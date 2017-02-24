@@ -1,0 +1,4 @@
+.idea/*
+*.~$lock
+composer.lock
+*.DS_Store
