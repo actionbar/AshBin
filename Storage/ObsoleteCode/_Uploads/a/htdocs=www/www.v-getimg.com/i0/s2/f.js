@@ -1,0 +1,1 @@
+(function(){var h,s='';F($('c^h2'),function(o,i){h=H(o);H(o,'<a name="'+i+'"></a>'+h);s+='<li><a href="#'+i+'">'+h+'</a></li>';});if(T(s))H($('d'),'<div class="f"><p>目录</p><ul>'+s+'</ul></div>');})();

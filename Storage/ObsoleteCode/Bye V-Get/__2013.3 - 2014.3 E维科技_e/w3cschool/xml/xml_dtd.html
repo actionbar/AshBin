@@ -1,0 +1,182 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="../c3.css" />
+<title>XML 验证</title>
+</head>
+<body class="xml">
+<div id="wrapper">
+<div id="header">
+<a href="http://e.v-get.com/w3cschool/" style="float:left;">W3CSchool 在线教程</a>
+<div class="q g"><script type="text/javascript">var cpro_id="u1163355"</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div>
+<div id="navfirst">
+<ul id="menu">
+<li id="h"><a href="../h.html">HTML教程</a></li>
+<li id="x"><a href="../x.html">XML教程</a></li>
+<li id="b"><a href="../b.html">浏览器脚本</a></li>
+<li id="s"><a href="../s.html">服务器脚本</a></li>
+<li id="d"><a href="../d.html">dot net教程</a></li>
+<li id="m"><a href="../m.html">多媒体教程</a></li>
+<li id="w"><a href="../w.html">建站手册</a></li>
+</ul>
+</div><div id="navsecond">
+<div id="course">
+<h2>XML 基础</h2>
+<ul>
+<li><a href="http://e.v-get.com/w3cschool/">XML 首页</a></li>
+<li><a href="xml_intro.html">XML 简介</a></li>
+<li><a href="xml_usedfor.html">XML 用途</a></li>
+<li><a href="xml_tree.html">XML 树结构</a></li>
+<li><a href="xml_syntax.html">XML 语法</a></li>
+<li><a href="xml_elements.html">XML 元素</a></li>
+<li><a href="xml_attributes.html">XML 属性</a></li>
+<li><a href="xml_dtd.html">XML 验证</a></li>
+<li><a href="xml_validator.html">XML 验证器</a></li>
+<li><a href="xml_browsers.html">XML 浏览器</a></li>
+<li><a href="xml_view.html">XML 查看</a></li>
+<li><a href="xml_display.html">XML CSS</a></li>
+<li><a href="xml_xsl.html">XML XSLT</a></li>
+</ul>
+<h2>XML JavaScript</h2>
+<ul>
+<li><a href="xml_parser.html">XML 解析器</a></li>
+<li><a href="xml_dom.html">XML DOM</a></li>
+<li><a href="xml_to_html.html">XML to HTML</a></li>
+<li><a href="xml_http.html">XML HTTP Request</a></li>
+<li><a href="xml_applications.html">XML 应用程序</a></li>
+</ul>
+</ul>
+<h2>XML 高级</h2>
+<ul>
+<li><a href="xml_namespaces.html">XML 命名空间</a></li>
+<li><a href="xml_cdata.html">XML CDATA</a></li>
+<li><a href="xml_encoding.html">XML 编码</a></li>
+<li><a href="xml_server.html">XML 服务器</a></li>
+<li><a href="xml_dom_advanced.html">XML DOM 高级</a></li>
+<li><a href="xml_dont.html">XML Don't</a></li>
+<li><a href="xml_savedata.html">XML 数据存储</a></li>
+<li><a href="xml_technologies.html">XML 技术</a></li>
+<li><a href="xml_real_life.html">XML 现实案例</a></li>
+<li><a href="xml_editors.html">XML 编辑器</a></li>
+<li><a href="xml_summary.html">XML 总结</a></li>
+</ul>
+<h2>实例/测验</h2>
+<ul>
+<li><a href="../example/xmle_examples.html">XML 实例</a></li>
+<li><a href="xml_quiz.html">XML 测验</a></li>
+</ul>
+</div>
+<div id="selected">
+<h2>建站手册</h2>
+<ul>
+<li><a href="../site/">网站构建</a></li>
+<li><a href="../w3c/">万维网联盟</a></li>
+<li><a href="http://e.v-get.com/w3c/">W3CSchool 教程</a></li>
+<li><a href="../quality/">网站品质</a></li>
+<li><a href="../semweb/">语义网</a></li>
+<li><a href="../hosting/">网站主机</a></li>
+</ul>
+<h2><a href="http://e.v-get.com/w3c/" class="f13">W3CSchool 教程</a></h2><div class="a120x90"><script type="text/javascript">var cpro_id="u1210867";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div></div>
+</div>
+<div id="maincontent">
+<h1>XML 验证</h1>
+<div id="tpn">
+<ul class="prenext">
+<li class="pre"><a href="xml_attributes.html">上一页</a></li>
+<li class="next"><a href="xml_validator.html">下一页</a></li>
+</ul>
+</div>
+<div id="intro">
+<p><strong>拥有正确语法的 XML 被称为“形式良好”的 XML。</strong></p>
+<p><strong>通过某个 DTD 进行了验证的 XML 是“合法”的 XML。</strong></p>
+</div>
+<div>
+<h2>形式良好的 XML 文档</h2>
+<p><strong>一个&#34;形式良好&#34;的 XML 文档拥有正确的语法。</strong></p>
+<p>一个&#34;形式良好&#34;的 XML 文档会遵守前几章介绍过的 XML 语法规则：</p>
+<ul>
+<li>XML 文档必须有根元素</li>
+<li>XML 文档必须有关闭标签</li>
+<li>XML 标签对大小写敏感</li>
+<li>XML 元素必须被正确的嵌套</li>
+<li>XML 属性必须加引号</li>
+</ul>
+<pre>&lt;?xml version=&#34;1.0&#34; encoding=&#34;ISO-8859-1&#34;?&gt;
+&lt;note&gt;
+&lt;to&gt;George&lt;/to&gt;
+&lt;from&gt;John&lt;/from&gt;
+&lt;heading&gt;Reminder&lt;/heading&gt;
+&lt;body&gt;Don't forget the meeting!&lt;/body&gt;
+&lt;/note&gt;</pre>
+</div>
+<div>
+<h2>验证 XML 文档</h2>
+<p>一个合法的 XML 文档是&#34;形式良好&#34;的 XML 文档，同样遵守文档类型定义 (DTD) 的语法规则：</p>
+<pre>
+&lt;?xml version=&#34;1.0&#34; encoding=&#34;ISO-8859-1&#34;?&gt;
+<code>&lt;!DOCTYPE note SYSTEM &#34;Note.dtd&#34;&gt;</code>
+&lt;note&gt;
+&lt;to&gt;George&lt;/to&gt;
+&lt;from&gt;John&lt;/from&gt;
+&lt;heading&gt;Reminder&lt;/heading&gt;
+&lt;body&gt;Don't forget the meeting!&lt;/body&gt;
+&lt;/note&gt;  
+</pre>
+<p>在上例中，DOCTYPE 声明是对外部 DTD 文件的引用。下面的段落展示了这个文件的内容。</p>
+</div>
+<div>
+<h2>XML DTD </h2>
+<p>DTD 的作用是定义 XML 文档的结构。它使用一系列合法的元素来定义文档结构：</p>
+<pre>
+&lt;!DOCTYPE note [
+  &lt;!ELEMENT note (to,from,heading,body)&gt;
+  &lt;!ELEMENT to      (#PCDATA)&gt;
+  &lt;!ELEMENT from    (#PCDATA)&gt;
+  &lt;!ELEMENT heading (#PCDATA)&gt;
+  &lt;!ELEMENT body    (#PCDATA)&gt;
+]&gt; 
+</pre>
+<p>如果您希望学习 DTD，请访问我们的 <a href="../dtd/">DTD 教程</a>。</p>
+</div>
+<div>
+<h2>XML Schema</h2>
+<p>W3C 支持一种基于 XML 的 DTD 代替者，它名为 XML Schema：</p>
+<pre>
+&lt;xs:element name=&#34;note&#34;&gt;
+&lt;xs:complexType&gt;
+  &lt;xs:sequence&gt;
+    &lt;xs:element name=&#34;to&#34;      type=&#34;xs:string&#34;/&gt;
+    &lt;xs:element name=&#34;from&#34;    type=&#34;xs:string&#34;/&gt;
+    &lt;xs:element name=&#34;heading&#34; type=&#34;xs:string&#34;/&gt;
+    &lt;xs:element name=&#34;body&#34;    type=&#34;xs:string&#34;/&gt;
+  &lt;/xs:sequence&gt;
+&lt;/xs:complexType&gt;
+&lt;/xs:element&gt; 
+</pre>
+<p>如果您需要学习 XML Schema，请访问我们的 <a href="../schema/">XML Schema 教程</a>。</p>
+</div>
+<div>
+<h2>一个通用的验证器</h2>
+<p>为了帮助您检查 XML 文件的语法，我们创建了这个工具，以便您对任何 XML 文件进行语法检查。</p>
+<p>请看下一节。</p>
+</div>
+<div id="bpn">
+<ul class="prenext">
+<li class="pre"><a href="xml_attributes.html">上一页</a></li>
+<li class="next"><a href="xml_validator.html">下一页</a></li>
+</ul>
+</div>
+</div>
+<div id="sidebar">
+<div class="rs"></div>
+<div id="tools">
+<h5 id="tools_example"><a href="../example/xmle_examples.html">XML 实例</a></h5>
+<h5 id="tools_quiz"><a href="xml_quiz.html">XML 测验</a></h5>
+</div>
+<div class="a120x600"><script type="text/javascript">var cpro_id="u1293136";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div><div class="b"></div>
+</div>
+</body>
+</html>

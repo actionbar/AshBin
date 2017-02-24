@@ -1,0 +1,126 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="../c3.css" />
+<title>VBScript Where To ...</title>
+</head>
+<body class="browserscripting">
+<div id="wrapper">
+<div id="header">
+<a href="http://e.v-get.com/w3cschool/" style="float:left;">W3CSchool 在线教程</a>
+<div class="q g"><script type="text/javascript">var cpro_id="u1163355"</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div>
+<div id="navfirst">
+<ul id="menu">
+<li id="h"><a href="../h.html">HTML教程</a></li>
+<li id="x"><a href="../x.html">XML教程</a></li>
+<li id="b"><a href="../b.html">浏览器脚本</a></li>
+<li id="s"><a href="../s.html">服务器脚本</a></li>
+<li id="d"><a href="../d.html">dot net教程</a></li>
+<li id="m"><a href="../m.html">多媒体教程</a></li>
+<li id="w"><a href="../w.html">建站手册</a></li>
+</ul>
+</div><div id="navsecond">
+<div id="course">
+<h2>VBScript 教程</h2>
+<ul>
+<li><a href="http://e.v-get.com/w3cschool/">VB 首页</a></li>
+<li><a href="vbscript_intro.html">VB 简介</a></li>
+<li><a href="vbscript_howto.html">VB How to</a></li>
+<li><a href="vbscript_whereto.html">VB Where to</a></li>
+<li><a href="vbscript_variables.html">VB 变量</a></li>
+<li><a href="vbscript_procedures.html">VB 程序</a></li>
+<li><a href="vbscript_conditionals.html">VB 条件语句</a></li>
+<li><a href="vbscript_looping.html">VB 循环语句</a></li>
+<li><a href="vbscript_summary.html">VB 总结</a></li>
+</ul>
+<h2>实例</h2>
+<ul>
+<li><a href="../example/vbst_examples.html">VB 实例</a></li>
+</ul>
+<h2>参考手册</h2>
+<ul>
+<li><a href="vbscript_ref_functions.html">VB 函数</a></li>
+<li><a href="vbscript_ref_keywords.html">VB 关键字</a></li>
+</ul>
+</div>
+<div id="selected">
+<h2>建站手册</h2>
+<ul>
+<li><a href="../site/">网站构建</a></li>
+<li><a href="../w3c/">万维网联盟</a></li>
+<li><a href="http://e.v-get.com/w3c/">W3CSchool 教程</a></li>
+<li><a href="../quality/">网站品质</a></li>
+<li><a href="../semweb/">语义网</a></li>
+<li><a href="../hosting/">网站主机</a></li>
+</ul>
+<h2><a href="http://e.v-get.com/w3c/" class="f13">W3CSchool 教程</a></h2><div class="a120x90"><script type="text/javascript">var cpro_id="u1210867";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div></div>
+</div>
+<div id="maincontent">
+<h1>VBScript Where To ...</h1>
+<div id="tpn">
+<ul class="prenext">
+<li class="pre"><a href="vbscript_howto.html">上一页</a></li>
+<li class="next"><a href="vbscript_variables.html">下一页</a></li>
+</ul>
+</div>
+<div class="example">
+<h2>实例</h2>
+<dl>
+<dt><a href="../tiy/t_597.html">head 部分中的函数</a></dt>
+<dd>可以把脚本放置在 head 部分。经常，我们会把所有的函数放置于 head 部分。这么做的目的是为了确保函数在调用前已经被载入。</dd>
+<dt><a href="../tiy/t_598.html">body 部分中的脚本</a></dt>
+<dd>本例会执行被放置于 body 部分的一段脚本。在 body 中的脚本会在页面载入时执行。</dd>
+</dl>
+</div>
+<div>
+<h2>在何处放置 VBScript</h2>
+<p>当页面载入浏览器时，页面中的脚本会立即被执行。我们并不希望这种情况发生。有时我们希望当页面载入时执行脚本，而有时我们则希望当用户触发某个事件时执行这些脚本。</p>
+<p>在 head 部分的脚本：当脚本被调用时，它们会被执行，或者某个事件被触发时，脚本也有可能会执行。当我们把脚本放置于 head 部分时，就可以确保在用户使用之前它们已经被载入了：</p>
+<pre>&lt;html&gt;
+&lt;head&gt;
+<code>&lt;script type=&#34;text/vbscript&#34;&gt;</code>
+  some statements
+<code>&lt;/script&gt;</code>
+&lt;/head&gt;</pre>
+<p>在 body 部分的脚本：当页面的 body 部分被载入时，脚本就会被执行。当我们把脚本放置于 body 部分，它会生成页面的内容：</p>
+<pre>&lt;html&gt;
+&lt;head&gt;
+&lt;/head&gt;
+&lt;body&gt;
+<code>&lt;script type=&#34;text/vbscript&#34;&gt;</code>
+  some statements
+<code>&lt;/script&gt;</code>
+&lt;/body&gt;</pre>
+<p>位于 body 和 head 部分的脚本：您可以在文档中放置如何数量的脚本，因此您可以同时在 body 和 head 部分放置脚本：</p>
+<pre>&lt;html&gt;
+&lt;head&gt;
+<code>&lt;script type=&#34;text/vbscript&#34;&gt;</code>
+  some statements
+<code>&lt;/script&gt;</code>
+&lt;/head&gt;
+&lt;body&gt;
+<code>&lt;script type=&#34;text/vbscript&#34;&gt;</code>
+  some statements
+<code>&lt;/script&gt;</code>
+&lt;/body&gt;</pre>
+</div>
+<div  id="bpn">
+<ul class="prenext">
+<li class="pre"><a href="vbscript_howto.html">上一页</a></li>
+<li class="next"><a href="vbscript_variables.html">下一页</a></li>
+</ul>
+</div>
+</div>
+<div id="sidebar">
+<div class="rs"></div>
+<div id="tools">
+<h5 id="tools_reference"><a href="vbscript_ref_functions.html">VBScript 参考手册</a></h5>
+<h5 id="tools_example"><a href="../example/vbst_examples.html">VBScript 实例</a></h5>
+</div>
+<div class="a120x600"><script type="text/javascript">var cpro_id="u1293136";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div><div class="b"></div>
+</div>
+</body>
+</html>

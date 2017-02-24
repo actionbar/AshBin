@@ -1,0 +1,121 @@
+<html xmlns:rdl>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<script src="rdl_method.js"></script>
+<base target="_self">
+</head>
+<body>
+
+<script>
+
+//collFriendObjects=new Array();
+//collFriendProperties=new Array();
+//collFriendMethods=new Array();
+//collFriendEvents=new Array();
+//collFriendCollections=new Array();
+
+collFriendMethods=new Array(
+'insertAdjacentHTML','insertAdjacentText','appendChild','applyElement','insertBefore'
+);
+
+//collIE40=new Array();
+//collIE50=new Array();
+//collIE55=new Array();
+//collIE60=new Array();
+
+collIE50=new Array(
+'A','ACRONYM','ADDRESS','APPLET','AREA','B','BASE','BASEFONT','BDO','BGSOUND','BIG','BLOCKQUOTE','BODY','BR','BUTTON','CAPTION','CENTER','CITE','CODE','COL','COLGROUP','COMMENT','DD','DEL','DFN','DIR','DIV','DL','DT','EM','EMBED','FIELDSET','FONT','FORM','FRAME','FRAMESET','HEAD','Hn','HR','HTML','I','IFRAME','IMG','INPUT type=button','INPUT type=checkbox','INPUT type=file','INPUT type=hidden','INPUT type=image','INPUT type=password','INPUT type=radio','INPUT type=reset','INPUT type=submit','INPUT type=text','INS','KBD','LABEL','LEGEND','LI','LINK','LISTING','MAP','MARQUEE','MENU','nextID','OBJECT','OL','OPTION','P','PLAINTEXT','PRE','Q','S','SAMP','SCRIPT','SELECT','SMALL','SPAN','STRIKE','STRONG','SUB','SUP','TABLE','TBODY','TD','TEXTAREA','TFOOT','TH','THEAD','TITLE','TR','TT','U','UL','VAR','XMP'
+);
+
+//sStyle='';
+
+sScript=
+'<script>\n'+
+'var i_nowheight=250;\n'+
+'function rdl_doApply(e){\n'+
+'with (document.all("oSelect1")) var sParam1=options[selectedIndex].value;\n'+
+'with (document.all("oSelect2")) var sParam2=options[selectedIndex].value;\n'+
+'var oNewNode=document.createElement(sParam1);\n'+
+'oList.insertAdjacentElement(sParam2,oNewNode);\n'+
+'oNewNode.innerText=sParam2\n'+
+'i_nowheight+=30;\n'+
+'window.resizeTo(360,i_nowheight);\n'+
+'}\n'+
+'<\/script>\n';
+
+sCode=
+'<div id=oCode>\n'+
+'<ul id=oList>\n'+
+'<li>列表项目1\n'+
+'<li>列表项目2\n'+
+'<\/ul>\n'+
+'<\/div>\n'+
+'<table height=56><tr>\n'+
+'<td><select style="width:100px;" id=oSelect1>\n'+
+'<option value="button" selected>button<\/option>\n'+
+'<option value="b">b<\/option>\n'+
+'<\/select><\/td>\n'+
+'<td><select style="width:100px;" id=oSelect2>\n'+
+'<option value="beforeBegin" selected>beforeBegin<\/option>\n'+
+'<option value="afterBegin">afterBegin<\/option>\n'+
+'<option value="beforeEnd">beforeEnd<\/option>\n'+
+'<option value="afterEnd">afterEnd<\/option>\n'+
+'<\/select><\/td>\n'+
+'<td><input type=button value=" 插入 " onclick="rdl_doApply()"><\/td>\n'+
+'<\/tr><\/table>\n';
+
+iWinWidth=360;
+
+iWinHeight=250;
+
+</script>
+
+<div id=idContent>
+
+<div id=idContentTitle><span id=idTitleName>insertAdjacentElement</span>版本：DHTML Object Model　返回值：有</div>
+
+<div class=cssColumnTitle>语法：</div>
+<div>
+<i>oElement</i><b> = </b><i>object</i><b> . insertAdjacentElement ( </b><i>sWhere</i><b> , </b><i>oElement</i><b> ) </b>
+</div>
+
+<div class=cssColumnTitle>参数：</div>
+<table>
+<tr><td nowrap><i> oElement </i></td><td nowrap><b>:</b></td>
+<td><b>必选项</b>。对象(Element)。要插入到<i> object </i>邻近的对象。<br>
+<tr><td nowrap><i> sWhere </i></td><td nowrap><b>:</b></td>
+<td><b>必选项</b>。字符串(String)。<b>beforeBegin</b> | <b>afterBegin</b> | <b>beforeEnd</b> | <b>afterEnd</b>
+<table>
+<tr><td nowrap><b> beforeBegin </b></td><td nowrap><b>:</b></td>
+<td>将<i> oElement </i>插到<i> object </i>的开始标签之前。</td></tr>
+<tr><td nowrap><b> afterBegin </b></td><td nowrap><b>:</b></td>
+<td>将<i> oElement </i>插到<i> object </i>的开始标签之后。但是在<i> object </i>的所有原有内容之前。</td></tr>
+<tr><td nowrap><b> beforeEnd </b></td><td nowrap><b>:</b></td>
+<td>将<i> oElement </i>插到<i> object </i>的结束标签之前。但是在<i> object </i>的所有原有内容之后。</td></tr>
+<tr><td nowrap><b> afterEnd </b></td><td nowrap><b>:</b></td>
+<td>将<i> oElement </i>插到<i> object </i>的结束标签之后。</td></tr>
+</table>
+</td></tr>
+</table>
+
+<div class=cssColumnTitle>返回值：</div>
+<table>
+<tr><td nowrap><i> oElement </i></td><td nowrap><b>:</b></td>
+<td>对象(Element)。返回插入的对象的引用。</td></tr>
+</table>
+
+<div class=cssColumnTitle>说明：</div>
+<div>
+将<i> oElement </i>依据<i> object </i>定位插入文档结构。
+<br>当文档正在载入时，不可以尝试此方法。必须在<a href="../events/onload.html"> onload </a>事件触发以后。
+<br>假如你尝试插入一个已经在文档结构中存在定位的对象，该对象将被移动到你指定的插入位置，而不会有新对象被创建。
+</div>
+
+
+
+</div>
+</body>
+</html>
+
+<!-- Part of RDL(TM) - Written by Rain1977 
+HomeSite: http://www.dhtmlet.com  E-Mail: dhtmlet@hotmail.com -->

@@ -1,0 +1,99 @@
+<html xmlns:rdl>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<script src="rdl_method.js"></script>
+<base target="_self">
+</head>
+<body>
+
+<script>
+//collFriendObjects=new Array();
+//collFriendProperties=new Array();
+//collFriendMethods=new Array();
+//collFriendEvents=new Array();
+//collFriendCollections=new Array();
+
+collFriendMethods=new Array(
+'empty','createRange','createRangeCollection','execCommand'
+);
+
+collFriendObjects=new Array(
+'selection'
+);
+
+collFriendEvents=new Array(
+'onselect','onselectstart'
+);
+
+//collIE40=new Array();
+//collIE50=new Array();
+//collIE55=new Array();
+//collIE60=new Array();
+
+collIE40=new Array(
+'selection'
+);
+
+//sStyle='';
+
+sScript=
+'<script>\n'+
+'function rdl_doSelect(){\n'+
+'var oMessage=document.all("oMessage");\n'+
+'var oTextRange=document.body.createTextRange();\n'+
+'with (oTextRange) {\n'+
+'moveToElementText(oMessage);\n'+
+'execCommand("SelectAll");\n'+
+'}\n'+
+'}\n'+
+'function rdl_doClear(){\n'+
+'document.selection.clear();\n'+
+'}\n'+
+'<\/script>\n';
+
+sCode=
+'<span id=oMessage>我是要被清除的信息。<\/span>\n'+
+'<br><br>\n'+
+'<input type=button value=" 选择 " onclick="rdl_doSelect();">&nbsp;<input type=button value=" 清除 " onclick="rdl_doClear();">\n';
+
+iWinWidth=320;
+
+iWinHeight=200;
+
+</script>
+
+<div id=idContent>
+
+<div id=idContentTitle><span id=idTitleName>clear</span>版本：DOM1　返回值：无</div>
+
+<div class=cssColumnTitle>语法：</div>
+<div>
+<a href="../objects/selection.html"><b>selection</b></a><b> . clear () </b>
+</div>
+
+<div class=cssColumnTitle>参数：</div>
+<div>
+无
+</div>
+
+<div class=cssColumnTitle>返回值：</div>
+<div>
+无
+</div>
+
+<div class=cssColumnTitle>说明：</div>
+<div>
+清除选择区(<a href="../objects/selection.html"> selection </a>)内的内容。
+</div>
+
+<div class=cssColumnTitle>示例：</div>
+<div id=idSimpleCode>
+document.selection.clear();
+</div>
+
+</div>
+</body>
+</html>
+
+<!-- Part of RDL(TM) - Written by Rain1977 
+HomeSite: http://www.dhtmlet.com  E-Mail: dhtmlet@hotmail.com -->

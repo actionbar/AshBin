@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>IP地址显示</title>
+<style type="text/css">
+body,td,th {
+	font-family: Tahoma, SimSun;
+}
+</style>
+</head>
+<link rel="stylesheet" type="text/css" href="../index.css" />
+<link rel="stylesheet" type="text/css" href="http://localhost:8080/v-get.com/tool/index.css" />
+<style type="text/css">
+<!--
+.c{margin:25px 50px}
+.c p{line-height:22px}
+.c select{margin:9px 0 3px}
+-->
+</style>
+
+
+<script type="text/javascript" src="http://localhost:8080/v-get.com/i/i.js"></script>
+
+
+</head>
+<body>
+<div class="w">
+<div class="t"><div class="q"><div class="p tl"></div><div class="p tc"><a href="">V-Get!首页</a>|<a href="">设为主页</a>|<a href="">收藏本站</a></div><div class="p tr"></div></div></div>
+<div class="u">
+<img src="http://localhost:8080/v-get.com/tool/index.png" />
+</div>
+<div class="n"><a href="http://localhost:8080/tool.v-get.com/">首页</a><a href="http://localhost:8080/v-get.com/tool/biz/">商务办公</a><a href="http://localhost:8080/v-get.com/tool/finance/">金融计算</a><a href="http://localhost:8080/v-get.com/tool/life/">生活助手</a><a href="http://localhost:8080/v-get.com/tool/images/">图片美工</a><a href="http://localhost:8080/v-get.com/tool/editor/">文字设计</a><a href="http://localhost:8080/v-get.com/tool/edu/">教育考试</a><a href="http://localhost:8080/v-get.com/tool/game/" class="no">娱乐游戏</a><a href="http://localhost:8080/v-get.com/tool/pc/">电脑优化</a></div>
+<div class="w4"><a href="#"><img src="http://localhost:8080/v-get.com/i/wuliu/a/zzidc980.gif" /></a></div>
+<!--这里不用include，因为基本这个部分是固定的；广告以后采用js替换，或者固定图片名称-->
+<!--因为都在life文件夹下，而且涉及.no，所以这样更好-->
+<div class="v">
+<div class="p l">
+<h2>生活助手</h2>
+<!--#include file="l.htm"-->
+
+</div>
+<div class="p r">
+<h1>21点纸牌游戏</h1>
+<div class="c">
+<script language="JavaScript1.2">
+<!--
+
+document.write("你当前的分辨率是:"+screen.width+"*"+screen.height)
+//-->
+</script>
+
+
+
+</div>
+
+<!--#include file="c.htm"-->
+
+
+</div>
+
+</div>
+
+<div class="o b">
+ddd
+</div>
+</div>
+
+  
+</body>
+</html>

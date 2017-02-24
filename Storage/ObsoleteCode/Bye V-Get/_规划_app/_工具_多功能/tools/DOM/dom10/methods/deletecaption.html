@@ -1,0 +1,94 @@
+<html xmlns:rdl>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<script src="rdl_method.js"></script>
+<base target="_self">
+</head>
+<body>
+
+<script>
+
+//collFriendObjects=new Array();
+//collFriendProperties=new Array();
+//collFriendMethods=new Array();
+//collFriendEvents=new Array();
+//collFriendCollections=new Array();
+
+collFriendMethods=new Array(
+'moveRow','createTFoot','createTHead',
+'moveRow','deleteCell','deleteRow','deleteTFoot','deleteTHead',
+'insertCell','insertRow'
+);
+
+collFriendCollections=new Array(
+'cells','rows','tBodies'
+);
+
+collFriendObjects=new Array(
+'TABLE','THEAD','TBODY','TFOOT','TR','TH','TD','CAPTION','COL','COLGROUP'
+);
+
+//collIE40=new Array();
+//collIE50=new Array();
+//collIE55=new Array();
+//collIE60=new Array();
+
+collIE40=new Array(
+'TABLE'
+);
+
+sStyle=
+'table{background:#003399;}\n'+
+'td{background:#6699CC;}\n'+
+'caption{background:#CC9966;border:solid #003399;border-width:1px 1px 0px 1px;}\n';
+
+sScript=
+'<script>\n'+
+'function rdl_doDel(){\n'+
+'document.all.myTable.deleteCaption()\n'+
+'}\n'+
+'<\/script>\n';
+
+sCode=
+'<table cellspacing=1 id=myTable><caption>第1个CAPTION<\/caption><caption>第2个CAPTION<\/caption><tr><td>第1个TD<\/td><td>第2个TD<\/td><td>第3个TD<\/td><\/tr><\/table>\n'+
+'<br><input type=button value=" 删除 " onclick="rdl_doDel();">\n';
+
+iWinWidth=320;
+
+iWinHeight=240;
+
+</script>
+
+<div id=idContent>
+
+<div id=idContentTitle><span id=idTitleName>deleteCaption</span>版本：DOM1　返回值：无</div>
+
+<div class=cssColumnTitle>语法：</div>
+<div>
+<a href="../objects/table.html"><b>TABLE</b></a><b> . deleteCaption()</b>
+</div>
+
+<div class=cssColumnTitle>参数：</div>
+<div>
+无
+</div>
+
+<div class=cssColumnTitle>返回值：</div>
+<div>
+无
+</div>
+
+<div class=cssColumnTitle>说明：</div>
+<div>
+从<a href="../objects/table.html"> table </a>中删除<a href="../objects/caption.html"> caption </a>及其内容。
+<br>假如<a href="../objects/table.html"> table </a>中存在一个或多个<a href="../objects/caption.html"> caption </a>，则该方法将仅仅删除其中第一个<a href="../objects/caption.html"> caption </a>及其内容。
+</div>
+
+
+
+</div>
+</body>
+</html>
+
+<!-- Part of RDL(TM) - Written by Rain1977 
+HomeSite: http://www.dhtmlet.com  E-Mail: dhtmlet@hotmail.com -->

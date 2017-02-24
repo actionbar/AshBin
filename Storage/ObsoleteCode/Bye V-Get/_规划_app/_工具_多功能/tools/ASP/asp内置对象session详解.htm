@@ -1,0 +1,112 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>asp内置对象 session 详解</title>
+<style type="text/css">
+<!--
+body {
+	font-size: 10.4pt;
+	line-height: 22px;
+}
+-->
+</style>
+</head>
+
+<body bgcolor="eeeeee" leftmargin="20" marginwidth="20">
+<p><strong>asp内置对象 session 详解</strong></p>
+<p></p>
+<hr>
+<p> Session 对象<br>
+  可以使用 Session 对象存储特定用户会话所需的信息。这样，当用户在应用程序的 Web 页之间跳转时，存储在 Session 对象中的变量将不会丢失，而是在整个用户会话中一直存在下去。</p>
+<p>当用户请求来自应用程序的 Web 页时，如果该用户还没有会话，则 Web 服务器将自动创建一个 Session 对象。当会话过期或被放弃后，服务器将终止该会话。</p>
+<p>Session 对象最常见的一个用法就是存储用户的首选项。例如，如果用户指明不喜欢查看图形，就可以将该信息存储在 Session 对象中。有关使用 Session 
+  对象的详细信息，请参阅“ASP 应用程序”部分的“管理会话”。</p>
+<p>注意 会话状态仅在支持 cookie 的浏览器中保留。</p>
+<p>语法<br>
+  Session.collection|property|method</p>
+<p>集合 <br>
+  Contents 包含已用脚本命令添加到会话中的项目。 <br>
+  StaticObjects 包含通过 &lt;OBJECT&gt; 标记创建的并给定了会话作用域的对象。 </p>
+<p><br>
+  属性<br>
+  CodePage 将用于符号映射的代码页。 <br>
+  LCID 现场标识。 <br>
+  SessionID 返回用户的会话验证。 <br>
+  Timeout 应用程序会话状态的超时时限，以分钟为单位。 </p>
+<p><br>
+  方法<br>
+  Abandon 该方法破坏 Session 对象并释放其资源。 </p>
+<p><br>
+  事件<br>
+  global.asa 文件中声明下列事件的脚本。</p>
+<p>Session_OnEnd <br>
+  Session_OnStart </p>
+<p><br>
+  有关以上事件及 global.asa 文件的详细信息, 请参阅 Global.asa 参考.</p>
+<p>注释<br>
+  您可以在 Session 对象中存储值。存储在 Session 对象中的信息在会话及会话作用域内有效。下列脚本演示两种类型的变量的存储方式。</p>
+<p>&lt;% <br>
+  Session(&quot;username&quot;) = &quot;Janine&quot;<br>
+  Session(&quot;age&quot;) = 24<br>
+  %&gt;</p>
+<p>但是，如果您将对象存储在 Session对象中，而且您使用 VBScript 作为主脚本语言。则必须使用关键字 Set。如下列脚本所示。</p>
+<p>&lt;% Set Session(&quot;Obj1&quot;) = Server.CreateObject(&quot;MyComponent.class1&quot;) 
+  %&gt;</p>
+<p>然后，您就可以在后面的 Web 页上调用 MyComponent.class1 揭示的方法和属性，其调用方法如下：</p>
+<p>&lt;% Session(&quot;Obj1&quot;).MyMethod %&gt;</p>
+<p>也可以通过展开该对象的本地副本并使用下列脚本来调用：</p>
+<p>&lt;% <br>
+  Set MyLocalObj1 = Session(&quot;Obj1&quot;) <br>
+  MyLocalObj1.MyObjMethod<br>
+  %&gt;</p>
+<p>创建有会话作用域的对象的另一种方法是在 global.asa 文件中使用 &lt;OBJECT&gt; 标记。 </p>
+<p>但是不能在 Session 对象中存储内建对象。例如，下面每一行都将返回错误。</p>
+<p>&lt;%<br>
+  Set Session(&quot;var1&quot;) = Session<br>
+  Set Session(&quot;var2&quot;) = Request<br>
+  Set Session(&quot;var3&quot;) = Response<br>
+  Set Session(&quot;var4&quot;) = Server<br>
+  Set Session(&quot;var5&quot;) = Application<br>
+  %&gt;</p>
+<p>在将对象存储到 Session 对象之前，必须了解它使用的是哪一种线程模型。只有那些标记为“Both”的对象才能存储在没有锁定单线程会话的 Session 
+  对象中。详细信息, 请参阅“创建 ASP 组件”中的“选择线程模型”。</p>
+<p>若您将一个数组存储在 Session对象中，请不要直接更改存储在数组中的元素。例如，下列的脚本无法运行。</p>
+<p>&lt;% Session(&quot;StoredArray&quot;)(3) = &quot;new value&quot; %&gt;</p>
+<p>这是因为 Session对象是作为集合被实现的。数组元素 StoredArray(3) 未获得新的赋值。而此值将包含在 Application 对象集合中，并将覆盖此位置以前存储的任何信息。</p>
+<p>我们极力建议您在将数组存储在 Session对象中时，在检索或改变数组中的对象前获取数组的一个副本。在对数组操作时，您应再将数组全部存储在 Session 
+  对象中，这样您所做的任何改动将被存储下来。下列的脚本对此进行演示。</p>
+<p>---file1.asp---<br>
+  &lt;%<br>
+  'Creating and initializing the array<br>
+  Dim MyArray()<br>
+  Redim MyArray(5)<br>
+  MyArray(0) = &quot;hello&quot;<br>
+  MyArray(1) = &quot;some other string&quot;</p>
+<p>'Storing the array in the Session object<br>
+  Session(&quot;StoredArray&quot;) = MyArray</p>
+<p>Response.Redirect(&quot;file2.asp&quot;)<br>
+  %&gt;</p>
+<p>---file2.asp---<br>
+  &lt;%<br>
+  'Retrieving the array from the Session Object<br>
+  'and modifying its second element<br>
+  LocalArray = Session(&quot;StoredArray&quot;)<br>
+  LocalArray(1) = &quot; there&quot;</p>
+<p>'printing out the string &quot;hello there&quot;<br>
+  Response.Write(LocalArray(0)&amp;LocalArray(1))</p>
+<p>'Re-storing the array in the Session object<br>
+  'This overwrites the values in StoredArray with the new values<br>
+  Session(&quot;StoredArray&quot;) = LocalArray<br>
+  %&gt;</p>
+<p>示例 <br>
+  下列代码将字符串 MyName 分配给名为 name 的会话变量，并给名为 year 的会话变量指定一个值，而且为 some.Obj 组件的实例指定一个名为 
+  myObj 的变量。</p>
+<p>Session(&quot;name&quot;) = &quot;MyName&quot; <br>
+  Session(&quot;year&quot;) = 96 <br>
+  Set Session(&quot;myObj&quot;) = Server.CreateObject(&quot;someObj&quot;) <br>
+  %&gt; </p>
+<p></p>
+<p>&nbsp; </p>
+</body>
+</html>

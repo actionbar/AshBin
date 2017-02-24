@@ -1,0 +1,196 @@
+<html>
+<head>
+<title>属性类型</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+
+<link rel = stylesheet href = "image/style.css">
+</head>
+<body bgcolor="#ffffff">
+<table width="688" border="0" cellspacing="0" cellpadding="0" align="center">
+  <tr bgcolor="EEEEEE"> 
+    <td height="22"><a href="index.htm">主页</a></td>
+  </tr>
+</table><br>
+<table border="0" cellpadding="0" cellspacing="0" width="688" align="center" height="490">
+  <tr valign="top"> 
+    <td rowspan="4" width="91">&nbsp; </td>
+    <td height="68" width="131"> 
+      <p><img src="image/doc.gif"></p>
+    </td>
+    <td rowspan="4" width="18"><b></b> </td>
+    <td height="68" width="387"><img src="image/title_doc.gif"></td>
+    <td rowspan="4" width="61"> 
+      <h6>&nbsp;</h6>
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td rowspan="3" valign="top" class="pt10" align="center" width="131" bgcolor="EEEEEE"> 
+      <p>&nbsp;</p>
+      <p><font color="#FF0000">※ 10.5 属性类型</font></p>
+       
+	</td>
+  </tr>
+  <tr valign="top"> 
+    <td width="387" height="308"> 
+      <table width="100%" border="0" cellpadding="0">
+        <tr> 
+          <td>
+
+           <h4><a name="_Toc467197324">10.5 属性类型</a></h4>
+<p>前面的所有例子都具有CDATA类型的属性。CDATA是最通用的类型，但此外还允许使用其他九种属性类型。所有十种类型如下：</p>
+<ul>
+  <p>
+  <li>CDATA</li>
+  <p></p>
+  <p>
+  <li>Enumerated(枚举)</li>
+  <p></p>
+  <p>
+  <li>NMTOKEN</li>
+  <p></p>
+  <p>
+  <li>NMTOKENS</li>
+  <p></p>
+  <p>
+  <li>ID</li>
+  <p></p>
+  <p>
+  <li>IDREF</li>
+  <p></p>
+  <p>
+  <li>IDREFS</li>
+  <p></p>
+  <p>
+  <li>ENTITY</li>
+  <p></p>
+  <p>
+  <li>ENTITIES</li>
+  <p></p>
+  <p>
+  <li>NOTATION</li>
+  <p></p>
+</ul>
+<p>上述属性类型中的九种在类型字段中的值为常数，而Enumerated是一种特殊的类型，表示属性值必须为一可能取值列表中的一个。下面分别对各类型进行深入的研究。</p>
+<h5><a name="_Toc467197325">10.5.1 CDATA属性类型</a></h5>
+<p>最通用的属性类型CDATA，表明属性值为不包括小于号（&lt;）和引号（"）的任意文本字符串。可通过普通的实体引用（&amp;lt；和&amp;quot；）的方式或由字符引用Unicode值的方式插入小于号和引号字符。原始的和号（&amp;）&#0;&#0;不是字符或实际引用开始的和号，必须使用换码符&amp;amp;。</p>
+<p>实际上，即使属性值中不可避免的要包含双引号（"）的情况下，也不可直接使用；替代的方法是用单引号把双引号括起来。如下例所示：</p>
+<p>&lt;RECTANGLE LENGTH= 7" WIDTH= 8.5" &gt;</p>
+<p>如果属性值中包含单引号和双引号，而且并不用作界定属性值的用途；它们必须替换为实体引用&amp;apos；(单引号)和&amp;quot；(双引号)。例如：</p>
+<p>&lt;RECTANGLE LENGTH= 8&amp; pos;7" WIDTH="10 6&amp;quot;"/&gt;</p>
+<h5><a name="_Toc467197326">10.5.2 Enumerated属性类型</a></h5>
+<p>Enumerated类型不是XML的关键词，而是由竖线分隔的可能的属性值列表。任一值均需为有效的XML名称。文档作者可选取列表中的一个成员为属性的值，缺省值必须为列表中的一个值。</p>
+<p> 例如，假设希望某个元素具有可见和不可见属性。希望该元素具有一个VISIBLE属性，其属性值为TRUE或FALSE。如果该元素为简单的P元素，那么&lt;!attlist&gt;声明可如下所示：</p>
+<p>&lt;!ATTLIST P VISIBLE (TRUE | FALSE) "TRUE"&gt;</p>
+<p>上述声明表示P元素的VISIBLE属性可有可无，若拥有VISIBLE属性，则属性值必须为TRUE或FALSE；如果没有VISIBLE属性，则假定该值为TRUE。例如：</p>
+<p>&lt;P VISIBLE= "FALSE"&gt;You can t see me! Nyah! Nyah!&lt;/P&gt;</p>
+<p>&lt;P VISIBLE= "TRUE"&gt;You can see me.&lt;/P&gt;</p>
+<p>&lt;P&gt;You can see me too.&lt;/P&gt;</p>
+<p>就其自身而言，这声明并不是一个提供隐藏文本能力的魔术般的咒语。这种能力依然依靠应用程序去理解不应该显示不可见元素。为决定元素的显示或隐藏，可以通过对元素应用VISIBLE属性的样式单规则来进行设置。例如：</p>
+<p>&lt;xsl:template match= "P[@VISIBLE= FALSE ]" &gt;</p>
+<p>&lt;/xsl:template&gt;</p>
+<p></p>
+<p>&lt;xsl:template match= "P[@VISIBLE= TRUE ]" &gt;</p>
+<p> &lt;xsl: apply-templates/&gt;</p>
+<p>&lt;/xsl:template&gt;</p>
+<h5><a name="_Toc467197327">10.5.3 NMTOKEN属性类型</a></h5>
+<p>NMTOKEN属性类型限定属性值为有效的XML名称。如第6章所述，XML名称必须以字母或下划线开头。名字中后面的字符可以为字母、数字、下划线、连字符和句号。但不可包括空格（下划线通常作为空格的替代品）。从技术上说，名字中可包含冒号（：）但不应该使用冒号，因为冒号被保留为与命名域（namespace）一起使用。</p>
+<p>当使用编程语言处理XML数据时，证明了NMTOKEN的价值。这并不是一种偶然，除了允许使用冒号以外，上述规则与JAVA，JavaScript和其他程序语言标识符规则一致。例如，可在元素中使用NMTOKEN属性访问特别的JAVA类。那么就应用JAVA的API映射把数据传送到专有类的特有方法中。</p>
+<p>当需要从大量名字中选取不是XML的规定部分但与XML命名要求相符的名字时，就能体现NMTOKEN的用途。这些要求的最重要部分就是对空格的限制。例如，NMTOKEN可以用于下述属性，其值必须映射为8.3的DOS文件名，另一方面该属性也能用于UNIX、Macintosh或Windows 
+  NT文件名，而这些文件名中通常包含空格。</p>
+<p>例如，假如要求&lt;ADDRESS/&gt;标记中的州（state）属性为两个字母缩写；不能用DTD强制这些特性的执行，但可应用如下&lt;!ATTLIST&gt;声明防止人们输入类似“New 
+  York”或“Puerto Rico”的值：</p>
+<p>&lt;!ATTLIST ADDRESS STATE NMTOKEN #REQUIRED&gt;</p>
+<p>无论何种情况，像“California”、“Nevada”和其他一个单词的州名依然为合法值。当然，可以利用具有几十个两个字母的代码的枚举列表的简单方法；但是这种方法将导致巨大的工作量，比人们想象的大得多。举个例子，想一想，如果用两个字母代码代表美国50个州、所有的领土和属地、所有的国外的军事基地和加拿大所有的省份会是一个什么样的情况？另一方面，如果曾经在DTD文件中的参数实体引用定义了这样的列表，就可重复多次使用这个文件。</p>
+<h5><a name="_Toc467197328">10.5.4 NMTOKENS属性类型</a></h5>
+<p>NMTOKENS属性类型几乎就是NMTOKEN的复数形式。这种类型的属性可以使如下情况合法——属性由若干XML名称字组成，彼此间由空格分隔。通常可为使用NMTOKEN属性相同的理由而使用NMTOKENS属性，但仅仅在需要多个名字的时候。</p>
+<p>例如，如果state元素的属性值需要多个两个字母州代码时，就可应用下例所示的方法：</p>
+<p>&lt;!ATTLIST ADDRESS STATES NMTOKENS #REQUIRED&gt;</p>
+<p>然后，就可编写如下所示的标记：</p>
+<p>&lt;ADDRESS STATES="MI NY LA CA"&gt;</p>
+<p>不幸的是，如果应用这种技术，就不能再排除类似“New York”这样的州名，因为州名中每一独立的部分都为一个合格的NMTOKEN。如下所示：</p>
+<p>&lt;ADDRESS STATES="MI New York LA CA"&gt;</p>
+<h5><a name="_Toc467197329">10.5.5 ID属性类型</a></h5>
+<p>一个ID类型的属性标识文档中唯一的元素，编辑工具和其余应用程序通常使用ID列举文档中的元素，并不关心元素的实际意义和各元素彼此之间的关系。</p>
+<p>一个ID类型属性值必须为有效的XML名称，该名称以字母开头，由字母数字混排的字符和下划线组成，并且其中不带空格。一个特定的名字不能用作多个标记的ID属性。若在一个文档中两次使用同一ID将导致语法分析器返回一个错误信息；另外，一个元素不能具有超过一个的ID类型的属性。</p>
+<p>一般来说，ID属性的存在只是为了处理数据的程序方便。在许多情况下，除了ID属性值外，多个元素可能会是一样的，如果以可以预见的方式来选取ID的话，程序就可以列举出文档中所有不同类型的元素或同一类型的不同元素。</p>
+<p>ID类型属性与#FIXED类型的属性不兼容。ID类型属性不能同时具有#FIXED类型的属性，因为#FIXED类型的属性仅能拥有一个单一的值，而每个ID类型属性都具有不同的值。大部分ID属性使用#REQUIRED值。如清单10-1例所示：</p>
+<p>清单10-1：required ID属性类型</p>
+<p>&lt;?xml version="1.0" standa lone="yes"?&gt;</p>
+<p>&lt;!DOCTYPE DOCUMENT [</p>
+<p>&lt;!ELEMENT DOCUMENT (P*)&gt;</p>
+<p>&lt;!ELEMENT P (#PCDATA)&gt;</p>
+<p>&lt;!ATTLIST P PNUMBER ID #REQUIRED&gt;</p>
+<p>]&gt;</p>
+<p></p>
+<p>&lt;DOCUMENT&gt;</p>
+<p>&lt;P PNUMBER="p1"&gt;The quick brown fox&lt;/P&gt;</p>
+<p>&lt;P PNUMBER="p2" &gt;The quick brown fox&lt;/P&gt;</p>
+<p>&lt;/DOCUMENT&gt;</p>
+<h5><a name="_Toc467197330">10.5.6 IDREF属性类型</a></h5>
+<p>IDREF类型的属性值为文档中另一个元素的ID。例如，清单10-2表明IDREF和ID属性用于子元素和父元素之间的连结。</p>
+<p>清单10-2：family.xml</p>
+<p>&lt;?xml version= "1.0" standalone= "yes"?&gt;</p>
+<p>&lt;!DOCTYPE DOCUMENT [</p>
+<p>&lt;!ELEMENT DOCUMENT (PERSON*)&gt;</p>
+<p>&lt;!ELEMENT PERSON (#PCDATA)&gt;</p>
+<p>&lt;!ATTLIST PERSON PNUMBER ID #REQUIRED&gt;</p>
+<p>&lt;!ATTLIST PERSON FATHER IDREF #IMPLIED&gt;</p>
+<p>&lt;!ATTLIST PERSON MOTHER IDREF #IMPLIED&gt;</p>
+<p>]&gt;</p>
+<p></p>
+<p>&lt;DOCUMENT&gt;</p>
+<p>&lt;PERSON PNUMBER= "a1" &gt;Susan&lt;/PERSON&gt;</p>
+<p>&lt;PERSON PNUMBER= "a2" &gt;Jack&lt;/PERSON&gt;</p>
+<p>&lt;PERSON PNUMBER= "a3" MOTHER= "a1" FATHER= "a2" &gt;Chelsea&lt;/PERSON&gt;</p>
+<p>&lt;PERSON PNUMBER= "a4" MOTHER= "a1" FATHER= "a2" &gt;David&lt;/PERSON&gt;</p>
+<p>&lt;/DOCUMENT&gt;</p>
+<p>当在文档结构树上并不冲突的两个元素之间需要建立连结时，通常使用这种并不普遍但很重要的类型。在清单10-2中，每个子元素都有FATHER和MOTHER属性给出，这两个属性包含的是对应的ID属性。</p>
+<p>在清单10-2中，无法简洁地使用IDREF建立父元素到子元素之间的链接，这是因为每个父元素都具有不确定的子元素数目。解决的方法就是，可以把所有同一父元素的子元素组成FAMILY元素，然后链接到FAMILY上。即使使用这种方法，当面对半同属（共享唯一一个父元素）的元素时，也不好用。简而言之，IDREF适用于多对一的关系，不适合一对多的关系。</p>
+<h5><a name="_Toc467197331">10.5.7 ENTITY属性类型</a></h5>
+<p>ENTITY类型的属性提供把外部二进制数据和外部不可析实体链接到文档中的能力。ENTITY属性值为DTD中声明的不可析通用实体名，该实体名链接到外部实际数据。</p>
+<p>经典的ENTITY属性的例子就是图像。图像由另一URL处可用的二进制数据组成。假如XML浏览器支持ENTITY类型属性，在DTD中按如下方式声明，就可在XML文档中包括一幅枷瘢?/p>
+<p>&lt;!ELEMENT IMAGE EMPTY&gt;</p>
+<p>&lt;!ATTLIST IMAGE SOURCE ENTITY #REQUIRED&gt;</p>
+<p>&lt;!ENTITY LOGO SYSTEM "logo.gif"&gt;</p>
+<p>然后在期望图像出现在文档中的位置处，就可插入如下的IMAG标记：</p>
+<p>&lt;IMAGE SOURCE="LOGO"/&gt;</p>
+<p>所有XML浏览器自动识别的过程并不是在变魔术，这仅仅是一种简单的技术，浏览器和其余应用程序可能采用也可能不采用这种技术在文档中嵌入非XML数据。</p>
+<p><img src="Image/BK000210-11.gif" width=47 height=33>这种技术在第11章 “嵌入非XML数据” 中有更深入的探讨。</p>
+<h5><a name="_Toc467197332">10.5.8 ENTITIES 属性类型</a></h5>
+<p> ENTITIES属性类型几乎就是ENTITY的复数形式。若干由空格分隔的不可析实体名组成ENTITIES类型属性的值。每一实体名指向一个外部非XML数据资源。这种类型属性的用途之一为：使不同图片之间的切换变得光滑平顺，如下例所示：</p>
+<p>&lt;!ELEMENT SLIDESHOW EMPTY&gt;</p>
+<p>&lt;!ATTLIST SLIDESHOW SOURCES ENTITIES #REQUIRED&gt;</p>
+<p>&lt;!ENTITY PIC1 SYSTEM "cat.gif"&gt;</p>
+<p>&lt;!ENTITY PIC2 SYSTEM "dog.gif"&gt;</p>
+<p>&lt;!ENTITY PIC3 SYSTEM "cow.gif"&gt;</p>
+<p>然后在文档中希望显示图片的位置上插入如下标记：</p>
+<p>&lt;SLIDESHOW SOURCES="PIC1 PIC2 PIC3"&gt;</p>
+<p> 再一次声明，这不是所有（或任意）XML浏览器可以自动识别的通用格式；仅仅是某些浏览器和其余的应用程序可能采用也可能不采用的在文档中嵌入非XML数据的方法而已。</p>
+<h5><a name="_Toc467197333">10.5.9 NOTATION属性类型</a></h5>
+<p> NOTATION属性类型指定属性值为DTD中声明的记号名。这一属性的缺省值也必须为DTD中声明的记号名。在下一章中介绍记号的详细内容。简单地说，记号可标识非XML数据的格式；例如为不可析实体指定一帮助程序。</p>
+<p><img src="Image/BK000210-11.gif" width=47 height=33>第11章 “嵌入非XML格式数据”讲述了这方面的内容。</p>
+<p> 例如，SOUND元素的PLAYER属性具有NOTATION类型和缺省值MP，从而标识非XML数据的格式，记号MP表示一个特殊类型的声音文件：</p>
+<p>&lt;!ATTLIST SOUND PLAYER NOTATION (MP) #REQUIRED&gt;</p>
+<p>&lt;!NOTATION MP SYSTEM "mplay32.exe"&gt;</p>
+<p> 也可提供不同记号的选择。这样做的用法之一是为不同的平台指定不同的帮助应用程序。浏览器可从中选取一可用的值。这种情况下，NOTATION关键词后紧跟一对圆括号，括号内包含由竖直线分隔的、许可的记号名列表。例如：</p>
+<p>&lt;!NOTATION MP SYSTEM "mplay32.exe"&gt;</p>
+<p>&lt;!NOTATION ST SYSTEM "soundtool"&gt;</p>
+<p>&lt;!NOTATION SM SYSTEM "Sound Machine"&gt;</p>
+<p>&lt;!ATTLIST SOUND PLAYER NOTATION (MP | SM | ST) #REQUIRED&gt;</p>
+<p>这表明SOUND元素的PLAYER属性值可设置为MP、ST或SM。下一章对此再作进一步的研究。</p>
+<p><img src="Image/BK000210-12.gif" width=38 height=54>乍看上去，这种处理方法与其余列表属性（如ENTITIES和NMTOKENS）处理方法好像不一致；但其实这两种方法截然不同。ENTITIES和NMTOKENS在文档的实际元素中具有一个属性列表，但在DTD的属性声明中仅有一个值。可是文档中实际元素的NOTATION属性值仅有一个。可取值的列表位于DTD 
+</p>
+<p> 的属性声明中。</p>
+
+ 
+<a href='420.htm'>&lt;&lt;上一篇</a>&nbsp;&nbsp;<a href='422.htm'>下一篇&gt;&gt;</a></td>
+        </tr>
+      </table>
+      <p>&nbsp; </p>
+    </td>
+  </tr>
+</table>
+
+</body>
+
+</html>

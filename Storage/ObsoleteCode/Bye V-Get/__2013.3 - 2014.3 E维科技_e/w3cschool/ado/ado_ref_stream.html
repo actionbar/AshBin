@@ -1,0 +1,211 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="../c3.css" />
+<title>ADO Stream 对象</title>
+</head>
+<body class="serverscripting">
+<div id="wrapper">
+<div id="header">
+<a href="http://e.v-get.com/w3cschool/" style="float:left;">W3CSchool 在线教程</a>
+<div class="q g"><script type="text/javascript">var cpro_id="u1163355"</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div>
+<div id="navfirst">
+<ul id="menu">
+<li id="h"><a href="../h.html">HTML教程</a></li>
+<li id="x"><a href="../x.html">XML教程</a></li>
+<li id="b"><a href="../b.html">浏览器脚本</a></li>
+<li id="s"><a href="../s.html">服务器脚本</a></li>
+<li id="d"><a href="../d.html">dot net教程</a></li>
+<li id="m"><a href="../m.html">多媒体教程</a></li>
+<li id="w"><a href="../w.html">建站手册</a></li>
+</ul>
+</div><div id="navsecond">
+<div id="course">
+<h2>ADO 教程</h2>
+<ul>
+<li><a href="http://e.v-get.com/w3cschool/">ADO 首页</a></li>
+<li><a href="ado_intro.html">ADO 简介</a></li>
+<li><a href="ado_connect.html">ADO 连接</a></li>
+<li><a href="ado_recordset.html">ADO 记录集</a></li>
+<li><a href="ado_display.html">ADO 显示</a></li>
+<li><a href="ado_query.html">ADO 查询</a></li>
+<li><a href="ado_sort.html">ADO 排序</a></li>
+<li><a href="ado_add.html">ADO 添加</a></li>
+<li><a href="ado_update.html">ADO 更新</a></li>
+<li><a href="ado_delete.html">ADO 删除</a></li>
+<li><a href="ado_getstring.html">ADO 加速</a></li>
+</ul>
+<h2>ADO 对象</h2>
+<ul>
+<li><a href="ado_ref_command.html">ADO Command</a></li>
+<li><a href="ado_ref_connection.html">ADO Connection</a></li>
+<li><a href="ado_ref_error.html">ADO Error</a></li>
+<li><a href="ado_ref_field.html">ADO Field</a></li>
+<li><a href="ado_ref_parameter.html">ADO Parameter</a></li>
+<li><a href="ado_ref_property.html">ADO Property</a></li>
+<li><a href="ado_ref_record.html">ADO Record</a></li>
+<li><a href="ado_ref_recordset.html">ADO Recordset</a></li>
+<li><a href="ado_ref_stream.html">ADO Stream</a></li>
+<li><a href="ado_datatypes.html">ADO 数据类型</a></li>
+<li><a href="ado_summary.html">ADO 总结</a></li>
+</ul>
+<h2>实例</h2>
+<ul>
+<li><a href="../example/adoe_examples.html">ADO 实例</a></li>
+</ul>
+</div>
+<div id="selected">
+<h2>建站手册</h2>
+<ul>
+<li><a href="../site/">网站构建</a></li>
+<li><a href="../w3c/">万维网联盟</a></li>
+<li><a href="http://e.v-get.com/w3c/">W3CSchool 教程</a></li>
+<li><a href="../quality/">网站品质</a></li>
+<li><a href="../semweb/">语义网</a></li>
+<li><a href="../hosting/">网站主机</a></li>
+</ul>
+<h2><a href="http://e.v-get.com/w3c/" class="f13">W3CSchool 教程</a></h2><div class="a120x90"><script type="text/javascript">var cpro_id="u1210867";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div></div>
+</div>
+<div id="maincontent">
+<h1>ADO Stream 对象</h1>
+<div id="tpn">
+<ul class="prenext">
+<li class="pre"><a href="ado_ref_recordset.html">上一页</a></li>
+<li class="next"><a href="ado_datatypes.html">下一页</a></li>
+</ul>
+</div>
+<div>
+<h2>Stream 对象 (ADO version 2.5)</h2>
+<p>ADO Stream 对象用于读写以及处理二进制数据或文本流。</p>
+<p>Stream 对象可通过三种方法获得：</p>
+<ul>
+<li>通过指向包含二进制或文本数据的对象 (通常是文件）的 URL。此对象可以是简单的文档、表示结构化文档的 Record 对象或文件夹。</li>
+<li>通过将 Stream 对象实例化。这些 Stream 对象可用来存储用于应用程序的数据。跟与 URL 相关联的 Stream 或 Record 的默认 Stream 不同，实例化的 Stream 在默认情况下与基本源没有关联。</li>
+<li>通过打开与 Record 对象相关联的默认 Stream 对象。打开 Record 时便可获取与 Record 对象相关联的默认流。只需打开该流便可删除一个往返过程。</li>
+</ul>
+<h3>语法</h3>
+<pre>objectname.property
+objectname.method</pre>
+</div>
+<div>
+<h2>属性</h2>
+<table class="dataintable">
+<tr>
+<th>属性</th>
+<th>描述</th>
+</tr>
+<tr>
+<td>CharSet</td>
+<td>指定用于存储 Stream 的字符集。</td>
+</tr>
+<tr>
+<td>EOS</td>
+<td>返回当前位置是否位于流的结尾。</td>
+</tr>
+<tr>
+<td>LineSeparator</td>
+<td>设置或返回用在文本 Stream 对象中的分行符。</td>
+</tr>
+<tr>
+<td>Mode</td>
+<td>设置或返回供修改数据的可用权限。</td>
+</tr>
+<tr>
+<td>Position</td>
+<td>设置或返回从 Stream 对象开始处的当前位置 (按字节计算）。</td>
+</tr>
+<tr>
+<td>Size</td>
+<td>返回一个打开的 Stream 对象的大小。</td>
+</tr>
+<tr>
+<td>State</td>
+<td>返回一个描述 Stream 是打开还是关闭的值。</td>
+</tr>
+<tr>
+<td>Type</td>
+<td>设置或返回 Stream 对象中的数据的类型。</td>
+</tr>
+</table>
+</div>
+<div>
+<h2>方法</h2>
+<table class="dataintable">
+<tr>
+<th>方法</th>
+<th>描述</th>
+</tr>
+<tr>
+<td>Cancel</td>
+<td>取消对 Stream 对象的 Open 调用的执行。</td>
+</tr>
+<tr>
+<td>Close</td>
+<td>关闭一个 Stream 对象。</td>
+</tr>
+<tr>
+<td>CopyTo</td>
+<td>把指定数目的字符/比特从一个 Stream 对象拷贝到另外一个 Stream 对象。</td>
+</tr>
+<tr>
+<td>Flush</td>
+<td>把 Stream 缓冲区中的内容发送到相关联的下层对象。</td>
+</tr>
+<tr>
+<td>LoadFromFile</td>
+<td>把文件的内容载入 Stream 对象。</td>
+</tr>
+<tr>
+<td>Open</td>
+<td>打开一个 Stream 对象。</td>
+</tr>
+<tr>
+<td>Read</td>
+<td>从一个二进制 Stream 对象读取全部流或指定的字节数。</td>
+</tr>
+<tr>
+<td>ReadText</td>
+<td>从一个文本 Stream 对象中读取全部流、一行或指定的字节数。</td>
+</tr>
+<tr>
+<td>SaveToFile</td>
+<td>把一个 Stream 对象的二进制内容保存到某个文件。</td>
+</tr>
+<tr>
+<td>SetEOS</td>
+<td>设置当前位置为流的结尾 (EOS)</td>
+</tr>
+<tr>
+<td>SkipLine</td>
+<td>在读取一个文本流时跳过一行。</td>
+</tr>
+<tr>
+<td>Write</td>
+<td>把二进制数据写到一个二进制 Stream 对象。</td>
+</tr>
+<tr>
+<td>WriteText</td>
+<td>把字符数据写到一个文本 Stream 对象。</td>
+</tr>
+</table>
+</div>
+<div id="bpn">
+<ul class="prenext">
+<li class="pre"><a href="ado_ref_recordset.html">上一页</a></li>
+<li class="next"><a href="ado_datatypes.html">下一页</a></li>
+</ul>
+</div>
+</div>
+<div id="sidebar">
+<div class="rs"></div>
+<div id="tools">
+<h5 id="tools_reference"><a href="ado_reference.html">ADO 参考手册</a></h5>
+<h5 id="tools_example"><a href="../example/adoe_examples.html">ADO 实例</a></h5>
+</div>
+<div class="a120x600"><script type="text/javascript">var cpro_id="u1293136";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div><div class="b"></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<meta http-equiv="content-type" content="text/html; charset=gb2312"><FONT 
+style="FONT-SIZE: 9pt; LINE-HEIGHT: 15pt"><B>设计数据库之经验谈&nbsp;(coo_key)</B><BR>数据库设计经验谈&nbsp;
+<P></P>
+<P>数据库模型的设计是否合理会极大影响系统的使用性能。笔者依据多年来设计和使用数据库的经验，提出以下一些设计原则，供同仁们参考。&nbsp;</P>
+<P>慎用游标（Cursor）&nbsp;</P>
+<P>游标提供了对特定集合中逐行扫描的手段，一般使用游标来逐行遍历数据，根据取出数据条件的不同进行不同的操作。而对于多表和大表中定义的游标（大的数据集合）循环很容易使程序进入一个漫长的等待甚至死机，笔者在某市“住房公积金管理系统”进行日终账户滚积数计息处理时，对一个10万个账户的游标处理时导致程序进入了一个无限期的等待（后经测算需48小时才能完成）(硬件环境：Alpha/4000&nbsp;128MB&nbsp;RAM&nbsp;,SCO&nbsp;Unix&nbsp;,Sybase&nbsp;11.0)。经修改程序并改用UPDATE语句后，该处理过程得以在20分钟之内完成。示例如下：&nbsp;</P>
+<P>Declare&nbsp;Mycursor&nbsp;cursor&nbsp;for&nbsp;select&nbsp;count—no&nbsp;from&nbsp;COUNT　　&nbsp;</P>
+<P>Open&nbsp;Mycursor&nbsp;</P>
+<P>Fetch&nbsp;Mycursor&nbsp;into&nbsp;@vcount—no&nbsp;</P>
+<P>While&nbsp;(@@sqlstatus=0)&nbsp;</P>
+<P>Begin&nbsp;</P>
+<P>If&nbsp;@vcount—no=′　′&nbsp;条件1&nbsp;</P>
+<P>操作1&nbsp;</P>
+<P>If&nbsp;@vcount—no=′　′&nbsp;条件2&nbsp;</P>
+<P>操作2&nbsp;</P>
+<P>...&nbsp;</P>
+<P>Fetch&nbsp;Mycursor&nbsp;into&nbsp;@vcount—no&nbsp;</P>
+<P>End&nbsp;</P>
+<P>　...&nbsp;</P>
+<P>改为&nbsp;</P>
+<P>Update&nbsp;COUNT&nbsp;set&nbsp;操作1&nbsp;for&nbsp;条件1&nbsp;</P>
+<P>Update&nbsp;COUNT&nbsp;set&nbsp;操作2&nbsp;for&nbsp;条件2&nbsp;</P>
+<P>...&nbsp;</P>
+<P>在某些必须使用游标的场合，可考虑将符合条件的数据行转入临时表中，再对临时表定义游标进行操作，这样，可使性能得到明显提高。笔者在某地市“电信收费系统”数据库后台程序设计中，对一个表（3万行中符合条件的30多行数据）进行游标操作(硬件环境：PC服务器，PⅡ266&nbsp;64MB&nbsp;RAM&nbsp;,Windows&nbsp;NT4.0&nbsp;MS&nbsp;SQL&nbsp;Server&nbsp;6.5)。&nbsp;</P>
+<P>示例如下：&nbsp;</P>
+<P>Create&nbsp;＃tmp&nbsp;/＊&nbsp;定义临时表&nbsp;＊/&nbsp;</P>
+<P>　(&nbsp;字段1&nbsp;</P>
+<P>　　字段2&nbsp;</P>
+<P>　　　...&nbsp;)&nbsp;</P>
+<P>Insert&nbsp;into&nbsp;＃tmp&nbsp;select&nbsp;＊&nbsp;from&nbsp;TOTAL&nbsp;where&nbsp;条件&nbsp;</P>
+<P>Declare&nbsp;Mycursor&nbsp;cursor&nbsp;for&nbsp;select&nbsp;＊&nbsp;from&nbsp;＃tmp&nbsp;/＊对临时表定义游标＊/&nbsp;</P>
+<P>　...&nbsp;</P>
+<P>索引(Index)的使用技巧&nbsp;</P>
+<P>创建索引一般有两个目的：维护被索引列的惟一性和提供快速访问表中数据的策略。大型数据库有两种索引，即簇索引和非簇索引，一个没有簇索引的表是按堆结构存储数据，所有的数据均添加在表的尾部；而建立了簇索引的表，其数据在物理上会按照簇索引键的顺序存储，一个表只允许有一个簇索引，因此，根据B树结构，可以理解添加任何一种索引均能提高按索引列查询的速度，但与此同时会降低插入、更新、删除操作的性能，尤其是当填充因子（Fill&nbsp;Factor）较大时。所以对索引较多的表进行频繁的插入、更新、删除操作时，建表和索引时应设置较小的填充因子，以便在各数据页中留下较多的自由空间，减少页分割及重新组织的工作。&nbsp;</P>
+<P>数据的一致性和完整性&nbsp;</P>
+<P>为了保证数据库的一致性和完整性，设计人员往往会设计过多的表间关联（Relation），尽可能地降低数据冗余。表间关联是一种强制性措施，建立后，对父表（Parent&nbsp;Table）和子表(Child&nbsp;Table)的插入、更新、删除操作均要占用系统的开销，另外，最好不要用Identify&nbsp;属性字段作为主键与子表关联。如果数据冗余低，数据的完整性容易得到保证，但增加了表间连接查询的操作。为了提高系统的响应时间，合理的数据冗余也是必要的。使用规则（Rule）和约束（Check）来防止系统操作人员误输入造成数据的错误是，设计人员的另一种常用手段，但是，不必要的规则和约束也会占用系统的不必要开销，需要注意的是，约束对数据的有效性验证要比规则快。所有这些，设计人员在设计阶段应根据系统操作的类型、频度加以均衡考虑。&nbsp;</P>
+<P>事务的陷阱&nbsp;</P>
+<P>事务是在一次性完成的一组操作。虽然这些操作是单个的操作，SQL&nbsp;Server能够保证这组操作要么全部都完成，要么一点儿都不做。正是大型数据库的这一特性，使得数据的完整性得到了极大的保证。&nbsp;</P>
+<P>众所周知，SQL&nbsp;Server为每个独立的SQL语句都提供了隐含的事务控制，使得每个DML的数据操作得以完整提交或回滚，但是SQL&nbsp;Server还提供了显式事务控制语句，如：&nbsp;</P>
+<P>BEGIN&nbsp;TRANSACTION&nbsp;开始一个事务&nbsp;</P>
+<P>COMMIT&nbsp;TRANSACTION&nbsp;提交一个事务&nbsp;</P>
+<P>ROLLBACK&nbsp;TRANSACTION&nbsp;回滚一个事务&nbsp;</P>
+<P>事务可以嵌套，可以通过全局变量@@trancount检索到连接的事务处理嵌套层次。要特别注意的是，每个显示或隐含的事物开始都使得该变量加1，每个事务的提交使该变量减1，每个事务的回滚都会使得该变量置0，而只有当该变量为0时的事务提交（最后一个提交语句时），才把物理数据写入磁盘。&nbsp;</P>
+<P>数据类型的选择&nbsp;</P>
+<P>数据类型的合理选择对于数据库的性能和操作具有很大的影响，有关这方面的书籍也有不少的阐述，笔者这里主要介绍几点经验：&nbsp;</P>
+<P>1.&nbsp;Identify字段不要作为表的主键与其它表关联，这将会影响到该表的数据迁移。&nbsp;</P>
+<P>2.&nbsp;Text&nbsp;和Image字段属指针型数据，主要用来存放二进制大型对象（BLOB）。这类数据的操作相比其它数据类型较慢，因此要避开使用。&nbsp;</P>
+<P>3.&nbsp;日期型字段的优点是有众多的日期函数支持，因此，在日期的大小比较、加减操作上非常简单。但是，在按照日期作为条件的查询操作也要用函数，相比其它数据类型速度上就慢许多,因为用函数作为查询的条件时，服务器无法用先进的性能策略来优化查询而只能进行表扫描遍历每行。&nbsp;</P>
+<P><BR></P></FONT>

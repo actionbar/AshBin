@@ -1,0 +1,103 @@
+<html>
+<head>
+<title>对输出元素排序</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+
+<link rel = stylesheet href = "image/style.css">
+</head>
+<body bgcolor="#ffffff">
+<table width="688" border="0" cellspacing="0" cellpadding="0" align="center">
+  <tr bgcolor="EEEEEE"> 
+    <td height="22"><a href="index.htm">主页</a></td>
+  </tr>
+</table><br>
+<table border="0" cellpadding="0" cellspacing="0" width="688" align="center" height="490">
+  <tr valign="top"> 
+    <td rowspan="4" width="91">&nbsp; </td>
+    <td height="68" width="131"> 
+      <p><img src="image/doc.gif"></p>
+    </td>
+    <td rowspan="4" width="18"><b></b> </td>
+    <td height="68" width="387"><img src="image/title_doc.gif"></td>
+    <td rowspan="4" width="61"> 
+      <h6>&nbsp;</h6>
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td rowspan="3" valign="top" class="pt10" align="center" width="131" bgcolor="EEEEEE"> 
+      <p>&nbsp;</p>
+      <p><font color="#FF0000">※ 14.12 对输出元素排序</font></p>
+       
+	</td>
+  </tr>
+  <tr valign="top"> 
+    <td width="387" height="308"> 
+      <table width="100%" border="0" cellpadding="0">
+        <tr> 
+          <td>
+
+           <h4><a name="_Toc467207175">14.12 对输出元素排序</a></h4>
+<p>xsl:sort元素将输出元素按不同于输入文档中的顺序进行排序。xsl:sort元素作为xsl:apply-templates或xsl:for-each的子元素出现。Xsl：sort元素的select特性定义关键字，用来按照xsl:apply-templates或xsl:for-each对元素的输出进行排序。</p>
+<p>在缺省情况下，以关键值的字母顺序进行排序。如果在给定的xsl:apply-templates或xsl:for-each元素中，存在一个以上的xsl：sort元素，那么输出内容首先按第一个关键字进行排序，然后按第二个关键字进行排序，依次类推。如果任何元素的比较结果是一样的，那么就按源文档的顺序输出。</p>
+<p>例如，假设在一文件中，全部都是以字母顺序排列的ATOM元素。为了要按原子序数进行排序，可使用清单14-18中的样式单。</p>
+<p>清单14-18：按原子序数排序的XSL样式单</p>
+<p>&lt;?xml version="1.0"?&gt;</p>
+<p>&lt;xsl:stylesheet</p>
+<p>xmlns:xsl="http://www.w3.org/XSL/Transform/1.0"&gt;</p>
+<p></p>
+<p> &lt;xsl:template match="PERIODIC_TABLE"&gt;</p>
+<p> &lt;html&gt;</p>
+<p> &lt;head&gt;</p>
+<p> &lt;title&gt;Atomic Number vs. Atomic Weight&lt;/title&gt;</p>
+<p> &lt;/head&gt;</p>
+<p> &lt;body&gt;</p>
+<p> &lt;hl&gt;Atomic Number vs. Atomic Weight&lt;/hl&gt;</p>
+<p> &lt;table&gt;</p>
+<p> &lt;th&gt;Element&lt;/th&gt;</p>
+<p> &lt;th&gt;Atomic Number&lt;/th&gt;</p>
+<p> &lt;th&gt;Atomic Weight&lt;/th&gt;</p>
+<p> &lt;xsl:apply-templates&gt;</p>
+<p> &lt;xsl:sort select="ATOMIC_NUMBER"/&gt;</p>
+<p> &lt;/xsl:apply-templates&gt;</p>
+<p> &lt;/table&gt;</p>
+<p> &lt;/body&gt;</p>
+<p> &lt;/html&gt;</p>
+<p> &lt;/xsl:template&gt;</p>
+<p></p>
+<p> &lt;xsl:template match="ATOM"&gt;</p>
+<p> &lt;tr&gt;</p>
+<p> &lt;td&gt;&lt;xsl:apply-templates select="NAME"/&gt;&lt;/td&gt;</p>
+<p> &lt;td&gt;&lt;xsl:apply-templates select="ATOMIC_NUMBER"/&gt;&lt;/td&gt;</p>
+<p> &lt;td&gt;&lt;xsl:apply-templates select="ATOMIC_WEIGHT"/&gt;&lt;/td&gt;</p>
+<p> &lt;/tr&gt;</p>
+<p> &lt;/xsl:template&gt;</p>
+<p>&lt;/xsl:stylesheet&gt;</p>
+<p>图14-5显示的结果表明了以字母顺序排序的局限。原子序数为1的氢是第一个元素。但是第二个元素不是原子序数为2的氦，而是原子数为10的氖。尽管按数字10排在9之后，但按照字母，10却在2之前。</p>
+<p align="center"><img src="Image/BK000214-28.gif" width=344 height=345></p>
+<p align="center">图14-5 按原子序数的字母顺序排序的原子</p>
+<p>但是，通过指导可选的data-type特性设置为number，即可调整排列顺序。例如，</p>
+<p>&lt;xsl:sort data-type="number" select="ATOMIC_NUMBER"/&gt;</p>
+<p>图14-6显示了正确排序的元素。</p>
+<p align="center"><img src="Image/BK000214-29.gif" width=282 height=283></p>
+<p align="center">图14-6 以数字顺序对原子序数进行排序的原子</p>
+<p>按照下面的方法，将order特性设置为descending，即可使排列顺序从缺省的升序改为降序：</p>
+<p>&lt;xsl:sort order="descending"</p>
+<p> sort="number"</p>
+<p> select="ATOMIC_NUMBER"/&gt;</p>
+<p>这样就使元素从最大到最小的原子序数进行排列，所以氢现在处于表的最后。</p>
+<p>以字母顺序进行的排序自然依赖于字母表。lang特性可设置关键字的语言。此特性的值应是一种ISO 639语言码，如对于英语为en。</p>
+<p><img src="Image/BK000214-19.gif" width=56 height=42 align="left">这些值与xml:lang特性支持的值相同，这在第10章“DTD中特性声明”中已经讨论过。</p>
+<p>&nbsp;</p>
+<p>最后，可将case-order特性设置为upper-first或lower-first两个值当中的一个，以指定大写字母是排在小写字母之前，还是反过来。缺省状况依赖于语言。</p>
+ 
+<a href='484.htm'>&lt;&lt;上一篇</a>&nbsp;&nbsp;<a href='486.htm'>下一篇&gt;&gt;</a></td>
+        </tr>
+      </table>
+      <p>&nbsp; </p>
+    </td>
+  </tr>
+</table>
+
+</body>
+
+</html>

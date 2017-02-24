@@ -1,0 +1,3 @@
+<?php
+echo 'Z(\'<div id="z"><a class="zo" href="#" title="关闭"></a><div class="zz zt"><div class="z0 z1">销售热线</div><p class="z6">0579-85577543</p><p class="zd">工作日9:00-18:00</p><a class="zs" href="http://s.v-get.com/l?l=wpa.qq.com%2fmsgrd%3fv%3d3%26uin%3d921923988%26site%3dqq%26menu%3dyes" title="售前咨询">售前在线咨询</a></div><div class="zz zb"><div class="z0 z2">售后服务</div><p class="z6">408-600-8800</p><p class="zd">7*24小时</p><a class="zs" href="http://s.v-get.com/l?l=wpa.qq.com%2fmsgrd%3fv%3d3%26uin%3d921923988%26site%3dqq%26menu%3dyes" title="备案指南">备案指南</a><a class="zs" href="http://s.v-get.com/l?l=wpa.qq.com%2fmsgrd%3fv%3d3%26uin%3d921923988%26site%3dqq%26menu%3dyes" title="帮助中心">帮助中心</a></div></div>\');';
+?>

@@ -1,0 +1,218 @@
+<html xmlns:rdl>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<script src="rdl_filters.js"></script>
+<base target="_self">
+</head>
+<body>
+
+<script>
+
+collFriendProperties=new Array(
+'filter'
+);
+
+//collIE40=new Array();
+//collIE50=new Array();
+//collIE55=new Array();
+//collIE60=new Array();
+
+collIE55=new Array(
+'A','ACRONYM','ADDRESS','B','BDO','BIG','BLOCKQUOTE','BODY','BUTTON','CAPTION','CENTER','CITE','CODE','CUSTOM','DD','DEL','DFN','DIR','DIV','DL','DT','EM','FIELDSET','FONT','FORM','FRAME','Hn','IFRAME','FRAMESET','I','INS','IMG','INPUT type=button','INPUT type=checkbox','INPUT type=file','INPUT type=image','INPUT type=password','INPUT type=radio','INPUT type=reset','INPUT type=submit','INPUT type=text','KBD','LABEL','LEGEND','LI','MARQUEE','MENU','NOBR','OBJECT','OL','P','PLAINTEXT','PRE','Q','RT','RUBY','S','SAMP','SMALL','SPAN','STRIKE','STRONG','SUB','SUP','TABLE','TEXTAREA','TH','TD','TT','U','UL','VAR','XMP'
+);
+
+sStyle=
+'<style>\n'+
+'#idParentDiv{width:100%;height:120px;padding:6px;background-color:buttonshadow;position:relative;filter:progid:DXImageTransform.Microsoft.Iris();}\n'+
+'#idDiv1{width:200px;height:100px;background-color:#000000;color:#FFFFFF;padding:4px;position:absolute;z-index:3;visibility:hidden;}\n'+
+'#idDiv2{width:200px;height:100px;background-color:#000000;color:#FFFFFF;padding:4px;position:absolute;z-index:4;visibility:visible;}\n'+
+'#idCodeDiv{width:100%;padding:4px;font-family:verdana,tahoma;margin:12px 0px 0px 0px;background-color:#EEEEEE;font-weight:bold;}\n'+
+'<\/style>\n';
+
+sScript=
+'<script>\n'+
+'var sBaseStr="filter : progid:DXImageTransform.Microsoft.Iris ( ";\n'+
+'var oParentDiv,oCodeDiv;\n'+
+'function rdl_doInit(e){\n'+
+'oParentDiv=document.all("idParentDiv");\n'+
+'oCodeDiv=document.all("idCodeDiv");\n'+
+'rdl_play();\n'+
+'}\n'+
+'function rdl_change(e){\n'+
+'with (document.all("idSel1")) var sValue1=options[selectedIndex].value;\n'+
+'with (document.all("idSel2")) var sValue2=options[selectedIndex].value;\n'+
+'with (document.all("idSel3")) var sValue3=options[selectedIndex].value;\n'+
+'oCodeDiv.innerText=sBaseStr+"duration="+sValue1+",irisStyle="+sValue2+",motion="+sValue3+" ) ;";\n'+
+'with (oParentDiv.filters[0]) {\n'+
+'Duration=sValue1;IrisStyle=sValue2;Motion=sValue3;\n'+
+'}\n'+
+'}\n'+
+'\n'+
+'function rdl_play(){\n'+
+'with (oParentDiv) {\n'+
+'if (children[0].style.visibility=="hidden") children[1].style.visibility="visible";\n'+
+'else children[1].style.visibility="hidden";\n'+
+'filters[0].Apply();\n'+
+'if (children[0].style.visibility=="hidden") children[0].style.visibility="visible";else children[0].style.visibility="hidden";\n'+
+'if (children[1].style.visibility=="hidden") children[1].style.visibility="visible";else children[1].style.visibility="hidden";\n'+
+'filters[0].play();\n'+
+'}\n'+
+'}\n'+
+'window.onload=rdl_doInit;\n'+
+'<\/script>\n';
+
+sCode=
+'<div id=idParentDiv>\n'+
+'<div id=idDiv1><img src="images\/rdl_body1.jpg" style="float:left;border:1px solid #FFFFFF;">我是合成滤镜获取的输入<b> A </b>。<\/div>\n'+
+'<div id=idDiv2><img src="images\/rdl_body2.jpg" style="float:left;border:1px solid #FFFFFF;">我是合成滤镜获取的输入<b> B </b>。<\/div>\n'+
+'<\/div>\n'+
+'<br>\n'+
+'<table><tr><td>\n'+
+'<select id=idSel1 onchange="rdl_change();">\n'+
+'<option value="0.5" style="font-weight:bold;">---Duration---\n'+
+'<option value="1">1\n'+
+'<option value="2">2\n'+
+'<option value="4">4\n'+
+'<option value="5">5\n'+
+'<option value="6">6\n'+
+'<option value="12">12\n'+
+'<\/select>\n'+
+'<\/td><td>\n'+
+'<select id=idSel2 onchange="rdl_change();">\n'+
+'<option value="PLUS" style="font-weight:bold;">---IrisStyle---\n'+
+'<option value="PLUS">PLUS\n'+
+'<option value="DIAMOND">DIAMOND\n'+
+'<option value="CIRCLE">CIRCLE\n'+
+'<option value="CROSS">CROSS\n'+
+'<option value="PLUS">PLUS\n'+
+'<option value="SQUARE">SQUARE\n'+
+'<option value="STAR">STAR\n'+
+'<\/select>\n'+
+'<\/td><td>\n'+
+'<select id=idSel3 onchange="rdl_change();">\n'+
+'<option value="out" style="font-weight:bold;">---Motion---\n'+
+'<option value="out">out\n'+
+'<option value="in">in\n'+
+'<\/select>\n'+
+'<\/td><td>\n'+
+'<input type=button value=" Play " onclick="if (oParentDiv!=null) rdl_play();">\n'+ 
+'<\/td><td>\n'+
+'<input type=button value=" Stop " onclick="if (oParentDiv!=null) oParentDiv.filters[0].stop();">\n'+ 
+'<\/td><\/tr><\/table>\n'+
+'<br>\n'+
+'<div id=idCodeDiv>filter : progid:DXImageTransform.Microsoft.Iris ()<\/div>\n';
+
+iWinWidth=480;
+
+iWinHeight=360;
+
+//bRunCode=false;
+
+//bElements=false;
+
+</script>
+
+<div id=idContent>
+
+<div id=idContentTitle><span id=idTitleName>Iris</span>兼容性：IE5.5+</div>
+
+<div class=cssColumnTitle>语法：</div>
+<div>
+<b>filter : progid:DXImageTransform.Microsoft.Iris ( enabled=</b><i>bEnabled</i><b> , duration=</b></b><i>fDuration</i><b> , irisStyle=</b></b><i>sShape</i><b> , motion=</b></b><i>sMotion</i><b> ) </b> 
+</div>
+
+<div class=cssColumnTitle>属性：</div>
+<table>
+<tr><td nowrap><b> enabled </b></td><td nowrap><b>:</b></td><td>
+可选项。布尔值(Boolean)。设置或检索滤镜是否激活。<span class=cssDefault><b>true</b></span> | <b>false</b>
+<table>
+<tr><td nowrap><b> true </b></td><td nowrap><b>:</b></td><td><b>默认值</b>。滤镜激活。</td></tr>
+<tr><td nowrap><b> false </b></td><td nowrap><b>:</b></td><td>滤镜被禁止。</td></tr>
+</table>
+</td></tr>
+<tr><td nowrap><b> duration </b></td><td nowrap><b>:</b></td><td>
+可选项。浮点数(Real)。设置或检索转换完成所用的时间。其值为秒.毫秒(0.0000)格式。<br>
+你可以使用<b> play </b>方法的<i> iDuration </i>参数设置转换回放的持续时间。然而，当你一旦调用了<b> play </b>方法，在回放持续过程中<b> Duration </b>特性就变为只读特性。
+</td></tr>
+<tr><td nowrap><b> irisStyle </b></td><td nowrap><b>:</b></td><td>
+可选项。字符串(String)。设置或检索剪切轮廓的外形。<span class=cssDefault><b>PLUS</b></span> | <b>DIAMOND</b> | <b>CIRCLE</b> | <b>CROSS</b> | <b>SQUARE</b> | <b>STAR</b>
+<table>
+<tr><td nowrap><b> PLUS </b></td><td nowrap><b>:</b></td><td><b>默认值</b>。十字形。</td></tr>
+<tr><td nowrap><b> DIAMOND </b></td><td nowrap><b>:</b></td><td>菱形。</td></tr>
+<tr><td nowrap><b> CIRCLE </b></td><td nowrap><b>:</b></td><td>圆形。</td></tr>
+<tr><td nowrap><b> CROSS </b></td><td nowrap><b>:</b></td><td>交叉对角线形。</td></tr>
+<tr><td nowrap><b> SQUARE </b></td><td nowrap><b>:</b></td><td>矩形。</td></tr>
+<tr><td nowrap><b> STAR </b></td><td nowrap><b>:</b></td><td>星形。</td></tr>
+</table>
+</td></tr>
+<tr><td nowrap><b> motion </b></td><td nowrap><b>:</b></td><td>
+可选项。字符串(String)。设置或检索对象的新内容是先从外显示还是先从内显示。<span class=cssDefault><b>out</b></span> | <b>in</b>
+<table>
+<tr><td nowrap><b> out </b></td><td nowrap><b>:</b></td><td><b>默认值</b>。转换从对象的中心向四边进行。</td></tr>
+<tr><td nowrap><b> in </b></td><td nowrap><b>:</b></td><td>转换从对象的四边向中心进行。</td></tr>
+</table>
+</td></tr>
+</table>
+
+<div class=cssColumnTitle>特性：</div>
+<table>
+<tr><td nowrap><b> Enabled </b></td><td nowrap><b>:</b></td><td>可读写。布尔值(Boolean)。参阅<b> enabled </b>属性。</td></tr>
+<tr><td nowrap><b> Duration </b></td><td nowrap><b>:</b></td><td>可读写。浮点数(Real)。参阅<b> duration </b>属性。</td></tr>
+<tr><td nowrap><b> IrisStyle </b></td><td nowrap><b>:</b></td><td>可读写。字符串(String)。参阅<b> irisStyle </b>属性。</td></tr>
+<tr><td nowrap><b> Motion </b></td><td nowrap><b>:</b></td><td>可读写。字符串(String)。参阅<b> motion </b>属性。</td></tr>
+<tr><td nowrap><b> Percent </b></td><td nowrap><b>:</b></td><td>可读写。字符串(String)。设置或检索当前静态滤镜输出在转换进程中所处的点。取值范围为<b> 0 - 100 </b>。默认值为<span class=cssDefault><b> 0 </b></span>，转换尚未开始。<b> 100 </b>为转换完成。<br>
+此特性可用于使用转换滤镜建立静态滤镜效果。设置其值等于定义了转换进程停止的点。使用转换滤镜建立静态滤镜效果可遵循以下步骤：
+<ol>
+<li>使用转换滤镜的<b> apply </b>方法。这将捕获对象内容的初始显示，设置<b> Percent </b>特性值为<b> 0 </b>。
+<li>改变对象内容。如<a href="c_visibility.html"> visibility </a>，<b> innerText </b>，<a href="c_backgroundcolor.html"> background-color </a>，<a href="c_border.html"> border </a>，或者其子对象的属性。
+<li>设置转换滤镜的<b> Percent </b>特性。即确定你希望的转换进程中某一点。这将捕获到转换进程中在该点处的一张内容图像。
+<li>设置转换滤镜的<b> Enabled </b>特性值为<b> true </b>。则滤镜作用的对象将依据获取到的图像更新其内容。
+</ol>
+请注意：你只能使用<a href="c_visibility.html"> visibility </a>属性来改变对象的子对象。否则，对子对象的直接改变会被立即显示出来，而不会被转换滤镜捕获。
+</td></tr>
+<tr><td nowrap><b> status </b></td><td nowrap><b>:</b></td><td>只读。整数值(Integer)。检索转换的当前状态。<b>0</b> | <b>1</b> | <b>2</b>
+<table>
+<tr><td nowrap><b> 0 </b></td><td nowrap><b>:</b></td><td>转换停止(stop)。</td></tr>
+<tr><td nowrap><b> 1 </b></td><td nowrap><b>:</b></td><td>转换被应用(apply)。</td></tr>
+<tr><td nowrap><b> 2 </b></td><td nowrap><b>:</b></td><td>转换在进行(play)。</td></tr>
+</table>
+</td></tr>
+</table>
+
+
+<div class=cssColumnTitle>方法：</div>
+<table>
+<tr><td nowrap><b> apply </b></td><td nowrap><b>:</b></td><td>
+捕获对象内容的初始显示，为转换做必要的准备。无返回值。<br>
+当此方法一旦被调用后，对象属性的任何改变都不会被显示，直到你调用<b> play </b>方法开始转换。<br>
+请注意：你只能使用<a href="c_visibility.html"> visibility </a>属性来改变对象的子对象。否则，对子对象的直接改变会被立即显示出来，而不会被转换滤镜捕获。<br>
+当你调用<b> play </b>方法时，转换呈现出内容的变化结果(对象的属性和子对象的<a href="c_visibility.html"> visibility </a>属性的改变)。
+</td></tr>
+<tr><td nowrap><b> play ( </b><i>iDuration</i><b> ) </b></td><td nowrap><b>:</b></td><td>
+开始转换。无返回值。参数见下表。<br>
+<table>
+<tr><td nowrap><i> iDuration </i></td><td nowrap><b>:</b></td><td>可选项。浮点数(Real)。 指定滤镜作用持续的时间。默认单位为秒。<br>
+使用<b> play </b>方法的<i> iDuration </i>参数设置转换回放的持续时间，其值在转换的当前一个周期内会替换<b> Duration </b>属性的设置。但是下一次转换会恢复使用<b> Duration </b>属性设置的值。</td></tr>
+</table>
+</td></tr>
+<tr><td nowrap><b> stop </b></td><td nowrap><b>:</b></td><td>
+停止转换回放。并呈现转换结果图像。同时激发<b> onfilterchange </b>事件。无返回值。<br>
+</td></tr>
+</table>
+
+<div class=cssColumnTitle>说明：</div>
+<div>
+用特殊形状剪切轮廓扩张或收缩显示效果转换对象内容。<br>
+</div>
+
+<div class=cssColumnTitle>示例：</div>
+<div id=idSimpleCode>
+#idDiv{ height:250px; width:250px; background-color: gold; filter:progid:DXImageTransform.Microsoft.Iris(duration=3);}<br>
+</div>
+
+</div>
+</body>
+</html>
+
+<!-- Part of RDL(TM) - Written by Rain1977 
+HomeSite: http://www.dhtmlet.com  E-Mail: dhtmlet@hotmail.com -->

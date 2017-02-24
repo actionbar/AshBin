@@ -1,0 +1,88 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+
+
+   <title>6.3. &#21629;&#20196;&#27880;&#20837;</title>
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="" />
+   <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+   <meta http-equiv="Content-Style-Type" content="text/css" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+</head>
+<body style="margin: 0px 0px 0px 0px; background: #FFFFFF;">
+
+
+<table width="100%" border="0" cellspacing="0" cellpadding="5" bgcolor="#649CCC">
+  <tr valign="middle">
+    <td align="left">
+      <p class="p_Heading1"><span class="f_Heading1">6.3. &#21629;&#20196;&#27880;&#20837;</span></p>
+
+    </td>
+    <td align="right">
+     <span style="font-size: 9pt">
+     <a href="introduction.htm">Top</a>&nbsp;
+     <a href="new_item40.htm">Previous</a>&nbsp;
+     <a href="new_item42.htm">Next</a>
+     </span>
+    </td>
+  </tr>
+</table>
+
+
+<!-- Placeholder for topic body. -->
+<table width="100%" border="0" cellspacing="0" cellpadding="5"><tr valign="top"><td align="left">
+<p style="line-height: 1.50;">6.3. &#21629;&#20196;&#27880;&#20837;</p>
+<p style="line-height: 1.50;">  &nbsp; &#20351;&#29992;&#31995;&#32479;&#21629;&#20196;&#26159;&#19968;&#39033;&#21361;&#38505;&#30340;&#25805;&#20316;&#65292;&#23588;&#20854;&#22312;&#20320;&#35797;&#22270;&#20351;&#29992;&#36828;&#31243;&#25968;&#25454;&#26469;&#26500;&#36896;&#35201;&#25191;&#34892;&#30340;&#21629;&#20196;&#26102;&#26356;&#26159;&#22914;&#27492;&#12290;&#22914;&#26524;&#20351;&#29992;&#20102;&#34987;&#27745;&#26579;&#25968;&#25454;&#65292;&#21629;&#20196;&#27880;&#20837;&#28431;&#27934;&#23601;&#20135;&#29983;&#20102;&#12290;</p>
+<p style="line-height: 1.50;">  &nbsp; Exec()&#26159;&#29992;&#20110;&#25191;&#34892;shell&#21629;&#20196;&#30340;&#20989;&#25968;&#12290;&#23427;&#36820;&#22238;&#25191;&#34892;&#24182;&#36820;&#22238;&#21629;&#20196;&#36755;&#20986;&#30340;&#26368;&#21518;&#19968;&#34892;&#65292;&#20294;&#20320;&#21487;&#20197;&#25351;&#23450;&#19968;&#20010;&#25968;&#32452;&#20316;&#20026;&#31532;&#20108;&#20010;&#21442;&#25968;&#65292;&#36825;&#26679;&#36755;&#20986;&#30340;&#27599;&#19968;&#34892;&#37117;&#20250;&#20316;&#20026;&#19968;&#20010;&#20803;&#32032;&#23384;&#20837;&#25968;&#32452;&#12290;&#20351;&#29992;&#26041;&#24335;&#22914;&#19979;&#65306;</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; &lt;?php</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; $last = exec('ls', $output, $return);</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; print_r($output);</p>
+<p style="line-height: 1.50;">  &nbsp; echo "Return [$return]";</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; ?&gt;</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; &#20551;&#35774;ls&#21629;&#20196;&#22312;shell&#20013;&#25163;&#24037;&#36816;&#34892;&#26102;&#20250;&#20135;&#29983;&#22914;&#19979;&#36755;&#20986;&#65306;</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; $ ls</p>
+<p style="line-height: 1.50;">  &nbsp; total 0</p>
+<p style="line-height: 1.50;">  &nbsp; -rw-rw-r-- &nbsp;1 chris chris 0 May 21 12:34 php-security</p>
+<p style="line-height: 1.50;">  &nbsp; -rw-rw-r-- &nbsp;1 chris chris 0 May 21 12:34 chris-shiflett</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; &#24403;&#36890;&#36807;&#19978;&#20363;&#30340;&#26041;&#27861;&#22312;exec()&#20013;&#36816;&#34892;&#26102;&#65292;&#36755;&#20986;&#32467;&#26524;&#22914;&#19979;&#65306;</p>
+<p style="line-height: 1.50;">  &nbsp; Array</p>
+<p style="line-height: 1.50;">  &nbsp; (</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; &nbsp; [0] =&gt; total 0</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; &nbsp; [1] =&gt; -rw-rw-r-- &nbsp;1 chris chris 0 May 21 12:34 php-security</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; &nbsp; [2] =&gt; -rw-rw-r-- &nbsp;1 chris chris 0 May 21 12:34 chris-shiflett</p>
+<p style="line-height: 1.50;">  &nbsp; )</p>
+<p style="line-height: 1.50;">  &nbsp; Return [0]</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; &#36825;&#31181;&#36816;&#34892;shell&#21629;&#20196;&#30340;&#26041;&#27861;&#26041;&#20415;&#32780;&#26377;&#29992;&#65292;&#20294;&#36825;&#31181;&#26041;&#20415;&#20026;&#20320;&#24102;&#26469;&#20102;&#37325;&#22823;&#30340;&#39118;&#38505;&#12290;&#22914;&#26524;&#20351;&#29992;&#20102;&#34987;&#27745;&#26579;&#25968;&#25454;&#26500;&#36896;&#21629;&#20196;&#20018;&#30340;&#35805;&#65292;&#25915;&#20987;&#32773;&#23601;&#33021;&#25191;&#34892;&#20219;&#24847;&#30340;&#21629;&#20196;&#12290;</p>
+<p style="line-height: 1.50;">  &nbsp; &#25105;&#24314;&#35758;&#20320;&#26377;&#21487;&#33021;&#30340;&#35805;&#65292;&#35201;&#36991;&#20813;&#20351;&#29992;shell&#21629;&#20196;&#65292;&#22914;&#26524;&#23454;&#22312;&#35201;&#29992;&#30340;&#35805;&#65292;&#23601;&#35201;&#30830;&#20445;&#23545;&#26500;&#36896;&#21629;&#20196;&#20018;&#30340;&#25968;&#25454;&#36827;&#34892;&#36807;&#28388;&#65292;&#21516;&#26102;&#24517;&#39035;&#35201;&#23545;&#36755;&#20986;&#36827;&#34892;&#36716;&#20041;&#65306;</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; &lt;?php</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; $clean = array();</p>
+<p style="line-height: 1.50;">  &nbsp; $shell = array();</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; /* Filter Input ($command, $argument) */</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; $shell['command'] = escapeshellcmd($clean['command']);</p>
+<p style="line-height: 1.50;">  &nbsp; $shell['argument'] = escapeshellarg($clean['argument']);</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; $last = exec("{$shell['command']} {$shell['argument']}", $output, $return);</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; ?&gt;</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; &#23613;&#31649;&#26377;&#22810;&#31181;&#26041;&#27861;&#21487;&#20197;&#25191;&#34892;shell&#21629;&#20196;&#65292;&#20294;&#24517;&#39035;&#35201;&#22362;&#25345;&#19968;&#28857;&#65292;&#22312;&#26500;&#36896;&#34987;&#36816;&#34892;&#30340;&#23383;&#31526;&#20018;&#26102;&#21482;&#20801;&#35768;&#20351;&#29992;&#24050;&#36807;&#28388;&#21644;&#36716;&#20041;&#25968;&#25454;&#12290;&#20854;&#20182;&#38656;&#35201;&#27880;&#24847;&#30340;&#21516;&#31867;&#20989;&#25968;&#26377;passthru( ), popen( ), shell_exec( ),&#20197;&#21450;system( )&#12290;&#25105;&#20877;&#27425;&#37325;&#30003;&#65292;&#22914;&#26524;&#26377;&#21487;&#33021;&#30340;&#35805;&#65292;&#24314;&#35758;&#36991;&#20813;&#25152;&#26377;shell&#21629;&#20196;&#30340;&#20351;&#29992;&#12290;</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<hr noshade size=1 ><p style="line-height: 1.50;">&nbsp;</p>
+
+</td></tr></table>
+
+</body>
+</html>

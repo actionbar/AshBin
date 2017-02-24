@@ -1,0 +1,117 @@
+<html xmlns:rdl>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<script src="rdl_method.js"></script>
+<base target="_self">
+</head>
+<body>
+
+<script>
+//collFriendObjects=new Array();
+//collFriendProperties=new Array();
+//collFriendMethods=new Array();
+//collFriendEvents=new Array();
+//collFriendCollections=new Array();
+
+collFriendMethods=new Array(
+'queryCommandEnabled','queryCommandIndeterm','queryCommandState','queryCommandSupported','queryCommandValue'
+);
+
+collFriendObjects=new Array(
+'document','TextRange','controlRange'
+);
+
+//collIE40=new Array();
+//collIE50=new Array();
+//collIE55=new Array();
+//collIE60=new Array();
+
+collIE40=new Array(
+'document','TextRange'
+);
+
+collIE50=new Array(
+'controlRange'
+);
+
+//sStyle='';
+
+sScript=
+'<script>\n'+
+'function rdl_createRange1(){\n'+
+'var oMessage=document.all("oMessage");\n'+
+'var oNote=document.all("oNote");\n'+
+'var oTextRange=document.body.createTextRange();\n'+
+'with (oTextRange) {\n'+
+'moveToElementText(oMessage);\n'+
+'execCommand("SelectAll");\n'+
+'}\n'+
+'var oTextRange=document.selection.createRange();\n'+
+'oNote.innerText="被建立的TextRange对象的内容为："+oTextRange.text;\n'+
+'}\n'+
+'<\/script>\n';
+
+sCode=
+'<span id=oMessage>我是要被<b>选择<\/b>的信息。<\/span>\n'+
+'<br><br>\n'+
+'<input type=button value=" 建立TextRange " onclick="rdl_createRange1();">\n'+
+'<br><br>\n'+
+'<span id=oNote></span>\n';
+
+iWinWidth=320;
+
+iWinHeight=220;
+
+</script>
+
+<div id=idContent>
+
+<div id=idContentTitle><span id=idTitleName>execCommand</span>版本：DHTML Object Model　返回值：有</div>
+
+<div class=cssColumnTitle>语法：</div>
+<div>
+<i>bSuccess</i><b> = </b><i>object</i><b> . execCommand ( </b><i>sCommand</i><b> , </b><i>bUserInterface</i><b> , </b><i>vValue</i><b> ) </b>
+</div>
+
+<div class=cssColumnTitle>参数：</div>
+<table>
+<tr><td nowrap><i> sCommand </i></td><td nowrap><b>:</b></td>
+<td><b>必选项</b>。字符串(String)。要被执行的命令。其可以是任何正确的命令标识符(<a href="l_commandidentifier.html"> Command Identifier</a> )。</td></tr>
+<tr><td nowrap><i> bUserInterface </i></td><td nowrap><b>:</b></td>
+<td><b>可选项</b>。布尔值(Boolean)。<span class=cssDefault><b>false</b></span> | <b>true</b>
+<table>
+<tr><td nowrap><b> false </b></td><td nowrap><b>:</b></td><td><b>默认值</b>。不显示用户接口。</td></tr>
+<tr><td nowrap><b> true </b></td><td nowrap><b>:</b></td><td>显示命令支持的用户接口。</td></tr>
+</table>
+</td></tr>
+<tr><td nowrap><i> vValue </i></td><td nowrap><b>:</b></td>
+<td><b>可选项</b>。可以分配为任何类型值的变量。其可能的值取决于所执行的命令标识符(<a href="l_commandidentifier.html"> Command Identifier</a> )。</td></tr>
+</table>
+
+
+<div class=cssColumnTitle>返回值：</div>
+<table>
+<tr><td nowrap><i> bSuccess </i></td><td nowrap><b>:</b></td>
+<td>布尔值(Boolean)。<b>false</b> | <b>true</b>
+<table>
+<tr><td nowrap><b> false </b></td><td nowrap><b>:</b></td><td>命令未被成功执行。</td></tr>
+<tr><td nowrap><b> true </b></td><td nowrap><b>:</b></td><td>命令被成功执行。</td></tr>
+</table>
+</td></tr>
+</table>
+
+<div class=cssColumnTitle>说明：</div>
+<div>
+在指定的选择区(<a href="../objects/selection.html"> selection </a>)或文本区(<a href="../objects/textrange.html"> TextRange </a>)上执行一个命令。<br>
+<i> bUserInterface </i>和<i> vValue </i>参数是否需要取决于要被执行的命令。<br>
+在文档被完全载入前不要调用此方法。
+</div>
+
+
+
+</div>
+</body>
+</html>
+
+<!-- Part of RDL(TM) - Written by Rain1977 
+HomeSite: http://www.dhtmlet.com  E-Mail: dhtmlet@hotmail.com -->

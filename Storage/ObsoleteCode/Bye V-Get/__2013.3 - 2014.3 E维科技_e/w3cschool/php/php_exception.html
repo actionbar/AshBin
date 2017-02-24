@@ -1,0 +1,414 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="../c3.css" />
+<title>PHP 异常处理</title>
+</head>
+<body class="serverscripting">
+<div id="wrapper">
+<div id="header">
+<a href="http://e.v-get.com/w3cschool/" style="float:left;">W3CSchool 在线教程</a>
+<div class="q g"><script type="text/javascript">var cpro_id="u1163355"</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div>
+<div id="navfirst">
+<ul id="menu">
+<li id="h"><a href="../h.html">HTML教程</a></li>
+<li id="x"><a href="../x.html">XML教程</a></li>
+<li id="b"><a href="../b.html">浏览器脚本</a></li>
+<li id="s"><a href="../s.html">服务器脚本</a></li>
+<li id="d"><a href="../d.html">dot net教程</a></li>
+<li id="m"><a href="../m.html">多媒体教程</a></li>
+<li id="w"><a href="../w.html">建站手册</a></li>
+</ul>
+</div><div id="navsecond">
+<div id="course">
+<h2>PHP 基础</h2>
+<ul>
+<li><a href="http://e.v-get.com/w3cschool/">PHP 教程</a></li>
+<li><a href="php_intro.html">PHP 简介</a></li>
+<li><a href="php_install.html">PHP 安装</a></li>
+<li><a href="php_syntax.html">PHP 语法</a></li>
+<li><a href="php_variables.html">PHP 变量</a></li>
+<li><a href="php_string.html">PHP 字符串</a></li>
+<li><a href="php_operators.html">PHP 运算符</a></li>
+<li><a href="php_if_else.html">PHP If...Else</a></li>
+<li><a href="php_switch.html">PHP Switch</a></li>
+<li><a href="php_arrays.html">PHP 数组</a></li>
+<li><a href="php_looping.html">PHP 循环</a></li>
+<li><a href="php_functions.html">PHP 函数</a></li>
+<li><a href="php_forms.html">PHP 表单</a></li>
+<li><a href="php_get.html">PHP $_GET</a></li>
+<li><a href="php_post.html">PHP $_POST</a></li>
+</ul>
+<h2>PHP 高级</h2>
+<ul>
+<li><a href="php_date.html" title="">PHP 日期</a></li>
+<li><a href="php_includes.html" title="">PHP 引用</a></li>
+<li><a href="php_file.html" title="">PHP 文件</a></li>
+<li><a href="php_file_upload.html" title="">PHP 文件上传</a></li>
+<li><a href="php_cookies.html" title="">PHP Cookies</a></li>
+<li><a href="php_sessions.html" title="">PHP Sessions</a></li>
+<li><a href="php_mail.html" title="">PHP E-mail</a></li>
+<li><a href="php_secure_mail.html" title="">PHP 安全 E-mail</a></li>
+<li><a href="php_error.html" title="">PHP Error</a></li>
+<li><a href="php_exception.html" title="">PHP Exception</a></li>
+<li><a href="php_filter.html" title="">PHP Filter</a></li>
+</ul>
+<h2>PHP 数据库</h2>
+<ul class="small">
+<li><a href="php_mysql_intro.html" title="">MySQL 简介</a></li>
+<li><a href="php_mysql_connect.html" title="">MySQL Connect</a></li>
+<li><a href="php_mysql_create.html" title="">MySQL Create</a></li>
+<li><a href="php_mysql_insert.html" title="">MySQL Insert</a></li>
+<li><a href="php_mysql_select.html" title="">MySQL Select</a></li>
+<li><a href="php_mysql_where.html" title="">MySQL Where</a></li>
+<li><a href="php_mysql_order_by.html" title="">MySQL Order By</a></li>
+<li><a href="php_mysql_update.html" title="">MySQL Update</a></li>
+<li><a href="php_mysql_delete.html" title="">MySQL Delete</a></li>
+<li><a href="php_db_odbc.html" title="">PHP ODBC</a></li>
+</ul>
+<h2>PHP XML</h2>
+<ul class="small">
+<li><a href="php_xml_parser_expat.html" title="">XML Expat Parser</a></li>
+<li><a href="php_xml_dom.html" title="">XML DOM</a></li>
+<li><a href="php_xml_simplexml.html" title="">XML SimpleXML</a></li>
+</ul>
+<h2>PHP 和 AJAX</h2>
+<ul class="small">
+<li><a href="php_ajax_intro.html">AJAX 简介</a></li>
+<li><a href="php_ajax_xmlhttprequest.html">XMLHttpRequest</a></li>
+<li><a href="php_ajax_suggest.html">AJAX Suggest</a></li>
+<li><a href="php_ajax_xml.html">AJAX XML</a></li>
+<li><a href="php_ajax_database.html">AJAX Database</a></li>
+<li><a href="php_ajax_responsexml.html">AJAX responseXML</a></li>
+<li><a href="php_ajax_livesearch.html">AJAX Live Search</a></li>
+<li><a href="php_ajax_rss_reader.html">AJAX RSS Reader</a></li>
+<li><a href="php_ajax_poll.html">AJAX Poll</a></li>
+</ul>
+<h2>PHP 参考手册</h2>
+<ul class="small">
+<li><a href="php_ref_array.html">PHP Array</a></li>
+<li><a href="php_ref_calendar.html">PHP Calendar</a></li>
+<li><a href="php_ref_date.html">PHP Date</a></li>
+<li><a href="php_ref_directory.html">PHP Directory</a></li>
+<li><a href="php_ref_error.html">PHP Error</a></li>
+<li><a href="php_ref_filesystem.html">PHP Filesystem</a></li>
+<li><a href="php_ref_filter.html">PHP Filter</a></li>
+<li><a href="php_ref_ftp.html">PHP FTP</a></li>
+<li><a href="php_ref_http.html">PHP HTTP</a></li>
+<li><a href="php_ref_libxml.html">PHP LibXML</a></li>
+<li><a href="php_ref_mail.html">PHP Mail</a></li>
+<li><a href="php_ref_math.html">PHP Math</a></li>
+<li><a href="php_ref_mysql.html">PHP MySQL</a></li>
+<li><a href="php_ref_simplexml.html">PHP SimpleXML</a></li>
+<li><a href="php_ref_string.html">PHP String</a></li>
+<li><a href="php_ref_xml.html">PHP XML</a></li>
+<li><a href="php_ref_zip.html">PHP Zip</a></li>
+<li><a href="php_ref_misc.html">PHP 杂项</a></li>
+</ul>
+<h2>PHP 测验</h2>
+<ul>
+<li>PHP Quiz</li>
+</ul>
+</div>
+<div id="selected">
+<h2>建站手册</h2>
+<ul>
+<li><a href="../site/">网站构建</a></li>
+<li><a href="../w3c/">万维网联盟</a></li>
+<li><a href="http://e.v-get.com/w3c/">W3CSchool 教程</a></li>
+<li><a href="../quality/">网站品质</a></li>
+<li><a href="../semweb/">语义网</a></li>
+<li><a href="../hosting/">网站主机</a></li>
+</ul>
+<h2><a href="http://e.v-get.com/w3c/" class="f13">W3CSchool 教程</a></h2><div class="a120x90"><script type="text/javascript">var cpro_id="u1210867";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div></div>
+</div>
+<div id="maincontent">
+<h1>PHP 异常处理</h1>
+<div  id="tpn">
+<ul class="prenext">
+<li class="pre"><a href="php_error.html">上一页</a></li>
+<li class="next"><a href="php_filter.html">下一页</a></li>
+</ul>
+</div>
+<div id="intro">
+<p><strong>异常 (Exception）用于在指定的错误发生时改变脚本的正常流程。</strong></p>
+</div>
+<div>
+<h2>什么是异常？</h2>
+<p>PHP 5 提供了一种新的面向对象的错误处理方法。</p>
+<p>异常处理用于在指定的错误 (异常）情况发生时改变脚本的正常流程。这种情况称为异常。</p>
+<p>当异常被触发时，通常会发生：</p>
+<ul>
+<li>当前代码状态被保存</li>
+<li>代码执行被切换到预定义的异常处理器函数</li>
+<li>根据情况，处理器也许会从保存的代码状态重新开始执行代码，终止脚本执行，或从代码中另外的位置继续执行脚本</li>
+</ul>
+<p>我们将展示不同的错误处理方法：</p>
+<ul>
+<li>异常的基本使用</li>
+<li>创建自定义的异常处理器</li>
+<li>多个异常</li>
+<li>重新抛出异常</li>
+<li>设置顶层异常处理器</li>
+</ul>
+</div>
+<div>
+<h2>异常的基本使用</h2>
+<p>当异常被抛出时，其后的代码不会继续执行，PHP 会尝试查找匹配的 &#34;catch&#34; 代码块。</p>
+<p>如果异常没有被捕获，而且又没用使用 set_exception_handler() 作相应的处理的话，那么将发生一个严重的错误 (致命错误），并且输出 &#34;Uncaught Exception&#34;  (未捕获异常）的错误消息。 </p>
+<p>让我们尝试抛出一个异常，同时不去捕获它：</p>
+<pre>&lt;?php
+//create function with an exception
+function checkNum($number)
+ {
+ if($number&gt;1)
+  {
+  throw new Exception(&#34;Value must be 1 or below&#34;);
+  }
+ return true;
+ }
+//trigger exception
+checkNum(2);
+?&gt;</pre>
+<p>上面的代码会获得类似这样的一个错误：</p>
+<pre>Fatal error: Uncaught exception 'Exception' 
+with message 'Value must be 1 or below' in C:\webfolder\test.php:6 
+Stack trace: #0 C:\webfolder\test.php(12): 
+checkNum(28) #1 {main} thrown in C:\webfolder\test.php on line 6</pre>
+<h3>Try, throw 和 catch</h3>
+<p>要避免上面例子出现的错误，我们需要创建适当的代码来处理异常。</p>
+<p>处理处理程序应当包括：</p>
+<ol>
+<li>Try - 使用异常的函数应该位于 &#34;try&#34; 代码块内。如果没有触发异常，则代码将照常继续执行。但是如果异常被触发，会抛出一个异常。</li>
+<li>Throw - 这里规定如何触发异常。每一个 &#34;throw&#34; 必须对应至少一个 &#34;catch&#34;</li>
+<li>Catch - &#34;catch&#34; 代码块会捕获异常，并创建一个包含异常信息的对象</li>
+</ol>
+<p>让我们触发一个异常：</p>
+<pre>
+&lt;?php
+//创建可抛出一个异常的函数
+function checkNum($number)
+ {
+ if($number&gt;1)
+  {
+  throw new Exception(&#34;Value must be 1 or below&#34;);
+  }
+ return true;
+ }
+//在 &#34;try&#34; 代码块中触发异常
+try
+ {
+ checkNum(2);
+ //If the exception is thrown, this text will not be shown
+ echo 'If you see this, the number is 1 or below';
+ }
+//捕获异常
+catch(Exception $e)
+ {
+ echo 'Message: ' .$e->getMessage();
+ }
+?&gt;
+</pre>
+<p>上面代码将获得类似这样一个错误：</p>
+<pre>Message: Value must be 1 or below </pre>
+<h3>例子解释：</h3>
+<p>上面的代码抛出了一个异常，并捕获了它：</p>
+<ol>
+<li>创建 checkNum() 函数。它检测数字是否大于 1。如果是，则抛出一个异常。</li>
+<li>在 &#34;try&#34; 代码块中调用 checkNum() 函数。</li>
+<li>checkNum() 函数中的异常被抛出</li>
+<li>&#34;catch&#34; 代码块接收到该异常，并创建一个包含异常信息的对象 ($e)。</li>
+<li>通过从这个 exception 对象调用 $e->getMessage()，输出来自该异常的错误消息</li>
+</ol>
+<p>不过，为了遵循“每个 throw 必须对应一个 catch”的原则，可以设置一个顶层的异常处理器来处理漏掉的错误。</p>
+</div>
+<div>
+<h2>创建一个自定义的 Exception 类</h2>
+<p>创建自定义的异常处理程序非常简单。我们简单地创建了一个专门的类，当 PHP 中发生异常时，可调用其函数。该类必须是 exception 类的一个扩展。</p>
+<p>这个自定义的 exception 类继承了 PHP 的 exception 类的所有属性，您可向其添加自定义的函数。</p>
+<p>我们开始创建 exception 类：</p>
+<pre>&lt;?php
+class customException extends Exception
+ {
+ public function errorMessage()
+  {
+  //error message
+  $errorMsg = 'Error on line '.$this-&gt;getLine().' in '.$this-&gt;getFile()
+  .': &lt;b&gt;'.$this-&gt;getMessage().'&lt;/b&gt; is not a valid E-Mail address';
+  return $errorMsg;
+  }
+ }
+$email = &#34;someone@example...com&#34;;
+try
+ {
+ //check if 
+ if(filter_var($email, FILTER_VALIDATE_EMAIL) === FALSE)
+  {
+  //throw exception if email is not valid
+  throw new customException($email);
+  }
+ }
+catch (customException $e)
+ {
+ //display custom message
+ echo $e-&gt;errorMessage();
+ }
+?&gt;</pre>
+<p>这个新的类是旧的 exception 类的副本，外加 errorMessage() 函数。正因为它是旧类的副本，因此它从旧类继承了属性和方法，我们可以使用 exception 类的方法，比如 getLine() 、 getFile() 以及 getMessage()。</p>
+<h3>例子解释：</h3>
+<p>上面的代码抛出了一个异常，并通过一个自定义的 exception 类来捕获它：</p>
+<ol>
+<li>customException() 类是作为旧的 exception 类的一个扩展来创建的。这样它就继承了旧类的所有属性和方法。</li>
+<li>创建 errorMessage() 函数。如果 e-mail 地址不合法，则该函数返回一条错误消息</li>
+<li>把 $email 变量设置为不合法的 e-mail 地址字符串</li>
+<li>执行 &#34;try&#34; 代码块，由于 e-mail 地址不合法，因此抛出一个异常</li>
+<li>&#34;catch&#34; 代码块捕获异常，并显示错误消息</li>
+</ol>
+</div>
+<div>
+<h2>多个异常</h2>
+<p>可以为一段脚本使用多个异常，来检测多种情况。</p>
+<p>可以使用多个 if..else 代码块，或一个 switch 代码块，或者嵌套多个异常。这些异常能够使用不同的 exception 类，并返回不同的错误消息：</p>
+<pre>&lt;?php
+class customException extends Exception
+{
+public function errorMessage()
+{
+//error message
+$errorMsg = 'Error on line '.$this-&gt;getLine().' in '.$this-&gt;getFile()
+.': &lt;b&gt;'.$this-&gt;getMessage().'&lt;/b&gt; is not a valid E-Mail address';
+return $errorMsg;
+}
+}
+$email = &#34;someone@example.com&#34;;
+try
+ {
+ //check if 
+ if(filter_var($email, FILTER_VALIDATE_EMAIL) === FALSE)
+  {
+  //throw exception if email is not valid
+  throw new customException($email);
+  }
+ //check for &#34;example&#34; in mail address
+ if(strpos($email, &#34;example&#34;) !== FALSE)
+  {
+  throw new Exception(&#34;$email is an example e-mail&#34;);
+  }
+ }
+catch (customException $e)
+ {
+ echo $e-&gt;errorMessage();
+ }
+catch(Exception $e)
+ {
+ echo $e-&gt;getMessage();
+ }
+?&gt;</pre>
+<h3>例子解释：</h3>
+<p>上面的代码测试了两种条件，如何任何条件不成立，则抛出一个异常：</p>
+<ol>
+<li>customException() 类是作为旧的 exception 类的一个扩展来创建的。这样它就继承了旧类的所有属性和方法。</li>
+<li>创建 errorMessage() 函数。如果 e-mail 地址不合法，则该函数返回一个错误消息。</li>
+<li>执行 &#34;try&#34; 代码块，在第一个条件下，不会抛出异常。</li>
+<li>由于 e-mail 含有字符串 &#34;example&#34;，第二个条件会触发异常。</li>
+<li>&#34;catch&#34; 代码块会捕获异常，并显示恰当的错误消息</li>
+</ol>
+<p>如果没有捕获 customException，紧紧捕获了 base exception，则在那里处理异常。</p>
+</div>
+<div>
+<h2>重新抛出异常</h2>
+<p>有时，当异常被抛出时，您也许希望以不同于标准的方式对它进行处理。可以在一个 &#34;catch&#34; 代码块中再次抛出异常。</p>
+<p>脚本应该对用户隐藏系统错误。对程序员来说，系统错误也许很重要，但是用户对它们并不感兴趣。为了让用户更容易使用，您可以再次抛出带有对用户比较友好的消息的异常：</p>
+<pre>&lt;?php
+class customException extends Exception
+ {
+ public function errorMessage()
+  {
+  //error message
+  $errorMsg = $this-&gt;getMessage().' is not a valid E-Mail address.';
+  return $errorMsg;
+  }
+ }
+$email = &#34;someone@example.com&#34;;
+try
+ {
+ try
+  {
+  //check for &#34;example&#34; in mail address
+  if(strpos($email, &#34;example&#34;) !== FALSE)
+   {
+   //throw exception if email is not valid
+   throw new Exception($email);
+   }
+  }
+ catch(Exception $e)
+  {
+  //re-throw exception
+  throw new customException($email);
+  }
+ }
+catch (customException $e)
+ {
+ //display custom message
+ echo $e-&gt;errorMessage();
+ }
+?&gt;
+</pre>
+<h3>例子解释：</h3>
+<p>上面的代码检测在邮件地址中是否含有字符串 &#34;example&#34;。如果有，则再次抛出异常：</p>
+<ol>
+<li>customException() 类是作为旧的 exception 类的一个扩展来创建的。这样它就继承了旧类的所有属性和方法。</li>
+<li>创建 errorMessage() 函数。如果 e-mail 地址不合法，则该函数返回一个错误消息。</li>
+<li>把 $email 变量设置为一个有效的邮件地址，但含有字符串 &#34;example&#34;。</li>
+<li>&#34;try&#34; 代码块包含另一个 &#34;try&#34; 代码块，这样就可以再次抛出异常。</li>
+<li>由于 e-mail 包含字符串 &#34;example&#34;，因此触发异常。</li>
+<li>&#34;catch&#34; 捕获到该异常，并重新抛出 &#34;customException&#34;。</li>
+<li>捕获到 &#34;customException&#34;，并显示一条错误消息。</li>
+</ol>
+<p>如果在其目前的 &#34;try&#34; 代码块中异常没有被捕获，则它将在更高层级上查找 catch 代码块。</p>
+</div>
+<div>
+<h2>设置顶层异常处理器  (Top Level Exception Handler）</h2>
+<p>set_exception_handler() 函数可设置处理所有未捕获异常的用户定义函数。</p>
+<pre>&lt;?php
+function myException($exception)
+{
+echo &#34;&lt;b&gt;Exception:&lt;/b&gt; &#34; , $exception-&gt;getMessage();
+}
+set_exception_handler('myException');
+throw new Exception('Uncaught Exception occurred');
+?&gt;</pre>
+<p>以上代码的输出应该类似这样：</p>
+<pre>Exception: Uncaught Exception occurred</pre>
+<p>在上面的代码中，不存在 &#34;catch&#34; 代码块，而是触发顶层的异常处理程序。应该使用此函数来捕获所有未被捕获的异常。</p>
+</div>
+<div>
+<h2>异常的规则</h2>
+<ul>
+<li>需要进行异常处理的代码应该放入 try 代码块内，以便捕获潜在的异常。</li>
+<li>每个 try 或 throw 代码块必须至少拥有一个对应的 catch 代码块。</li>
+<li>使用多个 catch 代码块可以捕获不同种类的异常。</li>
+<li>可以在 try 代码块内的 catch 代码块中再次抛出 (re-thrown）异常。</li>
+</ul>
+<p><strong>简而言之：如果抛出了异常，就必须捕获它。</strong></p>
+</div>
+<div id="bpn">
+<ul class="prenext">
+<li class="pre"><a href="php_error.html">上一页</a></li>
+<li class="next"><a href="php_filter.html">下一页</a></li>
+</ul>
+</div>
+</div>
+<div id="sidebar">
+<div class="rs"></div>
+<div id="tools">
+<h5 id="tools_reference"><a href="php_ref.html">PHP 参考手册</a></h5>
+<h5 id="tools_quiz"><a href="php_quiz.html">PHP 测验</a></h5>
+</div>
+<div class="a120x600"><script type="text/javascript">var cpro_id="u1293136";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div><div class="b"></div>
+</div>
+</body>
+</html>

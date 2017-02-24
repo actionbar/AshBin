@@ -1,0 +1,28 @@
+<!DOCTYPE html><html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>jQuery 二维码制作_V-Get!</title><meta name="keywords" content="jQuery,二维码,js二维码,jquery qrcode"/><meta name="description" content="jQuery 版本的二维码"/><script src="http://tp.v-get.com/i/8js/jquery.1.5.2.js"></script><script src="http://tp.v-get.com/i/8js/dimensional_code.js"></script>
+<style type="text/css">
+*{padding;0;margin:0}p{font:14px/25px "Microsoft YaHei","微软雅黑",Tahoma,Verdana,"宋体";}.w{width:728px;padding:20px;margin:0 auto;overflow:hidden}
+#text{width: 400px;height: 200px;}
+#qrcodeTable table{margin: 0 auto;}</style>
+</head>
+<body>
+<div class="w"><textarea id="text">V-Get.com</textarea><div id="qrcodeTable"></div></div>
+<script type="text/javascript">
+$(function(){
+    change();
+    var timer, old;
+    function change(){
+        if (old == $('#text').val()) return;
+        old = $('#text').val();
+        timer && clearTimeout(timer);
+        timer = setTimeout(function(){
+            timer = 0;
+            $('#qrcodeTable').html('').qrcode({
+                render: "canvas",
+                text: old
+            });
+        }, 500);
+    }
+    $('#text').bind('keyup', change).bind('input', change);
+});
+    </script>
+</body></html>

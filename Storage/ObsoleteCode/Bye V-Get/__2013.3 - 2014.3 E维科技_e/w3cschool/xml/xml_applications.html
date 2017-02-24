@@ -1,0 +1,228 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="../c3.css" />
+<title>XML 应用程序</title>
+</head>
+<body class="xml">
+<div id="wrapper">
+<div id="header">
+<a href="http://e.v-get.com/w3cschool/" style="float:left;">W3CSchool 在线教程</a>
+<div class="q g"><script type="text/javascript">var cpro_id="u1163355"</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div>
+<div id="navfirst">
+<ul id="menu">
+<li id="h"><a href="../h.html">HTML教程</a></li>
+<li id="x"><a href="../x.html">XML教程</a></li>
+<li id="b"><a href="../b.html">浏览器脚本</a></li>
+<li id="s"><a href="../s.html">服务器脚本</a></li>
+<li id="d"><a href="../d.html">dot net教程</a></li>
+<li id="m"><a href="../m.html">多媒体教程</a></li>
+<li id="w"><a href="../w.html">建站手册</a></li>
+</ul>
+</div><div id="navsecond">
+<div id="course">
+<h2>XML 基础</h2>
+<ul>
+<li><a href="http://e.v-get.com/w3cschool/">XML 首页</a></li>
+<li><a href="xml_intro.html">XML 简介</a></li>
+<li><a href="xml_usedfor.html">XML 用途</a></li>
+<li><a href="xml_tree.html">XML 树结构</a></li>
+<li><a href="xml_syntax.html">XML 语法</a></li>
+<li><a href="xml_elements.html">XML 元素</a></li>
+<li><a href="xml_attributes.html">XML 属性</a></li>
+<li><a href="xml_dtd.html">XML 验证</a></li>
+<li><a href="xml_validator.html">XML 验证器</a></li>
+<li><a href="xml_browsers.html">XML 浏览器</a></li>
+<li><a href="xml_view.html">XML 查看</a></li>
+<li><a href="xml_display.html">XML CSS</a></li>
+<li><a href="xml_xsl.html">XML XSLT</a></li>
+</ul>
+<h2>XML JavaScript</h2>
+<ul>
+<li><a href="xml_parser.html">XML 解析器</a></li>
+<li><a href="xml_dom.html">XML DOM</a></li>
+<li><a href="xml_to_html.html">XML to HTML</a></li>
+<li><a href="xml_http.html">XML HTTP Request</a></li>
+<li><a href="xml_applications.html">XML 应用程序</a></li>
+</ul>
+</ul>
+<h2>XML 高级</h2>
+<ul>
+<li><a href="xml_namespaces.html">XML 命名空间</a></li>
+<li><a href="xml_cdata.html">XML CDATA</a></li>
+<li><a href="xml_encoding.html">XML 编码</a></li>
+<li><a href="xml_server.html">XML 服务器</a></li>
+<li><a href="xml_dom_advanced.html">XML DOM 高级</a></li>
+<li><a href="xml_dont.html">XML Don't</a></li>
+<li><a href="xml_savedata.html">XML 数据存储</a></li>
+<li><a href="xml_technologies.html">XML 技术</a></li>
+<li><a href="xml_real_life.html">XML 现实案例</a></li>
+<li><a href="xml_editors.html">XML 编辑器</a></li>
+<li><a href="xml_summary.html">XML 总结</a></li>
+</ul>
+<h2>实例/测验</h2>
+<ul>
+<li><a href="../example/xmle_examples.html">XML 实例</a></li>
+<li><a href="xml_quiz.html">XML 测验</a></li>
+</ul>
+</div>
+<div id="selected">
+<h2>建站手册</h2>
+<ul>
+<li><a href="../site/">网站构建</a></li>
+<li><a href="../w3c/">万维网联盟</a></li>
+<li><a href="http://e.v-get.com/w3c/">W3CSchool 教程</a></li>
+<li><a href="../quality/">网站品质</a></li>
+<li><a href="../semweb/">语义网</a></li>
+<li><a href="../hosting/">网站主机</a></li>
+</ul>
+<h2><a href="http://e.v-get.com/w3c/" class="f13">W3CSchool 教程</a></h2><div class="a120x90"><script type="text/javascript">var cpro_id="u1210867";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div></div>
+</div>
+<div id="maincontent">
+<h1>XML 应用程序</h1>
+<div id="tpn">
+<ul class="prenext">
+<li class="pre"><a href="xml_http.html">上一页</a></li>
+<li class="next"><a href="xml_namespaces.html">下一页</a></li>
+</ul>
+</div>
+<div id="intro">
+<p><strong>本节演示由 HTML 和 JavaScript 构建的一个小型 XML 应用程序。</strong></p>
+</div>
+<div>
+<h2>XML 文档实例</h2>
+<p>请看下面这个 XML 文档 ( &#34;cd_catalog.xml&#34; )，它描述了一个 CD 目录：</p>
+<pre>&lt;?xml version=&#34;1.0&#34; encoding=&#34;ISO-8859-1&#34;?&gt;
+&lt;CATALOG&gt;
+  &lt;CD&gt;
+    &lt;TITLE&gt;Empire Burlesque&lt;/TITLE&gt;
+    &lt;ARTIST&gt;Bob Dylan&lt;/ARTIST&gt;
+    &lt;COUNTRY&gt;USA&lt;/COUNTRY&gt;
+    &lt;COMPANY&gt;Columbia&lt;/COMPANY&gt;
+    &lt;PRICE&gt;10.90&lt;/PRICE&gt;
+    &lt;YEAR&gt;1985&lt;/YEAR&gt;
+  &lt;/CD&gt;
+.
+.
+... more ...
+.</pre>
+<p><a href="../example/xmle/cd_catalog.xml">在您的浏览器中查看完整的 &#34;cd_catalog.xml&#34; 文件</a>。</p>
+</div>
+<div>
+<h2>加载 XML 文档</h2>
+<p>为了加载 XML 文档 (cd_catalog.xml)，我们使用了与 XML 解析器那一节中相同的代码：</p>
+<pre>var xmlDoc;
+if (window.ActiveXObject)
+  {
+  <span>// code for IE</span>
+  xmlDoc=new ActiveXObject(&#34;Microsoft.XMLDOM&#34;);
+  }
+else if (document.implementation.createDocument)
+  {
+  <span>// code for Firefox, Mozilla, Opera, etc.</span>
+  xmlDoc=document.implementation.createDocument(&#34;&#34;,&#34;&#34;,null);
+  }
+else
+  {
+  alert('Your browser cannot handle this script');
+  }
+xmlDoc.async=false;
+xmlDoc.load(&#34;cd_catalog.xml&#34;);</pre>
+<p>在本代码执行后，xmlDoc 成为一个 XML DOM 对象，可由 JavaScript 访问。</p>
+</div>
+<div>
+<h2>把 XML 数据显示为 HTML 表格</h2>
+<p>以下代码使用来自 XML DOM 对象的数据来填充一个 HTML 表格：</p>
+<pre>document.write(&#34;&lt;table border='1'&gt;&#34;);
+var x=xmlDoc.getElementsByTagName(&#34;CD&#34;);
+for (var i=0;i&lt;x.length;i++)
+{ 
+document.write(&#34;&lt;tr&gt;&#34;);
+document.write(&#34;&lt;td&gt;&#34;);
+document.write(
+x[i].getElementsByTagName(&#34;ARTIST&#34;)[0].childNodes[0].nodeValue);
+document.write(&#34;&lt;/td&gt;&#34;);
+document.write(&#34;&lt;td&gt;&#34;);
+document.write(
+x[i].getElementsByTagName(&#34;TITLE&#34;)[0].childNodes[0].nodeValue);
+document.write(&#34;&lt;/td&gt;&#34;);
+document.write(&#34;&lt;/tr&gt;&#34;);
+}
+document.write(&#34;&lt;/table&gt;&#34;);</pre>
+<p>针对 XML 文档中的每个 CD 元素，会创建一个表格行。每个表格行包含两个表格数据单元，其中的数据来自当前 CD 元素的 ARTIST 和 TITLE。</p>
+<p>TIY：<a href="../tiy/t_230.html">查看如何在一个 HTML 表格中显示 XML 数据</a>。</p>
+</div>
+<div>
+<h2>在任意 HTML 元素中显示 XML 数据</h2>
+<p>XML 数据可以拷贝到任何有能力显示文本的 HTML 元素。</p>
+<p>下面的代码为 HTML 文件的 &lt;head&gt; 部分。这段代码从第一个 &lt;CD&gt; 元素中获得 XML 数据，然后在 id="show" 的 HTML 元素中显示数据：</p>
+<pre>var x=xmlDoc.getElementsByTagName(&#34;CD&#34;);
+i=0;
+function display()
+{
+artist=
+(x[i].getElementsByTagName(&#34;ARTIST&#34;)[0].childNodes[0].nodeValue);
+title=
+(x[i].getElementsByTagName(&#34;TITLE&#34;)[0].childNodes[0].nodeValue);
+year=
+(x[i].getElementsByTagName(&#34;YEAR&#34;)[0].childNodes[0].nodeValue);
+txt=&#34;Artist: &#34;+artist+&#34;&lt;br /&gt;Title: &#34;+title+&#34;&lt;br /&gt;Year: &#34;+year;
+document.getElementById(&#34;show&#34;).innerHTML=txt;
+}</pre>
+<p>HTML 的 body 元素包含一个 onload 事件属性，它的作用是在页面已经加载时调用 display() 函数。body 元素中还包含了供接受 XML 数据的 &lt;div id='show'&gt; 元素。</p>
+<pre>&lt;div id='show'&gt;&lt;/div&gt;
+&lt;/body&gt;</pre>
+<p>TIY：<a href="../tiy/t_231.html">查看 XML 数据如何在 &lt;div&gt; 元素中显示</a>。</p>
+<p>通过上例，你只能看到来自 XML 文档中第一个 CD 元素中的数据。为了导航到数据的下一行，必须添加更多的代码。</p>
+</div>
+<div>
+<h2>添加导航脚本</h2>
+<p>为了向上例添加导航 (功能），需要创建 next() 和 previous() 两个函数：</p>
+<pre>function next()
+{
+if (i&lt;x.length)
+  {
+  i++;
+  display();
+  }
+}
+function previous()
+{
+if (i&gt;0)
+  {
+  i--;
+  display();
+  }
+}</pre>
+<p>next() 函数确保已到达最后一个 CD 元素后不显示任何东西，previous () 函数确保已到达第一个 CD 元素后不显示任何东西。</p>
+<p>通过点击 next/previous 按钮来调用 next() 和 previous() 函数：</p>
+<pre>&lt;input type=&#34;button&#34; onclick=&#34;previous()&#34; value=&#34;previous&#34; /&gt;
+&lt;input type=&#34;button&#34; onclick=&#34;next()&#34; value=&#34;next&#34; /&gt;</pre>
+<p>TIY：<a href="../tiy/t_232.html">查看如何在 XML 记录中导航</a>。</p>
+</div>
+<div>
+<h2>现在，把所有的东西组合起来！</h2>
+<p><strong>只需要一点点创新，您就可以创建一个完整的应用程序。</strong></p>
+<p>如果您使用本页中学到的知识，再加上一点点想象力，就可以轻松地开发出一个完整的应用程序。</p>
+<p>如果您正在使用 IE 5.0 或者更高的版本：<a href="../tiy/t_233.html">看看您可以怎样为这个应用程序添加一点点想象力</a>。</p>
+</div>
+<div  id="bpn">
+<ul class="prenext">
+<li class="pre"><a href="xml_http.html">上一页</a></li>
+<li class="next"><a href="xml_namespaces.html">下一页</a></li>
+</ul>
+</div>
+</div>
+<div id="sidebar">
+<div class="rs"></div>
+<div id="tools">
+<h5 id="tools_example"><a href="../example/xmle_examples.html">XML 实例</a></h5>
+<h5 id="tools_quiz"><a href="xml_quiz.html">XML 测验</a></h5>
+</div>
+<div class="a120x600"><script type="text/javascript">var cpro_id="u1293136";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div><div class="b"></div>
+</div>
+</body>
+</html>

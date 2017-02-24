@@ -1,0 +1,61 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>一个简单的新闻生成的例子</title>
+<style type="text/css">
+<!--
+body {
+	font-size: 10.4pt;
+	line-height: 22px;
+}
+-->
+</style>
+</head>
+
+<body bgcolor="#eeeeee" leftmargin="20" marginwidth="20">
+<p><strong>一个简单的新闻生成的例子</strong></p>
+<hr>
+<p>====================================asptohtml1.asp<br>
+  &lt;html&gt;<br>
+  &lt;head&gt;<br>
+  &lt;title&gt;Untitled Document&lt;/title&gt;<br>
+  &lt;meta http-equiv="Content-Type" content="text/html; charset=gb2312"&gt;<br>
+  &lt;/head&gt;</p>
+<p>&lt;body bgcolor="#FFFFFF" text="#000000"&gt;<br>
+  &lt;div align="center"&gt;<br>
+  &lt;form name="form1" method="post" action="asptohtml2.asp"&gt;<br>
+  标题： <br>
+  &lt;input type="text" name="biaoti"&gt;<br>
+  &lt;br&gt;<br>
+  正文：<br>
+  &lt;textarea name="neirong"&gt;&lt;/textarea&gt;<br>
+  &lt;br&gt;<br>
+  &lt;input type="submit" name="Submit" value="Submit"&gt;<br>
+  &lt;/form&gt;<br>
+  &lt;/div&gt;<br>
+  &lt;/body&gt;<br>
+  &lt;/html&gt;<br>
+  =========================asptohtml2.asp<br>
+  &lt;%<br>
+  biaoti=request("biaoti")<br>
+  neirong=request("neirong")<br>
+  set fileobj=server.createobject("scripting.filesystemobject")<br>
+  filepath=server.mappath("./")&amp;"/"&amp;year(now)&amp;month(now)&amp;day(now)&amp;hour(now)&amp;minute(now)&amp;second(now)&amp;".html"<br>
+  response.write filepath<br>
+  set filewrite=fileobj.opentextfile(filepath,2,true)<br>
+  filewrite.write biaoti&amp;"&lt;br&gt;"<br>
+  filewrite.write neirong<br>
+  set fileobj=nothing<br>
+  %&gt;</p>
+<p><br>
+  这样呢会在你的当前目录下生成一个根据日期及时分钟为文件名的.html文件，这样你需要做得就是把这个文件名，及文件的标题保存到一个表里，然后再输入这个表就可以了<br>
+  如：表中的字段有id,biaoti,timee(分别为，文件的id编号，带连接的文件名，生成时间)<br>
+  当然，你还可以再加上你需的字段，我这里只是举一个例子<br>
+  在html文件生成了后，你需要向这个表中的biaoti填加一条记录（如：&lt;a href=文件名&gt;提交后的文件名&lt;/a&gt;）</p>
+<p>最后你只要输出这个表的所有内容就行了</p>
+<p>我没有看过生成html新闻的那些例子，也不知道自己做得对不对，请大家指教。<br>
+  对了，还有就是在写入文件的时候，你可以在文件标题和文件内容的前后加上&lt;script scr=zzz.js&gt;&lt;/script&gt;这些文件就由你了，定义一些样式表或是带有图案的页面做美化了，这样一个新闻生成器就出来了，之所以这样做就是因为html执行起来就比asp快得多。。</p>
+<p></p>
+</body>
+</html>

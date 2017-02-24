@@ -1,0 +1,70 @@
+<html xmlns:rdl>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<script src="rdl_indexlist.js"></script>
+<base target="_self">
+</head>
+<body>
+
+<script>
+
+sTitleText='Selectors Reference';
+sPrefix='s_';
+
+collFriendLists = new Array(
+'Units','Properties','Declarations','At-Rules','Pseudo-Elements','Pseudo-Classes','Selectors'
+);
+
+collHeadNotes = new Array(
+'选择符(Selectors)','兼容性(Compatibility)','语法(Syntax Samples)','简介(Description)'
+);
+
+collListItems = new Array(
+new Array(
+'40','Type Selectors','IE4+ , NS4+','E1','类型选择符。以文档语言对象类型作为选择符。'
+),
+new Array(
+'80','Universal Selector','无','*','通配选择符。选定文档目录树(DOM)中的所有类型的单一对象。'
+),
+new Array(
+'40','Descendant Selectors','IE4+ , NS4+','E1  E2','包含选择符。选择所有被E1包含的E2。即 E1.contains(E2)==true 。'
+),
+new Array(
+'80','Child Selectors','无','E1 >	E2','子对象选择符。选择所有作为E1子对象的E2 。'
+),
+new Array(
+'80','Adjacent Sibling Selectors','无','E1 + E2','相邻选择符。选择紧贴在E1之后的所有E2 。'
+),
+new Array(
+'80','Attribute Selectors','无','E[attr]','属性选择符。选择具有attr属性的E。'
+),
+new Array(
+'80','Attribute Selectors','无','E[attr=value]','属性选择符。选择具有attr属性且属性值等于value的E。'
+),
+new Array(
+'80','Attribute Selectors','无','E[attr~=value]','属性选择符。选择具有attr属性且属性值为一用空格分隔的字词列表，其中一个等于value的E。'
+),
+new Array(
+'80','Attribute Selectors','无','E[attr|=value]','属性选择符。选择具有attr属性且属性值为一用连字符分隔的字词列表，由value开始的E。'
+),
+new Array(
+'40','ID Selectors','IE4+ , NS4+','#sID','ID选择符。以文档目录树(DOM)中作为对象的唯一标识符的ID作为选择。'
+),
+new Array(
+'40','Class Selectors','IE4+ , NS4+','E.className','类选择符。在HTML中可以使用此种选择符。其效果等同于E[class~=className] 。'
+),
+new Array(
+'40','Pseudo Selectors','IE4+ , NS4+','E : P','伪类及伪对象选择符。P为伪类或伪对象 。'
+),
+new Array(
+'40','Grouping','IE4+ , NS4+','E1,E2,E3','选择符分组。将同样的定义应用于多个选择符，可以将选择符以逗号分隔的方式并为组。'
+)
+);
+
+</script>
+
+</body>
+</html>
+
+<!-- Part of RDL(TM) - Written by Rain1977 
+HomeSite: http://www.dhtmlet.com  E-Mail: rainersu@hotmail.com -->

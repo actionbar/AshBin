@@ -1,0 +1,190 @@
+<html>
+<head>
+<title>内部通用实体</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+
+<link rel = stylesheet href = "image/style.css">
+</head>
+<body bgcolor="#ffffff">
+<table width="688" border="0" cellspacing="0" cellpadding="0" align="center">
+  <tr bgcolor="EEEEEE"> 
+    <td height="22"><a href="index.htm">主页</a></td>
+  </tr>
+</table><br>
+<table border="0" cellpadding="0" cellspacing="0" width="688" align="center" height="490">
+  <tr valign="top"> 
+    <td rowspan="4" width="91">&nbsp; </td>
+    <td height="68" width="131"> 
+      <p><img src="image/doc.gif"></p>
+    </td>
+    <td rowspan="4" width="18"><b></b> </td>
+    <td height="68" width="387"><img src="image/title_doc.gif"></td>
+    <td rowspan="4" width="61"> 
+      <h6>&nbsp;</h6>
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td rowspan="3" valign="top" class="pt10" align="center" width="131" bgcolor="EEEEEE"> 
+      <p>&nbsp;</p>
+      <p><font color="#FF0000">※ 9.2 内部通用实体</font></p>
+       
+	</td>
+  </tr>
+  <tr valign="top"> 
+    <td width="387" height="308"> 
+      <table width="100%" border="0" cellpadding="0">
+        <tr> 
+          <td>
+
+           <h4>9.2 内部通用实体</h4>
+<p>内部通用实体引用可看作经常使用的文本或强制格式文本的缩写。DTD中的&lt;!ENTITY&gt;标记定义缩写，并且该缩写就代替了文本。例如，可在DTD中简单地把页脚定义为实体footer，然后每页只需键入&amp;footer；，而勿需在每页底部键入相同的页脚。此外，若决定更改页脚块（也许是因为你的电子邮件地址更改了），就仅需在DTD中作一次更改即可，勿需对共享同一页脚的页面逐个进行更改。</p>
+<p>通用实体引用以“&amp;”符号开始，以“；”结尾，两个符号之间为实体名。例如，“&amp;lt；”就是小于符号(&lt;)的通用实体引用，实体名为lt，该实体的替换文本就是一个字符“&lt;”。实体名由字母和数字的混合排列以及下划线构成，禁止使用空格和其他标点符号字符。类似XML中的其他内容，实体引用是区分大小写的。</p>
+<p><img src="Image/BK000209-2.gif" width=49 height=33>尽管从技术上说，允许在对象名中使用冒号“：”，但正如第18章中所提及，此符号要保留用于命名域（namespace）。</p>
+<h5>9.2.1 定义内部通用实体引用</h5>
+<p>在DTD中使用标记&lt;!ENTITY&gt;标记定义内部通用实体引用，具有如下格式：</p>
+<p>&lt;!ENITY name "replacement text"&gt;</p>
+<p>name是replacement text的缩写。替换文本需放置于双引号中，因为其中可能包含空格和XML标记。可在文档中键入实体名，而读者所见为替换文本。</p>
+<p>例如，我的名字为“Elliotte Rusty Harold”（这得怪我父母取了一个长名）。即使经过多年习惯，我依然常常打错。我可以为我的名字定义通用实体引用，这样每次当我键入&amp;ERH；时，读者将会看见“Elliotte 
+  Rusty Harold”，这个定义如下：</p>
+<p>&lt;!ENITY ERH<i> </i>" Elliotte Rusty Harold"&gt;</p>
+<p>清单9-1示例说明了&amp;ERH；通用实体引用，图9-1中显示了载入到Internet Explorer的文档。可看出，源代码中的&amp;ERH；实体引用输出时被替换为“Elliotte 
+  Rusty Harold”。</p>
+<p align="center"><img src="Image/BK000209-3.gif" width=321 height=199></p>
+<p align="center">图9-1 清单9-1在内部通用实体引用被实际实体替换后的情形</p>
+<p>清单9-1：ERH内部通用实体引用</p>
+<p>&lt;?xml version="1.0" standalone="Yes"&gt;</p>
+<p>&lt;!DOCTYPE DOCUME [</p>
+<p> &lt;!ETITY ERH "Elliotte Rusty Harold"&gt;</p>
+<p> &lt;!ELEMENT DOCUME (TITLE, SIGNATURE)&gt;</p>
+<p> &lt;!ELEMENT TITLE (#PCDA A)&gt;</p>
+<p> &lt;!ELEMENT COPYRIGHT (#PCDATA)&gt;</p>
+<p> &lt;!ELEMENT EMAIL (#PCDA A)&gt;</p>
+<p> &lt;!ELEMENT LAST_MODIFIED (#PCDATA)&gt;</p>
+<p> &lt;!ELEMENT SIGNATURE (COPYRIGHT, EMAIL, LAST_MODIFIED)&gt;</p>
+<p>]&gt;</p>
+<p>&lt;DOCUMENT&gt;</p>
+<p> &lt;TITLE&gt;&amp;ERH;&lt;/TITLE&gt;</p>
+<p> &lt;SIGNATURE&gt;</p>
+<p> &lt;COPYRIGHT &gt;1999 &amp;ERH;&lt;/COPYRIGHT&gt;</p>
+<p> &lt;EMAIL&gt;elharo@metalab.unc.edu&lt;/EMAIL&gt;</p>
+<p> &lt;LAS _MODIFIED&gt;March 10, 1999&lt;/LAS _MODIFIED&gt;</p>
+<p> &lt;/SIGNATURE&gt;</p>
+<p>&lt;/DOCUMENT&gt;</p>
+<p>注意其中的通用实体引用，即使COPYRIGHT和TITLE声明为仅接受#PCDATA的子类，&amp;ERH;依然出现在它们之中。因&amp;ERH; 
+  实体引用的替换文本是可析的字符数据，所以这种排列是合法的。所有的实体引用被实体值替换后，才对文档进行正确性检查。</p>
+<p>在使用样式单时，也会发生相同的情形。当存在样式单引用，在实体引用替换为实体值后，才把样式应用于替换后实际存在的元素树状结构中。</p>
+<p>可按下列方式把版权、电子邮件或最后的修改日期声明为通用实体引用：</p>
+<p>&lt;!ENTITY COPY99 "Copyright 1999"&gt; </p>
+<p>&lt;!ENTITY EMAIL "elharo@metalab.unc.edu"&gt; </p>
+<p>&lt;!ENTITY LM "Last modified: "&gt; </p>
+<p>因日期对不同的文档可能会发生改变，故而忽略了&amp;LM；中的日期。若把日期作为一个实体引用，不会带来任何好处。</p>
+<p>现在，就可把清单9-1内容重写成更加简洁的形式：</p>
+<p>&lt;DOCUMENT&gt;</p>
+<p> &lt;TITLE&gt;&amp;ERH;&lt;/TITLE&gt;</p>
+<p> &lt;SIGNATURE&gt;</p>
+<p> &lt;COPYRIGHT&gt;&amp;COPY99; &amp;ERH;&lt;/COPYRIGHT&gt;</p>
+<p> &lt;EMAIL&gt;&amp;EMAIL;&lt;/EMAIL&gt;</p>
+<p> &lt;LAS _MODIFIED&gt;&amp;LM; March 10, 1999&lt;/LAST_MODIFIED&gt;</p>
+<p> &lt;/SIGNATURE&gt;</p>
+<p>&lt;/DOCUMENT&gt;</p>
+<p>应用实体引用代替书写文本全文的一个好处是使得更改文本更加简便，在简单的DTD被若干文档共享的情况下，特别有用。例如，假设把电子邮件地址从elharo@metalab.unc.edu更改为eharold@solar.stanford.edu，仅需按如下内容更改DTD中的一行内容，而勿需在多个文档中寻找和替换邮件地址：</p>
+<p>&lt;!ENTITY EMAIL "eharold@solar.stanford.edu"&gt;</p>
+<h5>9.2.2 在DTD中使用通用实体引用</h5>
+<p>读者或许对是否能像下面的代码一样在一个通用实体引用中包含另一个通用实体引用表示怀疑，如下所示：</p>
+<p>&lt;!ENTITY COPY99 "copyright 1999 &amp;ERH;"&gt;</p>
+<p>实际上该例是合法的，因为ERH实体作为COPY99实体的一部分存在，而COPY99实体本身最终又成为文档内容的一部分。尽管存在某些限制，对于DTD中的其他地方，若最终能转换成文档内容的一部分（例如作为缺省属性值），则也可在此处使用通用实体引用。第一条限制：语句中不能使用如下的循环引用：</p>
+<p>&lt;!ENTITY ERH "&amp;COPY99 Elliotte Rusty Harold"&gt;? </p>
+<p>&lt;!ENTITY COPY99 "copyright 1999 &amp;ERH;"&gt;?</p>
+<p>第二条限制：通用实体引用不能插入仅为DTD的一部分且不能作为文档内容的文本。例如，下述简略用法的企图无法实现：</p>
+<p>&lt;!ENTITY PCD "(#PCDATA)"&gt;</p>
+<p>&lt;!ELEMENT ANTIMAL &amp;PCD;&gt;</p>
+<p>&lt;!ELEMENT FOOD &amp;PCD;&gt;</p>
+<p>然而，利用实体引用把文本合并到文档的DTD中的方法常常是有用的。为此目的，XML使用将在下章中讲述的参数实体引用来实现这一目的。</p>
+<p>对通用实体值的限制仅在于不能直接包含三种字符：% 、&amp;、”，可是能经过使用字符引用包含这三种字符。若&amp;和%仅作为实体引用的开头，而不代表自身含义，则可包含其中。限制很少意味着实体可包含标记和分割为多行。例如下面的SIGNATURE实体是有效的：</p>
+<p>"&lt;SIGNATURE&gt;</p>
+<p>&lt;COPYRIGHT&gt;1999 Elliotte Rusty Harold&lt;/COPYRIGH &gt;</p>
+<p>&lt;EMAIL&gt;elharo@metalab.unc.edu&lt;/EMAIL&gt;</p>
+<p>&lt;LAST_MODIFIED&gt;March 10, 1999&lt;/LAST_MODIFIED&gt;</p>
+<p>&lt;/SIGNATURE&gt;"</p>
+<p>&gt; </p>
+<p>下一个关心的问题是实体是否可以拥有参数。能否使用上面的SIGNATURE实体，但却改变每页中每一独立的LAST_MODIFIED元素的数据？答案是否定的；实体仅为静态的替换文本。若需要给实体传送数据，应改为使用标记符，并在样式单中随同提供适当的实现指令。</p>
+<h5>9.2.3 预定义通用实体引用</h5>
+<p>XML预定义五个通用实体引用，如表9-1所示。五个实体引用出现在XML文档中用来代替一些特殊的字符，这些字符如果不用引用方式就会被解释为标记。例如实体引用&amp;lt；代表小于号&lt;，小于符号&lt;可解释为标记的开头。</p>
+<p>考虑到最大限度的兼容，若计划使用预定义实体引用，就该在DTD中声明这些引用。因为需要避免DTD中字符的递归引用，所以声明时必须相当小心。为方便引用的声明，字符引用使用字符的十六进制ASCII值。清单9-2显示了所需要的声明。</p>
+<p>
+<center>
+  <table BORDER cellspacing=1 cellpadding=1 width="245">
+    <tr> 
+      <td valign="TOP" colspan=2> 
+        <p>表9-1 XML中的预定义实体引用 
+      </td>
+    </tr>
+    <tr> 
+      <td height="18" valign="TOP"> 
+        <p align="left">实体引用 
+      </td>
+      <td height="18" valign="TOP"> 
+        <p align="left">字符 
+      </td>
+    </tr>
+    <tr> 
+      <td height="2" valign="TOP"> 
+        <p align="left">&amp;amp; 
+      </td>
+      <td height="2" valign="TOP"> 
+        <p align="left">&amp; 
+      </td>
+    </tr>
+    <tr> 
+      <td valign="TOP"> 
+        <p align="left">&amp;lt; 
+      </td>
+      <td valign="TOP"> 
+        <p align="left">&lt; 
+      </td>
+    </tr>
+    <tr> 
+      <td valign="TOP"> 
+        <p align="left">&amp;gt; 
+      </td>
+      <td valign="TOP"> 
+        <p align="left">&gt; 
+      </td>
+    </tr>
+    <tr> 
+      <td valign="TOP"> 
+        <p align="left">&amp;quot; 
+      </td>
+      <td valign="TOP"> 
+        <p align="left">" 
+      </td>
+    </tr>
+    <tr> 
+      <td valign="TOP"> 
+        <p align="left">&amp;apos; 
+      </td>
+      <td valign="TOP"> 
+        <p align="left">  
+      </td>
+    </tr>
+  </table>
+</center>
+<p></p>
+<p>清单9-2：预定义通用实体引用声明</p>
+<p>&lt;!ENTITY lt "&amp;#38;#60;"&gt;</p>
+<p>&lt;!ENTITY gt "&amp;#62;"&gt;</p>
+<p>&lt;!ENTITY amp "&amp;#38;#38;"&gt;</p>
+<p>&lt;!ENTITY apos "&amp;#39;"&gt;</p>
+<p>&lt;!ENTITY quot "&amp;#34;"&gt;</p>
+ 
+<a href='408.htm'>&lt;&lt;上一篇</a>&nbsp;&nbsp;<a href='410.htm'>下一篇&gt;&gt;</a></td>
+        </tr>
+      </table>
+      <p>&nbsp; </p>
+    </td>
+  </tr>
+</table>
+
+</body>
+
+</html>

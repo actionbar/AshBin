@@ -1,0 +1,290 @@
+<html>
+<head>
+<title>匹配节点的模式</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+
+<link rel = stylesheet href = "image/style.css">
+</head>
+<body bgcolor="#ffffff">
+<table width="688" border="0" cellspacing="0" cellpadding="0" align="center">
+  <tr bgcolor="EEEEEE"> 
+    <td height="22"><a href="index.htm">主页</a></td>
+  </tr>
+</table><br>
+<table border="0" cellpadding="0" cellspacing="0" width="688" align="center" height="490">
+  <tr valign="top"> 
+    <td rowspan="4" width="91">&nbsp; </td>
+    <td height="68" width="131"> 
+      <p><img src="image/doc.gif"></p>
+    </td>
+    <td rowspan="4" width="18"><b></b> </td>
+    <td height="68" width="387"><img src="image/title_doc.gif"></td>
+    <td rowspan="4" width="61"> 
+      <h6>&nbsp;</h6>
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td rowspan="3" valign="top" class="pt10" align="center" width="131" bgcolor="EEEEEE"> 
+      <p>&nbsp;</p>
+      <p><font color="#FF0000">※ 14.6 匹配节点的模式</font></p>
+       
+	</td>
+  </tr>
+  <tr valign="top"> 
+    <td width="387" height="308"> 
+      <table width="100%" border="0" cellpadding="0">
+        <tr> 
+          <td>
+
+           <p></p>
+<h4><a name="_Toc467207144">14.6 匹配节点的模式</a></h4>
+<p>xsl:template元素的match特性支持复杂的语法，允许人们精确地表达想要和不想要与哪个节点匹配。xsl:apply-templates、xsl:value-of、xsl:for-each、xsl:copy-of和xsl:sort的select特性支持功能更加强大的语法的超集，允许人们精确地表达想要和不想要选择哪个节点。下面讨论匹配和选择节点的各种模式。</p>
+<h5><a name="_Toc467207145">14.6.1 匹配根节点</a></h5>
+<p>为了使输出的文档结构整洁。从XSL变换的第一个输出内容应为输出文档的根元素。因此，XSL样式单一般以应用于根节点的规则开始。要在规则中指定根节点，可将其match特性设置为合适的值。例如：</p>
+<p>&lt;xsl:template match="/"&gt;</p>
+<p> &lt;html&gt;</p>
+<p> &lt;xsl:apply-templates/&gt;</p>
+<p> &lt;/html&gt;</p>
+<p>&lt;/xsl:template&gt;</p>
+<p>本规则应用于根节点，并且只应用于输入树形结构的根节点。当读取到此根节点时，就输出&lt;html&gt;标记，处理根节点的子节点，然后输出&lt;/html&gt;标记。本规则推翻了根节点的缺省规则。清单14-6显示了应用于根节点的带有单一规则的样式单。</p>
+<p>清单14-6：用于根节点的带有单一规则的XSL样式单</p>
+<p>&lt;?xml version="1.0"?&gt;</p>
+<p>&lt;xsl:stylesheet</p>
+<p> xmlns:xsl="http://www.w3.org/XSL/Transform/1.0"&gt;</p>
+<p></p>
+<p> &lt;xsl:template match="/"&gt;</p>
+<p> &lt;html&gt;</p>
+<p> &lt;head&gt;</p>
+<p> &lt;title&gt;Atomic Number vs. Atomic Weight&lt;/title&gt;</p>
+<p> &lt;/head&gt;</p>
+<p> &lt;body&gt;</p>
+<p> &lt;table&gt;</p>
+<p> Atom data will go here</p>
+<i>
+<p></p>
+</i>
+<p> &lt; /table&gt;</p>
+<p> &lt;/body&gt;</p>
+<p></p>
+<p> &lt;/html &gt;</p>
+<p> &lt;/xsl:template&gt;</p>
+<p></p>
+<p>&lt;/xsl:stylesheet&gt;</p>
+<p>由于本样式单只为根节点提供一条规则，并且由于规则的模板未指明对子节点进行进一步的处理，因而只是按原样输出，所以在模板中所看到的所有内容都将插入到结果文档中。换句话说，将清单14-6中的样式单应用于清单14-1（或其他任何结构整洁的XML文档）中，所获得的结果如下：</p>
+<p>&lt;html&gt;&lt;head&gt;&lt;title&gt;Atomic Number vs. Atomic</p>
+<p>Weight&lt;/title&gt;&lt;/head&gt;&lt;body&gt;&lt;table&gt;</p>
+<p> Atom data will go here</p>
+<p> &lt;/table&gt;&lt;/body&gt;&lt;/html&gt;</p>
+<h5><a name="_Toc467207146">14.6.2 匹配元素名</a></h5>
+<p>正如前面介绍的那样，最基本的模式只包含一个元素名，用来匹配所有带有该名的元素。例如，下面的模板与ATOM元素相匹配，并将ATOM元素的ATOMIC_NUMBER的子元素标成粗体：</p>
+<p>&lt;xsl:template match=”ATOM”&gt;</p>
+<p> &lt;b&gt;&lt;xsl:value-of select=”ATOMIC_NUMBER”/&gt;&lt;b&gt;</p>
+<p>&lt;/xsl:template&gt;</p>
+<p>清单14-7显示的是扩充了清单14-6的样式单。首先，在根节点的规则模板中包括了xsl:apply-templates元素。此规则使用select特性来确保只有PERIODIC_TABLE元素获得处理。</p>
+<p>其次，使用match=“PERIODIC_TABLE”语句创建了只适用于PERIODIC_TABLE元素的规则。本规则设置周期表的标题，然后应用模板来从ATOM元素中生成周期表的主体。</p>
+<p>最后，ATOM规则使用&lt;xsl:apply-templates select=“NAME”/&gt;、&lt;xsl:apply-templates 
+  select=“ATOMIC_NUMBER”/&gt;和&lt;xsl:apply templates select=“ATOMIC_WEIGHT”/&gt;，明确地选择ATOM元素的NAME、ATOMIC_NUMBER和ATOMIC_WEIGHT子元素。它们都包装在HTML的tr和td元素中，以便最终的结果是与原子量相匹配的原子序数表。图14-4显示将清单14-7中的样式单应用于整个周期表文档中的输出结果。</p>
+<p>对本样式单需要注意的是：在输入文档中的NAME、ATOMIC_NUMBER和ATOMIC_WEIGHT元素的精确顺序是不重要的。它们在输出文档中以选择它们的顺序出现，也就是说首先为原子序数，然后是原子量。相反，在输入文档中，各个原子依字母顺序排序。以后，将会看到如何使用xsl:sort元素来改变这个顺序，以便使用更常规的原子序数的顺序来排列原子。</p>
+<p>清单14-7：利用select的施用于元素的特定类的模板</p>
+<p>&lt;?xml version=”1.0”?&gt;</p>
+<p>&lt;xsl:stylesheet</p>
+<p>xmlns:xsl=”http://www.w3.org/XSL/Transform/1.0”&gt;</p>
+<p></p>
+<p> &lt;xsl:template match=”/”&gt;</p>
+<p> &lt;html&gt;</p>
+<p> &lt;head&gt;</p>
+<p> &lt;title&gt;Atomic Number vs. Atomic Weight&lt;/title&gt;</p>
+<p> &lt;/head&gt;</p>
+<p> &lt;body&gt;</p>
+<p> &lt;xsl:apply-templates select=”PERIODIC_TABLE”/&gt;</p>
+<p> &lt;/body&gt;</p>
+<p> &lt;/html&gt;</p>
+<p> &lt;/xsl:template&gt;</p>
+<p></p>
+<p> &lt;xsl:template match=”PERIODIC_TABLE”&gt;</p>
+<p> &lt;hl&gt;Atomic Number vs. Atomic Weight&lt;/hl&gt;</p>
+<p> &lt;table&gt;</p>
+<p> &lt;th&gt;Element&lt;/th&gt;</p>
+<p> &lt;th&gt;Atomic Number&lt;/th&gt;</p>
+<p> &lt;th&gt;Atomic Weight&lt;/th&gt;</p>
+<p> &lt;xsl:apply-templates select=”ATOM”/&gt;</p>
+<p> &lt;/table&gt;</p>
+<p> &lt;/xsl:template&gt;</p>
+<p></p>
+<p> &lt;xsl:template match=”ATOM”&gt;</p>
+<p> &lt;tr&gt;</p>
+<p> &lt;td&gt;&lt;xsl:value-of select=”NAME”/&gt;&lt;/td&gt;</p>
+<p> &lt;td&gt;&lt;xsl:value-of select=”ATOMIC_NUMBER”/&gt;&lt;/td&gt;</p>
+<p> &lt;td&gt;&lt;xsl:value-of select=”ATOMIC_WEIGHT”/&gt;&lt;/td&gt;</p>
+<p> &lt;/tr&gt;</p>
+<p> &lt;/xsl:template&gt;</p>
+<p></p>
+<p>&lt;/xsl:stylesheet&gt;</p>
+<p align="center"><img src="Image/BK000214-27.gif" width=344 height=347></p>
+<p align="center">图14-4 Netscape Navigator 4.5中显示的原子序数与原子量的关系表</p>
+<h5><a name="_Toc467207147">14.6.3 使用/字符匹配子节点</a></h5>
+<p>在match特性中并不局限于当前节点的子节点，可使用/符号来匹配指定的元素后代。当单独使用/符号时，它表示引用根节点。但是，在两个名称之间使用此符号时，表示第二个是第一个的子代。例如，ATOM/NAME引用NAME元素，NAME元素为ATOM元素的子元素。</p>
+<p>在xsl:template元素中，这种方法能够用来只与某些给定类型的元素进行匹配。例如，下面的模板规则将ATOM子元素的SYMBOL元素标记为strong。此规则与不是ATOM元素的直系子元素的SYMBOL元素无关。</p>
+<p>&lt;xsl:template match="ATOM/SYMBOL"&gt;</p>
+<p> &lt;strong&gt;&lt;xsl:value-of select="."/&gt;&lt;/strong&gt;</p>
+<p>&lt;/xsl:template&gt;</p>
+<p><img src="Image/BK000214-17.gif" width=47 height=52 align="left">请记住，本规则选择的是作为ATOM元素子元素的SYMBOL元素，而不是选择拥有SYMBOL子元素的ATOM元素。换句话说，在&lt;xsl:value-of 
+  select="."/&gt;中的.符号引用的是SYMBOL，而不是ATOM。</p>
+<p>&nbsp;</p>
+<p>将模式写成一行的形成，就可以指定更深层的匹配。例如，PERIODIC_TABLE / ATOM / NAME选择的是其父为ATOM元素（其父为PERIODIC_TABLE元素）的NAME元素。</p>
+<p>还可以使用*通配符来代替层次结构中的任意元素名。例如，下面的模板规则应用于PERIODIC_TABLE孙元素的所有SYMBOL元素。</p>
+<p>&lt;xsl:template match="PERIODIC_TABLE/*/SYMBOL"&gt;</p>
+<p> &lt;strong&gt;&lt;xsl:value-of select="."/&gt;&lt;/strong&gt;</p>
+<p>&lt;/xsl:template&gt;</p>
+<p>最后一点，就如上面所看到的那样，单独的/本身，表示选择文档的根节点。例如，下面的规则应用于文档根元素的所有PERIODIC_TABLE元素。</p>
+<p>&lt;xsl:template match="/PERIODIC_TABLE"&gt;</p>
+<p> &lt;html&gt;&lt;xsl:apply templates/&gt;&lt;/html&gt;</p>
+<p>&lt;/xsl:template&gt;</p>
+<p>虽然 / 引用根节点，但/* 则引用任意根元素。例如，</p>
+<p>&lt;xsl:template match="/*"&gt;</p>
+<p> &lt;html&gt;</p>
+<p> &lt;head&gt;</p>
+<p> &lt;title&gt;Atomic Number vs. Atomic Weight&lt;/title&gt;</p>
+<p> &lt;/head&gt;</p>
+<p> &lt;body&gt;</p>
+<p> &lt;xsl:apply-templates/&gt;</p>
+<p> &lt;/body&gt;</p>
+<p> &lt;/html&gt;</p>
+<p>&lt;/xsl:template&gt;</p>
+<h5><a name="_Toc467207148">14.6.4 使用//符号匹配子代</a></h5>
+<p>有时候，尤其是使用不规则的层次时，更容易的方法就是越过中间节点、只选择给定类型的所有元素而不管这些元素是不是直系子、孙、重孙或其他所有的元素。双斜杠（//）引用任意级别的后代元素。例如，下面的模板规则应用于PERIODIC_TABLE的所有NAME子代，而不管它们具有何种层次的关系：</p>
+<p>&lt;xsl:template match=" PERIODIC_TABLE //NAME"&gt;</p>
+<p> &lt;i&gt;&lt;xsl:value-of select="."/&gt;&lt;/i&gt;</p>
+<p>&lt;/xsl:template&gt;</p>
+<p>周期表实例相当简单，一看就懂，但这种技巧在更深层次，尤其是当元素包含该类的其他元素时（例如ATOM包含ATOM），就显得更加重要。</p>
+<p>模式开头的操作符选择根节点的任何子节点。例如，下面的模板规则处理所有的ATOMIC_NUMBER元素，而同时完全忽略其位置：</p>
+<p>&lt;xsl:template match="// ATOMIC_NUMBER "&gt;</p>
+<p> &lt;i&gt;&lt;xsl:value-of select="."/&gt;&lt;/i&gt;</p>
+<p>&lt;/xsl:template&gt;</p>
+<h5><a name="_Toc467207149">14.6.5 通过ID匹配</a></h5>
+<p>有人或许想把一特定的样式应用于特定的单一元素中，而不改变该类型的所有其他元素。在XSL中实现此目的的最简单的方法是，将样式与元素的ID匦韵喙亓？墒褂胕d()选择符（其中包括以单引号括起来的ID值）做到这一点。例如，下面的规则使带有ID值为e47的元素变为粗体：</p>
+<p>&lt;xsl:template match=”id(‘e47’)”&gt;</p>
+<p> &lt;b&gt;&lt;xsl:value-of select=”.”/&gt;&lt;/b&gt; </p>
+<p>&lt;/xsl:template&gt;</p>
+<p>当然，上面假设以此方式选择的元素具有在源文档的DTD中声明为ID类型的特性。但是，通常情况并非如此。首先，许多文档没有DTD，只不过结构整洁，但不合法。即使有DTD，也无法确保任何元素都有ID类型的特性。可以在样式单中使用xsl:key元素，用来把输入文档中的特定特性声明为应该作为ID来看待。</p>
+<h5><a name="_Toc467207150">14.6.6 使用@来匹配特性</a></h5>
+<p>正如第5章已经看到的那样，@符号根据特性名与特性相匹配，并选择节点。方法很简单，只需在要选择的特性前加上@符号。例如，清单14-8显示一样式单，用它来输出一张原子序数和熔点对照的表格。不仅写出了MELTING_POINT的值，而且也写出了UNITS特性的值。这是由于&lt;xsl 
+  :value-of select="@UNITS"/&gt;所获得的结果。</p>
+<p>清单14-8：使用@来选择UNITS特性的XSL样式单</p>
+<p>&lt;?xml version="1.0"?&gt;</p>
+<p>&lt;xsl:stylesheet</p>
+<p> xmlns:xsl="http://www.w3.org/XSL/Transform/1.0"&gt;</p>
+<p></p>
+<p> &lt;xsl:template match="/PERIODIC_TABLE"&gt;</p>
+<p> &lt;html&gt;</p>
+<p> &lt;body&gt;</p>
+<p></p>
+<p> &lt;hl&gt;Atomic Number vs. Melting Point&lt;/hl&gt;</p>
+<p> &lt;table&gt;</p>
+<p> &lt;th&gt;Element&lt;/th&gt;</p>
+<p> &lt;th&gt;Atomic Number&lt;/th&gt;</p>
+<p> &lt;th&gt;Melting Point&lt;/th&gt;</p>
+<p> &lt;xsl:apply-templates/&gt;</p>
+<p> &lt;/table&gt;</p>
+<p> &lt;/body&gt;</p>
+<p> &lt;/html&gt;</p>
+<p> &lt;/xsl:template&gt;</p>
+<p></p>
+<p> &lt;xsl:template match="ATOM"&gt;</p>
+<p> &lt;tr&gt;</p>
+<p> &lt;td&gt;&lt;xsl:value-of select="NAME"/&gt;&lt;/td&gt;</p>
+<p> &lt;td&gt;&lt;xsl:value-of select="ATOMIC_NUMBER"/&gt;&lt;/td&gt;</p>
+<p> &lt;td&gt;&lt;xsl:apply-templates select="MELTING_POINT"/&gt;&lt;/td&gt;</p>
+<p> &lt;/tr&gt;</p>
+<p> &lt;/xsl:template&gt;</p>
+<p></p>
+<p> &lt;xsl:template match="MELTING_POINT"&gt;</p>
+<p> &lt;xsl:value-of select="." /&gt;</p>
+<p> &lt;xsl:value-of select="@UNITS"/&gt;</p>
+<p> &lt;/xsl:template&gt;</p>
+<p></p>
+<p>&lt;/xsl:stylesheet&gt;</p>
+<p>回想一下，特性节点的值只是此特性的字符串值。一旦应用清单14-8中的样式单，ATOM元素就会格式化成如下形成：</p>
+<p>&lt;tr&gt;&lt;td&gt;Hydrogen&lt;/td&gt;&lt;td&gt;l&lt;/td&gt;&lt;td&gt;13.8lKelvin&lt;/td&gt;&lt;/tr&gt;</p>
+<p>　</p>
+<p>&lt;tr&gt;&lt;td&gt;Helium&lt;/td&gt;&lt;td&gt;2&lt;/td&gt;&lt;td&gt;0.95Kelvin&lt;/td&gt;&lt;/tr&gt;</p>
+<p>可以使用各种层次操作符将特性与元素组合起来。例如，<a href="mailto:BOILING_POINT/@UNITS">BOILING_POINT/@UNITS</a>引用BOILING_POINT元素的UNITS特性。<a href="mailto:ATOM/*/@UNITS">ATOM/*/@UNITS</a>就能匹配ATOM子元素的任何UNITS元素。当与模板规则中的特性匹配时，这种做法是特别有用的。必须记住，要匹配的是特性节点，而不是包含它的元素。最常见的错误是，不知不觉地将特性节点与包含它的元素节点搞混淆。例如，请看下面的规则，它试图将模板应用于具有UNITS特性的所有子元素：</p>
+<p>&lt;xsl:template match="ATOM"&gt;</p>
+<p> &lt;xsl:apply-templates select="@UNITS"/&gt;</p>
+<p>&lt;/xsl:template&gt;</p>
+<p>上面语句实际上做的是，将模板应用于ATOM元素中并不存在的UNITS特性。</p>
+<p>也可以使用*来选择元素的所有特性，例如，<a href="mailto:BOILING_POINT/@*">BOILING_POINT/@*</a>可选择BOILING_POINT元素的所有特性。</p>
+<h5><a name="_Toc467207151">14.6.7 使用comments()来匹配注释</a></h5>
+<p>大多数时候，可能应该完全忽略XML文档中的注释。要使注释成为文档的必不可少的部分，确实不是好主意。但是，当不得不选择注释时，XSL确实提供了选择注释的手段。</p>
+<p>为了选择注释，可使用comment()模式。尽管此模式有类似函数的圆括号，但实际上决不带任何参数。要区分不同的注释不太容易。例如，回想一下DENSITY元素具有如下的形式：</p>
+<p>&lt;DENSITY UNITS=”grams/cubic centimeter”&gt;&lt;!- At 300K -&gt;</p>
+<p> 6.51</p>
+<p>&lt;/DENSITY&gt;</p>
+<p>此模板规则不仅输出密度的值和单位，而且还打印测量密度的条件：</p>
+<p>&lt;xsl:template match=”DENSITY”&gt;</p>
+<p> &lt;xsl:value-of select=”.”/&gt;</p>
+<p> &lt;xsl:value-of select=”@UNITS”/&gt;</p>
+<p> &lt;xsl:apply-templates select=”comment()”/&gt;</p>
+<p>&lt;/xsl:template&gt;</p>
+<p>清单14-1使用注释而不是特性或元素来指定条件，就是为了用于本例。实际应用时，决不要将重要信息放在注释中。XSL允许人们选择注释的唯一真实的理由是，为了用样式单把一种标记语言变换成另一种标记语言，同时又能使注释保持不变。选择注释的任何其他方面的用途都意味着原文档设计得不好。下面的规则匹配所有的注释，并使用xsl:comment元素将它们再次复制出来。</p>
+<p>&lt;xsl:template match=”comment()”&gt;</p>
+<p> &lt;xsl:comment&gt;&lt;xsl:value-of select=”.”/&gt;&lt;/xsl:comment&gt;</p>
+<p>&lt;/xsl:template&gt;</p>
+<p>可是，要注意，用于施加模板的缺省规则对注释无效。因此，遇到注释时，如果要使缺省规则起作用，需要包括xsl:apply-templates元素，无论注释放在何处，此元素都能选择注释。</p>
+<p>使用层次操作符可以选择特定的注释。例如，下面的规则匹配DENSITY元素内部的注释：</p>
+<p>&lt;xsl:template match=”DENSITY/comment()”&gt;</p>
+<p> &lt;xsl:comment&gt;&lt;xsl:value-of select=”.” /&gt;&lt;/xsl:comment&gt;</p>
+<p>&lt;/xsl:template&gt;</p>
+<h5><a name="_Toc467207152">14.6.8 使用pi()来匹配处理指令</a></h5>
+<p>谈到编写结构化的、智能化的、可维护的XML时，处理指令并不比注释好。但是都有一些必需的应用，其中包括将样式单附加到文档上。</p>
+<p>pi()函数选择处理指令。pi()的参数是放在引号内的字符串，表示要选择的处理指令的名称。如果没有参数，则匹配当前节点的第一个处理指令子节点。但是，可以使用层次操作符。例如，下面的规则匹配根节点的第一个处理指令子节点（很可能是xml-stylesheet处理指令）。xsl:pi元素使用指定的名称和输出文档中的值来插入一个处理指令。</p>
+<p>&lt;xsl:template match="/pi()"&gt;</p>
+<p> &lt;xsl:pi name="xml-stylesheet"&gt;</p>
+<p> type="text/xsl" value="auto.xsl"</p>
+<p> &lt;/xsl:pi&gt;</p>
+<p>&lt;/xsl:template/&gt;</p>
+<p>下列规则也匹配xml-stylesheet处理指令，但是通过其名称来匹配的：</p>
+<p>&lt;xsl:template match="pi( xml-stylesheet )"&gt;</p>
+<p> &lt;xsl:pi name="xml-stylesheet"&gt;</p>
+<p> &lt;xsl:value-of select="."/&gt;</p>
+<p> &lt;/xsl:pi&gt;</p>
+<p>&lt;/xsl:template/&gt;</p>
+<p>事实上，区分根元素和根节点的主要原因之一就是，为了读取和处理序言中的处理指令。尽管xml-stylesheet处理指令使用“名称=值”这样的句法，但XSL并不把它们当做特性看待，这是因为处理指令不是元素。处理指令的值只是跟在其名称后面的空格和结束符?&gt;之间的所有内容。</p>
+<p>用来施加模板的缺省规则并不匹配处理指令。因此，遇到xml-stylesheet处理指令时，如果要使缺省规则起作用，需要包括xsl:apply-templates元素，此元素在适当的地方匹配缺省规则。例如，下面这个用于根节点的模板确实将模板应用于处理指令：</p>
+<p>&lt;xsl:template match="/"&gt;</p>
+<p> &lt;xsl:apply-templates select="pi()"/&gt;</p>
+<p> &lt;xsl:apply-templates select="*"/&gt;</p>
+<p>&lt;/xsl:template&gt;</p>
+<h5><a name="_Toc467207153">14.6.9 用text()来匹配文本节点</a></h5>
+<p>尽管文本节点的值包括在选择的元素值部分中，但它们作为节点通常被忽视。但是，text()操作符确实能够明确选择一个元素的文本子元素。尽管这种操作符有圆括号，但不需要任何参数。例如：</p>
+<p>&lt;xsl:template match="SYMBOL"&gt;</p>
+<p> &lt;xsl:value-of select="text()"/&gt;</p>
+<p>&lt;/xsl:template&gt;</p>
+<p>此操作符存在的主要原因是为了用于缺省规则。无论作者是否指定缺省规则，XSL处理程序必须提供下列的缺省规则：</p>
+<p>&lt;xsl:template match="text()"&gt;</p>
+<p> &lt;xsl:value-of select="."/&gt;</p>
+<p>&lt;/xsl:template&gt;</p>
+<p>这意味着无论何时将模板应用于文本节点，就会输出此节点的文本。如果并不需要这种缺省行为，可以将其推翻。例如，在样式单中，包括下列空模板规则，将会阻止输出文本节点，除非另外的规则明确地匹配。</p>
+<p>&lt;xsl:template rnatch="text()"&gt;</p>
+<p>&lt;/xsl:template&gt;</p>
+<h5><a name="_Toc467207154">14.6.10 使用“或”操作符|</a></h5>
+<p>竖线（|）允许一条模板规则匹配多种模式。如果节点与某种模式相匹配，则此节点将激活该模板。例如，下面模板规则与ATOMIC_NUMBER和ATOMIC_WEIGHT元素都匹配：</p>
+<p>&lt;xsl:template match=”ATOMIC_NUMBER|ATOMIC_WEIGHT”&gt;</p>
+<p> &lt;B&gt;&lt;xsl:apply-templates/&gt;&lt;/B&gt;</p>
+<p>&lt;/xsl:template&gt;</p>
+<p>也可以在|两边加入空格，这样使代码更清晰。例如：</p>
+<p>&lt;xsl:template match=”ATOMIC_NUMBER | ATOMIC_WEIGHT”&gt;</p>
+<p> &lt;B&gt;&lt;xsl:apply-templates/&gt;&lt;/B&gt;</p>
+<p>&lt;/xsl:template&gt;</p>
+<p>还可以顺次使用两个以上的模式。例如，下面的模板规则作用于A 
+<br><a href='478.htm'>&lt;&lt;上一篇</a>&nbsp;&nbsp;<a href='480.htm'>下一篇&gt;&gt;</a></td>
+        </tr>
+      </table>
+      <p>&nbsp; </p>
+    </td>
+  </tr>
+</table>
+
+</body>
+
+</html>

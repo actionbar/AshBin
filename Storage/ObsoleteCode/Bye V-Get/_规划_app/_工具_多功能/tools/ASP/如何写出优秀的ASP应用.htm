@@ -1,0 +1,187 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>如何写出优秀的ASP应用</title>
+<style type="text/css">
+<!--
+body {
+	font-size: 10.4pt;
+	line-height: 22px;
+}
+-->
+</style>
+</head>
+
+<body bgcolor="eeeeee" leftmargin="20" marginwidth="20">
+<p><strong>如何写出优秀的ASP应用</strong></p>
+<hr>
+<p> <span>怎样创建鲁棒性、正确性、可维护性和性能俱佳的ASP应用程序？要做什么？不做什么？本文以提纲的形式，给出了主要的Check-Points(检查点)。</span></p>
+<P><span><STRONG>什么是ASP</STRONG></span></P>
+<P><span>Active Server Page，简称ASP，是：</span></P>
+<P><span>. 连接网友界面(HTML)和商业逻辑(Business Logic)；<br>
+  </span><span>. 提供一致的、容易使用的、有状态保持的、基于WEB的客户端；<br>
+  </span><span>. 为那些需要事务处理的WEB 应用提供应用程序环境。</span></P>
+<P><span><STRONG>ASP不是</STRONG>：</span></P>
+<P><span>. 实现商业逻辑(Business Logic)的地方；商业逻辑应该通过COM+、MTS或者数据库来实现。</span></P>
+<P><span><STRONG>ASP的使用者应该有下面的教训</STRONG>：</span></P>
+<P><span>. 开发应用程序，而不是开发一个一个的孤立ASP页面；<br>
+  </span><span>. 对输入和输出进行缓存；<br>
+  </span><span>. 在发布之前要测试；<br>
+  </span><span>. 选择性能较好的部件；<br>
+  </span><span>. 减少数据库的存取：缓存变换后的结果；<br>
+  </span><span>. 使用MSMQ来处理有时间延迟的工作；</span></P>
+<P><span><STRONG>站点设计</STRONG></span></P>
+<P><span> . 你的站点想提供什么？<br>
+  </span><span>. 信息架构：80/20准则；<br>
+  </span><span>. 站点导航；<br>
+  </span><span>. 页面布局；<br>
+  </span><span>. 可用性；<br>
+  </span><span>. 使用ALT和Title属性；<br>
+  </span><span>. 不使用图片或者Image Map的导航；<br>
+  </span><span>. 适合大多数低版本浏览器，考虑他们对ActiveX、RDS、XML、DHTML、Java Applet的支持状况；<br>
+  </span><span>. 屏幕分辨率和屏幕颜色数<br>
+  </span><span>. 是否支持WebTV、PDA…？<br>
+  </span><span>. 设置IMG的width和height属性。<br>
+  </span><span>. 非浏览器的访问，如自动机器人(Spider)；<br>
+  </span><span>. 使用帧(Frame)？<br>
+  </span><span>. 使用Cookies的个性化；<br>
+  </span><span>. 避免坏连接；<br>
+  </span><span>. 使用meta标签；<br>
+  </span><span>. 内容审核；<br>
+  </span><span>. 内容检索；<br>
+  </span><span>. 结果反馈：用户反馈和跟踪；<br>
+  </span><span>. 减少下载时间；</span></P>
+<P><span><STRONG>三层、四层应用设计</STRONG></span></P>
+<P><span> <STRONG>可读性、可维护性</STRONG></span></P>
+<P><span><STRONG> </STRONG>. 使用注释；<br>
+  </span><span>. 在VBScript脚本中使用&lt;%Optio. Explicit%&gt;；<br>
+  </span><span>. 使用字符串变量存储SQL字符串：便于调试；<br>
+  </span><span>. 使用Server.MapPath和相对路径；<br>
+  </span><span>. 使用ADODB.INC或者&lt;!—metadata typelib=somelib file=somedll--&gt;来引用常量，不要直接使用常量数值。<br>
+  </span><span>. 指定ADO调用的缺省参数，避免出错；<br>
+  </span><span>. 使用库或者部件来封装代码。</span></P>
+<P><span><BR>
+  <STRONG>正确的方法</STRONG>：</span></P>
+<P><span>. 使用Server.URLEncode<br>
+  </span><span>. 错误捕获和处理</span></P>
+<P><span><STRONG>国际化</STRONG>：</span></P>
+<P><span>. 使用&lt;%CodePage%&gt;<br>
+  </span><span>. 使用Session.CodePage<br>
+  </span><span>. 在IIS5.0中，Response.write支持UTF8</span></P>
+<P><span><STRONG>其他</STRONG>：</span></P>
+<P><span>. 使用#include 重用代码<br>
+  </span><span>. 使用分页技术</span></P>
+<P><span><STRONG>站点安全</STRONG>：</span></P>
+<P><span>. 客户身份验证<br>
+  </span><span>. 输入验证<br>
+  </span><span>. #include 文件不要使用.INC后缀，使用.ASP或者设置.INC的应用程序映射<br>
+  </span><span>. 把MDB文件存放在非WEB路径下；<br>
+  </span><span>. 使用ADSI做安全管理</span></P>
+<P><span><BR>
+  <STRONG>Session和Application状态</STRONG></span></P>
+<P><span><STRONG>Session的使用</STRONG>：</span></P>
+<P><span>. 使用起来很方便但是很有问题；<br>
+  </span><span>. HTTP是一个无状态的协议；<br>
+  </span><span>. 设计购物推车特别有用；<br>
+  </span><span>. 不利于可伸缩性设计(Scalability)；<br>
+  </span><span>. 在不需要Session的页面中使用&lt;%EnableSessionState=false%&gt;<br>
+  </span><span>. 尽可能完全避免使用Session;<br>
+  </span><span>. 在多个web服务器情况下不适合；<br>
+  </span><span>. 某些部件使Session运行在单一线程模式，减少了吞吐量；<br>
+  </span><span>. 消耗内存；<br>
+  </span><span>. Session有超时的问题<br>
+  </span><span>. 需要客户端的浏览器打开cookie设置；<br>
+  </span><span>. 不要在session中保存recordset，或者缓存connection对象；<br>
+  </span><span>. 在global.asa不要使用空的Session_OnEnd；<br>
+  </span><span>. 可选方案：<br>
+  </span><span>. cookies<br>
+  </span><span>. 直接状态编码：简单、容易、不安全<br>
+  </span><span>. 后端数据库的ID作为状态值<br>
+  </span><span>. querystring 参数<br>
+  </span><span>. 如amazon的url方式<br>
+  </span><span>. 隐藏的表单</span></P>
+<P><span><STRONG>Application变量</STRONG>：</span></P>
+<P><span>. 共享变量<br>
+  </span><span>. 不能持久保存<br>
+  </span><span>. 多个web服务器时不行，除非只是只读变量。</span></P>
+<P><span>缓存<br>
+  <BR>
+  . 对静态内容非常理想<br>
+  </span><span>. 不要使用Response.Expires=0，使用负数：<br>
+  </span><span>. Response.Expires=-10000；<br>
+  </span><span>. Response.AddHeader “Pragma”,”no-cache”<br>
+  </span><span>. Response.AddHeader “cache-control”,”no-store”<br>
+  </span><span>. 服务器缓存<br>
+  </span><span>. proxy缓存<br>
+  </span><span>. 客户端缓存</span></P>
+<P><span><STRONG>部件</STRONG></span></P>
+<P><span> . 性能<br>
+  </span><span>. 伸缩性<br>
+  </span><span>. 分离商务逻辑和页面表现<br>
+  </span><span>. 被ASP或其他环境重用<br>
+  </span><span>. 事务处理<br>
+  </span><span>. 类型安全<br>
+  </span><span>. 存取操作系统特性<br>
+  </span><span>. 保护知识产权<br>
+  </span><span>. 在下列情况下使用Server.CreateObject：<br>
+  </span><span>. MTS事务处理<br>
+  </span><span>. 上下文安全性<br>
+  </span><span>. ASP内部部件<br>
+  </span><span>. OnStartPage、OnEndPage<br>
+  </span><span>. 使用&lt;Object RunAt=server&gt;延迟对象初始化<br>
+  </span><span>. 是否保存到Session或者Application变量中</span></P>
+<P><span><BR>
+  <STRONG>性能</STRONG></span></P>
+<P><span> . Response缓冲：Response.Buffer=True<br>
+  </span><span>. 关闭Connection并：set Connection=Nothing<br>
+  </span><span>. 使用局部变量<br>
+  </span><span>. 用&lt;Object &gt;代替Server.CreateObject<br>
+  </span><span>. 不要使用Session和Application变量<br>
+  </span><span>. 不要将COM对象存储在Session或者Application变量中<br>
+  </span><span>. 关闭脚本调试<br>
+  </span><span>. 避免重复的字符串相加<br>
+  </span><span>. 在费时的页面顶端使用Response.IsClientConnected<br>
+  </span><span>. 使用MSMQ<br>
+  </span><span>. 不要在Session或者Application中存储大数组<br>
+  </span><span>. 不要ReDim 数组<br>
+  </span><span>. 将集合类型的对象赋给临时变量<br>
+  </span><span>. 减小微处理器的最大线程数(运行regedt32，在HKEY_LOCAL_MACHINE\SYSTEM\ CurrentControlSet\Services\w3SVC\ASP\Parameters，增加ProcessorThreadMax，减小这个值，看看性能的变化；或者增大这个值。)<br>
+  </span><span>. 设置AspScriptEngineCacheMax，使它等于ProcessorThreadMax*CPU个数。缺省的是30；（在系统路径下：\system32\inetsrv/adminisamples下，键入adsutil.vbs，设置/w3svc/AspScriptEngineCacheMax）；<br>
+  </span><span>. 减少Session.Timeout；<br>
+  </span><span>. 在MMC中，设置ASP应用程序缓冲为有效。</span></P>
+<P><span><BR>
+  <STRONG>把某些工作交给客户端</STRONG>：</span></P>
+<P><span>. CSS、DHTML<br>
+  </span><span>. XML<br>
+  </span><span>. RDS<br>
+  </span><span>. Remote Scripting<br>
+  </span><span>. Xmlhttp<br>
+  </span><span>. 客户端验证<br>
+  </span><span>. 减小文件大小<br>
+  </span><span>. 尽可能避免https和SSL<br>
+  </span><span>. 使用Response.End测试性能</span></P>
+<P><span><STRONG>数据库</STRONG></span></P>
+<P><span> . 减少数据库存取访问；<br>
+  </span><span>. 缓存变换后的结果；<br>
+  </span><span>. 使用ODBC连接池和OLEDB资源池；<br>
+  </span><span>. 使用系统DSN或者非DSN，不要使用DSN或者文件DSN；<br>
+  </span><span>. 使ADO运行在双线程模式(Both-threaded)：makefre.bat；<br>
+  </span><span>. 使用ADO的Field对象；<br>
+  </span><span>. GetString或者GetRows比较快；<br>
+  </span><span>. RDS和XML把负载嫁到客户端；<br>
+  </span><span>. 不要使用Select *，把字段写出来；<br>
+  </span><span>. 尽量使用SQ. Server 7，不要使用Access；<br>
+  </span><span>. 使用SQ. Server的特性：存储过程、Job、Join、sort、group<br>
+  </span><span>. 使用SQ. Analysis，优化SQL的性能<br>
+  </span><span>. 使用索引<br>
+  </span><span>. 本地使用Name-pipes，远程使用Sockets<br>
+  </span><span>. 准确地指定Command Type</span></P>
+<P><span><STRONG>IIS 5的新特性</STRONG></span></P>
+<P><span> . 可靠的重新启动<br>
+  </span><span>. ASP性能提高<br>
+  </span><span>. Server.Transfer比Server.Redirect更好<br>
+  </span><span>. Server.Execute<br>
+  </span><span>. Server.GetLastError</span></P>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<html>
+<head>
+<title>删除和保留空白</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+
+<link rel = stylesheet href = "image/style.css">
+</head>
+<body bgcolor="#ffffff">
+<table width="688" border="0" cellspacing="0" cellpadding="0" align="center">
+  <tr bgcolor="EEEEEE"> 
+    <td height="22"><a href="index.htm">主页</a></td>
+  </tr>
+</table><br>
+<table border="0" cellpadding="0" cellspacing="0" width="688" align="center" height="490">
+  <tr valign="top"> 
+    <td rowspan="4" width="91">&nbsp; </td>
+    <td height="68" width="131"> 
+      <p><img src="image/doc.gif"></p>
+    </td>
+    <td rowspan="4" width="18"><b></b> </td>
+    <td height="68" width="387"><img src="image/title_doc.gif"></td>
+    <td rowspan="4" width="61"> 
+      <h6>&nbsp;</h6>
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td rowspan="3" valign="top" class="pt10" align="center" width="131" bgcolor="EEEEEE"> 
+      <p>&nbsp;</p>
+      <p><font color="#FF0000">※ 14.17 删除和保留空白</font></p>
+       
+	</td>
+  </tr>
+  <tr valign="top"> 
+    <td width="387" height="308"> 
+      <table width="100%" border="0" cellpadding="0">
+        <tr> 
+          <td>
+
+           <h4><a name="_Toc467207181">14.17 删除和保留空白</a></h4>
+<p>读者可能已经注意到，到目前为止，所有输出实例的格式化方式都有点奇怪。造成这种现象的原因是，源文档需要将长行划分成多行，以便适合本书页边距的要求。不幸的是，往输入文档中增加额外的空白，就会带到输出文档中。对于计算机来说，毫无意义的空白的具体内容并不重要，但对于人来说，这些空白内容就令人困惑。</p>
+<p>像ATOMIC_NUMBER或DENSITY元素那样，用于文本节点的缺省行为就是保留所有的空白。常见的DENSITY元素看起来如下面那样：</p>
+<p>&lt;DENSITY UNITS="grams/cubic centimeter"&gt;&lt;!- At 300K -&gt;</p>
+<p> 7.9</p>
+<p>&lt;/DENSITY&gt;</p>
+<p>当取其值时，值中就会包括首、尾空白（如下所示），尽管这个空白在此处只是用来满足打印页面的要求，但没有什么实际意义：</p>
+<p> 7.9</p>
+<p>但是，有一种例外的情况。如果文本节点只含有空白，没有其他文本，那么这个空白就认为是毫无意义，并被删除。但对此例外还有一种例外：如果文本先辈的xml:space特性保存有值，那么就不会删除此文本，除非更近的先辈的xml:space特性具有缺省值。（这种情况听起来有点复杂，但实际上很简单。所有的一切都说明，可忽略只含有空白的文本节点，除非这些文本节点明确地设置成有意义的空白。对于其他情况，空白被保留。）</p>
+<p>如果文档中的任何元素都不保留空白，那么可设置xsl:stylesheet元素的default-space特性为strip，所有的首尾空白在从文本的节点中删除之后，才输出这些节点文本。对于周期表来说，这最容易实现。例如：</p>
+<p>&lt;xsl:stylesheet xmlns:xsl="http://www.w3.org/XSL/Transform/1.0"</p>
+<p> default-space="strip"&gt;</p>
+<p>如果想保留所有元素中的空白，可使用xsl:strip-space元素，用它识别输入文档中指定的元素，如果指定的元素表明文档中的空白毫无意义，就不将此空白复制到输出文档中。element特性识别要截去过剩空白的元素。例如，下面的这些规则加到周期表样式单中，可避免过多的空白：</p>
+<p>&lt;xsl:strip-space element="DENSITY"/&gt;</p>
+<p>&lt;xsl:strip-space element="BOILING_POINT"/&gt;</p>
+<p>&lt;xsl:strip-space element="MELTING_POINT"/&gt;</p>
+<p>xsl:preserve-space元素与xsl:strip-space元素相反。其element特性命名的元素表示其空白应保留。例如：</p>
+<p>&lt;xsl:preserve-space element="ATOM"/&gt;</p>
+<p>样式单内部的空白（正好与输出XML文档中的空白相反）是毫无意义的，在缺省情况下简化为一个空格。这种情况是可以避免的：只需将文字空白放在xsl:text元素之间。例如：</p>
+<p>&lt;xsl:template select="ATOM"&gt;</p>
+<p>&lt;xsl:text&gt; This is indented exactly five spaces. &lt;/xsl:text&gt;</p>
+<p>&lt;/xsl:template&gt;</p>
+<p>处理空白的一个一劳永逸的方法就是将indent-result特性与根xsl:stylesheet元素相关联。如果此特性的值为yes，那么就允许处理程序将多余的空白插入到（而不是删除）输出文档中，以便使输出文档看起来好看一些。这包括缩排和行分隔符。例如：</p>
+<p>&lt;?xml version="1.0"?&gt;</p>
+<p>&lt;xsl:stylesheet xmlns:xsl=<a href="http://www.w3.org/XSL/Transform/1.0">http://www.w3.org/XSL/Transform/1.0</a></p>
+<p> indent result="yes"&gt;</p>
+<p> &lt;!- usual templates and such go here... -&gt;</p>
+<p>&lt;/xsl:stylesheet&gt;</p>
+<p>如果生成的是HTML，指定indent-result="yes"就可使输出的文档更具可读性。indent-result的缺省值为no，这是由于其他非HTML的输出格式都可能将空白认为是有意义的。</p>
+ 
+<a href='489.htm'>&lt;&lt;上一篇</a>&nbsp;&nbsp;<a href='491.htm'>下一篇&gt;&gt;</a></td>
+        </tr>
+      </table>
+      <p>&nbsp; </p>
+    </td>
+  </tr>
+</table>
+
+</body>
+
+</html>

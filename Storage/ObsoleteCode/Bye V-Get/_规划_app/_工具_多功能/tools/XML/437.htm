@@ -1,0 +1,76 @@
+<html>
+<head>
+<title>继承性</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+
+<link rel = stylesheet href = "image/style.css">
+</head>
+<body bgcolor="#ffffff">
+<table width="688" border="0" cellspacing="0" cellpadding="0" align="center">
+  <tr bgcolor="EEEEEE"> 
+    <td height="22"><a href="index.htm">主页</a></td>
+  </tr>
+</table><br>
+<table border="0" cellpadding="0" cellspacing="0" width="688" align="center" height="490">
+  <tr valign="top"> 
+    <td rowspan="4" width="91">&nbsp; </td>
+    <td height="68" width="131"> 
+      <p><img src="image/doc.gif"></p>
+    </td>
+    <td rowspan="4" width="18"><b></b> </td>
+    <td height="68" width="387"><img src="image/title_doc.gif"></td>
+    <td rowspan="4" width="61"> 
+      <h6>&nbsp;</h6>
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td rowspan="3" valign="top" class="pt10" align="center" width="131" bgcolor="EEEEEE"> 
+      <p>&nbsp;</p>
+      <p><font color="#FF0000">※ 12.4 继承性</font></p>
+       
+	</td>
+  </tr>
+  <tr valign="top"> 
+    <td width="387" height="308"> 
+      <table width="100%" border="0" cellpadding="0">
+        <tr> 
+          <td>
+
+           <h4><a name="_Toc467205075">12.4 继承性</a></h4>
+<p></p>
+<p>CSS不要求为文档中各元素的每个可能的属性明确地定义规则。例如，如果没有指定元素的字号的规则，那么此元素就会继承其父元素的字号。如果没有指定元素颜色的规则，那么此元素也将继承其父元素的颜色。同样对大多数CSS属性也是如此。事实上，唯一不被继承的属性就是背景和边框属性。</p>
+<p>例如，考虑下列这些规则：</p>
+<p>p { font-weight: bold;</p>
+<p> font size: 24pt;</p>
+<p> font-family: sans-serif }</p>
+<p>BOOK { font-style: italic; font-family: serif}</p>
+<p>现在来考察下面这个XML文档片段：</p>
+<p>&lt;P&gt;</p>
+<p> Michael Willhoite s &lt;BOOK&gt;Daddy s Roommate&lt;/BOOK&gt; is</p>
+<p> the #10 most frequently banned book in the U.S. in the 1990s.</p>
+<p>&lt;/P&gt;</p>
+<p>尽管BOOK元素没有被明确地赋以font-weight或font-size属性，但它仍以24磅粗体显示，因为它是P元素的子元素。它还是斜体的，因为在它自己的规则中被指定过了。BOOK继承了其父元素P的font-weight和font-size。如果此后在文档中BOOK元素出现在某个其他元素的上下文中，那么它将继承此元素的font-weight和font-size。</p>
+<p>font–family就有点难以把握，因为P和BOOK为此属性声明了相互矛盾的值。在BOOK元素内部，由BOOK声明的font–family处于优先位置。在BOOK元素外面，使用了P的font–family。所以，Daddy s 
+  Roommate是以serif(衬线)字体显示的，而most frequently banned book则是以sans serif(非衬线)字体显示的。</p>
+<p>通常都想使子元素继承其父元素的格式化。所以，不事先指定任何元素的格式化是很重要的。比如，假设我像下列的那样已声明BOOK以12磅的字体输出：</p>
+<p>BOOK { font-style: italic; font-family: serif; font size: 12pt }</p>
+<p>那么，此例就会获得如图12-3所示的显示结果：</p>
+<p align="center"><img src="Image/BK000212-19.gif" width=485 height=199></p>
+<p align="center">图12-3 写成12磅字号的BOOK元素</p>
+<p>可以使用专门的规则改正图中的情况，这个专门规则使用上下文选择符在P元素内挑选出BOOK元素，但仅仅继承父元素的font-size则更容易。</p>
+<p>有一种方法可以避免此类问题，而同时又保持对各自元素大小的某种控制，这就是使用相对单位如em和ex，而不使用如磅、十二点活字、英寸、厘米和毫米这样的绝对单位。em是指在当前字体中字母<i>m</i>的宽度。ex是指在当前字体中字母<i>x</i>的高度。如果字体变大，则以em和ex测定的所有的尺寸都会随之发生变化。</p>
+<p>使用百分比单位对有些属性也会达到相似的结果。例如，下列的规则设置FOOTNOTE_NUMBER元素的字号为其父元素字号的80%。如果父元素的字体增加或减小，那么FOOTNOTE_NUMBER的字号也会相似地成比例变化。</p>
+<p>FOOTNOTE_NUMBER { font-size: 80% }</p>
+<p>将百分比精确地定位于多大，这要根据属性而定。在vertical-align属性中，此百分比就是元素本身的行高。但页边距属性中，百分比就是此元素的宽度百分比。</p>
+ 
+<a href='436.htm'>&lt;&lt;上一篇</a>&nbsp;&nbsp;<a href='438.htm'>下一篇&gt;&gt;</a></td>
+        </tr>
+      </table>
+      <p>&nbsp; </p>
+    </td>
+  </tr>
+</table>
+
+</body>
+
+</html>

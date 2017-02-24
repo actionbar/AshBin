@@ -1,0 +1,66 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>asp内置对象 server 详解</title>
+<style type="text/css">
+<!--
+body {
+	font-size: 10.4pt;
+	line-height: 22px;
+}
+-->
+</style>
+</head>
+
+<body bgcolor="eeeeee" leftmargin="20" marginwidth="20">
+<p><strong>asp内置对象 server 详解</strong></p>
+<p></p>
+<hr>
+<p> Server 对象:</p>
+<p>Server 对象提供对服务器上的方法和属性的访问。其中大多数方法和属性是作为实用程序的功能服务的。</p>
+<p>语法 </p>
+<p>Server.property|method</p>
+<p>属性</p>
+<p>ScriptTimeout:<br>
+  ScriptTimeout 属性指定脚本在结束前最大可运行多长时间。 当处理服务器组件时，超时限制将不再生效。 </p>
+<p>语法 Server.ScriptTimeout = NumSeconds</p>
+<p>参数 NumSeconds <br>
+  指定脚本在被服务器结束前最大可运行的秒数。默认值为 90 秒。 </p>
+<p>注释<br>
+  通过使用元数据库中的AspScriptTimeout属性可以为 Web 服务或 Web 服务器设置缺省的ScriptTimeout值。ScriptTimeout属性不能设置为小于在元数据库中指定的值。例如，如果NumSeconds设置为10，而元数据库设置包含了默认值90秒，则脚本在90秒后超时。但如果NumSeconds设置为100，则脚本在100秒后超时。</p>
+<p>关于使用元数据库的详细信息，参阅 关于元数据库。</p>
+<p>示例 以下示例中，如果服务器处理脚本超过 100 秒，将使之超时。<br>
+  &lt;% Server.ScriptTimeout = 100 %&gt;<br>
+  以下示例获取 ScriptTimeout 属性当前值，并将其存储在变量 TimeOut 中。<br>
+  &lt;% TimeOut = Server.ScriptTimeout %&gt;</p>
+<p>方法</p>
+<p>CreateObject <br>
+  CreateObject 方法创建服务器组件的实例。如果该组件执行了 OnStartPage 和 OnEndPage 方法，则此时就会调用 OnStartPage 
+  方法。有关服务器组件的详细信息，请参阅 可安装的 ASP 组件 。</p>
+<p>语法 Server.CreateObject( progID )</p>
+<p>参数 progID 指定要创建的对象的类型。progID 的格式为 [Vendor.] component[.Version]。</p>
+<p>注释 默认情况下，由 Server.CreateObject 方法创建的对象具有页作用域。这就是说，再当前 ASP 页处理完成之后，服务器将自动破坏这些对象。要创建有会话或应用程序作用域的对象，可以使用 
+  &lt;OBJECT&gt; 标记并设置 SESSION 或 APPLICATION 的 SCOPE 属性，也可以在对话及应用程序变量中存储该对象。<br>
+  例如，在如下所示的脚本中，当 Session 对象被破坏，即当对话超时时或 Abandon 方法被调用时，存储在会话变量中的对象也将被破坏。<br>
+  &lt;% Set Session(&quot;ad&quot;) = Server.CreateObject(&quot;MSWC.AdRotator&quot;)%&gt;<br>
+  可以通过将变量设置为 Nothing 或新的值来破坏对象，如下所示。第一个例子释放 ad 对象，第二个例子用字串代替 ad 。<br>
+  &lt;% Session (&quot;ad&quot;) = Nothing %&gt;<br>
+  &lt;% Session (&quot;ad&quot;) = &quot; Other Valum &quot; %&gt;<br>
+  不能创建与内建对象同名的对象实例。 例如，下列脚本将返回错误。<br>
+  &lt;% Set Response = Server.CreateObject(&quot;Response&quot;) %&gt; </p>
+<p>示例 &lt;% Set MyAd = Server.CreateObject(&quot;MSWC.AdRotator&quot;) %&gt; <br>
+  上面的例子创建一个名为 MyAd 的 MSWC.AdRotator 服务器组件，MSWC.AdRotator 组件可用于在 Web 页上的自动轮换广告。<br>
+  关于服务器组件的详细信息, 请参阅 Creating Components for ASP.</p>
+<p>HTMLEncode HTMLEncode方法对指定的字符串应用 HTML 编码。 </p>
+<p>语法 Server.HTMLEncode( string )</p>
+<p>参数 string 指定要编码的字符串。 </p>
+<p>示例脚本 &lt;%= Server.HTMLEncode(&quot;The paragraph tag: &lt;P&gt;&quot;) %&gt; 
+</p>
+<p>输出 The paragraph tag: &amp;lt;P&amp;gt; </p>
+<p>注意 以上输出将被 Web 浏览器显示为The paragraph tag: &lt;P&gt;如果查看一下源文件或以文本方式打开一个 Web 页，您就可以看到已编码的 
+  HTML。<br>
+</p>
+<p>&nbsp; </p>
+</body>
+</html>

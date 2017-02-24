@@ -1,0 +1,32 @@
+
+body,a,.m{color:#333}
+table{text-align:center}
+
+
+.i{background:url(http://localhost/tu.v-get.com/8/i.gif) no-repeat;width:234px;height:60px}
+.ss{background:url(http://localhost/tu.v-get.com/g.gif) no-repeat}
+.g{margin:17px 9px 0}
+.s{margin:5px 0;border:#1996e6 3px solid;border-radius:5px;height:36px;width:332px;color:#666}
+.s form{padding:9px 15px 0 10px}
+.s label{margin:0 9px 0 5px}
+.s .p{padding-top:2px}
+.s .q{border:#BCBEC0 1px solid;height:18px;width:200px}
+.s .q .sk{border:none;background:none;width:183px}
+/*采用18px时为了少写margin-bottom*/
+.s .ss{border:none;background-position:0 -1978px;cursor:pointer;height:18px;width:16px}
+
+
+.n1,.n4{width:440px}
+.n2,.n5,.n8{width:460px}
+.n7{width:470px}
+.n7 .nr{width:100px}
+.n3{width:470px}
+/* 网站建设等的m ，注意f里面也有m */
+.m{height:32px;line-height:32px;padding:0 9px}
+.m a{text-decoration:none}
+.m a:hover{text-decoration:underline;color:#c00}
+.m .q{height:22px;padding-top:10px}
+
+
+
+

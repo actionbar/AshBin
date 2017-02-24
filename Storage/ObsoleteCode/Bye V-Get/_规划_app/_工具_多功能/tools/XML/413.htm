@@ -1,0 +1,374 @@
+<html>
+<head>
+<title>根据片段创建文档</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+
+<link rel = stylesheet href = "image/style.css">
+</head>
+<body bgcolor="#ffffff">
+<table width="688" border="0" cellspacing="0" cellpadding="0" align="center">
+  <tr bgcolor="EEEEEE"> 
+    <td height="22"><a href="index.htm">主页</a></td>
+  </tr>
+</table><br>
+<table border="0" cellpadding="0" cellspacing="0" width="688" align="center" height="490">
+  <tr valign="top"> 
+    <td rowspan="4" width="91">&nbsp; </td>
+    <td height="68" width="131"> 
+      <p><img src="image/doc.gif"></p>
+    </td>
+    <td rowspan="4" width="18"><b></b> </td>
+    <td height="68" width="387"><img src="image/title_doc.gif"></td>
+    <td rowspan="4" width="61"> 
+      <h6>&nbsp;</h6>
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td rowspan="3" valign="top" class="pt10" align="center" width="131" bgcolor="EEEEEE"> 
+      <p>&nbsp;</p>
+      <p><font color="#FF0000">※ 9.6 根据片段创建文档</font></p>
+       
+	</td>
+  </tr>
+  <tr valign="top"> 
+    <td width="387" height="308"> 
+      <table width="100%" border="0" cellpadding="0">
+        <tr> 
+          <td>
+
+           <h4>9.6 根据片段创建文档</h4>
+<p>棒球的例子已相当庞大，尽管本书中的例子仅为缩减的版本，其中球员数目受到限制，但全文已超过0.5MB，内容过于庞大，不便于装载和查询；特别是在读者仅对其中某一队员、球队或分部感兴趣时，尤其如此。本章中上一节讲述的技术可允许把这个文档分割为许多不同的、较小的、便于管理的文档，每个球队、队员、分部和联盟各自对应一个文档。通过外部实体引用，队员组成球队，球队组成分部，分部构成联盟，联盟构成赛季。</p>
+<p>遗憾的是，无法按外部可析实体的样式嵌入XML文档。考虑一下，例如清单9-9 ChrisHoiles.xml，这是清单9-6的修订版本。然而，若仔细检查两个清单，将发现它们的序进程是不同的。9-6清单的序进程为：</p>
+<p>&lt;?xml version="1.0" standalone="no"?&gt;</p>
+<p>&lt;!DOCTYPE PLAYER SYSTEM "Player.dtd"&gt;</p>
+<p>清单9-9的序进程是简单的XML声明，没有standalone属性，但却有encoding属性；而且忽略了文档类型声明。像清单9-9这样的文件表明将被嵌入另一文件中，其中的XML声明称为文本声明，虽然正如我们所看到的，它实际上正是一个合法的XML声明。</p>
+<p>清单9-9：ChrisHoiles.xml</p>
+<p>&lt;?xml version="1.0"encoding="UTF-8"?&gt;</p>
+<p>&lt;PLAYER&gt;</p>
+<p>&lt;GIVEN_ NAME&gt;Chris&lt;/GIVEN_NAME&gt;</p>
+<p>&lt;SURNAME&gt;Hoiles&lt;/SURNAME&gt;</p>
+<p>&lt;P&gt;Catcher&lt;/P&gt;</p>
+<p>&lt;G&gt;97&lt;/G&gt;</p>
+<p>&lt;GS&gt;81&lt;/GS&gt;</p>
+<p>&lt;AB&gt;267&lt;/AB&gt;</p>
+<p>&lt;R&gt;36&lt;/R&gt;</p>
+<p>&lt;H&gt;70&lt;/H&gt;</p>
+<p>&lt;D&gt;12&lt;/D&gt;</p>
+<p>&lt;T&gt;0&lt;/T&gt;</p>
+<p>&lt;HR&gt;15&lt;/HR&gt;</p>
+<p>&lt;RBI&gt;56&lt;/RBI&gt;</p>
+<p>&lt;SB&gt;0&lt;/SB&gt;</p>
+<p>&lt;CS&gt;1&lt;/CS&gt;</p>
+<p>&lt;SH&gt;5&lt;/SH&gt;</p>
+<p>&lt;SF&gt;4&lt;/SF&gt;</p>
+<p>&lt;E&gt;3&lt;/E&gt;</p>
+<p>&lt;BB&gt;38&lt;/BB&gt;</p>
+<p>&lt;S&gt;50&lt;/S&gt;</p>
+<p>&lt;HBP&gt;4&lt;/HBP&gt;</p>
+<p>&lt;/PLAYER&gt;</p>
+<p><img src="Image/BK000209-6.gif" width=44 height=44> 虽然可在本书附带的CD-ROM上的example\baseball\player目录中找到所有队员名单，但这里省略了大约1200名的队员名单。</p>
+<p>文档声明必须具有encoding属性（与XML声明不同，XML声明可以拥有encoding属性，但不是必要的），encoding属性规定实体使用的字符集。允许使用不同字符组写出的复合文档。例如，Latin-5字符组写出的文档可与UTF-8字符集写出的文档结合为一体。处理器或浏览器依然必须理解不同实体使用的编码。</p>
+<p>本章中的所有例子以ASCII编码形式给出。因ASCII编码是ISO Latin-1 、UTF-8的严格子集，所以可以使用如下的任一文本声明：</p>
+<p>&lt;?xml version="1.0" encoding="ISO-8859-1"?&gt;</p>
+<p>&lt;?xml version="1.0" encoding="UTF-8"?&gt;</p>
+<p>清单9-10 mets.dtd和清单9-11 mets.xml显示如何利用外部可析实体组建完整的球队文档。在DTD中为球队中的每个队员定义外部实体引用。利用文档内部DTD子集中的外部参数实体引用，XML文档载入该DTD；然后，该文档包括许多外部通用实体引用来载入分立的队员数据。</p>
+<p>清单9-10：具有player实体引用的New York Mets DTD（mets.dtd）</p>
+<p>&lt;!ENTITY AlLeiter SYSTEM "mets/AlLeiter.xml"&gt;</p>
+<p>&lt;!ENTITY ArmandoReynoso SYSTEM "mets/ArmandoReynoso.xml"&gt;</p>
+<p>&lt;!ENTITY BobbyJones SYSTEM "mets/BobbyJones.xml"&gt;</p>
+<p>&lt;!ENTITY BradClontz SYSTEM "mets/BradClontz.xml"&gt;</p>
+<p>&lt;!ENTITY DennisCook SYSTEM "mets/DennisCook.xml"&gt;</p>
+<p>&lt;!ENTITY GregMcmichael SYSTEM "mets/GregMcmichael.xml"&gt;</p>
+<p>&lt;!ENTITY HideoNomo SYSTEM "mets/HideoNomo.xml"&gt;</p>
+<p>&lt;!ENTITY JohnFranco SYSTEM "mets/JohnFranco.xml"&gt;</p>
+<p>&lt;!ENTITY JosiasManzanillo SYSTEM "mets/JosiasManzanillo.xml"&gt;</p>
+<p>&lt;!ENTITY OctavioDotel SYSTEM "mets/OctavioDotel.xml"&gt;</p>
+<p>&lt;!ENTITY RickReed SYSTEM "mets/RickReed.xml"&gt;</p>
+<p>&lt;!ENTITY RigoBeltran SYSTEM "mets/RigoBeltran.xml"&gt;</p>
+<p>&lt;!ENTITY WillieBlair SYSTEM "mets/WillieBlair.xml"&gt;</p>
+<p>图9-3显示了载入到Internet Explorer中的XML文档。请注意即使主文档仅包含存储队员数据的实体引用，所有队员数据也能被显示出来。Internet 
+  Explorer解决了所有外部引用，这可不是所有的XML语法分析程序或者浏览器都能做到的。</p>
+<p>在CD-ROM上的example\baseball目录中可找到其余球队。请特别需要注意，简洁的外部实体引用是如何嵌入多个队员数据的。</p>
+<p align="center"><img src="Image/BK000209-7.gif" width=495 height=341></p>
+<p align="center">图9-3 XML文档显示1998年New York Mets队中的所有球员。</p>
+<p>清单9-11：具有从外部实体中载入的队员数据的New York Mets（mets.xml）</p>
+<p>&lt;?xml version="1.0" standalone="no"?&gt;</p>
+<p> &lt;!DOCTYPE TEAM SYSTEM "team.dtd"[</p>
+<p> &lt;!ENTITY % players SYSTEM "mets.dtd"&gt; </p>
+<p>%players;</p>
+<p>]&gt;</p>
+<p>&lt;TEAM&gt;</p>
+<p>&lt; TEAM_CITY&gt;New York&lt;/ TEAM_CITY&gt;</p>
+<p>&lt; TEAM_ NAME&gt;Mets&lt;/ TEAM_ NAME&gt;</p>
+<p>&amp;AlLeiter;</p>
+<p>&amp;ArmandoReynoso;</p>
+<p>&amp;BobbyJones;</p>
+<p>&amp;BradClontz;</p>
+<p>&amp;DennisCook;</p>
+<p>&amp;GregMcmichael;</p>
+<p>&amp;HideoNomo;</p>
+<p>&amp;JohnFranco;</p>
+<p>&amp;JosiasManzanillo;</p>
+<p>&amp;OctavioDotel;</p>
+<p>&amp;RickReed;</p>
+<p>&amp;RigoBeltran;</p>
+<p>&amp;WillieBlair;</p>
+<p>&lt;/TEAM&gt;</p>
+<p>通过组合球队文件创建分部、通过组合分部文件创建联盟、通过组合联盟文件创建赛季的过程的延续，具有一定的好处。但遗憾的是，所有努力只会带来灾难性的后果。通过外部实体的方法嵌套的文档不能拥有自身的DTD。最多只能是序进程包含文本声明。这就是说，仅能拥有单一层次的文本嵌入。与此不同的是，DTD嵌入可进行任意层次的嵌套。</p>
+<p>因此唯一可用的方法就是，在引用了许多不同球员文档的单一文档中包括所有球队、分部、联盟和赛季。需要1200多个实体声明（每个队员对应一个声明）。因为DTD可以深层嵌套，就引入如清单9-10所示包含所有球队定义的DTD开始。如清单9-12所示。</p>
+<p>清单9-12：球员的DTD（players.dtd）</p>
+<p>&lt;!ENTITY % angels SYSTEM "angels.dtd"&gt;</p>
+<p>%angels;</p>
+<p>&lt;!ENTITY % astros SYSTEM "astros.dtd"&gt;</p>
+<p>%astros;</p>
+<p>&lt;!ENTITY % athletics SYSTEM "athletics.dtd"&gt;</p>
+<p>%athletics;</p>
+<p>&lt;!ENTITY % bluejays SYSTEM "bluejays.dtd"&gt;</p>
+<p>%bluejays;</p>
+<p>&lt;!ENTITY % braves SYSTEM "braves.dtd"&gt;</p>
+<p>%braves;</p>
+<p>&lt;!ENTITY % brewers SYSTEM "brewers.dtd"&gt;</p>
+<p>%brewers;</p>
+<p>&lt;!ENTITY % cubs SYSTEM "cubs.dtd"&gt;</p>
+<p>%cubs;</p>
+<p>&lt;!ENTITY % devilrays SYSTEM "devilrays.dtd"&gt;</p>
+<p>%devilrays;</p>
+<p>&lt;!ENTITY % diamondbacks SYSTEM "diamondbacks.dtd"&gt;</p>
+<p>%diamondbacks;</p>
+<p>&lt;!ENTITY % dodgers SYSTEM "dodgers.dtd"&gt;</p>
+<p>%dodgers;</p>
+<p>&lt;!ENTITY % expos SYSTEM "expos.dtd"&gt;</p>
+<p>%expos;</p>
+<p>&lt;!ENTITY % giants SYSTEM "giants.dtd"&gt;</p>
+<p>%giants;</p>
+<p>&lt;!ENTITY % indians SYSTEM "indians.dtd"&gt;</p>
+<p>%indians;</p>
+<p>&lt;!ENTITY % mariners SYSTEM "mariners.dtd"&gt;</p>
+<p>%mariners;</p>
+<p>&lt;!ENTITY % marlins SYSTEM "marlins.dtd"&gt;</p>
+<p>%marlins;</p>
+<p>&lt;!ENTITY % mets SYSTEM "mets.dtd"&gt;</p>
+<p>%mets;</p>
+<p>&lt;!ENTITY % orioles SYSTEM "orioles.dtd"&gt;</p>
+<p>%orioles;</p>
+<p>&lt;!ENTITY % padres SYSTEM "padres.dtd"&gt;</p>
+<p>%padres;</p>
+<p>&lt;!ENTITY % phillies SYSTEM "phillies.dtd"&gt;</p>
+<p>%phillies;</p>
+<p>&lt;!ENTITY % pirates SYSTEM "pirates.dtd"&gt;</p>
+<p>%pirates;</p>
+<p>&lt;!ENTITY % rangers SYSTEM "rangers.dtd"&gt;</p>
+<p>%rangers;</p>
+<p>&lt;!ENTITY % redsox SYSTEM "redsox.dtd"&gt;</p>
+<p>%redsox;</p>
+<p>&lt;!ENTITY % reds SYSTEM "reds.dtd"&gt;</p>
+<p>%reds;</p>
+<p>&lt;!ENTITY % rockies SYSTEM "rockies.dtd"&gt;</p>
+<p>%rockies;</p>
+<p>&lt;!ENTITY % royals SYSTEM "royals.dtd"&gt;</p>
+<p>%royals;</p>
+<p>&lt;!ENTITY % tigers SYSTEM "tigers.dtd"&gt;</p>
+<p>%tigers;</p>
+<p>&lt;!ENTITY % twins SYSTEM "twins.dtd"&gt;</p>
+<p>%twins;</p>
+<p>&lt;!ENTITY % whitesox SYSTEM "whitesox.dtd"&gt;</p>
+<p>%whitesox;</p>
+<p>&lt;!ENTITY % yankees SYSTEM "yankees.dtd"&gt;</p>
+<p>%yankees;</p>
+<p>清单9-13为主控文档，把所有队员的子文档和定义每个队员的DTD组合为一体。尽管该文档比以前产生的单一文档小（32k 与 628k之比），但仍然太长，所以无法在此引入所有队员。清单9-13的完整版本要依靠33个DTD和1000多个XML文件来生成最终文档。这种方法最大的问题在于，在显示文档之前，需要1000多个与Web服务器的链接。</p>
+<p><img src="Image/BK000209-8.gif" width=43 height=41>完整的例子位于光盘上的example/baseball/players/index.xml文件中。</p>
+<p>清单9-13：利用球员的外部实体引用的1998年赛季的主控牡?/p>
+<p>&lt;?xml version="1.0" standalone="no"?&gt;</p>
+<p>&lt;!DOCTYPE SEASO SYSTEM "baseball.dtd"[</p>
+<p> &lt;!ENTITY % players SYSTEM "players.dtd"&gt;</p>
+<p> %players;</p>
+<p>]&gt;</p>
+<p>&lt;SEASO &gt;</p>
+<p> &lt;YEAR&gt;1998&lt;/YEAR&gt;</p>
+<p> &lt;LEAGUE&gt;</p>
+<p> &lt;LEAGUE_NAME&gt; ational&lt;/LEAGUE_NAME&gt;</p>
+<p> &lt;DIVISION &gt;</p>
+<p> &lt;DIVISION _NAME&gt;East&lt;/DIVISION _NAME&gt;</p>
+<p> &lt;TEAM&gt;</p>
+<p>&lt;TEAM_CITY&gt;Florida&lt;/TEAM_CITY&gt;</p>
+<p>&lt;TEAM_NAME&gt;Marlins&lt;/TEAM_NAME&gt;</p>
+<p>&lt;/TEAM&gt;</p>
+<p>&lt;TEAM&gt;</p>
+<p>&lt;TEAM_CITY&gt;Montreal&lt;/TEAM_CITY&gt;</p>
+<p>&lt;TEAM_NAME&gt;Expos&lt;/TEAM_NAME&gt;</p>
+<p>&lt;/TEAM&gt;</p>
+<p>&lt;TEAM&gt;</p>
+<p>&lt;TEAM_CITY&gt; New York&lt;/TEAM_CITY&gt;</p>
+<p>&lt;TEAM_NAME&gt;Mets&lt;/TEAM_NAME&gt;</p>
+<p>&amp;RigoBeltran;</p>
+<p>&amp;DennisCook;</p>
+<p>&amp;SteveDecker;</p>
+<p>&amp;JohnFranco;</p>
+<p>&amp;MattFranco;</p>
+<p>&amp;ButchHuskey;</p>
+<p>&amp;BobbyJones;</p>
+<p>&amp;MikeKinkade;</p>
+<p>&amp;HideoNomo;</p>
+<p>&amp;VanceWilson;</p>
+<p>&lt;/TEAM&gt;</p>
+<p>&lt;TEAM&gt;</p>
+<p>&lt;TEAM_CITY&gt;Philadelphia&lt;/TEAM_CITY&gt;</p>
+<p>&lt;TEAM_NAME&gt;Phillies&lt;/TEAM_NAME&gt;</p>
+<p> &lt;/TEAM&gt;</p>
+<p>&lt;/DIVISION &gt;</p>
+<p>&lt;DIVISION &gt;</p>
+<p>&lt;DIVISION _NAME&gt;Central&lt;/DIVISION _NAME&gt;</p>
+<p>&lt;TEAM&gt;</p>
+<p>&lt;TEAM_CITY&gt;Chicago&lt;/TEAM_CITY&gt;</p>
+<p>&lt;TEAM_NAME&gt;Cubs&lt;/TEAM_NAME&gt;</p>
+<p>&lt;/TEAM&gt;</p>
+<p>&lt;/DIVISION &gt;</p>
+<p>&lt;DIVISION &gt;</p>
+<p>&lt;DIVISION _NAME&gt;West&lt;/DIVISION _NAME&gt;</p>
+<p>&lt;TEAM&gt;</p>
+<p>&lt;TEAM_CITY&gt;Arizona&lt;/TEAM_CITY&gt;</p>
+<p>&lt;TEAM_NAME&gt;Diamondbacks&lt;/TEAM_NAME&gt;</p>
+<p>&lt;/TEAM&gt;</p>
+<p>&lt;/DIVISION &gt;</p>
+<p>&lt;/LEAGUE&gt;</p>
+<p>&lt;LEAGUE&gt;</p>
+<p>&lt;LEAGUE_NAME&gt;American&lt;/LEAGUE_NAME&gt;</p>
+<p>&lt;DIVISION &gt;</p>
+<p>&lt;DIVISION _NAME&gt;East&lt;/DIVISION _NAME&gt;</p>
+<p>&lt;TEAM&gt;</p>
+<p>&lt;TEAM_CITY&gt;Baltimore&lt;/TEAM_CITY&gt;</p>
+<p>&lt;TEAM_NAME&gt;Orioles&lt;/TEAM_NAME&gt;</p>
+<p>&lt;/TEAM&gt;</p>
+<p>&lt;/DIVISION &gt;</p>
+<p>&lt;DIVISION &gt;</p>
+<p>&lt;DIVISION _NAME&gt;Central&lt;/DIVISION _NAME&gt;</p>
+<p>&lt;TEAM&gt;</p>
+<p>&lt;TEAM_CITY&gt;Chicago&lt;/TEAM_CITY&gt;</p>
+<p>&lt;TEAM_NAME&gt;White Sox&lt;/TEAM_NAME&gt;</p>
+<p>&amp;JeffAbbott;</p>
+<p>&amp;MikeCameron;</p>
+<p>&amp;MikeCaruso;</p>
+<p>&amp;LarryCasian;</p>
+<p>&amp;TomFordham;</p>
+<p>&amp;MarkJohnson;</p>
+<p>&amp;RobertMachado;</p>
+<p>&amp;JimParque;</p>
+<p>&amp;ToddRizzo;</p>
+<p>&lt;/TEAM&gt;</p>
+<p>&lt;/DIVISION &gt;</p>
+<p>&lt;DIVISION &gt;</p>
+<p>&lt;DIVISION _NAME&gt;West&lt;/DIVISION _NAME&gt;</p>
+<p>&lt;TEAM&gt;</p>
+<p>&lt;TEAM_CITY&gt;Anaheim&lt;/TEAM_CITY&gt;</p>
+<p>&lt;TEAM_NAME&gt;Angels&lt;/TEAM_NAME&gt;</p>
+<p>&lt;/TEAM&gt;</p>
+<p>&lt;/DIVISION &gt;</p>
+<p>&lt;/LEAGUE&gt;</p>
+<p>&lt;/SEASON&gt;</p>
+<p>在选择主文档和嵌套数据的层次结构上具有一定的灵活性。例如，一种可选择的结构就是在清单9-12中使用的，把球队和所有队员的数据放在不同的文件中；然后把球队数据组合为带外部实体的赛季文件，如清单9-14所示。使用尺寸更小、数目更少的XML文件的好处在于Web服务器中所占的空间更小以及下传和显示更加快捷。可是老实地说，一种方法或其他方法所带来的内在的益处很小。请放心大胆使用任意更严密地与数据组织相匹配，或者任一感觉使用方便的简洁方式。</p>
+<p>清单9-14：利用对球员的外部实体引用球队的1998年赛季的主控文档</p>
+<p>&lt;?xml version="1.0" standalone="no"?&gt;</p>
+<p>&lt;!DOCTYPE SEASO SYSTEM "baseball.dtd"[</p>
+<p></p>
+<p>&lt;!ENTITY angels SYSTEM "angels.xml"&gt;</p>
+<p>&lt;!ENTITY astros SYSTEM "astros.xml"&gt;</p>
+<p>&lt;!ENTITY athletics SYSTEM "athletics.xml"&gt;</p>
+<p>&lt;!ENTITY bluejays SYSTEM "bluejays.xml"&gt;</p>
+<p>&lt;!ENTITY braves SYSTEM "braves.xml"&gt;</p>
+<p>&lt;!ENTITY brewers SYSTEM "brewers.xml"&gt;</p>
+<p>&lt;!ENTITY cubs SYSTEM "cubs.xml"&gt;</p>
+<p>&lt;!ENTITY devilrays SYSTEM "devilrays.xml"&gt;</p>
+<p>&lt;!ENTITY diamondbacks SYSTEM "diamondbacks.xml"&gt;</p>
+<p>&lt;!ENTITY dodgers SYSTEM "dodgers.xml"&gt;</p>
+<p>&lt;!ENTITY expos SYSTEM "expos.xml"&gt;</p>
+<p>&lt;!ENTITY giants SYSTEM "giants.xml"&gt;</p>
+<p>&lt;!ENTITY indians SYSTEM "indians.xml"&gt;</p>
+<p>&lt;!ENTITY mariners SYSTEM "mariners.xml"&gt;</p>
+<p>&lt;!ENTITY marlins SYSTEM "marlins.xml"&gt;</p>
+<p>&lt;!ENTITY mets SYSTEM "mets.xml"&gt;</p>
+<p>&lt;!ENTITY orioles SYSTEM "orioles.xml"&gt;</p>
+<p>&lt;!ENTITY padres SYSTEM "padres.xml"&gt;</p>
+<p>&lt;!ENTITY phillies SYSTEM "phillies.xml"&gt;</p>
+<p>&lt;!ENTITY pirates SYSTEM "pirates.xml"&gt;</p>
+<p>&lt;!ENTITY rangers SYSTEM "rangers.xml"&gt;</p>
+<p>&lt;!ENTITY redsox SYSTEM "red sox.xml"&gt;</p>
+<p>&lt;!ENTITY reds SYSTEM "reds.xml"&gt;</p>
+<p>&lt;!ENTITY rockies SYSTEM "rockies.xml"&gt;</p>
+<p>&lt;!ENTITY royals SYSTEM "royals.xml"&gt;</p>
+<p>&lt;!ENTITY tigers SYSTEM "tigers.xml"&gt;</p>
+<p>&lt;!ENTITY twins SYSTEM "twins.xml"&gt;</p>
+<p>&lt;!ENTITY whitesox SYSTEM "whitesox.xml"&gt;</p>
+<p>&lt;!ENTITY yankees SYSTEM "yankees.xml"&gt;</p>
+<p>]&gt;</p>
+<p>&lt;SEASON &gt;</p>
+<p>&lt;YEAR&gt;1998&lt;/YEAR&gt;</p>
+<p>&lt;LEAGUE&gt;</p>
+<p>&lt;LEAGUE_NAME&gt; ational&lt;/LEAGUE_NAME&gt;</p>
+<p>&lt;DIVISION &gt;</p>
+<p>&lt;DIVISION _NAME&gt;East&lt;/DIVISION _NAME&gt;</p>
+<p>&amp;marlins;</p>
+<p>&amp;braves;</p>
+<p>&amp;expos;</p>
+<p>&amp;mets;</p>
+<p>&amp;phillies;</p>
+<p>&lt;/DIVISION &gt;</p>
+<p>&lt;DIVISION &gt;</p>
+<p>&lt;DIVISION _NAME&gt;Central&lt;/DIVISION _NAME&gt;</p>
+<p>&amp;cubs;</p>
+<p>&amp;reds;</p>
+<p>&amp;astros;</p>
+<p>&amp;brewers;</p>
+<p>&amp;pirates;</p>
+<p>&lt;/DIVISION &gt;</p>
+<p>&lt;DIVISION &gt;</p>
+<p>&lt;DIVISION _NAME&gt;West&lt;/DIVISION _NAME&gt;</p>
+<p>&amp;diamondbacks;</p>
+<p>&amp;rockies;</p>
+<p>&amp;dodgers;</p>
+<p>&amp;padres;</p>
+<p>&amp;giants;</p>
+<p>&lt;/DIVISION &gt;</p>
+<p>&lt;/LEAGUE&gt;</p>
+<p>&lt;LEAGUE&gt;</p>
+<p>&lt;LEAGUE_NAME&gt;American&lt;/LEAGUE_NAME&gt;</p>
+<p>&lt;DIVISION &gt;</p>
+<p>&lt;DIVISION _NAME&gt;East&lt;/DIVISION _NAME&gt;</p>
+<p>&amp;orioles;</p>
+<p>&amp;redsox;</p>
+<p>&amp;yankees;</p>
+<p>&amp;devilrays;</p>
+<p>&amp;bluejays</p>
+<p>&lt;/DIVISION &gt;</p>
+<p>&lt;DIVISION &gt;</p>
+<p>&lt;DIVISION _NAME&gt;Central&lt;/DIVISION _NAME&gt;</p>
+<p>&amp;whitesox;</p>
+<p>&amp;indians;</p>
+<p>&amp;tigers;</p>
+<p>&amp;royals;</p>
+<p>&amp;twins;</p>
+<p>&lt;/DIVISION &gt;</p>
+<p>&lt;DIVISION &gt;</p>
+<p>&lt;DIVISION _NAME&gt;West&lt;/DIVISION _NAME&gt;</p>
+<p>&amp;angels;</p>
+<p>&amp;athletics;</p>
+<p>&amp;mariners;</p>
+<p>&amp;rangers;</p>
+<p>&lt;/DIVISION &gt;</p>
+<p>&lt;/LEAGUE&gt;</p>
+<p>&lt;/SEASON &gt;</p>
+<p>最后，较少使用的方法是，从外部球员实体的基础上创建各分立的球队文件，然后组合所有球队文件为分部、联盟和赛季。主控文档中可定义用于子球队文档中的实体引用。可是在这种情况下，因为实体引用集合在主控文档以前未被定义，所以球队文档不可用于自身。</p>
+<p>真正的缺点是仅有顶层文档可附加于DTD之上。这是对外部可析实体用途的一种限制。无论如何，当学习了XLinks和XPointers后，可以明白创建大型、复杂文档的其他方法。然而，那些技术不是XML标准的核心部分内容，进行正确性检查的XML处理器和Web浏览器并无必要像支持本章讲述的技术一样去支持这些技术。</p>
+<p><img src="Image/BK000209-9.gif" width=49 height=33>Xlinks将在第16章讲述，XPointers将在第17章讲述。</p>
+
+ 
+<a href='412.htm'>&lt;&lt;上一篇</a>&nbsp;&nbsp;<a href='414.htm'>下一篇&gt;&gt;</a></td>
+        </tr>
+      </table>
+      <p>&nbsp; </p>
+    </td>
+  </tr>
+</table>
+
+</body>
+
+</html>

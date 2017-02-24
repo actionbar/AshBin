@@ -1,0 +1,119 @@
+<meta http-equiv="content-type" content="text/html; charset=gb2312"><FONT size=+0><B>Access 2000 How To's: Calculating Working 
+Days</B></FONT><BR><B>By <A href="http://www.databasejournal.com/features/msaccess/article.php/mailto:davepamn@relia.net">David 
+Nishimoto</A></B><BR>
+<P><FONT face="Verdana, Arial, Helvetica, sans-serif" size=-1><!--content_start--><FONT face=arial,helvetica size=3>
+<H3>Overview</H3>
+<P>This article explains how to use Access 2000 date functions when determining 
+1) the number of work days representing an interval between two dates, and 2) 
+the projected end working date calculated from a start date and number of hours 
+worked. 
+<P>The user enters in a start date and actual hours as parameters in the 
+GetEndWorkDay function. The function calculates the date in the future the work 
+should be completed. So, if today is 12/2/2002 and the actual hours is 12, the 
+projected end date would be 12/3/2002. 
+<P>The second part uses the GetNumberOfWorkDays function to determine what 
+percent of the estimated time actual time represents. Estimated work days is the 
+time interval to complete a task based on a start and end date. Comparing 
+estimated to actual time, we can provide the percent of work completed both 
+under or over allocated percents. 
+<P><BR>
+<H3>GetEndWorkDay Function</H3>
+<P><PRE><FONT color=#005f00>  Public Function GetEndWorkDay(sStartDate, sHours)
+    Dim iHoursToDays
+    Dim iCount
+    Dim bFlag
+    Dim sEndDate
+    Dim sCheckDate
+    Dim iFoundCount
+    Dim sDay
+  
+      'Assume an eight hour day
+      iHoursToDays = round(sHours / 8,0)
+      sEndDate = sStartDate
+      If iHoursToDays &gt; 1 Then
+        bFlag = False
+        iCount = 0
+        iFoundCount = 0
+        Do While bFlag = False
+          iCount = iCount + 1
+          sCheckDate = DateAdd("d", iCount, sStartDate)
+          sDay = Weekday(sCheckDate)
+          If sDay &lt;&gt; 1 And sDay &lt;&gt; 7 Then
+            sEndDate = sCheckDate
+            iFoundCount = iFoundCount + 1
+          End If
+          If iFoundCount &gt;= iHoursToDays Then
+            Exit Do
+          End If
+        Loop
+      End If
+      GetEndWorkDay = sEndDate
+  End Function
+</FONT></PRE>
+<OL>
+<LI>DateAdd returns a date to which a specific time interval has been added. In 
+this sample the interval is "Day". 
+<P>&nbsp; &nbsp; &nbsp;List of Interval Settings: <BR>&nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; yyyy = year <BR>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; q 
+= quarter <BR>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; m = month <BR>&nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; y = day of year <BR>&nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; d = day <BR>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; w = 
+weekday <BR>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ww = week <BR>&nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; h = hour <BR>&nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; n = minute <BR>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; s = 
+second 
+<P></P>
+<LI>Increment through a range of possible work days to find the end work date. 
+The number of work days is determined by dividing the hours by eight. This 
+assumes an eight hour work day. Ignore saturday and sunday as work days. Once 
+the number of found work days equals the work day interval, stop and return the 
+date as the final work date. 
+<P></P></LI></OL><BR>
+<H3>GetNumberofWorkDays Function</H3><PRE><FONT color=#005f00>  Public Function GetNumberOfWorkDays(sStartDate, sEndDate)
+    Dim iDays
+    Dim iWorkDays
+    Dim sDay
+    Dim i
+    
+    iDays = DateDiff("d", sStartDate, sEndDate)
+   
+    iWorkDays = 0
+   
+    For i = 0 To iDays
+      'First day of the week is sunday
+      sDay = Weekday(DateAdd("d", i, sStartDate))
+      If sDay &lt;&gt; 1 And sDay &lt;&gt; 7 Then
+        iWorkDays = iWorkDays + 1
+      End If
+    Next
+    GetNumberOfWorkDays = iWorkDays
+  End Function
+</FONT></PRE>
+<OL>
+<LI>DateDiff specifics a number of time intervals between two dates. 
+<LI>DateDiff (interal,date1,date2,firstdayofweek,firstweekofyear) <BR><BR>&nbsp; 
+&nbsp; &nbsp;Interval <BR>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; yyyy = year 
+<BR>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; q = quarter <BR>&nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; m = month <BR>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; y = day of year <BR>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; d = day 
+<BR>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; w = weekday <BR>&nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; ww = week <BR>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; h = hour <BR>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; n = minute 
+<BR>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; s = second 
+<P>&nbsp; &nbsp; &nbsp;date1 and date2 are used to calculate the interval 
+<BR>&nbsp; &nbsp; &nbsp;firstdayofweek is sunday unless specified <BR>&nbsp; 
+&nbsp; &nbsp;firstweekofyear is jan 1 unless specified 
+<BLOCKQUOTE></BLOCKQUOTE>
+<P></P>
+<LI>Weekday returns a number representing the day of the week. <BR><BR>&nbsp; 
+&nbsp; &nbsp;Return values are: <BR>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+Sunday = 1 <BR>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Monday = 2 <BR>&nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Tuesday = 3 <BR>&nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; Wednesday = 4 <BR>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+Thursday = 5 <BR>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Friday = 6 <BR>&nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Saturday = 7 
+<P></P>
+<LI>First determine the number of days between the two dates. Calculating the 
+number of work days is done by not adding Saturday and Sunday dates. A query 
+extract from a table containing all the holidays for the year could also be 
+added for increased accuracy. </LI></OL></FONT></FONT>

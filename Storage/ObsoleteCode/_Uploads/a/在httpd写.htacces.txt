@@ -1,0 +1,23 @@
+#RewriteCond语句之间默认的是AND,如果想要OR,则要下一个rewritecond在尾部[NC,OR]这样写出来#
+#RewriteCond %{HTTP_HOST} ^xxx\.com$ [NC]
+#
+#RewriteRule ^/(.*)$  http://www.xxx.com/$1 [R=301,L]
+#
+#每个rewriteCond只能对应下面一个RewriteRule
+RewriteCond %
+#
+NameVirtualHost *:80
+<VirtualHost *:80>   
+    ServerName localhost
+    DirectoryIndex index.php index.html index.htm
+ <IfModule rewrite_module>
+    RewriteEngine On
+  
+    RewriteCond %{HTTP_USER_AGENT}  ^Mozilla/5.0.* [NC]
+    RewriteCond %{HTTP_USER_AGENT}  ^Mozilla/3.0.* [NC]
+    RewriteRule ^/   http://firefox.com.cn/ 
+    RewriteCond %{HTTP_USER_AGENT}  ^Mozilla/4.0.* [NC]
+    
+    RewriteRule ^/   http://www.msn.com.cn/ 
+ </IfModule>
+</VirtualHost>

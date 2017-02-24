@@ -1,0 +1,213 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="../c3.css" />
+<title>VBScript VarType 函数</title>
+</head>
+<body class="browserscripting">
+<div id="wrapper">
+<div id="header">
+<a href="http://e.v-get.com/w3cschool/" style="float:left;">W3CSchool 在线教程</a>
+<div class="q g"><script type="text/javascript">var cpro_id="u1163355"</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div>
+<div id="navfirst">
+<ul id="menu">
+<li id="h"><a href="../h.html">HTML教程</a></li>
+<li id="x"><a href="../x.html">XML教程</a></li>
+<li id="b"><a href="../b.html">浏览器脚本</a></li>
+<li id="s"><a href="../s.html">服务器脚本</a></li>
+<li id="d"><a href="../d.html">dot net教程</a></li>
+<li id="m"><a href="../m.html">多媒体教程</a></li>
+<li id="w"><a href="../w.html">建站手册</a></li>
+</ul>
+</div><div id="navsecond">
+<div id="course">
+<h2>VBScript 教程</h2>
+<ul>
+<li><a href="http://e.v-get.com/w3cschool/">VB 首页</a></li>
+<li><a href="vbscript_intro.html">VB 简介</a></li>
+<li><a href="vbscript_howto.html">VB How to</a></li>
+<li><a href="vbscript_whereto.html">VB Where to</a></li>
+<li><a href="vbscript_variables.html">VB 变量</a></li>
+<li><a href="vbscript_procedures.html">VB 程序</a></li>
+<li><a href="vbscript_conditionals.html">VB 条件语句</a></li>
+<li><a href="vbscript_looping.html">VB 循环语句</a></li>
+<li><a href="vbscript_summary.html">VB 总结</a></li>
+</ul>
+<h2>实例</h2>
+<ul>
+<li><a href="../example/vbst_examples.html">VB 实例</a></li>
+</ul>
+<h2>参考手册</h2>
+<ul>
+<li><a href="vbscript_ref_functions.html">VB 函数</a></li>
+<li><a href="vbscript_ref_keywords.html">VB 关键字</a></li>
+</ul>
+</div>
+<div id="selected">
+<h2>建站手册</h2>
+<ul>
+<li><a href="../site/">网站构建</a></li>
+<li><a href="../w3c/">万维网联盟</a></li>
+<li><a href="http://e.v-get.com/w3c/">W3CSchool 教程</a></li>
+<li><a href="../quality/">网站品质</a></li>
+<li><a href="../semweb/">语义网</a></li>
+<li><a href="../hosting/">网站主机</a></li>
+</ul>
+<h2><a href="http://e.v-get.com/w3c/" class="f13">W3CSchool 教程</a></h2><div class="a120x90"><script type="text/javascript">var cpro_id="u1210867";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div></div>
+</div>
+<div id="maincontent">
+<h1>VBScript VarType 函数</h1>
+<div class="backtoreference">
+<p><a href="vbscript_ref_functions.html">返回 VBScript 函数参考手册</a></p>
+</div>
+<div>
+<h2>定义和用法</h2>
+<p>VarType 函数可返回指示指定变量的子类型的值。</p>
+<h3>VarType 函数可返回的值：</h3>
+<table class="dataintable">
+<tr>
+<th>常数</th>
+<th>值</th>
+<th>描述</th>
+</tr>
+<tr>
+<td>vbEmpty</td>
+<td>0</td>
+<td>未初始化 (默认）</td>
+</tr>
+<tr>
+<td>vbNull</td>
+<td>1</td>
+<td>不包含任何有效数据</td>
+</tr>
+<tr>
+<td>vbInteger</td>
+<td>2</td>
+<td>整型子类型</td>
+</tr>
+<tr>
+<td>vbLong</td>
+<td>3</td>
+<td>长整型子类型</td>
+</tr>
+<tr>
+<td>vbSingle</td>
+<td>4</td>
+<td>单精度子类型</td>
+</tr>
+<tr>
+<td>vbDouble</td>
+<td>5</td>
+<td>双精度子类型</td>
+</tr>
+<tr>
+<td>vbCurrency</td>
+<td>6</td>
+<td>货币子类型</td>
+</tr>
+<tr>
+<td>vbDate</td>
+<td>7</td>
+<td>日期或时间值</td>
+</tr>
+<tr>
+<td>vbString</td>
+<td>8</td>
+<td>字符串值</td>
+</tr>
+<tr>
+<td>vbObject</td>
+<td>9</td>
+<td>字符串子类型</td>
+</tr>
+<tr>
+<td>vbError</td>
+<td>10</td>
+<td>错误子类型</td>
+</tr>
+<tr>
+<td>vbBoolean</td>
+<td>11</td>
+<td>Boolean 子类型</td>
+</tr>
+<tr>
+<td>vbVariant</td>
+<td>12</td>
+<td>Variant  (仅用于变量数组）</td>
+</tr>
+<tr>
+<td>vbDataObject</td>
+<td>13</td>
+<td>数据访问对象</td>
+</tr>
+<tr>
+<td>vbDecimal</td>
+<td>14</td>
+<td>十进制子类型</td>
+</tr>
+<tr>
+<td>vbByte</td>
+<td>17</td>
+<td>字节子类型</td>
+</tr>
+<tr>
+<td>vbArray</td>
+<td>8192</td>
+<td>数组</td>
+</tr>
+</table>
+<p class="note"><span>注释：</span>这些常数是由 VBScript 指定的。所以，这些名称可在代码中随处使用，以代替实际值。</p>
+<p class="note"><span>注释：</span>假如变量是数组，则 VarType() 会返回 8192 +   VarType(数组元素)。举例：整数数组的 VarType() 会返回 8192 + 2 = 8194 。</p>
+<h3>语法</h3>
+<pre>VarType(varname)</pre>
+<table class="dataintable">
+  <tr>
+    <th>参数</th>
+    <th>描述</th>
+  </tr>  
+  <tr>
+    <td>varname</td>
+    <td>必需的。变量的名称。</td>
+  </tr>
+</table>
+</div>
+<div>
+<h2>实例</h2>
+<pre>dim x
+x=&#34;Hello World!&#34;
+document.write(VarType(x))
+x=4
+document.write(VarType(x))
+x=4.675
+document.write(VarType(x))
+x=Null
+document.write(VarType(x))
+x=Empty
+document.write(VarType(x))
+x=True
+document.write(VarType(x))</pre>
+<p>分别输出：</p>
+<pre>String
+Integer
+Double
+Null
+Empty
+Boolean</pre>
+</div>
+<div class="backtoreference">
+<p><a href="vbscript_ref_functions.html">返回 VBScript 函数参考手册</a></p>
+</div>
+</div>
+<div id="sidebar">
+<div class="rs"></div>
+<div id="tools">
+<h5 id="tools_reference"><a href="vbscript_ref_functions.html">VBScript 参考手册</a></h5>
+<h5 id="tools_example"><a href="../example/vbst_examples.html">VBScript 实例</a></h5>
+</div>
+<div class="a120x600"><script type="text/javascript">var cpro_id="u1293136";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div><div class="b"></div>
+</div>
+</body>
+</html>

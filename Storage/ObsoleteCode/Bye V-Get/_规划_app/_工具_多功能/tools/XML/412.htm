@@ -1,0 +1,238 @@
+<html>
+<head>
+<title>外部参数实体</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+
+<link rel = stylesheet href = "image/style.css">
+</head>
+<body bgcolor="#ffffff">
+<table width="688" border="0" cellspacing="0" cellpadding="0" align="center">
+  <tr bgcolor="EEEEEE"> 
+    <td height="22"><a href="index.htm">主页</a></td>
+  </tr>
+</table><br>
+<table border="0" cellpadding="0" cellspacing="0" width="688" align="center" height="490">
+  <tr valign="top"> 
+    <td rowspan="4" width="91">&nbsp; </td>
+    <td height="68" width="131"> 
+      <p><img src="image/doc.gif"></p>
+    </td>
+    <td rowspan="4" width="18"><b></b> </td>
+    <td height="68" width="387"><img src="image/title_doc.gif"></td>
+    <td rowspan="4" width="61"> 
+      <h6>&nbsp;</h6>
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td rowspan="3" valign="top" class="pt10" align="center" width="131" bgcolor="EEEEEE"> 
+      <p>&nbsp;</p>
+      <p><font color="#FF0000">※ 9.5 外部参数实体</font></p>
+       
+	</td>
+  </tr>
+  <tr valign="top"> 
+    <td width="387" height="308"> 
+      <table width="100%" border="0" cellpadding="0">
+        <tr> 
+          <td>
+
+           <h4>9.5 外部参数实体</h4>
+<p>前述例子中使用单一的DTD，用于定义文档中所有的元素。然而文档越长，这种技术应用越少。此外通常希望将DTD中的部分内容用于许多不同的地方。</p>
+<p>例如，对描述很少发生变化的邮件地址DTD来说，地址定义非常普遍，且可很方便地应用在不同的上下文中。类似地，清单9-2中列出的预定义实体引用可用于大部分XML文档中，但并不想总是对此清单进行拷贝和复制的操作。</p>
+<p>可用外部参数实体把较小的DTD组成大型的DTD。也就是说，一个外部DTD可以链接到另一外部DTD，第二个DTD引入第一个DTD中声明的元素和实体。尽管严禁使用循环——若DTD2引用DTD1，则DTD1不能引用DTD2&#0;&#0;但嵌套的DTD也会大型化和复杂化。</p>
+<p>同时，将DTD分解为小的、更便于管理的组块，使得对DTD的分析处理更加简便。由于一个实体文档和完整的DTD存储在单一的文件中，在前几章中的许多例子都过于庞大。若文档和文档的DTD分割为几个独立的文件，就变得更加易于理解。</p>
+<p>此外，描述一组元素的DTD中采用较小的、模块化的结构，使得不同的人或组织创建的DTD之间的组合和匹配更加简便。例如，在写一篇关于高温超导的文章，可能会用到描述其中分子的分子科学DTD、记录公式的数学DTD、描述图形的向量DTD和处理解释性文本的HTML 
+  DTD。</p>
+<p><img src="Image/BK000209-5.gif" width=37 height=45>特殊情况下，可使用Peter Murray-Rust的 
+  Chemical Markup Language中的mol.dtd DTD、W3C的Mathematical Markup Language 中的MathML 
+  DTD、W3C的 Scalable Vector Graphics中的SVG DTD和W3C的 XHTML DTD。</p>
+<p>我们还可以想出许多混合或者匹配来自不同领域的概念（也就是标记）的例子。人类的想法不会局限在狭窄的定义范围内，总是试图遍及所有领域。所编写的文档就反映了这种思想。</p>
+<p>让我们研究如何把棒球比赛统计表组织为几个不同的DTD的联合体。本例的层次非常分明。一个可能的分割方法是为PLAYER、TEAM和SEASON分别编写一个DTD。分割DTD为更便于管理的方法远不止一种，但这也不失为一个很好的例子。清单9-5显示的是只为PALYER建立的单独的DTD，保存在player.dtd文件中。</p>
+<p>清单9-5：PLAYER元素和它的子元素的DTD(player.dtd)</p>
+<p>&lt;!-Player Info -&gt;</p>
+<p>&lt;!ELEMENT PLAYER (GIVEN _N AME, SURNAME, P, G, </p>
+<p> GS, AB?, R?, H?, D?, ?, HR?, RBI?, SB?, CS?, </p>
+<p> SH?, SF?, E?, BB?, S?, HBP?, W?, L?, SV?, CG?, SO?, ERA?,</p>
+<p> IP?, HRA?, RA?, ER?, HB?, WP?, B?, WB?, K?)</p>
+<p>&gt;</p>
+<p></p>
+<p>&lt;!-Player s last name -&gt;</p>
+<p>&lt;!ELEMENT SURNAME (#PCDATA)&gt;</p>
+<p></p>
+<p>&lt;!-Player s first name -&gt;</p>
+<p>&lt;!ELEMENT GIVE _ NAME (#PCDATA)&gt;</p>
+<p></p>
+<p>&lt;!-Position -&gt;</p>
+<p>&lt;!ELEMENT P (#PCDATA)&gt;</p>
+<p></p>
+<p>&lt;!-Games Played -&gt;</p>
+<p>&lt;!ELEMENT G (#PCDATA)&gt; &lt;!桮ames Started -&gt;</p>
+<p>&lt;!ELEMENT GS (#PCDATA)&gt;</p>
+<p></p>
+<p>&lt;!-======================= -&gt;</p>
+<p>&lt;!-Batting Statistics -&gt;</p>
+<p>&lt;!-At Bats -&gt;</p>
+<p>&lt;!ELEMENT AB (#PCDATA)&gt;</p>
+<p></p>
+<p>&lt;!-Runs -&gt;</p>
+<p>&lt;!ELEMENT R (#PCDATA)&gt;</p>
+<p></p>
+<p>&lt;!-Hits -&gt;</p>
+<p>&lt;!ELEMENT H (#PCDATA)&gt;</p>
+<p></p>
+<p>&lt;!-Doubles -&gt;</p>
+<p>&lt;!ELEMENT D (#PCDATA)&gt;</p>
+<p></p>
+<p>&lt;!-Triples -&gt;</p>
+<p>&lt;!ELEMENT T (#PCDATA)&gt;</p>
+<p></p>
+<p>&lt;!-Home Runs -&gt;</p>
+<p>&lt;!ELEMENT HR (#PCDATA)&gt;</p>
+<p></p>
+<p>&lt;!-Runs Batted In -&gt;</p>
+<p>&lt;!ELEMENT RBI (#PCDATA)&gt;</p>
+<p></p>
+<p>&lt;!-Stolen Bases -&gt;</p>
+<p>&lt;!ELEMENT SB (#PCDATA)&gt;</p>
+<p></p>
+<p>&lt;!-Caught Stealing -&gt;</p>
+<p>&lt;!ELEMENT CS (#PCDATA)&gt;</p>
+<p></p>
+<p>&lt;!-Sacrifice Hits -&gt;</p>
+<p>&lt;!ELEMENT SH (#PCDATA)&gt;</p>
+<p></p>
+<p>&lt;!-Sacrifice Flies -&gt;</p>
+<p>&lt;!ELEMENT SF (#PCDATA)&gt;</p>
+<p></p>
+<p>&lt;!-Errors -&gt;</p>
+<p>&lt;!ELEMENT E (#PCDATA)&gt;</p>
+<p></p>
+<p>&lt;!-Walks (Base on Balls) -&gt;</p>
+<p>&lt;!ELEMENT BB (#PCDATA)&gt;</p>
+<p></p>
+<p>&lt;!-Struck Out -&gt; </p>
+<p>&lt;!ELEMENT S (#PCDATA)&gt;</p>
+<p></p>
+<p>&lt;!-Hit By Pitch -&gt;</p>
+<p>&lt;!ELEMENT HBP (#PCDATA)&gt;</p>
+<p>&lt;!-======================= -&gt;</p>
+<p>&lt;!-Pitching Statistics -&gt;</p>
+<p>&lt;!-Complete Games -&gt;</p>
+<p>&lt;!ELEMENT CG (#PCDATA)&gt;</p>
+<p></p>
+<p>&lt;!-Wins -&gt;</p>
+<p>&lt;!ELEMENT W (#PCDATA)&gt;</p>
+<p></p>
+<p>&lt;!-Losses -&gt;</p>
+<p>&lt;!ELEMENT L (#PCDATA)&gt;</p>
+<p></p>
+<p>&lt;!-Saves -&gt;</p>
+<p>&lt;!ELEMENT SV (#PCDATA)&gt;</p>
+<p></p>
+<p>&lt;!-Shutouts -&gt;</p>
+<p>&lt;!ELEMENT SO (#PCDATA)&gt;</p>
+<p></p>
+<p>&lt;!-ERA -&gt;</p>
+<p>&lt;!ELEMENT ERA (#PCDATA)&gt;</p>
+<p></p>
+<p>&lt;!-Innings Pitched -&gt;</p>
+<p>&lt;!ELEMENT IP (#PCDATA)&gt;</p>
+<p></p>
+<p>&lt;!-Home Runs hit Against -&gt;</p>
+<p>&lt;!ELEMENT HRA (#PCDATA)&gt;</p>
+<p></p>
+<p>&lt;!-Runs hit Against -&gt;</p>
+<p>&lt;!ELEMENT RA (#PCDATA)&gt;</p>
+<p></p>
+<p>&lt;!-Earned Runs -&gt;</p>
+<p>&lt;!ELEMENT ER (#PCDATA)&gt;</p>
+<p></p>
+<p>&lt;!-Hit Batter -&gt; </p>
+<p>&lt;!ELEMENT HB (#PCDATA)&gt;</p>
+<p></p>
+<p>&lt;!-Wild Pitches -&gt;</p>
+<p>&lt;!ELEMENT WP (#PCDATA)&gt;</p>
+<p></p>
+<p>&lt;!-Balk -&gt;</p>
+<p>&lt;!ELEMENT B (#PCDATA)&gt;</p>
+<p></p>
+<p>&lt;!-Walked Batter -&gt;</p>
+<p>&lt;!ELEMENT WB (#PCDATA)&gt;</p>
+<p></p>
+<p>&lt;!-Struck Out Batter -&gt;</p>
+<p>&lt;!ELEMENT K (#PCDATA)&gt;</p>
+<p>&lt;!-======================= -&gt;</p>
+<p>&lt;!-Fielding Statistics -&gt;</p>
+<p>&lt;!-Not yet supported -&gt;</p>
+<p>当时用这个文件，这个DTD还无法让你创建非常有趣的文档，清单9-6显示的是仅使用清单9-5中PLAYER DTD的简洁有效的文件。从这来说，这简单的文件并不重要；然而，可在这些较小的部分外创建更加复杂的文件。</p>
+<p>清单9-6：使用PLAYER DTD的有效文档</p>
+<p>&lt;?xml version="1.0" standalone="no"&gt;</p>
+<p>&lt;!DOCTYPE PLAYER SYSTEM "Player.dtd"&gt;</p>
+<p>&lt;PLAYER&gt;</p>
+<p>&lt;GIVEN_NAME&gt;Chris&lt;/GIVEN_NAME&gt;</p>
+<p>&lt;SURNAME&gt;Hoiles&lt;/SURNAME&gt;</p>
+<p>&lt;P&gt;Catcher&lt;/P&gt;</p>
+<p>&lt;G&gt;97&lt;/G&gt;</p>
+<p>&lt;GS&gt;81&lt;/GS&gt;</p>
+<p>&lt;AB&gt;267&lt;/AB&gt;</p>
+<p>&lt;R&gt;36&lt;/R&gt;</p>
+<p>&lt;H&gt;70&lt;/H&gt;</p>
+<p>&lt;D&gt;12&lt;/D&gt;</p>
+<p>&lt;T&gt;0&lt;/T&gt;</p>
+<p>&lt;HR&gt;15&lt;/HR&gt;</p>
+<p>&lt;RBI&gt;56&lt;/RBI&gt;</p>
+<p>&lt;SB&gt;0&lt;/SB&gt;</p>
+<p>&lt;CS&gt;1&lt;/CS&gt;</p>
+<p>&lt;SH&gt;5&lt;/SH&gt;</p>
+<p>&lt;SF&gt;4&lt;/SF&gt;</p>
+<p>&lt;E&gt;3&lt;/E&gt;</p>
+<p>&lt;BB&gt;38&lt;/BB&gt;</p>
+<p>&lt;S&gt;50&lt;/S&gt;</p>
+<p>&lt;HBP&gt;4&lt;/HBP&gt;</p>
+<p>&lt;/PLAYER&gt;</p>
+<p>文档的哪部分可拥有自己的DTD？这是显而易见的，TEAM就是其中的主要部分，可按如下方式书写它的DTD：</p>
+<p>&lt;!ELEMENT TEAM ( EAM_CITY, EAM_NAME, PLAYER*)&gt;</p>
+<p>&lt;!ELEMENT TEAM_CITY (#PCDATA)&gt;</p>
+<p>&lt;!ELEMENT TEAM_NAME (#PCDATA)&gt;</p>
+<p>然而作仔细的检查之后，就会注意到遗漏了某些东西：PLAYER元素的定义。该定义位于player.dtd独立文件中，需要连接到这个DTD中。</p>
+<p>可通过外部参数实体引用连接DTD。对私有的DTD，可按下列格式进行连接：</p>
+<p>&lt;!ENTITY % <i>name </i>SYSTEM "<i>URI</i>"&gt;</p>
+<p>%name;</p>
+<p>例如：</p>
+<p>&lt;! ENTITY % player SYSTEM "Player.dtd"&gt;</p>
+<p>%player;</p>
+<p>本例中使用了相对的URL（player.dtd），且假定player.dtd文件所在位置与进行链接的DTD的位置相同。若非这种情况，可使用完整的URL如下：</p>
+<p>&lt;! ENTITY % player SYSTEM</p>
+<p> "http://metalab.unc.edu/xml/dtds/player.dtd"&gt;</p>
+<p>%player;</p>
+<p>清单9-7显示的是包含了对PLAYER DTD引用的完整TEAM DTD：</p>
+<p>清单9-7：TEAM DTD（team.dtd）</p>
+<p>&lt;!ELEMENT EAM ( EAM_CITY, EAM_ NAME, PLAYER*)&gt;</p>
+<p>&lt;!ELEMENT EAM_CITY (#PCDATA)&gt;</p>
+<p>&lt;!ELEMENT EAM_ NAME (#PCDATA)&gt;</p>
+<p>&lt;!ENTITY % player SYSTEM "Player.dtd"&gt;</p>
+<p>%player;</p>
+<p>SEASON包含LEAGUE、DIVISION和TEAM元素。尽管LEAGUE和DIVISION元素可拥有自己的DTD，也没有必要过分追求使用各自独立的DTD。除非希望拥有包含LEAGUE或DIVISION元素的文档，该文档不是SEASON的一部分，在这种情况下，才可在同一DTD中引用所有三个DTD。如清单9-8中说明了这种情况。</p>
+<p>清单9-8：SEASON DTD（seasom.dtd）</p>
+<p>&lt;!ELEMENT YEAR (#PCDATA)&gt;</p>
+<p>&lt;!ELEMENT LEAGUE (LEAGUE_NAME, DIVISION, DIVISION, DIVISION )&gt;</p>
+<p>&lt;!-NAMErican or National -&gt;</p>
+<p>&lt;!ELEMENT LEAGUE_ NAME (#PCDATA)&gt;</p>
+<p>&lt;!-East, West, or Central -&gt;</p>
+<p>&lt;!ELEMENT DIVISION_ NAME (#PCDATA)&gt;</p>
+<p>&lt;!ELEMENT DIVISION (DIVISIO _ NAME, EAM+)&gt;</p>
+<p>&lt;!ELEMENT SEASON (YEAR, LEAGUE, LEAGUE)&gt;</p>
+<p>&lt;!ENTITY % team SYSTEM "team.dtd"&gt;</p>
+<p>%team;</p>
+ 
+<a href='411.htm'>&lt;&lt;上一篇</a>&nbsp;&nbsp;<a href='413.htm'>下一篇&gt;&gt;</a></td>
+        </tr>
+      </table>
+      <p>&nbsp; </p>
+    </td>
+  </tr>
+</table>
+
+</body>
+
+</html>

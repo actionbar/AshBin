@@ -1,0 +1,97 @@
+<html xmlns:rdl>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<script src="rdl_method.js"></script>
+<base target="_self">
+</head>
+<body>
+
+<script>
+
+//collFriendObjects=new Array();
+//collFriendProperties=new Array();
+//collFriendMethods=new Array();
+//collFriendEvents=new Array();
+//collFriendCollections=new Array();
+
+collFriendMethods=new Array(
+'AddFavorite','AddChannel'
+);
+
+collFriendObjects=new Array(
+'external'
+);
+
+//collIE40=new Array();
+//collIE50=new Array();
+//collIE55=new Array();
+//collIE60=new Array();
+
+collIE40=new Array(
+"external"
+);
+
+//sStyle='';
+
+//sScript='';
+
+iWinWidth=380;
+
+iWinHeight=220;
+
+bRunCode=false;
+
+</script>
+
+<div id=idContent>
+
+<div id=idContentTitle><span id=idTitleName>AddDesktopComponent</span>版本：DHTML Object Model　返回值：无</div>
+
+<div class=cssColumnTitle>语法：</div>
+<div>
+<a href="../objects/window.html"><b>window</b></a><b> . </b><a href="../objects/external.html"><b>external</b></a><b> . AddDesktopComponent ( </b><i>sURL</i><b> , </b><i>sType</i><b> , </b><i>iLeft</i><b> , </b><i>iTop</i><b> , </b><i>iWidth</i><b> , </b><i>iHeight</i><b> ) </b>
+</div>
+
+<div class=cssColumnTitle>参数：</div>
+<table>
+<tr><td nowrap><i> sURL  </i></td><td nowrap><b>:</b></td>
+<td><b>必选项</b>。字符串(String)。指定要被加入到 Microsoft&reg; Active Desktop&reg; 的站点或图片的<b> URL </b>地址。<br>
+<tr><td nowrap><i> sType  </i></td><td nowrap><b>:</b></td>
+<td><b>必选项</b>。字符串(String)。<b>image</b> | <b>website</b>
+<table>
+<tr><td nowrap><b> image </b></td><td nowrap><b>:</b></td><td>要被加入的是一张图片。</td></tr>
+<tr><td nowrap><b> website </b></td><td nowrap><b>:</b></td><td>要被加入的是一个站点。</td></tr>
+</table>
+<tr><td nowrap><i> iLeft</i></td><td nowrap><b>:</b></td>
+<td><b>可选项</b>。整数(Integer)。在屏幕坐标内指定左边距。</td></tr>
+<tr><td nowrap><i> iTop</i></td><td nowrap><b>:</b></td>
+<td><b>可选项</b>。整数(Integer)。在屏幕坐标内指定顶边距。</td></tr>
+<tr><td nowrap><i> iWidth</i></td><td nowrap><b>:</b></td>
+<td><b>可选项</b>。整数(Integer)。以屏幕单位指定宽度。</td></tr>
+<tr><td nowrap><i> iHeight</i></td><td nowrap><b>:</b></td>
+<td><b>可选项</b>。整数(Integer)。以屏幕单位指定高度。</td></tr>
+</table>
+
+<div class=cssColumnTitle>返回值：</div>
+<div>
+无
+</div>
+
+<div class=cssColumnTitle>说明：</div>
+<div>
+添加一个站点或图片到 Microsoft&reg; Active Desktop&reg; 。<br>
+用户必须安装了 Microsoft&reg; Active Desktop&reg; 才可以使用本方法。假如 Microsoft&reg; Active Desktop&reg; 没有安装，此方法将不会被调用。<br>
+此方法不支持HTML应用程式(<b> HTA </b>)。
+</div>
+
+<div class=cssColumnTitle>示例：</div>
+<div id=idSimpleCode>
+window.external.AddDesktopComponent("http://www.dhtmlet.com","website",100,100,200,200);
+</div>
+
+</div>
+</body>
+</html>
+
+<!-- Part of RDL(TM) - Written by Rain1977 
+HomeSite: http://www.dhtmlet.com  E-Mail: dhtmlet@hotmail.com -->

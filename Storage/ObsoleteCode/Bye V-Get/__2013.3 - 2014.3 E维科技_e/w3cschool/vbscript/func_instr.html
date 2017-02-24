@@ -1,0 +1,150 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="../c3.css" />
+<title>VBScript InStr 函数</title>
+</head>
+<body class="browserscripting">
+<div id="wrapper">
+<div id="header">
+<a href="http://e.v-get.com/w3cschool/" style="float:left;">W3CSchool 在线教程</a>
+<div class="q g"><script type="text/javascript">var cpro_id="u1163355"</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div>
+<div id="navfirst">
+<ul id="menu">
+<li id="h"><a href="../h.html">HTML教程</a></li>
+<li id="x"><a href="../x.html">XML教程</a></li>
+<li id="b"><a href="../b.html">浏览器脚本</a></li>
+<li id="s"><a href="../s.html">服务器脚本</a></li>
+<li id="d"><a href="../d.html">dot net教程</a></li>
+<li id="m"><a href="../m.html">多媒体教程</a></li>
+<li id="w"><a href="../w.html">建站手册</a></li>
+</ul>
+</div><div id="navsecond">
+<div id="course">
+<h2>VBScript 教程</h2>
+<ul>
+<li><a href="http://e.v-get.com/w3cschool/">VB 首页</a></li>
+<li><a href="vbscript_intro.html">VB 简介</a></li>
+<li><a href="vbscript_howto.html">VB How to</a></li>
+<li><a href="vbscript_whereto.html">VB Where to</a></li>
+<li><a href="vbscript_variables.html">VB 变量</a></li>
+<li><a href="vbscript_procedures.html">VB 程序</a></li>
+<li><a href="vbscript_conditionals.html">VB 条件语句</a></li>
+<li><a href="vbscript_looping.html">VB 循环语句</a></li>
+<li><a href="vbscript_summary.html">VB 总结</a></li>
+</ul>
+<h2>实例</h2>
+<ul>
+<li><a href="../example/vbst_examples.html">VB 实例</a></li>
+</ul>
+<h2>参考手册</h2>
+<ul>
+<li><a href="vbscript_ref_functions.html">VB 函数</a></li>
+<li><a href="vbscript_ref_keywords.html">VB 关键字</a></li>
+</ul>
+</div>
+<div id="selected">
+<h2>建站手册</h2>
+<ul>
+<li><a href="../site/">网站构建</a></li>
+<li><a href="../w3c/">万维网联盟</a></li>
+<li><a href="http://e.v-get.com/w3c/">W3CSchool 教程</a></li>
+<li><a href="../quality/">网站品质</a></li>
+<li><a href="../semweb/">语义网</a></li>
+<li><a href="../hosting/">网站主机</a></li>
+</ul>
+<h2><a href="http://e.v-get.com/w3c/" class="f13">W3CSchool 教程</a></h2><div class="a120x90"><script type="text/javascript">var cpro_id="u1210867";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div></div>
+</div>
+<div id="maincontent">
+<h1>VBScript InStr 函数</h1>
+<div class="backtoreference">
+<p><a href="vbscript_ref_functions.html">返回 VBScript 函数参考手册</a></p>
+</div>
+<div>
+<h2>定义和用法</h2>
+<p>InStr 函数可返回一个字符串在另一个字符串中首次出现的位置。</p>
+<p>InStr 函数可返回下面的值：</p>
+<ul>
+  <li>如果 string1 为 &#34;&#34; (零长度） - InStr 返回 0</li>
+  <li>如果 string1 为 Null - InStr 返回 Null</li>
+  <li>如果 string2 为 &#34;&#34; - InStr 返回 start</li>
+  <li>如果 string2 为 Null - InStr 返回 Null</li>
+  <li>如果 string2 没有找到 - InStr 返回 0</li>
+  <li>如果在 string1 中找到 string2，InStr 返回找到匹配字符串的位置。</li>
+  <li>如果 start &gt; Len(string1) - InStr 返回 0</li>
+</ul>
+<p class="tip"><span>提示：</span>请参阅 InStrRev 函数。</p>
+<h3>语法</h3>
+<pre>InStr([start,]string1,string2[,compare])</pre>
+<table class="dataintable"> 
+  <tr>
+    <th>参数</th>
+    <th>描述</th>
+  </tr>  
+  <tr>
+    <td>start</td>
+    <td>可选的。规定每次搜索的起始位置。默认是搜索起始位置是第一个字符。如果已规定 compare 参数，则必须有此参数。</td>
+  </tr>
+  <tr>
+    <td>string1</td>
+    <td>必需的。需要被搜索的字符串。</td>
+  </tr>
+  <tr>
+    <td>string2</td>
+    <td>必需的。需搜索的字符串。</td>
+  </tr>
+  <tr>
+    <td>compare</td>
+    <td>
+	<p>必需的。规定要使用的字符串比较类型。默认是 0 。可采用下列值：</p>
+    <ul>
+      <li>0 = vbBinaryCompare - 执行二进制比较。</li>
+      <li>1 = vbTextCompare - 执行文本比较。</li>
+    </ul>
+	</td>
+  </tr>
+</table>
+</div>
+<div>
+<h2>实例</h2>
+<h3>例子 1</h3>
+<pre>dim txt,pos
+txt=&#34;This is a beautiful day!&#34;
+pos=InStr(txt,&#34;his&#34;)
+document.write(pos)</pre>
+<p>输出：</p>
+<pre>2</pre>
+<h3>例子 2</h3>
+<pre>dim txt,pos
+txt=&#34;This is a beautiful day!&#34;
+'A textual comparison starting at position 4
+pos=InStr(4,txt,&#34;is&#34;,1)
+document.write(pos)</pre>
+<p>输出：</p>
+<pre>6</pre>
+<h3>例子 3</h3>
+<pre>dim txt,pos
+txt=&#34;This is a beautiful day!&#34;
+'A binary comparison starting at position 1
+pos=InStr(1,txt,&#34;B&#34;,0)
+document.write(pos)</pre>
+<p>输出：</p>
+<pre>0</pre>
+</div>
+<div class="backtoreference">
+<p><a href="vbscript_ref_functions.html">返回 VBScript 函数参考手册</a></p>
+</div>
+</div>
+<div id="sidebar">
+<div class="rs"></div>
+<div id="tools">
+<h5 id="tools_reference"><a href="vbscript_ref_functions.html">VBScript 参考手册</a></h5>
+<h5 id="tools_example"><a href="../example/vbst_examples.html">VBScript 实例</a></h5>
+</div>
+<div class="a120x600"><script type="text/javascript">var cpro_id="u1293136";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div><div class="b"></div>
+</div>
+</body>
+</html>

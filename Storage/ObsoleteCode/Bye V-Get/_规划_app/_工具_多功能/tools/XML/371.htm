@@ -1,0 +1,345 @@
+<html>
+<head>
+<title>结构完整的HTML</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+
+<link rel = stylesheet href = "image/style.css">
+</head>
+<body bgcolor="#ffffff">
+<table width="688" border="0" cellspacing="0" cellpadding="0" align="center">
+  <tr bgcolor="EEEEEE"> 
+    <td height="22"><a href="index.htm">主页</a></td>
+  </tr>
+</table><br>
+<table border="0" cellpadding="0" cellspacing="0" width="688" align="center" height="490">
+  <tr valign="top"> 
+    <td rowspan="4" width="91">&nbsp; </td>
+    <td height="68" width="131"> 
+      <p><img src="image/doc.gif"></p>
+    </td>
+    <td rowspan="4" width="18"><b></b> </td>
+    <td height="68" width="387"><img src="image/title_doc.gif"></td>
+    <td rowspan="4" width="61"> 
+      <h6>&nbsp;</h6>
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td rowspan="3" valign="top" class="pt10" align="center" width="131" bgcolor="EEEEEE"> 
+      <p>&nbsp;</p>
+      <p><font color="#FF0000">※ 6.4 结构完整的HTML</font></p>
+       
+	</td>
+  </tr>
+  <tr valign="top"> 
+    <td width="387" height="308"> 
+      <table width="100%" border="0" cellpadding="0">
+        <tr> 
+          <td>
+
+           <h4><a name="_Toc467197046">6.4 结构完整的HTML</a></h4>
+<p>即使在大部分Web浏览器还不能直接支持XML的情况下，也可以通过编写结构完整的HTML来练习XML技巧。这就是遵守XML的结构完整性约束，但只是使用标准的HTML标记的HTML。结构完整的HTML比多数人和FrontPage等工具编写的不标准的HTML容易读取，同时容易被Web机器人中用动检索引擎理解。它更为强健，对它作一些改动不会破坏它，在转移的过程中不会因为变换浏览器和操作平台对它产生影响。而且可以使用XML工具服务于HTML文档，这对于那些服务器不支持XML的读者来说仍然保持了向后的兼容性。</p>
+<h5><a name="_Toc467197047">6.4.1 现实的Web页面存在的问题</a></h5>
+<p>真正的Web页面非常不标准。没有结束标记，元素重叠，在页面中包含未经处理的小于号，忽略实体引用后面的分号。存在这些问题的Web页面严格来讲是无效的，但部分浏览器能接受它们。不过如果校正了这些问题，页面将会更整洁，显示更快，更容易维护。</p>
+<p>Web页面包含的一些常见的问题：</p>
+<ol>
+  <p>
+  <li> 起始标记没有对应的结束标记（没有结束元素）</li>
+  <p></p>
+  <p>
+  <li> 结束标记没有相应的起始标记</li>
+  <p></p>
+  <p>
+  <li> 元素重叠</li>
+  <p></p>
+  <p>
+  <li> 属性值未加引号</li>
+  <p></p>
+  <p>
+  <li> 没有避免使用&lt;、&gt;、&amp;和"符号</li>
+  <p></p>
+  <p>
+  <li> 没有根元素</li>
+  <p></p>
+  <p>
+  <li> 结束标记与起始标记不匹配</li>
+  <p></p>
+</ol>
+<p>清单大致按照其重要性排列，但确切的细节因标记不同而变化。例如，没有被结束的&lt;STRONG&gt;标记会把跟随其后的所有元素变为粗体。但是没有被结束的&lt;LI&gt;或者&lt;P&gt;标记不会引发任何问题。</p>
+<p>有几条规则仅适用于XML文档，如果试图把它们汇集在已存在的HTML页面中，确实会带来问题。这些规则有：</p>
+<p>1．以一个XML声明开始</p>
+<p>2．空标记必须以/&gt;结束</p>
+<p>3．使用的实体引用只有&amp;amp;、&amp;lt;、&amp;gt;、&amp;apos;和&amp;quot;。</p>
+<p>校正这些问题并不难，只是有几个稍不注意就会出现问题。下面让我们仔细加以研究。</p>
+<h6>6.4.1.1 结束所有的起始标记</h6>
+<p>任何含有内容的元素，无论是文本还是别的子元素，应该有一个起始标记和结束标记。HTML不绝对要求这样做。例如&lt;P&gt;、&lt;DT&gt;、&lt;DD&gt;和&lt;LI&gt;经常被单独使用。但是，这样做主要依靠Web浏览器能够很好地判断一个元素的结束位置，浏览器并不总能确切地按照作者的意愿去做。因此最好是明确地结束所有起始标记。</p>
+<p>对于编写HTML的方法，这里要求对其所作的最大改变是把&lt;P&gt;看作一个容器，而不是一个简单的段落分界符。例如，以前格式化Federalist 
+  Papers的开始部分，如下所示：</p>
+<p>To the People of the State of New York:</p>
+<p>&lt;P&gt;</p>
+<p>AFTER an unequivocal experience of the inefficiency of the</p>
+<p>subsisting federal government,you are called upon to</p>
+<p>deliberate on a new Constitution for the United States of</p>
+<p>America.The subject speaks its own importance;comprehending</p>
+<p>in its consequences nothing less than the existence of the</p>
+<p>UNION,the safety and welfare of the parts of which it is</p>
+<p>composed,the fate of an empire in many respects the most</p>
+<p>interesting in the world.It has been frequently remarked that</p>
+<p>it seems to have been reserved to the people of this country,</p>
+<p>by their conduct and example,to decide the important question,</p>
+<p>whether societies of men are really capable or not of</p>
+<p>establishing good government from reflection and choice,or</p>
+<p>whether they are forever destined to depend for their political</p>
+<p>constitutions on accident and force.If there be any truth in</p>
+<p>the remark,the crisis at which we are arrived may with</p>
+<p>propriety be regarded as the era in which that decision is to</p>
+<p>be made;and a wrong election of the part we shall act may,in</p>
+<p>this view,deserve to be considered as the general misfortune</p>
+<p>of mankind.</p>
+<p>&lt;P&gt;</p>
+<p>结构完整性要求将上面语句格式化为：</p>
+<p>&lt;P&gt;</p>
+<p>To the People of the State of New York:</p>
+<p>&lt;/P&gt;</p>
+<p>&lt;P&gt;</p>
+<p>AFTER an unequivocal experience of the inefficiency of the</p>
+<p>subsisting federal government,you are called upon to</p>
+<p>deliberate on a new Constitution for the United States of</p>
+<p>America.The subject speaks its own importance;comprehending</p>
+<p>in its consequences nothing less than the existence of the</p>
+<p>UNION,the safety and welfare of the parts of which it is</p>
+<p>composed,the fate of an empire in many respects the most</p>
+<p>interesting in the world.It has been frequently remarked that</p>
+<p>it seems to have been reserved to the people of this country,</p>
+<p>by their conduct and example,to decide the important question,</p>
+<p>whether societies of men are really capable or not of</p>
+<p>establishing good government from reflection and choice,or</p>
+<p>whether they are forever destined to depend for their political</p>
+<p>constitutions on accident and force.If there be any truth in</p>
+<p>the remark,the crisis at which we are arrived may with</p>
+<p>propriety be regarded as the era in which that decision is to</p>
+<p>be made;and a wrong election of the part we shall act may,in</p>
+<p>this view,deserve to be considered as the general misfortune</p>
+<p>of mankind.</p>
+<p>&lt;/P&gt;</p>
+<p>你以前学过的可能是把&lt;P&gt;看作一个段落的结束，现在应当把它看作一个开始。这会带来一些好处，例如可以方便地为一个段落指定多种格式化属性。例如，下面是可在http://thomas.loc.gov/home/hres581.html上看到的 
+  House Resolution 581的原始HTML标题：</p>
+<p>&lt;center&gt;</p>
+<p>&lt;p&gt;&lt;h2&gt;House Calendar No.272&lt;/h2&gt;</p>
+<p>&lt;p&gt;&lt;h1&gt;105TH CONGRESS 2D SESSION H.RES.581&lt;/h1&gt;</p>
+<p>&lt;p&gt;[Report No.105-795 ]</p>
+<p>&lt;p&gt;&lt;b&gt;Authorizing and directing the Committee on the</p>
+<p>Judiciary to investigate whether sufficient grounds</p>
+<p>exist for the impeachment of William Jefferson Clinton,</p>
+<p>President of the United States.&lt;/b&gt;</p>
+<p>&lt;/center&gt;</p>
+<p>下面是同样的文本，但使用的是结构完整的HTML。Align属性代替了相应的center元素，并且使用CSS样式属性代替了&lt;b&gt;标记。</p>
+<p>&lt;h2 align="center"&gt;House Calendar No.272&lt;/h2&gt;</p>
+<p>&lt;h1 align="center"&gt;105TH CONGRESS 2D SESSION H.RES.581&lt;/h1&gt;</p>
+<p>&lt;p align="center"&gt;[Report No.105-795 ]&lt;/p&gt;</p>
+<p>&lt;p align="center" style="font-weight:bold"&gt;</p>
+<p>Authorizing and directing the Committee on the Judiciary to</p>
+<p>investigate whether sufficient grounds exist for the</p>
+<p>impeachment of William Jefferson Clinton,</p>
+<p>President of the United States.</p>
+<p>&lt;/p&gt;</p>
+<h6>6.4.1.2 删除孤立的结束标记并且不要使元素重叠</h6>
+<p>在编辑页面时，删除一个起始标记而忘了删除相应的结束标记，这种情况很常见。在HTML中，一个孤立的结束标记如&lt;/STRONG&gt;或者&lt;/TD&gt;没有任何相匹配的起始标记不会引发问题。但是这样会使文件比需要的更长，下载速度变慢，而且潜在地使人或工具理解和编辑HTML源文件发生混淆。因此应当确保每个结束标记都有正确的起始标记。</p>
+<p>但是结束标记没有任何起始标记往往意味着那些元素错误地重叠了。在Web页面上的大部分重叠元素很容易修改。例如下面这种常见的错误：</p>
+<p>&lt;B&gt;&lt;I&gt;This text is bold and italic&lt;/B&gt;&lt;/I&gt;</p>
+<p>I元素在B元素中开始，也必须在B元素中结束。需要做的只是交换两个结束标记的位置：</p>
+<p>&lt;B&gt;&lt;I&gt;This text is bold and italic&lt;/I&gt;&lt;/B&gt;</p>
+<p>同样可以交换两个起始标记：</p>
+<p>&lt;I&gt;&lt;B&gt;This text is bold and italic&lt;/B&gt;&lt;/I&gt;</p>
+<p>偶尔会遇到一个棘手的问题。例如，下面是来自白宫主页的一个片段（http：//www.whitehouse.gov/，1998年11月4日）。其中已醒目地标出了有问题的标记，很容易看出错误所在：</p>
+<p>&lt;TD <i>valign</i>=<i>TOP width</i>=85&gt;</p>
+<p>&lt;FONT size=+1&gt;</p>
+<p>&lt;A HREF="/WH/New"&gt;&lt;img border=0</p>
+<p>src="/WH/images/pin_calendar.gif"</p>
+<p>align=LEFT height=50 width=75 hspace=5 vspace=5&gt;&lt;/A&gt;&lt;br&gt;<i>&lt;/TD&gt;</i></p>
+<p>&lt;TD valign=TOP width=225&gt;</p>
+<p>&lt;A HREF="/WH/New"&gt;&lt;B&gt;What ’s New:&lt;/B&gt;&lt;/A&gt;&lt;br&gt;</p>
+<p>&lt;/FONT&gt;</p>
+<p>What’s happening at the White &lt;nobr&gt;House -&lt;/nobr&gt;&lt;br&gt;</p>
+<p>&lt;font size=2&gt;&lt;b&gt;</p>
+<p>&lt;!-- New Begin --&gt;</p>
+<p>&lt;a href="/WH/New/html/19981104-12244.html"&gt;Remarks Of The</p>
+<p>President Regarding Social Security&lt;/a&gt;</p>
+<p>&lt;BR&gt;</p>
+<p>&lt;!-- New End --&gt;</p>
+<p>&lt;/font&gt;</p>
+<p>&lt;/b&gt;</p>
+<p>&lt;/TD&gt;</p>
+<p>其中，&lt;FONT size=+1&gt;元素在第一个&lt;TD valign=TOP width=85&gt;元素中开始，但是它的后续部分越过该元素结束于另一个&lt;TD 
+  valign=TOP width=225&gt;元素中。在此情况下，正确的处理方法是在第一个&lt;/TD&gt;结束标记之前立即结束&lt;FONT 
+  size=+1&gt;起始标记，然后在第二个TD元素开始之后立即添加一个新的&lt;FONT size=+1&gt;起始标记，如下所示：</p>
+<p>&lt;TD valign=TOP width=85&gt;</p>
+<p>&lt;FONT size=+1&gt;</p>
+<p>&lt;A HREF="/WH/New"&gt;&lt;img border=0</p>
+<p>src="/WH/images/pin_calendar.gif"</p>
+<p>align=LEFT height=50 width=75 hspace=5 vspace=5&gt;&lt;/A&gt;&lt;br&gt;</p>
+<p>&lt;/FONT&gt;&lt;/TD&gt;</p>
+<p>&lt;TD valign=TOP width=225&gt;</p>
+<p>&lt;FONT size=+1&gt;</p>
+<p>&lt;A HREF="/WH/New"&gt;&lt;B&gt;What ’s New:&lt;/B&gt;&lt;/A&gt;&lt;br&gt;</p>
+<p>&lt;/FONT&gt;</p>
+<p>What ’s happening at the White &lt;nobr&gt;House -&lt;/nobr&gt;&lt;br&gt;</p>
+<p>&lt;font size=2&gt;&lt;b&gt;</p>
+<p>&lt;!-- New Begin --&gt;</p>
+<p>&lt;a href="/WH/New/html/19981104-12244.html"&gt;Remarks Of The</p>
+<p>President Regarding Social Security&lt;/a&gt;</p>
+<p>&lt;BR&gt;</p>
+<p>&lt;!-- New End --&gt;</p>
+<p>&lt;/font&gt;</p>
+<p>&lt;/b&gt;</p>
+<p>&lt;/TD&gt;</p>
+<h6>6.4.1.3 给所有属性加引号</h6>
+<p>HTML属性只有在含有空格时才需要加引号，即使含有引号对它也并无妨碍。而且使用引号有助于以后将属性值修改为含有空格的属性值。很容易忘记加引号，尤其对于&lt;IMG&gt;中ALT这样的属性，在使用Web浏览器查看文档时它们的错误不很明显。</p>
+<p>例如下面的&lt;IMG&gt;标记：</p>
+<p>&lt;IMG SRC=cup.gif WIDTH=89 HEIGHT=67 ALT=Cup&gt;</p>
+<p>应将其改写为：</p>
+<p>&lt;IMG SRC="cup.gif" WIDTH="89" HEIGHT="67" ALT="Cup"&gt;</p>
+<h6>6.4.1.4 &lt;、&gt;和&amp;必须转义</h6>
+<p>HTML对小于号和与号的要求比XML宽松得多。即使这样，在纯HTML文本中它们确实也会引起麻烦，特别是在它们直接跟有其他字符时。例如，考虑下面来自Eudora软件中的From：标题中的email地址在经过复制和粘贴后显示的样子：</p>
+<p>Elliotte Rusty Harold &lt;elharo@metalab.unc.edu&gt;</p>
+<p>如果用HTML来显示的话，看到的可能是：</p>
+<p>Elliotte Rusty Harold</p>
+<p>elharo@metalab.unc.edu无意间被尖括号隐藏了。如果想在HTML中包含原始的小于号和与号，应当使用&amp;lt;和&amp;amp;代替。其正确的HTML形式是：</p>
+<p>Elliotte Rusty Harold &amp;lt;elharo@metalab.unc.edu&amp;gt;</p>
+<p>没有转义的大于号带来的问题不易察觉，如果在它之前有一个未结束的标记，它会被解释为一个置标。文档中会出现这种没有完成的标记，而且附近的大于号会掩盖它们的存在。例如下面的一段Java代码：</p>
+<p>for (int i=0;i&lt;10;i++){</p>
+<dir> 
+  <p>for (int j=20;j&gt;10;j--){</p>
+</dir>
+<p>这很可能显示为：``</p>
+<p>for (int i=0;i10;j--){</p>
+<p>如果这只是一个100行程序中的两行，在随便校正时极有可能错过这种疏忽。另一方面，如果转义了大于号，而未转义小于号将会隐藏程序的其余部分，而且这种问题容易被发现。</p>
+<h6>6.4.1.5 使用一个根元素</h6>
+<p>用于HTML文件的根元素被假定为html。大部分浏览器允许不包含它的这种疏忽。尽管如此，最好把&lt;html&gt;作为文档的第一个标记，&lt;/html&gt;作为文档的最后一个标记。如果其他文本或置标出现在&lt;html&gt;之前或&lt;/html&gt;之后，应把它们移到&lt;html&gt;和&lt;/html&gt;之间。</p>
+<p>这个问题常见的形式是忘记在文档的结尾包括&lt;/html&gt;。我通常先键入&lt;html&gt;和&lt;/html&gt;，然后在它们之间键入其他内容，而不是在编写完整个文档再加&lt;/html&gt;标记，指望着几天后还会记得应该加上&lt;/html&gt;标记。</p>
+<h6>6.4.1.6 所有标记使用相同的大小写形式</h6>
+<p>HTML对大小写不敏感，XML则不然。应推荐给标记挑选一个唯一的大小写形式，要么都大写，要么都小写，并且贯穿全文。这样做比记住每一个标记的细节要简单。我通常选小写，因为它比较容易输入。而且W3C将HTML再现为XML应用程序的结果也使用这个格式。</p>
+<img src="image/BK000206-13.gif" width=52 height=37 align="LEFT" hspace=12> 
+<p>在第20章中读取文档类型定义一节将详细描述HTML再现为XML。但是必须停止更深的探讨，因为这项工作使用在后面几章中学不到的技巧。</p>
+<h6>6.4.1.7 用"/&gt;"结束空标记</h6>
+<p>把HTML转换成结构完整的XML，其中最令人讨厌的就是空标记。HTML在形式上不能识别XML的&lt;elementname/&gt;空标记句法。虽然很容易将&lt;br&gt;转换为&lt;br/&gt;，&lt;hr&gt;转换为&lt;hr/&gt;，&lt;img&gt;转换为&lt;img/&gt;，但是给定的浏览器是否会正确显示变换后的标记是一个未知数。</p>
+<p><img src="image/BK000206-12.gif" width=49 height=50>不要把&lt;br&gt;，&lt;hr&gt;，&lt;img&gt;这样真正的空元素与标准的HTML中只有一个起始标记但能够带有内容的标记混淆，如&lt;p&gt;，&lt;li&gt;，&lt;dt&gt;，和&lt;dd&gt;。</p>
+<p> 一个被XML规范认可的最简单的解决办法是用不含有内容的起始和结束标记对替换空标记。浏览器将忽略该不能识别的结束标记，请看下面的实例：</p>
+<p>&lt;br&gt;&lt;/br&gt;</p>
+<p>&lt;hr&gt;&lt;/hr&gt;</p>
+<p>&lt;IMG SRC="cup.gif" WIDTH="89" HEIGHT="67" ALT="Cup"&gt;&lt;/IMG&gt;</p>
+<p> 在实践中这样做确实没有什么问题，但有一个明显的例外。Netscape 4.5以及更早的版本把&lt;/br&gt;和&lt;br&gt;看成是一样的，当作一个换行符号。因此&lt;br&gt;是单个换行符号，&lt;br&gt;&lt;/br&gt;则是一对换行符号，实际上更像一个段落标记。而且，Netscape完全忽略&lt;br/&gt;。必须支持传统浏览器的Web站点（几乎是所有的Web站点）不能使用&lt;br&gt;&lt;/br&gt;或者&lt;br/&gt;。在实践中对于XML和传统浏览器都适用的解决办法如下：</p>
+<p>&lt;br /&gt;</p>
+<p>请注意&lt;br和/&gt;之间的空格，确实解释不了这样为什么管用，而其他更多的变化却</p>
+<p></p>
+<p>不行。如果你确实想使用结构完整的HTML，我所能做的只是提供可能奏效的解决办法。</p>
+<h6>6.4.1.8 只使用&amp;amp;、&amp;lt;、&amp;gt;、&amp;apos;和&amp;quot;实体引用</h6>
+<p>许多Web页面除了&amp;amp;、&amp;lt;、&amp;gt;、&amp;apos;、和&amp;quot;之外确实不需要更多的实体引用。但是HTML 
+  4.0中规定了许多：</p>
+<ul>
+  <p>
+  <li>&amp;trade;为商标号（&trade;）</li>
+  <p></p>
+  <p>
+  <li>&amp;copy;为版权号（&copy;）</li>
+  <p></p>
+  <p>
+  <li>&amp;infin;为无穷大号∞</li>
+  <p></p>
+  <p>
+  <li>&amp;pi;为小写的希腊字母pi，π</li>
+  <p></p>
+</ul>
+<p>还有几百个别的实体引用，但是使用任何一个将破坏文档的结构完整性。解决这个问题的方法是使用一个DTD。我们将在第9章中讨论DTD对实体引用的影响。同时下面有几个暂时的解决办法。</p>
+<p>最简单的办法是以某一字符集编码一个包含全部所需符号的文档，然后使用一个&lt;META&gt;指令指定正在使用的字符集。例如，指定文档使用UTF-8编码（一个字符集，包含了几乎全部可能用到的字符，将在第7章讨论），而且应当把它放到文档的开头。</p>
+<p>&lt;META http-equiv="Content-Type"</p>
+<p>content="text/html;charset=UTF-8"&gt;</p>
+<p>或者可以简单地告诉Web服务器，让它提供必要的内容类型标题。通常使用&lt;META&gt;标记要简单一些：</p>
+<p>Content-Type:text/html;charset=UTF-8</p>
+<p>采用这种方法的问题是许多浏览器不一定能显示UTF-8字符集。对于其他提供所用的特殊字符的字符集也一样。</p>
+<p>HTML 4.0支持XML中的字符实体引用。这就是说可以使用&amp;#后跟Unicode中字符的十进制或者十六进制代码来代替一个字符。例如：</p>
+<ul>
+  <p>
+  <li>&amp;#8482; 为商标号（&trade;）</li>
+  <p></p>
+  <p>
+  <li>&amp;#169; 为版权号（&copy;）</li>
+  <p></p>
+  <p>
+  <li>&amp;#8734; 为无穷大号∞</li>
+  <p></p>
+  <p>
+  <li>&amp;#960; 为小写的希腊字母pi，π</li>
+  <p></p>
+</ul>
+<p>HTML 3.2只正式支持界于0和255（ISO Latin-1）之间的数字字符引用，而Navigator 4.0和以后的版本以及Internet Explorer能识别更多的Unicode字符。</p>
+<p>如果确实需要一个结构完整的向后与HTML兼容的XML，可以把这些字符作为内联图片。例如：</p>
+<ul>
+  <p>
+  <li>&lt;img src="tm.gif" width="12" height="12" alt="TM"&gt;&lt;/img&gt;， &lt;/img&gt;商标号(tm)；</li>
+  <p></p>
+  <p>
+  <li>&lt;img src="copyright.gif" width="12" height="12" lt="Copyright"&gt; a，为版权号（c）；</li>
+  <p></p>
+  <p>
+  <li>&lt;img src="infinity.gif" width="12" height="12" alt="infinity"&gt;&lt;/img&gt;，无穷大号∞；</li>
+  <p></p>
+  <p>
+  <li>&lt;img src="pi.gif" width="12" height="12" alt="pi"&gt;&lt;/img&gt;，小写的希腊字母pi，π。</li>
+  <p></p>
+</ul>
+<p>事实上，我不赞成使用这种方法。结构完整性在HTML中并不太重要，它只是强制读者增加了下载和显示出来的时间。</p>
+<h6>6.4.1.9 XML声明</h6>
+<p>HTML文档不需要XML声明，但有也无妨。Web浏览器只忽略它们不承认的标记。从这一点看，下面这一行就是另外一个标记：</p>
+<p>&lt;?xml version="1.0" standalone="yes"?&gt;</p>
+<p>因为不懂XML的浏览器解释不了&lt;?xml?&gt;标记，它们会简单地忽略它。懂得XML的浏览器会把它当作一个提示，表明该文档是结构完整的XML文档，并按此处理它。</p>
+<p>遗憾的是，不完全懂得XML的浏览器分析这些句法非常困难。特别是Internet Explorer 4.0 for the Mac（不是指Netscape 
+  Navigator或者其他版本的IE）把它当作下载一个文件的信号，而不作显示。因此，不得不从Web页面中将XML声名删除。</p>
+<h6>6.4.1.10 遵循规则</h6>
+<p>按照本章描述的规则编写结构完整的XML文档不是特别困难，但是XML浏览器对于不标准的句法不像HTML浏览器那样宽容，因此要细心编写。</p>
+<p>如果违反了任何结构完整性约束，XML分析器和浏览器将报告一个句法错误。因此编写XML的过程与用某种编程语言编写代码的过程有些相似，首先编写，然后编译，如果编译失败再根据报告的错误修改。</p>
+<p>通常在能够看到完成的文档之前要经过几次从编辑到编译的过程。而且编写XML文档比编写C和Java源代码要容易得多，只要很少的练习就会达到只出现相当少的错误，编写XML的速度几乎与你输入的速度一样快。</p>
+<h5><a name="_Toc467197048">6.4.2 HTML整理工具</a></h5>
+<p>有几种工具能够帮助我们整理页面。最引人注目的是来自XML.COM的RUWF（Are You Well Formed?）和由W3C的Dave Raggett编写的HTML 
+  Tidy。</p>
+<h6>6.4.2.1 RUWF</h6>
+<p>任何能够检验XML文档结构完整性的工具同样能够检验结构完整的HTML文档。其中最容易使用的工具是来自XML.COM的RUWF结构完整性检验程序。图6-2显示了该检验程序。只要键入想检验的页面的URL，RUWF就会返回在页面上发现的几十个错误。</p>
+<p><img src="image/BK000206-15.gif" width=464 height=426></p>
+<p>图6-2 RUWF结构完整性检验器</p>
+<p>下面是RUWF在白宫主页上找到的第一批错误。这些错误大部分是不标准的XML，但是它们是合法的HTML。但至少有一处错误（“第55行，30列：&lt;/FONT&gt;周围没有相应的起始标记”）对HTML和XML都是一个错误。</p>
+<p>Line 28,column 7:Encountered &lt;/HEAD&gt;expected &lt;/META&gt;</p>
+<p>...assumed &lt;/META&gt;...assumed &lt;/META&gt;...assumed &lt;/META&gt;</p>
+<p>...assumed &lt;/META&gt;</p>
+<p>Line 36,column 12,character ‘0 ’:after AttrName=in start-tag</p>
+<p>Line 37,column 12,character ‘0 ’:after AttrName=in start-tag</p>
+<p>Line 38,column 12,character ‘0 ’:after AttrName=in start-tag</p>
+<p>Line 40,column 12,character ‘0 ’:after AttrName=in start-tag</p>
+<p>Line 41,column 10,character ‘A ’:after AttrName=in start-tag</p>
+<p>Line 42,column 12,character ‘0 ’:after AttrName=in start-tag</p>
+<p>Line 43,column 14:Encountered &lt;/CENTER&gt;expected &lt;/br&gt;</p>
+<p>...assumed &lt;/br&gt;...assumed &lt;/br&gt;</p>
+<p>Line 51,column 11,character ‘+’:after AttrName=in start-tag</p>
+<p>Line 52,column 51,character ‘0 ’:after AttrName=in start-tag</p>
+<p>Line 54,column 57:after &amp;</p>
+<p>Line 55,column 30:Encountered &lt;/FONT&gt;with no start-tag.</p>
+<p>Line 57,column 10,character ‘A ’:after AttrName=in start-tag</p>
+<p>Line 59,column 15,character ‘+’:after AttrName=in start-tag</p>
+<h6>6.4.2.2 HTML Tidy</h6>
+<p>一旦确定了问题就会想到要修改它们，许多常见的问题&#0;&#0;例如，给属性值加引号&#0;&#0;是能够自动被修改的。做这种修改最便利的工具是Dave 
+  Raggett的命令行程序HTML Tidy。Tidy是用ANSI C写成的一个字符-模式程序，能够在许多操作平台如Windows、Unix、BeOS和Mac系统上执行。</p>
+<p><img src="image/BK000206-12.gif" width=49 height=50>Tidy在本书所附的CD-ROM的utilities/tidy目录中，包含用于Windows 
+  NT和BeOS的二进制代码和用于所有操作平台的可移植代码。可以从站点http://www.w3.org/People/Raggett/tidy/中下载最新版本的Tidy。</p>
+<p>Tidy通过几种不同的方式整理HTML文件，它们并非都与XML结构完整性有关。事实上在默认模式下，Tidy倾向于删除不必要的结束标记（对HTML而言，不是对XML），像&lt;/LI&gt;。并且对破坏结构完整性的地方作一些修改。但是可以使用-asxml开关指定需要结构完整的XML输出。例如，把index.html文件转换为结构完整的XML，需要从DOS窗口或者外壳提示符下输入：</p>
+<p>C:\&gt;tidy -m -asxml index.html</p>
+<p>-m标志告诉Tidy就地转换文件。-asxml标志告诉Tidy把输出的文档格式转化为XML文档。</p>
+ 
+<a href='370.htm'>&lt;&lt;上一篇</a>&nbsp;&nbsp;<a href='372.htm'>下一篇&gt;&gt;</a></td>
+        </tr>
+      </table>
+      <p>&nbsp; </p>
+    </td>
+  </tr>
+</table>
+
+</body>
+
+</html>

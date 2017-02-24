@@ -1,0 +1,114 @@
+<html xmlns:rdl>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<script src="rdl_properties.js"></script>
+<base target="_self">
+</head>
+<body>
+
+<script>
+
+//collFriendProperties=new Array();
+//collFriendDeclarations=new Array();
+//collFriendAtRules=new Array();
+//collFriendElements=new Array();
+//collFriendClasses=new Array();
+
+collFriendProperties=new Array(
+'height','max-width','min-width','max-height','min-height'
+);
+
+//collIE40=new Array();
+//collIE50=new Array();
+//collIE55=new Array();
+//collIE60=new Array();
+
+collIE40=new Array(
+'A','ACRONYM','ADDRESS','APPLET','B','BDO','BIG','BLOCKQUOTE','BUTTON','CAPTION','CENTER','CITE','CODE','DD','DEL','DFN','DIR','DIV','DL','DT','EM','EMBED','FIELDSET','FONT','FORM','FRAME','FRAMESET','Hn','HR','I','IFRAME','IMG','INPUT type=button','INPUT type=checkbox','INPUT type=file','INPUT type=image','INPUT type=password','INPUT type=radio','INPUT type=reset','INPUT type=submit','INPUT type=text','INS','KBD','LABEL','LEGEND','LI','LISTING','MARQUEE','MENU','NOBR','OBJECT','OL','OPTION','P','PLAINTEXT','PRE','Q','S','SAMP','SELECT','SMALL','SPAN','STRIKE','STRONG','style','SUB','SUP','TABLE','TD','TEXTAREA','TH','TR','TT','U','UL','VAR','XMP'
+);
+
+collIE50=new Array(
+'RT','RUBY','runtimeStyle','currentStyle','CUSTOM'
+);
+
+sStyle=
+'<style>\n'+
+'#idParentDIV{width:100%;height:80px;padding:6px;background-color:buttonshadow;}\n'+
+'#idDIV{width:80%;height:40px;background-color:#FF6633;color:#FFFFFF;padding:6px;}\n'+
+'#idCodeDiv{width:80%;padding:4px;font-family:verdana,tahoma;margin:12px 0px 0px 0px;background-color:#EEEEEE;font-weight:bold;}\n'+
+'<\/style>\n';
+
+sScript=
+'<script>\n'+
+'function rdl_change(e){\n'+
+'var oCodeDiv=document.all("idCodeDiv");\n'+
+'var oDiv=document.all("idDiv");\n'+
+'with (document.all("idSel")) var sValue=options[selectedIndex].value;\n'+
+'oDiv.style.width=sValue;\n'+
+'oCodeDiv.innerText="width : "+sValue+";";\n'+
+'}\n'+
+'<\/script>\n';
+
+sCode=
+'<div id=idParentDIV><div id=idDIV>请从下方选择我的<b> width <\/b>值。<\/div><\/div>\n'+
+'<br>\n'+
+'<select id="idSel" onchange="rdl_change();">\n'+
+'<option value="auto">---width---\n'+
+'<option value="60%">60%\n'+
+'<option value="400px">400px\n'+
+'<option value="150">150\n'+
+'<option value="6cm">6cm\n'+
+'<\/select>\n'+
+'<br>\n'+
+'<div id=idCodeDiv>width : normal ;<\/div>\n';
+
+iWinWidth=360;
+
+iWinHeight=320;
+
+//bRunCode=false;
+
+//bElements=false;
+
+</script>
+
+<div id=idContent>
+
+<div id=idContentTitle><span id=idTitleName>width</span>版本：CSS1　 兼容性：IE4+ NS6+　继承性：无</div>
+
+<div class=cssColumnTitle>语法：</div>
+<div>
+<b>width : </b><span class=cssDefault><b>auto</b></span> | <i>length</i>
+</div>
+
+<div class=cssColumnTitle>取值：</div>
+<table>
+<tr><td nowrap><b> auto </b></td><td nowrap><b>:</b></td><td><b>默认值</b>。无特殊定位，根据HTML定位规则分配</td></tr>
+<tr><td nowrap><i> length </i></td><td nowrap><b>:</b></td><td>由浮点数字和单位标识符组成的长度值 | 百分数。百分数是基于父对象的宽度。不可为负数。请参阅<a href="d_length.html"> 长度单位 </a></td></tr>
+</table>
+
+<div class=cssColumnTitle>说明：</div>
+<div>
+检索或设置对象的宽度。<br>
+对于<b> img </b>来说，仅指定此属性，其<a href="c_width.html"> height </a>值将根据图片源尺寸等比例缩放。<br>
+按照样式表的规则，对象的实际宽度为其下列属性值之和：<br>
+<a href="c_marginleft.html">margin-left</a> + <a href="c_borderleft.html">border-left</a> + <a href="c_paddingleft.html">padding-left</a>
+ + <b>width</b> + <a href="c_paddingright.html">padding-right</a> + <a href="c_borderright.html">border-right</a> + <a href="c_marginright.html">margin-right</a><br>
+ 在IE6中使用<b> !DOCTYPE </b>声明指定<b> standards-compliant </b>模式可以实现这一点。<br>
+而在IE6中如果没有将<b> !DOCTYPE </b>声明指定<b> standards-compliant mode</b>，以及以前的浏览器版本，对象的实际宽度等于：<br>
+<a href="c_marginleft.html">margin-left</a> + <b>width</b> + <a href="c_marginright.html">margin-right</a><br>
+此属性对于<b> currentStyle </b>对象而言是只读的。对于其他对象而言是可读写的。<br>
+对应的脚本特性为<b> width </b>。其值为一字符串，所以不可用于脚本(Scripts)中的计算。请使用<b> style </b>对象的<b> posWidth </b>，<b> pixelWidth </b>，以及对象的<b> offsetWidth </b>等特性。
+</div>
+
+<div class=cssColumnTitle>示例：</div>
+<div id=idSimpleCode>
+div { width: 1in; }<br>div { position:absolute; top:-3px; width:6px; } 
+</div>
+
+</div>
+</body>
+</html>
+
+<!-- Part of RDL(TM) - Written by Rain1977 
+HomeSite: http://www.dhtmlet.com  E-Mail: dhtmlet@hotmail.com -->

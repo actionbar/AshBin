@@ -1,0 +1,12 @@
+f  文章
+  i=id
+  s=site
+  a=site 第一个类
+  b=city mdeiumint
+  c= 第三类
+  h=title
+  k=keyword
+  d=description
+  f=file 
+  n=转载地
+  t=时间

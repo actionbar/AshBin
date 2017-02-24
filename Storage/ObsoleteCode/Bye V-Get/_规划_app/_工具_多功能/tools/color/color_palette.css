@@ -1,0 +1,98 @@
+BODY {
+	BACKGROUND-IMAGE: url(background.gif); TEXT-ALIGN: center
+}
+H3 {
+	COLOR: #FF0000
+}
+.container {
+	BACKGROUND-IMAGE: url(text_bg.gif);
+	WIDTH: 690px;
+	border: 1px solid #CCCCCC;
+}
+#mContainer {
+	BORDER-RIGHT: #000 1px solid; PADDING-RIGHT: 3px; BORDER-TOP: #000 1px solid; PADDING-LEFT: 3px; Z-INDEX: 11; PADDING-BOTTOM: 3px; MARGIN: auto; BORDER-LEFT: #000 1px solid; WIDTH: 250px; PADDING-TOP: 3px; BORDER-BOTTOM: #000 1px solid; POSITION: relative; HEIGHT: 100px; BACKGROUND-COLOR: #f8f7e4
+}
+#darkLayer {
+	LEFT: 5px; WIDTH: 250px; HEIGHT: 50px
+}
+#lightLayer {
+	LEFT: 5px; WIDTH: 250px; HEIGHT: 50px
+}
+#darkLayer {
+	BACKGROUND: #000; TOP: 50px
+}
+#lightLayer {
+	BACKGROUND: #fff; TOP: 5px
+}
+.swatch {
+	DISPLAY: block; FLOAT: left; WIDTH: 50px; CURSOR: pointer; HEIGHT: 50px
+}
+.textContainer {
+	FONT-SIZE: 12px; Z-INDEX: 1; MARGIN: auto; WIDTH: 375px; POSITION: relative; TEXT-ALIGN: center
+}
+.textContainer SPAN {
+	PADDING-RIGHT: 2px; PADDING-LEFT: 2px; PADDING-BOTTOM: 0px; WIDTH: 50px; PADDING-TOP: 0px; TEXT-ALIGN: center
+}
+#controls {
+	BORDER-TOP: #000 1px solid; FONT-SIZE: 12px; Z-INDEX: 1; MARGIN: 5px auto 0px; WIDTH: 350px; PADDING-TOP: 5px; POSITION: relative
+}
+#controls INPUT {
+	BORDER-RIGHT: #000 1px solid; PADDING-RIGHT: 2px; BORDER-TOP: #000 1px solid; PADDING-LEFT: 2px; FONT-SIZE: 12px; PADDING-BOTTOM: 2px; MARGIN: 4px; BORDER-LEFT: #000 1px solid; WIDTH: 90px; PADDING-TOP: 2px; BORDER-BOTTOM: #000 1px solid
+}
+SELECT {
+	BORDER-RIGHT: #000 1px solid; PADDING-RIGHT: 2px; BORDER-TOP: #000 1px solid; PADDING-LEFT: 2px; FONT-SIZE: 12px; PADDING-BOTTOM: 2px; MARGIN: 4px; BORDER-LEFT: #000 1px solid; WIDTH: 90px; PADDING-TOP: 2px; BORDER-BOTTOM: #000 1px solid
+}
+#previewContainer INPUT {
+	BORDER-RIGHT: #000 1px solid; PADDING-RIGHT: 2px; BORDER-TOP: #000 1px solid; PADDING-LEFT: 2px; FONT-SIZE: 12px; PADDING-BOTTOM: 2px; MARGIN: 4px; BORDER-LEFT: #000 1px solid; WIDTH: 90px; PADDING-TOP: 2px; BORDER-BOTTOM: #000 1px solid
+}
+.txt {
+	WIDTH: 90px; BACKGROUND-COLOR: #f8f7e4
+}
+SELECT {
+	WIDTH: 90px; BACKGROUND-COLOR: #f8f7e4
+}
+.btn {
+	CURSOR: pointer; COLOR: #fff; BACKGROUND-COLOR: #749f91
+}
+#controls #txt {
+	BORDER-RIGHT: #000 1px solid; BORDER-TOP: #000 1px solid; DISPLAY: none; FONT-SIZE: 12px; BORDER-LEFT: #000 1px solid; WIDTH: 250px; COLOR: #000; BORDER-BOTTOM: #000 1px solid; HEIGHT: 175px; BACKGROUND-COLOR: #f8f7e4
+}
+.colorTable {
+	BORDER-RIGHT: 1px solid; PADDING-RIGHT: 0px; BORDER-TOP: 1px solid; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: auto; BORDER-LEFT: 1px solid; WIDTH: 250px; PADDING-TOP: 0px; BORDER-BOTTOM: 1px solid
+}
+.colorTable TR TD {
+	PADDING-RIGHT: 2px; PADDING-LEFT: 2px; FONT-SIZE: 12px; PADDING-BOTTOM: 2px; WIDTH: 10px; PADDING-TOP: 2px; BORDER-BOTTOM: #000 1px solid
+}
+.colorTable TR TD DIV {
+	WIDTH: 100%; HEIGHT: 100%
+}
+#instructions {
+	BORDER-TOP: #000 1px solid; FONT-SIZE: 12px; MARGIN: 5px auto 0px; WIDTH: 350px; POSITION: relative; TEXT-ALIGN: left
+}
+#instructions P {
+	LINE-HEIGHT: 1.5em
+}
+#credits {
+	BORDER-TOP: #000 1px solid; FONT-SIZE: 12px; MARGIN: 25px auto 0px; WIDTH: 250px; BORDER-BOTTOM: #000 1px solid; POSITION: relative; HEIGHT: 90px
+}
+#credits IMG {
+	BORDER-RIGHT: #000000 1px solid; BORDER-TOP: #000000 1px solid; FLOAT: left; MARGIN: 5px 10px 5px 0px; BORDER-LEFT: #000000 1px solid; WIDTH: 80px; BORDER-BOTTOM: #000000 1px solid; HEIGHT: 79px
+}
+.controlsTable {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; FONT-SIZE: 12px; PADDING-BOTTOM: 0px; MARGIN: auto; WIDTH: 350px; PADDING-TOP: 0px
+}
+#scrollContainer {
+	OVERFLOW: auto; WIDTH: 290px; BORDER-BOTTOM: #000 1px solid; HEIGHT: 200px; BACKGROUND-COLOR: #f8f7e4
+}
+#previewContainer {
+	BORDER-RIGHT: #000 1px solid; BORDER-TOP: #000 1px solid; DISPLAY: none; FONT-SIZE: 12px; Z-INDEX: 10; LEFT: -20px; MARGIN: auto; BORDER-LEFT: #000 1px solid; WIDTH: 290px; BORDER-BOTTOM: #000 1px solid; POSITION: absolute; TOP: 50px; HEIGHT: 300px; BACKGROUND-COLOR: #ffffff
+}
+#previewContainer .ctrl {
+	PADDING-RIGHT: 5px; PADDING-LEFT: 5px; Z-INDEX: 10; PADDING-BOTTOM: 5px; PADDING-TOP: 5px; BACKGROUND-COLOR: #fff
+}
+.previewColor {
+	BORDER-RIGHT: #000 1px solid; BORDER-TOP: #000 1px solid; Z-INDEX: 10; BORDER-LEFT: #000 1px solid; WIDTH: 50px; CURSOR: pointer; BORDER-BOTTOM: #000 1px solid; HEIGHT: 50px
+}
+.hr {
+	WIDTH: 550px; HEIGHT: 1px
+}

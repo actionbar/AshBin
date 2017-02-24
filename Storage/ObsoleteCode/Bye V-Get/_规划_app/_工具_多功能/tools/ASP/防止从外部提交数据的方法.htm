@@ -1,0 +1,95 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>防止从外部提交数据的方法</title>
+<style type="text/css">
+<!--
+body {
+	font-size: 10.4pt;
+	line-height: 22px;
+}
+-->
+</style>
+</head>
+
+<body bgcolor="#eeeeee" leftmargin="20" marginwidth="20">
+<p><strong>防止从外部提交数据的方法</strong></p>
+<hr>
+<p>第一种做法，屏蔽特殊字符和关键字</p>
+<p>fqys=request.servervariables(&quot;query_string&quot;) </p>
+<p>dim nothis(18) </p>
+<p>nothis(0)=&quot;net user&quot; </p>
+<p>nothis(1)=&quot;xp_cmdshell&quot; </p>
+<p>nothis(2)=&quot;/add&quot; </p>
+<p>nothis(3)=&quot;exec%20master.dbo.xp_cmdshell&quot; </p>
+<p>nothis(4)=&quot;net localgroup administrators&quot; </p>
+<p>nothis(5)=&quot;select&quot; </p>
+<p>nothis(6)=&quot;count&quot; </p>
+<p>nothis(7)=&quot;asc&quot; </p>
+<p>nothis(8)=&quot;char&quot; </p>
+<p>nothis(9)=&quot;mid&quot; </p>
+<p>nothis(10)=&quot;'&quot; </p>
+<p>nothis(11)=&quot;:&quot; </p>
+<p>nothis(12)=&quot;&quot;&quot;&quot; </p>
+<p>nothis(13)=&quot;insert&quot; </p>
+<p>nothis(14)=&quot;delete&quot; </p>
+<p>nothis(15)=&quot;drop&quot; </p>
+<p>nothis(16)=&quot;truncate&quot; </p>
+<p>nothis(17)=&quot;from&quot; </p>
+<p>nothis(18)=&quot;%&quot; </p>
+<p>errc=false </p>
+<p>for i= 0 to ubound(nothis) </p>
+<p>if instr(FQYs,nothis(i))&lt;&gt;0 then </p>
+<p>errc=true </p>
+<p>end if </p>
+<p>next </p>
+<p>if errc then </p>
+<p>response.write &quot;&lt;script language=&quot;&quot;javascript&quot;&quot;&gt;&quot; 
+</p>
+<p>response.write &quot;parent.alert('很抱歉!你正在试图攻击本服务器或者想取得本服务器最高管理权!将直接转向首页..');&quot; 
+</p>
+<p>response.write &quot;self.location.href='default.asp';&quot; </p>
+<p>response.write &quot;&lt;/script&gt;&quot; </p>
+<p>response.end </p>
+<p>end if </p>
+<hr>
+<p>第二种可以防止客户从本地提交到网站上</p>
+<p>&lt;% </p>
+<p>server_v1=Cstr(Request.ServerVariables(&quot;HTTP_REFERER&quot;)) </p>
+<p>server_v2=Cstr(Request.ServerVariables(&quot;SERVER_NAME&quot;)) </p>
+<p>if mid(server_v1,8,len(server_v2))&lt;&gt;server_v2 then </p>
+<p>response.write &quot;&lt;br&gt;&lt;br&gt;&lt;center&gt;&lt;table border=1 cellpadding=20 
+  bordercolor=black bgcolor=#EEEEEE width=450&gt;&quot; </p>
+<p>response.write &quot;&lt;tr&gt;&lt;td style=font:9pt Verdana&gt;&quot; </p>
+<p>response.write &quot;你提交的路径有误，禁止从站点外部提交数据请不要乱该参数！&quot; </p>
+<p>response.write &quot;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/center&gt;&quot; 
+</p>
+<p>response.end </p>
+<p>end if </p>
+<p>%&gt; </p>
+<hr>
+<p>第三。这样可以防止在输入框上打上or 1=1 的字样
+</p><p>If Instr(request(&quot;username&quot;),&quot;=&quot;)&gt;0 or </p>
+<p>Instr(request(&quot;username&quot;),&quot;%&quot;)&gt;0 or </p>
+<p>Instr(request(&quot;username&quot;),chr(32))&gt;0 or </p>
+<p>Instr(request(&quot;username&quot;),&quot;?&quot;)&gt;0 or </p>
+<p>Instr(request(&quot;username&quot;),&quot;&amp;&quot;)&gt;0 or </p>
+<p>Instr(request(&quot;username&quot;),&quot;;&quot;)&gt;0 or </p>
+<p>Instr(request(&quot;username&quot;),&quot;,&quot;)&gt;0 or </p>
+<p>Instr(request(&quot;username&quot;),&quot;'&quot;)&gt;0 or </p>
+<p>Instr(request(&quot;username&quot;),&quot;?&quot;)&gt;0 or </p>
+<p>Instr(request(&quot;username&quot;),chr(34))&gt;0 or </p>
+<p>Instr(request(&quot;username&quot;),chr(9))&gt;0 or </p>
+<p>Instr(request(&quot;username&quot;),&quot;&quot;)&gt;0 or </p>
+<p>Instr(request(&quot;username&quot;),&quot;$&quot;)&gt;0 or </p>
+<p>Instr(request(&quot;username&quot;),&quot;&gt;&quot;)&gt;0 or </p>
+<p>Instr(request(&quot;username&quot;),&quot;&lt;&quot;)&gt;0 or </p>
+<p>Instr(request(&quot;username&quot;),&quot;&quot;&quot;&quot;)&gt;0 then </p>
+<p><br>
+</p>
+<p></p>
+<p>&nbsp;</p>
+<p></p>
+</body>
+</html>

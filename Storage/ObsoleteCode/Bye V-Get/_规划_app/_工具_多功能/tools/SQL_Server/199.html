@@ -1,0 +1,7 @@
+<meta http-equiv="content-type" content="text/html; charset=gb2312"><FONT 
+style="FONT-SIZE: 9pt; LINE-HEIGHT: 15pt"><B>TRUNCATE&nbsp;all&nbsp;table</B><BR>Declare&nbsp;@t&nbsp;varchar&nbsp;(1024)<BR>Declare&nbsp;tbl_cur&nbsp;cursor&nbsp;for&nbsp;&nbsp;<BR>select&nbsp;TABLE_NAME&nbsp;from&nbsp;INFORMATION_SCHEMA.TABLES&nbsp;WHERE&nbsp;TABLE_TYPE&nbsp;=&nbsp;'BASE&nbsp;TABLE'
+<P></P>
+<P>OPEN&nbsp;tbl_cur</P>
+<P>FETCH&nbsp;NEXT&nbsp;&nbsp;from&nbsp;tbl_cur&nbsp;INTO&nbsp;@t</P>
+<P>WHILE&nbsp;@@FETCH_STATUS&nbsp;=&nbsp;0<BR>BEGIN<BR>EXEC&nbsp;('TRUNCATE&nbsp;TABLE&nbsp;'+&nbsp;@t)<BR>FETCH&nbsp;NEXT&nbsp;&nbsp;from&nbsp;tbl_cur&nbsp;INTO&nbsp;@t<BR>END</P>
+<P>CLOSE&nbsp;tbl_cur<BR>DEALLOCATE&nbsp;tbl_Cur</P></FONT>

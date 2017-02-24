@@ -1,0 +1,15 @@
+<script type="text/javascript" src="http://localhost/p0.v-get.com/c.js"></script>
+<div id="b">dd</div>
+<script type="text/javascript">
+//$C("v3local",1,0);
+//设置两组，一组是地址，一组是数值
+//var l=$p($3.location.href,"/"),m=l[L(l)-1];
+var m=302; //获取url的id，用以比较cookie数组是否存在
+//301是网址，1235是访问量
+var v3=$C("v3local"),va=[],vb;
+if(v3){F($p(v3,","),function(s){if(L(s)>0){var a=$p(s,"=");va[$i(a[0])]=$i(a[1])}});
+for(I in va){if(m==I){vb=va[I]}}}
+else v3="";
+if($u(vb)){H($("b"),vb);}else A("http://localhost/www.v-get.com/wuliu/help/ips.php",m,$("b"),function(h){$C("v3local",v3+","+m+"="+h,1)});
+
+</script>

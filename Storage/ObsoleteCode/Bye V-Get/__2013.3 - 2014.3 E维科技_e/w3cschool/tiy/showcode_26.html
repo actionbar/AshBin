@@ -1,0 +1,24 @@
+<html>
+<head><link rel="stylesheet" type="text/css" href="showcode.css" /></head>
+<body>
+<pre>
+<code class="aspcode">&lt;%
+if Request.Form(&#34;select&#34;)&lt;&gt;&#34;&#34; then
+       Response.Redirect(Request.Form(&#34;select&#34;))
+end if
+%&gt;</code>   
+&lt;html&gt;
+&lt;body&gt;
+&lt;form action=&#34;/example/aspe/demo_aspe_redirect.asp&#34; method=&#34;post&#34;&gt;
+&lt;input type=&#34;radio&#34; name=&#34;select&#34; 
+value=&#34;/example/aspe/demo_aspe_server.asp&#34;&gt;
+服务器实例&lt;br&gt;
+&lt;input type=&#34;radio&#34; name=&#34;select&#34; 
+value=&#34;/example/aspe/demo_aspe_text.asp&#34;&gt;
+文本实例&lt;br&gt;&lt;br&gt;
+&lt;input type=&#34;submit&#34; value=&#34;跳转！&#34;&gt;
+&lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt; 
+</pre>
+</body>

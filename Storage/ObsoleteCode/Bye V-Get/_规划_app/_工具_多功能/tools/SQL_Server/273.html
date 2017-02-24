@@ -1,0 +1,10 @@
+<meta http-equiv="content-type" content="text/html; charset=gb2312">&nbsp;<FONT 
+style="FONT-SIZE: 9pt; LINE-HEIGHT: 15pt"><B>INF：SQL&nbsp;Server&nbsp;内存使用量(cityboy)</B><BR>调试了两天，竟然在微软发现了这个，，，，
+<P></P>
+<P><BR>这篇文章中的信息适用于:<BR>Microsoft&nbsp;SQL&nbsp;Server&nbsp;2000（所有版本）<BR>Microsoft&nbsp;SQL&nbsp;Server&nbsp;7.0</P>
+<P>本文的发布号曾为&nbsp;CHS321363&nbsp;<BR>概要在您启动&nbsp;SQL&nbsp;Server&nbsp;之后，SQL&nbsp;Server&nbsp;内存使用量将会持续稳定上升，即使当服务器上活动很少时也不会下降。另外，任务管理器和性能监视器将显示计算机上可用的物理内存稳定下降，直到可用内存降到&nbsp;4&nbsp;至&nbsp;10&nbsp;MB&nbsp;为止。</P>
+<P>仅仅出现这种状态不表示内存泄漏。此行为是正常的，并且是&nbsp;SQL&nbsp;Server&nbsp;缓冲池的预期行为。</P>
+<P>默认情况下，SQL&nbsp;Server&nbsp;根据操作系统报告的物理内存加载动态增大和收缩其缓冲池（缓存）的大小。只要有足够的内存可用于防止内存页面交换（在&nbsp;4&nbsp;至&nbsp;10&nbsp;MB&nbsp;之间），SQL&nbsp;Server&nbsp;缓冲池就会继续增大。像在与&nbsp;SQL&nbsp;Server&nbsp;分配内存位于相同计算机上的其他进程一样，SQL&nbsp;Server&nbsp;缓冲区管理器将在需要的时候释放内存。SQL&nbsp;Server&nbsp;每秒可以释放和获取几兆字节的内存，从而使它可以快速适应内存分配变化。&nbsp;<BR>更多信息您可以通过服务器内存最小值和服务器内存最大值配置选项设置&nbsp;SQL&nbsp;Server&nbsp;数据库引擎使用的内存（缓冲池）量的上下限。在设置服务器内存最小值和服务器内存最大值选项之前，请查阅以下&nbsp;Microsoft&nbsp;知识库文章中标题为"内存"一节中的参考信息：<BR>319942&nbsp;HOW&nbsp;TO：Determine&nbsp;Proper&nbsp;SQL&nbsp;Server&nbsp;Configuration&nbsp;Settings（确定正确的&nbsp;SQL&nbsp;Server&nbsp;配置设置）</P>
+<P>请注意，服务器内存最大值选项只限制&nbsp;SQL&nbsp;Server&nbsp;缓冲池的大小。服务器内存最大值选项不限制剩余的未保留内存区域，SQL&nbsp;Server&nbsp;准备将该区域分配给其他组件，例如扩展存储过程、COM&nbsp;对象、以及非共享&nbsp;DLL、EXE&nbsp;和&nbsp;MAPI&nbsp;组件。由于前面的分配，SQL&nbsp;Server&nbsp;专用字节超过服务器内存最大值配置是很正常的。有关此未保留内存区域中分配的其他信息，请单击下面的文章编号，以查看&nbsp;Microsoft&nbsp;知识库中相应的文章：&nbsp;</P>
+<P>316749&nbsp;PRB：在使用大量数据库时可能没有足够的虚拟内存</P>
+<P>参考<BR>SQL&nbsp;Server&nbsp;联机图书；主题："服务器内存最小值和最大值的影响"；"内存体系结构"；"服务器内存选项"；"SQL&nbsp;Server&nbsp;内存池"&nbsp;<BR>最近更新:&nbsp;2003-1-13&nbsp;<BR>关键字&nbsp;kbinfo&nbsp;KB321363&nbsp;</P></FONT>

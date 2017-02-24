@@ -1,0 +1,74 @@
+<html>
+<head>
+<title>计数器和自动编号</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+
+<link rel = stylesheet href = "image/style.css">
+</head>
+<body bgcolor="#ffffff">
+<table width="688" border="0" cellspacing="0" cellpadding="0" align="center">
+  <tr bgcolor="EEEEEE"> 
+    <td height="22"><a href="index.htm">主页</a></td>
+  </tr>
+</table><br>
+<table border="0" cellpadding="0" cellspacing="0" width="688" align="center" height="490">
+  <tr valign="top"> 
+    <td rowspan="4" width="91">&nbsp; </td>
+    <td height="68" width="131"> 
+      <p><img src="image/doc.gif"></p>
+    </td>
+    <td rowspan="4" width="18"><b></b> </td>
+    <td height="68" width="387"><img src="image/title_doc.gif"></td>
+    <td rowspan="4" width="61"> 
+      <h6>&nbsp;</h6>
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td rowspan="3" valign="top" class="pt10" align="center" width="131" bgcolor="EEEEEE"> 
+      <p>&nbsp;</p>
+      <p><font color="#FF0000">※ 13.6 计数器和自动编号</font></p>
+       
+	</td>
+  </tr>
+  <tr valign="top"> 
+    <td width="387" height="308"> 
+      <table width="100%" border="0" cellpadding="0">
+        <tr> 
+          <td>
+
+           <h4><a name="_Toc467205957">13.6 计数器和自动编号</a></h4>
+<p>CSS2能自动地产生某些内容。例如，可使用样式单来创建这样的一个大纲：使用不同的编号系统对大纲的每个层次进行适当的缩进。</p>
+<p>counter-increment属性使计数器（counter）加1。content属性使用counter(<i>id</i>)或counter(<i>id</i>, 
+  <i>list-style-type</i>)函数作为值，插入指定计数器的当前值。最后，counter-reset属性将计数器设置归0。</p>
+<p>例如，假定从1开始要对诗中的每个VERSE进行计数，但在每个新的STANZA和REFRAIN中重新计数。可使用下面的规则达到此目的：</p>
+<p>VERSE { counter-increment: verse-num }</p>
+<p>STANZA { counter-reset: verse-num }</p>
+<p>REFRAIN { counter-reset: verse-num }</p>
+<p>VERSE：before { content: counter(verse-num) }</p>
+<p>可在counter-reset中的计数器名后，指定重设的整数，就可以重新将计数器设回到非0的数。例如，下面的规则将计数器设回到-10：</p>
+<p>VERSE { counter-reset: verse-num –10 }</p>
+<p>在counter-increment中的计数器名后，指定非1的整数作为递增量。例如，</p>
+<p>VERSE { counter-increment: verse-num –1 }</p>
+<p>最后，content属性可有不止一个计数器以及附加内容及其计数器。例如，下面的这些规则以1.1，1.2，1.3，...，2.1，2.2，2.3，...的形式对诗进行编号，第一编号表示节，第二个编号为诗句：</p>
+<p>VERSE {counter-increment: verse-num }</p>
+<p>STANZA {counter-reset: verse-num }</p>
+<p>STANZA {counter-increment: stanza-num }</p>
+<p>REFRAIN {counter-reset: verse-num }</p>
+<p>REFRAIN {counter-reset: stanza-num 0 }</p>
+<p>VERSE:before {content:</p>
+<p> counter(stanza-num) "." counter(verse-num)</p>
+<p>还可以使用非欧洲数字。counter()函数的第二个参数可用来指定不同的数字格式。现有的格式有disc、circle、square、decimal、decimal-leading-zero、lower-roman、upper-roman、lower-greek、lower-alpha、lower-latin、upper-alpha、upper-latin、hebrew、armenian、georgian、cjk-ideographic、hiragana、katakana、hiragana-iroha和katakana-iroha。例如，使用平假名的日文数字来对诗进行编号，可以这样编写：</p>
+<p>VERSE：before {content: counter(stanza-num, hiragana)</p>
+<p> "." counter(verse-num, hiragana) }</p>
+ 
+<a href='469.htm'>&lt;&lt;上一篇</a>&nbsp;&nbsp;<a href='471.htm'>下一篇&gt;&gt;</a></td>
+        </tr>
+      </table>
+      <p>&nbsp; </p>
+    </td>
+  </tr>
+</table>
+
+</body>
+
+</html>

@@ -1,0 +1,207 @@
+<html xmlns:rdl>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<script src="rdl_method.js"></script>
+<base target="_self">
+</head>
+<body>
+
+<script>
+
+//collFriendObjects=new Array();
+//collFriendProperties=new Array();
+//collFriendMethods=new Array();
+//collFriendEvents=new Array();
+//collFriendCollections=new Array();
+
+collFriendMethods=new Array(
+'write','close','writeln','clear'
+);
+
+collFriendObjects=new Array(
+'document'
+);
+
+collFriendEvents=new Array(
+'onbeforeunload','onunload'
+);
+
+//collIE40=new Array();
+//collIE50=new Array();
+//collIE55=new Array();
+//collIE60=new Array();
+
+collIE40=new Array(
+'window'
+);
+
+sStyle=
+'<style>\n'+
+'#idParentDiv{width:100%;overflow-y:scroll;padding:6px;height:180px;background-color:buttonshadow;color:#FFFFFF;}\n'+
+'#idDiv{width:290px;text-align:left;padding:6px;background-color:#000000;font-family:tahoma,Arial;filter:progid:DXImageTransform.Microsoft.Matrix(M11=1.0, sizingmethod="auto expand");}\n'+
+'#idCodeDiv{width:100%;padding:4px;font-family:verdana,tahoma;margin:12px 0px 0px 0px;background-color:#EEEEEE;font-weight:bold;}\n'+
+'<\/style>\n';
+
+sScript=
+'<script>\n'+
+'var sFeatures="width=250,height=250";\n'+
+'function rdl_updateCode(){\n'+
+'oCodeDiv=document.all("idCodeDiv");\n'+
+'with (document.all("idToolbar")) {if (checked) sToolbar="toolbar=1,";else sToolbar="";}\n'+
+'with (document.all("idStatus")) {if (checked) sStatus="status=1,";else sStatus="";}\n'+
+'with (document.all("idScrollbars")) {if (checked) sScrollbars="scrollbars=1,";else sScrollbars="";}\n'+
+'with (document.all("idResizable")) {if (checked) sResizable="resizable=1,";else sResizable="";}\n'+
+'with (document.all("idMenubar")) {if (checked) sMenubar="menubar=1,";else sMenubar="";}\n'+
+'with (document.all("idLocation")) {if (checked) sLocation="location=1,";else sLocation="";}\n'+
+'with (document.all("idFullscreen")) {if (checked) sFullscreen="fullscreen=1,";else sFullscreen="";}\n'+
+'with (document.all("idChannelmode")) {if (checked) sChannelmode="channelmode=1,";else sChannelmode="";}\n'+
+'with (document.all("idDirectories")) {if (checked) sDirectories="directories=1,";else sDirectories="";}\n'+
+'sFeatures=sDirectories+sChannelmode+sFullscreen+sLocation+sMenubar+sResizable+sScrollbars+sStatus+sToolbar+"width=250,height=250";\n'+
+'oCodeDiv.innerText="window.open(location.href,\\"_blank\\","+sFeatures+");";\n'+
+'}\n'+
+'function rdl_open(){\n'+
+'window.open(location.href,"_blank",sFeatures);\n'+
+'}\n'+
+'<\/script>\n';
+
+sCode=
+'<table onclick="rdl_updateCode();"><tr><td>\n'+
+'<input type=checkbox id=idToolbar><\/td><td><label for=idToolbar>工具条(toolbar)<\/label>\n'+
+'<\/td><td>\n'+
+'<input type=checkbox id=idStatus><\/td><td><label for=idToolbar>状态条(status)<\/label>\n'+
+'<\/td><td>\n'+
+'<input type=checkbox id=idScrollbars><\/td><td><label for=idScrollbars>滚动条(scrollbars)<\/label>\n'+
+'<\/td></tr><tr><td>\n'+
+'<input type=checkbox id=idResizable><\/td><td><label for=idResizable>改变尺寸(resizable)<\/label>\n'+
+'<\/td><td>\n'+
+'<input type=checkbox id=idMenubar><\/td><td><label for=idMenubar>菜单条(menubar)<\/label>\n'+
+'<\/td><td>\n'+
+'<input type=checkbox id=idLocation><\/td><td><label for=idLocation>地址栏(location)<\/label>\n'+
+'<\/td></tr><tr><td>\n'+
+'<input type=checkbox id=idFullscreen><\/td><td><label for=idFullscreen>全屏(fullscreen)<\/label>\n'+
+'<\/td><td>\n'+
+'<input type=checkbox id=idChannelmode><\/td><td><label for=idChannelmode>频道模式(channelmode)<\/label>\n'+
+'<\/td><td>\n'+
+'<input type=checkbox id=idDirectories><\/td><td><label for=idDirectories>路径按钮(directories)<\/label>\n'+
+'<\/td><\/tr><\/table>\n'+
+'<input type=button value="打开窗口" onclick="rdl_open();">\n'+
+'<br>\n'+
+'<div id=idCodeDiv>window.open(location.href,"_blank");<\/div>\n';
+
+iWinWidth=520;
+
+iWinHeight=310;
+
+//bRunCode=false;
+
+</script>
+
+<div id=idContent>
+
+<div id=idContentTitle><span id=idTitleName>open</span>版本：DOM1　返回值：有</div>
+
+<div class=cssColumnTitle>语法：</div>
+<div>
+<i>oNewWindow</i><b> = </b><a href="../objects/window.html"><b>window</b></a><b> . open ( </b><i>sURL</i><b> , </b><i>sName</i><b> , </b><i>sFeatures</i><b> , </b><i>bReplace</i><b> ) </b>
+</div>
+
+<div class=cssColumnTitle>参数：</div>
+<table>
+
+<tr><td nowrap><i> sUrl </i></td><td nowrap><b>:</b></td><td>
+<b>可选项</b>。字符串(String)。指定要被加载的HTML文档的 URL 地址。假如无指定值，则<b> about:blank </b>的新窗口会被显示。</td></tr>
+
+<tr><td nowrap><i> sName </i></td><td nowrap><b>:</b></td><td>
+<b>可选项</b>。字符串(String)。 指定打开的窗口的名字。这个名字可以用于<a href="../objects/form.html"> form </a>或<a href="../objects/a.html"> a </a>对象的
+<a href="../properties/target.html"> TARGET </a>属性。此名字也可以使用下列通用名称: 
+<table>
+<tr><td nowrap><b> _media </b></td><td nowrap><b>:</b></td><td nowrap class=cssVersion> IE6.0 </td>
+<td>在浏览器左边的媒体面板内打开<i> sUrl </i>。</td></tr>
+<tr><td nowrap><b> _blank </b></td><td nowrap><b>:</b></td><td nowrap class=cssVersion> </td>
+<td>在新窗口中打开<i> sUrl </i>。</td></tr>
+<tr><td nowrap><b> _parent </b></td><td nowrap><b>:</b></td><td nowrap class=cssVersion> </td>
+<td>在当前框架的父框架内打开。假如当前框架无父框架，此参数值等同于<b> _self </b>。</td></tr>
+<tr><td nowrap><b> _search </b></td><td nowrap><b>:</b></td><td nowrap class=cssVersion> IE5.0 </td>
+<td>在浏览器左边的搜索面板内打开<i> sUrl </i>。</td></tr>
+<tr><td nowrap><b> _self </b></td><td nowrap><b>:</b></td><td nowrap class=cssVersion> </td>
+<td><i> sUrl </i>在当前窗口中打开，覆盖当前文档。</td></tr>
+<tr><td nowrap><b> _top </b></td><td nowrap><b>:</b></td><td nowrap class=cssVersion> </td>
+<td>在所有框架之外的最顶层窗口中打开<i> sUrl </i>。假如当前窗口无框架结构，此参数值等同于<b> _self </b>。</td></tr>
+</table>
+</td></tr>
+
+<tr><td nowrap><i> sFeatures </i></td><td nowrap><b>:</b></td><td>
+<b>可选项</b>。字符串(String)。 指定窗口装饰样式。使用下面的值。多个之间用逗号隔开。只有当新的浏览器窗口被建立时，此参数的设置才会发生作用。
+<table>
+<tr><td nowrap><b> channelmode = { yes | no | 1 | 0 } </b></td><td nowrap><b></b></td>
+<td>指定是否将窗口显示为频道模式。默认值为<span class=cssDefault><b> no </b></span>。</td></tr>
+<tr><td nowrap><b> directories = { yes | no | 1 | 0 } </b></td><td nowrap><b></b></td>
+<td>指定是否显示「链接」按钮。默认值为<span class=cssDefault><b> yes </b></span>。</td></tr>
+<tr><td nowrap><b> fullscreen = { yes | no | 1 | 0 } </b></td><td nowrap><b></b></td>
+<td>指定是否以全屏方式显示窗口。默认值为<span class=cssDefault><b> no </b></span>。要小心使用全屏模式，因为这种模式会隐藏浏览器窗口的标题栏和菜单。如果没有在页面内提供关闭窗口的功能，用户可以使用 ALT+F4 快捷键关闭窗口。</td></tr>
+<tr><td nowrap><b> height = </b><i>number </td><td nowrap><b></b></td>
+<td>设置窗口的高度。最小值为<b> 100 </b>。</td></tr>
+<tr><td nowrap><b> left = </b><i>number</i> </td><td nowrap><b></b></td>
+<td>设置窗口左上角相对于桌面的横坐标。单位为像素(<b> px </b>)。</td></tr>
+<tr><td nowrap><b> width = </b><i>number </td><td nowrap><b></b></td>
+<td>设置窗口的宽度。最小值为<b> 100 </b>。</td></tr>
+<tr><td nowrap><b> top = </b><i>number</i> </td><td nowrap><b></b></td>
+<td>设置窗口左上角相对于桌面的纵坐标。单位为像素(<b> px </b>)。</td></tr>
+<tr><td nowrap><b> location = { yes | no | 1 | 0 } </b></td><td nowrap><b></b></td>
+<td>设置是否显示浏览器窗口的地址栏。默认值为<span class=cssDefault><b> yes </b></span>。</td></tr>
+<tr><td nowrap><b> menubar = { yes | no | 1 | 0 } </b></td><td nowrap><b></b></td>
+<td>设置是否显示浏览器窗口的菜单栏。默认值为<span class=cssDefault><b> yes </b></span>。</td></tr>
+<tr><td nowrap><b> resizable = { yes | no | 1 | 0 } </b></td><td nowrap><b></b></td>
+<td>设置窗口是否允许被用户改变尺寸。默认值为<span class=cssDefault><b> yes </b></span>。</td></tr>
+<tr><td nowrap><b> scrollbars = { yes | no | 1 | 0 } </b></td><td nowrap><b></b></td>
+<td>设置窗口是否可以具有滚动条。默认值为<span class=cssDefault><b> yes </b></span>。</td></tr>
+<tr><td nowrap><b> status = { yes | no | 1 | 0 } </b></td><td nowrap><b></b></td>
+<td>设置是否显示浏览器窗口的状态栏。默认值为<span class=cssDefault><b> yes </b></span>。</td></tr>
+<tr><td nowrap><b> titlebar = { yes | no | 1 | 0 } </b></td><td nowrap><b></b></td>
+<td>设置是否显示浏览器窗口的标题栏。除非调用程序是HTML应用程式(<b> HTA </b>)或被信任的对话框，否则此参数将被忽略。默认值为<span class=cssDefault><b> yes </b></span>。</td></tr>
+<tr><td nowrap><b> toolbar = { yes | no | 1 | 0 } </b></td><td nowrap><b></b></td>
+<td>设置是否显示浏览器窗口的工具条。默认值为<span class=cssDefault><b> yes </b></span>。</td></tr>
+</table>
+</td></tr>
+
+<tr><td nowrap><i> bReplace </i></td><td nowrap><b>:</b></td><td>
+<b>可选项</b>。布尔值(Boolean)。<b>false</b> | <b>true</b>
+<table>
+<tr><td nowrap><b> false </b></td><td nowrap><b>:</b></td>
+<td>新打开的文档覆盖历史列表里的当前文档。</td></tr>
+<tr><tr><td nowrap><b> true </b></td><td nowrap><b>:</b></td>
+<td>文新打开的文档被简单的添加到历史列表的最后。</td></tr>
+</table>
+</td></tr>
+
+</table>
+
+<div class=cssColumnTitle>返回值：</div>
+<table>
+<tr><td nowrap><i> oNewWindow </i></td><td nowrap><b>:</b></td><td>对象(Element)。返回对新的<a href="../objects/window.html"><b> window </b></a>对象的引用。</td></tr>
+</table>
+
+<div class=cssColumnTitle>说明：</div>
+<div>
+打开新窗口并载入<i> sUrl </i>指定的HTML文档。
+默认情况下，此方法建立的新窗口具有默认的高度、宽度，以及菜单、工具条等。您可以使用<i> sFeatures </i>参数改变它们的设置。<br>
+当<i> sFeatures </i>参数被指定时，没有在参数值的列表中出现的装饰样式都会被自动设置为<b> no </b>。<br>
+IE5+ 中允许控制打开的窗口的标题栏。通过在被信任的程序像 Microsoft&reg; Visual Basic 或者HTML应用程式(<b> HTA </b>)中打开窗口可以关闭标题栏。他们是可信任的因为他们使用 Microsoft&reg; Internet Explorer 作为浏览器接口。<br>
+当文档内的对象上的事件(<a href="../objects/event.html"> event </a>)激发的函数调用<a href="open.html"> open </a>方法时，<a href="../objects/window.html"> window </a>对象的<a href="open_0.html"> open </a>方法被使用。而当文档内的对象上的事件(<a href="../objects/event.html"> event </a>)直接使用<a href="open.html"> open </a>方法时，<a href="../objects/document.html"> document </a>对象的<a href="open_1.html"> open </a>方法被使用。
+
+</div>
+
+<div class=cssColumnTitle>示例：</div>
+<div id=idSimpleCode>
+window.open('about:blank');<br>
+window.open('rdl_demo.html');<br>
+window.open('http://www.dhtmlet.com/rdl_demo.html',null,'height=200,width=400,status=yes,toolbar=no,menubar=no,location=no');
+</div>
+
+
+</div>
+</body>
+</html>
+
+<!-- Part of RDL(TM) - Written by Rain1977 
+HomeSite: http://www.dhtmlet.com  E-Mail: dhtmlet@hotmail.com -->

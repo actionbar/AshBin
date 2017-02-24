@@ -1,0 +1,119 @@
+<html>
+<head>
+<title>方式</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+
+<link rel = stylesheet href = "image/style.css">
+</head>
+<body bgcolor="#ffffff">
+<table width="688" border="0" cellspacing="0" cellpadding="0" align="center">
+  <tr bgcolor="EEEEEE"> 
+    <td height="22"><a href="index.htm">主页</a></td>
+  </tr>
+</table><br>
+<table border="0" cellpadding="0" cellspacing="0" width="688" align="center" height="490">
+  <tr valign="top"> 
+    <td rowspan="4" width="91">&nbsp; </td>
+    <td height="68" width="131"> 
+      <p><img src="image/doc.gif"></p>
+    </td>
+    <td rowspan="4" width="18"><b></b> </td>
+    <td height="68" width="387"><img src="image/title_doc.gif"></td>
+    <td rowspan="4" width="61"> 
+      <h6>&nbsp;</h6>
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td rowspan="3" valign="top" class="pt10" align="center" width="131" bgcolor="EEEEEE"> 
+      <p>&nbsp;</p>
+      <p><font color="#FF0000">※ 14.14 方式</font></p>
+       
+	</td>
+  </tr>
+  <tr valign="top"> 
+    <td width="387" height="308"> 
+      <table width="100%" border="0" cellpadding="0">
+        <tr> 
+          <td>
+
+           <h4><a name="_Toc467207177">14.14 方式</a></h4>
+<p>有时，要在输出文档中多次地包括源文档中的相同内容。要达到此目的是很容易的：只需多次地应用模板，在每个要使数据出现的地方应用一次。但是，假如要在不同的地方对数据进行不同的格式化，那怎么办呢？这是个比较棘手的问题。</p>
+<p>例如，若要使处理周期表的输出文档形成与100个更详细描述各原子信息的链接。在此情况下，输出文档的开始很可能如下：</p>
+<p>&lt;UL&gt;</p>
+<p>&lt;LI&gt;&lt;A HREF=”#Ac”&gt;Actinium&lt;/A&gt;&lt;/LI&gt;</p>
+<p>&lt;LI&gt;&lt;A HRFF=”#Al”&gt;Aluminum&lt;/A&gt;&lt;/LI&gt;</p>
+<p>&lt;LI&gt;&lt;A HREF=”#Am”&gt;Americium&lt;/A&gt;&lt;/LI&gt;</p>
+<p>&lt;LI&gt;&lt;A HREF=”#Sb”&gt;Antimony&lt;/A&gt;&lt;/LI&gt;</p>
+<p>&lt;LI&gt;&lt;A HREF=”#Ar”&gt;Argon&lt;/A&gt;&lt;/LI&gt;</p>
+<p>&#188; </p>
+<p>在文档的后面，出现真正的原子的描述，格式化后与下面的类似：</p>
+<p>&lt;H3&gt;&lt;A NAME=”Al”&gt;Aluminum&lt;/A&gt;&lt;/H3&gt;&lt;P&gt;</p>
+<p> Aluminum</p>
+<p> 26.98154</p>
+<p> 13</p>
+<p> 3</p>
+<p> 2740</p>
+<p> 933.5</p>
+<p> Al</p>
+<p></p>
+<p> 2.7</p>
+<p></p>
+<p>&lt;/P&gt;</p>
+<p>无论何时自动生成超文本的目录或索引，使用这类方法都是很普遍的。原子的NAME在目录中必须格式化成与文档主体中不同的格式。为此，需要在文档的不同地方将两个不同的规则应用于ATOM元素。此解决办法是把每个不同的规则给予mode特性。然后设置xsl-apply-templates元素的mode特性来选择准备应用的模板。</p>
+<p>清单14-19：在两个不同地方使用mode来对相同数据进行不同的格式化的XSL样式单</p>
+<p>&lt;?xml version=”1.0”?&gt;</p>
+<p>&lt;xsl:stylesheet</p>
+<p>xmlns:xsl=”http://www.w3.org/XSL/Transform/1.0”&gt;</p>
+<p></p>
+<p> &lt;xsl:template match=”/PERIODIC_TABLE”&gt;</p>
+<p> &lt;HTML&gt;</p>
+<p> &lt;HEAD&gt;&lt;TITLE&gt;The Elements&lt;/TITLE&gt;&lt;/HEAD&gt;</p>
+<p> &lt;BODY&gt;</p>
+<p></p>
+<p> &lt;H2&gt;Table of Contents&lt;/H2&gt;</p>
+<p> &lt;UL&gt;</p>
+<p> &lt;xsl:apply-templates select=”ATOM” mode=”toc”/&gt;</p>
+<p> &lt;/UL&gt;</p>
+<p></p>
+<p> &lt;H2&gt;The Elements&lt;/H2&gt;</p>
+<p> &lt;xsl:apply-templates select=”ATOM” mode=”full”/&gt;</p>
+<p></p>
+<p> &lt;/BODY&gt;</p>
+<p> &lt;/HTML&gt;</p>
+<p> &lt;/xsl:template&gt;</p>
+<p></p>
+<p> &lt;xsl:template match=”ATOM” mode=”toc”&gt;</p>
+<p> &lt;LI&gt;&lt;A&gt;</p>
+<p> &lt;xsl:attribute name=”HREF”&gt;#(xsl:value-of</p>
+<p> select=”SYMBOL”/&gt;&lt;/xsl:attribute&gt;</p>
+<p> &lt;xsl:value-of select=”NAME”/&gt;</p>
+<p> &lt;/A&gt;&lt;/LI&gt;</p>
+<p> &lt;/xsl:template&gt;</p>
+<p></p>
+<p> &lt;xsl:template match=”ATOM” mode=”full”&gt;</p>
+<p> &lt;H3&gt;&lt;A&gt;</p>
+<p> &lt;xsl:attribute name=”NAME”&gt;</p>
+<p> &lt;xsl:value-of select=”SYMBOL”/&gt;</p>
+<p> &lt;/xsl:attribute&gt;</p>
+<p> &lt;xsl:value-of select=”NAME”/&gt;</p>
+<p> &lt;/A&gt;&lt;/H3&gt;</p>
+<p> &lt;P&gt;</p>
+<p> &lt;xsl:value-of select=”.”/&gt;</p>
+<p> &lt;/P&gt;</p>
+<p></p>
+<p> &lt;/xsl:template&gt;</p>
+<p></p>
+<p>&lt;/xsl:stylesheet&gt;</p>
+<h4></h4>
+ 
+<a href='486.htm'>&lt;&lt;上一篇</a>&nbsp;&nbsp;<a href='488.htm'>下一篇&gt;&gt;</a></td>
+        </tr>
+      </table>
+      <p>&nbsp; </p>
+    </td>
+  </tr>
+</table>
+
+</body>
+
+</html>

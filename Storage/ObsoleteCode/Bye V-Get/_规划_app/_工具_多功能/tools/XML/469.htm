@@ -1,0 +1,140 @@
+<html>
+<head>
+<title>框</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+
+<link rel = stylesheet href = "image/style.css">
+</head>
+<body bgcolor="#ffffff">
+<table width="688" border="0" cellspacing="0" cellpadding="0" align="center">
+  <tr bgcolor="EEEEEE"> 
+    <td height="22"><a href="index.htm">主页</a></td>
+  </tr>
+</table><br>
+<table border="0" cellpadding="0" cellspacing="0" width="688" align="center" height="490">
+  <tr valign="top"> 
+    <td rowspan="4" width="91">&nbsp; </td>
+    <td height="68" width="131"> 
+      <p><img src="image/doc.gif"></p>
+    </td>
+    <td rowspan="4" width="18"><b></b> </td>
+    <td height="68" width="387"><img src="image/title_doc.gif"></td>
+    <td rowspan="4" width="61"> 
+      <h6>&nbsp;</h6>
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td rowspan="3" valign="top" class="pt10" align="center" width="131" bgcolor="EEEEEE"> 
+      <p>&nbsp;</p>
+      <p><font color="#FF0000">※ 13.5 框</font></p>
+       
+	</td>
+  </tr>
+  <tr valign="top"> 
+    <td width="387" height="308"> 
+      <table width="100%" border="0" cellpadding="0">
+        <tr> 
+          <td>
+
+           <h4><a name="_Toc467205954">13.5 框</a></h4>
+<p>当使用CSS来格式化一文档及其内容时，需要用到框。框具有边界和大小，用于存放元素的内容。这些框堆叠在一起并可互相覆盖，以便根据样式单的规则，以有序的方式对齐元素的内容。CSS2给框添加了新的轮廓（outline）属性，使框能够定位在页面、其他框或窗口上的绝对位置处。</p>
+<h5><a name="_Toc467205955">13.5.1 轮廓属性</a></h5>
+<p>CSS2能够将轮廓加入到对象中。轮廓很像边框，但轮廓是绘在框之上的。其宽度不加到框宽度上。此外，如果CSS元素是非矩形的（不大可能），在此元素周围的轮廓也将是非矩形的。由于轮廓不必一定是矩形的，所以不能分别设置左、右、顶和底轮廓，只能一次改变整个轮廓。</p>
+<p><b>13.5.1.1 轮廓样式属性 </b></p>
+<p>outline-style属性设置整个框的轮廓样式，它起的作用如同CSS1中的border-style属性，并且具有同样的11个值，其含义也相同：</p>
+<p>1．none：无线条</p>
+<p>2．hidden：使线条不可见，但仍占据空间</p>
+<p>3．dotted：点线</p>
+<p>4．dashed：虚线</p>
+<p>5．solid：实线</p>
+<p>6．double：双实线</p>
+<p>7．grooved：凹槽线，好像埋入页面</p>
+<p>8．ridge：凸纹线，好像突出页面</p>
+<p>9．inset：嵌入线，整个对象（不仅仅是轮廓线）像是推入到文档里面</p>
+<p>10．outset：外置线，整个对象（不仅仅是轮廓线）像是推出文档</p>
+<p>11．inherit：使用父类的值</p>
+<p>下列三条规则设置TITLE、AUTHOR和REFRAIN元素的轮廓样式：</p>
+<p>TITLE { outline-style: solid }</p>
+<p>AUTHOR { outline-style: outset }</p>
+<p>REFRAIN {outline-style: dashed }</p>
+<p><b>13.5.1.2 轮廓宽度属性</b> </p>
+<p>outline-width属性的作用像第12章讨论的margin-width和border-width属性一样，可使用无符号的长度或下列三个关键字之一来设置框的轮廓宽度：</p>
+<p>1．thin：大约0.5到0. 75磅</p>
+<p>2．medium：大约1磅</p>
+<p>3．thick：大约1.5到2磅</p>
+<p>例如下面的这条规则给STANZA加上一条粗轮廓线，给VERSE加上一条细轮廓线。</p>
+<p>STANZA { outline: thick }</p>
+<p>VERSE { outline: thin }</p>
+<p><b>13.5.1.3 轮廓颜色属性 </b></p>
+<p>outline-color属性设置元素框的轮廓颜色。一般地说，这种设置既可以使用颜色名（如red），也可以使用RGB颜色（如#FF0000）。但是，还有关键字值invert，此值反转屏幕的像素颜色（黑色变成白色，反之亦然）。</p>
+<p>TITLE { outline color: #FFCCCC;</p>
+<p> outline-style: inset;</p>
+<p> outline width: thick }</p>
+<p>AUTHOR { outline color: #FF33CC }</p>
+<p>VERSE { outline-color: invert }</p>
+<p><b>13.5.1.4 轮廓简略属性 </b></p>
+<p>outline属性是简略属性，它设置容器框的所有四个边的轮廓宽度、颜色和样式。例如：</p>
+<p>STANZA { outline: thin dashed red }</p>
+<p>VERSE { outline: inset }</p>
+<h5><a name="_Toc467205956">13.5.2 定位属性</a></h5>
+<p>CSS2对文档中每个对象的位置提供了多种控制方法。可以把特定的对象或对象的特定类型按层放置。每层与其他层无关，可独立移动。position属性确定对象如何排列，可使用下列四个关键字值之一：</p>
+<p>1．static：缺省的布局</p>
+<p>2．relative：对象偏移其静态位置</p>
+<p>3．absolute：相对于包含对象的框，将对象放置在特定的位置</p>
+<p>4．fixed：对象放在窗口或页面的特定位置</p>
+<p><b>13.5.2.1 相对定位（relative positioning）</b> </p>
+<p>编排文档时，格式化标识符根据对象和文本的正常信息流（flow），选择项目的位置。实际上，这就是对象缺省的静态格式化，大多数文档创作者都使用这种方法来编排文档。编排文档完成之后，对象相对于当前位置可能会发生偏移。这种对象位置的调整就是所谓的相对定位。使用相对定位，改变对象的位置，对其后的对象没有任何影响。由于相对定位的框完全保持其正常的信息流的大小和间隔，因此，框可以交叠。</p>
+<p>将position属性设置为relative，可生成一个相对定位的对象。其偏移量可由left、right、top和bottom属性来控制。使用JavaScript来改变这些属性，甚至可以在文档上移动对象和层。可以使影像或文本移动、出现或消失、或中途改变。例如，下面的这条规则将TITLE元素从正常的位置向上移动50像素，向左移动65像素。</p>
+<p>TITLE { position: relative; top: 50px; left: 65px }</p>
+<p><b>13.5.2.2 绝对定位（Absolute Positioning） </b></p>
+<p>绝对定位元素参照包含它的块来放置。它可为它包含的框建立一个新的包含块。绝对定位元素的内容不会在其他框周围流动。这样可能会使它们造成显示在文档中的其他框的内容模糊不清。绝对定位元素对其后同属的出现顺序无任何影响，所以跟在绝对定位元素后面的元素所产生的效果，就如同绝对定位元素不在此处一样。</p>
+<p>AUTHOR { position: absolute; top: 60px; left: 140px }</p>
+<p><b>13.5.2.3 精确定位（Fixed Positioning） </b></p>
+<p>具有固定位置的元素相对于其显示窗口或页面的坐标放置。如果正在查看由连续媒体组成的文档，那么当此文档滚动时，被固定的框就不会移动。如果被固定的框处于分页媒体上，那它总是会出现在每页的末尾。这样就能够把页脚或页眉放在文档上，或将签名放在一系列只有一页纸的信件的末尾。例如，下面的规则，以将REFRAIN元素的左上角放在距显示窗口（或打印的纸张）左上角往下300像素、往右140像素的地方。</p>
+<p>REFRAIN { position: fixed; top: 300px; left: 140px }</p>
+<p><b>13.5.2.4 使用z-index属性来层叠元素 </b></p>
+<p>z-index属性控制定位框的层叠顺序。要改变缺省的z-index值，可将z-index设置为整数（如2）。有较大z-index值的对象放在较小z-index值的对象的顶部。底部的对象无论是否完全显示，它们都决定于其顶部对象的背景属性。如果背景是透明的，那么，处于下面的对象至少有一些可能完全透过。</p>
+<p>清单13-2是使用绝对定位的样式单，这个样式单有一个z<i>-</i>index，用它来创建Shakespeare十四行诗多部分的重叠效果。图13-3显示了此情景。这肯定不如由浏览器来编排此诗的样子好看。使用绝对定位应十分小心。我只推荐用于印刷媒体，以此媒体分发论文，而不是电子文件。</p>
+<p align="center"><img src="Image/BK000213-22.gif" width=454 height=345></p>
+<p align="center">图13-3 使用z-index排序的绝对定位，可以控制文本框的重叠顺序</p>
+<p>清单13-2：Shakespeare十四行诗的z<i>-</i>index样式单</p>
+<p>#stl { position: absolute;</p>
+<p> top: 160px;</p>
+<p> left:200px;</p>
+<p> height: 100px;</p>
+<p> width:200px;</p>
+<p> overflow: auto,</p>
+<p> z<i>-</i>index: 2 }</p>
+<p>#st2 { position: absolute;</p>
+<p> top: 210px;</p>
+<p> left:50px;</p>
+<p> height: 100px;</p>
+<p> width:200px;</p>
+<p> overflow: auto;</p>
+<p> z-index: 3 }</p>
+<p>#st3 { position: absolute;</p>
+<p> top: 210px;</p>
+<p> left:250px;</p>
+<p> height: 100px;</p>
+<p> width:200px;</p>
+<p> overflow: auto;</p>
+<p> z-index: 4 }</p>
+<p>REFRAIN { position: absolute;</p>
+<p> top: 300px;</p>
+<p> left:200px;</p>
+<p> height: 100px;</p>
+<p> width:200px;</p>
+<p> overflow: auto;</p>
+<p> z-index: 5 }</p>
+ 
+<a href='468.htm'>&lt;&lt;上一篇</a>&nbsp;&nbsp;<a href='470.htm'>下一篇&gt;&gt;</a></td>
+        </tr>
+      </table>
+      <p>&nbsp; </p>
+    </td>
+  </tr>
+</table>
+
+</body>
+
+</html>

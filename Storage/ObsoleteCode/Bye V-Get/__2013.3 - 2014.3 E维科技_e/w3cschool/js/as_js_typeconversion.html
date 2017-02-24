@@ -1,0 +1,303 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="../c3.css" />
+<title>ECMAScript 类型转换</title>
+</head>
+<body class="browserscripting">
+<div id="wrapper" class="as">
+<div id="header">
+<a href="http://e.v-get.com/w3cschool/" style="float:left;">W3CSchool 在线教程</a>
+<div class="q g"><script type="text/javascript">var cpro_id="u1163355"</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div>
+<div id="navfirst">
+<ul id="menu">
+<li id="h"><a href="../h.html">HTML教程</a></li>
+<li id="x"><a href="../x.html">XML教程</a></li>
+<li id="b"><a href="../b.html">浏览器脚本</a></li>
+<li id="s"><a href="../s.html">服务器脚本</a></li>
+<li id="d"><a href="../d.html">dot net教程</a></li>
+<li id="m"><a href="../m.html">多媒体教程</a></li>
+<li id="w"><a href="../w.html">建站手册</a></li>
+</ul>
+</div><div id="navsecond">
+<div id="afterschool">
+<h2>JavaScript 简介</h2>
+<ul>
+<li><a href="index_as.html">JavaScript 高级教程</a></li>
+<li><a href="as_js_history.html">JavaScript 历史</a></li>
+<li><a href="as_js_implement.html">JavaScript 实现</a></li>
+</ul>
+<h2>ECMAScript 基础</h2>
+<ul>
+<li><a href="as_js_syntax.html">ECMAScript 语法</a></li>
+<li><a href="as_js_variables.html">ECMAScript 变量</a></li>
+<li><a href="as_js_keywords.html">ECMAScript 关键字</a></li>
+<li><a href="as_js_reservedwords.html">ECMAScript 保留字</a></li>
+<li><a href="as_js_value.html">ECMAScript 值</a></li>
+<li><a href="as_js_primitivetypes.html">ECMAScript 原始类型</a></li>
+<li><a href="as_js_typeconversion.html">ECMAScript 类型转换</a></li>
+<li><a href="as_js_referencetypes.html">ECMAScript 引用类型</a></li>
+</ul>
+<h2>ECMAScript 运算符</h2>
+<ul>
+<li><a href="as_js_operators_unary.html">一元运算符</a></li>
+<li><a href="as_js_operators_bitwise.html">位运算符</a></li>
+<li><a href="as_js_operators_boolean.html">逻辑运算符</a></li>
+<li><a href="as_js_operators_multiplicative.html">乘性运算符</a></li>
+<li><a href="as_js_operators_additive.html">加性运算符</a></li>
+<li><a href="as_js_operators_relational.html">关系运算符</a></li>
+<li><a href="as_js_operators_equality.html">等性运算符</a></li>
+<li><a href="as_js_operators_conditional.html">条件运算符</a></li>
+<li><a href="as_js_operators_assignment.html">赋值运算符</a></li>
+<li><a href="as_js_operators_comma.html">逗号运算符</a></li>
+</ul>
+<h2>ECMAScript 语句</h2>
+<ul>
+<li><a href="as_js_statements_if.html">if 语句</a></li>
+<li><a href="as_js_statements_iterative.html">迭代语句</a></li>
+<li><a href="as_js_statements_labeled.html">标签语句</a></li>
+<li><a href="as_js_statements_break-continue.html">break 语句</a></li>
+<li><a href="as_js_statements_break-continue.html">continue 语句</a></li>
+<li><a href="as_js_statements_with.html">with 语句</a></li>
+<li><a href="as_js_statements_switch.html">switch 语句</a></li>
+</ul>
+<h2>ECMAScript 函数</h2>
+<ul>
+<li><a href="as_js_functions.html">函数概述</a></li>
+<li><a href="as_js_functions_arguments-object.html">arguments 对象</a></li>
+<li><a href="as_js_functions_function-object.html">Function 对象</a></li>
+<li><a href="as_js_functions_closures.html">闭包 (closure）</a></li>
+</ul>
+<h2>实例/测验</h2>
+<ul>
+<li><a href="../example/jseg_examples.html">JS 实例</a></li>
+<li><a href="../example/jsrf_examples.html">JS 对象实例</a></li>
+<li><a href="js_quiz.html">JS 测验</a></li>
+</ul>
+<h2>JS 参考手册</h2>
+<ul>
+<li><a href="js_reference.html">JS 对象</a></li>
+<li><a href="../htmldom/htmldom_reference.html">JS HTML DOM</a></li>
+</ul>
+</div>
+<div id="selected">
+<h2>建站手册</h2>
+<ul>
+<li><a href="../site/">网站构建</a></li>
+<li><a href="../w3c/">万维网联盟</a></li>
+<li><a href="http://e.v-get.com/w3c/">W3CSchool 教程</a></li>
+<li><a href="../quality/">网站品质</a></li>
+<li><a href="../semweb/">语义网</a></li>
+<li><a href="../hosting/">网站主机</a></li>
+</ul>
+<h2><a href="http://e.v-get.com/w3c/" class="f13">W3CSchool 教程</a></h2><div class="a120x90"><script type="text/javascript">var cpro_id="u1210867";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div></div>
+</div>
+<div id="maincontent">
+<h1>ECMAScript 类型转换</h1>
+<div id="tpn">
+<ul class="prenext">
+<li class="pre"><a href="as_js_primitivetypes.html">上一页</a></li>
+<li class="next"><a href="as_js_referencetypes.html">下一页</a></li>
+</ul>
+</div>
+<div>
+<p><strong>所有程序设计语言最重要的特征之一是具有进行类型转换的能力。</strong></p>
+<p><strong>ECMAScript 给开发者提供了大量简单的类型转换方法。</strong></p>
+<p><strong>大部分类型具有进行简单转换的方法，还有几个全局方法可以用于更复杂的转换。无论哪种情况，在 ECMAScript 中，类型转换都是简短的一步操作。</strong></p>
+</div>
+<div>
+<h2>转换成字符串</h2>
+<p>ECMAScript 的 Boolean 值、数字和字符串的原始值的有趣之处在于它们是伪对象，这意味着它们实际上具有属性和方法。</p>
+<p>例如，要获得字符串的长度，可以采用下面的代码：</p>
+<pre>
+var sColor = &#34;red&#34;;
+alert(sColor.length);	<span>//输出 &#34;3&#34;</span>
+</pre>
+<p>尽管 &#34;red&#34; 是原始类型的字符串，它仍然具有属性 length，用于存放字符串的大小。</p>
+<p>总而言之，3 种主要的原始类型 Boolean 值、数字和字符串都有 toString() 方法，可以把它们的值转换成字符串。</p>
+<p class="tip"><span>提示：</span>您也许会问，“字符串还有 toString() 方法吗，这不是多余吗？”是的，的确如此，不过 ECMAScript 定义所有对象都有 toString() 方法，无论它是伪对象，还是真对象。因为 String 类型属于伪对象，所以它一定有 toString() 方法。</p>
+<p>Boolean 类型的 toString() 方法只是输出 &#34;true&#34; 或 &#34;false&#34;，结果由变量的值决定：</p>
+<pre>
+var bFound = false;
+alert(bFound.toString());	<span>//输出 &#34;false&#34;</span>
+</pre>
+<p>Number 类型的 toString() 方法比较特殊，它有两种模式，即<em>默认模式</em>和<em>基模式</em>。采用默认模式，toString() 方法只是用相应的字符串输出数字值 (无论是整数、浮点数还是科学计数法），如下所示：</p>
+<pre>
+var iNum1 = 10;
+var iNum2 = 10.0;
+alert(iNum1.toString());	<span>//输出 &#34;10&#34;</span>
+alert(iNum2.toString());	<span>//输出 &#34;10&#34;</span>
+</pre>
+<p class="note"><span>注释：</span>在默认模式中，无论最初采用什么表示法声明数字，Number 类型的 toString() 方法返回的都是数字的十进制表示。因此，以八进制或十六进制字面量形式声明的数字输出的都是十进制形式的。</p>
+<p>采用 Number 类型的 toString() 方法的基模式，可以用不同的<em>基</em>输出数字，例如二进制的基是 2，八进制的基是 8，十六进制的基是 16。</p>
+<p><em>基</em>只是要转换成的基数的另一种加法而已，它是 toString() 方法的参数：</p>
+<pre>
+var iNum = 10;
+alert(iNum1.toString(2));	<span>//输出 &#34;1010&#34;</span>
+alert(iNum1.toString(8));	<span>//输出 &#34;12&#34;</span>
+alert(iNum1.toString(16));	<span>//输出 &#34;A&#34;</span>
+</pre>
+<p>在前面的示例中，以 3 种不同的形式输出了数字 10，即二进制形式、八进制形式和十六进制形式。HTML 采用十六进制表示每种颜色，在 HTML 中处理数字时这种功能非常有用。</p>
+<p class="note"><span>注释：</span>对数字调用 toString(10) 与调用 toString() 相同，它们返回的都是该数字的十进制形式。</p>
+<h4>参阅：</h4>
+<p>请参阅 <a href="js_reference.html">JavaScript 参考手册</a>提供的有关 toString() 方法的详细信息：</p>
+<ul>
+<li><a href="jsref_toString_array.html">arrayObject.toString()</a></li>
+<li><a href="jsref_toString_boolean.html">booleanObject.toString()</a></li>
+<li><a href="jsref_toString_date.html">dateObject.toString()</a></li>
+<li><a href="jsref_tostring_number.html">NumberObject.toString()</a></li>
+<li><a href="jsref_toString_string.html">stringObject.toString()</a></li>
+</ul>
+</div>
+<div>
+<h2>转换成数字</h2>
+<p>ECMAScript 提供了两种把非数字的原始值转换成数字的方法，即 parseInt() 和 parseFloat()。</p>
+<p>正如您可能想到的，前者把值转换成整数，后者把值转换成浮点数。只有对 String 类型调用这些方法，它们才能正确运行；对其他类型返回的都是 NaN。</p>
+<h3>parseInt()</h3>
+<p>在判断字符串是否是数字值前，parseInt() 和 parseFloat() 都会仔细分析该字符串。</p>
+<p>parseInt() 方法首先查看位置 0 处的字符，判断它是否是个有效数字；如果不是，该方法将返回 NaN，不再继续执行其他操作。但如果该字符是有效数字，该方法将查看位置 1 处的字符，进行同样的测试。这一过程将持续到发现非有效数字的字符为止，此时 parseInt() 将把该字符之前的字符串转换成数字。</p>
+<p>例如，如果要把字符串 &#34;12345red&#34; 转换成整数，那么 parseInt() 将返回 12345，因为当它检查到字符 r 时，就会停止检测过程。</p>
+<p>字符串中包含的数字字面量会被正确转换为数字，比如 &#34;0xA&#34; 会被正确转换为数字 10。不过，字符串 &#34;22.5&#34; 将被转换成 22，因为对于整数来说，小数点是无效字符。</p>
+<p>一些示例如下：</p>
+<pre>
+var iNum1 = parseInt(&#34;12345red&#34;);	<span>//返回 12345</span>
+var iNum1 = parseInt(&#34;0xA&#34;);	<span>//返回 10</span>
+var iNum1 = parseInt(&#34;56.9&#34;);	<span>//返回 56</span>
+var iNum1 = parseInt(&#34;red&#34;);	<span>//返回 NaN</span>
+</pre>
+<p>parseInt() 方法还有基模式，可以把二进制、八进制、十六进制或其他任何进制的字符串转换成整数。基是由 parseInt() 方法的第二个参数指定的，所以要解析十六进制的值，需如下调用 parseInt() 方法：</p>
+<pre>var iNum1 = parseInt(&#34;AF&#34;, 16);	<span>//返回 175</span></pre>
+<p>当然，对二进制、八进制甚至十进制 (默认模式），都可以这样调用 parseInt() 方法：</p>
+<pre>
+var iNum1 = parseInt(&#34;10&#34;, 2);	<span>//返回 2</span>
+var iNum2 = parseInt(&#34;10&#34;, 8);	<span>//返回 8</span>
+var iNum3 = parseInt(&#34;10&#34;, 10);	<span>//返回 10</span>
+</pre>
+<p>如果十进制数包含前导 0，那么最好采用基数 10，这样才不会意外地得到八进制的值。例如：</p>
+<pre>
+var iNum1 = parseInt(&#34;010&#34;);	<span>//返回 8</span>
+var iNum2 = parseInt(&#34;010&#34;, 8);	<span>//返回 8</span>
+var iNum3 = parseInt(&#34;010&#34;, 10);	<span>//返回 10</span>
+</pre>
+<p>在这段代码中，两行代码都把字符 &#34;010&#34; 解析成一个数字。第一行代码把这个字符串看作八进制的值，解析它的方式与第二行代码 (声明基数为 8）相同。最后一行代码声明基数为 10，所以 iNum3 最后等于 10。</p>
+<h4>参阅</h4>
+<p>请参阅 <a href="js_reference.html">JavaScript 参考手册</a>提供的有关 parseInt() 方法的详细信息：<a href="jsref_parseInt.html">parseInt()</a>。</p>
+<h3>parseFloat()</h3>
+<p>parseFloat() 方法与 parseInt() 方法的处理方式相似，从位置 0 开始查看每个字符，直到找到第一个非有效的字符为止，然后把该字符之前的字符串转换成整数。</p>
+<p>不过，对于这个方法来说，第一个出现的小数点是有效字符。如果有两个小数点，第二个小数点将被看作无效的。parseFloat() 会把这个小数点之前的字符转换成数字。这意味着字符串 &#34;11.22.33&#34; 将被解析成 11.22。</p>
+<p>使用 parseFloat() 方法的另一不同之处在于，字符串必须以十进制形式表示浮点数，而不是用八进制或十六进制。该方法会忽略前导 0，所以八进制数 0102 将被解析为 102。对于十六进制数 0xA，该方法将返回 NaN，因为在浮点数中，x 不是有效字符。</p>
+<p>此外，parseFloat() 方法也没有基模式。</p>
+<p>下面是使用 parseFloat() 方法的一些示例：</p>
+<pre>
+var fNum1 = parseFloat(&#34;12345red&#34;);	<span>//返回 12345</span>
+var fNum2 = parseFloat(&#34;0xA&#34;);	<span>//返回 NaN</span>
+var fNum3 = parseFloat(&#34;11.2&#34;);	<span>//返回 11.2</span>
+var fNum4 = parseFloat(&#34;11.22.33&#34;);	<span>//返回 11.22</span>
+var fNum5 = parseFloat(&#34;0102&#34;);	<span>//返回 102</span>
+var fNum1 = parseFloat(&#34;red&#34;);	<span>//返回 NaN</span>
+</pre>
+<h4>参阅</h4>
+<p>请参阅 <a href="js_reference.html">JavaScript 参考手册</a>提供的有关 parseFloat() 方法的详细信息：<a href="jsref_parseFloat.html">parseFloat()</a>。</p>
+</div>
+<div>
+<h2>强制类型转换</h2>
+<p>您还可以使用<em>强制类型转换 (type casting）</em>来处理转换值的类型。使用强制类型转换可以访问特定的值，即使它是另一种类型的。</p>
+<p class="note"><span>编者注：</span>cast 有“铸造”之意，很贴合“强制转换”的意思。</p>
+<p>ECMAScript 中可用的 3 种强制类型转换如下：</p>
+<ul>
+<li>Boolean(value) - 把给定的值转换成 Boolean 型；</li>
+<li>Number(value) - 把给定的值转换成数字 (可以是整数或浮点数）；</li>
+<li>String(value) - 把给定的值转换成字符串；</li>
+</ul>
+<p>用这三个函数之一转换值，将创建一个新值，存放由原始值直接转换成的值。这会造成意想不到的后果。</p>
+<h3>Boolean() 函数</h3>
+<p>当要转换的值是至少有一个字符的字符串、非 0 数字或对象时，Boolean() 函数将返回 true。如果该值是空字符串、数字 0、undefined 或 null，它将返回 false。</p>
+<p>可以用下面的代码测试 Boolean 型的强制类型转换：</p>
+<pre>
+var b1 = Boolean(&#34;&#34;);		<span>//false - 空字符串</span>
+var b2 = Boolean(&#34;hello&#34;);		<span>//true - 非空字符串</span>
+var b1 = Boolean(50);		<span>//true - 非零数字</span>
+var b1 = Boolean(null);		<span>//false - null</span>
+var b1 = Boolean(0);		<span>//false - 零</span>
+var b1 = Boolean(new object());	<span>//true - 对象</span>
+</pre>
+<h3>Number() 函数</h3>
+<p>Number() 函数的强制类型转换与 parseInt() 和 parseFloat() 方法的处理方式相似，只是它转换的是整个值，而不是部分值。</p>
+<p>还记得吗，parseInt() 和 parseFloat() 方法只转换第一个无效字符之前的字符串，因此 &#34;1.2.3&#34; 将被转换为 &#34;4.5&#34;。</p>
+<p>用 Number() 进行强制类型转换，&#34;1.2.3&#34; 将返回 NaN，因为整个字符串值不能转换成数字。如果字符串值能被完整地转换，Number() 将判断是调用 parseInt() 方法还是 parseFloat() 方法。</p>
+<p>下表说明了对不同的值调用 Number() 方法会发生的情况：</p>
+<table class="dataintable">
+<tr>
+<th style="width:60%;">用法</th>
+<th>结果</th>
+</tr>
+<tr>
+<td>Number(false)</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Number(true)</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Number(undefined)</td>
+<td>NaN</td>
+</tr>
+<tr>
+<td>Number(null)</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Number(&#34;1.2&#34;)</td>
+<td>1.2</td>
+</tr>
+<tr>
+<td>Number(&#34;12&#34;)</td>
+<td>12</td>
+</tr>
+<tr>
+<td>Number(&#34;1.2.3&#34;)</td>
+<td>NaN</td>
+</tr>
+<tr>
+<td>Number(new object())</td>
+<td>NaN</td>
+</tr>
+<tr>
+<td>Number(50)</td>
+<td>50</td>
+</tr>
+</table>
+<h3>String() 函数</h3>
+<p>最后一种强制类型转换方法 String() 是最简单的，因为它可把任何值转换成字符串。</p>
+<p>要执行这种强制类型转换，只需要调用作为参数传递进来的值的 toString() 方法，即把 12 转换成 &#34;12&#34;，把 true 转换成 &#34;true&#34;，把 false 转换成 &#34;false&#34;，以此类推。</p>
+<p>强制转换成字符串和调用 toString() 方法的唯一不同之处在于，对 null 和 undefined 值强制类型转换可以生成字符串而不引发错误：</p>
+<pre>
+var s1 = String(null);	<span>//&#34;null&#34;</span>
+var oNull = null;
+var s2 = oNull.toString();	<span>//会引发错误</span>
+</pre>
+<p>在处理 ECMAScript 这样的弱类型语言时，强制类型转换非常有用，不过应该确保使用值的正确。</p>
+</div>
+<div id="bpn">
+<ul class="prenext">
+<li class="pre"><a href="as_js_primitivetypes.html">上一页</a></li>
+<li class="next"><a href="as_js_referencetypes.html">下一页</a></li>
+</ul>
+</div>
+</div>
+<div id="sidebar">
+<div class="rs"></div>
+<div id="tools">
+<h5 id="tools_reference"><a href="js_reference.html">JavaScript 参考手册</a></h5>
+<h5 id="tools_example"><a href="../example/jseg_examples.html">JavaScript 实例</a></h5>
+<h5 id="tools_quiz"><a href="js_quiz.html">JavaScript 测验</a></h5>
+<h5 id="tools_search"><a href="../search/search.html">W3CSchool 搜索</a></h5>
+</div>
+<div class="a120x600"><script type="text/javascript">var cpro_id="u1293136";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div><div class="b"></div>
+</div>
+</body>
+</html>

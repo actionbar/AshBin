@@ -1,0 +1,178 @@
+<html xmlns:rdl>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<script src="rdl_filters.js"></script>
+<base target="_self">
+</head>
+<body>
+
+<script>
+
+collFriendProperties=new Array(
+'filter'
+);
+
+//collIE40=new Array();
+//collIE50=new Array();
+//collIE55=new Array();
+//collIE60=new Array();
+
+collIE55=new Array(
+'A','ACRONYM','ADDRESS','B','BDO','BIG','BLOCKQUOTE','CAPTION','CENTER','CITE','CODE','CUSTOM','DD','DEL','DFN','DIR','DL','DT','EM','FIELDSET','FONT','FORM','FRAME','Hn','I','IFRAME','INS','KBD','LABEL','LEGEND','LI','MENU','NOBR','OBJECT','OL','P','PLAINTEXT','PRE','Q','RT','RUBY','S','SAMP','SMALL','STRIKE','STRONG','SUB','SUP','TT','U','UL','VAR','XMP'
+);
+
+collIE40=new Array(
+'TABLE','TD','TEXTAREA','TH','style','SPAN','MARQUEE','IMG','INPUT type=button','INPUT type=checkbox','INPUT type=file','INPUT type=image','INPUT type=password','INPUT type=radio','INPUT type=reset','INPUT type=submit','INPUT type=text','DIV','BODY','BUTTON'
+);
+
+collIE50=new Array(
+'runtimeStyle'
+);
+
+sStyle=
+'<style>\n'+
+'#idDiv{width:80%;height:80px;background-color:#FF6633;color:#FFFFFF;padding:6px;filter : progid:DXImageTransform.Microsoft.Alpha(style=3,opacity=0,finishOpacity=100);}\n'+
+'#idCodeDiv{width:100%;padding:4px;font-family:verdana,tahoma;margin:12px 0px 0px 0px;background-color:#EEEEEE;font-weight:bold;}\n'+
+'<\/style>\n';
+
+sScript=
+'<script>\n'+
+'var sFilter="filter : progid:DXImageTransform.Microsoft.Alpha(";\n'+
+'var sCodeEnd="startX=0, startY=0, finishX=100, finishY=100,";\n'+
+'function rdl_change(e){\n'+
+'var oCodeDiv=document.all("idCodeDiv");\n'+
+'var oDiv=document.all("idDiv");\n'+
+'with (document.all("idSel1")) var sValue1=parseInt(options[selectedIndex].value);\n'+
+'with (document.all("idSel2")) var sValue2=parseInt(options[selectedIndex].value);\n'+
+'with (document.all("idSel3")) var sValue3=parseInt(options[selectedIndex].value);\n'+
+'oDiv.filters[0].Style=sValue1;\n'+
+'oDiv.filters[0].Opacity=sValue2;\n'+
+'oDiv.filters[0].FinishOpacity=parseInt(sValue3);\n'+
+'if (sValue1!=1) oCodeDiv.innerText=sFilter+"style="+sValue1+",opacity="+sValue2+",finishOpacity="+sValue3+");";\n'+
+'else oCodeDiv.innerText=sFilter+sCodeEnd+"style="+sValue1+",opacity="+sValue2+",finishOpacity="+sValue3+");";\n'+
+'}\n'+
+'<\/script>\n';
+
+sCode=
+'<div id=idDiv><img src="images/rdl_sex.gif" style="float:left;">请从下方选择滤镜参数的值。<\/div>\n'+
+'<br>\n'+
+'<table><tr><td>\n'+
+'<select id="idSel1" onchange="rdl_change();">\n'+
+'<option value="0">---渐变样式---\n'+
+'<option value="0">0\n'+
+'<option value="1">1\n'+
+'<option value="2">2\n'+
+'<option value="3" selected>3\n'+
+'<\/select>\n'+
+'<\/td><td>\n'+
+'<select id="idSel2" onchange="rdl_change();">\n'+
+'<option value="0">---开始透明度---\n'+
+'<option value="0" selected>0\n'+
+'<option value="25">25\n'+
+'<option value="50">50\n'+
+'<option value="75">75\n'+
+'<option value="100">100\n'+
+'<\/select>\n'+
+'<select id="idSel3" onchange="rdl_change();">\n'+
+'<option value="0">---结束透明度---\n'+
+'<option value="0">0\n'+
+'<option value="25">25\n'+
+'<option value="50">50\n'+
+'<option value="75">75\n'+
+'<option value="100" selected>100\n'+
+'<\/select>\n'+
+'<\/td><\/tr><\/table>\n'+
+'<div id=idCodeDiv>filter : progid:DXImageTransform.Microsoft.Alpha(style=3,opacity=0,finishOpacity=100);<\/div>\n';
+
+
+iWinWidth=500;
+
+iWinHeight=300;
+
+//bRunCode=false;
+
+//bElements=false;
+
+</script>
+
+<div id=idContent>
+
+<div id=idContentTitle><span id=idTitleName>Alpha</span>兼容性：IE4.0+</div>
+
+<div class=cssColumnTitle>语法：</div>
+<div>
+<b>filter : progid:DXImageTransform.Microsoft.Alpha ( enabled=</b><i>bEnabled</i><b> , style=</b><i>iStyle</i><b> , opacity=</b><i>iOpacity</i><b> , finishOpacity=</b><i>iFinishOpacity</i><b> , startX=</b><i>iPercent</i><b> , startY=</b><i>iPercent</i><b> , finishX=</b><i>iPercent</i><b> , finishY=</b><i>iPercent</i><b> ) </b> 
+</div>
+
+<div class=cssColumnTitle>属性：</div>
+<table>
+<tr><td nowrap><b> enabled </b></td><td nowrap><b>:</b></td><td>
+可选项。布尔值(Boolean)。设置或检索滤镜是否激活。<span class=cssDefault><b>true</b></span> | <b>false</b>
+<table>
+<tr><td nowrap><b> true </b></td><td nowrap><b>:</b></td><td><b>默认值</b>。滤镜激活。</td></tr>
+<tr><td nowrap><b> false </b></td><td nowrap><b>:</b></td><td>滤镜被禁止。</td></tr>
+</table>
+</td></tr>
+<tr><td nowrap><b> style </b></td><td nowrap><b>:</b></td><td>
+可选项。整数值(Integer)。设置或检索透明渐变的样式。<span class=cssDefault><b>0</b></span> | <b>1</b> | <b>2</b> | <b>3</b>
+<table>
+<tr><td nowrap><b> 0 </b></td><td nowrap><b>:</b></td><td><b>默认值</b>。整体透明度。将<b> Opacity </b>值均匀的作用于对象。</td></tr>
+<tr><td nowrap><b> 1 </b></td><td nowrap><b>:</b></td><td>线性渐变透明度。从由<b> StartX </b>和<b> StartY </b>决定的点，由<b> Opacity </b>决定的透明度开始，到由<b> FinishX </b>和<b> FinishY </b>决定的点，由<b> FinishOpacity </b>决定的透明度结束。
+</td></tr>
+<tr><td nowrap><b> 2 </b></td><td nowrap><b>:</b></td><td>圆形放射渐变透明度。圆形放射区域的圆心为对象的中心，圆周到与对象的边相切为止。透明渐变由圆心开始，到圆周结束。开始透明度由<b> Opacity </b>决定，结束透明度由<b> FinishOpacity </b>决定。</td></tr>
+<tr><td nowrap><b> 3 </b></td><td nowrap><b>:</b></td><td>矩形放射渐变透明度。由对象的边开始，到对象的中心结束。开始透明度由<b> Opacity </b>决定，结束透明度由<b> FinishOpacity </b>决定。
+</td></tr>
+</table>
+</td></tr>
+
+<tr><td nowrap><b> opacity </b></td><td nowrap><b>:</b></td><td>
+可选项。整数值(Integer)。设置或检索透明渐变的开始透明度。取值范围为<b> 0 - 100 </b>。默认值为<span class=cssDefault><b> 0 </b></span>，即完全透明。<b> 100 </b>为完全不透明。
+</td></tr>
+<tr><td nowrap><b> finishOpacity </b></td><td nowrap><b>:</b></td><td>
+可选项。整数值(Integer)。设置或检索透明渐变的结束透明度。取值范围为<b> 0 - 100 </b>。默认值为<span class=cssDefault><b> 0 </b></span>，即完全透明。<b> 100 </b>为完全不透明。
+</td></tr>
+<tr><td nowrap><b> startX </b></td><td nowrap><b>:</b></td><td>
+可选项。整数值(Integer)。设置或检索透明渐变开始点的水平坐标。其数值作为对象宽度的百分比值处理。默认值为<span class=cssDefault><b> 0 </b></span>。
+</td></tr>
+<tr><td nowrap><b> startY </b></td><td nowrap><b>:</b></td><td>
+可选项。整数值(Integer)。设置或检索透明渐变开始点的垂直坐标。其数值作为对象高度的百分比值处理。默认值为<span class=cssDefault><b> 0 </b></span>。
+</td></tr>
+<tr><td nowrap><b> finishX </b></td><td nowrap><b>:</b></td><td>
+可选项。整数值(Integer)。设置或检索透明渐变结束点的水平坐标。其数值作为对象宽度的百分比值处理。默认值为<span class=cssDefault><b> 0 </b></span>。
+</td></tr>
+<tr><td nowrap><b> finishY </b></td><td nowrap><b>:</b></td><td>
+可选项。整数值(Integer)。设置或检索透明渐变结束点的垂直坐标。其数值作为对象高度的百分比值处理。默认值为<span class=cssDefault><b> 0 </b></span>。
+</td></tr>
+
+</table>
+
+<div class=cssColumnTitle>特性：</div>
+<table>
+<tr><td nowrap><b> Enabled </b></td><td nowrap><b>:</b></td><td>可读写。布尔值(Boolean)。参阅<b> enabled </b>属性。</td></tr>
+<tr><td nowrap><b> Style </b></td><td nowrap><b>:</b></td><td>可读写。整数值(Integer)。参阅<b> style </b>属性。</td></tr>
+<tr><td nowrap><b> Opacity </b></td><td nowrap><b>:</b></td><td>可读写。整数值(Integer)。参阅<b> opacity </b>属性。</td></tr>
+<tr><td nowrap><b> FinishOpacity </b></td><td nowrap><b>:</b></td><td>可读写。整数值(Integer)。参阅<b> finishOpacity </b>属性。</td></tr>
+<tr><td nowrap><b> StartX </b></td><td nowrap><b>:</b></td><td>可读写。整数值(Integer)。参阅<b> startX </b>属性。</td></tr>
+<tr><td nowrap><b> StartY </b></td><td nowrap><b>:</b></td><td>可读写。整数值(Integer)。参阅<b> startY </b>属性。</td></tr>
+<tr><td nowrap><b> FinishX </b></td><td nowrap><b>:</b></td><td>可读写。整数值(Integer)。参阅<b> finishX </b>属性。</td></tr>
+<tr><td nowrap><b> FinishY </b></td><td nowrap><b>:</b></td><td>可读写。整数值(Integer)。参阅<b> finishY </b>属性。</td></tr>
+</table>
+
+<div class=cssColumnTitle>说明：</div>
+<div>
+调整对象内容的透明度。<br>
+你可以设置整体透明度，或线性渐变和放射渐变的透明度。
+</div>
+
+<div class=cssColumnTitle>示例：</div>
+<div id=idSimpleCode>
+#idDiv{position:absolute; left:140px; height:400; width:400;filter:progid:DXImageTransform.Microsoft.Alpha(opacity=50);}<br>
+#idDiv{position:absolute; left:140px; height:400; width:400;filter:progid:DXImageTransform.Microsoft.Alpha(opacity=10,finishOpacity=100,style=2);}<br>
+</div>
+
+</div>
+</body>
+</html>
+
+<!-- Part of RDL(TM) - Written by Rain1977 
+HomeSite: http://www.dhtmlet.com  E-Mail: dhtmlet@hotmail.com -->

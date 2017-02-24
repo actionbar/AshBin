@@ -1,0 +1,76 @@
+<meta http-equiv="content-type" content="text/html; charset=gb2312">
+<TABLE class=tableborder1 style="TABLE-LAYOUT: fixed; WORD-BREAK: break-all" 
+cellSpacing=1 cellPadding=5 align=center>
+<TBODY>
+<TR>
+<TD class=tablebody1 vAlign=top width=*>
+<BLOCKQUOTE><FONT 
+style="FONT-SIZE: 9pt; LINE-HEIGHT: 15pt"><B>关于distinct&nbsp;id的取法</B><BR>型如表：t_test<BR>--------------------------------------<BR>id(int)&nbsp;cost(int)&nbsp;&nbsp;&nbsp;des&nbsp;&nbsp;&nbsp;&nbsp;Autoid(id)<BR>--------------------------------------<BR>1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;10&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;aaaa&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1<BR>1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;15&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bbbb&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2<BR>1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;20&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cccc&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3<BR>2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;80&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;aaaa&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4<BR>2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;100&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bbbb&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5<BR>2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;60&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dddd&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6<BR>3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;500&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dddd&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7<BR>--------------------------------------<BR>要在其中取每一类id中间cost最大的所有纪录，很多网友都对此进行了讨论，对此，我提出一点自己的看法，<BR>我认为用一条很难（对我而言）达到要求，同时也引出了一个问题，即：在SQL中定义自己的函数（/存储过程），达到特定的目的。具体对这个例子而言，可以这么写：
+<P></P>
+<P>CREATE&nbsp;&nbsp;PROCEDURE&nbsp;sp_test<BR>AS<BR>begin<BR>SELECT&nbsp;*&nbsp;INTO&nbsp;#mytbl&nbsp;FROM&nbsp;t_test&nbsp;</P>
+<P>SELECT&nbsp;id,&nbsp;MAX(cost)&nbsp;AS&nbsp;max_cost&nbsp;<BR>&nbsp;&nbsp;&nbsp;&nbsp;INTO&nbsp;#mytemp&nbsp;<BR>&nbsp;&nbsp;&nbsp;&nbsp;FROM&nbsp;t_test<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GROUP&nbsp;BY&nbsp;id<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;HAVING&nbsp;(COUNT(*)&nbsp;&gt;&nbsp;1)&nbsp;<BR>DELETE&nbsp;#mytbl&nbsp;FROM&nbsp;#mytemp,&nbsp;#mytbl&nbsp;WHERE&nbsp;#mytbl.id&nbsp;=&nbsp;#mytemp.id&nbsp;AND&nbsp;#mytbl.cost&nbsp;&lt;&gt;&nbsp;#mytemp.max_cost</P>
+<P>select&nbsp;*&nbsp;from&nbsp;#mytbl<BR>end</P>
+<P>execute&nbsp;sp_test<BR>返回：<BR>id(int)&nbsp;cost(int)&nbsp;&nbsp;&nbsp;des&nbsp;&nbsp;&nbsp;&nbsp;Autoid(id)<BR>--------------------------------------<BR>1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;20&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cccc&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3<BR>2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;100&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bbbb&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5<BR>3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;500&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dddd&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7<BR>--------------------------------------</P>
+<P>以上是我在SQL&nbsp;2000下调是通过的</FONT></P></BLOCKQUOTE></TD></TR>
+<TR>
+<TD class=tablebody1 vAlign=center align=middle width=175><A 
+href="http://www.pigtwo.com/forum/look_ip.asp?boardid=14&amp;userid=42&amp;ip=61.48.16.203&amp;action=lookip" 
+target=_blank><IMG height=15 alt="点击查看用户来源及管理<br>发贴IP：61.48.16.203" 
+src="http://www.pigtwo.com/forum/pic/ip.gif" width=13 align=absMiddle border=0></A> 2003-5-1 17:38:50</TD>
+<TD class=tablebody1 vAlign=center width=*>
+<TABLE cellSpacing=0 cellPadding=0 width="100%">
+<TBODY>
+<TR>
+<TD vAlign=center align=left><A 
+href="http://www.pigtwo.com/forum/editannounce.asp?BoardID=14&amp;replyID=835&amp;id=376&amp;star=1"><IMG 
+alt=编辑这个贴子 src="http://www.pigtwo.com/forum/pic/edit.gif" align=absMiddle border=0></A>&nbsp;&nbsp;<A 
+title=同意该帖观点，给他一朵鲜花，将消耗您5点金钱 
+href="http://www.pigtwo.com/forum/postagree.asp?boardid=14&amp;id=376&amp;isagree=1">鲜花</A>(<FONT 
+color=#ff0000>0</FONT>)&nbsp;&nbsp;<A title=不同意该帖观点，给他一个鸡蛋，将消耗您5点金钱 
+href="http://www.pigtwo.com/forum/postagree.asp?boardid=14&amp;id=376&amp;isagree=2">鸡蛋</A>(<FONT 
+color=#ff0000>0</FONT>)</TD>
+<TD vAlign=bottom align=right width=110 nowarp><A title=复制单个贴子到别的版面 
+href="http://www.pigtwo.com/forum/admin_postings.asp?action=复制&amp;BoardID=14&amp;ID=376&amp;replyID=835"><IMG 
+src="http://www.pigtwo.com/forum/pic/copy.gif" border=0></A>&nbsp;<A title=精华 
+href="http://www.pigtwo.com/forum/admin_postings.asp?action=精华&amp;BoardID=14&amp;ID=376&amp;replyID=835"><IMG 
+src="http://www.pigtwo.com/forum/pic/jing.gif" border=0></A></TD>
+<TD vAlign=bottom align=right 
+width=4></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE>
+<TABLE class=tableborder1 style="TABLE-LAYOUT: fixed; WORD-BREAK: break-all" 
+cellSpacing=1 cellPadding=5 align=center>
+<TBODY>
+<TR>
+<TD class=tablebody2 vAlign=top width=175>
+<TABLE cellSpacing=0 cellPadding=4 width="100%">
+<TBODY>
+<TR>
+<TD style="FILTER: glow(color=#9898BA,strength=2)" vAlign=center 
+width=*>&nbsp;<A name=845><FONT color=#000066><B>chshanghai</B></FONT></A> </TD>
+<TD vAlign=center width=25><IMG alt=帅哥哟，离线，有人找我吗？ src="http://www.pigtwo.com/forum/pic/ofMale.gif"></TD>
+<TD vAlign=center width=16></TD></TR></TBODY></TABLE>&nbsp;&nbsp;<IMG height=32 
+src="http://www.pigtwo.com/forum/pic/Image1.gif" width=32><BR>&nbsp;&nbsp;<IMG 
+src="http://www.pigtwo.com/forum/pic/level0.gif"><BR>&nbsp;&nbsp;等级：新手上路<BR>&nbsp;&nbsp;文章：1<BR>&nbsp;&nbsp;积分：3<BR>&nbsp;&nbsp;注册：2003-5-6<BR></TD>
+<TD class=tablebody2 vAlign=top width=*>
+<TABLE width="100%">
+<TBODY>
+<TR>
+<TD width=*><A 
+href=""><IMG 
+alt=给chshanghai发送一个短消息 src="http://www.pigtwo.com/forum/pic/message.gif" border=0></A>&nbsp;<A 
+href="http://www.pigtwo.com/forum/friendlist.asp?action=addF&amp;myFriend=chshanghai" target=_blank><IMG 
+alt=把chshanghai加入好友 src="http://www.pigtwo.com/forum/pic/friend.gif" border=0></A>&nbsp;<A 
+href="http://www.pigtwo.com/forum/dispuser.asp?id=251" target=_blank><IMG alt=查看chshanghai的个人资料 
+src="http://www.pigtwo.com/forum/pic/profile.gif" border=0></A>&nbsp;<A 
+href="http://www.pigtwo.com/forum/queryResult.asp?stype=1&amp;nSearch=3&amp;keyword=chshanghai&amp;BoardID=14&amp;SearchDate=ALL" 
+target=_blank><IMG alt="搜索chshanghai在『数 据 库』的所有贴子" src="http://www.pigtwo.com/forum/pic/find.gif" 
+border=0></A>&nbsp;<A href="http://www.pigtwo.com/forum/mailto:chshanghai@sohu.com"><IMG 
+alt=点击这里发送电邮给chshanghai src="http://www.pigtwo.com/forum/pic/email.gif" border=0></A>&nbsp;<A 
+href="http://www.pigtwo.com/forum/reannounce.asp?BoardID=14&amp;replyID=845&amp;id=376&amp;star=1&amp;reply=true"><IMG 
+alt=引用回复这个贴子 src="http://www.pigtwo.com/forum/pic/reply.gif" border=0></A>&nbsp;<A 
+href="http://www.pigtwo.com/forum/reannounce.asp?BoardID=14&amp;replyID=845&amp;id=376&amp;star=1"><IMG 
+alt=回复这个贴子 src="http://www.pigtwo.com/forum/pic/reply_a.gif" border=0></A></TD>
+<TD width=50><B>第<FONT color=#ff0000>2</FONT>楼</B></TD></TR>
+<TR>
+<TD bgColor=#6595d6 colSpan=2 height=1></TD></TR></TBODY></TABLE>
+<BLOCKQUOTE><IMG alt=发贴心情 src="http://www.pigtwo.com/forum/face/face1.gif" border=0>&nbsp;<FONT 
+style="FONT-SIZE: 9pt; LINE-HEIGHT: 15pt"><B></B><BR>其实&nbsp;一句话就可以啊&nbsp;&nbsp;&nbsp;为什么要这么烦,而且效率又不高&nbsp;&nbsp;<BR>select&nbsp;*&nbsp;from&nbsp;&nbsp;t_test&nbsp;a,<BR>&nbsp;(&nbsp;SELECT&nbsp;id,&nbsp;MAX(cost)&nbsp;AS&nbsp;max_cost&nbsp;<BR>&nbsp;&nbsp;&nbsp;&nbsp;INTO&nbsp;#mytemp&nbsp;<BR>&nbsp;&nbsp;&nbsp;&nbsp;FROM&nbsp;t_test<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GROUP&nbsp;BY&nbsp;id<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;HAVING&nbsp;(COUNT(*)&nbsp;&gt;&nbsp;1)&nbsp;&nbsp;)&nbsp;&nbsp;b<BR>where&nbsp;a.id=b.id&nbsp;and&nbsp;a.cost=b.max_cost</FONT></BLOCKQUOTE></TD></TR></TBODY></TABLE>

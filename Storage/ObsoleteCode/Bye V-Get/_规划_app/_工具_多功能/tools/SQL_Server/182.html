@@ -1,0 +1,12 @@
+<meta http-equiv="content-type" content="text/html; charset=gb2312"><FONT 
+style="FONT-SIZE: 9pt; LINE-HEIGHT: 15pt"><B>获取表中记录的总行数，等－T-SQL系列</B><BR><BR>（1）、获取表中记录的总行数
+<P></P>
+<P>SELECT&nbsp;COUNT(*)&nbsp;FROM&nbsp;seq_num</P>
+<P>--更快的方法，只能取得表的总行数<BR>SELECT&nbsp;ROWS<BR>FROM&nbsp;sysindexes<BR>WHERE&nbsp;id=OBJECT_ID("seq_num")<BR>&nbsp;&nbsp;AND&nbsp;indid&lt;2</P>
+<P>（2）、将数据放到WEB页上</P>
+<P>用专门的存储过程sp_makewebtask（它也内含了扩展存储过程xp_makewebtask）。</P>
+<P>sp_makewebtask&nbsp;@outputfile="c:\tmp\pub_info.htm",<BR>&nbsp;&nbsp;@query="SELECT&nbsp;pub_id,pr_info,pub_id,logo,pub_id&nbsp;FROM&nbsp;pub_info",<BR>&nbsp;&nbsp;@blobfmt="%2%FILE=c:\tmp\pubtxt_.html%4%FILE=c:\tmp\pubing_.gif"</P>
+<P></P>
+<P></P>
+<P>
+<DIV align=right><FONT color=#000066>[此贴子已经被</FONT></DIV></FONT>

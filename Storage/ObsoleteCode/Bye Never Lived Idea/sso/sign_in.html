@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+                <html>
+                <head>
+                    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+              <title>登陆掠需</title><meta name="description" content="fsdasdfsa"><meta name="keywords" content="dfas,dfss"><script type="text/javascript" src="http://www.luexu.com/_cdn/jq2.1.1.js"></script><link href="http://www.luexu.com/_cdn/y.css" rel="stylesheet" type="text/css"><script type="text/javascript" src="http://www.luexu.com/_cdn/y.js"></script><link href="http://www.luexu.com/_cdn/www/i.css" rel="stylesheet" type="text/css"><script type="text/javascript" src="http://www.luexu.com/_cdn/www/i.js"></script><script>// if logined move url to edit
+if (Y.cookie('sso_sign_info')) {
+    alert('已经登陆 ' + ' = ' +Y.cookie('sso_sign_info'));
+    //window.location.href = '{^Url::edit}';
+}
+
+
+</script><style type="text/css">
+    .l{width:770px;height:390px}
+.c a{color:#3b5998}
+
+.s-err-tip{line-height:42px}
+
+
+
+
+
+#sso-sign-up-tab{margin:0 0 18px 0;border:1px solid #fff;height:42px;}
+#sso-sign-up-tab a{width:50%;font:600 20px/42px "微软雅黑";}
+#sso-sign-up-tab .sso-sign-up-tab-ao{background:#fff;color:#333;}
+
+
+#sign-up-email{display: none}
+
+/* 采用 16:10  如果用 16:9 会很长*/
+.s-nation-flag{background:url(http://www.luexu.com/_cdn/www/reg_flag.png) no-repeat scroll 6px 10px #fff; width:32px; height:20px;padding:11px 6px;}
+.s-nation-code{width:38px;height:42px;font:400 16px/42px "微软雅黑";color:#666;background:#fff;}
+.s-mobile{width:206px}
+.send-msg{width:120px;height:42px;font:400 16px/42px "微软雅黑";background:0;border:0;cursor:pointer;background:#aaa;color:#fff}
+.send-msg-pause{cursor:text;}
+
+.r{width:300px}
+
+
+.reg-tab{margin:0 0 18px 0;border:1px solid #fff;height:42px;}
+.reg-tab a{width:50%;font:600 20px/42px "微软雅黑";}
+.reg-tab .reg-tab-ao{background:#fff;color:#333;}
+
+
+    
+.sso-pop-sign-in{width:270px}
+.sso p{margin:0 0 18px 0}
+.sso-input{position:relative;border:0;height:16px;padding:12px 12px 12px 38px;width:220px;font:400 16px "微软雅黑";}
+
+.sso-label{display: block;
+    position: absolute;
+    top: 8px;
+    left: 6px;
+    width: 24px;height: 24px;text-indent:99px;overflow: hidden;background: url(http://passport.bdimg.com/passApi/img/input_icons_24_915272c4.png) #c00 no-repeat;z-index: 20;}
+
+
+
+.sso-captcha-item{}
+.sso-captcha{width:55px;}
+/* 下面用于配置传递来的验证码图片，字体大小、长宽*/
+.sso-captcha-img{font-size:24px;width:100px;height:40px;margin:0 9px;cursor:default}
+
+.sso-captcha-item a.sso-captcha-change{line-height:42px}
+
+
+
+.sso-submit-item{margin:18px 0}
+.sso-submit{text-align:center;text-decoration:none;border:0;cursor:pointer;width:100%;display:inline-block;height:40px;font:400 18px/40px "微软雅黑";background:#3b5998;color:#fff}
+.sso-submit:hover{background:#79d}
+.sso-submit-item em{display:none;margin:0 9px 0 0;width:16px;height:16px;background:url(http://sso.luexu.com/_static/sso/loading16.gif) no-repeat;}</style>
+                </head>
+                <body><div class="u">
+    <div class="w po">
+
+        <a href="/" class="p i" title="抢需求，上掠需！">抢需求，上掠需！</a>
+
+        <div class="a p n">
+            <a href="">首页</a>
+            <a href="">掠需</a>
+            <a href="">案例</a>
+            <a href="">论文</a>
+        </div>
+
+        <div class="pr a t t-reg">
+            <a href="http://www.luexu.com/sso/" class="sso-reg">注册</a>
+            <a href="#" class="sso-line">|</a>
+            <a href="http://www.luexu.com/sso/sign_in.html" class="sso-login">登陆</a>
+        </div>
+    </div>
+
+</div>
+                <div class="w-v">
+                    <div class="w">
+                        <div class="v">
+          
+
+
+<div class="p l">
+    <div id="a770x390"></div>
+</div>
+
+<div class="q r">
+    <div class="sso-pop-sign-in">
+        <form method="post" class="po-p sso-sign-in" id="sso-sign-in">
+            <input name="accounttype" id="sso-account-type" type="hidden">
+
+            <p>
+                <label id="sso-label-account" class="sso-label sso-label-account"
+                       for="sso-account">掠需名/手机/邮箱</label>
+                <input name="account" id="sso-account" class="sso-input" type="text"
+                       data-type="placelen account" data-len="5-27" placeholder="掠需名/手机/邮箱">
+            </p>
+
+            <p>
+                <label id="sso-label-pwd" class="sso-label sso-label-pwd" for="sso-pwd">密码</label>
+                <input name="pwd" id="sso-pwd" class="sso-input" type="password" data-len="6-21"
+                       placeholder="请输入密码">
+            </p>
+
+            <p class="a ov sso-captcha-item">
+                <label id="sso-label-captcha" class="sso-label sso-label-captcha" for="sso-captcha">密码</label>
+                <input name="captcha" id="sso-captcha" class="p sso-input sso-captcha" type="text"
+                       data-len="4" data-type="captcha" autocomplete="off" placeholder="验证码">
+                <a href="#" id="sso-captcha-img" class="sso-captcha-img"></a>
+                <a href="#" id="sso-captcha-change" class="sso-captcha-change">换一张</a>
+            </p>
+
+            <p>
+                <input type="checkbox" checked="checked">
+                下次自动登陆
+                <a href="#" class="pr">忘记密码</a>
+            </p>
+
+
+            <p class="sso-submit-item">
+                <input class="sso-submit" type="submit" value="登 陆 掠 需">
+            </p>
+
+            <p>
+                使用以下账号直接登陆
+                <a class="pr" href="http://www.luexu.com/sso/">立即注册</a>
+            </p>
+
+        </form>
+    </div>
+</div>
+
+<script type="text/javascript" src="http://www.luexu.com/_cdn/thrift0.9.1.js"></script><script type="text/javascript" src="http://www.luexu.com/_cdn/www/sso/sign/sso_types.js"></script><script type="text/javascript" src="http://www.luexu.com/_cdn/www/sso/sign/Sign.js"></script>
+
+<script>
+
+
+    
+
+
+
+
+
+/*
+ var transport = new Thrift.Transport("http://c-b.luexu.com/v1/sso/");
+ var protocol  = new Thrift.Protocol(transport);
+ var handler = new Tf.Sso.SsoSignClient(protocol);
+
+ try {
+ var sign_info_st = new Tf.Sso.SignInfoSt();
+ sign_info_st.email = '951173723@qq.com';
+ sign_info_st.account_type = 3;
+ sign_info_st.pwd = '123456';
+ handler.signIn(sign_info_st);
+
+ document.write("调用 hello 成功:<br>"+result);
+ } catch(err){
+ document.write("调用 hello 出错:<br>"+err.id+"<br>"+err.msg);
+ }
+ */
+/*
+ *  thrift
+ * */
+
+var tfSsoSign = function () {
+
+};
+
+
+/*
+ * 默认错误
+ * */
+function Err(e) {
+    /// console.log(Tf.Sso.ErrIdEnum);
+    var x = Tf.Sso.ErrIdEnum;
+    var m = function (s) {
+        return e.msg || s
+    }
+    switch (e.id) {
+        case x.ERR_SERVER:
+            throw m('服务器错误');
+            break;
+        case x.ERR_NOT_EXISTS:
+            throw m('没有找到');
+            break;
+        case x.ERR_REPEATED:
+            throw m('重复');
+            break;
+        case x.ERR_USER_INPUT:
+            throw m('输入错误');
+            break;
+        case x.ERR_CAPTCHA:
+            throw m('验证码错误');
+            break;
+        case x.ERR_VERIFY:
+            throw m('验证错误');
+            break;
+        case x.ERR_PERMISSION:
+            throw m('权限错误');
+            break;
+        default:
+            throw m('未知错误');
+    }
+}
+
+
+function tfSignIn(a, a_type, p, c) {
+    try {
+        var transport = new Thrift.Transport("http://www.luexu.com/api.luexu.com/1/sso/?p=json");
+        var protocol = new Thrift.Protocol(transport);
+        var tfSsoSign = new Tf.Sso.SignClient(protocol);
+        var sign_in_st = new Tf.Sso.SignInSt();
+        sign_in_st.account = a;
+        sign_in_st.account_type = a_type;
+        sign_in_st.pwd = p;
+        sign_in_st.captcha = c.toLowerCase();
+        tfSsoSign.signIn(sign_in_st);
+        signInJump();
+
+    } catch (e) {
+        Err(e);
+    }
+
+}
+
+function signInJump() {
+    alert('登陆成功');
+}
+
+
+$("#sso-sign-in").submit(function (e) {
+    e.preventDefault();
+    var a = $('#sso-account').val(), p = $('#sso-pwd').val(), c = $('#sso-captcha').val();
+    try {
+        tfSignIn(a, 0, p, c);
+    }
+    catch (e) {
+        showCaptcha('#sso-captcha-img');
+        YS.errTip(this, e);
+    }
+
+
+});
+
+
+function showCaptcha(c) {
+    var i = c + ' img';
+
+    function f() {
+        $(i).hide(99);
+        var l = $(i).prop('src');
+        l = l.replace(/(\&t=)\d+/, '$1' + Y.t());
+        $(i).prop('src', l);
+        $(i).show(99);
+    }
+
+    if ($(i).attr('src')) {
+        f();
+    }
+    else {
+        $('.sso-captcha-outer').show(100);
+
+        var l = 'http://www.luexu.com/api.luexu.com/cgi-bin/captcha/?w=' + $(c).width() + '&h=' + $(c).height() + '&f=' + $(c).css('font-size').replace('px', '') + '&t=' + Y.t();
+
+        var s = '<img src="' + l + '" alt="验证码">';
+        $(c).append(s);
+        $('#sso-captcha-change').click(function () {
+            f()
+        });
+    }
+
+}
+
+    Y.J('http://www.luexu.com/_cdn/_misc/ad/sso.js', function () {
+        $('#a770x390').html(ad)
+    });
+
+
+
+</script>
+
+                        </div>
+          
+                    </div>
+                </div>
+          <script type="text/javascript" src="http://www.luexu.com/_cdn/www/i.js"></script><script type="text/javascript" src="http://www.luexu.com/_cdn/ys.js"></script>
+                </body>
+                </html>
+              

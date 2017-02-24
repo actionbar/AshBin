@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><script type="text/javascript" src="http://localhost/www.v-get.com/i0/c.js"></script></head><body>
+<div>
+<textarea id="a" style="width:550px;height:650px;float:left"></textarea><textarea id="b" style="width:550px;height:650px;float:right" ondblclick="dbc()"></textarea></div>
+<script>
+function dbc(){
+var a=$("a").value;
+a=$r(a,/\s+地址：/g,'市提货点：');
+a=$r(a,/\s+电话：/g,'</p><p>');
+a=$r(a,/\s*义乌 至 /g,'</p><p>');
+a=$r(a,/(\d+)\/(\d+)/g,'$1 / $2');
+a=$r(a,/^<\/p>(.+)/,'$1');
+a+='</p>';
+a=$r(a,/\s+<\/p>/g,'</p>');
+a=$r(a,/（/g,'(');a=$r(a,/）/g,')');
+a=$r(a,/(\d{4}-\d+)\s*联系人：([^\s]+)\s*/g,'$2 $1');
+a=$r(a,/(\d+)手机：(\d+)/g,'$1 / $2');
+//a=$r(a,/\s{2,}/g,'');
+$("b").value='<h2 h="提货地址">提货点</h2>'+a;
+
+}
+</script>
+
+
+
+</body></html>

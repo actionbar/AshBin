@@ -1,0 +1,312 @@
+<html>
+<head>
+<title>属性</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+
+<link rel = stylesheet href = "image/style.css">
+</head>
+<body bgcolor="#ffffff">
+<table width="688" border="0" cellspacing="0" cellpadding="0" align="center">
+  <tr bgcolor="EEEEEE"> 
+    <td height="22"><a href="index.htm">主页</a></td>
+  </tr>
+</table><br>
+<table border="0" cellpadding="0" cellspacing="0" width="688" align="center" height="490">
+  <tr valign="top"> 
+    <td rowspan="4" width="91">&nbsp; </td>
+    <td height="68" width="131"> 
+      <p><img src="image/doc.gif"></p>
+    </td>
+    <td rowspan="4" width="18"><b></b> </td>
+    <td height="68" width="387"><img src="image/title_doc.gif"></td>
+    <td rowspan="4" width="61"> 
+      <h6>&nbsp;</h6>
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td rowspan="3" valign="top" class="pt10" align="center" width="131" bgcolor="EEEEEE"> 
+      <p>&nbsp;</p>
+      <p><font color="#FF0000">※ 5.1 属性</font></p>
+       
+	</td>
+  </tr>
+  <tr valign="top"> 
+    <td width="387" height="308"> 
+      <table width="100%" border="0" cellpadding="0">
+        <tr> 
+          <td>
+<h3><a name="_Toc467197020">5.1 属性</a></h3>
+<p>在上一章中，所有的数据可分为标记名或者元素的内容两类。这种方法直接易懂，但不是唯一的。XML元素与HTML中的元素一样，有自己的属性。元素的每个属性是一个名称-数值对，名称和数值分别为一个字符串，一个元素不能有两个同名的属性。</p>
+<p>大家都熟悉HTML的属性句法，请看下面的&lt;IMG&gt;标记实例：</p>
+<p>&lt;IMG SRC=cup.gif WIDTH=89 HEIGHT=67 ALT="Cup of coffee"&gt;</p>
+<p>该标记有4个属性，SRC属性的值是cup.gif，WIDTH属性的值是89，HEIGHT属性的值是67，ALT属性的值是Cup of coffee。然而，与HTML不同，XML中属性的值必须加引号，并且必须有与起始标记匹配的终止标记。上述标记实例用XML表示为：</p>
+<p>&lt;IMG SRC="image/cup.gif" WIDTH="89" HEIGHT="67" ALT="Cup of coffee"&gt;</p>
+<p>&lt;/IMG&gt;</p>
+<p><img src="image/BK000205-1.gif" width=57 height=48>HTML与XML的另一个不同点是：XML没有赋予<b>IMG</b>标记及其属性任何特殊意义。特别是不能保证XML浏览器会把该标记翻译成装载并显示cup.gif文件中的图像的指令。</p>
+<p>可以很容易将属性句法应用到棒球示例中，这样会使标记显得简洁明了。例如，我们可以用SEASON元素中的一个YEAR属性代替一个YEAR子元素：</p>
+<p>&lt;SEASON YEAR="1998"&gt;</p>
+<p>&lt;/SEASON&gt;</p>
+<p>另一方面，LEAGUE应当是SEASON的一个子元素而不是一个属性。因为在一个赛季中可能有两个联赛，而且子元素在任何时候都有可能指代不同的事物。但是，一个元素的属性名是不能重复的。因此，不能像下面的示例那样编写SEASON元素。</p>
+<p>&lt;SEASON YEAR="1998" LEAGUE="National" League="American"&gt;</p>
+<p>&lt;/SEASON&gt;</p>
+<p>LEAGUE确实是一个子元素而不是一个属性的另一个原因是，它含有子结构，可进一步分成多个DIVISION元素，其属性值是无格式文本。XML元素可对结构方便地加以编码，而属性值却不能。</p>
+<p>联赛名称是无结构的普通文本，每一个联赛只有一个名称，因此，LEAGUE元素含有一个NAME属性，而不是一个LEAGUE_NAME子元素：</p>
+<p>&lt;LEAGUE NAME="National League"&gt;</p>
+<p>&lt;/LEAGUE&gt;</p>
+<p>由于属性与元素的联系比子元素更加紧密，上述的属性名应使用NAME，而不是LEAGUE_NAME，不会出错。各分部和球队这些子元素同样有NAME属性，不必担心与联赛名混淆。一个标记可以有多个属性，只要这些属性不同名即可。我们可以将各队所在的城市看作一个属性，如下所示：</p>
+<p>&lt;LEAGUE NAME="American League"&gt;</p>
+<dir> 
+  <p>&lt;DIVISION NAME="East"&gt;</p>
+  <dir> 
+    <p>&lt;TEAM NAME="Orioles" CITY="Baltimore"&gt;&lt;/TEAM&gt;</p>
+    <p>&lt;TEAM NAME="Red Sox" CITY="Boston"&gt;&lt;/TEAM&gt;</p>
+    <p>&lt;TEAM NAME="Yankees" CITY="New York"&gt;&lt;/TEAM&gt;</p>
+    <p>&lt;TEAM NAME="Devil Rays" CITY="Tampa Bay"&gt;&lt;/TEAM&gt;</p>
+    <p>&lt;TEAM NAME="Blue Jays" CITY="Toronto"&gt;&lt;/TEAM&gt;</p>
+  </dir>
+  <p>&lt;/DIVISION&gt;</p>
+</dir>
+<p>&lt;/LEAGUE&gt;</p>
+<p>如果把每一项统计选作一个属性，一个队员将包括许多属性。下面的示例是用属性表示的Joe Girardi在1998年的统计数据。</p>
+<p>&lt;PLAYER GIVEN_NAME="Joe" SURNAME="Girardi"</p>
+<dir> 
+  <p>GAMES="78" AT_BATS="254" RUNS="31" HITS="70"</p>
+  <p>DOUBLES="11" TRIPLES="4" HOME_RUNS="3"</p>
+  <p>RUNS_BATTED_IN="31" WALKS="14" STRUCK_OUT="38"</p>
+  <p>STOLEN_BASES="2" CAUGHT_STEALING="4"</p>
+  <p>SACRIFICE_FLY="1" SACRIFICE_HIT="8"</p>
+  <p>HIT_BY_PITCH="2"&gt;</p>
+</dir>
+<p>&lt;/PLAYER&gt;</p>
+<p>清单5-1应用这种新的属性样式展示了一个完整的XML文档，文档是1998年重要棒球联赛的统计。展示的信息与上一章清单4-1中的一样（包括2个联赛、6个分部、30个球队和9名运动员），只是标记的方式不同。图5-1显示了装入到Internet 
+  Explorer 5.0中的没有任何样式单的文档。</p>
+<p><img src="image/BK000205-2.gif" width=525 height=362></p>
+<p>图5-1 1998年主要棒球联赛统计，使用属性表示信息</p>
+<p>清单5-1：使用属性存储棒球统计的完整的XML文档</p>
+<p>&lt;?xml version="1.0" standalone="yes"?&gt;</p>
+<p>&lt;SEASON YEAR="1998"&gt;</p>
+<dir> 
+  <p>&lt;LEAGUE NAME="National League"&gt;</p>
+  <p> &lt;DIVISION NAME="East"&gt;</p>
+  <dir> 
+    <p>&lt;TEAM CITY="Atlanta" NAME="Braves"&gt;</p>
+    <p>&lt;PLAYER GIVEN_NAME="Marty" SURNAME="Malloy"</p>
+    <dir> 
+      <dir> 
+        <p>POSITION="Second Base" GAMES="11" GAMES_STARTED="8"</p>
+        <p>AT_BATS="28" RUNS="3" HITS="5" DOUBLES="1"</p>
+        <p>TRIPLES="0" HOME_RUNS="1" RBI="1" STEALS="0"</p>
+        <p>CAUGHT_STEALING="0" SACRIFICE_HITS="0"</p>
+        <p>SACRIFICE_FLIES="0" ERRORS="0" WALKS="2"</p>
+        <p>STRUCK_OUT="2" HIT_BY_PITCH="0"&gt;</p>
+      </dir>
+    </dir>
+    <p>&lt;/PLAYER&gt;</p>
+    <p>&lt;PLAYER GIVEN_NAME="Ozzie" SURNAME="Guillen"</p>
+    <dir> 
+      <dir> 
+        <p>POSITION="Shortstop" GAMES="83" GAMES_STARTED="59"</p>
+        <p>AT_BATS="264" RUNS="35" HITS="73" DOUBLES="15"</p>
+        <p>TRIPLES="1" HOME_RUNS="1" RBI="22" STEALS="1"</p>
+        <p>CAUGHT_STEALING="4" SACRIFICE_HITS="4"</p>
+        <p>SACRIFICE_FLIES="2" ERRORS="6" WALKS="24"</p>
+        <p>STRUCK_OUT="25" HIT_BY_PITCH="1"&gt;</p>
+      </dir>
+      <p>&lt;/PLAYER&gt;</p>
+    </dir>
+    <p>&lt;PLAYER GIVEN_NAME="Danny" SURNAME="Bautista"</p>
+    <dir> 
+      <dir> 
+        <p>POSITION="Outfield" GAMES="82" GAMES_STARTED="27"</p>
+        <p>AT_BATS="144" RUNS="17" HITS="36" DOUBLES="11"</p>
+        <p>TRIPLES="0" HOME_RUNS="3" RBI="17" STEALS="1"</p>
+        <p>CAUGHT_STEALING="0" SACRIFICE_HITS="3"</p>
+        <p>SACRIFICE_FLIES="2" ERRORS="2" WALKS="7"</p>
+        <p>STRUCK_OUT="21" HIT_BY_PITCH="0"&gt;</p>
+      </dir>
+    </dir>
+    <p>&lt;/PLAYER&gt;</p>
+    <p>&lt;PLAYER GIVEN_NAME="Gerald" SURNAME="Williams"</p>
+    <dir> 
+      <dir> 
+        <p>POSITION="Outfield" GAMES="129" GAMES_STARTED="51"</p>
+        <p>AT_BATS="266" RUNS="46" HITS="81" DOUBLES="18"</p>
+        <p>TRIPLES="3" HOME_RUNS="10" RBI="44" STEALS="11"</p>
+        <p>CAUGHT_STEALING="5" SACRIFICE_HITS="2"</p>
+        <p>SACRIFICE_FLIES="1" ERRORS="5" WALKS="17"</p>
+        <p>STRUCK_OUT="48" HIT_BY_PITCH="3"&gt;</p>
+      </dir>
+    </dir>
+    <p>&lt;/PLAYER&gt;</p>
+    <p>&lt;PLAYER GIVEN_NAME="Tom" SURNAME="Glavine"</p>
+    <dir> 
+      <dir> 
+        <p>POSITION="Starting Pitcher" GAMES="33"</p>
+        <p>GAMES_STARTED="33" WINS="20" LOSSES="6" SAVES="0"</p>
+        <p>COMPLETE_GAMES="4" SHUT_OUTS="3" ERA="2.47"</p>
+        <p>INNINGS="229.1" HOME_RUNS_AGAINST="13"</p>
+        <p>RUNS_AGAINST="67" EARNED_RUNS="63" HIT_BATTER="2"</p>
+        <p>WILD_PITCHES="3" BALK="0" WALKED_BATTER="74"</p>
+        <p>STRUCK_OUT_BATTER="157"&gt;</p>
+      </dir>
+    </dir>
+    <p>&lt;/PLAYER&gt;</p>
+    <p>&lt;PLAYER GIVEN_NAME="Javier" SURNAME="Lopez"</p>
+    <dir> 
+      <dir> 
+        <p>POSITION="Catcher" GAMES="133" GAMES_STARTED="124"</p>
+        <p>AT_BATS="489" RUNS="73" HITS="139" DOUBLES="21"</p>
+        <p>TRIPLES="1" HOME_RUNS="34" RBI="106" STEALS="5"</p>
+        <p>CAUGHT_STEALING="3" SACRIFICE_HITS="1"</p>
+        <p>SACRIFICE_FLIES="8" ERRORS="5" WALKS="30"</p>
+        <p>STRUCK_OUT="85" HIT_BY_PITCH="6"&gt;</p>
+      </dir>
+    </dir>
+    <p>&lt;/PLAYER&gt;</p>
+    <p>&lt;PLAYER GIVEN_NAME="Ryan" SURNAME="Klesko"</p>
+    <dir> 
+      <dir> 
+        <p>POSITION="Outfield" GAMES="129" GAMES_STARTED="124"</p>
+        <p>AT_BATS="427" RUNS="69" HITS="117" DOUBLES="29"</p>
+        <p>TRIPLES="1" HOME_RUNS="18" RBI="70" STEALS="5"</p>
+        <p>CAUGHT_STEALING="3" SACRIFICE_HITS="0"</p>
+        <p>SACRIFICE_FLIES="4" ERRORS="2" WALKS="56"</p>
+        <p>STRUCK_OUT="66" HIT_BY_PITCH="3"&gt;</p>
+      </dir>
+    </dir>
+    <p>&lt;/PLAYER&gt;</p>
+    <p>&lt;PLAYER GIVEN_NAME="Andres" SURNAME="Galarraga"</p>
+    <dir> 
+      <dir> 
+        <p>POSITION="First Base" GAMES="153" GAMES_STARTED="151"</p>
+        <p>AT_BATS="555" RUNS="103" HITS="169" DOUBLES="27"</p>
+        <p>TRIPLES="1" HOME_RUNS="44" RBI="121" STEALS="7"</p>
+        <p>CAUGHT_STEALING="6" SACRIFICE_HITS="0"</p>
+        <p>SACRIFICE_FLIES="5" ERRORS="11" WALKS="63"</p>
+        <p>STRUCK_OUT="146" HIT_BY_PITCH="25"&gt;</p>
+      </dir>
+    </dir>
+    <p>&lt;/PLAYER&gt;</p>
+    <p>&lt;PLAYER GIVEN_NAME="Wes" SURNAME="Helms"</p>
+    <dir> 
+      <dir> 
+        <p>POSITION="Third Base" GAMES="7" GAMES_STARTED="2"</p>
+        <p>AT_BATS="13" RUNS="2" HITS="4" DOUBLES="1"</p>
+        <p>TRIPLES="0" HOME_RUNS="1" RBI="2" STEALS="0"</p>
+        <p>CAUGHT_STEALING="0" SACRIFICE_HITS="0"</p>
+        <p>SACRIFICE_FLIES="0" ERRORS="1" WALKS="0"</p>
+        <p>STRUCK_OUT="4" HIT_BY_PITCH="0"&gt;</p>
+      </dir>
+      <p>&lt;/PLAYER&gt;</p>
+    </dir>
+  </dir>
+  <p>&lt;/TEAM&gt;</p>
+  <p>&lt;TEAM CITY="Florida" NAME="Marlins"&gt;</p>
+  <p>&lt;/TEAM&gt;</p>
+  <p>&lt;TEAM CITY="Montreal" NAME="Expos"&gt;</p>
+  <p>&lt;/TEAM&gt;</p>
+  <p>&lt;TEAM CITY="New York" NAME="Mets"&gt;</p>
+  <p>&lt;/TEAM&gt;</p>
+  <p>&lt;TEAM CITY="Philadelphia" NAME="Phillies"&gt;</p>
+  <p>&lt;/TEAM&gt;</p>
+</dir>
+<p>&lt;/DIVISION&gt;</p>
+<dir> 
+  <p>&lt;DIVISION NAME="Central"&gt;</p>
+  <dir> 
+    <p>&lt;TEAM CITY="Chicago" NAME="Cubs"&gt;</p>
+    <p>&lt;/TEAM&gt;</p>
+    <p>&lt;TEAM CITY="Cincinnati" NAME="Reds"&gt;</p>
+    <p>&lt;/TEAM&gt;</p>
+    <p>&lt;TEAM CITY="Houston" NAME="Astros"&gt;</p>
+    <p>&lt;/TEAM&gt;</p>
+    <p>&lt;TEAM CITY="Milwaukee" NAME="Brewers"&gt;</p>
+    <p>&lt;/TEAM&gt;</p>
+    <p>&lt;TEAM CITY="Pittsburgh" NAME="Pirates"&gt;</p>
+    <p>&lt;/TEAM&gt;</p>
+    <p>&lt;TEAM CITY="St.Louis" NAME="Cardinals"&gt;</p>
+    <p>&lt;/TEAM&gt;</p>
+  </dir>
+  <p>&lt;/DIVISION&gt;</p>
+  <p>&lt;DIVISION NAME="West"&gt;</p>
+  <dir> 
+    <p>&lt;TEAM CITY="Arizona" NAME="Diamondbacks"&gt;</p>
+    <p>&lt;/TEAM&gt;</p>
+    <p>&lt;TEAM CITY="Colorado" NAME="Rockies"&gt;</p>
+    <p>&lt;/TEAM&gt;</p>
+    <p>&lt;TEAM CITY="Los Angeles" NAME="Dodgers"&gt;</p>
+    <p>&lt;/TEAM&gt;</p>
+    <p>&lt;TEAM CITY="San Diego" NAME="Padres"&gt;</p>
+    <p>&lt;/TEAM&gt;</p>
+    <p>&lt;TEAM CITY="San Francisco" NAME="Giants"&gt;</p>
+    <p>&lt;/TEAM&gt;</p>
+  </dir>
+  <p>&lt;/DIVISION&gt;</p>
+  <p>&lt;/LEAGUE&gt;</p>
+  <p>&lt;LEAGUE NAME="American League"&gt;</p>
+  <p>&lt;DIVISION NAME="East"&gt;</p>
+  <dir> 
+    <p>&lt;TEAM CITY="Baltimore" NAME="Orioles"&gt;</p>
+    <p>&lt;/TEAM&gt;</p>
+    <p>&lt;TEAM CITY="Boston" NAME="Red Sox"&gt;</p>
+    <p>&lt;/TEAM&gt;</p>
+    <p>&lt;TEAM CITY="New York" NAME="Yankees"&gt;</p>
+    <p>&lt;/TEAM&gt;</p>
+    <p>&lt;TEAM CITY="Tampa Bay" NAME="Devil Rays"&gt;</p>
+    <p>&lt;/TEAM&gt;</p>
+    <p>&lt;TEAM CITY="Toronto" NAME="Blue Jays"&gt;</p>
+    <p>&lt;/TEAM&gt;</p>
+  </dir>
+  <p>&lt;/DIVISION&gt;</p>
+  <p>&lt;DIVISION NAME="Central"&gt;</p>
+  <dir> 
+    <p>&lt;TEAM CITY="Chicago" NAME="White Sox"&gt;</p>
+    <p>&lt;/TEAM&gt;</p>
+    <p>&lt;TEAM CITY="Kansas City" NAME="Royals"&gt;</p>
+    <p>&lt;/TEAM&gt;</p>
+    <p>&lt;TEAM CITY="Detroit" NAME="Tigers"&gt;</p>
+    <p>&lt;/TEAM&gt;</p>
+    <p>&lt;TEAM CITY="Cleveland" NAME="Indians"&gt;</p>
+    <p>&lt;/TEAM&gt;</p>
+    <p>&lt;TEAM CITY="Minnesota" NAME="Twins"&gt;</p>
+    <p>&lt;/TEAM&gt;</p>
+  </dir>
+  <p>&lt;/DIVISION&gt;</p>
+  <p>&lt;DIVISION NAME="West"&gt;</p>
+  <dir> 
+    <p>&lt;TEAM CITY="Anaheim" NAME="Angels"&gt;</p>
+    <p>&lt;/TEAM&gt;</p>
+    <p>&lt;TEAM CITY="Oakland" NAME="Athletics"&gt;</p>
+    <p>&lt;/TEAM&gt;</p>
+    <p>&lt;TEAM CITY="Seattle" NAME="Mariners"&gt;</p>
+    <p>&lt;/TEAM&gt;</p>
+    <p>&lt;TEAM CITY="Texas" NAME="Rangers"&gt;</p>
+    <p>&lt;/TEAM&gt;</p>
+  </dir>
+  <p>&lt;/DIVISION&gt;</p>
+</dir>
+<p> &lt;/LEAGUE&gt;</p>
+<p>&lt;/SEASON&gt;</p>
+<p>在清单5-1中，队员的信息是用属性表示的，清单4-1是用元素内容表示的。当然，也有合二为一的表示方法。例如，队员的名字作为元素内容，而其他部分作为属性，如下所示：</p>
+<p>&lt;P&gt;</p>
+<p>On Tuesday&lt;PLAYER GAMES="78" AT_BATS="254" RUNS="31"</p>
+<p>HITS="70" DOUBLES="11" TRIPLES="4" HOME_RUNS="3"</p>
+<p>RUNS_BATTED_IN="31" WALKS="14" STRIKE_OUTS="38"</p>
+<p>STOLEN_BASES="2" CAUGHT_STEALING="4"</p>
+<p>SACRIFICE_FLY="1" SACRIFICE_HIT="8"</p>
+<p>HIT_BY_PITCH="2"&gt;Joe Girardi&lt;/PLAYER&gt;struck out twice</p>
+<p>and...</p>
+<p>&lt;/P&gt;</p>
+<p>这样处理后，Joe Girardi的名字会以一个超链接文本的脚注或者工具提示包含在页面文本中，同时能保证希望深究它的读者得到该统计。一组相同的数据可以用多种方法进行编码，具体选择哪一种编码方法取决于用户特定应用的需要。</p>
+ 
+<a href='361.htm'>&lt;&lt;上一篇</a>&nbsp;&nbsp;<a href='362.htm'>下一篇&gt;&gt;</a></td>
+        </tr>
+      </table>
+      <p>&nbsp; </p>
+    </td>
+  </tr>
+</table>
+
+</body>
+
+</html>

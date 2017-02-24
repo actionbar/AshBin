@@ -1,0 +1,185 @@
+<html>
+<head>
+<title>什么是XML应用程序(续2)</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+
+<link rel = stylesheet href = "image/style.css">
+</head>
+<body bgcolor="#ffffff">
+<table width="688" border="0" cellspacing="0" cellpadding="0" align="center">
+  <tr bgcolor="EEEEEE"> 
+    <td height="22"><a href="index.htm">主页</a></td>
+  </tr>
+</table><br>
+<table border="0" cellpadding="0" cellspacing="0" width="688" align="center" height="490">
+  <tr valign="top"> 
+    <td rowspan="4" width="91">&nbsp; </td>
+    <td height="68" width="131"> 
+      <p><img src="image/doc.gif"></p>
+    </td>
+    <td rowspan="4" width="18"><b></b> </td>
+    <td height="68" width="387"><img src="image/title_doc.gif"></td>
+    <td rowspan="4" width="61"> 
+      <h6>&nbsp;</h6>
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td rowspan="3" valign="top" class="pt10" align="center" width="131" bgcolor="EEEEEE"> 
+      <p>&nbsp;</p>
+      <p><font color="#FF0000">※ 2.1 什么是XML应用程序</font></p>
+       
+            <p align="left"><a href='310.htm'>2.1 什么是XML应用程序</a></p>
+          
+            <p align="left"><a href='311.htm'>2.1 什么是XML应用程序(续1)</a></p>
+          
+            <p align="left">2.1 什么是XML应用程序(续2)</p>
+          
+	</td>
+  </tr>
+  <tr valign="top"> 
+    <td width="387" height="308"> 
+      <table width="100%" border="0" cellpadding="0">
+        <tr> 
+          <td>
+
+           <h5><A NAME="_Toc467196740">2.1.12 开放的金融交换（Open Financial Exchange）</A></h5>
+<P>软件不能胡乱加以改变。了解如何读取数据的软件具有惯性。在一种给定的没有文档说明的专有格式中的数据越多，则越难以改变这种软件。例如，我过去五年的个人财务信息都保存在Quicken中。即使Microsoft Money有的功能在Quicken中没有，我也不会轻易地将其改变为Microsoft Money。除非Money可以读取和转换Quicken文件，而不损失任何数据。</P>
+<P>在一个公司之内或是一个公司的产品之内也可能出现问题。Microsoft Word 97 for Windows不能读取Word的较早版本创建的文档。而早期版本的Word也不能读取Word 97 for Windows的文件，即使是Word 98 for the Mac比Word 97晚发行一年，也不能很好地读取Word 97 for Windows的文件。</P>
+<P>正像在第1章中指出的，开放金融交换格式（Open Financial Exchange Format，简写为OFX）是一种用于描述保存在个人财务软件（如Money或是Quicken）中的金融数据的XML应用。由于OFX是有文档加以很好说明的非专有格式（与Money、Quicken和其他程序的二进制格式不同），因而程序员就很容易来编写能够理解OFX的代码。</P>
+<P>OFX不仅允许Money和Quicken与其他软件交换数据，而且还允许使用同样格式的其他程序之间交换数据。例如，如果银行想要向顾客发出电子说明，只要写一个程序将此说明用OFX格式编码，而不必为多种程序的格式（如Quicken、Money和Managing Your Money）分别编码。</P>
+<P>使用给定格式的程序越多，在开发费用和精力上的节约也就越大。例如，六种程序要读写自己和互相读写其他程序的专有格式，需要有36种不同的转换器。当这六种程序都读写同样的OFX格式时，只需要六种转换器，这样一来，开发上的精力减少为O(<I>n</I>)（与<I>n</I>成正比），而不是原来的O(<I>n</I><SUP>2</SUP>)（与<I>n</I><SUP>2</SUP>成正比）。图2-6描述了六个程序读写自己和互相读写其他程序专有格式的情况。而图2-7描述了六种程序读写同样的OFX格式的情况。每个箭头代表一种在程序间交换文件与数据的转换器。在图2-6中，我们可以看到对于六种不同的程序相互读写专有的二进制格式的连接。在图2-7可以看到同是这六种程序都读写一种开放的XML格式的连接。基于XML的交换要比二进制的交换简单得多也清楚得多。</P>
+<P ALIGN="CENTER"><IMG SRC="image/Image16.gif" WIDTH=272 HEIGHT=274></P>
+<P ALIGN="CENTER">图2-6 六种不同的程序读写自己的和互相的格式</P>
+<P ALIGN="CENTER"><IMG SRC="image/Image17.gif" WIDTH=269 HEIGHT=258></P>
+<P ALIGN="CENTER">图2-7 六种程序读写同一种OFX格式</P>
+<h5><A NAME="_Toc467196741">2.1.13 可扩展的表单描述语言（Extensible Forms Description Language）</A></h5>
+<P>今天我到当地的书店买回了一本Armistead Maupin著的小说，名为Sure of You。我用信用卡支付购书款，当我这样做的时候，我就签署了一份协议，当划款时，同意向信用卡公司支付$14.07。最后，信用卡公司寄给我一张买书的帐单，我按单掏钱。如果我拒绝支付，信用卡公司可将我送上法庭，以便讨回欠款。该公司可拿出我签署的协议，向法庭证明，我在1998年10月15日曾同意向他们支付$14.07。</P>
+<P>同一天，我还在网上书店amazon.com处定购了Anne Rice著的名为 Vampire Armand 的书，书店收了我$16.17外加$3.95的邮寄费，我也是用信用卡支付的。但是差别在于网上书店Amazon（亚马逊）没有获得我签名的纸上协议。最后，信用卡公司也寄给我一张买书的帐单，我同样也支付了这笔钱。但是如果我拒绝支付，亚马逊书店并没有我签署的协议证明我同意在1998年10月15日支付$20.12。如果我声称我从未买过那本书，信用卡公司只好将帐单寄回亚马逊书店，向他们要钱。像亚马逊这样的在线书店和其他的接受电话定购商家在允许接受信用卡付费之前，在没有顾客白纸黑字签名的情况下，都要向信用卡公司保证对所有的有争议的交易负责。</P>
+<P>虽然准确的数字无法统计，当然也会随着商家的不同而不同，但是可能会有10%以下的因特网交易的帐单会因为信用卡诈骗和争议返回发生交易的商家。这是一个十分巨大的数字。消费商如Amazon只好接受这一结果，作为在网上做生意的成本和进入了定价时考虑的因素。但是很明显，这不适用于达到六位数字的商家与商家的交易。没有人会愿意送出 $200,000的共济金，只是为了让购买人来声称他们从未定过货也没有收到所定的货。在商家对商家的交易移到网络上之前，必须找出一种办法可以确认定货事实上已经由特定的人作出，而这个人就是他或她所声称的人。进一步说，这必须是在法庭上可强制实施的。（许多公司不与不能提起诉讼的人做生意，这正是美国商界的悲哀。）</P>
+<P>对这个问题的部分解决办法是数字签名纸上签名的电子等价物。为了在文档上进行电子签名，利用已有的算法计算出该文档的杂乱代码，将这个代码用私人密钥加密并将其附加在加了密的文档的杂乱代码上。通信人可以将杂乱代码用公开密钥解密，并对它是否与文档相匹配加以核对。但是，通信人不能代表别人在文档上签名，因为，他们没有别人的私人密钥。后面的准确的协议在实际上比较复杂，但是至少私人密钥要与被签名的文档以可核实的方式加以合并。其他不知道私人密钥的人都不能签署文档。</P>
+<P>这种方案也不是没有漏洞例如当私人密钥被窃时也出现弱点但是要想伪造数字签名可能会像伪造纸上的签名一样困难。不过还是有一定数目的不太明显的对数字签名协议的攻击。最重要的事情之一是，改变签名的数据。改变签名的数据会使签名无效，但是，在第一步上，如果不让变化了的数据包括在内的话，也不会使数字签名失效。例如，当我们发送一个HTML表单时，送出的只是填入表单域中的值和域名。其余的HTML标记并不包括在内。我们同意为一台新的运行Windows NT的450MHz Pentium II PC机支付$1500，但是只发送表单中的$1500。对这个数字加以签名，表明支付了多少钱，但未对要买的东西签名。商家可寄来两打马桶计量表，并声称这就是顾客花$1500要买的东西。很明显，如果要使数字签名有用，交易的所有细节都要包括在签名内，不能漏掉任何内容。</P>
+<P>如果要与美国联邦政府打交道的话，事情会变得更糟。根据政府的采购定货单和申请规则，表单的内容往往写得非常详细，连所用的字形和字号都有严格的要求。如不遵守这些规格，就可能导致价值$20,000,000的发票作废。因而不仅需要说明同意什么，还需要说明满足了表单的各项法定要求。HTML表单还没有复杂到能够满足这些需要。</P>
+<P>但是XML可以满足这些要求。总是可能利用XML来开发出一种结合了功能与准确性的标记语言，来满足各项要求。说得更确切一些，UWI.COM已经提出了一种名为扩展表单描述语言（Extensible Forms Description Language，简写为XFDL）的XML应用，可用于带有严格的法定要求并可用数字签名的表单。XFDL能够成为电子商务的关键部分，但这并不是说它将成为电子商务的关键部分。现在这样说还为时尚早，在这一领域，还有其他的竞争者。</P>
+<h5><A NAME="_Toc467196742">2.1.14 人力资源标记语言（Human Resources Markup Language）</A></h5>
+<P>HireScape公司的人力资源标记语言（Human Resources Markup Language，简写为HRML）是一种能够为描述工作职位空缺提供词汇表的XML应用。它将与典型的分类招聘广告相匹配的部分定义为元素，如公司、部门、招聘人员、联系信息、条款、经验以及其他各种项目。以HRML写成的工作职位列表与清单2-10所列相类似：</P>
+<P>清单2-10：以HRML编写的招聘职位列表</P>
+<P><i><font face="Courier New, Courier, mono">&lt;?xml version="1.0"?&gt;</font></i></P>
+<P><font face="Courier New, Courier, mono"><i>&lt;HRML_JOB&gt;</i></font></P>
+<P><font face="Courier New, Courier, mono"><i>&lt;COMPANY&gt;</i></font></P>
+<P><font face="Courier New, Courier, mono"><i>&lt;CO_NAME&gt;IDG Books&lt;/CO_NAME&gt;</i></font></P>
+<P><font face="Courier New, Courier, mono"><i>&lt;CO_INTERNET_ADD &gt;</i></font></P>
+<P><font face="Courier New, Courier, mono"><i>&lt;CO_HOME_PAGE&gt;http://www.idgbooks.com/&lt;/CO_HOME_PAGE&gt;</i></font></P>
+<P><font face="Courier New, Courier, mono"><i>&lt;CO_JOBS_PAGE&gt;</i></font></P>
+<P><font face="Courier New, Courier, mono"><i>http://www.idgbooks.com/cgi-bin</i></font></P>
+<P><font face="Courier New, Courier, mono"><i>/gatekeeper.pl?uidg4841:%2Fcompa 
+  y%2Fjobs%2Findex.html</i></font></P>
+<P><font face="Courier New, Courier, mono"><i>&lt;/CO_JOBS_PAGE&gt;</i></font></P>
+<P><font face="Courier New, Courier, mono"><i>&lt;/CO_INTERNET_ADD &gt;</i></font></P>
+<P><font face="Courier New, Courier, mono"><i>&lt;/COMPANY&gt;</i></font></P>
+<P><font face="Courier New, Courier, mono"><i>&lt;JOB&gt;</i></font></P>
+<P><font face="Courier New, Courier, mono"><i>&lt;JOB_METADATA&gt;</i></font></P>
+<P><font face="Courier New, Courier, mono"><i>&lt;JOB_LOADED_DT&gt;09/10/1998&lt;/JOB_LOADED_DT&gt;</i></font></P>
+<P><font face="Courier New, Courier, mono"><i>&lt;JOB_LOADED_URL&gt;</i></font></P>
+<P><font face="Courier New, Courier, mono"><i>http://www.idgbooks.com/cgi-bin</i></font></P>
+<P><font face="Courier New, Courier, mono"><i>/gatekeeper.pl?uidg4841:%2Fcompa 
+  y%2Fjobs%2Findex.html</i></font></P>
+<P><font face="Courier New, Courier, mono"><i>&lt;/JOB_LOADED_U L&gt;</i></font></P>
+<P><font face="Courier New, Courier, mono"><i>&lt;/JOB_METADATA&gt;</i></font></P>
+<P><font face="Courier New, Courier, mono"><i>&lt;JOB_DATA&gt;</i></font></P>
+<P><font face="Courier New, Courier, mono"><i>&lt;JOB_TITLE&gt;Web Development 
+  Manager&lt;/JOB_TITLE&gt;</i></font></P>
+<P><font face="Courier New, Courier, mono"><i>&lt;JOB_NUMBER_AVAIL&gt;1&lt;/JOB_NUMBER_AVAIL&gt;</i></font></P>
+<P><font face="Courier New, Courier, mono"><i>&lt;JOB_YEARS_EXP&gt;3&lt;/JOB_YEARS_EXP&gt;</i></font></P>
+<P><font face="Courier New, Courier, mono"><i>&lt;JOB_DESC&gt;</i></font></P>
+<P><font face="Courier New, Courier, mono"><i>This position is responsible for 
+  the technical </i></font></P>
+<P><font face="Courier New, Courier, mono"><i>and production functions of the 
+  Online</i></font></P>
+<P><font face="Courier New, Courier, mono"><i>group as well as strategizing and 
+  implementing </i></font></P>
+<P><font face="Courier New, Courier, mono"><i>technology to improve the IDG Books 
+  web sites. </i></font></P>
+<P><font face="Courier New, Courier, mono"><i>Skills must include Perl, C/C++, 
+  HTML, SQL, JavaScript, </i></font></P>
+<P><font face="Courier New, Courier, mono"><i>Windows NT 4, mod-perl, CGI, TCP/IP, 
+  Netscape servers </i></font></P>
+<P><font face="Courier New, Courier, mono"><i>and Apache server. You must also 
+  have excellent</i></font></P>
+<P><font face="Courier New, Courier, mono"><i>communicatio skills, project management, 
+  the ability </i></font></P>
+<P><font face="Courier New, Courier, mono"><i>to communicate technical solutions 
+  to non-technical </i></font></P>
+<P><font face="Courier New, Courier, mono"><i>people and management experience.</i></font></P>
+<P><font face="Courier New, Courier, mono"><i>&lt;/JOB_DESC&gt;</i></font></P>
+<P><font face="Courier New, Courier, mono"><i>&lt;JOB_KEYWORDS&gt;</i></font></P>
+<P><font face="Courier New, Courier, mono"><i>Perl, C/C++, HTML, SQL, JavaScript, 
+  Windows NT 4, </i></font></P>
+<P><font face="Courier New, Courier, mono"><i>mod-perl, CGI, TCP/IP, Netscape 
+  server, Apache server</i></font></P>
+<P><font face="Courier New, Courier, mono"><i>&lt;/JOB_KEYWORDS&gt;</i></font></P>
+<P><font face="Courier New, Courier, mono"><i>&lt;JOB_TERMS PAY="Salaried" TYPE="Full-time"&gt;</i></font></P>
+<P><font face="Courier New, Courier, mono"><i>$60,000</i></font></P>
+<P><font face="Courier New, Courier, mono"><i>&lt;/JOB_TERMS&gt;</i></font></P>
+<P><font face="Courier New, Courier, mono"><i>&lt;JOB_LOCATION CITY="Foster City" 
+  STATE="California" </i></font></P>
+<P><font face="Courier New, Courier, mono"><i>STATE_ABB ="CA" POSTAL_CODE="94404" 
+  COUNTRY="USA"&gt;</i></font></P>
+<P><font face="Courier New, Courier, mono"><i>&lt;/JOB_LOCATION&gt;</i></font></P>
+<P><font face="Courier New, Courier, mono"><i>&lt;/JOB_DATA&gt;</i></font></P>
+<P><font face="Courier New, Courier, mono"><i>&lt;/JOB&gt;</i></font></P>
+<P><font face="Courier New, Courier, mono"><i>&lt;RESPONSE&gt;</i></font></P>
+<P><font face="Courier New, Courier, mono"><i>&lt;RESP_EMAIL&gt;cajobs@idgbooks.com&lt;/RESP_EMAIL&gt;</i></font></P>
+<P><font face="Courier New, Courier, mono"><i>&lt;POSTAL_ADDR ENTITY_TYPE="Response"&gt;</i></font></P>
+<P><font face="Courier New, Courier, mono"><i>&lt;ADDR_LINE_1&gt;Dee Harris, HR 
+  Manager&lt;/ADDR_LINE_1&gt;</i></font></P>
+<P><font face="Courier New, Courier, mono"><i>&lt;ADDR_LINE_2&gt;919 E. Hillsdale 
+  Blvd.&lt;/ADDR_LINE_2&gt;</i></font></P>
+<P><font face="Courier New, Courier, mono"><i>&lt;ADDR_LINE_3&gt;Suite 400&lt;/ADDR_LINE_3&gt; 
+  </i></font></P>
+<P><font face="Courier New, Courier, mono"><i>&lt;CITY&gt;Foster City&lt;/CITY&gt;</i></font></P>
+<P><font face="Courier New, Courier, mono"><i>&lt;STATE&gt;CA&lt;/STATE&gt;</i></font></P>
+<P><font face="Courier New, Courier, mono"><i>&lt;POSTAL_CODE&gt;94404&lt;/POSTAL_CODE&gt;</i></font></P>
+<P><font face="Courier New, Courier, mono"><i>&lt;/POSTAL_ADD &gt;</i></font></P>
+<P><font face="Courier New, Courier, mono"><i>&lt;/RESPONSE&gt;</i></font></P>
+<P><font face="Courier New, Courier, mono"><i>&lt;/HRML_JOB&gt;</i></font></P>
+<P>用户当然能够为HRML定义样式单并用HRML将招聘职位列表放置在Web页面上。但这不是HRML的主要应用目的。HRML是为在公司、申请人、招聘人、招聘布告板和其他感兴趣的方面之间自动交换工作信息而设计的。在因特网上有数百个招聘布告板，还有无数的用户新闻组和邮件列表。对于个人来说，要想将其全部加以搜索是不可能的，对于计算机来说将其全部加以搜索也是困难的。因为这些布告板是使用不同的格式来描述工资、位置、福利以及类似项目的。</P>
+<P>但是，如果许多站点都采用了HRML，那么对于寻找工作的人来说，要搜索带有搜索条件，如“在纽约市的所有年薪高于$100,000且有全部健康福利的Java程序员”的结果就变得相对简单。而IRS可以输入一个搜索，查找所有的全日制工作的、在现场的、自由职业的空缺，从而了解哪些公司没有扣税也没有扣除失业保险。</P>
+<P>实际上，这些搜索很可能通过HTML表单为中介，就像当前的Web搜索一样。主要差别是，这种搜索可以返回比基于不准确的英语文本更为有用的结果。</P>
+<h5><A NAME="_Toc467196743">2.1.15 资源描述框架（Resource Description Framework）</A></h5>
+<P>XML向文档中增加了结构。资源描述框架（Resource Description Framework ，简写为RDF）是一种增加语义的XML应用。RDF可以用来指定任何事情，从Web页面的作者和摘要到软件版本和依赖性，以及电影的导演、编剧和演员。连接所有这些应用的是，RDF编码不是数据本身（Web页面、软件、电影等）而是关于数据的信息。关于数据的数据称为元数据（meta-data），而这正是RDF存在的理由。</P>
+<P>RDF词汇表定义了一套元素和它们允许的、对于给定领域的元数据来说是适当的内容。RDF使感兴趣的社区可以将词汇表标准化，并与其他可能会扩展词汇的人共享这些词汇。例如，Dublin Core是一个专为与Web页面有关的元数据设计的词汇表。Educom公司的指令元数据系统（Instructional Metadata System，简写为IMS）建立在Dublin Core的基础之上，但增加了附加的元素，这些元素当描述与学校有关的内容时，如学习等级、教育目的和价格等是非常有用的。当然，虽然RDF可用于印刷出版系统、视频店目录、自动软件更新和其他许多项目，但它好像首先会被用于在Web页面上嵌入元数据。RDF具有潜在的能力，可以目前“臃肿”的&lt;META&gt;标记（这种标记用于站点地图、内容评价、自动索引和数字图书馆等）与所有的工具都能“理解”的统一集合相同步。当RDF元数据成为Web页面标准的一部分时，搜索引擎将能够返回更为集中和有用的结果。智能代理可更为容易地搜索整个Web，以找出想要找的信息或是为我们进行交易。Web就会从当前的状态（无序的信息海洋）变成结构化的、可搜索的、可理解的数据保存地。</P>
+<P>正如名称所暗示的，RDF描述资源。资源是可用URI来寻址的任何事物。资源的描述是由一系列属性组成的。每个属性具有类型和数值。例如，&lt;DC:Format&gt;HTML &lt;/DC:Format&gt;的类型为DC:Format，而值为HTML。值可以是文本字符串、数字、日期以及其他类型的数据，也可以是其他资源。在RDF中，这些其他资源可以有自己的描述。例如，清单2-11中的代码使用了Dublin Core 词汇表来描述名为Cafe con Leche的 Web站点。</P>
+<P>清单2-11：使用Dublin Core词汇表的Cafe con Leche主页的RDF描述</P>
+<P><i><font face="Courier New, Courier, mono">&lt;RDF:RDF </font></i></P>
+<P><font face="Courier New, Courier, mono"><i>xmlns:RDF="http://www.w3.org/1999/02/22-rdf-syntax- 
+  s#"</i></font></P>
+<P><font face="Courier New, Courier, mono"><i>xmlns:DC="http://purl.org/DC/"&gt; 
+  </i></font></P>
+<P><font face="Courier New, Courier, mono"><i>&lt;RDF:Description about="http://metalab.unc.edu/xml/"&gt; 
+  </i></font></P>
+<P><font face="Courier New, Courier, mono"><i>&lt;DC:Creator&gt;Elliotte Rusty 
+  Harold&lt;/DC:Creator&gt; </i></font></P>
+<P><font face="Courier New, Courier, mono"><i>&lt;DC:Language&gt;en&lt;/DC:Language&gt; 
+  </i></font></P>
+<P><font face="Courier New, Courier, mono"><i>&lt;DC:Format&gt;HTML&lt;/DC:Format&gt; 
+  </i></font></P>
+<P><font face="Courier New, Courier, mono"><i>&lt;DC:Date&gt;1999-08-19&lt;/DC:date&gt; 
+  </i></font></P>
+<P><font face="Courier New, Courier, mono"><i>&lt;DC:Type&gt;home page&lt;/DC:Type&gt; 
+  </i></font></P>
+<P><font face="Courier New, Courier, mono"><i>&lt;DC:Title&gt;Cafe con Leche&lt;/DC:Title&gt; 
+  </i></font></P>
+<P><font face="Courier New, Courier, mono"><i>&lt;/RDF:Description&gt; </i></font></P>
+<P><font face="Courier New, Courier, mono"><i>&lt;/RDF:RDF&gt;</i></font></P>
+<P>RDF将会用于Platform for Internet Content Selection （因特网内容选择平台，简写为PICS）2.0版和Platform for Privacy Preferences（隐私优选平台，简写为P3P）和许多需要用元数据来描述Web页面和其他种类内容的其他领域。</P> 
+<a href='311.htm'>&lt;&lt;上一篇</a>&nbsp;&nbsp;<a href='313.htm'>下一篇&gt;&gt;</a></td>
+        </tr>
+      </table>
+      <p>&nbsp; </p>
+    </td>
+  </tr>
+</table>
+
+</body>
+
+</html>

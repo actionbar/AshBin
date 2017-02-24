@@ -1,0 +1,28 @@
+.w{background:#fff}
+
+#sve-s input.sve-input-warn{background:#eee;border:1px solid #888;}
+#sve-s label{color:#555}
+.sve-input-outer-div{line-height:34px;height:34px;}
+.sve-input{font-size:14px;border:1px solid #ddd;height:22px;padding:0 3px;line-height:22px}
+
+
+.sveh{width:380px}
+
+.sve-datetime{width:120px;margin:0 0 0 5px;border:0;background:none;}
+.svet{border:0;background:none;width:75px}
+
+
+em{color:#08c;font-weight:400}
+
+.sve-div-description{height:75px}
+.svedl{width:46px}
+.sved{font-size:14px;padding:3px;width:450px;height:60px;border:1px solid #ccc}
+.svek{width:300px;}
+
+.sveoriginurl{width:380px}
+.sveoriginname{width:150px}
+
+#sve-editor-content{padding:5px;width:800px;position:relative;}
+#container{min-height:500px;}
+
+#sve-submit{margin:0 0 0 9px;width:50px;height:24px;cursor:pointer}

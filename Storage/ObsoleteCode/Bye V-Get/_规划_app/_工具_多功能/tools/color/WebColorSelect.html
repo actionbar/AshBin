@@ -1,0 +1,575 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>颜色代码选择器</title>
+<meta name="keywords" content="颜色代码选择器">
+<meta content="颜色代码选择器,网页颜色,颜色选择" name="description" />
+<link href="../images/style.css" rel="stylesheet" type="text/css" />
+<style type="text/css">
+<!--
+body {margin:0; padding:0;background: #FFF url('../images/top3.gif') repeat-x top; font-size:12px;color:#666}
+.style1 {font-size: 14px}
+.css1 {
+	FONT-WEIGHT: bolder; FONT-SIZE: 10pt; COLOR: #000000; TEXT-DECORATION: none
+}
+.css2 {
+	FONT-WEIGHT: bolder; FONT-SIZE: 12pt; COLOR: #000000; TEXT-DECORATION: none
+}
+.css3 {
+	FONT-WEIGHT: lighter; FONT-SIZE: 9pt; COLOR: #000000
+}
+.css4 {
+	FONT-WEIGHT: bold; FONT-SIZE: 10pt; COLOR: #000000
+}
+-->
+</style>
+<SCRIPT language=JavaScript>
+<!--
+<!--
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+// -->
+
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+
+function MM_showHideLayers() { //v3.0
+  var i,p,v,obj,args=MM_showHideLayers.arguments;
+  for (i=0; i<(args.length-2); i+=3) if ((obj=MM_findObj(args[i]))!=null) { v=args[i+2];
+    if (obj.style) { obj=obj.style; v=(v=='show')?'visible':(v='hide')?'hidden':v; }
+    obj.visibility=v; }
+}
+//-->
+</SCRIPT>
+</HEAD>
+<BODY>
+<table width="960" height="75" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td width="264" rowspan="2" align="center"><a href="../index.html">
+	<img src="../images/logo.gif" width="224" height="38" border="0" /></a></td>
+    <td height="24" valign="top">
+	<table width="321" height="24" border="0" align="right" cellpadding="0" cellspacing="0" background="../images/top2.gif">
+        <tr>
+          <td align="center" class="cwhite12"><a href="#" class="cwhite12">tools.kqiqi.com</a>　<a href="#" OnClick='this.style.behavior="url(#default#homepage)";this.setHomePage("http://tools.kqiqi.com");' class="cwhite12">设为首页</a> | <a href="#" onClick="window.external.AddFavorite('http://tools.kqiqi.com','客齐齐实用查询工具');" class="cwhite12">收藏本站</a></td>
+        </tr>
+    </table></td>
+  </tr>
+</table>
+<table width="960" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td><table height="38" border="0" cellpadding="0" cellspacing="0" style="margin-left:5px">
+      <tr align="center">
+          <td width="88" background="../images/nav1.gif" style="padding-top:5px"><a href="../index.html" class="navfh2">首　页</a></td>
+          <td width="88" background="../images/nav1.gif" style="padding-top:5px"><a href="../admin/index.html" class="navfh2">站长工具</a></td>
+          <td width="88" background="../images/nav1.gif" style="padding-top:5px"><a href="../query/index.html" class="navfh2">查询工具</a></td>
+          <td width="88" background="../images/nav1.gif" style="padding-top:5px"><a href="../calculation/index.html" class="navfh2">计算工具</a></td>
+          <td width="88" background="../images/nav1.gif" style="padding-top:5px"><a href="../password/index.html" class="navfh2">加密解密</a></td>
+          <td width="88" background="../images/nav1.gif" style="padding-top:5px"><a href="../conversion/index.html" class="navfh2">转换工具</a></td>
+          <td width="88" background="../images/nav2.gif" style="padding-top:5px"><a href="index.html" class="navfh1">颜色工具</a></td>
+          <td width="88" background="../images/nav1.gif" style="padding-top:5px"><a href="../web/index.html" class="navfh2">网络辅助</a></td>
+          <td width="88" background="../images/nav1.gif" style="padding-top:5px"><a href="../picture/index.html" class="navfh2">图片工具</a></td>
+          <td width="88" background="../images/nav1.gif" style="padding-top:5px"><a href="../others/index.html" class="navfh2">其它工具</a></td>
+        </tr>
+    </table></td>
+  </tr>
+</table>
+<script language="javascript" src="../js/others_top.js"></script>
+<table width="960" border="0" align="center" cellpadding="0" cellspacing="0" class="mainbg1">
+  <tr valign="top">
+    <td width="20">　</td>
+    <td width="190">
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td colspan="2" height="10">
+
+</td>
+</tr>
+      <tr>
+        <td width="75%">
+		<img src="../images/t9.gif" width="32" height="32" align="absmiddle" />　<span class="navfh1">工具列表</span></td>
+        <td width="25%">　</td>
+      </tr>
+    </table>
+     <table width="100%"  border="0" cellpadding="0" cellspacing="0" background="../images/t12.gif" class="mar5">
+        <tr>
+          <td height="10"> </td>
+        </tr>
+      </table>
+<table width="100%"  border="0" cellpadding="0" cellspacing="0" class="mar5">
+      <tr>
+        <td>　
+ <div id="menu">
+ <div class="box">
+    <a href="colorscheme1.html">配色方案创建工具一
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+
+  <div class="box">
+    <a href="colorscheme2.html">配色方案创建工具二
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+    <div class="box">
+    <a href="colorscheme3.html">配色方案创建工具三
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+  <div class="box">
+    <a href="StandardColor.html">标准颜色参考工具
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+  <div class="box">
+    <a href="MatchWebColor.html">网页配色工具
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+  <div class="box">
+    <a href="WebColor.html">网页颜色配色工具
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+  <div class="box">
+    <a href="WebSafeColor.html">网页安全色大全
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+  <div class="box">
+    <a href="ColorComparison.html">配色代码对照表
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+<div class="box">
+    <a href="ColorHex.html">在线调色板
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+<div class="box">
+    <a href="MixColor.html">在线混色器
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+<div class="box">
+    <a href="ColorHSL.html">颜色HSL
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+<div class="box">
+    <a href="ColorThesaurus.html">配色辞典
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+<div class="box">
+    <a href="WebColorKit.html">网页颜色工具箱
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+  <div class="box">
+    <a href="WebColorSelect.html">颜色代码选择器
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+  <div class="box">
+    <a href="ColorPicker.html">Flash 取色器
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+ 
+</div>
+ </td>
+      </tr>
+    </table>
+
+      <table width="100%" height="17"  border="0" cellpadding="0" cellspacing="0" background="t2.gif" class="mar5">
+        <tr>
+          <td> </td>
+        </tr>
+      </table>
+      
+    </td>
+    <td width="27">　</td>
+    <td width="700">
+     
+            <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+          <tr>
+      <td height="10" colspan="2">
+      </td>
+      </tr>
+        <tr valign="top">
+         <td width="40"><img src="../images/bang.gif" width="32" height="31"> </td>
+          <td><span class="navfh1">颜色代码选择器</span></td>
+          
+        </tr>
+      </table>
+      <hr size="1" style="color:#E3E8E9" />
+      <table width="100%"  border="0" cellpadding="3" cellspacing="1">
+              <tr>
+          <td>
+           <DIV id=Layer1 style="Z-INDEX: 1; LEFT: 594px; VISIBILITY: hidden; WIDTH: 200px; POSITION: absolute; TOP: 400px; HEIGHT: 391px">
+<TABLE borderColor=#d9d9d9 width="100%" border=1>
+  <TBODY>
+  <TR>
+    <TD class=css1 align=middle bgColor=#f7f7f7 height=35>使用提示</TD></TR>
+  <TR>
+    <TD class=css4 bgColor=#ffffff height=344>可以将代码直接复制到需要的位置以确定显示位置。<BR>　 
+      方法是：在视图编缉状态下将鼠标移到所需位置 
+点击，然后切换到HTML编缉状态，将代码粘贴到光标所在位置。</TD></TR></TBODY></TABLE></DIV>
+<TABLE width=690 border=0 align=center cellpadding="5" cellSpacing=1 borderColor=#d9d9d9 bgcolor="#CCCCCC">
+  <TBODY>
+
+  <TR>
+    <TD bgcolor="#FFFFFF">
+      <TABLE cellSpacing=0 cellPadding=0 width="84%" align=center border=0>
+        <TBODY>
+
+        <TR>
+          <TD class=css2 align=middle height=30><font color="#FF0000">颜色代码选择器</font></TD></TR>
+        <TR>
+          <TD align=middle height=15>
+            <HR noShade>          </TD></TR>
+        <TR>
+          <TD vAlign=center align=middle height=27>
+            <P><SPAN class=css3>演示效果：</SPAN></P>
+            <P>
+            <TABLE class=css3 cellSpacing=1 cellPadding=3 width=350 align=center 
+            bgColor=#dddddd border=0>
+              <TBODY>
+              <TR bgColor=#ffffff>
+                <TD align=middle width="10%"><SELECT 
+                  onchange=selectchg(this.value) name=select1> <OPTION value=1 
+                    selected>红</OPTION> <OPTION value=2>绿</OPTION> <OPTION 
+                    value=3>蓝</OPTION> <OPTION value=4>灰</OPTION></SELECT> </TD>
+                <TD align=middle width="90%">
+                  <TABLE class=css3 cellSpacing=0 cellPadding=0 width="100%" 
+                  border=0>
+                    <TBODY>
+                    <TR>
+                      <TD align=right><INPUT class=memo size=10 name=text1> <INPUT class=button onclick=choosecolor() type=button value=">>" name=Button2>                      </TD>
+                      <TD align=right width="3%">　</TD>
+                      <TD width="30%">
+                        <TABLE class=cursorcross height=20 cellSpacing=1 
+                        cellPadding=0 width=40 border=0>
+                          <TBODY>
+                          <TR>
+                            <TD id=customcolor onmouseover=showcolor(this) 
+                            bgColor=#ffffff>　</TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></TD></TR>
+              <TR bgColor=#ffffff>
+                <TD align=middle width="10%" height=8>
+                  <TABLE class=cursorhand id=tableleft cellSpacing=1 
+                  cellPadding=0 border=0>
+                    <SCRIPT language=VBScript>
+function hexit(which)
+hexit=hex(which)
+end function
+</SCRIPT>
+
+                    <SCRIPT language=JavaScript>
+for(i=0;i<=15;++i)
+{document.write('<tr><td align="center">'+ hexit(0+i*17) +'</td><td id="tdleft' + i +'" bgcolor="rgb('+ (0+i*17) + ',0,0)" width="15" height="15" onclick="changeright(this.num)" onmouseover="showcolor(this)"></td></tr>')
+ document.all['tdleft' + i].num=i
+}
+</SCRIPT>
+
+                    <TBODY></TBODY></TABLE></TD>
+                <TD align=middle width="90%" height=8>
+                  <TABLE class=cursorcross id=tableleft cellSpacing=1 
+                  cellPadding=0 border=0>
+                    <SCRIPT language=JavaScript>
+document.write('<tr><td></td>')
+for(i=0;i<=15;++i)
+{document.write('<td align="center">'+ hexit(0+i*17) +'</td>')}
+document.write('</tr>')
+
+for(i=0;i<=15;++i)
+{document.write('<tr>')
+ document.write('<td align="center">'+ hexit(0+i*17) +'</td>')
+ for(j=0;j<=15;++j)
+  {document.write('<td id="tdrightr' + i + 'c' + j +'" bgcolor="rgb(0,'+ (0+i*17) + ',' + (0+j*17) + ')" width="15" height="15" onmouseover="showcolor(this)" onclick="clickright(this)"></td>')}
+ document.write('</tr>')
+}
+
+</SCRIPT>
+
+                    <TBODY></TBODY></TABLE></TD></TR>
+              <TR bgColor=#ffffff>
+                <TD colSpan=2 
+                  height=20>·可选16*16*16种颜色。<BR>·单击左边的颜色会得到更多的颜色。<BR>·单击右边的颜色会固定选取的颜色。 
+                  <BR>·输入框可以自定义颜色。</TD></TR></TBODY></TABLE>
+            <SCRIPT language=JavaScript>
+function selectchg(which)
+{switch(which)
+  {case '1' :leftR();break;
+   case '2' :leftG();break;
+   case '3' :leftB();break;
+   case '4' :leftA();break;
+  }
+}
+function leftR()
+{for(i=0;i<=15;++i)
+   {document.all['tdleft'+i].bgColor='rgb('+ (0+i*17) + ',0,0)'}
+ rightR(0)
+}
+function leftG()
+{for(i=0;i<=15;++i)
+   {document.all['tdleft'+i].bgColor='rgb(0,'+ (0+i*17) + ',0)'}
+ rightG(0)
+}
+function leftB()
+{for(i=0;i<=15;++i)
+   {document.all['tdleft'+i].bgColor='rgb(0,0,'+ (0+i*17) + ')'}
+ rightB(0)
+}
+function leftA()
+{for(i=0;i<=15;++i)
+   {document.all['tdleft'+i].bgColor='rgb('+ (0+i*17) + ','+ (0+i*17) + ','+ (0+i*17) + ')'}
+ rightA()
+}
+function rightR(which)
+{for(i=0;i<=15;++i)
+   {for(j=0;j<=15;++j)
+     {document.all['tdrightr' + i + 'c' + j].bgColor='rgb(' + (0+which*17) + ',' + (0+i*17) + ','+ (0+j*17) + ')'}
+    }
+}
+function rightG(which)
+{for(i=0;i<=15;++i)
+   {for(j=0;j<=15;++j)
+     {document.all['tdrightr' + i + 'c' + j].bgColor='rgb(' + (0+i*17) + ',' + (0+which*17) +  ',' + (0+j*17) + ')'}
+    }
+}
+function rightB(which)
+{for(i=0;i<=15;++i)
+   {for(j=0;j<=15;++j)
+     {document.all['tdrightr' + i + 'c' + j].bgColor='rgb(' + (0+i*17) + ','+ (0+j*17)+ ',' + (0+which*17) + ')'}
+    }
+}
+function rightA()
+{for(i=0;i<=15;++i)
+   {for(j=0;j<=15;++j)
+     {document.all['tdrightr' + i + 'c' + j].bgColor='rgb(' + (0+i*16+j) + ','+ (0+i*16+j)+ ',' + (0+i*16+j) + ')'}
+    }
+}
+var rightclicked=false
+function clickright(which)
+{if(rightclicked){rightclicked=false;showcolor(which)}else{rightclicked=true}
+}
+function changeright(which)
+{switch(select1.value)
+  {case '1' :rightR(which);break;
+   case '2' :rightG(which);break;
+   case '3' :rightB(which);break;
+ }
+}
+function showcolor(which)
+{if(rightclicked)return;
+ text1.value=which.bgColor
+ choosecolor()
+}
+function choosecolor()
+{customcolor.bgColor=text1.value
+}
+</SCRIPT>
+            </P></TD></TR>
+        <TR>
+          <TD vAlign=center align=middle height=30><SPAN 
+            class=css3>代码提示：将下面的代码复制到〈BODY〉区</SPAN></TD></TR>
+        <TR>
+          <TD align=middle>
+      <FORM name=form1 action="" method=post><TEXTAREA style="BACKGROUND-COLOR: #f7f7f7" name=textfield rows=9 cols=85>&lt;TABLE cellSpacing=1 cellPadding=3 width=350 align=center bgColor=#dddddd 
+border=0&gt;
+  &lt;TBODY&gt;
+  &lt;TR bgColor=#ffffff&gt;
+    &lt;TD align=middle width="10%"&gt;&lt;SELECT onchange=selectchg(this.value) 
+      name=select1&gt; &lt;OPTION value=1 selected&gt;红&lt;/OPTION&gt; &lt;OPTION 
+        value=2&gt;绿&lt;/OPTION&gt; &lt;OPTION value=3&gt;蓝&lt;/OPTION&gt; &lt;OPTION 
+      value=4&gt;灰&lt;/OPTION&gt;&lt;/SELECT&gt; &lt;/TD&gt;
+    &lt;TD align=middle width="90%"&gt;
+      &lt;TABLE cellSpacing=0 cellPadding=0 width="100%" border=0&gt;
+        &lt;TBODY&gt;
+        &lt;TR&gt;
+          &lt;TD align=right&gt;&lt;INPUT class=memo size=10 name=text1&gt; &lt;INPUT class=button onclick=choosecolor() type=button value="&gt;&gt;" name=Button2&gt; 
+          &lt;/TD&gt;
+          &lt;TD align=right width="3%"&gt;&nbsp;&lt;/TD&gt;
+          &lt;TD width="30%"&gt;
+            &lt;TABLE class=cursorcross height=20 cellSpacing=1 cellPadding=0 
+            width=40 border=0&gt;
+              &lt;TBODY&gt;
+              &lt;TR&gt;
+                &lt;TD id=customcolor onmouseover=showcolor(this) 
+                bgColor=#ffffff&gt;&nbsp;&lt;/TD&gt;&lt;/TR&gt;&lt;/TBODY&gt;&lt;/TABLE&gt;&lt;/TD&gt;&lt;/TR&gt;&lt;/TBODY&gt;&lt;/TABLE&gt;&lt;/TD&gt;&lt;/TR&gt;
+  &lt;TR bgColor=#ffffff&gt;
+    &lt;TD align=middle width="10%"&gt;
+      &lt;TABLE class=cursorhand id=tableleft cellSpacing=1 cellPadding=0 
+        border=0&gt;&lt;SCRIPT language=VBScript&gt;
+function hexit(which)
+hexit=hex(which)
+end function
+&lt;/SCRIPT&gt;
+
+        &lt;SCRIPT language=JavaScript&gt;
+for(i=0;i&lt;=15;++i)
+{document.write('&lt;tr&gt;&lt;td align="center"&gt;'+ hexit(0+i*17) +'&lt;/td&gt;&lt;td id="tdleft' + i +'" bgcolor="rgb('+ (0+i*17) + ',0,0)" width="15" height="15" onclick="changeright(this.num)" onmouseover="showcolor(this)"&gt;&lt;/td&gt;&lt;/tr&gt;')
+ document.all['tdleft' + i].num=i
+}
+&lt;/SCRIPT&gt;
+
+        &lt;TBODY&gt;&lt;/TBODY&gt;&lt;/TABLE&gt;&lt;/TD&gt;
+    &lt;TD align=middle width="90%"&gt;
+      &lt;TABLE class=cursorcross id=tableleft cellSpacing=1 cellPadding=0 
+border=0&gt;
+        &lt;SCRIPT language=JavaScript&gt;
+document.write('&lt;tr&gt;&lt;td&gt;&lt;/td&gt;')
+for(i=0;i&lt;=15;++i)
+{document.write('&lt;td align="center"&gt;'+ hexit(0+i*17) +'&lt;/td&gt;')}
+document.write('&lt;/tr&gt;')
+
+for(i=0;i&lt;=15;++i)
+{document.write('&lt;tr&gt;')
+ document.write('&lt;td align="center"&gt;'+ hexit(0+i*17) +'&lt;/td&gt;')
+ for(j=0;j&lt;=15;++j)
+  {document.write('&lt;td id="tdrightr' + i + 'c' + j +'" bgcolor="rgb(0,'+ (0+i*17) + ',' + (0+j*17) + ')" width="15" height="15" onmouseover="showcolor(this)" onclick="clickright(this)"&gt;&lt;/td&gt;')}
+ document.write('&lt;/tr&gt;')
+}
+
+&lt;/SCRIPT&gt;
+
+        &lt;TBODY&gt;&lt;/TBODY&gt;&lt;/TABLE&gt;&lt;/TD&gt;&lt;/TR&gt;
+  &lt;TR bgColor=#ffffff&gt;
+    &lt;TD colSpan=2 
+      height=20&gt;·可选16*16*16种颜色。&lt;BR&gt;·单击左边的颜色会得到更多的颜色。&lt;BR&gt;·单击右边的颜色会固定选取的颜色。 
+      &lt;BR&gt;·输入框可以自定义颜色。&lt;/TD&gt;&lt;/TR&gt;&lt;/TBODY&gt;&lt;/TABLE&gt;
+&lt;SCRIPT language=JavaScript&gt;
+function selectchg(which)
+{switch(which)
+  {case '1' :leftR();break;
+   case '2' :leftG();break;
+   case '3' :leftB();break;
+   case '4' :leftA();break;
+  }
+}
+function leftR()
+{for(i=0;i&lt;=15;++i)
+   {document.all['tdleft'+i].bgColor='rgb('+ (0+i*17) + ',0,0)'}
+ rightR(0)
+}
+function leftG()
+{for(i=0;i&lt;=15;++i)
+   {document.all['tdleft'+i].bgColor='rgb(0,'+ (0+i*17) + ',0)'}
+ rightG(0)
+}
+function leftB()
+{for(i=0;i&lt;=15;++i)
+   {document.all['tdleft'+i].bgColor='rgb(0,0,'+ (0+i*17) + ')'}
+ rightB(0)
+}
+function leftA()
+{for(i=0;i&lt;=15;++i)
+   {document.all['tdleft'+i].bgColor='rgb('+ (0+i*17) + ','+ (0+i*17) + ','+ (0+i*17) + ')'}
+ rightA()
+}
+function rightR(which)
+{for(i=0;i&lt;=15;++i)
+   {for(j=0;j&lt;=15;++j)
+     {document.all['tdrightr' + i + 'c' + j].bgColor='rgb(' + (0+which*17) + ',' + (0+i*17) + ','+ (0+j*17) + ')'}
+    }
+}
+function rightG(which)
+{for(i=0;i&lt;=15;++i)
+   {for(j=0;j&lt;=15;++j)
+     {document.all['tdrightr' + i + 'c' + j].bgColor='rgb(' + (0+i*17) + ',' + (0+which*17) +  ',' + (0+j*17) + ')'}
+    }
+}
+function rightB(which)
+{for(i=0;i&lt;=15;++i)
+   {for(j=0;j&lt;=15;++j)
+     {document.all['tdrightr' + i + 'c' + j].bgColor='rgb(' + (0+i*17) + ','+ (0+j*17)+ ',' + (0+which*17) + ')'}
+    }
+}
+function rightA()
+{for(i=0;i&lt;=15;++i)
+   {for(j=0;j&lt;=15;++j)
+     {document.all['tdrightr' + i + 'c' + j].bgColor='rgb(' + (0+i*16+j) + ','+ (0+i*16+j)+ ',' + (0+i*16+j) + ')'}
+    }
+}
+var rightclicked=false
+function clickright(which)
+{if(rightclicked){rightclicked=false;showcolor(which)}else{rightclicked=true}
+}
+function changeright(which)
+{switch(select1.value)
+  {case '1' :rightR(which);break;
+   case '2' :rightG(which);break;
+   case '3' :rightB(which);break;
+ }
+}
+function showcolor(which)
+{if(rightclicked)return;
+ text1.value=which.bgColor
+ choosecolor()
+}
+function choosecolor()
+{customcolor.bgColor=text1.value
+}
+&lt;/SCRIPT&gt;</TEXTAREA> </FORM></TD></TR></TBODY></TABLE></TD></TR>
+  <TR>
+<TD vAlign=center align=middle bgColor=#CCCCCC height=23><SPAN class=css1 
+      onmouseover="MM_showHideLayers('Layer1','','show')" 
+      onmouseout="MM_showHideLayers('Layer1','','hide')">使用提示</SPAN></TD>
+  </TR></TBODY></TABLE> 
+   
+          </td>
+        </tr>
+        </table>
+      <br />
+         <script type="text/javascript" src="../js/wz.js"></script>
+         <script type="text/javascript" src="../js/Copy.js"></script>
+           
+      <br />
+      </td>
+    <td width="20">　</td>
+  </tr>
+</table>
+<table width="960" border="0" align="center" cellpadding="0" cellspacing="0" class="mainbg2">
+  <tr>
+    <td height="25"></td>
+  </tr>
+</table>
+
+<table width="960" border="0" align="center" cellpadding="0" cellspacing="0" class="mainbg2">
+  <tr>
+    <td><table width="920"  border="0" align="center" cellpadding="0" cellspacing="20" class="bottombg">
+    <tr>
+        <td align="center">
+          Copyright &copy; <a href="http://tools.kqiqi.com/">客齐齐实用查询工具</a> All rights reserved - <a href="../map.html">网站地图</a> - <a href="../contact.html">联系我们</a> - <script language="javascript" src="../js/bottom.js"></script>
+          </td>
+      </tr>
+    </table></td>
+  </tr>
+</table>
+</body>
+</html>

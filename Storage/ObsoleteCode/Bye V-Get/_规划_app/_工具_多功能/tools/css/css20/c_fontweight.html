@@ -1,0 +1,131 @@
+<html xmlns:rdl>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<script src="rdl_properties.js"></script>
+<base target="_self">
+</head>
+<body>
+
+<script>
+
+//collFriendProperties=new Array();
+//collFriendDeclarations=new Array();
+//collFriendAtRules=new Array();
+//collFriendElements=new Array();
+//collFriendClasses=new Array();
+
+collFriendProperties=new Array(
+'font','color','font-style','text-decoration','text-underline-position','text-shadow','font-stretch'
+);
+
+//collIE40=new Array();
+//collIE50=new Array();
+//collIE55=new Array();
+//collIE60=new Array();
+
+collIE40=new Array(
+'A','ADDRESS','B','BIG','BLOCKQUOTE','BODY','BUTTON','CAPTION','CENTER','CITE','CODE','COL','COLGROUP','DD','DFN','DIR','DIV','DL','DT','EM','FIELDSET','FORM','Hn','HTML','I','IMG','INPUT type=button','INPUT type=checkbox','INPUT type=file','INPUT type=image','INPUT type=password','INPUT type=radio','INPUT type=reset','INPUT type=submit','INPUT type=text','ISINDEX','KBD','LABEL','LEGEND','LI','LISTING','MARQUEE','MENU','OL','P','PLAINTEXT','PRE','S','SAMP','SMALL','SPAN','STRIKE','STRONG','style','SUB','SUP','TABLE','TBODY','TD','TEXTAREA','TFOOT','TH','THEAD','TR','TT','U','UL','VAR','XMP'
+);
+
+collIE50=new Array(
+'currentStyle','CUSTOM','runtimeStyle'
+);
+
+collIE55=new Array(
+'defaults'
+);
+
+sStyle=
+'<style>\n'+
+'#idDIV{width:100%;height:80px;background-color:#FFD700;padding:4px;font-family:arial;}\n'+
+'#idCodeDiv{width:100%;padding:4px;font-family:verdana,tahoma;margin:12px 0px 0px 0px;background-color:#EEEEEE;font-weight:bold;}\n'+
+'<\/style>\n';
+
+sScript=
+'<script>\n'+
+'function rdl_change(e){\n'+
+'var oCodeDiv=document.all("idCodeDiv");\n'+
+'var oDiv=document.all("idDiv");\n'+
+'with (document.all("idSel")) var sValue=options[selectedIndex].value;\n'+
+'oDiv.style.fontWeight=sValue;\n'+
+'oCodeDiv.innerText="font-weight : "+sValue+";";\n'+
+'}\n'+
+'<\/script>\n';
+
+sCode=
+'<div id=idDIV>Every man dies , Not every man really lives .<\/div>\n'+
+'<br>\n'+
+'<select id="idSel" onchange="rdl_change();">\n'+
+'<option value="normal">---font-weight---\n'+
+'<option value="bold">bold\n'+
+'<option value="bolder">bolder\n'+
+'<option value="lighter">lighter\n'+
+'<option value="100">100\n'+
+'<option value="200">200\n'+
+'<option value="300">300\n'+
+'<option value="400">400\n'+
+'<option value="500">500\n'+
+'<option value="600">600\n'+
+'<option value="700">700\n'+
+'<option value="800">800\n'+
+'<option value="900">900\n'+
+'<\/select>\n'+
+'<br>\n'+
+'<div id=idCodeDiv>font-weight : normal ;<\/div>\n';
+
+iWinWidth=360;
+
+iWinHeight=320;
+
+//bRunCode=false;
+
+//bElements=false;
+
+</script>
+
+<div id=idContent>
+
+<div id=idContentTitle><span id=idTitleName>font-weight</span>版本：CSS1　 兼容性：IE4+ NS4+　继承性：有</div>
+
+<div class=cssColumnTitle>语法：</div>
+<div>
+<b>font-weight : </b><span class=cssDefault><b>normal</b></span> | <b>bold</b> | <b>bolder</b> | <b>lighter</b> | <b>100</b> | <b>200</b> | <b>300</b> | <b>400</b> | <b>500</b> | <b>600</b> | <b>700</b> | <b>800</b> | <b>900</b>
+</div>
+
+<div class=cssColumnTitle>取值：</div>
+<table>
+<tr><td nowrap><b> normal </b></td><td nowrap><b>:</b></td><td><b>默认值</b>。正常的字体。相当于<b> 400 </b>。声明此值将取消之前任何设置</td></tr>
+<tr><td nowrap><b> bold </b></td><td nowrap><b>:</b></td><td>粗体。相当于<b> 700 </b>。也相当于<b> b </b>对象的作用</td></tr>
+<tr><td nowrap><b> bolder </b></td><td nowrap><b>:</b></td><td>比<b> normal </b>>粗</td></tr>
+<tr><td nowrap><b> lighter </b></td><td nowrap><b>:</b></td><td>比<b> normal </b>>细</td></tr>
+<tr><td nowrap><b> 100 </b></td><td nowrap><b>:</b></td><td>字体至少像<b> 200 </b>那样细</td></tr>
+<tr><td nowrap><b> 200 </b></td><td nowrap><b>:</b></td><td>字体至少像<b> 100 </b>那样粗，像<b> 300 </b>那样细</td></tr>
+<tr><td nowrap><b> 300 </b></td><td nowrap><b>:</b></td><td>字体至少像<b> 200 </b>那样粗，像<b> 400 </b>那样细</td></tr>
+<tr><td nowrap><b> 400 </b></td><td nowrap><b>:</b></td><td>相当于<b> normal </b></td></tr>
+<tr><td nowrap><b> 500 </b></td><td nowrap><b>:</b></td><td>字体至少像<b> 400 </b>那样粗，像<b> 600 </b>那样细</td></tr>
+<tr><td nowrap><b> 600 </b></td><td nowrap><b>:</b></td><td>字体至少像<b> 500 </b>那样粗，像<b> 700 </b>那样细</td></tr>
+<tr><td nowrap><b> 700 </b></td><td nowrap><b>:</b></td><td>相当于<b> bold </b></td></tr>
+<tr><td nowrap><b> 800 </b></td><td nowrap><b>:</b></td><td>字体至少像<b> 700 </b>那样粗，像<b> 900 </b>那样细</td></tr>
+<tr><td nowrap><b> 900 </b></td><td nowrap><b>:</b></td><td>字体至少像<b> 800 </b>那样粗</td></tr>
+</table>
+
+<div class=cssColumnTitle>说明：</div>
+<div>
+设置或检索对象中的文本字体的粗细。<br>
+作用由用户端系统安装的字体的特定字体变量映射决定。系统选择最近的匹配。也就是说，用户可能看不到不同值之间的差异。<br>
+IE4.0仅仅支持<b> normal </b>和<b> bold </b>值。<br>
+此属性对于<b> currentStyle </b>对象而言是只读的。对于其他对象而言是可读写的。<br>
+对应的脚本特性为<b> fontWeight </b>。
+</div>
+
+<div class=cssColumnTitle>示例：</div>
+<div id=idSimpleCode>
+span { font-weight:800; }
+</div>
+
+</div>
+</body>
+</html>
+
+<!-- Part of RDL(TM) - Written by Rain1977 
+HomeSite: http://www.dhtmlet.com  E-Mail: dhtmlet@hotmail.com -->

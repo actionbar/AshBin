@@ -1,0 +1,98 @@
+<html>
+<head>
+<title>重命名XLink特性</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+
+<link rel = stylesheet href = "image/style.css">
+</head>
+<body bgcolor="#ffffff">
+<table width="688" border="0" cellspacing="0" cellpadding="0" align="center">
+  <tr bgcolor="EEEEEE"> 
+    <td height="22"><a href="index.htm">主页</a></td>
+  </tr>
+</table><br>
+<table border="0" cellpadding="0" cellspacing="0" width="688" align="center" height="490">
+  <tr valign="top"> 
+    <td rowspan="4" width="91">&nbsp; </td>
+    <td height="68" width="131"> 
+      <p><img src="image/doc.gif"></p>
+    </td>
+    <td rowspan="4" width="18"><b></b> </td>
+    <td height="68" width="387"><img src="image/title_doc.gif"></td>
+    <td rowspan="4" width="61"> 
+      <h6>&nbsp;</h6>
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td rowspan="3" valign="top" class="pt10" align="center" width="131" bgcolor="EEEEEE"> 
+      <p>&nbsp;</p>
+      <p><font color="#FF0000">※ 16.6 重命名XLink特性</font></p>
+       
+	</td>
+  </tr>
+  <tr valign="top"> 
+    <td width="387" height="308"> 
+      <table width="100%" border="0" cellpadding="0">
+        <tr> 
+          <td>
+
+           <h4><a name="_Toc467208500">16.6 重命名XLink特性</a></h4>
+<p>XLink有十个特性，这在前节中已经讨论过。现列于下面：</p>
+<p> xlink:form</p>
+<p> href</p>
+<p> steps</p>
+<p> title</p>
+<p> role</p>
+<p> content-title</p>
+<p> content-role</p>
+<p> show</p>
+<p> actuate</p>
+<p> behavior</p>
+<p>可以想像，这些特性之一或多个已用作特定XML应用程序中的特性名。title特性似乎特别要加以考虑。只有一个特性不能用于其他用途，这就是xlink:form。</p>
+<p>XLink规范预料到这个问题，所以可以利用xml:attributes特性将XLink特性重新命名为更便于使用的名称。在DTD的&lt;!ATTLIST&gt;中将此特性声明为一个固定的属性，类型为CDATA，而值为以空格分开的标准名和新名对的列表。</p>
+<p><img src="Image/BK000216-17.gif" width=47 height=52 align="left">这种问题可以使用命名域（在第18章中讨论）来解决。如果在未来的XLL草案中将此结构整个地删除，并用简单的命名域作前缀（如xlink:）时，我并不感到惊讶。</p>
+<p>例如，本章展示的链接元素有点滑稽，因为标准名都是小写字母，而本书的约定都是用大写字母。按照下面的方法，使用声明语句，就很容易将XLink特性变成大写字母：</p>
+<p>&lt;!ELEMENT WEBSITE (#PCDATA)&gt;</p>
+<p>&lt;!ATTLIST WEBSITE</p>
+<p> xlink:form CDATA #FIXED "simple"</p>
+<p> xml:attributes CDATA #FIXED</p>
+<p> "href HREF show SHOW actuate ACTUATE"</p>
+<p> HREF CDATA #REQUIRED</p>
+<p> SHOW CDATA (new | replace | embed) "new"</p>
+<p> ACTUATE CDATA (user | auto) user</p>
+<p>&gt;</p>
+<p>现在就可以更谐调地重新编写WEBSITE例子：</p>
+<p>&lt;WEBSITF HREF="http://www.microsoft.com/" SHOW="new"&gt;</p>
+<p> Check this out, but don t leave our site completely!</p>
+<p>&lt;/WEBSITE&gt;</p>
+<p>上面的ATTLIST声明只改变WEBSITE元素的特性。如果要在其他多个例子中用同样的方式改变这些特性，最容易的方法就是使用参数实体：</p>
+<p>&lt;!ENTITY LINK_ATTS</p>
+<p>  xlink:form CDATA #FIXED "simple"</p>
+<p> xml:attributes CDATA #FIXED</p>
+<p> "href HREF show SHOW actuate ACTUATE"</p>
+<p> HREF CDATA #REQUIRED</p>
+<p> SHOW CDATA (new | replace | embed) "new"</p>
+<p> ACTUATE CDATA (user | auto) "user" </p>
+<p>&gt;</p>
+<p></p>
+<p>&lt;!ELEMENT WEBSITE (#PCDATA)&gt;</p>
+<p>&lt;!ATTLIST WEBSITE %LINK_ATTS:&gt;</p>
+<p></p>
+<p>&lt;!ELEMENT COMPOSER (#PCDATA)&gt;</p>
+<p>&lt;!ATTLIST COMPOSER %LINK_ATTS;&gt;</p>
+<p></p>
+<p>&lt;!ELEMENT FOOTNOTE (#PCDATA)&gt;</p>
+<p>&lt;!ATTLIST FOOTNOTE %LINK_ATTS;&gt;</p>
+<h4><a name="_Toc467208501"></a></h4>
+ 
+<a href='544.htm'>&lt;&lt;上一篇</a>&nbsp;&nbsp;<a href='546.htm'>下一篇&gt;&gt;</a></td>
+        </tr>
+      </table>
+      <p>&nbsp; </p>
+    </td>
+  </tr>
+</table>
+
+</body>
+
+</html>

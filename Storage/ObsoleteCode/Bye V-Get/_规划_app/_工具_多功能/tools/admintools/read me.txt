@@ -1,0 +1,50 @@
+1.欢迎试用MooPHP站长系列工具
+-------------------------
+前段时间断断续续发布了几个站长小工具，有网友来信建议，希望能全部打包一份完整的提供下载。
+现在重新整理了一下文档，重新打包，发布出来给各位站长朋友使用。
+
+
+2.工具需求
+-----------
+php4以上版本
+无需MYSQL数据库支持
+
+
+3. MooPHP站长系列工具的主要目录结构
+-------------------------
+ \tools\
+ |
+ +--index.php         MooPHP站长工具聚合页面
+ |
+ +--alexa.php         alexa信息查询 
+     本程序基于MooPHP框架开发, 无需Mysql等数据库的支持, 高速获取Alexa官方网站数据, 界面为简体中文
+ |    
+ +--hex.php           网址转换成HEX编码 
+     请输入要查询的URL网址, 例如: http://www.hao32.com 转换结果:http://%77%77%77%2e%68%61%6f%33%32%2e%63%6f%6d 通网址转换为16进制的网址,两者完全等效的访问 
+ |
+ +--ip.php            ip物理地址查询
+     本程序基于MooPHP框架开发，可以查询输入的IP所在位置
+ |
+ +--md5.php           md5计算 
+     本程序基于MooPHP框架开发，md5计算你输入的数据，可按32位大写、32位小写、16位大写、16位小写来计算不一样的数值 
+ |
+ +--position.php      查看自己网站在搜索引擎中的排名 
+    本程序基于MooPHP框架开发，例如: www.hao32.com:个人日志 (网站地址:关键字) 只检索搜索引擎前100位, 再往后将不检测 请注意: hao32.com和www.hao32.com是不一样的
+ | 
+ +--pr.php            pr值查询
+    本程序基于MooPHP框架开发的Google PageRank查询工具, 代码简洁高效开源, 无需数据库, 解决LINUX服务器下查询不正常的问题
+ |
+ +--site.php          搜索引擎收录与反向链接查询 
+    本程序基于MooPHP框架开发，请输入要查询收录情况的的网址, 例如:www.hao32.com 请记住:www.hao32.com和hao32.com是不同的 
+ |
+ +--whois.php         whois查询  
+    本程序基于MooPHP框架开发的whois查询，查询你的域名资料的小工具
+
+
+
+4. MooPHP站长系列工具联系方式及演示
+-------------------------
+MooPHP站长系列工具是基于MooPHP框架编写，MooPHP官方站点：  http://www.moophp.org/
+MooPHP站长系列工具演示站点地址：    http://www.hao32.com/tools/
+MooPHP站长系列工具最新版本下载地址：http://www.hao32.com/category/web-program
+MooPHP站长系列工具论坛讨论地址：http://www.ismole.net/forum-20-1.html

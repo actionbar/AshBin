@@ -1,0 +1,288 @@
+<html>
+<head>
+<title>扩展链接</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+
+<link rel = stylesheet href = "image/style.css">
+</head>
+<body bgcolor="#ffffff">
+<table width="688" border="0" cellspacing="0" cellpadding="0" align="center">
+  <tr bgcolor="EEEEEE"> 
+    <td height="22"><a href="index.htm">主页</a></td>
+  </tr>
+</table><br>
+<table border="0" cellpadding="0" cellspacing="0" width="688" align="center" height="490">
+  <tr valign="top"> 
+    <td rowspan="4" width="91">&nbsp; </td>
+    <td height="68" width="131"> 
+      <p><img src="image/doc.gif"></p>
+    </td>
+    <td rowspan="4" width="18"><b></b> </td>
+    <td height="68" width="387"><img src="image/title_doc.gif"></td>
+    <td rowspan="4" width="61"> 
+      <h6>&nbsp;</h6>
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td rowspan="3" valign="top" class="pt10" align="center" width="131" bgcolor="EEEEEE"> 
+      <p>&nbsp;</p>
+      <p><font color="#FF0000">※ 16.3 扩展链接</font></p>
+       
+	</td>
+  </tr>
+  <tr valign="top"> 
+    <td width="387" height="308"> 
+      <table width="100%" border="0" cellpadding="0">
+        <tr> 
+          <td>
+
+           <h4 align="left"><a name="_Toc467208495">16.3 扩展链接</a></h4>
+<p>简单链接的效果或多或少地与HTML中已经熟悉了的标准链接类似。每个简单链接都包含一个本地资源和对一个远程资源的引用。本地资源为链接元素的内容，而远程资源则为链接的目标。</p>
+<p>但是，扩展链接（Extended link）实质上超越了HTML链接所能达到的程度，以便在许多文档和外联链接之间包括多方向的链接。扩展链接由xlink:form特性来指定，其值为extended，如：</p>
+<p>&lt;WEBSITE xlink:form="extended"&gt;</p>
+<p>扩展链接的第一个作用就是指向多个目标。为此，扩展链接将目标保存在链接元素的子locator元素中，而不像简单链接那样保存在链接元素的唯一的href特性中。例如：</p>
+<p>&lt;WEBSITE xlink:form="extended"&gt;Cafe au Lait</p>
+<p> &lt;locator href="http://metalab.unc.edu/javafaq/"&gt;</p>
+<p> North Carolina</p>
+<p> &lt;/locator&gt;</p>
+<p> &lt;locator</p>
+<p> href="http://sunsite.univie.ac.at/jcca/mirrors/javafaq/"&gt;</p>
+<p> Austria</p>
+<p> &lt;/locator&gt;</p>
+<p> &lt;locator href="http://sunsite.icm.edu.pl/java-corner/faq/"&gt;</p>
+<p> Poland</p>
+<p> &lt;/locator&gt;</p>
+<p> &lt;locator href="http://sunsite.uakom.sk/javafaq/"&gt;</p>
+<p> Slovakia</p>
+<p> &lt;/locator&gt;</p>
+<p> &lt;locator href="http://sunsite.cnlab-switch.ch/javafaq/"&gt;</p>
+<p> Switzerland</p>
+<p> &lt;/locator&gt;</p>
+<p>&lt;/WEBSITE&gt;</p>
+<p>本例中的链接元素WEBSITE本身和各locator子元素都可以有特性。链接元素只有适用于整个链接以及本地资源的特性，如content-title和content-role。locator元素具有应用于特定的远程资源（locator元素链接于这些资源）的特性，如role和title。例如：</p>
+<p>&lt;WEBSITE xlink:form="extended" content-title ="Cafe au Lait"</p>
+<p> content-role="Java news"&gt;</p>
+<p> &lt;locator href="http://metalab.unc.edu/javafaq/"</p>
+<p> title="Cafe au Lait" role=".us"/&gt;</p>
+<p> &lt;locator</p>
+<p> href="http://sunsite.univie.ac.at/jcca/mirrors/javafaq/"</p>
+<p> title="Cafe au Lait" role=".at"/&gt;</p>
+<p> &lt;locator href="http://sunsite.icm.edu.pl/java corner/faq/"</p>
+<p> title="Cafe au Lait" role=".pl"/&gt;</p>
+<p> &lt;locator href="http://sunsite.uakom.sk/javafaq/"</p>
+<p> title="Cafe au Lait" role=".sk"/&gt;</p>
+<p> &lt;locator href="http://sunsite.cnlab-switch.ch/javafaq/"</p>
+<p> title="Cafe au Lait" role=".ch"/&gt;</p>
+<p>&lt;/WEBSITE&gt;</p>
+<p>actuate、behavior和show（如果存在）属于各个locator元素。</p>
+<p>在有些情况下，如上面的实例所示，各定位符（locator）指向同一页面和镜像副本，对于各个locator元素来说，远程资源特性可以相同，都指向链接元素。在此情况下，可以在链接元素中使用远程资源特性。这些特性应用于各个locator子元素（对于同一个特性各子元素声明为相同的值）。例如：</p>
+<p>&lt;WEBSITE xlink:form="extended" content-title="Cafe au Lait"</p>
+<p> content-role="Java news" title="Cafe au Lait"&gt;</p>
+<p> &lt;locator href="http://metalab.unc.edu/javafaq/" role=".us"/&gt;</p>
+<p> &lt;locator</p>
+<p> href="http://sunsite.univie.ac.at/icca/mirrors/javafaq/"</p>
+<p> role=".at"/&gt;</p>
+<p> &lt;locator href="http://sunsite.icm.edu.pl/java-corner/faq/"</p>
+<p> role=".pl"/&gt;</p>
+<p> &lt;locator href="http://sunsite.uakom.sk/javafaq/" role=".sk"/&gt;</p>
+<p> &lt;locator href="http://sunsite.cnlab switch.ch/javafaq/"</p>
+<p> role=".ch"/&gt;</p>
+<p>&lt;/WEBSITE&gt;</p>
+<table cellspacing=0 border=0 cellpadding=7 width=562>
+  <tr>
+    <td valign="TOP" bgcolor="#ffffff"> 
+      <p>DTD的另一种快捷方式
+    </td>
+  </tr>
+  <tr>
+    <td valign="TOP" bgcolor="#ffffff"> 
+      <p>如果有多个链接和locator元素，那么在DTD的参数实体中定义通用的特性可能有好处，而这样又可以重新用于不同的元素。例如：
+    </td>
+  </tr>
+  <tr>
+    <td valign="TOP" bgcolor="#ffffff"> 
+      <p>&lt;!ENTITY % remote-resource-semantics.att
+    </td>
+  </tr>
+  <tr>
+    <td valign="TOP" bgcolor="#ffffff"> 
+      <p> "role CDATA #IMPLIED
+    </td>
+  </tr>
+  <tr>
+    <td valign="TOP" bgcolor="#ffffff"> 
+      <p> title CDATA #IMPLIED
+    </td>
+  </tr>
+  <tr>
+    <td valign="TOP" bgcolor="#ffffff"> 
+      <p> show (embed | eplace | new) #IMPLIED &#162; replace&#162; 
+    </td>
+  </tr>
+  <tr>
+    <td valign="TOP" bgcolor="#ffffff"> 
+      <p> actuate (auto | use ) #IMPLIED &#162; use&#162; 
+    </td>
+  </tr>
+  <tr>
+    <td valign="TOP" bgcolor="#ffffff"> 
+      <p> behavior CDATA #IMPLIED"
+    </td>
+  </tr>
+  <tr>
+    <td valign="TOP" bgcolor="#ffffff"> 
+      <p>&gt;
+    </td>
+  </tr>
+  <tr>
+    <td valign="TOP" bgcolor="#ffffff">　</td>
+  </tr>
+  <tr>
+    <td valign="TOP" bgcolor="#ffffff"> 
+      <p>&lt;!ENTITY % local- resource-semantics.att
+    </td>
+  </tr>
+  <tr>
+    <td valign="TOP" bgcolor="#ffffff"> 
+      <p> "content-title CDATA #IMPLIED
+    </td>
+  </tr>
+  <tr>
+    <td valign="TOP" bgcolor="#ffffff"> 
+      <p> content-role CDATA #IMPLIED"
+    </td>
+  </tr>
+  <tr>
+    <td valign="TOP" bgcolor="#ffffff"> 
+      <p>&gt;
+    </td>
+  </tr>
+  <tr>
+    <td valign="TOP" bgcolor="#ffffff">　</td>
+  </tr>
+  <tr>
+    <td valign="TOP" bgcolor="#ffffff"> 
+      <p>&lt;!ENTITY % locator.att
+    </td>
+  </tr>
+  <tr>
+    <td valign="TOP" bgcolor="#ffffff"> 
+      <p> "href CDATA #REQUIRED"
+    </td>
+  </tr>
+  <tr>
+    <td valign="TOP" bgcolor="#ffffff"> 
+      <p>&gt;
+    </td>
+  </tr>
+  <tr>
+    <td valign="TOP" bgcolor="#ffffff">　</td>
+  </tr>
+  <tr>
+    <td valign="TOP" bgcolor="#ffffff"> 
+      <p>&lt;!ENTITY % link-semantics.att
+    </td>
+  </tr>
+  <tr>
+    <td valign="TOP" bgcolor="#ffffff"> 
+      <p> "inline (true | false) &#162; true&#162; 
+    </td>
+  </tr>
+  <tr>
+    <td valign="TOP" bgcolor="#ffffff"> 
+      <p> role CDATA #IMPLIED"
+    </td>
+  </tr>
+  <tr>
+    <td valign="TOP" bgcolor="#ffffff"> 
+      <p>&gt;
+    </td>
+  </tr>
+  <tr>
+    <td valign="TOP" bgcolor="#ffffff">　</td>
+  </tr>
+  <tr>
+    <td valign="TOP" bgcolor="#ffffff"> 
+      <p>&lt;!ELEMENT WEBSITE (locator*) &gt;
+    </td>
+  </tr>
+  <tr>
+    <td valign="TOP" bgcolor="#ffffff"> 
+      <p>&lt;!ATTLIST WEBSITE
+    </td>
+  </tr>
+  <tr>
+    <td valign="TOP" bgcolor="#ffffff"> 
+      <p> xlink:form CDATA #FIXED "extended"
+    </td>
+  </tr>
+  <tr>
+    <td valign="TOP" bgcolor="#ffffff"> 
+      <p> %local-resource-semantics.att;
+    </td>
+  </tr>
+  <tr>
+    <td valign="TOP" bgcolor="#ffffff"> 
+      <p>&gt;
+    </td>
+  </tr>
+  <tr>
+    <td valign="TOP" bgcolor="#ffffff">　</td>
+  </tr>
+  <tr>
+    <td valign="TOP" bgcolor="#ffffff"> 
+      <p>&lt;!ELEMENT locator EMPTY&gt;
+    </td>
+  </tr>
+  <tr>
+    <td valign="TOP" bgcolor="#ffffff"> 
+      <p>&lt;!ATTLIST locator
+    </td>
+  </tr>
+  <tr>
+    <td valign="TOP" bgcolor="#ffffff"> 
+      <p> xlink:form CDATA #FIXED "locator"
+    </td>
+  </tr>
+  <tr>
+    <td valign="TOP" bgcolor="#ffffff"> 
+      <p> %locator.att;
+    </td>
+  </tr>
+  <tr>
+    <td valign="TOP" bgcolor="#ffffff"> 
+      <p> %link-semantics.att;
+    </td>
+  </tr>
+  <tr>
+    <td valign="TOP" bgcolor="#ffffff"> 
+      <p>&gt;
+    </td>
+  </tr>
+</table>
+<p>就像通常的那样，在合法的文档中，链接元素及其所有可能的特性都必须在DTD中声明。例如，下面声明上面实例中使用的WEBSITE和locator元素及其特性：</p>
+<p>&lt;!ELEMENT WEBSITE (locator*) &gt;</p>
+<p>&lt;!ATTLIST WEBSITE&#9;&#9;&#9;</p>
+<p> xlink:form CDATA #FIXED "extended"</p>
+<p> content-title CDATA #IMPLIED</p>
+<p> content-role CDATA #IMPLIED</p>
+<p> title CDATA #IMPLIED</p>
+<p>&gt;</p>
+<p>&lt;!ELEMENT locator EMPTY&gt;</p>
+<p>&lt;!ATTLIST locator</p>
+<p> xlink:form CDATA #FIXED "locator"</p>
+<p> href CDATA #REQUIRED</p>
+<p> role CDATA #IMPLIED</p>
+<p>&gt;</p>
+ 
+<a href='541.htm'>&lt;&lt;上一篇</a>&nbsp;&nbsp;<a href='543.htm'>下一篇&gt;&gt;</a></td>
+        </tr>
+      </table>
+      <p>&nbsp; </p>
+    </td>
+  </tr>
+</table>
+
+</body>
+
+</html>

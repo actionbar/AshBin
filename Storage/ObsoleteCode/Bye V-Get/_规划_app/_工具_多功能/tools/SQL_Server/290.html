@@ -1,0 +1,21 @@
+<meta http-equiv="content-type" content="text/html; charset=gb2312"><FONT 
+style="FONT-SIZE: 9pt; LINE-HEIGHT: 15pt"><B>sp_chowner</B><BR>sp_chowner.sql
+<P></P>
+<P></P>
+<P><BR>This&nbsp;is&nbsp;a&nbsp;stored&nbsp;procedure&nbsp;that&nbsp;can&nbsp;be&nbsp;run&nbsp;in&nbsp;any&nbsp;database&nbsp;to&nbsp;change&nbsp;all&nbsp;tables&nbsp;and&nbsp;views&nbsp;so&nbsp;that&nbsp;they're&nbsp;owned&nbsp;by&nbsp;dbo.&nbsp;It&nbsp;can&nbsp;be&nbsp;called&nbsp;like&nbsp;"exec&nbsp;sp_change_table_owner_to_dbo"&nbsp;and&nbsp;it&nbsp;will&nbsp;change&nbsp;all&nbsp;views&nbsp;and&nbsp;table&nbsp;to&nbsp;be&nbsp;owned&nbsp;by&nbsp;dbo&nbsp;or&nbsp;"exec&nbsp;sp_change_table_owner_to_dbo&nbsp;name"&nbsp;and&nbsp;it&nbsp;will&nbsp;change&nbsp;all&nbsp;views&nbsp;and&nbsp;tables&nbsp;owned&nbsp;by&nbsp;"name"&nbsp;to&nbsp;be&nbsp;owned&nbsp;by&nbsp;dbo.&nbsp;</P>
+<P>style="font-family:Arial,&nbsp;Helvetica,&nbsp;serif;&nbsp;font-size:&nbsp;small;"&nbsp;The&nbsp;script&nbsp;needs&nbsp;to&nbsp;be&nbsp;compiled&nbsp;in&nbsp;the&nbsp;master&nbsp;database&nbsp;under&nbsp;a&nbsp;dbo&nbsp;account.&nbsp;It&nbsp;should&nbsp;work&nbsp;in&nbsp;SQL&nbsp;Server&nbsp;7&nbsp;and&nbsp;up.&nbsp;</P>
+<P>Author:&nbsp;David&nbsp;Satz&nbsp;</P>
+<P>SET&nbsp;QUOTED_IDENTIFIER&nbsp;OFF&nbsp;<BR>GO<BR>SET&nbsp;ANSI_NULLS&nbsp;ON&nbsp;<BR>GO</P>
+<P>if&nbsp;exists&nbsp;(select&nbsp;*&nbsp;from&nbsp;dbo.sysobjects&nbsp;where&nbsp;id&nbsp;=&nbsp;object_id(N'[dbo].[sp_change_table_owner_to_dbo]')&nbsp;and&nbsp;OBJECTPROPERTY(id,&nbsp;N'IsProcedure')&nbsp;=&nbsp;1)<BR>&nbsp;drop&nbsp;procedure&nbsp;[dbo].[sp_change_table_owner_to_dbo]<BR>GO</P>
+<P>Create&nbsp;Procedure&nbsp;dbo.sp_change_table_owner_to_dbo<BR>@SpecificUser&nbsp;sysname&nbsp;=&nbsp;&nbsp;NULL<BR>,&nbsp;@Debug&nbsp;char(1)&nbsp;=&nbsp;&nbsp;NULL<BR>AS<BR>DECLARE&nbsp;@sql&nbsp;VARCHAR(4000)</P>
+<P>/*&nbsp;<BR>Programmer&nbsp;:&nbsp;David&nbsp;Satz<BR>Description:&nbsp;change&nbsp;all&nbsp;tables&nbsp;and&nbsp;views&nbsp;to&nbsp;be&nbsp;owned&nbsp;by&nbsp;dbo<BR>Parameters&nbsp;:&nbsp;@SpecificUser&nbsp;-&nbsp;if&nbsp;you&nbsp;only&nbsp;want&nbsp;to&nbsp;change&nbsp;1&nbsp;users&nbsp;tables&nbsp;and&nbsp;views&nbsp;<BR>Note:&nbsp;this&nbsp;only&nbsp;works&nbsp;in&nbsp;the&nbsp;current&nbsp;database<BR>*/&nbsp;<BR>SET&nbsp;NOCOUNT&nbsp;ON<BR>SET&nbsp;XACT_ABORT&nbsp;OFF&nbsp;</P>
+<P>CREATE&nbsp;TABLE&nbsp;#tables<BR>(&nbsp;TABLE_SCHEMA&nbsp;&nbsp;sysname<BR>,&nbsp;TABLE_NAME&nbsp;sysname)</P>
+<P>SET&nbsp;@sql&nbsp;=&nbsp;"INSERT&nbsp;#tables&nbsp;SELECT&nbsp;TABLE_SCHEMA,&nbsp;TABLE_NAME&nbsp;"&nbsp;+<BR>"&nbsp;FROM&nbsp;"&nbsp;+&nbsp;db_name()&nbsp;+&nbsp;".INFORMATION_SCHEMA.TABLES<BR>WHERE&nbsp;&nbsp;TABLE_SCHEMA&nbsp;&lt;&gt;&nbsp;'dbo'<BR>AND&nbsp;&nbsp;TABLE_SCHEMA&nbsp;&lt;&gt;&nbsp;'INFORMATION_SCHEMA'"</P>
+<P>IF&nbsp;@SpecificUser&nbsp;IS&nbsp;NOT&nbsp;NULL<BR>BEGIN<BR>&nbsp;SET&nbsp;@sql&nbsp;=&nbsp;@sql&nbsp;+&nbsp;"&nbsp;AND&nbsp;TABLE_SCHEMA&nbsp;=&nbsp;'"&nbsp;+&nbsp;@SpecificUser&nbsp;+&nbsp;"'"<BR>END</P>
+<P>EXEC(&nbsp;@sql&nbsp;)</P>
+<P><BR>DECLARE&nbsp;curTables&nbsp;CURSOR<BR>FOR<BR>SELECT&nbsp;&nbsp;"exec&nbsp;sp_changeobjectowner&nbsp;'"&nbsp;+&nbsp;TABLE_SCHEMA&nbsp;+&nbsp;"."&nbsp;+&nbsp;TABLE_NAME&nbsp;+&nbsp;"',&nbsp;dbo"<BR>FROM&nbsp;#tables<BR>ORDER&nbsp;BY&nbsp;TABLE_NAME&nbsp;</P>
+<P>OPEN&nbsp;&nbsp;curTables<BR>FETCH&nbsp;curTables&nbsp;INTO&nbsp;@sql&nbsp;<BR>WHILE&nbsp;&nbsp;@@FETCH_STATUS&nbsp;=&nbsp;0<BR>BEGIN<BR>&nbsp;IF&nbsp;IsNull(&nbsp;@Debug,&nbsp;"N"&nbsp;)&nbsp;=&nbsp;"Y"<BR>&nbsp;&nbsp;SELECT&nbsp;@sql<BR>&nbsp;ELSE<BR>&nbsp;&nbsp;EXEC&nbsp;&nbsp;(@sql)</P>
+<P>&nbsp;FETCH&nbsp;curTables&nbsp;INTO&nbsp;@sql&nbsp;<BR>END</P>
+<P>CLOSE&nbsp;curTables<BR>DEALLOCATE&nbsp;curTables<BR>DROP&nbsp;TABLE&nbsp;#tables<BR>SET&nbsp;XACT_ABORT&nbsp;ON<BR>GO</P>
+<P>SET&nbsp;QUOTED_IDENTIFIER&nbsp;OFF&nbsp;<BR>GO<BR>SET&nbsp;ANSI_NULLS&nbsp;ON&nbsp;<BR>GO</P>
+<P>if&nbsp;exists&nbsp;(select&nbsp;*&nbsp;from&nbsp;dbo.sysobjects&nbsp;where&nbsp;id&nbsp;=&nbsp;object_id(N'[dbo].[sp_change_table_owner_to_dbo]')&nbsp;and&nbsp;OBJECTPROPERTY(id,&nbsp;N'IsProcedure')&nbsp;=&nbsp;1)<BR>&nbsp;GRANT&nbsp;EXEC&nbsp;ON&nbsp;dbo.sp_change_table_owner_to_dbo&nbsp;TO&nbsp;PUBLIC<BR>GO</P></FONT>

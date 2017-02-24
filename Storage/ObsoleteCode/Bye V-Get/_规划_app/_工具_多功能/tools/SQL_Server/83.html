@@ -1,0 +1,13 @@
+<meta http-equiv="content-type" content="text/html; charset=gb2312"><FONT 
+style="FONT-SIZE: 9pt; LINE-HEIGHT: 15pt"><B>OPENQUERY</B><BR>OPENQUERY<BR>在给定的链接服务器（一个&nbsp;OLE&nbsp;DB&nbsp;数据源）上执行指定的直接传递查询。可以在查询的&nbsp;FROM&nbsp;子句中像引用表名那样引用&nbsp;OPENQUERY&nbsp;函数。依据&nbsp;OLE&nbsp;DB&nbsp;提供程序的能力，还可以将&nbsp;OPENQUERY&nbsp;函数引用为&nbsp;INSERT、UPDATE&nbsp;或&nbsp;DELETE&nbsp;语句的目标表。尽管查询可能返回多个结果集，但是&nbsp;OPENQUERY&nbsp;只返回第一个。
+<P></P>
+<P>语法<BR>OPENQUERY&nbsp;(&nbsp;linked_server&nbsp;,&nbsp;'query'&nbsp;)&nbsp;</P>
+<P>参数<BR>linked_server</P>
+<P>一个标识符，表示链接的服务器的名称。</P>
+<P>'query'</P>
+<P>在链接的服务器中执行的查询字符串。</P>
+<P>注释<BR>OPENQUERY&nbsp;不接受参数变量。</P>
+<P>示例<BR>下面的示例利用用于&nbsp;Oracle&nbsp;的&nbsp;Microsoft&nbsp;OLE&nbsp;DB&nbsp;提供程序针对&nbsp;Oracle&nbsp;数据库创建一个名为&nbsp;OracleSvr&nbsp;链接的服务器。然后，该示例对此链接的服务器使用一个直接传递查询。</P>
+<P></P>
+<P>说明&nbsp;&nbsp;本示例假定已经创建了一个名为&nbsp;ORCLDB&nbsp;的&nbsp;Oracle&nbsp;数据库别名。</P>
+<P><BR>EXEC&nbsp;sp_addlinkedserver&nbsp;'OracleSvr',&nbsp;<BR>&nbsp;&nbsp;&nbsp;'Oracle&nbsp;7.3',&nbsp;<BR>&nbsp;&nbsp;&nbsp;'MSDAORA',&nbsp;<BR>&nbsp;&nbsp;&nbsp;'ORCLDB'<BR>GO<BR>SELECT&nbsp;*<BR>FROM&nbsp;OPENQUERY(OracleSvr,&nbsp;'SELECT&nbsp;name,&nbsp;id&nbsp;FROM&nbsp;joe.titles')&nbsp;</P></FONT>

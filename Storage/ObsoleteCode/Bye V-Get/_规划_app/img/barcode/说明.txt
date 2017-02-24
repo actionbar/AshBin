@@ -1,0 +1,6 @@
+拓网二维码名片生成系统基于开源的PHP二维码生成类库，提供在线生成个人名片的二维码图片，结合Android或者IPhone手机程序，在线扫描二维码图片，可以达到各方面的用途。
+
+拓网科技：http://www.topwang.com
+在线演示：http://www.topwang.com/barcode
+下载地址：http://www.topwang.com/barcode.rar
+客服QQ:742631333

@@ -1,0 +1,36 @@
+*{padding:0;margin:0}
+body{font-size:14px;font-family:Tahoma,SimSun}
+ul{list-style-position:outside;list-style-type:none}ol{list-style-position:inside}
+li,p{line-height:25px}
+.ct,h1 span,.l2 .lt,.lt span{background:url(http://weigeti.com/p0/10f.png) repeat-x}
+.p{float:left}.o{clear:both}.q{float:right}
+.t{height:28px;line-height:28px}
+.w{margin:0px auto; overflow:hidden; width:960px}
+#av{height:50px}
+.l{width:650px;}
+.l a{color:#133DB6;text-decoration:none}
+.l a:hover{text-decoration:underline}
+.lw{margin:9px 0;padding-bottom:9px;border:#ddd 1px solid;}
+#c{background:#FCFEFC;border-top:#4CBE00 2px solid}
+.ct,.lt{height:50px;line-height:58px;overflow:hidden}
+.ct,h1 span,.cb,.lt,.lb,.lt span{padding:0 25px}
+h1 span,.lt span{font-size:15px;font-family:微软雅黑;color:#000;font-weight:800;background-repeat:no-repeat}
+h1 span{background-position:0 -107px}
+#c .cm{color:#666;font-size:12px;position:relative}
+#c .cm span{position:absolute;top:0;right:25px}
+.c{height:50px;padding:9px 0;font-size:12px;color:#666;border-top:#ccc 1px dashed;margin-top:9px}
+.c a{padding:0 5px}
+.cl{width:70px;height:50px;}
+.cl img{border:#eee 1px solid;border-radius:3px;width:50px;height:50px}
+.l2{color:#666;background:#FFFCF6}
+.l2 .lt{background-position:0 -55px}
+.l2 .lt span{background-position:0 -127px;}
+.lb li{line-height:30px;border-bottom:#dedede 1px dashed;position:relative}
+.lb li span{position:absolute;top:0;right:0;font-size:12px}
+.l3{padding:15px 25px;height:16px;color:#666}
+.l3 a{margin:0 5px}
+.l4 span{background-position:0 -147px;}
+.l5 span{background-position:0 -167px;}
+.r{width:300px}
+.b{text-align:center;font-size:12px;color:#666;padding:9px 0 25px}
+.b a{color:#999;text-decoration:none;padding:5px}

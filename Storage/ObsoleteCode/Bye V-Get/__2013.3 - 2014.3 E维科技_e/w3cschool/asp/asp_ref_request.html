@@ -1,0 +1,211 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="ASP Request Object" />
+<meta name="description" content="Request对象的作用，具体的例子，相关的集、属性以及方法。" />
+<link rel="stylesheet" type="text/css" href="../c3.css" />
+<title>ASP Request 对象</title>
+</head>
+<body class="serverscripting">
+<div id="wrapper">
+<div id="header">
+<a href="http://e.v-get.com/w3cschool/" style="float:left;">W3CSchool 在线教程</a>
+<div class="q g"><script type="text/javascript">var cpro_id="u1163355"</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div>
+<div id="navfirst">
+<ul id="menu">
+<li id="h"><a href="../h.html">HTML教程</a></li>
+<li id="x"><a href="../x.html">XML教程</a></li>
+<li id="b"><a href="../b.html">浏览器脚本</a></li>
+<li id="s"><a href="../s.html">服务器脚本</a></li>
+<li id="d"><a href="../d.html">dot net教程</a></li>
+<li id="m"><a href="../m.html">多媒体教程</a></li>
+<li id="w"><a href="../w.html">建站手册</a></li>
+</ul>
+</div><div id="navsecond">
+<div id="course">
+<h2>ASP 教程</h2>
+<ul>
+<li><a href="http://e.v-get.com/w3cschool/">ASP 首页</a></li>
+<li><a href="asp_intro.html">ASP 简介</a></li>
+<li><a href="asp_install.html">ASP 安装</a></li>
+<li><a href="asp_syntax.html">ASP 语法</a></li>
+<li><a href="asp_variables.html">ASP 变量</a></li>
+<li><a href="asp_procedures.html">ASP 程序</a></li>
+<li><a href="asp_inputforms.html">ASP 表单</a></li>
+<li><a href="asp_cookies.html">ASP Cookies</a></li>
+<li><a href="asp_sessions.html">ASP Session</a></li>
+<li><a href="asp_applications.html">ASP Application</a></li>
+<li><a href="asp_incfiles.html">ASP #include</a></li>
+<li><a href="asp_globalasa.html">ASP Global.asa</a></li>
+<li><a href="asp_send_email.html">ASP e-mail</a></li>
+</ul>
+<h2>ASP 对象</h2>
+<ul class="small">
+<li><a href="asp_ref_response.html">ASP Response</a></li>
+<li><a href="asp_ref_request.html">ASP Request</a></li>
+<li><a href="asp_ref_application.html">ASP Application</a></li>
+<li><a href="asp_ref_session.html">ASP Session</a></li>
+<li><a href="asp_ref_server.html">ASP Server</a></li>
+<li><a href="asp_ref_error.html">ASP Error</a></li>
+<li class="list_apart"><a href="asp_ref_filesystem.html">ASP FileSystem</a></li>
+<li><a href="asp_ref_textstream.html">ASP TextStream</a></li>
+<li><a href="asp_ref_drive.html">ASP Drive</a></li>
+<li><a href="asp_ref_file.html">ASP File</a></li>
+<li><a href="asp_ref_folder.html">ASP Folder</a></li>
+<li><a href="asp_ref_dictionary.html">ASP Dictionary</a></li>
+<li><a href="asp_ado.html">ASP ADO</a></li>
+</ul>
+<h2>ASP 组件</h2>
+<ul class="small">
+<li><a href="asp_adrotator.html">ASP AdRotator</a></li>
+<li><a href="asp_browser.html">ASP BrowserCap</a></li>
+<li><a href="asp_contentlinking.html">ASP Content Linking</a></li>
+<li><a href="asp_contentrotator.html">ASP Content Rotator</a></li>
+</ul>
+<h2>ASP 教程总结</h2>
+<ul>
+<li><a href="asp_quickref.html">ASP 快速参考</a></li>
+<li><a href="asp_summary.html">ASP 总结</a></li>
+</ul>
+<h2>实例/测验</h2>
+<ul>
+<li><a href="../example/aspe_examples.html">ASP 实例</a></li>
+<li><a href="asp_quiz.html">ASP 测验</a></li>
+</ul>
+</div>
+<div id="selected">
+<h2>建站手册</h2>
+<ul>
+<li><a href="../site/">网站构建</a></li>
+<li><a href="../w3c/">万维网联盟</a></li>
+<li><a href="http://e.v-get.com/w3c/">W3CSchool 教程</a></li>
+<li><a href="../quality/">网站品质</a></li>
+<li><a href="../semweb/">语义网</a></li>
+<li><a href="../hosting/">网站主机</a></li>
+</ul>
+<h2><a href="http://e.v-get.com/w3c/" class="f13">W3CSchool 教程</a></h2><div class="a120x90"><script type="text/javascript">var cpro_id="u1210867";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div></div>
+</div>
+<div id="maincontent">
+<h1>ASP Request 对象</h1>
+<div  id="tpn">
+<ul class="prenext">
+<li class="pre"><a href="asp_ref_response.html">上一页</a></li>
+<li class="next"><a href="asp_ref_application.html">下一页</a></li>
+</ul>
+</div>
+<div id="intro">
+<p><strong>ASP Request 对象用于从用户那里取得信息。</strong></p>
+</div>
+<div class="example">
+<h2>实例</h2>
+<h3>QueryString 集合 实例</h3>
+<dl>
+<dt><a href="../tiy/s_37.html">当用户点击链接时发送查询信息</a></dt>
+<dd>本例演示如何在链接中向页面发送一些额外的查询信息，并在目标页面中取回这些信息 (在本例中是同一页面）。</dd>
+<dt><a href="../tiy/s_38.html">对 QueryString 集合的简单应用</a></dt>
+<dd>本例演示 <em>QueryString</em> 集合如何从表单取回值。此表单使用 GET 方法，这意外着所发送的信息对用户来说是可见的 (在地址中）。GET 方法还会限制所发送信息的数量。</dd>
+<dt><a href="../tiy/s_23.html">如何使用从表单传来的信息</a></dt>
+<dd>本例演示如何使用从表单取回的值。我们会使用 <em>QueryString</em> 集合。此表单使用 GET 方法。</dd>
+<dt><a href="../tiy/s_39.html">来自表单的更多信息</a></dt>
+<dd>本例演示假如输入字段包含若干相同的名称的话，<em>QueryString</em> 会包含什么内容。它将展示如何把这些相同的名称分隔开来。它也会展示如何使用 <em>count</em> 关键词来对 &#34;name&#34; 属性进行计数。此表单使用 GET 方法。</dd>
+</dl>
+<h3>Form 集合 实例</h3>
+<dl>
+<dt><a href="../tiy/s_40.html">一个 Form 集合的简单应用</a></dt>
+<dd>本例演示 <em>Form</em> 集合如何从表单取回值。此表单使用 POST 方法，这意味着发送的信息对用户来说是不可见的，并且对所发送信息的量没有限制 (可发送大量的信息）。</dd>
+<dt><a href="../tiy/s_24.html">如何使用来自表单的信息</a></dt>
+<dd>本例演示如何使用从表单取回的信息。我们使用了 <em>Form</em> 集合。表单使用了 POST 方法。</dd>
+<dt><a href="../tiy/s_41.html">来自表单的更多信息</a></dt>
+<dd>本例演示假如若干的输入域使用了相同的名称，<em>Form</em> 集合会包含什么信息。它将展示如何把这些相同的名称分割开来。它也会展示如何使用 <em>count</em> 关键词来对 &#34;name&#34; 属性进行计数。此表单使用 POST 方法。</dd>
+<dt><a href="../tiy/s_25.html">带有单选按钮的表单</a></dt>
+<dd>本例演示如何使用 <em>Form</em> 集合通过单选按钮与用户进行交互。此表单使用 POST 方法。</dd>
+<dt><a href="../tiy/s_42.html">带有复选按钮的表单</a></dt>
+<dd>本例演示如何使用 <em>Form</em> 集合通过复选按钮与用户进行交互。此表单使用 POST 方法。</dd>
+</dl>
+<h3>其他实例</h3>
+<dl>
+<dt><a href="../tiy/s_43.html">获取用户信息</a></dt>
+<dd>如何查明访问者的浏览器类型、IP 地址等信息。</dd>
+<dt><a href="../tiy/s_44.html">获取服务器变量</a></dt>
+<dd>本例演示如何使用 <em>ServerVariables</em> 集合取得访问者的浏览器类型、IP 地址等信息。</dd>
+<dt><a href="../tiy/s_26.html">创建 welcome cookie</a></dt>
+<dd>本例演示如何使用 Cookies 集合创建一个欢迎 <em>cookie</em>。</dd>
+<dt><a href="../tiy/s_45.html">探测用户发送的字节总数</a></dt>
+<dd>本例演示如何使用 <em>TotalBytes</em> 属性来取得用户在 Request 对象中发送的字节总数。</dd>
+</dl>
+</div>
+<div>
+<h2>Request 对象</h2>
+<p>当浏览器向服务器请求页面时，这个行为就被称为一个 request (请求）。</p>
+<p>ASP Request 对象用于从用户那里获取信息。它的集合、属性和方法描述如下：</p>
+<h3>集合</h3>
+<table class="dataintable">
+<tr>
+<th style="width:25%">集合</th>
+<th>描述</th>
+</tr>
+<tr>
+<td>ClientCertificate</td>
+<td>包含了存储于客户证书中的域值 (field values）</td>
+</tr>
+<tr>
+<td><a href="coll_cookies_request.html">Cookies</a></td>
+<td>包含了 HTTP 请求中发送的所有 cookie 值</td>
+</tr>
+<tr>
+<td><a href="coll_form.html">Form</a></td>
+<td>包含了使用 post 方法由表单发送的所有的表单 (输入）值</td>
+</tr>
+<tr>
+<td><a href="coll_querystring.html">QueryString</a></td>
+<td>包含了 HTTP 查询字符串中所有的变量值</td>
+</tr>
+<tr>
+<td><a href="coll_servervariables.html">ServerVariables</a></td>
+<td>包含了所有的服务器变量值</td>
+</tr>
+</table>
+<h3>属性</h3>
+<table class="dataintable">
+<tr>
+<th style="width:25%">属性</th>
+<th>描述</th>
+</tr>
+<tr>
+<td><a href="prop_totalbytes.html">TotalBytes</a></td>
+<td>返回在请求正文中客户端所发送的字节总数</td>
+</tr>
+</table>
+<h3>方法</h3>
+<table class="dataintable">
+<tr>
+<th style="width:25%">方法</th>
+<th>描述</th>
+</tr>
+<tr>
+<td><a href="met_binaryread.html">BinaryRead</a></td>
+<td>取回作为 post 请求的一部分而从客户端送往服务器的数据，并把它存放到一个安全的数组之中。</td>
+</tr>
+</table>
+</div>
+<div id="bpn">
+<ul class="prenext">
+<li class="pre"><a href="asp_ref_response.html">上一页</a></li>
+<li class="next"><a href="asp_ref_application.html">下一页</a></li>
+</ul>
+</div>
+</div>
+<div id="sidebar">
+<div class="rs"></div>
+<div id="tools">
+<h5 id="tools_reference"><a href="asp_ref.html">ASP 参考手册</a></h5>
+<h5 id="tools_example"><a href="../example/aspe_examples.html">ASP 实例</a></h5>
+<h5 id="tools_quiz"><a href="asp_quiz.html">ASP 测验</a></h5>
+</div>
+<div class="a120x600"><script type="text/javascript">var cpro_id="u1293136";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div><div class="b"></div>
+</div>
+</body>
+</html>

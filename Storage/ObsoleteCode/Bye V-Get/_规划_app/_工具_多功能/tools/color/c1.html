@@ -1,0 +1,104 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>网页配色方案创建工具一</title>
+<meta name="keywords" content="网页配色方案创建工具">
+<meta content="网页配色方案创建工具，网页配色，网页配色工具，配色方案，配色工具" name="description" />
+<LINK href="color_scheme.css" type=text/css rel=stylesheet>
+<LINK media=all href="links.css" type=text/css rel=stylesheet>
+<SCRIPT src="color_scheme1.js" type=text/javascript></SCRIPT>
+<SCRIPT src="color_scheme2.js" type=text/javascript></SCRIPT>
+<base target="_self">
+</HEAD>
+<BODY>
+<div align="center">
+<DIV id=container>
+<DIV id=maincolorsample></DIV>
+<DIV id=image><!--
+                        <img src="images/wheel.gif" alt="" width="232" height="232" border="0" usemap="#map">
+                        <map name="map"><area id="wheelarea" shape="circle" coords="116,116,116"></map>
+                -->
+<DIV id=wheelarea></DIV>
+<DIV id=pointer0></DIV>
+<DIV id=pointer1></DIV>
+<DIV id=pointer2></DIV>
+<DIV id=pointer3></DIV></DIV>
+<DIV id=maincolorhue></DIV>
+<DIV id=scheme-select><IMG id=previmg-mono onClick="selectScheme('mono')" 
+height=52 alt="" src="images/prev_mono.gif" 
+width=41><IMG id=previmg-compl onClick="selectScheme('compl')" height=52 alt="" 
+src="images/prev_compl.gif" width=41><IMG 
+id=previmg-triad onClick="selectScheme('triad')" height=52 alt="" 
+src="images/prev_triad.gif" width=41><IMG 
+id=previmg-tetrad onClick="selectScheme('tetrad')" height=52 alt="" 
+src="images/prev_tetrad.gif" width=41><IMG 
+id=previmg-analog onClick="selectScheme('analog')" height=52 alt="" 
+src="images/prev_analog.gif" width=41> </DIV>
+<DIV id=scheme-slider>
+<DIV id=pointer-slider></DIV></DIV>
+<DIV id=scheme-addcompl><INPUT id=analogCompl onclick=createScheme(false) 
+type=checkbox onchange=createScheme(false)><LABEL for=analogCompl>添加互补色</LABEL> 
+</DIV>
+<DIV id=scheme-searchrgb><A onclick=searchRGB(false) 
+href="#">输入RGB</A> (粗略转换)</DIV><!--/form-->
+<DIV id=colsample>
+<DIV class=col id=color0>
+<DIV class=col-0 id=color0-0 onclick=drawVar(0,0)></DIV>
+<DIV class=col-1 id=color0-1 onclick=drawVar(0,1)></DIV>
+<DIV class=col-2 id=color0-2 onclick=drawVar(0,2)></DIV>
+<DIV class=col-3 id=color0-3 onclick=drawVar(0,3)></DIV></DIV>
+<DIV class=col id=color1>
+<DIV class=col-0 id=color1-0 onclick=drawVar(1,0)></DIV>
+<DIV class=col-1 id=color1-1 onclick=drawVar(1,1)></DIV>
+<DIV class=col-2 id=color1-2 onclick=drawVar(1,2)></DIV>
+<DIV class=col-3 id=color1-3 onclick=drawVar(1,3)></DIV></DIV>
+<DIV class=col id=color2>
+<DIV class=col-0 id=color2-0 onclick=drawVar(2,0)></DIV>
+<DIV class=col-1 id=color2-1 onclick=drawVar(2,1)></DIV>
+<DIV class=col-2 id=color2-2 onclick=drawVar(2,2)></DIV>
+<DIV class=col-3 id=color2-3 onclick=drawVar(2,3)></DIV></DIV>
+<DIV class=col id=color3>
+<DIV class=col-0 id=color3-0 onclick=drawVar(3,0)></DIV>
+<DIV class=col-1 id=color3-1 onclick=drawVar(3,1)></DIV>
+<DIV class=col-2 id=color3-2 onclick=drawVar(3,2)></DIV>
+<DIV class=col-3 id=color3-3 onclick=drawVar(3,3)></DIV></DIV>
+<DIV id=textBlack>黑色文本 </DIV>
+<DIV id=textWhite><STRONG>白色文本</STRONG></DIV></DIV>
+<DIV id=coltable></DIV>
+<DIV id=websnapswitch><INPUT id=websnapper onclick=switchWebSnap(this.checked) 
+type=checkbox onchange=switchWebSnap(this.checked)><LABEL for=websnapper>改成为 
+"安全" 颜色 (WebColors)</LABEL> </DIV>
+<DIV id=presetswitch>变化: <A class=btn id=preset-default 
+onclick="switchPreset('default');return false" 
+href="colorscheme1.html">缺省</A> <A class=btn 
+id=preset-pastel onClick="switchPreset('pastel');return false" 
+href="colorscheme1.html">柔和色</A> <A class=btn 
+id=preset-soft onClick="switchPreset('soft');return false" 
+href="colorscheme1.html">暗色</A> <A class=btn 
+id=preset-light onClick="switchPreset('light');return false" 
+href="colorscheme1.html">亮色</A> <A class=btn 
+id=preset-hard onClick="switchPreset('hard');return false" 
+href="colorscheme1.html">对比色</A> <A class=btn 
+id=preset-pale onClick="switchPreset('pale');return false" 
+href="colorscheme1.html">淡白色</A> </DIV><A id=url 
+href="colorscheme1.html">该配色方案的网址</A> 
+<FORM id=cbmodeswitch><SELECT id=cbmodeswitcher onchange=switchBlindlessMode()> 
+  <OPTION value="" selected>正常色觉 (约占总人口的85.5 %)</OPTION> <OPTION value=1>红色盲 (1 
+  % 的男性)</OPTION> <OPTION value=2>绿色盲 (1 % 的男性)</OPTION> <OPTION value=3>蓝色盲 
+  (约占总人口的 0.003 %)</OPTION> <OPTION value=4>红色弱(1 % 男性)</OPTION> <OPTION 
+  value=5>绿色弱(5 % 的男性, 0.4 % 的女性)</OPTION> <OPTION value=6>蓝色弱(几乎为 0 %)</OPTION> 
+  <OPTION value=7>全色盲(人口的0.005%)</OPTION> <OPTION value=8>非典型全色盲</OPTION></SELECT> 
+</FORM>
+<DIV id=colsamplevarsswitch>
+<DIV class=bottomaligner><A class=btn id=cancelsamplevars 
+onclick="drawSample();return false" 
+href="colorscheme1.html">返回</A> </DIV></DIV>
+<DIV id=colsamplevars></DIV></DIV></div>
+<table width="100%" height="10" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td></td>
+  </tr>
+</table>
+</body>
+</html>

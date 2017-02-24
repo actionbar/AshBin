@@ -1,0 +1,286 @@
+<html>
+<head>
+<title>命名域句法</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+
+<link rel = stylesheet href = "image/style.css">
+</head>
+<body bgcolor="#ffffff">
+<table width="688" border="0" cellspacing="0" cellpadding="0" align="center">
+  <tr bgcolor="EEEEEE"> 
+    <td height="22"><a href="index.htm">主页</a></td>
+  </tr>
+</table><br>
+<table border="0" cellpadding="0" cellspacing="0" width="688" align="center" height="490">
+  <tr valign="top"> 
+    <td rowspan="4" width="91">&nbsp; </td>
+    <td height="68" width="131"> 
+      <p><img src="image/doc.gif"></p>
+    </td>
+    <td rowspan="4" width="18"><b></b> </td>
+    <td height="68" width="387"><img src="image/title_doc.gif"></td>
+    <td rowspan="4" width="61"> 
+      <h6>&nbsp;</h6>
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td rowspan="3" valign="top" class="pt10" align="center" width="131" bgcolor="EEEEEE"> 
+      <p>&nbsp;</p>
+      <p><font color="#FF0000">※ 18.2 命名域句法</font></p>
+       
+	</td>
+  </tr>
+  <tr valign="top"> 
+    <td width="387" height="308"> 
+      <table width="100%" border="0" cellpadding="0">
+        <tr> 
+          <td>
+
+           <h4><a name="_Toc467209215">18.2 命名域句法</a></h4>
+<p>命名域高于XML 1.0规范。XML 1.0处理程序对命名域一无所知，但仍能阅读使用命名域的文档，并且不会发现任何错误。使用命名域的文档不破坏现有的XML分析程序（至少不进行合法性检查的分析程序是如此）；用户不必等待臭名昭著的、不准时的软件公司来发行昂贵的升级版才使用命名域。</p>
+<h5><a name="_Toc467209216">18.2.1 命名域的定义</a></h5>
+<p>在使用命名域的有效元素上应用xmlns:<i>prefix</i>特性来定义命名域。<i>prefix</i>由真正的用于命名域的前缀来代替。特性值为命名域的URI。例如，xsl:stylesheet标记将前缀xsl与URI 
+  http//www.w3.org/XSL/Transform/1.0联系在一起。</p>
+<p>&lt;xsl:stylesheet</p>
+<p>xmlns:xsl="http://www.w3.org/XSL/Transform/1.0"&gt;</p>
+<p>然后，xsl前缀就可以加到xsl:stylesheet元素内的本地元素和特性名中，以便将它们标识为属于http//www.w3.org/XSL/Transform/1.0命名域。前缀通过冒号与本地名分开。清单14-2为用于周期表的基本的XSL样式单，它最初出现在第14章“XSL变换”中，此清单演示了在stylesheet、template和apply-tempates上使用xsl前缀的方法。</p>
+<p>&lt;?xml version="1.0"?&gt;</p>
+<p>&lt;xsl:stylesheet xmlns:xsl="http://www.w3.org/XSL/Transform/1.0"&gt;</p>
+<p></p>
+<p> &lt;xsl:template match="PERIODIC_TABLE"&gt;</p>
+<p> &lt;html&gt;</p>
+<p> &lt;xsl:apply-templates/&gt;</p>
+<p> &lt;/html&gt;</p>
+<p> &lt;/xsl:template&gt;</p>
+<p></p>
+<p> &lt;xsl:template match="ATOM"&gt;</p>
+<p> &lt;P&gt;</p>
+<p> &lt;xsl:apply-templates/&gt;</p>
+<p> &lt;/P&gt;</p>
+<p> &lt;/xsl:template&gt;</p>
+<p></p>
+<p>&lt;/xsl:stylesheet&gt;</p>
+<p>定义命名域的URI纯粹是形式上的，其唯一目的就是成组、并明确文档中的元素和特性。它无需指向任何对象，特别在无法确保URI位置上的文档描述了此文档中使用的句法；或者有用于该目的的任何文档存在于该URI位置。正如已说明过的，如果有一个用于特定XML应用程序的URI，那么此URI就可以用于定义命名域。</p>
+<p>命名域前缀可以是任何合法的XML名称（不能包含冒号）。回顾第6章的“结构整洁的XML文档”，合法的XML名必须以一个字母或下划线（_）开头。名称中的后面的字符可以包括字母、数字、下划线、连字号和句点。但不能包括空白。</p>
+<p><img src="Image/BK000218-17.gif" width=47 height=52 align="left">有两个前缀明确地不允许使用：xml和xmlns。xml前缀是定义为用来引用<a href="http://www.w3.org/XML/1998/namespace">http://www.w3.org/XML/1998/namespace</a>的。xmlns前缀用于将元素绑定到命名域上，所以不可用于绑定目标的前缀。</p>
+<p>在XML名称中，除了不允许有冒号字符外（不包括用于分隔前缀和本地名的冒号），命名域对标准的XML句法没有直接的影响。使用命名域的文档必须也是结构整洁的，以便对命名域一无所知的处理程序可阅读此文档。如果文档需要检查合法性，那么它无需明确地考虑命名域就肯定能够获得通过。对于XML处理程序，使用命名域的文档只不过是样子古怪的文档，在此文档中有些元素和特性名可能有一个冒号。</p>
+<p><img src="Image/BK000218-34.gif" width=52 height=51 align="left">命名域的确存在着合法性的问题。如果编写的DTD没有命名域前缀，那么必须使用命名域前缀来重新编写DTD，才能用于对使用该前缀的文档进行合法性检查。例如，考虑下面的元素声明：</p>
+<p> &lt;!ELEMENT DIVISION (DIVISION_NAME, TEAM+)&gt;</p>
+<p>如果元素都是以bb作命名域前缀，就得按下面的方式重新编写：</p>
+<p> &lt;!ELEMENT bb:DIVISION (bb:DIVISION_NAME, bb:TEAM+)&gt;</p>
+<p>这意味着，不能将相同的DTD用于带有和不带有命名域的文档，即使这两类文档本来就使用相同的符号集也是如此。事实上，由于DTD受真正的前缀而不是命名域的URI的约束，所以甚至不能将同一个DTD用于使用相同的标记集和命名域、但前缀不同的文档中。</p>
+<p> 
+<h5><a name="_Toc467209217">18.2.2 多个命名域</a></h5>
+<p></p>
+<p>清单14-2并不真正将HTML元素放在命名域中，但要做到这一点则并不困难。清单18-1演示这种用法。正像xsl是XSL转换指令的惯用前缀一样，html也是HTML元素的惯用前缀。在下面的实例中，xsl:stylesheet元素声明两个不同的命名域：一个用于XSL，另一个用于HTML。</p>
+<p>清单18-1：使用<a href="http://www.w3.org/TR/REC-html40">http://www.w3.org/TR/REC-html40</a>作为命名域用于输出的XSL样式单</p>
+<p>&lt;?xml version="1.0"?&gt;</p>
+<p>&lt;xsl:stylesheet xmlns:xsl="http://www.w3.org/XSL/Transform/1.0"</p>
+<p> xmlns:html="http://www.w3.org/TR/REC-html40"&gt;</p>
+<p></p>
+<p> &lt;xsl:template match="PERIODIC_TABLE"&gt;</p>
+<p> &lt;html:html&gt;</p>
+<p> &lt;xsl:apply-templates/&gt;</p>
+<p> &lt;/html:html&gt;</p>
+<p> &lt;/xsl:template&gt;</p>
+<p></p>
+<p> &lt;xsl:template match="ATOM"&gt;</p>
+<p> &lt;html:p&gt;</p>
+<p> &lt;xsl:apply-templates/&gt;</p>
+<p> &lt;/html:p&gt;</p>
+<p> &lt;/xsl:template&gt;</p>
+<p></p>
+<p>&lt;/xsl:stylesheet&gt;</p>
+<p>虽然将xmlns特性放在根元素上已成为习惯，并且总的来说是很有用的，但也可以出现在其他元素上。在此情况下，命名域前缀只能在声明它的元素内才有效。考虑一下清单18-2。html前缀只在声明它的xsl:template元素中才合法。不能将其施加于其他的模板规则，除非这些模板规则分别声明html命名域。</p>
+<p>清单18-2：在模板规则中声明的带有<a href="http://www.w3.org/TR/REC-html40">http://www.w3.org/TR/REC-html40</a>命名域的XSL样式单</p>
+<p>&lt;?xml version="1.0"?&gt;</p>
+<p>&lt;xsl:stylesheet</p>
+<p>xmlns:xsl="httP://www.w3.org/XSL/Transform/1.0"&gt;</p>
+<p></p>
+<p> &lt;xsl:template match="PERIODIC-TABLE"</p>
+<p> xmlns:html="http://www.w3.org/TR/REC-html40"&gt;</p>
+<p> &lt;html:html&gt;</p>
+<p> &lt;xsl:apply-templates/&gt;</p>
+<p> &lt;/html:html&gt;</p>
+<p> &lt;/xsl:template&gt;</p>
+<p></p>
+<p> &lt;xsl:template match="ATOM"&gt;</p>
+<p> &lt;P&gt;</p>
+<p> &lt;xsl:apply-templates/&gt;</p>
+<p> &lt;/P&gt;</p>
+<p> &lt;/xsl:template&gt;</p>
+<p></p>
+<p>&lt;/xsl:stylesheet&gt;</p>
+<p>可以在子元素中重新定义命名域。例如，清单18-3中的XSL样式单。此处的xsl前缀出现在不同的元素中，以交替引用<a href="http://www.w3.org/XSL/Transform/1.0">http://www.w3.org/XSL/Transform/1.0</a>和http://www.w3.org/XSL/Format/1.0。尽管每个元素都有前缀xsl，但由于xsl前缀的含义随元素而变，所以XSL转换指令和XSL格式化对象仍处于不同的命令位中。</p>
+<p>清单18-3：重新定义xsl前缀</p>
+<p>&lt;?xml version="1.0"?&gt;</p>
+<p>&lt;xsl:stylesheet</p>
+<p> xmlns:xsl="http://www.w3.org/XSL/Transform/1.0"&gt;</p>
+<p></p>
+<p> &lt;xsl:template match="/"&gt;</p>
+<p> &lt;xsl:root xmlns:xsl="http://www.w3.org/XSL/Format/1.0"&gt;</p>
+<p></p>
+<p> &lt;xsl:layout-master-set&gt;</p>
+<p> &lt;xsl:simple-page-master page-master-name="only"&gt;</p>
+<p> &lt;xsl:region-body/&gt;</p>
+<p> &lt;/xsl:simple-page-master&gt;</p>
+<p> &lt;/xsl:layout-master-set&gt;</p>
+<p></p>
+<p> &lt;xsl:page-sequence&gt;</p>
+<p></p>
+<p> &lt;xsl:sequence-specification&gt;</p>
+<p> &lt;xsl:sequence-specifier-single page-master-name="only"/&gt;</p>
+<p> &lt;/xsl:sequence-specification&gt;</p>
+<p></p>
+<p> &lt;xsl:flow&gt;</p>
+<p> &lt;xsl:apply-templates select="//ATOM"/</p>
+<p> xmlns:xsl="http://www.w3.org/XSL/Transform/1.0"/&gt;</p>
+<p> &lt;/xsl:flow&gt;</p>
+<p></p>
+<p> &lt;/xsl:page-sequence&gt;</p>
+<p></p>
+<p> &lt;/xsl:root&gt;</p>
+<p> &lt;/xsl:template&gt;</p>
+<p></p>
+<p> &lt;xsl:template match="ATOM"&gt;</p>
+<p> &lt;xsl:block font-size="20pt" font-family="serif"</p>
+<p> xmlns:xsl="http://www.w3.org/XSL/Format/1.0"&gt;</p>
+<p> &lt;xsl:value-of select="NAME"</p>
+<p> xmlns:xsl="http://www.w3.org/XSL/Transform/1.0"/&gt;</p>
+<p> &lt;/xsl:block&gt;</p>
+<p> &lt;/xsl:template&gt;</p>
+<p></p>
+<p>&lt;/xsl:stylesheet&gt;</p>
+<p>但这样做会产生不必要的混乱，我强烈建议读者避免这样做。可供使用的前缀还有很多，几乎不需要在同一个文档中重复使用。不重复使用前缀的主要价值还在于，来自于不同作者的两个不同的文档碰巧重复使用类似的前缀，此时这两个文档就会组合在一起。这一点也是避免使用像a、m和x这样的短前缀的很好的理由，这些短前缀很可能重新用于不同的目的。</p>
+<p> 
+<h5><a name="_Toc467209218">18.2.3 特性</a></h5>
+<p></p>
+<p>由于特性属于特定元素，所以不使用命名域也可很容易地从类似的命名特性中确定出来。因此，像加到元素中那样，将命名域加到特性中几乎是没有必要的。例如，1999年4月21日的XSL规范工作草案要求所有的XSL转换元素都要加入<a href="http://www.w3.org/XSL/Transform/1.0">http://www.w3.org/XSL/Transform/1.0</a>命名域，但是它不要求这些元素的特性也在任何特定命名域中（事实上，它要求元素的特性都不在任何命名域中）。但是，如果需要，可以将命名域前缀加入特性中。例如，下面的PLAYER元素和它所有的特性都处在<a href="http://metalab.unc.edu/xml/baseball">http://metalab.unc.edu/xml/baseball</a>命名域中。</p>
+<p>&lt;bb:PLAYER xmlns:bb=”http://metalab.unc.edu/xml/baseball”</p>
+<p> bb:GIVEN_NAME=”Tom” bb:SURNAME=”Glavine”</p>
+<p> bb:POSITION=”Starting Pitcher” bb:GAMES=”33”</p>
+<p> bb:GAMES_STARTED=”33” bb:WINS=”20” bb:LOSSES=”6” bb:SAVES=”0”</p>
+<p> bb:COMPLETE_GAMES=”4” bb:SHUT_OUTS=”3” bb:ERA=”2.47”</p>
+<p> bb:INNINGS=”229.1” bb:HOME_RUNS_AGAINST=”13”</p>
+<p> bb:RUNS_AGAINST=”67” bb:EARNED_RUNS=”63” bb:HIT_BATTER=”2”</p>
+<p> bb:WILD_PITCHES=”3” bb:BALK=”O” bb:WALKED_BATTER=”74”</p>
+<p> bb:STRUCK_OUT_BATTER=”157”/&gt;</p>
+<p>如果需要将两个不同XML应用程序中的特性组合到同一个元素中，这种方式有时或许也有用。</p>
+<p>可以（虽然通常无意义）将同一个命名域URI与两个不同的前缀相关联。实在是没有道理这么做，不过需要提醒读者，我在此提出可以这样做的唯一前提是，对于带有相同名称的最多只有一个特性的一个元素来说，特性的全名必须满足XML规则。例如，由于bb:GIVEN_NAME和baseball:GIVEN_NAME是相同的，所以下面的形式是不合法的：</p>
+<p>&lt;bb:PLAYER xmlns:bb=”http://metalab.unc.edu/xml”</p>
+<p> xmlns:baseball=”http://metalab.unc.edu/xml”</p>
+<p> bb:GIVEN_NAME=”Hank” bb:SURNAME=”Aaron”</p>
+<p> baseball:GIVEN_NAME=”Henry” /&gt;</p>
+<p>另一方面，URI实际上并不领会它所指向的是什么对象。URI的http://metalab.unc.edu /xml/和<a href="http://www.metalab.unc.edu/xml/&Ouml;&#0;&Iuml;&ograve;&Iacute;&#0;&Ograve;&#0;&Ograve;&#0;">http://www.metalab.unc.edu/xml/指向同一页</a>。但下面的这种是合法的：</p>
+<p>&lt;bb:PLAYER xmlns:bb=”http://metalab.unc.edu/xml”</p>
+<p> xmlns:baseball=”http://www.metalab.unc.edu/xml”</p>
+<p> bb:GIVEN_NAME=”Hank” bb:SURNAME=”Aaron”</p>
+<p> baseball:GIVEN_NAME=”Henry” /&gt;</p>
+<p> 
+<h5><a name="_Toc467209219">18.2.4 缺省的命名域</a></h5>
+<p>在有大量标记的长文档（在所有相同命名域）中，可能会发现要将前缀加到各个元素名中是很不方便的。可以使用没有前缀的xmlns特性，将缺省的命名域与某个元素及其子元素相关联。此元素本身（其所有的子元素也一样）可认为处于定义的命名域中，除非它们拥有明确的前缀。例如，清单18-4显示的XSL样式单就像习惯上的那样，没有使用xsl作为XSL转换元素的前缀。</p>
+<p><img src="Image/BK000218-17.gif" width=47 height=52 align="left">特性从不处于缺省的命名域中，它们必须明确地作为加上前缀。</p>
+<p></p>
+<p>　</p>
+<p>清单18-4：使用缺省命名域的XSL样式单</p>
+<p>&lt;?xml version="1.0"?&gt;</p>
+<p>&lt;stylesheet</p>
+<p> xmlns="http://www.w3.org/XSL/Transform/1.0"</p>
+<p> xmlns:fo="http://www.w3.org/XSL/Format/1.0"</p>
+<p> result ns="fo"&gt;</p>
+<p></p>
+<p> &lt;template match="/"&gt;</p>
+<p> &lt;fo:root xmlns:fo="http://www.w3.org/XSL/Format/1.0"&gt;</p>
+<p></p>
+<p> &lt;fo:layout-master-set&gt;</p>
+<p> &lt;fo:simple-page-master page-master-name="only"&gt;</p>
+<p> &lt;fo:region-body/&gt;</p>
+<p> &lt;/fo:simple-page-master&gt;</p>
+<p> &lt;/fo:layout-master-set&gt;</p>
+<p></p>
+<p> &lt;fo:page-sequence&gt;</p>
+<p></p>
+<p> &lt;fo:sequence-specification&gt;</p>
+<p> &lt;fo:sequence-specifier-single page-master-name="only"/&gt;</p>
+<p> &lt;/fo:sequence-specification&gt;</p>
+<p></p>
+<p> &lt;fo:flow&gt;</p>
+<p> &lt;apply-templates select="//ATOM"/&gt;</p>
+<p> &lt;/fo:flow&gt;</p>
+<p></p>
+<p> &lt;/fo:page-sequence&gt;</p>
+<p></p>
+<p> &lt;/fo:root&gt;</p>
+<p> &lt;/template&gt;</p>
+<p></p>
+<p> &lt;template match="ATOM"&gt;</p>
+<p> &lt;fo:block font-size="20pt" font-family="serif"&gt;</p>
+<p> &lt;value-of select="NAME"/&gt;</p>
+<p> &lt;/fo:block&gt;</p>
+<p> &lt;/template&gt;</p>
+<p></p>
+<p>&lt;/stylesheet&gt;</p>
+<p>或许最好使用缺省的命名域来将命名域与正准备加入不同语言标记的、现有的文档中的每个元素相关联。例如，如果将某个MathML放在HTML文档中，只要将前缀加到MathML元素中。只需要将&lt;html&gt;开始标记用下面标记代替，就可以将所有的HTML元素放在<a href="http://www.w3.org/TR/REC-html40">http://www.w3.org/TR/REC-html40</a>命名域中：</p>
+<p>&lt;html xmlns="http://www.w3.org/TR/REC-html40"&gt;</p>
+<p>无需编辑文件的其余部分！插入的MathML标记仍需要在各自的命名域中。但是，只要这些标记不与大量的HTML标记相混合，就可以在MathML根元素上简单地声明xmlns特性。这样就定义用于MathML元素的一个缺省命名域，此元素覆盖包含MathML的文档的缺省命名域。如清单18-5所示。</p>
+<p>清单18-5：嵌入到使用命名域的、结构完整的HTML文档中的MathML数学元素</p>
+<p>&lt;?xml version="1.0"?&gt;</p>
+<p>&lt;html xmlns="http://www.w3.org/TR/REC-html40"&gt;</p>
+<p> &lt;head&gt;</p>
+<p> &lt;title&gt;Fiat Lux&lt;/title&gt;</p>
+<p> &lt;meta name="GFNFRATOR" content="amaya V1.3b" /&gt;</p>
+<p> &lt;/head&gt;</p>
+<p> &lt;body&gt;</p>
+<p></p>
+<p> &lt;P&gt;And God said,&lt;/P&gt;</p>
+<p></p>
+<p> &lt;math xmlns="http://www.w3.org/TR/REC-MathML/"&gt;</p>
+<p> &lt;mrow&gt;</p>
+<p> &lt;msub&gt;</p>
+<p> &lt;mi&gt;&amp;#x3B4;&lt;/mi&gt;</p>
+<p> &lt;mi&gt;&amp;#x3B1;&lt;/mi&gt;</p>
+<p> &lt;/msub&gt;</p>
+<p> &lt;msup&gt;</p>
+<p> &lt;mi&gt;F&lt;/mi&gt;</p>
+<p> &lt;mi&gt;&amp;#x3B1;&amp;#x3B2;&lt;/mi&gt;</p>
+<p> &lt;/msup&gt;</p>
+<p> &lt;mi&gt;&lt;/mi&gt;</p>
+<p> &lt;mo&gt;=&lt;/mo&gt;</p>
+<p> &lt;mi&gt;&lt;/mi&gt;</p>
+<p> &lt;mfrac&gt;</p>
+<p> &lt;mrow&gt;</p>
+<p> &lt;mn&gt;4&lt;/mn&gt;</p>
+<p> &lt;mi&gt;&amp;#x3C0;&lt;/mi&gt;</p>
+<p> &lt;/mrow&gt;</p>
+<p> &lt;mi&gt;c&lt;/mi&gt;</p>
+<p> &lt;/mfrac&gt;</p>
+<p> &lt;mi&gt;&lt;/mi&gt;</p>
+<p> &lt;msup&gt;</p>
+<p> &lt;mi&gt;J&lt;/mi&gt;</p>
+<p> &lt;mrow&gt;</p>
+<p> &lt;mi&gt;&amp;#x3B2;&lt;/mi&gt;</p>
+<p> &lt;mo&gt;&lt;/mo&gt;</p>
+<p> &lt;/mrow&gt;</p>
+<p> &lt;/msup&gt;</p>
+<p> &lt;/mrow&gt;</p>
+<p> &lt;/math&gt;</p>
+<p></p>
+<p> &lt;P&gt;and there was light&lt;/P&gt;</p>
+<p></p>
+<p> &lt;/body&gt;</p>
+<p>&lt;/html&gt;</p>
+<p>此处的math、mrow、msub、mo、mi、mfrac、mn和msup都在<a href="http://www.w3.org/TR/REC-MathML/&Atilde;&uuml;&Atilde;&ucirc;&Icirc;&#0;&Ouml;&ETH;">http://www.w3.org/ 
+  TR/ REC-MathML/命名域中</a>，尽管包含它们的文档使用<a href="http://www.w3.org/TR/REC-html40">http://www.w3.org/TR/ 
+  REC-html40</a>命名域。</p>
+ 
+<a href='571.htm'>&lt;&lt;上一篇</a>&nbsp;&nbsp;<a href='573.htm'>下一篇&gt;&gt;</a></td>
+        </tr>
+      </table>
+      <p>&nbsp; </p>
+    </td>
+  </tr>
+</table>
+
+</body>
+
+</html>

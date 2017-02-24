@@ -1,0 +1,413 @@
+<html>
+<head>
+<title>数据的XML化(续)</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+
+<link rel = stylesheet href = "image/style.css">
+</head>
+<body bgcolor="#ffffff">
+<table width="688" border="0" cellspacing="0" cellpadding="0" align="center">
+  <tr bgcolor="EEEEEE"> 
+    <td height="22"><a href="index.htm">主页</a></td>
+  </tr>
+</table><br>
+<table border="0" cellpadding="0" cellspacing="0" width="688" align="center" height="490">
+  <tr valign="top"> 
+    <td rowspan="4" width="91">&nbsp; </td>
+    <td height="68" width="131"> 
+      <p><img src="image/doc.gif"></p>
+    </td>
+    <td rowspan="4" width="18"><b></b> </td>
+    <td height="68" width="387"><img src="image/title_doc.gif"></td>
+    <td rowspan="4" width="61"> 
+      <h6>&nbsp;</h6>
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td rowspan="3" valign="top" class="pt10" align="center" width="131" bgcolor="EEEEEE"> 
+      <p>&nbsp;</p>
+      <p><font color="#FF0000">※ 4.2 数据的XML化(续)</font></p>
+       
+            <p align="left"><a href='330.htm'>4.2 数据的XML化</a></p>
+          
+            <p align="left">4.2 数据的XML化(续)</p>
+          
+	</td>
+  </tr>
+  <tr valign="top"> 
+    <td width="387" height="308"> 
+      <table width="100%" border="0" cellpadding="0">
+        <tr> 
+          <td>
+
+           <h5 align="left">4.2.5 将XML组装在一起</h5>
+<p>到目前为止，我向读者展示的只是一段一段（每段一个元素）的XML文档。但现在是该将各段组装在一起，看一看包括1998年Major League赛季的统计数据的全部文档的时候了。清单4-1列出了完成了的XML文档，其中包括两个联赛、六个分部、三十个队和九个球员。</p>
+<b>
+<p>清单4-1：一份完整的XML文档</p>
+</b> 
+<p><font face="Courier New, Courier, mono"><i>&lt;?xml version="1.0"?&gt;</i></font></p>
+<p><i><font face="Courier New, Courier, mono">&lt;SEASON&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;YEAR&gt;1998&lt;/YEAR&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;LEAGUE&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;LEAGUE_NAME&gt;National League&lt;/LEAGUE_NAME&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;DIVISION&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;DIVISION_NAME&gt;East&lt;/DIVISION_NAME&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;TEAM&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;TEAM_CITY&gt;Atlanta&lt;/TEAM_CITY&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;TEAM_NAME&gt;Braves&lt;/TEAM_NAME&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;PLAYER&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;SURNAME&gt;Malloy&lt;/SURNAME&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;GIVEN_NAME&gt;Marty&lt;/GIVEN_NAME&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;POSITION&gt;Second Base&lt;/POSITION&gt; 
+  </font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;GAMES&gt;11&lt;/GAMES&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;GAMES_STARTED&gt;8&lt;/GAMES_STARTED&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;AT_BATS&gt;28&lt;/AT_BATS&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;RUNS&gt;3&lt;/RUNS&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;HITS&gt;5&lt;/HITS&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;DOUBLES&gt;1&lt;/DOUBLES&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;TRIPLES&gt;0&lt;/TRIPLES&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;HOME_RUNS&gt;1&lt;/HOME_RUNS&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;RBI&gt;1&lt;/RBI&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;STEALS&gt;0&lt;/STEALS&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;CAUGHT_STEALING&gt;0&lt;/CAUGHT_STEALING&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;SACRIFICE_HITS&gt;0&lt;/SACRIFICE_HITS&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;SACRIFICE_FLIES&gt;0&lt;/SACRIFICE_FLIES&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;ERRORS&gt;0&lt;/ERRORS&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;WALKS&gt;2&lt;/WALKS&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;STRUCK_OUT&gt;2&lt;/STRUCK_OUT&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;HIT_BY_PITCH&gt;0&lt;/HIT_BY_PITCH&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;/PLAYER&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;PLAYER&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;SURNAME&gt;Guillen&lt;/SURNAME&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;GIVEN_NAME&gt;Ozzie &lt;/GIVEN_NAME&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;POSITION&gt;Shortstop&lt;/POSITION&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;GAMES&gt;83&lt;/GAMES&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;GAMES_STARTED&gt;59&lt;/GAMES_STARTED&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;AT_BATS&gt;264&lt;/AT_BATS&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;RUNS&gt;35&lt;/RUNS&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;HITS&gt;73&lt;/HITS&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;DOUBLES&gt;15&lt;/DOUBLES&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;TRIPLES&gt;1&lt;/TRIPLES&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;HOME_RUNS&gt;1&lt;/HOME_RUNS&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;RBI&gt;22&lt;/RBI&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;STEALS&gt;1&lt;/STEALS&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;CAUGHT_STEALING&gt;4&lt;/CAUGHT_STEALING&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;SACRIFICE_HITS&gt;4&lt;/SACRIFICE_HITS&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;SACRIFICE_FLIES&gt;2&lt;/SACRIFICE_FLIES&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;ERRORS&gt;6&lt;/ERRORS&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;WALKS&gt;24&lt;/WALKS&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;STRUCK_OUT&gt;25&lt;/STRUCK_OUT&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;HIT_BY_PITCH&gt;1&lt;/HIT_BY_PITCH&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;/PLAYER&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;PLAYER&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;SURNAME&gt;Bautista&lt;/SURNAME&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;GIVEN_NAME&gt;Danny&lt;/GIVEN_NAME&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;POSITION&gt;Outfield&lt;/POSITION&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;GAMES&gt;82&lt;/GAMES&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;GAMES_STARTED&gt;27&lt;/GAMES_STARTED&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;AT_BATS&gt;144&lt;/AT_BATS&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;RUNS&gt;17&lt;/RUNS&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;HITS&gt;36&lt;/HITS&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;DOUBLES&gt;1&lt;/DOUBLES&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;TRIPLES&gt;0&lt;/TRIPLES&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;HOME_RUNS&gt;3&lt;/HOME_RUNS&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;RBI&gt;17&lt;/RBI&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;STEALS&gt;1&lt;/STEALS&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;CAUGHT_STEALING&gt;0&lt;/CAUGHT_STEALING&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;SACRIFICE_HITS&gt;3&lt;/SACRIFICE_HITS&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;SACRIFICE_FLIES&gt;2&lt;/SACRIFICE_FLIES&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;ERRORS&gt;2&lt;/ERRORS&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;WALKS&gt;7&lt;/WALKS&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;STRUCK_OUT&gt;21&lt;/STRUCK_OUT&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;HIT_BY_PITCH&gt;0&lt;/HIT_BY_PITCH&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;/PLAYER&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;PLAYER&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;SURNAME&gt;Williams&lt;/SURNAME&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;GIVEN_NAME&gt;Gerald&lt;/GIVEN_NAME&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;POSITION&gt;Outfield&lt;/POSITION&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;GAMES&gt;129&lt;/GAMES&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;GAMES_STARTED&gt;51&lt;/GAMES_STARTED&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;AT_BATS&gt;266&lt;/AT_BATS&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;RUNS&gt;46&lt;/RUNS&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;HITS&gt;81&lt;/HITS&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;DOUBLES&gt;18&lt;/DOUBLES&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;TRIPLES&gt;3&lt;/TRIPLES&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;HOME_RUNS&gt;10&lt;/HOME_RUNS&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;RBI&gt;44&lt;/RBI&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;STEALS&gt;1&lt;/STEALS&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;CAUGHT_STEALING&gt;5&lt;/CAUGHT_STEALING&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;SACRIFICE_HITS&gt;2&lt;/SACRIFICE_HITS&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;SACRIFICE_FLIES&gt;1&lt;/SACRIFICE_FLIES&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;ERRORS&gt;5&lt;/ERRORS&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;WALKS&gt;17&lt;/WALKS&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;STRUCK_OUT&gt;48&lt;/STRUCK_OUT&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;HIT_BY_PITCH&gt;3&lt;/HIT_BY_PITCH&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;/PLAYER&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;PLAYER&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;SURNAME&gt;Glavine&lt;/SURNAME&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;GIVEN_NAME&gt;Tom&lt;/GIVEN_NAME&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;POSITION&gt;Starting Pitcher&lt;/POSITION&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;WINS&gt;20&lt;/WINS&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;LOSSES&gt;6&lt;/LOSSES&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;SAVES&gt;0&lt;/SAVES&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;GAMES&gt;33&lt;/GAMES&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;GAMES_STARTED&gt;33&lt;/GAMES_STARTED&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;COMPLETE_GAMES&gt;4&lt;/COMPLETE_GAMES&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;SHUT_OUTS&gt;3&lt;/SHUT_OUTS&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;ERA&gt;2.47&lt;/ERA&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;INNINGS&gt;229.1&lt;/INNINGS&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;HOME_RUNS&gt;202&lt;/HOME_RUNS&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;RUNS&gt;13&lt;/RUNS&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;EARNED_RUNS&gt;67&lt;/EARNED_RUNS&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;HIT_BATTER&gt;63&lt;/HIT_BATTER&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;WILD_PITCHES&gt;2&lt;/WILD_PITCHES&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;BALK&gt;3&lt;/BALK&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;WALKED_BATTER&gt;0&lt;/WALKED_BATTER&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;STRUCK_OUT_BATTER&gt;74&lt;/STRUCK_OUT_BATTER&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;/PLAYER&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;PLAYER&gt;</font></i></p>
+<p><i><font face="Courier New, Courier, mono">&lt;SURNAME&gt;Lopez&lt;/SURNAME&gt;</font></i></p>
+<p><i><font face="Courier New, Courier, mono">&lt;GIVEN_NAME&gt;Javier&lt;/GIVEN_NAME&gt;</font></i></p>
+<p><i><font face="Courier New, Courier, mono">&lt;POSITION&gt;Catcher&lt;/POSITION&gt;</font></i></p>
+<p><i><font face="Courier New, Courier, mono">&lt;GAMES&gt;133&lt;/GAMES&gt;</font></i></p>
+<p><i><font face="Courier New, Courier, mono">&lt;GAMES_STARTED&gt;124&lt;/GAMES_STARTED&gt;</font></i></p>
+<p><i><font face="Courier New, Courier, mono">&lt;AT_BATS&gt;489&lt;/AT_BATS&gt;</font></i></p>
+<p><i><font face="Courier New, Courier, mono">&lt;RUNS&gt;73&lt;/RUNS&gt;</font></i></p>
+<p><i><font face="Courier New, Courier, mono">&lt;HITS&gt;139&lt;/HITS&gt;</font></i></p>
+<p><i><font face="Courier New, Courier, mono">&lt;DOUBLES&gt;21&lt;/DOUBLES&gt;</font></i></p>
+<p><i><font face="Courier New, Courier, mono">&lt;TRIPLES&gt;1&lt;/TRIPLES&gt;</font></i></p>
+<p><i><font face="Courier New, Courier, mono">&lt;HOME_RUNS&gt;34&lt;/HOME_RUNS&gt;</font></i></p>
+<p><i><font face="Courier New, Courier, mono">&lt;RBI&gt;106&lt;/RBI&gt;</font></i></p>
+<p><i><font face="Courier New, Courier, mono">&lt;STEALS&gt;5&lt;/STEALS&gt;</font></i></p>
+<p><i><font face="Courier New, Courier, mono">&lt;CAUGHT_STEALING&gt;3&lt;/CAUGHT_STEALING&gt;</font></i></p>
+<p><i><font face="Courier New, Courier, mono">&lt;SACRIFICE_HITS&gt;1&lt;/SACRIFICE_HITS&gt;</font></i></p>
+<p><i><font face="Courier New, Courier, mono">&lt;SACRIFICE_FLIES&gt;8&lt;/SACRIFICE_FLIES&gt;</font></i></p>
+<p><i><font face="Courier New, Courier, mono">&lt;ERRORS&gt;5&lt;/ERRORS&gt;</font></i></p>
+<p><i><font face="Courier New, Courier, mono">&lt;WALKS&gt;30&lt;/WALKS&gt;</font></i></p>
+<p><i><font face="Courier New, Courier, mono">&lt;STRUCK_OUT&gt;85&lt;/STRUCK_OUT&gt;</font></i></p>
+<p><i><font face="Courier New, Courier, mono">&lt;HIT_BY_PITCH&gt;6&lt;/HIT_BY_PITCH&gt;</font></i></p>
+<p><i><font face="Courier New, Courier, mono">&lt;/PLAYER&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;PLAYER&gt;</font></i></p>
+<p><i><font face="Courier New, Courier, mono">&lt;SURNAME&gt;Klesko&lt;/SURNAME&gt;</font></i></p>
+<p><i><font face="Courier New, Courier, mono">&lt;GIVEN_NAME&gt;Ryan&lt;/GIVEN_NAME&gt;</font></i></p>
+<p><i><font face="Courier New, Courier, mono">&lt;POSITION&gt;Outfield&lt;/POSITION&gt;</font></i></p>
+<p><i><font face="Courier New, Courier, mono">&lt;GAMES&gt;129&lt;/GAMES&gt;</font></i></p>
+<p><i><font face="Courier New, Courier, mono">&lt;GAMES_STARTED&gt;124&lt;/GAMES_STARTED&gt;</font></i></p>
+<p><i><font face="Courier New, Courier, mono">&lt;AT_BATS&gt;427&lt;/AT_BATS&gt;</font></i></p>
+<p><i><font face="Courier New, Courier, mono">&lt;RUNS&gt;69&lt;/RUNS&gt;</font></i></p>
+<p><i><font face="Courier New, Courier, mono">&lt;HITS&gt;17&lt;/HITS&gt;</font></i></p>
+<p><i><font face="Courier New, Courier, mono">&lt;DOUBLES&gt;29&lt;/DOUBLES&gt;</font></i></p>
+<p><i><font face="Courier New, Courier, mono">&lt;TRIPLES&gt;1&lt;/TRIPLES&gt;</font></i></p>
+<p><i><font face="Courier New, Courier, mono">&lt;HOME_RUNS&gt;18&lt;/HOME_RUNS&gt;</font></i></p>
+<p><i><font face="Courier New, Courier, mono">&lt;RBI&gt;70&lt;/RBI&gt;</font></i></p>
+<p><i><font face="Courier New, Courier, mono">&lt;STEALS&gt;5&lt;/STEALS&gt;</font></i></p>
+<p><i><font face="Courier New, Courier, mono">&lt;CAUGHT_STEALING&gt;3&lt;/CAUGHT_STEALING&gt;</font></i></p>
+<p><i><font face="Courier New, Courier, mono">&lt;SACRIFICE_HITS&gt;0&lt;/SACRIFICE_HITS&gt;</font></i></p>
+<p><i><font face="Courier New, Courier, mono">&lt;SACRIFICE_FLIES&gt;4&lt;/SACRIFICE_FLIES&gt;</font></i></p>
+<p><i><font face="Courier New, Courier, mono">&lt;ERRORS&gt;2&lt;/ERRORS&gt;</font></i></p>
+<p><i><font face="Courier New, Courier, mono">&lt;WALKS&gt;56&lt;/WALKS&gt;</font></i></p>
+<p><i><font face="Courier New, Courier, mono">&lt;STRUCK_OUT&gt;66&lt;/STRUCK_OUT&gt;</font></i></p>
+<p><i><font face="Courier New, Courier, mono">&lt;HIT_BY_PITCH&gt;3&lt;/HIT_BY_PITCH&gt;</font></i></p>
+<p><i><font face="Courier New, Courier, mono">&lt;/PLAYER&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;PLAYER&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;SURNAME&gt;Galarraga&lt;/SURNAME&gt;</font></i></p>
+<p><i><font face="Courier New, Courier, mono">&lt;GIVEN_NAME&gt;Andres&lt;/GIVEN_NAME&gt;</font></i></p>
+<p><i><font face="Courier New, Courier, mono">&lt;POSITION&gt;First Base&lt;/POSITION&gt;</font></i></p>
+<p><i><font face="Courier New, Courier, mono">&lt;GAMES&gt;153&lt;/GAMES&gt;</font></i></p>
+<p><i><font face="Courier New, Courier, mono">&lt;GAMES_STARTED&gt;151&lt;/GAMES_STARTED&gt;</font></i></p>
+<p><i><font face="Courier New, Courier, mono">&lt;AT_BATS&gt;555&lt;/AT_BATS&gt;</font></i></p>
+<p><i><font face="Courier New, Courier, mono">&lt;RUNS&gt;103&lt;/RUNS&gt;</font></i></p>
+<p><i><font face="Courier New, Courier, mono">&lt;HITS&gt;169&lt;/HITS&gt;</font></i></p>
+<p><i><font face="Courier New, Courier, mono">&lt;DOUBLES&gt;27&lt;/DOUBLES&gt;</font></i></p>
+<p><i><font face="Courier New, Courier, mono">&lt;TRIPLES&gt;1&lt;/TRIPLES&gt;</font></i></p>
+<p><i><font face="Courier New, Courier, mono">&lt;HOME_RUNS&gt;44&lt;/HOME_RUNS&gt;</font></i></p>
+<p><i><font face="Courier New, Courier, mono">&lt;RBI&gt;121&lt;/RBI&gt;</font></i></p>
+<p><i><font face="Courier New, Courier, mono">&lt;STEALS&gt;7&lt;/STEALS&gt;</font></i></p>
+<p><i><font face="Courier New, Courier, mono">&lt;CAUGHT_STEALING&gt;6&lt;/CAUGHT_STEALING&gt;</font></i></p>
+<p><i><font face="Courier New, Courier, mono">&lt;SACRIFICE_HITS&gt;0&lt;/SACRIFICE_HITS&gt;</font></i></p>
+<p><i><font face="Courier New, Courier, mono">&lt;SACRIFICE_FLIES&gt;5&lt;/SACRIFICE_FLIES&gt;</font></i></p>
+<p><i><font face="Courier New, Courier, mono">&lt;ERRORS&gt;1&lt;/ERRORS&gt;</font></i></p>
+<p><i><font face="Courier New, Courier, mono">&lt;WALKS&gt;63&lt;/WALKS&gt;</font></i></p>
+<p><i><font face="Courier New, Courier, mono">&lt;STRUCK_OUT&gt;146&lt;/STRUCK_OUT&gt;</font></i></p>
+<p><i><font face="Courier New, Courier, mono">&lt;HIT_BY_PITCH&gt;25&lt;/HIT_BY_PITCH&gt;</font></i></p>
+<p><i><font face="Courier New, Courier, mono">&lt;/PLAYER&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;PLAYER&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;SURNAME&gt;Helms&lt;/SURNAME&gt;</font></i></p>
+<p><i><font face="Courier New, Courier, mono">&lt;GIVEN_NAME&gt;Wes&lt;/GIVEN_NAME&gt;</font></i></p>
+<p><i><font face="Courier New, Courier, mono">&lt;POSITION&gt;Third Base&lt;/POSITION&gt;</font></i></p>
+<p><i><font face="Courier New, Courier, mono">&lt;GAMES&gt;7&lt;/GAMES&gt;</font></i></p>
+<p><i><font face="Courier New, Courier, mono">&lt;GAMES_STARTED&gt;2&lt;/GAMES_STARTED&gt;</font></i></p>
+<p><i><font face="Courier New, Courier, mono">&lt;AT_BATS&gt;13&lt;/AT_BATS&gt;</font></i></p>
+<p><i><font face="Courier New, Courier, mono">&lt;RUNS&gt;2&lt;/RUNS&gt;</font></i></p>
+<p><i><font face="Courier New, Courier, mono">&lt;HITS&gt;4&lt;/HITS&gt;</font></i></p>
+<p><i><font face="Courier New, Courier, mono">&lt;DOUBLES&gt;1&lt;/DOUBLES&gt;</font></i></p>
+<p><i><font face="Courier New, Courier, mono">&lt;TRIPLES&gt;0&lt;/TRIPLES&gt;</font></i></p>
+<p><i><font face="Courier New, Courier, mono">&lt;HOME_RUNS&gt;1&lt;/HOME_RUNS&gt;</font></i></p>
+<p><i><font face="Courier New, Courier, mono">&lt;RBI&gt;2&lt;/RBI&gt;</font></i></p>
+<p><i><font face="Courier New, Courier, mono">&lt;STEALS&gt;0&lt;/STEALS&gt;</font></i></p>
+<p><i><font face="Courier New, Courier, mono">&lt;CAUGHT_STEALING&gt;0&lt;/CAUGHT_STEALING&gt;</font></i></p>
+<p><i><font face="Courier New, Courier, mono">&lt;SACRIFICE_HITS&gt;0&lt;/SACRIFICE_HITS&gt;</font></i></p>
+<p><i><font face="Courier New, Courier, mono">&lt;SACRIFICE_FLIES&gt;0&lt;/SACRIFICE_FLIES&gt;</font></i></p>
+<p><i><font face="Courier New, Courier, mono">&lt;ERRORS&gt;1&lt;/ERRORS&gt;</font></i></p>
+<p><i><font face="Courier New, Courier, mono">&lt;WALKS&gt;0&lt;/WALKS&gt;</font></i></p>
+<p><i><font face="Courier New, Courier, mono">&lt;STRUCK_OUT&gt;4&lt;/STRUCK_OUT&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;HIT_BY_PITCH&gt;0&lt;/HIT_BY_PITCH&gt;&lt;/PLAYER&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;/TEAM&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;TEAM&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;TEAM_CITY&gt;Florida&lt;/TEAM_CITY&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;TEAM_NAME&gt;Marlins&lt;/TEAM_NAME&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;/TEAM&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;TEAM&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;TEAM_CITY&gt;Montreal&lt;/TEAM_CITY&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;TEAM_NAME&gt;Expos&lt;/TEAM_NAME&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;/TEAM&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;TEAM&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;TEAM_CITY&gt;New York&lt;/TEAM_CITY&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;TEAM_NAME&gt;Mets&lt;/TEAM_NAME&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;/TEAM&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;TEAM&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;TEAM_CITY&gt;Philadelphia&lt;/TEAM_CITY&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;TEAM_NAME&gt;Phillies&lt;/TEAM_NAME&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;/TEAM&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;/DIVISION&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;DIVISION&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;DIVISION_NAME&gt;Central&lt;/DIVISION_NAME&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;TEAM&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;TEAM_CITY&gt;Chicago&lt;/TEAM_CITY&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;TEAM_NAME&gt;Cubs&lt;/TEAM_NAME&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;/TEAM&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;TEAM&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;TEAM_CITY&gt;Cincinatti&lt;/TEAM_CITY&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;TEAM_NAME&gt;Reds&lt;/TEAM_NAME&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;/TEAM&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;TEAM&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;TEAM_CITY&gt;Houston&lt;/TEAM_CITY&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;TEAM_NAME&gt;Astros&lt;/TEAM_NAME&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;/TEAM&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;TEAM&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;TEAM_CITY&gt;Milwaukee&lt;/TEAM_CITY&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;TEAM_NAME&gt;Brewers&lt;/TEAM_NAME&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;/TEAM&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;TEAM&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;TEAM_CITY&gt;Pittsburgh&lt;/TEAM_CITY&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;TEAM_NAME&gt;Pirates&lt;/TEAM_NAME&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;/TEAM&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;TEAM&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;TEAM_CITY&gt;St. Louis&lt;/TEAM_CITY&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;TEAM_NAME&gt;Cardinals&lt;/TEAM_NAME&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;/TEAM&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;/DIVISION&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;DIVISION&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;DIVISION_NAME&gt;West&lt;/DIVISION_NAME&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;TEAM&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;TEAM_CITY&gt;Arizona&lt;/TEAM_CITY&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;TEAM_NAME&gt;Diamondbacks&lt;/TEAM_NAME&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;/TEAM&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;TEAM&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;TEAM_CITY&gt;Colorado&lt;/TEAM_CITY&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;TEAM_NAME&gt;Rockies&lt;/TEAM_NAME&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;/TEAM&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;TEAM&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;TEAM_CITY&gt;Los Angeles&lt;/TEAM_CITY&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;TEAM_NAME&gt;Dodgers&lt;/TEAM_NAME&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;/TEAM&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;TEAM&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;TEAM_CITY&gt;San Diego&lt;/TEAM_CITY&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;TEAM_NAME&gt;Padres&lt;/TEAM_NAME&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;/TEAM&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;TEAM&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;TEAM_CITY&gt;San Francisco&lt;/TEAM_CITY&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;TEAM_NAME&gt;Giants&lt;/TEAM_NAME&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;/TEAM&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;/DIVISION&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;/LEAGUE&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;LEAGUE&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;LEAGUE_NAME&gt;American League&lt;/LEAGUE_NAME&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;DIVISION&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;DIVISION_NAME&gt;East&lt;/DIVISION_NAME&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;TEAM&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;TEAM_CITY&gt;Baltimore&lt;/TEAM_CITY&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;TEAM_NAME&gt;Orioles&lt;/TEAM_NAME&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;/TEAM&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;TEAM&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;TEAM_CITY&gt;Boston&lt;/TEAM_CITY&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;TEAM_NAME&gt;Red Sox&lt;/TEAM_NAME&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;/TEAM&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;TEAM&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;TEAM_CITY&gt;New York&lt;/TEAM_CITY&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;TEAM_NAME&gt;Yankees&lt;/TEAM_NAME&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;/TEAM&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;TEAM&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;TEAM_CITY&gt;Tampa Bay&lt;/TEAM_CITY&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;TEAM_NAME&gt;Devil Rays&lt;/TEAM_NAME&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;/TEAM&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;TEAM&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;TEAM_CITY&gt;Toronto&lt;/TEAM_CITY&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;TEAM_NAME&gt;Blue Jays&lt;/TEAM_NAME&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;/TEAM&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;/DIVISION&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;DIVISION&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;DIVISION_NAME&gt;Central&lt;/DIVISION_NAME&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;TEAM&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;TEAM_CITY&gt;Chicago&lt;/TEAM_CITY&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;TEAM_NAME&gt;White Sox&lt;/TEAM_NAME&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;/TEAM&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;TEAM&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;TEAM_CITY&gt;Kansas City&lt;/TEAM_CITY&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;TEAM_NAME&gt;Royals&lt;/TEAM_NAME&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;/TEAM&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;TEAM&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;TEAM_CITY&gt;Detroit&lt;/TEAM_CITY&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;TEAM_NAME&gt;Tigers&lt;/TEAM_NAME&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;/TEAM&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;TEAM&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;TEAM_CITY&gt;Cleveland&lt;/TEAM_CITY&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;TEAM_NAME&gt;Indians&lt;/TEAM_NAME&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;/TEAM&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;TEAM&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;TEAM_CITY&gt;Minnesota&lt;/TEAM_CITY&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;TEAM_NAME&gt;Twins&lt;/TEAM_NAME&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;/TEAM&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;/DIVISION&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;DIVISION&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;DIVISION_NAME&gt;West&lt;/DIVISION_NAME&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;TEAM&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;TEAM_CITY&gt;Anaheim&lt;/TEAM_CITY&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;TEAM_NAME&gt;Angels&lt;/TEAM_NAME&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;/TEAM&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;TEAM&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;TEAM_CITY&gt;Oakland&lt;/TEAM_CITY&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;TEAM_NAME&gt;Athletics&lt;/TEAM_NAME&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;/TEAM&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;TEAM&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;TEAM_CITY&gt;Seattle&lt;/TEAM_CITY&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;TEAM_NAME&gt;Mariners&lt;/TEAM_NAME&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;/TEAM&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;TEAM&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;TEAM_CITY&gt;Texas&lt;/TEAM_CITY&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;TEAM_NAME&gt;Rangers&lt;/TEAM_NAME&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;/TEAM&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;/DIVISION&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;/LEAGUE&gt;</font></i></p>
+<p><i><font face="Courier New, Courier, mono">&lt;/SEASON&gt;</font></i></p>
+<p>图4-1显示的是将本文档装入Internet Explorer 5.0的情况。</p>
+<p align="CENTER"><img src="image/Image29.gif" width=408 height=478></p>
+<p align="CENTER">图4-1 在Internet Explorer 5.0中显示的1998年主要联赛的统计数据</p>
+<p>即使现在这个文档也是不完全的。此文档只包括一个队的球员（Atlanta Braves队）而且只有该球队的九个球员。如果将全部都写出来的话，则示例就会变得太长，以至于本书无法将其包括。</p>
+<img src="image/Image30.gif" width=44 height=45 align="LEFT" hspace=12> 
+<p>在名为1998statistics.xml的更为完整的XML文档中，包括了1998年度两大联赛的所有球员的统计数据，这个文档附在本书光盘中，目录为examples/base-ball。同时，我故意将所包括的数据加以限制，以便符合本书的篇幅。实际上，可以包括更为详细的数据。我已经间接提到可按比赛场次、投球次数等来安排数据的可能性。即使没有那样做，还是有许多细节可以添加到每个元素中。球队还有教练、经理、老板（说到Yankees队怎能不提到George 
+  Steinbrenner呢？）、室内运动场和其他项目。</p>
+<p>我还故意忽略了可以从这里给出的其他项目中计算出来的数字，如平均击球数等。不管如何，球员还有许多其他数据，如臂长、身高、出生日期等。当然球员远不止这里列出的几个。所有这一切都是很容易加进XML文档的。但是我们的XML化就到此为止了，这样我们才能往下进行，首先要简短地讨论一下为什么这一数据格式是有用的，然后再讨论在Web浏览器上实际显示该文档所用的技术。</p>
+ 
+<a href='330.htm'>&lt;&lt;上一篇</a>&nbsp;&nbsp;<a href='332.htm'>下一篇&gt;&gt;</a></td>
+        </tr>
+      </table>
+      <p>&nbsp; </p>
+    </td>
+  </tr>
+</table>
+
+</body>
+
+</html>

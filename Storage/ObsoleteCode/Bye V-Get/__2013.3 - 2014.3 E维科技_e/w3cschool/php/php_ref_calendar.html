@@ -1,0 +1,386 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="../c3.css" />
+<title>PHP Calendar 函数</title>
+</head>
+<body class="serverscripting">
+<div id="wrapper">
+<div id="header">
+<a href="http://e.v-get.com/w3cschool/" style="float:left;">W3CSchool 在线教程</a>
+<div class="q g"><script type="text/javascript">var cpro_id="u1163355"</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div>
+<div id="navfirst">
+<ul id="menu">
+<li id="h"><a href="../h.html">HTML教程</a></li>
+<li id="x"><a href="../x.html">XML教程</a></li>
+<li id="b"><a href="../b.html">浏览器脚本</a></li>
+<li id="s"><a href="../s.html">服务器脚本</a></li>
+<li id="d"><a href="../d.html">dot net教程</a></li>
+<li id="m"><a href="../m.html">多媒体教程</a></li>
+<li id="w"><a href="../w.html">建站手册</a></li>
+</ul>
+</div><div id="navsecond">
+<div id="course">
+<h2>PHP 基础</h2>
+<ul>
+<li><a href="http://e.v-get.com/w3cschool/">PHP 教程</a></li>
+<li><a href="php_intro.html">PHP 简介</a></li>
+<li><a href="php_install.html">PHP 安装</a></li>
+<li><a href="php_syntax.html">PHP 语法</a></li>
+<li><a href="php_variables.html">PHP 变量</a></li>
+<li><a href="php_string.html">PHP 字符串</a></li>
+<li><a href="php_operators.html">PHP 运算符</a></li>
+<li><a href="php_if_else.html">PHP If...Else</a></li>
+<li><a href="php_switch.html">PHP Switch</a></li>
+<li><a href="php_arrays.html">PHP 数组</a></li>
+<li><a href="php_looping.html">PHP 循环</a></li>
+<li><a href="php_functions.html">PHP 函数</a></li>
+<li><a href="php_forms.html">PHP 表单</a></li>
+<li><a href="php_get.html">PHP $_GET</a></li>
+<li><a href="php_post.html">PHP $_POST</a></li>
+</ul>
+<h2>PHP 高级</h2>
+<ul>
+<li><a href="php_date.html" title="">PHP 日期</a></li>
+<li><a href="php_includes.html" title="">PHP 引用</a></li>
+<li><a href="php_file.html" title="">PHP 文件</a></li>
+<li><a href="php_file_upload.html" title="">PHP 文件上传</a></li>
+<li><a href="php_cookies.html" title="">PHP Cookies</a></li>
+<li><a href="php_sessions.html" title="">PHP Sessions</a></li>
+<li><a href="php_mail.html" title="">PHP E-mail</a></li>
+<li><a href="php_secure_mail.html" title="">PHP 安全 E-mail</a></li>
+<li><a href="php_error.html" title="">PHP Error</a></li>
+<li><a href="php_exception.html" title="">PHP Exception</a></li>
+<li><a href="php_filter.html" title="">PHP Filter</a></li>
+</ul>
+<h2>PHP 数据库</h2>
+<ul class="small">
+<li><a href="php_mysql_intro.html" title="">MySQL 简介</a></li>
+<li><a href="php_mysql_connect.html" title="">MySQL Connect</a></li>
+<li><a href="php_mysql_create.html" title="">MySQL Create</a></li>
+<li><a href="php_mysql_insert.html" title="">MySQL Insert</a></li>
+<li><a href="php_mysql_select.html" title="">MySQL Select</a></li>
+<li><a href="php_mysql_where.html" title="">MySQL Where</a></li>
+<li><a href="php_mysql_order_by.html" title="">MySQL Order By</a></li>
+<li><a href="php_mysql_update.html" title="">MySQL Update</a></li>
+<li><a href="php_mysql_delete.html" title="">MySQL Delete</a></li>
+<li><a href="php_db_odbc.html" title="">PHP ODBC</a></li>
+</ul>
+<h2>PHP XML</h2>
+<ul class="small">
+<li><a href="php_xml_parser_expat.html" title="">XML Expat Parser</a></li>
+<li><a href="php_xml_dom.html" title="">XML DOM</a></li>
+<li><a href="php_xml_simplexml.html" title="">XML SimpleXML</a></li>
+</ul>
+<h2>PHP 和 AJAX</h2>
+<ul class="small">
+<li><a href="php_ajax_intro.html">AJAX 简介</a></li>
+<li><a href="php_ajax_xmlhttprequest.html">XMLHttpRequest</a></li>
+<li><a href="php_ajax_suggest.html">AJAX Suggest</a></li>
+<li><a href="php_ajax_xml.html">AJAX XML</a></li>
+<li><a href="php_ajax_database.html">AJAX Database</a></li>
+<li><a href="php_ajax_responsexml.html">AJAX responseXML</a></li>
+<li><a href="php_ajax_livesearch.html">AJAX Live Search</a></li>
+<li><a href="php_ajax_rss_reader.html">AJAX RSS Reader</a></li>
+<li><a href="php_ajax_poll.html">AJAX Poll</a></li>
+</ul>
+<h2>PHP 参考手册</h2>
+<ul class="small">
+<li><a href="php_ref_array.html">PHP Array</a></li>
+<li><a href="php_ref_calendar.html">PHP Calendar</a></li>
+<li><a href="php_ref_date.html">PHP Date</a></li>
+<li><a href="php_ref_directory.html">PHP Directory</a></li>
+<li><a href="php_ref_error.html">PHP Error</a></li>
+<li><a href="php_ref_filesystem.html">PHP Filesystem</a></li>
+<li><a href="php_ref_filter.html">PHP Filter</a></li>
+<li><a href="php_ref_ftp.html">PHP FTP</a></li>
+<li><a href="php_ref_http.html">PHP HTTP</a></li>
+<li><a href="php_ref_libxml.html">PHP LibXML</a></li>
+<li><a href="php_ref_mail.html">PHP Mail</a></li>
+<li><a href="php_ref_math.html">PHP Math</a></li>
+<li><a href="php_ref_mysql.html">PHP MySQL</a></li>
+<li><a href="php_ref_simplexml.html">PHP SimpleXML</a></li>
+<li><a href="php_ref_string.html">PHP String</a></li>
+<li><a href="php_ref_xml.html">PHP XML</a></li>
+<li><a href="php_ref_zip.html">PHP Zip</a></li>
+<li><a href="php_ref_misc.html">PHP 杂项</a></li>
+</ul>
+<h2>PHP 测验</h2>
+<ul>
+<li>PHP Quiz</li>
+</ul>
+</div>
+<div id="selected">
+<h2>建站手册</h2>
+<ul>
+<li><a href="../site/">网站构建</a></li>
+<li><a href="../w3c/">万维网联盟</a></li>
+<li><a href="http://e.v-get.com/w3c/">W3CSchool 教程</a></li>
+<li><a href="../quality/">网站品质</a></li>
+<li><a href="../semweb/">语义网</a></li>
+<li><a href="../hosting/">网站主机</a></li>
+</ul>
+<h2><a href="http://e.v-get.com/w3c/" class="f13">W3CSchool 教程</a></h2><div class="a120x90"><script type="text/javascript">var cpro_id="u1210867";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div></div>
+</div>
+<div id="maincontent">
+<h1>PHP Calendar 函数</h1>
+<div  id="tpn">
+<ul class="prenext">
+<li class="pre"><a href="php_ref_array.html">上一页</a></li>
+<li class="next"><a href="php_ref_date.html">下一页</a></li>
+</ul>
+</div>
+<div>
+<h2>PHP Calendar 简介</h2>
+<p>当使用不同的历法格式时，calendar 函数很有用。它所基于的标准是儒略日计数 (Julian day count)。</p>
+<p class="note"><span>编者注：</span>Julian day count 是从 January 1, 4713 B.C. 开始计算的，中文译为儒略日计数或恺撒日计数。</p>
+<p>请注意，Julian day count (儒略日计数） 与 Julian calendar (儒略历） 不是一回事。</p>
+<p class="note"><span>注释：</span>如需在日历格式之间转换，必须首先转换为 Julian day count，然后再转换为日历格式。</p>
+</div>
+<div>
+<h2>安装</h2>
+<p>PHP 的 windows 版本已内建了对日历扩展的支持。因此，Calendar 函数会自动工作。</p>
+<p>不过，如果您运行的是 PHP 的 Linux 版本，就不得不通过 --enable-calendar 编译 PHP，这样日历函数才能工作。</p>
+</div>
+<div>
+<h2>PHP Calendar 函数</h2>
+<p class="note"><span>PHP：</span>指示支持该函数的最早的 PHP 版本。</p>
+<table class="dataintable">
+  <tr>
+    <th>函数</th>
+    <th>描述</th>
+    <th>PHP</th>
+  </tr>
+  <tr>
+    <td><a href="func_cal_cal_days_in_month.html">cal_days_in_month()</a></td>
+    <td>针对指定的年份和日历，返回一个月中的天数。</td>
+    <td>4</td>
+  </tr>
+  <tr>
+    <td><a href="func_cal_cal_from_jd.html">cal_from_jd()</a></td>
+    <td>把儒略日计数转换为指定日历的日期。</td>
+    <td>4</td>
+  </tr>
+  <tr>
+    <td><a href="func_cal_cal_info.html">cal_info()</a></td>
+    <td>返回有关给定日历的信息。</td>
+    <td>4</td>
+  </tr>
+  <tr>
+    <td><a href="func_cal_cal_to_jd.html">cal_to_jd()</a></td>
+    <td>把日期转换为儒略日计数。</td>
+    <td>4</td>
+  </tr>
+  <tr>
+    <td><a href="func_cal_easter_date.html">easter_date()</a></td>
+    <td>返回指定年份的复活节午夜的 Unix 时间戳。</td>
+    <td>3</td>
+  </tr>
+  <tr>
+    <td><a href="func_cal_easter_days.html">easter_days()</a></td>
+    <td>返回指定年份的复活节与 3 月 21 日之间的天数。</td>
+    <td>3</td>
+  </tr>
+  <tr>
+    <td><a href="func_cal_frenchtojd.html">FrenchToJD()</a></td>
+    <td>将法国共和历法转换成为儒略日计数。</td>
+    <td>3</td>
+  </tr>
+  <tr>
+    <td><a href="func_cal_gregoriantojd.html">GregorianToJD()</a></td>
+    <td>将格利高里历法转换成为儒略日计数。</td>
+    <td>3</td>
+  </tr>
+  <tr>
+    <td><a href="func_cal_jddayofweek.html">JDDayOfWeek()</a></td>
+    <td>返回日期在周几。</td>
+    <td>3</td>
+  </tr>
+  <tr>
+    <td><a href="func_cal_jdmonthname.html">JDMonthName()</a></td>
+    <td>返回月的名称。</td>
+    <td>3</td>
+  </tr>
+  <tr>
+    <td><a href="func_cal_jdtofrench.html">JDToFrench()</a></td>
+    <td>把儒略日计数转换为法国共和国历法。</td>
+    <td>3</td>
+  </tr>
+  <tr>
+    <td><a href="func_cal_jdtogregorian.html">JDToGregorian()</a></td>
+    <td>把儒略日计数转换为格利高里历法。</td>
+    <td>3</td>
+  </tr>
+  <tr>
+    <td><a href="func_cal_jdtojewish.html">jdtojewish()</a></td>
+    <td>把儒略日计数转换为犹太历法。</td>
+    <td>3</td>
+  </tr>
+  <tr>
+    <td><a href="func_cal_jdtojulian.html">JDToJulian()</a></td>
+    <td>把儒略日计数转换为儒略历。</td>
+    <td>3</td>
+  </tr>
+  <tr>
+    <td><a href="func_cal_jdtounix.html">jdtounix()</a></td>
+    <td>把儒略日计数转换为 Unix 时间戳。</td>
+    <td>4</td>
+  </tr>
+  <tr>
+    <td><a href="func_cal_jewishtojd.html">JewishToJD()</a></td>
+    <td>把犹太历法转换为儒略日计数。</td>
+    <td>3</td>
+  </tr>
+  <tr>
+    <td><a href="func_cal_juliantojd.html">JulianToJD()</a></td>
+    <td>把儒略历转换为儒略日计数。</td>
+    <td>3</td>
+  </tr>
+  <tr>
+    <td><a href="func_cal_unixtojd.html">unixtojd()</a></td>
+    <td>把 Unix 时间戳转换为儒略日计数。</td>
+    <td>4</td>
+  </tr>
+</table>
+</div>
+<div>
+<h2>PHP Calendar 常量</h2>
+<p class="note"><span>PHP：</span>指示支持该常量的最早的 PHP 版本。</p>
+<table class="dataintable">
+  <tr>
+    <th>常量</th>
+    <th>描述</th>
+    <th>PHP</th>
+  </tr>
+  <tr>
+    <td>CAL_GREGORIAN</td>
+    <td>Gregorian calendar</td>
+    <td>3</td>
+  </tr>
+  <tr>
+    <td>CAL_JULIAN</td>
+    <td>Julian calendar</td>
+    <td>3</td>
+  </tr>
+	<tr>
+    <td>CAL_JEWISH</td>
+    <td>Jewish calendar</td>
+    <td>3</td>
+  </tr>
+  <tr>
+    <td>CAL_FRENCH</td>
+    <td>French Republican calendar</td>
+    <td>3</td>
+  </tr>
+  <tr>
+    <td>CAL_NUM_CALS</td>
+    <td>&nbsp;</td>
+    <td>3</td>
+  </tr>
+  <tr>
+    <td>CAL_DOW_DAYNO</td>
+    <td>&nbsp;</td>
+    <td>3</td>
+  </tr>
+  <tr>
+    <td>CAL_DOW_SHORT</td>
+    <td>&nbsp;</td>
+    <td>3</td>
+  </tr>
+  <tr>
+    <td>CAL_DOW_LONG</td>
+    <td>&nbsp;</td>
+    <td>3</td>
+  </tr>
+  <tr>
+    <td>CAL_MONTH_GREGORIAN_SHORT</td>
+    <td>&nbsp;</td>
+    <td>3</td>
+  </tr>
+  <tr>
+    <td>CAL_MONTH_GREGORIAN_LONG</td>
+    <td>&nbsp;</td>
+    <td>3</td>
+  </tr>
+  <tr>
+    <td>CAL_MONTH_JULIAN_SHORT</td>
+    <td>&nbsp;</td>
+    <td>3</td>
+  </tr>
+  <tr>
+    <td>CAL_MONTH_JULIAN_LONG</td>
+    <td>&nbsp;</td>
+    <td>3</td>
+  </tr>
+  <tr>
+    <td>CAL_MONTH_JEWISH</td>
+    <td>&nbsp;</td>
+    <td>3</td>
+  </tr>
+  <tr>
+    <td>CAL_MONTH_FRENCH</td>
+    <td>&nbsp;</td>
+    <td>3</td>
+  </tr>
+  <tr>
+    <td>CAL_EASTER_DEFAULT</td>
+    <td>&nbsp;</td>
+    <td>4</td>
+  </tr>
+  <tr>
+    <td>CAL_EASTER_DEFAULT</td>
+    <td>&nbsp;</td>
+    <td>4</td>
+  </tr>
+  <tr>
+    <td>CAL_EASTER_ROMAN</td>
+    <td>&nbsp;</td>
+    <td>4</td>
+  </tr>
+  <tr>
+    <td>CAL_EASTER_ALWAYS_GREGORIAN</td>
+    <td>&nbsp;</td>
+    <td>4</td>
+  </tr>
+  <tr>
+    <td>CAL_EASTER_ALWAYS_JULIAN</td>
+    <td>&nbsp;</td>
+    <td>4</td>
+  </tr>
+  <tr>
+    <td>CAL_JEWISH_ADD_ALAFIM_GERESH</td>
+    <td>&nbsp;</td>
+    <td>5</td>
+  </tr>
+  <tr>
+    <td>CAL_JEWISH_ADD_ALAFIM</td>
+    <td>&nbsp;</td>
+    <td>5</td>
+  </tr>
+  <tr>
+    <td>CAL_JEWISH_ADD_GERESHAYIM</td>
+    <td>&nbsp;</td>
+    <td>5</td>
+  </tr>
+</table>
+</div>
+<div  id="bpn">
+<ul class="prenext">
+<li class="pre"><a href="php_ref_array.html">上一页</a></li>
+<li class="next"><a href="php_ref_date.html">下一页</a></li>
+</ul>
+</div>
+</div>
+<div id="sidebar">
+<div class="rs"></div>
+<div id="tools">
+<h5 id="tools_reference"><a href="php_ref.html">PHP 参考手册</a></h5>
+<h5 id="tools_quiz"><a href="php_quiz.html">PHP 测验</a></h5>
+</div>
+<div class="a120x600"><script type="text/javascript">var cpro_id="u1293136";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div><div class="b"></div>
+</div>
+</body>
+</html>

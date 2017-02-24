@@ -1,0 +1,175 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="../c3.css" />
+<title>JavaScript onerror 事件</title>
+</head>
+<body class="browserscripting">
+<div id="wrapper">
+<div id="header">
+<a href="http://e.v-get.com/w3cschool/" style="float:left;">W3CSchool 在线教程</a>
+<div class="q g"><script type="text/javascript">var cpro_id="u1163355"</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div>
+<div id="navfirst">
+<ul id="menu">
+<li id="h"><a href="../h.html">HTML教程</a></li>
+<li id="x"><a href="../x.html">XML教程</a></li>
+<li id="b"><a href="../b.html">浏览器脚本</a></li>
+<li id="s"><a href="../s.html">服务器脚本</a></li>
+<li id="d"><a href="../d.html">dot net教程</a></li>
+<li id="m"><a href="../m.html">多媒体教程</a></li>
+<li id="w"><a href="../w.html">建站手册</a></li>
+</ul>
+</div><div id="navsecond">
+<div id="course">
+<h2>JavaScript 基础</h2>
+<ul>
+<li><a href="http://e.v-get.com/w3cschool/">JS 教程</a></li>
+<li><a href="js_intro.html">JS 简介</a></li>
+<li><a href="js_howto.html">JS 实现</a></li>
+<li><a href="js_whereto.html">JS 放置</a></li>
+<li><a href="js_statements.html">JS 语句</a></li>
+<li><a href="js_comments.html">JS 注释</a></li>
+<li><a href="js_variables.html">JS 变量</a></li>
+<li><a href="js_operators.html">JS 运算符</a></li>
+<li><a href="js_comparisons.html">JS 比较</a></li>
+<li><a href="js_if_else.html">JS If...Else</a></li>
+<li><a href="js_switch.html">JS Switch</a></li>
+<li><a href="js_popup.html">JS 消息框</a></li>
+<li><a href="js_functions.html">JS 函数</a></li>
+<li><a href="js_loop_for.html">JS For Loop</a></li>
+<li><a href="js_loop_while.html">JS While Loop</a></li>
+<li><a href="js_break.html">JS Break Loops</a></li>
+<li><a href="js_loop_for_in.html">JS For...In</a></li>
+<li><a href="js_events.html">JS 事件</a></li>
+<li><a href="js_try_catch.html">JS Try...Catch</a></li>
+<li><a href="js_throw.html">JS Throw</a></li>
+<li><a href="js_onerror.html">JS onerror</a></li>
+<li><a href="js_special_characters.html">JS 特殊字符</a></li>
+<li><a href="js_guidelines.html">JS 指导方针</a></li>
+</ul>
+<h2>JavaScript 对象</h2>
+<ul>
+<li><a href="js_obj_intro.html">JS 对象简介</a></li>
+<li><a href="js_obj_string.html">JS 字符串</a></li>
+<li><a href="js_obj_date.html">JS 日期</a></li>
+<li><a href="js_obj_array.html">JS 数组</a></li>
+<li><a href="js_obj_boolean.html">JS 逻辑</a></li>
+<li><a href="js_obj_math.html">JS 算数</a></li>
+<li><a href="js_obj_regexp.html">JS RegExp</a></li>
+<li><a href="js_obj_htmldom.html">JS HTML DOM</a></li>
+</ul>
+<h2>JavaScript 高级</h2>
+<ul>
+<li><a href="js_browser.html">JS 浏览器</a></li>
+<li><a href="js_cookies.html">JS Cookies</a></li>
+<li><a href="js_form_validation.html">JS 验证</a></li>
+<li><a href="js_animation.html">JS 动画</a></li>
+<li><a href="js_image_maps.html">JS 图像地图</a></li>
+<li><a href="js_timing.html">JS 计时</a></li>
+<li><a href="js_objects.html">JS 创建对象</a></li>
+<li><a href="js_summary.html">JS 总结</a></li>
+</ul>
+<h2>实例/测验</h2>
+<ul>
+<li><a href="../example/jseg_examples.html">JS 实例</a></li>
+<li><a href="../example/jsrf_examples.html">JS 对象实例</a></li>
+<li><a href="js_quiz.html">JS 测验</a></li>
+</ul>
+<h2>JS 参考手册</h2>
+<ul>
+<li><a href="js_reference.html">JS 对象</a></li>
+<li><a href="../htmldom/htmldom_reference.html">JS HTML DOM</a></li>
+</ul>
+</div>
+<div id="selected">
+<h2>建站手册</h2>
+<ul>
+<li><a href="../site/">网站构建</a></li>
+<li><a href="../w3c/">万维网联盟</a></li>
+<li><a href="http://e.v-get.com/w3c/">W3CSchool 教程</a></li>
+<li><a href="../quality/">网站品质</a></li>
+<li><a href="../semweb/">语义网</a></li>
+<li><a href="../hosting/">网站主机</a></li>
+</ul>
+<h2><a href="http://e.v-get.com/w3c/" class="f13">W3CSchool 教程</a></h2><div class="a120x90"><script type="text/javascript">var cpro_id="u1210867";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div></div>
+</div>
+<div id="maincontent">
+<h1>JavaScript onerror 事件</h1>
+<div  id="tpn">
+<ul class="prenext">
+<li class="pre"><a href="js_throw.html">上一页</a></li>
+<li class="next"><a href="js_special_characters.html">下一页</a></li>
+</ul>
+</div>
+<div id="intro">
+<p><strong>使用 onerror 事件是一种老式的标准的在网页中捕获 Javascript 错误的方法。</strong></p>
+</div>
+<div class="example">
+<h2>实例</h2>
+<dl>
+<dt><a href="../tiy/t_297.html">onerror 事件</a></dt>
+<dd>如何使用 onerror 事件捕获网页中的错误。</dd>
+</dl>
+</div>
+<div>
+<h2>onerror 事件</h2>
+<p>我们刚讲过如何使用 try...catch 声明来捕获网页中的错误。现在，我们继续讲解如何使用 onerror 事件来达到相同的目的。</p>
+<p>只要页面中出现脚步错误，就会产生 onerror 事件。</p>
+<p>如果需要利用 onerror 事件，就必须创建一个处理错误的函数。你可以把这个函数叫作 onerror 事件处理器 (onerror event handler)。这个事件处理器使用三个参数来调用：msg (错误消息）、url (发生错误的页面的 url）、line (发生错误的代码行）。</p>
+<h3>语法：</h3>
+<pre>onerror=handleErrfunction handleErr(msg,url,l)
+{
+//Handle the error here
+return true or false
+}</pre>
+<p>浏览器是否显示标准的错误消息，取决于 onerror 的返回值。如果返回值为 false，则在控制台 (JavaScript console) 中显示错误消息。反之则不会。</p>
+<h3>实例：</h3>
+<p>下面的例子展示如何使用 onerror 事件来捕获错误：</p>
+<pre>&lt;html&gt;
+&lt;head&gt;
+&lt;script type=&#34;text/javascript&#34;&gt;
+<code>onerror=handleErr</code>
+var txt=&#34;&#34;
+function handleErr(msg,url,l)
+{
+txt=&#34;There was an error on this page.\n\n&#34;
+txt+=&#34;Error: &#34; + msg + &#34;\n&#34;
+txt+=&#34;URL: &#34; + url + &#34;\n&#34;
+txt+=&#34;Line: &#34; + l + &#34;\n\n&#34;
+txt+=&#34;Click OK to continue.\n\n&#34;
+alert(txt)
+return true
+}
+function message()
+{
+adddlert(&#34;Welcome guest!&#34;)
+}
+&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;input type=&#34;button&#34; value=&#34;View message&#34; onclick=&#34;message()&#34; /&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+</div>
+<div  id="bpn">
+<ul class="prenext">
+<li class="pre"><a href="js_throw.html">上一页</a></li>
+<li class="next"><a href="js_special_characters.html">下一页</a></li>
+</ul>
+</div>
+</div>
+<div id="sidebar">
+<div class="rs"></div>
+<div id="tools">
+<h5 id="tools_reference"><a href="js_reference.html">JavaScript 参考手册</a></h5>
+<h5 id="tools_example"><a href="../example/jseg_examples.html">JavaScript 实例</a></h5>
+<h5 id="tools_quiz"><a href="js_quiz.html">JavaScript 测验</a></h5>
+<h5 id="tools_search"><a href="../search/search.html">W3CSchool 搜索</a></h5>
+</div>
+<div class="a120x600"><script type="text/javascript">var cpro_id="u1293136";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div><div class="b"></div>
+</div>
+</body>
+</html>

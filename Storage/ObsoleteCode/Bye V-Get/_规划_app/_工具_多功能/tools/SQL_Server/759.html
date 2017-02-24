@@ -1,0 +1,7 @@
+<meta http-equiv="content-type" content="text/html; charset=gb2312">&nbsp;<FONT 
+style="FONT-SIZE: 9pt; LINE-HEIGHT: 15pt"><B>Get&nbsp;Triggers&nbsp;for&nbsp;the&nbsp;Table</B><BR>By:&nbsp;mohit108&nbsp;<BR>Use&nbsp;this&nbsp;script&nbsp;to&nbsp;get&nbsp;Insert,&nbsp;Update&nbsp;and&nbsp;Delete&nbsp;trigger&nbsp;for&nbsp;all&nbsp;the&nbsp;tables.&nbsp;This&nbsp;script&nbsp;will&nbsp;give&nbsp;you&nbsp;just&nbsp;the&nbsp;first&nbsp;level&nbsp;of&nbsp;triggers.&nbsp;So&nbsp;if&nbsp;you&nbsp;have&nbsp;more&nbsp;than&nbsp;1&nbsp;insert&nbsp;trigger,&nbsp;it&nbsp;will&nbsp;give&nbsp;you&nbsp;the&nbsp;first&nbsp;one.
+<P></P>
+<P>Mohit&nbsp;Nayyar<BR>MCP&nbsp;(.Net),&nbsp;MCSD,&nbsp;MCDBA&nbsp;</P>
+<P>select&nbsp;a.name&nbsp;'Table',&nbsp;i.name&nbsp;'Insert&nbsp;Trigger',&nbsp;u.name&nbsp;'Update&nbsp;Trigger',&nbsp;d.name&nbsp;'Delete&nbsp;Trigger'<BR>from&nbsp;sysObjects&nbsp;a,&nbsp;&nbsp;sysObjects&nbsp;i,&nbsp;sysObjects&nbsp;u,&nbsp;sysObjects&nbsp;d<BR>where&nbsp;((a.deltrig&gt;0&nbsp;or&nbsp;a.instrig&gt;0&nbsp;or&nbsp;a.updtrig&gt;0)&nbsp;and&nbsp;a.type&nbsp;!=&nbsp;'TR')<BR>and&nbsp;a.instrig&nbsp;*=&nbsp;i.id&nbsp;and&nbsp;a.updtrig&nbsp;*=&nbsp;u.id&nbsp;and&nbsp;a.deltrig&nbsp;*=&nbsp;d.id</P>
+<P>--Use&nbsp;the&nbsp;next&nbsp;line&nbsp;for&nbsp;specific&nbsp;table&nbsp;check<BR>--&nbsp;and&nbsp;a.name&nbsp;=&nbsp;'TableName'</P>
+<P><BR></P></FONT>

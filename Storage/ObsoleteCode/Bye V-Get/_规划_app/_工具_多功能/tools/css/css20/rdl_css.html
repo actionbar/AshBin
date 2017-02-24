@@ -1,0 +1,100 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>Rainer's Cascading Style Sheet 2.0 Handbook</title>
+<link rel=stylesheet href="rdl_default.css" type="text/css">
+<script src="rdl_introduction.js"></script>
+
+</head>
+
+<body>
+
+<div id=idMenubarArea><img src="images/rdl_none.gif" width=500 height=1></div>
+<div align=right><img src="images/rdl_trademark.gif" width=155 height=14 hspace=10 vspace=12></div>
+
+<div id=idContent>
+
+<div id=idContentTitle><span id=idTitleName>Introduction To CSS2</span>样式表简介</div>
+
+<div class=cssColumnTitle>什么是样式表：</div>
+<div>
+CSS 是<b> Cascading Style Sheet </b>的缩写。译作「层叠样式表单」。是用于(增强)控制网页样式并允许将样式信息与网页内容分离的一种标记性语言。
+</div>
+
+<div class=cssColumnTitle>如何将样式表加入您的网页：</div>
+<div>
+你可以用以下三种方式将样式表加入您的网页。而最接近目标的样式定义优先权越高。高优先权样式将继承低优先权样式的未重叠定义但覆盖重叠的定义。例外请参阅<a href="i_important.html"> !important </a>声明。 
+
+</div>
+
+<div class=cssColumnTitle>链入外部样式表文件 (Linking to a Style Sheet)</div>
+<div>
+你可以先建立外部样式表文件（.css），然后使用HTML的link对象。示例如下：<br>
+<br>
+<div class=cssSimpleCode>
+&lt;head&gt;<br>
+&lt;title&gt;文档标题&lt;/title&gt;<br>
+&lt;link rel=stylesheet href="http://www.dhtmlet.com/dhtmlet.css" type="text/css"&gt;<br>
+&lt;/head&gt;<br>
+</div>
+<br>
+而在XML中，你应该如下例所示在声明区中加入： <br>
+<br>
+<div class=cssSimpleCode>
+&lt;? xml-stylesheet type="text/css" href="http://www.dhtmlet.com/dhtmlet.css" ?&gt;<br>
+</div>
+</div>
+
+<div class=cssColumnTitle>定义内部样式块对象 (Embedding a Style Block)</div>
+<div>
+你可以在你的HTML文档的&lt;HTML&gt;和&lt;BODY&gt;标记之间插入一个&lt;STYLE&gt;...&lt;/STYLE&gt;块对象。 定义方式请参阅<a href="#nameSyntax">样式表语法</a>。示例如下： <br>
+<br>
+<div class=cssSimpleCode>
+&lt;html&gt;<br>
+&lt;head&gt;<br>
+&lt;title&gt;文档标题&lt;/title&gt;<br>
+&lt;style type="text/css"&gt;<br>
+&lt;!--<br>
+body {font: 10pt "Arial"}<br>
+h1 {font: 15pt/17pt "Arial"; font-weight: bold; color: maroon}<br>
+h2 {font: 13pt/15pt "Arial"; font-weight: bold; color: blue}<br>
+p {font: 10pt/12pt "Arial"; color: black}<br>
+--&gt;<br>
+&lt;/style&gt;<br>
+&lt;/head&gt;<br>
+&lt;body&gt; <br>
+</div>
+<br>
+请注意，这里将style对象的type属性设置为"text/css"，是允许不支持这类型的浏览器忽略样式表单。 
+</div>
+
+<div class=cssColumnTitle>内联定义 (Inline Styles)</div>
+<div>
+内联定义即是在对象的标记内使用对象的style属性定义适用其的样式表属性。示例如下：<br>
+<br>
+<div class=cssSimpleCode>
+&lt;p style="margin-left: 0.5in; margin-right:0.5in"&gt;这一行被增加了左右的外补丁&lt;p&gt; <br>
+</div>
+</div>
+
+<div class=cssColumnTitle>样式表语法 (CSS Syntax)</div>
+<div>
+<span class=cssDefault id=nameSyntax>Selector { property: value } </span><br>
+<br>
+参数说明： 
+<br>
+<i>Selector</i> -- <a href="l_selectors.html">选择符</a><br>
+<i>property</i><b> : </b><i>value</i> -- 样式表定义。<a href="l_properties.html">属性</a>和属性值之间用冒号(:)隔开。多个定义之间用分号(;)隔开<br>
+</div>
+
+<div class=cssColumnTitle>继承的值 (The ' Inherit ' Value)</div>
+<div>
+每个属性都有一个指定的值：<b> Inherit </b>。它的意思是：将父对象的值等同为计算机值得到。这个值通常仅仅是备用的。显式的声明它可用来强调。 
+</div>
+
+</div>
+</body>
+</html>
+
+<!-- Part of RDL(TM) - Written by Rain1977 -->
+<!-- HomeSite: http://www.dhtmlet.com  E-Mail: rainer@mail.hf.ah.cn -->

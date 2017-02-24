@@ -1,0 +1,261 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>科学多功能计算器</title>
+</head>
+<link rel="stylesheet" type="text/css" href="../index.css" />
+<link rel="stylesheet" type="text/css" href="http://localhost:8080/v-get.com/tool/index.css" />
+
+
+
+<script type="text/javascript" src="http://localhost:8080/v-get.com/i/i.js"></script>
+
+
+</head>
+<body>
+<div class="w">
+<div class="t"><div class="q"><a href="">V-Get!首页</a>|<a href="">设为主页</a>|<a href="">收藏本站</a></div></div>
+<div class="u">
+<img src="../index.png" />
+</div>
+<div class="n"><a href="http://localhost:8080/tool.v-get.com/">首页</a><a href="http://localhost:8080/v-get.com/tool/biz/">商务办公</a><a href="http://localhost:8080/v-get.com/tool/finance/" class="no">金融计算</a><a href="http://localhost:8080/v-get.com/tool/life/">生活助手</a><a href="http://localhost:8080/v-get.com/tool/images/">图片美工</a><a href="http://localhost:8080/v-get.com/tool/editor/">文字设计</a><a href="http://localhost:8080/v-get.com/tool/edu/">教育考试</a><a href="http://localhost:8080/v-get.com/tool/games/">娱乐游戏</a><a href="http://localhost:8080/v-get.com/tool/pc/">电脑优化</a></div>
+<div class="w4"><a href="#"><img src="http://localhost:8080/v-get.com/i/wuliu/a/zzidc980.gif" /></a></div>
+<!--因为都在life文件夹下，而且涉及.no，所以这样更好-->
+<div class="v">
+<div class="p l">
+<!--#include file="../finance/l.htm"-->
+
+</div>
+<div class="p r">
+<h1>快递查询</h1>
+<div class="c">
+ <SCRIPT LANGUAGE="JavaScript">
+
+
+
+function freecol(brtspc,bgcolor)
+{
+                table("cellspacing='0' cellpadding='0' bgcolor='"+bgcolor+"'");
+                tr();
+                        td("width='"+brtspc+"'");
+                        td("/");
+                tr("/");
+                table("/");
+}
+
+function table(strg)
+{
+        if (strg != "/")
+                document.write("<table "+anfrepl(strg)+">");
+        else
+                document.write("</table>");
+}
+
+function tr(strg)
+{
+        if (strg != "/")
+                document.write("<tr "+anfrepl(strg)+">");
+        else
+                document.write("</tr>");
+}
+
+function td(strg)
+{
+        if (strg != "/")
+                document.write("<td "+anfrepl(strg)+">");
+        else
+                document.write("</td>");
+}
+
+function th(strg)
+{
+        if (strg != "/")
+                document.write("<th "+anfrepl(strg)+">");
+        else
+                document.write("</th>");
+}
+                                                        // interpreting ' as " in a string
+function anfrepl(strg)
+{
+        var i;
+        var outstring= "";
+
+        if (!strg)
+                strg = "";
+
+        for (i=0;i<strg.length;i++)
+        {
+                if(strg.charCodeAt(i)==39)
+                        outstring = outstring + chr(34);
+                else
+                        outstring = outstring + strg.charAt(i);
+        }
+return outstring;
+}
+
+function chr(asciiwert)
+{
+        return String.fromCharCode(asciiwert);
+}
+
+function dec2hex(dec)
+{
+        var result;
+        var i,j;
+        
+        hexChars = "0123456789ABCDEF";
+        i = dec % 16;
+        j = (dec - i) / 16;
+        result = hexChars.charAt(j) + hexChars.charAt(i);
+        return result;
+}
+
+// Main programm: Sorry 4 the jumble but its hard to combine the structure of the program
+// and the structure of the tables.
+          
+function outtest(which)
+{
+        var i,j;
+        var actwert,hexwert,buchst;
+
+        if (which == false)
+                var brtchar = htmchar;  
+        else
+                var brtchar = jschar;   
+
+        document.write(anfrepl("<font size='+1'><b>ASCII Table of: "+font+"</b></font><br>"));
+
+table("border='0' cellspacing='0' cellpadding='0' bgcolor='"+bgcolor+"'");
+tr();
+        td();
+                freecol(brtspc,bgcolor);
+        td("/");        
+
+
+        for (i=0 ; i<spalt ; i++)
+        {
+        td();
+                table("cellspacing='0' cellpadding='0' bgcolor='"+bgcolor+"' border='0' bordercolor='Silver' bordercolorlight='Silver' bordercolordark='Silver'");
+                tr();
+                        th("width='"+(brtdec+2)+"' align='CENTER'");
+                                document.write("Dec");
+                        th("/");
+                        th("width='"+(brthex+2)+"' align='CENTER'");
+                                document.write("Hex");
+                        th("/");
+                        th("<th width='"+(brtchar+2)+"' align='CENTER'");
+                                document.write("Chr");
+                tr("/");
+                table("/");
+        td("/");
+        td();
+                freecol(brtspc,bgcolor);
+        td("/");
+        }
+tr("/");
+
+
+        for (i=0 ; i<Math.ceil(max/spalt) ; i++)
+        {
+tr();
+        td();
+                freecol(brtspc,bgcolor);
+        td("/");
+
+
+                for (j=0 ; j<spalt ; j++)
+                {
+                        if (Math.floor((i*spalt+j)/((max+1)/100)) <= 100)
+                                status = "Building Table: " + Math.floor((i*spalt+j)/((max+1)/100)) + "%"
+                        actwert=j*Math.ceil(max/spalt)+i;
+                        hexwert=dec2hex(actwert);
+                        if (which == false)
+                                buchst="&#"+actwert+";";
+                        else
+                                buchst=chr(actwert);
+                        if (actwert > 255)
+                                actwert=hexwert=buchst="";
+
+        td();
+                table("cellspacing='0' cellpadding='0' bgcolor='White' border='1'");
+                tr();
+                        td("width='"+brtdec+"' align='CENTER'");
+                                document.write(" "+actwert);
+                        td("/");
+                        td("width='"+brthex+"' align='CENTER'");
+                                document.write(" "+hexwert);
+                        td("/");
+                        th("width='"+brtchar+"' align='CENTER'");
+                                document.write(anfrepl("<font face='"+font+"'>"));
+                                document.write(" "+buchst);
+                                document.write("</font>");
+                                
+                        th("/");
+                tr("/");
+                table("/");
+        td("/");
+        td();
+                freecol(brtspc,bgcolor);
+        td("/");
+                }
+tr("/");
+        }
+status = "Viewing Table: Please wait."
+table("/");
+}
+
+</SCRIPT>
+
+
+<SCRIPT LANGUAGE="JavaScript">
+
+
+        var spalt = 6;                          // number of columns
+        var max = 256;                          // mximum ascii value
+        var brtdec = 40;                        // width of DEC column
+        var brthex = 30;                        // width of HEX column
+        var brtspc= 15;                         // width of the space between the columns
+        var bgcolor = "silver";         // colour of the spaces
+        var htmchar = 60;                       // width of CHR column-HTML-Version (CANCEL Button)
+        var jschar = 40;                        // width of CHR column-JS-Version (OK Button)
+        var font = "罗马字符"            // Font of the ASCII character
+
+        outtest(confirm("确定:\t字符将用javascript解释.\n取消:\t字符将用HTML来解释. "));
+
+
+</SCRIPT>
+
+</CENTER>
+
+<SCRIPT LANGUAGE="JavaScript">
+
+        status = "Table ready";
+
+</SCRIPT>
+
+
+
+
+
+
+
+</div>
+<!--#include file="../finance/c.htm"-->
+
+
+</div>
+
+</div>
+
+
+</div>
+<!--<ul>
+<li><a href="http://localhost:8080/v-get.com/tool/fanyi.html">数字大小写及翻译</a></li>
+<li><a href="http://localhost:8080/v-get.com/tool/yanpitiao.php">眼皮跳吉凶查询</a></li>
+<li><a href="http://localhost:8080/v-get.com/tool/erweima/">QR二维码</a></li>
+</ul>-->
+ 
+  
+</body>
+</html>

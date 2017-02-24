@@ -1,0 +1,118 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+
+
+   <title>8.3. &#20250;&#35805;&#27880;&#20837;</title>
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="" />
+   <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+   <meta http-equiv="Content-Style-Type" content="text/css" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+</head>
+<body style="margin: 0px 0px 0px 0px; background: #FFFFFF;">
+
+
+<table width="100%" border="0" cellspacing="0" cellpadding="5" bgcolor="#649CCC">
+  <tr valign="middle">
+    <td align="left">
+      <p class="p_Heading1"><span class="f_Heading1">8.3. &#20250;&#35805;&#27880;&#20837;</span></p>
+
+    </td>
+    <td align="right">
+     <span style="font-size: 9pt">
+     <a href="introduction.htm">Top</a>&nbsp;
+     <a href="new_item49.htm">Previous</a>&nbsp;
+     <a href="new_item51.htm">Next</a>
+     </span>
+    </td>
+  </tr>
+</table>
+
+
+<!-- Placeholder for topic body. -->
+<table width="100%" border="0" cellspacing="0" cellpadding="5"><tr valign="top"><td align="left">
+<p style="line-height: 1.50;">8.3. &#20250;&#35805;&#27880;&#20837;</p>
+<p style="line-height: 1.50;">  &nbsp; &#19968;&#20010;&#19982;&#20250;&#35805;&#26292;&#38706;&#31867;&#20284;&#30340;&#38382;&#39064;&#26159;&#20250;&#35805;&#27880;&#20837;&#12290;&#27492;&#31867;&#25915;&#20987;&#26159;&#22522;&#20110;&#20320;&#30340;WEB&#26381;&#21153;&#22120;&#38500;&#20102;&#23545;&#20250;&#35805;&#23384;&#20648;&#30446;&#24405;&#26377;&#35835;&#21462;&#26435;&#38480;&#22806;&#65292;&#36824;&#26377;&#20889;&#20837;&#26435;&#38480;&#12290;&#22240;&#27492;&#65292;&#23384;&#22312;&#30528;&#32534;&#20889;&#19968;&#27573;&#20801;&#35768;&#20854;&#20182;&#29992;&#25143;&#28155;&#21152;&#65292;&#32534;&#36753;&#25110;&#21024;&#38500;&#20250;&#35805;&#30340;&#33050;&#26412;&#30340;&#21487;&#33021;&#12290;&#19979;&#20363;&#26174;&#31034;&#20102;&#19968;&#20010;&#20801;&#35768;&#29992;&#25143;&#26041;&#20415;&#22320;&#32534;&#36753;&#24050;&#23384;&#22312;&#30340;&#20250;&#35805;&#25968;&#25454;&#30340;HTML&#34920;&#21333;&#65306;</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; &lt;?php</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; session_start();</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; ?&gt;</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; &lt;form action="inject.php" method="POST"&gt;</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; &lt;?php</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; $path = ini_get('session.save_path');</p>
+<p style="line-height: 1.50;">  &nbsp; $handle = dir($path);</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; while ($filename = $handle-&gt;read())</p>
+<p style="line-height: 1.50;">  &nbsp; {</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; if (substr($filename, 0, 5) == 'sess_')</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; {</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; &nbsp; $sess_data = file_get_contents("$path/$filename");</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; &nbsp; if (!empty($sess_data))</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; &nbsp; {</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; &nbsp; &nbsp; session_decode($sess_data);</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; &nbsp; &nbsp; $sess_data = $_SESSION;</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; &nbsp; &nbsp; $_SESSION = array();</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; &nbsp; &nbsp; $sess_name = substr($filename, 5);</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; &nbsp; &nbsp; $sess_name = htmlentities($sess_name, ENT_QUOTES, 'UTF-8');</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; &nbsp; &nbsp; echo "&lt;h1&gt;Session [$sess_name]&lt;/h1&gt;";</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; &nbsp; &nbsp; foreach ($sess_data as $name =&gt; $value)</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; &nbsp; &nbsp; {</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; $name = htmlentities($name, ENT_QUOTES, 'UTF-8');</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; $value = htmlentities($value, ENT_QUOTES, 'UTF-8');</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; echo "&lt;p&gt;</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; $name:</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;input type=\"text\"</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; name=\"{$sess_name}[{$name}]\"</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; value=\"$value\" /&gt;</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;/p&gt;";</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; &nbsp; &nbsp; }</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; &nbsp; &nbsp; echo '&lt;br /&gt;';</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; &nbsp; }</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; }</p>
+<p style="line-height: 1.50;">  &nbsp; }</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; $handle-&gt;close();</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; ?&gt;</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; &lt;input type="submit" /&gt;</p>
+<p style="line-height: 1.50;">  &nbsp; &lt;/form&gt;</p>
+<p style="line-height: 1.50;">  &nbsp; &#33050;&#26412;inject.php&#25191;&#34892;&#30001;&#34920;&#21333;&#25152;&#25351;&#23450;&#30340;&#20462;&#25913;&#65306;</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; &lt;?php</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; session_start();</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; $path = ini_get('session.save_path');</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; foreach ($_POST as $sess_name =&gt; $sess_data)</p>
+<p style="line-height: 1.50;">  &nbsp; {</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; $_SESSION = $sess_data;</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; $sess_data = session_encode;</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; file_put_contents("$path/$sess_name", $sess_data);</p>
+<p style="line-height: 1.50;">  &nbsp; }</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; $_SESSION = array();</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; ?&gt;</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; &#27492;&#31867;&#25915;&#20987;&#38750;&#24120;&#21361;&#38505;&#12290;&#25915;&#20987;&#32773;&#19981;&#20165;&#21487;&#20197;&#32534;&#36753;&#20320;&#30340;&#29992;&#25143;&#30340;&#25968;&#25454;&#65292;&#36824;&#21487;&#20197;&#32534;&#36753;&#20182;&#33258;&#24049;&#30340;&#20250;&#35805;&#25968;&#25454;&#12290;&#23427;&#27604;&#20250;&#35805;&#21163;&#25345;&#26356;&#20026;&#24378;&#22823;&#65292;&#22240;&#20026;&#25915;&#20987;&#32773;&#33021;&#36873;&#25321;&#25152;&#26377;&#30340;&#20250;&#35805;&#25968;&#25454;&#36827;&#34892;&#20462;&#25913;&#65292;&#20174;&#32780;&#20351;&#32469;&#36807;&#35775;&#38382;&#38480;&#21046;&#21644;&#20854;&#20182;&#23433;&#20840;&#25163;&#27573;&#25104;&#20026;&#21487;&#33021;&#12290;</p>
+<p style="line-height: 1.50;">  &nbsp; &#38024;&#23545;&#36825;&#20010;&#38382;&#39064;&#30340;&#26368;&#22909;&#35299;&#20915;&#26041;&#26696;&#26159;&#23558;&#20250;&#35805;&#25968;&#25454;&#20445;&#23384;&#22312;&#25968;&#25454;&#24211;&#20013;&#12290;&#21442;&#35265;&#21069;&#33410;&#25152;&#31034;&#12290;</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<hr noshade size=1 ><p style="line-height: 1.50;">&nbsp;</p>
+
+</td></tr></table>
+
+</body>
+</html>

@@ -1,0 +1,168 @@
+<html>
+<head>
+<title>文本属性</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+
+<link rel = stylesheet href = "image/style.css">
+</head>
+<body bgcolor="#ffffff">
+<table width="688" border="0" cellspacing="0" cellpadding="0" align="center">
+  <tr bgcolor="EEEEEE"> 
+    <td height="22"><a href="index.htm">主页</a></td>
+  </tr>
+</table><br>
+<table border="0" cellpadding="0" cellspacing="0" width="688" align="center" height="490">
+  <tr valign="top"> 
+    <td rowspan="4" width="91">&nbsp; </td>
+    <td height="68" width="131"> 
+      <p><img src="image/doc.gif"></p>
+    </td>
+    <td rowspan="4" width="18"><b></b> </td>
+    <td height="68" width="387"><img src="image/title_doc.gif"></td>
+    <td rowspan="4" width="61"> 
+      <h6>&nbsp;</h6>
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td rowspan="3" valign="top" class="pt10" align="center" width="131" bgcolor="EEEEEE"> 
+      <p>&nbsp;</p>
+      <p><font color="#FF0000">※ 12.12 文本属性</font></p>
+       
+	</td>
+  </tr>
+  <tr valign="top"> 
+    <td width="387" height="308"> 
+      <table width="100%" border="0" cellpadding="0">
+        <tr> 
+          <td>
+
+           <ol>
+  <ol>
+  </ol>
+</ol>
+<h4><a name="_Toc467205104">12.12 文本属性</a></h4>
+<ol>
+  <ol>
+  </ol>
+</ol>
+<p>如不考虑字体，影响文本外观的属性有8个：</p>
+<p>1．word-spacing</p>
+<p>2．letter-spacing</p>
+<p>3．text decoration</p>
+<p>4．vertical-align</p>
+<p>5．text transform</p>
+<p>6．text-align</p>
+<p>7．text-indent</p>
+<p>8．line-height</p>
+<h5><a name="_Toc467205105">12.12.1 word-spacing属性</a></h5>
+<p>word-spacing属性通过在单词之间附加空格而使文本扩大。负值会删除单词之间的空白。要改变Web网页上的词间距，我认为唯一的理由就是，如果你是位学生，工作时受到页面数目的限制，而又想使纸张看起来比实际的大或小一些。</p>
+<p><img src="Image/BK000212-56.gif" width=46 height=57 align="left">桌面出版商热衷于调节这类属性。问题是他们已了解到的有关如何、什么时候调整间隔的所有准则是基于纸上印刷的，但在转换到以磷光体(一般为CRT显示器)表现的电子媒介时就失效。让浏览器来决定字和字母的间距，几乎永远是最好的方法。</p>
+<p>另一方面，如果目标媒体是纸上的墨水，那么通过调整这些属性就可以获得更多的空间。主要区别是，在纸上使用墨水就能控制输出媒体。准确地知道字体多大、显示器有多宽和多高、每英寸有多少点可供使用等等。实际是，在Web上，没有有关可供输出媒体的足够信息，以便详细地控制所有的情况。</p>
+<p>如要改变word-spacing的缺省值(norma1)，可给属性设置长度。例如：</p>
+<p>INVITATION { word-spacing: 1em }</p>
+<p>如浏览器不关注此属性，尤其是如果它与其他属性(如align: justified)发生冲突时更是如此。Internet Explorer 5.0不支持word-spacing，但Mozilla则支持(如图12-19所示)。</p>
+<p align="center"><img src="Image/BK000212-34.gif" width=373 height=264></p>
+<p align="center">图12-19 字间距为1em的INVITATION元素</p>
+<h5><a name="_Toc467205106">12.12.2 letter-spacing属性</a></h5>
+<p>letter-spacing属性能在字母之间添加额外的空隙从而扩展文本。设置为负值，就会删除字母之间的空隙。同样，我认为在Web网页上这样做的唯一的理由是让纸张看起来比实际的更大或更小，以满足纸张长度要求。</p>
+<p>要从normal缺省值变为其他值，可为此属性设置一长度。例如：</p>
+<p>INVITATION { letter-spacing: 0.3em }</p>
+<p>由于通过调整字母之间空隙大小就可以获得两端对齐，所以手工改变字母间距就可以防止浏览器使文本两端对齐。</p>
+<p>浏览器不关注此属性，尤其是如果它与其他属性(如align:justified)发生冲突时更是如此。但是，Internet Explorer和Mozilla都能体现此属性(如图12-20所示)。</p>
+<p align="center"><img src="Image/BK000212-35.gif" width=365 height=296></p>
+<p align="center">图12-20 字母间距为0.3em的INVITATION元素</p>
+<h5><a name="_Toc467205107">12.12.3 text-decoration属性</a></h5>
+<p>text-decoration属性可以是下列五个值之一：</p>
+<p> none</p>
+<p> underline</p>
+<p> overline</p>
+<p> line-through</p>
+<p> blink</p>
+<p>除了none(缺省值)之外，这些值都不互斥。例如，可以为一个段落指定下划线(underline)、上线(overline)、删除线(struck through)和闪烁(blink)。(可我不推荐这样做。)</p>
+<p><img src="Image/BK000212-56.gif" width=59 height=65 align="left">浏览器不支持闪烁文本。这是一件好事情。</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>例如，下面的这条规则指定CHARACTER元素加上下划线。图12-21显示了将此规则应用于清单12-7中的《第十二夜》大纲的情景。</p>
+<p>CHARACTER { text-decoration: underline }</p>
+<p align="center"><img src="Image/BK000212-36.gif" width=372 height=248></p>
+<p align="center">图12-21 带下划线字符的<i>Twelfth Nigh</i>大纲</p>
+<h5><a name="_Toc467205108">12.12.4 vertical-align属性</a></h5>
+<p>vertical-align属性指定内联元素如何根据文本的基线定位。有效值是：</p>
+<p> baseline</p>
+<p> sub</p>
+<p> super</p>
+<p> top</p>
+<p> text-top</p>
+<p> middle</p>
+<p> bottom</p>
+<p> text-bottom</p>
+<p>还可以使用元素的行高的百分数来表示。缺省值是baseline，表示把元素的基线与其父元素的基线对齐。</p>
+<p>sub值使元素成为下标。super值使元素成为上标。text-top值使元素的顶端与父元素字体的顶端对齐。middle值使元素的垂直中心与父元素的基线加上x-height一半对齐。text-bottom值使元素的底部与父元素字体的底部对齐。</p>
+<p>top值使元素的顶端与此行上最高字母或元素的顶部对齐。bottom值使元素的底部与此行上最低字母或元素的底部对齐。精确的对齐方式随最高或最低字母的高度而变。</p>
+<p>例如，用于脚注数字的规则如下面的语句所示，它把数字成为上标，并且大小减小20%。</p>
+<p>FOOTNOTE_NUMBER { vertical-align: super; font-size: 80% }</p>
+<h5><a name="_Toc467205109">12.12.5 text –transform属性</a></h5>
+<p>text-transform属性可用来指定文本应以全部大写字母、全部小写字母或首字母为大写形式显示。例如，这个属性用于标题是很有用的。有效值为：</p>
+<p> capitalize</p>
+<p> uppercase</p>
+<p> lowercase</p>
+<p> none</p>
+<p>capitalize(以大写字母开头)仅使每个单词的首字母成为大写(如本句：Capitalization Makes Only The First Letter 
+  Of Every Word Uppercase)。但如把句子设置成uppercase(大写体)将使句子中的每个字母成为大写(如PLACING THE SENTENCE 
+  IN UPPERCASE, HOWEVER, MAKES EVERY LETTER IN THE SENTENCE UPPERCASE)。下面的规则将《第十二夜》剧本大纲中的TITLE元素转换成大写体。图12-22为应用了此规则后所显示的大纲。</p>
+<p>TITLE { text-transform: uppercase }</p>
+<p align="center"><img src="Image/BK000212-37.gif" width=372 height=248></p>
+<p align="center">图12-22 大纲中的TITLE现在成为大写</p>
+<p><img src="Image/BK000212-56.gif" width=59 height=65 align="left">text-transform属性与语言有关，因为许多语言(如中文)就没有任何大写和小写的概念。</p>
+<h5>&nbsp;</h5>
+<h5>&nbsp;</h5>
+<h5><a name="_Toc467205110">12.12.6 text-align属性</a></h5>
+<p>text-align属性只应用于块级元素。它指定块中的文本是否为左对齐、右对齐、居中或两端对齐。</p>
+<p> left</p>
+<p> right</p>
+<p> center</p>
+<p> justify</p>
+<p>下面的规则使《第十二夜》剧本大纲中的TITLE元素居中，并使其他的两端对齐。图12-23显示了应用这些规则之后的大纲。</p>
+<p>TITLE { text-align: center }</p>
+<p>SYNOPSIS { text-align: justify }</p>
+<p align="center"><img src="Image/BK000212-38.gif" width=373 height=248></p>
+<p align="center">图12-23 大纲中TITLE居中，而文本的其他部分两端对齐</p>
+<h5><a name="_Toc467205111">12.12.7 text-indent属性</a></h5>
+<p>text-indent属性只应用于块级元素，它指定块的第一行相对于块其余行的缩排方式，可用绝对长度或父元素宽度的百分数来表示。此值可为负，表示悬挂式缩进。</p>
+<p><img src="Image/BK000212-58.gif" width=50 height=44 align="left">要使元素的所有行而不仅仅是第一行都缩进，可使用框属性(将在下节讨论)在元素上设置额外的左边距。</p>
+<p>例如，下面的规则将大纲中的场景缩进半英寸。图12-24显示了在应用了本规则之后的大纲。</p>
+<p>SCENE { text-indent: 0.5in }</p>
+<h5><a name="_Toc467205112">12.12.8 line-height属性</a></h5>
+<p>line-height属性指定后续行基线之间的距离，可用绝对数字、绝对长度或字号的百分数来表示。例如，下面的这条规则使SYNOPSIS元素的行距加倍。图12-25显示在应用此规则之后的《第十二夜》剧本大纲。</p>
+<p>SYNOPSIS { line-height: 200% }</p>
+<p align="center"><img src="Image/BK000212-39.gif" width=334 height=250></p>
+<p align="center">图12-24 大纲中的SCENE及其子元素都缩进半英寸</p>
+<p align="center"><img src="Image/BK000212-40.gif" width=334 height=251></p>
+<p align="center">图12-25 间隔加倍的大纲</p>
+<p>行距加倍不是特别吸引人，所以我要将其删除。在下一节中，在各元素周围添加了一些额外的页边距，以获得良好的效果。清单12-15概述了本节中加入到大纲样式单的所有情况(去掉了行距加倍)。</p>
+<p>清单12-15：文本属性的大纲样式单</p>
+<p>SYNOPSIS, TITLE, ACT, SCENE { display: block }</p>
+<p>SCENE_NUMBER { font: italic smaller serif }</p>
+<p>TITLE { font: bold x-large Helvetica, sans-serif }</p>
+<p>SYNOPSIS { font: 14pt Times, "Times New Roman", serif }</p>
+<p>ACT_NUMBER { font variant: small-caps }</p>
+<p>ACT_NUMBER:first-letter { font-variant: normal }</p>
+<p>ACT_NUMBER { font-weight: bold }</p>
+<p>CHARACTER { text-decoration: underline }</p>
+<p>TITLE { text-transform: uppercase }</p>
+<p>TITLE { text-align: center }</p>
+<p>SYNOPSIS { text-align: justify }</p>
+<p>SCENE { text-indent: 0.5in }</p>
+<p>&nbsp;</p>
+ 
+<a href='444.htm'>&lt;&lt;上一篇</a>&nbsp;&nbsp;<a href='446.htm'>下一篇&gt;&gt;</a></td>
+        </tr>
+      </table>
+      <p>&nbsp; </p>
+    </td>
+  </tr>
+</table>
+
+</body>
+
+</html>

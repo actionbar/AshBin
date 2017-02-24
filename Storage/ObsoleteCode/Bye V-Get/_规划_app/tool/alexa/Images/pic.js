@@ -1,0 +1,1 @@
+document.all.pic_ad.innerHTML='<iframe frameborder="0" src="http://Images.chinaz.com/alexa/pic.htm" width="784" height="40" scrolling="no"></iframe>'

@@ -1,0 +1,233 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="../c3.css" />
+<title>SMIL Media 元素</title>
+</head>
+<body class="multimedia">
+<div id="wrapper">
+<div id="header">
+<a href="http://e.v-get.com/w3cschool/" style="float:left;">W3CSchool 在线教程</a>
+<div class="q g"><script type="text/javascript">var cpro_id="u1163355"</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div>
+<div id="navfirst">
+<ul id="menu">
+<li id="h"><a href="../h.html">HTML教程</a></li>
+<li id="x"><a href="../x.html">XML教程</a></li>
+<li id="b"><a href="../b.html">浏览器脚本</a></li>
+<li id="s"><a href="../s.html">服务器脚本</a></li>
+<li id="d"><a href="../d.html">dot net教程</a></li>
+<li id="m"><a href="../m.html">多媒体教程</a></li>
+<li id="w"><a href="../w.html">建站手册</a></li>
+</ul>
+</div><div id="navsecond">
+<div id="course">
+<h2>SMIL 教程</h2>
+<ul>
+<li><a href="http://e.v-get.com/w3cschool/">SMIL 首页</a></li>
+<li><a href="smil_intro.html">SMIL 简介</a></li>
+<li><a href="smil_files.html">SMIL 文件</a></li>
+<li><a href="smil_html.html">SMIL HTML</a></li>
+<li><a href="smil_xhtml.html">SMIL XHTML</a></li>
+<li><a href="smil_timing.html">SMIL Timing</a></li>
+<li><a href="smil_seq.html">SMIL Sequence</a></li>
+<li><a href="smil_parallel.html">SMIL Parallel</a></li>
+<li><a href="smil_transition.html">SMIL Transition</a></li>
+<li><a href="smil_media.html">SMIL Media</a></li>
+<li><a href="smil_reference.html">SMIL 参考</a></li>
+</ul>
+</div>
+<div id="selected">
+<h2>建站手册</h2>
+<ul>
+<li><a href="../site/">网站构建</a></li>
+<li><a href="../w3c/">万维网联盟</a></li>
+<li><a href="http://e.v-get.com/w3c/">W3CSchool 教程</a></li>
+<li><a href="../quality/">网站品质</a></li>
+<li><a href="../semweb/">语义网</a></li>
+<li><a href="../hosting/">网站主机</a></li>
+</ul>
+<h2><a href="http://e.v-get.com/w3c/" class="f13">W3CSchool 教程</a></h2><div class="a120x90"><script type="text/javascript">var cpro_id="u1210867";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div></div>
+</div>
+<div id="maincontent">
+<h1>SMIL Media 元素</h1>
+<div id="tpn">
+<ul class="prenext">
+<li class="pre"><a href="smil_transition.html">上一页</a></li>
+<li class="next"><a href="smil_reference.html">下一页</a></li>
+</ul>
+</div>
+<div id="intro">
+<p><strong>SMIL 使用媒介元素来描述内容。</strong></p>
+</div>
+<div>
+<h2>Media 元素</h2>
+<p>可使用下面的媒介元素在 SMIL 文档中包括媒介对象：</p>
+<table class="dataintable">
+<tr>
+<th style="width:25%;">元素</th>
+<th style="width:60%;">描述</th>
+<th style="width:15%;">Ver</th>
+</tr>
+<tr>
+<td>&lt;animation&gt;</td>
+<td>定义动画。</td>
+<td>1</td>
+</tr>
+<tr>
+<td>&lt;audio&gt;</td>
+<td>定义音频片断。</td>
+<td>1</td>
+</tr>
+<tr>
+<td>&lt;brush&gt;</td>
+<td>定义笔刷。</td>
+<td>1</td>
+</tr>
+<tr>
+<td>&lt;img&gt;</td>
+<td>定义图像。</td>
+<td>1</td>
+</tr>
+<tr>
+<td>&lt;param&gt;</td>
+<td>定义参数。</td>
+<td>1</td>
+</tr>
+<tr>
+<td>&lt;ref&gt;</td>
+<td>定义一般的媒介引用。</td>
+<td>1</td>
+</tr>
+<tr>
+<td>&lt;text&gt;</td>
+<td>定义文本。</td>
+<td>1</td>
+</tr>
+<tr>
+<td>&lt;textstream&gt;</td>
+<td>定义文本流。</td>
+<td>1</td>
+</tr>
+<tr>
+<td>&lt;video&gt;</td>
+<td>定义视频。</td>
+<td>1</td>
+</tr>
+</table>
+</div>
+<div>
+<h2>Media 属性</h2>
+<p>必须使用 src 属性中的引用 (URL）来包括 SMIL 文档中的每个媒介对象。src 属性是最常用在媒介元素的属性。</p>
+<p>type 属性用于定义媒介类型。如果 type 属性被忽略，则应用程序依赖由服务器告知的类型信息。开发者不应该依靠文件类型扩展名来定义文件类型。</p>
+<table class="dataintable">
+<tr>
+<th style="width:25%;">属性</th>
+<th style="width:60%;">描述</th>
+<th style="width:15%;">Ver</th>
+</tr>
+<tr>
+<td>erase</td>
+<td>定义计时完成后该元素的行为。</td>
+<td>1</td>
+</tr>
+<tr>
+<td>src</td>
+<td>定义媒介对象的源。</td>
+<td>1</td>
+</tr>
+<tr>
+<td>type</td>
+<td>定义媒介类型。</td>
+<td>1</td>
+</tr>
+</table>
+<p>如需完整的 SMIL 元素和属性列表，请访问 <a href="smil_reference.html">W3CSchool SMIL 参考手册</a>。</p>
+</div>
+<div>
+<h2>&lt;animation&gt; 元素</h2>
+<p>&lt;animation&gt; 元素定义了对动画对象的引用，该对象是以矢量图型或其他各式存储的。</p>
+<p>不应把 &lt;animation&gt; 元素与 &lt;animate&gt; 元素相混淆。&lt;animation&gt; 元素通过引用定义了动画对象。而 &lt;animate&gt; 元素定义了其他元素的动画显示。</p>
+</div>
+<div>
+<h2>&lt;audio&gt; 元素</h2>
+<p>&lt;audio&gt; 元素定义了对音频对象的引用，该对象是以被录制的音频存储的。</p>
+<h3>实例：</h3>
+<pre>&lt;html xmlns:t=&#34;urn:schemas-microsoft-com:time&#34;&gt;
+&lt;head&gt;
+  &lt;?import namespace=&#34;t&#34; implementation=&#34;#default#time2&#34;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;t:audio
+src=&#34;liar.wav&#34;
+repeatCount=&#34;indefinite&#34;
+type=&#34;wav&#34; /&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+<p><a href="../tiy/t_709.html">TIY</a></p>
+</div>
+<div>
+<h2>&lt;brush&gt; 元素</h2>
+<p>&lt;brush&gt; 元素定义了填充颜色或填充模式。</p>
+<p>该元素定义了代替媒介对象的着色颜色或模式。</p>
+</div>
+<div>
+<h2>&lt;img&gt; 元素</h2>
+<p>&lt;img&gt; 元素定义了对图像对象的引用，该对象以 JPG 或其他图像格式存储。</p>
+<h3>实例：</h3>
+<pre>&lt;img src=&#34;myimage.gif&#34; type=&#34;GIF&#34; /&gt;</pre>
+</div>
+<div>
+<h2>&lt;param&gt; 元素</h2>
+<p>&lt;param&gt; 元素为任何其他媒介元素定义参数。</p>
+<h3>实例：</h3>
+<pre>&lt;param name=&#34;color&#34; value=&#34;red&#34; /&gt;</pre>
+</div>
+<div>
+<h2>&lt;ref&gt; 元素</h2>
+<p>&lt;ref&gt; 元素定义了对一般的媒介元素的引用。</p>
+<p>可在媒介类型未被良好定义的情况下使用 &lt;ref&gt; 元素。</p>
+</div>
+<div>
+<h2>&lt;text&gt; 元素</h2>
+<p>&lt;text&gt; 元素定义了对文本对象的引用，该对象被存储为文本。</p>
+</div>
+<div>
+<h2>&lt;textstream&gt; 元素</h2>
+<p>&lt;textstream&gt; 元素定义了对存储为文本流的文本对象的引用。</p>
+</div>
+<div>
+<h2>&lt;video&gt; 元素</h2>
+<p>&lt;video&gt; 元素定义了对视频对象的引用，该对象被存储为录制的视频。</p>
+<h3>例子:</h3>
+<pre>&lt;html xmlns:t=&#34;urn:schemas-microsoft-com:time&#34;&gt;
+&lt;head&gt;
+  &lt;?import namespace=&#34;t&#34; implementation=&#34;#default#time2&#34;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;t:video
+src=&#34;http://www.ananova.com/about/vap_windows_check.wmv&#34;
+repeatCount=&#34;indefinite&#34;
+type=&#34;wmv&#34; /&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+<p><a href="../tiy/t_710.html">TIY</a></p>
+</div>
+<div id="bpn">
+<ul class="prenext">
+<li class="pre"><a href="smil_transition.html">上一页</a></li>
+<li class="next"><a href="smil_reference.html">下一页</a></li>
+</ul>
+</div>
+</div>
+<div id="sidebar">
+<div class="rs"></div>
+<div id="tools">
+<h5 id="tools_reference"><a href="smil_reference.html">SMIL 参考手册</a></h5>
+</div>
+<div class="a120x600"><script type="text/javascript">var cpro_id="u1293136";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div><div class="b"></div>
+</div>
+</body>
+</html>

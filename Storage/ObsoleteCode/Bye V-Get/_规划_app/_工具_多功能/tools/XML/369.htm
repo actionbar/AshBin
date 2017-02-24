@@ -1,0 +1,279 @@
+<html>
+<head>
+<title>置标和字符数据</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+
+<link rel = stylesheet href = "image/style.css">
+</head>
+<body bgcolor="#ffffff">
+<table width="688" border="0" cellspacing="0" cellpadding="0" align="center">
+  <tr bgcolor="EEEEEE"> 
+    <td height="22"><a href="index.htm">主页</a></td>
+  </tr>
+</table><br>
+<table border="0" cellpadding="0" cellspacing="0" width="688" align="center" height="490">
+  <tr valign="top"> 
+    <td rowspan="4" width="91">&nbsp; </td>
+    <td height="68" width="131"> 
+      <p><img src="image/doc.gif"></p>
+    </td>
+    <td rowspan="4" width="18"><b></b> </td>
+    <td height="68" width="387"><img src="image/title_doc.gif"></td>
+    <td rowspan="4" width="61"> 
+      <h6>&nbsp;</h6>
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td rowspan="3" valign="top" class="pt10" align="center" width="131" bgcolor="EEEEEE"> 
+      <p>&nbsp;</p>
+      <p><font color="#FF0000">※ 6.2 置标和字符数据</font></p>
+       
+	</td>
+  </tr>
+  <tr valign="top"> 
+    <td width="387" height="308"> 
+      <table width="100%" border="0" cellpadding="0">
+        <tr> 
+          <td>
+
+           <h4><a name="_Toc467197039">6.2 置标和字符数据</a></h4>
+<p> XML文档是文本。文本由字符组成。字符是字母、数字、标点符号、空格、制表符号或类似的东西。XML使用Unicode字符集（统一的字符编码标准集），它不仅包含来自英语和其他西欧字母表中的常见字母和符号，也包含来自古斯拉夫语、希腊语、希伯来语、阿拉伯语和梵语的字母表。另外还包含汉语和日语的象形汉字和韩国的Hangul音节表。在本章中只使用英语文本。</p>
+<p><img src="image/BK000206-4.gif" width=50 height=36>国际化字符集将在第7章“外语和非罗马文本”中讨论。</p>
+<p>一个XML文档的文本可有两种用途，字符数据和置标。字符数据是文档的基本信息。另一方面，置标主要描述一个文档的逻辑结构。例如，回想一下第三章清单3-2中的greeting.xml：</p>
+<p>&lt;?xml version="1.0" standalone="yes"?&gt;</p>
+<p>&lt;GREETING&gt;</p>
+<dir> 
+  <p>Hello XML!</p>
+</dir>
+<p>&lt;/GREETING&gt;</p>
+<p>其中&lt;?xml version="1.0" standalone="yes"?&gt;,&lt;GREETING&gt;和&lt;/GREETING&gt;是置标。Hello 
+  XML!是字符数据。XML比其他格式优越的一点是它把实际数据与置标明显地分隔开。</p>
+<p>更确切地说，置标包括所有的注释、字符引用、实体引用、CDATA段定界符、标记、处理指令和DTD。其他的就是字符数据。但是文档被处理后，一些置标会变成字符数据。例如，置标&amp;gt；变成了大于号（&gt;）。文档经处理后留下的字符数据和所有的代表特定字符的数据称为可分析的字符数据。</p>
+<h5><a name="_Toc467197040">6.2.1 注释</a></h5>
+<p>XML的注释与HTML的注释很相似，它们以&lt;!--开始，以--&gt;结束。介于&lt;!--和--&gt;之间的全部数据均被XML处理器忽略，就像它们根本不存在一样。注释用于提醒自己或临时标注出文档中不完善的部分。例如：</p>
+<p>&lt;?xml version="1.0" standalone="yes"?&gt;</p>
+<p>&lt;!--This is Listing 3-2 from The XML Bible-—&gt;</p>
+<p>&lt;GREETING&gt;</p>
+<p>Hello XML!</p>
+<p>&lt;!--Goodbye XML--&gt;</p>
+<p>&lt;/GREETING&gt;</p>
+<p>在使用注释时必须遵循以下几条规则，大致如下：</p>
+<p>1. 注释不能出现在XML声明之前，XML声明必须是文档最前面的部分。例如，下面这种情况是不允许的：</p>
+<p>&lt;!--This is Listing 3-2 from The XML Bible--&gt;</p>
+<p>&lt;?xml version="1.0" standalone="yes"?&gt;</p>
+<p>&lt;GREETING&gt;</p>
+<p>Hello XML!</p>
+<p>&lt;!--Goodbye XML--&gt;</p>
+<p>&lt;/GREETING&gt;</p>
+<p>2. 注释不能放在标记中，例如：下面这种情况是非法的：</p>
+<p>&lt;?xml version="1.0" standalone="yes"?&gt;</p>
+<p>&lt;GREETING&gt;</p>
+<p>Hello XML!</p>
+<p>&lt;/GREETING &lt;!--Goodbye--&gt; &gt;</p>
+<p>3. 注释可以包围和隐藏标记。在下面例子中，&lt;antigreeting&gt;标记及其内容被当作注释；而且文档在浏览器中显示时不会出现，好像不存在一样：</p>
+<p>&lt;?xml version="1.0" standalone="yes"?&gt;</p>
+<p>&lt;DOCUMENT&gt;</p>
+<p>&lt;GREETING&gt;</p>
+<p>Hello XML!</p>
+<p>&lt;/GREETING&gt;</p>
+<p>&lt;!--</p>
+<p>&lt;ANTIGREETING&gt;</p>
+<p>Goodbye XML!</p>
+<p>&lt;/ANTIGREETING&gt;</p>
+<p>--&gt;</p>
+<p>&lt;/DOCUMENT&gt;</p>
+<p>由于注释有效地删除了文本的一些部分，必须保证剩余的文本仍然是一个结构完整的XML文档。例如，在没有注释掉相应的结束标记前千万不要注释掉起始标记。例如，下面的语句是非法的：</p>
+<p>&lt;?xml version="1.0" standalone="yes"?&gt;</p>
+<p>&lt;GREETING&gt;</p>
+<p>Hello XML!</p>
+<p>&lt;!--</p>
+<p>&lt;/GREETING&gt;</p>
+<p>--&gt;</p>
+<p>一旦删除注释文本，剩余的是：</p>
+<p>&lt;?xml version="1.0" standalone="yes"?&gt;</p>
+<p>&lt;GREETING&gt;</p>
+<p>Hello XML!</p>
+<p>因为&lt;GREETING&gt;标记没有与之匹配的结束标记&lt;/GREETING&gt;，这已经不再是一个结构完整的XML文档。</p>
+<p>4. 两个连字符号（--）除了作为注释起始和结束标记的一部分外，不能出现在该注释中。例如,下面的是非法注释：</p>
+<p>&lt;!--The red door--that is,the second one--was left open--&gt;</p>
+<dir> 
+  <p>这意味着不能像下面的语句这样嵌套注释：</p>
+</dir>
+<p>&lt;?xml version="1.0" standalone="yes"?&gt;</p>
+<p>&lt;DOCUMENT&gt;</p>
+<p> &lt;GREETING&gt;</p>
+<p> Hello XML!</p>
+<p> &lt;/GREETING&gt;</p>
+<p>&lt;!--</p>
+<p> &lt;ANTIGREETING&gt;</p>
+<p> &lt;!--Goodbye XML!--&gt;</p>
+<p> &lt;/ANTIGREETING&gt;</p>
+<p>--&gt;</p>
+<p>&lt;/DOCUMENT&gt;</p>
+<p>这也意味着如果注释掉带有表达式如i--或numberLeft--的C、Java或者JavaScript源代码时就会出现问题。通常只要意识到这个问题就不难解决。</p>
+<h5><a name="_Toc467197041">6.2.2 实体引用</a></h5>
+<p>实体引用是指分析文档时会被字符数据取代的置标。XML预先定义了5个实体引用，列在表6-1中。实体引用用于XML文档中的特殊字符，否则这些字符将被解释为置标的组成部分。例如，实体引用&amp;lt；代表小于号（&lt;），否则会被解释为一个标记的起始部分。</p>
+<p>表6-1 XML预定义的实体引用</p>
+<p>
+<center>
+  <table BORDER cellspacing=2 bordercolor="#000000" cellpadding=7 width=273>
+    <tr>
+      <td width="56%" valign="TOP"> 
+        <p>实体引用
+      </td>
+      <td width="44%" valign="TOP"> 
+        <p>字 符
+      </td>
+    </tr>
+    <tr>
+      <td width="56%" valign="TOP"> 
+        <p>&amp;amp;
+      </td>
+      <td width="44%" valign="TOP"> 
+        <p>&amp;
+      </td>
+    </tr>
+    <tr>
+      <td width="56%" valign="TOP"> 
+        <p>&amp;lt;
+      </td>
+      <td width="44%" valign="TOP"> 
+        <p>&lt;
+      </td>
+    </tr>
+    <tr>
+      <td width="56%" valign="TOP"> 
+        <p>&amp;gt;
+      </td>
+      <td width="44%" valign="TOP"> 
+        <p>&gt;
+      </td>
+    </tr>
+    <tr>
+      <td width="56%" valign="TOP"> 
+        <p>&amp;quot;
+      </td>
+      <td width="44%" valign="TOP"> 
+        <p>"
+      </td>
+    </tr>
+    <tr>
+      <td width="56%" valign="TOP"> 
+        <p>&amp;apos;
+      </td>
+      <td width="44%" valign="TOP"> 
+        <p> 
+      </td>
+    </tr>
+  </table>
+</center>
+<p></p>
+<p><img src="image/BK000206-12.gif" width=49 height=50>XML中的实体引用与HTML中不同，必须以一个分号结束。因此&amp;gt;是正确的实体引用写法，&amp;gt是不正确的。</p>
+<p>未经处理的小于号（&lt;）同表示“和”的符号（&amp;）在一般的XML文本中往往被分别解释为起始标记和实体引用（特殊文本是指CDATA段，将在后面讨论）。因此，小于号同“和”号必须分别编码为&amp;lt;和&amp;amp;。例如，短语“Ben 
+  &amp; Jerry s New York Super Fudge Chunk Ice Cream”应当写成Ben &amp;amp;Jerry s 
+  New York Super Fudge Chunk Ice Cream 。</p>
+<p>大于号、双引号和撇号在它们可能会被解释成为置标的一部分时也必须编码。但是，养成全部编码的习惯要比努力推测一个特定的应用是否会被解释为置标容易得多。</p>
+<p>实体引用也能用于属性值中。例如：</p>
+<p>&lt;PARAM NAME="joke" VALUE="The diner said,</p>
+<p> &amp;quote;Waiter,There&amp;apos;s a fly in my soup!&amp;quote;"&gt;</p>
+<p>&lt;/PARAM&gt;</p>
+<h5><a name="_Toc467197042">6.2.3 CDATA</a></h5>
+<p>大多数情况下，出现在一对尖括号（&lt;&gt;）中的是置标，不在尖括号中的是字符数据。但是有一种情况例外，在CDATA段中所有文本都是纯字符数据。看起来与标记或者实体相似的仅仅是它们各自相应的文本。XML处理器无论如何是不会解释它们的。</p>
+<p>CDATA段用于需要把整个文本解释为纯字符数据而并不是置标的情况。当有一个包含许多&lt;、&gt;、&amp;或"字符而非置标的庞大文本时，这是非常有用的。对于大部分C和Java源代码，正是这种情况。</p>
+<p>如果想使用XML写有关XML的简介，CDATA段同样非常有效。例如，在本书中包含许多小的XML代码块，而我正在使用的字处理器又不能顾及这些情况。但是如果把本书转换为XML，我将不得不很辛苦地用&amp;lt;代替全部小于号，&amp;amp;代替所有“和”字符。如下所示：</p>
+<p>&amp;lt;?xml version="1.0" standalone="yes"?&amp;gt;</p>
+<p>&amp;lt;GREETING&amp;gt;</p>
+<p>Hello XML!</p>
+<p>&amp;lt;/GREETING&amp;gt;</p>
+<p>为了避免这种麻烦，可以使用一个CDATA段表示一个不需翻译的文本块。CDATA段以&lt;![CDATA[ 开始并以 ]]&gt;结束，例如：</p>
+<p>&lt;![CDATA[</p>
+<p>&lt;?xml version="1.0" standalone="yes"?&gt;</p>
+<p>&lt;GREETING&gt;</p>
+<p>Hello XML!</p>
+<p>&lt;/GREETING&gt;</p>
+<p>]]&gt;</p>
+<p>唯一不许出现在CDATA段中的文本是CDATA的结束界定符]]&gt;。注释可能会出现在CDATA段中，但不再扮演注释的角色。也就是说两个注释标记和包含在它们之间的全部文本都将显示出来。</p>
+<p><img src="image/BK000206-1.gif" width=57 height=48>因为]]&gt;不能出现在CDATA段中，所以CDATA段不能嵌套。这使得使用XML写有关的CDATA段相对困难些。如果需要的话，必须去掉项目符号，并使用&amp;lt;、&amp;amp;和实体引用。</p>
+<p>CDATA段不常需要，一旦需要时，它是非常有用的。</p>
+<h5><a name="_Toc467197043">6.2.4 标记</a></h5>
+<p>置标能够区分XML文件与无格式文本文件。置标的最大部分是标记。前一章讲隽吮昙堑氖褂梅椒ǎ窘诮ㄒ灞昙遣⑻峁┦褂梅椒ā?/p>
+<p>简而言之，标记在XML文档中以&lt;开始，以&gt;结束，而且不包含在注释或者CDATA段中。因此，XML标记有与HTML标记相同的形式。开始或打开标记以&lt;开始，后面跟有标记名。终止或结束标记以&lt;/开始，后面也跟标记名。遇到的第一个&gt;该标记结束。</p>
+<h6>6.2.4.1 标记名</h6>
+<p>每个标记都有一个名称。标记名必须以字母或下划线（_）开始，名称中后续字符可以包含字母、数字、下划线、连字符和句号。其中不能含有空格（经常用下划线替代空格）。下面是一些合法的XML标记：</p>
+<p>&lt;HELP&gt;</p>
+<p>&lt;Book&gt;</p>
+<p>&lt;volume&gt;</p>
+<p>&lt;heading1&gt;</p>
+<p>&lt;section.paragraph&gt;</p>
+<p>&lt;Mary_Smith&gt;</p>
+<p>&lt;_8ball&gt;</p>
+<p><img src="image/BK000206-4.gif" width=50 height=36>冒号出现在标记名中从语法上讲是合法的，但是它们被保留用于命名域。命名域可以混合和匹配可能使用同名标记的标记集合。命名域将在第18章讨论。</p>
+<p>以下是句法不正确的XML标记：</p>
+<p>&lt;Book%7&gt;</p>
+<p>&lt;volume control&gt;</p>
+<p>&lt;1heading&gt;</p>
+<p>&lt;Mary Smith&gt;</p>
+<p>&lt;.employee.salary&gt;</p>
+<p><img src="image/BK000206-1.gif" width=53 height=45>事实上标记名的规则也适用于其他许多名称，如属性名、ID属性值、实体名和其他一些将在后面几章遇到的结构。</p>
+<p>结束标记与起始标记同名，只是在起始尖括号后加了一个/。例如，如果起始标记是&lt;FOO&gt;，那么结束标记是&lt;/FOO&gt;。下面是前面所提到的合法起始标记所对应的结束标记：</p>
+<p>&lt;/HELP&gt;</p>
+<p>&lt;/Book&gt;</p>
+<p>&lt;/volume&gt;</p>
+<p>&lt;/heading1&gt;</p>
+<p>&lt;/section.paragraph&gt;</p>
+<p>&lt;/Mary_Smith&gt;</p>
+<p>&lt;/_8ball&gt;</p>
+<p>XML名称是大小写敏感的。在HTML中的&lt;P&gt;和&lt;p&gt;是同一个标记，&lt;/p&gt;可以结束一个&lt;P&gt;标记，但在XML中却不行。下面所示的并不是我们讨论过的合法起始标记所对应的结束标记：</p>
+<p>&lt;/help&gt;</p>
+<p>&lt;/book&gt;</p>
+<p>&lt;/Volume&gt;</p>
+<p>&lt;/HEADING1&gt;</p>
+<p>&lt;/Section.Paragraph&gt;</p>
+<p>&lt;/MARY_SMITH&gt;</p>
+<p>&lt;/_8BALL&gt;</p>
+<p>尽管大小写字母均可以用在XML的标记中，从此观点出发，我会尽可能遵循使用大写的约定。这主要是因为大写在本书中可以更突出，但是有时使用的标记集是别人建立的，那么采用别人的习惯约定是必要的。</p>
+<h6>6.2.4.2 空标记</h6>
+<p>许多不含数据的HTML标记没有结束标记。例如，在HTML中没有&lt;/LI&gt;、&lt;/IMG&gt;、&lt;/HR&gt;或&lt;/BR&gt;标记。一些页面作者在所列的项目后面确实会包含&lt;/LI&gt;标记，一些HTML工具也使用&lt;/LI&gt;标记。但是HTML 
+  4.0标准特别否认了这一点的必要性。同HTML中所有没有被公认的标记一样，一个不必要的&lt;/LI&gt;的出现对交付的输出没有任何影响。</p>
+<p>这在XML中不是问题。XML的总体观点就是在分析文档时允许发现新的标记。因此没有识别的标记就不会被简单地忽略。而且XML处理器一定能够判明以前从没出现过的一个标记有没有结束标记。</p>
+<p>XML区分带有结束标记的标记，而不带结束标记的标记称为空标记。空标记以斜杠和一个结束尖括号（/&gt;）结束。例如，&lt;BR/&gt;或&lt;HR/&gt;。</p>
+<p>目前的Web浏览器处理这种标记的方法不一致，如果希望保持向后的兼容性，可以用结束标记来代替，只要在两个标记之间不包含任何文本。例如：</p>
+<p>&lt;BR&gt;&lt;/BR&gt;</p>
+<p>&lt;HR&gt;&lt;/HR&gt;</p>
+<p>&lt;IMG&gt;&lt;/IMG&gt;</p>
+<p>在学了后续几章中的DTD和样式单后，将会看到在必须由传统浏览器分析的文档中使用HTML可以有多种方法保持向前和向后的兼容性。</p>
+<h5><a name="_Toc467197044">6.2.5 属性</a></h5>
+<p>在前面的章节中讨论过，起始标记和空标记可以随意地包含属性。属性是用等号（=）分隔开的名称-数值对。例如：</p>
+<p>&lt;GREETING LANGUAGE="English"&gt;</p>
+<p>Hello XML!</p>
+<p>&lt;MOVIE SRC="WavingHand.mov"/&gt;</p>
+<p>&lt;/GREETING&gt;</p>
+<p>在此&lt;GREETING&gt;标记有一个LANGUAGE属性，其属性值是English。&lt;MOVIE&gt;标记有一个SRC属性，其属性值为WavingHand.mov。</p>
+<h6>6.2.5.1 属性名</h6>
+<p>属性名是字符串，遵循与标记名同样的规则。这就是，属性名必须以字母或下划线（_）开始，名称中后续字符可以包含字母、数字、下划线、连字符和句号。其中不能含有空格（经常用下划线替代空格）。</p>
+<p>同一个标记不能有两个同名的属性。例如，下面的例子是不合法的：</p>
+<p>&lt;RECTANGLE SIDE="8cm" SIDE="10cm"/&gt;</p>
+<p>属性名是区分大小写的。SIDE属性与side或者Side属性不是同一个属性，因此以下例子是合法的：</p>
+<p>&lt;BOX SIDE="8cm" side="10cm" Side="31cm"/&gt;</p>
+<p>但是上面的这种写法很迷惑人，最好不要这样书写。</p>
+<h6>6.2.5.2 属性值</h6>
+<p>属性值也是字符串。如下面所示的LENGTH属性，即使字符串表示的是一个数，但还是两个字符7和2，不是十进制数的72。</p>
+<p>&lt;RULE LENGTH="72"/&gt;</p>
+<p>如果编写处理XML的代码，在对字符串执行算术运算之前必须把它们转换为一个数。</p>
+<p>与属性名不同，对属性值包含的内容没有任何限制。属性值可以包含空格，可以以一个数字或任何标点符号（有时单括号和双括号除外）开头。</p>
+<p>XML属性值由引号界定。与HTML属性不同，XML属性值必须加引号。大多数情况下是使用双引号，但是如果属性值本身含有一个引号，就需要使用单引号。例如：</p>
+<p>&lt;RECTANGLE LENGTH= 7"  WIDTH= 8.5" /&gt;</p>
+<p>如果属性值中含有两种引号，那么其中不用于界定字符串的一个必须用合适的实体引用代替。我通常替换两个，这种方法很管用。例如：</p>
+<p>&lt;RECTANGLE LENGTH= 8&amp;apos;7&amp;quot;  WIDTH="10&amp;apos;6&amp;quot;"/&gt;</p>
+ 
+<a href='368.htm'>&lt;&lt;上一篇</a>&nbsp;&nbsp;<a href='370.htm'>下一篇&gt;&gt;</a></td>
+        </tr>
+      </table>
+      <p>&nbsp; </p>
+    </td>
+  </tr>
+</table>
+
+</body>
+
+</html>

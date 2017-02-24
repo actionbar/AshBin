@@ -1,0 +1,136 @@
+<html>
+    <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf8" />
+    <title>table表格排序</title>
+    <style type="text/css">
+    .fu_list{ width:500px; border:1px solid #ebebeb;line-height:20px; font-size:12px;}
+    .fu_list thead td{background-color:#ebebeb;}
+    .fu_list td{padding:5px;}
+    .fu_list a{outline:none;/*ff*/hide-focus:expression(this.hideFocus=true);/*ie*/}
+    .fu_list a:link, .fu_list a:visited, .fu_list a:hover, .fu_list a:active{text-decoration:none;color:#333;}
+    .fu_list thead a{padding-right:15px;}
+    .fu_list thead a.up, .fu_list thead a.down{ background:url() right center no-repeat; }
+    .fu_list thead a.down{background-image:url();}
+    </style>
+	
+    </head>
+    <body>
+    <table border="0" cellspacing="0" cellpadding="0" class="fu_list" id="idTable">
+    <thead>
+    <tr>
+    <td> <a href="javascript:void(0)" id="idTitle">名称</a> / <a href="javascript:void(0)" id="idExt">类型</a></td>
+    <td width="150" align="center"><a href="javascript:void(0)" id="idAddtime" class="up">上传时间</a></td>
+    <td width="50" align="center"><a href="javascript:void(0)" id="idSize">大小</a></td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td _ext="rar">JSCSS</td>
+    <td align="center" _order="2008/9/12 8:51:09">2008-9-12 8:51:09</td>
+    <td align="right" _order="433247">423.09 K</td>
+    </tr>
+    <tr>
+    <td _ext="htm">AJAX</td>
+    <td align="center" _order="2008/10/4 20:21:54">2008-3-6 20:12:23</td>
+    <td align="right" _order="11394">11.13 K</td>
+    </tr>
+    <tr>
+    <td _ext="htm">EXT</td>
+    <td align="center" _order="2008/10/4 20:21:54">2008-10-4 20:21:54</td>
+    <td align="right" _order="351">351 b</td>
+    </tr>
+    <tr>
+    <td _ext="xml">Index</td>
+    <td align="center" _order="2008/10/4 20:24:11">2008-10-5 20:12:36</td>
+    <td align="right" _order="14074">13.74 K</td>
+    </tr>
+    <tr>
+    <td _ext="js">ORDER</td>
+    <td align="center" _order="2008/10/4 20:24:11">2009-07-6 20:26:18</td>
+    <td align="right" _order="2844">2.78 K</td>
+    </tr>
+    </tbody>
+    </table>
+    <input name="" type="button" value="这里是预设排序动作你自己设定吧" id="idBtn" />
+    <script type="text/javascript">
+    var $=function (id) {return "string" == typeof id ? document.getElementById(id) : id;};
+	
+	
+   
+	
+    Function.prototype.bind=function(object) {var __method=this, args=Array.prototype.slice.call(arguments); args.shift();return function() {return __method.apply(object, args.concat(Array.prototype.slice.call(arguments)));}}
+	
+    function Each(list, fun){for (var i=0, len=list.length; i < len; i++) { fun(list[i], i); }};
+	
+    var TableOrder=function() {this.initialize.apply(this, arguments);};
+	
+    TableOrder.prototype={
+    initialize: function(table) {this.tBody=$(table).tBodies[0];this.Rows=[];this._order=null;
+    Each(this.tBody.rows, function(o){this.Rows.push(o);}.bind(this));
+    },
+    Sort: function() {
+    if(!this._order){ return false };
+    this.Rows.sort(!this._order.Compare ? this.Compare.bind(this) : this._order.Compare);
+    this._order.Down  &&  this.Rows.reverse();
+    var oFragment=document.createDocumentFragment();
+    Each(this.Rows, function(o){ oFragment.appendChild(o); });
+    this.tBody.appendChild(oFragment);
+    this._order.onSort();
+    },
+    Compare: function(o1, o2) {
+    var value1=this.GetValue(o1), value2=this.GetValue(o2);
+    return value1 < value2 ? -1 : value1 > value2 ? 1 : 0;
+    },
+    GetValue: function(tr) {
+    var td=tr.getElementsByTagName("td")[this._order.Index], data=td[this._order.Attri] ? td[this._order.Attri] : td.getAttribute(this._order.Attri);
+    switch (this._order.DataType.toLowerCase()) {case "int":return parseInt(data) || 0;
+    case "float":return parseFloat(data) || 0;
+    case "date":return Date.parse(data) || 0;
+    case "string":default:return data.toString() || "";}
+    },
+    Add: function(index, options) {
+    var oThis=this;
+    return new function(){
+    this.Attri="innerHTML";
+    this.DataType="string";
+    this.Down=true;
+    this.onSort=function(){};
+    this.Compare=null;
+	var source=options||{};
+	for (var I in source) {this[I]=source[I];}
+    this.Index=index;
+    this.Sort=function(){ oThis._order=this; oThis.Sort(); };
+    };
+    }
+    }
+    var to=new TableOrder("idTable");
+	
+    function SetOrder(obj, index, options){
+    var o=$(obj);
+    !SetOrder._arr  &&  (SetOrder._arr=[]); SetOrder._arr.push(o);
+    var order=to.Add(index, options);
+    order.onSort=function(){
+    Each(SetOrder._arr, function(o){ o.className=""; });
+    o.className=order.Down ? "down" : "up";
+    order.Down=!order.Down
+    }
+    o.onclick=function(){ order.Sort(); return false; }
+    }
+	
+    SetOrder("idTitle", 0);
+    SetOrder("idExt", 0, { Attri: "_ext" });
+    SetOrder("idAddtime", 1, { Attri: "_order", DataType: "date" });
+    SetOrder("idSize", 2, { Attri: "_order", DataType: "int" });
+	
+    var order2=to.Add(0, {
+    onSort: function(){ Each(SetOrder._arr, function(o){ o.className=""; }); },
+    Compare: function(o1, o2) {
+    var value1=/x/i.test(to.GetValue(o1)), value2=/x/i.test(to.GetValue(o2));
+    return value1  &&  !value2 ? 1 : !value1  &&  value2 ? -1 : 0;
+    }
+    });
+	
+    $("idBtn").onclick=function(){ order2.Sort(); }
+    </script>
+    </body>
+    </html>

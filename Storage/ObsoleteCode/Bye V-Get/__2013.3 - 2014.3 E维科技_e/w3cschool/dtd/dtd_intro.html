@@ -1,0 +1,130 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="../c3.css" />
+<title>DTD 简介</title>
+</head>
+<body class="xml">
+<div id="wrapper">
+<div id="header">
+<a href="http://e.v-get.com/w3cschool/" style="float:left;">W3CSchool 在线教程</a>
+<div class="q g"><script type="text/javascript">var cpro_id="u1163355"</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div>
+<div id="navfirst">
+<ul id="menu">
+<li id="h"><a href="../h.html">HTML教程</a></li>
+<li id="x"><a href="../x.html">XML教程</a></li>
+<li id="b"><a href="../b.html">浏览器脚本</a></li>
+<li id="s"><a href="../s.html">服务器脚本</a></li>
+<li id="d"><a href="../d.html">dot net教程</a></li>
+<li id="m"><a href="../m.html">多媒体教程</a></li>
+<li id="w"><a href="../w.html">建站手册</a></li>
+</ul>
+</div><div id="navsecond">
+<div id="course">
+<h2>DTD 教程</h2>
+<ul>
+<li><a href="http://e.v-get.com/w3cschool/">DTD 首页</a></li>
+<li><a href="dtd_intro.html">DTD 简介</a></li>
+<li><a href="dtd_building.html">DTD 构建模块</a></li>
+<li><a href="dtd_elements.html">DTD 元素</a></li>
+<li><a href="dtd_attributes.html">DTD 属性</a></li>
+<li><a href="dtd_entities.html">DTD 实体</a></li>
+<li><a href="dtd_validation.html">DTD 验证</a></li>
+<li><a href="dtd_examples.html">DTD 实例</a></li>
+<li><a href="dtd_summary.html">DTD 总结</a></li>
+</ul>
+</div>
+<div id="selected">
+<h2>建站手册</h2>
+<ul>
+<li><a href="../site/">网站构建</a></li>
+<li><a href="../w3c/">万维网联盟</a></li>
+<li><a href="http://e.v-get.com/w3c/">W3CSchool 教程</a></li>
+<li><a href="../quality/">网站品质</a></li>
+<li><a href="../semweb/">语义网</a></li>
+<li><a href="../hosting/">网站主机</a></li>
+</ul>
+<h2><a href="http://e.v-get.com/w3c/" class="f13">W3CSchool 教程</a></h2><div class="a120x90"><script type="text/javascript">var cpro_id="u1210867";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div></div>
+</div>
+<div id="maincontent">
+<h1>DTD 简介</h1>
+<div id="tpn">
+<ul class="prenext">
+<li class="pre"><a href="http://e.v-get.com/w3cschool/">上一页</a></li>
+<li class="next"><a href="dtd_building.html">下一页</a></li>
+</ul>
+</div>
+<div id="intro">
+<p><strong>文档类型定义 (DTD）可定义合法的XML文档构建模块。它使用一系列合法的元素来定义文档的结构。</strong></p>
+<p><strong>DTD 可被成行地声明于 XML 文档中，也可作为一个外部引用。</strong></p>
+</div>
+<div>
+<h2>内部的 DOCTYPE 声明</h2>
+<p>假如 DTD 被包含在您的 XML 源文件中，它应当通过下面的语法包装在一个 DOCTYPE 声明中：</p>
+<pre>&lt;!DOCTYPE 根元素 [元素声明]&gt;</pre>
+<p>带有 DTD 的 XML 文档实例 (请在 IE5 以及更高的版本打开，并选择查看源代码）：</p>
+<pre>&lt;?xml version=&#34;1.0&#34;?&gt;
+&lt;!DOCTYPE note [
+  &lt;!ELEMENT note (to,from,heading,body)&gt;
+  &lt;!ELEMENT to      (#PCDATA)&gt;
+  &lt;!ELEMENT from    (#PCDATA)&gt;
+  &lt;!ELEMENT heading (#PCDATA)&gt;
+  &lt;!ELEMENT body    (#PCDATA)&gt;
+]&gt;
+&lt;note&gt;
+  &lt;to&gt;George&lt;/to&gt;
+  &lt;from&gt;John&lt;/from&gt;
+  &lt;heading&gt;Reminder&lt;/heading&gt;
+  &lt;body&gt;Don't forget the meeting!&lt;/body&gt;
+&lt;/note&gt;</pre>
+<p><a href="note_in_dtd.xml">在您的浏览器中打开此 XML 文件，并选择“查看源代码”命令</a>。</p>
+<h3>以上 DTD 解释如下：</h3>
+<p><em>!DOCTYPE note</em> (第二行)定义此文档是 <em>note</em> 类型的文档。</p>
+<p><em>!ELEMENT note</em> (第三行)定义 <em>note</em> 元素有四个元素：&#34;to、from、heading,、body&#34;</p>
+<p><em>!ELEMENT to</em> (第四行)定义 <em>to</em> 元素为 &#34;#PCDATA&#34; 类型</p>
+<p><em>!ELEMENT from</em> (第五行)定义 <em>frome</em> 元素为 &#34;#PCDATA&#34; 类型</p>
+<p><em>!ELEMENT heading</em> (第六行)定义 <em>heading</em> 元素为 &#34;#PCDATA&#34; 类型</p>
+<p><em>!ELEMENT body</em> (第七行)定义 <em>body</em> 元素为 &#34;#PCDATA&#34; 类型</p>
+</div>
+<div>
+<h2>外部文档声明</h2>
+<p>假如 DTD 位于 XML 源文件的外部，那么它应通过下面的语法被封装在一个 DOCTYPE 定义中：</p>
+<pre>&lt;!DOCTYPE 根元素 SYSTEM &#34;文件名&#34;&gt;</pre>
+<p>这个 XML 文档和上面的 XML 文档相同，但是拥有一个外部的 DTD:  (<a href="note_ex_dtd.xml">在 IE5 中打开</a>，并选择“查看源代码”命令。）</p>
+<pre>&lt;?xml version=&#34;1.0&#34;?&gt;
+&lt;!DOCTYPE note SYSTEM &#34;note.dtd&#34;&gt;
+&lt;note&gt;
+&lt;to&gt;George&lt;/to&gt;
+&lt;from&gt;John&lt;/from&gt;
+&lt;heading&gt;Reminder&lt;/heading&gt;
+&lt;body&gt;Don't forget the meeting!&lt;/body&gt;
+&lt;/note&gt; </pre>
+<p>这是包含 DTD 的 &#34;note.dtd&#34; 文件：</p>
+<pre>&lt;!ELEMENT note (to,from,heading,body)&gt;
+&lt;!ELEMENT to (#PCDATA)&gt;
+&lt;!ELEMENT from (#PCDATA)&gt;
+&lt;!ELEMENT heading (#PCDATA)&gt;
+&lt;!ELEMENT body (#PCDATA)&gt;</pre>
+</div>
+<div>
+<h2>为什么使用 DTD？</h2>
+<p>通过 DTD，您的每一个 XML 文件均可携带一个有关其自身格式的描述。</p>
+<p>通过 DTD，独立的团体可一致地使用某个标准的 DTD 来交换数据。</p>
+<p>而您的应用程序也可使用某个标准的 DTD 来验证从外部接收到的数据。</p>
+<p>您还可以使用 DTD 来验证您自身的数据。</p>
+</div>
+<div id="bpn">
+<ul class="prenext">
+<li class="pre"><a href="http://e.v-get.com/w3cschool/">上一页</a></li>
+<li class="next"><a href="dtd_building.html">下一页</a></li>
+</ul>
+</div>
+</div>
+<div id="sidebar">
+<div class="rs"></div><div class="a120x600"><script type="text/javascript">var cpro_id="u1293136";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div><div class="b"></div>
+</div>
+</body>
+</html>

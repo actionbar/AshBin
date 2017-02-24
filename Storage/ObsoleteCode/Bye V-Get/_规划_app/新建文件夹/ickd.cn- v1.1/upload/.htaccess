@@ -1,0 +1,12 @@
+<IfModule mod_rewrite.c>
+	RewriteEngine On
+	RewriteBase /upload/
+	ErrorDocument 404 /404.html
+	RewriteRule ^([a-zA-Z]+)-([a-zA-Z\d]+)\.html?$ query.php?expName=$1&expNo=$2
+	RewriteRule ^([a-zA-Z]+)-([a-zA-Z\d]+)-([\d]+)\.html?$ query.php?expName=$1&expNo=$2&page=$3
+	RewriteRule ^([a-zA-Z]+)-([a-zA-Z\d]+)-ajax\.html?$ query.php?expName=$1&expNo=$2&inajax=1
+	RewriteRule ^([a-zA-Z]+)$ index.php?expName=$1
+	RewriteRule ^comment.do$ comment.php
+	RewriteRule ^query.do$ do.php
+	RewriteRule ^([a-zA-Z]+).html$ query.php?expName=$1 [L]
+</IfModule>

@@ -1,0 +1,182 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>二级域名原理以及程序，申请即可开通</title>
+<style type="text/css">
+<!--
+body {
+	font-size: 10.4pt;
+	line-height: 22px;
+}
+-->
+</style>
+</head>
+
+<body bgcolor="eeeeee" leftmargin="20" marginwidth="20">
+<p><strong>二级域名原理以及程序，申请即可开通</strong></p>
+<hr>
+<p> 要达到二级名的效果，必须一下条件以及流程：<br>
+  1、必须有一个顶级域名，而且此域名必须做好泛解析并做好指向。<br>
+  2、必须有一台独立的服务器。泛解析的域名指向该服务器。<br>
+  3、在服务器上的IIS建一个空的主机头名的web站点。<br>
+  4、将默认的页面设置为你的二机解析程序（比如：freedns.asp）<br>
+  5、二级域名系列程序（包括申请页：shenqing.htm，添加页add.asp,解析页，）<br>
+  <br>
+  <br>
+  此程序的优点：<br>
+  a，可以限制申请域名的敏感字,比如 hacker,wwww,sex,china等<br>
+  b, 可以限制申请域名的非法字，比如：！·#￥%……—*（）——？‘“/等<br>
+  c, 每个地址只能申请一个域名。<br>
+  d，限制申请域名的长度，<br>
+  e, 如果用户所访问的域名没人申请则转到特定的页面，本例中的http://www.51bxg.com/miss.html<br>
+  f, 申请了域名：***.yourname.com 可以同时支持：http://***.yourname.com 以及http://www.***.youranme.com 
+  两个域名的访问。<br>
+  <br>
+  <br>
+  一下为系列程序代码：<br>
+  shenqing.htm<br>
+  <br>
+  &lt;form action=adddns.asp method=post name=Frm onSubmit=&quot;return check_input()&quot;&gt; 
+  &lt;br&gt; &lt;font color=red&gt;加*号为必填内容&lt;/font&gt; &lt;br&gt;<br>
+  您想注册的域名： <br>
+  http://&lt;;input name=&quot;nowurl&quot; size=12 <br>
+  style=&quot; BORDER-BOTTOM: 1px double; BORDER-LEFT: 1px double; BORDER-RIGHT: 
+  1px double; BORDER-TOP: 1px double; COLOR: #000000; FONT-SIZE: 9pt&quot;&gt; 
+  .51bxg.com <br>
+  　　　　 &lt;br&gt;<br>
+  你实际的网站地址：<br>
+  &lt;input name=&quot;tourl&quot; size=12 <br>
+  style=&quot; BORDER-BOTTOM: 1px double; BORDER-LEFT: 1px double; BORDER-RIGHT: 
+  1px double; BORDER-TOP: 1px double; COLOR: #000000; FONT-SIZE: 9pt&quot;&gt;<br>
+  你要求显示的title：<br>
+  &lt;input name=&quot;company&quot; size=12 <br>
+  style=&quot; BORDER-BOTTOM: 1px double; BORDER-LEFT: 1px double; BORDER-RIGHT: 
+  1px double; BORDER-TOP: 1px double; COLOR: #000000; FONT-SIZE: 9pt&quot;&gt;<br>
+  <br>
+  <br>
+  &lt;br&gt;<br>
+  &lt;input type=&quot;submit&quot; name=&quot;Submit&quot; value=&quot; 提 交 信 
+  息 &quot; style=&quot;border:1px double rgb(88,88,88);font:9pt&quot;&gt;<br>
+  　　 <br>
+  &lt;input type=&quot;reset&quot; name=&quot;Reset&quot; value=&quot; 重 新 填 写 
+  &quot; style=&quot;border:1px double rgb(88,88,88);font:9pt&quot;&gt;<br>
+  &lt;/p&gt;<br>
+  &lt;/form&gt;<br>
+  <br>
+  <br>
+  添加记录页面add.asp<br>
+  &lt;!--#include file=&quot;char.inc&quot;--&gt;<br>
+  &lt;!--#include file=&quot;conn.asp&quot;--&gt;<br>
+  &lt;%<br>
+  uID=request.cookies(&quot;*****&quot;)<br>
+  %&gt;<br>
+  &lt;%<br>
+  dim nowurl,tourl,company,along,pbkey<br>
+  nowurl=trim(request.form(&quot;nowurl&quot;))+&quot;.51bxg.com&quot;<br>
+  nurl=trim(request.form(&quot;nowurl&quot;))<br>
+  tourl=trim(request.form(&quot;tourl&quot;))<br>
+  company=trim(request.form(&quot;company&quot;))<br>
+  along=20<br>
+  pbkey=&quot;www,sex,admin,w,ww,wwww,hacker,hack&quot;<br>
+  <br>
+  <br>
+  set rs=server.createobject(&quot;adodb.recordset&quot;)<br>
+  sql=&quot;select * from dns where userid='&quot;&amp;uid&amp;&quot;'&quot;<br>
+  rs.open sql,conn,1,1<br>
+  if not rs.EOF then<br>
+  response.write&quot;很抱歉，你已经申请过二级域名，每个用户只能申请一个二级域名！&lt;br&gt;你申请的二级域名是：http://&quot;+rs(&quot;nowurl&quot;)<br>
+  response.end<br>
+  end if<br>
+  <br>
+  <br>
+  set rs=server.createobject(&quot;adodb.recordset&quot;)<br>
+  sql=&quot;select * from dns where nowurl='&quot;&amp;nowurl&amp;&quot;'&quot;<br>
+  rs.open sql,conn,1,1<br>
+  if not rs.eof then<br>
+  response.write&quot;很抱歉，你申请的域名：http://&quot;+nowurl+&quot;已经被其他公司申请，请另外申请域名。&quot;<br>
+  response.end<br>
+  end if<br>
+  <br>
+  if len(nurl)&gt;along then<br>
+  response.write&quot;很抱歉，你输入的域名太长，请重新输入&quot;<br>
+  response.end <br>
+  end if<br>
+  <br>
+  if instr(pbkey,nurl) then<br>
+  response.write&quot;很抱歉，你输入的域名因为含有敏感字而不管理员屏蔽，请重新输入。&quot;<br>
+  response.end<br>
+  end if<br>
+  <br>
+  '判断字符的合法性<br>
+  if instr(nurl,&quot;~&quot;) or instr(nurl,&quot;`&quot;) or instr(nurl,&quot;/&quot;) 
+  or instr(nurl,&quot;?&quot;) or instr(nurl,&quot;&gt;&quot;) or instr(nurl,&quot;&lt;&quot;) 
+  or instr(nurl,&quot;;&quot;) or instr(nurl,&quot;:&quot;) or instr(nurl,&quot;}&quot;) 
+  or instr(nurl,&quot;{&quot;) or instr(nurl,&quot;)&quot;) or instr(nurl,&quot;(&quot;) 
+  or instr(nurl,&quot;*&quot;) or instr(nurl,&quot;&amp;&quot;) or instr(nurl,&quot;^&quot;) 
+  or instr(nurl,&quot;%&quot;) or instr(nurl,&quot;.&quot;) or instr(nurl,&quot;,&quot;) 
+  or instr(nurl,&quot;'&quot;) or instr(nurl,&quot;~&quot;) or instr(nurl,&quot;!&quot;) 
+  or instr(nurl,&quot;$&quot;) then<br>
+  response.write&quot;很抱歉，你输入的域名含有非法字符，请重新输入，以下字符为非法字符：&lt;br&gt;~ ` / ? &gt; 
+  &lt; ; : } { ) ( * &amp; ^ % $ # @ ! &quot;<br>
+  response.end<br>
+  end if<br>
+  <br>
+  <br>
+  set rs=server.createobject(&quot;adodb.recordset&quot;)<br>
+  sql=&quot;select * from ** where theid is null&quot;<br>
+  rs.open sql,conn,3,3<br>
+  rs.addnew<br>
+  rs(&quot;userid&quot;)=uID<br>
+  rs(&quot;nowurl&quot;)=nowurl<br>
+  rs(&quot;tourl&quot;)=tourl<br>
+  rs(&quot;company&quot;)=company<br>
+  rs.update<br>
+  response.write&quot;祝贺，申请成功，你马上就可使用你的域名：http://&quot;+nowurl<br>
+  %&gt; <br>
+  <br>
+  <br>
+  域名解吸程序： freedns.asp<br>
+  &lt;!--#include file=&quot;conn.asp&quot;--&gt;<br>
+  &lt;%<br>
+  dim geturl<br>
+  geturl=replace(Request.ServerVariables(&quot;HTTP_HOST&quot;),&quot;www.&quot;,&quot;&quot;)<br>
+  <br>
+  set rs=server.createobject(&quot;adodb.recordset&quot;)<br>
+  sql=&quot;select * from tb where nowurl='&quot;&amp;geturl&amp;&quot;'&quot;<br>
+  rs.open sql,conn,1,1<br>
+  if rs.eof then<br>
+  response.redirect&quot;http://www.51bxg.com/miss.html&quot;<br>
+  else<br>
+  dim tourl,company<br>
+  tourl=rs(&quot;tourl&quot;)<br>
+  company=rs(&quot;company&quot;)<br>
+  %&gt;<br>
+  &lt;HTML&gt;<br>
+  &lt;HEAD&gt;<br>
+  &lt;META http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=gb2312&quot;&gt;<br>
+  &lt;META CONTENT=&quot;text/html; CHARSET=UTF-8&quot; HTTP-EQUIV=&quot;Content-Type&quot;&gt;<br>
+  &lt;TITLE&gt;&lt;% =company %&gt;&lt;/TITLE&gt;<br>
+  &lt;/HEAD&gt;<br>
+  <br>
+  <br>
+  &lt;frameset frameborder=&quot;0&quot; framespacing=&quot;0&quot; scrolling=&quot;no&quot; 
+  border=&quot;0&quot; marginheight=&quot;0&quot; marginwidth=&quot;0&quot; rows=&quot;0,*&quot;&gt;<br>
+  &lt;frame scrolling=&quot;NO&quot; noresize=&quot;0&quot; marginwidth=&quot;0&quot; 
+  marginheight=&quot;0&quot; framespacing=&quot;0&quot; frameborder=&quot;0&quot; 
+  target=&quot;main&quot; name=&quot;main&quot; SRC=&quot;about:blank&quot;&gt;<br>
+  <br>
+  &lt;frame scrolling=&quot;yes&quot; noresize=&quot;0&quot; marginwidth=&quot;0&quot; 
+  marginheight=&quot;0&quot; framespacing=&quot;0&quot; frameborder=&quot;0&quot; 
+  target=&quot;main&quot; name=&quot;main&quot; SRC=&quot;&lt;% =tourl %&gt;&quot;&gt;<br>
+  <br>
+  &lt;noframes&gt;<br>
+  &lt;body&gt;<br>
+  &lt;p&gt;This page uses frames, but your browser doesn't support them.&lt;/p&gt;&lt;/body&gt;<br>
+  &lt;/noframes&gt;<br>
+  &lt;/frameset&gt;<br>
+  &lt;/HTML&gt;<br>
+  &lt;% end if %&gt;<br>
+</p>
+</body>
+</html>

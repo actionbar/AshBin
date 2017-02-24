@@ -1,0 +1,25 @@
+<?php
+$url = $_SERVER['PHP_SELF']; 
+$filename= substr( $url , strrpos($url , '/')+2,-4);
+if(!isset($_GET['sure'])){
+echo '<a href="?sure=ok">确定更新e.v-get.com/host/'.$filename.'.html ？</a>';
+exit;
+}
+require '../_/global.php';$QC=mysql_connect('localhost',constant('db_user'),constant('db_pass'));mysql_select_db(constant('database'),$QC);mysql_query('set names utf8');
+
+$file=constant('uploadFile').'soho/'.$filename.'.html';
+$fp=fopen($file,'w+');if(is_writable($file)==false) {die("文件没有找到");exit;}
+else{$id_out='';
+
+$text=constant('CSSJS').'<link rel="stylesheet" type="text/css" href="'.constant('LTU_8').'ir.css" /><title>家居办公_客服代理_淘宝客服外包_天猫客服招聘_文字编辑_网上兼职_E维科技_V-Get!</title><meta name="keywords" content="客服外包,淘宝客服,网上兼职,天猫客服招聘,文字编辑"/><meta name="description" content="工资越来越高，办公室又小了。客服招聘越来越难？客服招聘、培训费时费力，都没时间推广了？为什么不选择客服员工外包呢？远程专业员工，降低客服成本，省时省力。E维科技，专注网络营销！"/>';
+
+$text.=TUN('soho');
+$text.='<div class="m mb">当前位置：<a href="'.constant('LK').'">E维科技</a> &gt;&gt; 家居办公</div><div class="v"><div class="p f l"><div class="lv" id="d"><h4 class="lh">家居办公</h4><ul><li><a href="'.constant('LK').'soho/kefu.html">网店客服外包</a></li><li><a href="'.constant('LK').'host/free.html">免费虚拟主机</a></li><li><a href="'.constant('LK').'host/virtual.html">FTP服务器空间</a></li><li><a href="'.constant('LK').'host/vps.html">VPS主机服务器</a></li><li><a href="'.constant('LK').'host/cloud.html">传统独享云主机</a></li><li><a href="'.constant('LK').'host/server.html">服务器托管租用</a></li><li><a href="'.constant('LK').'host/icp_beian.html">工信部域名备案</a></li></ul></div><div class="lc"><h4>购买流程</h4><ul><li><a href="'.constant('LK').'web/service.html">a. 客户选择主机类型</a></li><li class="lc2"></li><li><a href="'.constant('LK').'host/domain.html">b. 联系客服付费</a></li><li class="lc2"></li><li><a href="'.constant('LK').'host/">c. 获取主机账号</a></li><li class="lc2"></li><li><a href="'.constant('LK').'web/service_b2.html">d. 查询使用指南</a></li></ul></div><div class="lv mb"><h4>SOHO资讯</h4><ul>';
+$Qq=mysql_query('SELECT i,h,t FROM f2013 WHERE a=3'.$id_out.' ORDER BY t DESC LIMIT 10');
+while($Qa=mysql_fetch_array($Qq)){
+$I=$Qa['i'];$id_out.=' AND i!='.$I;$T=$Qa['t'];$t=strtotime($T);$t=date('Ymd/His',$t);
+$text.='<li><a href="'.constant('LK').'tech/'.$t.$I.'.html">'.SUB($Qa['h'],13).'</a></li>';}
+
+$text.='</ul></ul></div><div><h4>帮助中心</h4><div id="lii"><p><a href="http://e.v-get.com/open/php-frame.html">框架大全</a><a href="http://e.v-get.com/">源码下载</a></p><p class="lic"><a href="http://e.v-get.com/open/php-social.html">论坛源码</a><a href="http://e.v-get.com/tech/u/SEO_1.html">SEO教程</a></p><p><a href="http://e.v-get.com/open/php-shop.html">PHP商城</a><a href="http://e.v-get.com/open/php-soft.html">开发软件</a></p><p class="lic"><a href="http://e.v-get.com/tech/">码农笑话</a><a href="http://e.v-get.com/s?sk=Discuz">Discuz !</a></p></div></div></div><div class="q r f"><h4>客服招聘外包<span> Customer Service</span></h4><div class="fo"><img src="'.constant('LTP_8').'o/rc.jpg" width="700" height="186"/></div><div class="mf"><p><strong>客服外包</strong>是指我们提供客户网店日常运营客服服务，7*15小时的客服销售时间。</p><ul style="margin:0 25px"><li><strong>服务对象</strong>：淘宝、拍拍、MSN、英文客服、邮件回复、英文邮件回复等任何需要在线客服的用户</li><li><strong>工作时间</strong>：周一至周日（节假日无休，加班费另算） 9:00-24:00</li><li><strong>收费标准</strong>：① 1000元+(1-5)%店铺月销售总额作为佣金，提成比例按照店铺产品类别设定；② 3000元/月</li><li><strong>服务优势</strong>：</li></ul><p>①&nbsp; 全天15小时的客服销售时间，不让店铺错过任何一笔订单，更全面的让买家了解店铺产品信息</p><p>②&nbsp; 专业的客服团队，不定期的客服培训，让买家更深入的了解店铺产品信息，有效的促进店铺产品成交率</p><p>③&nbsp; 外包客服费用相对自己雇佣员工更低，付出和回报成正比</p><p>④&nbsp; 外包客服不仅节约成本，而且省去了商家本身招聘客服与培训客服的时间，让商家有更多的时间与精力去运营店铺，赢得利润</p><div style="margin:15px 25px;background:#eee;padding:15px;border:#ccc 1px solid"><p>深夜，某年轻顾客同时看好两个店铺的同款衣服，无论价格还是款式都是差不多的，但是一个店铺采用了“E维科技”客服外包，有专业的客服人员15小时值守，另外一个店铺没有客服。如果您是这位顾客，您会选择在哪家店铺购买呢？淘宝模式的存在，大大方便了网购用户，但是很多顾客的生活习惯不尽一样，很多顾客都习惯昼伏夜行的日夜颠倒的生活，而这部分往往大多数都是年轻的用户，这类顾客更偏向于去网购。而对于传统店铺来说，客流时间段不确定，让各位小店店长不得不一直束缚在电脑旁边，从而浪费了大量的时间，而且失去了各种交际活动：进军电子商务的传统企业，不得不增加成本，增加客服的存在，费时费力，而往往培训的非专业客服跳槽率比较高。</p></div><p>随着店铺的发展，客服出现以下问题：</p><p>1） 业务发展快，需要大量客服，招聘困难</p><p>2） 活动期间需要兼职客服</p><p>3） 客服不够专业，影响转化率</p><p>4） 客服流动性较大，管理培训等费用高</p><p>5） 休息时，店铺得停业，影响销售</p><p>6） … … … … … …</p><p>综上所述，我们发现，无论是小卖家的困扰还是传统企业的优化方案，有一共同的答案，那就是----客服外包</p><p>&nbsp;</p><p><strong>网店客服外包的好处：</strong></p><p>1） 全天15个小时的客服在线，不让店铺错过任何一笔订单</p><p>2） 专业的客服团队，不定期的客服培训，让客服可以深入的了解店铺知识，有效促进店铺的产品成交率</p><p>3） 降低成本、舒缓资金压力，假设自己拥有的专门的客服人员，客服费用巨大，而客服外包恰恰省去这笔开支，进行更重要的环节投资</p><p>4） 外包客服不但降低成本，还省去了商家本运营压力，提高抗风险能力</p><p>&nbsp;</p><p><strong>客服外包针对那些群体：</strong></p><p>1） 专注于自己开发产产品等核心环节的商家</p><p>2） 初中级客户，有一定生意但是专门招客服不划算</p><p>3） 已经有专门的客服人员，但是因成本太高，管理压力大的商家</p><p>4） 有计划公司集体出游或兼职有事，又不希望自己店铺无人打理</p><p>5） 因最近参加了大型活动，需要兼职客服人员的商家</p><p>电子商务快速发展，专业化人才非常匮乏，如果自己成立一支团队，不光是投入很大，见效也慢，E维客服外包服务，拥有专业的客服队伍，专注于外包的研究和发展，强强联合，为您创造最佳效益。</p></div></div>'.constant('BOTTOM').'<div class="pn"><script type="text/javascript">'.JI0().constant('TONGJI').'</script></div></body></html>';
+file_put_contents($file,$text);}
+?>

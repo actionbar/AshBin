@@ -1,0 +1,87 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>一个统计当前在线用户的解决方案</title>
+<style type="text/css">
+<!--
+body {
+	font-size: 10.4pt;
+	line-height: 22px;
+}
+-->
+</style>
+</head>
+
+<body bgcolor="eeeeee" leftmargin="20" marginwidth="20">
+<p><strong>一个统计当前在线用户的解决方案</strong></p>
+<p></p>
+<hr>
+<p> 在做一个在线交流的网站时，有个问题很令我头疼，就是关于实时统计在线用户的问题，客户要求：统计当前在线人数、游客人数、会员人数、在线用户列表，包括游客、会员和管理员（如果是游客，则自动生成游客的ID，如果是会员，则显示会员姓名）。因为它要求有实时性，则首先我将用global.asa解决的想法pass掉。</p>
+<p>问题的关键是如何判断用户已经离开，和当用户离开时如何执行一个文件或一个函数。</p>
+<p>经过和网上一些朋友的探讨，终于解决了这个问题。</p>
+<p>解决的原理为：编写一个通用页面，所谓的通用页面，就是应用里的每个页面都包含这个页面，例如：header.asp，在这个页面里，用XMLHTTP写一段代码，这段代码的作用是每隔10秒或20秒就向服务器发送一个请求，目的是更新当前用户的在线时间并删除在线时间超过一定时间的用户，使数据库中的在线用户记录保持一定的实时性。</p>
+<p>主要实现方法为：</p>
+<p>新建一数据库，字段名称分别为：id（字符）,name（字符）,user（数字）tt（日期）,admin（权限代码，0-普通用户，1-管理员）</p>
+<p>表名：online</p>
+<p>header.asp ↓</p>
+<p>============================================================</p>
+<p>&lt;%</p>
+<p>... ...</p>
+<p>if session(&quot;s_in&quot;)&lt;&gt;1 and session(&quot;s_name&quot;)=&quot;&quot; 
+  then '如果用户是第一次登陆</p>
+<p> rs.open &quot;select * from online&quot;,conn,3,3<br>
+  rs.addnew<br>
+  rs(&quot;id&quot;)=session.sessionID<br>
+  rs(&quot;name&quot;)=&quot;游客&quot; &amp; session.sessionID<br>
+  rs(&quot;user&quot;)=0 '0表示用户未登陆，是游客身份<br>
+  rs(&quot;tt&quot;)=now<br>
+  rs.update<br>
+  rs.close<br>
+  session(&quot;s_in&quot;)=1 '设置用户的资料已经存入数据库，表示已经在线<br>
+  end if</p>
+<p>if session(&quot;s_name&quot;)&lt;&gt;&quot;&quot; then '如果用户已经通过登录框登录<br>
+  rs.open &quot;select * from online where id='&quot; &amp; session.sessionID 
+  &amp; &quot;'&quot;,conn,3,3<br>
+  rs(&quot;name&quot;)=session(&quot;s_name&quot;)<br>
+  rs(&quot;admin&quot;)=session(&quot;s_admin&quot;) '将用户的姓名更新为会员名称<br>
+  rs(&quot;user&quot;)=1 '表示用户已经登陆，是会员身份<br>
+  rs(&quot;tt&quot;)=now '将当前系统时间设置为用户的登陆时间<br>
+  rs.update<br>
+  rs.close<br>
+  end if</p>
+<p>... ...</p>
+<p>%&gt;</p>
+<p>... ...</p>
+<p>&lt;head&gt;</p>
+<p>... ...</p>
+<p> &lt;script language=javascript&gt;<br>
+  function Test()<br>
+  {<br>
+  var xmlhttp = new ActiveXObject(&quot;MSXML2.XMLHTTP&quot;);<br>
+  xmlhttp.open(&quot;POST&quot;,&quot;onceonline.asp&quot;,false); // 向onceonline.asp发送更新请求<br>
+  xmlhttp.setRequestHeader(&quot;CONTENT-TYPE&quot;,&quot;application/x-www-form-urlencoded&quot;);<br>
+  xmlhttp.send();<br>
+  }<br>
+  setInterval(&quot;Test();&quot;,10); // 10秒钟发送一次更新请求<br>
+  &lt;/script&gt;</p>
+<p>... ...</p>
+<p>&lt;/head&gt;</p>
+<p>... ...</p>
+<p>==========================================================</p>
+<p>onceonline.asp</p>
+<p>&lt;%<br>
+  rs.open &quot;select tt from online where id='&quot; &amp; session.sessionID 
+  &amp; &quot;'&quot;,conn,3,3<br>
+  rs(&quot;tt&quot;)=now() '更新当前在线用户的在线时间<br>
+  rs.update<br>
+  rs.close</p>
+<p>rs.open &quot;delete from online where datediff('s',tt,now())&gt;60&quot;,conn,3,1 
+  '删除超时用户<br>
+  %&gt;</p>
+<p>==============================================================</p>
+<p>这样，基本保证了数据库中用户列表的实时性，误差取决于更新时间和删除时间的差值大小和服务器的处理速度，建议不要将删除超时用户的时间间隔取的过于小，那样有可能会导致在线用户0人的失误。</p>
+<p>本方案在WIN2000+SQL Server2000上调试通过，由于本方案对系统要求比较大，期待其他朋友拿出更好的方案，一起解决这个问题！</p>
+<p>&nbsp;</p>
+</body>
+</html>

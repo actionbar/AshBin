@@ -1,0 +1,110 @@
+<html xmlns:rdl>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<script src="rdl_method.js"></script>
+<base target="_self">
+</head>
+<body>
+
+<script>
+
+//collFriendObjects=new Array();
+//collFriendProperties=new Array();
+//collFriendMethods=new Array();
+//collFriendEvents=new Array();
+//collFriendCollections=new Array();
+
+collFriendMethods=new Array(
+'moveRow','createTFoot','createTHead',
+'deleteCaption','deleteCell','deleteRow','deleteTFoot','deleteTHead',
+'moveRow','insertRow'
+);
+
+collFriendCollections=new Array(
+'cells','rows','tBodies'
+);
+
+collFriendObjects=new Array(
+'TABLE','THEAD','TBODY','TFOOT','TR','TH','TD','CAPTION','COL','COLGROUP'
+);
+
+//collIE40=new Array();
+//collIE50=new Array();
+//collIE55=new Array();
+//collIE60=new Array();
+
+collIE40=new Array(
+'TR'
+);
+
+sStyle=
+'table{background:#CCCCCC;width:80%;}\n'+
+'thead,tfoot{background:#6699CC;}\n'+
+'tbody{background:#CC9966;}\n'+
+'td{text-align:center;}\n';
+
+sScript=
+'<script>\n'+
+'function rdl_doAdd(){\n'+
+'var oBody=document.createElement("<tbody id=myBody>");\n'+
+'document.all("myTable").insertBefore(oBody,document.all("myFoot"));\n'+
+'for (m=0;m<3;m++) {\n'+
+'var myTR =oBody.insertRow();\n'+
+'for (i=0;i<4;i++) {\n'+
+'var myTD=myTR.insertCell();\n'+
+'myTD.innerText="第"+(i+1).toString()+"个单元格";\n'+
+'}\n'+
+'}\n'+
+'document.all("myHeadTD").colSpan=document.all("myFootTD").colSpan=i.toString();\n'+
+'window.resizeTo(320,310);\n'+
+'}\n'+
+'<\/script>\n';
+
+sCode=
+'<table cellspacing=1 id=myTable width=90%>\n'+
+'<thead id=myHead><tr><td id=myHeadTD>这是标题<\/td><\/tr><\/thead>\n'+
+'<tfoot id=myFoot><tr><td id=myFootTD>这是脚注<\/td><\/tr><\/tfoot>\n'+
+'<\/table>\n'+
+'<br><input type=button value=" 插入TBODY " onclick="rdl_doAdd();">\n';
+
+iWinWidth=320;
+
+iWinHeight=250;
+
+</script>
+
+<div id=idContent>
+
+<div id=idContentTitle><span id=idTitleName>insertCell</span>版本：DOM1　返回值：有</div>
+
+<div class=cssColumnTitle>语法：</div>
+<div>
+<i>oTD</i><b> = </b><a href="../objects/tr.html"><b>TR</b></a><b> . insertCell ( </b><i>iIndex</i><b> ) </b>
+</div>
+
+<div class=cssColumnTitle>参数：</div>
+<table>
+<tr><td nowrap><i> iIndex </i></td><td nowrap><b>:</b></td>
+<td><b>可选项</b>。整数值(Integer)。指定插入<a href="../objects/td.html"> td </a>的序号。默认值为<span class=cssDefault><b> -1 </b></span>，插入单元格到<a href="../objects/cells.html"> cells </a>集合内的最后一个。</td></tr>
+</table>
+
+<div class=cssColumnTitle>返回值：</div>
+<table>
+<tr><td nowrap><i> oTD </i></td><td nowrap><b>:</b></td>
+<td>对象(Element)。成功则返回新建<a href="../objects/td.html"> td </a>的引用。否则返回<b> null </b>。</td></tr>
+</table>
+
+<div class=cssColumnTitle>说明：</div>
+<div>
+在表格行内建立新的单元格(<a href="../objects/td.html"> td </a>)，同时添加到<a href="../objects/cells.html"> cells </a>集合内。
+<br>推荐使用的方法，是依据默认值将单元格插入到<a href="../objects/cells.html"> cells </a>集合内的最后一个。这是速度最快的插入方式。
+</div>
+
+
+
+</div>
+</body>
+</html>
+
+<!-- Part of RDL(TM) - Written by Rain1977 
+HomeSite: http://www.dhtmlet.com  E-Mail: dhtmlet@hotmail.com -->

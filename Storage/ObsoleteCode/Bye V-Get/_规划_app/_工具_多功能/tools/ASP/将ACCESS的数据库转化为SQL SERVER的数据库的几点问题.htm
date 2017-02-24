@@ -1,0 +1,58 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>将ACCESS的数据库转化为SQL SERVER的数据库的几点问题</title>
+<style type="text/css">
+<!--
+body {
+	font-size: 10.4pt;
+	line-height: 22px;
+}
+-->
+</style>
+</head>
+
+<body bgcolor="eeeeee" leftmargin="20" marginwidth="20">
+<p><strong>将ACCESS的数据库转化为SQL SERVER的数据库的几点问题</strong></p>
+<hr>
+<p>1.ACCESS的数据库中的自动编号类型在转化时，sql server并没有将它设为自动编号型，我们需在SQL创建语句中加上identity，表示自动编号！<br>
+  2.转化时，跟日期有关的字段，SQL SERVER默认为smalldatetime型，我们最好将它变为datetime型，因为datetime型的范围比smalldatetime型大。我遇见这种情况，用smalldatetime型时，转化失败，而用datetime型时，转化成功。<br>
+  3.对此两种数据库进行操作的sql语句不全相同，例如：在对ACCESS数据库进行删除纪录时用：&quot;delete * from user where 
+  id=10&quot;,而对SQL SERVER数据库进行删除是用：&quot;delete user where id=10&quot;.<br>
+  4.日期函数不相同，在对ACCESS数据库处理中，可用date()、time()等函数，但对<br>
+  SQL SERVER数据库处理中，只能用datediff,dateadd等函数，而不能用date()、time()等函数。<br>
+  5.在对ACCESS数据库处理中,sql语句中直接可以用一些VB的函数，像cstr()函数，而对SQL SERVER数据库处理中，却不能用。 </p>
+<hr>
+<p> 一，首先，我说的是在ACCESS2000，SQL2000之间转换，其他的我也还没有尝试过，希望大家多多试验，肯定是有办法的；<br>
+  二，转换的方法<br>
+  1，打开”控制面板“下”管理工具“中的”数据库源“；<br>
+  2，按”添加“添加一个新的数据源，在选择栏里选”Driver do microsoft Access<br>
+  (*.mdb)”,完成后将出现一个框,<br>
+  <br>
+  在”数据库源“里面输入你想写的名称，我取名叫“ABC”,说明不需要填，接着，按下面的选择，寻找你的数据库地址和选中（注意，请先备份自己的ACCESS数据库），然后确定。<br>
+  数据源在这里建好了，剩下转换了。<br>
+  <br>
+  3，打开SQL2000企业管理器，进入数据库，新建一个空的数据库“ABC”；<br>
+  4，选择新建立的数据库，按鼠标右键，选择“所有任务”下“导入数据”，按“下一步”继续；<br>
+  5，在数据库源下拉但中选择”Driver do microsoft Access(*.mdb)“，在”用户/系统DSN“中，选种你刚才添加的”ABC“，按 
+  ”下一步“；<br>
+  6，“目的”不需要修改，选择服务器（一般下为自己的本机&quot;local&quot;,也可以选择服务器地址或者局域网地址,确定你的权限是否可以操作,),&quot;使用WINDOWS 
+  身份验证&quot;指用自己的系统管理员身份操作,&quot;使用SQL身份操作验证&quot;可以用于网站的操作,推荐用后者;<br>
+  7,选上&quot;使用SQL身份操作验证&quot;后,填写你的用户名和密码,我自己选择的是系统默认号码&quot;sa&quot;,&quot;****&quot;,数据库选择刚新建的&quot;ABC&quot;,按&quot;下一步&quot;;<br>
+  8,这一步的两个单项选择,&quot;从数据源复制表和视图&quot;与&quot;用一条查询指令指定要传输的数据&quot;,选择前者,按&quot;下一步&quot;继续;<br>
+  9,这里将出现你自己ACCESS数据库的表,按&quot;全选&quot;后,下一步;<br>
+  10,&quot;DTS导入/导出向导&quot;,看&quot;立即运行&quot;被选中按&quot;下一步&quot;,<br>
+  11,按&quot;完成&quot;继续;<br>
+  12,这个步骤你将看到你的数据被导入SQL2000里面,当出现&quot;已经成功把XXX个表导入到数据库&quot;的字样,而且所有的表前面都有绿色的勾,就表示成功导入所有数据,如果中途出现问题或者表前面有红色的叉的话,说明该表没有成功导入,这时就要回去查看自己的操作是否正确了.<br>
+  <br>
+  三,数据修改<br>
+  1,由于SQL2000里面没有&quot;自动编号&quot;,所以你的以&quot;自动编号&quot;设置的字段都会变成非空的字段,这就必须手工修改这些字段,并把他的&quot;标示&quot;选择&quot;是&quot;,种子为&quot;1&quot;,增量为&quot;1&quot;,<br>
+  2,另外,ACCESS2000转换成SQL2000后,原来属性为&quot;是/否&quot;的字段将被转换成非空的&quot;bit&quot;,这时候你必须修改成自己想要的属性了;<br>
+  3,另外,大家要注意对时间函数的把握.ACCESS与SQL是有很多不同的. </p>
+<p> 因为没有抓图软件的关系,没有给大家图片展示,请大家原谅.<br>
+  我的QQ是:310575,欢迎大家与我一起交流.<br>
+  我的下一篇将会写SQL2000转换成ACCESS2000,请大家梢候.</p>
+<p>&nbsp;</p>
+</body>
+</html>

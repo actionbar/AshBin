@@ -1,0 +1,93 @@
+<html>
+<head>
+<title>相关技术</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+
+<link rel = stylesheet href = "image/style.css">
+</head>
+<body bgcolor="#ffffff">
+<table width="688" border="0" cellspacing="0" cellpadding="0" align="center">
+  <tr bgcolor="EEEEEE"> 
+    <td height="22"><a href="index.htm">主页</a></td>
+  </tr>
+</table><br>
+<table border="0" cellpadding="0" cellspacing="0" width="688" align="center" height="490">
+  <tr valign="top"> 
+    <td rowspan="4" width="91">&nbsp; </td>
+    <td height="68" width="131"> 
+      <p><img src="image/doc.gif"></p>
+    </td>
+    <td rowspan="4" width="18"><b></b> </td>
+    <td height="68" width="387"><img src="image/title_doc.gif"></td>
+    <td rowspan="4" width="61"> 
+      <h6>&nbsp;</h6>
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td rowspan="3" valign="top" class="pt10" align="center" width="131" bgcolor="EEEEEE"> 
+      <p>&nbsp;</p>
+      <p><font color="#FF0000">※ 1.4 相关技术</font></p>
+       
+	</td>
+  </tr>
+  <tr valign="top"> 
+    <td width="387" height="308"> 
+      <table width="100%" border="0" cellpadding="0">
+        <tr> 
+          <td>
+
+           <h4 ALIGN="CENTER">1.4 相关技术</h4>
+<P>XML并不是在真空中操作的。如果将XML用于不只是一种数据格式的话，就需要与多种相关的技术相互作用。这些技术包括为了向后兼容老式的浏览器的HTML、CSS（Cascading Style Sheet，级联样式单）和XSL（eXtensible Style Languages，可扩展的样式语言）、URL和URI、XLL（eXtensible Linking Language，可扩展的链接语言）和Unicode字符集。</P>
+<h5>1.4.1 超文本标记语言（Hypertext Markup Language）</h5>
+<P>Mozilla 5.0和Internet Explorer 5.0是首先对XML提供支持（虽然并不完全）的浏览器。但是，要使大多数用户升级到这两种浏览器的新版本上来，可能还要花两年的时间。（我的妻子Beth在1999年还在使用Netscape 1.1。）因而在今后一段时间内，还需要将XML内容转化为经典的HTML。</P>
+<P>因而，在转向XML之前，对使用HTML还不应感到别扭。用户不必完全成为一个时髦的图形设计者，但是应该了解如何将一个页面与另一个页面链接起来，了解如何在文档中包括图像，如何使文本变成粗体等等。由于HTML是XML的最普通的输出格式，所以对HTML了解得越多，也就越容易了解如何创建所需的效果。</P>
+<P>另一方面，如果已经熟悉了利用表格或是单像素的GIF来安排页面上的对象，或是如果开始借助于画出草图而不是借助于内容来创建Web站点的话，那么也就必须要忘记某些坏的习惯。正如前面所讨论的一样，XML将文档的内容与文档的外观相分离。首先开发内容，然后再用样式单将格式附加其上。将内容与样式分开是非常有效的技术，这既改善了文档内容也改善了文档外观。除此之外，还允许作者和设计者更加互相独立地工作。但是，对于设计Web站点来说，确实需要有不同的思路，如果涉及多人的话，或许要利用不同的项目管理技术。</P>
+<h5>1.4.2 级联样式单（Cascading Style Sheets）</h5>
+<P>由于XML允许在文档中包括任意的标记，所以对于浏览器来说，没有办法事先知道如何显示每个元素。当将文档送给用户时，还要向用户发送样式单，通过样式单告诉浏览器如何格式化每个元素。可以使用的一种样式单是级联样式单（ Cascading Style Sheet ，简写为CSS）。</P>
+<P>CSS开始是为 HTML设计的，它定义字号、字族、字重、段落缩进、段落对齐和其他样式等格式化属性，这些属性都可以施加到个别的元素上。例如，CSS允许HTML文档来指定所有的H1元素应该被格式化为32磅、中间对齐的Helvetica字体的粗体。单独的样式可以施加到大多数HTML标记上，它能够覆盖浏览器的缺省设置。多个样式单可施加到一个文档上，而多个样式也可用于单个元素上。样式根据特定的一套规则级联起来。</P>
+<P><img src="image/Image4.gif" WIDTH=45 HEIGHT=33>CSS规则和属性将在第12章“级联样式单，第一级”和第13章“级联样式单，第二级”中详细介绍。</P>
+<P>向XML施加CSS规则是很容易的。只要改变施加规则于其上的标记名称即可。Mozilla 5.0直接支持CSS样式单与XML的结合，虽然到目前为止，此浏览器时常发生崩溃。</P>
+<h5>1.4.3 可扩展的样式语言（Extensible Style Language）</h5>
+<P>可扩展的样式语言（Extensible Style Language，简写为XSL）是更为先进的专门用于XML文档的样式单语言。XSL文档本身就是结构完整的XML文档。</P>
+<P>XSL文档包括一系列的适用于特定的XML元素样式的规则。XSL处理程序读取XML文档并将其读入的内容与样式单中的模式相比较。当在XML文档中识别出XSL样式单中的模式时，对应的规则输出某些文本的组合。与级联样式单不同，输出的文本比较任意，也不局限于输入文本加上格式化信息。</P>
+<P>CSS只能改变特定元素的格式，也只能以元素为基础。但XSL样式单可以重新排列元素并对元素进行重排序。这种样式单可以隐藏一些元素而显示另外一些元素。更进一步说，还可以选择应用样式的标记，而不仅是基于标记的，而且还基于标记的内容和特性，还基于标记在文档中相对于其他元素的位置，以及基于各种其他的准则。</P>
+<P><img src="image/Image4.gif" WIDTH=45 HEIGHT=33>CSS的优越性在于具有广泛的浏览器支持。但是XSL更为灵活和强大，可更好地适用于XML文档。而且带XSL样式单的XML文档可以很容易地转换为带CSS样式单的HTML文档。</P>
+<P>XSL样式单将第14章“XSL变换”和第15章“XSL格式化对象”中更为详细地论述。</P>
+<h5>1.4.4 URL和URI</h5>
+<P>XML文档可用于Web，正如HTML和其他文档一样。使用时，也如HTML文档一样，被统一资源定位符（Uniform Resource Locator，简写为URL）所引用。例如，在URL http://www.hypermedic.com/style/xml/tempest.xml处，可以找到以XML标记的莎士比亚的歌剧<I>tempest</I>的全文。 虽然URL已被人们广泛理解并被广泛支持，但XML规范使用的是更为通用的统一资源标识符（Uniform Resource Identifier，简写为URI）。URI对于定位Internet上的资源是更为通用的架构，更为注重资源而不太注重位置。理论上说，URI可找出镜像文档的最为近似的副本或是找出已经从一个站点移动到另一站点的文档。实际上，URI仍然处于进一步的研究之中，被当前的软件所唯一支持的一种URI正是URL。</P>
+<h5>1.4.5 XLink和XPointer</h5>
+<P>只要将XML张贴到Internet上，用户当然希望能够对此文档寻址并且可以将这些文档链接起来。标准的HTML链接标记可用在XML文档中，而且HTML文档也可与XML文档加以链接。例如，下面的HTML代码将链接指向了前文提到的以XML形式出现的<I>Tempest</I>的副本：</P>
+<P>&lt;a href="http://www.hypermedic.com/style/xml/tempest.xml"&gt;</P>
+<P>  The Tempest by Shakespeare</P>
+<P>&lt;/a&gt;</P><img src="image/Image6.gif" WIDTH=28 HEIGHT=33 ALIGN="LEFT" HSPACE=11>
+<P>如果用户跟随着链接，浏览器能否显示这个文档，依赖于该浏览器处理XML文件的能力。目前大多数浏览器还不能很好地处理XML文档。</P>
+<P>然而，XML利用XLink来与文档链接，用XPointer来确定文档个别部分的位置，就可以有更多的功能。.</P>
+<P><img src="image/Image4.gif" WIDTH=45 HEIGHT=33>XLink使任意元素成为链接，而不只是A元素。进一步说，链接可以是双向的、多向的或是指向多个镜像的站点，并选择这些站点中最近的一个。XLink利用普通的URL来标识它链接的站点。.</P>
+<P>XLink将在第16章中加以讨论。</P>
+<P>XPointer能使链接不仅指向特定位置处的特定文档，而且还可指向特定文档的特定部分。XPointer可以引用文档中的特定的元素，如第一个、第二个或是第十七个特定的元素。XPointer提供了文档间连接的非常强大的功能，而这些文档不必有包括附加标记的目的文档，正因为如此，其中的个别部分才可以被链接。</P>
+<P><img src="image/Image4.gif" WIDTH=45 HEIGHT=33>进一步说，与HTML的锚（anchor）不同，XPointer不只是引用文档中的一点。XPointer可以指向一个范围或是一个区域。因而XPointer可以用来选择文档的特定部分，或许这样一来，就可以将这部分复制或是将其装入其他程序。</P>
+<P>XPointer将在第17章中加以讨论。</P>
+<h5>1.4.6 Unicode字符集</h5>
+<P>Web是国际性的，到目前为止其上主要文本部分仍为英文。XML是改变这种状况的开始。XML对双字节的Unicode字符集及其紧凑的表示提供了完全的支持。这一字符集几乎可以支持地球上的每一种常用的字符。遗憾的是，光有XML还是不够的。为了阅读一种文字，需要三个条件：</P>
+<P>1. 该种文字的字符集</P>
+<P>2. 该字符集的字体</P>
+<P>3. 操作系统和应用软件能够理解这种字符集</P>
+<P><img src="image/Image4.gif" WIDTH=63 HEIGHT=45>如果想要以这种文字写作，并阅读这种文字，还需要该种文字的输入法。当然，XML定义了字符引用，可使用户使用纯ASCII字符将未列在本地字符集中的字符加以编码。这对于偶尔引用一下希腊或是中文字符也足够了，当然不能指望用这种办法以其他语言来写一部小说。</P>
+<P>在第7章“外国语言和非罗马文本”中，读者将会看到国际文本在计算机中是如何来代表的，XML如何来理解文本，以及如何来利用不得不以非英语来读写的软件。</P>
+<h5>1.4.7 如何将这些技术融合在一起</h5>
+<P>XML定义了一些标记的语法规则，可用来标记文档。XML文档是用XML标记来标记的。XML文档的缺省编码方法是Unicode。</P>
+<P>XML文档的许多好处之一是，可以包括与其他文档和资源的超链接。这些链接是根据XLink规范创建的。XLink用URI（理论上）或是用URL（实际上）标识出链接的文档。一个XLink可进一步指定它所链接文档的个别部分。这些个别部分是通过XPointer来寻址的。如果打算由人来阅读XML文档，那么样式单就提供个别元素格式化的指令（并不是所有的XML文档都如此）。样式单可用几种样式语言中的任一种来编写。CSS和XSL是两种最常用的样式语言，虽然也存在其他基于XSL的样式语言，如DSSSL（Document Style Semantics and Specification Language，文档样式语义和规格语言）。</P>
+<img src="image/Image7.gif" WIDTH=41 HEIGHT=41 ALIGN="LEFT" HSPACE=12> 
+<P>我已经在本章中概述了许多令人激动的技术。但是，良知让我告诉读者，我还没有全讨论到。事实上，我所叙述的大部分是XML的前景而不是当前的现实。XML让软件产业中的许多人激动不已，许多程序员正在奋发工作，以便将梦想变为现实。层出不穷的新软件正将我们带入XML的“天堂”，但是由于这一领域非常新，许多新软件还没有经过充分地考验。在本书的其余部分，我将小心地不仅要指出什么将可能出现，而且也指出什么实际已经上出现了。令人沮丧的是，这两件事常常不是一回事。不管怎么说，当前还是可以小心地用XML来做一些实际工作的。</P>
+ 
+<a href='307.htm'>&lt;&lt;上一篇</a>&nbsp;&nbsp;<a href='309.htm'>下一篇&gt;&gt;</a></td>
+        </tr>
+      </table>
+      <p>&nbsp; </p>
+    </td>
+  </tr>
+</table>
+
+</body>
+
+</html>

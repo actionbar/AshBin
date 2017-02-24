@@ -1,0 +1,79 @@
+<meta http-equiv="content-type" content="text/html; charset=gb2312"><FONT 
+style="FONT-SIZE: 9pt; LINE-HEIGHT: 15pt"><B>FAQ:SQL&nbsp;Mail（1）&lt;译&gt;(潇湘剑公子)</B><BR>本文信息适用于:<BR>·&nbsp;&nbsp;&nbsp;&nbsp;Microsoft&nbsp;SQL&nbsp;Server&nbsp;2000&nbsp;(所有版本)&nbsp;<BR>·&nbsp;&nbsp;&nbsp;&nbsp;Microsoft&nbsp;SQL&nbsp;Server&nbsp;versions&nbsp;6.5&nbsp;,&nbsp;7.0&nbsp;<BR>摘要<BR>本文回答一些关于SQL&nbsp;Mail&nbsp;profile与性能的FAQ.本文不讲述如何配置&nbsp;SQL&nbsp;Mail,也不解答&nbsp;SQL&nbsp;Mail&nbsp;的相关故障问题.关于&nbsp;SQL&nbsp;Mail&nbsp;的相关故障问题及其解答,请通过以下链接查阅相关文章:&nbsp;<BR><IMG 
+src="http://www.pigtwo.com/forum/pic/url.gif" align=absMiddle border=0><A 
+href="http://support.Microsoft.com/defaul.aspx?scid=kb" 
+target=_blank>http://support.Microsoft.com/defaul.aspx?scid=kb</A>;EN-US;Q315886&nbsp;<BR>大多数&nbsp;SQL&nbsp;Mail&nbsp;相关问题都归结于不合适的配置.根据以下的链接,你可以获取正确的SQL&nbsp;Mail&nbsp;配置方法<BR><IMG 
+src="http://www.pigtwo.com/forum/pic/url.gif" align=absMiddle border=0><A 
+href="http://support.microsoft.com/default.aspx?scid=kb" 
+target=_blank>http://support.microsoft.com/default.aspx?scid=kb</A>;EN-US;Q263556
+<P></P>
+<P>除非另做说明,文中关于&nbsp;SQL&nbsp;Mail&nbsp;的说明同样适用于&nbsp;SQL&nbsp;Agent&nbsp;Mail.&nbsp;</P>
+<P>更多信息<BR>以下是一些经常向Microsoft&nbsp;SQL&nbsp;Server&nbsp;支持专家&nbsp;提出的关于&nbsp;SQL&nbsp;Mail&nbsp;的问题.&nbsp;</P>
+<P>Q1&nbsp;:&nbsp;为什么我们在使用&nbsp;SQL&nbsp;Mail&nbsp;时需要在&nbsp;SQL&nbsp;Server&nbsp;服务器上安装一个邮件客户端程序？</P>
+<P>A1:SQL&nbsp;Mail&nbsp;是基于Mail&nbsp;Application&nbsp;Programming&nbsp;Interface&nbsp;(MAPI)&nbsp;的应用,需要&nbsp;MAPI&nbsp;信息子系统来发送邮件.当你在机器上安装了基于MAPI的客户端,&nbsp;MAPI&nbsp;子系统也就相应的被安装了.Microsoft&nbsp;Windows&nbsp;NT&nbsp;4.0&nbsp;提供一个名为Windows&nbsp;Messaging&nbsp;的&nbsp;MAPI&nbsp;客户端；但是,&nbsp;Microsoft&nbsp;Windows&nbsp;2000&nbsp;不提供这样一个MAPI&nbsp;客户端.&nbsp;</P>
+<P>支持&nbsp;SQL&nbsp;Mail&nbsp;应用的MAPI&nbsp;子系统最简洁的途径是安装一个基于MAPI的客户端,就象&nbsp;Microsoft&nbsp;Outlook.</P>
+<P>Q2:&nbsp;怎样的邮件客户端程序可以配合&nbsp;SQL&nbsp;Mail&nbsp;一起使用?&nbsp;</P>
+<P>A2:&nbsp;配合&nbsp;SQL&nbsp;Mail&nbsp;使用的邮件客户端程序和你所使用的&nbsp;SQL&nbsp;Server&nbsp;版本以及操作系统有关.&nbsp;如果你使用&nbsp;Windows&nbsp;NT&nbsp;4.0,&nbsp;那么你可以使用支持Windows&nbsp;NT&nbsp;4.0&nbsp;的&nbsp;SQL&nbsp;Mail&nbsp;for&nbsp;SQL&nbsp;Server&nbsp;6.5&nbsp;以及&nbsp;SQL&nbsp;Server&nbsp;7.0.的&nbsp;Windows&nbsp;Messaging&nbsp;client&nbsp;.Windows&nbsp;Messaging&nbsp;client&nbsp;只能在Internet邮件服务器下工作,并且不支持SQL&nbsp;Server&nbsp;2000.</P>
+<P>Microsoft&nbsp;Outlook&nbsp;98&nbsp;支持&nbsp;SQL&nbsp;Server&nbsp;6.5&nbsp;以及&nbsp;SQL&nbsp;Server&nbsp;7.0.如果要&nbsp;Outlook&nbsp;98&nbsp;能在SQL&nbsp;Server&nbsp;2000&nbsp;下工作,除非你安装了Microsoft&nbsp;SQL&nbsp;Server&nbsp;2000&nbsp;Service&nbsp;Pack&nbsp;1.&nbsp;Outlook&nbsp;98&nbsp;可以在一个&nbsp;Exchange&nbsp;server&nbsp;或者一个&nbsp;Internet&nbsp;mail&nbsp;server&nbsp;下工作.&nbsp;为了支持SQL&nbsp;Mail&nbsp;,在安装&nbsp;Outlook&nbsp;98&nbsp;时应该选择&nbsp;Corporate&nbsp;or&nbsp;Workgroup&nbsp;选项.&nbsp;</P>
+<P>Microsoft&nbsp;Outlook&nbsp;2000&nbsp;在&nbsp;SQL&nbsp;Server&nbsp;6.5,&nbsp;SQL&nbsp;Server&nbsp;7.0&nbsp;以及&nbsp;SQL&nbsp;Server&nbsp;2000&nbsp;环境下工作.&nbsp;Outlook&nbsp;2000可以在一个&nbsp;Exchange&nbsp;server&nbsp;或者一个&nbsp;Internet&nbsp;mail&nbsp;server&nbsp;下工作.&nbsp;为了支持SQL&nbsp;Mail&nbsp;,在安装&nbsp;Outlook&nbsp;2000&nbsp;时应该选择&nbsp;Corporate&nbsp;or&nbsp;Workgroup&nbsp;选项.</P>
+<P>Microsoft&nbsp;Office&nbsp;XP&nbsp;附带的Microsoft&nbsp;Outlook&nbsp;2002&nbsp;在&nbsp;SQL&nbsp;Server&nbsp;2000&nbsp;环境下的使用.&nbsp;Outlook&nbsp;2002&nbsp;内建的安全特征导致&nbsp;SQL&nbsp;Mail&nbsp;不再支持&nbsp;SQL&nbsp;Server&nbsp;6.5&nbsp;与&nbsp;SQL&nbsp;Server&nbsp;7.0&nbsp;.Outlook&nbsp;2002&nbsp;配套&nbsp;SQL&nbsp;Mail&nbsp;使用时,你必须使用Exchange&nbsp;server.<BR>Microsoft&nbsp;不推荐使用&nbsp;Outlook&nbsp;2002&nbsp;配合&nbsp;SQL&nbsp;Mail&nbsp;与&nbsp;Simple&nbsp;Mail&nbsp;Transport&nbsp;Protocol&nbsp;(SMTP)&nbsp;或者&nbsp;Post&nbsp;Office&nbsp;Protocol&nbsp;3&nbsp;(POP3)&nbsp;Internet&nbsp;mail&nbsp;servers.&nbsp;这方面的内容将在在以后的文章中做详细的叙述.</P>
+<P>Q3:&nbsp;能用&nbsp;Outlook&nbsp;Express&nbsp;配合&nbsp;SQL&nbsp;Mail&nbsp;使用吗?&nbsp;</P>
+<P>A3:&nbsp;不行.&nbsp;</P>
+<P>Q4:&nbsp;如何在运行Microsoft&nbsp;Small&nbsp;Business&nbsp;Server&nbsp;下创建mail&nbsp;profile?&nbsp;</P>
+<P>A4:&nbsp;Small&nbsp;Business&nbsp;Server&nbsp;是&nbsp;Exchange&nbsp;server&nbsp;与&nbsp;SQL&nbsp;Server&nbsp;在同一台机器上的特殊情况.&nbsp;想获取更多信息,请根据以下链接查询:&nbsp;<BR><IMG 
+src="http://www.pigtwo.com/forum/pic/url.gif" align=absMiddle border=0><A 
+href="http://suppor.microsoft.com/default.aspx?scid=kb" 
+target=_blank>http://suppor.microsoft.com/default.aspx?scid=kb</A>;EN-US;Q304967&nbsp;</P>
+<P>Q5:&nbsp;能象使用&nbsp;Lotus&nbsp;Notes&nbsp;或者&nbsp;Novell&nbsp;Groupwise&nbsp;那样使用SQL&nbsp;Mail&nbsp;&nbsp;吗?&nbsp;</P>
+<P>A5:&nbsp;你可以将&nbsp;SQL&nbsp;mail&nbsp;与第三方邮件服务器一起使用,如：&nbsp;Lotus&nbsp;Notes&nbsp;以及&nbsp;Novell&nbsp;Groupwise;&nbsp;但是,只有当第三方邮件服务器被配置成一个&nbsp;Internet&nbsp;mail&nbsp;server&nbsp;时,这个构架才支持.&nbsp;</P>
+<P>虽然可以配置&nbsp;Microsoft&nbsp;Outlook&nbsp;client支持使之支持第三方邮件服务器,&nbsp;这些第三方的邮件服务器所拥有的e-mail&nbsp;clients却不支持&nbsp;SQL&nbsp;Mail&nbsp;的应用.&nbsp;这些e-mail&nbsp;clients提供属于它们自身的&nbsp;MAPI&nbsp;信息子系统的工具,这些工具没有在&nbsp;SQL&nbsp;Mail&nbsp;上验证过.&nbsp;</P>
+<P>Q6:&nbsp;当SQL&nbsp;Mail&nbsp;接受不到邮件时,是否需要一个POP3&nbsp;server?&nbsp;</P>
+<P>A6:除非你设置&nbsp;SQL&nbsp;Mail&nbsp;与&nbsp;Exchange&nbsp;server&nbsp;作为内部邮件服务,&nbsp;否则你必须拥有一个POP3&nbsp;server.&nbsp;原因是当&nbsp;Microsoft&nbsp;Outlook&nbsp;在发送外部邮件时会先检验POP3&nbsp;incoming&nbsp;mail&nbsp;server.&nbsp;如果没有检验到合法的&nbsp;POP3&nbsp;incoming&nbsp;mail&nbsp;server,&nbsp;邮件将不能发送出去,&nbsp;甚至&nbsp;SQL&nbsp;Mail&nbsp;会停止响应&nbsp;(挂起).&nbsp;</P>
+<P>Q7:&nbsp;能使用&nbsp;Yahoo!&nbsp;或者&nbsp;Hotmail&nbsp;帐户&nbsp;作为&nbsp;POP3&nbsp;server&nbsp;吗?&nbsp;</P>
+<P>A7:&nbsp;不行.&nbsp;并且,使用这样的服务器做商业用途违反了服务商的许可.&nbsp;</P>
+<P>使用象&nbsp;MSN&nbsp;这样的&nbsp;Internet&nbsp;Service&nbsp;Provider&nbsp;(ISP)&nbsp;运作下的&nbsp;POP3&nbsp;帐户也不是一个好主意.一旦出于任何原因引起&nbsp;SQL&nbsp;Mail&nbsp;连接POP3&nbsp;server&nbsp;失败,&nbsp;SQL&nbsp;Mail&nbsp;将停止响应,你必须先停止服务,然后重新启动&nbsp;SQL&nbsp;Server&nbsp;,这样才能再次发送邮件.&nbsp;</P>
+<P>在你的&nbsp;SQL&nbsp;Server&nbsp;服务器上安装并配置自己的&nbsp;POP3&nbsp;server&nbsp;是一个不错的解决方案.</P>
+<P>Q8:&nbsp;当我不愿意在&nbsp;SQL&nbsp;Server&nbsp;上安装&nbsp;Microsoft&nbsp;Outlook&nbsp;时如何使用&nbsp;SQL&nbsp;Mail?&nbsp;</P>
+<P>A8:&nbsp;如果你的环境运行在Windows&nbsp;NT&nbsp;4.0&nbsp;下，或许你可以使用&nbsp;Windows&nbsp;Messaging&nbsp;,这依赖于&nbsp;SQL&nbsp;Server&nbsp;的版本.&nbsp;</P>
+<P>如果你的环境运行在&nbsp;Windows&nbsp;2000&nbsp;下,&nbsp;那么只能使用&nbsp;Microsoft&nbsp;Outlook.&nbsp;</P>
+<P>使用&nbsp;CDO&nbsp;for&nbsp;NT&nbsp;Server&nbsp;(CDONTS)&nbsp;或者&nbsp;CDO&nbsp;for&nbsp;Windows&nbsp;2000&nbsp;(CDOSYS)&nbsp;以及SQL&nbsp;Server&nbsp;OLE&nbsp;自动存储过程&nbsp;,你可以不借助&nbsp;SQL&nbsp;Mail&nbsp;,而通过一个&nbsp;Transact-SQL&nbsp;批处理来发送邮件.更多信息，请参阅：&nbsp;<BR><IMG 
+src="http://www.pigtwo.com/forum/pic/url.gif" align=absMiddle border=0><A 
+href="http://suppor.microsoft.com/default.aspx?scid=kb" 
+target=_blank>http://suppor.microsoft.com/default.aspx?scid=kb</A>;EN-US;Q312839&nbsp;</P>
+<P>Q9:&nbsp;如果有&nbsp;Microsoft&nbsp;Exchange,&nbsp;还需要&nbsp;Outlook&nbsp;吗?&nbsp;</P>
+<P>A9:&nbsp;Outlook&nbsp;提供的客户端&nbsp;MAPI&nbsp;并不总是适合象&nbsp;SQL&nbsp;Server&nbsp;这样的服务器端应用.与Exchange&nbsp;Server&nbsp;一起提供的服务器端&nbsp;MAPI&nbsp;比&nbsp;Outlook&nbsp;所提供的&nbsp;MAPI&nbsp;更优越.很不幸,&nbsp;Exchange&nbsp;MAPI&nbsp;的安装并不提供创建&nbsp;SQL&nbsp;Mail&nbsp;所必须的&nbsp;mail&nbsp;profile&nbsp;的功能.&nbsp;如果你打算使用Exchange&nbsp;服务器端&nbsp;MAPI&nbsp;，以下是创建mail&nbsp;profile&nbsp;的技巧.&nbsp;更多信息，请参阅：&nbsp;<BR><IMG 
+src="http://www.pigtwo.com/forum/pic/url.gif" align=absMiddle border=0><A 
+href="http://suppor.microsoft.com/default.aspx?scid=kb" 
+target=_blank>http://suppor.microsoft.com/default.aspx?scid=kb</A>;EN-US;Q306962</P>
+<P>安装&nbsp;服务器端&nbsp;MAPI&nbsp;,你不需要在你的&nbsp;SQL&nbsp;Server&nbsp;计算机上安装Exchange&nbsp;Server.&nbsp;你只需要安装Microsoft&nbsp;Exchange&nbsp;Administrator.&nbsp;为创建&nbsp;profile&nbsp;,&nbsp;你还需要增加&nbsp;Exchange&nbsp;services.&nbsp;更多信息，请参阅：&nbsp;<BR><IMG 
+src="http://www.pigtwo.com/forum/pic/url.gif" align=absMiddle border=0><A 
+href="http://suppor.microsoft.com/default.aspx?scid=kb" 
+target=_blank>http://suppor.microsoft.com/default.aspx?scid=kb</A>;Q294470&nbsp;</P>
+<P>Q10:&nbsp;能使用&nbsp;SQL&nbsp;Mail&nbsp;发送&nbsp;HTML&nbsp;邮件吗?&nbsp;</P>
+<P>A10:&nbsp;因为&nbsp;MAPI&nbsp;的局限性，你不能使用SQL&nbsp;Server&nbsp;的当前版本发送HTML-formatted&nbsp;邮件.&nbsp;更多信息，请参阅：&nbsp;<BR><IMG 
+src="http://www.pigtwo.com/forum/pic/url.gif" align=absMiddle border=0><A 
+href="http://suppor.microsoft.com/default.aspx?scid=kb" 
+target=_blank>http://suppor.microsoft.com/default.aspx?scid=kb</A>;Q268440&nbsp;&nbsp;</P>
+<P>如果你需要发送&nbsp;HTML&nbsp;格式的邮件,&nbsp;你可以考虑编写存储过程，通过Collaboration&nbsp;Data&nbsp;Objects&nbsp;(CDO)&nbsp;来发送邮件.&nbsp;更多信息，请参阅：&nbsp;<BR><IMG 
+src="http://www.pigtwo.com/forum/pic/url.gif" align=absMiddle border=0><A 
+href="http://suppor.microsoft.com/default.aspx?scid=kb" 
+target=_blank>http://suppor.microsoft.com/default.aspx?scid=kb</A>;Q312839</P>
+<P>Q11:&nbsp;为什么&nbsp;SQL&nbsp;Server&nbsp;2000&nbsp;中没有&nbsp;SQL&nbsp;Mail&nbsp;启动选项?&nbsp;</P>
+<P>A11:&nbsp;在SQL&nbsp;Server&nbsp;2000&nbsp;中没有手动启动&nbsp;SQL&nbsp;Mail&nbsp;的选项，在&nbsp;SQL&nbsp;Server&nbsp;2000&nbsp;启动时也不会自动启动&nbsp;SQL&nbsp;Mail.&nbsp;当你第一次发送&nbsp;SQL&nbsp;Mail&nbsp;信息时&nbsp;SQL&nbsp;Mail&nbsp;将自动启动.&nbsp;更多信息，请参阅：&nbsp;<BR><IMG 
+src="http://www.pigtwo.com/forum/pic/url.gif" align=absMiddle border=0><A 
+href="http://suppor.microsoft.com/default.aspx?scid=kb" 
+target=_blank>http://suppor.microsoft.com/default.aspx?scid=kb</A>;Q293443&nbsp;</P>
+<P>用扩展存储过程&nbsp;xp_startmail&nbsp;和&nbsp;xp_stopmail&nbsp;来启动与关闭&nbsp;SQL&nbsp;Mail&nbsp;将导致内存泄漏,除非你已经在机器上安装了SQL&nbsp;Server&nbsp;2000&nbsp;Service&nbsp;Pack&nbsp;2,否则&nbsp;Microsoft不推荐使用以上两个存储过程.&nbsp;更多信息，请参阅：&nbsp;<BR><IMG 
+src="http://www.pigtwo.com/forum/pic/url.gif" align=absMiddle border=0><A 
+href="http://suppor.microsoft.com/default.aspx?scid=kb" 
+target=_blank>http://suppor.microsoft.com/default.aspx?scid=kb</A>;Q300414</P>
+<P>Q12:&nbsp;为什么需要用域帐户来启动&nbsp;SQL&nbsp;Server?&nbsp;</P>
+<P>A12:&nbsp;当使用&nbsp;Exchange&nbsp;Server&nbsp;时你必须使用域帐户来启动&nbsp;SQL&nbsp;Server.&nbsp;SQL&nbsp;Mail&nbsp;需要通过&nbsp;Windows&nbsp;认证来连接&nbsp;Exchange&nbsp;Server&nbsp;以避免被用户证书提示.&nbsp;一个域帐户能同时登录到本地&nbsp;SQL&nbsp;Server&nbsp;计算机和远程&nbsp;Exchange&nbsp;Server&nbsp;计算机，所以是最佳方案.&nbsp;</P>
+<P>Q13:&nbsp;我是否一定得给SQL&nbsp;Mail&nbsp;和SQL&nbsp;Agent&nbsp;Mail使用同样的mail&nbsp;profile?&nbsp;</P>
+<P>A13:&nbsp;Mail&nbsp;profiles&nbsp;与&nbsp;Windows&nbsp;登录帐户是相关联的.&nbsp;如果你用同一个服务帐户启动&nbsp;SQL&nbsp;Server&nbsp;和&nbsp;SQL&nbsp;Agent&nbsp;services,&nbsp;那么对于SQL&nbsp;Mail&nbsp;和&nbsp;SQL&nbsp;Agent&nbsp;Mail&nbsp;,&nbsp;你需要使用同一个&nbsp;mail&nbsp;profile,&nbsp;这对不同的&nbsp;profile&nbsp;是不利的.&nbsp;</P>
+<P>如果要用不同的帐户启动&nbsp;SQL&nbsp;Server&nbsp;和&nbsp;SQL&nbsp;Agent&nbsp;services&nbsp;,&nbsp;那么你必须为每一个帐户配置一个mail&nbsp;profile&nbsp;文件.&nbsp;为服务帐户配置mail&nbsp;profile&nbsp;文件,&nbsp;你必须用该帐户登录到服务器.&nbsp;</P>
+<P>Q14:&nbsp;当&nbsp;Exchange&nbsp;server&nbsp;和&nbsp;SQL&nbsp;Server&nbsp;server&nbsp;分别处于两个相互不信任的域中，我应该使用什么帐户？</P>
+<P>A14:&nbsp;根据工作区的特性，将&nbsp;Exchange&nbsp;server&nbsp;视为一个Internet&nbsp;mail&nbsp;server.&nbsp;当配置SQL&nbsp;Mail&nbsp;profile时,可以填入登录帐户和口令信息，这样，当&nbsp;SQL&nbsp;Mail&nbsp;连接另一个域下的&nbsp;Exchange&nbsp;server&nbsp;将不会被提示登录信息.</P>
+<P>当SQL&nbsp;Server&nbsp;server&nbsp;和&nbsp;Exchange&nbsp;server&nbsp;处于不同的防火墙下，你同样可以使用这个技巧.&nbsp;</P>
+<P>Q15:&nbsp;SQL&nbsp;Mail&nbsp;能与&nbsp;Microsoft&nbsp;Desktop&nbsp;Engine&nbsp;(MSDE)&nbsp;一起使用吗?&nbsp;</P>
+<P>A15:&nbsp;MSDE&nbsp;不支持&nbsp;SQL&nbsp;Mail.&nbsp;如果要使用&nbsp;SQL&nbsp;Mail&nbsp;,必须升级当前&nbsp;SQL&nbsp;Server到一个非MSDE&nbsp;版本.</P></FONT>

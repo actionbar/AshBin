@@ -1,0 +1,192 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="../c3.css" />
+<title>HTML 服务器控件</title>
+</head>
+<body class="dotnet">
+<div id="wrapper">
+<div id="header">
+<a href="http://e.v-get.com/w3cschool/" style="float:left;">W3CSchool 在线教程</a>
+<div class="q g"><script type="text/javascript">var cpro_id="u1163355"</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div>
+<div id="navfirst">
+<ul id="menu">
+<li id="h"><a href="../h.html">HTML教程</a></li>
+<li id="x"><a href="../x.html">XML教程</a></li>
+<li id="b"><a href="../b.html">浏览器脚本</a></li>
+<li id="s"><a href="../s.html">服务器脚本</a></li>
+<li id="d"><a href="../d.html">dot net教程</a></li>
+<li id="m"><a href="../m.html">多媒体教程</a></li>
+<li id="w"><a href="../w.html">建站手册</a></li>
+</ul>
+</div><div id="navsecond">
+<div id="course">
+<h2>ASP.NET 教程</h2>
+<ul>
+<li><a href="http://e.v-get.com/w3cschool/">ASP.NET 首页</a></li>
+<li><a href="aspnet_intro.html">ASP.NET 简介</a></li>
+<li><a href="aspnet_vsasp.html">ASP.NET vs ASP</a></li>
+<li><a href="aspnet_pages.html">ASP.NET 页面</a></li>
+<li><a href="aspnet_controls.html">ASP.NET 控件</a></li>
+<li><a href="aspnet_events.html">ASP.NET 事件</a></li>
+</ul>
+<h2>ASP.NET 窗体</h2>
+<ul>
+<li><a href="aspnet_forms.html">ASP.NET 窗体</a></li>
+<li><a href="aspnet_viewstate.html">ASP.NET ViewState</a></li>
+<li><a href="aspnet_textbox.html">asp:TextBox</a></li>
+<li><a href="aspnet_button.html">asp:Button</a></li>
+</ul>
+<h2>ASP.NET 绑定</h2>
+<ul>
+<li><a href="aspnet_databinding.html">数据绑定</a></li>
+<li><a href="aspnet_arraylist.html">ArrayList</a></li>
+<li><a href="aspnet_hashtable.html">Hashtable</a></li>
+<li><a href="aspnet_sortedlist.html">SortedList</a></li>
+<li><a href="aspnet_xml.html">XML 文件</a></li>
+<li><a href="aspnet_repeater.html">asp:Repeater</a></li>
+<li><a href="aspnet_datalist.html">asp:DataList</a></li>
+</ul>
+<h2>ASP.NET 数据库</h2>
+<ul>
+<li><a href="aspnet_dbconnection.html">数据库连接</a></li>
+</ul>
+<h2>ASP.NET 2.0</h2>
+<ul>
+<li><a href="aspnet_newfeatures.html">2.0 新特性</a></li>
+<li><a href="aspnet_masterpages.html">2.0 母版页</a></li>
+<li><a href="aspnet_navigation.html">2.0 导航</a></li>
+</ul>
+<h2>参考手册</h2>
+<ul>
+<li><a href="aspnet_refhtmlcontrols.html">HTML 控件</a></li>
+<li><a href="aspnet_refwebcontrols.html">Web 控件</a></li>
+<li><a href="aspnet_refvalidationcontrols.html">Validation 控件</a></li>
+</ul>
+<h2>实例</h2>
+<ul>
+<li>ASP.NET 实例</li>
+</ul>
+</div>
+<div id="selected">
+<h2>建站手册</h2>
+<ul>
+<li><a href="../site/">网站构建</a></li>
+<li><a href="../w3c/">万维网联盟</a></li>
+<li><a href="http://e.v-get.com/w3c/">W3CSchool 教程</a></li>
+<li><a href="../quality/">网站品质</a></li>
+<li><a href="../semweb/">语义网</a></li>
+<li><a href="../hosting/">网站主机</a></li>
+</ul>
+<h2><a href="http://e.v-get.com/w3c/" class="f13">W3CSchool 教程</a></h2><div class="a120x90"><script type="text/javascript">var cpro_id="u1210867";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div></div>
+</div>
+<div id="maincontent">
+<h1>HTML 服务器控件</h1>
+<div id="tpn">
+<ul class="prenext">
+<li class="pre"><a href="aspnet_navigation.html">上一页</a></li>
+<li class="next"><a href="aspnet_refwebcontrols.html">下一页</a></li>
+</ul>
+</div>
+<div id="intro">
+<p><strong>HTML 服务器控件是服务器可理解的 HTML 标签。</strong></p>
+</div>
+<div>
+<h2>HTML 服务器控件</h2>
+<p>ASP.NET 文件中的 HTML 元素默认作为文本进行处理。为了使这些元素可编程化，需要向 HTML 元素添加 runat="server" 属性。该属性指示该元素应作为服务器控件进行处理。</p>
+<p class="note"><span>注释：</span>所有 HTML 服务器控件必须位于带有 runat="server" 属性的 &lt;form&gt; 标签内！</p>
+<p class="note"><span>注释：</span>ASP.NET 要求所有 HTML 元素必须正确关闭和嵌套。</p>
+<table class="dataintable">
+<tr>
+<th>HTML 服务器控件</th>
+<th>描述</th>
+</tr>
+<tr>
+<td><a href="control_htmlanchor.html">HtmlAnchor</a></td>
+<td>控制 &lt;a&gt; HTML 元素</td>
+</tr>
+<tr>
+<td><a href="control_htmlbutton.html">HtmlButton</a></td>
+<td>控制 &lt;button&gt; HTML 元素</td>
+</tr>
+<tr>
+<td><a href="control_htmlform.html">HtmlForm</a></td>
+<td>控制 &lt;form&gt; HTML 元素</td>
+</tr>
+<tr>
+<td><a href="control_htmlgeneric.html">HtmlGeneric</a></td>
+<td>控制其他未被具体的 HTML 服务器控件规定的 HTML 元素，比如 &lt;body&gt;, &lt;div&gt;, &lt;span&gt; 等等。</td>
+</tr>
+<tr>
+<td><a href="control_htmlimage.html">HtmlImage</a></td>
+<td>控制 &lt;image&gt; HTML 元素</td>
+</tr>
+<tr>
+<td><a href="control_htmlinputbutton.html">HtmlInputButton</a></td>
+<td>控制 &lt;input type="button"&gt; 、&lt;input type="submit"&gt; 以及 &lt;input type="reset"&gt; HTML 元素</td>
+</tr>
+<tr>
+<td><a href="control_htmlinputcheckbox.html">HtmlInputCheckBox</a></td>
+<td>控制 &lt;input type="checkbox"&gt; HTML 元素</td>
+</tr>
+<tr>
+<td><a href="control_htmlinputfile.html">HtmlInputFile</a></td>
+<td>控制 &lt;input type="file"&gt; HTML 元素</td>
+</tr>
+<tr>
+<td><a href="control_htmlinputhidden.html">HtmlInputHidden</a></td>
+<td>控制 &lt;input type="hidden"&gt; HTML 元素</td>
+</tr>
+<tr>
+<td><a href="control_htmlinputimage.html">HtmlInputImage</a></td>
+<td>控制 &lt;input type="image"&gt; HTML 元素</td>
+</tr>
+<tr>
+<td><a href="control_htmlinputradiobutton.html">HtmlInputRadioButton</a></td>
+<td>控制 &lt;input type="radio"&gt; HTML 元素</td>
+</tr>
+<tr>
+<td><a href="control_htmlinputtext.html">HtmlInputText</a></td>
+<td>控制 &lt;input type="text"&gt; 和 &lt;input type="password"&gt; HTML 元素</td>
+</tr>
+<tr>
+<td><a href="control_htmlselect.html">HtmlSelect</a></td>
+<td>控制 &lt;select&gt; HTML 元素</td>
+</tr>
+<tr>
+<td><a href="control_htmltable.html">HtmlTable</a></td>
+<td>控制 &lt;table&gt; HTML 元素</td>
+</tr>
+<tr>
+<td><a href="control_htmltablecell.html">HtmlTableCell</a></td>
+<td>控制 &lt;td&gt; 和 &lt;th&gt; HTML 元素</td>
+</tr>
+<tr>
+<td><a href="control_htmltablerow.html">HtmlTableRow</a></td>
+<td>控制 &lt;tr&gt; HTML 元素</td>
+</tr>
+<tr>
+<td><a href="control_htmltextarea.html">HtmlTextArea</a></td>
+<td>控制 &lt;textarea&gt; HTML 元素</td>
+</tr>
+</table>
+</div>
+<div id="bpn">
+<ul class="prenext">
+<li class="pre"><a href="aspnet_navigation.html">上一页</a></li>
+<li class="next"><a href="aspnet_refwebcontrols.html">下一页</a></li>
+</ul>
+</div>
+</div>
+<div id="sidebar">
+<div class="rs"></div>
+<div id="tools">
+<h5 id="tools_reference"><a href="aspnet_reference.html">ASP.NET 参考手册</a></h5>
+</div>
+<div class="a120x600"><script type="text/javascript">var cpro_id="u1293136";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div><div class="b"></div>
+</div>
+</body>
+</html>

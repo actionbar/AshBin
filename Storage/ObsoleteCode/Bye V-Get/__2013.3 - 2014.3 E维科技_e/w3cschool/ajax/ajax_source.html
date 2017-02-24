@@ -1,0 +1,236 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="../c3.css" />
+<title>AJAX 请求 源代码</title>
+</head>
+<body class="browserscripting">
+<div id="wrapper">
+<div id="header">
+<a href="http://e.v-get.com/w3cschool/" style="float:left;">W3CSchool 在线教程</a>
+<div class="q g"><script type="text/javascript">var cpro_id="u1163355"</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div>
+<div id="navfirst">
+<ul id="menu">
+<li id="h"><a href="../h.html">HTML教程</a></li>
+<li id="x"><a href="../x.html">XML教程</a></li>
+<li id="b"><a href="../b.html">浏览器脚本</a></li>
+<li id="s"><a href="../s.html">服务器脚本</a></li>
+<li id="d"><a href="../d.html">dot net教程</a></li>
+<li id="m"><a href="../m.html">多媒体教程</a></li>
+<li id="w"><a href="../w.html">建站手册</a></li>
+</ul>
+</div><div id="navsecond">
+<div id="course">
+<h2>AJAX 基础</h2>
+<ul>
+<li><a href="http://e.v-get.com/w3cschool/">AJAX 首页</a></li>
+<li><a href="ajax_intro.html">AJAX 简介</a></li>
+<li><a href="ajax_httprequest.html">AJAX HTTP 请求</a></li>
+<li><a href="ajax_example.html">AJAX 实例</a></li>
+<li><a href="ajax_browsers.html">AJAX 浏览器支持</a></li>
+<li style="font-size:11px;"><a href="ajax_xmlhttprequest.html">AJAX XMLHttpRequest</a></li>
+<li><a href="ajax_server.html">AJAX 请求服务器</a></li>
+<li><a href="ajax_serverscript.html">AJAX 服务器脚本</a></li>
+</ul>
+<h2>AJAX 高级</h2>
+<ul>
+<li><a href="ajax_example_suggest.html">AJAX 请求实例</a></li>
+<li><a href="ajax_source.html">AJAX 请求源代码</a></li>
+<li><a href="ajax_database.html">AJAX 数据库实例</a></li>
+<li><a href="ajax_xmlfile.html">AJAX XML 实例</a></li>
+<li><a href="ajax_responsexml.html">AJAX ResponseXML</a></li>
+</ul>
+<h2>AJAX 实例</h2>
+<ul>
+<li><a href="../example/ajax_examples.html">AJAX 实例</a></li>
+</ul>
+</div>
+<div id="selected">
+<h2>建站手册</h2>
+<ul>
+<li><a href="../site/">网站构建</a></li>
+<li><a href="../w3c/">万维网联盟</a></li>
+<li><a href="http://e.v-get.com/w3c/">W3CSchool 教程</a></li>
+<li><a href="../quality/">网站品质</a></li>
+<li><a href="../semweb/">语义网</a></li>
+<li><a href="../hosting/">网站主机</a></li>
+</ul>
+<h2><a href="http://e.v-get.com/w3c/" class="f13">W3CSchool 教程</a></h2><div class="a120x90"><script type="text/javascript">var cpro_id="u1210867";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div></div>
+</div>
+<div id="maincontent">
+<h1>AJAX 请求 源代码</h1>
+<div  id="tpn">
+<ul class="prenext">
+<li class="pre"><a href="ajax_example_suggest.html">上一页</a></li>
+<li class="next"><a href="ajax_database.html">下一页</a></li>
+</ul>
+</div>
+<div>
+<h2>AJAX Suggest 源代码的实例</h2>
+<p>下面的源代码属于上一节的 AJAX 实例。</p>
+<p>您可以拷贝粘贴这些代码，然后亲自测试一下。</p>
+</div>
+<div>
+<h2>AJAX HTML 页面</h2>
+<p>这是 HTML 页面。它包含了一个简单的 HTML 表单，以及一个指向 JavaScript 的链接。</p>
+<pre>&lt;html&gt;
+&lt;head&gt;
+&lt;script src=&#34;clienthint.js&#34;&gt;&lt;/script&gt; 
+&lt;/head&gt;
+&lt;body&gt;
+&lt;form&gt; 
+First Name:&lt;input type=&#34;text&#34; <code>id=&#34;txt1&#34; onkeyup=&#34;showHint(this.value)&#34;</code> /&gt;
+&lt;/form&gt;
+&lt;p&gt;Suggestions: &lt;span <code>id=&#34;txtHint&#34;</code>&gt;&lt;/span&gt;&lt;/p&gt; 
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+<p>下面列出了 JavaScript 代码。</p>
+</div>
+<div>
+<h2>AJAX JavaScript</h2>
+<p>这是 JavaScript 代码，存储在文件 &#34;clienthint.js&#34; 中：</p>
+<pre>var xmlHttp
+<code>function showHint(str)</code>
+{
+  if (str.length==0)
+    { 
+    document.getElementById(&#34;txtHint&#34;).innerHTML=&#34;&#34;;
+    return;
+    }
+  xmlHttp=GetXmlHttpObject()
+  if (xmlHttp==null)
+    {
+    alert (&#34;您的浏览器不支持AJAX！&#34;);
+    return;
+    }
+  var url=&#34;gethint.asp&#34;;
+  url=url+&#34;?q=&#34;+str;
+  url=url+&#34;&amp;sid=&#34;+Math.random();
+  xmlHttp.onreadystatechange=stateChanged;
+  xmlHttp.open(&#34;GET&#34;,url,true);
+  xmlHttp.send(null);
+} 
+function stateChanged() 
+{ 
+if (xmlHttp.readyState==4)
+{ 
+document.getElementById(&#34;txtHint&#34;).innerHTML=xmlHttp.responseText;
+}
+}
+<code>function GetXmlHttpObject()</code>
+{
+  var xmlHttp=null;
+  try
+    {
+    <span>// Firefox, Opera 8.0+, Safari</span>
+    xmlHttp=new XMLHttpRequest();
+    }
+  catch (e)
+    {
+    <span>// Internet Explorer</span>
+    try
+      {
+      xmlHttp=new ActiveXObject(&#34;Msxml2.XMLHTTP&#34;);
+      }
+    catch (e)
+      {
+      xmlHttp=new ActiveXObject(&#34;Microsoft.XMLHTTP&#34;);
+      }
+    }
+return xmlHttp;
+}</pre>
+</div>
+<div>
+<h2>AJAX 服务器页面 - ASP 和 PHP</h2>
+<p>其实不存在什么“AJAX 服务器”。AJAX 页面可以由任一因特网服务器提供服务。</p>
+<p>在上一节的例子中被 JavaScript 调用的服务器页面是一个简单的名为 &#34;gethint.asp&#34; 的 ASP 文件。</p>
+<p>下面我们列出了这个服务器页面代码的实例，使用 ASP 来编写。</p>
+</div>
+<div>
+<h2>AJAX ASP 实例</h2>
+<p>&#34;gethint.asp&#34; 页面中的代码针对 IIS 使用 VBScript 编写。它会检查一个名字数组，然后向客户端返回相应的名字：</p>
+<pre>&lt;%
+response.expires=-1
+dim a(30)
+<span>'用名字为数组赋值</span>
+a(1)=&#34;Anna&#34;
+a(2)=&#34;Brittany&#34;
+a(3)=&#34;Cinderella&#34;
+a(4)=&#34;Diana&#34;
+a(5)=&#34;Eva&#34;
+a(6)=&#34;Fiona&#34;
+a(7)=&#34;Gunda&#34;
+a(8)=&#34;Hege&#34;
+a(9)=&#34;Inga&#34;
+a(10)=&#34;Johanna&#34;
+a(11)=&#34;Kitty&#34;
+a(12)=&#34;Linda&#34;
+a(13)=&#34;Nina&#34;
+a(14)=&#34;Ophelia&#34;
+a(15)=&#34;Petunia&#34;
+a(16)=&#34;Amanda&#34;
+a(17)=&#34;Raquel&#34;
+a(18)=&#34;Cindy&#34;
+a(19)=&#34;Doris&#34;
+a(20)=&#34;Eve&#34;
+a(21)=&#34;Evita&#34;
+a(22)=&#34;Sunniva&#34;
+a(23)=&#34;Tove&#34;
+a(24)=&#34;Unni&#34;
+a(25)=&#34;Violet&#34;
+a(26)=&#34;Liza&#34;
+a(27)=&#34;Elizabeth&#34;
+a(28)=&#34;Ellen&#34;
+a(29)=&#34;Wenche&#34;
+a(30)=&#34;Vicky&#34;
+<span>'从URL取得参数q</span>
+q=ucase(request.querystring(&#34;q&#34;))
+<span>'如果q的长度大于0，则查找所有的hint</span>
+if len(q)&gt;0 then
+  hint=&#34;&#34;
+  for i=1 to 30
+    if q=ucase(mid(a(i),1,len(q))) then
+      if hint=&#34;&#34; then
+        hint=a(i)
+      else
+        hint=hint &amp; &#34; , &#34; &amp; a(i)
+      end if
+    end if
+  next
+end if
+<span>'如果找不到hint，则输出&#34;no suggestion&#34;</span>
+<span>'或者输出正确的值</span>
+if hint=&#34;&#34; then 
+  response.write(&#34;no suggestion&#34;)
+else
+  response.write(hint)
+end if
+%&gt;</pre>
+</div>
+<div id="bpn">
+<ul class="prenext">
+<li class="pre"><a href="ajax_example_suggest.html">上一页</a></li>
+<li class="next"><a href="ajax_database.html">下一页</a></li>
+</ul>
+</div>
+</div>
+<div id="sidebar">
+<div class="rs"></div><div id="ad">
+<script type="text/javascript"><!--
+google_ad_client = "pub-3381531532877742";
+/* 120x600, sidebar_pic_1 */
+google_ad_slot = "0951690603";
+google_ad_width = 120;
+google_ad_height = 600;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div>
+</div><div class="b"></div>
+</div>
+</body>
+</html>

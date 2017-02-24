@@ -1,0 +1,100 @@
+<html xmlns:rdl>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<script src="rdl_properties.js"></script>
+<base target="_self">
+</head>
+<body>
+
+<script>
+
+//collFriendProperties=new Array();
+//collFriendDeclarations=new Array();
+//collFriendAtRules=new Array();
+//collFriendElements=new Array();
+//collFriendClasses=new Array();
+
+collFriendProperties=new Array(
+'word-break','white-space','word-wrap'
+);
+
+//collIE40=new Array();
+//collIE50=new Array();
+//collIE55=new Array();
+//collIE60=new Array();
+
+collIE50=new Array(
+'DDRESS','BLOCKQUOTE','BODY','CENTER','currentStyle','DD','DIR','DIV','DL','DT','FIELDSET','FORM','Hn','HR','LEGEND','LI','LISTING','MARQUEE','MENU','OL','P','PLAINTEXT','PRE','runtimeStyle','style','TABLE','TD','TH','TR','UL','XMP'
+);
+
+sStyle=
+'<style>\n'+
+'#idDIV{width:100%;height:80px;background-color:#FFD700;padding:4px;font-family:verdana,tahoma;line-break : normal;}\n'+
+'#idCodeDiv{width:100%;padding:4px;font-family:verdana,tahoma;margin:12px 0px 0px 0px;background-color:#EEEEEE;font-weight:bold;}\n'+
+'<\/style>\n';
+
+sScript=
+'<script>\n'+
+'function rdl_change(e){\n'+
+'var oCodeDiv=document.all("idCodeDiv");\n'+
+'var oDiv=document.all("idDiv");\n'+
+'with (document.all("idSel")) var sValue=options[selectedIndex].value;\n'+
+'oDiv.style.lineBreak=sValue;\n'+
+'oCodeDiv.innerText="line-break : "+sValue+";";\n'+
+'}\n'+
+'window.onload=new Function ("with (document) {defaultCharset=charset=\'shift_jis\';}");\n'+
+'<\/script>\n';
+
+sCode=
+'<div id=idDIV>印象的なギターリフ、日本語?英語が自然な形で行き交う独特な歌詞と存在感あるKUMIの歌声で構成されたDELICOらしいスケール感ある新作。<\/div>\n'+
+'<br>\n'+
+'<select id="idSel" onchange="rdl_change();">\n'+
+'<option value="normal">---line-break---\n'+
+'<option value="strict">strict\n'+
+'<\/select>\n'+
+'<br>\n'+
+'<div id=idCodeDiv>line-break : normal ;<\/div>\n';
+
+iWinWidth=360;
+
+iWinHeight=320;
+
+//bRunCode=false;
+
+//bElements=false;
+
+</script>
+
+<div id=idContent>
+
+<div id=idContentTitle><span id=idTitleName>line-break</span>版本：IE5+专有属性　继承性：有</div>
+
+<div class=cssColumnTitle>语法：</div>
+<div>
+<b>line-break : </b><span class=cssDefault><b>normal</b></span> | <b>strict</b>
+</div>
+
+<div class=cssColumnTitle>取值：</div>
+<table>
+<tr><td nowrap><b> normal </b></td><td nowrap><b>:</b></td><td><b>默认值</b>。应用日文文本的默认换行规则</td></tr>
+<tr><td nowrap><b> strict </b></td><td nowrap><b>:</b></td><td>强制日文文本换行规则的严谨性</td></tr>
+</table>
+
+<div class=cssColumnTitle>说明：</div>
+<div>
+设置或检索用于日文文本的换行规则。<br>
+此属性对于<b> currentStyle </b>对象而言是只读的。对于其他对象而言是可读写的。<br>
+对应的脚本特性为<b> lineBreak </b>。
+</div>
+
+<div class=cssColumnTitle>示例：</div>
+<div id=idSimpleCode>
+div { line-break : strict; } 
+</div>
+
+</div>
+</body>
+</html>
+
+<!-- Part of RDL(TM) - Written by Rain1977 
+HomeSite: http://www.dhtmlet.com  E-Mail: dhtmlet@hotmail.com -->

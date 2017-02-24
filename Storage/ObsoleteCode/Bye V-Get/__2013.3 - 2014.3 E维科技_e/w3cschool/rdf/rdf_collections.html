@@ -1,0 +1,100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="../c3.css" />
+<title>RDF 集合</title>
+</head>
+<body class="xml">
+<div id="wrapper">
+<div id="header">
+<a href="http://e.v-get.com/w3cschool/" style="float:left;">W3CSchool 在线教程</a>
+<div class="q g"><script type="text/javascript">var cpro_id="u1163355"</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div>
+<div id="navfirst">
+<ul id="menu">
+<li id="h"><a href="../h.html">HTML教程</a></li>
+<li id="x"><a href="../x.html">XML教程</a></li>
+<li id="b"><a href="../b.html">浏览器脚本</a></li>
+<li id="s"><a href="../s.html">服务器脚本</a></li>
+<li id="d"><a href="../d.html">dot net教程</a></li>
+<li id="m"><a href="../m.html">多媒体教程</a></li>
+<li id="w"><a href="../w.html">建站手册</a></li>
+</ul>
+</div><div id="navsecond">
+<div id="course">
+<h2>RDF 教程</h2>
+<ul>
+<li><a href="http://e.v-get.com/w3cschool/">RDF 首页</a></li>
+<li><a href="rdf_intro.html">RDF 简介</a></li>
+<li><a href="rdf_rules.html" title="">RDF 规则</a></li>
+<li><a href="rdf_example.html" title="">RDF 实例</a></li>
+<li><a href="rdf_main.html" title="">RDF 元素</a></li>
+<li><a href="rdf_containers.html" title="">RDF 容器</a></li>
+<li><a href="rdf_collections.html" title="">RDF 集合</a></li>
+<li><a href="rdf_schema.html" title="">RDF Schema</a></li>
+<li><a href="rdf_dublin.html" title="">RDF 都柏林核心</a></li>
+<li><a href="rdf_owl.html" title="">RDF OWL</a></li>
+</ul>
+</div>
+<div id="selected">
+<h2>建站手册</h2>
+<ul>
+<li><a href="../site/">网站构建</a></li>
+<li><a href="../w3c/">万维网联盟</a></li>
+<li><a href="http://e.v-get.com/w3c/">W3CSchool 教程</a></li>
+<li><a href="../quality/">网站品质</a></li>
+<li><a href="../semweb/">语义网</a></li>
+<li><a href="../hosting/">网站主机</a></li>
+</ul>
+<h2><a href="http://e.v-get.com/w3c/" class="f13">W3CSchool 教程</a></h2><div class="a120x90"><script type="text/javascript">var cpro_id="u1210867";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div></div>
+</div>
+<div id="maincontent">
+<h1>RDF 集合</h1>
+<div id="tpn">
+<ul class="prenext">
+<li class="pre"><a href="rdf_containers.html">上一页</a></li>
+<li class="next"><a href="rdf_schema.html">下一页</a></li>
+</ul>
+</div>
+<div id="intro">
+<p><strong>RDF 集合用于描述仅包含指定成员的组。</strong></p>
+</div>
+<div>
+<h2>rdf:parseType=&#34;Collection&#34; 属性</h2>
+<p>正如在前面的章节所看到的，我们无法关闭一个容易。容器规定了所包含的资源为成员 - 它没有规定其他的成员是不被允许的。</p>
+<p>RDF 集合用于描述仅包含指定成员的组。</p>
+<p>集合是通过属性 rdf:parseType=&#34;Collection&#34; 来描述的。</p>
+<h3>实例</h3>
+<pre>&lt;?xml version=&#34;1.0&#34;?&gt;
+&lt;rdf:RDF
+xmlns:rdf=&#34;http://www.w3.org/1999/02/22-rdf-syntax-ns#&#34; 
+xmlns:cd=&#34;http://recshop.fake/cd#&#34;&gt;
+&lt;rdf:Description
+rdf:about=&#34;http://recshop.fake/cd/Beatles&#34;&gt;
+&lt;cd:artist rdf:parseType=&#34;Collection&#34;&gt;
+&lt;rdf:Description rdf:about=&#34;http://recshop.fake/cd/Beatles/George&#34;/&gt;
+&lt;rdf:Description rdf:about=&#34;http://recshop.fake/cd/Beatles/John&#34;/&gt;
+&lt;rdf:Description rdf:about=&#34;http://recshop.fake/cd/Beatles/Paul&#34;/&gt;
+&lt;rdf:Description rdf:about=&#34;http://recshop.fake/cd/Beatles/Ringo&#34;/&gt;
+&lt;/cd:artist&gt;
+&lt;/rdf:Description&gt;
+&lt;/rdf:RDF&gt;</pre>
+</div>
+<div id="bpn">
+<ul class="prenext">
+<li class="pre"><a href="rdf_containers.html">上一页</a></li>
+<li class="next"><a href="rdf_schema.html">下一页</a></li>
+</ul>
+</div>
+</div>
+<div id="sidebar">
+<div class="rs"></div>
+<div id="tools">
+<h5 id="tools_reference"><a href="rdf_reference.html">RDF 参考手册</a></h5>
+</div>
+<div class="a120x600"><script type="text/javascript">var cpro_id="u1293136";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div><div class="b"></div>
+</div>
+</body>
+</html>

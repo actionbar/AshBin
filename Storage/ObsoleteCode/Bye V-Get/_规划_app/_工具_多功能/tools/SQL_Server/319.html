@@ -1,0 +1,33 @@
+<meta http-equiv="content-type" content="text/html; charset=gb2312"><FONT 
+style="FONT-SIZE: 9pt; LINE-HEIGHT: 15pt"><B>FAQ:SQL&nbsp;Mail（3）&lt;译&gt;(潇湘剑公子)</B><BR>常见的&nbsp;SQL&nbsp;Mail&nbsp;问题（二）
+<P></P>
+<P>Q5:&nbsp;为什么外发邮件会粘贴收件箱？</P>
+<P>A5&nbsp;:&nbsp;这个问题在&nbsp;Outlook&nbsp;2002&nbsp;上发生的可能性更高一些。为了提高互联网电子邮件的效率，&nbsp;Office&nbsp;开发团队将&nbsp;the&nbsp;mail&nbsp;spooler&nbsp;for&nbsp;non-Exchange&nbsp;mail&nbsp;移到了Outlook进程空间（原文是process&nbsp;space）。你需要打开&nbsp;Outlook&nbsp;client&nbsp;来发送外发邮件。这个问题对&nbsp;Outlooks向&nbsp;Exchange&nbsp;server&nbsp;发送电子邮件没有影响。</P>
+<P>当你使用&nbsp;Outlook&nbsp;2000&nbsp;的时候，你同样可能遇到这样的问题。在这种情况下，最可能的原因是在&nbsp;mail&nbsp;profile&nbsp;中没有提供一个工作的&nbsp;POP3&nbsp;server&nbsp;作为邮件接收服务器。</P>
+<P></P>
+<P>Q6:&nbsp;为什么外发邮件会粘贴待发箱？</P>
+<P>A6:&nbsp;这样的问题经常出现在类似&nbsp;Microsoft&nbsp;Windows&nbsp;Messaging&nbsp;以及&nbsp;Microsoft&nbsp;Outlook&nbsp;97这样的早期电子邮件&nbsp;clients&nbsp;上。这些邮件&nbsp;clients&nbsp;从来不准备接收来自象SQL&nbsp;Server&nbsp;这样的&nbsp;Windows&nbsp;service&nbsp;的请求。更多信息，请通过以下链接访问微软产品技术服务站点:</P>
+<P><IMG src="http://www.pigtwo.com/forum/pic/url.gif" align=absMiddle border=0><A 
+href="http://support.microsoft.com/default.aspx?scid=kb" 
+target=_blank>http://support.microsoft.com/default.aspx?scid=kb</A>;en-us;Q237913</P>
+<P>这些邮件&nbsp;clients&nbsp;现在基本上废弃了，所以不久之后你将不会再遇到这样的问题。&nbsp;但是，如果你遇到了，通过联系Microsoft&nbsp;产品支持服务，你将获得hotfix（热修？呵呵）。</P>
+<P></P>
+<P>Q7:&nbsp;为什么在我的发送Sent&nbsp;Items文件夹中没有任何发送信息？</P>
+<P>A7:&nbsp;SQL&nbsp;Server&nbsp;6.5&nbsp;和&nbsp;SQL&nbsp;Server&nbsp;7.0&nbsp;的SQL&nbsp;Mail&nbsp;在&nbsp;Outlook&nbsp;的&nbsp;Sent&nbsp;Items&nbsp;文件夹中保存一个发送信息的拷贝，这是简单&nbsp;MAPI&nbsp;界面的默认行为。即使你在Outlook&nbsp;mail&nbsp;client&nbsp;中清除&nbsp;Save&nbsp;copies&nbsp;of&nbsp;messages&nbsp;in&nbsp;Sent&nbsp;Items&nbsp;folder&nbsp;选项以使该选项失效，这个选项也会被忽略掉。</P>
+<P>SQL&nbsp;Server&nbsp;2000&nbsp;的&nbsp;SQL&nbsp;Mail&nbsp;使用扩展&nbsp;MAPI&nbsp;界面，它不会将发送信息在&nbsp;Sent&nbsp;Items&nbsp;文件夹中保存一个拷贝。如果你需要保存SQL&nbsp;Server&nbsp;2000&nbsp;发送的&nbsp;SQL&nbsp;Mail&nbsp;拷贝，你可以抄送给自己并且创建一个&nbsp;Outlook&nbsp;通讯规则来发送信息拷贝到你的Sent&nbsp;Items&nbsp;文件夹。</P>
+<P></P>
+<P>Q8:&nbsp;为什么我的信箱满了却在&nbsp;Sent&nbsp;Items&nbsp;文件夹中看不见任何邮件？</P>
+<P>A8&nbsp;:&nbsp;在&nbsp;SQL&nbsp;Server&nbsp;7.0&nbsp;和&nbsp;SQL&nbsp;Server&nbsp;2000&nbsp;中，&nbsp;有一个&nbsp;SQL&nbsp;Server&nbsp;Agent&nbsp;Properties&nbsp;选项&nbsp;Save&nbsp;copies&nbsp;of&nbsp;the&nbsp;sent&nbsp;messages&nbsp;in&nbsp;the&nbsp;'Sent&nbsp;Items'&nbsp;folder&nbsp;.&nbsp;如果你不选择该选项，&nbsp;SQL&nbsp;Mail&nbsp;将会把SQL&nbsp;Server&nbsp;Agent&nbsp;mail&nbsp;的拷贝保存到&nbsp;Exchange&nbsp;server&nbsp;的根文件夹下。当邮箱满了时，使用xp_sendmail&nbsp;存储过程发送邮件将失败并返回&nbsp;0x80040403&nbsp;错误或者MAPI_E_TABLE_TOO_BIG&nbsp;错误。</P>
+<P>你无法直接看到&nbsp;Microsoft&nbsp;Outlook&nbsp;的&nbsp;SQLAgentMail拷贝，需要通过&nbsp;Microsoft&nbsp;Exchange&nbsp;utility&nbsp;MDB&nbsp;Viewer&nbsp;工具来查看和删除这些信息。更多信息，请通过以下链接访问微软产品技术服务站点:</P>
+<P><IMG src="http://www.pigtwo.com/forum/pic/url.gif" align=absMiddle border=0><A 
+href="http://support.microsoft.com/default.aspx?scid=kb" 
+target=_blank>http://support.microsoft.com/default.aspx?scid=kb</A>;en-us;Q261133<BR><IMG 
+src="http://www.pigtwo.com/forum/pic/url.gif" align=absMiddle border=0><A 
+href="http://support.microsoft.com/default.aspx?scid=kb" 
+target=_blank>http://support.microsoft.com/default.aspx?scid=kb</A>;en-us;Q308758</P>
+<P></P>
+<P>Q9:&nbsp;为什么SQL&nbsp;Mail&nbsp;不删除电子邮件的附件？<BR>Why&nbsp;does&nbsp;SQL&nbsp;Mail&nbsp;not&nbsp;delete&nbsp;my&nbsp;e-mail&nbsp;attachments?&nbsp;</P>
+<P>A9:&nbsp;如果你运行带查询的&nbsp;xp_sendmail&nbsp;存储过程，&nbsp;@attach_results&nbsp;正确，将创建附件的临时文件并存放在Windows&nbsp;操作系统安装的&nbsp;System32&nbsp;目录下。所有版本的&nbsp;SQL&nbsp;Server&nbsp;都支持这个行为。更多信息,&nbsp;请通过以下链接访问微软产品技术服务站点:</P>
+<P><IMG src="http://www.pigtwo.com/forum/pic/url.gif" align=absMiddle border=0><A 
+href="http://support.microsoft.com/default.aspx?scid=kb" 
+target=_blank>http://support.microsoft.com/default.aspx?scid=kb</A>;en-us;Q151545</P></FONT>

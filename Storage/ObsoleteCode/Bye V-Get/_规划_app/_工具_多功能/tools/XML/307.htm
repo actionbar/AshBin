@@ -1,0 +1,68 @@
+<html>
+<head>
+<title>XML文档的“生命”</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+
+<link rel = stylesheet href = "image/style.css">
+</head>
+<body bgcolor="#ffffff">
+<table width="688" border="0" cellspacing="0" cellpadding="0" align="center">
+  <tr bgcolor="EEEEEE"> 
+    <td height="22"><a href="index.htm">主页</a></td>
+  </tr>
+</table><br>
+<table border="0" cellpadding="0" cellspacing="0" width="688" align="center" height="490">
+  <tr valign="top"> 
+    <td rowspan="4" width="91">&nbsp; </td>
+    <td height="68" width="131"> 
+      <p><img src="image/doc.gif"></p>
+    </td>
+    <td rowspan="4" width="18"><b></b> </td>
+    <td height="68" width="387"><img src="image/title_doc.gif"></td>
+    <td rowspan="4" width="61"> 
+      <h6>&nbsp;</h6>
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td rowspan="3" valign="top" class="pt10" align="center" width="131" bgcolor="EEEEEE"> 
+      <p>&nbsp;</p>
+      <p><font color="#FF0000">※ 1.3 XML文档的“生命”</font></p>
+       
+	</td>
+  </tr>
+  <tr valign="top"> 
+    <td width="387" height="308"> 
+      <table width="100%" border="0" cellpadding="0">
+        <tr> 
+          <td>
+
+           <h4 ALIGN="CENTER">1.3 XML文档的“生命”</h4>
+<P>从基本上来说，XML是一种文档格式。它是一系列的关于XML文档看起来是什么样子的规则。与XML标准的符合程度有两种级别。第一级是结构完整性，第二级是正确性。本书的第一部分向读者介绍如何编写结构完整的文档。而第二部分向读者介绍如何编写具有正确性的文档。</P>
+<P>HTML是设计用于Internet上和Web页面内部的文档格式。正如本书所叙述的，XML当然也可以用在这些方面。但是XML具有更为广泛的适用性。正如前面所讨论的，可用于字处理器的保存文件的格式，可用于不同程序间的数据交换格式，可用作与Intranet模板一致化的工具，还可用作以人类可读的形式保存数据的手段。</P>
+<P>虽然如此，如所有的数据格式一样，XML在有用之前也需要程序和内容。因而对于数据看起来应该是什么样子的，光了解XML本身还是不够的，这不光是一个规范所能解决的问题。用户还需要了解XML文档是如何编辑的，处理程序是如何读取XML文档并将其读取的信息传送给应用程序的，以及这些应用程序是如何处理数据的。</P>
+<h5>1.3.1 编辑器</h5>
+<P>XML文档大多数情况下都是用编辑器创建的。编辑器可以是基本的文本编辑器如Notepad（记事本）或是vi，这些编辑器并不真正理解XML。另一方面，也可以用所见即所得的编辑器，如Adobe FrameMaker，这种编辑器可将用户完全隔离于XML底层格式之外。另外也可以是一个结构化的编辑器，如JUMBO，它可将XML文档显示为树状结构。对于最重要的部分，有趣的编辑器并不是太有用，因而本书将注意力集中于用普通的文本编辑器来编写XML文档。</P>
+<P>其他程序也可以创建XML文档。例如，本书在讲述设计新的DTD的稍后章节中将可看到某些XML数据可直接从FileMaker的数据库中得出。在这种情况下，数据是先输入到FileMaker数据库中的，然后FileMaker的计算字段将数据转换为XML。一般来说，XML与数据库可协同工作得很好。</P>
+<P><img src="image/Image4.gif" WIDTH=45 HEIGHT=33>准确地说，我们可在第23章“设计新的XML应用”中看到这种情况。</P>
+<P>无论在何种情况下，都是编辑器或其他程序创建了XML文档。通常，这一文档是某种计算机硬盘上的实际文件。但也不是必须如此。例如，文档可能是数据库中的记录或是字段，或者可能是从网络上接收来的字节流。</P>
+<h5>1.3.2 语法分析程序和处理程序</h5>
+<P>XML的语法分析程序（即所谓的XML处理程序）读取文档并检查其中包括的XML是否是结构完整的。它还要确定文档是否合法，虽然这种测试不是必需的。这种测试的详细情况将在本书的第二部分中讲述。如果文档通过了测试，则处理程序就将文档转换为元素的树状结构。</P>
+<h5>1.3.3 浏览器和其他工具</h5>
+<P>最后语法分析程序将树状结构或是树的节点传送给用户端应用程序。这个应用程序可能是浏览器，如Mozilla，或是其他能够理解如何处理数据的程序。如果这个应用程序是浏览器的话，数据就显示给用户。但是其他程序也可以接受数据。例如，可将数据翻译成数据库的输入、一系列要演奏的乐谱或是要运行的Java 程序。XML是非常灵活的，可以用于许多不同的目的。</P>
+<h5>1.3.4 处理过程总结</h5>
+<P>总结一下，首先由一个编辑器创建了XML文档。语法分析程序将树状结构传送给浏览器，由浏览器显示出来。图1-1显示了这个处理过程。</P>
+<P ALIGN="CENTER"><img src="image/Image5.gif" WIDTH=395 HEIGHT=-13959></P>
+<P ALIGN="CENTER">图1-1  XML文档的处理流程</P>
+<P>请注意，所有这些部分都是独立的，互相分离的。将这些部分联系在一起的是XML文档。改变编辑程序与终端应用程序无关。事实上，很可能在编写文档时就根本不知道最终的应用程序是什么。可能是最终用户来阅读文档，也可能是数据库从中提取数据，甚至还可能是未发明出来的程序，也可能是所有这些情况。文档与读取它的程序是无关的。</P><img src="image/Image6.gif" WIDTH=41 HEIGHT=48 ALIGN="LEFT" HSPACE=11>
+<P>HTML也在某种程度上与读写它的程序无关，但是它只适用于浏览器。其他应用，如数据库输入已经不在它的有效范围之内了。例如，HTML没有提供某种方法来包括所需的内容，如每本书都必须有ISBN号码一样。在XML中可以包括这个。甚至可以强制安排元素出现的顺序（如第二级标题必须出现在第一级之后）。</P> 
+<a href='306.htm'>&lt;&lt;上一篇</a>&nbsp;&nbsp;<a href='308.htm'>下一篇&gt;&gt;</a></td>
+        </tr>
+      </table>
+      <p>&nbsp; </p>
+    </td>
+  </tr>
+</table>
+
+</body>
+
+</html>

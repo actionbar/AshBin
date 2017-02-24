@@ -1,0 +1,127 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+
+
+   <title>2.7. HTTP&#35831;&#27714;&#27450;&#39575;</title>
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="" />
+   <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+   <meta http-equiv="Content-Style-Type" content="text/css" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+</head>
+<body style="margin: 0px 0px 0px 0px; background: #FFFFFF;">
+
+
+<table width="100%" border="0" cellspacing="0" cellpadding="5" bgcolor="#649CCC">
+  <tr valign="middle">
+    <td align="left">
+      <p class="p_Heading1"><span class="f_Heading1">2.7. HTTP&#35831;&#27714;&#27450;&#39575;</span></p>
+
+    </td>
+    <td align="right">
+     <span style="font-size: 9pt">
+     <a href="introduction.htm">Top</a>&nbsp;
+     <a href="new_item22.htm">Previous</a>&nbsp;
+     <a href="new_item24.htm">Next</a>
+     </span>
+    </td>
+  </tr>
+</table>
+
+
+<!-- Placeholder for topic body. -->
+<table width="100%" border="0" cellspacing="0" cellpadding="5"><tr valign="top"><td align="left">
+<p style="line-height: 1.50;">2.7. HTTP&#35831;&#27714;&#27450;&#39575;</p>
+<p style="line-height: 1.50;">  &nbsp; &#19968;&#20010;&#27604;&#27450;&#39575;&#34920;&#21333;&#26356;&#39640;&#32423;&#21644;&#22797;&#26434;&#30340;&#25915;&#20987;&#26041;&#24335;&#26159;HTTP&#35831;&#27714;&#27450;&#39575;&#12290;&#36825;&#32473;&#20102;&#25915;&#20987;&#32773;&#23436;&#20840;&#30340;&#25511;&#21046;&#26435;&#19982;&#28789;&#27963;&#24615;&#65292;&#23427;&#36827;&#19968;&#27493;&#35777;&#26126;&#20102;&#19981;&#33021;&#30450;&#30446;&#20449;&#20219;&#29992;&#25143;&#25552;&#20132;&#30340;&#20219;&#20309;&#25968;&#25454;&#12290;</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; &#20026;&#20102;&#28436;&#31034;&#36825;&#26159;&#22914;&#20309;&#36827;&#34892;&#30340;&#65292;&#35831;&#30475;&#19979;&#38754;&#20301;&#20110;http://example.org/form.php&#30340;&#34920;&#21333;&#65306;</p>
+<p style="line-height: 1.50;">CODE:</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; &lt;form action="process.php" method="POST"&gt;</p>
+<p style="line-height: 1.50;">  &nbsp; &lt;p&gt;Please select a color:</p>
+<p style="line-height: 1.50;">  &nbsp; &lt;select name="color"&gt;</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; &lt;option value="red"&gt;Red&lt;/option&gt;</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; &lt;option value="green"&gt;Green&lt;/option&gt;</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; &lt;option value="blue"&gt;Blue&lt;/option&gt;</p>
+<p style="line-height: 1.50;">  &nbsp; &lt;/select&gt;&lt;br /&gt;</p>
+<p style="line-height: 1.50;">  &nbsp; &lt;input type="submit" value="Select" /&gt;&lt;/p&gt;</p>
+<p style="line-height: 1.50;">  &nbsp; &lt;/form&gt;</p>
+<p style="line-height: 1.50;">&#22914;&#26524;&#29992;&#25143;&#36873;&#25321;&#20102;Red&#24182;&#28857;&#20987;&#20102;Select&#25353;&#38062;&#21518;&#65292;&#27983;&#35272;&#22120;&#20250;&#21457;&#20986;&#19979;&#38754;&#30340;HTTP&#35831;&#27714;&#65306;</p>
+<p style="line-height: 1.50;">CODE:</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; POST /process.php HTTP/1.1</p>
+<p style="line-height: 1.50;">  &nbsp; Host: example.org</p>
+<p style="line-height: 1.50;">  &nbsp; User-Agent: Mozilla/5.0 (X11; U; Linux i686)</p>
+<p style="line-height: 1.50;">  &nbsp; Referer: http://example.org/form.php</p>
+<p style="line-height: 1.50;">  &nbsp; Content-Type: application/x-www-form-urlencoded</p>
+<p style="line-height: 1.50;">  &nbsp; Content-Length: 9</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; color=red</p>
+<p style="line-height: 1.50;">.</p>
+<p style="line-height: 1.50;">  &nbsp; &#30475;&#21040;&#22823;&#22810;&#25968;&#27983;&#35272;&#22120;&#20250;&#21253;&#21547;&#19968;&#20010;&#26469;&#28304;&#30340;URL&#20540;&#65292;&#20320;&#21487;&#33021;&#20250;&#35797;&#22270;&#20351;&#29992;$_SERVER['HTTP_REFERER']&#21464;&#37327;&#21435;&#38450;&#27490;&#27450;&#39575;&#12290;&#30830;&#23454;&#65292;&#36825;&#21487;&#20197;&#29992;&#20110;&#23545;&#20184;&#21033;&#29992;&#26631;&#20934;&#27983;&#35272;&#22120;&#21457;&#36215;&#30340;&#25915;&#20987;&#65292;&#20294;&#25915;&#20987;&#32773;&#26159;&#19981;&#20250;&#34987;&#36825;&#20010;&#23567;&#40635;&#28902;&#32473;&#25377;&#20303;&#30340;&#12290;&#36890;&#36807;&#32534;&#36753;HTTP&#35831;&#27714;&#30340;&#21407;&#22987;&#20449;&#24687;&#65292;&#25915;&#20987;&#32773;&#21487;&#20197;&#23436;&#20840;&#25511;&#21046;HTTP&#22836;&#37096;&#30340;&#20540;&#65292;GET&#21644;POST&#30340;&#25968;&#25454;&#65292;&#20197;&#21450;&#25152;&#26377;&#22312;HTTP&#35831;&#27714;&#30340;&#20869;&#23481;&#12290;</p>
+<p style="line-height: 1.50;">  &nbsp; &#25915;&#20987;&#32773;&#22914;&#20309;&#26356;&#25913;&#21407;&#22987;&#30340;HTTP&#35831;&#27714;&#65311;&#36807;&#31243;&#38750;&#24120;&#31616;&#21333;&#12290;&#36890;&#36807;&#22312;&#22823;&#22810;&#25968;&#31995;&#32479;&#24179;&#21488;&#19978;&#37117;&#25552;&#20379;&#30340;Telnet&#23454;&#29992;&#31243;&#24207;&#65292;&#20320;&#23601;&#21487;&#20197;&#36890;&#36807;&#36830;&#25509;&#32593;&#31449;&#26381;&#21153;&#22120;&#30340;&#20390;&#21548;&#31471;&#21475;&#65288;&#20856;&#22411;&#30340;&#31471;&#21475;&#20026;80&#65289;&#26469;&#19982;Web&#26381;&#21153;&#22120;&#30452;&#25509;&#36890;&#20449;&#12290;&#19979;&#38754;&#23601;&#26159;&#20351;&#29992;&#36825;&#20010;&#25216;&#24039;&#35831;&#27714;http://example.org/&#39029;&#38754;&#30340;&#20363;&#23376;&#65306;</p>
+<p style="line-height: 1.50;">CODE:</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp;$ telnet example.org 80</p>
+<p style="line-height: 1.50;">  &nbsp; Trying 192.0.34.166...</p>
+<p style="line-height: 1.50;">  &nbsp; Connected to example.org (192.0.34.166).</p>
+<p style="line-height: 1.50;">  &nbsp; Escape character is '^]'.</p>
+<p style="line-height: 1.50;">  &nbsp; GET / HTTP/1.1</p>
+<p style="line-height: 1.50;">  &nbsp; Host: example.org</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; HTTP/1.1 200 OK</p>
+<p style="line-height: 1.50;">  &nbsp; Date: Sat, 21 May 2005 12:34:56 GMT</p>
+<p style="line-height: 1.50;">  &nbsp; Server: Apache/1.3.31 (Unix)</p>
+<p style="line-height: 1.50;">  &nbsp; Accept-Ranges: bytes</p>
+<p style="line-height: 1.50;">  &nbsp; Content-Length: 410</p>
+<p style="line-height: 1.50;">  &nbsp; Connection: close</p>
+<p style="line-height: 1.50;">  &nbsp; Content-Type: text/html</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; &lt;html&gt;</p>
+<p style="line-height: 1.50;">  &nbsp; &lt;head&gt;</p>
+<p style="line-height: 1.50;">  &nbsp; &lt;title&gt;Example Web Page&lt;/title&gt;</p>
+<p style="line-height: 1.50;">  &nbsp; &lt;/head&gt;</p>
+<p style="line-height: 1.50;">  &nbsp; &lt;body&gt;</p>
+<p style="line-height: 1.50;">  &nbsp; &lt;p&gt;You have reached this web page by typing &amp;quot;example.com&amp;quot;,</p>
+<p style="line-height: 1.50;">  &nbsp; &amp;quot;example.net&amp;quot;, or &amp;quot;example.org&amp;quot; into your web browser.&lt;/p&gt;</p>
+<p style="line-height: 1.50;">  &nbsp; &lt;p&gt;These domain names are reserved for use in documentation and are not</p>
+<p style="line-height: 1.50;">  &nbsp; available for registration. See</p>
+<p style="line-height: 1.50;">  &nbsp; &lt;a href="http://www.rfc-editor.org/rfc/rfc2606.txt"&gt;RFC 2606&lt;/a&gt;, Section</p>
+<p style="line-height: 1.50;">  &nbsp; 3.&lt;/p&gt;</p>
+<p style="line-height: 1.50;">  &nbsp; &lt;/body&gt;</p>
+<p style="line-height: 1.50;">  &nbsp; &lt;/html&gt;</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; Connection closed by foreign host.</p>
+<p style="line-height: 1.50;">  &nbsp; $</p>
+<p style="line-height: 1.50;">&#19978;&#20363;&#20013;&#25152;&#26174;&#31034;&#30340;&#35831;&#27714;&#26159;&#31526;&#21512;HTTP/1.1&#35268;&#33539;&#30340;&#26368;&#31616;&#21333;&#30340;&#35831;&#27714;&#65292;&#36825;&#26159;&#22240;&#20026;Host&#20449;&#24687;&#26159;&#22836;&#37096;&#20449;&#24687;&#20013;&#25152;&#24517;&#39035;&#26377;&#30340;&#12290;&#19968;&#26086;&#20320;&#36755;&#20837;&#20102;&#34920;&#31034;&#35831;&#27714;&#32467;&#26463;&#30340;&#36830;&#32493;&#20004;&#20010;&#25442;&#34892;&#31526;&#65292;&#25972;&#20010;HTML&#30340;&#22238;&#24212;&#21363;&#26174;&#31034;&#22312;&#23631;&#24149;&#19978;&#12290;</p>
+<p style="line-height: 1.50;">  &nbsp; Telnet&#23454;&#29992;&#31243;&#24207;&#19981;&#26159;&#19982;Web&#26381;&#21153;&#22120;&#30452;&#25509;&#36890;&#20449;&#30340;&#21807;&#19968;&#26041;&#27861;&#65292;&#20294;&#23427;&#24120;&#24120;&#26159;&#26368;&#26041;&#20415;&#30340;&#12290;&#21487;&#26159;&#22914;&#26524;&#20320;&#29992;PHP&#32534;&#30721;&#21516;&#26679;&#30340;&#35831;&#27714;&#65292;&#20320;&#21487;&#20197;&#23601;&#21487;&#20197;&#23454;&#29616;&#33258;&#21160;&#25805;&#20316;&#20102;&#12290;&#21069;&#38754;&#30340;&#35831;&#27714;&#21487;&#20197;&#29992;&#19979;&#38754;&#30340;PHP&#20195;&#30721;&#23454;&#29616;&#65306;</p>
+<p style="line-height: 1.50;">CODE:</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp;&lt;?php</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; $http_response = '';</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; $fp = fsockopen('example.org', 80);</p>
+<p style="line-height: 1.50;">  &nbsp; fputs($fp, "GET / HTTP/1.1\r\n");</p>
+<p style="line-height: 1.50;">  &nbsp; fputs($fp, "Host: example.org\r\n\r\n");</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; while (!feof($fp))</p>
+<p style="line-height: 1.50;">  &nbsp; {</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; $http_response .= fgets($fp, 128);</p>
+<p style="line-height: 1.50;">  &nbsp; }</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; fclose($fp);</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; echo nl2br(htmlentities($http_response, ENT_QUOTES, 'UTF-8'));</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; ?&gt;</p>
+<p style="line-height: 1.50;">&#24403;&#28982;&#65292;&#36824;&#26377;&#24456;&#22810;&#26041;&#27861;&#21435;&#36798;&#21040;&#19978;&#38754;&#30340;&#30446;&#30340;&#65292;&#20294;&#20854;&#35201;&#28857;&#26159;HTTP&#26159;&#19968;&#20010;&#24191;&#20026;&#20154;&#30693;&#30340;&#26631;&#20934;&#21327;&#35758;&#65292;&#31245;&#26377;&#32463;&#39564;&#30340;&#25915;&#20987;&#32773;&#37117;&#20250;&#23545;&#23427;&#38750;&#24120;&#29087;&#24713;&#65292;&#24182;&#19988;&#23545;&#24120;&#35265;&#30340;&#23433;&#20840;&#28431;&#27934;&#30340;&#25915;&#20987;&#26041;&#27861;&#20063;&#24456;&#29087;&#24713;&#12290;</p>
+<p style="line-height: 1.50;">  &nbsp; &#30456;&#23545;&#20110;&#27450;&#39575;&#34920;&#21333;&#65292;&#27450;&#39575;HTTP&#35831;&#27714;&#30340;&#20570;&#27861;&#24182;&#19981;&#22810;&#65292;&#23545;&#23427;&#19981;&#24212;&#35813;&#20851;&#27880;&#12290;&#25105;&#35762;&#36848;&#36825;&#20123;&#25216;&#24039;&#30340;&#21407;&#22240;&#26159;&#20026;&#20102;&#26356;&#22909;&#30340;&#28436;&#31034;&#19968;&#20010;&#25915;&#20987;&#32773;&#22312;&#21521;&#20320;&#30340;&#24212;&#29992;&#36755;&#20837;&#24694;&#24847;&#20449;&#24687;&#26102;&#26159;&#22914;&#20309;&#22320;&#26041;&#20415;&#12290;&#36825;&#20877;&#27425;&#24378;&#35843;&#20102;&#36807;&#28388;&#36755;&#20837;&#30340;&#37325;&#35201;&#24615;&#21644;HTTP&#35831;&#27714;&#25552;&#20379;&#30340;&#20219;&#20309;&#20449;&#24687;&#37117;&#26159;&#19981;&#21487;&#20449;&#30340;&#36825;&#20010;&#20107;&#23454;&#12290;</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<hr noshade size=1 ><p style="line-height: 1.50;">&nbsp;</p>
+
+</td></tr></table>
+
+</body>
+</html>

@@ -1,0 +1,93 @@
+<html xmlns:rdl>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<script src="rdl_method.js"></script>
+<base target="_self">
+</head>
+<body>
+
+<script>
+//collFriendObjects=new Array();
+//collFriendProperties=new Array();
+//collFriendMethods=new Array();
+//collFriendEvents=new Array();
+//collFriendCollections=new Array();
+
+collFriendMethods=new Array(
+'alert','showModelessDialog','showModalDialog','ShowBrowserUI','prompt'
+);
+
+//collIE40=new Array();
+//collIE50=new Array();
+//collIE55=new Array();
+//collIE60=new Array();
+
+collIE40=new Array(
+'window'
+);
+
+//sStyle='';
+
+sScript=
+'<script>\n'+
+'function rdl_doClick(){\n'+
+'var sMessage=document.all("oMessage").value;\n'+
+'var bConfirm=window.confirm(sMessage);\n'+
+'with (document.all("oMessage")) if (bConfirm) value="用户点击了「确定」。"; else value="用户点击了「取消」。";\n'+
+'}\n'+
+'<\/script>\n';
+
+sCode=
+'<input id=oMessage type=text size=40 value="请在此输入信息。">\n'+
+'<br><br>\n'+
+'<input type=button value=" 显示对话框 " onclick="rdl_doClick();">\n';
+
+iWinWidth=320;
+
+iWinHeight=200;
+
+</script>
+
+<div id=idContent>
+
+<div id=idContentTitle><span id=idTitleName>confirm</span>版本：DHTML Object Model　返回值：有</div>
+
+<div class=cssColumnTitle>语法：</div>
+<div>
+<i>bConfirmed</i><b> = </b><a href="../objects/window.html"><b>window</b></a><b> . confirm ( </b><i>sMessage</i><b> ) </b>
+</div>
+
+<div class=cssColumnTitle>参数：</div>
+<table>
+<tr><td nowrap><i> sMessage </i></td><td nowrap><b>:</b></td>
+<td><b>可选项</b>。字符串(String)。指定在对话框内要被显示的信息。如果忽略此参数，将不显示任何信息。</td></tr>
+</table>
+
+<div class=cssColumnTitle>返回值：</div>
+<table>
+<tr><td nowrap><i> bConfirmed </i></td><td nowrap><b>:</b></td>
+<td>布尔值(Boolean)。<b>false</b> | <b>true</b>
+<table>
+<tr><td nowrap><b> false </b></td><td nowrap><b>:</b></td><td>用户点击了对话框的「取消」。</td></tr>
+<tr><td nowrap><b> true </b></td><td nowrap><b>:</b></td><td>用户点击了对话框的「确定」。</td></tr>
+</table>
+</td></tr>
+</table>
+
+<div class=cssColumnTitle>说明：</div>
+<div>
+显示一个包含可选信息以及「确定」和「取消」按钮的确认对话框。<br>
+此对话框为模式对话框，其标题栏文字不可以被改变。
+</div>
+
+<div class=cssColumnTitle>示例：</div>
+<div id=idSimpleCode>
+var bConfirm=window.confirm("Dream is my reality .");
+</div>
+
+</div>
+</body>
+</html>
+
+<!-- Part of RDL(TM) - Written by Rain1977 
+HomeSite: http://www.dhtmlet.com  E-Mail: dhtmlet@hotmail.com -->

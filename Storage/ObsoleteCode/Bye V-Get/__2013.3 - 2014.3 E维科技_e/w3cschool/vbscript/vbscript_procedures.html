@@ -1,0 +1,140 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="../c3.css" />
+<title>VBScript 程序</title>
+</head>
+<body class="browserscripting">
+<div id="wrapper">
+<div id="header">
+<a href="http://e.v-get.com/w3cschool/" style="float:left;">W3CSchool 在线教程</a>
+<div class="q g"><script type="text/javascript">var cpro_id="u1163355"</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div>
+<div id="navfirst">
+<ul id="menu">
+<li id="h"><a href="../h.html">HTML教程</a></li>
+<li id="x"><a href="../x.html">XML教程</a></li>
+<li id="b"><a href="../b.html">浏览器脚本</a></li>
+<li id="s"><a href="../s.html">服务器脚本</a></li>
+<li id="d"><a href="../d.html">dot net教程</a></li>
+<li id="m"><a href="../m.html">多媒体教程</a></li>
+<li id="w"><a href="../w.html">建站手册</a></li>
+</ul>
+</div><div id="navsecond">
+<div id="course">
+<h2>VBScript 教程</h2>
+<ul>
+<li><a href="http://e.v-get.com/w3cschool/">VB 首页</a></li>
+<li><a href="vbscript_intro.html">VB 简介</a></li>
+<li><a href="vbscript_howto.html">VB How to</a></li>
+<li><a href="vbscript_whereto.html">VB Where to</a></li>
+<li><a href="vbscript_variables.html">VB 变量</a></li>
+<li><a href="vbscript_procedures.html">VB 程序</a></li>
+<li><a href="vbscript_conditionals.html">VB 条件语句</a></li>
+<li><a href="vbscript_looping.html">VB 循环语句</a></li>
+<li><a href="vbscript_summary.html">VB 总结</a></li>
+</ul>
+<h2>实例</h2>
+<ul>
+<li><a href="../example/vbst_examples.html">VB 实例</a></li>
+</ul>
+<h2>参考手册</h2>
+<ul>
+<li><a href="vbscript_ref_functions.html">VB 函数</a></li>
+<li><a href="vbscript_ref_keywords.html">VB 关键字</a></li>
+</ul>
+</div>
+<div id="selected">
+<h2>建站手册</h2>
+<ul>
+<li><a href="../site/">网站构建</a></li>
+<li><a href="../w3c/">万维网联盟</a></li>
+<li><a href="http://e.v-get.com/w3c/">W3CSchool 教程</a></li>
+<li><a href="../quality/">网站品质</a></li>
+<li><a href="../semweb/">语义网</a></li>
+<li><a href="../hosting/">网站主机</a></li>
+</ul>
+<h2><a href="http://e.v-get.com/w3c/" class="f13">W3CSchool 教程</a></h2><div class="a120x90"><script type="text/javascript">var cpro_id="u1210867";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div></div>
+</div>
+<div id="maincontent">
+<h1>VBScript 程序</h1>
+<div  id="tpn">
+<ul class="prenext">
+<li class="pre"><a href="vbscript_variables.html">上一页</a></li>
+<li class="next"><a href="vbscript_conditionals.html">下一页</a></li>
+</ul>
+</div>
+<div class="example">
+<h2>实例</h2>
+<dl>
+<dt><a href="../tiy/t_602.html">子程序</a></dt>
+<dd>这个子程序不会返回值。</dd>
+<dt><a href="../tiy/t_603.html">函数程序</a></dt>
+<dd>假如你希望返回某个值时，可以使用函数程序。</dd>
+</dl>
+</div>
+<div>
+<h2>VBScript 程序</h2>
+<p>我们可使用两种程序：子程序和函数程序。</p>
+<h3>子程序：</h3>
+<ul>
+<li>是一系列的语句，被封装在 Sub 和 End Sub 语句内。</li>
+<li>可执行某些操作，但不会返回值。</li>
+<li>可带有通过程序调用来向子程序传递参数。</li>
+<li>如果没有，必须带有空的圆括号</li>
+</ul>
+<pre>Sub mysub()
+ some statements
+End Sub</pre>
+<pre>Sub mysub(argument1,argument2)
+ some statements
+End Sub</pre>
+<h3>函数程序：</h3>
+<ul>
+<li>是一系列的语句，被封装在 Function 和 End Function 语句内。</li>
+<li>可执行某些操作并返回值。</li>
+<li>可带有通过程序调用来向其传递参数。</li>
+<li>如果没有，必须带有空的圆括号</li>
+<li>通过向函数程序名赋值的方式，可使其返回值。</li>
+</ul>
+<pre>Function myfunction()
+ some statements
+ myfunction=some value
+End Function</pre>
+<pre>Function myfunction(argument1,argument2)
+ some statements
+ myfunction=some value
+End Function</pre>
+</div>
+<div>
+<h2>调用子程序或函数程序</h2>
+<p>可以这样调用某个函数：</p>
+<pre>name = findname()</pre>
+<p>此函数名为 &#34;findname&#34;，函数会返回一个值，这个值会存储于变量 &#34;name&#34; 中。</p>
+<p>或者可以这样做：</p>
+<pre>msgbox &#34;Your name is &#34; &amp; findname()</pre>
+<p>我们通过调用了名为 &#34;findname&#34; 的函数，这个函数返回的值会显示在消息框中。</p>
+<p>可以这样调用子程序：</p>
+<pre>Call MyProc(argument)</pre>
+<p>或者，也可以省略 Call 语句：</p>
+<pre>MyProc argument</pre>
+</div>
+<div  id="bpn">
+<ul class="prenext">
+<li class="pre"><a href="vbscript_variables.html">上一页</a></li>
+<li class="next"><a href="vbscript_conditionals.html">下一页</a></li>
+</ul>
+</div>
+</div>
+<div id="sidebar">
+<div class="rs"></div>
+<div id="tools">
+<h5 id="tools_reference"><a href="vbscript_ref_functions.html">VBScript 参考手册</a></h5>
+<h5 id="tools_example"><a href="../example/vbst_examples.html">VBScript 实例</a></h5>
+</div>
+<div class="a120x600"><script type="text/javascript">var cpro_id="u1293136";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div><div class="b"></div>
+</div>
+</body>
+</html>

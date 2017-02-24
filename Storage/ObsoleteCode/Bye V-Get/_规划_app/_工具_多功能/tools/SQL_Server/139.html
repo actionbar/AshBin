@@ -1,0 +1,16 @@
+<meta http-equiv="content-type" content="text/html; charset=gb2312"><FONT 
+style="FONT-SIZE: 9pt; LINE-HEIGHT: 15pt"><B>Access&nbsp;Get&nbsp;lastinsertid</B><BR>We&nbsp;have&nbsp;a&nbsp;table&nbsp;in&nbsp;MsAccess&nbsp;like&nbsp;:&nbsp;
+<P></P>
+<P>Test,&nbsp;Fields&nbsp;(id=autoinc,&nbsp;name=text);&nbsp;</P>
+<P>First&nbsp;we&nbsp;have&nbsp;to&nbsp;have&nbsp;a&nbsp;function&nbsp;like&nbsp;the&nbsp;one&nbsp;below&nbsp;:&nbsp;</P>
+<P>function&nbsp;GetLastInsertID&nbsp;:&nbsp;integer;&nbsp;<BR>begin&nbsp;</P>
+<P>&nbsp;&nbsp;//&nbsp;datResult&nbsp;=&nbsp;TADODataSet&nbsp;</P>
+<P>&nbsp;&nbsp;datResult.Active&nbsp;:=&nbsp;False;&nbsp;<BR>&nbsp;&nbsp;datResult.CommandText&nbsp;:=&nbsp;'select&nbsp;@@IDENTITY&nbsp;as&nbsp;[ID]';&nbsp;<BR>&nbsp;&nbsp;datResult.Active&nbsp;:=&nbsp;True;&nbsp;</P>
+<P>&nbsp;&nbsp;Result&nbsp;:=&nbsp;datResult.FieldByName('id').AsInteger;&nbsp;</P>
+<P>&nbsp;&nbsp;datResult.Active&nbsp;:=&nbsp;False;&nbsp;</P>
+<P>end;&nbsp;</P>
+<P>Now&nbsp;before&nbsp;getting&nbsp;the&nbsp;last&nbsp;inserted&nbsp;record&nbsp;record&nbsp;id&nbsp;=&nbsp;autoincrement&nbsp;field,&nbsp;in&nbsp;other&nbsp;words&nbsp;calling&nbsp;the&nbsp;above&nbsp;function.&nbsp;You&nbsp;have&nbsp;to&nbsp;do&nbsp;a&nbsp;SQL&nbsp;insert&nbsp;like&nbsp;the&nbsp;following&nbsp;</P>
+<P>procedure&nbsp;InsertRec;&nbsp;<BR>begin&nbsp;<BR>&nbsp;&nbsp;&nbsp;<BR>&nbsp;&nbsp;//&nbsp;datCommand&nbsp;=&nbsp;TADOCommand&nbsp;</P>
+<P>&nbsp;&nbsp;datCommand.CommandText&nbsp;:=&nbsp;'insert&nbsp;into&nbsp;[test]&nbsp;(&nbsp;[name]&nbsp;)&nbsp;values&nbsp;(&nbsp;"Test"&nbsp;)';&nbsp;<BR>&nbsp;&nbsp;datCommand.Execute;&nbsp;</P>
+<P>end;&nbsp;</P>
+<P>Now&nbsp;if&nbsp;we&nbsp;like&nbsp;to&nbsp;know&nbsp;which&nbsp;is&nbsp;the&nbsp;last&nbsp;autoinc&nbsp;value&nbsp;(&nbsp;notice&nbsp;that&nbsp;the&nbsp;getlastinsertid&nbsp;proc.&nbsp;only&nbsp;works&nbsp;after&nbsp;the&nbsp;insertrec&nbsp;proc)&nbsp;<BR></P></FONT>

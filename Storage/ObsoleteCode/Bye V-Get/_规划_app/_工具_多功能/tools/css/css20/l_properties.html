@@ -1,0 +1,218 @@
+<html xmlns:rdl>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<script src="rdl_indexlist.js"></script>
+<base target="_self">
+</head>
+<body>
+
+<script>
+
+sTitleText='Properties Reference';
+sPrefix='c_';
+
+collFriendLists = new Array(
+'Units','Properties','Declarations','At-Rules','Pseudo-Elements','Pseudo-Classes','Selectors'
+);
+
+collHeadNotes = new Array(
+'属性(Properties)','版本(Version)','兼容性(Compatibility)','继承性(Inherit From Parent)','简介(Description)'
+);
+
+collListItems = new Array(
+new Array('Head','文本属性  Text Properties'),
+new Array('40','text-indent','CSS1','IE4+ , NS4+','有','检索或设置对象中的文本的缩进。'),
+new Array('60','text-overflow','IE专有属性','IE6+','无','设置或检索是否使用一个省略标记(...)标示对象内文本的溢出。'),
+new Array('40','vertical-align','CSS1/CSS2','IE4+ , NS4+','无','设置或检索对象内容的垂直对其方式。'),
+new Array('40','text-align','CSS1','IE4+ , NS4+','有','设置或检索对象中文本的对齐方式。'),
+new Array('55','layout-flow','IE专有属性','IE5.5+','有','设置或检索对象内文本的流动和方向。'),
+new Array('55','writing-mode','IE专有属性','IE5.5+','有','设置或检索对象的内容块固有的书写方向。'),
+new Array('50','direction','CSS2','IE5+','无','用于设置文本流入的方向。'),
+new Array('50','unicode-bidi','CSS2','IE5+','无','用于同一个页面里存在从不同方向读进的文本显示。'),
+new Array('50','word-break','IE专有属性','IE5+','无','设置或检索对象内文本的字内换行行为。尤其在出现多种语言时。'),
+new Array('50','line-break','IE专有属性','IE5+','无','设置或检索用于日文文本的换行规则。'),
+new Array('55','white-space','CSS1','IE5.5+ , NS4+','有','设置或检索对象内空格的处理方式。'),
+new Array('55','word-wrap','IE专有属性','IE5.5+','有','设置或检索当当前行超过指定容器的边界时是否断开转行。'),
+new Array('50','text-autospace','IE专有属性','IE5+','无','设置或检索对象文本的自动空格和紧缩空格宽度调整的方式。'),
+new Array('55','text-kashida-space','IE专有属性','IE5.5+','有','设置或检索如何拉伸字符来调节文本行排列。'),
+new Array('50','text-justify','IE专有属性','IE5+','无','设置或检索对象内文本的对齐方式。'),
+new Array('50','ruby-align','IE专有属性','IE5+','无','设置或检索通过rt对象指定的注释文本或发音指南（参考ruby对象）的对齐位置。'),
+new Array('50','ruby-position','IE专有属性','IE5+','无','设置或检索通过rt对象指定的注释文本或发音指南（参考ruby对象）的位置。'),
+new Array('50','ruby-overhang','IE专有属性','IE5+','无','设置或检索通过rt对象指定的注释文本或发音指南（参考ruby对象）的位置。'),
+new Array('50','ime-mode','IE专有属性','IE5+','无','设置或检索是否允许用户激活输入中文，韩文，日文等的输入法(IME)状态。'),
+new Array('50','layout-grid','IE专有属性','IE5+','有','复合属性。设置或检索复合文档中指定文本字符版式的网格特性。'),
+new Array('50','layout-grid-char','IE专有属性','IE5+','有','设置或检索应用于对象文本的字符网格值。'),
+new Array('50','layout-grid-char-spacing','IE专有属性','IE5+','有','设置或检索字符间隔。'),
+new Array('50','layout-grid-line','IE专有属性','IE5+','有','设置或检索应用于对象文本的行网格值。'),
+new Array('50','layout-grid-mode','IE专有属性','IE5+','有','设置或检索文本网格版式是否使用二维。'),
+new Array('50','layout-grid-type','IE专有属性','IE5+','有','设置或检索应用于对象文本的网格类型。'),
+
+new Array('Head','表格属性  Table Properties'),
+new Array('50','border-collapse','CSS2','IE5+','无','设置或检索表格的行和单元格的边是合并在一起还是按照标准的HTML样式分开。'),
+new Array('80','border-spacing','CSS2','无','无','设置或检索当表格边框独立时，行和单元格的边在横向和纵向上的间距。'),
+new Array('80','caption-side','CSS2','无','无','设置或检索表格( table )的 caption 对象是在表格的那一边。'),
+new Array('80','empty-cells','CSS2','无','无','设置或检索当表格的单元格无内容时，是否显示该单元格的边框。'),
+new Array('50','table-layout','CSS2','IE5+','无','设置或检索表格的布局算法。你可以通过此属性改善表格呈递性能。'),
+new Array('80','speak-header','CSS2','无','无','设置或检索当表格( table )通过语音发生器说话时，表格标题是在所有的单元格之前发声，还是到一个不与之关联的单元格就结束发声。'),
+
+new Array('Head','滚动条属性  Scrollbar Properties'),
+new Array('55','scrollbar-3dlight-color','IE专有属性','IE5.5+','有','设置或检索滚动条亮边框颜色。'),
+new Array('55','scrollbar-highlight-color','IE专有属性','IE5.5+','有','设置或检索滚动条3D界面的亮边(ThreedHighlight)颜色。'),
+new Array('55','scrollbar-face-color','IE专有属性','IE5.5+','有','设置或检索滚动条3D表面(ThreedFace)的颜色。'),
+new Array('55','scrollbar-arrow-color','IE专有属性','IE5.5+','有','设置或检索滚动条方向箭头的颜色。当滚动条出现但不可用时，此属性失效。'),
+new Array('55','scrollbar-shadow-color','IE专有属性','IE5.5+','有','设置或检索滚动条3D界面的暗边(ThreedShadow)颜色。'),
+new Array('55','scrollbar-darkshadow-color','IE专有属性','IE5.5+','有','设置或检索滚动条暗边框(ThreedDarkShadow)颜色。'),
+new Array('55','scrollbar-base-color','IE专有属性','IE5.5+','有','设置或检索滚动条基准颜色。其它界面颜色将据此自动调整。'),
+new Array('55','scrollbar-track-color','IE专有属性','IE5.5+','有','设置或检索滚动条的拖动区域(TrackBar)颜色。'),
+
+new Array('Head','打印属性  Printing Properties'),
+new Array('40','page-break-after','CSS2','IE4+','无','检索或设置对象后出现的页分割符。'),
+new Array('40','page-break-before','CSS2','IE4+','无','检索或设置对象前出现的页分割符。'),
+new Array('80','page-break-inside','CSS2','无','无','检索或设置对象容器中出现的页分割符。'),
+new Array('80','marks','CSS2','无','无','设置或检索什么样的标志是应该在页容器外边被给予。'),
+new Array('80','orphans','CSS2','无','无','设置或检索对象内容内一定要留在一页范围底端以内的行的最少数量。'),
+new Array('80','size','CSS2','无','无','检索或指定页面规格的调整。'),
+new Array('80','widows','CSS2','无','无','检索或指定一定要留在页面顶部的行数。'),
+
+new Array('Head','定位属性  Positioning Properties'),
+new Array('40','position','CSS2','IE4+ , NS4+','无','检索对象的定位方式。'),
+new Array('40','z-index','CSS2','IE4+ , NS6+','无','检索或设置对象的层叠顺序。'),
+new Array('40','top','CSS2','IE4+ , NS4+','无','检索或设置对象与其最近一个具有定位设置的父对象顶边相关的位置。'),
+new Array('40','right','CSS2','IE5+','无','检索或设置对象与其最近一个具有定位设置的父对象右边相关的位置。'),
+new Array('40','bottom','CSS2','IE5+','无','检索或设置对象与其最近一个具有定位设置的父对象底边相关的位置。'),
+new Array('40','left','CSS2','IE4+ , NS4+','无','检索或设置对象与其最近一个具有定位设置的父对象左边相关的位置。'),
+
+new Array('Head','内补丁属性  Paddings Properties'),
+new Array('40','padding','CSS1','IE4+ , NS4+','无','检索或设置对象四边的内补丁。'),
+new Array('40','padding-top','CSS1','IE4+ , NS4+','无','检索或设置对象上边的内补丁。'),
+new Array('40','padding-right','CSS1','IE4+ , NS4+','无','检索或设置对象右边的内补丁。'),
+new Array('40','padding-bottom','CSS1','IE4+ , NS4+','无','检索或设置对象底边的内补丁。'),
+new Array('40','padding-left','CSS1','IE4+ , NS4+','无','检索或设置对象左边的内补丁。'),
+
+new Array('Head','轮廓属性  Outlines Properties'),
+new Array('80','outline','CSS2','无','无','复合属性。设置或检索对象外的线条轮廓。'),
+new Array('80','outline-color','CSS2','无','无','设置或检索对象外的线条轮廓( outline )的颜色。'),
+new Array('80','outline-style','CSS2','无','无','设置或检索对象外的线条轮廓( outline )的样式。'),
+new Array('80','outline-width','CSS2','无','无','设置或检索对象外的线条轮廓( outline )的宽度。'),
+
+new Array('Head','外补丁属性  Margins Properties'),
+new Array('40','margin','CSS1','IE4+ , NS4+','无','检索或设置对象四边的外补丁。'),
+new Array('40','margin-top','CSS1','IE4+ , NS4+','无','检索或设置对象顶边的外补丁。'),
+new Array('40','margin-right','CSS1','IE4+ , NS4+','无','检索或设置对象右边的外补丁。'),
+new Array('40','margin-bottom','CSS1','IE4+ , NS4+','无','检索或设置对象底边的外补丁。'),
+new Array('40','margin-left','CSS1','IE4+ , NS4+','无','检索或设置对象左边的外补丁。'),
+
+new Array('Head','列表属性  Lists Properties'),
+new Array('40','list-style','CSS1','IE4+ , NS4+','有','设置列表项目相关样式。'),
+new Array('40','list-style-image','CSS1','IE4+ , NS6+','有','设置或检索作为对象的列表项标记的图像。'),
+new Array('40','list-style-position','CSS1','IE4+ , NS6+','有','设置或检索作为对象的列表项标记如何根据文本排列。'),
+new Array('40','list-style-type','CSS1/CSS2','IE4+ , NS4+','有','设置或检索对象的列表项所使用的预设标记。'),
+new Array('80','marker-offset','CSS2','无','有','设置或检索标记容器和主容器之间水平补白。'),
+
+new Array('Head','布局属性  Layout Properties'),
+new Array('40','clear','CSS1','IE4+ , NS4+','无','该属性的值指出了不允许有浮动对象的边。'),
+new Array('40','float','CSS1','IE4+ , NS4+','无','该属性的值指出了对象是否及如何浮动。'),
+new Array('40','clip','CSS2','IE4+ , NS6+','无','检索或设置对象的可视区域。'),
+new Array('40','overflow','CSS2','IE4+ , NS6+','无','检索或设置当对象的内容超过其指定高度及宽度时如何管理内容。'),
+new Array('40','overflow-x','IE专有属性','IE4+','无','检索或设置当对象的内容超过其指定宽度时如何管理内容。'),
+new Array('40','overflow-y','IE专有属性','IE4+','无','检索或设置当对象的内容超过其指定宽度时如何管理内容。'),
+new Array('40','display','CSS1/CSS2','IE4+ , NS4+','无','设置或检索对象是否及如何显示。'),
+new Array('40','visibility','CSS2','IE4+ , NS6+','无','设置或检索是否显示对象。与 display 属性不同，此属性为隐藏的对象保留其占据的物理空间。'),
+
+new Array('Head','字体属性  Font Properties'),
+new Array('40','font','CSS1/CSS2','IE4+ , NS4+','有','复合属性。设置或检索对象中的文本特性。'),
+new Array('40','color','CSS1','IE4+ , NS4+','有','检索或设置对象的文本颜色。'),
+new Array('40','font-family','CSS1','IE4+ , NS4+','有','设置或检索用于对象中文本的字体名称序列。'),
+new Array('40','font-size','CSS1','IE4+ , NS4+','有','设置或检索对象中的字体尺寸。'),
+new Array('80','font-size-adjust','CSS2','无','有','设置或检索用于对象中文本的字体名称序列是否强制使用同一尺寸。'),
+new Array('80','font-stretch','CSS2','无','有','设置或检索用于对象中文本的文字是否横向的拉伸变形。'),
+new Array('40','font-style','CSS1','IE4+ , NS4+','有','设置或检索对象中的字体样式。'),
+new Array('40','font-weight','CSS1','IE4+ , NS4+','有','设置或检索对象中的文本字体的粗细。'),
+new Array('40','text-decoration','CSS1','IE4+ , NS4+','无','检索或设置对象中的文本的装饰。'),
+new Array('55','text-underline-position','IE专有属性','IE5.5+','有','设置或检索 text-decoration 属性定义的下划线的位置。'),
+new Array('80','text-shadow','CSS2','无','无','设置或检索对象中文本的文字是否有阴影及模糊效果。'),
+new Array('40','font-variant','CSS1','IE4+ , NS6+','有','设置或检索对象中的文本是否为小型的大写字母。'),
+new Array('40','text-transform','CSS1','IE4+ , NS4+','有','检索或设置对象中的文本的大小写。'),
+new Array('40','line-height','CSS1','IE4+ , NS4+','有','检索或设置对象的行高。'),
+new Array('40','letter-spacing','CSS1','IE4+ , NS6+','有','检索或设置对象中的文字之间的间隔。'),
+new Array('60','word-spacing','CSS1','IE6+ , NS6+','有','检索或设置对象中的单词之间插入的空隔。'),
+
+new Array('Head','尺寸属性  Dimensions Properties'),
+new Array('40','height','CSS1','IE4+ , NS6+','无','检索或设置对象的高度。'),
+new Array('80','max-height','CSS2','无','无','设置或检索对象的最大高度。'),
+new Array('60','min-height','CSS2','IE6+','无','设置或检索对象的最小高度。'),
+new Array('40','width','CSS1','IE4+ , NS6+','无','检索或设置对象的宽度。'),
+new Array('80','max-width','CSS2','无','无','设置或检索对象的最大宽度。'),
+new Array('80','min-width','CSS2','无','无','设置或检索对象的最小宽度。'),
+
+new Array('Head','内容属性  Generated Content Properties'),
+new Array('80','include-source','CSS2','无','无','插入另一个文档到当前文档，取代当前对象的内容。'),
+new Array('80','quotes','CSS2','无','无','设置或检索对象内使用的嵌套标记。'),
+new Array('80','counter-increment','CSS2','无','无','设定当一个选择符(selector)发生时计数器增加的值。'),
+new Array('80','counter-reset','CSS2','无','无','将指定选择符(selector)的计数器复位。'),
+
+new Array('Head','边框属性  Borders Properties'),
+new Array('40','border','CSS1','IE4+ , NS4+','无','复合属性。设置对象的边框样式。'),
+new Array('40','border-color','CSS1','IE4+ , NS6+','无','设置对象边框的颜色。'),
+new Array('40','border-style','CSS1','IE4+ , NS4+','无','设置对象边框的样式。'),
+new Array('40','border-width','CSS1','IE4+ , NS4+','无','设置对象边框的宽度。'),
+new Array('40','border-top','CSS1','IE4+ , NS6+','无','复合属性。设置对象上边框的样式。'),
+new Array('40','border-top-color','CSS2','IE4+ , NS6+','无','设置对象上边框的颜色。'),
+new Array('40','border-top-style','CSS2','IE4+ , NS6+','无','设置对象上边框的样式。'),
+new Array('40','border-top-width','CSS1','IE4+ , NS4+','无','设置对象上边框的宽度。'),
+new Array('40','border-right','CSS1','IE4+ , NS6+','无','复合属性。设置对象右边框的样式。'),
+new Array('40','border-right-color','CSS2','IE4+ , NS6+','无','设置对象右边框的颜色。'),
+new Array('40','border-right-style','CSS2','IE4+ , NS6+','无','设置对象右边框的样式。'),
+new Array('40','border-right-width','CSS1','IE4+ , NS4+','无','设置对象右边框的宽度。'),
+new Array('40','border-bottom','CSS1','IE4+ , NS6+','无','复合属性。设置对象下边框的样式。'),
+new Array('40','border-bottom-color','CSS2','IE4+ , NS6+','无','设置对象下边框的颜色。'),
+new Array('40','border-bottom-style','CSS2','IE4+ , NS6+','无','设置对象下边框的样式。'),
+new Array('40','border-bottom-width','CSS1','IE4+ , NS4+','无','设置对象下边框的宽度。'),
+new Array('40','border-left','CSS1','IE4+ , NS6+','无','复合属性。设置对象左边框的样式。'),
+new Array('40','border-left-color','CSS2','IE4+ , NS6+','无','设置对象左边框的颜色。'),
+new Array('40','border-left-style','CSS2','IE4+ , NS6+','无','设置对象左边框的样式。'),
+new Array('40','border-left-width','CSS1','IE4+ , NS4+','无','设置对象左边框的宽度。'),
+
+new Array('Head','背景属性  Background Properties'),
+new Array('40','background','CSS1','IE4+ , NS4+','无','复合属性。设置对象的背景样式。'),
+new Array('40','background-attachment','CSS1','IE4+ , NS6+','无','设置或检索背景图像是随对象内容滚动还是固定的。'),
+new Array('40','background-color','CSS1','IE4+ , NS4+','无','设置或检索对象的背景颜色。'),
+new Array('40','background-image','CSS1','IE4+ , NS4+','无','设置或检索对象的背景图像。'),
+new Array('40','background-position','CSS1','IE4+ , NS6+','无','设置或检索对象的背景图像位置。'),
+new Array('40','background-position-x','IE专有属性','IE4+','无','设置或检索对象的背景图像横坐标位置。'),
+new Array('40','background-position-y','IE专有属性','IE4+','无','设置或检索对象的背景图像纵坐标位置。'),
+new Array('40','background-repeat','CSS1','IE4+ , NS4+','无','设置或检索对象的背景图像是否及如何铺排。'),
+new Array('80','layer-background-color','NS专有属性','NS4+','无','设置或检索对象整个区域的背景颜色。'),
+new Array('80','layer-background-image','NS专有属性','NS4+','无','设置或检索对象整个区域的背景图像。'),
+
+new Array('Head','声音属性  Aural Properties'),
+new Array('80','voice-family','CSS2','无','有','设置或检索当前声音类型。'),
+new Array('80','volume','CSS2','无','有','设置或检索音量。'),
+new Array('80','azimuth','CSS2','无','有','设置或检索当前声音的音场角度。'),
+new Array('80','stress','CSS2','无','有','和 pitch-range 相似。设置或检索当前声音波形的最高峰值。'),
+new Array('80','richness','CSS2','无','有','设置或检索当前声音的音色。'),
+new Array('80','speech-rate','CSS2','无','有','设置或检索发音速度。'),
+new Array('80','cue','CSS2','无','有','设置在对象前后播放的声音。'),
+new Array('80','cue-after','CSS2','无','有','设置在对象后播放的声音。'),
+new Array('80','cue-before','CSS2','无','有','设置在对象前播放的声音。'),
+new Array('80','pause','CSS2','无','有','设置对象前后的声音暂停。'),
+new Array('80','pause-after','CSS2','无','有','定义对象内容被发音后的暂停。'),
+new Array('80','pause-before','CSS2','无','有','定义对象内容发音前的暂停。'),
+new Array('80','pitch','CSS2','无','有','设置或检索音高。'),
+new Array('80','pitch-range','CSS2','无','有','设置或检索声音的平滑程度。'),
+new Array('80','play-during','CSS2','无','有','设置或检索背景音乐的播放。'),
+new Array('80','speak','CSS2','无','有','设置或检索声音是否给出。'),
+new Array('80','speak-numeral','CSS2','无','有','设置或检索数字如何发音。'),
+new Array('80','speak-punctuation','CSS2','无','有','设置或检索标点符号如何发音。')
+
+);
+
+
+</script>
+
+</body>
+</html>
+
+<!-- Part of RDL(TM) - Written by Rain1977 
+HomeSite: http://www.dhtmlet.com  E-Mail: rainersu@hotmail.com -->
+

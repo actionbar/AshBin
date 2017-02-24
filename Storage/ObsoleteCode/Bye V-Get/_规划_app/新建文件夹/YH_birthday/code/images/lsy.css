@@ -1,0 +1,175 @@
+html,body,div,h1,h2,h3,h4,p,td,tr,ul,ol,li,table,dl,dd,dt,img,form{margin:0;padding:0;}
+table{border-collapse:collapse;border-spacing:0;}
+img { border:0}
+body{margin:auto;font-family:arial;font-size:12px;}
+a{
+	TEXT-DECORATION: none;
+	color: #003399;
+}
+a:hover{
+	COLOR: #009286;
+	text-decoration: underline;
+}
+p{
+	margin-bottom:2px;
+	margin-top:2px;
+}
+span{
+	margin-left:28px;display:inline;color:green;
+}
+.list{margin-left:5px; margin-bottom:1px;width:80px; FLOAT: left;BORDER: #e7e7e7 0px solid;}
+.list_n{margin-left:9px; margin-bottom:1px;width:85px; FLOAT: left;}
+.list.a{color:#00cc66;}
+.list_m{width:270px;height:90px; FLOAT: left;TEXT-ALIGN: left;padding:3px;BORDER: #e7e7e7 1px solid;margin-top:12px;margin-left:3px;margin-right:4px;}
+
+.button {background:#a9c9e2;border:	1px solid #a9c9e2; cursor: pointer;font-size:12px;height: 21px;width: 80px;
+margin: 8px 8px 1px 8px; padding: 2px 2px 2px 2px;}
+
+.input_1 {background:#f5fafe;border:1px solid #a9c9e2;font-size:12px;height: 16px;width: 180px;
+margin: 8px 8px 1px 8px; padding: 6px 2px 2px 2px;}
+
+#wrapper{width:100%;text-align:left;}
+#header{width:984px;margin:1px auto;}
+
+.box800 {
+	DISPLAY: block; MARGIN: auto; OVERFLOW: hidden; WIDTH: 950px; BACKGROUND-COLOR: #fff;margin-bottom:3px;
+}
+.weblogo {
+	FLOAT: left; WIDTH: 226px; TEXT-ALIGN: left; PADDING-bottom: 5px
+}
+.webmenu {
+	FLOAT: right; BORDER-RIGHT: #e7e7e7 1px solid; BORDER-TOP: #e7e7e7 1px solid; MARGIN: 0px 0px 5px; OVERFLOW: auto; BORDER-LEFT: #e7e7e7 1px solid; BORDER-BOTTOM: #e7e7e7 1px solid; BACKGROUND-COLOR: #f9f9f9; TEXT-ALIGN: left; WIDTH: 610px
+}
+#main {
+	width:984px;height:100%;margin:auto;
+}
+#top{
+	MARGIN: auto; WIDTH: 795px;padding:4px;BORDER-TOP: #a9c9e2 1px solid;
+}
+#show{FONT-SIZE: 12px; text-align:left;padding:2px 2px;LINE-HEIGHT: 21px;}
+
+#left_content {
+	FLOAT: left; WIDTH: 670px
+}
+#leftcontent {
+	BORDER-RIGHT: #a9c9e2 1px solid;BORDER-LEFT: #a9c9e2 1px solid; PADDING: 8px; BORDER-TOP: #a9c9e2 1px solid; BACKGROUND: #f5fafe; FLOAT: left; WIDTH: 649px;
+}
+#rightlist {
+	text-align:center;BACKGROUND: #f5fafe; FLOAT: right; PADDING-left: 7px; PADDING-BOTTOM: 0px; PADDING-TOP: 5px;WIDTH: 465px;
+}
+#leftlist{
+	BORDER-RIGHT: #a9c9e2 1px solid; PADDING-LEFT: 15px; BACKGROUND: #f5fafe; FLOAT: left; PADDING-BOTTOM: 0px; PADDING-TOP: 15px;WIDTH: 89px;height:300px;FONT-SIZE: 13px;
+}
+.pxd13 {
+	text-align:left;FONT-SIZE: 12px; COLOR: #333333; LINE-HEIGHT: 20px; PADDING: 5px;
+}
+.pxd13 a{margin-right:20px;margin-left:0px;}
+.pxd14 {
+	FONT-SIZE: 12px; COLOR: #333333; LINE-HEIGHT: 25px; PADDING-TOP: 0px
+}
+.pxd14 .p{
+	MARGIN-left: 5px;
+}
+.pcixin{color:red;FONT-SIZE: 15px;}
+.pexplain{margin-left:10px;}
+#leftcontent_1 {
+	BORDER-top: #a9c9e2 1px dotted;BORDER-RIGHT: #a9c9e2 1px solid; PADDING-RIGHT: 10px; PADDING-LEFT: 10px; BACKGROUND: #f5fafe; FLOAT: left; WIDTH: 575px
+}
+
+.frame{BORDER: #a9c9e2 1px solid;margin-bottom:5px;padding-bottom:3px;}
+.title{background-color:#E4E4E4;height:19px;font-size:15px;padding-left:4px;padding-bottom:-3px;}
+#img{float:left;MARGIN-TOP: 5px;}
+#tab{float:left;MARGIN-TOP: 5px;padding-top:6px;}
+#table_m{padding-top:2px;}
+.frame UL {	MARGIN: 0px; LIST-STYLE-TYPE: none}
+.frame li{width:270px;padding-left:5px;float:left;}
+.tab_1{width:550px;padding-left:5px;}
+.tab_2{width:270px;padding-left:5px;float:left;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.traffic_table{width:557px;}
+.traffic_table TABLE {background: #FFF;border-collapse: separate;margin-left:7px;margin-right:3px;border: 1px solid #999999; }
+.traffic_table th{padding-left:5px;background-color:#A6DCE2;}
+.traffic_table td{padding-left:5px;background-color:#D0DDDF;}
+
+.urls{float:left;padding:0 2px;text-align:left;width:140px;margin:2px 2px;overflow:hidden}
+#leftcontent_2 {
+	BORDER-top: #FFCC00 1px dotted;
+}
+#right_c {
+ FLOAT: right; WIDTH: 310px
+}
+.side_tit_bg1 {
+	BORDER-RIGHT: #ffffff 1px solid; BACKGROUND: url(tit_bg1.gif); BORDER-LEFT: #ffffff 1px solid; HEIGHT: 29px
+}
+.tit_azury {
+	PADDING-RIGHT: 0px; DISPLAY: block; PADDING-LEFT: 0px; FONT-WEIGHT: bold; FONT-SIZE: 12px; FLOAT: left; PADDING-BOTTOM: 0px; MARGIN: 5px 0px 0px 2px; COLOR: #000000; LINE-HEIGHT: 21px; PADDING-TOP: 2px; HEIGHT: 21px; TEXT-ALIGN: left
+}
+.right_nav1  {
+	PADDING-RIGHT: 2px; PADDING-LEFT: 12px; PADDING-BOTTOM: 2px; LINE-HEIGHT: 20px; PADDING-TOP: 5px;margin-bottom:12px;
+}
+ul   { margin:2px;} 
+li  { list-style:none}
+.sidelist{padding:0;margin:0 auto;width:310px;clear:both; overflow:auto;}
+.sidelist li{line-height:22px;height:20px;width:310px;float:left;overflow:hidden}
+.sidelist a:link,.sidelist a:visited{ color:#164EA2; line-height:18px;}
+.right_nav1 a {
+	LINE-HEIGHT: 18px;
+}
+.newtitle H1 {
+	FONT-SIZE: 20px; COLOR: #000000; TEXT-ALIGN: left;LINE-HEIGHT: 25px;MARGIN-BOTTOM: 1px;MARGIN-top: 5px;
+}
+.clear{
+	margin:0 auto;	height:1px;	line-height:1px;	font-size:1px;	clear:both;
+}
+#footer{ margin-top:10px; border-top:3px solid #0071B6; text-align:left; padding-top:10px;MARGIN: auto; WIDTH: 984px}
+#footer a:link,#footer a:visited{ color:#111; line-height:18px;}
+
+.topbar {
+	border-bottom:1px solid #bfcfd8;height:26px;background:#fff;min-width:800px;overflow:hidden;
+}
+#nav-operate {
+	BORDER-TOP-WIDTH: 0px; PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 2px; MARGIN: auto; WIDTH: 98%; PADDING-TOP: 4px;FONT-SIZE: 12px£»
+}
+
+#nav-operate a{color:#333333; font:12px/12px Arial;}
+#nav-operate a:hover{color:#336699;}
+.nav-operate_left{}
+.nav-operate_left li{float:left;margin:4px 7px 0 0;border-right:1px solid #c5c5c5;}
+.nav-operate_left li a{float:left;padding:0 0 1px;*padding:1px 0 0;margin-right:7px;}
+.nav-operate_left span.red{color:#FF0000;}
+.nav-operate_right{float:right;}
+.nav-operate_right li{float:left;margin:4px 7px 0 0;border-right:1px solid #c5c5c5;}
+.nav-operate_right li a{float:left;padding:0 0 1px;*padding:1px 0 0;margin-right:7px;}
+.nav-operate_right span.blueb{color:#0000FF;font-weight:bold;}
+.nav-operate_right span.blue{color:#0000FF;}
+
+/*------- nav --------*/
+.htlink {border-left:1px solid #B6C7DB;border-right:1px solid #B6C7DB;border-bottom:1px solid #B6C7DB;background-color:#F5FAFE;}
+
+#menu {list-style-type:none; width:984px;margin:0px auto;padding:0;}
+#menu li {float:left; padding:0; margin:0 1px 0 0; position:relative; width:80px; height:3em; z-index:100;}
+#menu li dl {position:absolute; top:0; left:0; padding-bottom:0;}
+#menu li a, #menu li a:visited {color:#FFF;text-decoration:none;font-size:12px;}
+#menu li dd {display:none;}
+#menu li a:hover {border:0;}
+#menu li:hover dd, #menu li a:hover dd {display:block;}
+#menu li:hover dl, #menu li a:hover dl {padding-bottom:10px;}
+#menu table {border-collapse:collapse; padding:0; margin:-1px; font-size:1em;}
+#menu dl {width: 80px; margin: 0; padding: 0; background: transparent;}
+#menu dt {margin:0; padding: 0;}
+#menu dd {margin:0; padding:0; color: #fff; font-size: 1em; text-align:left;}
+#menu dt a, #menu dt a:visited {display:block; font-size: 12px;color: #FFF; height:16px;text-align:center; border:1px solid #08c; border-width:0 1px 1px 1px; background:#246bc3; padding:0.25em 0 0.35em 0;font-weight:bold;}
+#menu li:hover dt a, #menu a:hover dt a {color:#006; background:#ddd; border:1px solid #08c; border-width:0 1px 1px 1px;}
+#menu dd a, #menu dd a:visited {background:#08c; color:#fff; padding:0.5em 0; text-decoration:none; display:block; text-align:center; border-left:1px solid #08c; border-right:1px solid #08c;}
+#menu dd a:hover {background: #ddd; color:#000; border-left:1px solid #08c; border-right:1px solid #08c;}
+#menu b {display:block; overflow:hidden; height:1px;}
+#menu b.p1 {background:#08c; margin:0 5px;}
+#menu b.p2 {background:#246bc3; border:2px solid #08c; border-width:0 2px; margin:0 3px;}
+#menu b.p3 {background:#246bc3; margin:0 2px; border:1px solid #08c; border-width:0 1px;}
+#menu b.p4 {height:2px; background:#246bc3; margin:0 1px; border:1px solid #08c; border-width:0 1px;}
+#menu b.p5 {background:#08c; margin:0 5px;}
+#menu b.p6 {background:#08c; margin:0 3px;}
+#menu b.p7 {background:#08c; margin:0 2px;}
+#menu b.p8 {height:2px; background:#08c; margin:0 1px;}
+#menu li:hover b.p2, #menu a:hover b.p2 {background:#fff;}
+#menu li:hover b.p3, #menu a:hover b.p3 {background:#f0f0f0;}
+#menu li:hover b.p4, #menu a:hover b.p4 {background:#e8e8e8;}

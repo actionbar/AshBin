@@ -1,0 +1,107 @@
+<html xmlns:rdl>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<script src="rdl_properties.js"></script>
+<base target="_self">
+</head>
+<body>
+
+<script>
+
+//collFriendProperties=new Array();
+//collFriendDeclarations=new Array();
+//collFriendAtRules=new Array();
+//collFriendElements=new Array();
+//collFriendClasses=new Array();
+
+collFriendProperties=new Array(
+'list-style-image','list-style','list-style-type','marker-offset'
+);
+
+//collIE40=new Array();
+//collIE50=new Array();
+//collIE55=new Array();
+//collIE60=new Array();
+
+collIE40=new Array(
+'LI','OL','UL'
+);
+
+collIE50=new Array(
+'runtimeStyle','style','currentStyle'
+);
+
+sStyle=
+'<style>\n'+
+'#idDIV{background-color:#FFD700;font-family:verdana,tahoma;font-size:12px ; list-style: disc outside none;line-height:18px; margin-left:12px;}\n'+
+'#idCodeDiv{width:100%;padding:4px;font-family:verdana,tahoma;margin:12px 0px 0px 0px;background-color:#EEEEEE;font-weight:bold;}\n'+
+'<\/style>\n';
+
+sScript=
+'<script>\n'+
+'function rdl_change(e){\n'+
+'var oCodeDiv=document.all("idCodeDiv");\n'+
+'var oDiv=document.all("idDiv");\n'+
+'with (document.all("idSel")) var sValue=options[selectedIndex].value;\n'+
+'oDiv.style.listStylePosition=sValue;\n'+
+'oCodeDiv.innerText="list-style : disc outside none ; \\r\\nlist-style-position : "+sValue+";";\n'+
+'}\n'+
+'<\/script>\n';
+
+sCode=
+'<div id=idDIV><li>Every man dies , Not every man really lives .<li>请记住上面这句话。<\/div>\n'+
+'<br>\n'+
+'<select id="idSel" onchange="rdl_change();">\n'+
+'<option value="outside">---list-style-position---\n'+
+'<option value="inside">inside\n'+
+'<option value="outside">outside\n'+
+'<\/select>\n'+
+'<br>\n'+
+'<div id=idCodeDiv>list-style : disc outside none ;<br>list-style-position : outside ;<\/div>\n';
+
+iWinWidth=360;
+
+iWinHeight=320;
+
+//bRunCode=false;
+
+//bElements=false;
+
+</script>
+
+<div id=idContent>
+
+<div id=idContentTitle><span id=idTitleName>list-style-position</span>版本：CSS1　 兼容性：IE4+ NS6+　继承性：有</div>
+
+<div class=cssColumnTitle>语法：</div>
+<div>
+<b>list-style-position : </b><span class=cssDefault><b>outside</b></span> | <b>inside</b>
+</div>
+
+<div class=cssColumnTitle>取值：</div>
+<table>
+<tr><td nowrap><b> outside </b></td><td nowrap><b>:</b></td><td><b>默认值</b>。列表项目标记放置在文本以外，且环绕文本不根据标记对齐</td></tr>
+<tr><td nowrap><b> inside </b></td><td nowrap><b>:</b></td><td>列表项目标记放置在文本以内，且环绕文本根据标记对齐</td></tr>
+</table>
+
+<div class=cssColumnTitle>说明：</div>
+<div>
+设置或检索作为对象的列表项标记如何根据文本排列。<br>
+假如一个列表项目的左外补丁(<a href="c_marginleft.html"> margin-left </a>)被设置为<b> 0 </b>，则列表项目标记不会被显示。左外补丁(<a href="c_marginleft.html"> margin-left </a>)最小可以被设置为<b> 30 </b>。<br>
+仅作用于具有<a href="c_display.html"> display </a>属性值等于<b> list-item </b>的对象。如<b> li </b>对象。<br>
+注意：<b> ol </b>对象和<b> ul </b>对象的<b> type </b>属性为其后的所有列表项目(如<b> li </b>对象)指明列表属性。<br>
+此属性对于<b> currentStyle </b>对象而言是只读的。对于其他对象而言是可读写的。<br>
+对应的脚本特性为<b> listStylePosition </b>。
+</div>
+
+<div class=cssColumnTitle>示例：</div>
+<div id=idSimpleCode>
+ul.in { display: list-item; list-style-position: inside; } 
+</div>
+
+</div>
+</body>
+</html>
+
+<!-- Part of RDL(TM) - Written by Rain1977 
+HomeSite: http://www.dhtmlet.com  E-Mail: dhtmlet@hotmail.com -->

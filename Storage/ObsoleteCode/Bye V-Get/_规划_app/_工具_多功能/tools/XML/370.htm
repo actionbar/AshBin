@@ -1,0 +1,168 @@
+<html>
+<head>
+<title>独立文档中结构完整的XML</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+
+<link rel = stylesheet href = "image/style.css">
+</head>
+<body bgcolor="#ffffff">
+<table width="688" border="0" cellspacing="0" cellpadding="0" align="center">
+  <tr bgcolor="EEEEEE"> 
+    <td height="22"><a href="index.htm">主页</a></td>
+  </tr>
+</table><br>
+<table border="0" cellpadding="0" cellspacing="0" width="688" align="center" height="490">
+  <tr valign="top"> 
+    <td rowspan="4" width="91">&nbsp; </td>
+    <td height="68" width="131"> 
+      <p><img src="image/doc.gif"></p>
+    </td>
+    <td rowspan="4" width="18"><b></b> </td>
+    <td height="68" width="387"><img src="image/title_doc.gif"></td>
+    <td rowspan="4" width="61"> 
+      <h6>&nbsp;</h6>
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td rowspan="3" valign="top" class="pt10" align="center" width="131" bgcolor="EEEEEE"> 
+      <p>&nbsp;</p>
+      <p><font color="#FF0000">※ 6.3 独立文档中结构完整的XML</font></p>
+       
+	</td>
+  </tr>
+  <tr valign="top"> 
+    <td width="387" height="308"> 
+      <table width="100%" border="0" cellpadding="0">
+        <tr> 
+          <td>
+
+           <h4><a name="_Toc467197045">6.3 独立文档中结构完整的XML</a></h4>
+<p>尽管可以根据需要编写标记，XML文档为了保持结构完整必须遵循一定的规则。如果一个文档不是结构完整的，大部分读取和显示操作都会失败。</p>
+<p>事实上，XML规范严格禁止XML句法分析器分析和解释结构欠妥的文档。正在执行操作的分析器唯一能做的是报告出错。它不会修改错误，不会作最大的努力显示作者想要的东西，也不会忽略不当的结构欠妥的标记。它所能做的是报告错误和退出。</p>
+<p>这样做的目的是为了避免对错误的兼容性的竞争。这种竞争已使得编写HTML语法分析程序和显示程序变得非常困难。因为Web浏览器承认畸形的HTML，而Web页面设计者不会特别尽力确保他们的HTML正确无误。事实上，他们甚至利用个别浏览器中的错误达到特殊的效果。为了正确显示被大量安装的HTML页面，每个新的Web浏览器必须支持已有的Web浏览器的每一个细微差别和各自的属性。用户将放弃任何一种严格执行HTML标准的浏览器。正是为了避免这种遗憾，XML处理器才只接受结构完整的XML。</p>
+<p>为了使一个文档结构完整，XML文档中的所有置标和字符数据必须遵守前几节中给出的规则。而且有几条关于如何把置标和字符数据相互联系起来的规则。这些规则总结如下：</p>
+<p>1．文档的开始必须是XML声明。</p>
+<p>2．含有数据的元素必须有起始标记和结束标记。</p>
+<p>3．不含数据并且仅使用一个标记的元素必须以/&gt;结束。</p>
+<p>4．文档只能包含一个能够包含全部其他元素的元素。</p>
+<p>5．元素只能嵌套不能重叠。</p>
+<p>6．属性值必须加引号。</p>
+<p>7．字符&lt;和&amp;只能用于起始标记和实体引用。</p>
+<p>8．出现的实体引用只有&amp;amp;、&amp;lt;、&amp;gt;、&amp;apos;和&amp;quot;。</p>
+<p>这八条规则稍加调整就能适用于含有一个DTD的文档，而且对于定义文档与它的DTD之间关系的完整性有另外的规则。我们将在后面几章中介绍。现在请仔细看这些用于没有DTD文档的规则。</p>
+<p><img src="image/BK000206-13.gif" width=41 height=29>DTD将在本书第二部分中讨论。</p>
+<b>
+<p>#1：文档必须以XML声明开始</p>
+</b>
+<p>下面是XML 1.0中独立文档的XML声明：</p>
+<p>&lt;?xml version="1.0" standalone="yes"?&gt;</p>
+<p> 如果声明出现，它绝对是该文件最开头部分，因为XML处理器会读取文件最先的几个字节并将它与字符串&lt;?XML的不同编码作比较来确定正在使用的字符串集（UTF-8、大头（高字节先传格式）或者小头（低字节先传格式））。除去看不见的字节顺序记号，在它之前不能有任何东西，包括空格。例如，下面一行用于XML的开始是不能接受的，因为在该行的前面有多余的空白。</p>
+<p>&lt;?xml version="1.0" standalone="yes"?&gt;</p>
+<p>UTF-8和Unicode的变种在第7章“外语和非罗马文本”中讨论。</p>
+<p> XML确实允许完全省略XML声明。通常不推荐这样做，但这样做有特殊的用途。例如，省略XML声明，通过连接其他结构完整的XML文档有助于重新建立一个结构完整的XML文档。这种方法将在第9章讨论。而且，本章后面将要讲述的一种样式能够编写结构完整的HTML文档。</p>
+<b>
+<p>#2：在非空标记中使用起始和结束标记</p>
+</b>
+<p> 如果忘了结束HTML的标记，Web浏览器并不严格追究。例如，如果文档包含一个&lt;B&gt;标记却没有相应的&lt;/B&gt;标记，在&lt;B&gt;标记之后的全部文档将变为粗体。但文档仍然能显示。</p>
+<p> XML不会如此宽松，每个起始标记必须以相应的结束标记结束。如果一个文档未能结束一个标记，浏览器或移交器将报告一个错误信息，并且不会以任何形式显示任何文档的内容。</p>
+<b>
+<p>#3：用“/&gt;”结束空标记</p>
+</b>
+<p> 不包含数据的标记，例如HTML的&lt;BR&gt;、&lt;HR&gt;和&lt;IMG&gt;，不需要结束标记。但是XML空标记必须由/&gt;结束，而不是&gt;。例如&lt;BR&gt;、&lt;HR&gt;和&lt;IMG&gt;的XML等价物是&lt;BR/&gt;、&lt;HR/&gt;和&lt;IMG/&gt;。</p>
+<p>当前的Web浏览器处理这种标记的方法不一致。但是如果想保持向后的兼容性，可以使用结束标记来代替，而且不能在其间包含任何文本。例如：</p>
+<p>&lt;BR&gt;&lt;/BR&gt;</p>
+<p>&lt;HR&gt;&lt;/HR&gt;</p>
+<p>&lt;IMG&gt;&lt;/IMG&gt;</p>
+<p>即使这样，Netscape处理&lt;BR&gt;&lt;/BR&gt;也有困难（它把这两个标记解释为行间距，而不是前面所讲的）。因此，在HTML中包含结构完整的空标记也并非总是可行的。</p>
+<b>
+<p>#4：让一个元素完全包含其他所有元素</p>
+</b>
+<p>一个XML文档包含一个根元素，它完全包含了文档中其他所有元素。有时候这种元素被称作文档元素。假设根元素是非空的（通常都是如此），它肯定有起始标记和结束标记。这些标记可能使用但不是必须使用root或DOCUMENT命名。例如，在下面的文档中根元素是GREETING：</p>
+<p>&lt;?xml version="1.0" standalone="yes"?&gt;</p>
+<p>&lt;GREETING&gt;</p>
+<p>Hello XML!</p>
+<p>&lt;/GREETING&gt;</p>
+<p>XML声明不是一个元素，它更像是一个处理指令，因此不必包含在根元素中。类似地，在一个XML文档中的其他非元素数据，诸如其他处理指令、DTD和注释也不必包含在根元素中。但是所有实际的元素（除根元素本身）必须包含在根元素中。</p>
+<b>
+<p>#5：不能重叠元素</p>
+</b>
+<p>元素可以包含别的元素（大多数情况下），但是元素不能重叠。事实上是指，如果一个元素含有一个起始标记，则必须同时含有相应的结束标记。同样，一个元素不能只含有一个结束标记而没有相应的起始标记。例如，下面的XML是允许的：</p>
+<p>&lt;PRE&gt;&lt;CODE&gt;n =n +1;&lt;/CODE&gt;&lt;/PRE&gt;</p>
+<p>下面所示的XML是非法的，因为结束标记&lt;/PRE&gt;放在了结束标记&lt;/CODE&gt;之前：</p>
+<p>&lt;PRE&gt;&lt;CODE&gt;n =n +1;&lt;/PRE&gt;&lt;/CODE&gt;</p>
+<p>大部分HTML浏览器容易处理这种情况，但是XML浏览器会因为这种结构而报告出错。</p>
+<p>空标记可随处出现。例如：</p>
+<p>&lt;PLAYWRIGHTS&gt;Oscar Wilde&lt;HR/&gt;Joe Orton&lt;/PLAYWRIGHTS&gt;</p>
+<p>本规则与规则4联系在一起有如下含义：对于所有非根元素，只能有一个元素包含某一非根元素，但是元素不能包含其中含有非根元素的元素。这个直接含有者称为非根元素的父元素，非根元素被认为是父元素的子元素。因此，每个非根元素只有一个父元素。但是一个单独的元素可以有任意数目的子元素或不含有子元素。</p>
+<p>请分析如下所示的清单6-1。根元素是DOCUMENT元素，它含有两个元素。第一个STATE元素含有4个子元素：NAME、TREE、FLOWER和CAPITOL。第二个STATE元素含有3个子元素：NAME、TREE和CAPITOL。这些里层的子元素只包含字符数据，没有子元素。</p>
+<p>清单6-1：父元素和子元素</p>
+<p>&lt;?xml version="1.0" standalone="yes"?&gt;</p>
+<p>&lt;DOCUMENT&gt;</p>
+<p> &lt;STATE&gt;</p>
+<p> &lt;NAME&gt;Louisiana&lt;/NAME&gt;</p>
+<p> &lt;TREE&gt;Bald Cypress&lt;/TREE&gt;</p>
+<p> &lt;FLOWER&gt;Magnolia&lt;/FLOWER&gt;</p>
+<p> &lt;CAPITOL&gt;Baton Rouge&lt;/CAPITOL&gt;</p>
+<p> &lt;/STATE&gt;</p>
+<p> &lt;STATE&gt;</p>
+<p> &lt;NAME&gt;Mississippi&lt;/NAME&gt;</p>
+<p> &lt;TREE&gt;Magnolia&lt;/TREE&gt;</p>
+<p> &lt;CAPITOL&gt;Jackson&lt;/CAPITOL&gt;</p>
+<p> &lt;/STATE&gt;</p>
+<p>&lt;/DOCUMENT&gt;</p>
+<p>在编程人员的术语中，这意味着XML文档形成了一个树。图6-1显示了清单6-1表示的树形结构以及将该结构称为树的原因。图6-1从根开始，逐级地分支延伸到树末端的叶。</p>
+<p>树有一些好的特性使计算机程序易于读取，尽管对于文档的作者而言是无关紧要的。</p>
+<p><img src="image/BK000206-14.gif" width=360 height=148></p>
+<p>图6-1 清单6-1表示的树形结构</p>
+<p><img src="image/BK000206-1.gif" width=57 height=48>树通常由上向下画，这就是说树的根应该在图片的顶部而不是底部。但这样看起来不像真正的树，不过并不影响数据结构的拓扑形式。</p>
+<b>
+<p>#6：属性值必须加引号</p>
+</b>
+<p>XML要求所有的属性值必须加引号，不管属性值是否包括空白。例如：</p>
+<p>&lt;A HREF="http://metalab.unc.edu/xml/"&gt;</p>
+<p><img src="image/BK000206-1.gif" width=57 height=48>HTML的要求则不是这样。比如，HTML允许标记含有不带引号的属性。例如，下面是一个合法的HTML&lt;A&gt;标记：</p>
+<p>&lt;A HREF=http://metalab.unc.edu/xml/&gt;</p>
+<p>唯一的要求是属性值不能嵌有空格。</p>
+<p>如果一个属性值本身含有双引号，可以使用属性值加单引号来代替。例如：</p>
+<p>&lt;IMG SRC="sistinechapel.jpg"ALT= And God said,"Let there be light," and 
+  there was light /&gt;</p>
+<p> 如果一个属性值包含有单引号和双引号，可以使用实体引用&amp;apos;代替单引号，&amp;quot;代替双引号。例如：</p>
+<p>&lt;PARAM name="joke" value="The diner said,</p>
+<p>&amp;quot;Waiter,There&amp;apos;s a fly in my soup!&amp;quot;"&gt;</p>
+<b>
+<p>#7：只在开始标记和实体引用中使用&lt;和&amp;</p>
+</b>
+<p> XML假定最先的&lt;是一个标记的开始，&amp;是一个实体引用的开始（HTML也是如此，如果省略它们，大部分浏览器会假定有一个分号）。例如：</p>
+<p>&lt;H1&gt;A Homage to Ben &amp;Jerry s</p>
+<p>New York Super Fudge Chunk Ice Cream&lt;/H1&gt;</p>
+<p> Web浏览器会正确地显示该标记，但是为了最大限度的安全，应当避免使用&amp;，用&amp;amp;来代替，像下面这样：</p>
+<p>&lt;H1&gt;A Homage to Ben &amp;amp;Jerry s New York Super Fudge Chunk</p>
+<p>Ice Cream&lt;/H1&gt;</p>
+<p>开尖括号（&lt;）的情况也类似。请看下面很普通的一行Java代码：</p>
+<p>&lt;CODE&gt;&#9;for (int i =0;i &lt;=args.length;i++){&lt;/CODE&gt;</p>
+<p> XML与HTML都会把&lt;=中的小于号当作一个标记的开始。该标记会延续到下一个&gt;。因此该行会现示成：</p>
+<p>for (int i =0;i</p>
+<p>而不是：</p>
+<p>for (int i =0;i &lt;=args.length;i++){</p>
+<p>“=args.length;i++){”被解释成一个不能识别的标记的一部分。</p>
+<p> 把小于号写成&amp;lt;可以出现在XML和HTML文本中。例如：</p>
+<p>&lt;CODE&gt;&#9;for (int i =0;i &amp;lt;=args.length;i++){&lt;/CODE&gt;</p>
+<p>结构完整的XML要求把&amp;写成&amp;amp;，把&lt;写成&amp;lt;，只要不是作为标记或者实体的一部分时都应如此。</p>
+<b>
+<p>#8：只能使用现有的5个实体引用</p>
+</b>
+<p>读者可能已经熟悉了几个HTML中的实体引用，例如&amp;copy;为插入版权号，&amp;reg为插入注册商标号。但是除了已经讨论过的五个实体引用，XML只能使用预先在DTD中定义过的实体引用。</p>
+<p>但是现在读者可能还不了解DTD，如果与字符&amp;出现在文档中的任何地方，其后必须紧跟amp;、lt;、gt;、apos;或者quot;。所有其他的用法均会破坏结构完整性。</p>
+<p><img src="image/BK000206-4.gif" width=50 height=36>在第9章“实体和外部DTD子集”中将会学习如何使用DTD定义插入特殊符号和大块样板文本的新实体引用。</p>
+ 
+<a href='369.htm'>&lt;&lt;上一篇</a>&nbsp;&nbsp;<a href='371.htm'>下一篇&gt;&gt;</a></td>
+        </tr>
+      </table>
+      <p>&nbsp; </p>
+    </td>
+  </tr>
+</table>
+
+</body>
+
+</html>

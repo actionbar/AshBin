@@ -1,0 +1,169 @@
+<html>
+<head>
+<title>何为命名域</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+
+<link rel = stylesheet href = "image/style.css">
+</head>
+<body bgcolor="#ffffff">
+<table width="688" border="0" cellspacing="0" cellpadding="0" align="center">
+  <tr bgcolor="EEEEEE"> 
+    <td height="22"><a href="index.htm">主页</a></td>
+  </tr>
+</table><br>
+<table border="0" cellpadding="0" cellspacing="0" width="688" align="center" height="490">
+  <tr valign="top"> 
+    <td rowspan="4" width="91">&nbsp; </td>
+    <td height="68" width="131"> 
+      <p><img src="image/doc.gif"></p>
+    </td>
+    <td rowspan="4" width="18"><b></b> </td>
+    <td height="68" width="387"><img src="image/title_doc.gif"></td>
+    <td rowspan="4" width="61"> 
+      <h6>&nbsp;</h6>
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td rowspan="3" valign="top" class="pt10" align="center" width="131" bgcolor="EEEEEE"> 
+      <p>&nbsp;</p>
+      <p><font color="#FF0000">※ 18.1 何为命名域</font></p>
+       
+	</td>
+  </tr>
+  <tr valign="top"> 
+    <td width="387" height="308"> 
+      <table width="100%" border="0" cellpadding="0">
+        <tr> 
+          <td>
+
+<p> 
+<h4><a name="_Toc467209214">18.1 何为命名域</a></h4>
+<p>XML能够使开发者为工程创建自己的标记语言。这些语言可以和工作于世界各地的类似工程的工作者们共享。使用这种方式工作的典型实例之一就是XSL。XSL本身就是用于XML样式文档的一个XML应用程序。XSL变换语言必须输出任意的、结构整洁的XML，或许还包括XSL本身。因此，需要有明确的手段来区分何为XSL转换指令的XML元素、何为输出的XML元素，即便它们有相同的名称也得要区分开！</p>
+<p>命名域就是这种解决方案。命名域允许文档中的每个元素和特性放在不同的命名域中。组成XSL转换指令的XML元素放在http://www.w3.org/XSL/Transform/1.0命名域中。成为输出部分的XML元素仍放在某个其他方便的命名域（如http://www.w3. 
+  org/TR/REC-html40或http://www.w3.org/XSL/Format/1.0）中。只要命名域不同，那么命名域的精确性就不显得很重要。</p>
+<p><img src="Image/BK000218-34.gif" width=52 height=51 align="left">如果熟悉C++和其他程序语言命名域，那么在深入阅读本章之前，需要将以前的概念放置一边。XML命名域与编程中使用的命名域类似，但不完全相同。特别是，XML命名域没有必要组成一个集合（没有重名的集合）。</p>
+<p>清单15-2是从源符号集转换到XSL格式化对象的变换，最早出现在第15章的“XSL格式化对象”中。它显示了XSL样式单，可从输入XML转换成XSL格式化对象。格式化引擎使用命名域来区分作为XSL指令的元素和用于输出的文字数据。http://www.w3.org/XSL/Transform/1.0命名域中的任何元素都表示一个转换指令。http://www.w3.org/XSL/Format/1.0命名域中的任何元素包括输出部分。</p>
+<p>&lt;?xml version="1.0"?&gt;</p>
+<p>&lt;xsl:stylesheet</p>
+<p> xmlns:xsl="http://www.w3.org/XSL/Transform/1.0"</p>
+<p> xmlns:fo="http://www.w3.org/XSL/Format/1.0"</p>
+<p> result-ns="fo" indent-result="yes"&gt;</p>
+<p></p>
+<p> &lt;xsl:template match="/"&gt;</p>
+<p> &lt;fo:root xmlns:fo="http://www.w3.org/XSL/Format/1.0"&gt;</p>
+<p></p>
+<p> &lt;fo:layout-master-set&gt;</p>
+<p> &lt;fo:simple-page-master page-master-name="only"&gt;</p>
+<p> &lt;fo:region-body/&gt;</p>
+<p> &lt;/fo:simple-page-master&gt;</p>
+<p> &lt;/fo:layout-master-set&gt;</p>
+<p></p>
+<p> &lt;fo:page-sequence&gt;</p>
+<p></p>
+<p> &lt;fo:sequence-specification&gt;</p>
+<p> &lt;fo:sequence-specifier-single page-master-name="only"/&gt;</p>
+<p> &lt;/fo:sequence-specification&gt;</p>
+<p></p>
+<p> &lt;fo:flow&gt;</p>
+<p> &lt;xsl:apply-templates select="//ATOM"/&gt;</p>
+<p> &lt;/fo:flow&gt;</p>
+<p></p>
+<p> &lt;/fo:page-sequence&gt;</p>
+<p></p>
+<p> &lt;/fo:root&gt;</p>
+<p> &lt;/xsl:template&gt;</p>
+<p></p>
+<p> &lt;xsl:template match="ATOM"&gt;</p>
+<p> &lt;fo:block font-size="20pt" font-family="serif"&gt;</p>
+<p> &lt;xsl:value-of select="NAME"/&gt;</p>
+<p> &lt;/fo:block&gt;</p>
+<p> &lt;/xsl:template&gt;</p>
+<p></p>
+<p>&lt;/xsl:stylesheet&gt;</p>
+<p>更确切地说，下面这些元素存在于<a href="http://www.w3.org/XSL/Transform/1.0">http://www.w3.org/XSL/Transform/1.0</a>命名域中而且是XSL指令：</p>
+<ul>
+  <p>
+  <li>stylesheet</li>
+  <p></p>
+  <p>
+  <li>template </li>
+  <p></p>
+  <p>
+  <li>apply-templates</li>
+  <p></p>
+  <p>
+  <li>value-of</li>
+  <p></p>
+</ul>
+<p>下面这些元素存在于<a href="http://www.w3.org/XSL/Transform/1.0">http://www.w3.org/XSL/Format/l.0</a>命名域中，是XSL格式化对象和输出部分：</p>
+<ul>
+  <p>
+  <li>root</li>
+  <p></p>
+  <p>
+  <li>layout-master-set</li>
+  <p></p>
+  <p>
+  <li>simple-page-master</li>
+  <p></p>
+  <p>
+  <li>region-body</li>
+  <p></p>
+  <p>
+  <li>sequence-specification</li>
+  <p></p>
+  <p>
+  <li>sequence-specifier-single</li>
+  <p></p>
+  <p>
+  <li>page-sequence</li>
+  <p></p>
+  <p>
+  <li>block</li>
+  <p></p>
+</ul>
+<p>下面四个带有xsl前缀的元素使限定名具有以该前缀开始的：</p>
+<ul>
+  <p>
+  <li>xsl:stylesheet</li>
+  <p></p>
+  <p>
+  <li>xsl:template</li>
+  <p></p>
+  <p>
+  <li>xsl:apply-templates</li>
+  <p></p>
+  <p>
+  <li>xsl:value-of</li>
+  <p></p>
+</ul>
+<p>但是，它们的完整名称使用URL，而不是前缀：</p>
+<ul>
+  <p>
+  <li>http://www.w3.org/XSL/Transform/l.0:stylesheet</li>
+  <p></p>
+  <p>
+  <li>http://www.w3.org/XSL/Transform/l.0:template</li>
+  <p></p>
+  <p>
+  <li>http://www.w3.org/XSL/Transform/l.0:apply-templates</li>
+  <p></p>
+  <p>
+  <li>http://www.w3.org/XSL/Transform/l.0:value-of</li>
+  <p></p>
+</ul>
+<p>实际上，由于URL经常包含如~、%和/这样的一些在XML名称中不合法的字符，所以作为别名的这种较短的限定名只用于文档内部。但是，限定名的确使文档更易于键入和阅读。</p>
+<img src="Image/BK000218-34.gif" width=53 height=50 align="left">“XML中的命名域”是正式的W3C标准。W3C认为它相当完善，只是可能存在不太重要的错误和说明。但是，在W3C所有的XML规范中，正是这个命名域才最有争议。许多人非常强烈地觉得，这个标准有基本原理上的缺陷。主要的缺陷是命名域实际上与DTD和合法性不兼容。而我对此并没有强烈的某种看法，但我的确有这样的疑问：当人们没有达成一致意见时，发行一个标准是否明智。命名域是许多XML相关规范（如XSL和XHTML）的至关重要的部分，所以需要人们理解。但很多开发者和读者都在他们的工作中忽略此规范。 
+<p>&nbsp;</p>
+ 
+<a href='570.htm'>&lt;&lt;上一篇</a>&nbsp;&nbsp;<a href='572.htm'>下一篇&gt;&gt;</a></td>
+        </tr>
+      </table>
+      <p>&nbsp; </p>
+    </td>
+  </tr>
+</table>
+
+</body>
+
+</html>

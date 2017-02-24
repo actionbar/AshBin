@@ -1,0 +1,110 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="../c3.css" />
+<title>XSL-FO 流</title>
+</head>
+<body class="xml">
+<div id="wrapper">
+<div id="header">
+<a href="http://e.v-get.com/w3cschool/" style="float:left;">W3CSchool 在线教程</a>
+<div class="q g"><script type="text/javascript">var cpro_id="u1163355"</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div>
+<div id="navfirst">
+<ul id="menu">
+<li id="h"><a href="../h.html">HTML教程</a></li>
+<li id="x"><a href="../x.html">XML教程</a></li>
+<li id="b"><a href="../b.html">浏览器脚本</a></li>
+<li id="s"><a href="../s.html">服务器脚本</a></li>
+<li id="d"><a href="../d.html">dot net教程</a></li>
+<li id="m"><a href="../m.html">多媒体教程</a></li>
+<li id="w"><a href="../w.html">建站手册</a></li>
+</ul>
+</div><div id="navsecond">
+<div id="course">
+<h2>XSLFO 教程</h2>
+<ul>
+<li><a href="http://e.v-get.com/w3cschool/">XSLFO 首页</a></li>
+<li><a href="xslfo_intro.html">XSLFO 简介</a></li>
+<li><a href="xslfo_documents.html">XSLFO 文档</a></li>
+<li><a href="xslfo_areas.html">XSLFO 区域</a></li>
+<li><a href="xslfo_output.html">XSLFO 输出</a></li>
+<li><a href="xslfo_flow.html">XSLFO 流</a></li>
+<li><a href="xslfo_pages.html">XSLFO 页面</a></li>
+<li><a href="xslfo_blocks.html">XSLFO 块</a></li>
+<li><a href="xslfo_lists.html">XSLFO 列表</a></li>
+<li><a href="xslfo_tables.html">XSLFO 表格</a></li>
+<li><a href="xslfo_xslt.html">XSLFO 与 XSLT</a></li>
+</ul>
+<h2>XSLFO 参考手册</h2>
+<ul>
+<li><a href="xslfo_reference.html">XSLFO 对象</a></li>
+</ul>
+</div>
+<div id="selected">
+<h2>建站手册</h2>
+<ul>
+<li><a href="../site/">网站构建</a></li>
+<li><a href="../w3c/">万维网联盟</a></li>
+<li><a href="http://e.v-get.com/w3c/">W3CSchool 教程</a></li>
+<li><a href="../quality/">网站品质</a></li>
+<li><a href="../semweb/">语义网</a></li>
+<li><a href="../hosting/">网站主机</a></li>
+</ul>
+<h2><a href="http://e.v-get.com/w3c/" class="f13">W3CSchool 教程</a></h2><div class="a120x90"><script type="text/javascript">var cpro_id="u1210867";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div></div>
+</div>
+<div id="maincontent">
+<h1>XSL-FO 流</h1>
+<div id="tpn">
+<ul class="prenext">
+<li class="pre"><a href="xslfo_output.html">上一页</a></li>
+<li class="next"><a href="xslfo_pages.html">下一页</a></li>
+</ul>
+</div>
+<div id="intro">
+<p><strong>XSL-FO 页面使用来自 &lt;fo:flow&gt; 元素的数据进行填充。</strong></p>
+</div>
+<div>
+<h2>XSL-FO 页面顺序</h2>
+<p>XSL-FO 使用 &lt;fo:page-sequence&gt; 元素来定义<em>输出页面</em>。</p>
+<p>每个<em>输出页面</em>都会引用一个定义<em>布局</em>的 page master。</p>
+<p>每个<em>输出页面</em>均有一个定义<em>输出</em>的 &lt;fo:flow&gt;元素。</p>
+<p>每个<em>输出页面</em>均会按<em>顺序 (序列）</em>被打印或显示。</p>
+</div>
+<div>
+<h2>XSL-FO Flow (流）</h2>
+<p>XSL-FO 页面使用来自 &lt;fo:flow&gt; 元素的数据进行填充。</p>
+<p>&lt;fo:flow&gt; 包含所有被打印到页面的元素。</p>
+<p>当页面被印满以后，相同的 page master 会被一遍又一遍地被使用，直到所有页面的页面被打印为止。</p>
+</div>
+<div>
+<h2>流动到何处?</h2>
+<p>&lt;fo:flow&gt; 元素有一个名为 &#34;flow-name&#34; 的属性。</p>
+<p>flow-name 属性的值定义 &lt;fo:flow&gt; 元素的内容会去往何处。</p>
+<h3>合法的值：</h3>
+<ul>
+<li>xsl-region-body  (进入 region-body）</li>
+<li>xsl-region-before  (进入 region-before）</li>
+<li>xsl-region-after  (进入 region-after）</li>
+<li>xsl-region-start  (进入 region-start）</li>
+<li>xsl-region-end  (进入 region-end）</li>
+</ul>
+</div>
+<div id="bpn">
+<ul class="prenext">
+<li class="pre"><a href="xslfo_output.html">上一页</a></li>
+<li class="next"><a href="xslfo_pages.html">下一页</a></li>
+</ul>
+</div>
+</div>
+<div id="sidebar">
+<div class="rs"></div>
+<div id="tools">
+<h5 id="tools_reference"><a href="xslfo_reference.html">XSL-FO 参考手册</a></h5>
+</div>
+<div class="a120x600"><script type="text/javascript">var cpro_id="u1293136";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div><div class="b"></div>
+</div>
+</body>
+</html>

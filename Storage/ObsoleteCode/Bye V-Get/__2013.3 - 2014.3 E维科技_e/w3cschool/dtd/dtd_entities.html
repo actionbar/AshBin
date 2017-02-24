@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="../c3.css" />
+<title>DTD - 实体</title>
+</head>
+<body class="xml">
+<div id="wrapper">
+<div id="header">
+<a href="http://e.v-get.com/w3cschool/" style="float:left;">W3CSchool 在线教程</a>
+<div class="q g"><script type="text/javascript">var cpro_id="u1163355"</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div>
+<div id="navfirst">
+<ul id="menu">
+<li id="h"><a href="../h.html">HTML教程</a></li>
+<li id="x"><a href="../x.html">XML教程</a></li>
+<li id="b"><a href="../b.html">浏览器脚本</a></li>
+<li id="s"><a href="../s.html">服务器脚本</a></li>
+<li id="d"><a href="../d.html">dot net教程</a></li>
+<li id="m"><a href="../m.html">多媒体教程</a></li>
+<li id="w"><a href="../w.html">建站手册</a></li>
+</ul>
+</div><div id="navsecond">
+<div id="course">
+<h2>DTD 教程</h2>
+<ul>
+<li><a href="http://e.v-get.com/w3cschool/">DTD 首页</a></li>
+<li><a href="dtd_intro.html">DTD 简介</a></li>
+<li><a href="dtd_building.html">DTD 构建模块</a></li>
+<li><a href="dtd_elements.html">DTD 元素</a></li>
+<li><a href="dtd_attributes.html">DTD 属性</a></li>
+<li><a href="dtd_entities.html">DTD 实体</a></li>
+<li><a href="dtd_validation.html">DTD 验证</a></li>
+<li><a href="dtd_examples.html">DTD 实例</a></li>
+<li><a href="dtd_summary.html">DTD 总结</a></li>
+</ul>
+</div>
+<div id="selected">
+<h2>建站手册</h2>
+<ul>
+<li><a href="../site/">网站构建</a></li>
+<li><a href="../w3c/">万维网联盟</a></li>
+<li><a href="http://e.v-get.com/w3c/">W3CSchool 教程</a></li>
+<li><a href="../quality/">网站品质</a></li>
+<li><a href="../semweb/">语义网</a></li>
+<li><a href="../hosting/">网站主机</a></li>
+</ul>
+<h2><a href="http://e.v-get.com/w3c/" class="f13">W3CSchool 教程</a></h2><div class="a120x90"><script type="text/javascript">var cpro_id="u1210867";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div></div>
+</div>
+<div id="maincontent">
+<h1>DTD - 实体</h1>
+<div id="tpn">
+<ul class="prenext">
+<li class="pre"><a href="dtd_attributes.html">上一页</a></li>
+<li class="next"><a href="dtd_validation.html">下一页</a></li>
+</ul>
+</div>
+<div id="intro">
+<p><strong>实体是用于定义用于定义引用普通文本或特殊字符的快捷方式的变量。</strong></p>
+<p><strong>实体引用是对实体的引用。</strong></p>
+<p><strong>实体可在内部或外部进行声明。</strong></p>
+</div>
+<div>
+<h2>一个内部实体声明</h2>
+<h3>语法：</h3>
+<pre>&lt;!ENTITY 实体名称 &#34;实体的值&#34;&gt;</pre>
+<h3>例子：</h3>
+<p>DTD 例子:</p>
+<pre>&lt;!ENTITY writer &#34;Bill Gates&#34;&gt;
+&lt;!ENTITY copyright &#34;Copyright e.v-get.com&#34;&gt;</pre>
+<p>XML 例子:</p>
+<pre>&lt;author&gt;&amp;writer;&amp;copyright;&lt;/author&gt;</pre>
+<p class="note"><span>注释:</span> 一个实体由三部分构成: 一个和号 (&amp;), 一个实体名称, 以及一个分号 (;)。</p>
+</div>
+<div>
+<h2>一个外部实体声明</h2>
+<h3>语法：</h3>
+<pre>&lt;!ENTITY 实体名称 SYSTEM &#34;URI/URL&#34;&gt;</pre>
+<h3>例子：</h3>
+<p>DTD 例子:</p>
+<pre>&lt;!ENTITY writer SYSTEM &#34;http://e.v-get.com/dtd/entities.dtd&#34;&gt;
+&lt;!ENTITY copyright SYSTEM &#34;http://e.v-get.com/dtd/entities.dtd&#34;&gt;</pre>
+<p>XML 例子:</p>
+<pre>&lt;author&gt;&amp;writer;&amp;copyright;&lt;/author&gt;</pre>
+</div>
+<div  id="bpn">
+<ul class="prenext">
+<li class="pre"><a href="dtd_attributes.html">上一页</a></li>
+<li class="next"><a href="dtd_validation.html">下一页</a></li>
+</ul>
+</div>
+</div>
+<div id="sidebar">
+<div class="rs"></div><div class="a120x600"><script type="text/javascript">var cpro_id="u1293136";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div><div class="b"></div>
+</div>
+</body>
+</html>

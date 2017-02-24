@@ -1,0 +1,331 @@
+<html>
+<head>
+<title>什么是XML应用程序(续1)</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+
+<link rel = stylesheet href = "image/style.css">
+</head>
+<body bgcolor="#ffffff">
+<table width="688" border="0" cellspacing="0" cellpadding="0" align="center">
+  <tr bgcolor="EEEEEE"> 
+    <td height="22"><a href="index.htm">主页</a></td>
+  </tr>
+</table><br>
+<table border="0" cellpadding="0" cellspacing="0" width="688" align="center" height="490">
+  <tr valign="top"> 
+    <td rowspan="4" width="91">&nbsp; </td>
+    <td height="68" width="131"> 
+      <p><img src="image/doc.gif"></p>
+    </td>
+    <td rowspan="4" width="18"><b></b> </td>
+    <td height="68" width="387"><img src="image/title_doc.gif"></td>
+    <td rowspan="4" width="61"> 
+      <h6>&nbsp;</h6>
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td rowspan="3" valign="top" class="pt10" align="center" width="131" bgcolor="EEEEEE"> 
+      <p>&nbsp;</p>
+      <p><font color="#FF0000">※ 2.1 什么是XML应用程序</font></p>
+       
+            <p align="left"><a href='310.htm'>2.1 什么是XML应用程序</a></p>
+          
+            <p align="left">2.1 什么是XML应用程序(续1)</p>
+          
+            <p align="left"><a href='312.htm'>2.1 什么是XML应用程序(续2)</a></p>
+          
+	</td>
+  </tr>
+  <tr valign="top"> 
+    <td width="387" height="308"> 
+      <table width="100%" border="0" cellpadding="0">
+        <tr> 
+          <td>
+
+           <h5><A NAME="_Toc467196733">2.1.5 同步的多媒体集成语言（Synchronized Multimedia Integration 
+  Language）</A></h5>
+<P>同步的多媒体集成语言（Synchronized Multimedia Integration Language，简写为SMIL，发音为“smile”）是W3C推荐的写作像电视一样的多媒体Web演示的XML应用。SMIL文档不去描述实际的多媒体内容（那是它要播放的内容），而是描述何时何地对内容加以播放。例如，一个典型的用于电影节的SMIL文档可能会告诉浏览器，在回放视频文件corange.mov的同时回放声音文件beethoven9.mid，同时还要显示HTML文件clockwork.htm。然后，当播放完成时，再播放视频文件2001.mov，声音文件zarathustra.mid，并显示HTML文件aclarke.htm。这一过程消除了将低带宽的数据（如文本）嵌入高带宽数据（如视频）中的需求，而只要将这两者结合起来即可。清单2-3是完成上述任务的一个简单的SMIL文件：</P>
+<P>清单2-3：SMIL电影节</P>
+<P><font face="Courier New, Courier, mono"><i>&lt;?xml version ="1.0" encoding="ISO-8859-1"?&gt;</i></font></P>
+<P><i><font face="Courier New, Courier, mono">&lt;!DOCTYPE smil PUBLIC "-//W3C//DTD 
+  SMIL 1.0//EN" </font></i></P>
+<P><i><font face="Courier New, Courier, mono">"http://www.w3.org/TR/REC-smil/SMIL10.dtd"&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;smil&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;body&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;seq id="Kubrick"&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;audio src="beethove 9.mid"/&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;video src="cora ge.mov"/&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;text src="clockwork.htm"/&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;audio src="zarathustra.mid"/&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;video src="2001.mov"/&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;text src="aclarke.htm"/&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;/seq&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;/body&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;/smil&gt;</font></i></P>
+<P>更进一步说，在指定时间顺序的同时，SMIL文档还对单个的图形元素在屏幕上定位并将媒体对象与其相连接。例如，在电影和声音播放的同时，相应故事的文本也显示在屏幕上。</P>
+<h5><A NAME="_Toc467196734">2.1.6 HTML+TIME</A></h5>
+<P>SMIL的操作与Web页面是独立的。通过SMIL推送的流媒体在浏览器的框架中有自己的窗格，但是它并不真正与页面上的其他用HTML写成的内容进行交互操作。例如，SMIL只允许用户为声音、视频和文本加以定时。而不允许用户在基本的HTML标记（&lt;P&gt;、&lt;LI&gt;、 &lt;IMG&gt;）上增加定时信息。但SMIL复制了HTML的某些方面，如元素是如何在页面上定位的。</P>
+<P>Microsoft与Macromedia和Compaq一起提出了一个半竞赛性质的XML应用，其英文名为Timed Interactive Multimedia Extensions for HTML（或者简写为HTML+TIME，中文名可译为“用于HTML的定时交互的多媒体扩展）。HTML+TIME建立在SMIL上，以便支持传统的HTML元素和较为紧密地在Web页面上与HTML集成的特色的定时操作。例如，HTML+TIME允许用户编写一个如清单2-4所示的倒计数的Web页面：</P>
+<P>Listing 2-4：利用HTML+TIME编写的倒计时的Web页面</P>
+<P><font face="Courier New, Courier, mono"><i>&lt;html&gt;</i></font></P>
+<P><i><font face="Courier New, Courier, mono">&lt;head&gt;&lt;title&gt;Countdown 
+  &lt;/title&gt;&lt;/head&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;body&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;p t:begin="0" t:dur="1"&gt;10&lt;/p&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;p t:begin="1" t:dur="1"&gt;9&lt;/p&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;p t:begin="2" t:dur="1"&gt;8&lt;/p&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;p t:begin="3" t:dur="1"&gt;7&lt;/p&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;p t:begin="4" t:dur="1"&gt;6&lt;/p&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;p t:begin="5" t:dur="1"&gt;5&lt;/p&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;p t:begin="6" t:dur="1"&gt;4&lt;/p&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;p t:begin="7" t:dur="1"&gt;3&lt;/p&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;p t:begin="8" t:dur="1"&gt;2&lt;/p&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;p t:begin="9" t:dur="1"&gt;1&lt;/p&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;p t:begin="10" t:dur="1"&gt;Blast 
+  Off!&lt;/p&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;/body&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;/html&gt;</font></i></P>
+<P>这种应用对于幻灯放映和定时抢答等场合是有用的。在HTML+TIME中，清单2-3中的电影节的例子可写成下面的样子：</P>
+<P><font face="Courier New, Courier, mono"><i>&lt;t:seq id=”Kubrick”&gt;</i></font></P>
+<P><i><font face="Courier New, Courier, mono">&lt;t:audio src=”beethove 9.mid”/&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;t:video src=”corange.mov”/&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;t:textstream src=”clockwork.htm”/&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;t:audio src=”zarathustra.mid”/&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;t:video src=”2001.mov”/&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;t:textstream src=”aclarke.htm”/&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;/seq&gt;</font></i></P>
+<P>这虽然与SMIL版本并不完全相同，但也是非常接近的。主要差别是，SMIL版本是为将其保存在另外的文件而设计的，而显示时要用特殊的播放器如RealPlayer，而HTML+TIME版本是认为包括在Web页面中的，由浏览器即可显示出来。另一个主要差别是，目前已有几个产品可以播放SMIL文件，包括RealPlayer G2，而现在具有HTML+TIME功能的浏览器还没有出现。不过，很可能在Internet Explorer的未来版本中将包括对HTML+TIME的支持。</P>
+<P>在HTML+TIME中有一些很好的功能和有价值的想法。但是W3C已经在Microsoft提出HTML+TIME之前几个月提议了SMIL，而且SMIL还有第三方内容创建方面的支持和推动。这样一来，我们又要看到另一场Microsoft对其余人的“宇宙混战”了。这只能使第三方开发者受到损害和感到混乱。我们只能寄希望于W3C，希望它愿意同时也有能力在这场混战中当好公平的“裁判”。如果Microsoft不退出，Web开发确实能够变得更为简单。</P>
+<h5><A NAME="_Toc467196735">2.1.7 开放的软件描述（Open Software Description）</A></h5>
+<P>开放的软件描述（Open Software Description，简写为OSD）格式是由Marimba和 Microsoft合作为了自动更新软件而开发的，也是一种XML应用。OSD定义了描述软件组件的XML标记。组件的描述包括组件的版本、内部结构和它与其他组件的关系以及对其他组件的依赖性。这种描述对于OSD决定用户是否需要特定的更新提供了足够的信息。</P>
+<P>如果它们确实需要更新，就可以自动地“推”向用户，而不需要用户手工下载和安装。清单2-5是一个用于更新为WhizzyWriter 1000的OSD文件的例子：</P>
+<P>清单2-5：用于更新为WhizzyWriter 1000的OSD文件的例子</P>
+<P><i><font face="Courier New, Courier, mono">&lt;?XML version="1.0"?&gt;</font></i></P>
+<P><font face="Courier New, Courier, mono"><i>&lt;CHANNEL HREF="http://updates.whizzy.com/updateChannel.html"&gt;</i></font></P>
+<P><font face="Courier New, Courier, mono"><i>&lt;TITLE&gt;WhizzyWriter 1000 Update 
+  Channel&lt;/TITLE&gt;</i></font></P>
+<P><font face="Courier New, Courier, mono"><i>&lt;USAGE VALUE="SoftwareUpdate"/&gt;</i></font></P>
+<P><font face="Courier New, Courier, mono"><i>&lt;SOFTPKG HREF="http://updates.whizzy.com/updateChannel.html"</i></font></P>
+<P><font face="Courier New, Courier, mono"><i>NAME="{46181F7D-1C38-22A1-3329-00415C6A4D54}"</i></font></P>
+<P><font face="Courier New, Courier, mono"><i>VERSION="5,2,3,1"</i></font></P>
+<P><font face="Courier New, Courier, mono"><i>STYLE="MSAppLogo5"</i></font></P>
+<P><font face="Courier New, Courier, mono"><i>PRECACHE="yes"&gt;</i></font></P>
+<P><font face="Courier New, Courier, mono"><i>&lt;TITLE&gt;WhizzyWriter 1000&lt;/TITLE&gt;</i></font></P>
+<P><font face="Courier New, Courier, mono"><i>&lt;ABSTRACT&gt;</i></font></P>
+<P><font face="Courier New, Courier, mono"><i>Abstract: WhizzyWriter 1000: now 
+  with tint control!</i></font></P>
+<P><font face="Courier New, Courier, mono"><i>&lt;/ABST ACT&gt;</i></font></P>
+<P><font face="Courier New, Courier, mono"><i>&lt;IMPLEMENTATION&gt;</i></font></P>
+<P><font face="Courier New, Courier, mono"><i>&lt;CODEBASE HREF="http://updates.whizzy.com/ti 
+  update.exe"/&gt;</i></font></P>
+<P><font face="Courier New, Courier, mono"><i>&lt;/IMPLEMENTATION&gt;</i></font></P>
+<P><font face="Courier New, Courier, mono"><i>&lt;/SOFTPKG&gt;</i></font></P>
+<P><font face="Courier New, Courier, mono"><i>&lt;/CHANNEL&gt;</i></font></P>
+<P>只有有关更新的信息才保存在OSD文件中。实际的更新文件保存在另外的CAB归档文件或是可执行文件中，当需要时可以下载。对于软件的这种更新办法是好还是坏存在着相当激烈的争论。许多软件公司（或许Microsoft不在其列）都有发行软件更新引起的问题比它解决的问题还多的历史教训。许多用户不愿意匆忙升级，而等待着喜爱前卫的人试用过后，再决定要不要升级。</P>
+<h5><A NAME="_Toc467196736">2.1.8 可伸缩的矢量图形（Scalable Vector Graphics）</A></h5>
+<P>矢量图形比当前Web上使用的位图GIF和JPEG更具有优越性，因为许多图形包括流程图、卡通片、广告和类似的图像。但是，许多传统的矢量图形格式，如PDF、PostScript和 EPS都是为用颜色在纸上打印而设计的，没有考虑在电子在屏幕上显示图形。（这正是PDF格式在Web上并不能取代HTML的原因，尽管PDF有更大量的原始图形积累。）用于Web的矢量图格式应该支持在纸上并没有多少意义的功能，如透明、平滑、加成色、超链接、动画和“钩子”，以便搜索引擎和发声程序能够从图形中提取文本。对于在纸上印刷领域中的PostScript和PDF来说，这些功能没有一种是需要的。</P>
+<P>几个软件开发商已经向W3C提出了好多建议，支持将XML应用于矢量图形。这些建议包括：</P>
+
+<UL>
+<P><LI>IBM、Adobe、Netscape和Sun提出的精确图形标记语言（Precision Graphics Markup Language，简写为PGML）</LI><p></P>
+<P><LI>Microsoft、Macromedia、Autodesk、Hewlett-Packard和Visio提出的矢量标记语言</LI><p></P>
+<P><LI>研究委员会的中心实验室（Central Laboratory of the Research Councils）提出的Web上的语义图形（Schematic Graphics on the World Wide Web）</LI><p></P>
+<P><LI>Excosoft AB 提出的DrawML</LI><p></P>
+<P><LI>PRP和Orange PCSL提出的超级图形标记语言（Hyper Graphics Markup Language，简写为HGML）</LI><p></P></UL>
+
+<P>这些建议的每一种都反映出作者的兴趣和经验。例如，并不令人感到惊奇的是Adobe参加了PGML方案的提出，这种方案具有PostScript的痕迹，但是却带有XML元素特性句法，而不是PostScript的反转Polish记号。清单2-6演示了用PGML嵌入粉红色的三角形的方法：</P>
+<P>清单2-6：用PGML表示的粉红色三角形</P>
+<P><font face="Courier New, Courier, mono"><i>&lt;?xml version="1.0"?&gt;</i></font></P>
+<P><i><font face="Courier New, Courier, mono">&lt;!DOCTYPE pgml SYSTEM "pgml.dtd"&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;pgml&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;group name="PinkTriangle" fillcolor="pink"&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;path&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;moveto x="0" y="0"/&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;lineto x="100" y="173"/&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;lineto x="200" y="0"/&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;closepath/&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;/path&gt; </font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;/group&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;/pgml&gt;</font></i></P>
+<P>W3C曾经组织了由上述的软件开发商代表组成的工作小组，来确定一个单一的、统一的可伸缩矢量图形规范，简称为SVG。SVG是用于描述二维图形的XML应用。它定义了三种基本类型的图形：形状、图像和文本。形状是由其轮廓（也称为路径）来定义的，可以有多种笔触或是填充。图像是如GIF或是JPEG类的位图图形。文本定义为以特定的字体写出来的文本字符串，也可以附加有路径，因而并不局限于如本页这样的水平线形的文本。所有这三类图形都可在页面上放置到指定位置，加以旋转、缩放、倾斜或是进行其他处理。由于SVG是一种文本格式，因而很容易由程序自动生成，同时也容易被程序处理。特别是，用户可将其与DHTML和ECMAScript结合起来，以便使Web页面动画化，还可以响应用户的操作。</P>
+<P>由于SVG描述的是图形而不是文本，这与本章讨论的大多数的其他XML应用不同，它将需要特殊的显示软件。所有已经提出的样式语言都假设显示的是基本的文本数据，没有一种样式语言能够支持像SVG这样的应用程序的繁重图形处理的要求。未来的浏览器有可能加入SVG支持，特别是因为Mozilla是开放源代码的，因而也许插件特别好编写。但是，在未来一段时间内，SVG的主要好处是，可以用作为使用不同内建的二进制格式的程序（如Adobe Illustrator和CorelDraw）间的数据交换格式 。</P>
+<P>在写作本书时，SVG还没有完全成形，还没有实现它的办法。SVG的第一个工作草案是由W3C在1999年2月出版的。但与其他工作草案相比还非常不完善。实际上也就是需要包括的图形元素的大纲，没有关于如何准确地用XML将图形元素编码的任何细节。如果这个工作草案再早一些出版的话，就有可能通过像VML（矢量标记语言）一样的竞争的努力而充实起来。</P>
+<h5><A NAME="_Toc467196737">2.1.9 矢量标记语言（Vector Markup Language）</A></h5>
+<P>Microsoft曾经开发了他们自己的用于矢量图形的XML应用，名为Vector Markup Language（简写为VML，即矢量标记语言）。VML比SVG要成熟一些，而且已被Internet Explorer 5.0和Microsoft Office 2000所支持。清单2-7是能够画出粉红色三角形的带有嵌入的VML的HTML文件。图2-4是这个文件在Internet Explorer 5.0中显示的样子。但是，VML并不像SVG那样是一个雄心勃勃的格式，它忽略了SVG中包括的许多先进功能，如裁剪、蒙板和组合等。</P>
+<P>清单2-7：用VML画出的粉红色三角形</P>
+<P><font face="Courier New, Courier, mono"><i>&lt;html xmlns:vml="urr:schemas-microsoft-com:vml"&gt;</i></font></P>
+<P><i><font face="Courier New, Courier, mono">&lt;head&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;title&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">A Pink Triangle, Listing 2-7 from 
+  the XML Bible</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;/title&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;object id="VML Render" </font></i></P>
+<P><i><font face="Courier New, Courier, mono">classid="CLSID:10072CEC-8CC1-11D1-986E-00A0C955B42E"&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;/object&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;style&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">vml\:* { behavior: url(#VML Render) 
+  }</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;/style&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;/head&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;body&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;div&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;vml:polyline </font></i></P>
+<P><i><font face="Courier New, Courier, mono">style="width: 200px; height: 200px"</font></i></P>
+<P><i><font face="Courier New, Courier, mono">stroke="false"</font></i></P>
+<P><i><font face="Courier New, Courier, mono">fill="true"</font></i></P>
+<P><i><font face="Courier New, Courier, mono">fillcolor="#FFCCCC"</font></i></P>
+<P><i><font face="Courier New, Courier, mono">points="10pt, 275pt, 310pt, 275pt, 
+  160pt, 45pt"&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;/vml:polyline&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;/div&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;/body&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;/html&gt;</font></i></P>
+<P>确实没有任何原因在Web上需要两个不同的且相互不兼容的矢量图形标准，因而Microsoft最终会有限地支持SVG。然而现在已经能够使用VML了，即使它的应用局限于Microsoft的产品，而SVG只是一个不完全的草案规范。Web艺术家可能更愿意看到一个单一的标准，但是，有两个标准也不是什么奇怪的事（请看GIF和JPEG）。只要这些格式的文档齐全，说明清楚，而且不是专有的就可以了。</P>
+<P>对于Web浏览器来说，支持两种标准并没有什么问题。至少，潜在的XML可使程序员很容易地编写从一种文件格式转换成另一种文件格式的转换器。</P>
+<P ALIGN="CENTER"><IMG SRC="image/Image13.gif" WIDTH=431 HEIGHT=344></P>
+<P ALIGN="CENTER">图2-4 用VML创建的粉红色的三角形</P><DIR>
+
+<P><IMG SRC="image/Image14.gif" WIDTH=45 HEIGHT=32>在本书的第22章“矢量标记语言”中还要更为详细的讨论VML。</P></DIR>
+
+<h5><A NAME="_Toc467196738">2.1.10 音乐标记语言（MusicML）</A></h5>
+<P>Connection Factory公司已经创建出一种用于乐谱的XML应用，名为MusicML。MusicML包括音符、节拍、音部记号、五线谱、行、节奏、休止符和和弦等等。清单2-8展示的是用MusicML写成的Beth Anderson的<I>Flute Swale</I>乐曲的第一小节。</P>
+<P>清单2-8：Beth Anderson的乐曲<I>Flute Swale</I>的第一小节</P>
+<P><i><font face="Courier New, Courier, mono">&lt;?xml version="1.0"?&gt;</font></i></P>
+<P><font face="Courier New, Courier, mono"><i>&lt;!DOCTYPE sheetmusic SYSTEM "music.dtd"&gt;</i></font></P>
+<P><font face="Courier New, Courier, mono"><i>&lt;sheetmusic&gt;</i></font></P>
+<P><font face="Courier New, Courier, mono"><i>&lt;musicrow size="one"&gt;</i></font></P>
+<P><font face="Courier New, Courier, mono"><i>&lt;entrysegment&gt;</i></font></P>
+<P><font face="Courier New, Courier, mono"><i>&lt;entrypart cleff="bass" rythm="fourquarter" 
+  </i></font></P>
+<P><font face="Courier New, Courier, mono"><i>position="one"&gt;</i></font></P>
+<P><font face="Courier New, Courier, mono"><i>&lt;molkruis level="plus1" name="f" 
+  notetype="sharp"/&gt;</i></font></P>
+<P><font face="Courier New, Courier, mono"><i>&lt;molkruis level=”plus1” name="c" 
+  notetype="sharp"/&gt;</i></font></P>
+<P><font face="Courier New, Courier, mono"><i>&lt;/entrypart&gt;</i></font></P>
+<P><font face="Courier New, Courier, mono"><i>&lt;/entrysegment&gt;</i></font></P>
+<P><font face="Courier New, Courier, mono"><i>&lt;segment&gt;</i></font></P>
+<P><font face="Courier New, Courier, mono"><i>&lt;subsegment position="one"&gt;</i></font></P>
+<P><font face="Courier New, Courier, mono"><i>&lt;beam size="double"&gt;</i></font></P>
+<P><font face="Courier New, Courier, mono"><i>&lt;note beat="sixteenth" name="a" 
+  level="zero" </i></font></P>
+<P><font face="Courier New, Courier, mono"><i>dynamics=”mf”/&gt;</i></font></P>
+<P><font face="Courier New, Courier, mono"><i>&lt;note beat="sixteenth" name="b" 
+  level="zero"&gt;&lt;/note&gt;</i></font></P>
+<P><font face="Courier New, Courier, mono"><i>&lt;note beat="sixteenth" name="c" 
+  level="plus1"&gt;&lt;/note&gt;</i></font></P>
+<P><font face="Courier New, Courier, mono"><i>&lt;note beat="sixteenth" name="a" 
+  level="zero"&gt;&lt;/note&gt;</i></font></P>
+<P><font face="Courier New, Courier, mono"><i>&lt;/beam&gt;</i></font></P>
+<P><font face="Courier New, Courier, mono"><i>&lt;beam size="single"&gt;</i></font></P>
+<P><font face="Courier New, Courier, mono"><i>&lt;note beat="eighth" name="d" 
+  level="plus1"/&gt;</i></font></P>
+<P><font face="Courier New, Courier, mono"><i>&lt;note beat="eighth" name="c" 
+  level="plus1"/&gt;</i></font></P>
+<P><font face="Courier New, Courier, mono"><i>&lt;/beam&gt;</i></font></P>
+<P><font face="Courier New, Courier, mono"><i>&lt;note beat="quarter" name="b" 
+  level="zero"/&gt;</i></font></P>
+<P><font face="Courier New, Courier, mono"><i>&lt;note beat="quarter" name="a" 
+  level="zero"/&gt;</i></font></P>
+<P><font face="Courier New, Courier, mono"><i>&lt;/subsegment&gt;</i></font></P>
+<P><font face="Courier New, Courier, mono"><i>&lt;/segment&gt;</i></font></P>
+<P><font face="Courier New, Courier, mono"><i>&lt;/musicrow&gt;</i></font></P>
+<P><font face="Courier New, Courier, mono"><i>&lt;/sheetmusic&gt;</i></font></P>
+<P>Connection Factory公司还编写了一个可以分析和显示MusicML的Java小程序。图2-5是用这个小程序显示的上面的乐谱的例子。这个小程序还有几处错误（例如，漏掉了最后的音调），但是，从整体上说，它显示的乐谱还是不错的。</P>
+<P ALIGN="CENTER"><IMG SRC="image/Image15.gif" WIDTH=140 HEIGHT=51></P>
+<P ALIGN="CENTER">图2-5 用MusicML写成的Beth Anderson的Flute Swale乐谱</P>
+<P>MusicML将来不会取代Finale或是Nightingale。而且实际上，好像更多的是为了证明一种概念，而不是要开发出完善的产品。MusicML与实际还有许多差异，这将使音乐家感到不舒服（如错拼节奏、高音与低音记号弄反、节实际上是节拍等等）。</P>
+<P>不管怎么说，这样的结果总算是音乐乐谱程序的说得过去的输出格式，这使得在Web 上可以显示音乐乐谱了。进一步说，如果乐谱程序都支持MusicML或是类似的方法，那么MusicML就可以用作将数据从一个程序转移到另一个程序的交换格式，这正是作曲家现在极为需要的。</P>
+<h5><A NAME="_Toc467196739">2.1.11 VoxML</A></h5>
+<P>摩托罗拉的VoxML（http://www.voxml.com/）是一种用于语音朗读的XML应用。明确地说，就是用于恼人的语音邮件和自动电话回复系统（就像以下语音回复：“如果用了我们的产品你的头发变绿了，请按1。如果用了我们的产品你的头发变紫了请按2。如果在我们的产品中发现了不认识的昆虫，请按3。其他情况请不要挂断电话，直到你的头发变回原来的颜色。”）。</P>
+<P>VoxML可使得Web站点使用的同样的数据可通过电话提供服务。这对于结合了多种有用数据创建的信息，如股票价格、运动成绩、天气预报和考试成绩等特别有用。CBS MarketWatch.com站点的天气预报频道可看作是使用VoxML通过普通的语音电话来提供更多的信息的例子。</P>
+<P>一个洗发液公司的自动电话回复系统的小型VoxML文件看起来与清单2-9中的代码相似：</P>
+<P>清单2-9：一个VoxML文件</P>
+<P><i><font face="Courier New, Courier, mono">&lt;?xml version="1.0"?&gt;</font></i></P>
+<P><font face="Courier New, Courier, mono"><i>&lt;DIALOG&gt;</i></font></P>
+<P><font face="Courier New, Courier, mono"><i>&lt;CLASS NAME="help_top"&gt;</i></font></P>
+<P><font face="Courier New, Courier, mono"><i>&lt;HELP&gt;Welcome to TIC consumer 
+  products division. </i></font></P>
+<P><font face="Courier New, Courier, mono"><i>For shampoo information, say shampoo 
+  now. </i></font></P>
+<P><font face="Courier New, Courier, mono"><i>&lt;/HELP&gt;</i></font></P>
+<P><font face="Courier New, Courier, mono"><i>&lt;/CLASS&gt;</i></font></P>
+<P><font face="Courier New, Courier, mono"><i>&lt;STEP NAME="init" PARENT="help_top"&gt;</i></font></P>
+<P><font face="Courier New, Courier, mono"><i>&lt;PROMPT&gt;Welcome to Wonder 
+  Shampoo</i></font></P>
+<P><font face="Courier New, Courier, mono"><i>&lt;BREAK SIZE="large"/&gt;</i></font></P>
+<P><font face="Courier New, Courier, mono"><i>Which color did Wonder Shampoo turn 
+  your hair? </i></font></P>
+<P><font face="Courier New, Courier, mono"><i>&lt;/PROMPT&gt;</i></font></P>
+<P><font face="Courier New, Courier, mono"><i>&lt;INPUT TYPE="OPTIONLIST"&gt; 
+  </i></font></P>
+<P><font face="Courier New, Courier, mono"><i>&lt;OPTION NEXT="#green"&gt;green&lt;/OPTION&gt;</i></font></P>
+<P><font face="Courier New, Courier, mono"><i>&lt;OPTION NEXT="#purple"&gt;purple&lt;/OPTION&gt;</i></font></P>
+<P><font face="Courier New, Courier, mono"><i>&lt;OPTION NEXT="#bald"&gt;bald&lt;/OPTION&gt;</i></font></P>
+<P><font face="Courier New, Courier, mono"><i>&lt;OPTION NEXT="#bye"&gt;exit&lt;/OPTION&gt;</i></font></P>
+<P><font face="Courier New, Courier, mono"><i>&lt;/INPUT&gt;</i></font></P>
+<P><font face="Courier New, Courier, mono"><i>&lt;/STEP&gt;</i></font></P>
+<P><font face="Courier New, Courier, mono"><i>&lt;STEP NAME="green" PARENT="help_top"&gt;</i></font></P>
+<P><font face="Courier New, Courier, mono"><i>&lt;PROMPT&gt;</i></font></P>
+<P><font face="Courier New, Courier, mono"><i>If Wonder Shampoo turned your hair 
+  green and you wish</i></font></P>
+<P><font face="Courier New, Courier, mono"><i>to return it to its natural color, 
+  simply shampoo seven</i></font></P>
+<P><font face="Courier New, Courier, mono"><i>times with three parts soap, seven 
+  parts water, four</i></font></P>
+<P><font face="Courier New, Courier, mono"><i>parts kerosene, and two parts iguana 
+  bile.</i></font></P>
+<P><font face="Courier New, Courier, mono"><i>&lt;/PROMPT&gt;</i></font></P>
+<P><font face="Courier New, Courier, mono"><i>&lt;INPUT TYPE="NONE" NEXT="#bye"/&gt;</i></font></P>
+<P><font face="Courier New, Courier, mono"><i>&lt;/STEP&gt;</i></font></P>
+<P><font face="Courier New, Courier, mono"><i>&lt;STEP NAME="purple" PARENT="help_top"&gt;</i></font></P>
+<P><font face="Courier New, Courier, mono"><i>&lt;PROMPT&gt;</i></font></P>
+<P><font face="Courier New, Courier, mono"><i>If Wonder Shampoo turned your hair 
+  purple and you wish</i></font></P>
+<P><font face="Courier New, Courier, mono"><i>to return it to its natural color, 
+  please walk </i></font></P>
+<P><font face="Courier New, Courier, mono"><i>widdershins around your local cemetery 
+  </i></font></P>
+<P><font face="Courier New, Courier, mono"><i>three times while chanting "Surrender 
+  Dorothy".</i></font></P>
+<P><font face="Courier New, Courier, mono"><i>&lt;/PROMPT&gt;</i></font></P>
+<P><font face="Courier New, Courier, mono"><i>&lt;INPUT TYPE="NONE" NEXT="#bye"/&gt;</i></font></P>
+<P><font face="Courier New, Courier, mono"><i>&lt;/STEP&gt;</i></font></P>
+<P><font face="Courier New, Courier, mono"><i>&lt;STEP NAME="bald" PARENT="help_top"&gt;</i></font></P>
+<P><font face="Courier New, Courier, mono"><i>&lt;PROMPT&gt;</i></font></P>
+<P><font face="Courier New, Courier, mono"><i>If you went bald as a result of 
+  using Wonder Shampoo,</i></font></P>
+<P><font face="Courier New, Courier, mono"><i>please purchase and apply a three 
+  months supply</i></font></P>
+<P><font face="Courier New, Courier, mono"><i>of our Magic Hair Growth Formula(TM). 
+  Please do not</i></font></P>
+<P><font face="Courier New, Courier, mono"><i>consult a attorney as doing so would 
+  violate the</i></font></P>
+<P><font face="Courier New, Courier, mono"><i>license agreement printed on inside 
+  fold of the Wonder </i></font></P>
+<P><font face="Courier New, Courier, mono"><i>Shampoo box in 3 point type which 
+  you agreed to</i></font></P>
+<P><font face="Courier New, Courier, mono"><i>by opening the package. </i></font></P>
+<P><font face="Courier New, Courier, mono"><i>&lt;/PROMPT&gt;</i></font></P>
+<P><font face="Courier New, Courier, mono"><i>&lt;INPUT TYPE=”NONE” NEXT=”#bye”/&gt;</i></font></P>
+<P><font face="Courier New, Courier, mono"><i>&lt;/STEP&gt;</i></font></P>
+<P><font face="Courier New, Courier, mono"><i>&lt;STEP NAME="bye" PARENT="help_top"&gt;</i></font></P>
+<P><font face="Courier New, Courier, mono"><i>&lt;PROMPT&gt;</i></font></P>
+<P><font face="Courier New, Courier, mono"><i>Thank you for visiting TIC Corp. 
+  Goodbye. </i></font></P>
+<P><font face="Courier New, Courier, mono"><i>&lt;/PROMPT&gt;</i></font></P>
+<P><font face="Courier New, Courier, mono"><i>&lt;INPUT TYPE="NONE" NEXT="#exit"/&gt;</i></font></P>
+<P><font face="Courier New, Courier, mono"><i>&lt;/STEP&gt;</i></font></P>
+<P><font face="Courier New, Courier, mono"><i>&lt;/DIALOG&gt; </i></font></P>
+<P>我无法向读者展示本例的屏幕抓图，因为这个文件不是用来在Web浏览器上显示的。用户必须在电话上听。</P> 
+<a href='310.htm'>&lt;&lt;上一篇</a>&nbsp;&nbsp;<a href='312.htm'>下一篇&gt;&gt;</a></td>
+        </tr>
+      </table>
+      <p>&nbsp; </p>
+    </td>
+  </tr>
+</table>
+
+</body>
+
+</html>

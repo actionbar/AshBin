@@ -1,0 +1,127 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="../c3.css" />
+<title>E4X 实例</title>
+</head>
+<body class="browserscripting">
+<div id="wrapper">
+<div id="header">
+<a href="http://e.v-get.com/w3cschool/" style="float:left;">W3CSchool 在线教程</a>
+<div class="q g"><script type="text/javascript">var cpro_id="u1163355"</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div>
+<div id="navfirst">
+<ul id="menu">
+<li id="h"><a href="../h.html">HTML教程</a></li>
+<li id="x"><a href="../x.html">XML教程</a></li>
+<li id="b"><a href="../b.html">浏览器脚本</a></li>
+<li id="s"><a href="../s.html">服务器脚本</a></li>
+<li id="d"><a href="../d.html">dot net教程</a></li>
+<li id="m"><a href="../m.html">多媒体教程</a></li>
+<li id="w"><a href="../w.html">建站手册</a></li>
+</ul>
+</div><div id="navsecond">
+<div id="course">
+<h2>E4X 教程</h2>
+<ul>
+<li><a href="http://e.v-get.com/w3cschool/">E4X 教程</a></li>
+<li><a href="e4x_howto.html">E4X HowTo</a></li>
+<li><a href="e4x_why.html">E4X Why?</a></li>
+<li><a href="e4x_browsers.html">E4X 浏览器</a></li>
+<li><a href="e4x_example.html">E4X 实例</a></li>
+</ul>
+</div>
+<div id="selected">
+<h2>建站手册</h2>
+<ul>
+<li><a href="../site/">网站构建</a></li>
+<li><a href="../w3c/">万维网联盟</a></li>
+<li><a href="http://e.v-get.com/w3c/">W3CSchool 教程</a></li>
+<li><a href="../quality/">网站品质</a></li>
+<li><a href="../semweb/">语义网</a></li>
+<li><a href="../hosting/">网站主机</a></li>
+</ul>
+<h2><a href="http://e.v-get.com/w3c/" class="f13">W3CSchool 教程</a></h2><div class="a120x90"><script type="text/javascript">var cpro_id="u1210867";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div></div>
+</div>
+<div id="maincontent">
+<h1>E4X 实例</h1>
+<div  id="tpn">
+<ul class="prenext">
+<li class="pre"><a href="e4x_browsers.html">上一页</a></li>
+<li class="next"><a href="http://e.v-get.com/w3cschool/">下一页</a></li>
+</ul>
+</div>
+<div id="intro">
+<p><strong>E4X 使针对 XML 的脚本异常简单。</strong></p>
+</div>
+<div>
+<h2>E4X 实例</h2>
+<p>作为一个例子，我们将和一个表示订单的 XML 文档打交道。</p>
+<p>XML 文档类似这样：</p>
+<pre>&lt;order&gt;
+&lt;date&gt;2005-08-01&lt;/date&gt;
+&lt;customer&gt;
+  &lt;firstname&gt;John&lt;/firstname&gt;
+  &lt;lastname&gt;Johnson&lt;/lastname&gt;
+&lt;/customer&gt;
+&lt;item&gt;
+  &lt;name&gt;Maxilaku&lt;/name&gt;
+  &lt;qty&gt;5&lt;/qty&gt;
+  &lt;price&gt;155.00&lt;/price&gt;
+&lt;/item&gt;
+&lt;/order&gt;</pre>
+<p>假如我们把这个 XML 文档存储在名为 txt 的字符串中，那么通过编写下面的 JavaScript 语句，我们就可以把它载入名为 order 的 XML 对象中：</p>
+<pre>var order = new XML(txt)</pre>
+<p>或者我们可以直接使用 XML 文档对这个 XML 对象变量进行赋值：</p>
+<pre>var order = new XML()
+order=&lt;order id=&#34;555&#34;&gt;
+&lt;date&gt;2005-08-01&lt;/date&gt;
+&lt;customer&gt;
+  &lt;firstname&gt;John&lt;/firstname&gt;
+  &lt;lastname&gt;Johnson&lt;/lastname&gt;
+&lt;/customer&gt;
+&lt;item&gt;
+  &lt;name&gt;Maxilaku&lt;/name&gt;
+  &lt;qty&gt;5&lt;/qty&gt;
+  &lt;price&gt;155.00&lt;/price&gt;
+&lt;/item&gt;
+&lt;/order&gt;</pre>
+</div>
+<div>
+<h2>与数据打交道：</h2>
+<p>计算价格：</p>
+<pre>var total=order.item.qty * order.item.price</pre>
+<p>显示客户的全称：</p>
+<pre>document.write(order.customer.lastname)
+document.write(&#34;,&#34;)
+document.write(order.customer.firstname)</pre>
+<p>添加新项目：</p>
+<pre>order.item+=
+&lt;item&gt;
+  &lt;name&gt;Pavlova&lt;/name&gt;
+  &lt;qty&gt;10&lt;/qty&gt;
+  &lt;price&gt;128.00&lt;/price&gt;
+&lt;/item&gt;</pre>
+<p>显示订单编号：</p>
+<pre>document.write(order.@id)</pre>
+<p>如果有多项订单，则计算总价：</p>
+<pre>var price=0
+for each (i in order.item)
+  {
+  price+= i.qty*i.price
+  }</pre>
+</div>
+<div  id="bpn">
+<ul class="prenext">
+<li class="pre"><a href="e4x_browsers.html">上一页</a></li>
+<li class="next"><a href="http://e.v-get.com/w3cschool/">下一页</a></li>
+</ul>
+</div>
+</div>
+<div id="sidebar">
+<div class="rs"></div><div class="a120x600"><script type="text/javascript">var cpro_id="u1293136";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div><div class="b"></div>
+</div>
+</body>
+</html>

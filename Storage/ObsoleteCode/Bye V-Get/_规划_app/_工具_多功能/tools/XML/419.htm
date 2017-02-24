@@ -1,0 +1,66 @@
+<html>
+<head>
+<title>声明多个属性</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+
+<link rel = stylesheet href = "image/style.css">
+</head>
+<body bgcolor="#ffffff">
+<table width="688" border="0" cellspacing="0" cellpadding="0" align="center">
+  <tr bgcolor="EEEEEE"> 
+    <td height="22"><a href="index.htm">主页</a></td>
+  </tr>
+</table><br>
+<table border="0" cellpadding="0" cellspacing="0" width="688" align="center" height="490">
+  <tr valign="top"> 
+    <td rowspan="4" width="91">&nbsp; </td>
+    <td height="68" width="131"> 
+      <p><img src="image/doc.gif"></p>
+    </td>
+    <td rowspan="4" width="18"><b></b> </td>
+    <td height="68" width="387"><img src="image/title_doc.gif"></td>
+    <td rowspan="4" width="61"> 
+      <h6>&nbsp;</h6>
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td rowspan="3" valign="top" class="pt10" align="center" width="131" bgcolor="EEEEEE"> 
+      <p>&nbsp;</p>
+      <p><font color="#FF0000">※ 10.3 声明多个属性</font></p>
+       
+	</td>
+  </tr>
+  <tr valign="top"> 
+    <td width="387" height="308"> 
+      <table width="100%" border="0" cellpadding="0">
+        <tr> 
+          <td>
+
+           <h4><a name="_Toc467197319">10.3 声明多个属性</a></h4>
+<p>元素通常具有多个属性。HTML的IMG元素可有HEIGHT、WIDTH、ALT、BORDER、ALIGN和其他几个属性 。实际上，大部分HTML标记都具有多个属性，XML标记也是如此。例如，很自然的RECTANGLE元素需要LENGTH和WIDTH属性：</p>
+<p>&lt;RECTANGLE LENGTH= "70px" WIDTH="85px"/&gt;</p>
+<p>也可用几个属性声明来声明这些属性，一个属性声明对应一个属性。例如：</p>
+<p>&lt;!ELEMENT RECTANGLE EMPTY&gt;</p>
+<p>&lt;!ATTLIST RECTANGLE LENGTH CDATA "0px"&gt;</p>
+<p>&lt;!ATTLIST RECTANGLE WIDTH CDATA "0px"&gt;</p>
+<p>上例说明，RECTANGLE元素具有LENGTH和WIDTH属性，它们的缺省值均为0px。</p>
+<p>可按如下方式，组合两个&lt;!ATTLIST&gt;标记为一个单一声明：</p>
+<p>&lt;!ATTLIST RECTANGLE LENGTH CDATA "0px"</p>
+<p> WIDTH CDATA "0px"&gt;</p>
+<p>该声明声明了LENGTH和WIDTH属性，两个属性类型均为CDATA，缺省值为0px。若各属性的类型或缺省值不同，也可用这种语法结构进行声明。如下所示：</p>
+<p>&lt;!ATTLIST RECTANGLE LENGTH CDATA "15px"</p>
+<p> WIDTH CDATA "34pt"&gt;</p>
+<p><img src="Image/BK000210-10.gif" width=38 height=52>从个人角度来说，我不喜欢这种风格。看起来很混乱；且为易于辨认，过于依赖于额外的空格在其中的正确放置（尽管这些空格对标签的实际意义而言并不重要）。可是你一定会遇到其他人书写的、这种风格的DTD，所以必须掌握这种 
+  书写方法。</p>
+ 
+<a href='418.htm'>&lt;&lt;上一篇</a>&nbsp;&nbsp;<a href='420.htm'>下一篇&gt;&gt;</a></td>
+        </tr>
+      </table>
+      <p>&nbsp; </p>
+    </td>
+  </tr>
+</table>
+
+</body>
+
+</html>

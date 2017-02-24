@@ -1,0 +1,42 @@
+<html xmlns:rdl>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<script src="rdl_selectors.js"></script>
+<base target="_self">
+</head>
+<body>
+
+<script>
+
+collFriendSelectors=new Array(
+'Pseudo Selectors','Type Selectors','Universal Selector','Descendant Selectors','Child Selectors','Attribute Selectors','ID Selectors','Class Selectors','Grouping'
+);
+
+</script>
+
+<div id=idContent>
+
+<div id=idContentTitle><span id=idTitleName>Adjacent Sibling Selectors</span>　版本：CSS2　 兼容性：无</div>
+
+<div class=cssColumnTitle>语法：</div>
+<div>
+<b>E1 +	E2 { </b><i>sRules</i><b> } </b> 
+</div>
+
+<div class=cssColumnTitle>说明：</div>
+<div>
+相邻选择符。选择紧贴在<b> E1 </b>之后的所有<b> E2 </b>。<b> E1 </b>和<b> E2 </b>在文档目录结构树(DOM)中有共同的父对象。
+</div>
+
+<div class=cssColumnTitle>示例：</div>
+<div id=idSimpleCode>
+div + p { font-size:14px; } <br>/* 所有紧贴在div对象之后的p对象的字体尺寸为14px */
+<br>&nbsp;<br>div.fly + p { font-size:14px; } 
+</div>
+
+</div>
+</body>
+</html>
+
+<!-- Part of RDL(TM) - Written by Rain1977 
+HomeSite: http://www.dhtmlet.com  E-Mail: rainersu@hotmail.com -->

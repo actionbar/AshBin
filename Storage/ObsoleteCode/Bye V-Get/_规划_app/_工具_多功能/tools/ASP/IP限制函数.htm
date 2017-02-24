@@ -1,0 +1,109 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>IP限制函数</title>
+<style type="text/css">
+<!--
+body {
+	font-size: 10.4pt;
+	line-height: 22px;
+}
+-->
+</style>
+</head>
+
+<body bgcolor="eeeeee" leftmargin="20" marginwidth="20">
+<p><strong>IP限制函数</strong></p>
+<hr>
+<p> 大家如果还有好的建议算法，就联系我！！：）</p>
+<p>“******************************<br>
+  “Function CheckIp(cInput_Ip,cBound_Ip)<br>
+  “Created by qqdao, qqdao@263.net 2001/11/28<br>
+  “说明：首先需要根据;号循环，然后判断是否含有&quot;-&quot;，如果有则进行拆分处理，最后判断是否在范围内<br>
+  “参数： cInput_Ip,代检查的ip<br>
+  “ cBound_Ip,给定的范围格式为,单个ip,和范围ip，范围ip最后使用”-“分割，如果是“*”则必须放到最后一位<br>
+  “ 每个范围后添加&quot;:ALLOW&quot;表示允许登陆，添加&quot;:REFUSE&quot;表示拒绝登陆。多个范围用”;“隔开<br>
+  “ 例如192.168.1*.*:ALLOW;192.168.1.1:ALLOW;192.168.1.1-10:REFUSE&quot;<br>
+  “返回值: true/false<br>
+  “更新：2001/12/05 支持ALLOW,REFUSE支持’*‘,不想对？支持，因为和*差不多<br>
+  “******************************<br>
+  function CheckIp(cInput_Ip,cBound_Ip)<br>
+  dim cSingle_Ip,cTemp_IP,cStart_IP,cEnd_Ip<br>
+  CheckIp = false<br>
+  cSingle_Ip=split(cBound_Ip,&quot;;&quot;)</p>
+<p>for i=0 to ubound(cSingle_Ip)<br>
+  if Instr(cSingle_Ip(i),&quot;REFUSE&quot;) &lt;&gt; 0 then “就是拒绝了<br>
+  cTemp_IP = left(cSingle_Ip(i),instr(cSingle_Ip(i),&quot;:&quot;)-1)</p>
+<p>if Instr(cTemp_IP,&quot;*&quot;) &lt;&gt; 0 then “是宽范围<br>
+  cStart_IP = left(cTemp_IP,instr(cTemp_IP,&quot;*&quot;)-1)<br>
+  if left(cInput_Ip,len(cStart_IP))=cStart_IP then<br>
+  CheckIp = false<br>
+  exit function<br>
+  end if<br>
+  end if</p>
+<p>if Instr(cTemp_IP,&quot;-&quot;) = 0 then<br>
+  cStart_IP = cTemp_IP<br>
+  cEnd_Ip = cTemp_IP<br>
+  else<br>
+  cStart_IP = left(cTemp_IP,instr(cTemp_IP,&quot;-&quot;)-1)<br>
+  cEnd_Ip = left(cStart_IP,InStrRev(cStart_IP,&quot;.&quot;)-1)+&quot;.&quot;+mid(cTemp_IP,instr(cTemp_IP,&quot;-&quot;)+1)<br>
+  end if</p>
+<p>if Ip2Str(cInput_Ip)&gt;=Ip2Str(cStart_IP) and Ip2Str(cInput_Ip)&lt;=Ip2Str(cEnd_Ip) 
+  then<br>
+  CheckIp = false<br>
+  exit function<br>
+  end if</p>
+<p>elseif Instr(cSingle_Ip(i),&quot;ALLOW&quot;) &lt;&gt; 0 then “允许</p>
+<p>cTemp_IP = left(cSingle_Ip(i),instr(cSingle_Ip(i),&quot;:&quot;)-1)</p>
+<p>if Instr(cTemp_IP,&quot;*&quot;) &lt;&gt; 0 then “是宽范围<br>
+  cStart_IP = left(cTemp_IP,instr(cTemp_IP,&quot;*&quot;)-1)<br>
+  if left(cInput_Ip,len(cStart_IP))=cStart_IP then<br>
+  CheckIp = true<br>
+  end if<br>
+  end if</p>
+<p>if Instr(cTemp_IP,&quot;-&quot;) = 0 then<br>
+  cStart_IP = cTemp_IP<br>
+  cEnd_Ip = cTemp_IP<br>
+  else<br>
+  cStart_IP = left(cTemp_IP,instr(cTemp_IP,&quot;-&quot;)-1)<br>
+  cEnd_Ip = left(cStart_IP,InStrRev(cStart_IP,&quot;.&quot;)-1)+&quot;.&quot;+mid(cTemp_IP,instr(cTemp_IP,&quot;-&quot;)+1)<br>
+  end if</p>
+<p>if Ip2Str(cInput_Ip)&gt;=Ip2Str(cStart_IP) and Ip2Str(cInput_Ip)&lt;=Ip2Str(cEnd_Ip) 
+  then<br>
+  CheckIp =true<br>
+  else<br>
+  CheckIp =false<br>
+  end if<br>
+  end if<br>
+  next</p>
+<p>end function</p>
+<p><br>
+  “******************************<br>
+  “Function Ip2Str(cIp)<br>
+  “Created by qqdao, qqdao@263.net 2001/11/28<br>
+  “参考动网ip算法<br>
+  “参数：cIp ip地址<br>
+  “返回值: 转换后数值<br>
+  “******************************<br>
+  function Ip2Str(cIp)<br>
+  Dim str1,str2,str3,str4<br>
+  Dim cIp_Temp<br>
+  if cIp=&quot;127.0.0.1&quot; then cIp=&quot;192.168.0.1&quot;<br>
+  str1=left(cIp,instr(cIp,&quot;.&quot;)-1)<br>
+  cIp_Temp=mid(cIp,instr(cIp,&quot;.&quot;)+1)<br>
+  str2=left(cIp_Temp,instr(cIp_Temp,&quot;.&quot;)-1)<br>
+  cIp_Temp=mid(cIp_Temp,instr(cIp_Temp,&quot;.&quot;)+1)<br>
+  str3=left(cIp_Temp,instr(cIp_Temp,&quot;.&quot;)-1)<br>
+  str4=mid(cIp_Temp,instr(cIp_Temp,&quot;.&quot;)+1)</p>
+<p>if isNumeric(str1)=0 or isNumeric(str2)=0 or isNumeric(str3)=0 or isNumeric(str4)=0 
+  then</p>
+<p>else<br>
+  Ip2Str=cint(str1)*256*256*256+cint(str2)*256*256+cint(str3)*256+cint(str4)-1<br>
+  end if</p>
+<p>end function <br>
+  　</p>
+<p></p>
+<p>&nbsp; </p>
+</body>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="../c3.css" />
+<title>WML &lt;tr&gt; 标签</title>
+</head>
+<body class="xml">
+<div id="wrapper">
+<div id="header">
+<a href="http://e.v-get.com/w3cschool/" style="float:left;">W3CSchool 在线教程</a>
+<div class="q g"><script type="text/javascript">var cpro_id="u1163355"</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div>
+<div id="navfirst">
+<ul id="menu">
+<li id="h"><a href="../h.html">HTML教程</a></li>
+<li id="x"><a href="../x.html">XML教程</a></li>
+<li id="b"><a href="../b.html">浏览器脚本</a></li>
+<li id="s"><a href="../s.html">服务器脚本</a></li>
+<li id="d"><a href="../d.html">dot net教程</a></li>
+<li id="m"><a href="../m.html">多媒体教程</a></li>
+<li id="w"><a href="../w.html">建站手册</a></li>
+</ul>
+</div><div id="navsecond">
+<div id="course">
+<h2>WAP 教程</h2>
+<ul>
+<li><a href="http://e.v-get.com/w3cschool/">WAP 教程</a></li>
+<li><a href="wap_intro.html">WAP 简介</a></li>
+<li><a href="wap_basic.html">WAP 基础</a></li>
+<li><a href="wml_format.html">WML 格式化</a></li>
+<li><a href="wml_links.html">WML 连接</a></li>
+<li><a href="wml_input.html">WML 输入</a></li>
+<li><a href="wml_tasks.html">WML 任务</a></li>
+<li><a href="wml_timer.html">WML 定时器</a></li>
+<li><a href="wml_variables.html">WML 变量</a></li>
+<li><a href="wml_examples.html">WML 实例</a></li>
+<li><a href="wap_demo.html">WAP 演示</a></li>
+<li><a href="wap_pages.html">WAP W3CSchool</a></li>
+</ul>
+<h2>参考手册</h2>
+<ul>
+<li><a href="wml_reference.html">WML 参考手册</a></li>
+<li><a href="wml_entities.html">WML 实体</a></li>
+<li><a href="wml_dtd.html">WML DTD</a></li>
+</ul>
+<h2>资源</h2>
+<ul>
+<li><a href="wap_forum.html">WAP 论坛/OMA</a></li>
+<li><a href="wap_software.html">WAP 软件</a></li>
+</ul>
+</div>
+<div id="selected">
+<h2>建站手册</h2>
+<ul>
+<li><a href="../site/">网站构建</a></li>
+<li><a href="../w3c/">万维网联盟</a></li>
+<li><a href="http://e.v-get.com/w3c/">W3CSchool 教程</a></li>
+<li><a href="../quality/">网站品质</a></li>
+<li><a href="../semweb/">语义网</a></li>
+<li><a href="../hosting/">网站主机</a></li>
+</ul>
+<h2><a href="http://e.v-get.com/w3c/" class="f13">W3CSchool 教程</a></h2><div class="a120x90"><script type="text/javascript">var cpro_id="u1210867";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div></div>
+</div>
+<div id="maincontent">
+<h1>WML &lt;tr&gt; 标签</h1>
+<div class="backtoreference">
+<p><a href="wml_reference.html">返回 WML 参考手册</a></p>
+</div>
+<div>
+<h2>定义和用法</h2>
+<p>&lt;tr&gt; 标签定义一个表格行。</p>
+<p class="note"><span>注释：</span>此元素必须位于 table 元素中。</p>
+<h3>语法</h3>
+<pre>&lt;table columns=&#34;number&#34;&gt;
+&lt;tr&gt;
+&lt;td&gt;..&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;</pre>
+<h3>属性</h3>
+<table class="dataintable">
+<tr>
+<th>属性</th>
+<th>值</th>
+<th>描述</th>
+</tr>
+<tr>
+<td>class</td>
+<td>cdata</td>
+<td>为此元素设置的 class 名。这个 class 名对大小写敏感。一个元素可链接多个 class。claas 属性中的多个 class 名通过空格进行分隔。</td>
+</tr>
+<tr>
+<td>id</td>
+<td>id</td>
+<td>为此元素设置的唯一名称。</td>
+</tr>
+</table>
+<h3>实例</h3>
+<pre>&lt;?xml version=&#34;1.0&#34;?&gt;
+&lt;!DOCTYPE wml PUBLIC &#34;-//WAPFORUM//DTD WML 1.1//EN&#34;
+&#34;http://www.wapforum.org/DTD/wml_1.1.xml&#34;&gt;
+&lt;wml&gt;
+&lt;card title=&#34;Table&#34;&gt;
+&lt;p&gt;
+ &lt;table columns=&#34;3&#34;&gt;
+  &lt;tr&gt;
+   &lt;td&gt;Cell 1&lt;/td&gt;
+   &lt;td&gt;Cell 2&lt;/td&gt;
+   &lt;td&gt;Cell 3&lt;/td&gt;
+  &lt;/tr&gt;
+ &lt;/table&gt;
+&lt;/p&gt;
+&lt;/card&gt;
+&lt;/wml&gt;</pre>
+</div>
+<div class="backtoreference">
+<p><a href="wml_reference.html">返回 WML 参考手册</a></p>
+</div>
+</div>
+<div id="sidebar">
+<div class="rs"></div>
+<div id="tools">
+<h5 id="tools_reference"><a href="wml_reference.html">WML 参考手册</a></h5>
+<h5 id="tools_example"><a href="wap_demo.html">WAP 演示</a></h5>
+</div>
+<div class="a120x600"><script type="text/javascript">var cpro_id="u1293136";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div><div class="b"></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,124 @@
+<html xmlns:rdl>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<script src="rdl_method.js"></script>
+<base target="_self">
+</head>
+<body>
+
+<script>
+
+//collFriendObjects=new Array();
+//collFriendProperties=new Array();
+//collFriendMethods=new Array();
+//collFriendEvents=new Array();
+//collFriendCollections=new Array();
+
+collFriendMethods=new Array(
+'getElementsByTagName'
+);
+
+//collIE40=new Array();
+//collIE50=new Array();
+//collIE55=new Array();
+//collIE60=new Array();
+
+collIE40=new Array(
+'all','anchors','applets','areas','cells','children','elements','embeds','forms','images','links','options','plugins','rows','scripts','tBodies'
+);
+
+collIE50=new Array(
+'boundElements'
+);
+
+//sStyle='';
+
+sScript=
+'<script>\n'+
+'function rdl_getTags(){\n'+
+'event.cancelBubble=true;\n'+
+'var oWorkItem=event.srcElement;\n'+
+'var aReturn=oWorkItem.parentElement.all.tags("li");\n'+
+'var iChilds=oWorkItem.parentElement.children.tags("li").length;\n'+
+'document.all("id_info").innerHTML='+
+'"您选定的列表内有项目: <span style=\\"color:#FF3300;\\">"+aReturn.length.toString()+"<\\/span> 个<br>"+'+
+'"与选定项目同一级的有: <span style=\\"color:#FF3300;\\">"+iChilds.toString()+"<\\/span> 个<br>"+'+
+'"它的第一个列表项目是: <span style=\\"color:#FF3300;\\">"+aReturn[0].childNodes[0].nodeValue+"<\\/span>";'+
+'window.resizeTo(436,360);\n'+
+'}\n'+
+'function rdl_hoverLI(){\n'+
+'event.cancelBubble=true;\n'+
+'with (event.srcElement) {if (tagName.toLowerCase()=="li") style.color="#003399";}\n'+
+'}\n'+
+'function rdl_outsideLI(){\n'+
+'event.cancelBubble=true;\n'+
+'with (event.srcElement) {if (tagName.toLowerCase()=="li") style.color="#000000";}\n'+
+'}\n'+
+'<\/script>\n';
+
+sCode=
+'<ul onclick="rdl_getTags();" style="cursor:default;" onmouseover="rdl_hoverLI();" onmouseout="rdl_outsideLI();">\n'+
+'<li>列表项目1\n'+
+'<ul>\n'+
+'<li>列表项目1-1\n'+
+'<ul>\n'+
+'<li>列表项目1-1-1\n'+
+'<li>列表项目1-1-2\n'+
+'<\/ul>\n'+
+'<li>列表项目1-2\n'+
+'<li>列表项目1-3\n'+
+'<\/ul>\n'+
+'<li>列表项目2\n'+
+'<ul>\n'+
+'<li>列表项目2-1\n'+
+'<li>列表项目2-2\n'+
+'<\/ul>\n'+
+'<li>列表项目3\n'+
+'<\/ul>\n'+
+'<span id=id_info><\/span>\n';
+
+iWinWidth=436;
+
+iWinHeight=320;
+
+//bRunCode=false;
+
+</script>
+
+<div id=idContent>
+
+<div id=idContentTitle><span id=idTitleName>tags</span>版本：DHTML Object Model　返回值：有</div>
+
+<div class=cssColumnTitle>语法：</div>
+<div>
+<i>oElements</i><b> = </b><i>object</i><b> . tags ( </b><i>sTagName</i><b> ) </b>
+</div>
+
+<div class=cssColumnTitle>参数：</div>
+<table>
+<tr><td nowrap><i> sTagName </i></td><td nowrap><b>:</b></td><td><b>必选项</b>。字符串(String)。</td></tr>
+</table>
+
+<div class=cssColumnTitle>返回值：</div>
+<table>
+<tr><td nowrap><i> oElements </i></td><td nowrap><b>:</b></td><td>数组(Array)。</td></tr>
+</table>
+
+<div class=cssColumnTitle>说明：</div>
+<div>
+在<i> object </i>中获取并返回标记名称等于<i> sTagName </i>的一组对象的引用。
+<br>该 DHTML 方法等同于 DOM 的<a href="getelementsbytagname.html"> getElementsByTagName </a>方法。
+<br>如果无符合条件的对象，则返回空数组。
+</div>
+
+<div class=cssColumnTitle>示例：</div>
+<div id=idSimpleCode>
+var aReturn=event.srcElement.parentElement.all.tags("a");
+</div>
+
+</div>
+</body>
+</html>
+
+<!-- Part of RDL(TM) - Written by Rain1977 
+HomeSite: http://www.dhtmlet.com  E-Mail: dhtmlet@hotmail.com -->

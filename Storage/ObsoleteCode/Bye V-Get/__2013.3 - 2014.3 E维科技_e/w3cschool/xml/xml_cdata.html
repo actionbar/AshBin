@@ -1,0 +1,186 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="../c3.css" />
+<title>XML CDATA</title>
+</head>
+<body class="xml">
+<div id="wrapper">
+<div id="header">
+<a href="http://e.v-get.com/w3cschool/" style="float:left;">W3CSchool 在线教程</a>
+<div class="q g"><script type="text/javascript">var cpro_id="u1163355"</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div>
+<div id="navfirst">
+<ul id="menu">
+<li id="h"><a href="../h.html">HTML教程</a></li>
+<li id="x"><a href="../x.html">XML教程</a></li>
+<li id="b"><a href="../b.html">浏览器脚本</a></li>
+<li id="s"><a href="../s.html">服务器脚本</a></li>
+<li id="d"><a href="../d.html">dot net教程</a></li>
+<li id="m"><a href="../m.html">多媒体教程</a></li>
+<li id="w"><a href="../w.html">建站手册</a></li>
+</ul>
+</div><div id="navsecond">
+<div id="course">
+<h2>XML 基础</h2>
+<ul>
+<li><a href="http://e.v-get.com/w3cschool/">XML 首页</a></li>
+<li><a href="xml_intro.html">XML 简介</a></li>
+<li><a href="xml_usedfor.html">XML 用途</a></li>
+<li><a href="xml_tree.html">XML 树结构</a></li>
+<li><a href="xml_syntax.html">XML 语法</a></li>
+<li><a href="xml_elements.html">XML 元素</a></li>
+<li><a href="xml_attributes.html">XML 属性</a></li>
+<li><a href="xml_dtd.html">XML 验证</a></li>
+<li><a href="xml_validator.html">XML 验证器</a></li>
+<li><a href="xml_browsers.html">XML 浏览器</a></li>
+<li><a href="xml_view.html">XML 查看</a></li>
+<li><a href="xml_display.html">XML CSS</a></li>
+<li><a href="xml_xsl.html">XML XSLT</a></li>
+</ul>
+<h2>XML JavaScript</h2>
+<ul>
+<li><a href="xml_parser.html">XML 解析器</a></li>
+<li><a href="xml_dom.html">XML DOM</a></li>
+<li><a href="xml_to_html.html">XML to HTML</a></li>
+<li><a href="xml_http.html">XML HTTP Request</a></li>
+<li><a href="xml_applications.html">XML 应用程序</a></li>
+</ul>
+</ul>
+<h2>XML 高级</h2>
+<ul>
+<li><a href="xml_namespaces.html">XML 命名空间</a></li>
+<li><a href="xml_cdata.html">XML CDATA</a></li>
+<li><a href="xml_encoding.html">XML 编码</a></li>
+<li><a href="xml_server.html">XML 服务器</a></li>
+<li><a href="xml_dom_advanced.html">XML DOM 高级</a></li>
+<li><a href="xml_dont.html">XML Don't</a></li>
+<li><a href="xml_savedata.html">XML 数据存储</a></li>
+<li><a href="xml_technologies.html">XML 技术</a></li>
+<li><a href="xml_real_life.html">XML 现实案例</a></li>
+<li><a href="xml_editors.html">XML 编辑器</a></li>
+<li><a href="xml_summary.html">XML 总结</a></li>
+</ul>
+<h2>实例/测验</h2>
+<ul>
+<li><a href="../example/xmle_examples.html">XML 实例</a></li>
+<li><a href="xml_quiz.html">XML 测验</a></li>
+</ul>
+</div>
+<div id="selected">
+<h2>建站手册</h2>
+<ul>
+<li><a href="../site/">网站构建</a></li>
+<li><a href="../w3c/">万维网联盟</a></li>
+<li><a href="http://e.v-get.com/w3c/">W3CSchool 教程</a></li>
+<li><a href="../quality/">网站品质</a></li>
+<li><a href="../semweb/">语义网</a></li>
+<li><a href="../hosting/">网站主机</a></li>
+</ul>
+<h2><a href="http://e.v-get.com/w3c/" class="f13">W3CSchool 教程</a></h2><div class="a120x90"><script type="text/javascript">var cpro_id="u1210867";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div></div>
+</div>
+<div id="maincontent">
+<h1>XML CDATA</h1>
+<div id="tpn">
+<ul class="prenext">
+<li class="pre"><a href="xml_namespaces.html">上一页</a></li>
+<li class="next"><a href="xml_encoding.html">下一页</a></li>
+</ul>
+</div>
+<div id="intro">
+<p><strong>所有 XML 文档中的文本均会被解析器解析。</strong></p>
+<p><strong>只有 CDATA 区段 (CDATA section）中的文本会被解析器忽略。</strong></p>
+</div>
+<div>
+<h2>Parsed Data</h2>
+<p><strong>XML 解析器通常会解析 XML 文档中所有的文本。</strong></p>
+<p>当某个 XML 元素被解析时，其标签之间的文本也会被解析：</p>
+<pre>&lt;message&gt;此文本也会被解析&lt;/message&gt;</pre>
+<p>解析器之所以这么做是因为 XML 元素可包含其他元素，就像这个例子中，其中的 &lt;name&gt; 元素包含着另外的两个元素(first 和 last)：</p>
+<pre>&lt;name&gt;&lt;first&gt;Bill&lt;/first&gt;&lt;last&gt;Gates&lt;/last&gt;&lt;/name&gt;</pre>
+<p>而解析器会把它分解为像这样的子元素：</p>
+<pre>&lt;name&gt;
+   &lt;first&gt;Bill&lt;/first&gt;
+   &lt;last&gt;Gates&lt;/last&gt;
+&lt;/name&gt;</pre>
+</div>
+<div>
+<h2>转义字符</h2>
+<p><strong>非法的 XML 字符必须被替换为实体引用 (entity reference）。</strong></p>
+<p>假如您在 XML 文档中放置了一个类似 &#34;&lt;&#34; 字符，那么这个文档会产生一个错误，这是因为解析器会把它解释为新元素的开始。因此你不能这样写：</p>
+<pre>&lt;message&gt;if salary &lt; 1000 then&lt;/message&gt;</pre>
+<p>为了避免此类错误，需要把字符 &#34;&lt;&#34; 替换为实体引用，就像这样：</p>
+<pre>&lt;message&gt;if salary &amp;lt; 1000 then&lt;/message&gt;</pre>
+<h3>在 XML 中有 5 个预定义的实体引用：</h3>
+<table class="dataintable">
+<tr>
+<td>&amp;lt;</td>
+<td>&lt;</td>
+<td>小于</td>
+</tr>
+<tr>
+<td>&amp;gt;</td>
+<td>&gt;</td>
+<td>大于</td>
+</tr>
+<tr>
+<td>&amp;amp;</td>
+<td>&amp;</td>
+<td>和号</td>
+</tr>
+<tr>
+<td>&amp;apos;</td>
+<td>'</td>
+<td>省略号</td>
+</tr>
+<tr>
+<td>&amp;quot;</td>
+<td>&#34;</td>
+<td>引号</td>
+</tr></table>
+<p class="note"><span>注释：</span>严格地讲，在 XML 中仅有字符 &#34;&lt;&#34;和&#34;&amp;&#34; 是非法的。省略号、引号和大于号是合法的，但是把它们替换为实体引用是个好的习惯。
+</div>
+<div>
+<h2>CDATA</h2>
+<p><strong>CDATA 内部的所有东西都会被解析器忽略。</strong></p>
+<p>假如文本中包含了大量的 &#34;&lt;&#34; 和 &#34;&amp;&#34; 字符 - 就像编程代码中经常出现的情况一样 - 那么这个 XML 元素就可以被定义为一个 CDATA 部分。</p>
+<p>CDATA 区段开始于 <em>&#34;&lt;![CDATA[&#34;</em>，结束于 <em>&#34;]]&gt;&#34;</em>：</p>
+<pre>&lt;script&gt;
+&lt;![CDATA[
+function matchwo(a,b)
+{
+if (a &lt; b &amp;&amp; a &lt; 0)
+   {
+   return 1
+   }
+else
+   {
+   return 0
+   }
+}
+]]&gt;
+&lt;/script&gt;</pre>
+<p>在上面的例子中，在 CDATA 区段中的所有东西都会被解析器忽略。</p>
+<h3>关于 CDATA 区段的注释：</h3>
+<p>CDATA 区段不能包含字符串 &#34;]]&gt;&#34;，所以，CDATA 区段的嵌套是不被允许的。</p>
+<p>同时也需要确保在 &#34;]]&gt;&#34; 字符串中没有空格或折行。</p>
+</div>
+<div id="bpn">
+<ul class="prenext">
+<li class="pre"><a href="xml_namespaces.html">上一页</a></li>
+<li class="next"><a href="xml_encoding.html">下一页</a></li>
+</ul>
+</div>
+</div>
+<div id="sidebar">
+<div class="rs"></div>
+<div id="tools">
+<h5 id="tools_example"><a href="../example/xmle_examples.html">XML 实例</a></h5>
+<h5 id="tools_quiz"><a href="xml_quiz.html">XML 测验</a></h5>
+</div>
+<div class="a120x600"><script type="text/javascript">var cpro_id="u1293136";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div><div class="b"></div>
+</div>
+</body>
+</html>

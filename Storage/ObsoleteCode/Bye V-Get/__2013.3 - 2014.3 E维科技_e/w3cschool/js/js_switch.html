@@ -1,0 +1,184 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="../c3.css" />
+<title>JavaScript Switch 语句</title>
+</head>
+<body class="browserscripting">
+<div id="wrapper">
+<div id="header">
+<a href="http://e.v-get.com/w3cschool/" style="float:left;">W3CSchool 在线教程</a>
+<div class="q g"><script type="text/javascript">var cpro_id="u1163355"</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div>
+<div id="navfirst">
+<ul id="menu">
+<li id="h"><a href="../h.html">HTML教程</a></li>
+<li id="x"><a href="../x.html">XML教程</a></li>
+<li id="b"><a href="../b.html">浏览器脚本</a></li>
+<li id="s"><a href="../s.html">服务器脚本</a></li>
+<li id="d"><a href="../d.html">dot net教程</a></li>
+<li id="m"><a href="../m.html">多媒体教程</a></li>
+<li id="w"><a href="../w.html">建站手册</a></li>
+</ul>
+</div><div id="navsecond">
+<div id="course">
+<h2>JavaScript 基础</h2>
+<ul>
+<li><a href="http://e.v-get.com/w3cschool/">JS 教程</a></li>
+<li><a href="js_intro.html">JS 简介</a></li>
+<li><a href="js_howto.html">JS 实现</a></li>
+<li><a href="js_whereto.html">JS 放置</a></li>
+<li><a href="js_statements.html">JS 语句</a></li>
+<li><a href="js_comments.html">JS 注释</a></li>
+<li><a href="js_variables.html">JS 变量</a></li>
+<li><a href="js_operators.html">JS 运算符</a></li>
+<li><a href="js_comparisons.html">JS 比较</a></li>
+<li><a href="js_if_else.html">JS If...Else</a></li>
+<li><a href="js_switch.html">JS Switch</a></li>
+<li><a href="js_popup.html">JS 消息框</a></li>
+<li><a href="js_functions.html">JS 函数</a></li>
+<li><a href="js_loop_for.html">JS For Loop</a></li>
+<li><a href="js_loop_while.html">JS While Loop</a></li>
+<li><a href="js_break.html">JS Break Loops</a></li>
+<li><a href="js_loop_for_in.html">JS For...In</a></li>
+<li><a href="js_events.html">JS 事件</a></li>
+<li><a href="js_try_catch.html">JS Try...Catch</a></li>
+<li><a href="js_throw.html">JS Throw</a></li>
+<li><a href="js_onerror.html">JS onerror</a></li>
+<li><a href="js_special_characters.html">JS 特殊字符</a></li>
+<li><a href="js_guidelines.html">JS 指导方针</a></li>
+</ul>
+<h2>JavaScript 对象</h2>
+<ul>
+<li><a href="js_obj_intro.html">JS 对象简介</a></li>
+<li><a href="js_obj_string.html">JS 字符串</a></li>
+<li><a href="js_obj_date.html">JS 日期</a></li>
+<li><a href="js_obj_array.html">JS 数组</a></li>
+<li><a href="js_obj_boolean.html">JS 逻辑</a></li>
+<li><a href="js_obj_math.html">JS 算数</a></li>
+<li><a href="js_obj_regexp.html">JS RegExp</a></li>
+<li><a href="js_obj_htmldom.html">JS HTML DOM</a></li>
+</ul>
+<h2>JavaScript 高级</h2>
+<ul>
+<li><a href="js_browser.html">JS 浏览器</a></li>
+<li><a href="js_cookies.html">JS Cookies</a></li>
+<li><a href="js_form_validation.html">JS 验证</a></li>
+<li><a href="js_animation.html">JS 动画</a></li>
+<li><a href="js_image_maps.html">JS 图像地图</a></li>
+<li><a href="js_timing.html">JS 计时</a></li>
+<li><a href="js_objects.html">JS 创建对象</a></li>
+<li><a href="js_summary.html">JS 总结</a></li>
+</ul>
+<h2>实例/测验</h2>
+<ul>
+<li><a href="../example/jseg_examples.html">JS 实例</a></li>
+<li><a href="../example/jsrf_examples.html">JS 对象实例</a></li>
+<li><a href="js_quiz.html">JS 测验</a></li>
+</ul>
+<h2>JS 参考手册</h2>
+<ul>
+<li><a href="js_reference.html">JS 对象</a></li>
+<li><a href="../htmldom/htmldom_reference.html">JS HTML DOM</a></li>
+</ul>
+</div>
+<div id="selected">
+<h2>建站手册</h2>
+<ul>
+<li><a href="../site/">网站构建</a></li>
+<li><a href="../w3c/">万维网联盟</a></li>
+<li><a href="http://e.v-get.com/w3c/">W3CSchool 教程</a></li>
+<li><a href="../quality/">网站品质</a></li>
+<li><a href="../semweb/">语义网</a></li>
+<li><a href="../hosting/">网站主机</a></li>
+</ul>
+<h2><a href="http://e.v-get.com/w3c/" class="f13">W3CSchool 教程</a></h2><div class="a120x90"><script type="text/javascript">var cpro_id="u1210867";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div></div>
+</div>
+<div id="maincontent">
+<h1>JavaScript Switch 语句</h1>
+<div id="tpn">
+<ul class="prenext">
+<li class="pre"><a href="js_if_else.html">上一页</a></li>
+<li class="next"><a href="js_popup.html">下一页</a></li>
+</ul>
+</div>
+<div id="intro">
+<p><strong>JavaScript 中的条件语句用于完成基于不同条件的行为。</strong></p>
+</div>
+<div class="example">
+<h2>实例</h2>
+<dl>
+<dt><a href="../tiy/t_683.html">Switch 语句</a></dt>
+<dd>如何编写一个 Switch 语句。</dd>
+</dl>
+</div>
+<div>
+<h2>JavaScript Switch 语句</h2>
+<p>如果希望选择执行若干代码块中的一个，你可以使用 switch 语句：</p>
+<h3>语法：</h3>
+<pre>
+<code>switch(n)</code>
+   {
+   <code>case 1:</code>
+     执行代码块 1
+     <code>break</code>
+   <code>case 2:</code>
+     执行代码块 2
+     <code>break</code>
+   <code>default:</code>
+     如果n即不是1也不是2，则执行此代码
+   }
+</pre>
+<p><em>工作原理</em>：switch 后面的 (n) 可以是表达式，也可以 (并通常）是变量。然后表达式中的值会与 case 中的数字作比较，如果与某个 case 相匹配，那么其后的代码就会被执行。<em>break</em> 的作用是防止代码自动执行到下一行。</p>
+<h3>实例：</h3>
+<pre>&lt;script type=&#34;text/javascript&#34;&gt;
+//You will receive a different greeting based
+//on what day it is. Note that Sunday=0,
+//Monday=1, Tuesday=2, etc.
+var d=new Date()
+theDay=d.getDay()
+<code>switch (theDay)</code>
+   {
+   <code>case 5:</code>
+     document.write(&#34;Finally Friday&#34;)
+     <code>break</code>
+   <code>case 6:</code>
+     document.write(&#34;Super Saturday&#34;)
+     <code>break</code>
+   <code>case 0:</code>
+     document.write(&#34;Sleepy Sunday&#34;)
+     <code>break</code>
+   <code>default:</code>
+     document.write(&#34;I'm looking forward to this weekend!&#34;)
+}
+&lt;/script&gt;</pre>
+</div>
+<div id="bpn">
+<ul class="prenext">
+<li class="pre"><a href="js_if_else.html">上一页</a></li>
+<li class="next"><a href="js_popup.html">下一页</a></li>
+</ul>
+</div>
+<div id="toc">
+<h2>课外书</h2>
+<p>如需更多有关 <em>JavaScript Switch 语句</em>的知识，请阅读 JavaScript 高级教程中的相关内容：</p>
+<dl>
+<dt><a href="as_js_statements_switch.html">ECMAScript switch 语句</a></dt>
+<dd>switch 语句是 if 语句的兄弟语句。本节介绍了 switch 语句的用法，以及与 Java 中的 switch 语句的不同。</dd>
+</dl>
+</div>
+</div>
+<div id="sidebar">
+<div class="rs"></div>
+<div id="tools">
+<h5 id="tools_reference"><a href="js_reference.html">JavaScript 参考手册</a></h5>
+<h5 id="tools_example"><a href="../example/jseg_examples.html">JavaScript 实例</a></h5>
+<h5 id="tools_quiz"><a href="js_quiz.html">JavaScript 测验</a></h5>
+<h5 id="tools_search"><a href="../search/search.html">W3CSchool 搜索</a></h5>
+</div>
+<div class="a120x600"><script type="text/javascript">var cpro_id="u1293136";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div><div class="b"></div>
+</div>
+</body>
+</html>

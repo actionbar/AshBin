@@ -1,0 +1,95 @@
+<html xmlns:rdl>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<script src="rdl_method.js"></script>
+<base target="_self">
+</head>
+<body>
+
+<script>
+
+//collFriendObjects=new Array();
+//collFriendProperties=new Array();
+//collFriendMethods=new Array();
+//collFriendEvents=new Array();
+//collFriendCollections=new Array();
+
+collFriendProperties=new Array(
+'MouseEventsEnabled','clientX','clientY'
+);
+
+//collIE40=new Array();
+//collIE50=new Array();
+//collIE55=new Array();
+//collIE60=new Array();
+
+collIE40=new Array(
+'document'
+);
+
+//sStyle='';
+
+sScript=
+'<script>\n'+
+'function rdl_eventHandle(e){\n'+
+'event.cancelBubble=true;\n'+
+'var oPoint=document.elementFromPoint(event.clientX,event.clientY);\n'+
+'if (oPoint.tagName.toLowerCase()!="li") oCode.innerHTML="请将鼠标移动到项目列表上。";\n'+
+'else oCode.innerHTML="您的鼠标指针现在位于<font color=\'#FF3300\'>"+oPoint.innerText+"<\/font>上面";\n'+
+'}\n'+
+'document.onmouseover=rdl_eventHandle;\n'+
+'<\/script>\n';
+
+sCode=
+'<ul id=oList style="cursor:default;">\n'+
+'<li>列表项目1\n'+
+'<li>列表项目2\n'+
+'<li>列表项目3\n'+
+'<li>列表项目4\n'+
+'<\/ul>\n'+
+'<br><div id=oCode>请将鼠标移动到项目列表上。<\/div>\n';
+
+iWinWidth=360;
+
+iWinHeight=250;
+
+</script>
+
+<div id=idContent>
+
+<div id=idContentTitle><span id=idTitleName>elementFromPoint</span>版本：DHTML Object Model　返回值：有</div>
+
+<div class=cssColumnTitle>语法：</div>
+<div>
+<i>oElement</i><b> = </b><a href="../objects/document.html"><b>document</b></a><b> . elementFromPoint ( </b><i>iX</i><b> , </b><i>iY</i><b> ) </b>
+</div>
+
+<div class=cssColumnTitle>参数：</div>
+<table>
+<tr><td nowrap><i> iX </i></td><td nowrap><b>:</b></td>
+<td><b>必选项</b>。整数(Integer)。单位：象素(Pixel)。定位横坐标偏移量。</td></tr>
+<tr><td nowrap><i> iY </i></td><td nowrap><b>:</b></td>
+<td><b>必选项</b>。整数(Integer)。单位：象素(Pixel)。定位纵坐标偏移量。</td></tr>
+</table>
+
+<div class=cssColumnTitle>返回值：</div>
+<table>
+<tr><td nowrap><i> oElement </i></td><td nowrap><b>:</b></td>
+<td>对象(Element)。返回获取的对象的引用。</td></tr>
+</table>
+
+<div class=cssColumnTitle>说明：</div>
+<div>
+根据横纵坐标值<i> iX </i>和<i> iY </i>获取对象<i> oElement </i>。<i> oElement </i>必须支持和响应鼠标事件。
+<br>提供的坐标是客户区坐标。客户区的左上角为 (0,0)。
+<br>当将此方法用于<b> Structured Graphics </b>或<b> Sprite </b>对象时，必须设置<a href="../properties/mouseeventsenabled.html"> MouseEventsEnabled </a>属性值为<b> 1 </b>。
+</div>
+
+
+
+</div>
+</body>
+</html>
+
+<!-- Part of RDL(TM) - Written by Rain1977 
+HomeSite: http://www.dhtmlet.com  E-Mail: dhtmlet@hotmail.com -->

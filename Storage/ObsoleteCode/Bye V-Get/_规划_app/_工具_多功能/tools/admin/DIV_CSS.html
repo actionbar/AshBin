@@ -1,0 +1,563 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>在线DIV+CSS编辑器-站长工具-客齐齐实用查询工具</title>
+<meta name="keywords" content="DIV+CSS编辑器,在线编辑，DIV+CSS，DIV+CSS工具">
+<meta content="在线DIV+CSS编辑器!" name="description" />
+<link href="../images/style.css" rel="stylesheet" type="text/css" />
+<style type="text/css">
+<!--
+body {margin:0; padding:0;background: #FFF url('../images/top3.gif') repeat-x top; font-size:12px;color:#666}
+.style1 {font-size: 14px}
+.DetailCSSboxModel{
+	height:100%;
+	margin-right: auto;
+	margin-left: auto;
+}
+.MainBody{
+	height:100%;
+	width: 690px;
+	margin-left: auto;
+	margin-right: auto;
+}
+.vcsseffect{background-color:#fff;background-image:url(grid.gif);}
+.hiddenObj{display:none;}
+.normal_input{border:1px solid #84a1bd;background-color:#fff;height:18px;}
+.hover_input {border:1px solid #9ecc00;background-color:#fff;height:18px;}
+.vcssDetail{padding: 15px;padding-top:0px;}
+.MainDialogCSS{
+	width:550px;
+	margin-right: auto;
+	margin-left: auto;
+}
+-->
+</style>
+<script language="javascript" type="text/javascript">
+<!--
+function hoverInput(obj,n)
+{
+	if(n==1){if(obj.tagName=="INPUT" && obj.type=="text"){obj.className='hover_input';}}
+	else{
+		if(obj.tagName=="INPUT" && obj.type=="text")
+		{
+		obj.className='normal_input';
+		if(obj.value!='' && !isNaN(obj.value.substring(obj.value.length-1)))obj.value+='px';
+		}
+	}
+	setSelectionWithCss(2);
+}
+var allCSSsetterCode = "";
+function setSelectionWithCss(funnum)
+{
+	isSetting(vcssWidth,"width");
+	isSetting(vcssHeight,"height");
+	isSetting(vcssBackgroundColor,"background-color");
+	isSetting(vcssColor,"color");
+	isSetting(vcssBorderWidth,"border-width");
+	isSetting(vcssBorderColor,"border-color");
+	isSetting(vcssBorderdStyle,"border-style");
+	isSetting(vcssMargin,"margin");
+	isSetting(vcssPadding,"padding");
+	isSetting(vcssFloatResult,"float");
+	isSetting(vcssDisplay,"display");
+	isSetting(vcssVisibilityResult,"visibility");
+	isSetting(vcssTextAlign,"text-align");
+	isSetting(vcssLineHeight,"line-height");
+	isSetting(vcssTextIndent,"text-indent");
+	isSetting(vcssFontSize,"font-Size");
+	isSetting(vcssFontFamily,"font-family");
+	isSetting(vcssFontWeight,"font-weight");
+	isSetting(vcssDecorationResult,"text-decoration");
+	isSetting(vcssPosition,"position");
+	isSetting(vcssZIndex,"z-index");
+	isSetting(vcssLeft,"left");
+	isSetting(vcssRight,"right");
+	isSetting(vcssTop,"top");
+	isSetting(vcssBottom,"bottom");	
+	isSetting(vcssPositionResult,"list-style-position");
+	isSetting(vcssCursor,"cursor");
+	isSetting(vcssBackgroundRepeat,"background-repeat");
+	isSetting(vcssBackgroundAttachment,"background-attachment");
+	isSetting(vcssListStyleType,"list-style-type");
+	isSetting(vcssOverflow,"overflow");
+	isSetting(vcssClear,"clear");
+	isSetting(vcssVerticalAlign,"vertical-align");
+	if(vcssBackgroundImage.value!="")allCSSsetterCode+="background-image:url("+vcssBackgroundImage.value+");";
+	if(vcssBackgroundPositionX.value!="" && vcssBackgroundPositionY.value!="")allCSSsetterCode+="background-position:"+vcssBackgroundPositionX.value+" "+vcssBackgroundPositionY.value+";";
+	if(vcssListStyleImage.value!="")allCSSsetterCode+="list-style-image:url("+vcssListStyleImage.value+");";
+	if(funnum==1)
+	{
+		alert(allCSSsetterCode);
+	}
+	else
+	{
+		var everyRule = allCSSsetterCode.split(';');
+		var resultCSSTEXT=vcssIdentName.value+"\r\n{\t";
+		for(var v=0;v<everyRule.length-1;v++)
+		{
+			resultCSSTEXT+=everyRule[v]+";\r\n\t";
+		}
+		resultCSSTEXT+="\r\n}";
+		document.all.cssTextValue.value=String(resultCSSTEXT);
+		document.all.cssTextValueCompare.value=String(allCSSsetterCode);
+		vcsseffect_div.style.cssText=String(allCSSsetterCode);
+	}
+	allCSSsetterCode="";
+}
+var isFisrtGetCss = true;
+function getSelectionWithCss(funnum)
+{
+	isGetting("vcssWidth","width");
+	isGetting("vcssHeight","height");
+	isGetting("vcssBackgroundColor","backgroundColor");
+	isGetting("vcssColor","color");
+	isGetting("vcssBorderWidth","borderWidth");
+	isGetting("vcssBorderColor","borderColor");
+	isGetting("vcssBorderdStyle","borderStyle");
+	isGetting("vcssMargin","margin");
+	isGetting("vcssPadding","padding");
+	isGetting("vcssFloat","float");
+	isGetting("vcssDisplay","display");
+	isGetting("vcssVisibilityResult","visibility");
+	isGetting("vcssTextAlign","textAlign");
+	isGetting("vcssLineHeight","lineHeight");
+	isGetting("vcssTextIndent","textIndent");
+	isGetting("vcssFontSize","fontSize");
+	isGetting("vcssFontFamily","fontFamily");
+	isGetting("vcssFontWeight","fontWeight");
+	isGetting("vcssDecorationResult","textDecoration");
+	isGetting("vcssBackgroundImage","backgroundImage");
+	isGetting("vcssBackgroundRepeat","backgroundRepeat");
+	isGetting("vcssBackgroundAttachment","backgroundAttachment");
+	isGetting("vcssListStyleType","listStyleType");
+	isGetting("vcssListStyleImage","ListStyleImage");
+	isGetting("vcssPositionResult","listStylePosition");
+	isGetting("vcssCursor","cursor");
+}
+function isSetting(cssobj,cssStartParam)
+{
+	if(cssobj.value!="")allCSSsetterCode+=cssStartParam+":"+cssobj.value+";";
+}
+function isGetting(cssobj,cssStartParam)
+{	if(isFisrtGetCss)
+	{
+		ele = document.getElementById("vv");
+		if(eval("ele.style."+cssStartParam)!="")
+		{
+			document.all[cssobj].value=eval("ele.style."+cssStartParam);
+		}
+	}
+}
+//-->
+</script>
+<script>
+var sInitColor = null;
+function callColorDlg(obj){
+if (sInitColor == null) 
+	var sColor = dlgHelper.ChooseColorDlg();
+else
+	var sColor = dlgHelper.ChooseColorDlg(sInitColor);
+		sColor = sColor.toString(16);	
+if (sColor.length < 6) {
+  var sTempString = "000000".substring(0,6-sColor.length);
+  sColor = sTempString.concat(sColor);
+}
+if(sColor!="000000"){
+sColor = "#" + sColor;
+obj.value=sColor;
+obj.style.backgroundColor=sColor;
+}}
+</script>
+</HEAD>
+<BODY>
+<OBJECT id=dlgHelper CLASSID="clsid:3050f819-98b5-11cf-bb82-00aa00bdce0b" width="0px" height="0px"></OBJECT>
+<table width="960" height="75" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td width="264" rowspan="2" align="center"><a href="../index.html">
+	<img src="../images/logo.gif" width="224" height="38" border="0" /></a></td>
+    <td height="24" valign="top">
+	<table width="321" height="24" border="0" align="right" cellpadding="0" cellspacing="0" background="../images/top2.gif">
+        <tr>
+          <td align="center" class="cwhite12"><a href="#" class="cwhite12">tools.kqiqi.com</a>　<a href="#" OnClick='this.style.behavior="url(#default#homepage)";this.setHomePage("http://tools.kqiqi.com");' class="cwhite12">设为首页</a> | <a href="#" onClick="window.external.AddFavorite('http://tools.kqiqi.com','客齐齐实用查询工具');" class="cwhite12">收藏本站</a></td>
+        </tr>
+    </table></td>
+  </tr>
+</table>
+<table width="960" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td><table height="38" border="0" cellpadding="0" cellspacing="0" style="margin-left:5px">
+      <tr align="center">
+          <td width="88" background="../images/nav1.gif" style="padding-top:5px"><a href="../index.html" class="navfh2">首　页</a></td>
+          <td width="88" background="../images/nav2.gif" style="padding-top:5px"><a href="index.html" class="navfh1">站长工具</a></td>
+          <td width="88" background="../images/nav1.gif" style="padding-top:5px"><a href="../query/index.html" class="navfh2">查询工具</a></td>
+          <td width="88" background="../images/nav1.gif" style="padding-top:5px"><a href="../calculation/index.html" class="navfh2">计算工具</a></td>
+          <td width="88" background="../images/nav1.gif" style="padding-top:5px"><a href="../password/index.html" class="navfh2">加密解密</a></td>
+          <td width="88" background="../images/nav1.gif" style="padding-top:5px"><a href="../conversion/index.html" class="navfh2">转换工具</a></td>
+          <td width="88" background="../images/nav1.gif" style="padding-top:5px"><a href="../color/index.html" class="navfh2">颜色工具</a></td>
+          <td width="88" background="../images/nav1.gif" style="padding-top:5px"><a href="../web/index.html" class="navfh2">网络辅助</a></td>
+          <td width="88" background="../images/nav1.gif" style="padding-top:5px"><a href="../picture/index.html" class="navfh2">图片工具</a></td>
+          <td width="88" background="../images/nav1.gif" style="padding-top:5px"><a href="../others/index.html" class="navfh2">其它工具</a></td>
+        </tr>
+    </table></td>
+  </tr>
+</table>
+<script language="javascript" src="../js/others_top.js"></script>
+<table width="960" border="0" align="center" cellpadding="0" cellspacing="0" class="mainbg1">
+  <tr valign="top">
+    <td width="20">　</td>
+    <td width="190">
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td colspan="2" height="10">
+
+</td>
+</tr>
+      <tr>
+        <td width="75%">
+		<img src="../images/t9.gif" width="32" height="32" align="absmiddle" />　<span class="navfh1">工具列表</span></td>
+        <td width="25%">　</td>
+      </tr>
+    </table>
+     <table width="100%"  border="0" cellpadding="0" cellspacing="0" background="../images/t12.gif" class="mar5">
+        <tr>
+          <td height="10"> </td>
+        </tr>
+      </table>
+<table width="100%"  border="0" cellpadding="0" cellspacing="0" class="mar5">
+      <tr>
+        <td>　
+ <div id="menu">
+  <div class="box">
+    <a href="Window_bomb.html">弹出式窗口代码产生器
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+  <div class="box">
+    <a href="Password.html">密码登录生成器
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+  <div class="box">
+    <a href="Mouse.html">鼠标经过按钮生成器
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+  <div class="box">
+    <a href="Frame.html">框架网页代码生成器
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+  <div class="box">
+    <a href="Meta.html">Meta 标签生成器
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+  <div class="box">
+    <a href="Scroll_bar.html">滚动条颜色生成器
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+<div class="box">
+    <a href="Open.html">OPEN参数生成器
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+<div class="box">
+    <a href="Color.html">多色彩特效字代码生成器
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+<div class="box">
+    <a href="Web.html">网页代码调试器
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+<div class="box">
+    <a href="DIV_CSS.html">在线DIV+CSS编辑器
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+<div class="box">
+    <a href="Page.html">页面转换效果生成器
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+  <div class="box">
+    <a href="Javascript.html">常用javascript特效
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+  <div class="box">
+    <a href="CSS.html">CSS在线编辑器
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+  <div class="box">
+    <a href="CSS1.html">CSS生成器
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+  <div class="box">
+    <a href="Character.html">字符替换器
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+  <div class="box">
+    <a href="FTP.html">在线FTP登陆
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+    <div class="box">
+    <a href="Editor.html">所见即所得编辑器
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+    <div class="box">
+    <a href="Html_Editor.html">在线HTML编辑器
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+    <div class="box">
+    <a href="Web_Editor.html">网页在线编辑器
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+   <div class="box">
+    <a href="Learn_Html.html">在线HTML语法教学
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+
+</div>
+ </td>
+      </tr>
+    </table>
+
+      <table width="100%" height="17"  border="0" cellpadding="0" cellspacing="0" background="t2.gif" class="mar5">
+        <tr>
+          <td> </td>
+        </tr>
+      </table>
+      
+    </td>
+    <td width="27">　</td>
+    <td width="700">
+     
+            <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+          <tr>
+      <td height="10" colspan="2">
+      </td>
+      </tr>
+        <tr valign="top">
+         <td width="40"><img src="../images/bang.gif" width="32" height="31"> </td>
+          <td><span class="navfh1">在线DIV+CSS编辑器</span></td>
+          
+        </tr>
+      </table>
+      <hr size="1" style="color:#E3E8E9" />
+      <table width="100%"  border="0" cellpadding="3" cellspacing="1">
+              <tr>
+          <td>
+         <div class="MainBody" id="MainBody">
+<div onMouseOver="hoverInput(event.srcElement,1);" onMouseOut="hoverInput(event.srcElement,2);" onKeyUp="setSelectionWithCss(2);" class="MainDialogCSS">
+<div id="vcssDetail_div" class="vcssDetail" style="display:block;"><p>
+类/标签/ID：<input name="vcssIdentName" id="vcssIdentName" value=".style1" class="normal_input" onmouseover="select();" onMouseOut="event.cancelBubble=true;this.className='normal_input';" />
+所有数值都不用输入单位;<br />
+宽：<input name="vcssWidth" type="text" class="normal_input" id="vcssWidth" value="" size="8" />
+高：<input name="vcssHeight" type="text" class="normal_input" id="vcssHeight" value="" size="8" />
+背景色：<input name="vcssBackgroundColor" type="text" class="normal_input" id="vcssBackgroundColor" onMouseOut="event.cancelBubble=true;this.className='normal_input';" value="" size="8" onClick="callColorDlg(this)" />
+前景色：<input name="vcssColor" type="text"  class="normal_input" id="vcssColor" value="" size="8" onMouseOut="event.cancelBubble=true;this.className='normal_input';" onClick="callColorDlg(this)" /><br>
+边框：<input name="vcssBorderWidth" onclick="value=1;vcssBorderdStyle.value='solid';" type="text"  class="normal_input" id="vcssBorderWidth" value="" size="8" />
+颜色：<input name="vcssBorderColor" type="text"  class="normal_input" id="vcssBorderColor" value="" size="8" onClick="callColorDlg(this)" onMouseOut="event.cancelBubble=true;this.className='normal_input';" />
+<select name="vcssBorderdStyle" id="vcssBorderdStyle" onclick="if(value=='')value='solid';">
+	<option selected>选择<option value="solid">solid<option value="dotted">dotted<option value="none">none<option value="hidden">hidden<option value="dashed">dashed<option value="double">double<option value="groove">groove<option value="ridge">ridge<option value="inset">inset<option value="outset">outset</select><br> 
+外间距 Margin ：<input name="vcssMargin" type="text" onKeyDown="if(event.keyCode==32)this.value+='px';" class="normal_input" id="vcssMargin" value="" size="20" /> 
+如:10px 2px <br> 
+内间距 Padding：<input name="vcssPadding" type="text" onKeyDown="if(event.keyCode==32)this.value+='px';" onBlur="if(this.value!='' && !isNaN(this.value.substring(this.value.length-1)))this.value+='px';" class="normal_input" id="vcssPadding" value="" size="20" />
+如:10px 2px<br>
+浮动： 左<input type="radio" name="vcssFloat" onClick="if(this.checked)vcssFloatResult.value=this.value" value="left"> 
+右<input name="vcssFloat" type="radio" onClick="if(this.checked)vcssFloatResult.value=this.value" value="right"><input name="vcssFloat" type="radio" class="hiddenObj" id="unsetFloat" onClick="if(this.checked)vcssFloatResult.value='';" />
+<a onClick="unsetFloat.click();" style="cursor:pointer;" title="取消浮动属性">×</a>
+<input name="vcssFloatResult" type="hidden" />
+显示：<select name="vcssDisplay"  id="vcssDisplay">
+  <option selected>选择
+  <option value="block">block
+  <option value="inline">inline
+  <option value="none">none
+</select>
+可见：<input type="radio" name="vcssVisibility" value="visible" onClick="if(this.checked)vcssVisibilityResult.value=this.value">可见
+<input type="radio" name="vcssVisibility" value="hidden" onClick="if(this.checked)vcssVisibilityResult.value=this.value">隐藏
+<input type="radio" name="vcssVisibility" class="hiddenObj" id="unsetVisibility" onClick="if(this.checked)vcssVisibilityResult.value='';" /><a onClick="unsetVisibility.click();" style="cursor:pointer;" title="取消可见属性">×</a>
+<input name="vcssVisibilityResult" type="hidden" />
+<br>
+文本对齐：<select name="vcssTextAlign" id="vcssTextAlign" onclick="if(value=='')value='center';">
+  <option selected>选择</option>
+  <option value="left">left</option>
+  <option value="center">center</option>
+  <option value="right">right</option>
+</select> 
+行高：<input name="vcssLineHeight" type="text" class="normal_input" id="vcssLineHeight" onMouseOut="event.cancelBubble=true;this.className='normal_input';" value="" size="8" />
+<select name="vcssLineUnit" id="select5">
+  <option value="%">%</option>
+  <option selected>无</option>
+  <option value="px">px</option>
+</select>
+文字缩进：<input name="vcssTextIndent" type="text" class="normal_input" id="vcssLineHeight4" value="" size="8" />
+<br>
+文本：<input name="vcssFontSize" type="text" class="normal_input" id="vcssFontSize" value="12px" size="5" />
+字体：
+<select name="vcssFontFamily" id="vcssFontFamily" onclick="if(value=='')value='Arial';"><option selected>选择</option><option value="宋体">宋体<option value="黑体">黑体<option value="Arial">Arial<option value="微软雅黑">雅黑</select>
+粗细：<input name="vcssFontWeight" type="text" class="normal_input" id="vcssLineHeight3" value="" size="8" onMouseOut="event.cancelBubble=true;this.className='normal_input';" />
+效果：<input type="radio" name="vcssTextDecoration" value="underline" onClick="if(this.checked)vcssDecorationResult.value=this.value">下划线
+<input type="radio" name="vcssTextDecoration" value="none" onClick="if(this.checked)vcssDecorationResult.value=this.value">无
+<input type="radio" name="vcssVisibility" class="hiddenObj" id="unsetDecoration" onClick="if(this.checked)vcssDecorationResult.value='';" /><a onClick="unsetDecoration.click();" style="cursor:pointer;" title="取消文字效果属性">×</a>
+<input name="vcssDecorationResult" type="hidden" />
+<br>
+背景图片：<input name="vcssBackgroundImage" type="file"  class="normal_input" id="vcssBackgroundImage">
+重复：<select name="vcssBackgroundRepeat" id="vcssBackgroundRepeat" onclick="if(value=='')value='no-repeat';"><option selected>选择<option value="repeat-x">横向重复<option value="repeat-y">纵向重复<option value="no-repeat">不重复</select>
+<br>
+水平位置：<input name="vcssBackgroundPositionX" type="text" class="normal_input" id="vcssBackgroundPositionX" value="" size="5" />
+垂直位置：<input name="vcssBackgroundPositionY" type="text" class="normal_input" id="vcssBackgroundPositionY" value="" size="5" />
+附件：<select name="vcssBackgroundAttachment" id="vcssBackgroundAttachment" onclick="if(value=='')value='fixed';"><option selected>选择<option value="fixed">固定<option value="scroll">滚动</select>
+<br />
+垂直对齐：<select name="vcssVerticalAlign" id="vcssVerticalAlign" onclick="if(value=='')value='middle';">
+  <option selected>选择</option>
+  <option value="middle">middle</option>
+  <option value="bottom">bottom</option> 
+  <option value="auto">top</option>
+  <option value="auto">auto</option>
+  <option value="baseline">baseline</option>
+</select>
+清除：<select name="vcssClear" id="vcssClear" onclick="if(value=='')value='both';">
+  <option selected>选择</option>
+  <option value="left">left</option>
+  <option value="right">right</option> 
+  <option value="both">both</option>
+</select>
+Overflow：<select name="vcssOverflow" id="vcssOverflow" onclick="if(value=='')value='hidden';">
+  <option selected>选择</option>
+  <option value="scroll">scroll</option>
+  <option value="auto">auto</option> 
+  <option value="hidden">hidden</option>
+</select>
+<br />
+定位：<select name="vcssPosition" id="vcssPosition">
+  <option selected>选择</option>
+  <option value="absolute">绝对</option>
+  <option value="relative">相对</option> 
+</select>
+Z坐标：<input name="vcssZIndex" id="vcssZIndex" class="normal_input" size="5" value="" onMouseOut="event.cancelBubble=true;this.className='normal_input';" />
+left:<input name="vcssLeft" id="vcssLeft" class="normal_input" size="4" value="" />
+top:<input name="vcssTop" id="vcssTop" class="normal_input" size="4" />
+right:<input name="vcssRight" id="vcssRight" class="normal_input" size="4" />
+bottom:<input name="vcssBottom" id="vcssBottom" class="normal_input" size="4" />
+<br />
+UL列表：类型<select name="vcssListStyleType" id="vcssListStyleType" onclick="if(value=='')value='none';">
+  <option selected>选择</option>
+  <option value="none">none</option>
+  <option value="disc">disc</option>
+  <option value="circle">circle</option>
+  <option value="square">square</option>
+  <option value="decimal">decimal</option>
+</select>
+图像：<input name="vcssListStyleImageBtn" type="button" id="vcssListStyleImageBtn" onclick="vcssListStyleImage.click();" value=".....">
+<input name="vcssListStyleImage" id="vcssListStyleImage" type="file" value="" style="display:none;" />
+位置：<input type="radio" name="vcssListStylePosition" value="inside" onClick="if(this.checked)vcssPositionResult.value=this.value">内
+<input type="radio" name="vcssListStylePosition" value="outside" onClick="if(this.checked)vcssPositionResult.value=this.value">外
+<input type="radio" name="vcssVisibility" class="hiddenObj" id="unsetPosition" onClick="if(this.checked)vcssPositionResult.value='';" /><a onClick="unsetPosition.click();" style="cursor:pointer;" title="取消列表效果属性">×</a>
+<input name="vcssPositionResult" type="hidden" />
+&nbsp;光标：
+<select name="vcssCursor" id="vcssCursor" onclick="if(value=='')value='pointer';">
+  <option selected>选择</option>
+  <option value="default">默认</option>
+  <option value="pointer">手</option>
+  <option value="text">文本</option>
+  <option value="move">移动</option>
+  <option value="crosshair">crosshair</option>
+<option value="default">default</option>
+<option value="pointer">pointer</option>
+<option value="hand">hand</option>
+<option value="move">move</option>
+<option value="help">help</option>
+<option value="wait">wait</option>
+<option value="text">text</option>
+<option value="w-resize">w-resize</option>
+<option value="s-resize">s-resize</option>
+<option value="n-resize">n-resize</option>
+<option value="e-resize">e-resize</option>
+</select><br /><br />
+<input name="vcssOk" type="button" id="vcssOk" onClick="setSelectionWithCss(1);" value="确定" class="button1">
+<input name="vcssCancel" type="button" id="vcssCancel" value="取消" class="button1">
+<input name="vcssView" type="button" id="vcssView" onClick="setSelectionWithCss(2);" value="应用" class="button1">
+ <input name="vcssImport" type="button" id="vcssImport" value="导入" class="button1">
+ <input name="vcssSave" type="button" id="vcssSave" value="保存" class="button1">
+ <input name="vcssLoad" type="button" id="vcssLoad" value="载入" class="button1">
+ <br></p><fieldset style="padding:10px; "><legend>实际应用效果如下</legend><div id="vcsseffect_div" class="vcsseffect">
+Effect of This Rule Shows You at here!
+<br>客齐齐实用查询工具 （tools.kqiqi.com）！</div>
+</fieldset><br></div></div>
+
+<hr />
+<textarea name="cssTextValue" cols="94" rows="5" id="cssTextValue"></textarea>
+<input name="vcssView" type="button" id="vcssView" onclick="window.clipboardData.setData('text',document.all.cssTextValue.value);alert('CSS已保存到剪贴板');" value="复制到剪切板" class="button2">
+<textarea name="cssTextValueCompare" cols="94" rows="5" id="cssTextValueCompare"></textarea>
+<input name="vcssView2" type="button" id="vcssView" onclick="window.clipboardData.setData('text',document.all.cssTextValueCompare.value);alert('CSS已保存到剪贴板');" value="复制到剪切板" class="button2">
+<hr />
+<div class="vv" id="vv" contentEditable="true" style="width:300px;height:50px;background-color:#ff80c0;color:#800040;border-width:1px;border-color:#ff0080;border-style:solid;margin:6px;padding:6px;float:left;font-Size:12px;">
+这是一个使用了复杂的样式的DIV，你可以使用获取CSS来获取这个CSS
+</div><input type="button" id="vcssView" onclick="getSelectionWithCss();setSelectionWithCss()" value="获取左侧DIV样式" class="button2">
+<div style="width:100% "> </div>
+</div>
+          </td>
+        </tr>
+        </table>
+      <br />
+         <script type="text/javascript" src="../js/wz.js"></script>
+         <script type="text/javascript" src="../js/Copy.js"></script>
+           
+      <br />
+      </td>
+    <td width="20">　</td>
+  </tr>
+</table>
+<table width="960" border="0" align="center" cellpadding="0" cellspacing="0" class="mainbg2">
+  <tr>
+    <td height="25"></td>
+  </tr>
+</table>
+
+<table width="960" border="0" align="center" cellpadding="0" cellspacing="0" class="mainbg2">
+  <tr>
+    <td><table width="920"  border="0" align="center" cellpadding="0" cellspacing="20" class="bottombg">
+       <tr>
+        <td align="center">
+          Copyright &copy; <a href="http://tools.kqiqi.com/">客齐齐实用查询工具</a> All rights reserved - <a href="../map.html">网站地图</a> - <a href="../contact.html">联系我们</a> - <script language="javascript" src="../js/bottom.js"></script>
+          </td>
+      </tr>
+
+    </table></td>
+  </tr>
+</table>
+</body>
+</html>

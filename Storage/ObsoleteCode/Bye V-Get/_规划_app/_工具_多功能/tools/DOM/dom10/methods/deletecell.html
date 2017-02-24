@@ -1,0 +1,100 @@
+<html xmlns:rdl>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<script src="rdl_method.js"></script>
+<base target="_self">
+</head>
+<body>
+
+<script>
+
+//collFriendObjects=new Array();
+//collFriendProperties=new Array();
+//collFriendMethods=new Array();
+//collFriendEvents=new Array();
+//collFriendCollections=new Array();
+
+collFriendMethods=new Array(
+'moveRow','createTFoot','createTHead',
+'deleteCaption','moveRow','deleteRow','deleteTFoot','deleteTHead',
+'insertCell','insertRow'
+);
+
+collFriendCollections=new Array(
+'cells','rows','tBodies'
+);
+
+collFriendObjects=new Array(
+'TABLE','THEAD','TBODY','TFOOT','TR','TH','TD','CAPTION','COL','COLGROUP'
+);
+
+//collIE40=new Array();
+//collIE50=new Array();
+//collIE55=new Array();
+//collIE60=new Array();
+
+collIE40=new Array(
+'TR'
+);
+
+sStyle=
+'table{background:#003399;}\n'+
+'td{background:#6699CC;}\n'+
+'caption{background:#CC9966;border:solid #003399;border-width:1px 1px 0px 1px;}\n';
+
+sScript=
+'<script>\n'+
+'function rdl_doDel1(){\n'+
+'if (myTable.cells.length>0) myTable.rows[0].deleteCell();\n'+
+'mySpan.innerText=myTable.cells.length.toString();\n'+
+'}\n'+
+'function rdl_doDel2(){\n'+
+'if (myTR.cells.length>0) myTR.deleteCell();\n'+
+'mySpan.innerText=myTR.cells.length.toString();\n'+
+'}\n'+
+'<\/script>\n';
+
+sCode=
+'<table cellspacing=1 id=myTable><caption>第1个CAPTION<\/caption><tr id=myTR><td>第1个TD<\/td><td>第2个TD<\/td><td>第3个TD<\/td><td>第4个TD<\/td><\/tr><\/table>\n'+
+'<br><input type=button value=" 从表格内删除 " onclick="rdl_doDel1();"><input type=button value=" 从行内删除 " onclick="rdl_doDel2();">\n'+
+'<br><br>表格内现有<b><span id=mySpan> 4 </span></b>个单元格。\n';
+
+iWinWidth=320;
+
+iWinHeight=250;
+
+</script>
+
+<div id=idContent>
+
+<div id=idContentTitle><span id=idTitleName>deleteCell</span>版本：DOM1　返回值：无</div>
+
+<div class=cssColumnTitle>语法：</div>
+<div>
+<a href="../objects/tr.html"><b>TR</b></a><b> . deleteCell(</b><i> iIndex </i><b>)</b>
+</div>
+
+<div class=cssColumnTitle>参数：</div>
+<table>
+<tr><td nowrap><i> iIndex </i></td><td nowrap><b>:</b></td>
+<td><b>可选项</b>。整数值(Integer)。指定从表格内删除的<a href="../objects/td.html"> td </a>或<a href="../objects/th.html"> th </a>的序号。如果忽略此参数，默认将删除<a href="../objects/cells.html"> cells </a>集合内的最后一个。</td></tr>
+</table>
+
+<div class=cssColumnTitle>返回值：</div>
+<div>
+无
+</div>
+
+<div class=cssColumnTitle>说明：</div>
+<div>
+从从表格行内删除指定的单元格(<a href="../objects/td.html"> td </a>或<a href="../objects/th.html"> th </a>)。也即从<a href="../objects/tr.html"> tr </a>的<a href="../objects/cells.html"> cells </a>集合内删除指定的项目。
+</div>
+
+
+
+</div>
+</body>
+</html>
+
+<!-- Part of RDL(TM) - Written by Rain1977 
+HomeSite: http://www.dhtmlet.com  E-Mail: dhtmlet@hotmail.com -->

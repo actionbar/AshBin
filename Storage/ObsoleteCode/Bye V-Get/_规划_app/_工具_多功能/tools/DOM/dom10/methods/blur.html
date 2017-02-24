@@ -1,0 +1,86 @@
+<html xmlns:rdl>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<script src="rdl_method.js"></script>
+<base target="_self">
+</head>
+<body>
+
+<script>
+//collFriendObjects=new Array();
+//collFriendProperties=new Array();
+//collFriendMethods=new Array();
+//collFriendEvents=new Array();
+//collFriendCollections=new Array();
+
+collFriendMethods=new Array(
+'blur','focus','hasFocus','setActive'
+);
+
+collFriendEvents=new Array(
+'onblur','onfocus'
+);
+
+//collIE40=new Array();
+//collIE50=new Array();
+//collIE55=new Array();
+//collIE60=new Array();
+
+collIE40=new Array(
+'A','APPLET','AREA','BODY','BUTTON','DIV','EMBED','FIELDSET','FRAME','FRAMESET','IFRAME','INPUT type=button','INPUT type=checkbox','INPUT type=file','INPUT type=image','INPUT type=password','INPUT type=radio','INPUT type=reset','INPUT type=submit','INPUT type=text','INS','ISINDEX','KBD','LABEL','LEGEND','LI','LISTING','MARQUEE','MENU','OBJECT','OL','P','PLAINTEXT','SELECT','SPAN','TABLE','TD','TEXTAREA','TR','window'
+);
+
+collIE50=new Array(
+'ACRONYM','ADDRESS','B','BDO','BIG','BLOCKQUOTE','CAPTION','CENTER','CITE','custom','DD','DEL','DFN','DIR','DL','DT','EM','FONT','FORM','Hn','HR','I','IMG','PRE','Q','RT','RUBY','S','SAMP','SMALL','STRIKE','STRONG','SUB','SUP','TBODY','TFOOT','TH','THEAD','TT','U','UL','VAR','XMP'
+);
+
+sStyle=
+'td{text-align:left;vertical-align:middle;}\n'+
+'table{border-collapse:collapse;}\n';
+
+//sScript='';
+
+sCode=
+'<table><tr><td><input id=oInput type=checkbox><\/td><td><label for=oInput>我是一个选择框控件。<\/label><\/td><\/tr><\/table>\n'+
+'<br><br>\n'+
+'<input type=button value=" 获取焦点 " onclick="document.all(\'oInput\').focus();">&nbsp;<input type=button value=" 失去焦点 " onclick="document.all(\'oInput\').blur();">\n';
+
+iWinWidth=320;
+
+iWinHeight=200;
+
+</script>
+
+<div id=idContent>
+
+<div id=idContentTitle><span id=idTitleName>blur</span>版本：DOM1　返回值：无</div>
+
+<div class=cssColumnTitle>语法：</div>
+<div>
+<i>object</i><b> . blur () </b>
+</div>
+
+<div class=cssColumnTitle>参数：</div>
+<div>
+无
+</div>
+
+<div class=cssColumnTitle>返回值：</div>
+<div>
+无
+</div>
+
+<div class=cssColumnTitle>说明：</div>
+<div>
+导致控件失去焦点。然后激发<a href="../events/onblur.html"> onblur </a>事件。<br>
+在 Microsoft&reg; Internet Explorer 5.0+ 中，能使用此方法的元素必须拥有<a href="../properties/tabindex.html"> tabindex </a>属性。 
+</div>
+
+
+
+</div>
+</body>
+</html>
+
+<!-- Part of RDL(TM) - Written by Rain1977 
+HomeSite: http://www.dhtmlet.com  E-Mail: dhtmlet@hotmail.com -->

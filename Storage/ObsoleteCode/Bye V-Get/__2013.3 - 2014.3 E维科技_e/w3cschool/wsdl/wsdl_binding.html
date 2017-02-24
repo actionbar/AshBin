@@ -1,0 +1,107 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="../c3.css" />
+<title>WSDL 绑定</title>
+</head>
+<body class="xml">
+<div id="wrapper">
+<div id="header">
+<a href="http://e.v-get.com/w3cschool/" style="float:left;">W3CSchool 在线教程</a>
+<div class="q g"><script type="text/javascript">var cpro_id="u1163355"</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div>
+<div id="navfirst">
+<ul id="menu">
+<li id="h"><a href="../h.html">HTML教程</a></li>
+<li id="x"><a href="../x.html">XML教程</a></li>
+<li id="b"><a href="../b.html">浏览器脚本</a></li>
+<li id="s"><a href="../s.html">服务器脚本</a></li>
+<li id="d"><a href="../d.html">dot net教程</a></li>
+<li id="m"><a href="../m.html">多媒体教程</a></li>
+<li id="w"><a href="../w.html">建站手册</a></li>
+</ul>
+</div><div id="navsecond">
+<div id="course">
+<h2>WSDL 教程</h2>
+<ul>
+<li><a href="http://e.v-get.com/w3cschool/">WSDL 首页</a></li>
+<li><a href="wsdl_intro.html">WSDL 简介</a></li>
+<li><a href="wsdl_documents.html">WSDL 文档</a></li>
+<li><a href="wsdl_ports.html">WSDL 端口</a></li>
+<li><a href="wsdl_binding.html">WSDL 绑定</a></li>
+<li><a href="wsdl_uddi.html">WSDL 和 UDDI</a></li>
+<li><a href="wsdl_syntax.html">WSDL 语法</a></li>
+<li><a href="wsdl_summary.html">WSDL 总结</a></li>
+</ul>
+</div>
+<div id="selected">
+<h2>建站手册</h2>
+<ul>
+<li><a href="../site/">网站构建</a></li>
+<li><a href="../w3c/">万维网联盟</a></li>
+<li><a href="http://e.v-get.com/w3c/">W3CSchool 教程</a></li>
+<li><a href="../quality/">网站品质</a></li>
+<li><a href="../semweb/">语义网</a></li>
+<li><a href="../hosting/">网站主机</a></li>
+</ul>
+<h2><a href="http://e.v-get.com/w3c/" class="f13">W3CSchool 教程</a></h2><div class="a120x90"><script type="text/javascript">var cpro_id="u1210867";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div></div>
+</div>
+<div id="maincontent">
+<h1>WSDL 绑定</h1>
+<div id="tpn">
+<ul class="prenext">
+<li class="pre"><a href="wsdl_ports.html">上一页</a></li>
+<li class="next"><a href="wsdl_uddi.html">下一页</a></li>
+</ul>
+</div>
+<div id="intro">
+<p><strong>WSDL 绑定可为 web service 定义消息格式和协议细节。</strong></p>
+</div>
+<div>
+<h2>绑定到 SOAP</h2>
+<p>一个 <em>请求 - 响应</em> 操作的例子：</p>
+<pre>&lt;message name=&#34;getTermRequest&#34;&gt;
+   &lt;part name=&#34;term&#34; type=&#34;xs:string&#34; /&gt;
+&lt;/message&gt;
+&lt;message name=&#34;getTermResponse&#34;&gt;
+   &lt;part name=&#34;value&#34; type=&#34;xs:string&#34; /&gt;
+&lt;/message&gt;
+&lt;portType name=&#34;glossaryTerms&#34;&gt;
+  &lt;operation name=&#34;getTerm&#34;&gt;
+      &lt;input message=&#34;getTermRequest&#34; /&gt;
+      &lt;output message=&#34;getTermResponse&#34; /&gt;
+  &lt;/operation&gt;
+&lt;/portType&gt;
+&lt;binding type=&#34;glossaryTerms&#34; name=&#34;b1&#34;&gt;
+&lt;soap:binding style=&#34;document&#34;
+transport=&#34;http://schemas.xmlsoap.org/soap/http&#34; /&gt;
+  &lt;operation&gt;
+    &lt;soap:operation
+     soapAction=&#34;http://example.com/getTerm&#34; /&gt;
+    &lt;input&gt;
+      &lt;soap:body use=&#34;literal&#34; /&gt;
+    &lt;/input&gt;
+    &lt;output&gt;
+      &lt;soap:body use=&#34;literal&#34; /&gt;
+    &lt;/output&gt;
+  &lt;/operation&gt;
+&lt;/binding&gt;</pre>
+<p><em>binding</em> 元素有两个属性 - name 属性和 type 属性。</p>
+<p>name 属性定义 binding 的名称，而 type 属性指向用于 binding 的端口，在这个例子中是 &#34;glossaryTerms&#34; 端口。</p>
+<p><em>soap:binding</em> 元素有两个属性 -  style 属性和 transport 属性。</p>
+<p>style 属性可取值 &#34;rpc&#34; 或 &#34;document&#34;。在这个例子中我们使用 document。transport 属性定义了要使用的 SOAP 协议。在这个例子中我们使用 HTTP。</p>
+<p><em>operation</em> 元素定义了每个端口提供的操作符。</p>
+<p>对于每个操作，相应的 SOAP 行为都需要被定义。同时您必须如何对输入和输出进行编码。在这个例子中我们使用了 &#34;literal&#34;。</p>
+</div>
+<div id="bpn">
+<ul class="prenext">
+<li class="pre"><a href="wsdl_ports.html">上一页</a></li>
+<li class="next"><a href="wsdl_uddi.html">下一页</a></li>
+</ul>
+</div>
+</div>
+<div class="r q"></div><div class="b"></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>无限级分类</title>
+<style type="text/css">
+<!--
+body {
+	font-size: 10.4pt;
+	line-height: 22px;
+}
+-->
+</style>
+</head>
+
+<body bgcolor="eeeeee" leftmargin="20" marginwidth="20">
+<p><strong>无限级分类</strong></p>
+<hr>
+<p> 比较简单的一个页面,类似csdn论坛在ns下的左边列表</p>
+<p>描述:</p>
+<p>1.</p>
+<p>数据名:tree.mdb</p>
+<p>表名:tree</p>
+<p>表结构:id(自编) pid(数字) content(文本) link(文本)</p>
+<p>2.</p>
+<p>图片:endnode.gif collapsed.gif back.gif(均在img目录下,可自行修改)</p>
+<p>3.</p>
+<p>代码:</p>
+<p>&lt;!--#include file=&quot;conn.inc&quot;--&gt;<br>
+  &lt;HTML&gt;<br>
+  &lt;HEAD&gt;<br>
+  &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=gb2312&quot;&gt;<br>
+  &lt;META NAME=&quot;GENERATOR&quot; Content=&quot;Microsoft FrontPage 4.0&quot;&gt;<br>
+  &lt;TITLE&gt;无限级列表&lt;/TITLE&gt;<br>
+  &lt;!--<br>
+  by fason(2003-5-12)<br>
+  --&gt;<br>
+  &lt;style&gt;<br>
+  .node{<br>
+  font-size:12px;<br>
+  padding:0 0 2 0;<br>
+  margin-left:10;<br>
+  height:22px;<br>
+  }<br>
+  img{<br>
+  vertical-align:middle;<br>
+  width:11px;<br>
+  height:11px;<br>
+  }<br>
+  a{text-decoration:none;font-size:12px;color:black}<br>
+  .deeptree{<br>
+  width:100%;<br>
+  height:100%;<br>
+  backgound-color:#f2f2f2;<br>
+  overflow:auto;<br>
+  }</p>
+<p>&lt;/style&gt;<br>
+  &lt;/HEAD&gt;<br>
+  &lt;BODY bgcolor=#f2f2f2&gt;<br>
+  &lt;nobr&gt;<br>
+  &lt;div class=&quot;deeptree&quot;&gt;<br>
+  &lt;%<br>
+  newid=Request.QueryString(&quot;id&quot;)<br>
+  if newid=&quot;&quot; or CInt(newid)&lt;0 then newid=0<br>
+  if isNumeric(newid) then<br>
+  listTree(CInt(newid))<br>
+  end if</p>
+<p>function listTree(id)<br>
+  dim rs<br>
+  dim imgFolder,imgFile<br>
+  dim link,href,parentHref<br>
+  dim target,ahref,click<br>
+  target=&quot;main&quot; '所指定的框架名<br>
+  imgFolder=&quot;img/&quot; '默认路径<br>
+  set rs=conn.execute(&quot;select *,(select count(*) from tree where pid = T.id) 
+  as children,(select pid from tree where id=&quot;&amp;id&amp;&quot;) as parent 
+  from tree T where pid=&quot;&amp;id)<br>
+  if not rs.eof then<br>
+  parentHref=Request.ServerVariables(&quot;URL&quot;)&amp;&quot;?id=&quot;&amp;rs(&quot;parent&quot;)<br>
+  if id&lt;&gt;0 then Response.Write &quot;&lt;div class='node' nowrap=true&gt;&lt;a 
+  href='&quot;&amp;parentHref&amp;&quot;' onfocus='blur()'&gt;&lt;img src='&quot;&amp;imgFolder&amp;&quot;back.gif' 
+  border=0&gt;&lt;/a&gt; &lt;a href='&quot;&amp;parentHref&amp;&quot;'&gt;上一级目录&lt;/a&gt;&lt;/div&gt;&quot;&amp;VbCrLf<br>
+  do while not rs.eof <br>
+  if rs(&quot;children&quot;)&gt;0 then<br>
+  img=imgFolder+&quot;collapsed.gif&quot;<br>
+  href=Request.ServerVariables(&quot;URL&quot;)&amp;&quot;?id=&quot;&amp;rs(&quot;id&quot;)<br>
+  click=&quot;onclick=&quot;&quot;location.href='&quot;&amp;href&amp;&quot;'&quot;&quot;&quot;<br>
+  else<br>
+  img=imgFolder+&quot;endnode.gif&quot;<br>
+  href=&quot;javascript:void(0)&quot;<br>
+  end if<br>
+  if not isNull(rs(&quot;link&quot;)) then<br>
+  ahref=rs(&quot;link&quot;)<br>
+  else<br>
+  ahref=&quot;javascript:void(0)&quot;<br>
+  target=&quot;_self&quot;<br>
+  end if<br>
+  link=&quot;&lt;a href='&quot;&amp;ahref&amp;&quot;' target='&quot;&amp;target&amp;&quot;' 
+  title='&quot;&amp;rs(&quot;content&quot;)&amp;&quot;' &quot;&amp;click&amp;&quot;&gt;&quot;&amp;rs(&quot;content&quot;)&amp;&quot;&lt;/a&gt;&quot;<br>
+  Response.Write &quot;&lt;div class='node' nowrap=true&gt;&lt;a href='&quot;&amp;href&amp;&quot;' 
+  onfocus='blur()'&gt;&lt;img src='&quot;&amp;img&amp;&quot;' border=0&gt;&lt;/a&gt; 
+  &quot;&amp;link&amp;&quot;&lt;/div&gt;&quot;<br>
+  rs.movenext<br>
+  loop<br>
+  rs.close:set rs=nothing<br>
+  end if<br>
+  end function<br>
+  conn.close:set conn=nothing<br>
+  %&gt;</p>
+<p>&lt;/div&gt;<br>
+  &lt;/nobr&gt;<br>
+  &lt;/BODY&gt;<br>
+  &lt;/HTML&gt;</p>
+<p><br>
+  conn.inc:</p>
+<p>&lt;%<br>
+  dim conn<br>
+  set conn = Server.CreateObject(&quot;ADODB.Connection&quot;)<br>
+  conn.Open &quot;Provider=Microsoft.Jet.OLEDB.4.0;Data Source=&quot; &amp; Server.mappath(&quot;tree.mdb&quot;) 
+  &amp; &quot;;Persist Security Info=False&quot;<br>
+  %&gt;</p>
+<p>4.测试:ie6,ns7,mozilla下测试通过</p>
+<p>原理比较简单,有错请大家指正,谢谢</p>
+<p></p>
+<p>&nbsp; </p>
+</body>
+</html>

@@ -1,0 +1,35 @@
+ 1【托运：包含快递，因为快递打个电话就上面】tuoyun/2【仓库】cangku/3【搬家】banjia/4【货车】huoche/5【客运】keyun/6【名人：与招聘不同，介绍创始人】train/ 7 【联运货场】join /8【设备】shebei/9【货代】huodai/
+上面是地区性的，比如软件/人才，以后专门用 wuliu.v-get.com/hr/  wuliu.v-get.com/soft/
+ 
+ 
+10 【新闻】
+
+信息：wuliu.v-get.com/news/
+文章一律用 wuliu.v-get.com 避免子站点重复
+i=id
+   a=第三类   从业者指南
+  1 业界【资讯】 zixun/2 【创业】访谈chuangye/3 【维权】weiquan/4 【趋势】传言qushi/5 【技术】经验交流jishu/6 企业【推荐】tuijian/ 7 【法规】 fagui/8【运营】管理 yunying/ 9【工具】资源 gongju
+  
+  b= 第二类  城市 英文字母，采用char 4英文字母、数字,比如上海 shai  yiwu  luan 0571(杭州)
+  
+ 城市的不能采用  city_1.html  ,采用的是    city.wuliu.v-get.com/news-2/ 
+  c 第三个类   物流专题  == 这里必须要放到c，不能放到a，不然设计 yiwu.wuliu.v-get.com 中间搜索栏的时候不好设计
+  1【托运】tuoyun/2【仓库】cangku/3【搬家】banjia/4【货车】huoche/5【客运】keyun/6【培训】peixun/ 7 【联运】join /8【设备】shebei/9【货代】huodai/
+  
+  
+ 
+  
+  h=title
+  k=keyword
+  d=description
+  f=file 
+  g=  是否优秀： 默认0， （背景：fg0 fg1,不用逻辑运算，增加速度） 1推荐（一次阅读/） 2 热帖 3 爆料（可能是谣言）4纯图片 5原创 6付费采用  7精华（） 8 优秀（查询类，常用） 9置顶
+  文章：【1推荐 3爆料 8优秀 9置顶】
+   wuliu.v-get.com/news/top1_1.html  wuliu.v-get.com/news/top3_1.html
+  m=varchar(16) 用户名英文 ==以后对用户名设定一个 类，可以查看该用户名发布的所有
+    默认： [-]kaibang / [-]   ==> 分站用户名
+		   显示大写，查询的时候，一律替换成小写比较
+	       mysql列的别名是忽略大小写的。‘E' = ’e'
+	     wuliu.v-get.com/news/u/ wuliu.v-get.com/news/u/PHP_1.html
+  n=转载地
+  t=时间

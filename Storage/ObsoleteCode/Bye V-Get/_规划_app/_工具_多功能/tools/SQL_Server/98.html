@@ -1,0 +1,9 @@
+<meta http-equiv="content-type" content="text/html; charset=gb2312"><FONT 
+style="FONT-SIZE: 9pt; LINE-HEIGHT: 15pt"><B>TitleCase</B><BR>TitleCase.sql
+<P></P>
+<P></P>
+<P><BR>This&nbsp;function&nbsp;converts&nbsp;a&nbsp;string&nbsp;into&nbsp;title&nbsp;case.&nbsp;It&nbsp;does&nbsp;have&nbsp;some&nbsp;limitations&nbsp;but&nbsp;should&nbsp;fit&nbsp;most&nbsp;scenarios.&nbsp;This&nbsp;code&nbsp;was&nbsp;originally&nbsp;developed&nbsp;by&nbsp;Russell&nbsp;Jones,&nbsp;our&nbsp;resident&nbsp;VB&nbsp;developer,&nbsp;and&nbsp;turned&nbsp;into&nbsp;a&nbsp;UDF&nbsp;by&nbsp;myself.&nbsp;The&nbsp;script&nbsp;has&nbsp;been&nbsp;tested&nbsp;on&nbsp;SQL&nbsp;Server&nbsp;2000.&nbsp;</P>
+<P>Author:&nbsp;Darryl&nbsp;Fryatt</P>
+<P>CREATE&nbsp;FUNCTION&nbsp;TitleCase&nbsp;(@DataIn&nbsp;VARCHAR(50))<BR>RETURNS&nbsp;Varchar(50)<BR>AS&nbsp;BEGIN<BR>DECLARE&nbsp;@Store&nbsp;VARCHAR(50)<BR>DECLARE&nbsp;@i&nbsp;INT<BR>SET&nbsp;@Store&nbsp;=&nbsp;LOWER(@DataIn)<BR>SET&nbsp;@Store&nbsp;=&nbsp;UPPER(LEFT(@Store,1))&nbsp;+&nbsp;SUBSTRING(@Store,2,LEN(@Store))</P>
+<P>WHILE&nbsp;CHARINDEX('&nbsp;',@Store,1)&nbsp;&gt;&nbsp;0<BR>&nbsp;BEGIN<BR>&nbsp;&nbsp;SET&nbsp;@i&nbsp;=&nbsp;CHARINDEX('&nbsp;',@Store,1)<BR>&nbsp;&nbsp;SET&nbsp;@Store&nbsp;=&nbsp;LEFT(@Store,@i-1)&nbsp;+&nbsp;'~*'&nbsp;+&nbsp;UPPER(SUBSTRING(@store,@i&nbsp;+&nbsp;1,1))&nbsp;+SUBSTRING(@Store,@i+2,LEN(@Store))<BR>&nbsp;END<BR>&nbsp;</P>
+<P>&nbsp;SET&nbsp;@Store&nbsp;=&nbsp;REPLACE(@Store,'~*','&nbsp;')<BR>&nbsp;SET&nbsp;@DataIn&nbsp;=&nbsp;@Store<BR>&nbsp;RETURN&nbsp;@DataIn<BR>END</P></FONT>

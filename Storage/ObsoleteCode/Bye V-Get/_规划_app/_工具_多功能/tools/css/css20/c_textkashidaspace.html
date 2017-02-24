@@ -1,0 +1,105 @@
+<html xmlns:rdl>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<script src="rdl_properties.js"></script>
+<base target="_self">
+</head>
+<body>
+
+<script>
+
+//collFriendProperties=new Array();
+//collFriendDeclarations=new Array();
+//collFriendAtRules=new Array();
+//collFriendElements=new Array();
+//collFriendClasses=new Array();
+
+collFriendProperties=new Array(
+'text-justify','text-autospace'
+);
+
+//collIE40=new Array();
+//collIE50=new Array();
+//collIE55=new Array();
+//collIE60=new Array();
+
+collIE55=new Array(
+'ADDRESS','BLOCKQUOTE','BODY','CENTER','currentStyle','CUSTOM','DD','DIV','DL','DT','FIELDSET','FORM','Hn','HR','ISINDEX','LI','LISTING','MENU','OL','P','PLAINTEXT','PRE','runtimeStyle','style','UL','XMP'
+);
+
+sStyle=
+'<style>\n'+
+'#idDIV{width:100%;height:80px;background-color:#FFD700;padding:4px;font-family:verdana,tahoma;text-justify:kashida;text-align:justify;}\n'+
+'#idCodeDiv{width:100%;padding:4px;font-family:verdana,tahoma;margin:12px 0px 0px 0px;background-color:#EEEEEE;font-weight:bold;}\n'+
+'<\/style>\n';
+
+sScript=
+'<script>\n'+
+'function rdl_change(e){\n'+
+'var oCodeDiv=document.all("idCodeDiv");\n'+
+'var oDiv=document.all("idDiv");\n'+
+'with (document.all("idSel")) var sValue=options[selectedIndex].value;\n'+
+'oDiv.style.textKashidaSpace=sValue;\n'+
+'oCodeDiv.innerText="text-kashida-space : "+sValue+";";\n'+
+'}\n'+
+'window.onload=new Function ("with (document) {defaultCharset=charset=\'shift_jis\';}");\n'+
+'<\/script>\n';
+
+sCode=
+'<div id=idDIV>印象的なギターリフ、日本語?英語が自然な形で行き交う独特な歌詞と存在感あるKUMIの歌声で構成されたDELICOらしいスケール感ある新作。<\/div>\n'+
+'<br>\n'+
+'<select id="idSel" onchange="rdl_change();">\n'+
+'<option value="0%">---text-kashida-space---\n'+
+'<option value="50%">50%\n'+
+'<option value="100%">100%\n'+
+'<option value="0%">0%\n'+
+'<\/select>\n'+
+'<br>\n'+
+'<div id=idCodeDiv>text-kashida-space : 0% ;<\/div>\n';
+
+iWinWidth=360;
+
+iWinHeight=320;
+
+//bRunCode=false;
+
+//bElements=false;
+
+</script>
+
+<div id=idContent>
+
+<div id=idContentTitle><span id=idTitleName>text-kashida-space</span>版本：IE5.5+专有属性　继承性：有</div>
+
+<div class=cssColumnTitle>语法：</div>
+<div>
+<b>text-kashida-space : </b><i>length</i> | <b>inherit</b>
+</div>
+
+<div class=cssColumnTitle>取值：</div>
+<table>
+<tr><td nowrap><i> length </i></td><td nowrap><b>:</b></td><td>百分数。标示kashida膨胀与空格膨胀的比例。为100%，仅有kashida膨胀。为0%，仅有空格膨胀</td></tr>
+<tr><td nowrap><b> inherit </b></td><td nowrap><b>:</b></td><td>遵循父对象的设置</td></tr>
+</table>
+
+<div class=cssColumnTitle>说明：</div>
+<div>
+设置或检索如何拉伸字符来调节文本行排列。默认值为<span class=cssDefault><b> 0% </b></span>。<br>
+Kashida是一种印刷效果，通过在恰当的位置拉长字符来调整文本行。它通常用于阿拉伯书写系统。<br>
+此属性可以在任何应用Kashida样式的场合使用。例如<a href="c_textjustify.html"> text-justify </a>属性值为<b> auto </b>，<b> distribute </b>，<b> kashida </b>，<b> newspaper </b>时。<br>
+此属性仅作用于块对象。<br>
+此属性对于<b> currentStyle </b>对象而言是只读的。对于其他对象而言是可读写的。<br>
+对应的脚本特性为<b> textKashidaSpace </b>。
+</div>
+
+<div class=cssColumnTitle>示例：</div>
+<div id=idSimpleCode>
+div { text-kashida-space : 50%;text-justify: kashida; } 
+</div>
+
+</div>
+</body>
+</html>
+
+<!-- Part of RDL(TM) - Written by Rain1977 
+HomeSite: http://www.dhtmlet.com  E-Mail: dhtmlet@hotmail.com -->

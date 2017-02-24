@@ -1,0 +1,20 @@
+<meta http-equiv="content-type" content="text/html; charset=gb2312"><FONT 
+style="FONT-SIZE: 9pt; LINE-HEIGHT: 15pt"><B>Remove&nbsp;all&nbsp;freespace</B><BR>Remove&nbsp;all&nbsp;freespace&nbsp;from&nbsp;all&nbsp;databases&nbsp;and&nbsp;truncate&nbsp;all&nbsp;transaction&nbsp;logs
+<P></P>
+<P></P>
+<P><BR>&gt;&gt;Script&nbsp;Language&nbsp;and&nbsp;Platform:&nbsp;Microsoft&nbsp;SQL&nbsp;Server<BR>For&nbsp;each&nbsp;user&nbsp;database,this&nbsp;script&nbsp;will&nbsp;remove&nbsp;all&nbsp;the&nbsp;freespace&nbsp;and&nbsp;truncate&nbsp;the&nbsp;transaction&nbsp;log.&nbsp;</P>
+<P>Instructions:&nbsp;Run&nbsp;against&nbsp;master,&nbsp;the&nbsp;script&nbsp;will&nbsp;use&nbsp;the&nbsp;system&nbsp;catalog&nbsp;to&nbsp;produce&nbsp;a&nbsp;list&nbsp;of&nbsp;databases&nbsp;If&nbsp;you&nbsp;want&nbsp;to&nbsp;exclude&nbsp;a&nbsp;database&nbsp;add&nbsp;the&nbsp;excluded&nbsp;db&nbsp;name&nbsp;to&nbsp;the&nbsp;'not&nbsp;in'&nbsp;list&nbsp;below.&nbsp;</P>
+<P>Author:&nbsp;Cameron&nbsp;Michelis&nbsp;</P>
+<P></P>
+<P>/*&nbsp;</P>
+<P>Function:&nbsp;For&nbsp;each&nbsp;user&nbsp;database&nbsp;remove&nbsp;all&nbsp;the&nbsp;freespace&nbsp;and&nbsp;truncate&nbsp;the&nbsp;transaction&nbsp;log.&nbsp;&nbsp;</P>
+<P>Instructions:&nbsp;Run&nbsp;against&nbsp;master,&nbsp;the&nbsp;script&nbsp;will&nbsp;use&nbsp;the&nbsp;system&nbsp;catalog&nbsp;to&nbsp;produce&nbsp;a&nbsp;list&nbsp;of&nbsp;databases.<BR>If&nbsp;you&nbsp;want&nbsp;to&nbsp;excluce&nbsp;a&nbsp;database&nbsp;add&nbsp;the&nbsp;excluded&nbsp;db&nbsp;name&nbsp;to&nbsp;the&nbsp;'not&nbsp;in'&nbsp;list&nbsp;below.</P>
+<P>cjm@integer.org<BR><IMG src="http://www.pigtwo.com/forum/pic/url.gif" align=absMiddle border=0><A 
+href="http://www.integer.org" target=_blank>http://www.integer.org</A></P>
+<P>Copyright&nbsp;(C)&nbsp;2003&nbsp;Cameron&nbsp;Michelis&nbsp;copying&nbsp;and&nbsp;redistribution&nbsp;of&nbsp;this&nbsp;file&nbsp;is&nbsp;permitted&nbsp;<BR>provided&nbsp;this&nbsp;notice&nbsp;and&nbsp;the&nbsp;above&nbsp;comments&nbsp;are&nbsp;preserved.<BR>*/</P>
+<P>Set&nbsp;quoted_identifier&nbsp;off<BR>use&nbsp;master<BR>go</P>
+<P>DECLARE&nbsp;@dataname&nbsp;varchar(30)<BR>DECLARE&nbsp;@dataname_header&nbsp;varchar(75)<BR>DECLARE&nbsp;datanames_cursor&nbsp;CURSOR&nbsp;FOR&nbsp;SELECT&nbsp;name&nbsp;FROM&nbsp;sysdatabases<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WHERE&nbsp;name&nbsp;not&nbsp;in&nbsp;('master',&nbsp;'pubs',&nbsp;'tempdb',&nbsp;'model',&nbsp;'northwind')</P>
+<P>OPEN&nbsp;datanames_cursor</P>
+<P>&nbsp;&nbsp;FETCH&nbsp;NEXT&nbsp;FROM&nbsp;datanames_cursor&nbsp;INTO&nbsp;@dataname</P>
+<P>&nbsp;&nbsp;WHILE&nbsp;(@@fetch_status&nbsp;&lt;&gt;&nbsp;-1)<BR>&nbsp;&nbsp;&nbsp;&nbsp;BEGIN<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IF&nbsp;(@@fetch_status&nbsp;=&nbsp;-2)<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BEGIN<BR>&nbsp;&nbsp;FETCH&nbsp;NEXT&nbsp;FROM&nbsp;datanames_cursor&nbsp;INTO&nbsp;@dataname<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CONTINUE<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;END<BR>&nbsp;SELECT&nbsp;@dataname_header&nbsp;=&nbsp;"Database&nbsp;"&nbsp;+&nbsp;RTRIM(UPPER(@dataname))<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PRINT&nbsp;"&nbsp;"<BR>&nbsp;PRINT&nbsp;@dataname_header<BR>&nbsp;EXEC("BACKUP&nbsp;LOG&nbsp;"&nbsp;+&nbsp;@dataname&nbsp;+&nbsp;"&nbsp;WITH&nbsp;TRUNCATE_ONLY")<BR>&nbsp;EXEC("DBCC&nbsp;SHRINKDATABASE&nbsp;("&nbsp;+&nbsp;@dataname&nbsp;+&nbsp;",TRUNCATEONLY)")<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FETCH&nbsp;NEXT&nbsp;FROM&nbsp;datanames_cursor&nbsp;INTO&nbsp;@dataname<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;END</P>
+<P>DEALLOCATE&nbsp;datanames_cursor<BR>PRINT&nbsp;""<BR>PRINT&nbsp;"&nbsp;"<BR>PRINT&nbsp;"Free&nbsp;space&nbsp;removed&nbsp;and&nbsp;transaction&nbsp;log&nbsp;truncated&nbsp;for&nbsp;each&nbsp;user&nbsp;database"</P></FONT>

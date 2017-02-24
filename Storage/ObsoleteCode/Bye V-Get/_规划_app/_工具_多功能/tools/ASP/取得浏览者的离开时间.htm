@@ -1,0 +1,51 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>取得浏览者的离开时间</title>
+<style type="text/css">
+<!--
+body {
+	font-size: 10.4pt;
+	line-height: 22px;
+}
+-->
+</style>
+</head>
+
+<body bgcolor="eeeeee" leftmargin="20" marginwidth="20">
+<p><strong>取得浏览者的离开时间</strong></p>
+<hr>
+<p> &lt;SCRIPT LANGUAGE=VBScript RUNAT=Server&gt;</p>
+<p>sub Application_OnStart </p>
+<p>Application(&quot;conn&quot;)=&quot;dsn=;uid=;pwd=&quot;</p>
+<p>end sub </p>
+<p>Sub session_onstart</p>
+<p>session(&quot;ip&quot;)=Request.ServerVariables(&quot;REMOTE_ADDR&quot;)<br>
+  session(&quot;stime&quot;)=now()</p>
+<p>application.Lock <br>
+  if application(&quot;clicks&quot;)=&quot;&quot; then <br>
+  application(&quot;clicks&quot;)=0<br>
+  end if<br>
+  application(&quot;clicks&quot;)=application(&quot;clicks&quot;)+1</p>
+<p>application.UnLock </p>
+<p><br>
+  End Sub</p>
+<p>Sub Session_Onend</p>
+<p>application.Lock </p>
+<p>StrSQL=&quot;dsn=;uid=;pwd=&quot;<br>
+  set conn=server.createobject(&quot;ADODB.CONNECTION&quot;)<br>
+  conn.open StrSQL<br>
+  <br>
+  SQL = &quot;insert into client(c_date,stime,etime,ip) values('&quot;&amp;date()&amp;&quot;','&quot;&amp;session(&quot;stime&quot;)&amp;&quot;','&quot;&amp;now()&amp;&quot;','&quot;&amp;session(&quot;ip&quot;)&amp;&quot;')&quot;</p>
+<p>conn.Execute(sql)</p>
+<p>conn.Close<br>
+  set conn=nothing</p>
+<p>application.UnLock <br>
+  <br>
+  End Sub</p>
+<p>&lt;/SCRIPT&gt;</p>
+<p></p>
+<p>&nbsp; </p>
+</body>
+</html>

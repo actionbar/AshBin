@@ -1,0 +1,135 @@
+<html>
+<head>
+<title>XSL模板</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+
+<link rel = stylesheet href = "image/style.css">
+</head>
+<body bgcolor="#ffffff">
+<table width="688" border="0" cellspacing="0" cellpadding="0" align="center">
+  <tr bgcolor="EEEEEE"> 
+    <td height="22"><a href="index.htm">主页</a></td>
+  </tr>
+</table><br>
+<table border="0" cellpadding="0" cellspacing="0" width="688" align="center" height="490">
+  <tr valign="top"> 
+    <td rowspan="4" width="91">&nbsp; </td>
+    <td height="68" width="131"> 
+      <p><img src="image/doc.gif"></p>
+    </td>
+    <td rowspan="4" width="18"><b></b> </td>
+    <td height="68" width="387"><img src="image/title_doc.gif"></td>
+    <td rowspan="4" width="61"> 
+      <h6>&nbsp;</h6>
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td rowspan="3" valign="top" class="pt10" align="center" width="131" bgcolor="EEEEEE"> 
+      <p>&nbsp;</p>
+      <p><font color="#FF0000">※ 14.3 XSL模板</font></p>
+       
+	</td>
+  </tr>
+  <tr valign="top"> 
+    <td width="387" height="308"> 
+      <table width="100%" border="0" cellpadding="0">
+        <tr> 
+          <td>
+
+           <h4><a name="_Toc467207139">14.3 XSL模板</a></h4>
+<p>由xsl:template元素定义的模板规则是XSL样式单的最重要的部分。每个模板规则都是一个xsl:template元素。这些规则将特定的输出与特定的输入相关联。每个xsl:template元素都有一个match特性，用来指定要将此模板应用于输入文档的哪个节点。</p>
+<p>xsl:template元素的内容是要运用的实际模板。模板可能既包含逐字显示在输出文档中的文本，同时也包含从输入XML文档将数据复制到结果的XSL指令。因为所有的XSL指令都放在xsl命名域中（即它们都是以xsl:开头），所以要区分元素（这些元素就是复制到输出的实际数据）和XSL指令是很容易的。例如，下面为一个应用于输入树形结构根节点的模板：</p>
+<p>&lt;xsl:template match=”/”&gt;</p>
+<p> &lt;html&gt;</p>
+<p> &lt;head&gt;</p>
+<p> &lt;/head&gt;</p>
+<p> &lt;body&gt;</p>
+<p> &lt;/body&gt;</p>
+<p></p>
+<p> &lt;/html&gt;</p>
+<p>&lt;/xsl:template&gt;</p>
+<p>当XSL处理程序读取此输入文档时，它所看到的第一个节点就是根节点。下面的规则与此根节点相匹配，并告诉XSL处理程序发送此文本：</p>
+<p>&lt;html&gt;</p>
+<p> &lt;head&gt;</p>
+<p> &lt;/head&gt;</p>
+<p> &lt;body&gt;</p>
+<p> &lt;/body&gt;</p>
+<p>&lt;/html&gt;</p>
+<p>这种文本就是结构整洁的HTML。由于XSL文档本身就是XML文档，所以其内容（包括模板在内）也必须是结构整洁的XML。</p>
+<p>如果要在XSL样式单中使用上面的规则，并且只在XSL样式单中使用的话，那么输出就只限于上面的六个标记。（实际上，可压缩为四个等价的标记：&lt;html&gt; 
+  &lt;head/&gt; &lt;body/&gt; &lt;/html&gt;）。这是由于在规则中没有任何指令告诉格式化程序沿树形结构逐级下移，以便寻找与样式单中的模板进一步的匹配。</p>
+<h5><a name="_Toc467207140">14.3.1 xsl:apply-templates元素</a></h5>
+<p>要达到根节点以外的地方，就要告诉格式化引擎处理根节点的子节点。一般来说，为了包括子节点中的内容，需递归处理整个XML文档中的节点。可以用来达到此目的的元素就是xsl:apply-templates。把xsl:apply-templates放在输出模板中，就可以告诉格式化程序把与源元素匹配的每个子元素同样式单中的模板相比较。用于匹配节点的模板本身可能包含xsl:apply-templates元素，以便搜索与其子节点的匹配。当格式化引擎处理节点时，此节点是作为整个树形结构来看待的。这是树形结构的优点所在。每个部分都是以处理整体相同的方式来处理。例如，清单14-5就是使用xsl:apply-templates元素来处理子节点的XSL样式单。</p>
+<p>清单14-5：递归处理根下子节点的XSL样式单</p>
+<p>&lt;?xml version="1.0"?&gt;</p>
+<p>&lt;xsl:stylesheet</p>
+<p>xmlns:xsl="http://www.w3.org/XSL/Transform/1.0"&gt;</p>
+<p></p>
+<p> &lt;xsl:template match="/"&gt;</p>
+<p> &lt;html&gt;</p>
+<p></p>
+<p> &lt;xsl:apply-templates/&gt;</p>
+<p> &lt;/html&gt;</p>
+<p> &lt;/xsl:template&gt;</p>
+<p></p>
+<p> &lt;xsl:template match="PERIODIC_TABLE"&gt;</p>
+<p> &lt;body&gt;</p>
+<p> &lt;xsl:apply-templates/&gt;</p>
+<p> &lt;/body&gt;</p>
+<p> &lt;/xsl:template&gt;</p>
+<p></p>
+<p> &lt;xsl:template match="ATOM"&gt;</p>
+<p> An Atom</p>
+<p> &lt;/xsl:template&gt;</p>
+<p></p>
+<p>&lt;/xsl:stylesheet&gt;</p>
+<p>当本样式单应用于清单14-1时，将进行以下处理：</p>
+<p> 1．将根节点与样式单中的所有模板规则进行比较，它与第一个模板规则相匹配。</p>
+<p> 2．写出&lt;html&gt;标记。</p>
+<p> 3．xsl:apply-templates元素使格式化引擎处理子节点。</p>
+<p> A．将根节点的第一个子节点（xml-stylesheet指令）与模板规则相比较，此子节点与任何一个模板规则都不匹配，所以不产生任何输出。</p>
+<p> B．将根节点的第二个子节点（根元素PERIODIC_TABLE）与模板规则相比较，此子节点与第二个模板规则相匹配。</p>
+<p> C．写出&lt;body&gt;标记。</p>
+<p> D．body元素中的xsl:apply-templates元素使格式化引擎处理PERIODIC_TABLE的子节点。</p>
+<p> a．将PERIODIC_TABLE元素的第一个子元素（即氢的ATOM元素）与模板规则进行比较，此子元素与第三个模板规则相匹配。</p>
+<p> b．输出文本An Atom。</p>
+<p> c．将PERIODIC_TABLE元素的第二个子元素（即氦的ATOM元素）与模板规则进行比较，此子元素与第三个模板规则相匹配。</p>
+<p> d．输出文本An Atom。</p>
+<p> E．写出&lt;/body&gt;标记。</p>
+<p> 4．写出&lt;/html&gt;标记。</p>
+<p> 5．处理完成。</p>
+<p>最后的结果为：</p>
+<p>&lt;html&gt;&lt;body&gt;</p>
+<p></p>
+<p> An Atom</p>
+<p></p>
+<p>　</p>
+<p> An Atom</p>
+<p></p>
+<p>&lt;/body&gt;&lt;/html&gt;</p>
+<h5><a name="_Toc467207141">14.3.2 select特性</a></h5>
+<p>为了用ATOM元素的名称（由其NAME子元素给出）来代替An Atom文本，需要指定模板应用于ATOM元素的NAME子元素。为了选择一组特定的子元素，而不是所有的子元素，可向xsl:apply-templates提供select特性，用来指定要选择的子元素。见下面的例子：</p>
+<p>&lt;xsl:template match=”ATOM”&gt;</p>
+<p> &lt;xsl:apply-templates select=”NAME”/&gt;</p>
+<p>&lt;/xsl:template&gt;</p>
+<p>select特性使用同一类型的模式作为xsl:template元素的match特性。目前，我们坚持使用简单的元素名称；但本章后面有关匹配和选择模式的部分，将讨论select和match更多的可能用法，如果不存在select特性，那么选择所有的子元素。</p>
+<p>将上面的规则加到清单14-5的样式单，并应用于清单14-5，其结果如下：</p>
+<p>&lt;html&gt;&lt;head/&gt;&lt;body&gt;</p>
+<p></p>
+<p> Hydrogen</p>
+<p></p>
+<p> Helium</p>
+<p></p>
+<p>&lt;/body&gt;&lt;/html&gt;</p>
+ 
+<a href='475.htm'>&lt;&lt;上一篇</a>&nbsp;&nbsp;<a href='477.htm'>下一篇&gt;&gt;</a></td>
+        </tr>
+      </table>
+      <p>&nbsp; </p>
+    </td>
+  </tr>
+</table>
+
+</body>
+
+</html>

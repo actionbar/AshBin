@@ -1,0 +1,277 @@
+
+
+
+
+*{padding:0;margin:0}
+body {background:#fff;font-size:12px;color: #333;font-family:"Tahoma","SimSun"}
+ul{list-style-position:outside;list-style-type: none}
+/*ul是无序的，ol是有序的*/
+li{white-space:nowrap;text-overflow:ellipsis;-o-text-overflow:ellipsis;overflow: hidden;}/*li中内容超过长度后以省略号显示的方法*/
+li,a{cursor:pointer}
+
+select,input,img{vertical-align:middle;}
+a{color: #333; text-decoration:none}/*发现所有大型"资讯类"网站，都默认链接全部下划线；物流不是资讯类，不需要下划线；资讯类一律用下划线，增加浏览量*/
+a:hover{color: #c00;text-decoration: underline;}
+img {border-width:0;}
+
+.p{float:left}.o{clear:both}.q{float:right}
+.f6{color:#f60}.f7{color:#00f}.f8{color:#0f0}.f9{color:#f00}
+
+
+.t,.e,.e .es1,.df a,.lw h2{ background:url(i.gif)}
+
+.n,.ns,.l3c li,#m2 li,.cw h2,.cs,.ch{background:url(i.png)}
+
+
+.t,.n,.ns,.e,.lw h2,.l3c li,.df a,#m2 li,.cw h2,.cs{background:url(i.png)}
+/*background:放图片右边， x y从多少像素开始，根据css尺寸截取,使用负数，-x*/
+
+
+.w {margin: 0px auto; overflow: hidden; width: 960px}
+
+
+
+/*这个可以被很多利用*/
+/*h头部css*/
+.t{height:28px;line-height:28px;border:#dadada solid; border-width:0 1px}
+.t a{margin:0 3px}
+
+.u {height:70px;position:relative;}
+.i{width:193px;height:70px;margin-right:17px}
+
+.g{width:750px}
+.g li{float:left;height:24px;line-height:24px;width:249px;border-right:#afaeae 1px dotted}
+.g a{margin:0px 5px; text-align:center}
+.gb { clear:both;overflow: hidden;height: 22px;color: #000;line-height:22px;border-right:#afaeae 1px dotted;}
+.gb a {margin:0 2px;}
+
+.w3{margin: 7px auto 5px;padding:5px;border: 1px solid rgb(205, 201, 202);  height: 90px; clear: both;}
+.w3l{width: 733px; height: 90px; float: left;}
+.w3r{width: 215px; height: 88px; text-align:center}
+.w3r li{height:22px;line-height:22px}
+.w3 a:hover{color:#f00; text-decoration: none}
+
+.n{background-position:0 -30px;height: 28px;line-height: 28px}
+.n a{border-left:1px solid #fff ;margin: 0px 9px; color:#fff;padding-left:11px}
+.ns{background-position:0 -60px;width:240px}
+.ns input{ border:none; background:none}
+#nss{margin-left:41px;padding:0 10px;width:31px;cursor:pointer}/*float的div在ie下设置的margin会加倍。这是一个ie6都存在的bug。解决方案是在这个div里面加上display:inline;*/
+/*
+区别ff与ie6 ie7 ie8 ie9
+color:gray;       ff等非ie浏览器字体色将为灰色
+color:red\9;     ie8 ie9字体色将为红色
+*color:green;     ie7字体色将为绿色
+_color:blue;     ie6字体色将为蓝色
+所有兼容性代码必须单独写一行含selector的，并且按照ff ie最新 ie最旧顺序排 
+*/
+
+#nss ul{line-height:18px;background:#fff;border:solid 1px #ccc;border-top:0px;margin-top:-21px;margin-top:-1px\9;margin-left:-10px;margin-left:-40px\9;width:53px;z-index:9;position:absolute;display:none; text-align:center}/*z-index + position:absolute=  置顶*/
+/*下面两个padding不要动，是专门控制触发地点的*/
+.nsk{height:15px;width:79px;margin-left:9px}
+.nss{height:15px;margin:6px 3px 0;width:39px}
+
+
+#z{position:absolute;display:none;background-color:#eee;z-index:2000}
+#z table{margin-bottom:13px;width: 300px;padding:10px;}
+#z td{padding:5px;}
+#z p{width:150px;padding:5px}
+#z p b{float:left}
+#z p span{float:right}
+/*e滚动模块*/
+.e {margin: 1px 0px 3px;overflow: hidden;line-height:28px;height:28px;width:100%;background-position:0 -90px}
+.e a{color:#f30}
+.e span {float: left;margin-top: 7px; font-weight:bold;border-right:#88beff 1px solid;display: inline; font-size: 12px;  overflow: hidden;line-height: 15px; height: 15px; text-indent: 15px; width: 48px}
+.e .el{width:75px}
+.e div{float:left;width:300px;margin:6px 5px;height:16px;line-height:16px;overflow:hidden}
+#m1{width:160px}
+.e form {vertical-align: middle; overflow: hidden; line-height: 25px; font-family: tahoma; height: 25px}
+.e select{float:right;margin:4px;}
+.e input {font-size: 12px;vertical-align: middle;}
+.e .es0{border: #033 1px solid;padding-top: 3px;background: none;width: 202px; color: #ddd;height: 17px;text-align: left}
+.e .es1 {border: #145098 1px solid; padding:0px;background:none;width: 44px; color: #000;height: 22px}
+/*e滚动模块结束*/
+.w6{overflow: hidden;margin:3px 0;}
+/*广告2结束*/
+
+.v{height:100%;overflow:hidden;margin:3px 0;}
+.l {width:266px;}
+/*因为高速路广告牌尺寸是18×6，所以，这里如果下面广告位是264*88就是3:1的比率，加上两边，l尺寸为266；这样就对应了高速路广告位尺寸*/
+/*左侧循环结构*/
+.lw{border: #c2c2c2 1px solid;width:264px;margin-top:3px;overflow: hidden;}
+.lw h2 {font-size: 12px;background-position:0 -120px;border-bottom: #d8d8d8 1px solid; position: relative; height: 28px;}
+.lw h2 a{margin:8px 15px}
+.lw h2 .q{font-weight: normal;color: #296cbd;}
+
+
+.lw ul{margin: 5px 5px 5px 25px;}
+.lw ul li {overflow: hidden; line-height: 22px;height: 22px;}
+.l3c li{background-position:0 -150px;padding:0 10px}
+.lat{margin:6px 1px 9px 1px;width:264px;height:88px}
+/*广告2*/
+/*图片区*/
+.d{border: #c2c2c2 1px solid;overflow: hidden;}
+.d {position: relative; height: 237px;padding:3px;width:258px;cursor:pointer}
+#d{height:218px;overflow:hidden;}
+#d li{line-height:218px;height:218px}
+.d img{height:216px;width:256px;border:solid 1px #b4cfea;}
+.df{position: absolute;right:3px;bottom: 3px;z-index: 18;overflow: hidden;text-align: center}
+.df a{float:left;overflow: hidden;margin:0 1px;width:155px;height:16px;line-height:16px;border:#b4cfea 1px solid;background-position:0 -175px;}
+#do a {width: 16px;z-index:8;color:#1e50a2; font-weight:800}
+#do .do{background:none;color:#000}
+.d a:hover {text-decoration: none}
+#dk,.db {position: absolute;left:4px;bottom: 22px;width: 256px;height: 25px;}
+#dk{text-align: center;line-height: 25px;font-size: 14px;overflow: hidden;z-index:18}
+#dk a{color:#fff}
+.db {z-index: 8; filter: alpha(opacity=60);opacity:0.6;background: #000; }
+/*图片区结束*/
+/*因为高速路广告牌尺寸是18×6，所以，这里如果下面广告位是264*88就是3:1的比率，这样就对应了高速路广告
+/*l5t=l_top*/
+.l5t {height: 70px;padding: 0px 13px;}/*width: 268px;*/
+.l5t h3 {padding:0px 12px; line-height: 22px; text-align:center;background: #fff5eb;border-left: #fedbb3 1px solid;border-right: #fedbb3 1px solid;}
+.l_t_0{height: 22px; font-size: 13px;border-top:#fedbb3 1px solid;}
+.l_t_1 {height: 48px;font-size: 12px;font-weight:normal;border-bottom: #fedbb3 1px solid}
+.l5t a {color: #cc0001}
+
+.l5t dl {width: 263px;overflow: hidden;border-bottom: #2a6cc2 1px dashed;}
+.l5t dt img {display: block; float: left; width: 70px; height: 70px;}
+.l5t dd {display: inline; float: left; margin-left: 12px; width: 177px;}
+.l5t dd span {margin: 0px;height: 22px;line-height: 22px;overflow: hidden;color: #666666;}
+.l_b {height:120px;}
+.ld{height:874px}
+.ld li{margin-bottom:2px;width:264px;height:88px}/*width:264px*/
+.ld .li2{height:178px}
+.ld .li3{height:268px}
+.ld .li4{height:358px}
+.ld .lib{height:56px}
+#a2 img {width: 285px; height: 90px}
+
+
+
+
+
+.c{width:458px;font-size:14px;margin:0 5px;border:1px #ccc solid}/*420px*/
+.cp{background:#eee}
+
+.cs {height:46px;line-height:46px;background-position:0 -200px;border-bottom:1px #ccc solid}
+.cs img{margin:0 5px;vertical-align:middle}
+.cs select{vertical-align:middle;}
+.cs input{margin:0 5px;vertical-align:middle;}
+#z0{margin:0 5px 0 10px; font-size:12px; background:none; display:inline-block;min-width:40px;text-align:center; cursor:pointer}
+#m2{overflow:hidden;height:84px;margin:0 0 10px} 
+#m2 li{line-height:28px;height:28px;background-position:0 -250px;padding:0 5px;} 
+.csb{ cursor:pointer;background:url(http://localhost:8080/v-get.com/i/wuliu/i/s.png) no-repeat;height:21px;width:56px}
+.cw{margin:0 0 7px;}
+.cw h2{font-size:12px; background-position:0 -280px;height:28px; overflow:hidden;}
+.ch{padding:5px 14px;height:18px;width:28px;/*实际是28px 56px,这里有padding 10 28*/background-position:0 -310px;color:#fff}
+.chr{line-height:28px;font-weight:normal}
+.chr a{margin:0 7px}
+
+.cv{height:70px;width:458px;margin:0 0 9px}
+
+.c3 a{margin:9px}
+
+
+
+#sk{width:150px;height:20px}
+.a1{ padding:3px 9px;border:#F00 1px solid; background:#C00;color:#fff}
+.a2{ padding:3px 9px;border:#F00 1px solid; background:#f00;color:#000}
+.a3{ padding:3px 9px;background:#ABABAB;color:#fff}
+
+#c ol{padding-top:9px; font-size:12px;list-style-position:inside}
+#c li{line-height:28px;height:28px;padding:0 9px;list-style-type:circle;color:#888;font-size:14px}
+#c a,.pg a{color:#06c}
+#c li span{font-size:12px;margin:0 9px 0 0}
+.pg{height:28px;line-height:28px;text-align:right;margin:3px 15px;font-size:12px}
+.pg a{margin:0 5px;text-decoration:none;border:1px solid #E7ECF0;padding:3px 8px}
+.pg a:hover{ background:#EBEBEB}
+.pg .po{color:#000;font-weight:800;border-color:#fff;cursor:default}
+.pg .po:hover{background:#fff}
+
+
+
+
+
+.r {border:#cde 1px solid;width: 222px; background:#f8fafb }
+.r h2 {font-size:12px;margin: 0px 15px; overflow: hidden; border-bottom:#cde 1px solid; position: relative; height: 23px;}
+.r h2 a{margin:3px}
+.r h2 .q{font-weight:normal;color:#333;}
+
+
+.r ul {margin:5px 5px 0px 19px;}
+.r ul li {overflow:hidden;height: 24px;line-height:24px; }
+.rtt img{width:16px;height:16px;padding:0 5px 0 0; vertical-align:bottom}
+.rtt a{color:#f00}
+.rtt .rtbt{color:#f60}
+.r iframe{margin:5px 15px;height:173px;width:192px}
+.rw{margin:5px 0 13px; overflow: hidden}
+
+/*广告3*/
+#a3 {width: 207px;border: #cde 1px solid;background:#fff; padding:5px 15px;}
+#a3 li {padding:0px 12px;  background: url(i/icon10_bg.png) no-repeat left -144px;  overflow: hidden; line-height: 20px; height: 20px;}
+
+
+.rt_t {height:85px;border-bottom:#296cbd 1px dashed;margin:5px 15px;}
+.rt_t h3{margin-bottom:0px;font-size: 12px; overflow: hidden; line-height: 22px;height:22px;}
+.rt_t h3 a{color: #000}
+.rt_t p{margin-top:0px;overflow: hidden; line-height: 20px;height:60px}
+.rt_t dl {margin: 8px; overflow: hidden;width:216px;}
+.rt_t dt img {display: block; float: left; width: 70px; height: 70px}
+.rt_t dd {display: inline; float: left; margin:0px 5px 8px;position:absolute; width: 121px;}
+.rt_t dd span {overflow: hidden; color: #666666; line-height: 18px;}
+.rt_b {margin: 0 15px}
+.rt_b li { overflow: hidden; line-height: 22px; height: 22px;}
+/*投票*/
+.rt_b li b {float: left; width: 58px}
+.rt_b_1,.rt_b_0 {display: block; float: left;height: 20px;}
+.rt_b_0 {background: url(i/rtb0.png) repeat-x;}
+.rt_b_1 {background: url(i/rtb1.png) repeat-x; }
+.rt_b li em {padding:0px 4px;float: left; font-style: normal;}
+.rt_b li input {font-size: 12px;background: url(i/btn.png) no-repeat left -92px; float: right; width: 35px; color: #f0f; height: 20px; }
+/*投票结束*/
+.rt_a {margin:5px 15px 0px 0px;}
+.rt_a li { overflow: hidden; line-height: 24px; height: 24px;}
+/*高速路广告位比3:1,这里标准广告位尺寸用210，高度70*/
+#a4 {margin:14px 8px 2px;overflow: hidden; width: 210px;text-align: center;vertical-align:middle}
+#a4 li{margin-bottom:3px;height:92px;}
+#a4 .rb2{height:15px;line-height:15px}
+#a5 {margin:8px 0;border: #c3c2c2 1px solid;overflow: hidden;height:90px;width:958px}
+#gg4_1{height:28px;line-height:28px;overflow:hidden}
+#gg4_1 li{float:left}
+.a6 {clear: both;}/*height:58px*/
+.a6 ul {padding:0px; overflow: hidden; height: 20px}
+.a6 li {padding:0px 8px;font-size: 12px; float: left;overflow: hidden; width: 94px; line-height: 20px;}
+
+.yr_t {margin:0px 15px 0px -18px;overflow: hidden; width: 216px;}
+.yr_t li {float: left; width: 108px;text-align:center;}
+.yr_t li img {display: block; margin: 8px 8px 0px; width: 92px; height: 70px}
+.yr_t_0 {font-weight: normal; font-size: 12px;overflow: hidden; line-height: 20px; height: 20px;color: #666666}
+.yr_t_1{line-height: 24px; height: 24px;color:#00f}
+.yr_b {margin-top:0px;}
+.yr_b li {margin: 0px 15px 0px -18px; overflow: hidden; line-height: 21px; height: 21px;}
+#a7 {margin: 8px 8px 0px; overflow: hidden; width: 235px; height: 90px; text-align: center;}
+#a7 img {width: 235px; height: 90px}
+#a8 {overflow: hidden; width: 988px; height: 90px; text-align: center;border: #c3c2c2 1px solid; background: #f3f2f2;margin:8px 0px;}
+#a8 img {overflow: hidden; width: 990px; height: 90px; text-align: center}
+#a9 {margin: 8px auto 7px; overflow: hidden; width: 235px; height: 275px; text-align: center;}
+#a10 {margin: 8px auto 0px; overflow: hidden; width: 235px; height: 90px; text-align: center}
+#a10 img {width: 235px; height: 90px}
+.yr_l,.yr_r{border-top:#c2c2c2 1px solid;border-bottom:#c2c2c2 1px solid;background:#fff;}
+.yr_l{width:111px;height:205px;margin:-1px 15px;border-left:#c2c2c2 1px solid;}
+.yr_l img {display: block;  width: 98px;height: 148px;padding:8px 0px 0px 8px;}
+.yr_r{top:23px;left:126px;height:205px;position:absolute;width:111px;border-right:#c2c2c2 1px solid;}
+#a11 {margin:8px 0;overflow: hidden; padding-top: 10px; height: 90px; text-align: center;background-color:#ccc}
+
+/*获取信息性显示广告*/
+.as {background: none transparent scroll repeat 0% 0%; position: absolute; top: 0px;width:200px;background:#999}
+#a12 {right:0px;}
+#a13 {left:0px}
+/*选择性显示广告结束*/
+.b {width: 100%; color: #000000; text-align: center}
+.b .b1 {border: #c6d3e6 1px solid;  background: url(i/btn.png) repeat-x left -345px; color: #1c5da8; line-height: 36px;}
+.b .b1 a {margin: 0px 14px}
+.b ul {margin: 15px auto 0px; overflow: hidden;width:900px;padding-left:30px;}
+.b li {float: left; overflow: hidden; width: 300px; line-height: 20px; height: 20px; text-align: left}
+
+.b p {padding:15px 0px 20px; text-align: center}
+.b p img {margin-left: 10px; vertical-align: middle}
+.b a {color: #000}

@@ -1,0 +1,27 @@
+BODY {
+	BACKGROUND-IMAGE: url(background.gif); TEXT-ALIGN: center
+}
+H1 {
+	FONT-SIZE: 24px; COLOR: #006699
+}
+A {
+	TEXT-DECORATION: none
+}
+.hr {
+	WIDTH: 690px; HEIGHT: 1px
+}
+.main {
+	BORDER-RIGHT: black 1px solid; BORDER-TOP: black 1px solid; FONT-SIZE: 12px; BORDER-LEFT: black 1px solid; WIDTH: 690px; BORDER-BOTTOM: black 1px solid; BACKGROUND-COLOR: #f7f7f7; TEXT-ALIGN: left
+}
+.px12 {
+	FONT-SIZE: 12px
+}
+TEXTAREA {
+	BORDER-RIGHT: #7f9db9 1px solid; BORDER-TOP: #7f9db9 1px solid; BORDER-LEFT: #7f9db9 1px solid; BORDER-BOTTOM: #7f9db9 1px solid; TEXT-ALIGN: left
+}
+.bold {
+	FONT-WEIGHT: bold
+}
+.colorsquare {
+	BORDER-RIGHT: black 2px solid; BORDER-TOP: black 2px solid; DISPLAY: block; BORDER-LEFT: black 2px solid; WIDTH: 40px; BORDER-BOTTOM: black 2px solid; HEIGHT: 16px
+}

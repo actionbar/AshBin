@@ -1,0 +1,21 @@
+<meta http-equiv="content-type" content="text/html; charset=gb2312">&nbsp;<FONT 
+style="FONT-SIZE: 9pt; LINE-HEIGHT: 15pt"><B>Drop&nbsp;All&nbsp;Constraints</B><BR>Drop&nbsp;All&nbsp;Constraints
+<P></P>
+<P></P>
+<P><BR>sp_drop_constraints&nbsp;will&nbsp;drop&nbsp;all&nbsp;constraints&nbsp;on&nbsp;the&nbsp;specified&nbsp;table,&nbsp;including&nbsp;CHECK,&nbsp;FOREIGN&nbsp;KEY,&nbsp;PRIMARY&nbsp;KEY,&nbsp;UNIQUE,&nbsp;and&nbsp;DEFAULT&nbsp;constraints.&nbsp;Compile&nbsp;it&nbsp;in&nbsp;your&nbsp;master&nbsp;database&nbsp;and&nbsp;use&nbsp;it&nbsp;from&nbsp;any&nbsp;user&nbsp;database.&nbsp;</P>
+<P>Author:&nbsp;Doug&nbsp;Bass&nbsp;</P>
+<P>SET&nbsp;QUOTED_IDENTIFIER&nbsp;&nbsp;OFF&nbsp;&nbsp;&nbsp;&nbsp;SET&nbsp;ANSI_NULLS&nbsp;&nbsp;ON&nbsp;<BR>GO</P>
+<P>if&nbsp;exists&nbsp;(select&nbsp;*&nbsp;from&nbsp;sysobjects&nbsp;where&nbsp;id&nbsp;=&nbsp;object_id(N'[dbo].[sp_drop_constraints]')&nbsp;and&nbsp;OBJECTPROPERTY(id,&nbsp;N'IsProcedure')&nbsp;=&nbsp;1)<BR>drop&nbsp;procedure&nbsp;[dbo].[sp_drop_constraints]<BR>GO</P>
+<P>create&nbsp;proc&nbsp;sp_drop_constraints</P>
+<P>&nbsp;@tablename&nbsp;sysname</P>
+<P>as</P>
+<P>--&nbsp;name:&nbsp;&nbsp;&nbsp;sp_drop_constraints<BR>--&nbsp;author:&nbsp;douglas&nbsp;bass<BR>--&nbsp;date:&nbsp;&nbsp;&nbsp;06/19/2000</P>
+<P>--&nbsp;sp_drop_constraints&nbsp;will&nbsp;drop&nbsp;all&nbsp;constraints&nbsp;on&nbsp;the&nbsp;specified&nbsp;table,&nbsp;<BR>--&nbsp;including&nbsp;CHECK,&nbsp;FOREIGN&nbsp;KEY,&nbsp;PRIMARY&nbsp;KEY,&nbsp;UNIQUE,&nbsp;and&nbsp;DEFAULT&nbsp;constraints.&nbsp;&nbsp;<BR>--&nbsp;Compile&nbsp;it&nbsp;in&nbsp;your&nbsp;master&nbsp;database&nbsp;and&nbsp;use&nbsp;it&nbsp;from&nbsp;any&nbsp;user&nbsp;database.</P>
+<P>set&nbsp;nocount&nbsp;on</P>
+<P>declare&nbsp;@constname&nbsp;sysname,<BR>&nbsp;@cmd&nbsp;&nbsp;varchar(1024)</P>
+<P>declare&nbsp;curs_constraints&nbsp;cursor&nbsp;for<BR>&nbsp;select&nbsp;&nbsp;name<BR>&nbsp;from&nbsp;&nbsp;sysobjects&nbsp;<BR>&nbsp;where&nbsp;&nbsp;xtype&nbsp;in&nbsp;('C',&nbsp;'F',&nbsp;'PK',&nbsp;'UQ',&nbsp;'D')<BR>&nbsp;and&nbsp;(status&nbsp;&amp;&nbsp;64)&nbsp;=&nbsp;0<BR>&nbsp;and&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;parent_obj&nbsp;=&nbsp;object_id(@tablename)</P>
+<P>open&nbsp;curs_constraints</P>
+<P>fetch&nbsp;next&nbsp;from&nbsp;curs_constraints&nbsp;into&nbsp;@constname<BR>while&nbsp;(@@fetch_status&nbsp;=&nbsp;0)<BR>begin<BR>&nbsp;select&nbsp;@cmd&nbsp;=&nbsp;'ALTER&nbsp;TABLE&nbsp;'&nbsp;+&nbsp;@tablename&nbsp;+&nbsp;'&nbsp;DROP&nbsp;CONSTRAINT&nbsp;'&nbsp;+&nbsp;@constname<BR>&nbsp;exec(@cmd)<BR>&nbsp;fetch&nbsp;next&nbsp;from&nbsp;curs_constraints&nbsp;into&nbsp;@constname<BR>end</P>
+<P>close&nbsp;curs_constraints<BR>deallocate&nbsp;curs_constraints</P>
+<P>return&nbsp;0</P>
+<P><BR>GO<BR>SET&nbsp;QUOTED_IDENTIFIER&nbsp;&nbsp;OFF&nbsp;&nbsp;&nbsp;&nbsp;SET&nbsp;ANSI_NULLS&nbsp;&nbsp;ON&nbsp;<BR>GO</P></FONT>

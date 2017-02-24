@@ -1,0 +1,15 @@
+<meta http-equiv="content-type" content="text/html; charset=gb2312"><FONT 
+style="FONT-SIZE: 9pt; LINE-HEIGHT: 15pt"><B>View&nbsp;Old&nbsp;Connections</B><BR>Script&nbsp;to&nbsp;View&nbsp;Old&nbsp;Connections
+<P></P>
+<P></P>
+<P><BR>This&nbsp;procedure&nbsp;accepts&nbsp;an&nbsp;integer&nbsp;parameter&nbsp;(as&nbsp;#&nbsp;of&nbsp;days)&nbsp;and&nbsp;will&nbsp;show&nbsp;all&nbsp;active&nbsp;SQL&nbsp;connections&nbsp;older&nbsp;than&nbsp;the&nbsp;number&nbsp;of&nbsp;days&nbsp;specified.&nbsp;The&nbsp;script&nbsp;has&nbsp;been&nbsp;tested&nbsp;in&nbsp;SQL&nbsp;Server&nbsp;2000.&nbsp;</P>
+<P>Example:</P>
+<P>exec&nbsp;sp_connections&nbsp;'3'</P>
+<P>Author:&nbsp;Lauryn&nbsp;Bradley&nbsp;</P>
+<P>IF&nbsp;EXISTS&nbsp;(SELECT&nbsp;name&nbsp;<BR>&nbsp;&nbsp;&nbsp;&nbsp;FROM&nbsp;&nbsp;&nbsp;sysobjects&nbsp;<BR>&nbsp;&nbsp;&nbsp;&nbsp;WHERE&nbsp;&nbsp;name&nbsp;=&nbsp;N'sp_connections'&nbsp;<BR>&nbsp;&nbsp;&nbsp;&nbsp;AND&nbsp;&nbsp;&nbsp;&nbsp;type&nbsp;=&nbsp;'P')</P>
+<P>DROP&nbsp;PROCEDURE&nbsp;sp_connections<BR>GO</P>
+<P>CREATE&nbsp;PROCEDURE&nbsp;sp_connections&nbsp;@days&nbsp;int&nbsp;AS<BR>SELECT&nbsp;&nbsp;<BR>&nbsp;DATEDIFF(day,&nbsp;last_batch,&nbsp;getdate())&nbsp;AS&nbsp;Days,<BR>&nbsp;sp.spid,<BR>&nbsp;sp.nt_username&nbsp;as&nbsp;NTname,&nbsp;<BR>&nbsp;sp.loginame,&nbsp;<BR>&nbsp;sp.hostname,&nbsp;<BR>&nbsp;sp.program_name,&nbsp;<BR>&nbsp;sd.name&nbsp;as&nbsp;DBName,<BR>&nbsp;sp.login_time,&nbsp;<BR>&nbsp;sp.last_batch,&nbsp;<BR>&nbsp;sp.status,&nbsp;<BR>&nbsp;sp.dbid,<BR>&nbsp;sp.cmd,<BR>&nbsp;sp.lastwaittype&nbsp;</P>
+<P>FROM&nbsp;&nbsp;&nbsp;&nbsp;sysdatabases&nbsp;sd&nbsp;RIGHT&nbsp;OUTER&nbsp;JOIN<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sysprocesses&nbsp;sp&nbsp;ON&nbsp;sd.dbid&nbsp;=&nbsp;sp.dbid<BR>WHERE&nbsp;&nbsp;&nbsp;DATEDIFF(day,&nbsp;last_batch,&nbsp;getdate())&gt;=&nbsp;@days<BR>and&nbsp;sd.name&nbsp;is&nbsp;not&nbsp;null</P>
+<P>--&nbsp;Lauryn&nbsp;Bradley&nbsp;11/01/02<BR>--&nbsp;Gets&nbsp;active&nbsp;database&nbsp;connections&nbsp;older&nbsp;than&nbsp;number&nbsp;of&nbsp;days&nbsp;<BR>--&nbsp;specified.&nbsp;&nbsp;Accepts&nbsp;integer&nbsp;input&nbsp;parameter&nbsp;for&nbsp;number&nbsp;of&nbsp;days.</P>
+<P>--&nbsp;exec&nbsp;sp_connections&nbsp;'5'</P>
+<P>GO<BR></P></FONT>

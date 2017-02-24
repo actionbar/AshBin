@@ -1,0 +1,101 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+
+
+   <title>1.1.2. &#38169;&#35823;&#25253;&#21578;</title>
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="" />
+   <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+   <meta http-equiv="Content-Style-Type" content="text/css" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+</head>
+<body style="margin: 0px 0px 0px 0px; background: #FFFFFF;">
+
+
+<table width="100%" border="0" cellspacing="0" cellpadding="5" bgcolor="#649CCC">
+  <tr valign="middle">
+    <td align="left">
+      <p class="p_Heading1"><span class="f_Heading1">1.1.2. &#38169;&#35823;&#25253;&#21578;</span></p>
+
+    </td>
+    <td align="right">
+     <span style="font-size: 9pt">
+     <a href="introduction.htm">Top</a>&nbsp;
+     <a href="new_item4.htm">Previous</a>&nbsp;
+     <a href="new_item6.htm">Next</a>
+     </span>
+    </td>
+  </tr>
+</table>
+
+
+<!-- Placeholder for topic body. -->
+<table width="100%" border="0" cellspacing="0" cellpadding="5"><tr valign="top"><td align="left">
+<p style="line-height: 1.50;">1.1.2. &#38169;&#35823;&#25253;&#21578;</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; &nbsp; &nbsp;&#27809;&#26377;&#19981;&#20250;&#29359;&#38169;&#30340;&#24320;&#21457;&#32773;&#65292;PHP&#30340;&#38169;&#35823;&#25253;&#21578;&#21151;&#33021;&#23558;&#21327;&#21161;&#24744;&#30830;&#35748;&#21644;&#23450;&#20301;&#36825;&#20123;&#38169;&#35823;&#12290;&#21487;&#20197;PHP&#25552;&#20379;&#30340;&#36825;&#20123;&#35814;&#32454;&#25551;&#36848;&#20063;&#21487;&#33021;&#34987;&#24694;&#24847;&#25915;&#20987;&#32773;&#30475;&#21040;&#65292;&#36825;&#23601;&#19981;&#22937;&#20102;&#12290;&#20351;&#22823;&#20247;&#30475;&#19981;&#21040;&#25253;&#38169;&#20449;&#24687;&#65292;&#36825;&#19968;&#28857;&#24456;&#37325;&#35201;&#12290;&#20570;&#21040;&#36825;&#19968;&#28857;&#24456;&#23481;&#26131;&#65292;&#21482;&#35201;&#20851;&#38381;display_errors&#65292;&#24403;&#28982;&#22914;&#26524;&#24744;&#24076;&#26395;&#24471;&#21040;&#20986;&#38169;&#20449;&#24687;&#65292;&#21487;&#20197;&#25171;&#24320;log_errors&#36873;&#39033;&#65292;&#24182;&#22312;error_log&#36873;&#39033;&#20013;&#35774;&#32622;&#20986;&#38169;&#26085;&#24535;&#25991;&#20214;&#30340;&#20445;&#23384;&#36335;&#24452;&#12290;</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; &nbsp; &nbsp;&#30001;&#20110;&#20986;&#38169;&#25253;&#21578;&#30340;&#32423;&#21035;&#35774;&#23450;&#21487;&#20197;&#23548;&#33268;&#26377;&#20123;&#38169;&#35823;&#26080;&#27861;&#21457;&#29616;&#65292;&#24744;&#33267;&#23569;&#38656;&#35201;&#25226;error_reporting&#35774;&#20026;E_ALL(E_ALL | E_STRICT &#26159;&#26368;&#39640;&#30340;&#35774;&#32622;, &#25552;&#20379;&#21521;&#19979;&#20860;&#23481;&#30340;&#24314;&#35758;, &#22914;&#19981;&#24314;&#35758;&#20351;&#29992;&#30340;&#25552;&#31034;).</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; &nbsp; &nbsp;&#25152;&#26377;&#30340;&#20986;&#38169;&#25253;&#21578;&#32423;&#21035;&#21487;&#20197;&#22312;&#20219;&#24847;&#32423;&#21035;&#36827;&#34892;&#20462;&#25913;&#65292;&#25152;&#20197;&#24744;&#22914;&#26524;&#20351;&#29992;&#30340;&#26159;&#20849;&#20139;&#30340;&#20027;&#26426;&#65292;&#27809;&#26377;&#26435;&#38480;&#23545;php.ini, httpd.conf, &#25110; .htaccess&#31561;&#37197;&#32622;&#25991;&#20214;&#36827;&#34892;&#26356;&#25913;&#26102;&#65292;&#24744;&#21487;&#20197;&#22312;&#31243;&#24207;&#20013;&#36816;&#34892;&#20986;&#38169;&#25253;&#21578;&#32423;&#21035;&#37197;&#32622;&#35821;&#21477;&#65306;</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">CODE:</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; &lt;?php</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; ini_set('error_reporting', E_ALL | E_STRICT);</p>
+<p style="line-height: 1.50;">  &nbsp; ini_set('display_errors', 'Off');</p>
+<p style="line-height: 1.50;">  &nbsp; ini_set('log_errors', 'On');</p>
+<p style="line-height: 1.50;">  &nbsp; ini_set('error_log', '/usr/local/apache/logs/error_log');</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; ?&gt;</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;"><span style="font-weight: bold;">&#23567;&#25552;&#31034;</span></p>
+<p style="line-height: 1.50;">http://php.net/manual/ini.php &#23545;php.ini&#30340;&#36873;&#39033;&#37197;&#32622;&#20316;&#20102;&#35814;&#23613;&#30340;&#35828;&#26126;&#12290;</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; &nbsp; &nbsp;PHP&#36824;&#20801;&#35768;&#24744;&#36890;&#36807; set_error_handler( ) &#20989;&#25968;&#25351;&#23450;&#24744;&#33258;&#24050;&#30340;&#20986;&#38169;&#22788;&#29702;&#20989;&#25968;&#65306;</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">CODE:</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp;&lt;?php</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; set_error_handler('my_error_handler');</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; ?&gt;</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; &nbsp; &nbsp;&#19978;&#38754;&#31243;&#24207;&#25351;&#23450;&#20102;&#24744;&#33258;&#24050;&#30340;&#20986;&#38169;&#22788;&#29702;&#20989;&#25968;my_error_handler( ); &#19979;&#38754;&#26159;&#19968;&#20010;&#23454;&#38469;&#20351;&#29992;&#30340;&#31034;&#20363;&#65306;</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">CODE:</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; &lt;?php</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; function my_error_handler($number, $string, $file, $line, $context)</p>
+<p style="line-height: 1.50;">  &nbsp; {</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; $error = "= &nbsp;== &nbsp;== &nbsp;== &nbsp;==\nPHP ERROR\n= &nbsp;== &nbsp;== &nbsp;== &nbsp;==\n";</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; $error .= "Number: [$number]\n";</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; $error .= "String: [$string]\n";</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; $error .= "File: &nbsp; [$file]\n";</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; $error .= "Line: &nbsp; [$line]\n";</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; $error .= "Context:\n" . print_r($context, TRUE) . "\n\n";</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; error_log($error, 3, '/usr/local/apache/logs/error_log');</p>
+<p style="line-height: 1.50;">  &nbsp; }</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; ?&gt;</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;"><span style="font-weight: bold;">&#23567;&#25552;&#31034;</span></p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; &nbsp; &nbsp;PHP 5&#36824;&#20801;&#35768;&#21521;set_error_handler( )&#20256;&#36882;&#31532;&#20108;&#20010;&#21442;&#25968;&#20197;&#38480;&#23450;&#22312;&#20160;&#20040;&#20986;&#38169;&#24773;&#20917;&#19979;&#25191;&#34892;&#20986;&#23450;&#20041;&#30340;&#20986;&#38169;&#22788;&#29702;&#20989;&#25968;&#12290;&#27604;&#22914;&#65292;&#29616;&#22312;&#24314;&#31435;&#19968;&#20010;&#22788;&#29702;&#21578;&#35686;&#32423;&#21035;&#65288;warning&#65289;&#38169;&#35823;&#30340;&#20989;&#25968;&#65306;</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">CODE:</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp;&lt;?php</p>
+<p style="line-height: 1.50;">  &nbsp; set_error_handler('my_warning_handler', E_WARNING);</p>
+<p style="line-height: 1.50;">  &nbsp; ?&gt;</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; PHP5&#36824;&#25552;&#20379;&#20102;&#24322;&#24120;&#22788;&#29702;&#26426;&#21046;&#65292;&#35814;&#35265;http://php.net/exceptions</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<hr noshade size=1 ><p style="line-height: 1.50;">&nbsp;</p>
+
+</td></tr></table>
+
+</body>
+</html>

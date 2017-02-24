@@ -1,0 +1,240 @@
+<html>
+<head>
+<title>DTD中的注释</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+
+<link rel = stylesheet href = "image/style.css">
+</head>
+<body bgcolor="#ffffff">
+<table width="688" border="0" cellspacing="0" cellpadding="0" align="center">
+  <tr bgcolor="EEEEEE"> 
+    <td height="22"><a href="index.htm">主页</a></td>
+  </tr>
+</table><br>
+<table border="0" cellpadding="0" cellspacing="0" width="688" align="center" height="490">
+  <tr valign="top"> 
+    <td rowspan="4" width="91">&nbsp; </td>
+    <td height="68" width="131"> 
+      <p><img src="image/doc.gif"></p>
+    </td>
+    <td rowspan="4" width="18"><b></b> </td>
+    <td height="68" width="387"><img src="image/title_doc.gif"></td>
+    <td rowspan="4" width="61"> 
+      <h6>&nbsp;</h6>
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td rowspan="3" valign="top" class="pt10" align="center" width="131" bgcolor="EEEEEE"> 
+      <p>&nbsp;</p>
+      <p><font color="#FF0000">※ 8.6 DTD中的注释</font></p>
+       
+	</td>
+  </tr>
+  <tr valign="top"> 
+    <td width="387" height="308"> 
+      <table width="100%" border="0" cellpadding="0">
+        <tr> 
+          <td>
+
+           <h4>8.6 DTD中的注释</h4>
+<p>像一份XML文档的其他部分一样，DTD也可以包含注释。这些注释不能在声明中出现，但可以在声明外出现。注释通常用来组织不同部分的DTD，为一些元素的许可内容提供说明，并对元素作进一步的解释。例如，YEAR元素的声明可以有这样的注释：</p>
+<p>&lt;!--A four digit year like 1998, 1999, or 2000 ?--&gt;</p>
+<p>&lt;!ELEMENT YEAR (#PCDATA)&gt;</p>
+<p>像所有注释一样，这只是为了便于人们阅读源代码，XML处理程序会忽略注释部分。</p>
+<p>注释的一个可能用法是定义标记中用到的缩略语。例如，在本章及前些章中，我极力避免使用棒球术语的缩略语，因为对一些人来说难以弄清楚。一种可能的途径是使用缩略语但在DTD中用注释加以定义。清单8-12同以前的棒球例子相似，但使用了DTD注释和缩略标记。</p>
+<p>清单8-12：使用缩略标记和DTD注释的合法XML文档 </p>
+<p> &lt;?xml version="1.0" standalone="yes"?&gt;</p>
+<p> &lt;!DOCTYPE SEASON [</p>
+<p>&lt;!ELEMENT YEAR (#PCDATA)&gt;</p>
+<p>&lt;!ELEMENT LEAGUE (LEAGUE_NAME, DIVISION, DIVISION, DIVISION)&gt;</p>
+<p>&lt;!--American or National ?</p>
+<p> &lt;!ELEMENT LEAGUE_NAME (#PCDATA)&gt;</p>
+<p>&lt;!--East , West , or Central ?</p>
+<p>&lt;!ELEMENT DIVISION_NAME (#PCDATA)&gt;</p>
+<p>&lt;!ELEMENT DIVISION (DIVISION_NAME, TEAM+)&gt;</p>
+<p>&lt;!ELEMENT SEASON (YEAR, LEAGUE, LEAGUE)&gt;</p>
+<p>&lt;!ELEMENT TEAM (TEAM_CITY, TEAM_NAME, PLAYER*)&gt;</p>
+<p>&lt;!ELEMENT TEAM_CITY (#PCDATA)&gt;</p>
+<p>&lt;!ELEMENT TEAM_NAME (#PCDATA)&gt;</p>
+<p>&lt;!ELEMENT PLAYER (GIVEN_NAME, SURNAME, P, G,</p>
+<p>GS, AB?, R?, H?, D?, T?, HR?, RBI?, SB?, CS?,</p>
+<p>SH?, SF?, E?, BB?, S?, HBP?, CG?, SO?, ERA?, IP?,</p>
+<p>HRA?, RA?, ER?, HB?, WP?, B?, WB?, K?)</p>
+<p>&gt;</p>
+<p>&lt;!--=======================--&gt;</p>
+<p>&lt;!--Player Info--&gt;</p>
+<p>&lt;!--Player’s last name--&gt;</p>
+<p>&lt;!ELEMENT SURNAME (#PCDATA)&gt;</p>
+<p>&lt;!--Player’s first name--&gt;</p>
+<p>&lt;!ELEMENT GIVEN_NAME (#PCDATA)&gt;</p>
+<p>&lt;!—Position--&gt;</p>
+<p>&lt;!ELEMENT P (#PCDATA)&gt;</p>
+<p>&lt;!--Games Played--&gt;</p>
+<p>&lt;!ELEMENT G (#PCDATA)&gt;</p>
+<p>&lt;!--Games Started--&gt;</p>
+<p>&lt;!ELEMENT GS (#PCDATA)&gt;</p>
+<p>&lt;!--=======================--&gt;</p>
+<p>&lt;!--Batting Statistics--&gt;</p>
+<p>&lt;!--At Bats--&gt;</p>
+<p>&lt;!ELEMENT AB (#PCDATA)&gt;</p>
+<p>&lt;!--Runs--&gt;</p>
+<p>&lt;!ELEMENT R (#PCDATA)&gt;</p>
+<p>&lt;!--Hits--&gt;</p>
+<p>&lt;!ELEMENT H (#PCDATA)&gt;</p>
+<p>&lt;!--Doubles--&gt;</p>
+<p>&lt;!ELEMENT D (#PCDATA)&gt;</p>
+<p>&lt;!--Triples--&gt;</p>
+<p>&lt;!ELEMENT T (#PCDATA)&gt;</p>
+<p>&lt;!--Home Runs--&gt;</p>
+<p>&lt;!ELEMENT HR (#PCDATA)&gt;</p>
+<p>&lt;!--Runs Batted In--&gt;</p>
+<p>&lt;!ELEMENT RBI (#PCDATA)&gt;</p>
+<p>&lt;!--Stolen Bases--&gt;</p>
+<p>&lt;!ELEMENT SB (#PCDATA)&gt;</p>
+<p>&lt;!--Caught Stealing--&gt;</p>
+<p>&lt;!ELEMENT CS (#PCDATA)&gt;</p>
+<p>&lt;!--Sacrifice Hits--&gt;</p>
+<p>&lt;!ELEMENT SH (#PCDATA)&gt;</p>
+<p>&lt;!--Sacrifice Flies--&gt;</p>
+<p>&lt;!ELEMENT SF (#PCDATA)&gt;</p>
+<p>&lt;!--Errors--&gt;</p>
+<p>&lt;!ELEMENT E (#PCDATA)&gt;</p>
+<p>&lt;!--Walks (Base on Balls)--&gt;</p>
+<p>&lt;!ELEMENT BB (#PCDATA)&gt;</p>
+<p>&lt;!--Struck Out--&gt;</p>
+<p>&lt;!ELEMENT S (#PCDATA)&gt;</p>
+<p>&lt;!--Hit By Pitch--&gt;</p>
+<p>&lt;!ELEMENT HBP (#PCDATA)&gt;</p>
+<p>&lt;!--=======================--&gt;</p>
+<p>&lt;!--Pitching Staistics--&gt;</p>
+<p>&lt;!--Complete Games--&gt;</p>
+<p>&lt;!ELEMENT CG (#PCDATA)&gt;</p>
+<p>&lt;!--Shut Outs--&gt;</p>
+<p>&lt;!ELEMENT SO (#PCDATA)&gt;</p>
+<p>&lt;!--ERA--&gt;</p>
+<p>&lt;!ELEMENT ERA (#PCDATA)&gt;</p>
+<p>&lt;!--Innings Pitched--&gt;</p>
+<p>&lt;!ELEMENT IP (#PCDATA)&gt;</p>
+<p>&lt;!--Home Runs hit Against--&gt;</p>
+<p>&lt;!ELEMENT HRA (#PCDATA)&gt;</p>
+<p>&lt;!--Runs hit Against--&gt;</p>
+<p>&lt;!ELEMENT RA (#PCDATA)&gt;</p>
+<p>&lt;!--Earned Runs--&gt;</p>
+<p>&lt;!ELEMENT ER (#PCDATA)&gt;</p>
+<p>&lt;!--Hit Batter--&gt; </p>
+<p>&lt;!ELEMENT HB (#PCDATA)&gt;</p>
+<p>&lt;!--Wild Pitches--&gt;</p>
+<p>&lt;!ELEMENT WP (#PCDATA)&gt;</p>
+<p>&lt;!—Balk--&gt;</p>
+<p>&lt;!ELEMENT B (#PCDATA)&gt;</p>
+<p>&lt;!--Walked Batter--&gt;</p>
+<p>&lt;!ELEMENT WB (#PCDATA)&gt;</p>
+<p>&lt;!--Struck Out Batter--&gt;</p>
+<p>&lt;!ELEMENT K (#PCDATA)&gt;</p>
+<p>&lt;!--=======================--&gt;</p>
+<p>&lt;!--Fielding Statistics--&gt;</p>
+<p>&lt;!--Not yet supported--&gt;</p>
+<p>]&gt;</p>
+<p>&lt;SEASON&gt;</p>
+<p>&lt;YEAR&gt;1998&lt;/YEAR&gt;</p>
+<p>&lt;LEAGUE&gt;</p>
+<p>&lt;LEAGUE_NAME&gt;National&lt;/LEAGUE_NAME&gt;</p>
+<p>&lt;DIVISION&gt;</p>
+<p>&lt;DIVISION_NAME&gt;East &lt;/DIVISION_NAME&gt;</p>
+<p>&lt;TEAM&gt;</p>
+<p>&lt;TEAM_CITY&gt;Atlanta&lt;/TEAM_CITY&gt;</p>
+<p>&lt;TEAM_NAME&gt;Braves&lt;/TEAM_NAME&gt;</p>
+<p>&lt;PLAYER&gt;</p>
+<p>&lt;GIVEN_NAME&gt;Ozzie&lt;/GIVEN_NAME&gt;</p>
+<p>&lt;SURNAME&gt;Guillen&lt;/SURNAME&gt;</p>
+<p>&lt;P&gt;Short stop&lt;/P&gt;</p>
+<p>&lt;G&gt;83&lt;/G&gt;</p>
+<p>&lt;GS&gt;59&lt;/GS&gt;</p>
+<p>&lt;AB&gt;264&lt;/AB&gt;</p>
+<p>&lt;R&gt;35&lt;/R&gt;</p>
+<p>&lt;H&gt;73&lt;/H &gt;</p>
+<p>&lt;D&gt;15&lt;/D&gt;</p>
+<p>&lt;T&gt;1&lt;/T&gt;</p>
+<p>&lt;HR&gt;1&lt;/HR&gt;</p>
+<p>&lt;RBI&gt;22&lt;/RBI&gt;</p>
+<p>&lt;SB&gt;1&lt;/SB&gt;</p>
+<p>&lt;CS&gt;4&lt;/CS&gt;</p>
+<p>&lt;SH&gt;4&lt;/SH&gt;</p>
+<p>&lt;SF&gt;2&lt;/SF&gt;</p>
+<p>&lt;E&gt;6&lt;/E&gt;</p>
+<p>&lt;BB&gt;24&lt;/BB&gt;</p>
+<p>&lt;S&gt;25&lt;/S&gt;</p>
+<p>&lt;HBP&gt;1&lt;/HBP&gt;</p>
+<p>&lt;/PLAYER&gt;</p>
+<p>&lt;/TEAM&gt;</p>
+<p>&lt;TEAM&gt;</p>
+<p>&lt;TEAM_CITY&gt;Florida&lt;/TEAM_CITY&gt;</p>
+<p>&lt;TEAM_NAME&gt;Marlins&lt;/TEAM_NAME&gt;</p>
+<p>&lt;/TEAM&gt;</p>
+<p>&lt;TEAM&gt;</p>
+<p>&lt;TEAM_CITY&gt;Montreal&lt;/TEAM_CITY&gt;</p>
+<p>&lt;TEAM_NAME&gt;Expos&lt;/TEAM_NAME&gt;</p>
+<p>&lt;/TEAM&gt;</p>
+<p>&lt;TEAM&gt;</p>
+<p>&lt;TEAM_CITY&gt;New York&lt;/TEAM_CITY&gt;</p>
+<p>&lt;TEAM_NAME&gt;Mets&lt;/TEAM_NAME&gt;</p>
+<p>&lt;/TEAM&gt;</p>
+<p>&lt;TEAM&gt;</p>
+<p>&lt;TEAM_CITY&gt;Philadelphia&lt;/TEAM_CITY&gt;</p>
+<p>&lt;TEAM_NAME&gt;Phillies&lt;/TEAM_NAME&gt;</p>
+<p>&lt;/TEAM&gt;</p>
+<p>&lt;/DIVISION&gt;</p>
+<p>&lt;DIVISION&gt;</p>
+<p>&lt;DIVISION_NAME&gt;Central&lt;/DIVISION_NAME&gt;</p>
+<p>&lt;TEAM&gt;</p>
+<p>&lt;TEAM_CITY&gt;Chicago&lt;/TEAM_CITY&gt;</p>
+<p>&lt;TEAM_NAME&gt;Cubs&lt;/TEAM_NAME&gt;</p>
+<p>&lt;/TEAM&gt;</p>
+<p>&lt;/DIVISION&gt;</p>
+<p>&lt;DIVISION&gt;</p>
+<p>&lt;DIVISION_NAME&gt;West&lt;/DIVISION_NAME&gt;</p>
+<p>&lt;TEAM&gt;</p>
+<p>&lt;TEAM_CITY&gt;Arizona&lt;/TEAM_CITY&gt;</p>
+<p>&lt;TEAM_NAME&gt;Diamondbacks&lt;/TEAM_NAME&gt;</p>
+<p>&lt;/TEAM&gt;</p>
+<p>&lt;/DIVISION&gt;</p>
+<p>&lt;/LEAGUE&gt;</p>
+<p>&lt;LEAGUE&gt;</p>
+<p>&lt;LEAGUE_NAME&gt;American&lt;/LEAGUE_NAME&gt;</p>
+<p>&lt;DIVISION&gt;</p>
+<p>&lt;DIVISION_NAME&gt;East&lt;/DIVISION_NAME&gt;</p>
+<p>&lt;TEAM&gt;</p>
+<p>&lt;TEAM_CITY&gt;Baltimore&lt;/TEAM_CITY&gt;</p>
+<p>&lt;TEAM_NAME&gt;Orioles&lt;/TEAM_NAME&gt;</p>
+<p>&lt;/TEAM&gt;</p>
+<p>&lt;/DIVISION&gt;</p>
+<p>&lt;DIVISION&gt;</p>
+<p>&lt;DIVISION_NAME&gt;Central&lt;/DIVISION_NAME&gt;</p>
+<p>&lt;TEAM&gt;</p>
+<p>&lt;TEAM_CITY&gt;Chicago&lt;/TEAM_CITY&gt;</p>
+<p>&lt;TEAM_NAME&gt;White Sox&lt;/TEAM_NAME&gt;</p>
+<p>&lt;/TEAM&gt;</p>
+<p>&lt;/DIVISION&gt;</p>
+<p>&lt;DIVISION&gt;</p>
+<p>&lt;DIVISION_NAME&gt;West&lt;/DIVISION_NAME&gt;</p>
+<p>&lt;TEAM&gt;</p>
+<p>&lt;TEAM_CITY&gt;Anaheim&lt;/TEAM_CITY&gt;</p>
+<p>&lt;TEAM_NAME&gt;Angels&lt;/TEAM_NAME&gt;</p>
+<p>&lt;/TEAM&gt;</p>
+<p>&lt;/DIVISION&gt;</p>
+<p>&lt;/LEAGUE&gt;</p>
+<p>&lt;/SEASON&gt;</p>
+<p>当整个联赛全包含在内时，产生的文档从带长标记的699K缩短到带短标记的391K，节约了44％。但是信息的内容是相同的。两个文档压缩后很接近，短标记文档58K，长标记文档66K。</p>
+<p>在注释内可以包括和应该包括的信息量没有限制。包括得多使DTD更长（这样就使检测更难，下载更慢）。然而，在下面的几章中，您将学会如何在多个XML文档间共享同一DTD以及将DTD拆成更好管理的多个部分。这样，使用注释的缺点就是暂时的了。我建议在DTD中自由地使用注释，尤其是对于打算公用的DTD。</p>
+ 
+<a href='400.htm'>&lt;&lt;上一篇</a>&nbsp;&nbsp;<a href='402.htm'>下一篇&gt;&gt;</a></td>
+        </tr>
+      </table>
+      <p>&nbsp; </p>
+    </td>
+  </tr>
+</table>
+
+</body>
+
+</html>

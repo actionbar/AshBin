@@ -1,0 +1,158 @@
+<!DOCTYPE html><html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>jQuery 正十二面体旋转图_V-Get!</title>
+    <script src="http://tp.v-get.com/i/8js/dodecahedron.js"></script>
+    <style>
+	*{padding;0;margin:0}p{font:14px/25px "Microsoft YaHei","微软雅黑",Tahoma,Verdana,"宋体";}.w{width:728px;padding:20px;margin:0 auto;overflow:hidden}
+.o{clear:both}
+	#canvas {
+    border: solid 1px #ccc;
+}
+#div {
+    width: 500px;
+    height: 500px;
+}
+.number {
+    position: absolute;
+}
+.hidenumber .number {
+    display: none;
+}
+    </style>
+</head>
+<body>
+<div class="w">
+<div id="bdshare"></div>
+<div class="o"></div>
+    <span id="info"></span>
+    <div id="div"></div>
+    <label>显示参考线<input type="checkbox" id="checkboxReference" /></label>
+    <label>显示序号<input type="checkbox" id="checkboxNumber" /></label>
+<script type="text/javascript" src="http://tu.v-get.com/i.js"></script>
+<script type="text/javascript" src="http://tu.v-get.com/f.js"></script>
+    <script>
+void function(){
+
+    // 若以正十二面体的中心为(0,0,0)，各顶点的坐标为{(0,±1/φ,±φ), (±1/φ,±φ,0), (±φ,0,±1/φ), (±1,±1,±1)}，其中φ = (1+√5)/2，
+    
+    var phi = (1 + Math.sqrt(5)) / 2;
+    var endpoints = [
+        //(0,±1/φ,±φ)
+        [0, +1 / phi, +phi],
+        [0, -1 / phi, +phi],
+        [0, +1 / phi, -phi],
+        [0, -1 / phi, -phi],
+
+        //(±1/φ,±φ,0)
+        [+1 / phi, +phi, 0],
+        [-1 / phi, +phi, 0],
+        [+1 / phi, -phi, 0],
+        [-1 / phi, -phi, 0],
+
+        //(±φ,0,±1/φ)
+        [+phi, 0, +1 / phi],
+        [+phi, 0, -1 / phi],
+        [-phi, 0, +1 / phi],
+        [-phi, 0, -1 / phi],
+
+        //(±1,±1,±1)
+        [+1, +1, +1],
+        [+1, +1, -1],
+        [+1, -1, +1],
+        [+1, -1, -1],
+
+        [-1, +1, +1],
+        [-1, +1, -1],
+        [-1, -1, +1],
+        [-1, -1, -1],
+
+        [0, 0, 0] // 中心点
+    ];
+    // 参考线
+    var referencePath = AcePath.create({
+        parent: 'div',
+        stroke: '#0000ff',
+        strokeWidth: 1
+    });
+    // 多面体
+    var polyhedronPath = AcePath.create({
+        parent: 'div',
+        stroke: '#ff0000',
+        strokeWidth: 3
+    });
+    var checkboxReference =$('checkboxReference');
+    var checkboxNumber = $('checkboxNumber');
+
+    var radius = 18;
+    var div = $('div');
+    var spans = [];
+    var polyhedronTemplate = '';
+    var referenceTemplate = '';
+    for (var i = 0; i < endpoints.length; i++){
+        endpoints[i][0] *= radius;
+        endpoints[i][1] *= radius;
+        endpoints[i][2] *= radius;
+        var span = document.createElement('span');
+        span.innerHTML = i;
+        span.className = 'number';
+        div.appendChild(span);
+        spans.push(span);
+
+        referenceTemplate += 'M #{20} L #{' + i + '} Z ';
+    }
+
+    polyhedronTemplate += 'M #{0} L #{1} #{18} #{10} #{16} Z';
+    polyhedronTemplate += 'M #{0} L #{12} #{4} #{5} #{16} Z';
+    polyhedronTemplate += 'M #{0} L #{1} #{14} #{8} #{12} Z';
+    polyhedronTemplate += 'M #{5} L #{17} #{11} #{10} #{16} Z';
+    polyhedronTemplate += 'M #{8} L #{9} #{15} #{6} #{14} Z';
+    polyhedronTemplate += 'M #{8} L #{9} #{13} #{4} #{12} Z';
+    polyhedronTemplate += 'M #{10} L #{11} #{19} #{7} #{18} Z';
+    polyhedronTemplate += 'M #{4} L #{5} #{17} #{2} #{13} Z';
+    polyhedronTemplate += 'M #{2} L #{3} #{19} #{11} #{17} Z';
+    polyhedronTemplate += 'M #{2} L #{3} #{15} #{9} #{13} Z';
+    polyhedronTemplate += 'M #{6} L #{7} #{18} #{1} #{14} Z';
+
+    var rotation = 0;
+    var distance = 1000;
+    var frameTime = new Date, frameCount = 0, fps = 0; // fps
+    function render(){
+        if (new Date - frameTime > 1000){ // fps
+            frameTime = new Date;
+            fps = frameCount;
+            frameCount = 0;
+        } else frameCount++;
+        document.getElementById('info').innerHTML = "fps:" + fps;
+        
+        var temp = [];
+        for (var i = 0; i < endpoints.length; i++){
+            var p = endpoints[i].slice();
+            Ace3D.rotateX(p, rotation);
+            Ace3D.rotateY(p, rotation);
+            Ace3D.rotateZ(p, rotation);
+            var t = Ace3D.projection(p, 150, distance);
+            t[0] += 250;
+            t[1] += 250;
+            temp.push(t);
+            spans[i].style.left = t[0] + 'px';
+            spans[i].style.top = t[1] + 'px';
+            spans[i].style.fontSize = p[2] + 5 + 'px';
+        }
+        if (checkboxReference.checked) {
+            referencePath.attr('path', AceString.format(referenceTemplate, temp));
+        } else {
+            referencePath.attr('path', '');
+        }
+        if (checkboxNumber.checked) {
+            div.className = 'shownumber';
+        } else {
+            div.className = 'hidenumber';
+        }
+        polyhedronPath.attr('path', AceString.format(polyhedronTemplate, temp));
+        rotation += Math.PI / 90.0;
+    }    
+    //render();//debug
+    setInterval(render, 1000 / 30);
+    
+}();
+    </script></div>
+</body>
+</html>

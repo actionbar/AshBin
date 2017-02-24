@@ -1,0 +1,70 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>轻松实现将上传图片到数据库</title>
+<style type="text/css">
+<!--
+body {
+	font-size: 10.4pt;
+	line-height: 22px;
+}
+-->
+</style>
+</head>
+
+<body bgcolor="eeeeee" leftmargin="20" marginwidth="20">
+<p><strong>轻松实现将上传图片到数据库</strong></p>
+<hr>
+<p> 很久就想自己写一写程序了，不过由于赖就不想写我，今天刚好有空，所以写了这个小小的程序很容易一看就知道的，不多说了就此开始：</p>
+<p>　　我们做一个上传的。数据据库的字段就id自动编号 big 字段类型是 OLE 呵呵就简单的那个字段好了<br>
+  　　<br>
+  　　uppic.asp上传程序名<br>
+  　　<br>
+  　　&lt;%<br>
+  　　dim rs <br>
+  　　dim formsize,formdata,bncrlf,divider,datastart,dataend,mydata<br>
+  　　formsize=request.totalbytes '取得客户端发过来的大小<br>
+  　　formdata=request.binaryread(formsize)'把客户发过来的数据转成二进制作<br>
+  　　bncrlf=chrB(13) &amp; chrB(10)<br>
+  　　divider=leftB(formdata,clng(instrb(formdata,bncrlf))-1)<br>
+  　　datastart=instrb(formdata,bncrlf &amp; bncrlf)+4<br>
+  　　dataend=instrb(datastart+1,formdata,divider)-datastart<br>
+  　　mydata=midb(formdata,datastart,dataend)'上面总共是取得图片的二进制数据<br>
+  <br>
+  　　%&gt;<br>
+  　　&lt;!--#include file=&quot;conn.asp&quot;--&gt;<br>
+  　　&lt;%<br>
+  　　sql=&quot;select * from pic order by id desc&quot;<br>
+  　　Set rs = Server.CreateObject(&quot;ADODB.Recordset&quot;)<br>
+  　　rs.Open sql,conn,3,2<br>
+  　　rs.addnew<br>
+  　　rs(&quot;big&quot;).appendchunk mydata '增加到数据库中<br>
+  　　rs.update<br>
+  　　set rs=nothing<br>
+  　　set conn=nothing<br>
+  　　%&gt; <br>
+  　　接下来是显示图片<br>
+  　　<br>
+  　　display.asp<br>
+  　　<br>
+  　　&lt;!--#include file=&quot;conn.asp&quot;--&gt; '这个大家都知道吧，他就是与数据库连的一个程序了<br>
+  　　　　&lt;% <br>
+  　　id=request(&quot;id&quot;)<br>
+  　　set rs=server.createobject(&quot;ADODB.recordset&quot;) <br>
+  　　sql=&quot;select * from pic where id=&quot; &amp; id<br>
+  　　rs.open sql,conn,1,1 <br>
+  　　Response.ContentType = &quot;text/html&quot; '显示图片的格式也可以用<br>
+  　　<br>
+  　　'Response.ContentType = &quot;image/gif&quot; 以gif显示<br>
+  　　<br>
+  　　'Response.ContentType = &quot;image/jpg&quot; 以jpg显示<br>
+  　　Response.BinaryWrite rs(&quot;big&quot;) '显示图片<br>
+  　　rs.close <br>
+  　　set rs=nothing <br>
+  　　set connGraph=nothing <br>
+  　　<br>
+  　　%&gt;</p>
+<p>&nbsp;</p>
+</body>
+</html>

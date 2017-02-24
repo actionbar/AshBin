@@ -1,0 +1,1 @@
+<?phpheader("Content-Type: text/html;charset=utf-8");$QC=mysql_connect('localhost','root','qwdw114');mysql_select_db('vv',$QC);mysql_query('set names utf8');for($j=1;$j<9999;++$j){mysql_query('INSERT INTO test (a,b,c) VALUES(9,'.$j.',"9^'.$j.'")');}?>

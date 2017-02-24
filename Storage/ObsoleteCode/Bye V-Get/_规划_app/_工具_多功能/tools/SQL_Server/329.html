@@ -1,0 +1,380 @@
+<HEAD><TITLE>周周共享论坛--『数 据 库』浏览：sp_IndexKeyText</TITLE>
+<META charset=gb2312 http-equiv=Content-Type content=text/html;>
+<META content=动网先锋,动网论坛,dvbbs name=keywords>
+<STYLE type=text/css>
+A:link,A:active,A:visited{TEXT-DECORATION:none ;Color:#000000}
+A:hover{TEXT-DECORATION: underline;Color:#4455aa}
+
+BODY{
+FONT-SIZE: 12px;
+COLOR: #000000;
+FONT-FAMILY:  宋体;
+background-color: #FFFFFF; 
+scrollbar-face-color: #DEE3E7;
+scrollbar-highlight-color: #FFFFFF;
+scrollbar-shadow-color: #DEE3E7;
+scrollbar-3dlight-color: #D1D7DC;
+scrollbar-arrow-color:  #006699;
+scrollbar-track-color: #EFEFEF;
+scrollbar-darkshadow-color: #98AAB1;
+}
+TD{
+font-family: 宋体;
+font-size: 12px;
+line-height: 15px;
+}
+th
+{
+background-image: url(skin/default/bg1.gif);
+background-color: #4455aa;
+color: white;
+font-size: 12px;
+font-weight:bold;
+}
+td.TableTitle2
+{
+background-color: #E4E8EF;
+}
+td.TableBody1
+{
+background-color: #FFFFFF;
+}
+td.TableBody2
+{
+background-color: #E4E8EF;
+}
+td.TopDarkNav
+{
+background-image: url(skin/default/topbg.gif);
+}
+td.TopLighNav
+{
+background-image: url(skin/default/bottombg.gif);
+}
+td.TopLighNav1
+{
+background-image: url(skin/default/tabs_m_tile.gif);
+}
+td.TopLighNav2
+{
+background-color:#FFFFFF
+}
+.tableBorder1
+{
+width:97%;
+border: 1px; 
+background-color: #6595D6;
+}
+.tableBorder2
+{
+width:97%;
+border: 1px #DEDEDE solid; 
+background-color: #EFEFEF;
+}
+
+#TableTitleLink A:link, #TableTitleLink A:visited, #TableTitleLink A:active {
+	COLOR: #FFFFFF;
+	TEXT-DECORATION: none;
+}
+#TableTitleLink A:hover {
+	COLOR: #FFFFFF;
+	TEXT-DECORATION: underline;}
+
+input,select,Textarea{
+font-family:Tahoma,Verdana,宋体; font-size: 12px; line-height: 15px;}
+}
+.normalTextSmall 
+{ 
+    font-size : 11px;
+    color : #000000; 
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+</STYLE>
+
+
+
+
+
+<STYLE id=defaultPopStyle type=text/css>.cPopText {  background-color: #F8F8F5;color:#000000; border: 1px #000000 solid;font-color: font-size: 12px; padding-right: 4px; padding-left: 4px; height: 20px; padding-top: 2px; padding-bottom: 2px; filter: Alpha(Opacity=0)}</STYLE>
+</head>
+<BODY leftMargin=0 topMargin=0>
+<DIV class=cPopText id=dypopLayer style="Z-INDEX: 1000; FILTER: Alpha(); LEFT: 191px; POSITION: absolute; TOP: 239px"></DIV>
+<TABLE style="BORDER-RIGHT: #6595d6 1px solid; BORDER-TOP: #6595d6 0px solid; BORDER-LEFT: #6595d6 1px solid; WIDTH: 97%; BORDER-BOTTOM: #6595d6 0px solid" cellSpacing=0 cellPadding=0 align=center>
+<TBODY>
+<TR>
+<TD width="100%">
+<TABLE cellSpacing=0 cellPadding=0 width="100%" align=center border=0>
+<TBODY>
+<TR>
+<TD class=TopDarkNav height=9></TD></TR>
+<TR>
+<TD class=TopLighNav2 height=70>
+<TABLE width="100%" align=center border=0>
+<TBODY>
+<TR>
+<TD align=left width="25%"><A href="http://www.pigtwo.com/"><IMG src="http://www.pigtwo.com/forum/images/LOGO.GIF" border=0></A></TD>
+<TD align=middle width="65%">
+
+
+
+
+
+
+<TABLE height=31 cellSpacing=0 cellPadding=0 width=88 background="http://www.pigtwo.com/count/images/stat_counter.gif" border=0>
+<TBODY>
+<TR>
+<TD width=24 height=5></TD>
+<TD width=57 height=5></TD>
+<TD width=7 height=5></TD></TR>
+<TR>
+<TD height=16></TD>
+<TD vAlign=top align=middle height=16>
+<MARQUEE style="FONT-SIZE: 12px; LINE-HEIGHT: 15px" scrollAmount=3 scrollDelay=100 behavior=loop><A style="COLOR: #ffffff; TEXT-DECORATION: none" href="http://www.pigtwo.com/count/index.asp" target=_blank><FONT face="Arial, Verdana, san-serif" color=#407526>总访问量: 43278 &nbsp;今日访问: 295 &nbsp;昨日访问: 449 &nbsp;您的访量: </FONT></A></MARQUEE></TD>
+<TD height=16></TD></TR>
+<TR>
+<TD height=10></TD>
+<TD height=10></TD>
+<TD height=10></TD></TR></TBODY></TABLE></TD>
+<TD style="LINE-HEIGHT: 15pt" align=right width="10%"><A href="#"><SPAN style="CURSOR: hand" onclick="">加入收藏</SPAN></A> <BR><A href="http://www.pigtwo.com/forum/mailto:v_lucky@163.com">联系我们</A> <BR><A href="http://www.pigtwo.com/forum/boardhelp.asp">新手上路</A> </TD></TD></TR></TBODY></TABLE></TD></TR>
+<TR>
+<TD class=TopLighNav height=9></TD></TR>
+<TR>
+<TD class=TopLighNav1 vAlign=center height=22>&nbsp;&nbsp; <A href="http://www.pigtwo.com/forum/cookies.asp?action=online&amp;userid=42">上线</A> <IMG src="http://www.pigtwo.com/forum/pic/navspacer.gif" align=absMiddle> <A href="http://www.pigtwo.com/forum/login.asp">重登陆</A> <IMG src="http://www.pigtwo.com/forum/pic/navspacer.gif" align=absMiddle> <A href="http://www.pigtwo.com/forum/usermanager.asp">用户控制面板</A> <IMG src="http://www.pigtwo.com/forum/pic/navspacer.gif" align=absMiddle> <A href="http://www.pigtwo.com/forum/query.asp?boardid=14">搜索</A> <IMG src="http://www.pigtwo.com/forum/pic/navspacer.gif" align=absMiddle> <A href="http://www.pigtwo.com/forum/boardstat.asp?boardid=14">论坛状态</A> <IMG src="http://www.pigtwo.com/forum/pic/navspacer.gif" align=absMiddle> <A href="http://www.pigtwo.com/forum/boardhelp.asp?boardid=14">帮助</A> <IMG src="http://www.pigtwo.com/forum/pic/navspacer.gif" align=absMiddle> <A href="http://www.pigtwo.com/forum/logout.asp">退出</A> </TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE><BR>
+<TABLE cellSpacing=1 cellPadding=3 width="97%" align=center border=0>
+<TBODY>
+<TR>
+<TD width="65%">&gt;&gt; 欢迎 <B>ugvanxk</B> [ <A href="">发短信</A> :: <A href="http://www.pigtwo.com/forum/topicwithme.asp?s=2">发表的主题</A> :: <A href="http://www.pigtwo.com/forum/topicwithme.asp?s=1">参与的主题</A> :: <A href="http://www.pigtwo.com/forum/dispuser.asp?id=42&amp;boardid=14&amp;action=permission">我能做什么</A> ] </TD>
+<TD align=right width="35%"><IMG src="http://www.pigtwo.com/forum/pic/msg_no_new_bar.gif"> <A href="http://www.pigtwo.com/forum/usersms.asp?action=inbox">我的收件箱</A> (<FONT color=gray>0 新</FONT>) </TD></TR></TBODY></TABLE>
+<TABLE class=tableBorder2 cellSpacing=1 cellPadding=3 align=center>
+<TBODY>
+<TR>
+<TD vAlign=center height=25><IMG src="http://www.pigtwo.com/forum/pic/Forum_nav.gif" align=absMiddle> <A href="http://www.pigtwo.com/forum/index.asp">周周共享论坛</A> → <A href="http://www.pigtwo.com/forum/list.asp?boardid=14">『数 据 库』</A> → 浏览：sp_IndexKeyText <A name=top></A></TD></TD></TR></TBODY></TABLE><BR>
+<TABLE cellSpacing=0 cellPadding=0 width="97%" align=center border=0>
+<TBODY>
+<TR>
+<TD vAlign=center align=left width="30%">&nbsp; <A href="http://www.pigtwo.com/forum/announce.asp?BoardID=14"><IMG alt=发表一个新主题 src="http://www.pigtwo.com/forum/pic/post.gif" border=0></A>&nbsp; <A href="http://www.pigtwo.com/forum/vote.asp?BoardID=14"><IMG alt="" src="http://www.pigtwo.com/forum/pic/newpoll.gif" border=0 dypop="发表一个新投票"></A>&nbsp; <A href="http://www.pigtwo.com/forum/reannounce.asp?BoardID=14&amp;id=489&amp;star=1"><IMG alt=回复主题 src="http://www.pigtwo.com/forum/pic/newreply1.gif" border=0></A> </TD>
+<TD vAlign=center align=right width="70%">您是本帖的第 <B>4</B> 个阅读者<A href="http://www.pigtwo.com/forum/go.asp?BoardID=14&amp;sid=489"><IMG height=12 alt=浏览上一篇主题 src="http://www.pigtwo.com/forum/pic/prethread.gif" width=52 border=0></A>&nbsp; <A href=""><IMG height=12 alt=刷新本主题 src="http://www.pigtwo.com/forum/pic/refresh.gif" width=40 border=0></A> &nbsp; <A href="http://www.pigtwo.com/forum/?BoardID=14&amp;replyID=489&amp;id=489&amp;star=1&amp;skin=1"><IMG height=12 alt=树形显示贴子 src="http://www.pigtwo.com/forum/pic/treeview.gif" width=40 border=0></A>　<A href="http://www.pigtwo.com/forum/go.asp?BoardID=14&amp;sid=489&amp;action=next"><IMG height=12 alt=浏览下一篇主题 src="http://www.pigtwo.com/forum/pic/nextthread.gif" width=52 border=0></A> </TD></TR></TBODY></TABLE>
+<TABLE class=tableborder1 cellSpacing=1 cellPadding=0 align=center>
+<TBODY>
+<TR align=middle>
+<TD vAlign=center align=left width="100%" height=25>
+<TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+<TBODY>
+<TR>
+<TH vAlign=center align=left width="73%" height=25>&nbsp;* 贴子主题</B>： sp_IndexKeyText</TH>
+<TH align=right width="37%"><A onclick="" href="#"><IMG height=16 alt=保存该页为文件 src="http://www.pigtwo.com/forum/pic/saveas.gif" width=16 align=absMiddle border=0></A>&nbsp;
+</OBJECT><A href="http://www.pigtwo.com/forum/report.asp?BoardID=14&amp;id=489"><IMG alt=报告本帖给版主 src="http://www.pigtwo.com/forum/pic/report.gif" border=0></A>&nbsp; <A href="http://www.pigtwo.com/forum/printpage.asp?BoardID=14&amp;id=489"><IMG alt=显示可打印的版本 src="http://www.pigtwo.com/forum/pic/printpage.gif" border=0></A>&nbsp; <A href="http://www.pigtwo.com/forum/pag.asp?BoardID=14&amp;id=489"><IMG alt=把本贴打包邮递 src="http://www.pigtwo.com/forum/pic/pag.gif" border=0></A>&nbsp; <A href="http://www.pigtwo.com/forum/favadd.asp?BoardID=14&amp;id=489"><IMG alt=把本贴加入论坛收藏夹 src="http://www.pigtwo.com/forum/pic/fav_add.gif" border=0></A>&nbsp; <A href="http://www.pigtwo.com/forum/sendpage.asp?BoardID=14&amp;id=489"><IMG alt="" src="http://www.pigtwo.com/forum/pic/emailtofriend.gif" border=0 dypop="发送本页面给朋友"></A>&nbsp; <A href="#"><SPAN style="CURSOR: hand" onclick=""><IMG height=15 alt=把本贴加入IE收藏夹 src="http://www.pigtwo.com/forum/pic/fav_add1.gif" width=15 border=0></A>&nbsp; </SPAN></TH></TR></TBODY></TABLE></TD></TR></TBODY></TABLE>
+<TABLE class=tableborder1 style="TABLE-LAYOUT: fixed; WORD-BREAK: break-all" cellSpacing=1 cellPadding=5 align=center>
+<TBODY>
+<TR>
+<TD class=tablebody1 vAlign=top width=175>
+<TABLE cellSpacing=0 cellPadding=4 width="100%">
+<TBODY>
+<TR>
+<TD style="FILTER: glow(color=#9898BA,strength=2)" vAlign=center width=*>&nbsp;<A name=1037><FONT color=#990000><B>ugvanxk</B></FONT></A> </TD>
+<TD vAlign=center width=25><IMG alt=帅哥哟，在线，有人找我吗？ src="http://www.pigtwo.com/forum/pic/Male.gif"></TD>
+<TD vAlign=center width=16></TD></TR></TBODY></TABLE>&nbsp;&nbsp;<IMG height=32 src="http://www.pigtwo.com/forum/pic/Image1.gif" width=32><BR>&nbsp;&nbsp;<IMG src="http://www.pigtwo.com/forum/pic/level10.gif"><BR>&nbsp;&nbsp;等级：版主<BR>&nbsp;&nbsp;文章：210<BR>&nbsp;&nbsp;积分：548<BR>&nbsp;&nbsp;注册：2002-11-2<BR></TD>
+<TD class=tablebody1 vAlign=top width=*>
+<TABLE width="100%">
+<TBODY>
+<TR>
+<TD width=*><A href=""><IMG alt="" src="http://www.pigtwo.com/forum/pic/message.gif" border=0 dypop="给ugvanxk发送一个短消息"></A>&nbsp;<A href="http://www.pigtwo.com/forum/friendlist.asp?action=addF&amp;myFriend=ugvanxk" target=_blank><IMG alt=把ugvanxk加入好友 src="http://www.pigtwo.com/forum/pic/friend.gif" border=0></A>&nbsp;<A href="http://www.pigtwo.com/forum/dispuser.asp?id=42" target=_blank><IMG alt=查看ugvanxk的个人资料 src="http://www.pigtwo.com/forum/pic/profile.gif" border=0></A>&nbsp;<A href="http://www.pigtwo.com/forum/queryResult.asp?stype=1&amp;nSearch=3&amp;keyword=ugvanxk&amp;BoardID=14&amp;SearchDate=ALL" target=_blank><IMG alt="搜索ugvanxk在『数 据 库』的所有贴子" src="http://www.pigtwo.com/forum/pic/find.gif" border=0></A>&nbsp;<A href="http://www.pigtwo.com/forum/mailto:jsqmail@163.com"><IMG alt=点击这里发送电邮给ugvanxk src="http://www.pigtwo.com/forum/pic/email.gif" border=0></A>&nbsp;<A href="http://www.pigtwo.com/forum/reannounce.asp?BoardID=14&amp;replyID=1037&amp;id=489&amp;star=1&amp;reply=true"><IMG alt=引用回复这个贴子 src="http://www.pigtwo.com/forum/pic/reply.gif" border=0></A>&nbsp;<A href="http://www.pigtwo.com/forum/reannounce.asp?BoardID=14&amp;replyID=1037&amp;id=489&amp;star=1"><IMG alt=回复这个贴子 src="http://www.pigtwo.com/forum/pic/reply_a.gif" border=0></A></TD>
+<TD width=50><B>楼顶</B></TD></TR>
+<TR>
+<TD bgColor=#6595d6 colSpan=2 height=1></TD></TR></TBODY></TABLE>
+<BLOCKQUOTE><IMG alt=发贴心情 src="http://www.pigtwo.com/forum/face/face1.gif" border=0>&nbsp;<FONT style="FONT-SIZE: 9pt; LINE-HEIGHT: 15pt"><B>sp_IndexKeyText</B><BR>sp_IndexKeyText.sql
+<P></P>
+<P></P>
+<P><BR>This&nbsp;stored&nbsp;procedure&nbsp;will&nbsp;script&nbsp;all&nbsp;indexes,&nbsp;primary&nbsp;keys&nbsp;and&nbsp;foreign&nbsp;keys.&nbsp;It's&nbsp;useful&nbsp;as&nbsp;a&nbsp;documentation&nbsp;tool&nbsp;and&nbsp;also&nbsp;for&nbsp;being&nbsp;able&nbsp;to&nbsp;generate&nbsp;scripts&nbsp;that&nbsp;can&nbsp;be&nbsp;used&nbsp;while&nbsp;making&nbsp;modifications&nbsp;that&nbsp;require&nbsp;referential&nbsp;integrity&nbsp;to&nbsp;be&nbsp;removed.&nbsp;A&nbsp;full&nbsp;explanation&nbsp;of&nbsp;the&nbsp;switches&nbsp;required&nbsp;to&nbsp;generate&nbsp;the&nbsp;various&nbsp;output&nbsp;options&nbsp;are&nbsp;included&nbsp;in&nbsp;the&nbsp;script.&nbsp;</P>
+<P>Updated&nbsp;on&nbsp;3/4/02&nbsp;with&nbsp;fixes&nbsp;for&nbsp;a&nbsp;couple&nbsp;of&nbsp;bugs&nbsp;and&nbsp;a&nbsp;minor&nbsp;alteration&nbsp;of&nbsp;the&nbsp;functionality.&nbsp;</P>
+<P>Author:&nbsp;John&nbsp;Thorpe&nbsp;</P>
+<P><BR></FONT></P></BLOCKQUOTE></TD></TR>
+<TR>
+<TD class=tablebody1 vAlign=center align=middle width=175><A href="http://www.pigtwo.com/forum/look_ip.asp?boardid=14&amp;userid=42&amp;ip=61.48.16.31&amp;action=lookip" target=_blank><IMG height=15 alt="点击查看用户来源及管理<br>发贴IP：61.48.16.31" src="http://www.pigtwo.com/forum/pic/ip.gif" width=13 align=absMiddle border=0></A> 2003-6-3 18:20:18</TD>
+<TD class=tablebody1 vAlign=center width=*>
+<TABLE cellSpacing=0 cellPadding=0 width="100%">
+<TBODY>
+<TR>
+<TD vAlign=center align=left><A href="http://www.pigtwo.com/forum/editannounce.asp?BoardID=14&amp;replyID=1037&amp;id=489&amp;star=1"><IMG alt="" src="http://www.pigtwo.com/forum/pic/edit.gif" align=absMiddle border=0 dypop="编辑这个贴子"></A>&nbsp;&nbsp;<A title=同意该帖观点，给他一朵鲜花，将消耗您5点金钱 href="http://www.pigtwo.com/forum/postagree.asp?boardid=14&amp;id=489&amp;isagree=1">鲜花</A>(<FONT color=#ff0000>0</FONT>)&nbsp;&nbsp;<A title=不同意该帖观点，给他一个鸡蛋，将消耗您5点金钱 href="http://www.pigtwo.com/forum/postagree.asp?boardid=14&amp;id=489&amp;isagree=2">鸡蛋</A>(<FONT color=#ff0000>0</FONT>)</TD>
+<TD vAlign=bottom align=right width=110 nowarp><A title=复制单个贴子到别的版面 href="http://www.pigtwo.com/forum/admin_postings.asp?action=复制&amp;BoardID=14&amp;ID=489&amp;replyID=1037"><IMG src="http://www.pigtwo.com/forum/pic/copy.gif" border=0></A>&nbsp;<A title=精华 href="http://www.pigtwo.com/forum/admin_postings.asp?action=精华&amp;BoardID=14&amp;ID=489&amp;replyID=1037"><IMG src="http://www.pigtwo.com/forum/pic/jing.gif" border=0></A></TD>
+<TD vAlign=bottom align=right width=4></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE>
+<TABLE class=tableborder1 style="TABLE-LAYOUT: fixed; WORD-BREAK: break-all" cellSpacing=1 cellPadding=5 align=center>
+<TBODY>
+<TR>
+<TD class=tablebody2 vAlign=top width=175>
+<TABLE cellSpacing=0 cellPadding=4 width="100%">
+<TBODY>
+<TR>
+<TD style="FILTER: glow(color=#9898BA,strength=2)" vAlign=center width=*>&nbsp;<A name=1038><FONT color=#990000><B>ugvanxk</B></FONT></A> </TD>
+<TD vAlign=center width=25><IMG alt=帅哥哟，在线，有人找我吗？ src="http://www.pigtwo.com/forum/pic/Male.gif"></TD>
+<TD vAlign=center width=16></TD></TR></TBODY></TABLE>&nbsp;&nbsp;<IMG height=32 src="http://www.pigtwo.com/forum/pic/Image1.gif" width=32><BR>&nbsp;&nbsp;<IMG src="http://www.pigtwo.com/forum/pic/level10.gif"><BR>&nbsp;&nbsp;等级：版主<BR>&nbsp;&nbsp;文章：210<BR>&nbsp;&nbsp;积分：548<BR>&nbsp;&nbsp;注册：2002-11-2<BR></TD>
+<TD class=tablebody2 vAlign=top width=*>
+<TABLE width="100%">
+<TBODY>
+<TR>
+<TD width=*><A href=""><IMG alt="" src="http://www.pigtwo.com/forum/pic/message.gif" border=0 dypop="给ugvanxk发送一个短消息"></A>&nbsp;<A href="http://www.pigtwo.com/forum/friendlist.asp?action=addF&amp;myFriend=ugvanxk" target=_blank><IMG alt=把ugvanxk加入好友 src="http://www.pigtwo.com/forum/pic/friend.gif" border=0></A>&nbsp;<A href="http://www.pigtwo.com/forum/dispuser.asp?id=42" target=_blank><IMG alt="" src="http://www.pigtwo.com/forum/pic/profile.gif" border=0 dypop="查看ugvanxk的个人资料"></A>&nbsp;<A href="http://www.pigtwo.com/forum/queryResult.asp?stype=1&amp;nSearch=3&amp;keyword=ugvanxk&amp;BoardID=14&amp;SearchDate=ALL" target=_blank><IMG alt="搜索ugvanxk在『数 据 库』的所有贴子" src="http://www.pigtwo.com/forum/pic/find.gif" border=0></A>&nbsp;<A href="http://www.pigtwo.com/forum/mailto:jsqmail@163.com"><IMG alt=点击这里发送电邮给ugvanxk src="http://www.pigtwo.com/forum/pic/email.gif" border=0></A>&nbsp;<A href="http://www.pigtwo.com/forum/reannounce.asp?BoardID=14&amp;replyID=1038&amp;id=489&amp;star=1&amp;reply=true"><IMG alt=引用回复这个贴子 src="http://www.pigtwo.com/forum/pic/reply.gif" border=0></A>&nbsp;<A href="http://www.pigtwo.com/forum/reannounce.asp?BoardID=14&amp;replyID=1038&amp;id=489&amp;star=1"><IMG alt=回复这个贴子 src="http://www.pigtwo.com/forum/pic/reply_a.gif" border=0></A></TD>
+<TD width=50><B>第<FONT color=#ff0000>2</FONT>楼</B></TD></TR>
+<TR>
+<TD bgColor=#6595d6 colSpan=2 height=1></TD></TR></TBODY></TABLE>
+<BLOCKQUOTE><IMG alt=发贴心情 src="http://www.pigtwo.com/forum/face/face0.gif" border=0>&nbsp;<FONT style="FONT-SIZE: 9pt; LINE-HEIGHT: 15pt"><B></B><BR>/*<BR>***&nbsp;Karl&nbsp;Mortimer,&nbsp;John&nbsp;Thorpe<BR>*/<BR>--&nbsp;&nbsp;Tested&nbsp;on&nbsp;SQL&nbsp;SERVER&nbsp;7.0&nbsp;&amp;&nbsp;2000<BR>--&nbsp;&nbsp;Supports&nbsp;upto&nbsp;16&nbsp;column&nbsp;compound&nbsp;keys<BR>--<BR>--&nbsp;&nbsp;procedure&nbsp;to&nbsp;create&nbsp;'create&nbsp;index...'&nbsp;statements&nbsp;and&nbsp;'drop&nbsp;index...'&nbsp;statements&nbsp;for&nbsp;a&nbsp;given&nbsp;table<BR>--&nbsp;&nbsp;option&nbsp;to&nbsp;include&nbsp;or&nbsp;exclude&nbsp;Primary&nbsp;keys&nbsp;and&nbsp;create&nbsp;'alter&nbsp;table...'&nbsp;statements<BR>--&nbsp;&nbsp;option&nbsp;to&nbsp;include&nbsp;or&nbsp;exclude&nbsp;Foreign&nbsp;Keys&nbsp;and&nbsp;create&nbsp;'alter&nbsp;table...'&nbsp;statements<BR>--&nbsp;&nbsp;excludes&nbsp;unique&nbsp;constraints&nbsp;(as&nbsp;these&nbsp;do&nbsp;not&nbsp;include&nbsp;indexing)&nbsp;and&nbsp;will&nbsp;not&nbsp;include<BR>--&nbsp;&nbsp;sorted_data&nbsp;and&nbsp;sorted_data_reorg&nbsp;parameters&nbsp;to&nbsp;the&nbsp;statement<BR>--&nbsp;&nbsp;as&nbsp;they&nbsp;must&nbsp;be&nbsp;specified&nbsp;manually.&nbsp;&nbsp;This&nbsp;means&nbsp;that&nbsp;if&nbsp;data&nbsp;needs<BR>--&nbsp;&nbsp;to&nbsp;be&nbsp;sorted&nbsp;when&nbsp;the&nbsp;index&nbsp;is&nbsp;put&nbsp;on,&nbsp;a&nbsp;dbcc&nbsp;reindex&nbsp;must&nbsp;be<BR>--&nbsp;&nbsp;executed&nbsp;for&nbsp;that&nbsp;table&nbsp;afterwards&nbsp;with&nbsp;the&nbsp;sorted_data&nbsp;/&nbsp;sorted_data_reorg<BR>--&nbsp;&nbsp;parameters&nbsp;correctly&nbsp;set<BR>--<BR>if&nbsp;exists&nbsp;(select&nbsp;*&nbsp;from&nbsp;sysobjects&nbsp;where&nbsp;id&nbsp;=&nbsp;object_id('dbo.sp_IndexKeyText')&nbsp;and&nbsp;sysstat&nbsp;&amp;&nbsp;0xf&nbsp;=&nbsp;4)<BR>&nbsp;&nbsp;&nbsp;&nbsp;drop&nbsp;procedure&nbsp;dbo.sp_IndexKeyText<BR>GO
+<P></P>
+<P>create&nbsp;procedure&nbsp;sp_IndexKeyText</P>
+<P>@Options&nbsp;tinyint&nbsp;=&nbsp;25,&nbsp;--&nbsp;bitmap&nbsp;of&nbsp;options.&nbsp;First&nbsp;bit&nbsp;determines&nbsp;whether&nbsp;indexes&nbsp;are&nbsp;included<BR>&nbsp;&nbsp;&nbsp;--&nbsp;Second&nbsp;bit&nbsp;determines&nbsp;whether&nbsp;primary&nbsp;keys&nbsp;are&nbsp;included<BR>&nbsp;&nbsp;&nbsp;--&nbsp;Third&nbsp;bit&nbsp;determines&nbsp;whether&nbsp;foreign&nbsp;keys&nbsp;are&nbsp;included&nbsp;<BR>&nbsp;&nbsp;&nbsp;--&nbsp;Fourth&nbsp;bit&nbsp;determines&nbsp;whether&nbsp;drop&nbsp;statements&nbsp;are&nbsp;scripted<BR>&nbsp;&nbsp;&nbsp;--&nbsp;Fifth&nbsp;bit&nbsp;determines&nbsp;whether&nbsp;create&nbsp;statements&nbsp;are&nbsp;scripted<BR>&nbsp;&nbsp;&nbsp;--&nbsp;Default&nbsp;bit&nbsp;1&nbsp;true&nbsp;for&nbsp;indexes&nbsp;only,&nbsp;bits&nbsp;4&nbsp;and&nbsp;5&nbsp;true&nbsp;for&nbsp;both&nbsp;to&nbsp;be&nbsp;scripted.<BR>@Tablename&nbsp;VARCHAR(50)&nbsp;=&nbsp;NULL&nbsp;--optional&nbsp;tablename&nbsp;to&nbsp;drop&nbsp;indexes&nbsp;on&nbsp;a&nbsp;given&nbsp;table</P>
+<P><BR>as</P>
+<P>set&nbsp;nocount&nbsp;on</P>
+<P>if&nbsp;@Options&nbsp;&amp;&nbsp;8&nbsp;&lt;&gt;&nbsp;8&nbsp;AND&nbsp;@Options&nbsp;&amp;&nbsp;16&nbsp;&lt;&gt;&nbsp;16&nbsp;--Both&nbsp;Create&nbsp;and&nbsp;Drop&nbsp;script&nbsp;options&nbsp;turned&nbsp;OFF<BR>begin<BR>&nbsp;RAISERROR('Both&nbsp;drop&nbsp;and&nbsp;create&nbsp;scripting&nbsp;switched&nbsp;off,&nbsp;no&nbsp;output&nbsp;would&nbsp;be&nbsp;produced',10,1)<BR>&nbsp;RETURN<BR>end</P>
+<P>if&nbsp;@options&nbsp;=&nbsp;0<BR>begin<BR>&nbsp;RAISERROR('All&nbsp;Index&nbsp;options&nbsp;turned&nbsp;off&nbsp;-&nbsp;no&nbsp;output&nbsp;will&nbsp;be&nbsp;produced',10,1)<BR>&nbsp;RETURN<BR>end</P>
+<P>if&nbsp;@Tablename&nbsp;is&nbsp;not&nbsp;null<BR>and&nbsp;@Tablename&nbsp;not&nbsp;in&nbsp;(select&nbsp;name&nbsp;from&nbsp;sysobjects&nbsp;where&nbsp;type&nbsp;=&nbsp;'U')<BR>begin<BR>&nbsp;RAISERROR('Invalid&nbsp;value&nbsp;given&nbsp;for&nbsp;@Tablename&nbsp;-&nbsp;table&nbsp;does&nbsp;not&nbsp;exist&nbsp;in&nbsp;current&nbsp;database',10,1)<BR>&nbsp;RETURN<BR>end</P>
+<P>declare&nbsp;@objid&nbsp;int&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/*&nbsp;the&nbsp;object&nbsp;id&nbsp;of&nbsp;the&nbsp;table&nbsp;*/<BR>declare&nbsp;@indid&nbsp;int&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/*&nbsp;the&nbsp;index&nbsp;id&nbsp;of&nbsp;an&nbsp;index&nbsp;*/<BR>declare&nbsp;@keys&nbsp;varchar(200)&nbsp;&nbsp;&nbsp;&nbsp;/*&nbsp;string&nbsp;to&nbsp;build&nbsp;up&nbsp;index&nbsp;key&nbsp;in&nbsp;*/<BR>declare&nbsp;@inddesc&nbsp;varchar(68)&nbsp;&nbsp;&nbsp;&nbsp;/*&nbsp;string&nbsp;to&nbsp;build&nbsp;up&nbsp;index&nbsp;desc&nbsp;in&nbsp;*/<BR>declare&nbsp;@dbname&nbsp;varchar(30),<BR>&nbsp;@primary&nbsp;BIT,<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@unique&nbsp;BIT,<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@clustered&nbsp;BIT,<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@fillfactor&nbsp;TINYINT,<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@ignoredupkey&nbsp;BIT,<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@allowduprow&nbsp;BIT,<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@ignoreduprow&nbsp;BIT,<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@location&nbsp;sysname,<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@index_name&nbsp;VARCHAR(30),<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@with&nbsp;VARCHAR(100),<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@IndexString&nbsp;VARCHAR(255),<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@objname&nbsp;VARCHAR(50),<BR>&nbsp;@Title&nbsp;varchar(30),<BR>&nbsp;@empty&nbsp;varchar(1),<BR>&nbsp;@groupid&nbsp;smallint,<BR>&nbsp;@ExecString&nbsp;varchar(200)</P>
+<P>select&nbsp;@empty&nbsp;=&nbsp;''&nbsp;--&nbsp;Empty&nbsp;string&nbsp;for&nbsp;concatenation</P>
+<P>create&nbsp;table&nbsp;#sysfilegroups(<BR>&nbsp;&nbsp;groupid&nbsp;smallint&nbsp;not&nbsp;null,<BR>&nbsp;&nbsp;allocpolicy&nbsp;smallint&nbsp;not&nbsp;null,<BR>&nbsp;&nbsp;status&nbsp;int&nbsp;not&nbsp;null,<BR>&nbsp;&nbsp;groupname&nbsp;sysname&nbsp;not&nbsp;null)</P>
+<P>select&nbsp;@ExecString&nbsp;=&nbsp;'select&nbsp;*&nbsp;from&nbsp;'+DB_NAME(0)+'..sysfilegroups'</P>
+<P>insert&nbsp;into&nbsp;#sysfilegroups<BR>exec&nbsp;(@ExecString)</P>
+<P>IF&nbsp;@Tablename&nbsp;is&nbsp;NULL<BR>&nbsp;&nbsp;&nbsp;&nbsp;BEGIN</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DECLARE&nbsp;CurTables&nbsp;CURSOR&nbsp;FOR<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SELECT&nbsp;name<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FROM&nbsp;sysobjects<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WHERE&nbsp;type&nbsp;=&nbsp;'U'<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ORDER&nbsp;BY&nbsp;name</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;END<BR>ELSE<BR>&nbsp;&nbsp;&nbsp;&nbsp;BEGIN</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DECLARE&nbsp;CurTables&nbsp;CURSOR&nbsp;FOR<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SELECT&nbsp;name<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FROM&nbsp;sysobjects<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WHERE&nbsp;type&nbsp;=&nbsp;'U'<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AND&nbsp;name&nbsp;=&nbsp;@Tablename<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ORDER&nbsp;BY&nbsp;name</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;END</P>
+<P>OPEN&nbsp;CurTables<BR>FETCH&nbsp;NEXT&nbsp;FROM&nbsp;CurTables&nbsp;INTO&nbsp;@objname</P>
+<P>CREATE&nbsp;TABLE&nbsp;#CREATE&nbsp;(description&nbsp;VARCHAR(255))</P>
+<P>CREATE&nbsp;TABLE&nbsp;#DROP&nbsp;(description&nbsp;VARCHAR(255))</P>
+<P>WHILE&nbsp;@@FETCH_STATUS&nbsp;=&nbsp;0<BR>BEGIN<BR>&nbsp;&nbsp;&nbsp;&nbsp;/*<BR>&nbsp;&nbsp;&nbsp;&nbsp;**&nbsp;&nbsp;Check&nbsp;to&nbsp;see&nbsp;the&nbsp;the&nbsp;table&nbsp;exists&nbsp;and&nbsp;initialize&nbsp;@objid.<BR>&nbsp;&nbsp;&nbsp;&nbsp;*/<BR>&nbsp;&nbsp;&nbsp;&nbsp;select&nbsp;@objid&nbsp;=&nbsp;object_id(@objname)</P>
+<P><BR>&nbsp;&nbsp;&nbsp;&nbsp;/*<BR>&nbsp;&nbsp;&nbsp;&nbsp;**&nbsp;&nbsp;Table&nbsp;doesn't&nbsp;exist&nbsp;so&nbsp;return.<BR>&nbsp;&nbsp;&nbsp;&nbsp;*/<BR>&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;@objid&nbsp;is&nbsp;NULL<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;begin<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GOTO&nbsp;NEXT_TABLE<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end<BR>&nbsp;&nbsp;&nbsp;&nbsp;</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;/*<BR>&nbsp;&nbsp;&nbsp;&nbsp;**&nbsp;&nbsp;See&nbsp;if&nbsp;the&nbsp;object&nbsp;has&nbsp;any&nbsp;indexes.<BR>&nbsp;&nbsp;&nbsp;&nbsp;**&nbsp;&nbsp;Since&nbsp;there&nbsp;may&nbsp;be&nbsp;more&nbsp;than&nbsp;one&nbsp;entry&nbsp;in&nbsp;sysindexes&nbsp;for&nbsp;the&nbsp;object,<BR>&nbsp;&nbsp;&nbsp;&nbsp;**&nbsp;&nbsp;this&nbsp;select&nbsp;will&nbsp;set&nbsp;@indid&nbsp;to&nbsp;the&nbsp;index&nbsp;id&nbsp;of&nbsp;the&nbsp;first&nbsp;index.<BR>&nbsp;&nbsp;&nbsp;&nbsp;*/<BR>&nbsp;&nbsp;&nbsp;&nbsp;select&nbsp;@indid&nbsp;=&nbsp;min(indid)&nbsp;from&nbsp;sysindexes<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;where&nbsp;id&nbsp;=&nbsp;@objid<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;and&nbsp;indid&nbsp;&gt;&nbsp;0<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;and&nbsp;indid&nbsp;&lt;&nbsp;255</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;/*<BR>&nbsp;&nbsp;&nbsp;&nbsp;**&nbsp;&nbsp;If&nbsp;no&nbsp;indexes,&nbsp;return.<BR>&nbsp;&nbsp;&nbsp;&nbsp;*/<BR>&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;@indid&nbsp;is&nbsp;NULL<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;begin<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GOTO&nbsp;NEXT_TABLE<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end<BR>&nbsp;&nbsp;&nbsp;&nbsp;</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;set&nbsp;nocount&nbsp;on</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;/*<BR>&nbsp;&nbsp;&nbsp;&nbsp;**&nbsp;&nbsp;Now&nbsp;check&nbsp;out&nbsp;each&nbsp;index&nbsp;and&nbsp;figure&nbsp;out&nbsp;its&nbsp;type&nbsp;and&nbsp;keys&nbsp;<BR>&nbsp;&nbsp;&nbsp;&nbsp;*/</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;while&nbsp;@indid&nbsp;IS&nbsp;NOT&nbsp;NULL<BR>&nbsp;&nbsp;&nbsp;&nbsp;begin<BR>&nbsp;select&nbsp;@primary&nbsp;=&nbsp;0</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/*<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**&nbsp;See&nbsp;if&nbsp;the&nbsp;index&nbsp;is&nbsp;primary&nbsp;key&nbsp;constraint&nbsp;(0x800).<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;exists&nbsp;(select&nbsp;*<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;from&nbsp;master.dbo.spt_values&nbsp;v,&nbsp;sysindexes&nbsp;i<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;where&nbsp;i.status&nbsp;&amp;&nbsp;v.number&nbsp;=&nbsp;v.number<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;and&nbsp;v.type&nbsp;=&nbsp;'I'<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;and&nbsp;v.number&nbsp;=&nbsp;2048<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;and&nbsp;i.id&nbsp;=&nbsp;@objid<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;and&nbsp;i.indid&nbsp;=&nbsp;@indid)<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BEGIN<BR>&nbsp;&nbsp;if&nbsp;@Options&nbsp;&amp;&nbsp;2&nbsp;=&nbsp;2&nbsp;--&nbsp;Primary&nbsp;Key&nbsp;Flag&nbsp;Set&nbsp;&nbsp;&nbsp;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--&nbsp;if&nbsp;primary&nbsp;key,&nbsp;set&nbsp;flag<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;select&nbsp;@primary&nbsp;=&nbsp;1<BR>&nbsp;&nbsp;else&nbsp;GOTO&nbsp;Ignore_index<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;END</P>
+<P>&nbsp;if&nbsp;@primary&nbsp;=&nbsp;0&nbsp;and&nbsp;@Options&nbsp;&amp;&nbsp;1&nbsp;&lt;&gt;&nbsp;1&nbsp;GOTO&nbsp;Ignore_index</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/*<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**&nbsp;&nbsp;See&nbsp;if&nbsp;the&nbsp;index&nbsp;is&nbsp;unique&nbsp;key&nbsp;constraint&nbsp;(0x1000).<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;exists&nbsp;(select&nbsp;*&nbsp;from&nbsp;master.dbo.spt_values&nbsp;v,&nbsp;sysindexes&nbsp;i<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;where&nbsp;i.status&nbsp;&amp;&nbsp;v.number&nbsp;=&nbsp;v.number<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;and&nbsp;v.type&nbsp;=&nbsp;'I'<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;and&nbsp;v.number&nbsp;=&nbsp;4096<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;and&nbsp;i.id&nbsp;=&nbsp;@objid<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;and&nbsp;i.indid&nbsp;=&nbsp;@indid)<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BEGIN<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--&nbsp;if&nbsp;Unique&nbsp;key,&nbsp;ignore&nbsp;index<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GOTO&nbsp;Ignore_index<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;END</P>
+<P><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/*<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**&nbsp;&nbsp;First&nbsp;we'll&nbsp;figure&nbsp;out&nbsp;what&nbsp;the&nbsp;keys&nbsp;are.<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;declare&nbsp;@k&nbsp;int<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;declare&nbsp;@thiskey&nbsp;varchar(30)<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;declare&nbsp;@lastindid&nbsp;int</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;select&nbsp;@k&nbsp;=&nbsp;1</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;while&nbsp;@k&nbsp;&lt;=&nbsp;16<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;begin<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;select&nbsp;@thiskey&nbsp;=&nbsp;index_col(@objname,&nbsp;@indid,&nbsp;@k)</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;@thiskey&nbsp;is&nbsp;null<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;goto&nbsp;keysdone</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;@k&nbsp;=&nbsp;1<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;select&nbsp;@keys&nbsp;=&nbsp;'['+index_col(@objname,&nbsp;@indid,&nbsp;@k)+']'<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;select&nbsp;@keys&nbsp;=&nbsp;@keys&nbsp;+&nbsp;',&nbsp;['+index_col(@objname,&nbsp;@indid,&nbsp;@k)+']'</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/*<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**&nbsp;&nbsp;Increment&nbsp;@k&nbsp;so&nbsp;it&nbsp;will&nbsp;check&nbsp;for&nbsp;the&nbsp;next&nbsp;key.<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;select&nbsp;@k&nbsp;=&nbsp;@k&nbsp;+&nbsp;1</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end</P>
+<P><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/*<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**&nbsp;&nbsp;When&nbsp;we&nbsp;get&nbsp;here&nbsp;we&nbsp;now&nbsp;have&nbsp;all&nbsp;the&nbsp;keys.<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;keysdone:</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/*<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**&nbsp;&nbsp;Initialize&nbsp;the&nbsp;index&nbsp;description&nbsp;by&nbsp;figuring&nbsp;out&nbsp;if&nbsp;it's&nbsp;a<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**&nbsp;&nbsp;clustered&nbsp;or&nbsp;nonclustered&nbsp;index.<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;@indid&nbsp;=&nbsp;1<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;select&nbsp;@clustered&nbsp;=&nbsp;1&nbsp;--&nbsp;clustered</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;@indid&nbsp;&gt;&nbsp;1<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;select&nbsp;@clustered&nbsp;=&nbsp;0&nbsp;--&nbsp;non-clustered</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/*<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**&nbsp;&nbsp;Now&nbsp;we'll&nbsp;check&nbsp;out&nbsp;the&nbsp;status&nbsp;bits&nbsp;for&nbsp;this&nbsp;index&nbsp;and<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**&nbsp;&nbsp;build&nbsp;an&nbsp;english&nbsp;description&nbsp;from&nbsp;them.<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/*<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**&nbsp;&nbsp;See&nbsp;if&nbsp;the&nbsp;index&nbsp;is&nbsp;ignore_dupkey&nbsp;(0x01).<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;exists&nbsp;(select&nbsp;*<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;from&nbsp;master.dbo.spt_values&nbsp;v,&nbsp;sysindexes&nbsp;i<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;where&nbsp;i.status&nbsp;&amp;&nbsp;v.number&nbsp;=&nbsp;v.number<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;and&nbsp;v.type&nbsp;=&nbsp;'I'<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;and&nbsp;v.number&nbsp;=&nbsp;1<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;and&nbsp;i.id&nbsp;=&nbsp;@objid<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;and&nbsp;i.indid&nbsp;=&nbsp;@indid)<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BEGIN<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SELECT&nbsp;@ignoredupkey&nbsp;=&nbsp;1<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;END<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BEGIN<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SELECT&nbsp;@ignoredupkey&nbsp;=&nbsp;0<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;END</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/*<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**&nbsp;&nbsp;See&nbsp;if&nbsp;the&nbsp;index&nbsp;is&nbsp;unique&nbsp;(0x02).<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;exists&nbsp;(select&nbsp;*<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;from&nbsp;master.dbo.spt_values&nbsp;v,&nbsp;sysindexes&nbsp;i<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;where&nbsp;i.status&nbsp;&amp;&nbsp;v.number&nbsp;=&nbsp;v.number<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;and&nbsp;v.type&nbsp;=&nbsp;'I'<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;and&nbsp;v.number&nbsp;=&nbsp;2<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;and&nbsp;i.id&nbsp;=&nbsp;@objid<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;and&nbsp;i.indid&nbsp;=&nbsp;@indid)<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BEGIN<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SELECT&nbsp;@unique&nbsp;&nbsp;=&nbsp;1<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;END<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BEGIN<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SELECT&nbsp;@unique&nbsp;=&nbsp;0<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;END</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/*<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**&nbsp;&nbsp;Add&nbsp;the&nbsp;location&nbsp;of&nbsp;the&nbsp;data.<BR>&nbsp;*/<BR>&nbsp;&nbsp;&nbsp;&nbsp;<BR>&nbsp;select&nbsp;@location&nbsp;=&nbsp;fg.groupname&nbsp;from&nbsp;#sysfilegroups&nbsp;fg,&nbsp;sysindexes&nbsp;i&nbsp;&nbsp;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;where&nbsp;fg.groupid&nbsp;=&nbsp;i.groupid&nbsp;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;and&nbsp;i.id&nbsp;=&nbsp;@objid<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;and&nbsp;i.indid&nbsp;=&nbsp;@indid</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--&nbsp;get&nbsp;the&nbsp;index_name&nbsp;and&nbsp;fillfactor</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;select&nbsp;@index_name&nbsp;=&nbsp;name,<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@fillfactor&nbsp;=&nbsp;origfillfactor<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;from&nbsp;sysindexes<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;where&nbsp;id&nbsp;=&nbsp;@objid<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;and&nbsp;indid&nbsp;=&nbsp;@indid</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--&nbsp;set&nbsp;with&nbsp;clause<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SELECT&nbsp;@with&nbsp;=&nbsp;NULLIF('FILLFACTOR&nbsp;=&nbsp;'+CONVERT(VARCHAR,@fillfactor)+',',&nbsp;'FILLFACTOR&nbsp;=&nbsp;0,')</P>
+<P>&nbsp;select&nbsp;@with&nbsp;=&nbsp;case&nbsp;when&nbsp;@with&nbsp;is&nbsp;null&nbsp;then&nbsp;@empty&nbsp;else&nbsp;@with&nbsp;end<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+CASE&nbsp;@ignoredupkey<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WHEN&nbsp;1&nbsp;THEN&nbsp;'IGNORE_DUP_KEY&nbsp;'<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WHEN&nbsp;0&nbsp;THEN&nbsp;@empty<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;END</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--&nbsp;if&nbsp;@with&nbsp;clause&nbsp;contains&nbsp;anything&nbsp;add&nbsp;keyword&nbsp;'WITH'&nbsp;to&nbsp;beginning&nbsp;of&nbsp;string</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IF&nbsp;@with&nbsp;&lt;&gt;&nbsp;@empty<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BEGIN<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SELECT&nbsp;@with&nbsp;=&nbsp;'&nbsp;WITH&nbsp;'+@with<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;END</P>
+<P>&nbsp;if&nbsp;@primary&nbsp;=&nbsp;0<BR>&nbsp;begin<BR>&nbsp;&nbsp;select&nbsp;@IndexString&nbsp;=&nbsp;NULLIF('&nbsp;ON&nbsp;'+@Location,&nbsp;'&nbsp;ON&nbsp;PRIMARY')</P>
+<P></P>
+<P>&nbsp;&nbsp;select&nbsp;@IndexString&nbsp;=&nbsp;case&nbsp;when&nbsp;@IndexString&nbsp;is&nbsp;null&nbsp;then&nbsp;@empty&nbsp;else&nbsp;@IndexString&nbsp;end<BR>&nbsp;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--&nbsp;print&nbsp;create&nbsp;index&nbsp;statement&nbsp;out<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SELECT&nbsp;@IndexString&nbsp;=<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'CREATE&nbsp;'+CASE&nbsp;@unique<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WHEN&nbsp;1&nbsp;THEN&nbsp;'UNIQUE&nbsp;'<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WHEN&nbsp;0&nbsp;THEN&nbsp;@empty<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;END<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+CASE&nbsp;@clustered<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WHEN&nbsp;1&nbsp;THEN&nbsp;'&nbsp;CLUSTERED&nbsp;'<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WHEN&nbsp;0&nbsp;THEN&nbsp;'&nbsp;NONCLUSTERED&nbsp;'<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;END<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+'&nbsp;INDEX&nbsp;['+@index_name&nbsp;+']&nbsp;'<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+'ON&nbsp;['+@objname+']&nbsp;('+@keys+')'<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+case&nbsp;when&nbsp;@with&nbsp;is&nbsp;null&nbsp;then&nbsp;@empty&nbsp;else&nbsp;@with&nbsp;end<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+@Indexstring<BR>&nbsp;end<BR>&nbsp;else<BR>&nbsp;begin<BR>&nbsp;&nbsp;select&nbsp;@IndexString&nbsp;=&nbsp;NULLIF('ON&nbsp;'+@Location,&nbsp;'ON&nbsp;PRIMARY')</P>
+<P>&nbsp;&nbsp;select&nbsp;@IndexString&nbsp;=&nbsp;case&nbsp;when&nbsp;@IndexString&nbsp;is&nbsp;null&nbsp;then&nbsp;@empty&nbsp;else&nbsp;@IndexString&nbsp;end</P>
+<P>&nbsp;&nbsp;--&nbsp;print&nbsp;alter&nbsp;table&nbsp;statement&nbsp;out<BR>&nbsp;&nbsp;select&nbsp;@IndexString&nbsp;&nbsp;=<BR>&nbsp;&nbsp;&nbsp;'ALTER&nbsp;TABLE&nbsp;['+@objname+']&nbsp;ADD&nbsp;CONSTRAINT&nbsp;['+@index_name+']&nbsp;PRIMARY&nbsp;KEY&nbsp;'<BR>&nbsp;&nbsp;&nbsp;&nbsp;+CASE&nbsp;@clustered<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WHEN&nbsp;1&nbsp;THEN&nbsp;'CLUSTERED&nbsp;'<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WHEN&nbsp;0&nbsp;THEN&nbsp;'NONCLUSTERED&nbsp;'<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;END<BR>&nbsp;&nbsp;&nbsp;&nbsp;+'('+@keys+')'<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+case&nbsp;when&nbsp;@with&nbsp;is&nbsp;null&nbsp;then&nbsp;@empty&nbsp;else&nbsp;@with&nbsp;end<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+@IndexString<BR>&nbsp;end</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IF&nbsp;@Options&nbsp;&amp;&nbsp;16&nbsp;=&nbsp;16&nbsp;--create&nbsp;flag&nbsp;ON<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BEGIN<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SELECT&nbsp;@IndexString&nbsp;=&nbsp;@IndexString&nbsp;+&nbsp;CHAR(13)+'GO'+CHAR(13)+CHAR(13)</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;INSERT&nbsp;INTO&nbsp;#CREATE(description)&nbsp;valueS&nbsp;(@IndexString)<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;END</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IF&nbsp;@Options&nbsp;&amp;&nbsp;8&nbsp;=&nbsp;8&nbsp;--drop&nbsp;flag&nbsp;ON<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BEGIN<BR>&nbsp;&nbsp;if&nbsp;@primary&nbsp;=&nbsp;0<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SELECT&nbsp;@IndexString&nbsp;=&nbsp;'DROP&nbsp;index&nbsp;['+@objname+'].['+@index_name+']'<BR>&nbsp;&nbsp;else<BR>&nbsp;&nbsp;&nbsp;SELECT&nbsp;@IndexString&nbsp;=&nbsp;'ALTER&nbsp;TABLE&nbsp;['+@objname+']&nbsp;DROP&nbsp;CONSTRAINT&nbsp;['+@index_name+']'</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SELECT&nbsp;@IndexString&nbsp;=&nbsp;@IndexString&nbsp;+&nbsp;CHAR(13)+'GO'+CHAR(13)+CHAR(13)</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;INSERT&nbsp;INTO&nbsp;#DROP(description)&nbsp;valueS&nbsp;(@IndexString)<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;END</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ignore_index:</P>
+<P><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/*<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**&nbsp;&nbsp;Now&nbsp;move&nbsp;@indid&nbsp;to&nbsp;the&nbsp;next&nbsp;index.<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;select&nbsp;@lastindid&nbsp;=&nbsp;@indid<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;select&nbsp;@indid&nbsp;=&nbsp;NULL<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;select&nbsp;@indid&nbsp;=&nbsp;min(indid)<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;from&nbsp;sysindexes<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;where&nbsp;id&nbsp;=&nbsp;@objid<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;and&nbsp;indid&nbsp;&gt;&nbsp;@lastindid<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;and&nbsp;indid&nbsp;&lt;&nbsp;255<BR>&nbsp;&nbsp;&nbsp;&nbsp;end</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;<BR>&nbsp;&nbsp;&nbsp;&nbsp;NEXT_TABLE:</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;FETCH&nbsp;NEXT&nbsp;FROM&nbsp;CurTables&nbsp;INTO&nbsp;@objname</P>
+<P>END&nbsp;--&nbsp;WHILE&nbsp;loop</P>
+<P>/*<BR>&nbsp;**&nbsp;&nbsp;Now&nbsp;print&nbsp;out&nbsp;the&nbsp;contents&nbsp;of&nbsp;the&nbsp;temporary&nbsp;index&nbsp;table.<BR>&nbsp;*/<BR>SET&nbsp;nocount&nbsp;on<BR>IF&nbsp;@Options&nbsp;&amp;&nbsp;8&nbsp;=&nbsp;8&nbsp;--drop&nbsp;flag&nbsp;ON<BR>begin<BR>&nbsp;if&nbsp;@Options&nbsp;&amp;&nbsp;2&nbsp;=&nbsp;2&nbsp;AND&nbsp;@Options&nbsp;&amp;&nbsp;1&nbsp;=&nbsp;1&nbsp;SELECT&nbsp;description&nbsp;AS&nbsp;'Index&nbsp;/&nbsp;Primary&nbsp;Key&nbsp;Drops'&nbsp;FROM&nbsp;#drop<BR>&nbsp;if&nbsp;@Options&nbsp;&amp;&nbsp;2&nbsp;&lt;&gt;&nbsp;2&nbsp;AND&nbsp;@Options&nbsp;&amp;&nbsp;1&nbsp;=&nbsp;1&nbsp;SELECT&nbsp;description&nbsp;AS&nbsp;'Index&nbsp;Drops'&nbsp;FROM&nbsp;#drop<BR>&nbsp;if&nbsp;@Options&nbsp;&amp;&nbsp;2&nbsp;=&nbsp;2&nbsp;AND&nbsp;@Options&nbsp;&amp;&nbsp;1&nbsp;&lt;&gt;&nbsp;1&nbsp;SELECT&nbsp;description&nbsp;AS&nbsp;'Primary&nbsp;Key&nbsp;Drops'&nbsp;FROM&nbsp;#drop<BR>end</P>
+<P>IF&nbsp;@Options&nbsp;&amp;&nbsp;16&nbsp;=&nbsp;16&nbsp;--create&nbsp;flag&nbsp;ON<BR>begin<BR>&nbsp;if&nbsp;@Options&nbsp;&amp;&nbsp;2&nbsp;=&nbsp;2&nbsp;AND&nbsp;@Options&nbsp;&amp;&nbsp;1&nbsp;=&nbsp;1&nbsp;SELECT&nbsp;description&nbsp;AS&nbsp;'Index&nbsp;/&nbsp;Primary&nbsp;Key&nbsp;Creates'&nbsp;FROM&nbsp;#create<BR>&nbsp;if&nbsp;@Options&nbsp;&amp;&nbsp;2&nbsp;&lt;&gt;&nbsp;2&nbsp;AND&nbsp;@Options&nbsp;&amp;&nbsp;1&nbsp;=&nbsp;1&nbsp;SELECT&nbsp;description&nbsp;AS&nbsp;'Index&nbsp;Creates'&nbsp;FROM&nbsp;#create<BR>&nbsp;if&nbsp;@Options&nbsp;&amp;&nbsp;2&nbsp;=&nbsp;2&nbsp;AND&nbsp;@Options&nbsp;&amp;&nbsp;1&nbsp;&lt;&gt;&nbsp;1&nbsp;SELECT&nbsp;description&nbsp;AS&nbsp;'Primary&nbsp;Key&nbsp;Creates'&nbsp;FROM&nbsp;#create<BR>end</P>
+<P>CLOSE&nbsp;CurTables<BR>DEALLOCATE&nbsp;CurTables</P>
+<P>drop&nbsp;table&nbsp;#create<BR>drop&nbsp;table&nbsp;#drop</P>
+<P></FONT></P></BLOCKQUOTE></TD></TR>
+<TR>
+<TD class=tablebody2 vAlign=center align=middle width=175><A href="http://www.pigtwo.com/forum/look_ip.asp?boardid=14&amp;userid=42&amp;ip=61.48.16.31&amp;action=lookip" target=_blank><IMG height=15 alt="点击查看用户来源及管理<br>发贴IP：61.48.16.31" src="http://www.pigtwo.com/forum/pic/ip.gif" width=13 align=absMiddle border=0></A> 2003-6-3 18:21:43</TD>
+<TD class=tablebody2 vAlign=center width=*>
+<TABLE cellSpacing=0 cellPadding=0 width="100%">
+<TBODY>
+<TR>
+<TD vAlign=center align=left><A href="http://www.pigtwo.com/forum/editannounce.asp?BoardID=14&amp;replyID=1038&amp;id=489&amp;star=1"><IMG alt=编辑这个贴子 src="http://www.pigtwo.com/forum/pic/edit.gif" align=absMiddle border=0></A></TD>
+<TD vAlign=bottom align=right width=110 nowarp><A title=注意：本操作将删除单个贴子 href="http://www.pigtwo.com/forum/admin_postings.asp?action=删除跟帖&amp;BoardID=14&amp;ID=489&amp;replyID=1038&amp;userid=42"><IMG src="http://www.pigtwo.com/forum/pic/delete.gif" border=0></A>&nbsp;<A title=复制单个贴子到别的版面 href="http://www.pigtwo.com/forum/admin_postings.asp?action=复制&amp;BoardID=14&amp;ID=489&amp;replyID=1038"><IMG src="http://www.pigtwo.com/forum/pic/copy.gif" border=0></A>&nbsp;<A title=精华 href="http://www.pigtwo.com/forum/admin_postings.asp?action=精华&amp;BoardID=14&amp;ID=489&amp;replyID=1038"><IMG src="http://www.pigtwo.com/forum/pic/jing.gif" border=0></A></TD>
+<TD vAlign=bottom align=right width=4></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE>
+<TABLE class=tableborder1 style="TABLE-LAYOUT: fixed; WORD-BREAK: break-all" cellSpacing=1 cellPadding=5 align=center>
+<TBODY>
+<TR>
+<TD class=tablebody1 vAlign=top width=175>
+<TABLE cellSpacing=0 cellPadding=4 width="100%">
+<TBODY>
+<TR>
+<TD style="FILTER: glow(color=#9898BA,strength=2)" vAlign=center width=*>&nbsp;<A name=1039><FONT color=#990000><B>ugvanxk</B></FONT></A> </TD>
+<TD vAlign=center width=25><IMG alt=帅哥哟，在线，有人找我吗？ src="http://www.pigtwo.com/forum/pic/Male.gif"></TD>
+<TD vAlign=center width=16></TD></TR></TBODY></TABLE>&nbsp;&nbsp;<IMG height=32 src="http://www.pigtwo.com/forum/pic/Image1.gif" width=32><BR>&nbsp;&nbsp;<IMG src="http://www.pigtwo.com/forum/pic/level10.gif"><BR>&nbsp;&nbsp;等级：版主<BR>&nbsp;&nbsp;文章：210<BR>&nbsp;&nbsp;积分：548<BR>&nbsp;&nbsp;注册：2002-11-2<BR></TD>
+<TD class=tablebody1 vAlign=top width=*>
+<TABLE width="100%">
+<TBODY>
+<TR>
+<TD width=*><A href=""><IMG alt=给ugvanxk发送一个短消息 src="http://www.pigtwo.com/forum/pic/message.gif" border=0></A>&nbsp;<A href="http://www.pigtwo.com/forum/friendlist.asp?action=addF&amp;myFriend=ugvanxk" target=_blank><IMG alt=把ugvanxk加入好友 src="http://www.pigtwo.com/forum/pic/friend.gif" border=0></A>&nbsp;<A href="http://www.pigtwo.com/forum/dispuser.asp?id=42" target=_blank><IMG alt=查看ugvanxk的个人资料 src="http://www.pigtwo.com/forum/pic/profile.gif" border=0></A>&nbsp;<A href="http://www.pigtwo.com/forum/queryResult.asp?stype=1&amp;nSearch=3&amp;keyword=ugvanxk&amp;BoardID=14&amp;SearchDate=ALL" target=_blank><IMG alt="搜索ugvanxk在『数 据 库』的所有贴子" src="http://www.pigtwo.com/forum/pic/find.gif" border=0></A>&nbsp;<A href="http://www.pigtwo.com/forum/mailto:jsqmail@163.com"><IMG alt=点击这里发送电邮给ugvanxk src="http://www.pigtwo.com/forum/pic/email.gif" border=0></A>&nbsp;<A href="http://www.pigtwo.com/forum/reannounce.asp?BoardID=14&amp;replyID=1039&amp;id=489&amp;star=1&amp;reply=true"><IMG alt=引用回复这个贴子 src="http://www.pigtwo.com/forum/pic/reply.gif" border=0></A>&nbsp;<A href="http://www.pigtwo.com/forum/reannounce.asp?BoardID=14&amp;replyID=1039&amp;id=489&amp;star=1"><IMG alt=回复这个贴子 src="http://www.pigtwo.com/forum/pic/reply_a.gif" border=0></A></TD>
+<TD width=50><B>第<FONT color=#ff0000>3</FONT>楼</B></TD></TR>
+<TR>
+<TD bgColor=#6595d6 colSpan=2 height=1></TD></TR></TBODY></TABLE>
+<BLOCKQUOTE><IMG alt=发贴心情 src="http://www.pigtwo.com/forum/face/face0.gif" border=0>&nbsp;<FONT style="FONT-SIZE: 9pt; LINE-HEIGHT: 15pt"><B></B><BR>set&nbsp;nocount&nbsp;off
+<P></P>
+<P>/*<BR>&nbsp;***&nbsp;Foreign&nbsp;Key&nbsp;code&nbsp;generation&nbsp;<BR>&nbsp;*/</P>
+<P>IF&nbsp;@Options&nbsp;&amp;&nbsp;4&nbsp;=&nbsp;4&nbsp;--&nbsp;Foreign&nbsp;Key&nbsp;flag&nbsp;ON<BR>begin</P>
+<P>&nbsp;SET&nbsp;nocount&nbsp;on<BR>&nbsp;IF&nbsp;@Options&nbsp;&amp;&nbsp;8&nbsp;=&nbsp;8&nbsp;--drop&nbsp;flag&nbsp;ON<BR>&nbsp;begin<BR>&nbsp;&nbsp;select&nbsp;'Foreign&nbsp;Key&nbsp;drops'&nbsp;=&nbsp;'alter&nbsp;table&nbsp;['+object_name(fkeyid)+']'+char(13)<BR>&nbsp;&nbsp;+'drop&nbsp;constraint&nbsp;['+object_name(constid)+']'+char(13)+char(13)+'GO'+char(13)+char(13)<BR>&nbsp;&nbsp;from&nbsp;sysreferences<BR>&nbsp;&nbsp;where&nbsp;OBJECT_NAME(rkeyid)&nbsp;like&nbsp;isnull(@Tablename,'%')<BR>&nbsp;&nbsp;order&nbsp;by&nbsp;object_name(fkeyid)<BR>&nbsp;end</P>
+<P>&nbsp;IF&nbsp;@Options&nbsp;&amp;&nbsp;16&nbsp;=&nbsp;16&nbsp;--create&nbsp;flag&nbsp;ON<BR>&nbsp;begin<BR>&nbsp;&nbsp;select&nbsp;'Foreign&nbsp;Key&nbsp;creates'&nbsp;=&nbsp;'alter&nbsp;table&nbsp;['+object_name(fkeyid)+']&nbsp;'+char(13)<BR>&nbsp;&nbsp;+'add&nbsp;constraint&nbsp;['+object_name(constid)+']&nbsp;'<BR>&nbsp;&nbsp;+'Foreign&nbsp;key(['+f1.name+']'<BR>&nbsp;&nbsp;+case&nbsp;when&nbsp;f2.name&nbsp;is&nbsp;null&nbsp;then&nbsp;@empty&nbsp;else&nbsp;'['+f2.name+']'&nbsp;end<BR>&nbsp;&nbsp;+case&nbsp;when&nbsp;f3.name&nbsp;is&nbsp;null&nbsp;then&nbsp;@empty&nbsp;else&nbsp;'['+f3.name+']'&nbsp;end<BR>&nbsp;&nbsp;+case&nbsp;when&nbsp;f4.name&nbsp;is&nbsp;null&nbsp;then&nbsp;@empty&nbsp;else&nbsp;'['+f4.name+']'&nbsp;end<BR>&nbsp;&nbsp;+case&nbsp;when&nbsp;f5.name&nbsp;is&nbsp;null&nbsp;then&nbsp;@empty&nbsp;else&nbsp;'['+f5.name+']'&nbsp;end<BR>&nbsp;&nbsp;+case&nbsp;when&nbsp;f6.name&nbsp;is&nbsp;null&nbsp;then&nbsp;@empty&nbsp;else&nbsp;'['+f6.name+']'&nbsp;end<BR>&nbsp;&nbsp;+case&nbsp;when&nbsp;f7.name&nbsp;is&nbsp;null&nbsp;then&nbsp;@empty&nbsp;else&nbsp;'['+f7.name+']'&nbsp;end<BR>&nbsp;&nbsp;+case&nbsp;when&nbsp;f8.name&nbsp;is&nbsp;null&nbsp;then&nbsp;@empty&nbsp;else&nbsp;'['+f8.name+']'&nbsp;end<BR>&nbsp;&nbsp;+case&nbsp;when&nbsp;f9.name&nbsp;is&nbsp;null&nbsp;then&nbsp;@empty&nbsp;else&nbsp;'['+f9.name+']'&nbsp;end<BR>&nbsp;&nbsp;+case&nbsp;when&nbsp;f10.name&nbsp;is&nbsp;null&nbsp;then&nbsp;@empty&nbsp;else&nbsp;'['+f10.name+']'&nbsp;end<BR>&nbsp;&nbsp;+case&nbsp;when&nbsp;f11.name&nbsp;is&nbsp;null&nbsp;then&nbsp;@empty&nbsp;else&nbsp;'['+f11.name+']'&nbsp;end<BR>&nbsp;&nbsp;+case&nbsp;when&nbsp;f12.name&nbsp;is&nbsp;null&nbsp;then&nbsp;@empty&nbsp;else&nbsp;'['+f12.name+']'&nbsp;end<BR>&nbsp;&nbsp;+case&nbsp;when&nbsp;f13.name&nbsp;is&nbsp;null&nbsp;then&nbsp;@empty&nbsp;else&nbsp;'['+f13.name+']'&nbsp;end<BR>&nbsp;&nbsp;+case&nbsp;when&nbsp;f14.name&nbsp;is&nbsp;null&nbsp;then&nbsp;@empty&nbsp;else&nbsp;'['+f14.name+']'&nbsp;end<BR>&nbsp;&nbsp;+case&nbsp;when&nbsp;f15.name&nbsp;is&nbsp;null&nbsp;then&nbsp;@empty&nbsp;else&nbsp;'['+f15.name+']'&nbsp;end<BR>&nbsp;&nbsp;+case&nbsp;when&nbsp;f16.name&nbsp;is&nbsp;null&nbsp;then&nbsp;@empty&nbsp;else&nbsp;'['+f16.name+']'&nbsp;end<BR>&nbsp;&nbsp;+')'+char(13)<BR>&nbsp;&nbsp;+'references&nbsp;['+object_name(rkeyid)+']&nbsp;(['+c1.name+']'<BR>&nbsp;&nbsp;+case&nbsp;when&nbsp;c2.name&nbsp;is&nbsp;null&nbsp;then&nbsp;@empty&nbsp;else&nbsp;'['+c2.name+']'&nbsp;end<BR>&nbsp;&nbsp;+case&nbsp;when&nbsp;c3.name&nbsp;is&nbsp;null&nbsp;then&nbsp;@empty&nbsp;else&nbsp;'['+c3.name+']'&nbsp;end<BR>&nbsp;&nbsp;+case&nbsp;when&nbsp;c4.name&nbsp;is&nbsp;null&nbsp;then&nbsp;@empty&nbsp;else&nbsp;'['+c4.name+']'&nbsp;end<BR>&nbsp;&nbsp;+case&nbsp;when&nbsp;c5.name&nbsp;is&nbsp;null&nbsp;then&nbsp;@empty&nbsp;else&nbsp;'['+c5.name+']'&nbsp;end<BR>&nbsp;&nbsp;+case&nbsp;when&nbsp;c6.name&nbsp;is&nbsp;null&nbsp;then&nbsp;@empty&nbsp;else&nbsp;'['+c6.name+']'&nbsp;end<BR>&nbsp;&nbsp;+case&nbsp;when&nbsp;c7.name&nbsp;is&nbsp;null&nbsp;then&nbsp;@empty&nbsp;else&nbsp;'['+c7.name+']'&nbsp;end<BR>&nbsp;&nbsp;+case&nbsp;when&nbsp;c8.name&nbsp;is&nbsp;null&nbsp;then&nbsp;@empty&nbsp;else&nbsp;'['+c8.name+']'&nbsp;end<BR>&nbsp;&nbsp;+case&nbsp;when&nbsp;c9.name&nbsp;is&nbsp;null&nbsp;then&nbsp;@empty&nbsp;else&nbsp;'['+c9.name+']'&nbsp;end<BR>&nbsp;&nbsp;+case&nbsp;when&nbsp;c10.name&nbsp;is&nbsp;null&nbsp;then&nbsp;@empty&nbsp;else&nbsp;'['+c10.name+']'&nbsp;end<BR>&nbsp;&nbsp;+case&nbsp;when&nbsp;c11.name&nbsp;is&nbsp;null&nbsp;then&nbsp;@empty&nbsp;else&nbsp;'['+c11.name+']'&nbsp;end<BR>&nbsp;&nbsp;+case&nbsp;when&nbsp;c12.name&nbsp;is&nbsp;null&nbsp;then&nbsp;@empty&nbsp;else&nbsp;'['+c12.name+']'&nbsp;end<BR>&nbsp;&nbsp;+case&nbsp;when&nbsp;c13.name&nbsp;is&nbsp;null&nbsp;then&nbsp;@empty&nbsp;else&nbsp;'['+c13.name+']'&nbsp;end<BR>&nbsp;&nbsp;+case&nbsp;when&nbsp;c14.name&nbsp;is&nbsp;null&nbsp;then&nbsp;@empty&nbsp;else&nbsp;'['+c14.name+']'&nbsp;end<BR>&nbsp;&nbsp;+case&nbsp;when&nbsp;c15.name&nbsp;is&nbsp;null&nbsp;then&nbsp;@empty&nbsp;else&nbsp;'['+c15.name+']'&nbsp;end<BR>&nbsp;&nbsp;+case&nbsp;when&nbsp;c16.name&nbsp;is&nbsp;null&nbsp;then&nbsp;@empty&nbsp;else&nbsp;'['+c16.name+']'&nbsp;end<BR>&nbsp;&nbsp;+')'+char(13)<BR>&nbsp;&nbsp;+char(13)<BR>&nbsp;&nbsp;from&nbsp;sysreferences,<BR>&nbsp;&nbsp;syscolumns&nbsp;c1,<BR>&nbsp;&nbsp;syscolumns&nbsp;c2,<BR>&nbsp;&nbsp;syscolumns&nbsp;c3,<BR>&nbsp;&nbsp;syscolumns&nbsp;c4,<BR>&nbsp;&nbsp;syscolumns&nbsp;c5,<BR>&nbsp;&nbsp;syscolumns&nbsp;c6,<BR>&nbsp;&nbsp;syscolumns&nbsp;c7,<BR>&nbsp;&nbsp;syscolumns&nbsp;c8,<BR>&nbsp;&nbsp;syscolumns&nbsp;c9,<BR>&nbsp;&nbsp;syscolumns&nbsp;c10,<BR>&nbsp;&nbsp;syscolumns&nbsp;c11,<BR>&nbsp;&nbsp;syscolumns&nbsp;c12,<BR>&nbsp;&nbsp;syscolumns&nbsp;c13,<BR>&nbsp;&nbsp;syscolumns&nbsp;c14,<BR>&nbsp;&nbsp;syscolumns&nbsp;c15,<BR>&nbsp;&nbsp;syscolumns&nbsp;c16,<BR>&nbsp;&nbsp;syscolumns&nbsp;f1,<BR>&nbsp;&nbsp;syscolumns&nbsp;f2,<BR>&nbsp;&nbsp;syscolumns&nbsp;f3,<BR>&nbsp;&nbsp;syscolumns&nbsp;f4,<BR>&nbsp;&nbsp;syscolumns&nbsp;f5,<BR>&nbsp;&nbsp;syscolumns&nbsp;f6,<BR>&nbsp;&nbsp;syscolumns&nbsp;f7,<BR>&nbsp;&nbsp;syscolumns&nbsp;f8,<BR>&nbsp;&nbsp;syscolumns&nbsp;f9,<BR>&nbsp;&nbsp;syscolumns&nbsp;f10,<BR>&nbsp;&nbsp;syscolumns&nbsp;f11,<BR>&nbsp;&nbsp;syscolumns&nbsp;f12,<BR>&nbsp;&nbsp;syscolumns&nbsp;f13,<BR>&nbsp;&nbsp;syscolumns&nbsp;f14,<BR>&nbsp;&nbsp;syscolumns&nbsp;f15,<BR>&nbsp;&nbsp;syscolumns&nbsp;f16<BR>&nbsp;&nbsp;WHERE&nbsp;c1.colid&nbsp;=*&nbsp;rkey1<BR>&nbsp;&nbsp;AND&nbsp;c1.id&nbsp;=*&nbsp;rkeyid<BR>&nbsp;&nbsp;AND&nbsp;c2.colid&nbsp;=*&nbsp;rkey2<BR>&nbsp;&nbsp;AND&nbsp;c2.id&nbsp;=*&nbsp;rkeyid<BR>&nbsp;&nbsp;AND&nbsp;c3.colid&nbsp;=*&nbsp;rkey3<BR>&nbsp;&nbsp;AND&nbsp;c3.id&nbsp;=*&nbsp;rkeyid<BR>&nbsp;&nbsp;AND&nbsp;c4.colid&nbsp;=*&nbsp;rkey4<BR>&nbsp;&nbsp;AND&nbsp;c4.id&nbsp;=*&nbsp;rkeyid<BR>&nbsp;&nbsp;AND&nbsp;c5.colid&nbsp;=*&nbsp;rkey5<BR>&nbsp;&nbsp;AND&nbsp;c5.id&nbsp;=*&nbsp;rkeyid<BR>&nbsp;&nbsp;AND&nbsp;c6.colid&nbsp;=*&nbsp;rkey6<BR>&nbsp;&nbsp;AND&nbsp;c6.id&nbsp;=*&nbsp;rkeyid<BR>&nbsp;&nbsp;AND&nbsp;c7.colid&nbsp;=*&nbsp;rkey7<BR>&nbsp;&nbsp;AND&nbsp;c7.id&nbsp;=*&nbsp;rkeyid<BR>&nbsp;&nbsp;AND&nbsp;c8.colid&nbsp;=*&nbsp;rkey8<BR>&nbsp;&nbsp;AND&nbsp;c8.id&nbsp;=*&nbsp;rkeyid<BR>&nbsp;&nbsp;AND&nbsp;c9.colid&nbsp;=*&nbsp;rkey9<BR>&nbsp;&nbsp;AND&nbsp;c9.id&nbsp;=*&nbsp;rkeyid<BR>&nbsp;&nbsp;AND&nbsp;c10.colid&nbsp;=*&nbsp;rkey10<BR>&nbsp;&nbsp;AND&nbsp;c10.id&nbsp;=*&nbsp;rkeyid<BR>&nbsp;&nbsp;AND&nbsp;c11.colid&nbsp;=*&nbsp;rkey11<BR>&nbsp;&nbsp;AND&nbsp;c11.id&nbsp;=*&nbsp;rkeyid<BR>&nbsp;&nbsp;AND&nbsp;c12.colid&nbsp;=*&nbsp;rkey12<BR>&nbsp;&nbsp;AND&nbsp;c12.id&nbsp;=*&nbsp;rkeyid<BR>&nbsp;&nbsp;AND&nbsp;c13.colid&nbsp;=*&nbsp;rkey13<BR>&nbsp;&nbsp;AND&nbsp;c13.id&nbsp;=*&nbsp;rkeyid<BR>&nbsp;&nbsp;AND&nbsp;c14.colid&nbsp;=*&nbsp;rkey14<BR>&nbsp;&nbsp;AND&nbsp;c14.id&nbsp;=*&nbsp;rkeyid<BR>&nbsp;&nbsp;AND&nbsp;c15.colid&nbsp;=*&nbsp;rkey15<BR>&nbsp;&nbsp;AND&nbsp;c15.id&nbsp;=*&nbsp;rkeyid<BR>&nbsp;&nbsp;AND&nbsp;c16.colid&nbsp;=*&nbsp;rkey16<BR>&nbsp;&nbsp;AND&nbsp;c16.id&nbsp;=*&nbsp;rkeyid<BR>&nbsp;&nbsp;AND&nbsp;f1.colid&nbsp;=*&nbsp;fkey1<BR>&nbsp;&nbsp;AND&nbsp;f1.id&nbsp;=*&nbsp;fkeyid<BR>&nbsp;&nbsp;AND&nbsp;f2.colid&nbsp;=*&nbsp;fkey2<BR>&nbsp;&nbsp;AND&nbsp;f2.id&nbsp;=*&nbsp;fkeyid<BR>&nbsp;&nbsp;AND&nbsp;f3.colid&nbsp;=*&nbsp;fkey3<BR>&nbsp;&nbsp;AND&nbsp;f3.id&nbsp;=*&nbsp;fkeyid<BR>&nbsp;&nbsp;AND&nbsp;f4.colid&nbsp;=*&nbsp;fkey4<BR>&nbsp;&nbsp;AND&nbsp;f4.id&nbsp;=*&nbsp;fkeyid<BR>&nbsp;&nbsp;AND&nbsp;f5.colid&nbsp;=*&nbsp;fkey5<BR>&nbsp;&nbsp;AND&nbsp;f5.id&nbsp;=*&nbsp;fkeyid<BR>&nbsp;&nbsp;AND&nbsp;f6.colid&nbsp;=*&nbsp;fkey6<BR>&nbsp;&nbsp;AND&nbsp;f6.id&nbsp;=*&nbsp;fkeyid<BR>&nbsp;&nbsp;AND&nbsp;f7.colid&nbsp;=*&nbsp;fkey7<BR>&nbsp;&nbsp;AND&nbsp;f7.id&nbsp;=*&nbsp;fkeyid<BR>&nbsp;&nbsp;AND&nbsp;f8.colid&nbsp;=*&nbsp;fkey8<BR>&nbsp;&nbsp;AND&nbsp;f8.id&nbsp;=*&nbsp;fkeyid<BR>&nbsp;&nbsp;AND&nbsp;f9.colid&nbsp;=*&nbsp;fkey9<BR>&nbsp;&nbsp;AND&nbsp;f9.id&nbsp;=*&nbsp;fkeyid<BR>&nbsp;&nbsp;AND&nbsp;f10.colid&nbsp;=*&nbsp;fkey10<BR>&nbsp;&nbsp;AND&nbsp;f10.id&nbsp;=*&nbsp;fkeyid<BR>&nbsp;&nbsp;AND&nbsp;f11.colid&nbsp;=*&nbsp;fkey11<BR>&nbsp;&nbsp;AND&nbsp;f11.id&nbsp;=*&nbsp;fkeyid<BR>&nbsp;&nbsp;AND&nbsp;f12.colid&nbsp;=*&nbsp;fkey12<BR>&nbsp;&nbsp;AND&nbsp;f12.id&nbsp;=*&nbsp;fkeyid<BR>&nbsp;&nbsp;AND&nbsp;f13.colid&nbsp;=*&nbsp;fkey13<BR>&nbsp;&nbsp;AND&nbsp;f13.id&nbsp;=*&nbsp;fkeyid<BR>&nbsp;&nbsp;AND&nbsp;f14.colid&nbsp;=*&nbsp;fkey14<BR>&nbsp;&nbsp;AND&nbsp;f14.id&nbsp;=*&nbsp;fkeyid<BR>&nbsp;&nbsp;AND&nbsp;f15.colid&nbsp;=*&nbsp;fkey15<BR>&nbsp;&nbsp;AND&nbsp;f15.id&nbsp;=*&nbsp;fkeyid<BR>&nbsp;&nbsp;AND&nbsp;f16.colid&nbsp;=*&nbsp;fkey16<BR>&nbsp;&nbsp;AND&nbsp;f16.id&nbsp;=*&nbsp;fkeyid<BR>&nbsp;&nbsp;AND&nbsp;OBJECT_NAME(rkeyid)&nbsp;like&nbsp;isnull(@Tablename,'%')<BR>&nbsp;end</P>
+<P>&nbsp;SET&nbsp;nocount&nbsp;off<BR>end</P>
+<P>drop&nbsp;table&nbsp;#sysfilegroups</P>
+<P>set&nbsp;nocount&nbsp;off</P>
+<P>return</P>
+<P>go<BR></FONT></P></BLOCKQUOTE></TD></TR>
+<TR>
+<TD class=tablebody1 vAlign=center align=middle width=175><A href="http://www.pigtwo.com/forum/look_ip.asp?boardid=14&amp;userid=42&amp;ip=61.48.16.31&amp;action=lookip" target=_blank><IMG height=15 alt="点击查看用户来源及管理<br>发贴IP：61.48.16.31" src="http://www.pigtwo.com/forum/pic/ip.gif" width=13 align=absMiddle border=0></A> 2003-6-3 18:22:02</TD>
+<TD class=tablebody1 vAlign=center width=*>
+<TABLE cellSpacing=0 cellPadding=0 width="100%">
+<TBODY>
+<TR>
+<TD vAlign=center align=left><A href="http://www.pigtwo.com/forum/editannounce.asp?BoardID=14&amp;replyID=1039&amp;id=489&amp;star=1"><IMG alt=编辑这个贴子 src="http://www.pigtwo.com/forum/pic/edit.gif" align=absMiddle border=0></A></TD>
+<TD vAlign=bottom align=right width=110 nowarp><A title=注意：本操作将删除单个贴子 href="http://www.pigtwo.com/forum/admin_postings.asp?action=删除跟帖&amp;BoardID=14&amp;ID=489&amp;replyID=1039&amp;userid=42"><IMG src="http://www.pigtwo.com/forum/pic/delete.gif" border=0></A>&nbsp;<A title=复制单个贴子到别的版面 href="http://www.pigtwo.com/forum/admin_postings.asp?action=复制&amp;BoardID=14&amp;ID=489&amp;replyID=1039"><IMG src="http://www.pigtwo.com/forum/pic/copy.gif" border=0></A>&nbsp;<A title=精华 href="http://www.pigtwo.com/forum/admin_postings.asp?action=精华&amp;BoardID=14&amp;ID=489&amp;replyID=1039"><IMG src="http://www.pigtwo.com/forum/pic/jing.gif" border=0></A></TD>
+<TD vAlign=bottom align=right width=4></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE><BR>
+<TABLE cellSpacing=3 cellPadding=0 width="97%" align=center border=0>
+<TBODY>
+<TR>
+<TD vAlign=center noWrap>本主题贴数<B>3</B>，分页： <FONT color=#ff0000>[1]</FONT></TD>
+<TD vAlign=center noWrap align=right><SELECT onchange="if(this.options[this.selectedIndex].value!=''){location=this.options[this.selectedIndex].value;}"><OPTION selected>跳转论坛至...</OPTION><OPTION>╋ 技术论坛</OPTION><OPTION value=list.asp?boardid=11>　├『 JAVA 专区』</OPTION><OPTION value=list.asp?boardid=12>　├『 C / C ++ 』</OPTION><OPTION value=list.asp?boardid=13>　├『Delphi编程』</OPTION><OPTION value=list.asp?boardid=14>　├『数 据 库』</OPTION><OPTION value=list.asp?boardid=15>　├『综合技术』</OPTION><OPTION>╋ 休闲娱乐</OPTION><OPTION value=list.asp?boardid=21>　├『天天澡堂』</OPTION><OPTION value=list.asp?boardid=22>　├『随意贴图』</OPTION><OPTION value=list.asp?boardid=24>　├『关注社会』</OPTION><OPTION>╋ 站务处理</OPTION><OPTION value=list.asp?boardid=23>　├『站务处理』</OPTION></SELECT></TD></TR></TBODY></TABLE>
+<TABLE class=tableborder1 cellSpacing=1 cellPadding=1 align=center>
+<TBODY>
+<TR>
+<TH vAlign=center align=left width="100%" colSpan=2 height=25>&nbsp;*快速回复：sp_IndexKeyText</TH></TR>
+<FORM name=frmAnnounce onsubmit=submitonce(this) action=SaveReAnnounce.asp?method=fastreply&amp;BoardID=14 method=post><INPUT type=hidden value=1037 name=followup> <INPUT type=hidden value=489 name=RootID> <INPUT type=hidden value=1 name=star> <INPUT type=hidden value=bbs1 name=TotalUseTable> 
+<TR>
+<TD class=tablebody2 noWrap width=175><B>你的用户名:</B></TD>
+<TD class=tablebody2 height=30><INPUT maxLength=25 size=23 value=ugvanxk name=UserName> &nbsp;&nbsp; <A href="http://www.pigtwo.com/forum/reg.asp">还没注册?</A> &nbsp;&nbsp; <B>密码:</B> <INPUT type=password maxLength=20 size=23 value="" name=passwd> &nbsp;&nbsp; <A href="http://www.pigtwo.com/forum/lostpass.asp">忘记密码?</A></TD></TR>
+<TR>
+<TD class=tablebody1 vAlign=top noWrap><B>内容</B><BR>
+<LI>HTML标签： 不可用 
+<LI>UBB标签： 可用 
+<LI>贴图标签： 可用 
+<LI>Flash标签：可用 
+<LI>表情字符转换：可用 
+<LI>上传图片：可用 
+<LI>最多16KB </LI></TD>
+<TD class=tablebody1><TEXTAREA onkeydown="" title=可以使用Ctrl+Enter直接提交贴子 name=Content rows=7 wrap=VIRTUAL cols=100></TEXTAREA> </TD></TR>
+<TR bgColor=#ba0000 #FFFFFF;>
+<TD class=tablebody2 noWrap height=30><INPUT type=checkbox value=yes name=Forum_Setting(2)> 邮件回复 <INPUT type=checkbox CHECKED value=yes name=signflag> 显示签名 </TD>
+<TD class=tablebody2 width="100%"><INPUT type=submit value=OK!发表我的回应帖子 name=Submit> &nbsp;<INPUT onclick="" type=button value="预 览" name=Button>&nbsp;<INPUT type=reset value=清空内容！ name=Clear>[Ctrl+Enter直接提交贴子] </TD></TR></FORM></TBODY></TABLE><BR>
+<TABLE cellSpacing=0 cellPadding=0 width="97%" align=center border=0>
+<TBODY>
+<TR vAlign=center>
+<TD align=right width="100%"><A title=锁定本主题 href="http://www.pigtwo.com/forum/admin_postings.asp?action=锁定&amp;BoardID=14&amp;ID=489">锁定</A> | <A title=将本主题解开锁定 href="http://www.pigtwo.com/forum/admin_postings.asp?action=解锁&amp;BoardID=14&amp;ID=489">解锁</A> | <A title=注意：本操作将删除本主题所有贴子，不能恢复 href="http://www.pigtwo.com/forum/admin_postings.asp?action=删除主题&amp;BoardID=14&amp;ID=489">删除</A> | <A title=移动主题 href="http://www.pigtwo.com/forum/admin_postings.asp?action=移动&amp;BoardID=14&amp;ID=489&amp;replyID=1037">移动</A> | <A title=将本主题固顶 href="http://www.pigtwo.com/forum/admin_postings.asp?action=固顶&amp;BoardID=14&amp;ID=489">固顶</A> | <A title=对发起主题用户奖励 href="http://www.pigtwo.com/forum/admin_postings.asp?action=奖励&amp;BoardID=14&amp;ID=489">奖励</A> | <A title=对发起主题用户惩罚 href="http://www.pigtwo.com/forum/admin_postings.asp?action=惩罚&amp;BoardID=14&amp;ID=489">惩罚</A> | <A href="http://www.pigtwo.com/forum/announcements.asp?BoardID=14&amp;action=AddAnn">发布公告</A> </TD></TR></TBODY></TABLE>
+<FORM name=preview action=preview.asp method=post target=preview_page><INPUT type=hidden name=title><INPUT type=hidden name=body> </FORM>
+
+
+
+
+<P>
+<TABLE cellSpacing=0 cellPadding=0 width="97%" align=center border=0>
+<TBODY>
+<TR>
+<TD align=middle><A href="http://www.pigtwo.com/index.htm" target=_blank><IMG src="http://www.pigtwo.com/forum/pic/logo_2.gif"></IMG></A> </TD></TR>
+<TR>
+<TD align=middle>Powered by：<A href="http://www.dvbbs.net/download.asp">DVBBS Ver5.0 Final</A><BR>Copyright ?2002 - 2003 <A href="http://www.pigtwo.com"><FONT face=Verdana, size=1 sans-serif Helvetica, Arial,><B>pigtwo<FONT color=#cc0000>.com</FONT></B></FONT></A> , 页面执行时间：1,015.625毫秒 </TD></TR></TBODY></TABLE></P></BODY>

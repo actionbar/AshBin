@@ -1,0 +1,374 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="../c3.css" />
+<title>ASP ServerVariables 集合</title>
+</head>
+<body class="serverscripting">
+<div id="wrapper">
+<div id="header">
+<a href="http://e.v-get.com/w3cschool/" style="float:left;">W3CSchool 在线教程</a>
+<div class="q g"><script type="text/javascript">var cpro_id="u1163355"</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div>
+<div id="navfirst">
+<ul id="menu">
+<li id="h"><a href="../h.html">HTML教程</a></li>
+<li id="x"><a href="../x.html">XML教程</a></li>
+<li id="b"><a href="../b.html">浏览器脚本</a></li>
+<li id="s"><a href="../s.html">服务器脚本</a></li>
+<li id="d"><a href="../d.html">dot net教程</a></li>
+<li id="m"><a href="../m.html">多媒体教程</a></li>
+<li id="w"><a href="../w.html">建站手册</a></li>
+</ul>
+</div><div id="navsecond">
+<div id="course">
+<h2>ASP 教程</h2>
+<ul>
+<li><a href="http://e.v-get.com/w3cschool/">ASP 首页</a></li>
+<li><a href="asp_intro.html">ASP 简介</a></li>
+<li><a href="asp_install.html">ASP 安装</a></li>
+<li><a href="asp_syntax.html">ASP 语法</a></li>
+<li><a href="asp_variables.html">ASP 变量</a></li>
+<li><a href="asp_procedures.html">ASP 程序</a></li>
+<li><a href="asp_inputforms.html">ASP 表单</a></li>
+<li><a href="asp_cookies.html">ASP Cookies</a></li>
+<li><a href="asp_sessions.html">ASP Session</a></li>
+<li><a href="asp_applications.html">ASP Application</a></li>
+<li><a href="asp_incfiles.html">ASP #include</a></li>
+<li><a href="asp_globalasa.html">ASP Global.asa</a></li>
+<li><a href="asp_send_email.html">ASP e-mail</a></li>
+</ul>
+<h2>ASP 对象</h2>
+<ul class="small">
+<li><a href="asp_ref_response.html">ASP Response</a></li>
+<li><a href="asp_ref_request.html">ASP Request</a></li>
+<li><a href="asp_ref_application.html">ASP Application</a></li>
+<li><a href="asp_ref_session.html">ASP Session</a></li>
+<li><a href="asp_ref_server.html">ASP Server</a></li>
+<li><a href="asp_ref_error.html">ASP Error</a></li>
+<li class="list_apart"><a href="asp_ref_filesystem.html">ASP FileSystem</a></li>
+<li><a href="asp_ref_textstream.html">ASP TextStream</a></li>
+<li><a href="asp_ref_drive.html">ASP Drive</a></li>
+<li><a href="asp_ref_file.html">ASP File</a></li>
+<li><a href="asp_ref_folder.html">ASP Folder</a></li>
+<li><a href="asp_ref_dictionary.html">ASP Dictionary</a></li>
+<li><a href="asp_ado.html">ASP ADO</a></li>
+</ul>
+<h2>ASP 组件</h2>
+<ul class="small">
+<li><a href="asp_adrotator.html">ASP AdRotator</a></li>
+<li><a href="asp_browser.html">ASP BrowserCap</a></li>
+<li><a href="asp_contentlinking.html">ASP Content Linking</a></li>
+<li><a href="asp_contentrotator.html">ASP Content Rotator</a></li>
+</ul>
+<h2>ASP 教程总结</h2>
+<ul>
+<li><a href="asp_quickref.html">ASP 快速参考</a></li>
+<li><a href="asp_summary.html">ASP 总结</a></li>
+</ul>
+<h2>实例/测验</h2>
+<ul>
+<li><a href="../example/aspe_examples.html">ASP 实例</a></li>
+<li><a href="asp_quiz.html">ASP 测验</a></li>
+</ul>
+</div>
+<div id="selected">
+<h2>建站手册</h2>
+<ul>
+<li><a href="../site/">网站构建</a></li>
+<li><a href="../w3c/">万维网联盟</a></li>
+<li><a href="http://e.v-get.com/w3c/">W3CSchool 教程</a></li>
+<li><a href="../quality/">网站品质</a></li>
+<li><a href="../semweb/">语义网</a></li>
+<li><a href="../hosting/">网站主机</a></li>
+</ul>
+<h2><a href="http://e.v-get.com/w3c/" class="f13">W3CSchool 教程</a></h2><div class="a120x90"><script type="text/javascript">var cpro_id="u1210867";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div></div>
+</div>
+<div id="maincontent">
+<h1>ASP ServerVariables 集合</h1>
+<div>
+<p><a href="asp_ref_request.html">返回 Request 对象参考手册</a></p>
+</div>
+<div>
+<h2>定义和用法</h2>
+<p>ServerVariables 集合用于取回服务器变量的值。</p>
+</div>
+<div>
+<h2>语法</h2>
+<pre>Request.ServerVariables (server_variable)</pre>
+<table class="dataintable"> 
+  <tr>
+    <th>参数</th>
+    <th>描述</th>
+  </tr>  
+  <tr>
+    <td>server_variable</td>
+    <td>必需。要取回的<a href="#sv">服务器变量</a>的名称。</td>
+  </tr>
+</table>
+</div>
+<div>
+<h2 id="sv">服务器变量</h2>
+<table class="dataintable"> 
+<tr>
+<th>变量</th>
+<th>描述</th>
+</tr>
+<tr>
+<td>ALL_HTTP</td>
+<td>Returns all HTTP headers sent by the client. Always prefixed with HTTP_ and capitalized</td>
+</tr>
+<tr>
+<td>ALL_RAW</td>
+<td>Returns all headers in raw form</td>
+</tr>
+<tr>
+<td>APPL_MD_PATH</td>
+<td> Returns the meta base path for the application for the ISAPI DLL</td>
+</tr>
+<tr>
+<td>APPL_PHYSICAL_PATH</td>
+<td>Returns the physical path corresponding to the meta base path</td>
+</tr>
+<tr>
+<td>AUTH_PASSWORD</td>
+<td>Returns the value entered in the client's authentication dialog</td>
+</tr>
+<tr>
+<td>AUTH_TYPE</td>
+<td>The authentication method that the server uses to validate users</td>
+</tr>
+<tr>
+<td>AUTH_USER</td>
+<td>Returns the raw authenticated user name</td>
+</tr>
+<tr>
+<td>CERT_COOKIE</td>
+<td>Returns the unique ID for client certificate as a string</td>
+</tr>
+<tr>
+<td>CERT_FLAGS</td>
+<td>bit0 is set to 1 if the client certificate is present and bit1 is set to 1 if the cCertification authority of the client certificate is not valid</td>
+</tr>
+<tr>
+<td>CERT_ISSUER</td>
+<td>Returns the issuer field of the client certificate</td>
+</tr>
+<tr>
+<td>CERT_KEYSIZE</td>
+<td>Returns the number of bits in Secure Sockets Layer connection key size</td>
+</tr>
+<tr>
+<td>CERT_SECRETKEYSIZE</td>
+<td>Returns the number of bits in server certificate private key</td>
+</tr>
+<tr>
+<td>CERT_SERIALNUMBER</td>
+<td>Returns the serial number field of the client certificate</td>
+</tr>
+<tr>
+<td>CERT_SERVER_ISSUER</td>
+<td>Returns the issuer field of the server certificate</td>
+</tr>
+<tr>
+<td>CERT_SERVER_SUBJECT</td>
+<td>Returns the subject field of the server certificate</td>
+</tr>
+<tr>
+<td>CERT_SUBJECT</td>
+<td>Returns the subject field of the client certificate</td>
+</tr>
+<tr>
+<td>CONTENT_LENGTH</td>
+<td>Returns the length of the content as sent by the client</td>
+</tr>
+<tr>
+<td>CONTENT_TYPE</td>
+<td>Returns the data type of the content</td>
+</tr>
+<tr>
+<td>GATEWAY_INTERFACE</td>
+<td>Returns the revision of the CGI specification used by the server</td>
+</tr>
+<tr>
+<td>HTTP_&lt;<i>HeaderName</i>&gt;</td>
+<td>Returns the value stored in the header <i> HeaderName</i></td>
+</tr>
+<tr>
+<td>HTTP_ACCEPT</td>
+<td>Returns the value of the Accept header</td>
+</tr>
+<tr>
+<td>HTTP_ACCEPT_LANGUAGE</td>
+<td>Returns a string describing the language to use for displaying content</td>
+</tr>
+<tr>
+<td>HTTP_COOKIE</td>
+<td>Returns the cookie string included with the request</td>
+</tr>
+<tr>
+<td>HTTP_REFERER</td>
+<td>Returns a string containing the URL of the page that referred the request to the current page using an &lt;a&gt; tag. If the page is redirected, HTTP_REFERER is empty</td>
+</tr>
+<tr>
+<td>HTTP_USER_AGENT</td>
+<td>Returns a string describing the browser that sent the request</td>
+</tr>
+<tr>
+<td>HTTPS</td>
+<td>Returns ON if the request came in through secure channel or OFF if the request came in through a non-secure channel</td>
+</tr>
+<tr>
+<td>HTTPS_KEYSIZE</td>
+<td>Returns the number of bits in Secure Sockets Layer connection key size</td>
+</tr>
+<tr>
+<td>HTTPS_SECRETKEYSIZE</td>
+<td>Returns the number of bits in server certificate private key</td>
+</tr>
+<tr>
+<td>HTTPS_SERVER_ISSUER</td>
+<td>Returns the issuer field of the server certificate</td>
+</tr>
+<tr>
+<td>HTTPS_SERVER_SUBJECT</td>
+<td>Returns the subject field of the server certificate</td>
+</tr>
+<tr>
+<td>INSTANCE_ID</td>
+<td>The ID for the IIS instance in text format</td>
+</tr>
+<tr>
+<td>INSTANCE_META_PATH</td>
+<td>The meta base path for the instance of IIS that responds to the request</td>
+</tr>
+<tr>
+<td>LOCAL_ADDR</td>
+<td>Returns the server address on which the request came in</td>
+</tr>
+<tr>
+<td>LOGON_USER</td>
+<td>Returns the Windows account that the user is logged into</td>
+</tr>
+<tr>
+<td>PATH_INFO</td>
+<td>Returns extra path information as given by the client</td>
+</tr>
+<tr>
+<td>PATH_TRANSLATED</td>
+<td>A translated version of PATH_INFO that takes the path and performs any necessary virtual-to-physical mapping</td>
+</tr>
+<tr>
+<td>QUERY_STRING</td>
+<td>Returns the query information stored in the string following the question mark (?) in the HTTP request</td>
+</tr>
+<tr>
+<td>REMOTE_ADDR</td>
+<td>Returns the IP address of the remote host making the request</td>
+</tr>
+<tr>
+<td>REMOTE_HOST</td>
+<td>Returns the name of the host making the request</td>
+</tr>
+<tr>
+<td>REMOTE_USER</td>
+<td>Returns an unmapped user-name string sent in by the user</td>
+</tr>
+<tr>
+<td>REQUEST_METHOD</td>
+<td>Returns the method used to make the request</td>
+</tr>
+<tr>
+<td>SCRIPT_NAME</td>
+<td>Returns a virtual path to the script being executed</td>
+</tr>
+<tr>
+<td>SERVER_NAME</td>
+<td>Returns the server's host name, DNS alias, or IP address as it would appear in self-referencing URLs</td>
+</tr>
+<tr>
+<td>SERVER_PORT</td>
+<td>Returns the port number to which the request was sent</td>
+</tr>
+<tr>
+<td>SERVER_PORT_SECURE</td>
+<td>Returns a string that contains 0 or 1. If the request is being handled on the secure port, it will be 1. Otherwise, it will be 0</td>
+</tr>
+<tr>
+<td>SERVER_PROTOCOL</td>
+<td>Returns the name and revision of the request information protocol</td>
+</tr>
+<tr>
+<td>SERVER_SOFTWARE</td>
+<td>Returns the name and version of the server software that answers the request and runs the gateway</td>
+</tr>
+<tr>
+<td>URL</td>
+<td>Returns the base portion of the URL</td>
+</tr>
+</table>
+</div>
+<div>
+<h2>实例</h2>
+<h3>例子 1</h3>
+<p>您可以像这样来循环遍历所有的服务器变量：</p>
+<pre>
+&lt;%
+for each x in Request.ServerVariables
+response.write(x &amp; &#34;&lt;br /&gt;&#34;)
+next
+%&gt;
+</pre>
+ 
+<h3>例子 2</h3>
+<p>本例演示了如何查明访问者浏览器的类型、IP 地址等等：</p>
+<pre>&lt;html&gt;
+&lt;body&gt;
+&lt;p&gt;
+&lt;b&gt;You are browsing this site with:&lt;/b&gt;
+&lt;%Response.Write(Request.ServerVariables(&#34;http_user_agent&#34;))%&gt;
+&lt;/p&gt;
+&lt;p&gt;
+&lt;b&gt;Your IP address is:&lt;/b&gt;
+&lt;%Response.Write(Request.ServerVariables(&#34;remote_addr&#34;))%&gt;
+&lt;/p&gt;
+&lt;p&gt;
+&lt;b&gt;The DNS lookup of the IP address is:&lt;/b&gt;
+&lt;%Response.Write(Request.ServerVariables(&#34;remote_host&#34;))%&gt;
+&lt;/p&gt;
+&lt;p&gt;
+&lt;b&gt;The method used to call the page:&lt;/b&gt;
+&lt;%Response.Write(Request.ServerVariables(&#34;request_method&#34;))%&gt;
+&lt;/p&gt;
+&lt;p&gt;
+&lt;b&gt;The server's domain name:&lt;/b&gt;
+&lt;%Response.Write(Request.ServerVariables(&#34;server_name&#34;))%&gt;
+&lt;/p&gt;
+&lt;p&gt;
+&lt;b&gt;The server's port:&lt;/b&gt;
+&lt;%Response.Write(Request.ServerVariables(&#34;server_port&#34;))%&gt;
+&lt;/p&gt;
+&lt;p&gt;
+&lt;b&gt;The server's software:&lt;/b&gt;
+&lt;%Response.Write(Request.ServerVariables(&#34;server_software&#34;))%&gt;
+&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+</div>
+<div>
+<p><a href="asp_ref_request.html">返回 Request 对象参考手册</a></p>
+</div>
+</div>
+<div id="sidebar">
+<div class="rs"></div>
+<div id="tools">
+<h5 id="tools_reference"><a href="asp_ref.html">ASP 参考手册</a></h5>
+<h5 id="tools_example"><a href="../example/aspe_examples.html">ASP 实例</a></h5>
+<h5 id="tools_quiz"><a href="asp_quiz.html">ASP 测验</a></h5>
+</div>
+<div class="a120x600"><script type="text/javascript">var cpro_id="u1293136";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div><div class="b"></div>
+</div>
+</body>
+</html>

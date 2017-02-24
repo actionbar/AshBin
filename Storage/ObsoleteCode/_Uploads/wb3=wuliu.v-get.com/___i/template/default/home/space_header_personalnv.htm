@@ -1,0 +1,4 @@
+<!--{if $_G['adminid'] == 1 && empty($space['self'])}-->
+<!--{eval $personalnv['items'] = array(); $personalnv['banitems'] = array(); $personalnv['nvhidden'] = 0;}-->
+<!--{/if}-->
+<!--{eval $nvclass = !empty($personalnv['nvhidden']) ? ' class="mininv"' : '';}--><div id="nv"><ul$nvclass><li><a href="http://wuliu.v-get.com/i/$space[username]">主页</a></li><li><a href="http://wuliu.v-get.com/i/$space[username]?do=profile">资料</a></li></ul></div>

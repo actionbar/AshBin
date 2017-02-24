@@ -1,0 +1,9 @@
+<meta http-equiv="content-type" content="text/html; charset=gb2312">&nbsp;<FONT 
+style="FONT-SIZE: 9pt; LINE-HEIGHT: 15pt"><B>保存计算列－T－SQL系列</B><BR><BR>保存计算列
+<P></P>
+<P>CREATE&nbsp;TABLE&nbsp;customer_sx<BR>(cust_name&nbsp;char(20),<BR>soundex_value&nbsp;as&nbsp;SOUNDEX(cust_name)<BR>)</P>
+<P>上表中的soundex_value是计算列，它是一个虚拟列，在访问它时才计算它。因此不能被索引。</P>
+<P><BR>用触发器来解决：</P>
+<P>--更改表<BR>CREATE&nbsp;TABLE&nbsp;customer_sx<BR>(cust_name&nbsp;char(20),<BR>soundex_value&nbsp;char(4)&nbsp;null<BR>)</P>
+<P>--创建群集索引<BR>CREATE&nbsp;CLUSTERED&nbsp;INDEX&nbsp;sounds_like&nbsp;<BR>&nbsp;&nbsp;ON&nbsp;customer_sx(soundex_value)<BR>GO</P>
+<P>--触发器<BR>CREATE&nbsp;TRIGGER&nbsp;maintain_soundex&nbsp;ON&nbsp;c<BR>FOR&nbsp;INSERT,UPDATE<BR>AS<BR>&nbsp;&nbsp;UPDATE&nbsp;customer_sx&nbsp;<BR>&nbsp;&nbsp;&nbsp;&nbsp;SET&nbsp;soundex_value=SOUNDEX(inserted.cust_name)<BR>&nbsp;&nbsp;&nbsp;&nbsp;FROM&nbsp;customer_sx,inserted<BR>&nbsp;&nbsp;&nbsp;&nbsp;WHERE&nbsp;customer_sx.cust_name=inserted.cust_name</P></FONT>

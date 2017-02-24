@@ -1,0 +1,597 @@
+<meta http-equiv="content-type" content="text/html; charset=gb2312">
+<P 
+style="MARGIN: 4px 2px 0px">本人平时比较沉默，但朋友们都说我很疯狂—疯狂地学习、疯狂地工作。很久就有写点东西的打算啦，一直懒于打字，近来稍有空闲，决定杜撰此文，献给现些喜欢或不喜欢沉默的朋友。<BR>----疯子自序<BR>网上已经有很多SQL与ORACLE的对比 
+，但本人要讲的即不是单纯的SQL，也不是单纯的ORACLE，更不是评价谁好谁坏（意思不大），而是两种数据库之相同和异同，本人曾讲授过SQL与ORACLE的课程，讲SQL时说SQL好，讲ORACLE时又说ORACLE棒，现在终于可以平心而评啦。<BR>估计有人现在会嘿嘿冷笑（又一个误人子弟的骗子），老实说，当初每次讲完课，就有这种感觉—教的人不得其法，学的人不得其道。说点严肃的事吧，据说比尔与艾里森在洗手间相遇，两个又是拥抱，又是KISS，不多久就吵了起来，比尔对查询分析器（SQL 
+QUERY ANALYZE）赞不经绝口，艾里森嘿嘿冷笑，只说了一句话—SQL 
+PLUS内秀。<BR>言归正传，且听我一一道来<BR>001、SQL与ORACLE的内存分配<BR>ORACLE的内存分配大部分是由INIT.ORA来决定的，一个数据库实例可以有N种分配方案，不同的应用（OLTP、OLAP）它的配置是有侧重的。SQL概括起来说，只有两种内存分配方式：动态内存分配与静态内存分配，动态内存分配充许SQL自己调整需要的内存，静态内存分配限制了SQL对内存的使用。<BR>002、SQL与ORACLE的物理结构<BR>&nbsp; 
+总得讲，它们的物理结构很相似，SQL的数据库相当于ORACLE的模式（方案），SQL的文件组相当于ORACLE的表空间，作用都是均衡DISK 
+I/O，SQL创建表时，可以指定表在不同的文件组，ORACLE则可以指定不同的表空间。<BR>CREATE TABLE A001（ID 
+DECIMAL（8，0）） ON [文件组]<BR>&nbsp; 
+&nbsp;--------------------------------------------------------------------------------------------<BR>CREATE 
+TABLE A001（ID NUMBER（8，0）） TABLESPACE 
+表空间<BR>注：以后所有示例，先SQL，后ORACLE<BR>003、SQL与ORACLE的日志模式<BR>SQL对日志的控制有三种恢复模型：SIMPLE、FULL、BULK-LOGGED；ORACLE对日志的控制有二种模式：NOARCHIVELOG、ARCHIVELOG。SQL的SIMPLE相当于ORACLE的NOARCHIVELOG，FULL相当于ARCHIVELOG，BULK-LOGGED相当于ORACLE大批量数据装载时的NOLOGGING。经常有网友抱怨SQL的日志庞大无比且没法处理，最简单的办法就是先切换到SIMPLE模式，收缩数据库后再切换到FULL，记住切换到FULL之后要马上做完全备份。<BR>004、SQL与ORACLE的备份类型<BR>SQL的备份类型分的极杂：完全备份、增量备份、日志备份、文件或文件组备份；ORACLE的备份类型就清淅多啦：物理备份、逻辑备份；ORACLE的逻辑备份（EXP）相当于SQL的完全备份与增量备份，ORACLE的物理备份相当于SQL的文件与文件组备份。SQL的各种备份都密切相关，以完全备份为基础，配合其它的备份方式，就可以灵活地备分数据；ORACLE的物理备份与逻辑备份各司其职。SQL可以有多个日志，相当于ORACLE日志组，ORACLE的日志自动切换并归档，SQL的日志不停地膨胀……SQL有附加数据库，可以将数据库很方便地移到别一个服务器，ORACLE有可传输表空间，可操作性就得注意啦。<BR>005、SQL与ORACLE的恢复类型<BR>SQL有完全恢复与基于时间点的不完全恢复；ORACLE有完全恢复与不完全恢复，不完全恢复有三种方式：基于取消的、基于时间的、基于修改的（SCN）的恢复。不完全恢复可以恢复数据到某个稳定的状态点。<BR>006、SQL与ORACLE的事务隔离<BR>SET 
+TRANSACTION ISOLATION LEVEL <BR>SQL有四种事务隔离级别：<BR>READ COMMITTED、READ 
+UNCOMMITTED、REPEATABLE READ、SERIALIZABLE<BR>ORACLE有两种事务隔离级别<BR>READ 
+COMMITTED、SERIALIZABLE<BR>SQL虽然有四种事务隔离，事务之间还是经常发生阻塞；ORACLE则利用回退段很好地实现了事务隔离，不会产生阻塞。SQL与ORACLE如果发生死锁，都可以很快地识别并将之处理掉。<BR>007 
+SQL与ORACLE的外键约束<BR>SQL的外键约束可以实现级联删除与级联更新，ORACLE则只充许级联删除。<BR>CREATE TABLE A001（ID 
+INT PRIMARY KEY，NAME VARCHAR（20））<BR>CREATE TABLE A002（ID INT REFERENCES 
+A001（ID）ON DELETE CASCADE ON UPDATE CASCADE，AGE TINYINT）<BR>CREATE TABLE A001（ID 
+INT PRIMAY KEY，NAME VARCHAR2（20））<BR>CREATE TABLE A002（ID INT REFERENCES 
+A001（ID）ON DELETE CASCADE，AGE 
+NUMBER（2，0））<BR>008、SQL与ORACLE的临时表<BR>SQL的临时表用#或##开头，使用完后自动释放，ORACLE的临时表则存在数据库中，每个会话的数据都互不干涉。oracle临时表中的纪录可以被定义为自动删除（分commit方式和transaction方式），而表结构不会被自动删除。临时表的DML，DDL操作和标准表一样。<BR>CREATE 
+TABLE #TEMP（ID INT，NAME 
+VARCHAR（20））<BR>-------------------------------------------------------<BR>CREATE 
+GLOBAL TEMPORARY TABLE TEMP（ID 
+INT，VARCHAR2（20））<BR>009、SQL与ORACLE的类型转换<BR>SQL常用类型转换函数有：CAST、CONVERT、STR<BR>ORACLE常用类型转换函数有：TO_CHAR、TO_NUMBER、TO_DATE<BR>SELECT 
+CONVERT（VARCHAR（20），GETDATE（），112）<BR>------------------------------------------------------------------------------------------------<BR>SELECT 
+TO_CHAR（SYSDATE，‘YYYYMMDD’）FROM 
+DUAL<BR>010、SQL与ORACLE的自动编号<BR>SQL的编号一般由IDENTITY字段来提供，可以灵活地设定种子值，增量，取值范围有BIGINT、INT、SMALLINT、TINYINT、DEIMAL等；ORACLE的编号一般由SEQUENCE来提供，由NEXTVAL与CURVAL函数从SEQUENCES取值。<BR>CREATE 
+TABLE A003（ID INT IDENTITY（-9999，9），NAME 
+VARCHAR（20））<BR>-------------------------------------------------------------------------------------------------------<BR>CREATE 
+SEQUENCE SEQ_001 START 9999 INCREMENT BY 9<BR>CREATE TABLE A004（ID 
+INT）<BR>INSERT INTO A004 VALUES（SEQ_001.NEXTVAL）<BR>INSERT INTO A004 
+VALUES（SEQ_001.CURVAL+1）<BR>011、SQL与ORACLE的分区表<BR>从严格意思上来讲，SQL还没有分区表，它的分区表是以UNION为基础，将多个结果集串起来，实际上是视图；ORACLE的分区表有多种：PARTITION 
+BY RANGE、PARTITION BY HASH、PARTITION BY 
+LIST，其它就是混合分区，以上三种基础分区的混合使用。当然ORACLE也可以象SQL那样分区视图。<BR>CREATE TABLE A1999（ID 
+INT，NAME VARCHAR（20））<BR>CREATE TABLE A2000（ID INT，NAME VARCHAR（20））<BR>CREATE 
+VIEW V_PART AS <BR>SELECT * FROM A1999 UNION SELECT * FROM 
+A2000<BR>--------------------------------------------------<BR>CREATE TABLE 
+A_PART1(ID INT,NAME VARCHAR2(20))<BR>PARTITON BY RANGE(ID)(<BR>PARTITION P1 
+VALUES LESS THEN (2000000) PATITION P2 VALUES LESS THEN (MAXVALUE))<BR>CREATE 
+TABLE A_PART2(ID INT,NAME VARCHAR2(20))<BR>PARTITION BY HASH(ID) PARTITIONS 2 
+STORE IN (USERS01,USERS02)<BR>CREATE TABLE A_PART3(ID INT,NAME 
+VARCHAR2(20))<BR>PARTITION BY LIST(ID)(<BR>PARTIION P1 VALUES(‘01’,’03’,’05’) 
+PARTITON P2 
+VALUES(‘02’,’04’))<BR>012、SQL与ORACLE的存储过程<BR>SQL的存储过程可以很方便地返回结果集，ORACLE的存储过程只有通过游标类型返回结果集，这种结果集ADO不可识别，如果想使用ORACLE存储过程的结果集，只有使用ODAC开发包（DELPHI/BCB控件组 
+<A href="http://www.51delphi.com/" target=_blank>www.51delphi.com</A> 与<A 
+href="http://www.playicq.com有下载），sql的过程参数如果是字符必须指定参数长度，oracle的过程则不充许指定字符参数的长度。/" 
+target=_blank>www.playicq.com有下载），SQL的过程参数如果是字符必须指定参数长度，ORACLE的过程则不充许指定字符参数的长度。</A><BR>CREATE 
+PROCEDURE UP_001(@ID INT) AS<BR>BEGIN <BR>SELECT ID ,SUM(QTY) FROM A_TEST WHERE 
+ID=@ID GROUP BY 
+@ID<BR>END<BR>------------------------------------------------------------<BR>CREATE 
+OR REPLACE PACKAGE UP_002 AS<BR>TYPE MYCURSOR IS REF CURSOR；<BR>FUNCTION 
+GETRECORD RETURN MYCURSOR；<BR>END；<BR>CEEATE OR REPLACE PACKAGE BODY UP_002 
+AS<BR>&nbsp; &nbsp;FUNCTION GETRECORD RETURN MYCURSOR AS<BR>&nbsp; &nbsp; 
+&nbsp;MC MYCURSOR；<BR>&nbsp;SL VARCHAR2（999）；<BR>&nbsp; &nbsp;BEGIN<BR>&nbsp; 
+OPEN MC FOR SELECT * FROM A001；<BR>&nbsp; RETURN MC；<BR>&nbsp; &nbsp;END； 
+<BR>END；<BR>ORACLE的存储函数返回结果这么艰难，但SQL的触发器竟然也充许返回结果集就令人费解啦，触发器的调试比较麻烦，在SQL实际开发中，一般都将触发器要执行的代码放到过程中进行调试，在查询分析器中可以对过程进行设断点调试。<BR>013、SQL与ORACLE的触发器<BR>触发器的事务是引起触发动作事务的延续，在SQL的触发器中是可以无BEGIN 
+TRAN而可以直接COMMIT 
+TRAN的。SQL的触发器是表级触发器，DML影响一行或无数行触发动作只触发一次，ORACLE分表级触发器与行级触发器，触发的粒度更细腻一些，SQL在处理多行时就必须使用CURSOR啦。ORACLE使用INSERTING、DELTING、UPDATING判断执行了什么DML操作，SQL只有判断INSERTED、DELETED的记录数来判断执行了什么操作，只有INSERTED映象表记录数大于0表示INSERT，只有DELETED映象表记录数大于0表示DELETE，若两个表记录数都大于0表示UPDATE。<BR>用SQL的触发器实现级联添加、级联删除、级联更新<BR>CREATE 
+TABLE A1（ID INT，NAME VARCHAR（20））<BR>CREATE TABLE A2（ID INT，NAME 
+VARCHAR（20））<BR>CREATE TRIGGER TRI_A1_INS ON A1 <BR>FOR INSERT , DELETE , UPDATE 
+AS BEGIN<BR>&nbsp;DECLARE @I INT,@D INT,@ID INT<BR>&nbsp;SELECT @I=COUNT(*) FROM 
+INSERTED<BR>&nbsp;SELECT @D=COUNT(*) FROM DELETED<BR>&nbsp;--IF (@I&gt;0 AND 
+@D&gt;0) 执行更新，由于用到游标，故略去<BR>&nbsp;IF @I&gt;0<BR>&nbsp; &nbsp; INSERT INTO A2 
+SELECT * FROM INSERTED<BR>&nbsp;IF @D&gt;0<BR>&nbsp; &nbsp; DELETE FROM A2 WHERE 
+ID=@ID<BR>END<BR>----------------------------------------------------------------------<BR>用ORACLE的触发器实现级联添加、级联删除、级联更新<BR>CREATE 
+OR REPLACE TRI_A1_INS <BR>AFTER INSERT OR DELETE OR UPDATE ON A1 <BR>FOR EACH 
+ROW<BR>BEGIN<BR>IF INSERTING THEN<BR>INSERT INTO A2 SELECT * FROM 
+：NEW；<BR>&nbsp; &nbsp;END IF；<BR>IF DELETING THEN<BR>DELETE FROM A2 WHERE ID = 
+：OLD.ID ；<BR>&nbsp; &nbsp;END IF；<BR>IF UPDATING THEN<BR>UPATE A2 SET ID = 
+：NEW.ID , NAME = &nbsp;：NEW.NAME WHERE ID = ：OLD.ID ；<BR>&nbsp; &nbsp;END 
+IF；<BR>END 
+<BR>014、SQL与ORACLE的游标<BR>SQL的游标用@@FETCH_STATUS判断是否还有数据，ORACLE的游标用%FOUND、%NOTFOUND来判断游标是否结束，游标分服务端游标与客户端游标，在存储过程、函数、触发器中声明的游标为服务端游标，其它处声明的游标为客户端游标，游标需要使用较多的内存，但它比临时表的性能要优一些，因为临时表占用的是DISK 
+I/O，DISK 
+I/O应该比服务器的内存要更珍贵一些吧。<BR>015、SQL与ORACLE的重复记录删除<BR>好的数据库设计重复记录是不存在的，如果有重复记录如何删除呢？SQL可以使用SET 
+ROWCOUNT 
+N设置客户端缓冲区的记录来删除，ORACLE可以使用ROWID来进行，都必须进行一些简单的编程，SQL可以做用过程，更通用一些，ORACLE如果想做得通过不太容易，字段小些会更方便处理一些。<BR>DECLARE 
+@M INT<BR>SELECT @M=COUNT(*) FROM A_TEST WHERE ID=X<BR>SELECT @M=@M-1<BR>SET 
+ROWCOUNT @M &nbsp; &nbsp;--限制客户端缓冲区的记录数<BR>DELETE FROM A_TEST WHERE ID=X<BR>SET 
+ROWCOUNT 0 &nbsp; &nbsp; --取消限制<BR>说明 
+删除某条记录的重复值，如果想清除表的所有重值要使用游标，取得所有的X<BR>---------------------------------------------------------------------<BR>DELETE 
+FROM A_TEST A WHERE ROWID!=(SELECT MAX(ROWID) FROM A_TEST B<BR>&nbsp; WHERE 
+A.ID=B.ID AND A.NAME=B.NAME)<BR>说明 当数据量较大时，这种方法将会使用系统大量的资源<BR>016 
+SQL与ORACLE的对象加密<BR>SQL与ORACLE的某些对象如过程、视图、函数、触发器可能涉及商业，开发商通常希望对这些对象进行加密，SQL的加密方法在创建时带上WITH 
+ENCRYPTION，ORACLE的对象加密明显复杂一些，要使用WRAP工具，在ORACLE的BIN目录内。<BR>017 
+SQL与ORACLE的表生成SQL语句<BR>SQL与ORACLE的表如何才导成SQL语句呢？如果一定要编程实现，SQL需要将其它数据类型的字段转换成VARCHAR类型，ORACLE则可以隐式进行数据类型转换。<BR>CREATE 
+TABLE A_SQL(ID INT,NAME VARCHAR(20)) –假如有两万记录<BR>SELECT ‘INSERT INTO A_SQL 
+VALUES(‘+CAST(ID <BR>AS VARCHAR(20))+’,’’’+NAME+’’’)’ FROM 
+A_SQL<BR>----------------------------------------------------------------<BR>SELECT 
+‘INSERT INTO A_SQL VALUES(‘||ID||’,’||’’’||NAME||’’’||’)’<BR>FROM A_SQL<BR>说明 
+SQL的字符串连接用+号，ORACLE字符串连接用||，单引号可以做转义符。<BR>018、SQL与ORACLE的动态SQL<BR>SQL与ORACLE都支持动态SQL语句，SQL用EXEC（）执行的动态SQL语句，ORACLE用EXECUTE 
+IMMEDIATE执行动态SQL。动态SQL的效率要比非动态SQL性能差，但使用起来非常灵活，可以根据不同条件执行不同的任务。<BR>DECLARE @SQL 
+VARCHAR(99)<BR>SELECT @SQL=’declare @m int select @m=count(*) from sysobjects 
+select 
+@m’<BR>EXEC(@SQL)<BR>--------------------------------------------<BR>DECLARE<BR>S 
+VARCHAR2(99);<BR>BEGIN <BR>S:='SELECT COUNT(*) &nbsp;FROM '||' 
+USER_TABLES';<BR>EXECUTE IMMEDIATE 
+S;<BR>END;<BR>19、返回记录集中前N条记录的语法？<BR>SQL只有使用TOP，ORACLE可以使用ROWNUM<BR>SELECT TOP N 
+* FROM 记录集（表，视图，子查询）<BR>---------------------------------------------<BR>SELECT 
+* FROM 记录集 WHERE ROWNUM&lt;=N<BR>20 如何返回记录集中相临两记录之间某字段的差值？<BR>CREATE TABLE 
+A001(ID INT,QTY INT)<BR>INSERT INTO A001 VALUES(1,20)<BR>INSERT INTO A001 
+VALUES(4,10)<BR>SELECT IDENTITY(INT,1,1) CODE,QTY INTO #X FROM A001<BR>SELECT 
+B.QTY-A.QTY FROM #X A,#X B WHERE A.CODE=B.CODE-1<BR>DROP TABLE 
+#X<BR>--------------------------------------------------------<BR>CREATE TABLE 
+A002（ID INT）<BR>INSERT INTO A002 VALUES（1）<BR>INSERT INTO A002 VALUES（9）<BR>WITH 
+A AS (SELECT ROWNUM RN,ID FROM A002)<BR>SELECT A2.ID-A1.ID FROM A A2,A A1 WHERE 
+A2.RN=A1.RN-1<BR>说明 虽然语法大不相同，但最大的特点是两者都使用了自连接技术。<BR>21 
+如何返回任意某个范围之间的记录集？<BR>CREATE TABLE A03(ID INT)<BR>DECLARE @I INT<BR>SELECT 
+@I=1<BR>WHILE @I&lt;1000 BEGIN<BR>INSERT INTO A03 VALUES(@I)<BR>&nbsp;SELECT 
+@I=@I+1<BR>END<BR>--前部分是创建环境，后一部分是实现方法，比较牵强<BR>SELECT IDENTITY(INT,1,1) CODE,ID 
+INTO #X FROM A03<BR>SELECT ID FROM #X WHERE CODE BETWEEN 10 AND 20<BR>DROP TABLE 
+#X<BR>------------------------------------------------------<BR>BEGIN<BR>FOR I 
+IN 1..999 LOOP<BR>&nbsp;INSERT INTO A03 VALUES(I);<BR>END 
+LOOP;<BR>END;<BR><BR>SELECT * FROM A03 WHERE ROWNUM&lt;20<BR>MINUS<BR>SELECT * 
+FROM A03 WHERE ROWNUM&lt;10;<BR>说明 
+在数据提取方面，ORACLE有ROWID，ROWNUM使之有相当强的优势，SQL只有使用函数IDENTITY来构建一个临时表，这样来说还不好使用CURSOR来性能会好一些。通过这个例子，大家还可以看出SQL与ORACLE的程序结构，ORACLE更严谨、人性化一些。<BR>22、表A04中的含有A、B、C、D四个字段，当按A字段分组后，如果D等1，则只统计B的值，如果D等0,则只统计C的值。<BR>CREATE 
+TABLE A04(A VARCHAR(20),B INT,C INT,D INT)<BR>INSERT INTO A04 
+VALUES('01',20,7,'0')<BR>INSERT INTO A04 VALUES('01',10,8,'1')<BR>INSERT INTO 
+A04 VALUES('02',20,7,'1')<BR>INSERT INTO A04 VALUES('02',10,8,'0')<BR>SELECT 
+A,SUM(CASE D WHEN 1 THEN B WHEN 0 THEN C END) FROM A04 GROUP BY 
+A<BR>---------------------------------------------------------------<BR>SELECT 
+A,SUM(DECODE(D,1,B,0,C)) FROM A04 GROUP BY A <BR>说明 ORACLE 
+9I可以使用CASE语句来实现这种操作，但也可以用DECODE来作统计，使用CASE比DECODE提供了更为强大的功能，但DECODE的语法显然比CASE 
+WHEN THEN END要简洁得多。<BR>23、如何删除数据库所有表？（ORACLE则是删除模式所有表）<BR>DECLARE @SQL 
+VARCHAR(99),@TBL VARCHAR(30),@FK VARCHAR(30)<BR>DECLARE CUR_FK CURSOR LOCAL 
+FOR<BR>&nbsp; SELECT OBJECT_NAME(CONSTID),OBJECT_NAME(FKEYID) FROM 
+SYSREFERENCES<BR>--删除所有外键<BR>OPEN CUR_FK<BR>FETCH CUR_FK INTO @FK,@TBL<BR>WHILE 
+@@FETCH_STATUS =0<BR>BEGIN<BR>SELECT @SQL='ALTER TABLE '+@TBL+' DROP CONSTRAINT 
+'+@FK<BR>&nbsp;EXEC(@SQL)<BR>&nbsp;--SELECT @SQL='DROP TABLE 
+'+@TBL<BR>&nbsp;FETCH CUR_FK INTO @FK,@TBL<BR>END<BR>CLOSE CUR_FK<BR>DECLARE 
+CUR_FKS CURSOR LOCAL FOR<BR>&nbsp; SELECT NAME FROM SYSOBJECTS WHERE 
+XTYPE='U'<BR>OPEN CUR_FKS<BR>FETCH CUR_FKS INTO @TBL<BR>WHILE @@FETCH_STATUS 
+=0<BR>BEGIN<BR>&nbsp; SELECT @SQL='DROP TABLE ['+@TBL+']'<BR>&nbsp; 
+EXEC(@SQL)<BR>&nbsp; FETCH CUR_FKS INTO @TBL<BR>END<BR>CLOSE CUR_FKS 
+&nbsp;<BR>----------------------------------------------------------------<BR>DECLARE<BR>S 
+VARCHAR2(99);<BR>CURSOR CUR_F IS SELECT CONSTRAINT_NAME,TABLE_NAME FROM 
+USER_CONSTRAINTS<BR>&nbsp; &nbsp; WHERE CONSTRAINT_TYPE='R';<BR>CURSOR CUR_T IS 
+SELECT TABLE_NAME FROM USER_TABLES;<BR>BEGIN<BR>&nbsp;FOR V IN CUR_F 
+LOOP<BR>&nbsp; &nbsp; S:='ALTER TABLE '||V.TABLE_NAME||' DROP CONSTRAINT 
+'||V.CONSTRAINT_NAME;<BR>&nbsp; &nbsp; EXECUTE IMMEDIATE S;<BR>&nbsp;END 
+LOOP;<BR>&nbsp; &nbsp;FOR T IN CUR_T LOOP<BR>&nbsp; &nbsp; &nbsp; S:='DROP TABLE 
+'||T.TABLE_NAME;<BR>&nbsp; &nbsp; &nbsp; EXECUTE IMMEDIATE S;<BR>&nbsp; 
+&nbsp;END LOOP;<BR>END;<BR>说明 
+SQL删除数据库时，用到了两个系统表：SYSREFERENCES、SYSOBJECTS，前一个可以获得所有外键键信息，后者可以获得所有表的信息，在删除表时还在表名上加了一对中括号，即使用表名含有空格键或其它特殊这符也可以顺利删除。<BR>在ORACLE中，要删除模式的所有表，方法和SQL差不多，需要用到的数据字典也有两个：USER_CONSTRAINTS、USER_TABLES；USER_CONSTRAINTS中CONSTRAINT_TYPE值等于R表示是外键，同样也要用到CURSOR与动态SQL，这里提醒一下大家，FOR 
+… LOOP内的变量变量是FOR … 
+LOOP声明的，可以ORACLE的程序结构比SQL简洁。<BR>24、如何统计数据库所有用户表的记录数（ORACLE统计模式内所有表的记录数）？<BR>&nbsp;CREATE 
+TABLE #TMP (QTY INT)<BR>&nbsp;CREATE TABLE #TMP1 (TBL VARCHAR(30),QTY 
+INT)<BR>DECLARE @SQL VARCHAR(99),@TBL VARCHAR(30),@QTY INT<BR>&nbsp;DECLARE 
+CUR_FKS CURSOR LOCAL FOR<BR>&nbsp; &nbsp; SELECT NAME FROM SYSOBJECTS WHERE 
+XTYPE='U'<BR>&nbsp;OPEN CUR_FKS<BR>&nbsp;FETCH CUR_FKS INTO @TBL<BR>&nbsp;WHILE 
+@@FETCH_STATUS =0<BR>&nbsp;BEGIN<BR>&nbsp; &nbsp; SELECT @SQL='SELECT COUNT(*) 
+FROM '+@TBL<BR>&nbsp; &nbsp; INSERT INTO #TMP EXEC(@SQL)<BR>&nbsp; &nbsp; SELECT 
+@QTY=QTY FROM #TMP<BR>&nbsp; &nbsp; INSERT INTO #TMP1 
+VALUES(@TBL,@QTY)<BR>&nbsp; &nbsp; DELETE FROM #TMP <BR>&nbsp; &nbsp; FETCH 
+CUR_FKS INTO @TBL<BR>&nbsp;END<BR>&nbsp;CLOSE CUR_FKS &nbsp;<BR>&nbsp;SELECT * 
+FROM 
+#TMP1<BR>---------------------------------------------------------------<BR>DESC 
+DBMS_UTILITY<BR>EXECUTE 
+DBMS_UTILITY.ANALYZE_SCHEMA('SCOTT','COMPUTE');<BR>SELECT TABLE_NAME,NUM_ROWS 
+FROM USER_TABLES;<BR>说明 SQL的EXEC功能可谓十分强大，竟然可以和INSERT 
+INTO合用，将结果集存入一个表中，MS可真牛。ORACLE就只好用个偷懒的方法，首先将要统计的模式进行统计分析，在数据字典中就记载了每个表的行数，ORACLE很简单吧。<BR>25、SQL与ORACLE快速建表的方法？<BR>SELECT 
+* INTO 新表名称 FROM 子查询|表名<BR>-----------------------------------------<BR>CREATE 
+TABLE 新表名称 AS 子查询<BR>说明 
+快速建表可以有效地消除碎片，速度极快。<BR>26、如何实现有一组有规则的编号（如200305310001…200305310999）?<BR>DECLARE 
+@I INT,@C VARCHAR(20)<BR>SELECT @I=1<BR>WHILE @I&lt;1000 BEGIN<BR>&nbsp;SELECT 
+@C=CASE WHEN @I&lt;10 THEN '000'+CAST(@I AS CHAR(1))<BR>&nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; WHEN @I BETWEEN 10 AND 99 THEN '00'+CAST(@I 
+AS CHAR(2))<BR>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; WHEN @I 
+BETWEEN 100 AND 999 THEN '0'+CAST(@I AS CHAR(3))<BR>&nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp;END<BR>&nbsp;SELECT 
+@C=CONVERT(VARCHAR(20),GETDATE(),112)+@C<BR>&nbsp;SELECT @C &nbsp; &nbsp; 
+--在查询分析器中输出<BR>&nbsp;SELECT 
+@I=@I+1<BR>END<BR>---------------------------------------------------------<BR>DECLARE<BR>C 
+VARCHAR2(20);<BR>BEGIN<BR>&nbsp;FOR I IN 1 .. 999 LOOP<BR>&nbsp; 
+&nbsp;DBMS_OUTPUT.PUT_LINE(TO_CHAR(SYSDATE,'YYYYMMDD')||LPAD(I,4,'0'));<BR>&nbsp;END 
+LOOP;<BR>END;<BR>说明 
+虽然都可以实现，但ORACLE的LPAD果然身手不凡，可怜的MS还没有类似LPAD的函数，只有用CASE进行判断组合，真得很蠢，如果你有好的办法，请明示，甚至连循环结构，SQL稍也不慎，就死循环啦（如果注释掉加蓝显示那条语句的话）。<BR>27、关于SQL与ORACLE的分布式结构<BR>SQL在分布式方面做得不错，不仅提供了链接服务器的方式供初级用户使用，还提供了OPENDATASOURCE、OPENXML、OPENQUERY、OPENROWSET等行集函数，可以方便地通过SQL语句从*.TXT、*.XLS、*.XML、*.MDB、*.DBF等介质获取数据，还可以从ORACLE、DB2、SYBASE等数据库获取数据；ORACLE在同构数据库之间提供了DB 
+LINK，异构数据库之间提供了透明网关软件。<BR>28、现在有三个表，结构如下<BR>Score(FScoreId &nbsp;成绩记录号,FSubID 
+课程号,FStdID 学生号,FScore &nbsp; &nbsp;成绩)<BR>student:（FID &nbsp;学生号，FName 
+&nbsp;姓名）<BR>subject:（FSubID &nbsp; 课程号，FSubName 课程名）, &nbsp; 
+<BR>怎么能实现这个表：<BR>姓名 &nbsp; 英语 &nbsp; 数学 &nbsp; 语文 &nbsp;历史<BR>张萨 &nbsp; 78 
+&nbsp; &nbsp; 67 &nbsp; &nbsp; 89 &nbsp; &nbsp;76<BR>王强 &nbsp; 89 &nbsp; &nbsp; 
+67 &nbsp; &nbsp; 84 &nbsp; &nbsp;96 &nbsp; <BR>李三 &nbsp; 70 &nbsp; &nbsp; 87 
+&nbsp; &nbsp; 92 &nbsp; &nbsp;56<BR>李四 &nbsp; 80 &nbsp; &nbsp; 78 &nbsp; &nbsp; 
+97 &nbsp; &nbsp;66<BR>SELECT A.FNAME AS 姓名, <BR>&nbsp; &nbsp; &nbsp;英语 = 
+SUM(CASE B.FSUBNAME WHEN '英语' THEN C.FSCORE END), <BR>&nbsp; &nbsp; &nbsp;数学 = 
+SUM(CASE B.FSUBNAME WHEN '数学' THEN C.FSCORE END), <BR>&nbsp; &nbsp; &nbsp;语文 = 
+SUM(CASE B.FSUBNAME WHEN '语文' THEN C.FSCORE END), <BR>&nbsp; &nbsp; &nbsp;历史 = 
+SUM(CASE B.FSUBNAME WHEN '历史' THEN C.FSCORE END)<BR>FROM STUDENT A, SUBJECT B, 
+SCORE C<BR>WHERE A.FID = C.FSTDID AND B.FSUBID = C.FSUBID GROUP BY 
+A.FNAME<BR>------------------------------------------------------------------------<BR>SELECT 
+A.FNAME AS 姓名, <BR>&nbsp; &nbsp;英语 = &nbsp;SUM（DECODE（B.FSUBNAME,’ 
+英语’,C.FSORE）），<BR>&nbsp; &nbsp;数学 = &nbsp;SUM（DECODE（B.FSUBNAME,’ 
+数学’,C.FSORE）），<BR>&nbsp; &nbsp;语文 = &nbsp;SUM（DECODE（B.FSUBNAME,’ 
+语文’,C.FSORE）），<BR>&nbsp; &nbsp;历史 = &nbsp;SUM（DECODE（B.FSUBNAME,’ 
+历史’,C.FSORE）），<BR>FROM STUDENT A, SUBJECT B, SCORE C<BR>WHERE A.FID = C.FSTDID 
+AND B.FSUBID = C.FSUBID GROUP BY A.FNAME<BR>说明 这个案例主要是运用CASE与DECODE，当然也涉及GROUP 
+BY的用法。<BR>29、有两个表，用一条SQL语句算出商品A,B目前还剩多少？表结构如下：<BR>商品名称mc &nbsp;商品总量sl 
+&nbsp;表一(AAA)<BR>&nbsp;A &nbsp; &nbsp; &nbsp; &nbsp; 100<BR>&nbsp;B &nbsp; 
+&nbsp; &nbsp; &nbsp; 120<BR>商品名称mc &nbsp;出库数量sl 表二(BBB)<BR>&nbsp; A &nbsp; 
+&nbsp; &nbsp; &nbsp; 10<BR>&nbsp; A &nbsp; &nbsp; &nbsp; &nbsp; 20<BR>&nbsp; B 
+&nbsp; &nbsp; &nbsp; &nbsp; 10<BR>&nbsp; B &nbsp; &nbsp; &nbsp; &nbsp; 
+20<BR>SELECT TA.商品名称,A-B AS 剩余数量 FROM<BR>(SELECT 商品名称,SUM(商品总量) AS A FROM AAA 
+GROUP BY 商品名称)TA,<BR>(SELECT 商品名称,SUM(出库数量) AS B FROM BBB GROUP BY 
+商品名称)TB<BR>WHERE 
+TA.商品名称=TB.商品名称<BR>----------------------------------------------------------<BR>SELECT 
+商品名称,SUM（商品总量）剩余数量 FROM <BR>（SELECT * FROM AAA <BR>UNION ALL<BR>SELECT 
+商品名称,-出库数量 FROM BBB）A GROUP BY 商品名称<BR>30、如何将A表的某个字段更新到表B的某个字段？<BR>UPDATE A SET 
+QTY=B.QTY FROM B WHERE 
+A.CODE=B.CODE<BR>---------------------------------------------------<BR>UPDATE A 
+SET QTY=(SELECT QTY FROM B WHERE B.CODE=A.CODE)<BR>说明 
+这两道题在语法上SQL与ORACLE没有发别，只不过是两种思路而已。<BR>31、有一个商品销售表，记载了某月商品的销售数量，现在要为所有商品排名次，放到一个单独的字段中，就是说达到右边显示的效果，如何作？<BR>BU1032 
+5 NULL &nbsp; &nbsp; &nbsp;BU1032 5 &nbsp;2<BR>PS2091 3 NULL &nbsp; &nbsp; 
+&nbsp;PS2092 3 &nbsp;3<BR>PC8888 50 NULL &nbsp; &nbsp; &nbsp;PC8888 50 
+1<BR>UPDATE X SET ORD=(SELECT COUNT(*)+1 FROM X B WHERE 
+B.QTY&gt;X.QTY)<BR>----------------------------------------------------------------<BR>SELECT 
+CODE,QTY,RANK() OVER (ORDER BY QTY) ORD FROM A_TEST<BR>说明 
+SQL中的排序是通过UPDATE更新，然后再显示出来，而ORACLE使用了RANK OVER函数，直接将数据集显示出来，而且RANK 
+OVER函数还可以通过PARTITION 
+BY对分组中的数据进行排序。<BR>32、SQL与ORACLE的文件结构<BR>SQL文件被格式化为8K为单位的页，每8个相邻的页称为盘区（64K），若该盘区分配给一个对象，称为一致盘区，若分配给多个对象等为混合盘区，SQL有全局分配页面、数据页面、索引页页、BLOB页面、TEXT页面。ORACLE的文件最小逻辑单位是由INIT.ORA中的BLOCK_SIZE的值决定的，可以取2K、4K、6K、8K、16K、32K等，ORACLE的盘区是由一些块组成的，ORACLE的段是由盘区组成的，ORACLE有数据段、索引段、回退段（UNDO段）、临时段、CLOB/BLOB段、CLUSTER段等。<BR>33、SQL与ORACLE如何取得一个全局唯一标识标（GUID）<BR>SELECT 
+NEWID（）<BR>----------------------------------<BR>SELECT SYS_GUID() FROM 
+DUAL<BR>34、本人有一张表单, 
+要求统计COL1~COL6中不等于2的列的个数，数据如下：<BR>————————————————————————————————<BR>ROW_ID | 
+&nbsp;COL1 &nbsp;| &nbsp;COL2 &nbsp;| &nbsp;COL3 &nbsp;| &nbsp;COL4 &nbsp;| 
+&nbsp;COL5 &nbsp;| &nbsp;COL6 &nbsp;|<BR>&nbsp;1 &nbsp; &nbsp;| &nbsp; &nbsp;2 
+&nbsp; | &nbsp; &nbsp;1 &nbsp; | &nbsp; &nbsp;1 &nbsp; | &nbsp; &nbsp;2 &nbsp; | 
+&nbsp; &nbsp;3 &nbsp; | &nbsp; &nbsp;2 &nbsp; |<BR>&nbsp;2 &nbsp; &nbsp;| &nbsp; 
+&nbsp;1 &nbsp; | &nbsp; &nbsp;1 &nbsp; | &nbsp; &nbsp;2 &nbsp; | &nbsp; &nbsp;2 
+&nbsp; | &nbsp; &nbsp;2 &nbsp; | &nbsp; &nbsp;2 &nbsp; |<BR>&nbsp;3 &nbsp; 
+&nbsp;| &nbsp; &nbsp;2 &nbsp; | &nbsp; &nbsp;3 &nbsp; | &nbsp; &nbsp;2 &nbsp; | 
+&nbsp; &nbsp;2 &nbsp; | &nbsp; &nbsp;1 &nbsp; | &nbsp; &nbsp;2 &nbsp; 
+|<BR>&nbsp;4 &nbsp; &nbsp;| &nbsp; &nbsp;2 &nbsp; | &nbsp; &nbsp;2 &nbsp; | 
+&nbsp; &nbsp;2 &nbsp; | &nbsp; &nbsp;2 &nbsp; | &nbsp; &nbsp;1 &nbsp; | &nbsp; 
+&nbsp;2 &nbsp; |<BR>&nbsp;5 &nbsp; &nbsp;| &nbsp; &nbsp;1 &nbsp; | &nbsp; 
+&nbsp;2 &nbsp; | &nbsp; &nbsp;2 &nbsp; | &nbsp; &nbsp;2 &nbsp; | &nbsp; &nbsp;2 
+&nbsp; | &nbsp; &nbsp;2 &nbsp; |<BR>&nbsp;6 &nbsp; &nbsp;| &nbsp; &nbsp;2 &nbsp; 
+| &nbsp; &nbsp;2 &nbsp; | &nbsp; &nbsp;2 &nbsp; | &nbsp; &nbsp;2 &nbsp; | &nbsp; 
+&nbsp;2 &nbsp; | &nbsp; &nbsp;1 &nbsp; 
+|<BR>————————————————————————————————<BR>要求结果如下：<BR>—————————<BR>ROW_ID | COUNT 
+&nbsp;| <BR>&nbsp;1 &nbsp; &nbsp;| &nbsp; &nbsp;3 &nbsp; | &nbsp;<BR>&nbsp;2 
+&nbsp; &nbsp;| &nbsp; &nbsp;2 &nbsp; |<BR>&nbsp;3 &nbsp; &nbsp;| &nbsp; &nbsp;2 
+&nbsp; |<BR>&nbsp;4 &nbsp; &nbsp;| &nbsp; &nbsp;1 &nbsp; |<BR>&nbsp;5 &nbsp; 
+&nbsp;| &nbsp; &nbsp;1 &nbsp; |<BR>&nbsp;6 &nbsp; &nbsp;| &nbsp; &nbsp;1 &nbsp; 
+|<BR>SELECT ROW_ID,(6-(CASE WHEN COL1=2 THEN COL1 / 2 ELSE 0 END)<BR>-(CASE WHEN 
+COL2=2 THEN COL2 / 2 ELSE 0 END)<BR>-(CASE WHEN COL3=2 THEN COL3 / 2 ELSE 0 
+END)<BR>-(CASE WHEN COL4=2 THEN COL4 / 2 ELSE 0 END)<BR>-(CASE WHEN COL5=2 THEN 
+COL5 / 2 ELSE 0 END)<BR>-(CASE WHEN COL6=2 THEN COL6 / 2 ELSE 0 END))AS COUNT 
+FROM TABLE_A &nbsp;<BR>说明 本例摘自<A 
+href="http://www.delphibbs.com，有名的delphi开发网站，本人不拥有版权。该sql的实现方法与oracle的实现写法完全一样，不在多述。/" 
+target=_blank>WWW.DELPHIBBS.COM，有名的DELPHI开发网站，本人不拥有版权。该SQL的实现方法与ORACLE的实现写法完全一样，不在多述。</A><BR>35、有一客户表，数据如下：<BR>客户 
+&nbsp; &nbsp; 日期 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;资金<BR>F001 &nbsp; 
+&nbsp;2003-03-05 &nbsp; &nbsp; 123.00<BR>F002 &nbsp; &nbsp;2003-03-04 &nbsp; 
+&nbsp; 1223.00<BR>F002 &nbsp; &nbsp;2003-03-02 &nbsp; &nbsp; 1123.00<BR>F003 
+&nbsp; &nbsp;2003-03-05 &nbsp; &nbsp; 1231.00<BR>F003 &nbsp; &nbsp;2003-03-04 
+&nbsp; &nbsp; 1232.00<BR>要求选出每个客户最新的哪条记录 组成一个结果集，结果如下：<BR>F001 &nbsp; 
+&nbsp;2003-03-05 &nbsp; &nbsp; 123.00<BR>F002 &nbsp; &nbsp;2003-03-04 &nbsp; 
+&nbsp; 1223.00<BR>F003 &nbsp; &nbsp;2003-03-05 &nbsp; &nbsp; 
+1231.00<BR>实现方法：<BR>SELECT A.客户, B.日期, A.资金 FROM &nbsp;客户资金表 A,<BR>&nbsp; 
+&nbsp;(SELECT 客户, MAX(日期) 日期 &nbsp;FROM 客户资金表 &nbsp;GROUP BY 客户 ) B<BR>WHERE 
+A.客户 = B.客户 AND A.日期 = B.日期<BR>说明 ORACLE的写法与SQL一样,本例也摘自<A 
+href="http://www.delphibbs.com，本人不拥有版权。/" 
+target=_blank>WWW.DELPHIBBS.COM，本人不拥有版权。</A><BR>36 
+现在看一个高难度的作业，后来解决办法和本例不同，请看需求。<BR>视图1 CITYWATER_VIEW<BR>行政区划名称 城市用水量（亿M3） 
+。。。<BR>北京市 15000 …<BR>上海市 9000 …<BR>天津市 5400 …<BR>重庆市 9500 …<BR><BR><BR><BR>表2 
+CODE<BR>区划 代码<BR>北京市 100000<BR>上海市 200000<BR>天津市 300000<BR>表3 CITYWATER<BR>代码 
+城市用水<BR>100000 15000<BR>200000 9000<BR>300000 5400<BR>表1 DICTIONARY<BR>字段别名 
+字段全名<BR>区划 行政区划名称<BR>代码 行政区划代码<BR>城市用水 
+城市用水量（亿M3）<BR><BR>表1-2是数据库public中的基表,表3是数据库water中的基表；在数据库water中创建视图1，用T-SQL语句怎样实现？把查询结果的“字段别名”修改为视图中的“字段全名”，如果采用T-SQL中的常用修改列标题方式（SELECT 
+column_name AS expression或者SELECT expression= column_name 
+），很烦，每个基表里的字段太多，并且基表有近200个，字段近3000个。<BR>说明：其实现在要作的就是将表3中的“代码“、“城市用水”替代成表1中的行政区划代码、城市用户量（亿M3）等。<BR>CREATE 
+VIEW V_GOD<BR>AS SELECT 
+A.[100000],B.[310000],B.[114011],B.[114111],B.[114421],B.[114311],B.[114321] 
+FROM CODE A,FA01P B WHERE A.[200000]=B.[200000]<BR>DECLARE CUR_COL CURSOR LOCAL 
+FOR <BR>&nbsp; SELECT NAME FROM SYSCOLUMNS WHERE 
+ID=OBJECT_ID('V_GOD')<BR>DECLARE @COL VARCHAR(20),@SQL VARCHAR(999),<BR>&nbsp; 
+&nbsp; &nbsp; &nbsp;@COL_TOTAL VARCHAR(8000),@ALIAS VARCHAR(99),<BR>&nbsp; 
+&nbsp; &nbsp; &nbsp;@SOURCE VARCHAR(8000)<BR>OPEN CUR_COL<BR>FETCH CUR_COL INTO 
+@COL<BR>WHILE @@FETCH_STATUS=0<BR>BEGIN<BR>&nbsp;SELECT @ALIAS=字段名 FROM 
+DICTIONARY WHERE 段码=@COL<BR>&nbsp;IF @COL_TOTAL IS NULL <BR>&nbsp; &nbsp; SELECT 
+@COL_TOTAL=@ALIAS<BR>&nbsp;ELSE<BR>&nbsp; &nbsp; SELECT 
+@COL_TOTAL=@COL_TOTAL+','+@ALIAS<BR>&nbsp;FETCH CUR_COL INTO 
+@COL<BR>END<BR>CLOSE CUR_COL<BR>SELECT @SOURCE=RTRIM(TEXT) FROM SYSCOMMENTS 
+WHERE ID=OBJECT_ID('V_GOD')<BR>SELECT 
+@SOURCE=RTRIM(SUBSTRING(@SOURCE,CHARINDEX('AS',@SOURCE),LEN(@SOURCE)))<BR>SELECT 
+@SOURCE='ALTER VIEW V_GOD('+@COL_TOTAL+') '+@SOURCE<BR>EXEC(@SOURCE)<BR>说明 
+由于该实例需要的表有两个已没有记录，所以大家只有看看T-SQL的语法及动态SQL的编写，ORACLE也类似。<BR>37、如何用SQL操作一段XML文件？<BR>CREATE 
+PROCEDURE UP_XML_TEST(@DOC VARCHAR(7999))<BR>AS<BR>BEGIN<BR>DECLARE @IDOC 
+INT<BR>EXEC SP_XML_PREPAREDOCUMENT @IDOC OUTPUT, @DOC<BR>SELECT *<BR>FROM &nbsp; 
+OPENXML (@IDOC, '/ROOT/DATASET/BOOKS',2)<BR>&nbsp;WITH(TITLE VARCHAR(32) 
+'TITLE',<BR>&nbsp; &nbsp; &nbsp; AUTHOR VARCHAR(20) 'AUTHOR',<BR>&nbsp; &nbsp; 
+&nbsp; PRICE DECIMAL(9,2) 'PRICE')<BR>EXEC SP_XML_REMOVEDOCUMENT 
+@IDOC<BR>END<BR>&nbsp; &nbsp; &nbsp; <BR>CREATE FUNCTION UF_XML_TEST(@DOC 
+VARCHAR(7999))<BR>RETURNS @T TABLE(TITLE VARCHAR(32),<BR>&nbsp; &nbsp; &nbsp; 
+AUTHOR VARCHAR(20),<BR>&nbsp; &nbsp; &nbsp; PRICE 
+DECIMAL(9,2))<BR>AS<BR>BEGIN<BR>DECLARE @IDOC INT<BR>EXEC SP_XML_PREPAREDOCUMENT 
+@IDOC OUTPUT, @DOC<BR>INSERT INTO @T SELECT *<BR>FROM &nbsp; OPENXML (@IDOC, 
+'/ROOT/DATASET/BOOKS',2)<BR>&nbsp;WITH(TITLE VARCHAR(32) 'TITLE',<BR>&nbsp; 
+&nbsp; &nbsp; AUTHOR VARCHAR(20) 'AUTHOR',<BR>&nbsp; &nbsp; &nbsp; PRICE 
+DECIMAL(9,2) 'PRICE')<BR>EXEC SP_XML_REMOVEDOCUMENT 
+@IDOC<BR>RETURN<BR>END<BR><BR>DECLARE @DOC VARCHAR(7999)<BR>SELECT 
+@DOC=<BR>'&lt;ROOT&gt;<BR>&lt;DATASET&gt;<BR>&lt;BOOKS&gt;<BR>&nbsp; 
+&lt;TITLE&gt;DELPHI&lt;/TITLE&gt;<BR>&nbsp; 
+&lt;AUTHOR&gt;ABC&lt;/AUTHOR&gt;<BR>&nbsp; 
+&lt;PRICE&gt;38.00&lt;/PRICE&gt;<BR>&lt;/BOOKS&gt;<BR>&lt;BOOKS&gt;<BR>&nbsp; 
+&lt;TITLE&gt;MIDAS&lt;/TITLE&gt;<BR>&nbsp; 
+&lt;AUTHOR&gt;DEF&lt;/AUTHOR&gt;<BR>&nbsp; 
+&lt;PRICE&gt;26.00&lt;/PRICE&gt;<BR>&lt;/BOOKS&gt;<BR>&lt;/DATASET&gt;<BR>&lt;/ROOT&gt;'<BR>EXEC 
+UP_XML_TEST @DOC<BR>--SELECT * FROM DBO.UF_XML_TEST(@DOC)<BR>说明 
+用过程可以方便地对XML进行操作，但编写成FUNCTION时就报错，大概MS的函数内部不充许执行OPENXML等这类行集函数。另一个重要的问题是，SQL的这种语法竟然不支持汉字字串，真是要命。<BR>38、使用DBMS_REPAIR检测与修复破损的BLOCK？<BR>ADMIN_TABLES 
+提供管理函数修复或孤立关键表，包含创建、净化与删除函数。<BR>CHECK_OBJECT 检测并报告表或索引的破损块。<BR>DUMP_ORPHAN_KEYS 
+导出破损块的数据<BR>FIX_CORRUPT_BLOCKS 在CHECK_OBJECT检测出的破损块上做标记<BR>REBUILD_FREELISTS 
+重建对象的FREELISTS<BR>SKIP_CORRUPT_BLOCKS 
+设置在表或索引扫描时是否不扫描被做了破损标记的块。<BR>SEGMENT_FIX_STATUS 
+整理BITMAP实体上的破损标志<BR>上表列举了DBMS_REPAIR包所有的过程，下边将对这些过程要引入的参数的枚举值进行<BR>说明，这引些参数将在过程应用中起决定作用。<BR>object_type 
+TABLE_OBJECT, INDEX_OBJECT, CLUSTER_OBJECT<BR>action CREATE_ACTION, DROP_ACTION, 
+PURGE_ACTION<BR>table_type REPAIR_TABLE, ORPHAN_TABLE<BR>flags SKIP_FLAG, 
+NOSKIP_FLAG<BR>SQL&gt; &nbsp;EXEC 
+DBMS_REPAIR.ADMIN_TABLES('SCOTT.EMP',DBMS_REPAIR.REPAIR_TABLE,-<BR>DBMS_REPAIR.CREATE_ACTION,'USERS');<BR>ORA-24129: 
+表名 SCOTT.EMP 没有以前缀 REPAIR_ 开始<BR>SQL&gt; EXEC 
+DBMS_REPAIR.ADMIN_TABLES('REPAIR_EMP',DBMS_REPAIR.REPAIR_TABLE,-<BR>&nbsp; 
+&nbsp; DBMS_REPAIR.CREATE_ACTION,'USERS');<BR>&nbsp; &nbsp;SQL&gt; SELECT 
+OBJECT_NAME FROM REPAIR_EMP;<BR>&nbsp; &nbsp;SQL&gt; EXEC 
+DBMS_REPAIR.ADMIN_TABLES('ORPHAN_EMP',DBMS_REPAIR.ORPHAN_TABLE,-<BR>DBMS_REPAIR.CREATE_ACTION,'USERS');<BR>SQL&gt; 
+SELECT TABLE_NAME FROM 
+ORPHAN_EMP;<BR>ADMIN_TABLES过程可以创建DBMS_REPAIR包的使用中需要的一些辅助表。<BR>SQL&gt; 
+DECLARE<BR>&nbsp; &nbsp;M INTEGER;<BR>&nbsp; &nbsp;BEGIN<BR>&nbsp; &nbsp; 
+&nbsp;DBMS_REPAIR.CHECK_OBJECT(SCHEMA_NAME=&gt;'SCOTT',<BR>&nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;OBJECT_NAME=&gt;'EMP',<BR>&nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;REPAIR_TABLE_NAME =&gt;'REPAIR_EMP',<BR>&nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;CORRUPT_COUNT=&gt;M);<BR>&nbsp; 
+&nbsp; &nbsp;DBMS_OUTPUT.PUT_LINE(M);<BR>&nbsp; &nbsp;END;<BR>说明 
+统计SCOTT模式的EMP表有多少破损块。其它的过程本人就不再一一举例说明啦，引用方法类似与上边的实例，其它一些过程的参数列表可以通用SQL&gt;DESC 
+DBMS_REPAIR来查看。<BR>39、关于UTL_FILE包的使用方法<BR>使用UTL_FILE时有个地方要注意:INIT.ORA文件中的UTL_FILE_DIR参数必须指定路径，即UTL_FILE包只有在UTL_FILE_DIR所指的目录中有权限读写，以下的实例表示本人已经修改UTL_FILE_DIR=C:\啦。<BR>SQL&gt;DESC 
+UTL_FILE<BR>&nbsp; &nbsp;可以查看UTL_FILE包的所有类型与过程。<BR>例将表中数据输出到文件：<BR>CREATE OR 
+REPLACE PROCEDURE UP_FILEW &nbsp;IS<BR>&nbsp; &nbsp;ID NUMBER;<BR>&nbsp; 
+&nbsp;NAME VARCHAR2(20);<BR>&nbsp; &nbsp;HANDLE 
+&nbsp;UTL_FILE.FILE_TYPE;<BR>&nbsp; &nbsp;CURSOR REGION_CUR &nbsp;IS &nbsp; 
+SELECT * FROM A_JOB;<BR>BEGIN<BR>&nbsp; HANDLE 
+:=UTL_FILE.FOPEN('C:\','JOB.OUT','W');<BR>&nbsp; OPEN 
+&nbsp;REGION_CUR;<BR>&nbsp; FETCH &nbsp;REGION_CUR &nbsp;INTO ID,NAME;<BR>&nbsp; 
+WHILE &nbsp;REGION_CUR%FOUND LOOP<BR>&nbsp; &nbsp; 
+UTL_FILE.PUTF(HANDLE,'%S,%S\N',ID,NAME);<BR>&nbsp; &nbsp; FETCH &nbsp;REGION_CUR 
+&nbsp;INTO &nbsp;ID,NAME;<BR>&nbsp; END LOOP;<BR>&nbsp; CLOSE 
+REGION_CUR;<BR>&nbsp; UTL_FILE.FFLUSH(HANDLE);<BR>&nbsp; 
+UTL_FILE.FCLOSE(HANDLE);<BR>&nbsp; END UP_FILEW;<BR><BR>例将文件中数据写入到表中 <BR>CREATE 
+OR REPLACE PROCEDURE UP_FILER &nbsp;IS<BR>&nbsp; &nbsp; STR 
+VARCHAR(200);<BR>&nbsp; &nbsp; ID NUMBER;<BR>&nbsp; &nbsp; NAME 
+VARCHAR2(20);<BR>&nbsp; &nbsp; HANDLE &nbsp;UTL_FILE.FILE_TYPE;<BR>&nbsp; &nbsp; 
+POS NUMBER(6);<BR>BEGIN<BR>&nbsp; &nbsp;HANDLE 
+:=UTL_FILE.FOPEN('C:\','JOB.OUT','R');<BR>&nbsp; 
+&nbsp;UTL_FILE.GET_LINE(HANDLE,STR);<BR>&nbsp; &nbsp;WHILE 
+&nbsp;LENGTH(STR)&gt;0 LOOP<BR>&nbsp; &nbsp; 
+&nbsp;POS:=INSTR(STR,',');<BR>&nbsp; &nbsp; &nbsp;ID := 
+TO_NUMBER(SUBSTR(STR,1,POS-1));<BR>&nbsp; &nbsp; 
+&nbsp;NAME:=SUBSTR(STR,POS+1,LENGTH(STR));<BR>&nbsp; &nbsp; 
+&nbsp;--DBMS_OUTPUT.PUT_LINE(TO_CHAR(ID)||NAME);<BR>&nbsp; &nbsp; &nbsp;INSERT 
+INTO A_JOB VALUES(ID,NAME);<BR>&nbsp; &nbsp; 
+&nbsp;UTL_FILE.GET_LINE(HANDLE,STR);<BR>&nbsp; &nbsp;END LOOP;<BR>&nbsp; 
+&nbsp;EXCEPTION<BR>&nbsp; &nbsp;WHEN OTHERS THEN<BR>&nbsp; &nbsp; &nbsp; &nbsp; 
+UTL_FILE.FCLOSE(HANDLE);<BR>END 
+UP_FILER;<BR>说明：由于没办法判断文件是否结束，所以本例就使用EXCEPTION处理，在文件读完时触发异常，并关闭文件。UTL_FILE.FILE_TYPE是文件句柄，就象C或PASCAL中读写文件的方式是一样的。<BR>40、关于DBMS_JOB包的使用方法？<BR>首先在SQL&gt;DESC 
+DBMS_JOB来查看DBMS_JOB的一些过程，然后可以在RDBMS目录中找到DBMSJOB.SQL，这个文件就是DBMS_JOB包的源程序，并有参数说明，本例就给出来实例与常用的数据字典（USER_JOBS、DBA_JOBS、ALL_JOBS）。<BR>创建测试表<BR>SQL&gt; 
+CREATE TABLE A_JOB(DT DATE);<BR>创建一个自定义过程<BR>SQL&gt; CREATE OR REPLACE PROCEDURE 
+UP_TEST <BR>AS<BR>&nbsp; &nbsp;BEGIN<BR>&nbsp; &nbsp; &nbsp; INSERT INTO A_JOB 
+VALUES(SYSDATE);<BR>&nbsp; &nbsp;END;<BR>&nbsp; &nbsp;/<BR>创建JOB<BR>SQL&gt; 
+VARIABLE JOB1 NUMBER;<BR>SQL&gt; <BR>SQL&gt; 
+BEGIN<BR>DBMS_JOB.SUBMIT(:JOB1,'UP_TEST;',SYSDATE,'SYSDATE+1/(24*60)');　　<BR>--每天1440分钟，即一分钟运行TEST过程一次<BR>&nbsp; 
+&nbsp;END;<BR>&nbsp; &nbsp;/<BR>运行JOB<BR>SQL&gt; BEGIN<BR>&nbsp; 
+&nbsp;DBMS_JOB.RUN(:JOB1);<BR>&nbsp; &nbsp;END;<BR>&nbsp; 
+&nbsp;/<BR>查看结果<BR>SQL&gt; SELECT TO_CHAR(DT,'YYYY/MM/DD HH24:MI:SS') 时间 FROM 
+A_JOB;<BR>时间<BR>-------------------<BR>2001/01/07 23:51:21<BR>2001/01/07 
+23:52:22<BR>2001/01/07 23:53:24<BR>删除JOB<BR>SQL&gt; BEGIN<BR>&nbsp;2 
+&nbsp;DBMS_JOB.REMOVE(:JOB1);<BR>&nbsp;3 &nbsp;END;<BR>&nbsp;4 
+&nbsp;/<BR>说明：JOB1是BIND 
+VARIABLE（绑定变量），相当于一个常局变量，在当前会话的生命期内可以引用，如果我们要删除一个JOB，通常是从USER_JOBS字典中找到JOB的ID。<BR>SQL&gt; 
+SELECT JOB FROM USER_JOBS;<BR>SQL&gt;EXEC 
+DBMS_JOB.REMOVE(上一句查出来的JOB号);<BR>41、关于DBMS_SQL包的使用方法？<BR>DBMS_SQL包是动态执行SQL语句的一个包，它使用方法比EXECUTE 
+IMMEDIATE复杂，但功能更强大一些，最主要的是它执行的SQL可以超出64K的限制，DBMSSQL.SQL是该包的SQL源程序（RDBMS目录内）。<BR>DECLARE<BR>&nbsp; 
+&nbsp; &nbsp;T_C1_TNAME &nbsp; &nbsp; 
+&nbsp;USER_TABLES.TABLE_NAME%TYPE;<BR>&nbsp; &nbsp; &nbsp;T_COMMAND &nbsp; 
+&nbsp; &nbsp; VARCHAR2(200);<BR>&nbsp; &nbsp; &nbsp;T_CID &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; INTEGER;<BR>&nbsp; &nbsp; &nbsp;T_TOTAL_RECORDS 
+NUMBER(10);<BR>&nbsp; &nbsp; &nbsp;STAT &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp;INTEGER;<BR>&nbsp; &nbsp; &nbsp;ROW_COUNT &nbsp; &nbsp; &nbsp; 
+INTEGER;<BR>T_LIMIT &nbsp; &nbsp; &nbsp; &nbsp; INTEGER := 0; 
+<BR>--限制只取出记录大于0的表的情况<BR>&nbsp; &nbsp; &nbsp;CURSOR C1 IS SELECT TABLE_NAME FROM 
+USER_TABLES ORDER BY TABLE_NAME; <BR>--查出所有表的名字<BR>BEGIN<BR>&nbsp; &nbsp;T_LIMIT 
+:= 0;<BR>&nbsp; &nbsp;OPEN C1;<BR>LOOP<BR>&nbsp; &nbsp; &nbsp; 
+--取出一个表名<BR>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; FETCH C1 INTO 
+T_C1_TNAME;<BR>&nbsp; --如果游标记录取完，退出循环 <BR>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+EXIT WHEN C1%NOTFOUND; <BR>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; T_COMMAND := 
+'SELECT COUNT(0) FROM '||T_C1_TNAME;<BR>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; T_CID 
+:= DBMS_SQL.OPEN_CURSOR; <BR>--创建一个游标<BR>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+DBMS_SQL.PARSE(T_CID,T_COMMAND,DBMS_SQL.NATIVE); 
+<BR>--向服务器发出一个语句并检查这个语句的语法和语义错误<BR>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+DBMS_SQL.DEFINE_COLUMN(T_CID,1,T_TOTAL_RECORDS); 
+<BR>--定义将从FETCHROWS()函数接收数据的变量的<BR>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; STAT := 
+DBMS_SQL.EXECUTE(T_CID); <BR>--执行此语句，必须跟着FETCH_ROWS函数并为单个行检索数据<BR>&nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; ROW_COUNT := DBMS_SQL.FETCH_ROWS(T_CID); 
+<BR>--取回一行数据放入局部缓冲区<BR>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+DBMS_SQL.COLUMN_VALUE(T_CID,1,T_TOTAL_RECORDS); 
+<BR>--返回调用FETCHROWS()取回的值，值存储在T_TOTAL_RECORDS中<BR>&nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; IF T_TOTAL_RECORDS &gt; T_LIMIT THEN<BR>&nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; DBMS_OUTPUT.PUT_LINE(RPAD(T_C1_TNAME,55,' ')||<BR>&nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; TO_CHAR(T_TOTAL_RECORDS,'99999999')||' 
+RECORD(S)'); <BR>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; END IF;<BR>&nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; DBMS_SQL.CLOSE_CURSOR(T_CID);<BR>&nbsp; &nbsp; END 
+LOOP;<BR>&nbsp; &nbsp;CLOSE 
+C1;<BR>END;<BR>42、SQL与ORACLE取随机数的方法，本例要求从65到97之间的随机数？<BR>SELECT 
+65+FLOOR(RAND()*26)<BR>-------------------------------------------<BR>SELECT 
+FLOOR(DBMS_RANDOM.VALUE(65,97)) FROM DUAL<BR>43、SQL与ORACLE取系统时间的方法<BR>SELECT 
+GETDATE（）<BR>-------------------------------------------<BR>SELECT 
+TO_CHAR(SYSDATE,'YYYY-MM-DD HH24:MM:SS') FROM 
+DUAL<BR>44、关于DBMS_FLASHBACK包的使用方法？<BR>DBMS_FLASHBACK包处理ORACLE的闪回功能，它是ORACLE9I新增的一个功能，可以方便地提取表中数据的前映象。你不要指望闪回功能帮你找回所有有意或无意删除的数据，它最多只能得到5天内的前映象而不用回退日志。<BR>SQL&gt;DESC 
+DBMS_FLASHBACK<BR>现在看示例如下<BR>SQL&gt;CREATE TABLE A_TEST(ID INT);/*创建表后请退出SQL 
+PLUS再进来做测试*/<BR>SQL&gt;INSERT INTO A_TEST 
+VALUES(1);<BR>SQL&gt;COMMIT;<BR>SQL&gt;SELECT 
+DBMS_FLASHBACK.GET_SYSTEM_CHANGE_NUMBER FROM 
+DUAL;<BR>此处显示SCN号1（77056701）<BR>SQL&gt;INSERT INTO A_TEST 
+VALUES(2);<BR>SQL&gt;COMMIT;<BR>SQL&gt;SELECT 
+DBMS_FLASHBACK.GET_SYSTEM_CHANGE_NUMBER FROM DUAL;<BR>此处显示SCN号2 
+(77056801)<BR>SQL&gt;SELECT * FROM A_TEST AS OF SCN 77056701<BR>SQL&gt;SELECT * 
+FROM A_TEST AS OF SCN 77056801<BR>SQL&gt;SELECT * FROM 
+A_TEST<BR>说明：如果创建表A_TEST后立即使用SELECT * FROM &nbsp;AS OF SCN 
+这种语法，ORACLE会返回ORA-01466: 无法读数据 - 
+表定义已更改,这是正常的，只有退出再进来就可以使用闪回语法啦，SYS用户无法使用闪回语法。<BR>相关链接：<A 
+href="http://www.itpub.net/SHOWTHREAD.PHP?S=&amp;THREADID=116321" 
+target=_blank>HTTP://WWW.ITPUB.NET/SHOWTHREAD.PHP?S=&amp;THREADID=116321</A><BR>45、有一个表，记录数据较多，要求对同一分类的数据进行排序？<BR>工號 
+&nbsp;姓名 &nbsp;時間 &nbsp; &nbsp; 序號<BR>001 &nbsp; abc &nbsp; 08:00 &nbsp; &nbsp; 
+1<BR>001 &nbsp; abc &nbsp; 12:01 &nbsp; &nbsp; 2<BR>001 &nbsp; abc &nbsp; 13:28 
+&nbsp; &nbsp; 3<BR>001 &nbsp; abc &nbsp; 17:40 &nbsp; &nbsp; 4<BR>002 &nbsp; def 
+&nbsp; &nbsp;07:30 &nbsp; &nbsp;1<BR>002 &nbsp; def &nbsp; &nbsp;22:59 &nbsp; 
+&nbsp;2<BR>SQL的解决方法如下：<BR>CREATE TABLE A_TEST(ID VARCHAR(10),SJ VARCHAR(20),ORD 
+INT)<BR>INSERT INTO A_TEST VALUES('001','07',0)<BR>INSERT INTO A_TEST 
+VALUES('001','08',0)<BR>INSERT INTO A_TEST VALUES('001','09',0)<BR>INSERT INTO 
+A_TEST VALUES('002','07',0)<BR>INSERT INTO A_TEST VALUES('002','08',0)<BR>INSERT 
+INTO A_TEST VALUES('002','09',0)<BR>INSERT INTO A_TEST 
+VALUES('003','07',0)<BR>INSERT INTO A_TEST VALUES('003','08',0)<BR>INSERT INTO 
+A_TEST VALUES('003','09',0)<BR>UPDATE A_TEST SET ORD=(<BR>SELECT COUNT(*)+1 FROM 
+A_TEST B WHERE B.SJ&lt;A_TEST.SJ AND 
+B.ID=A_TEST.ID)<BR>46、SQL与ORACLE如何延时执行程序？<BR>WAITFOR DELAY ‘00:01:00’ &nbsp; 
+--延时一分钟<BR>WAITFOR TIME &nbsp;’12:00:00’ &nbsp; 
+--定时到12点整<BR>------------------------------------------------<BR>SQL&gt;EXEC 
+DBMS_LOCK.SLEEP(1)<BR>说明：DBMS_LOCK.SLEEP延时一分钟与SQL第一条语法作用相当。<BR>47、SQL与ORACLE如何返回服务器的IP地址？<BR>CREATE 
+PROCEDURE GETIP <BR>AS<BR>BEGIN<BR>&nbsp;CREATE TABLE M(DEMO 
+VARCHAR(7999))<BR>&nbsp;DECLARE @SQL VARCHAR(99)<BR>&nbsp;SELECT 
+@SQL='XP_CMDSHELL '+'''IPCONFIG'''<BR>&nbsp;INSERT INTO M EXEC(@SQL)<BR>DECLARE 
+@S VARCHAR(99),@IP VARCHAR(24),@P INT,@L INT<BR>SELECT @S=RTRIM(LTRIM(DEMO)) 
+FROM M WHERE DEMO LIKE '%IP ADDRESS%'<BR>SELECT 
+@L=LEN(@S),@P=CHARINDEX(':',@S,1)<BR>SELECT 
+@IP=RTRIM(LTRIM(RIGHT(@S,@L-@P)))<BR>SELECT @IP<BR>&nbsp;DROP TABLE 
+M<BR>END<BR><BR>EXEC 
+GETIP<BR>------------------------------------------------------------<BR>SELECT 
+SYS_CONTEXT('USERENV','IP_ADDRESS') FROM DUAL; <BR>EXEC 
+DBMS_OUTPUT.PUT_LINE(UTL_INADDR.GET_HOST_ADDRESS);<BR>说明 
+SYS_CONTEXT求客户端IP地址，一般在触发器中使用<BR>48、SQL与ORACLE中对象是如何重命名的？<BR>EXEC SP_RENAME 
+‘旧表名’,’新表名’<BR>EXEC SP_RENAME ‘表名.字段名’,’新字段名’<BR>EXEC SP_RENAMEDB 
+‘旧数据库名’,’新数据库名’<BR>------------------------------------------------------------<BR>RENAME 
+旧表名 TO 新表名<BR>数据库重命名可以用NID（从9I开始），字段重命名暂缺。<BR>49、ORACLE9I中INSERT 
+的新语法，源表的结构与数据示例如下：<BR>SQL&gt;SELECT * FROM sales_input_table;<BR>PRODUCT_ID 
+CUSTOMER_ID WEEKLY_ST &nbsp;SALES_SUN &nbsp;SALES_MON &nbsp;SALES_TUE 
+&nbsp;SALES_WED SALES_THU &nbsp;SALES_FRI &nbsp;SALES_SAT<BR>---------- 
+----------- --------- ---------- ---------- ---------- -------------------- 
+---------- ----------<BR>&nbsp; &nbsp; &nbsp; 111 &nbsp; &nbsp; &nbsp; &nbsp; 
+222 01-OCT-00 &nbsp; &nbsp; &nbsp; &nbsp;100 &nbsp; &nbsp; &nbsp; &nbsp;200 
+&nbsp; &nbsp; &nbsp; &nbsp;300 &nbsp; &nbsp; &nbsp; &nbsp;400 &nbsp; &nbsp; 
+&nbsp; 500 &nbsp; &nbsp; &nbsp; &nbsp;600 &nbsp; &nbsp; &nbsp; 
+&nbsp;700<BR>&nbsp; &nbsp; &nbsp; 222 &nbsp; &nbsp; &nbsp; &nbsp; 333 08-OCT-00 
+&nbsp; &nbsp; &nbsp; &nbsp;200 &nbsp; &nbsp; &nbsp; &nbsp;300 &nbsp; &nbsp; 
+&nbsp; &nbsp;400 &nbsp; &nbsp; &nbsp; &nbsp;500 &nbsp; &nbsp; &nbsp; 600 &nbsp; 
+&nbsp; &nbsp; &nbsp;700 &nbsp; &nbsp; &nbsp; &nbsp;800<BR>&nbsp; &nbsp; &nbsp; 
+333 &nbsp; &nbsp; &nbsp; &nbsp; 444 15-OCT-00 &nbsp; &nbsp; &nbsp; &nbsp;300 
+&nbsp; &nbsp; &nbsp; &nbsp;400 &nbsp; &nbsp; &nbsp; &nbsp;500 &nbsp; &nbsp; 
+&nbsp; &nbsp;600 &nbsp; &nbsp; &nbsp; 700 &nbsp; &nbsp; &nbsp; &nbsp;800 &nbsp; 
+&nbsp; &nbsp; &nbsp;900<BR>sales_input_table表存储了商品每周的销售明细，将它转成如下所示？<BR>&nbsp; 
+PROD_ID &nbsp; &nbsp;CUST_ID TIME_ID &nbsp; C &nbsp; PROMO_ID QUANTITY_SOLD 
+&nbsp; &nbsp; AMOUNT &nbsp; &nbsp; &nbsp; COST<BR>---------- ---------- 
+--------- - ---------- ------------- ---------- ----------<BR>&nbsp; &nbsp; 
+&nbsp; 111 &nbsp; &nbsp; &nbsp; &nbsp;222 01-OCT-00 &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; 100<BR>&nbsp; &nbsp; &nbsp; 111 &nbsp; &nbsp; &nbsp; &nbsp;222 
+02-OCT-00 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 200<BR>&nbsp; &nbsp; &nbsp; 111 
+&nbsp; &nbsp; &nbsp; &nbsp;222 03-OCT-00 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; 300<BR>&nbsp; &nbsp; &nbsp; 111 &nbsp; &nbsp; &nbsp; &nbsp;222 04-OCT-00 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 400<BR>&nbsp; &nbsp; &nbsp; 111 &nbsp; 
+&nbsp; &nbsp; &nbsp;222 05-OCT-00 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+500<BR>&nbsp; &nbsp; &nbsp; 111 &nbsp; &nbsp; &nbsp; &nbsp;222 06-OCT-00 &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 600<BR>&nbsp; &nbsp; &nbsp; 111 &nbsp; &nbsp; 
+&nbsp; &nbsp;222 07-OCT-00 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+700<BR>&nbsp; &nbsp; &nbsp; 222 &nbsp; &nbsp; &nbsp; &nbsp;333 08-OCT-00 &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 200<BR>&nbsp; &nbsp; &nbsp; 222 &nbsp; &nbsp; 
+&nbsp; &nbsp;333 09-OCT-00 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+300<BR>&nbsp; &nbsp; &nbsp; 222 &nbsp; &nbsp; &nbsp; &nbsp;333 10-OCT-00 &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 400<BR>&nbsp; &nbsp; &nbsp; 222 &nbsp; &nbsp; 
+&nbsp; &nbsp;333 11-OCT-00 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+500<BR>&nbsp; &nbsp; &nbsp; 222 &nbsp; &nbsp; &nbsp; &nbsp;333 12-OCT-00 &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 600<BR>&nbsp; &nbsp; &nbsp; 222 &nbsp; &nbsp; 
+&nbsp; &nbsp;333 13-OCT-00 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+700<BR>&nbsp; &nbsp; &nbsp; 222 &nbsp; &nbsp; &nbsp; &nbsp;333 14-OCT-00 &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 800<BR>&nbsp; &nbsp; &nbsp; 333 &nbsp; &nbsp; 
+&nbsp; &nbsp;444 15-OCT-00 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+300<BR>&nbsp; &nbsp; &nbsp; 333 &nbsp; &nbsp; &nbsp; &nbsp;444 16-OCT-00 &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 400<BR>&nbsp; &nbsp; &nbsp; 333 &nbsp; &nbsp; 
+&nbsp; &nbsp;444 17-OCT-00 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+500<BR>&nbsp; &nbsp; &nbsp; 333 &nbsp; &nbsp; &nbsp; &nbsp;444 18-OCT-00 &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 600<BR>&nbsp; &nbsp; &nbsp; 333 &nbsp; &nbsp; 
+&nbsp; &nbsp;444 19-OCT-00 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+700<BR>&nbsp; &nbsp; &nbsp; 333 &nbsp; &nbsp; &nbsp; &nbsp;444 20-OCT-00 &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 800<BR>&nbsp; &nbsp; &nbsp; 333 &nbsp; &nbsp; 
+&nbsp; &nbsp;444 21-OCT-00 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+900<BR>请看下边的这组SQL语句，成功而方便地解决这个问题<BR>SQL&gt; INSERT ALL<BR>&nbsp; &nbsp; 
+&nbsp;INTO sales (prod_id, cust_id, time_id, amount)<BR>&nbsp; &nbsp; 
+&nbsp;VALUES (product_id, customer_id, weekly_start_date, sales_sun)<BR>&nbsp; 
+&nbsp; &nbsp;INTO sales (prod_id, cust_id, time_id, amount)<BR>&nbsp; &nbsp; 
+&nbsp;VALUES (product_id, customer_id, weekly_start_date+1, sales_mon)<BR>&nbsp; 
+&nbsp; &nbsp;INTO sales (prod_id, cust_id, time_id, amount)<BR>&nbsp; &nbsp; 
+&nbsp;VALUES (product_id, customer_id, weekly_start_date+2, sales_tue)<BR>&nbsp; 
+&nbsp; &nbsp;INTO sales (prod_id, cust_id, time_id, amount)<BR>&nbsp; &nbsp; 
+&nbsp;VALUES (product_id, customer_id, weekly_start_date+3, sales_wed)<BR>&nbsp; 
+&nbsp; &nbsp;INTO sales (prod_id, cust_id, time_id, amount)<BR>&nbsp; &nbsp; 
+&nbsp;VALUES (product_id, customer_id, weekly_start_date+4, sales_thu)<BR>&nbsp; 
+&nbsp; &nbsp;INTO sales (prod_id, cust_id, time_id, amount)<BR>&nbsp; &nbsp; 
+&nbsp;VALUES (product_id, customer_id, weekly_start_date+5, sales_fri)<BR>&nbsp; 
+&nbsp; &nbsp;INTO sales (prod_id, cust_id, time_id, amount)<BR>&nbsp; &nbsp; 
+&nbsp;VALUES (product_id, customer_id, weekly_start_date+6, sales_sat)<BR>&nbsp; 
+SELECT product_id, customer_id, weekly_start_date, sales_sun,<BR>&nbsp; &nbsp; 
+&nbsp;sales_mon, sales_tue, sales_wed, sales_thu, sales_fri, sales_sat<BR>&nbsp; 
+&nbsp; &nbsp;FROM sales_input_table;<BR>刚才看了INSERT ALL的用法，现在再看看INSERT 
+ALL与WHEN的用法：<BR>CREATE TABLE small_orders <BR>&nbsp; (order_id &nbsp; &nbsp; 
+&nbsp; NUMBER(12) &nbsp; NOT NULL,<BR>&nbsp; &nbsp;customer_id &nbsp; 
+&nbsp;NUMBER(6) &nbsp; &nbsp;NOT NULL,<BR>&nbsp; &nbsp;order_total &nbsp; 
+&nbsp;NUMBER(8,2),<BR>&nbsp; &nbsp;sales_rep_id &nbsp; NUMBER(6) &nbsp; 
+);<BR>CREATE TABLE medium_orders AS SELECT * FROM small_orders;<BR>CREATE TABLE 
+large_orders AS SELECT * FROM small_orders;<BR>CREATE TABLE special_orders 
+<BR>&nbsp; (order_id &nbsp; &nbsp; &nbsp; NUMBER(12) &nbsp; &nbsp;NOT 
+NULL,<BR>&nbsp; &nbsp;customer_id &nbsp; &nbsp;NUMBER(6) &nbsp; &nbsp; NOT 
+NULL,<BR>&nbsp; &nbsp;order_total &nbsp; &nbsp;NUMBER(8,2),<BR>&nbsp; 
+&nbsp;sales_rep_id &nbsp; NUMBER(6),<BR>&nbsp; &nbsp;credit_limit &nbsp; 
+NUMBER(9,2),<BR>&nbsp; &nbsp;cust_email &nbsp; &nbsp; VARCHAR2(30) &nbsp; 
+);<BR>&nbsp;现在已经创建了四个表，将测试的环境搭起来啦。<BR>INSERT ALL<BR>&nbsp; WHEN order_total &lt; 
+1000000 THEN<BR>&nbsp; &nbsp; &nbsp;INTO small_orders<BR>&nbsp; WHEN order_total 
+&gt; 1000000 AND order_total &lt; 2000000 THEN<BR>&nbsp; &nbsp; &nbsp;INTO 
+medium_orders<BR>&nbsp; WHEN order_total &gt; 2000000 THEN <BR>&nbsp; &nbsp; 
+&nbsp;INTO large_orders<BR>&nbsp; SELECT order_id, order_total, sales_rep_id, 
+customer_id &nbsp; <BR>FROM orders;<BR>当然，我们也可以使用ELSE来替代最后一个WHEN…THEN<BR>INSERT 
+ALL<BR>&nbsp; WHEN order_total &lt; 100000 THEN<BR>&nbsp; &nbsp; &nbsp;INTO 
+small_orders<BR>&nbsp; WHEN order_total &gt; 100000 AND order_total &lt; 200000 
+THEN<BR>&nbsp; &nbsp; &nbsp;INTO medium_orders<BR>&nbsp; ELSE<BR>&nbsp; &nbsp; 
+&nbsp;INTO large_orders<BR>&nbsp; SELECT order_id, order_total, sales_rep_id, 
+customer_id &nbsp; FROM orders;<BR>以上两组SQL功能是一样的。现在再看一下INSERT 
+FIRST的用法：<BR>INSERT FIRST<BR>&nbsp; WHEN ottl &lt; 100000 THEN<BR>&nbsp; &nbsp; 
+&nbsp;INTO small_orders<BR>&nbsp; &nbsp; &nbsp; &nbsp; VALUES(oid, ottl, sid, 
+cid)<BR>&nbsp; WHEN ottl &gt; 100000 and ottl &lt; 200000 THEN<BR>&nbsp; &nbsp; 
+&nbsp;INTO medium_orders<BR>&nbsp; &nbsp; &nbsp; &nbsp; VALUES(oid, ottl, sid, 
+cid)<BR>&nbsp; WHEN ottl &gt; 290000 THEN<BR>&nbsp; &nbsp; &nbsp;INTO 
+special_orders<BR>&nbsp; WHEN ottl &gt; 200000 THEN<BR>&nbsp; &nbsp; &nbsp;INTO 
+large_orders<BR>&nbsp; &nbsp; &nbsp; &nbsp; VALUES(oid, ottl, sid, 
+cid)<BR>&nbsp; SELECT o.order_id oid, o.customer_id cid, o.order_total 
+ottl,<BR>&nbsp; &nbsp; &nbsp;o.sales_rep_id sid, c.credit_limit cl, c.cust_email 
+cem<BR>&nbsp; &nbsp; &nbsp;FROM orders o, customers c<BR>&nbsp; &nbsp; 
+&nbsp;WHERE o.customer_id = 
+c.customer_id;<BR>说明：Large_Orders表中将不含有OTT1&gt;290000这部分数据。<BR>INSERT 
+ALL<BR>&nbsp; WHEN ottl &lt; 100000 THEN<BR>&nbsp; &nbsp; &nbsp;INTO 
+small_orders &nbsp; VALUES(oid, ottl, sid, cid)<BR>&nbsp; WHEN ottl &gt; 100000 
+and ottl &lt; 200000 THEN<BR>&nbsp; &nbsp; &nbsp;INTO medium_orders 
+&nbsp;VALUES(oid, ottl, sid, cid)<BR>&nbsp; WHEN ottl &gt; 200000 THEN<BR>&nbsp; 
+&nbsp; &nbsp;into large_orders &nbsp; VALUES(oid, ottl, sid, cid)<BR>&nbsp; WHEN 
+ottl &gt; 290000 THEN<BR>&nbsp; &nbsp; &nbsp;INTO special_orders<BR>&nbsp; 
+SELECT o.order_id oid, o.customer_id cid, o.order_total ottl,<BR>&nbsp; &nbsp; 
+&nbsp;o.sales_rep_id sid, c.credit_limit cl, c.cust_email cem<BR>&nbsp; &nbsp; 
+&nbsp;FROM orders o, customers c &nbsp;WHERE o.customer_id = 
+c.customer_id;<BR>说明：Large_Orders表中将含有OTT1&gt;290000这部分数据，这就是INSERT ALL与INSERT 
+FIRST的区别。<BR>50、ORACLE9I中WITH的新用法。可以理解成WITH是用来对ORACLE9I子查询定义别名<BR>SQL&gt; with 
+total as ( select deptno,sum(sal) from emp group by deptno) <BR>select count(*) 
+from total; 
+<BR><BR><BR><BR>编后：如果您认为有侵权的地方，请来信说明，本人将立即删去。<BR><BR>EMAIL：XZHUI@VIP.SINA.COM<BR>QQ 
+&nbsp; : 77056803 </P><BR>

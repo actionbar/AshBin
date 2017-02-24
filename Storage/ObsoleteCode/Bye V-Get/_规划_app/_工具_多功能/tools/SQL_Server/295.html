@@ -1,0 +1,359 @@
+<meta http-equiv="content-type" content="text/html; charset=gb2312">
+<TABLE class=tableborder1 style="TABLE-LAYOUT: fixed; WORD-BREAK: break-all" 
+cellSpacing=1 cellPadding=5 align=center>
+<TBODY>
+<TR>
+<TD class=tablebody1 vAlign=top width=*>
+<BLOCKQUOTE>&nbsp;<FONT 
+style="FONT-SIZE: 9pt; LINE-HEIGHT: 15pt"><B>SQL&nbsp;Server&nbsp;体系结构的工作原理(soul)</B><BR>数据库体系结构：存储引擎&nbsp;<BR>2002-03-25&nbsp;15:30:00·&nbsp;Cathan&nbsp;Cook·&nbsp;RealSKy
+<P></P>
+<P>　　摘要：本文深入探讨了&nbsp;SQL&nbsp;Server&nbsp;体系结构的工作原理。其中介绍了数据库引擎的增强功能及其使用技巧，并提供了相关信息的链接。深入了解&nbsp;SQL&nbsp;Server&nbsp;的引擎有助于数据库管理员（数据库系统工程师）在设计、构建或改进数据库系统时充分利用&nbsp;SQL&nbsp;Server&nbsp;的优势。虽然本文主要面向数据库专业人士，但也可用于教学或营销目的。&nbsp;</P>
+<P>　　一.&nbsp;简介</P>
+<P>　　本文描述&nbsp;Microsoft?&nbsp;SQL&nbsp;Server?&nbsp;2000&nbsp;中新增的存储引擎功能，并提供相关的使用技巧，同时探讨存储引擎的工作原理。初步掌握存储引擎的工作原理可使您最大限度地发挥&nbsp;SQL&nbsp;Server&nbsp;的性能。</P>
+<P>　　当今，人们的注意力集中在应用程序的高可扩展性方面。数据库的设计和实施周期不断缩短，而且由于开发需求的不断变更以及产品使用的增长，又使得数据库在不断地演变发展。为满足可扩展性、可用性和易于使用等方面的要求，需要有一种具有应变能力和灵活性的数据存储引擎。</P>
+<P>　　SQL&nbsp;Server&nbsp;2000&nbsp;的不同版本可支持不同规模的系统，其范围从用于&nbsp;Pocket&nbsp;PC&nbsp;的小型移动系统到运行在群集&nbsp;Windows?&nbsp;2000&nbsp;Datacenter&nbsp;Server&nbsp;上容量达数&nbsp;TB&nbsp;的高可用性事务处理或决策支持系统。所有这些系统都满足使命关键的业务系统所要求的灵活性、安全性和可靠性要求。</P>
+<P>　　由于存储引擎操作的智能化和自动化，因而可以在各种用途和规模的项目中部署&nbsp;SQL&nbsp;Server&nbsp;2000&nbsp;应用程序。高度完善的体系结构改善了性能、可用性和可伸缩性。</P>
+<P>　　可用性</P>
+<P>　　由于在与物理文件进行交互时采用了新的算法，可靠性和并发能力得到了增强。这些算法减轻了日常维护工作，使您不必再运行数据库控制台命令&nbsp;(DBCC)。然而，DBCC&nbsp;仍旧可以使用，并且新增的&nbsp;DBCC&nbsp;CHECK&nbsp;命令的运行不会干扰联机处理工作。</P>
+<P>　　可扩展性</P>
+<P>　　存储子系统（由物理数据库文件及其在磁盘上的布局组成）既支持小型数据库，也支持超大型数据库。SQL&nbsp;Server&nbsp;当前可支持最高达&nbsp;64&nbsp;GB&nbsp;物理内存&nbsp;(RAM)&nbsp;和&nbsp;32&nbsp;颗处理器。</P>
+<P>　　易于使用</P>
+<P>　　增强的管理功能可帮助数据库管理员&nbsp;(DBA)&nbsp;实现服务器的自动管理和集中管理。这也使得对远程服务器和应用程序的维护变得容易，DBA&nbsp;无需访问每个站点。由复杂算法管理的服务器配置可动态对服务器使用方案的变化作出反应，从而使&nbsp;DBA&nbsp;可以将精力集中在数据库管理和优化等任务上。</P>
+<P>　　二.&nbsp;存储引擎的增强功能</P>
+<P>　　SQL&nbsp;Server&nbsp;2000&nbsp;的关系数据库服务器包括两个主要部分：关系引擎和存储引擎。两个引擎独立工作，它们通过本地数据访问组件（如&nbsp;OLE&nbsp;DB）进行交互。关系引擎提供访问存储引擎的接口，而存储引擎由与基本数据库存储组件和功能进行交互的服务构成。</P>
+<P>　　存储引擎的主要任务包括：&nbsp;<BR>　　提供改善管理存储组件易用性的功能&nbsp;<BR>　　管理数据缓冲和对物理文件的所有&nbsp;I/O&nbsp;操作&nbsp;<BR>　　控制并发、管理事务、锁定和日志记录&nbsp;<BR>　　管理用于存储数据的文件和物理页&nbsp;<BR>　　恢复系统故障&nbsp;</P>
+<P>　　SQL&nbsp;Server&nbsp;2000&nbsp;中的存储引擎提供概念简单而实际操作比较灵活的新增功能，同时减少了详细规划容量和优化性能的工作。SQL&nbsp;Server&nbsp;2000&nbsp;可以对其环境作出反应，并准确而快速地适应数据库使用上的变化。这种技术上的突破已将数据库管理的重点转移到作为服务的数据简化上。SQL&nbsp;Server&nbsp;2000&nbsp;DBA&nbsp;可以将注意力集中到设计一个可对数据流和数据使用作出响应的系统上，而不再需要将时间浪费在优化个别参数上。&nbsp;</P>
+<P></P>
+<P>2003-6-7&nbsp;19:21:00&nbsp;&nbsp;&nbsp;&nbsp;<BR>&nbsp;查看评语???&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</P>
+<P>&nbsp;2003-6-7&nbsp;19:23:01&nbsp;&nbsp;&nbsp;&nbsp;　　SQL&nbsp;Server&nbsp;2000&nbsp;中的变化建立在体系结构的增强上。这种增强是在&nbsp;SQL&nbsp;Server&nbsp;7.0&nbsp;中引入的，其目的是为后来的改进和创新提供基础。存储引擎小组的主要目的是减少花在定期优化服务器上的时间和精力。由于绝大多数的调优参数设置是基于数据库使用的，所以引擎使用自适应算法动态调整这些设置，使其适合数据库环境。调优参数现在可以按这种方式自动调整，而在早期版本中，它们需要不断调整和测试。您仍可以手动调整调优功能，但&nbsp;SQL&nbsp;Server&nbsp;2000&nbsp;可以完成更多的工作。只有很少的&nbsp;SQL&nbsp;Server&nbsp;客户才需要对调优参数进行调整；这种调整工作需要进行仔细的测试，并且需要经验丰富的数据库管理员进行监督。</P>
+<P>　　下表总结了&nbsp;SQL&nbsp;Server&nbsp;2000&nbsp;存储引擎的主要增强功能。本文的后面将对这些内容进行详细阐述。</P>
+<P><BR>功能&nbsp;描述及益处&nbsp;<BR>应用程序锁定管理器&nbsp;如果需要控制对应用程序定义的资源（如表单）的并发访问，新增的存储过程允许您使用&nbsp;SQL&nbsp;Server&nbsp;的应用程序锁定管理器锁定这些资源。&nbsp;<BR>数据库控制台命令&nbsp;(DBCC)&nbsp;DBCC&nbsp;CHECK&nbsp;命令可以在联机处理过程中运行，且不会中断更新。新增的功能允许校验物理页的一致性，以检测硬件引起的错误。在&nbsp;SQL&nbsp;Server&nbsp;2000&nbsp;企业版中，DBCC&nbsp;可以在多个处理器上以并行方式运行。&nbsp;<BR>数据库选项&nbsp;所有的数据库选项都可使用&nbsp;ALTER&nbsp;DATABASE&nbsp;进行修改。此功能简化了管理工作。&nbsp;<BR>差异备份&nbsp;在&nbsp;SQL&nbsp;Server&nbsp;2000&nbsp;中，由于改进后的功能可以在更广的层次上跟踪数据库的更改，差异备份的速度更快。&nbsp;<BR>动态调优&nbsp;通过使用动态自适应算法，服务器可以自动调整以前是静态不变的配置设置。管理控制仍可用于管理系统范围的资源，但以后您不必使用它们。手动设置参数可以在它们的约束边界内动态调整。&nbsp;<BR>行内文本&nbsp;在包含较小且使用频繁的文本列的表中，较小的文本值可以与标准数据行存储在同一页中，而不必存储在文本值页中。如果表中包含这种被频繁访问的文本数据，此功能可减少大量磁盘&nbsp;I/O&nbsp;操作。&nbsp;<BR>并行建立索引&nbsp;在企业版中，索引建立过程自动使用为并行处理配置的所有处理器，减少了建立索引所需的时间；例如，在一台八处理器的服务器中，时间缩短到原来的六分之一。索引建立过程还可利用内存和&nbsp;tempdb&nbsp;中的可用资源。&nbsp;<BR>预读索引&nbsp;读取索引的功能得到增强，提高了扫描索引的性能。&nbsp;<BR>重组索引&nbsp;对&nbsp;DBCC&nbsp;SHOWCONTIG&nbsp;进行的改进提供了有关索引碎片的详细信息。新增的&nbsp;DBCC&nbsp;命令&nbsp;INDEXDEFRAG&nbsp;可联机重组索引页，且不会中断数据库服务，也不会导致数据库一致性或故障恢复方面的问题。&nbsp;<BR>降序排列索引中的键列&nbsp;索引中的各个键列可单独指定为升序或降序。&nbsp;<BR>KILL&nbsp;命令&nbsp;此命令现在报告完成的进度。如果此命令正在等待另一个进程（例如回滚），则可以查看命令执行的进度。改进后的命令可以用于停止&nbsp;Microsoft&nbsp;分布式事务协调器&nbsp;(MS&nbsp;DTC)&nbsp;事务，而这些事务并不与特定会话相关联。&nbsp;<BR>对高内存量的支持&nbsp;Windows&nbsp;2000&nbsp;中的技术改进了使用大量内存的企业版系统的性能。通过使用&nbsp;Windows&nbsp;2000&nbsp;的&nbsp;AWE&nbsp;扩展，SQL&nbsp;Server&nbsp;2000&nbsp;可至多支持&nbsp;64&nbsp;GB&nbsp;物理内存&nbsp;(RAM)。&nbsp;<BR>锁定&nbsp;改进后的锁定管理器可探测到其它资源（如线程和内存）的死锁情况。并发能力的改善同时也降低了死锁的发生，从而进一步加强了&nbsp;SQL&nbsp;Server&nbsp;2000&nbsp;的可扩展性。&nbsp;<BR>逻辑日志标记&nbsp;Transact-SQL&nbsp;命令可在日志中创建书签，使数据库可以恢复到书签所示的时点。此功能还可同步恢复用于同一应用程序的多个数据库。&nbsp;<BR>联机索引重组&nbsp;对&nbsp;DBCC&nbsp;SHOWCONTIG&nbsp;进行的改进提供了有关索引碎片的详细信息。新增的&nbsp;DBCC&nbsp;命令&nbsp;INDEXDEFRAG&nbsp;可联机重组索引页，且不会中断数据库服务，也不会导致数据库一致性或故障恢复方面的问题。&nbsp;<BR>优化的预读&nbsp;I/O&nbsp;操作&nbsp;对于扫描所涉及的每个文件，SQL&nbsp;Server&nbsp;2000&nbsp;都会同时发出多个连续的、预读读取操作。为提高性能，查询优化器在扫描表和索引时使用连续的预读&nbsp;I/O&nbsp;操作。&nbsp;<BR>密码保护备份&nbsp;可使用密码保护备份媒体和单独的备份。这样可以防止未授权的用户恢复备份并访问数据库。&nbsp;<BR>故障恢复模式&nbsp;通过使用故障恢复模式，可以选择数据库的日志记录级别。这样事务日志管理更加灵活。故障恢复模式可联机更改，以适应一天当中不断变化的数据库使用。&nbsp;<BR>共享表扫描&nbsp;在企业版中，对某个表的多次扫描可以利用其他进行中的对该表的扫描，减少了对磁盘的实际&nbsp;I/O&nbsp;操作。&nbsp;<BR>收缩日志&nbsp;收缩日志命令可在更多的情况下立即运行。即使不能立即收缩日志，SQL&nbsp;Server&nbsp;也会提供建议性的反馈，说明在继续或完成收缩操作之前必需完成的操作。&nbsp;<BR>快照备份&nbsp;对第三方供应商提供的快照备份的支持进一步得到加强。快照备份采用存储技术，可以在几秒内备份或恢复整个数据库。如今，可以将这些备份与常规事务日志及差异备份相结合，为&nbsp;OLTP&nbsp;数据库提供完整的保护。此功能对于中型或大型数据库是非常有益的，因为在这种环境中可用性是非常重要的。&nbsp;<BR>节省空间的空表和索引&nbsp;SQL&nbsp;Server&nbsp;2000&nbsp;不为空表和索引分配磁盘页。SQL&nbsp;Server&nbsp;7.0&nbsp;会给空表和索引分配多达三个磁盘页。&nbsp;<BR>前&nbsp;n项排序&nbsp;此新功能可优化前&nbsp;n&nbsp;项值的检索（例如，SELECT&nbsp;TOP&nbsp;5&nbsp;*&nbsp;FROM&nbsp;tablename）。&nbsp;<BR>Xlock&nbsp;SQL&nbsp;Server&nbsp;2000&nbsp;提供这种新的&nbsp;Transact-SQL&nbsp;锁定提示。它可用于明确调用互斥的、事务级别的页或表锁。&nbsp;</P>
+<P>　　SQL&nbsp;Server&nbsp;2000&nbsp;中增加了许多功能，这些功能使数据交互更为有效，使管理更加灵活。以下部分将详细介绍这些增强功能，并提供相关的使用技巧。<BR></FONT></P></BLOCKQUOTE></TD></TR>
+<TR>
+<TD class=tablebody1 vAlign=center align=middle width=175><A 
+href="http://www.pigtwo.com/forum/look_ip.asp?boardid=14&amp;userid=42&amp;ip=61.48.16.230&amp;action=lookip" 
+target=_blank><IMG height=15 alt="点击查看用户来源及管理<br>发贴IP：61.48.16.230" 
+src="http://www.pigtwo.com/forum/pic/ip.gif" width=13 align=absMiddle border=0></A> 2003-6-15 9:54:46</TD>
+<TD class=tablebody1 vAlign=center width=*>
+<TABLE cellSpacing=0 cellPadding=0 width="100%">
+<TBODY>
+<TR>
+<TD vAlign=center align=left><A 
+href="http://www.pigtwo.com/forum/editannounce.asp?BoardID=14&amp;replyID=1099&amp;id=531&amp;star=1"><IMG 
+alt=编辑这个贴子 src="http://www.pigtwo.com/forum/pic/edit.gif" align=absMiddle border=0></A>&nbsp;&nbsp;<A 
+title=同意该帖观点，给他一朵鲜花，将消耗您5点金钱 
+href="http://www.pigtwo.com/forum/postagree.asp?boardid=14&amp;id=531&amp;isagree=1">鲜花</A>(<FONT 
+color=#ff0000>0</FONT>)&nbsp;&nbsp;<A title=不同意该帖观点，给他一个鸡蛋，将消耗您5点金钱 
+href="http://www.pigtwo.com/forum/postagree.asp?boardid=14&amp;id=531&amp;isagree=2">鸡蛋</A>(<FONT 
+color=#ff0000>0</FONT>)</TD>
+<TD vAlign=bottom align=right width=110 nowarp><A title=复制单个贴子到别的版面 
+href="http://www.pigtwo.com/forum/admin_postings.asp?action=复制&amp;BoardID=14&amp;ID=531&amp;replyID=1099"><IMG 
+src="http://www.pigtwo.com/forum/pic/copy.gif" border=0></A>&nbsp;<A title=解除精华 
+href="http://www.pigtwo.com/forum/admin_postings.asp?action=解除精华&amp;BoardID=14&amp;ID=531&amp;replyID=1099"><IMG 
+src="http://www.pigtwo.com/forum/pic/jing.gif" border=0></A></TD>
+<TD vAlign=bottom align=right 
+width=4></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE>
+<TABLE class=tableborder1 style="TABLE-LAYOUT: fixed; WORD-BREAK: break-all" 
+cellSpacing=1 cellPadding=5 align=center>
+<TBODY>
+<TR>
+<TD class=tablebody2 vAlign=top width=175>
+<TABLE cellSpacing=0 cellPadding=4 width="100%">
+<TBODY>
+<TR>
+<TD style="FILTER: glow(color=#9898BA,strength=2)" vAlign=center 
+width=*>&nbsp;<A name=1100><FONT color=#990000><B>ugvanxk</B></FONT></A> </TD>
+<TD vAlign=center width=25><IMG alt=帅哥哟，在线，有人找我吗？ src="http://www.pigtwo.com/forum/pic/Male.gif"></TD>
+<TD vAlign=center width=16></TD></TR></TBODY></TABLE>&nbsp;&nbsp;<IMG height=32 
+src="http://www.pigtwo.com/forum/pic/Image1.gif" width=32><BR>&nbsp;&nbsp;<IMG 
+src="http://www.pigtwo.com/forum/pic/level10.gif"><BR>&nbsp;&nbsp;等级：版主<BR>&nbsp;&nbsp;文章：262<BR>&nbsp;&nbsp;积分：682<BR>&nbsp;&nbsp;注册：2002-11-2<BR></TD>
+<TD class=tablebody2 vAlign=top width=*>
+<TABLE width="100%">
+<TBODY>
+<TR>
+<TD width=*><A 
+href=""><IMG 
+alt=给ugvanxk发送一个短消息 src="http://www.pigtwo.com/forum/pic/message.gif" border=0></A>&nbsp;<A 
+href="http://www.pigtwo.com/forum/friendlist.asp?action=addF&amp;myFriend=ugvanxk" target=_blank><IMG 
+alt=把ugvanxk加入好友 src="http://www.pigtwo.com/forum/pic/friend.gif" border=0></A>&nbsp;<A 
+href="http://www.pigtwo.com/forum/dispuser.asp?id=42" target=_blank><IMG alt=查看ugvanxk的个人资料 
+src="http://www.pigtwo.com/forum/pic/profile.gif" border=0></A>&nbsp;<A 
+href="http://www.pigtwo.com/forum/queryResult.asp?stype=1&amp;nSearch=3&amp;keyword=ugvanxk&amp;BoardID=14&amp;SearchDate=ALL" 
+target=_blank><IMG alt="搜索ugvanxk在『数 据 库』的所有贴子" src="http://www.pigtwo.com/forum/pic/find.gif" 
+border=0></A>&nbsp;<A href="http://www.pigtwo.com/forum/mailto:jsqmail@163.com"><IMG alt=点击这里发送电邮给ugvanxk 
+src="http://www.pigtwo.com/forum/pic/email.gif" border=0></A>&nbsp;<A 
+href="http://www.pigtwo.com/forum/reannounce.asp?BoardID=14&amp;replyID=1100&amp;id=531&amp;star=1&amp;reply=true"><IMG 
+alt=引用回复这个贴子 src="http://www.pigtwo.com/forum/pic/reply.gif" border=0></A>&nbsp;<A 
+href="http://www.pigtwo.com/forum/reannounce.asp?BoardID=14&amp;replyID=1100&amp;id=531&amp;star=1"><IMG 
+alt=回复这个贴子 src="http://www.pigtwo.com/forum/pic/reply_a.gif" border=0></A></TD>
+<TD width=50><B>第<FONT color=#ff0000>2</FONT>楼</B></TD></TR>
+<TR>
+<TD bgColor=#6595d6 colSpan=2 height=1></TD></TR></TBODY></TABLE>
+<BLOCKQUOTE><IMG alt=发贴心情 src="http://www.pigtwo.com/forum/face/face0.gif" border=0>&nbsp;<FONT 
+style="FONT-SIZE: 9pt; LINE-HEIGHT: 15pt"><B></B><BR>三.&nbsp;与数据进行交互
+<P></P>
+<P>　　在&nbsp;SQL&nbsp;Server&nbsp;2000&nbsp;中，存储引擎的功能得到增强，在与数据进行交互时可提供更好的可扩展性及性能。了解这些增强的功能有助于更有效地使用&nbsp;SQL&nbsp;Server。</P>
+<P>　　无论是通过用户界面还是自动执行的任务，数据交换都从查询开始。数据请求先被传递到关系引擎，然后关系引擎与存储引擎进行交互以获取数据，并将其传递给用户。无论是从用户还是&nbsp;DBA&nbsp;的角度来看，存储和关系引擎的功能是无法区分的。</P>
+<P>　　更有效地读取数据</P>
+<P>　　数据通过一系列事务在服务器和用户之间传递。应用程序或用户启动任务后，数据库将其传递给查询处理器进行处理，然后返回最终结果。查询处理器通过接收、解释和执行&nbsp;SQL&nbsp;语句来完成任务。</P>
+<P>　　例如，当用户会话发出&nbsp;SELECT&nbsp;语句时，将会执行以下步骤：&nbsp;</P>
+<P>　　关系引擎将语句进行编译和优化后，将其纳入执行计划（获取数据所需的一系列步骤）。然后，关系引擎运行执行计划。执行步骤包括通过存储引擎访问表和索引。&nbsp;</P>
+<P>　　关系引擎解释执行计划，调用存储引擎以收集所需的信息。&nbsp;</P>
+<P>　　关系引擎将存储引擎返回的所有数据组合到最终的结果集中，然后将结果集返回给用户。&nbsp;</P>
+<P>　　为提高此过程的性能，进行了两项改进。在&nbsp;SQL&nbsp;Server&nbsp;2000&nbsp;中，关系引擎将核准查询谓词的工作交由存储引擎完成，这样在该过程中这些谓词能尽早得到处理，因而提高了存储和关系引擎之间数据交换的效率。此项改进使核准查询的效率显著提高。</P>
+<P>　　增强的&nbsp;Top&nbsp;n&nbsp;功能</P>
+<P>　　另一项改进是存储引擎处理从结果集中选择前&nbsp;n&nbsp;个记录的方式。在&nbsp;SQL&nbsp;Server&nbsp;2000&nbsp;中，新的&nbsp;Top&nbsp;n&nbsp;引擎将分析类似以下语句的最佳操作路径：<BR>SELECT&nbsp;top&nbsp;5&nbsp;*&nbsp;from&nbsp;orders&nbsp;order&nbsp;by&nbsp;date_ordered&nbsp;desc<BR>在本例中，如果必须搜索整个表，则引擎会分析数据并只跟踪高速缓存中的前&nbsp;n&nbsp;项数值。这种方式将大幅提高上述&nbsp;SELECT&nbsp;语句的性能，因为只有前&nbsp;n&nbsp;项值需要排序，而非整个表。</P>
+<P>　　共享扫描</P>
+<P>　　在&nbsp;SQL&nbsp;Server&nbsp;2000&nbsp;企业版中，两个或多个查询可共享正在进行的表扫描，此项功能可改善大型&nbsp;SQL&nbsp;Server&nbsp;2000&nbsp;数据库的性能。例如，当查询使用无序扫描查询一个很大的表时，高速缓存中的页面将被清空，以便为流入数据腾出空间。如果另一个查询已经开始，对同一表的第二次扫描就会使磁盘&nbsp;I/O&nbsp;再次检索这些页面。在频繁进行表扫描的环境中，当两个查询搜索相同的数据页时，这将导致磁盘颠簸。&nbsp;</P>
+<P><BR>图&nbsp;1：共享扫描效果</P>
+<P>　　优化的进程可减少由此类数据访问模式造成的磁盘&nbsp;I/O&nbsp;操作。对表的第一个无序扫描将从磁盘中读取数据；后续的对同一表的无序扫描不必再读取硬盘，而只需使用已在内存中的信息。参见图&nbsp;1。在对同一个表同时进行多个扫描操作时，此同步过程可将性能提高至多八倍。此项改进的效果在大型决策支持查询中更加明显，因为整个表的大小远远大于高速缓存的大小）。&nbsp;</P>
+<P>　　当查询没有更有效的执行计划时，存储引擎将使用共享扫描功能协助查询。此功能的目的是提高频繁读取大型表的性能。当查询处理器确定最佳执行计划中包含表扫描时，将调用此功能。然而，尽管可以使用查询或索引优化强制进行共享扫描时，但强制进行表扫描并不会提高性能。此时使用状态良好的索引完成同样的工作效果不会差，而且可能会更好。</P>
+<P>　　并发</P>
+<P>　　为了在多个用户进行数据交互的同时维护事务的一致性，存储引擎会锁定资源以管理行、页、键、键范围、索引、表和数据库的依存性。通过在更改资源时将其锁定，引擎可防止多个用户同时更改同一数据。SQL&nbsp;Server&nbsp;中的锁可在不同粒度级别上动态应用，以选择事务所需的限制最小的锁。</P>
+<P>　　在&nbsp;SQL&nbsp;Server&nbsp;2000&nbsp;中，并发方面的改进进一步减少了死锁，避免了对资源不必要的锁定。例如，增强的锁定管理器可了解被竞用的其它资源（如线程和内存）。这种新的功能可帮助数据库管理员确定更广范围内的设计或硬件限制。&nbsp;</P>
+<P>&nbsp;<BR>&nbsp;2003-6-7&nbsp;19:30:13&nbsp;&nbsp;&nbsp;&nbsp;锁定管理器中新增的&nbsp;Transact-SQL&nbsp;接口支持在编程代码中使用自定义的锁定逻辑。业务逻辑所需的锁可通过在&nbsp;Transact-SQL&nbsp;批处理中调用&nbsp;sp_getapplock&nbsp;命令来创建，这将允许您指定要锁定的应用程序定义的资源（例如锁定表单，而非数据行）、要使用的锁定模式、超时值以及锁的范围是事务还是会话。当使用新的应用程序锁管理器创建锁后，它们接受&nbsp;SQL&nbsp;Server&nbsp;的常规锁管理，如同它们是由存储引擎创建的一样，因此，不必担心当调用事务终止时，应用程序创建的锁仍处于打开状态。</P>
+<P>　　在&nbsp;SQL&nbsp;Server&nbsp;2000&nbsp;中，用于获取锁的进程将考虑页中的数据是否都已提交。例如，若要对某个表运行&nbsp;SELECT&nbsp;语句，而该表中的数据在最近未发生变化（如&nbsp;pubs&nbsp;数据库中的表），则该进程不会产生锁，因为最近没有活动事务对表进行过更新。存储引擎是通过将数据页上的日志序列号与当前活动事务相比较来实现上述功能的。如果数据库中的绝大多数数据都早于最早的活动事务，则对于这样的数据库，这一功能将显著减少锁定操作，从而使性能大幅提高。&nbsp;</P>
+<P>　　在使用锁保护事务中数据的同时，另一个进程&nbsp;latching&nbsp;控制对物理页的访问。闩锁是一种非常轻型的、短期同步对象，它保护事务生存期内不需要锁定的操作。当存储引擎扫描某页时，它先锁住该页，读取行，将行返回给关系引擎，然后再解除对页面的锁定，以使其它进程可以访问同一数据。存储引擎使用称为&nbsp;lazy&nbsp;latching&nbsp;的进程优化对数据页的访问，即只在另一个活动进程请求某页时，才释放对该页的锁存。如果没有活动进程请求同一数据页，则在对该页的整个操作过程中，单个闩锁将始终有效。</P>
+<P>　　为改进系统的并发性能，应将精力集中在数据库系统的设计以及与其相关的代码对象上。SQL&nbsp;Server&nbsp;2000&nbsp;支持&nbsp;TB&nbsp;级的数据存储，其扩展能力可线性增长，且不受限制。数据库管理员的任务是管理数据库生命周期，即所有数据库组件（从代码到磁盘上的数据存储）的设计和优化周期，以确保设计始终满足服务级协议的要求。</P>
+<P>　　四.&nbsp;表和索引</P>
+<P>　　在物理数据结构方面也进行了改进，提高了设计和维护的灵活性。</P>
+<P>　　随着表或索引的增长，SQL&nbsp;Server&nbsp;以八个为一组分配新的数据页；这些数据页称为扩展。虽然&nbsp;text、ntext&nbsp;或&nbsp;image&nbsp;类型的列可存储在不同的页中，但一行数据不能超出一页，所以它只能拥有&nbsp;8&nbsp;KB&nbsp;数据。拥有聚集索引的表按键的顺序存储在磁盘上。堆是不带聚集索引的表，它们是无序的。记录按插入的顺序存储。</P>
+<P>　　SQL&nbsp;Server&nbsp;2000&nbsp;支持索引视图，在其它数据库产品中常常称为实体视图。在某个视图上创建聚集索引时，该视图将从派生对象转为存储在数据库中的基本对象，并且其结构与带有聚集索引的表相同。索引视图可用于存储预先计算的值或复杂联接的结果，但前提是维护开销不能超过性能上的收益。在&nbsp;SQL&nbsp;Server&nbsp;2000&nbsp;企业版中，只要索引视图可以优化查询计划，查询处理器就会自动使用它。对于很少更改但又经常作为复杂联接或计算查询组成部分的数据，索引视图可改善查询速度。</P>
+<P>　　行内文本</P>
+<P>　　行内文本可用于在主页面中存储小文本数据。例如，如果某个表中有一文本列，但文本值通常小到可与行中的其余内容放在同一普通页中，则可以在文本列中设置阈值。阈值用来确定可存储在主页面而非单独的文本页上的最大文本长度。如果大多数数据可放在主页面上，而只有小部分数据比较大，需要创建文本页，采取这种做法就可使性能获得提高。</P>
+<P>　　若要确定在何种情况下使用此新功能，则需要权衡存储密度（或每个数据页上存储的行数）以及&nbsp;I/O&nbsp;性能的改善。例如，某个表中的文本列用于存放注释。该列中有&nbsp;20%&nbsp;的文本值较长，而其它&nbsp;80%&nbsp;的文本值都小于&nbsp;100&nbsp;个字节。对于这种情形，似乎可以采用行内文本解决方案；但是，只有在这样的列中的数据被频繁访问时才应考虑使用行内文本。如果用户频繁访问此表，但只在进行特殊搜索时才查看此注释列，则使用行内文本未必是最好的做法。由于每页存储的行数少，所以存储密度会降低；并且由于表包含更多的页，所以表扫描响应时间也会增加。所以，实现行内文本的最好情况是，存在需要频繁访问的文本列，并且该列的许多值都小于&nbsp;8&nbsp;K，可以存储在行中。</P>
+<P>　　新增数据类型</P>
+<P>　　SQL&nbsp;Server&nbsp;2000&nbsp;引入了三种新的数据类型。bigint&nbsp;是&nbsp;8&nbsp;字节整数类型。sql_variant&nbsp;可以存储不同数据类型的数据值。第三种数据类型&nbsp;table&nbsp;可用于优化性能。Table&nbsp;变量使&nbsp;tempdb&nbsp;的使用效率更高，并且比临时表更加快速。与其它变量一样，它们的作用范围是声明它们的批处理。table&nbsp;变量的功能类似于临时表，但其性能要高于临时表或游标，并且可更加有效地利用服务器资源。通常，在创建与数据库交互的代码时，一定要考虑利用服务器上可用资源的最佳方法。&nbsp;</P>
+<P>　　索引</P>
+<P>　　通过使用索引，可以优化对数据的访问。因为是否建立索引取决于使用情况，所以不正确的索引是造成数据库缓慢最主要的原因。标准的索引维护工作应该包括周期性校验当前索引方案以及通过适当增删索引使其适应当前的系统使用情况。</P>
+<P>　　SQL&nbsp;Server&nbsp;2000&nbsp;中的几个新增功能使索引维护更加有效，索引管理更加容易。这些增强功能减少了磁盘&nbsp;I/O&nbsp;操作，从而增加了索引扫描的性能。在范围扫描可以使用辅助索引时，这一功能尤其有用。&nbsp;</P>
+<P>&nbsp;<BR>&nbsp;2003-6-7&nbsp;19:31:33&nbsp;&nbsp;&nbsp;&nbsp;建立索引</P>
+<P>　　建立索引时，存储引擎对行进行采样，并计算使用服务器资源建立索引的最佳方法。通过使用选项，可以控制建立索引的方式，因而可选择控制系统资源的分配方式。可以使用这些选项，并结合您在特定数据库系统方面的知识，平衡对于整体系统的性能是至关重要的进程中的资源，从而使建立索引的操作对事务处理的影响最小。</P>
+<P>资源&nbsp;命令&nbsp;选项&nbsp;说明&nbsp;<BR>内存&nbsp;sp_configure（高级）<BR>index&nbsp;create&nbsp;memory<BR>指定建立索引操作可以使用的内存总量。&nbsp;<BR>TempDB&nbsp;create&nbsp;index<BR>sort_in_tempdb<BR>从&nbsp;tempdb&nbsp;中分配在索引建立期间用于排序的磁盘空间。如果&nbsp;tempdb&nbsp;在单独的磁盘上，此命令会产生更高的&nbsp;I/O&nbsp;带宽；并且如果数据库所在空间不是非常连续，该命令还可以使索引页的布局在物理上更加连续。&nbsp;<BR>CPU&nbsp;sp_configure（高级）<BR>最大并行程度<BR>限制在并行操作中（服务器范围）可使用的处理器(CPU)&nbsp;的个数。&nbsp;</P>
+<P>　　大型系统的另一个可扩展性功能是并行索引建立。SQL&nbsp;Server&nbsp;2000&nbsp;企业版具有此功能。在发出单个&nbsp;CREATE&nbsp;INDEX&nbsp;语句时，此过程将被自动调用。存储引擎计算数据的要求，然后创建单独的线程，每个线程建立一段索引。&nbsp;</P>
+<P><BR>图&nbsp;2：并行索引优化</P>
+<P>　　索引建立也可以使用共享表扫描，从而使这一过程进一步优化。</P>
+<P>　　整理索引碎片</P>
+<P>　　SQL&nbsp;Server&nbsp;2000&nbsp;支持联机索引重组，相比于以前的版本，这是一个非常大的进步。联机索引重组对事务的吞吐量影响非常小，并且可随时停止并重新启动，而不会影响其运行效果。索引重组操作按较小增量进行，并且可完全恢复。</P>
+<P>　　随着在表中插入、删除和更新信息，聚集和非聚集索引页最终将变得零碎，从而降低对数据的范围查询的效率。因此，定期整理索引碎片是非常有益的。可以使用&nbsp;DBCC&nbsp;SHOWCONTIG（该命令在&nbsp;SQL&nbsp;Server&nbsp;2000&nbsp;中已有所改进）分析并报告碎片。</P>
+<P>　　如果确定索引已变为碎片，就可以使用&nbsp;DBCC&nbsp;INDEXDEFRAG&nbsp;命令对其进行重组。该命令以逻辑键的顺序记录页，同时压缩可用空间，移动已建立的扩展中的行以满足填充因子设置。通过提高页面中内容的密度以减少数据扫描时读取的页数，从而提高读取性能。如果索引经常得到维护并且其分布不是完全散碎的，那么运行&nbsp;DBCC&nbsp;INDEXDEFRAG&nbsp;对联机性能的影响要远远小于重建索引。</P>
+<P>　　DBCC&nbsp;INDEXDEFRAG&nbsp;是众多长期运行的管理操作中的一个，它们内部都使用短小的事务。这些短小的事务可最大限度提高服务器中的并发操作，允许操作停止而不影响工作，并且这些事务被全部记录以便在发生故障时进行恢复。</P>
+<P></FONT></P></BLOCKQUOTE></TD></TR>
+<TR>
+<TD class=tablebody2 vAlign=center align=middle width=175><A 
+href="http://www.pigtwo.com/forum/look_ip.asp?boardid=14&amp;userid=42&amp;ip=61.48.16.230&amp;action=lookip" 
+target=_blank><IMG height=15 alt="点击查看用户来源及管理<br>发贴IP：61.48.16.230" 
+src="http://www.pigtwo.com/forum/pic/ip.gif" width=13 align=absMiddle border=0></A> 2003-6-15 9:55:32</TD>
+<TD class=tablebody2 vAlign=center width=*>
+<TABLE cellSpacing=0 cellPadding=0 width="100%">
+<TBODY>
+<TR>
+<TD vAlign=center align=left><A 
+href="http://www.pigtwo.com/forum/editannounce.asp?BoardID=14&amp;replyID=1100&amp;id=531&amp;star=1"><IMG 
+alt=编辑这个贴子 src="http://www.pigtwo.com/forum/pic/edit.gif" align=absMiddle border=0></A></TD>
+<TD vAlign=bottom align=right width=110 nowarp><A title=注意：本操作将删除单个贴子 
+href="http://www.pigtwo.com/forum/admin_postings.asp?action=删除跟帖&amp;BoardID=14&amp;ID=531&amp;replyID=1100&amp;userid=42"><IMG 
+src="http://www.pigtwo.com/forum/pic/delete.gif" border=0></A>&nbsp;<A title=复制单个贴子到别的版面 
+href="http://www.pigtwo.com/forum/admin_postings.asp?action=复制&amp;BoardID=14&amp;ID=531&amp;replyID=1100"><IMG 
+src="http://www.pigtwo.com/forum/pic/copy.gif" border=0></A>&nbsp;<A title=精华 
+href="http://www.pigtwo.com/forum/admin_postings.asp?action=精华&amp;BoardID=14&amp;ID=531&amp;replyID=1100"><IMG 
+src="http://www.pigtwo.com/forum/pic/jing.gif" border=0></A></TD>
+<TD vAlign=bottom align=right 
+width=4></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE>
+<TABLE class=tableborder1 style="TABLE-LAYOUT: fixed; WORD-BREAK: break-all" 
+cellSpacing=1 cellPadding=5 align=center>
+<TBODY>
+<TR>
+<TD class=tablebody1 vAlign=top width=175>
+<TABLE cellSpacing=0 cellPadding=4 width="100%">
+<TBODY>
+<TR>
+<TD style="FILTER: glow(color=#9898BA,strength=2)" vAlign=center 
+width=*>&nbsp;<A name=1101><FONT color=#990000><B>ugvanxk</B></FONT></A> </TD>
+<TD vAlign=center width=25><IMG alt=帅哥哟，在线，有人找我吗？ src="http://www.pigtwo.com/forum/pic/Male.gif"></TD>
+<TD vAlign=center width=16></TD></TR></TBODY></TABLE>&nbsp;&nbsp;<IMG height=32 
+src="http://www.pigtwo.com/forum/pic/Image1.gif" width=32><BR>&nbsp;&nbsp;<IMG 
+src="http://www.pigtwo.com/forum/pic/level10.gif"><BR>&nbsp;&nbsp;等级：版主<BR>&nbsp;&nbsp;文章：262<BR>&nbsp;&nbsp;积分：682<BR>&nbsp;&nbsp;注册：2002-11-2<BR></TD>
+<TD class=tablebody1 vAlign=top width=*>
+<TABLE width="100%">
+<TBODY>
+<TR>
+<TD width=*><A 
+href=""><IMG 
+alt=给ugvanxk发送一个短消息 src="http://www.pigtwo.com/forum/pic/message.gif" border=0></A>&nbsp;<A 
+href="http://www.pigtwo.com/forum/friendlist.asp?action=addF&amp;myFriend=ugvanxk" target=_blank><IMG 
+alt=把ugvanxk加入好友 src="http://www.pigtwo.com/forum/pic/friend.gif" border=0></A>&nbsp;<A 
+href="http://www.pigtwo.com/forum/dispuser.asp?id=42" target=_blank><IMG alt=查看ugvanxk的个人资料 
+src="http://www.pigtwo.com/forum/pic/profile.gif" border=0></A>&nbsp;<A 
+href="http://www.pigtwo.com/forum/queryResult.asp?stype=1&amp;nSearch=3&amp;keyword=ugvanxk&amp;BoardID=14&amp;SearchDate=ALL" 
+target=_blank><IMG alt="搜索ugvanxk在『数 据 库』的所有贴子" src="http://www.pigtwo.com/forum/pic/find.gif" 
+border=0></A>&nbsp;<A href="http://www.pigtwo.com/forum/mailto:jsqmail@163.com"><IMG alt=点击这里发送电邮给ugvanxk 
+src="http://www.pigtwo.com/forum/pic/email.gif" border=0></A>&nbsp;<A 
+href="http://www.pigtwo.com/forum/reannounce.asp?BoardID=14&amp;replyID=1101&amp;id=531&amp;star=1&amp;reply=true"><IMG 
+alt=引用回复这个贴子 src="http://www.pigtwo.com/forum/pic/reply.gif" border=0></A>&nbsp;<A 
+href="http://www.pigtwo.com/forum/reannounce.asp?BoardID=14&amp;replyID=1101&amp;id=531&amp;star=1"><IMG 
+alt=回复这个贴子 src="http://www.pigtwo.com/forum/pic/reply_a.gif" border=0></A></TD>
+<TD width=50><B>第<FONT color=#ff0000>3</FONT>楼</B></TD></TR>
+<TR>
+<TD bgColor=#6595d6 colSpan=2 height=1></TD></TR></TBODY></TABLE>
+<BLOCKQUOTE><IMG alt=发贴心情 src="http://www.pigtwo.com/forum/face/face0.gif" border=0>&nbsp;<FONT 
+style="FONT-SIZE: 9pt; LINE-HEIGHT: 15pt"><B></B><BR>五.&nbsp;日志记录和故障恢复&nbsp;
+<P></P>
+<P>　　事务日志是一个记录流，它记录了从数据库创建到当前时点对数据库所做的更改。每个记录的操作都创建一个日志记录。日志记录由事务生成，并在事务提交时写入磁盘。相反，被事务修改的数据页不会立即写入磁盘，而是先保留在&nbsp;SQL&nbsp;Server&nbsp;的缓冲区高速缓存中，稍后再写入磁盘。推迟将数据写入磁盘可最大限度地提高对数据页进行多路访问的性能，并避免中断扫描。在提交时强制将日志写入磁盘是为了确保在服务器关机时不会丢失已完成的工作。</P>
+<P>　　故障恢复可确保在将数据库变为联机状态之前保持其在事务上的一致性。如果数据库在事务上是一致的，则所有提交的工作都已生效，而任何未提交的工作都变为无效。日志总是定义数据库的正确视图。简而言之，故障恢复就是将数据与事务日志在某一给定时点保持一致的过程。&nbsp;</P>
+<P>　　当&nbsp;SQL&nbsp;Server&nbsp;启动时，当数据库被连接时，或在从备份恢复数据库的最后一步时，故障恢复将自动执行。在&nbsp;SQL&nbsp;Server&nbsp;启动时执行的故障恢复称为重新启动故障恢复或启动故障恢复。使用备份进行故障恢复通常是由于磁盘发生故障。此类故障恢复称为媒体故障恢复。</P>
+<P>　　重新启动故障恢复是自动进行的，通常可恢复到最近的时点。在使用备份进行故障恢复时，DBA&nbsp;可以选择恢复到较早的时点。这种故障恢复需要满足一些限制条件。</P>
+<P>　　每当启动一个&nbsp;SQL&nbsp;Server&nbsp;实例时，启动故障恢复会自动运行，它将回滚上次关闭实例时尚未完成的所有事务。在使用备份进行故障恢复时，DBA&nbsp;可以选择恢复到较早的时点。这种故障恢复需要满足一些限制条件。无论何种情况，故障恢复操作都基于此目标时点。&nbsp;</P>
+<P>&nbsp;<BR>&nbsp;2003-6-7&nbsp;19:32:58&nbsp;&nbsp;&nbsp;&nbsp;故障恢复分为两个阶段：&nbsp;</P>
+<P>　　恢复所有更改，直到达到事务日志中的目标时点。&nbsp;</P>
+<P>　　撤消由在恢复停止点仍处于活动状态的事务所执行的所有操作。</P>
+<P>　　SQL&nbsp;Server&nbsp;使用检查点加速重新启动故障恢复。检查点强制将当前缓冲区高速缓存中所有已修改的数据页保存到磁盘上。这将为故障恢复的恢复阶段创建一起点。由于检查点的开销非常大，所以&nbsp;SQL&nbsp;Server&nbsp;自动对检查点进行管理，以保证在尽量缩短重新启动所花时间的同时尽可能提高性能。</P>
+<P>　　在&nbsp;SQL&nbsp;Server&nbsp;2000&nbsp;中，成功完成的写入必须可持久存储在磁盘中。如果使用写缓存磁盘存储，请与您的存储设备供应商联系，确认高速缓存是否容错。容错能力表示高速缓存可不受电源故障或操作员操作的影响。如果缓存没有容错能力，则应不使用。</P>
+<P>　　逻辑日志标记</P>
+<P>　　在&nbsp;SQL&nbsp;Server&nbsp;7.0&nbsp;中，已经可以恢复到任何指定时点。如果出现硬件故障，则恢复过程是相当简单的。然而，对数据库的另一种威胁可能是输入了无效的数据，或者有效数据被用户操作所破坏。在这种情况下，需要确定问题发生的开始时间。在&nbsp;SQL&nbsp;Server&nbsp;7.0&nbsp;中，解决这种问题的唯一方法是将日志恢复成数据库副本，直到问题重现，然后再对产品映像执行恢复操作，直到在所发现的问题出现时刻之前的时点。</P>
+<P>　　在&nbsp;SQL&nbsp;Server&nbsp;2000&nbsp;中，可以在日志中标记事务。之后，如果需要恢复，就可以参考执行时使用的标记，而不必使用规定的时刻。为此，请使用&nbsp;BEGIN&nbsp;TRANSACTION&nbsp;的语句和&nbsp;WITH&nbsp;MARK&nbsp;[说明]&nbsp;子句。标记存储在&nbsp;msdb&nbsp;中。故障恢复可以包括包含标记的事务，也可以恰恰在包含标记的事务前停止。例如，如果某个进程以批处理方式运行并且更改了许多记录，那么可以使用此功能以确保，当进程运行在错误环境中时可以将数据回滚到执行命令的时点。</P>
+<P>　　标记名称不必唯一。若要指定所需的事务，请指定&nbsp;datetime&nbsp;值。该操作的语法为：<BR>RESTORE&nbsp;LOG&nbsp;WITH&nbsp;[&nbsp;STOPBEFOREMARK|STOPAFTERMARK&nbsp;]&nbsp;=&nbsp;@TaggedTransaction&nbsp;AFTER&nbsp;@datetime<BR>也可以对分布式事务使用标记（称为分布式标记），以支持将多个相关数据库恢复到事务上一致的状态。相关数据库可以位于&nbsp;SQL&nbsp;Server&nbsp;的同一或不同实例上。可以定期对一组数据库设置分布式标记（例如，每五分钟一次）。如果其中某个数据库的事务日志被损坏，则必须将这组数据库恢复到更早的时点。分布式标记可提供这一时点。使用分布式标记，就可以在对多个相关数据库进行备份时不用费心地确定备份的时刻。</P>
+<P>　　收缩事务日志</P>
+<P>　　SQL&nbsp;Server&nbsp;7.0&nbsp;中不能立即执行日志收缩操作。该操作被推迟到下一次备份或删节事务日志。这种方式使许多&nbsp;SQL&nbsp;Server&nbsp;7.0&nbsp;客户非常烦恼。SQL&nbsp;Server&nbsp;2000&nbsp;可以立即收缩日志，并且可在日志备份后指出是否可以进行进一步收缩。这时，可以在日志备份完成后再次运行收缩命令。</P>
+<P>　　日志大小取决于当前故障恢复模式以及应用程序设计。如果发现需要定期收缩日志，请查明造成问题的原因。应该进一步调查日志添满的原因，而不要只是一味地使用收缩命令维护日志。</P>
+<P>　　故障恢复模式</P>
+<P>　　使用&nbsp;SQL&nbsp;Server&nbsp;2000&nbsp;中增加的故障恢复模式可以方便到实施数据保护计划。这些模式都在性能、日志空间要求和媒体（磁盘）故障保护之间进行了取舍。共有三种模式，它们是：简单故障恢复、完全故障恢复和大容量记录。</P>
+<P>　　选择故障恢复模式时，应考虑数据库的使用情况和可用性要求，同时选择的模式应有助于确定适当的备份和恢复过程。这些故障恢复模式只适用于媒体故障恢复，即使用备份进行故障恢复。重新启动故障恢复所有提交的工作。</P>
+<P>　　故障恢复模式间的转换非常容易。例如，在大型数据库中，既可使用完全模式，也可以使用大容量记录模式，或同时使用这两种模式。可以在白天使用完全模式，而在夜晚或在包含大容量插入以及重建索引的数据装载过程中使用大容量记录模式。也可以在运行数据装载时切换到大容量记录模式，然后再切换回完全模式，运行事务日志备份，而且能够恢复到模式切换时点，而不必运行完全数据库备份。此功能可更有效地进行大容量处理操作；而所要做的只是将以前的事务日志进行备份。</P>
+<P>　　要更改故障恢复模式，请使用以下语法：<BR>　　ALTER&nbsp;DATABASE&nbsp;SET&nbsp;RECOVERY&nbsp;RecoveryModel</P>
+<P>　　简单故障恢复模式</P>
+<P>　　简单故障恢复模式通常需要很少的日志空间，但如果数据或日志文件被损坏，则它造成的潜在工作损失是最大的。因为在这种模式下只记录基本故障恢复所需的事件。使用简单故障恢复模式时，只能进行完全数据库备份和差异数据库备份。在出现故障时，必须重新完成自从上次备份后所有提交的工作。此模式对管理员是最简单的，但并不适用于关键性任务的应用程序，因为这种程序通常不允许丢失已提交的工作。</P>
+<P>　　此模式类似于&nbsp;SQL&nbsp;Server&nbsp;7.0&nbsp;及以前版本中的&nbsp;truncate&nbsp;log&nbsp;on&nbsp;checkpoint&nbsp;选项。&nbsp;</P>
+<P>&nbsp;<BR>&nbsp;2003-6-7&nbsp;19:34:47&nbsp;&nbsp;&nbsp;&nbsp;完全故障恢复模式</P>
+<P>　　在完全故障恢复模式中，所有一切都被记录。完全故障恢复模式提供了全面的保护，以防止损坏的数据文件对工作造成损失。如果事务日志被损坏，则从最近一次日志备份后提交的工作都将丢失，并且必须重新手动完成。</P>
+<P>　　即使使用完全故障恢复模式，也最好使用容错磁盘存储事务日志，以防止数据丢失。完全故障恢复模式还允许恢复到指定的时点。</P>
+<P>　　大容量记录故障恢复模式</P>
+<P>　　大容量记录故障恢复模式为大容量操作提供了最高的性能。而且，这些操作在该模式下占用的日志空间要小于在完全故障恢复模式下占用的空间。例如，新页的分配将被记录，而插入页中的数据则不被记录。在&nbsp;SQL&nbsp;Server&nbsp;2000&nbsp;中，大容量操作由大容量装载（BCP&nbsp;和&nbsp;BULK&nbsp;INSERT，包括当他们在&nbsp;DTS&nbsp;包中运行时）、SELECT&nbsp;INTO、CREATE&nbsp;INDEX、WRITETEXT&nbsp;和&nbsp;UPDATETEXT&nbsp;组成。</P>
+<P>　　与完全故障恢复模式相比，大容量记录故障恢复模式减少了对大容量操作的日志记录。请记住，在需要进行故障恢复时，如果日志被损坏或在最近一次日志备份后又进行了大容量操作，则在最后一次日志备份后对数据库进行的更改将会丢失。</P>
+<P>　　此模式不支持恢复到指定的时点，但它允许恢复到包含大容量更改的事务日志备份的末尾。使用大容量记录故障恢复模式进行的事务日志备份包含由大容量操作修改的扩展。此功能改善了对日志传送的支持，因为不用担心备份在大容量操作后会变为无效。SQL&nbsp;Server&nbsp;维护映射以跟踪修改的数据扩展，这样做，可优化&nbsp;SQL&nbsp;Server&nbsp;用于标识更改的进程。</P>
+<P>　　改善的备份功能</P>
+<P>　　除引入故障恢复模式以简化常规数据保护外，SQL&nbsp;Server&nbsp;2000&nbsp;还改善了管理特性：快照技术、差异备份和安全性都已得到加强。&nbsp;</P>
+<P>　　事务日志备份链永远不会断开。在&nbsp;SQL&nbsp;Server&nbsp;7.0&nbsp;中，某些操作（如向数据库中添加文件）会中断日志链，并且要求以后进行完全数据库备份。&nbsp;</P>
+<P>　　备份操作不会与应用程序或其他管理操作发生冲突。例如，备份可与大容量操作（如创建索引和批处理装载）同时进行。&nbsp;</P>
+<P>　　日志和文件备份可以同时进行。&nbsp;</P>
+<P>　　无论系统正在进行何种活动，SQL&nbsp;Server&nbsp;2000&nbsp;都对无人值守备份操作实现良好的支持。</P>
+<P>　　SQL&nbsp;Server&nbsp;支持与独立硬件和软件供应商共同完成的快照备份和恢复技术。快照备份使得在进行备份时占用的系统资源最少，甚至可以不占用资源。这种技术对于中型或大型数据库尤其有益，因为在这种环境中可用性是非常重要的。这种技术的主要优势在于：&nbsp;</P>
+<P>　　可在非常短的时间（通常可以秒计）内创建备份，基本上不会对服务器造成任何影响。&nbsp;</P>
+<P>　　可以使用磁盘备份非常快地恢复数据库。&nbsp;</P>
+<P>　　另一台主机可创建备份，且不会对生产系统造成影响。&nbsp;</P>
+<P>　　可以立即创建生产数据库的副本，以用于报告或测试目的。&nbsp;</P>
+<P>　　快照备份和恢复技术是与第三方硬件和/或软件供应商协作共同完成的，这些供应商使用了&nbsp;SQL&nbsp;Server&nbsp;2000&nbsp;为实现该技术而提供的特定功能。备份技术通常使用拆分磁盘镜像集的方法，创建要备份的数据的即时副本。在恢复时，原有数据就可立即投入使用。基本磁盘的同步是在后台进行的，因此几乎可以实现即时恢复。</P>
+<P>　　差异数据库备份的运行时间与上次完全备份后数据更改的总量成正比。数据更改越少，备份越快。SQL&nbsp;Server&nbsp;2000&nbsp;使用映射跟踪自最近一次数据库或文件备份后发生更改的数据扩展，以确保可更有效地定位这些扩展。此外，SQL&nbsp;Server&nbsp;2000&nbsp;支持文件差异备份。</P>
+<P>　　备份仍会收集自最近一次完全备份后对数据库进行的更改，运作方式与故障恢复相同。然而，这种备份是非常快的，因为它们只记录少部分更改过的信息，尤其是当数据库非常大而更改的数据又非常少时。</P>
+<P>　　为确保安全，可以使用密码保护备份媒体和备份集。这样就可防止未授权的用户在备份中添加数据或恢复数据库。</P>
+<P>　　六.&nbsp;增强的管理功能</P>
+<P>　　在&nbsp;SQL&nbsp;Server&nbsp;2000&nbsp;中，存储引擎的若干管理功能得到了加强。</P>
+<P>　　数据库验证</P>
+<P>　　DBCC&nbsp;提供了各种管理能力，包括验证数据库一致性的&nbsp;CHECK&nbsp;命令。</P>
+<P>　　使用&nbsp;SQL&nbsp;Server&nbsp;7.0&nbsp;和&nbsp;SQL&nbsp;Server&nbsp;2000&nbsp;的经验表明，数据库的不一致性是由硬件问题引起的，但是数据库引擎或应用程序在正常操作中不一定能检测到这种问题。这种情况更可能出现在不经常访问的数据上。为解决这种问题，SQL&nbsp;Server&nbsp;2000&nbsp;引入一种检查模式&nbsp;Physical_Only，可以探测到绝大部分由硬件引发的问题。探测过程非常快，速度与磁盘扫描速度相当，并且其对资源的消耗也很小。</P>
+<P>　　由于&nbsp;SQL&nbsp;Server&nbsp;存储引擎在基础体系结构上的改进（从&nbsp;SQL&nbsp;Server&nbsp;7.0&nbsp;开始），已不必在常规维护时进行数据库验证。然而，Microsoft&nbsp;仍然将数据库验证工具作为管理任务关键数据的重要组成部分。Microsoft&nbsp;建议：&nbsp;</P>
+<P>　　根据对基本硬件（特别是磁盘子系统）的信心，不定期运行&nbsp;Physical_Only&nbsp;检查。&nbsp;</P>
+<P>&nbsp;<BR>&nbsp;2003-6-7&nbsp;19:36:16&nbsp;&nbsp;&nbsp;&nbsp;在关键时刻，如在硬件或软件升级时，或怀疑出现任何问题时，进行完整数据库检查。&nbsp;</P>
+<P>　　Microsoft&nbsp;不推荐在进行常规维护时执行完整数据库检查。</P>
+<P>　　SQL&nbsp;Server&nbsp;2000&nbsp;还在数据库验证方面作出了如下重大改进：&nbsp;</P>
+<P>　　默认情况下，检查可以在联机状态下完成。联机检查对事务工作负载的影响很小。这种影响的大小取决于系统负载、硬件配置和&nbsp;tempdb&nbsp;的速度。Microsoft&nbsp;的实验结果表明，对于中等&nbsp;OLTP&nbsp;工作负载（50%&nbsp;的&nbsp;CPU&nbsp;使用率），这种影响为&nbsp;15%&nbsp;到&nbsp;20%。提供的&nbsp;TABLOCK&nbsp;选项会强制检查索取共享表锁，这可以使检查的运行速度更快，但会妨碍更新。&nbsp;</P>
+<P>　　检查操作在对称的多处理器&nbsp;(SMP)&nbsp;计算机中是以并行方式完成的，它受限于在该&nbsp;SQL&nbsp;Server&nbsp;实例中设置的最大并行程度。&nbsp;</P>
+<P>　　SQL&nbsp;Server&nbsp;2000&nbsp;检查命令继续支持&nbsp;SQL&nbsp;Server&nbsp;7.0&nbsp;中引入的修复功能。在某些情形，脱机修复可以替代备份恢复。</P>
+<P>　　数据库状态控制</P>
+<P>　　SQL&nbsp;Server&nbsp;2000&nbsp;对&nbsp;ALTER&nbsp;DATABASE&nbsp;语句进行了改进，改进后的语句允许通过&nbsp;Transact-SQL&nbsp;对数据库状态实现更多的控制。现在，所有数据库选项都可通过&nbsp;ALTER&nbsp;DATABASE&nbsp;命令进行灵活修改；在以后的版本中，将不再更新&nbsp;sp_dboption&nbsp;和&nbsp;databaseproperty()。Transact-SQL&nbsp;命令&nbsp;sp_helpdb&nbsp;和&nbsp;DatabasePropertyEx()&nbsp;提供有关数据库状态的更多信息。</P>
+<P>　　下表列出了数据库状态选项。</P>
+<P><BR>选项类型&nbsp;可用设置&nbsp;<BR>用户权限&nbsp;SINGLE_USERRESTRICTED_USERMULTI_USER&nbsp;<BR>可用性&nbsp;ONLINEOFFLINE&nbsp;<BR>更新能力&nbsp;READ_ONLYREAD_WRITE&nbsp;</P>
+<P><BR>　　SQL&nbsp;Server&nbsp;还根据数据库中的条件设置以下状态：复原&nbsp;(restoring)、恢复&nbsp;(recovering)&nbsp;和待定&nbsp;(suspect)。数据库选项可通过以下方式进行设置：ALTER&nbsp;DATABASE&nbsp;语句的&nbsp;SET&nbsp;子句、sp_dboption&nbsp;系统存储过程或&nbsp;SQL&nbsp;Server&nbsp;Enterprise&nbsp;Manager（在某些情况下）。</P>
+<P>　　在数据库状态发生变化后，更改数据库状态的会话仍然保持连接，而与新状态不一致的会话可被终止，并且其事务将被回滚。会话终止选项如下：&nbsp;</P>
+<P>　　立即终止&nbsp;</P>
+<P>　　在指定时间后终止&nbsp;</P>
+<P>　　允许活动进程正常完成&nbsp;</P>
+<P>　　检查活动，如果发现活动用户会话，则忽略状态更改&nbsp;</P>
+<P>　　如下为语法的两个示例：</P>
+<P>　　alter&nbsp;database&nbsp;accting&nbsp;set&nbsp;read_only&nbsp;with&nbsp;rollback&nbsp;immediate<BR>　　alter&nbsp;database&nbsp;accting&nbsp;set&nbsp;single_user&nbsp;with&nbsp;rollback&nbsp;after&nbsp;60&nbsp;seconds</P>
+<P>　　系统进程&nbsp;ID&nbsp;和工作单元</P>
+<P>　　管理方面的另一个改进是&nbsp;KILL&nbsp;命令，该命令在停止进程时使用。改进后的&nbsp;KILL&nbsp;命令具有状态反馈。所以，如果要了解&nbsp;KILL&nbsp;命令的状态，请运行以下命令：</P>
+<P>　　KILL&nbsp;SPID&nbsp;WITH&nbsp;STATUSONLY</P>
+<P>　　在试图停止已由其它&nbsp;KILL&nbsp;命令停止的系统进程&nbsp;ID&nbsp;(SPID)&nbsp;时，系统将返回相同的状态信息。</P>
+<P>　　在&nbsp;SQL&nbsp;Server&nbsp;2000&nbsp;中，MS&nbsp;DTC&nbsp;事务可以在没有相关连接或&nbsp;SPID&nbsp;的情况下&nbsp;存在。因此，在等待事务或工作单元完成之前，连接可由其他进程使用。当&nbsp;MS&nbsp;DTC&nbsp;事务管理器发送消息声明任务已完成时，您可以提交事务，也可以回滚事务。这就叫做一个工作单元&nbsp;(UOW)，它是&nbsp;MS&nbsp;DTC&nbsp;用于事务的事务标识符。UOW&nbsp;没有&nbsp;SPID。&nbsp;</P>
+<P>&nbsp;<BR>&nbsp;2003-6-7&nbsp;19:37:22&nbsp;&nbsp;&nbsp;&nbsp;动态调优</P>
+<P>　　在&nbsp;SQL&nbsp;Server&nbsp;2000&nbsp;中，基于使用的性能优化是动态管理的，无需手动调整。静态参数已被去除，但仍然保留了对某些资源的管理控制（例如，设置&nbsp;SQL&nbsp;Server&nbsp;可以使用的最大内存数）。相对于根据平均值和估计值进行手工计算的系统，这种方法更加精确，反应更加快捷。这样，您可以将注意力集中在数据库管理的设计方面。传统的数据库系统需要大量的手工管理和调优工作。例如，为了根据使用情况来优化系统，DBA&nbsp;必须监视系统，不断记录大量的统计数据，以便选择可提供最佳系统性能的静态设置。然后，DBA&nbsp;要重新评估系统以确定新设置的效果，接着又从头开始调优过程。</P>
+<P>　　SQL&nbsp;Server&nbsp;2000&nbsp;在存储引擎中引入了动态算法，它可主动监视服务器的使用情况，并在内部调整设置。SQL&nbsp;Server&nbsp;2000&nbsp;中的动态反馈和分析可将设置保持在绝对优化值的&nbsp;10%&nbsp;以内（参见图&nbsp;3），从而使系统的性能更优，适应性更强。&nbsp;</P>
+<P><BR>图&nbsp;3：自适应算法优化</P>
+<P><BR></FONT></P></BLOCKQUOTE></TD></TR>
+<TR>
+<TD class=tablebody1 vAlign=center align=middle width=175><A 
+href="http://www.pigtwo.com/forum/look_ip.asp?boardid=14&amp;userid=42&amp;ip=61.48.16.230&amp;action=lookip" 
+target=_blank><IMG height=15 alt="点击查看用户来源及管理<br>发贴IP：61.48.16.230" 
+src="http://www.pigtwo.com/forum/pic/ip.gif" width=13 align=absMiddle border=0></A> 2003-6-15 9:56:29</TD>
+<TD class=tablebody1 vAlign=center width=*>
+<TABLE cellSpacing=0 cellPadding=0 width="100%">
+<TBODY>
+<TR>
+<TD vAlign=center align=left><A 
+href="http://www.pigtwo.com/forum/editannounce.asp?BoardID=14&amp;replyID=1101&amp;id=531&amp;star=1"><IMG 
+alt=编辑这个贴子 src="http://www.pigtwo.com/forum/pic/edit.gif" align=absMiddle border=0></A></TD>
+<TD vAlign=bottom align=right width=110 nowarp><A title=注意：本操作将删除单个贴子 
+href="http://www.pigtwo.com/forum/admin_postings.asp?action=删除跟帖&amp;BoardID=14&amp;ID=531&amp;replyID=1101&amp;userid=42"><IMG 
+src="http://www.pigtwo.com/forum/pic/delete.gif" border=0></A>&nbsp;<A title=复制单个贴子到别的版面 
+href="http://www.pigtwo.com/forum/admin_postings.asp?action=复制&amp;BoardID=14&amp;ID=531&amp;replyID=1101"><IMG 
+src="http://www.pigtwo.com/forum/pic/copy.gif" border=0></A>&nbsp;<A title=精华 
+href="http://www.pigtwo.com/forum/admin_postings.asp?action=精华&amp;BoardID=14&amp;ID=531&amp;replyID=1101"><IMG 
+src="http://www.pigtwo.com/forum/pic/jing.gif" border=0></A></TD>
+<TD vAlign=bottom align=right 
+width=4></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE>
+<TABLE class=tableborder1 style="TABLE-LAYOUT: fixed; WORD-BREAK: break-all" 
+cellSpacing=1 cellPadding=5 align=center>
+<TBODY>
+<TR>
+<TD class=tablebody2 vAlign=top width=175>
+<TABLE cellSpacing=0 cellPadding=4 width="100%">
+<TBODY>
+<TR>
+<TD style="FILTER: glow(color=#9898BA,strength=2)" vAlign=center 
+width=*>&nbsp;<A name=1102><FONT color=#990000><B>ugvanxk</B></FONT></A> </TD>
+<TD vAlign=center width=25><IMG alt=帅哥哟，在线，有人找我吗？ src="http://www.pigtwo.com/forum/pic/Male.gif"></TD>
+<TD vAlign=center width=16></TD></TR></TBODY></TABLE>&nbsp;&nbsp;<IMG height=32 
+src="http://www.pigtwo.com/forum/pic/Image1.gif" width=32><BR>&nbsp;&nbsp;<IMG 
+src="http://www.pigtwo.com/forum/pic/level10.gif"><BR>&nbsp;&nbsp;等级：版主<BR>&nbsp;&nbsp;文章：262<BR>&nbsp;&nbsp;积分：682<BR>&nbsp;&nbsp;注册：2002-11-2<BR></TD>
+<TD class=tablebody2 vAlign=top width=*>
+<TABLE width="100%">
+<TBODY>
+<TR>
+<TD width=*><A 
+href=""><IMG 
+alt=给ugvanxk发送一个短消息 src="http://www.pigtwo.com/forum/pic/message.gif" border=0></A>&nbsp;<A 
+href="http://www.pigtwo.com/forum/friendlist.asp?action=addF&amp;myFriend=ugvanxk" target=_blank><IMG 
+alt=把ugvanxk加入好友 src="http://www.pigtwo.com/forum/pic/friend.gif" border=0></A>&nbsp;<A 
+href="http://www.pigtwo.com/forum/dispuser.asp?id=42" target=_blank><IMG alt=查看ugvanxk的个人资料 
+src="http://www.pigtwo.com/forum/pic/profile.gif" border=0></A>&nbsp;<A 
+href="http://www.pigtwo.com/forum/queryResult.asp?stype=1&amp;nSearch=3&amp;keyword=ugvanxk&amp;BoardID=14&amp;SearchDate=ALL" 
+target=_blank><IMG alt="搜索ugvanxk在『数 据 库』的所有贴子" src="http://www.pigtwo.com/forum/pic/find.gif" 
+border=0></A>&nbsp;<A href="http://www.pigtwo.com/forum/mailto:jsqmail@163.com"><IMG alt=点击这里发送电邮给ugvanxk 
+src="http://www.pigtwo.com/forum/pic/email.gif" border=0></A>&nbsp;<A 
+href="http://www.pigtwo.com/forum/reannounce.asp?BoardID=14&amp;replyID=1102&amp;id=531&amp;star=1&amp;reply=true"><IMG 
+alt=引用回复这个贴子 src="http://www.pigtwo.com/forum/pic/reply.gif" border=0></A>&nbsp;<A 
+href="http://www.pigtwo.com/forum/reannounce.asp?BoardID=14&amp;replyID=1102&amp;id=531&amp;star=1"><IMG 
+alt=回复这个贴子 src="http://www.pigtwo.com/forum/pic/reply_a.gif" border=0></A></TD>
+<TD width=50><B>第<FONT color=#ff0000>4</FONT>楼</B></TD></TR>
+<TR>
+<TD bgColor=#6595d6 colSpan=2 height=1></TD></TR></TBODY></TABLE>
+<BLOCKQUOTE><IMG alt=发贴心情 src="http://www.pigtwo.com/forum/face/face0.gif" border=0>&nbsp;<FONT 
+style="FONT-SIZE: 9pt; LINE-HEIGHT: 15pt"><B></B><BR>七.&nbsp;数据存储组件
+<P></P>
+<P>　　SQL&nbsp;Server&nbsp;2000&nbsp;协同&nbsp;Windows&nbsp;2000&nbsp;操作系统平衡所有可用&nbsp;CPU&nbsp;的工作量。如果正在运行一个特定的&nbsp;SQL&nbsp;Server&nbsp;实例，并且其他应用程序未占用相同的资源，请将处理器相关设置保持为默认值，以便使全部的处理器得到充分利用。SQL&nbsp;Server&nbsp;可利用多个处理器上的并行处理能力执行查询、索引建立、DBCC&nbsp;和其他操作。SQL&nbsp;Server&nbsp;2000&nbsp;标准版最多可支持四个处理器和&nbsp;2&nbsp;GB&nbsp;物理内存&nbsp;(RAM)。企业版提高到新的水平，支持多达&nbsp;32&nbsp;个处理器和&nbsp;64&nbsp;GB&nbsp;物理内存&nbsp;(RAM)。</P>
+<P>　　SQL&nbsp;Server&nbsp;实例的主内存源称为它的内存池。在&nbsp;SQL&nbsp;Server&nbsp;实例中几乎所有使用内存的数据结构都是从内存池分配的。从内存池分配的对象示例包括缓冲区高速缓存（其中存储最近读取的数据）和过程高速缓存（其中存储最近的执行计划）。&nbsp;</P>
+<P>　　内存池中的分配是高度动态的。为优化性能，SQL&nbsp;Server&nbsp;不断调整分配给不同区域的内存池大小。例如，当存储的执行计划的数量很少时，会通过将更多可用内存分配给数据高速缓存来调整内存池，从而优化资源的使用。</P>
+<P>　　SQL&nbsp;Server&nbsp;2000&nbsp;尽可能使用内存以减少磁盘&nbsp;I/O。为此，SQL&nbsp;Server&nbsp;在物理内存&nbsp;(RAM)&nbsp;中使用缓冲区高速缓存装载最近引用的数据，这样，这些数据可被重复使用。减少磁盘&nbsp;I/O&nbsp;和提供数据库系统速度的潜在方法是增加&nbsp;SQL&nbsp;Server&nbsp;可用的物理内存&nbsp;(RAM)。</P>
+<P>　　通常，内存设置不需要任何调整。然而，在某些情况下可以对它们进行控制。例如，当在同一服务器上运行&nbsp;SQL&nbsp;Server&nbsp;的多个实例时，特别是在使用故障转移群集时，需要特别关注内存。如果在运行&nbsp;SQL&nbsp;Server&nbsp;的服务器上运行其他应用程序，也需要监视内存的使用情况。&nbsp;</P>
+<P>&nbsp;<BR>&nbsp;2003-6-7&nbsp;19:38:17&nbsp;&nbsp;&nbsp;&nbsp;　　SQL&nbsp;Server&nbsp;2000&nbsp;利用&nbsp;Windows&nbsp;2000&nbsp;的新功能，可寻址超过&nbsp;3GB&nbsp;的物理内存&nbsp;(RAM)&nbsp;。参见图&nbsp;4。SQL&nbsp;Server&nbsp;2000&nbsp;企业版可以使用&nbsp;Windows&nbsp;2000&nbsp;Advanced&nbsp;Server&nbsp;或&nbsp;Windows&nbsp;2000&nbsp;Datacenter&nbsp;Server&nbsp;所允许的内存量。</P>
+<P>　　文件、文件组和磁盘</P>
+<P>　　SQL&nbsp;Server&nbsp;在磁盘文件中存储数据和日志。在基本安装中，默认情况下，创建的数据和日志文件保存在服务器配置中指定的默认位置。然而，为了获得最优的性能和管理能力，可以应用以下几条基本原则：&nbsp;<BR>尽可能将数据分布到多个磁盘、信道和控制器中。&nbsp;</P>
+<P>　　通常，磁盘越多（无论其单个容量），访问磁盘（控制器和信道）的速度以及存储引擎读写数据的速度也就越快。系统使用量越大，数据文件与日志文件的分离程度（将它们存储在不同的物理驱动器上）也就越重要。此外，由于&nbsp;tempdb&nbsp;的使用已发生变化，所以应该将&nbsp;tempdb&nbsp;存储在大磁盘集上；例如，与数据文件存放在一起或一组磁盘上。&nbsp;</P>
+<P>　　使用文件组，使企业数据库更易于管理。&nbsp;</P>
+<P>　　每个数据库都以一个默认的文件组开始。由于&nbsp;SQL&nbsp;Server&nbsp;2000&nbsp;可在不附加文件组的情况下高效工作，因此许多系统都无需添加用户定义的文件组。然而，随着系统的增长，使用附加的文件组可提供更高的管理能力，当然这要求由称职的&nbsp;DBA&nbsp;实施和维护。</P>
+<P>　　在&nbsp;SQL&nbsp;Server&nbsp;2000&nbsp;中，如果将数据库上的特定文件组设置为只读，则该文件组中的数据不能更改，但仍可以管理诸如权限等目录信息。</P>
+<P>　　注意：在&nbsp;SQL&nbsp;Server&nbsp;2000&nbsp;中，数据库引擎中的异步&nbsp;I/O&nbsp;操作数实现了动态管理，并且不受使用的文件或文件组个数的影响，这一点与&nbsp;SQL&nbsp;Server&nbsp;7.0&nbsp;相同。</P>
+<P>　　实施或优化数据库设计时，数据库管理员（数据库系统工程师）需要考虑数据库存储组件的配置，尤其是物理和逻辑磁盘的布局、数据库文件在磁盘中的排列。</P>
+<P>　　八.&nbsp;总结</P>
+<P>　　灵活性的增强和性能控制的提高，使数据库管理员可以在掌握数据库技术的使用技巧和丰富数据库的使用经验时，将精力集中在管理数据库代码、设计和存储组件等方面，并以此作为数据库系统管理的最佳途径。SQL&nbsp;Server&nbsp;2000&nbsp;数据库引擎为各种数据库实现提供了通用的可扩展性和灵活性。&nbsp;&nbsp;</P></FONT></BLOCKQUOTE></TD></TR></TBODY></TABLE>

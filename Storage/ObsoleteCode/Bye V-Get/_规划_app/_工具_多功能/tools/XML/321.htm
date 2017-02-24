@@ -1,0 +1,75 @@
+<html>
+<head>
+<title>Hello XML</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+
+<link rel = stylesheet href = "image/style.css">
+</head>
+<body bgcolor="#ffffff">
+<table width="688" border="0" cellspacing="0" cellpadding="0" align="center">
+  <tr bgcolor="EEEEEE"> 
+    <td height="22"><a href="index.htm">主页</a></td>
+  </tr>
+</table><br>
+<table border="0" cellpadding="0" cellspacing="0" width="688" align="center" height="490">
+  <tr valign="top"> 
+    <td rowspan="4" width="91">&nbsp; </td>
+    <td height="68" width="131"> 
+      <p><img src="image/doc.gif"></p>
+    </td>
+    <td rowspan="4" width="18"><b></b> </td>
+    <td height="68" width="387"><img src="image/title_doc.gif"></td>
+    <td rowspan="4" width="61"> 
+      <h6>&nbsp;</h6>
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td rowspan="3" valign="top" class="pt10" align="center" width="131" bgcolor="EEEEEE"> 
+      <p>&nbsp;</p>
+      <p><font color="#FF0000">※ 3.1 Hello XML</font></p>
+       
+	</td>
+  </tr>
+  <tr valign="top"> 
+    <td width="387" height="308"> 
+      <table width="100%" border="0" cellpadding="0">
+        <tr> 
+          <td>
+
+<h4 ALIGN="CENTER">3.1 Hello XML</h4>
+<P>本节遵照老程序员介绍新语言的传统，先用一个能够在屏幕上打印出“Hello World”的程序加以介绍。XML是标记语言，而不是编程语言，但是基本原理还是适用的。最简单的方法是以一个完全的可运行的有扩展能力的示例开始，而不要尝试以更基本的无任何功能的程序开始。如果用户在使用基本的工具时确实遇到了问题，在简短的文档环境中也比在复杂的文档环境下更容易调试和改正。</P>
+<P>在本节中，读者将学到如何创建一个简单的XML文档并将其保存在文件中。然后我们对其中的代码及其意义再加以仔细考察。</P>
+<h5>3.1.1 创建一个简单的XML文档</h5>
+<P>在本节中，读者将学到如何键入一个实际的XML文档。我们从能够想像得到的最简单的XML文档开始。这个文档列在清单3-1中：</P>
+<P>清单3-1：Hello XML</P>
+<P><font face="Courier New, Courier, mono"><i>&lt;?xml version="1.0" standalone="yes"?&gt;</i></font></P>
+<P><i><font face="Courier New, Courier, mono">&lt;FOO&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">Hello XML!</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;/FOO&gt;</font></i></P>
+<P>这虽然不太复杂，但却是一个“好”的XML的文档。更准确地说，这是一个结构完整的XML文档（XML中有一些用于文档的专门术语，依照到底满足了哪条规则而被认为是“好”的 。其中“结构完整的”就是一条这样的术语，在本书的后面要对此加以讨论。）可在任何使用方便的文本编辑器，如Notepad、BBEdit或是emacs中键入这个文档。</P>
+<P><img src="image/Image18.gif" WIDTH=45 HEIGHT=28>结构完整性将在第6章“结构完整的XML文档”中加以讨论。</P>
+<h5>3.1.2 保存XML文件</h5>
+<P>当键入了上面的代码之后，请将该文档保存在名为hello.xml的文件中。也可以使用诸如HelloWorld.xml、MyFirstDocument.xml或是其他文件名，但三个字母的扩展名.xml是标准的，一般不要更改。而且还要确保以普通的文本格式加以保存，而不要用某些字处理程序，如WordPerfect或Microsoft Word的内建格式。</P>
+<img src="image/Image19.gif" align="left"> 
+<P>如果使用的是Windows 95/98上的Notepad来编辑文件，当保存文档时，一定要将文件名用双引号括起来，即“Hello.xml”，而不要只是Hello.xml，正如图3-1所示的一样。如果没有引号，Notepad会在文件名后再加上.txt扩展名，也就是文件名变成了Hello.xml.txt，这完全不是我们所希望出现的。</P>
+<P ALIGN="CENTER"><img src="image/Image20.gif" WIDTH=367 HEIGHT=251></P>
+<P ALIGN="CENTER">图3-1  在Notepad中用带引号的文件名来保存XML文档</P>
+<P>Windows NT版本的Notepad还会给出将文件保存为Unicode格式的选项。令人惊奇的是，这样保存也可以，不过我们还是坚持使用基本的ASCII文本格式比较好。XML文件既可以是Unicode格式也可以是Unicode的名为UTF-8的压缩版本，这是严格的ASCII的超集，因而纯ASCII文件也是合法的XML文件。</P>
+<P><img src="image/Image21.gif" WIDTH=42 HEIGHT=32>UTF-8和ASCII将在第7章“外国语言和非罗马文本”中加以更为详细的讨论。</P>
+<h5>3.1.3 将XML文件装入Web浏览器</h5>
+<P>既然已经创建了第一个XML文档，当然想看一看了。这个文件可以在支持XML的浏览器，如Internet Explorer 5.0中直接打开。图3-2显示的就是结果。</P>
+<P>我们看到的结果将依不同的浏览器而有所不同。在本例情况下，文件是格式化得很好的，以不同的颜色来表示不同的句法。不过所看到的并没有吸引人的地方。问题在于浏览器并不了解如何来处理FOO元素。我们必须指示浏览器如何来处理每个元素，这就要用到样式单了。我们将要简单地介绍一下，但首先还是仔细地考察一下这个文档。</P>
+<P ALIGN="CENTER"><img src="image/Image22.gif" WIDTH=354 HEIGHT=244></P>
+<P ALIGN="CENTER">图3-2  hello.xml在Internet Explorer 5.0中的显示结果</P>
+<P></P> 
+<a href='320.htm'>&lt;&lt;上一篇</a>&nbsp;&nbsp;<a href='322.htm'>下一篇&gt;&gt;</a></td>
+        </tr>
+      </table>
+      <p>&nbsp; </p>
+    </td>
+  </tr>
+</table>
+
+</body>
+
+</html>

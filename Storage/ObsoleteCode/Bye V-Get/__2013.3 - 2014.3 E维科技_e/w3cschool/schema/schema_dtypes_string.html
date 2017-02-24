@@ -1,0 +1,215 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="../c3.css" />
+<title>XSD 字符串数据类型</title>
+</head>
+<body class="xml">
+<div id="wrapper">
+<div id="header">
+<a href="http://e.v-get.com/w3cschool/" style="float:left;">W3CSchool 在线教程</a>
+<div class="q g"><script type="text/javascript">var cpro_id="u1163355"</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div>
+<div id="navfirst">
+<ul id="menu">
+<li id="h"><a href="../h.html">HTML教程</a></li>
+<li id="x"><a href="../x.html">XML教程</a></li>
+<li id="b"><a href="../b.html">浏览器脚本</a></li>
+<li id="s"><a href="../s.html">服务器脚本</a></li>
+<li id="d"><a href="../d.html">dot net教程</a></li>
+<li id="m"><a href="../m.html">多媒体教程</a></li>
+<li id="w"><a href="../w.html">建站手册</a></li>
+</ul>
+</div><div id="navsecond">
+<div id="course">
+<h2>Schema 教程</h2>
+<ul>
+<li><a href="http://e.v-get.com/w3cschool/">XSD 首页</a></li>
+<li><a href="schema_intro.html">XSD 简介</a></li>
+<li><a href="schema_why.html">XSD 为何使用</a></li>
+<li><a href="schema_howto.html">XSD 如何使用</a></li>
+<li><a href="schema_schema.html">XSD &lt;schema&gt;</a></li>
+</ul>
+<h2>简单的类型</h2>
+<ul>
+<li><a href="schema_simple.html">XSD 元素</a></li>
+<li><a href="schema_simple_attributes.html">XSD 属性</a></li>
+<li><a href="schema_facets.html">XSD 限定</a></li>
+</ul>
+<h2>复杂的类型</h2>
+<ul>
+<li><a href="schema_complex.html">XSD 元素</a></li>
+<li><a href="schema_complex_empty.html">XSD 空元素</a></li>
+<li><a href="schema_complex_elements.html">XSD 仅含元素</a></li>
+<li><a href="schema_complex_text.html">XSD 仅含文本</a></li>
+<li><a href="schema_complex_mixed.html">XSD 混合内容</a></li>
+<li><a href="schema_complex_indicators.html">XSD 指示器</a></li>
+<li><a href="schema_complex_any.html">XSD &lt;any&gt;</a></li>
+<li><a href="schema_complex_anyattribute.html" title="">XSD &lt;anyAttribute&gt;</a></li>
+<li><a href="schema_complex_subst.html">XSD 元素替换</a></li>
+<li><a href="schema_example.html">XSD 实例</a></li>
+</ul>
+<h2>数据类型</h2>
+<ul>
+<li><a href="schema_dtypes_string.html">XSD 字符串</a></li>
+<li><a href="schema_dtypes_date.html">XSD 日期</a></li>
+<li><a href="schema_dtypes_numeric.html">XSD 数值</a></li>
+<li><a href="schema_dtypes_misc.html">XSD 杂项</a></li>
+<li><a href="schema_summary.html">XSD 总结</a></li>
+</ul>
+<h2>参考手册</h2>
+<ul>
+<li><a href="schema_elements_ref.html">XSD 参考手册</a></li>
+<li><a href="http://www.w3.org/2001/03/webdata/xsv/">XSD 验证器</a></li>
+</ul>
+</div>
+<div id="selected">
+<h2>建站手册</h2>
+<ul>
+<li><a href="../site/">网站构建</a></li>
+<li><a href="../w3c/">万维网联盟</a></li>
+<li><a href="http://e.v-get.com/w3c/">W3CSchool 教程</a></li>
+<li><a href="../quality/">网站品质</a></li>
+<li><a href="../semweb/">语义网</a></li>
+<li><a href="../hosting/">网站主机</a></li>
+</ul>
+<h2><a href="http://e.v-get.com/w3c/" class="f13">W3CSchool 教程</a></h2><div class="a120x90"><script type="text/javascript">var cpro_id="u1210867";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div></div>
+</div>
+<div id="maincontent">
+<h1>XSD 字符串数据类型</h1>
+<div  id="tpn">
+<ul class="prenext">
+<li class="pre"><a href="schema_example.html">上一页</a></li>
+<li class="next"><a href="schema_dtypes_date.html">下一页</a></li>
+</ul>
+</div>
+<div id="intro">
+<p><strong>字符串数据类型用于可包含字符串的值。</strong></p>
+</div>
+<div>
+<h2>字符串数据类型 (String Data Type）</h2>
+<p>字符串数据类型可包含字符、换行、回车以及制表符。</p>
+<p>下面是一个关于某个 scheme 中字符串声明的例子：</p>
+<pre>&lt;xs:element name=&#34;customer&#34; type=&#34;xs:string&#34;/&gt;</pre>
+<p>文档中的元素看上去应该类似这样：</p>
+<pre>&lt;customer&gt;John Smith&lt;/customer&gt;</pre>
+<p>或者类似这样：</p>
+<pre>&lt;customer&gt;	John Smith	&lt;/customer&gt;</pre>
+<p class="note"><span>注释：</span>如果您使用字符串数据类型，XML 处理器就不会更改其中的值。</p>
+</div>
+<div>
+<h2>规格化字符串数据类型 (NormalizedString Data Type）</h2>
+<p>规格化字符串数据类型源自于字符串数据类型。</p>
+<p>规格化字符串数据类型同样可包含字符，但是 XML 处理器会移除折行，回车以及制表符。</p>
+<p>下面是一个关于在某个 schema 中规格化字符串数据类型的例子：</p>
+<pre>&lt;xs:element name=&#34;customer&#34; type=&#34;xs:normalizedString&#34;/&gt;</pre>
+<p>文档中的元素看上去应该类似这样：</p>
+<pre>&lt;customer&gt;John Smith&lt;/customer&gt;</pre>
+<p>或者类似这样：</p>
+<pre>&lt;customer&gt;	John Smith	&lt;/customer&gt;</pre>
+<p class="note"><span>注释：</span>在上面的例子中，XML 处理器会使用空格替换所有的制表符。</p>
+</div>
+<div>
+<h2>Token 数据类型 (Token Data Type）</h2>
+<p>Token 数据类型同样源自于字符串数据类型。</p>
+<p>Token 数据类型同样可包含字符，但是 XML 处理器会移除换行符、回车、制表符、开头和结尾的空格以及 (连续的）空格。</p>
+<p>下面是在 schema 中一个有关 token 声明的例子：</p>
+<pre>&lt;xs:element name=&#34;customer&#34; type=&#34;xs:token&#34;/&gt;</pre>
+<p>文档中的元素看上去应该类似这样：</p>
+<pre>&lt;customer&gt;John Smith&lt;/customer&gt;</pre>
+<p>或者类似这样：</p>
+<pre>&lt;customer&gt;	John Smith	&lt;/customer&gt;</pre>
+<p class="note"><span>注释：</span>在上面这个例子中，XML 解析器会移除制表符。</p>
+</div>
+<div>
+<h2>字符串数据类型</h2>
+<p>请注意，所有以下的数据类型均衍生于字符串数据类型 (除了字符串数据类型本身）！</p>
+<table class="dataintable">
+<tr>
+<th>名称</th>
+<th>描述</th>
+</tr>
+<tr>
+<td>ENTITIES</td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td>ENTITY</td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td>ID</td>
+<td>在 XML 中提交 ID 属性的字符串 (仅与 schema 属性一同使用)</td>
+</tr>
+<tr>
+<td>IDREF</td>
+<td>在 XML 中提交 IDREF 属性的字符串(仅与 schema 属性一同使用)</td>
+</tr>
+<tr>
+<td>IDREFS language</td>
+<td>包含合法的语言 id 的字符串</td>
+</tr>
+<tr>
+<td>Name</td>
+<td>包含合法 XML 名称的字符串</td>
+</tr>
+<tr>
+<td>NCName</td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td>NMTOKEN</td>
+<td>在 XML 中提交 NMTOKEN 属性的字符串 (仅与 schema 属性一同使用)</td>
+</tr>
+<tr>
+<td>NMTOKENS</td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td>normalizedString</td>
+<td>不包含换行符、回车或制表符的字符串</td>
+</tr>
+<tr>
+<td>QName</td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td>string</td>
+<td>字符串</td>
+</tr>
+<tr>
+<td>token</td>
+<td>不包含换行符、回车或制表符、开头或结尾空格或者多个连续空格的字符串</td>
+</tr>
+</table>
+</div>
+<div>
+<h2>对字符串数据类型的限定 (Restriction）</h2>
+<p>可与字符串数据类型一同使用的限定：</p>
+<ul>
+<li>enumeration</li>
+<li>length</li>
+<li>maxLength</li>
+<li>minLength</li>
+<li>pattern (NMTOKENS、IDREFS 以及 ENTITIES 无法使用此约束)</li>
+<li>whiteSpace</li>
+</ul>
+</div>
+<div  id="bpn">
+<ul class="prenext">
+<li class="pre"><a href="schema_example.html">上一页</a></li>
+<li class="next"><a href="schema_dtypes_date.html">下一页</a></li>
+</ul>
+</div>
+</div>
+<div id="sidebar">
+<div class="rs"></div>
+<div id="tools">
+<h5 id="tools_reference"><a href="schema_elements_ref.html">XML Schema 参考手册</a></h5>
+</div>
+<div class="a120x600"><script type="text/javascript">var cpro_id="u1293136";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div><div class="b"></div>
+</div>
+</body>
+</html>

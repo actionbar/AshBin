@@ -1,0 +1,40 @@
+<meta http-equiv="content-type" content="text/html; charset=gb2312">&nbsp;<FONT 
+style="FONT-SIZE: 9pt; LINE-HEIGHT: 15pt"><B>FAQ:SQL&nbsp;Mail（4）&lt;译&gt;&nbsp;(&nbsp;_Rambo)</B><BR>Q10:&nbsp;为什么SQL&nbsp;Mail属性的配置文件名下拉框没有配置文件列表？
+<P></P>
+<P>A10:&nbsp;原因之一可能是使用了Local&nbsp;System用户来启动SQL&nbsp;Server服务。该用户没有Windows用户与其关联，因此不会有该用户的mail配置文件，也当然也就无法为其配置相应的SQL&nbsp;Mail配置文件了。另一个可能原因就是启动服务账号的用户没有相应的mail配置文件。你必需使用启动服务用户来登录SQL&nbsp;Server所在的服务器，才可能为该用户配置一个SQL&nbsp;Mail配置文件。</P>
+<P><BR>Q11:&nbsp;为什么只有登录了服务器后SQL&nbsp;Mail才正常工作？</P>
+<P>A11:&nbsp;这可能是因为没有正确配置SQL&nbsp;Mail。或者用户使用Outlook2002，并配置成Internet&nbsp;Mail模式。&nbsp;</P>
+<P><BR>Q12:&nbsp;为什么SQL&nbsp;Mail停止响应（挂起）？</P>
+<P>A12:&nbsp;最可能导致SQL&nbsp;Mail停止响应的原因是与Mail服务器连接失败，特别当Mail服务器是一个Internet&nbsp;mail(POP3/SMTP)服务器时，当然Mail服务器为Exchage&nbsp;Server时也可能发生同样的问题。<BR>一般的邮件客户端软件在连接服务器失败时会弹出继续或取消的对话框，用户只要干预即可继续，但SQL&nbsp;Mail不会弹出这样的对话框，也就是说SQL&nbsp;Mail将处于持续等待状态，即使可以正常连接了SQL&nbsp;Mail也不会自动重试连接。这种情况下只有重新启动SQL&nbsp;Server服务才可以重新发送邮件。<BR>另一个可能导致SQL&nbsp;Mail停止响应的情况是当非Outlook应用程序发送邮件时产生了一个Outlook安全警告。SQL6.5和SQL7的SQL&nbsp;Mail正是这样的非Outlook应用程序，当发送邮件时如果产生一个安全对话框，那么SQL&nbsp;Mail就会象失去邮件服务器连接一样停止响应。</P>
+<P><BR>Q13:&nbsp;如何确定是对话框导致了SQL&nbsp;Mail停止响应？</P>
+<P>A13:&nbsp;国为SQL&nbsp;Mail是通过SQL&nbsp;Server服务运行的，所以桌面上并不会出现导致SQL&nbsp;Mail挂起的对话框。只有当SQL&nbsp;Server以控制台应用程序而非以服务形式运行时才可能出现对话框，测试方法如下：<BR>1.&nbsp;使用SQL&nbsp;Server服务账号登录服务器。<BR>2.&nbsp;进入windows命令提示符状态，并进入相应SQL&nbsp;Server实例可执行文件目录。<BR>3.&nbsp;执行sqlservr&nbsp;-c<BR>注意:&nbsp;如果是SQL2000，使用了命名实例，那么需要使用-s参数，并带上实例名。<BR>4.&nbsp;使用查询分析器连接上SQL&nbsp;Server，执行xp_sendmail扩展存储过程发送一个测试邮件。如果SQL&nbsp;Server不是SQL2000，那么先运行xp_startmail扩展存储过程启动SQL&nbsp;Mail。<BR>5.&nbsp;如果出现对话框，那么就得先排除这个问题再能使用SQL&nbsp;Mail。</P>
+<P><BR>Q14:&nbsp;为什么一个已调度的job会停止工作？该job使用mail通知方式。</P>
+<P>A14:&nbsp;当一个调度的job调用SQLAgentMail时可导致SQLAgentMail停止响应。job成功完成与SQLAgentMail通知操作员是同步进行的，在此过程中如果到邮件服务的连接停止响应，那么发送邮件的命令就会停止响应，这将使接下来的job无法运行，除非问题得到解决，并且SQL代理服务重启。</P>
+<P><BR>Q15:&nbsp;为什么出现“Mapi&nbsp;logon&nbsp;failure”错误提示？</P>
+<P>A15:&nbsp;出现该错误信息通常意味着SQL&nbsp;Mail未找到用来启动的mail配置文件。或者配置文件不明确，比如配置文件名超过32个字符，这时需要删除并重建该配置文件，并使用短名字，当然还必须是可以正常工作的配置文件。</P>
+<P><BR>Q16:&nbsp;为什么出现“General&nbsp;mapi&nbsp;failure”错误提示？</P>
+<P>A16:&nbsp;该错误通常是由于未正确配置SQL&nbsp;Mail造成的。</P>
+<P><BR>Q17:&nbsp;为什么在SQL&nbsp;Server错误日志中会出现1073759806和1073759778号错误？</P>
+<P>A17:&nbsp;在SQL2000下使用xp_startmail扩展存储过程将会在错误日志中出现以下信息：<BR>Error:&nbsp;1073759806,&nbsp;Severity:&nbsp;1,&nbsp;State:&nbsp;0&nbsp;Starting&nbsp;SQL&nbsp;Mail&nbsp;session....&nbsp;<BR>Error:&nbsp;1073759778,&nbsp;Severity:&nbsp;1,&nbsp;State:&nbsp;0&nbsp;SQL&nbsp;Mail&nbsp;session&nbsp;started...<BR>SQL2000下当运行xp_sendmail时，SQL&nbsp;Mail将会自动启动，所以xp_startmail并不是必须的，以上错误信息可以忽略。</P>
+<P><BR>Q18:&nbsp;在发送邮件时为什么出现0x80040111（或相似的错误号）邮件错误？</P>
+<P>A18:&nbsp;解决此问题首先要确定与该错误号相关联的错误信息。MAPI不会转化相应的错号为错误信息，所以SQL&nbsp;Mail也只返回错误号。MAPI错误号与错误信息对应关系请查看：<BR><IMG 
+src="http://www.pigtwo.com/forum/pic/url.gif" align=absMiddle border=0><A 
+href="http://support.microsoft.com/default.aspx?scid=kb" 
+target=_blank>http://support.microsoft.com/default.aspx?scid=kb</A>;en-us;Q238119<BR>INFO:&nbsp;List&nbsp;of&nbsp;Extended&nbsp;MAPI&nbsp;Numeric&nbsp;Result&nbsp;Codes&nbsp;<BR>对于0x80040111错误，可以找到错误信息是MAPI_E_LOGON_FAILED，即SQL&nbsp;Mail登录配置文件提供商失败，跟据此可以纠正错误了。</P>
+<P><BR>Q19:&nbsp;为什么SQL&nbsp;Mail正常工作而SQLAgentMail不正常工作呢？或者SQLAgentMail正常工作而SQL&nbsp;Mail不正常工作呢？</P>
+<P>A19:&nbsp;第一个可能原因是SQL&nbsp;Server启动账号与SQL&nbsp;Agent服务账号不一致。更改不能正常工作的一个账号与另一个保持一致。重启该服务进行测试。<BR>另一个可能原因是配置文件不一致。启动服务的账号保持一致后，更改不能工作的服务的配置文件与另一个何持一致，启动服务进行测试。<BR>有一点很重要，SQL6.5和SQL7使用简单MAPI，但SQLAgentMail却使用扩展MAPI，SQL&nbsp;Mail支持一些只支持简单MAPI的邮件程序，但SQLAgentMail不支持。关于SQL&nbsp;Mail支持的邮件程序请查看：<BR><IMG 
+src="http://www.pigtwo.com/forum/pic/url.gif" align=absMiddle border=0><A 
+href="http://support.microsoft.com/default.aspx?scid=kb" 
+target=_blank>http://support.microsoft.com/default.aspx?scid=kb</A>;en-us;Q311231<BR>INF:Frequently&nbsp;Asked&nbsp;Questions&nbsp;-&nbsp;SQL&nbsp;Server&nbsp;-&nbsp;SQL&nbsp;Mail&nbsp;<BR>默认邮件程序甚至可以影响SQL&nbsp;Mail的操作。</P>
+<P><BR>Q20:&nbsp;为什么不能象“测试”按钮所提示的那样使用使配置文件来启动或停止SQL&nbsp;Mail？</P>
+<P>A20:&nbsp;SQL&nbsp;Mail（或SQLAgentMail）属性而对话框仅仅是用来测试用户可以用该配置文件提供商来启动SQL&nbsp;Mail，并不确保SQL&nbsp;Mail一定使用该配置文件来启动。因为SQL&nbsp;Mail将使用默认的邮件程序，而不管配置文件提供商。如果默认的邮件程序是Outlook&nbsp;Express，并且服务器上Outlook&nbsp;Express没有被配置，SQL&nbsp;Mail将使用Outlook&nbsp;Express来启动，当然，结果是失败的。<BR>必须使默认邮件程序和用来启动SQL&nbsp;Mail的配置文件提供商保持一致，才能使SQL&nbsp;Mail正常工作。如果不一致，则请更改默认邮件程序。&nbsp;</P>
+<P><BR>Q21:&nbsp;为什么集群系统中SQL&nbsp;Mail没有故障恢复功能？</P>
+<P>A21:&nbsp;由于SQL&nbsp;Mail使用的MAPI接口没有集群功能，所以SQL&nbsp;Mail在SQL&nbsp;Server集群环境下并不支持故障恢复。更详细信息请查看：<BR><IMG 
+src="http://www.pigtwo.com/forum/pic/url.gif" align=absMiddle border=0><A 
+href="http://support.microsoft.com/default.aspx?scid=kb" 
+target=_blank>http://support.microsoft.com/default.aspx?scid=kb</A>;en-us;Q298723<BR>BUG:&nbsp;SQL&nbsp;Mail&nbsp;Not&nbsp;Fully&nbsp;Supported&nbsp;for&nbsp;Use&nbsp;in&nbsp;Conjunction&nbsp;with&nbsp;Cluster&nbsp;Virtual&nbsp;SQL&nbsp;Servers&nbsp;</P>
+<P><BR>Q22:&nbsp;为什么SQL&nbsp;Mail不能使用分发列表？</P>
+<P>A22:&nbsp;SQL7.0及SQL6.5的SQL&nbsp;Mail可以使用一个分发列表来分发邮件，但是SQL2000只在特定的配置下可以使用分发列表来发送邮件。更详细信息请查看：<IMG 
+src="http://www.pigtwo.com/forum/pic/url.gif" align=absMiddle border=0><A 
+href="http://support.microsoft.com/default.aspx?scid=kb" 
+target=_blank>http://support.microsoft.com/default.aspx?scid=kb</A>;en-us;Q315666<BR>BUG:&nbsp;XP_SENDMAIL&nbsp;Fails&nbsp;to&nbsp;Send&nbsp;Mail&nbsp;to&nbsp;Personal&nbsp;Distribution&nbsp;List&nbsp;</P></FONT>

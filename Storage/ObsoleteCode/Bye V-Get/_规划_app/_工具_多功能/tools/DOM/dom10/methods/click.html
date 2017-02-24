@@ -1,0 +1,86 @@
+<html xmlns:rdl>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<script src="rdl_method.js"></script>
+<base target="_self">
+</head>
+<body>
+
+<script>
+//collFriendObjects=new Array();
+//collFriendProperties=new Array();
+//collFriendMethods=new Array();
+//collFriendEvents=new Array();
+//collFriendCollections=new Array();
+
+collFriendEvents=new Array(
+'onclick','ondblclick'
+);
+
+//collIE40=new Array();
+//collIE50=new Array();
+//collIE55=new Array();
+//collIE60=new Array();
+
+collIE40=new Array(
+'A','ADDRESS','APPLET','AREA','B','BIG','BLOCKQUOTE','BODY','BUTTON','CAPTION','CENTER','CITE','CODE','DD','DFN','DIR','DIV','DL','DT','EM','EMBED','FIELDSET','FONT','FORM','Hn','HR','I','IMG','INPUT type=button','INPUT type=checkbox','INPUT type=file','INPUT type=image','INPUT type=password','INPUT type=radio','INPUT type=reset','INPUT type=submit','INPUT type=text','KBD','LABEL','LEGEND','LI','LISTING','MAP','MARQUEE','MENU','NOBR','OBJECT','OL','OPTION','P','PLAINTEXT','PRE','S','SAMP','SELECT','SMALL','SPAN','STRIKE','STRONG','SUB','SUP','TABLE','TBODY','TD','TEXTAREA','TFOOT','TH','THEAD','TR','TT','U','UL','VAR','XMP'
+);
+
+collIE50=new Array(
+'custom'
+);
+
+//sStyle='';
+
+sScript=
+'<script>\n'+
+'function rdl_doClick(e){\n'+
+'event.cancelBubble=false;\n'+
+'event.srcElement.value="我被单击了。"\n'+
+'}\n'+
+'<\/script>\n';
+
+sCode=
+'<input id=oInput type=text tabindex=4 size=30 onclick="rdl_doClick();">\n'+
+'<br><br>\n'+
+'<input type=button value=" 模拟单击 " onclick="document.all(\'oInput\').click();">\n';
+
+iWinWidth=320;
+
+iWinHeight=200;
+
+</script>
+
+<div id=idContent>
+
+<div id=idContentTitle><span id=idTitleName>click</span>版本：DOM1　返回值：无</div>
+
+<div class=cssColumnTitle>语法：</div>
+<div>
+<i>object</i><b> . click () </b>
+</div>
+
+<div class=cssColumnTitle>参数：</div>
+<div>
+无
+</div>
+
+<div class=cssColumnTitle>返回值：</div>
+<div>
+无
+</div>
+
+<div class=cssColumnTitle>说明：</div>
+<div>
+模拟对象的一次单击激发<a href="../events/onclick.html"> onclick </a>事件。<br>
+请注意此方法不会导致对象获得焦点激发<a href="../events/onfocus.html"> onfocus </a>事件。
+</div>
+
+
+
+</div>
+</body>
+</html>
+
+<!-- Part of RDL(TM) - Written by Rain1977 
+HomeSite: http://www.dhtmlet.com  E-Mail: dhtmlet@hotmail.com -->

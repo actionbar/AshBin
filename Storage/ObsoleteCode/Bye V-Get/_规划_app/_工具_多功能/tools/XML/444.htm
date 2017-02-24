@@ -1,0 +1,294 @@
+<html>
+<head>
+<title>背景属性</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+
+<link rel = stylesheet href = "image/style.css">
+</head>
+<body bgcolor="#ffffff">
+<table width="688" border="0" cellspacing="0" cellpadding="0" align="center">
+  <tr bgcolor="EEEEEE"> 
+    <td height="22"><a href="index.htm">主页</a></td>
+  </tr>
+</table><br>
+<table border="0" cellpadding="0" cellspacing="0" width="688" align="center" height="490">
+  <tr valign="top"> 
+    <td rowspan="4" width="91">&nbsp; </td>
+    <td height="68" width="131"> 
+      <p><img src="image/doc.gif"></p>
+    </td>
+    <td rowspan="4" width="18"><b></b> </td>
+    <td height="68" width="387"><img src="image/title_doc.gif"></td>
+    <td rowspan="4" width="61"> 
+      <h6>&nbsp;</h6>
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td rowspan="3" valign="top" class="pt10" align="center" width="131" bgcolor="EEEEEE"> 
+      <p>&nbsp;</p>
+      <p><font color="#FF0000">※ 12.11 背景属性</font></p>
+       
+	</td>
+  </tr>
+  <tr valign="top"> 
+    <td width="387" height="308"> 
+      <table width="100%" border="0" cellpadding="0">
+        <tr> 
+          <td>
+
+           <h4><a name="_Toc467205097">12.11 背景属性</a></h4>
+<p></p>
+<p>元素的背景可设置成一种颜色或一幅影像。如果设置为一幅影像，那么此影像可相对于元素内容加以定位。可使用下列五个基本属性来达此目的：</p>
+<p>1．background-color</p>
+<p>2．background-image</p>
+<p>3．background-repeat</p>
+<p>4．background-attachment</p>
+<p>5．background-position</p>
+<p>最后，还有一个background简略属性，它允许在一条规则中设置某些或所有的五个属性。</p>
+<img src="Image/BK000212-52.gif" width=49 height=49 align="LEFT" hspace=12> 
+<p>如今在Web上，人们过度地使用奇特的背景。除了非常明亮的背景以外的其他东西，只会使网页难以阅读，并令用户生厌。出于完整之目的，我在此列出了这些属性，但是，我强烈推荐节制一点使用这些属性(如果不能完全不用的话)。</p>
+<p>任何一个背景属性都不会被继承。每个子元素必须指定所需的背景色。但是，由于背景的缺省值为透明的，所以看起来就好像这些背景属性被继承了一样。无论哪个元素的背景绘制于某元素下，它都会透过来。在大多数情况下，这就是父元素的背景。</p>
+<h5><a name="_Toc467205098">12.11.1 background-color属性</a></h5>
+<p>background-color属性可设置为与color属性一样的值，但是，它并不改变元素内容的颜色，而是改变元素内容绘制其上的背景的颜色。例如，要在蓝色背景上绘制黄色文本的SIGN元素，可使用如下的规则：</p>
+<p>SIGN { color: yellow; background-color: blue }</p>
+<p>也可以将background-color设置为关键字transparent(缺省值)，这表明背景使用位于其下的元素(通常为父元素)的颜色或影像。</p>
+<h5><a name="_Toc467205099">12.11.2 background-image属性</a></h5>
+<p>background-image属性既可以是none(缺省值)，也可以是指明位图图像文件集团的URL(通常是相对值)。如果为URL，则浏览器将加载影像，并把它作为背景使用，这一点极像HTML中BODY元素的BACKGROUND特性。例如，下面显示的是如何将文件party.gif(如图12-10所示)作为INVITATION元素的背景。</p>
+<p>INVITATION { background-image: url(party.gif) }</p>
+<p align="center"><img src="Image/BK000212-26.gif" width=84 height=121></p>
+<p align="center">图12-10 清单12-14中舞会请谏背景使用的未平铺且未加裁剪的原始背景影像</p>
+<p>由background-image属性引用的影像在指定的元素下方绘出，而不是像HTML的BODY元素的BACKGROUND特性那样在浏览器窗格下方绘出。</p>
+<img src="Image/BK000212-57.gif" width=45 height=53 align="LEFT" hspace=11> 
+<p>如果背景影像与基本元素关联，早期的Mozilla 5.0测试版把背景影像加到整个文档窗格而不仅仅是元素本身上。但是，对于所有的非基本元素，背景影像只施加于使用它的元素。CSS1规范并没有明确地表示这一点是否可以接受。</p>
+<p>背景影像通常并不是和网页内容的大小精确一致。如果影像比元素框大，影像将会被剪切。如果影像比元素框小，那它就会垂直和水平平铺。图12-11显示的背景影像，平铺到足够大以超过下面的内容。注意，这种平铺是在元素窗口中横向穿过，而不是在整个浏览器窗口上进行。</p>
+<p align="center"><img src="Image/BK000212-27.gif" width=343 height=272></p>
+<p align="center">图12-11 平铺的背景影像</p>
+<p>清单12-14：以XML格式表示的舞会请谏</p>
+<p>&lt;?xml version=”1.0”?&gt;</p>
+<p>&lt;?xml stylesheet type=”text/css” href=”party.css”?&gt;</p>
+<p>&lt;INVITATION&gt;</p>
+<p>You’re invited to a party on December 31, 1999 to celebrate the</p>
+<p>new millennium! You’re invited to a party on December 31, 1999</p>
+<p>to celebrate the new millennium! You’re invited to a party on</p>
+<p>December 31, 1999 to celebrate the new millennium! You’re</p>
+<p>invited to a party on December 31, 1999 to celebrate the new</p>
+<p>millennium! You’re invited to a party on December 31, 1999 to</p>
+<p>celebrate the new millennium! You’re invited to a party on</p>
+<p>December 31, 1999 to celebrate the new millennium! You’re</p>
+<p>invited to a party on December 31, 1999 to celebrate the new</p>
+<p>millennium! You’re invited to a party on December 31, 1999 to</p>
+<p>celebrate the new millennium! You’re invited to a party on</p>
+<p>December 31, 1999 to celebrate the new millennium! You’re</p>
+<p>invited to a party on December 31, 1999 to celebrate the new</p>
+<p>millennium! You’re invited to a party on December 31, 1999 to</p>
+<p>celebrate the new millennium!</p>
+<p>&lt;/INVITATION&gt;</p>
+<h5><a name="_Toc467205100">12.11.3 background-repeat属性</a></h5>
+<p>background-repeat属性调整背景影像如何在屏幕上平铺。可指定背景影像为不平铺或只以水平或垂直方向平铺。此属性可取的值如下：</p>
+<p> repeat</p>
+<p> repeat-x</p>
+<p> repeat-y</p>
+<p> no-repeat</p>
+<p>例如，要在请谏上仅显示一顶舞会帽，可设置INVITATION元素的background-repeat为no-repeat。图12-12显示的就是这种情景。例如：</p>
+<p>INVITATION { background-image: url(party.gif);</p>
+<p> background-repeat: no-repeat }</p>
+<p>要在页面上横向平铺而不是向下平铺，可设置background-repeat为repeat-x，如下所示。图12-13显示的背景影像是横向平铺而不是向下平铺。</p>
+<p>INVITATION { background-image: url(party.gif);</p>
+<p> background-repeat: repeat-x }</p>
+<p align="center"><img src="Image/BK000212-28.gif" width=312 height=184></p>
+<p align="center">图12-12 未平铺的背景影像</p>
+<p align="center"><img src="Image/BK000212-29.gif" width=346 height=201></p>
+<p align="center">图12-13 横向而不是向下平铺的背景影像</p>
+<p>如要在页面上向下平铺而不是横向平铺，可按下面的语句将background-repeat设置为repeat-y。图12-14显示的就是这种情景。</p>
+<p align="center"><img src="Image/BK000212-30.gif" width=207 height=231></p>
+<p align="center">图12-14 向下而不是横向平铺的背景影像</p>
+<p>INVITATION { background-image: url(party.gif);</p>
+<p> background-repeat: repeat-y }</p>
+<h5><a name="_Toc467205101">12.11.4 background-attachment属性</a></h5>
+<p>在HTML中，背景影像是附加到文档上的。当滚动文档时，背景影像也随之滚动。使用background-attachment属性，就可以指定背景只附加于窗口或是窗格上。可取的值是scroll和fixed。缺省值是scroll，这就是说，背景附加于文档而不是窗口之上。</p>
+<p>但是，将background-attachment设置为fixed，文档就会滚动，但背景影像不滚动。当不想使此影像平铺，而对于一般类型的浏览器来说图像已大到充满窗口，但大文档的背景要小时，将此属性设置为fixed可能是有用的。这时可编码如下：</p>
+<p>DOCUMENT { background-attachment: fixed;</p>
+<p> background-repeat: no-repeat }</p>
+<img src="Image/BK000212-52.gif" width=49 height=49 align="LEFT" hspace=12> 
+<p>无论是IE 5，还是Mozilla都不支持固定的背景影像。在以后的发行版中有可能增加此功能(CSS1规范不需要浏览器支持固定背景)。</p>
+<h5><a name="_Toc467205102">12.11.5 background-position属性</a></h5>
+<p>在缺省条件下，背景影像的左上角与它所连接的元素的左上角对齐(见图12-12)。在多数情况下，这样就能满足人们的需要。但是，在少数情况下，可能还需要其他可能，background-position就允许人们相对于元素来移动背景。</p>
+<p>可使用父元素的宽和高度的百分数、绝对长度或下列六个关键字中的两个来指定偏移量：</p>
+<p> top</p>
+<p> center</p>
+<p> bottom</p>
+<p> left</p>
+<p> center</p>
+<p> right</p>
+<ol>
+  <ol>
+    <ol>
+      <ol>
+      </ol>
+    </ol>
+  </ol>
+</ol>
+<b>12.11.5.1 父元素的宽和高度的百分数</b> 
+<ol>
+  <ol>
+    <ol>
+      <ol>
+      </ol>
+    </ol>
+  </ol>
+</ol>
+<p>百分数能够把各部分的背景与元素的相应部分紧紧地联系在一起。x坐标的百分数范围从0%(左侧)到100%(右侧)变化。y坐标的百分数变化范围是从0%(顶端)到100%(底部)。例如，下面这条规则把影像的右上角置于INVITATION的右上角。图12-15为该情况的显示结果。</p>
+<p>INVITATION { background-image: url(party.gif);</p>
+<p> background-repeat: no-repeat;</p>
+<p> background-position: 100% 0% }</p>
+<p align="center"><img src="Image/BK000212-31.gif" width=350 height=249></p>
+<p align="center">图12-15 与内容右上角对齐的背景影像</p>
+<ol>
+  <ol>
+    <ol>
+      <ol>
+      </ol>
+    </ol>
+  </ol>
+</ol>
+<b>12.11.5.2 绝对长度</b> 
+<p>绝对长度决定背景的左上角在元素上的绝对位置。下面这条规则把背景影像party.gif的左上角放置在距元素右边1厘米、左上角下方2厘米的位置。图12-16显示的就是这种情景。</p>
+<p>INVITATION { background-image: url(party.gif);</p>
+<p> background-repeat: no-repeat;</p>
+<p> background position: lcm 2cm }</p>
+<p align="center"><img src="Image/BK000212-32.gif" width=301 height=214></p>
+<p align="center">图12-16 距元素右边1厘米、左上角下方2厘米的背景影像</p>
+<ol>
+  <ol>
+    <ol>
+      <ol>
+      </ol>
+    </ol>
+  </ol>
+</ol>
+<b>12.11.5.3 关键字</b> 
+<ol>
+  <ol>
+    <ol>
+      <ol>
+        <p></p>
+      </ol>
+    </ol>
+  </ol>
+</ol>
+<p>top left和left top关键字与0% 0%相同。top、top center和center top与50% 0%相同。right top和top 
+  right关键字与100% 0%相同。left、left center和center left关键字与50% 50%相同。right、right center和center 
+  right关键字与100% 50%相同。bottom left和left bottom关键字与0% 100%相同。bottom、bottom center和center 
+  bottom与50% 100%相同。bottom right和right bottom关键字与100% 100%相同。图12-17将这些关键字与元素框上的各位置联系在一起了。</p>
+<p></p>
+<p>
+<center>
+  <table BORDER cellspacing=1 cellpadding=7 width=399>
+    <tr>
+      <td width="30%" valign="TOP"> 
+        <p>top left</p>
+        <p>left top</p>
+        <p>0% 0%
+      </td>
+      <td width="6%" valign="TOP">　</td>
+      <td width="30%" valign="TOP"> 
+        <p>top</p>
+        <p>top center</p>
+        <p>center top</p>
+        <p>50% 0%
+      </td>
+      <td width="6%" valign="TOP">　</td>
+      <td width="30%" valign="TOP"> 
+        <p>top right</p>
+        <p>right top</p>
+        <p>100% 0%
+      </td>
+    </tr>
+    <tr>
+      <td width="30%" valign="TOP">　</td>
+      <td width="6%" valign="TOP">　</td>
+      <td width="30%" valign="TOP">　</td>
+      <td width="6%" valign="TOP">　</td>
+      <td width="30%" valign="TOP">　</td>
+    </tr>
+    <tr>
+      <td width="30%" valign="TOP"> 
+        <p>left</p>
+        <p>center left</p>
+        <p>left center</p>
+        <p>0% 50%
+      </td>
+      <td width="6%" valign="TOP">　</td>
+      <td width="30%" valign="TOP"> 
+        <p>center</p>
+        <p>center center</p>
+        <p>50% 50%
+      </td>
+      <td width="6%" valign="TOP">　</td>
+      <td width="30%" valign="TOP"> 
+        <p>right</p>
+        <p>center right</p>
+        <p>right center</p>
+        <p>100% 50%
+      </td>
+    </tr>
+    <tr>
+      <td width="30%" valign="TOP">　</td>
+      <td width="6%" valign="TOP">　</td>
+      <td width="30%" valign="TOP">　</td>
+      <td width="6%" valign="TOP">　</td>
+      <td width="30%" valign="TOP">　</td>
+    </tr>
+    <tr>
+      <td width="30%" valign="TOP"> 
+        <p>bottom left</p>
+        <p>left bottom</p>
+        <p>0% 100%
+      </td>
+      <td width="6%" valign="TOP">　</td>
+      <td width="30%" valign="TOP"> 
+        <p>bottom</p>
+        <p>bottom center</p>
+        <p>center bottom</p>
+        <p>50% 100%
+      </td>
+      <td width="6%" valign="TOP">　</td>
+      <td width="30%" valign="TOP"> 
+        <p>bottom right</p>
+        <p>right bottom</p>
+        <p>100% 100%
+      </td>
+    </tr>
+  </table>
+</center>
+<p></p>
+<p align="center">图12-17 背景影像的相对位置</p>
+<p>例如，以请谏为例，最好的效果是把影像牢牢地固定于窗口的中间(如图12-18所示)。下列是需要的规则：</p>
+<p>INVITATION { background-image: url(party.gif);</p>
+<p> background-repeat: no-repeat;</p>
+<p> background-position: center center }</p>
+<p align="center"><img src="Image/BK000212-33.gif" width=364 height=296></p>
+<p align="center">图12-18 固定于INVITATION元素中间的无平铺背景影像</p>
+<p>如果background-attachment属性值为fixed，那么影像放置的位置就是窗口边的相对位置，而不是元素的相对位置。</p>
+<b><a name="_Toc467205103">12.11.6 背景简略属性</a></b> 
+<p>background属性是在一条规则中设置background-color、background-image、background-repeat、background-attachment和background-position属性的简略方法。例如，要在INVITATION元素中将background-color设置为white，background-image设置为party.gif，background-repeat设置为no-repeat以及background-attachment设置为fixed，可使用下面的规则：</p>
+<p>INVITATION { background: url(party.gif) white no-repeat fixed }</p>
+<p>下面的规则与上面的意思是完全一样的，只是句子更长，但更容易理解：</p>
+<p>INVITATION { background-image: url(party.gif);</p>
+<p> background-color: white;</p>
+<p> background-repeat: no-repeat;</p>
+<p> background-attachment: fixed }</p>
+<p>当使用background简略属性时，对于这五个属性的任何一个或所有的值都可按任何顺序给出。但是，可以省略不只一个值。例如，用于图12-16的右上角对齐规则还可以表示如下：</p>
+<p>INVITATION { background: url(party.gif) no-repeat 100% 0% }</p>
+ 
+<a href='443.htm'>&lt;&lt;上一篇</a>&nbsp;&nbsp;<a href='445.htm'>下一篇&gt;&gt;</a></td>
+        </tr>
+      </table>
+      <p>&nbsp; </p>
+    </td>
+  </tr>
+</table>
+
+</body>
+
+</html>

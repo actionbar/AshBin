@@ -1,0 +1,9 @@
+<meta http-equiv="content-type" content="text/html; charset=gb2312">&nbsp;<FONT 
+style="FONT-SIZE: 9pt; LINE-HEIGHT: 15pt"><B>未公布的访问注册表的扩展存储过程(旭子)</B><BR>SQL&nbsp;Server中包含了几个可以访问系统注册表的扩展存储过程.但实际上这几个扩展存储过程是未公开的,从sql&nbsp;server&nbsp;7.0就有了,<BR>在SQL&nbsp;server&nbsp;2000中仍然保留,他们以后可能会删除.但是这几个存储过程却提供了在当前的SQL&nbsp;Server版本中访问系统注册表的能力,<BR>而且很多人利用SQL&nbsp;Server来进行攻击系统时,往往都会用到这几个扩展存储过程.所以最好在SQL&nbsp;Server中禁用他们.
+<P></P>
+<P>xp_regenumvalues&nbsp;以多个记录集方式返回所有键值<BR>使用方法:<BR>xp_regenumvalues&nbsp;注册表根键,&nbsp;子键<BR>比如说,想看看HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Run&nbsp;的所有键值:<BR>use&nbsp;master<BR>exec&nbsp;xp_regenumvalues&nbsp;'HKEY_LOCAL_MACHINE','SOFTWARE\Microsoft\Windows\CurrentVersion\Run'</P>
+<P>xp_regread&nbsp;返回制定键的值<BR>使用方法:<BR>xp_regread&nbsp;根键,子键,键值名<BR>use&nbsp;master<BR>exec&nbsp;xp_regread&nbsp;'HKEY_LOCAL_MACHINE','SOFTWARE\Microsoft\Windows\CurrentVersion','CommonFilesDir'</P>
+<P>xp_regwrite&nbsp;写入注册表<BR>使用方法:<BR>xp_regwrite&nbsp;根键,子键,&nbsp;值名,&nbsp;值类型,&nbsp;值<BR>use&nbsp;master<BR>exec&nbsp;xp_regwrite&nbsp;'HKEY_LOCAL_MACHINE','SOFTWARE\Microsoft\Windows\CurrentVersion','TestvalueName','reg_sz','hello'<BR>注意值类型有2种REG_SZ&nbsp;表示字符型,REG_DWORD&nbsp;表示整型</P>
+<P>xp_regdeletevalue&nbsp;删除某个值<BR>使用方法:<BR>xp_regdeletevalue&nbsp;根键,子键,值名<BR>use&nbsp;master<BR>exec&nbsp;xp_regdeletevalue&nbsp;'HKEY_LOCAL_MACHINE','SOFTWARE\Microsoft\Windows\CurrentVersion','TestvalueName'</P>
+<P>xp_regdeletekey&nbsp;删除键,包括该键下所有值</P>
+<P>使用方法:<BR>use&nbsp;master<BR>xp_regdeletekey&nbsp;'HKEY_LOCAL_MACHINE','SOFTWARE\Microsoft\Windows\CurrentVersion\Testkey'<BR></P></FONT>

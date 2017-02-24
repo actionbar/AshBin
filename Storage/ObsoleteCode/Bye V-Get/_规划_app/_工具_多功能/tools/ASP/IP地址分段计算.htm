@@ -1,0 +1,98 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>IP地址分段计算</title>
+<style type="text/css">
+<!--
+body {
+	font-size: 10.4pt;
+	line-height: 22px;
+}
+-->
+</style>
+</head>
+
+<body bgcolor="eeeeee" leftmargin="20" marginwidth="20">
+<p><strong>IP地址分段计算</strong></p>
+<hr>
+<p>&lt;script language=&quot;JScript&quot; Runat=&quot;Server&quot;&gt;<br>
+  function IPDeCode(EIP){<br>
+  var Ip1,Ip2,Ip3,Ip4;<br>
+  Ip1 = moveByteR(EIP &amp; 0xff000000,3);<br>
+  Ip2 = moveByteR(EIP &amp; 0x00ff0000,2);<br>
+  Ip3 = moveByteR(EIP &amp; 0x0000ff00,1);<br>
+  Ip4 = EIP &amp; 0x000000ff;<br>
+  return Ip1 + &quot;.&quot; + Ip2 + &quot;.&quot; + Ip3 + &quot;.&quot; + Ip4;<br>
+  }</p>
+<p><br>
+  function moveByteL(num,bytenum){<br>
+  return num &lt;&lt;= (bytenum*8)<br>
+  }</p>
+<p>function moveByteR(num,bytenum){<br>
+  return num &gt;&gt;&gt;= (bytenum*8)<br>
+  }</p>
+<p>&lt;/script&gt;</p>
+<p><br>
+  在vbs中没有位操作，这样在一个页面中用到了js和vbs，并不好，如果用vbs也可以，不过罗嗦了一些，而且有一点注意，如果在vbs中split(&quot;202.102.29.6&quot;,&quot;.&quot;)，会得到202，102，29三个数，得不到最后一个6，所以需要将ip换成split(&quot;202.102.29.6&quot; 
+  &amp; &quot;.&quot;,&quot;.&quot;)<br>
+  我用vbs做的，由于没有位操作，所以做得比较麻烦<br>
+  &lt;%<br>
+  function ip2int(ipstr)<br>
+  dim iptemp,max<br>
+  iptemp = split(ipstr&amp;&quot;.&quot;,&quot;.&quot;)<br>
+  max = ubound(iptemp)<br>
+  if max &lt;&gt; 4 then<br>
+  exit function<br>
+  end if</p>
+<p>dim a,b,i<br>
+  a = &quot;&amp;H&quot;<br>
+  for i = 0 to 3<br>
+  b = Hex(iptemp(i))<br>
+  if len(b) = 1 then<br>
+  b = &quot;0&quot;&amp;b<br>
+  end if<br>
+  a = a&amp;b<br>
+  next<br>
+  ip2int = CLng(a)<br>
+  end function</p>
+<p>function int2ip(ip)<br>
+  dim iptemp,a,ipstr,i,length<br>
+  iptemp = Hex(ip)<br>
+  length = 8 - len(iptemp)<br>
+  for i = 1 to length<br>
+  iptemp = &quot;0&quot; &amp; iptemp<br>
+  next<br>
+  a = left(iptemp,2)<br>
+  a = &quot;&amp;H&quot; &amp; a<br>
+  i = CInt(a)<br>
+  a = CStr(i)<br>
+  ipstr = a &amp; &quot;.&quot;<br>
+  a = mid(iptemp,3,2)<br>
+  a = &quot;&amp;H&quot; &amp; a<br>
+  i = CInt(a)<br>
+  a = CStr(i)<br>
+  ipstr = ipstr &amp; a &amp; &quot;.&quot;<br>
+  a = mid(iptemp,5,2)<br>
+  a = &quot;&amp;H&quot; &amp; a<br>
+  i = CInt(a)<br>
+  a = CStr(i)<br>
+  ipstr = ipstr &amp; a &amp; &quot;.&quot;<br>
+  a = right(iptemp,2)<br>
+  a = &quot;&amp;H&quot; &amp; a<br>
+  i = CInt(a)<br>
+  a = CStr(i)<br>
+  ipstr = ipstr &amp; a<br>
+  int2ip = ipstr<br>
+  end function</p>
+<p>dim testIP,testInt<br>
+  testIP=&quot;202.102.29.6&quot;<br>
+  testInt = ip2int(testIP)<br>
+  response.write testIP &amp; &quot; will be encoded to &lt;font color=red&gt;&quot; 
+  &amp; testInt &amp; &quot;&lt;/font&gt;&lt;br&gt;&quot;<br>
+  response.write testIP &amp; &quot; will be dencoded to &lt;font color=red&gt;&quot; 
+  &amp; int2ip(testInt) &amp; &quot;&lt;/font&gt;&lt;br&gt;&quot;<br>
+  %&gt;</p>
+<p>&nbsp;</p>
+</body>
+</html>

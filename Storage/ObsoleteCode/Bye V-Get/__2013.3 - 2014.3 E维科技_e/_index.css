@@ -1,0 +1,81 @@
+/* css 被用于index.php里面引用 */
+.r h4,.r .rao{background:url(CONSTANT('GO_CSS')f.png) repeat-x}
+.r2 li,.r7 li,.r8 li{padding-left:9px;background:url(CONSTANT('GO_CSS')g.gif) no-repeat}
+#l4 a,#l4 li{background:url(CONSTANT('GO_CSS_F')div1.gif) no-repeat}
+#l4da a:hover,#l4da .l4da,#l4da a.l4da:hover,#l4da .l4nr{background:url(CONSTANT('GO_CSS_F')div1.gif) -136px -3px no-repeat}
+.l3,.l4 .q,.l9 .q,.lb .q{background:url(CONSTANT('GO_CSS_B')ffb.jpg) repeat-x}
+
+.l{width:700px}
+.l h4{height:40px;line-height:40px}
+.lt{margin:0 5px}
+.lt h2{font:bold 30px "微软雅黑";overflow:hidden;margin:6px 0 10px;height:40px;line-height:40px}
+.lt h2 a{color:#000}
+.lt h2 a:hover{text-decoration:none;color:#c00}
+.lt div{font:normal 12px "微软雅黑";line-height:22px;height:22px;color:#666}
+.lt div a{color:#666;margin:0 3px}
+.lt i a{color:#E03A3C}
+.mc{position:relative;height:240px;width:700px}
+#mc{height:240px;width:700px;overflow:hidden}
+#mc img{border:#CDCDCD 1px solid;border-radius:5px;width:698px;height:238px}
+#mc li{float:left}
+#mco{position:absolute;right:9px;bottom:5px}
+#mco a{width:18px;height:18px;line-height:18px;margin:0 4px;border:#999 1px solid;filter:Alpha(opacity=50);opacity:0.5;background:#666;color:#fff}
+#mco .mco{background:#0a60ba;border-color:#6DBEF3;filter:Alpha(opacity=90);opacity:0.9;}
+.l2 div{border:#ccc 1px solid;border-radius:5px;padding:0 5px 0 67px;width:94px;height:59px;background:url(CONSTANT('GO_CSS_F')a23.jpg) no-repeat}
+.l2 div.p{margin:0 9px 0 0}
+.l2 p a,.l3 span a{padding:0 3px;color:#666;display:inline-block}
+.l2 a:hover,.l3 span a:hover{color:#FDBA1A;text-decoration:none}
+
+.l2 .l22{background-position:0 -62px}
+.l2 .l23{background-position:0 -122px}
+.l2 .q{background-position:0 -182px}
+.v .l2 h2{font-size:14px;line-height:28px;height:24px}
+.l2 h2 a{color:#3074B5}
+.l2 p{line-height:15px}
+#c{font-size:14px}
+#c h2{line-height:32px;font-size:18px}
+#c a:hover{background:#08F;color:#FFF;text-decoration:none}
+#c p{line-height:25px}
+#c p a{padding:0 5px}
+.ct{height:50px;line-height:50px;border-top:1px solid #DDD}
+.ct strong{font-size:15px}
+.ct a{padding:0 5px}
+#c a.f3:hover{color:#C00}
+.cc{border-top:1px solid #ddd;padding:20px 0;}
+.cc .p{margin:0 9px 0 0}
+.cc a{color:#08F}
+#c p span a{color:#333;padding:0}
+.r{width:250px;overflow:hidden}
+.r h4{height:32px;padding:0 9px;line-height:32px;background-position:0 -30px;border-bottom:#E6E6E6 1px solid;color:#06c}
+.r h4 .pr{font-weight:400;right:3px}
+.r .a a{width:82px;text-decoration:none}
+.r .a a:hover{color:#666}
+.r .rao{background-position:0 -87px}
+.rt h2{margin:0 0 15px 0;font:normal 18px "微软雅黑";height:38px;line-height:38px;}
+.rt h2 a{border-bottom:3px solid #258cff;display:inline-block;height:38px;line-height:38px;width:33%}
+.rt h2 a:hover{border-color:#4BA733;color:#4BA733;text-decoration:none}
+.rt h2 i{display:inline-block;width:67%;border-bottom:3px solid #ccc;height:38px;line-height:38px;}
+.rt a h3{font:bold 14px "微软雅黑";width:170px}
+.rt a p{width:170px;height:36px;overflow:hidden}
+.rt a img{height:60px;width:60px}
+#rt{height:22px;overflow:hidden;text-align:center}
+#rt li{height:22px;line-height:22px;}
+#r2n ,#r7n {height:28px;border-bottom:#ccc 1px solid;}
+#r2n a,#r7n a{line-height:28px}
+.r2 ul ,.r7 ul{margin:9px 0 5px 15px;display:none}
+.r2 li ,.r7 li{background-position:0 -1475px}
+.r6{border:#ccc 1px solid}
+.r3{border-radius:5px;background:#F5F6F7}
+.r3 p{line-height:36px;height:36px}
+.r3 p a{padding:0 9px 0 20px}
+.r3c{background:#fff}
+.r6 .o{border-bottom:#ccc 1px dashed;margin:0 9px}
+.r6 dl{height:50px;padding:9px}
+.r6 dt,.r6 dd{float:left}
+.r6 dt{width:67px;text-align:center;padding:5px 0}
+.r6 dd{width:160px}
+.r6 h3{vertical-align:top}
+.r6 h3,.r6 p{line-height:18px}
+
+#r8 {height:188px;margin:0 9px;overflow:hidden}
+#r8 li{line-height:23px;height:23px;background-position:0 -1400px}

@@ -1,0 +1,80 @@
+<html>
+<head>
+<title>DTD的条件部分</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+
+<link rel = stylesheet href = "image/style.css">
+</head>
+<body bgcolor="#ffffff">
+<table width="688" border="0" cellspacing="0" cellpadding="0" align="center">
+  <tr bgcolor="EEEEEE"> 
+    <td height="22"><a href="index.htm">主页</a></td>
+  </tr>
+</table><br>
+<table border="0" cellpadding="0" cellspacing="0" width="688" align="center" height="490">
+  <tr valign="top"> 
+    <td rowspan="4" width="91">&nbsp; </td>
+    <td height="68" width="131"> 
+      <p><img src="image/doc.gif"></p>
+    </td>
+    <td rowspan="4" width="18"><b></b> </td>
+    <td height="68" width="387"><img src="image/title_doc.gif"></td>
+    <td rowspan="4" width="61"> 
+      <h6>&nbsp;</h6>
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td rowspan="3" valign="top" class="pt10" align="center" width="131" bgcolor="EEEEEE"> 
+      <p>&nbsp;</p>
+      <p><font color="#FF0000">※ 11.4 DTD的条件部分</font></p>
+       
+	</td>
+  </tr>
+  <tr valign="top"> 
+    <td width="387" height="308"> 
+      <table width="100%" border="0" cellpadding="0">
+        <tr> 
+          <td>
+
+           <h4>11.4 DTD的条件部分</h4>
+<p>在创建DTD和文档的时候，或许需要文档中没有反映DTD的部分作一些注释。除了直接使用注释，也可以把DTD中的特定声明组放置在IGNORE指令中的方式，从而忽略该声明组。句法结构如下：</p>
+<p>&lt;![ IGNORE </p>
+<i>
+<p> declarations that are ignored</p>
+</i>
+<p>]]&gt;</p>
+<p>像通常一样，空格不会对句法结构产生实质性的影响，但是必须保证开始符（&lt;![IGNORE）和结束符（]]&gt;）占单独的一行，以便阅读。</p>
+<p>可以忽略任意声明或一组声明——元素、实体、属性甚至包括其他的IGNORE块，但是必须忽略整个声明。IGNORE的构造必须完整包含从DTD中移走的全部声明。不能仅忽略声明的某个局部（例如在不可析实体声明中的NDATA 
+  GIF）。</p>
+<p>也可以指定包括声明的某个特定部分，也就是说不忽略的部分。INCLUDE指示的句法结构与IGNORE相似，但是关键词不同：</p>
+<p>&lt;![ INCLUDE </p>
+<i>
+<p> declarations that are included</p>
+</i>
+<p>]]&gt;</p>
+<p>当INCLUDE位于IGNORE之内的时候，INCLUDE和声明都被忽略。当IGNORE位于INCLUDE内，位于IGNORE之内的声明依然被忽略。换一种说法就是INCLUDE不会覆盖IGNORE。</p>
+<p>上述给出的情形中，或许会为INCLUDE的存在表示奇怪。简单地移走INCLUDE块，仅留下它们的内容，没有任何DTD会发生改变。INCLUDE好像完全是多余的。可是，对于无法单独使用IGNORE的参数实体引用的情形中，同时应用IGNORE和INCLUDE不失为一个灵巧的方法。首先定义一个如下的参数实体引用：</p>
+<p>&lt;!ENTITY % fulldtd "IGNORE"&gt;</p>
+<p>将元素包裹在下列结构中，就可将其忽略：</p>
+<p>&lt;![ %fulldtd; </p>
+<i>
+<p> declarations</p>
+</i>
+<p>]]&gt;</p>
+<p>%fulldtd；参数实体引用求出的值为IGNORE，因此声明被忽略。现在，假设对一个单词作出修改，把fulldtd从IGNORE改为INCLUDE，如下所示：</p>
+<p>&lt;!ENTITY % fulldtd "INCLUDE"&gt;</p>
+<p>所有的IGNORE块立即转换为INCLUDE块。实际上，就像是一系列开关，可以打开或者关闭声明块。</p>
+<p>在本例中，仅使用了一个开关——fulldtd。可以在DTD中的多个IGNORE/INCLUDE块中使用这种开关。也可以拥有许多可根据不同条件选择开或关的不同IGNORE/INCLUDE块。</p>
+<p>当设计其余DTD内含的DTD时，这种能力特别有用。通过改变参数实体开关值，最后的DTD可以改变嵌入的DTD行为。</p>
+ 
+<a href='431.htm'>&lt;&lt;上一篇</a>&nbsp;&nbsp;<a href='433.htm'>下一篇&gt;&gt;</a></td>
+        </tr>
+      </table>
+      <p>&nbsp; </p>
+    </td>
+  </tr>
+</table>
+
+</body>
+
+</html>

@@ -1,0 +1,22 @@
+<?php
+// 必须引入
+include __DIR__ .'/c/AutoLoad/AutoLoad.php';
+
+/* 自定义类文件，通常用于一个文件下放置多个类，如 FileDefinitionThrift.php 中
+    就是自动引入 Thrift自动生成的 Types.php 和 xxx.php 【包含类 xxxClient  xxxIf 等】
+    比如 Thrift 的 Tf/ 下面的所有生成的php ， */
+include __DIR__ .'/c/AutoLoad/FileDefinitionThrift.php';
+$FileDefinitionThrift = new \C\AutoLoad\FileDefinitionThrift();
+
+
+$AutoLoad = new \C\AutoLoad\AutoLoad();
+
+//公用类 C/
+$AutoLoad->registerNamespace('C', __DIR__);
+// Thrift 库的位置 C/Thrift
+$AutoLoad->registerNamespace('Thrift', __DIR__ . '/C');
+
+// Thrift 生成文件位置
+$AutoLoad->registerDefinitionClass('Tf', __DIR__, $FileDefinitionThrift);
+
+$AutoLoad->register();

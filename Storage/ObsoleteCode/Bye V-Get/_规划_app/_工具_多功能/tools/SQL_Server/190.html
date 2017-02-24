@@ -1,0 +1,35 @@
+<meta http-equiv="content-type" content="text/html; charset=gb2312"><FONT 
+style="FONT-SIZE: 9pt; LINE-HEIGHT: 15pt"><B>SQL脚本生成的一些BUG(chair3)</B><BR>SQL脚本生成的一些BUG：！！（原创作品）
+<P></P>
+<P><BR>原创：&nbsp;&nbsp;&nbsp;&nbsp;chair3.2002.1.18<BR>email：&nbsp;&nbsp;&nbsp;&nbsp;chair3@sina.com</P>
+<P>微软的SQL脚本生成令我伤透了心……我一直以为是我的程序上的问题，或者我操作上的失误，<BR>并且，客服务人员屡屡埋怨我的程序bug，多次测试之后，靠，原来都是微软惹的祸……</P>
+<P>Sql&nbsp;Server&nbsp;的脚本生成有不少漏洞，经常由它生成的脚本运行起来却有错误。下面举例说明：</P>
+<P>1、并没有根据sysdenpends的依赖关系生成SQL代码，而是根据“优先级”（呵呵，所谓的优先级）来生成。<BR>比如：他认为view的优先级就要比function高。<BR>那么，我写了下面的测试程序，形成如下的依赖关系：fnT1&nbsp;&nbsp;&lt;--&nbsp;&nbsp;vwT1&nbsp;&nbsp;&lt;--&nbsp;&nbsp;fnT2<BR>就是，view&nbsp;vwT1处于依赖的中间。<BR>------------------------------------<BR>Create&nbsp;function&nbsp;fnT1()<BR>&nbsp;&nbsp;Returns&nbsp;Integer<BR>As<BR>begin<BR>&nbsp;&nbsp;Return&nbsp;123<BR>end<BR>go</P>
+<P>Create&nbsp;view&nbsp;vwT1<BR>As<BR>&nbsp;&nbsp;Select&nbsp;aa=dbo.fnT1()</P>
+<P>Go</P>
+<P>Create&nbsp;function&nbsp;fnT2()<BR>&nbsp;&nbsp;Returns&nbsp;Table<BR>As<BR>&nbsp;&nbsp;Return&nbsp;(Select&nbsp;*&nbsp;From&nbsp;vwT1)<BR>Go<BR>-------------------------------------<BR>运行到数据库之后，用Enterprise生成SQL代码。（选项不一样，会有所不同，我没有选数据库和用户的）<BR>-----------------------------------------------------------------------------------<BR>if&nbsp;exists&nbsp;(select&nbsp;*&nbsp;from&nbsp;dbo.sysobjects&nbsp;where&nbsp;id&nbsp;=&nbsp;object_id(N'[dbo].[fnT1]')&nbsp;and&nbsp;xtype&nbsp;in&nbsp;(N'FN',&nbsp;N'IF',&nbsp;N'TF'))<BR>drop&nbsp;function&nbsp;[dbo].[fnT1]<BR>GO</P>
+<P>if&nbsp;exists&nbsp;(select&nbsp;*&nbsp;from&nbsp;dbo.sysobjects&nbsp;where&nbsp;id&nbsp;=&nbsp;object_id(N'[dbo].[fnT2]')&nbsp;and&nbsp;xtype&nbsp;in&nbsp;(N'FN',&nbsp;N'IF',&nbsp;N'TF'))<BR>drop&nbsp;function&nbsp;[dbo].[fnT2]<BR>GO</P>
+<P>if&nbsp;exists&nbsp;(select&nbsp;*&nbsp;from&nbsp;dbo.sysobjects&nbsp;where&nbsp;id&nbsp;=&nbsp;object_id(N'[dbo].[vwT1]')&nbsp;and&nbsp;OBJECTPROPERTY(id,&nbsp;N'IsView')&nbsp;=&nbsp;1)<BR>drop&nbsp;view&nbsp;[dbo].[vwT1]<BR>GO</P>
+<P>SET&nbsp;QUOTED_IDENTIFIER&nbsp;ON&nbsp;<BR>GO<BR>SET&nbsp;ANSI_NULLS&nbsp;ON&nbsp;<BR>GO</P>
+<P>Create&nbsp;view&nbsp;vwT1<BR>As<BR>&nbsp;&nbsp;Select&nbsp;aa=dbo.fnT1()</P>
+<P>GO<BR>SET&nbsp;QUOTED_IDENTIFIER&nbsp;OFF&nbsp;<BR>GO<BR>SET&nbsp;ANSI_NULLS&nbsp;ON&nbsp;<BR>GO</P>
+<P>SET&nbsp;QUOTED_IDENTIFIER&nbsp;ON&nbsp;<BR>GO<BR>SET&nbsp;ANSI_NULLS&nbsp;ON&nbsp;<BR>GO</P>
+<P>Create&nbsp;function&nbsp;fnT1()<BR>&nbsp;&nbsp;Returns&nbsp;Integer<BR>As<BR>begin<BR>&nbsp;&nbsp;Return&nbsp;123<BR>end</P>
+<P>GO<BR>SET&nbsp;QUOTED_IDENTIFIER&nbsp;OFF&nbsp;<BR>GO<BR>SET&nbsp;ANSI_NULLS&nbsp;ON&nbsp;<BR>GO</P>
+<P>SET&nbsp;QUOTED_IDENTIFIER&nbsp;ON&nbsp;<BR>GO<BR>SET&nbsp;ANSI_NULLS&nbsp;ON&nbsp;<BR>GO</P>
+<P>Create&nbsp;function&nbsp;fnT2()<BR>&nbsp;&nbsp;Returns&nbsp;Table<BR>As<BR>&nbsp;&nbsp;Return&nbsp;(Select&nbsp;*&nbsp;From&nbsp;vwT1)</P>
+<P>GO<BR>SET&nbsp;QUOTED_IDENTIFIER&nbsp;OFF&nbsp;<BR>GO<BR>SET&nbsp;ANSI_NULLS&nbsp;ON&nbsp;<BR>GO<BR>-----------------------------------------------------------------------------<BR>呵呵，一眼你就可以看出来了，建立view要比建立function先。而不是根据依赖关系建立……<BR>毫无疑问，将会得到如下的错误：（这个错误可真严重！害得我好惨……）<BR>---------------------------------------------------<BR>服务器:&nbsp;消息&nbsp;208，级别&nbsp;16，状态&nbsp;1，过程&nbsp;vwT1，行&nbsp;4<BR>对象名&nbsp;'dbo.fnT1'&nbsp;无效。<BR>服务器:&nbsp;消息&nbsp;208，级别&nbsp;16，状态&nbsp;1，过程&nbsp;fnT2，行&nbsp;5<BR>对象名&nbsp;'vwT1'&nbsp;无效。<BR>---------------------------------------------------<BR>2、作业脚本。</P>
+<P>这个我就不说了，bug还不是很严重，主要是中文“--”注释符的问题，英文版我没有测试过，不过猜想应当没有这个bug。<BR>大家可以试试看。</P>
+<P>3、还有一个SP的问题。</P>
+<P>大家看过我的精华里面有spGetIDStr和spAnalyseStrList了吧，关系是后者依赖于前者。可是spGetIDStr我并没有调用任何的表。<BR>因此，每当运行Sql&nbsp;Server生成的脚本的时候，总是报告（大概是这样的信息）：<BR>------------------------------------------------------------------------<BR>&nbsp;&nbsp;&nbsp;spGetIDStr并不存在，无法在sysdepends里建立依赖关系，存储过程spAnalyseStrList仍然建立。<BR>--------------------------------------------------------------------------<BR>无论我手工修改他的建立顺序还是什么的，用它生成的脚本就是有错。呵呵，这个破微软！<BR>这里，再看看第三个bug，看我下面的测试程序：<BR>（原理：当sp没有对表或视图等数据库对象有依赖关系的时候，sp被别的sp引用的时候也将无法建立依赖关系）<BR>形成依赖关系：spB1&nbsp;&lt;---&nbsp;&nbsp;spA1<BR>------------------------------------------------------------------------<BR>Create&nbsp;Proc&nbsp;spB1<BR>As<BR>&nbsp;&nbsp;Return&nbsp;11</P>
+<P>Go</P>
+<P>Create&nbsp;proc&nbsp;spA1<BR>As<BR>Begin<BR>&nbsp;&nbsp;Declare&nbsp;@i&nbsp;int<BR>&nbsp;&nbsp;Exec&nbsp;@i=spB1<BR>&nbsp;&nbsp;Return&nbsp;@i*2<BR>End<BR>Go<BR>-------------------------------------------------------------------------<BR>生成的脚本就为：<BR>-------------------------------------------------------------------------<BR>if&nbsp;exists&nbsp;(select&nbsp;*&nbsp;from&nbsp;dbo.sysobjects&nbsp;where&nbsp;id&nbsp;=&nbsp;object_id(N'[dbo].[spA1]')&nbsp;and&nbsp;OBJECTPROPERTY(id,&nbsp;N'IsProcedure')&nbsp;=&nbsp;1)<BR>drop&nbsp;procedure&nbsp;[dbo].[spA1]<BR>GO</P>
+<P>if&nbsp;exists&nbsp;(select&nbsp;*&nbsp;from&nbsp;dbo.sysobjects&nbsp;where&nbsp;id&nbsp;=&nbsp;object_id(N'[dbo].[spB1]')&nbsp;and&nbsp;OBJECTPROPERTY(id,&nbsp;N'IsProcedure')&nbsp;=&nbsp;1)<BR>drop&nbsp;procedure&nbsp;[dbo].[spB1]<BR>GO</P>
+<P>SET&nbsp;QUOTED_IDENTIFIER&nbsp;ON&nbsp;<BR>GO<BR>SET&nbsp;ANSI_NULLS&nbsp;ON&nbsp;<BR>GO</P>
+<P><BR>Create&nbsp;proc&nbsp;spA1<BR>As<BR>Begin<BR>&nbsp;&nbsp;Declare&nbsp;@i&nbsp;int<BR>&nbsp;&nbsp;Exec&nbsp;@i=spB1<BR>&nbsp;&nbsp;Return&nbsp;@i*2<BR>End</P>
+<P>GO<BR>SET&nbsp;QUOTED_IDENTIFIER&nbsp;OFF&nbsp;<BR>GO<BR>SET&nbsp;ANSI_NULLS&nbsp;ON&nbsp;<BR>GO</P>
+<P>SET&nbsp;QUOTED_IDENTIFIER&nbsp;ON&nbsp;<BR>GO<BR>SET&nbsp;ANSI_NULLS&nbsp;ON&nbsp;<BR>GO</P>
+<P>Create&nbsp;Proc&nbsp;spB1<BR>As<BR>&nbsp;&nbsp;Return&nbsp;11</P>
+<P><BR>GO<BR>SET&nbsp;QUOTED_IDENTIFIER&nbsp;OFF&nbsp;<BR>GO<BR>SET&nbsp;ANSI_NULLS&nbsp;ON&nbsp;<BR>GO</P>
+<P>-------------------------------------------------------------------------<BR>嘻嘻。大家这回应当明白我故意命名为spA1,spB1缘故了。因为如果没有依赖关系的话，A自然排在B前面，你看微软可不就是这么做的么？<BR>呵呵，发现微软的工程师有时候也好笨……：），你看spA1就建立在spB1的前面，而不是它的实际关系（她根本没有在sysdepends里面写）<BR>幸好这个bug还不是很大，怎么说SP还是建立了起来。</P>
+<P><BR>各位有兴趣的可以试试别的，比如sp与fn，sp&nbsp;Group等等，我懒：）。<BR></P></FONT>

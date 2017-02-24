@@ -1,0 +1,127 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>ASP代码的对象化</title>
+<style type="text/css">
+<!--
+body {
+	font-size: 10.4pt;
+	line-height: 22px;
+}
+-->
+</style>
+</head>
+
+<body bgcolor="eeeeee" leftmargin="20" marginwidth="20">
+<p><strong>ASP代码的对象化</strong></p>
+<hr>
+<p> 提起ASP很多人就认为是一堆HTML脚本和被括在&lt;%和%&gt;之中的一些代码还有就是一些JAVASCRIPT脚本等筹在一起的一些代码的集合，这样的代码，再加上各类的不同格式的注释，看起来就一个字：乱。也不管别人能不能看得懂，只要是能实现自己的目的就可以了，因为ASP的代码也是脚本，给了客户也不可能不被人看到其中的内容，经多包容在DLL中一部分业务逻辑，但是还是觉得ASP代码是最不值钱的代码，没有人回去购买，可以随时从别人的网站中查看源码的形式得到别人辛辛苦苦编写出来的独特风格的东东。这些原因使ASP的发展成为了一种编的快忘的也快的代码，可读性，维护性也是各种语言中最为差的代码。<br>
+  其实，ASP代码也可以像其他语言一样的面向对象，模块化，将很多页面集成封装到一个类中，运用类中的不同方法来显示不同的页面，这样你可以将同一业务逻辑下的页面和逻辑封装到一个类里，用不同的方法来实现。说了这么多，可能大家的思路都乱了，赶快给大家一点范例来看看：</p>
+<p>&lt;%<br>
+  '****************************************</p>
+<p>'* 类名：clsWebWorkFlowLog </p>
+<p>'* 功能：工作流日志跟踪类</p>
+<p>'* History： </p>
+<p>'* 作成：doface </p>
+<p>'* 日期：2003/10/24 Ver 1.0 </p>
+<p>'* 改动： </p>
+<p>'* 日期：</p>
+<p>'****************************************</p>
+<p>class clsWebWorkFlowLog</p>
+<p> '定义公开属性存放Connection对象<br>
+  public ActiveConnection<br>
+  <br>
+  private oResponse<br>
+  <br>
+  '========================================<br>
+  '= 过程名：main<br>
+  '= 参 数：<br>
+  '= 功　能：主调函数<br>
+  '= 根据不同动作参数执行不同的操作<br>
+  '= 返回值：<br>
+  '========================================<br>
+  sub main()<br>
+  select case Request(&quot;act&quot;)<br>
+  case &quot;list&quot;<br>
+  list()<br>
+  case else<br>
+  list()<br>
+  end select<br>
+  end sub<br>
+  <br>
+  '========================================<br>
+  '= 过程名：list<br>
+  '= 参 数：<br>
+  '= 功　能：显示列表画面<br>
+  '= 返回值：<br>
+  '========================================<br>
+  sub list()<br>
+  dim oRs<br>
+  set oRs = ActiveConnection.execute(&quot;select *,(select name from wf_config 
+  where id=w.wf_id) as wfname from wf_log w where step_id=1 and user_id=&quot; 
+  &amp; session(&quot;usr&quot;)(&quot;uid&quot;))<br>
+  '(select * from wf_log where id in (select max(id),wf_id,tab_id,rec_id from 
+  wf_log group by wf_id,tab_id,rec_id where wf_id= and tab_id=))<br>
+  %&gt; &lt;p align=&quot;left&quot;&gt;&lt;img border=&quot;0&quot; src=&quot;../images/desk/workflow-new.gif&quot; 
+  WIDTH=&quot;32&quot; HEIGHT=&quot;32&quot;&gt;&lt;font color=&quot;#FF0000&quot;&gt;&lt;b&gt;待办事宜：&lt;/b&gt;&lt;/font&gt;&lt;/p&gt;<br>
+  &lt;center&gt;</p>
+<p> &lt;table bgColor=&quot;#FFFFFF&quot; border=&quot;1&quot; borderColorDark=&quot;#ffffff&quot; 
+  borderColorLight=&quot;#c0c0c0&quot; cellSpacing=&quot;0&quot; width=&quot;99%&quot; 
+  height=&quot;25&quot;&gt;<br>
+  &lt;tr&gt;<br>
+  &lt;td bgColor=&quot;#808080&quot; height=&quot;15&quot;&gt;&lt;font color=&quot;#FFFFFF&quot;&gt;流程名称&lt;/font&gt;&lt;/td&gt;<br>
+  &lt;td bgColor=&quot;#808080&quot; height=&quot;15&quot;&gt;&lt;font color=&quot;#FFFFFF&quot;&gt;申请人&lt;/font&gt;&lt;/td&gt;<br>
+  &lt;td bgColor=&quot;#808080&quot; height=&quot;15&quot;&gt;&lt;font color=&quot;#FFFFFF&quot;&gt;申请时间&lt;/font&gt;&lt;/td&gt;<br>
+  &lt;td bgColor=&quot;#808080&quot; height=&quot;15&quot;&gt;&lt;font color=&quot;#FFFFFF&quot;&gt;完成时间&lt;/font&gt;&lt;/td&gt;<br>
+  &lt;td bgColor=&quot;#808080&quot; height=&quot;15&quot;&gt;&lt;font color=&quot;#FFFFFF&quot;&gt;状态&lt;/font&gt;&lt;/td&gt;<br>
+  &lt;td bgColor=&quot;#808080&quot; height=&quot;15&quot;&gt;&lt;font color=&quot;#FFFFFF&quot;&gt;操作&lt;/font&gt;&lt;/td&gt;<br>
+  &lt;/tr&gt;&lt;%<br>
+  do while not oRs.eof<br>
+  dim maxID,Next_id<br>
+  if glbFunc.getMaxID(oRs(&quot;id&quot;).value,ActiveConnection,maxID,Next_id) 
+  then<br>
+  %&gt;&lt;tr&gt;<br>
+  &lt;td bgColor=&quot;#ffffff&quot; height=&quot;19&quot;&gt;&lt;%=oRs(&quot;wfname&quot;)%&gt;&lt;/a&gt;&lt;/td&gt;<br>
+  &lt;td bgColor=&quot;#ffffff&quot; height=&quot;19&quot;&gt;&lt;%=session(&quot;usr&quot;)(&quot;name&quot;)%&gt;&amp;nbsp;&lt;/td&gt;<br>
+  &lt;td bgColor=&quot;#ffffff&quot; height=&quot;19&quot;&gt;&lt;%=oRs(&quot;exetime&quot;)%&gt;&amp;nbsp;&lt;/td&gt;<br>
+  &lt;td bgColor=&quot;#ffffff&quot; height=&quot;19&quot;&gt;&amp;nbsp;&lt;/td&gt;<br>
+  &lt;td bgColor=&quot;#ffffff&quot; height=&quot;19&quot;&gt;&lt;%=glbFunc.getCurZT(oRs(&quot;id&quot;).value,ActiveConnection)%&gt;&lt;/td&gt;<br>
+  &lt;td bgColor=&quot;#ffffff&quot; height=&quot;19&quot;&gt;&lt;p align=&quot;left&quot;&gt;&lt;a 
+  href=&quot;../PubExeTab/PubExeTab.asp?act=view&amp;tab_id=&lt;%=oRs(&quot;tab_id&quot;)%&gt;&amp;id=&lt;%=oRs(&quot;rec_id&quot;)%&gt;&quot;&gt;&lt;img 
+  src=&quot;../images/action/view.gif&quot; border=&quot;0&quot; alt=&quot;详细&quot; 
+  WIDTH=&quot;16&quot; HEIGHT=&quot;16&quot;&gt;&lt;/a&gt;&amp;nbsp;&lt;a href=&quot;javascript:newin('wfimage.asp?act=list&amp;id=&lt;%=oRs(&quot;wf_id&quot;)%&gt;&amp;bz=1&amp;step_id=&lt;%=next_id%&gt;',true,false,false,false,true);&quot;&gt;&lt;img 
+  src=&quot;../images/action/lcchuli.gif&quot; border=&quot;0&quot; alt=&quot;流程追踪&quot; 
+  WIDTH=&quot;16&quot; HEIGHT=&quot;16&quot;&gt;&lt;/a&gt;&amp;nbsp;&lt;/p&gt;&lt;/td&gt;&lt;%<br>
+  end if<br>
+  %&gt;&lt;/tr&gt;&lt;%<br>
+  oRs.movenext<br>
+  loop<br>
+  %&gt;&lt;/table&gt; </p>
+<p> &lt;/center&gt;<br>
+  &lt;%<br>
+  end sub<br>
+</p>
+<p><br>
+  end class<br>
+  '****************************************<br>
+  '* 类结束 <br>
+  '****************************************</p>
+<p><br>
+  '****************************************<br>
+  'ASP页面开始 <br>
+  '****************************************</p>
+<p>'输出标准HTML头<br>
+  glbFunc.writeHEAD</p>
+<p>dim oWebWorkFlowLog<br>
+  set oWebWorkFlowLog = new clsWebWorkFlowLog<br>
+  set oWebWorkFlowLog.ActiveConnection = glbFunc.getADOConnection</p>
+<p>oWebWorkFlowLog.main </p>
+<p>glbFunc.writeTail()<br>
+  %&gt;</p>
+<p> </p>
+<p>可以添加更多的方法，这样这一个类就能完成以前多个ASP文件的功能。访问的时候，在 .ASP之后加上参数（要访问哪个函数）即可区分出来。</p>
+<p><br>
+</p>
+</body>
+</html>

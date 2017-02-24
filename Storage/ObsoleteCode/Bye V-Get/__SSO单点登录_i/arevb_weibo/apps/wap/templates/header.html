@@ -1,0 +1,21 @@
+<!DOCTYPE wml PUBLIC "-//WAPFORUM//DTD WML 1.1//EN" "http://www.wapforum.org/DTD/wml_1.1.xml">
+<wml>
+<head>
+<meta http-equiv="cache-control" content="max-age=0"/>
+</head>
+<card title="{$cache_settings['webname']} - powered by arevb!">
+<p align="center"><img src="{$siteurl}public/images/wap_logo.png" alt="{$cache_settings['webname']}" id="top" /></p>
+<p>
+	<!--{if $logger_uid < 1}-->
+	<a href="{eval echo miniurl('home');}">首页</a>
+	<a href="{eval echo miniurl('login');}">登陆</a>
+	<a href="{eval echo miniurl('register');}">注册</a>
+	<a href="{eval echo miniurl('travel');}">随便看看</a>
+	<!--{else}-->
+	<a href="{eval echo miniurl('');}">我的首页</a>
+	<a href="{eval echo miniurl('pms');}"><!--{if $_DSESSION['newpm'] > 0}-->新消息[{$_DSESSION['newpm']}]<!--{else}-->我的消息<!--{/if}--></a>
+	<a href="{eval echo miniurl('travel');}">随便看看</a>
+	<!--{/if}-->
+	<br />
+	<input type="text" size="15" maxlength="30" name="keyword" /> <anchor title="搜话题">搜话题<go method="post" href="{eval echo miniurl('search/tags')}"><postfield name="keyword" value="$(keyword)" /></go></anchor> <anchor title="找人">找人<go method="post" href="{eval echo miniurl('search/people')}"><postfield name="keyword" value="$(keyword)" /></go></anchor>
+</p>

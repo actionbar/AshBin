@@ -1,0 +1,264 @@
+<html>
+<head>
+<title>基于属性的棒球统计数据的DTD</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+
+<link rel = stylesheet href = "image/style.css">
+</head>
+<body bgcolor="#ffffff">
+<table width="688" border="0" cellspacing="0" cellpadding="0" align="center">
+  <tr bgcolor="EEEEEE"> 
+    <td height="22"><a href="index.htm">主页</a></td>
+  </tr>
+</table><br>
+<table border="0" cellpadding="0" cellspacing="0" width="688" align="center" height="490">
+  <tr valign="top"> 
+    <td rowspan="4" width="91">&nbsp; </td>
+    <td height="68" width="131"> 
+      <p><img src="image/doc.gif"></p>
+    </td>
+    <td rowspan="4" width="18"><b></b> </td>
+    <td height="68" width="387"><img src="image/title_doc.gif"></td>
+    <td rowspan="4" width="61"> 
+      <h6>&nbsp;</h6>
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td rowspan="3" valign="top" class="pt10" align="center" width="131" bgcolor="EEEEEE"> 
+      <p>&nbsp;</p>
+      <p><font color="#FF0000">※ 10.7 基于属性的棒球统计数据的DTD</font></p>
+       
+	</td>
+  </tr>
+  <tr valign="top"> 
+    <td width="387" height="308"> 
+      <table width="100%" border="0" cellpadding="0">
+        <tr> 
+          <td>
+
+           <h4><a name="_Toc467197337">10.7 基于属性的棒球统计数据的DTD</a></h4>
+<p>在第5章中，为1998 Major League Season创建了一个结构完整的XML文档，文档中应用属性来保存赛季（SEASON）的年份（YEAR）、联盟名（NAME）、分部名、球队名、球队比赛的城市名（CITY）和每个球员的详细统计资料。下面的清单10-4是清单5-1的一个缩略版本，完整的XML文档中包括两个联盟、六个分部、六个球队和两个球员的数据，以便于去理解元素的位置所在和元素具有什么属性。</p>
+<p>清单10-4：完整的XML文档</p>
+<p>&lt;?xml version="1.0" standalone="yes"?&gt;</p>
+<p>&lt;SEASON YEAR= "1998" &gt;</p>
+<p>&lt;LEAGUE NAME= "Nation l League" &gt;</p>
+<p>&lt;DIVISION NAME="East"&gt;</p>
+<p>&lt;TEAM CITY=" Atlant NAME=" Braves"&gt;</p>
+<p>&lt;PLAYER GIVEN_NAME=" Marty SURNAME=" Malloy" </p>
+<p>POSITION=" Second Base" GAMES=" 11" GAMES_STARTED=" 8" </p>
+<p>AT_BATS=" 28" RUNS=" 3" HITS=" 5" DOUBLES=" 1" </p>
+<p>TRIPLES=" 0" HOME_RUNS=" 1" RBI=" 1" STEALS=" 0" </p>
+<p>CAUGHT_STEALING=" 0" SACRIFICE_HITS=" 0 " </p>
+<p>SACRIFICE_FLIES=" 0" ERRORS=" 0" WALKS=" 2" </p>
+<p>STRUCK_OUT=" 2" HIT_BY_PITCH=" 0" /&gt;</p>
+<p>&lt;PLAYER GIVEN_NAME=" Tom" SURNAME=" Glavine" </p>
+<p>POSITION=" Starting Pitcher" GAMES=" 33" </p>
+<p>GAMES_STARTED=" 33" WINS=" 20" LOSSES=" 6" SAVES=" 0" </p>
+<p>COMPLETE_GAMES=" 4 SHUTOUTS=" 3 ERA=" 2.47" </p>
+<p>INNINGS=" 229.1" HOME_RUNS_AGAINST=" 13" </p>
+<p>RUNS_AGAINST=" 67" EARNED_RUNS=" 63" HIT_BATTER=" 2" </p>
+<p>WILD_PITCHES=" 3" BALK=" 0" WALKED_BATTER=" 74" </p>
+<p>STRUCK_OUT_BATTER=" 157" /&gt;</p>
+<p>&lt;/TEAM&gt;</p>
+<p>&lt;/DIVISION&gt;</p>
+<p>&lt;DIVISION NAME=" Central" &gt;</p>
+<p>&lt;TEAM CITY=" Chicago NAME=" Cubs" &gt;</p>
+<p>&lt;/TEAM&gt;</p>
+<p>&lt;/DIVISION&gt;</p>
+<p>&lt;DIVISION NAME=" West &gt;</p>
+<p>&lt;TEAM CITY=" San Francisco" NAME=" Giants" &gt;</p>
+<p>&lt;/TEAM&gt;</p>
+<p>&lt;/DIVISION&gt;</p>
+<p>&lt;/LEAGUE&gt;</p>
+<p>&lt;LEAGUE NAME=" American League" &gt;</p>
+<p>&lt;DIVISION NAME=" East" &gt;</p>
+<p>&lt;TEAM CITY=" New York NAME=" Yankees" &gt;</p>
+<p>&lt;/TEAM&gt;</p>
+<p>&lt;/DIVISION&gt;</p>
+<p>&lt;DIVISION NAME=" Central" &gt;</p>
+<p>&lt;TEAM CITY=" Minnesota" NAME=" Twins" &gt;</p>
+<p>&lt;/TEAM&gt;</p>
+<p>&lt;/DIVISION&gt;</p>
+<p>&lt;DIVISION NAME=" West" &gt;</p>
+<p>&lt;TEAM CITY=" Oakland" NAME=" Athletics" &gt;</p>
+<p>&lt;/TEAM&gt;</p>
+<p>&lt;/DIVISION&gt;</p>
+<p>&lt;/LEAGUE&gt;</p>
+<p>&lt;/SEASON&gt;</p>
+<p>为了此文档的合法性和结构的完整性，就需要提供DTD。该DTD中必须声明清单10-4中使用的所有元素和属性。元素的声明与旧版类似，只是由于大部分信息被转移到属性中的缘故，显得更为简短：</p>
+<p>&lt;!ELEMENT SEASON (LEAGUE, LEAGUE)&gt;</p>
+<p>&lt;!ELEMENT LEAGUE (DIVISION, DIVISION, DIVISION)&gt;</p>
+<p>&lt;!ELEMENT DIVISION (TEAM+)&gt;</p>
+<p>&lt;!ELEMENT TEAM (PLAYER*)&gt;</p>
+<p>&lt;!ELEMENT PLAYER EMPTY&gt;</p>
+<h5><a name="_Toc467197338">10.7.1 在DTD中声明SEASON的属性</a></h5>
+<p>SEASON拥有单一的属性YEAR。尽管有些语义上的限定，规定什么是，而什么不是一个年份（1998是年份，March 31就不是）；DTD不进行这种限定。因此，最好的方法就是声明YEAR属性具有最通用的属性类型CDATA；另外，希望每个赛季都具有年份值（year），就可使YEAR属性为REQUIRED类型。</p>
+<p>&lt;!ATTLIST SEASON YEAR CDATA #REQUIRED&gt;</p>
+<p>尽管确实无法限制作者输入YEAR属性文本的格式，但是至少可以提供一个记号，表明可以接受何种格式的文本。例如，规定年份（year）需要四位数的格式就不失为一个好主意。</p>
+<p>&lt;!ATTLIST SEASON YEAR CDATA #REQUIRED&gt; &lt;!--e.g. 1998 --&gt;</p>
+<p>&lt;!--DO NOT USE TWO DIGIT YEARS like 98, 99, 00!! --&gt;</p>
+<h5><a name="_Toc467197339">10.7.2 在DTD中声明DIVISION和LEAGUE属性</a></h5>
+<p>接下来考虑DIVISION和LEAGUE元素。它们都具有单一的NAME属性。此外自然具有CDATA和REQUIRED属性类型。因为两个不同的元素具有两个相互独立的NAME属性，所以需要两个独立的&lt;!ATTLIST&gt;声明。</p>
+<p>&lt;!ATTLIST LEAGUE NAME CDATA #REQUIRED&gt;</p>
+<p>&lt;!ATTLIST DIVISION NAME CDATA #REQUIRED&gt;</p>
+<p>在这里添加注释可以有助于表明作者期望的格式；例如是否包括单词<i>League</i>和<i>Division</i>作为名字的一部分。</p>
+<p>&lt;!ATTLIST LEAGUE NAME CDATA #REQUIRED&gt; </p>
+<p>&lt;!--e.g. "Nation l League" --&gt;</p>
+<p>&lt;!ATTLIST DIVISION NAME CDATA #REQUIRED&gt;</p>
+<p>&lt;!--e.g. "East" --&gt;</p>
+<h5><a name="_Toc467197340">10.7.3 在DTD中声明TEAM属性</a></h5>
+<p>TEAM元素具有NAME和CITY属性，两个属性均为CDATA和REQUIRED类型。</p>
+<p>&lt;!ATTLIST TEAM NAME CDATA #REQUIRED&gt;</p>
+<p>&lt;!ATTLIST TEAM CITY CDATA #REQUIRED&gt;</p>
+<p>添加注释有助于建立某些并不明显的东西，例如，在一些情况下，CITY属性实际上可以是某个州名：</p>
+<p>&lt;!ATTLIST TEAM CITY CDATA #REQUIRED&gt;</p>
+<p>&lt;!--e.g. "San Diego" as in "San Diego Padres" </p>
+<p> or "Texas" as in "Texas Rangers" --&gt;</p>
+<p>换一种方式，可以在一个简单的&lt;!ATTLIST&gt;中声明这两个属性。</p>
+<p>&lt;!ATTLIST TEAM NAME CDATA #REQUIRED</p>
+<p> CITY CDATA #REQUIRED&gt;</p>
+<h5>10.7.4 在DTD中声明PLAYER的属性</h5>
+<p>PLAYER元素可以说是包含了大部分属性类型。首先是GIVEN_NAME和SURNAME两个属性，均为简单的CDATA、REQUIRED类型。</p>
+<p>&lt;!ATTLIST PLAYER GIVEN_NAME CDATA #REQUIRED&gt;</p>
+<p>&lt;!ATTLIST PLAYER SURNAME CDATA #REQUIRED&gt;</p>
+<p>下一个PLAYER属性是POSITION。因为棒球场上球员的位置是一个相当基本的数据，在这里可使用枚举属性类型。可是“First Base”、“Second 
+  Base”、“Third Base”、“Starting Pitcher”和“Relief Pitcher”都包含有空格，因此它们都不是有效的XML名称字。因此仅能使用CDATA属性类型。实际情况下没有任何理由为POSITION选定缺省值，所以该属性应为REQUIRED类型。</p>
+<p>&lt;!ATTLIST PLAYER POSITION CDATA #REQUIRED&gt;</p>
+<p>接下来的是各种各样的统计数据：GAMES、GAMES_STARTED、AT_BAT、RUNS、HITS、WINS、LOSSES、SAVES、SHUTOUTS等等。上述每一个属性本应为数字类型，但是因为XML不提供数字类型机制，所以把它们简单地声明为CDATA类型。因为不是每一个球员都具有如上的每一个统计数据值，所以把上述各属性声明为IMPLIED类型，而不是REQUIRED类型。</p>
+<p>&lt;!ATTLIST PLAYER GAMES CDATA #IMPLIED&gt;</p>
+<p>&lt;!ATTLIST PLAYER GAMES_STARTED CDATA #IMPLIED&gt;</p>
+<p>&lt;!-Batting Statistics -&gt;</p>
+<p>&lt;!ATTLIST PLAYER AT_BATS CDATA #IMPLIED&gt;</p>
+<p>&lt;!ATTLIST PLAYER RUNS CDATA #IMPLIED&gt;</p>
+<p>&lt;!ATTLIST PLAYER HITS CDATA #IMPLIED&gt;</p>
+<p>&lt;!ATTLIST PLAYER DOUBLES CDATA #IMPLIED&gt;</p>
+<p>&lt;!ATTLIST PLAYER TRIPLES CDATA #IMPLIED&gt;</p>
+<p>&lt;!ATTLIST PLAYER HOME_RUNS CDATA #IMPLIED&gt;</p>
+<p>&lt;!ATTLIST PLAYER RBI CDATA #IMPLIED&gt;</p>
+<p>&lt;!ATTLIST PLAYER STEALS CDATA #IMPLIED&gt;</p>
+<p>&lt;!ATTLIST PLAYER CAUGHT_STEALING CDATA #IMPLIED&gt;</p>
+<p>&lt;!ATTLIST PLAYER SACRIFICE_HITS CDATA #IMPLIED&gt;</p>
+<p>&lt;!ATTLIST PLAYER SACRIFICE_FLIES CDATA #IMPLIED&gt;</p>
+<p>&lt;!ATTLIST PLAYER ERRORS CDATA #IMPLIED&gt;</p>
+<p>&lt;!ATTLIST PLAYER WALKS CDATA #IMPLIED&gt;</p>
+<p>&lt;!ATTLIST PLAYER STRUCK_OUT CDATA #IMPLIED&gt;</p>
+<p>&lt;!ATTLIST PLAYER HIT_BY_PITCH CDATA #IMPLIED&gt;</p>
+<p>&lt;!-Pitching Statistics -&gt;</p>
+<p>&lt;!ATTLIST PLAYER WINS CDATA #IMPLIED&gt;</p>
+<p>&lt;!ATTLIST PLAYER LOSSES CDATA #IMPLIED&gt;</p>
+<p>&lt;!ATTLIST PLAYER SAVES CDATA #IMPLIED&gt;</p>
+<p>&lt;!ATTLIST PLAYER COMPLETE_GAMES CDATA #IMPLIED&gt;</p>
+<p>&lt;!ATTLIST PLAYER SHUTOUTS CDATA #IMPLIED&gt;</p>
+<p>&lt;!ATTLIST PLAYER ERA CDATA #IMPLIED&gt;</p>
+<p>&lt;!ATTLIST PLAYER INNINGS CDATA #IMPLIED&gt;</p>
+<p>&lt;!ATTLIST PLAYER HOME_RUNS_AGAINST CDATA #IMPLIED&gt;</p>
+<p>&lt;!ATTLIST PLAYER RUNS_AGAINST CDATA #IMPLIED&gt;</p>
+<p>&lt;!ATTLIST PLAYER EARNED_RUNS CDATA #IMPLIED&gt;</p>
+<p>&lt;!ATTLIST PLAYER HIT_BATTER CDATA #IMPLIED&gt;</p>
+<p>&lt;!ATTLIST PLAYER WILD_PITCHES CDATA #IMPLIED&gt;</p>
+<p>&lt;!ATTLIST PLAYER BALK CDATA #IMPLIED&gt;</p>
+<p>&lt;!ATTLIST PLAYER WALKED_BATTER CDATA #IMPLIED&gt;</p>
+<p>&lt;!ATTLIST PLAYER STRUCK_OUT_BATTER CDATA #IMPLIED&gt;</p>
+<p> 只要你愿意，可以把PLAYER可能使用的所有属性组合为一个外形庞大的&lt;!ATTLIST&gt;声明：</p>
+<p>&lt;!ATTLIST PLAYER </p>
+<p>GIVEN_NAME CDATA #REQUIRED</p>
+<p>SURNAME CDATA #REQUIRED</p>
+<p>POSITION CDATA #REQUIRED</p>
+<p>GAMES CDATA #IMPLIED</p>
+<p>GAMES_STARTED CDATA #IMPLIED</p>
+<p>AT_BATS CDATA #IMPLIED</p>
+<p>RUNS CDATA #IMPLIED</p>
+<p>HITS CDATA #IMPLIED</p>
+<p>DOUBLES CDATA #IMPLIED</p>
+<p>TRIPLES CDATA #IMPLIED</p>
+<p>HOME_RUNS CDATA #IMPLIED</p>
+<p>RBI CDATA #IMPLIED</p>
+<p>STEALS CDATA #IMPLIED</p>
+<p>CAUGHT_STEALING CDATA #IMPLIED</p>
+<p>SACRIFICE_HITS CDATA #IMPLIED</p>
+<p>SACRIFICE_FLIES CDATA #IMPLIED</p>
+<p>ERRORS CDATA #IMPLIED</p>
+<p>WALKS CDATA #IMPLIED</p>
+<p>STRUCK_OUT CDATA #IMPLIED</p>
+<p>HIT_BY_PITCH CDATA #IMPLIED</p>
+<p>WINS CDATA #IMPLIED</p>
+<p>LOSSES CDATA #IMPLIED</p>
+<p>SAVES CDATA #IMPLIED</p>
+<p>COMPLETE_GAMES CDATA #IMPLIED</p>
+<p>SHUTOUTS CDATA #IMPLIED</p>
+<p>ERA CDATA #IMPLIED</p>
+<p>INNINGS CDATA #IMPLIED</p>
+<p>HOME_RUNS_AGAINST CDATA #IMPLIED</p>
+<p>RUNS_AGAINST CDATA #IMPLIED</p>
+<p>EARNED_RUNS CDATA #IMPLIED</p>
+<p>HIT_BATTER CDATA #IMPLIED</p>
+<p>WILD_PITCHES CDATA #IMPLIED</p>
+<p>BALK CDATA #IMPLIED</p>
+<p>WALKED_BATTER CDATA #IMPLIED</p>
+<p>STRUCK_OUT_BATTER CDATA #IMPLIED&gt;</p>
+<p>这种方法不会有什么好处，应用这种方法就无法在个别属性后加上简单的注释。</p>
+<h5><a name="_Toc467197341">10.7.5 棒球比赛统计数据示例的完整DTD</a></h5>
+<p>清单10-5显示的是棒球比赛统计数据基本属性的完整DTD。</p>
+<p>清单10-5：利用属性包含大部分信息的棒球比赛统计数据的完整DTD</p>
+<p>&lt;!ELEMENT SEASON (LEAGUE, LEAGUE)&gt;</p>
+<p>&lt;!ELEMENT LEAGUE (DIVISION, DIVISION, DIVISION)&gt;</p>
+<p>&lt;!ELEMENT DIVISION (TEAM+)&gt;</p>
+<p>&lt;!ELEMENT TEAM (PLAYER*)&gt;</p>
+<p>&lt;!ELEMENT PLAYER EMPTY&gt;</p>
+<p>&lt;!ATTLIST SEASON YEAR CDATA #REQUIRED&gt;</p>
+<p>&lt;!ATTLIST LEAGUE NAME CDATA #REQUIRED&gt;</p>
+<p>&lt;!ATTLIST DIVISION NAME CDATA #REQUIRED&gt;</p>
+<p>&lt;!ATTLIST TEAM NAME CDATA #REQUIRED</p>
+<p>CITY CDATA #REQUIRED&gt;</p>
+<p>&lt;!ATTLIST PLAYER GIVEN_NAME CDATA #REQUIRED&gt;</p>
+<p>&lt;!ATTLIST PLAYER SURNAME CDATA #REQUIRED&gt;</p>
+<p>&lt;!ATTLIST PLAYER POSITION CDATA #REQUIRED&gt;</p>
+<p>&lt;!ATTLIST PLAYER GAMES CDATA #REQUIRED&gt;</p>
+<p>&lt;!ATTLIST PLAYER GAMES_STARTED CDATA #REQUIRED&gt;</p>
+<p>&lt;!-Batting Statistics -&gt;</p>
+<p>&lt;!ATTLIST PLAYER AT_BATS CDATA #IMPLIED&gt;</p>
+<p>&lt;!ATTLIST PLAYER RUNS CDATA #IMPLIED&gt;</p>
+<p>&lt;!ATTLIST PLAYER HITS CDATA #IMPLIED&gt;</p>
+<p>&lt;!ATTLIST PLAYER DOUBLES CDATA #IMPLIED&gt;</p>
+<p>&lt;!ATTLIST PLAYER TRIPLES CDATA #IMPLIED&gt;</p>
+<p>&lt;!ATTLIST PLAYER HOME_RUNS CDATA #IMPLIED&gt;</p>
+<p>&lt;!ATTLIST PLAYER RBI CDATA #IMPLIED&gt;</p>
+<p>&lt;!ATTLIST PLAYER STEALS CDATA #IMPLIED&gt;</p>
+<p>&lt;!ATTLIST PLAYER CAUGHT_STEALING CDATA #IMPLIED&gt;</p>
+<p>&lt;!ATTLIST PLAYER SACRIFICE_HITS CDATA #IMPLIED&gt;</p>
+<p>&lt;!ATTLIST PLAYER SACRIFICE_FLIES CDATA #IMPLIED&gt;</p>
+<p>&lt;!ATTLIST PLAYER ERRORS CDATA #IMPLIED&gt;</p>
+<p>&lt;!ATTLIST PLAYER WALKS CDATA #IMPLIED&gt;</p>
+<p>&lt;!ATTLIST PLAYER STRUCK_OUT CDATA #IMPLIED&gt;</p>
+<p>&lt;!ATTLIST PLAYER HIT_BY_PITCH CDATA #IMPLIED&gt;</p>
+<p>&lt;!-Pitching Statistics -&gt;</p>
+<p>&lt;!ATTLIST PLAYER WINS CDATA #IMPLIED&gt;</p>
+<p>&lt;!ATTLIST PLAYER LOSSES CDATA #IMPLIED&gt;</p>
+<p>&lt;!ATTLIST PLAYER SAVES CDATA #IMPLIED&gt;</p>
+<p>&lt;!ATTLIST PLAYER COMPLETE_GAMES CDATA #IMPLIED&gt;</p>
+<p>&lt;!ATTLIST PLAYER SHUTOUTS CDATA #IMPLIED&gt;</p>
+<p>&lt;!ATTLIST PLAYER ERA CDATA #IMPLIED&gt;</p>
+<p>&lt;!ATTLIST PLAYER INNINGS CDATA #IMPLIED&gt;</p>
+<p>&lt;!ATTLIST PLAYER HOME_RUNS_AGAINST CDATA #IMPLIED&gt;</p>
+<p>&lt;!ATTLIST PLAYER RUNS_AGAINST CDATA #IMPLIED&gt;</p>
+<p>&lt;!ATTLIST PLAYER EARNED_RUNS CDATA #IMPLIED&gt;</p>
+<p>&lt;!ATTLIST PLAYER HIT_BATTER CDATA #IMPLIED&gt;</p>
+<p>&lt;!ATTLIST PLAYER WILD_PITCHES CDATA #IMPLIED&gt;</p>
+<p>&lt;!ATTLIST PLAYER BALK CDATA #IMPLIED&gt;</p>
+<p>&lt;!ATTLIST PLAYER WALKED_BATTER CDATA #IMPLIED&gt;</p>
+<p>&lt;!ATTLIST PLAYER STRUCK_OUT_BATTER CDATA #IMPLIED&gt;</p>
+<p>使用如下的序进程把清单10-5的内容引入到清单10-4中，当然我们假设清单10-5保存为一个文件名为“baseballattribtes.dtd”的文件中。</p>
+<p>&lt;?xml version= "1.0" standalone=" yes "?&gt;</p>
+<p>&lt;!DOCTYPE SEASON SYSTEM "baseball attributes.dtd" &gt;</p>
+ 
+<a href='422.htm'>&lt;&lt;上一篇</a>&nbsp;&nbsp;<a href='424.htm'>下一篇&gt;&gt;</a></td>
+        </tr>
+      </table>
+      <p>&nbsp; </p>
+    </td>
+  </tr>
+</table>
+
+</body>
+
+</html>

@@ -1,0 +1,616 @@
+<html>
+<head>
+<title>CSS中的单位</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+
+<link rel = stylesheet href = "image/style.css">
+</head>
+<body bgcolor="#ffffff">
+<table width="688" border="0" cellspacing="0" cellpadding="0" align="center">
+  <tr bgcolor="EEEEEE"> 
+    <td height="22"><a href="index.htm">主页</a></td>
+  </tr>
+</table><br>
+<table border="0" cellpadding="0" cellspacing="0" width="688" align="center" height="490">
+  <tr valign="top"> 
+    <td rowspan="4" width="91">&nbsp; </td>
+    <td height="68" width="131"> 
+      <p><img src="image/doc.gif"></p>
+    </td>
+    <td rowspan="4" width="18"><b></b> </td>
+    <td height="68" width="387"><img src="image/title_doc.gif"></td>
+    <td rowspan="4" width="61"> 
+      <h6>&nbsp;</h6>
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td rowspan="3" valign="top" class="pt10" align="center" width="131" bgcolor="EEEEEE"> 
+      <p>&nbsp;</p>
+      <p><font color="#FF0000">※ 12.7 CSS中的单位</font></p>
+       
+	</td>
+  </tr>
+  <tr valign="top"> 
+    <td width="387" height="308"> 
+      <table width="100%" border="0" cellpadding="0">
+        <tr> 
+          <td>
+
+           <h4><a name="_Toc467205081">12.7 CSS中的单位</a></h4>
+<p></p>
+<p>CSS属性具有名称和值。表12-1列举了一些属性名及其值。</p>
+<p>CSS的所有名称都是关键字。但是，值则千变万化。有些值是关键字，如display:none中的none或border-style:solid中的solid；有些值是带有单位的数字，如margin-top:0.5in中的0.5in或font-size:12pt中的12pt；而另外还有一些值则为URL，如background-image: 
+  url(<a href="http://www.idgbooks.com/images/paper.gif)">http://www.idgbooks.com 
+  /images /paper.gif)</a>中的<a href="http://www.idgbooks.com/images/paper.gif)">http://www.idgbooks.com 
+  /images/paper.gif)</a>，或者为RGB颜色，如color:#CC0033中的#CC0033。不同的属性可以为不同的值，但是，一个属性只能为下列四种类型的值：</p>
+<p>1．长度</p>
+<p>2．URL</p>
+<p>3．颜色</p>
+<p>4．关键字</p>
+<p>关键字随属性而变，但其他类型的值则与属性无关，保持定值。也就是说，长度值就是一个长度的长短，而不管其是哪个属性的值。如果知道如何指定一个边界的长度，也就知道如何指定页边距(margin)、贴边(padding)和图像的长度。语法的这种重用性使处理不同的属性变得容易一些。</p>
+<p align="center">表12-1 属性名和属性值的示例</p>
+<p>
+<center>
+  <table BORDER cellspacing=1 cellpadding=7 width=497>
+    <tr>
+      <td width="31%" valign="TOP"> <b>
+        <p>名称
+        </b></td>
+      <td width="69%" valign="TOP"> <b>
+        <p>值
+        </b></td>
+    </tr>
+    <tr>
+      <td width="31%" valign="TOP"> 
+        <p>display
+      </td>
+      <td width="69%" valign="TOP"> 
+        <p>None
+      </td>
+    </tr>
+    <tr>
+      <td width="31%" valign="TOP"> 
+        <p>font-style
+      </td>
+      <td width="69%" valign="TOP"> 
+        <p>Italic
+      </td>
+    </tr>
+    <tr>
+      <td width="31%" valign="TOP"> 
+        <p>margin-top
+      </td>
+      <td width="69%" valign="TOP"> 
+        <p>0.5in
+      </td>
+    </tr>
+    <tr>
+      <td width="31%" valign="TOP"> 
+        <p>font-size
+      </td>
+      <td width="69%" valign="TOP"> 
+        <p>12pt
+      </td>
+    </tr>
+    <tr>
+      <td width="31%" valign="TOP"> 
+        <p>border-style
+      </td>
+      <td width="69%" valign="TOP"> 
+        <p>Solid
+      </td>
+    </tr>
+    <tr>
+      <td width="31%" valign="TOP"> 
+        <p>color
+      </td>
+      <td width="69%" valign="TOP"> 
+        <p>#CC0033
+      </td>
+    </tr>
+    <tr>
+      <td width="31%" valign="TOP"> 
+        <p>background-color
+      </td>
+      <td width="69%" valign="TOP"> 
+        <p>White
+      </td>
+    </tr>
+    <tr>
+      <td width="31%" valign="TOP"> 
+        <p>background-image
+      </td>
+      <td width="69%" valign="TOP"> 
+        <p>url(http://www.idgbooks.com/images/paper.gif)
+      </td>
+    </tr>
+    <tr>
+      <td width="31%" valign="TOP"> 
+        <p>list-styl –image
+      </td>
+      <td width="69%" valign="TOP"> 
+        <p>url(/images/redbullet.png)
+      </td>
+    </tr>
+    <tr>
+      <td width="31%" valign="TOP"> 
+        <p>line-height
+      </td>
+      <td width="69%" valign="TOP"> 
+        <p>120%
+      </td>
+    </tr>
+  </table>
+</center>
+<p></p>
+<h5><a name="_Toc467205082">12.7.1 长度值</a></h5>
+<p>在CSS中，长度是一种度量尺寸，用于宽度、高度、字号、字和字母间距、文本的缩排、行高、页边距、贴边、边框线宽以及许许多多的其他属性。可以用下列三种方法指定长度：</p>
+<p>1．绝对单位</p>
+<p>2．相对单位</p>
+<p>3．百分比</p>
+<b>12.7.1.1 长度的绝对单位</b> 
+<p></p>
+<p>长度的绝对单位，似乎有点用词不当的感觉，因为在计算机屏幕上确实没有绝对的长度单位。将屏幕的分辩率从640&#180; 480改为1600&#180; 
+  1200，就会改变计算机中的所有长度，包括以英寸和厘米为单位的长度。但是，CSS支持五种“绝对”长度单位(至少其字体不会发生变化)。表12-2列出了这五种长度的绝对单位。</p>
+<p align="center">表12-2 长度的绝对单位</p>
+<p>
+<center>
+  <table BORDER cellspacing=1 cellpadding=7 width=526>
+    <tr>
+      <td width="13%" valign="TOP">　</td>
+      <td width="16%" valign="TOP"> 
+        <p>英寸(in)
+      </td>
+      <td width="18%" valign="TOP"> 
+        <p>厘米(cm)
+      </td>
+      <td width="18%" valign="TOP"> 
+        <p>毫米(mm)
+      </td>
+      <td width="16%" valign="TOP"> 
+        <p>磅(pt)
+      </td>
+      <td width="19%" valign="TOP"> 
+        <p>十二点(pc)
+      </td>
+    </tr>
+    <tr>
+      <td width="13%" valign="TOP"> 
+        <p>英寸
+      </td>
+      <td width="16%" valign="TOP"> 
+        <p>1.0
+      </td>
+      <td width="18%" valign="TOP"> 
+        <p>2.54
+      </td>
+      <td width="18%" valign="TOP"> 
+        <p>25.4
+      </td>
+      <td width="16%" valign="TOP"> 
+        <p>72
+      </td>
+      <td width="19%" valign="TOP"> 
+        <p>6
+      </td>
+    </tr>
+    <tr>
+      <td width="13%" valign="TOP"> 
+        <p>厘米
+      </td>
+      <td width="16%" valign="TOP"> 
+        <p>0.3937
+      </td>
+      <td width="18%" valign="TOP"> 
+        <p>1
+      </td>
+      <td width="18%" valign="TOP"> 
+        <p>10
+      </td>
+      <td width="16%" valign="TOP"> 
+        <p>28.3464
+      </td>
+      <td width="19%" valign="TOP"> 
+        <p>4.7244
+      </td>
+    </tr>
+    <tr>
+      <td width="13%" valign="TOP"> 
+        <p>毫米
+      </td>
+      <td width="16%" valign="TOP"> 
+        <p>0.03937
+      </td>
+      <td width="18%" valign="TOP"> 
+        <p>0.1
+      </td>
+      <td width="18%" valign="TOP"> 
+        <p>1.0
+      </td>
+      <td width="16%" valign="TOP"> 
+        <p>2.83464
+      </td>
+      <td width="19%" valign="TOP"> 
+        <p>0.47244
+      </td>
+    </tr>
+    <tr>
+      <td width="13%" valign="TOP"> 
+        <p>磅
+      </td>
+      <td width="16%" valign="TOP"> 
+        <p>0.01389
+      </td>
+      <td width="18%" valign="TOP"> 
+        <p>0.0352806
+      </td>
+      <td width="18%" valign="TOP"> 
+        <p>0.352806
+      </td>
+      <td width="16%" valign="TOP"> 
+        <p>1.0
+      </td>
+      <td width="19%" valign="TOP"> 
+        <p>0.83333
+      </td>
+    </tr>
+    <tr>
+      <td width="13%" valign="TOP"> 
+        <p>十二点
+      </td>
+      <td width="16%" valign="TOP"> 
+        <p>0.16667
+      </td>
+      <td width="18%" valign="TOP"> 
+        <p>0.4233
+      </td>
+      <td width="18%" valign="TOP"> 
+        <p>4.233
+      </td>
+      <td width="16%" valign="TOP"> 
+        <p>12
+      </td>
+      <td width="19%" valign="TOP"> 
+        <p>1.0
+      </td>
+    </tr>
+  </table>
+</center>
+<p></p>
+<p>长度是以数值来表示的，其后紧跟着表示长度单位的缩写字母：</p>
+<p>
+<center>
+  <table cellspacing=2 border=2 cellpadding=7 width=316>
+    <tr>
+      <td width="67%" valign="TOP"> 
+        <p>英寸
+      </td>
+      <td width="33%" valign="TOP"> 
+        <p>in
+      </td>
+    </tr>
+    <tr>
+      <td width="67%" valign="TOP"> 
+        <p>厘米
+      </td>
+      <td width="33%" valign="TOP"> 
+        <p>cm
+      </td>
+    </tr>
+    <tr>
+      <td width="67%" valign="TOP"> 
+        <p>毫米
+      </td>
+      <td width="33%" valign="TOP"> 
+        <p>mm
+      </td>
+    </tr>
+    <tr>
+      <td width="67%" valign="TOP"> 
+        <p>磅
+      </td>
+      <td width="33%" valign="TOP"> 
+        <p>pt
+      </td>
+    </tr>
+    <tr>
+      <td width="67%" valign="TOP"> 
+        <p>十二点
+      </td>
+      <td width="33%" valign="TOP"> 
+        <p>pc
+      </td>
+    </tr>
+  </table>
+</center>
+<p></p>
+<p>长度单位的数值可能有小数点(如，margin-top:0.3in)。有些属性允许为负值，如-0.5in，但并非都如此；甚至有些属性往往限制其负长度值的大小。要使交叉浏览器具有最大的兼容性，最好避免使用负值。</p>
+<b>12.7.1.2 长度的相对单位</b> 
+<p></p>
+<p>CSS还支持下列三种长度的相对单位：</p>
+<p>1．em：当前字体中字母<i>m</i>的宽度</p>
+<p>2．ex：当前字体中字母<i>x</i>的高度</p>
+<p>3．px：一个像素的大小(假设为方形像素；如今的普通显示器都使用方形像素，尽管几乎现在就要被丢进垃圾箱的有些旧PC显示器并非如此)</p>
+<p>例如，下列规则设置PULLQUOTE元素的左右边为当前字体中字母<i>m</i>宽度的两倍，顶和底边为当前字体中字母<i>x</i>高度的1.5倍：</p>
+<p>PULLQUOTE { border-right-width: 2em; border-left-width: 2em;</p>
+<p> border-top-width: 1.5ex; border-bottom-width: 1.5ex }</p>
+<p>使用em和ex的目的就是为所给的字体设置合适的宽度，而没有必要知道字体有多大。例如，在上面的规则中，不知道字体的大小，所以边界的准确宽度也不知道。在显示时，可通过比较当前字体中的<i>m</i>和<i>x</i>来确定。字体越大，所对应的em和ex也就越大。</p>
+<p>以像素为单位的长度是相对于显示器上的像素(或许为方形)的高度和宽度。影像的宽度和高度经常是以像素给出的。</p>
+<img src="Image/BK000212-52.gif" width=49 height=49 align="LEFT" hspace=12> 
+<p>像素测量法通常不是个好方法。首先，像素的大小依分辩率变化较大。大多数资深用户都会将显示器设置成尽可能高的分辩率，从而导致像素太小，而无法阅读。</p>
+<p>第二，在未来的十年中，200甚至300dpi分辩率的显示器将会普及起来，最终代替粗糙的每英寸72像素(给出或获得28像素)的德国事实标准，这个标准是1984年第一台Macintosh计算机以来盛行的。以非基于屏幕的单位(如em、ex、磅、十二点字和英寸)来指定度量的文档，可以进行转换。但是，使用像素级规格的文档，在高分辨率下浏览时，就会变得太小，无法阅读。</p>
+<p> <b>12.7.1.3 长度的百分比单位</b> 
+<p>最后，长度也可以用某一百分比来指定。一般地，它是某一属性当前值的百分比。例如，如果STANZA元素的字号为12磅，并且STANZA包括的VERSE的字号设置为150%，那么VERSE的字号将为18磅。</p>
+<h5><a name="_Toc467205083">12.7.2 URL值</a></h5>
+<p>有三个CSS属性可以包括URL值：background-image、list-style-image和简略语属性list-style。此外，正如已看到的那样，@import规则也使用URL值。按字面理解，URL放置在url()内。允许使用所有的相对和绝对URL值。例如：</p>
+<p>DOC { background-image: url(http://www.mysite.com/bg.gif) }</p>
+<p>LETTER { background-image: url(/images/paper.gif) }</p>
+<p>SOFTWARE { background-image: url(images/screenshot.gif) }</p>
+<p>GAME { background-image: url(currentposition.gif) }</p>
+<p>可用单或双引号把URL括起来，当然这样做并非必要。例如：</p>
+<p>DOC { background-image: url("http://www.mysite.com/bg.gif") }</p>
+<p>LETTER { background-image: url("/images/paper.gif") }</p>
+<p>SOFTWARE { background-image: url( images/screenshot.gif ) }</p>
+<p>GAME { background-image: url( currentposition.gif ) }</p>
+<p>出现在URL中的圆括号、逗号、空格字符、单引号(‘)和双引号(“)必须用反斜杠加以转义：‘\(’、‘\)’、‘\,’。在URL内出现的任何圆括号、省略语符号、空格或引号(可能常用于空字符)应由URL标准的%转义码来代替。于是：</p>
+<p>space&#9;%20</p>
+<p>,&#9;&#9;%2C</p>
+<p>‘&#9;&#9;%27</p>
+<p>“&#9;&#9;%22</p>
+<p>(&#9;&#9;%2B</p>
+<p>)&#9;&#9;%2C</p>
+<p><img src="Image/BK000212-56.gif" width=59 height=65 align="left">CSS为这些字符(\(、\)、\,、\’和\”)定义自己的反斜杠转义码，但这些只会造成额外的混乱。</p>
+<p>&nbsp;</p>
+<h5><a name="_Toc467205084">12.7.3 颜色值</a></h5>
+<p>CSS胜过HTML而被广泛采用的原因之一就是它能够将前景色和背景色应用于页面上的任何元素。使用颜色值的属性有color、background-color和border-color。</p>
+<p>CSS提供了四种方式来指定颜色：名称、十六进制分量、十进制分量以及百分比。由名称定义颜色是最简单的。CSS理解从Windows VGA调色板中采用的16种颜色的名称：</p>
+<p>
+<center>
+  <table cellspacing=1 border=1 cellpadding=7 width=345>
+    <tr>
+      <td width="56%" valign="TOP"> 
+        <p>&#168; 浅绿(aqua)
+      </td>
+      <td width="44%" valign="TOP"> 
+        <p>&#168; 海蓝(navy)
+      </td>
+    </tr>
+    <tr>
+      <td width="56%" valign="TOP"> 
+        <p>&#168; 黑色(black)
+      </td>
+      <td width="44%" valign="TOP"> 
+        <p>&#168; 橄榄(olive)
+      </td>
+    </tr>
+    <tr>
+      <td width="56%" valign="TOP"> 
+        <p>&#168; 蓝色(blue)
+      </td>
+      <td width="44%" valign="TOP"> 
+        <p>&#168; 紫色(purple)
+      </td>
+    </tr>
+    <tr>
+      <td width="56%" valign="TOP"> 
+        <p>&#168; 紫红(fuchsia)
+      </td>
+      <td width="44%" valign="TOP"> 
+        <p>&#168; 红色(red)
+      </td>
+    </tr>
+    <tr>
+      <td width="56%" valign="TOP"> 
+        <p>&#168; 灰色(gray)
+      </td>
+      <td width="44%" valign="TOP"> 
+        <p>&#168; 银色(silver)
+      </td>
+    </tr>
+    <tr>
+      <td width="56%" valign="TOP"> 
+        <p>&#168; 绿色(green)
+      </td>
+      <td width="44%" valign="TOP"> 
+        <p>&#168; 深青(teal)
+      </td>
+    </tr>
+    <tr>
+      <td width="56%" valign="TOP"> 
+        <p>&#168; 酸橙(lime)
+      </td>
+      <td width="44%" valign="TOP"> 
+        <p>&#168; 白色(white)
+      </td>
+    </tr>
+    <tr>
+      <td width="56%" valign="TOP"> 
+        <p>&#168; 栗色(maroon)
+      </td>
+      <td width="44%" valign="TOP"> 
+        <p>&#168; 黄色(yellow)
+      </td>
+    </tr>
+  </table>
+</center>
+<p></p>
+<p>当然，普通的彩色显示器可以显示几百万种以上的颜色。可以给颜色的红(red)、绿(green)和蓝(blue)(RGB)分量提供值，来指定这些颜色。由于CSS是假设为24位的颜色模式，所以每种黄色都赋为8位。一个8位无符号整数是0~255之间的数值。这个值可以是十进制也可以是十六进制RGB值。另外，它也可以用0%(0)到100%(255)之间的RGB百分数来指定。表12-3列出了一些可能的颜色以及十进制、十六进制和RGB百分数。</p>
+<p align="center">表12-3 CSS实例的颜色</p>
+<p>
+<center>
+  <table BORDER cellspacing=1 cellpadding=7 width=502>
+    <tr>
+      <td width="18%" valign="TOP"> 
+        <p>颜色
+      </td>
+      <td width="29%" valign="TOP"> 
+        <p>十进制 RGB
+      </td>
+      <td width="21%" valign="TOP"> 
+        <p>十六进制 RGB
+      </td>
+      <td width="32%" valign="TOP"> 
+        <p>RGB百分数
+      </td>
+    </tr>
+    <tr>
+      <td width="18%" valign="TOP"> 
+        <p>纯红
+      </td>
+      <td width="29%" valign="TOP"> 
+        <p>rgb(255, 0, 0)
+      </td>
+      <td width="21%" valign="TOP"> 
+        <p>#FF0000
+      </td>
+      <td width="32%" valign="TOP"> 
+        <p>rgb(100%, 0%, 0%)
+      </td>
+    </tr>
+    <tr>
+      <td width="18%" valign="TOP"> 
+        <p>纯蓝
+      </td>
+      <td width="29%" valign="TOP"> 
+        <p>rgb(0, 0, 255)
+      </td>
+      <td width="21%" valign="TOP"> 
+        <p>#0000FF
+      </td>
+      <td width="32%" valign="TOP"> 
+        <p>rgb(0%, 0%, 100%)
+      </td>
+    </tr>
+    <tr>
+      <td width="18%" valign="TOP"> 
+        <p>纯绿
+      </td>
+      <td width="29%" valign="TOP"> 
+        <p>rgb(0, 255, 0)
+      </td>
+      <td width="21%" valign="TOP"> 
+        <p>#00FF00
+      </td>
+      <td width="32%" valign="TOP"> 
+        <p>rgb(0%, 100%, 0%)
+      </td>
+    </tr>
+    <tr>
+      <td width="18%" valign="TOP"> 
+        <p>白色
+      </td>
+      <td width="29%" valign="TOP"> 
+        <p>rgb(255, 255, 255)
+      </td>
+      <td width="21%" valign="TOP"> 
+        <p>#FFFFFF
+      </td>
+      <td width="32%" valign="TOP"> 
+        <p>rgb(100%, 100%, 100%)
+      </td>
+    </tr>
+    <tr>
+      <td width="18%" valign="TOP"> 
+        <p>黑色
+      </td>
+      <td width="29%" valign="TOP"> 
+        <p>rgb(0, 0, 0)
+      </td>
+      <td width="21%" valign="TOP"> 
+        <p>#000000
+      </td>
+      <td width="32%" valign="TOP"> 
+        <p>rgb(0%, 0%, 0%)
+      </td>
+    </tr>
+    <tr>
+      <td width="18%" valign="TOP"> 
+        <p>浅紫
+      </td>
+      <td width="29%" valign="TOP"> 
+        <p>rgb(255, 204, 255)
+      </td>
+      <td width="21%" valign="TOP"> 
+        <p>#FFCCFF
+      </td>
+      <td width="32%" valign="TOP"> 
+        <p>rgb(100%, 80%, 100%)
+      </td>
+    </tr>
+    <tr>
+      <td width="18%" valign="TOP"> 
+        <p>浅灰
+      </td>
+      <td width="29%" valign="TOP"> 
+        <p>rgb(153, 153, 153)
+      </td>
+      <td width="21%" valign="TOP"> 
+        <p>#999999
+      </td>
+      <td width="32%" valign="TOP"> 
+        <p>rgb(60%, 60%, 60%)
+      </td>
+    </tr>
+    <tr>
+      <td width="18%" valign="TOP"> 
+        <p>褐色
+      </td>
+      <td width="29%" valign="TOP"> 
+        <p>rgb(153, 102, 51)
+      </td>
+      <td width="21%" valign="TOP"> 
+        <p>#996633
+      </td>
+      <td width="32%" valign="TOP"> 
+        <p>rgb(60%, 40%, 20%)
+      </td>
+    </tr>
+    <tr>
+      <td width="18%" valign="TOP"> 
+        <p>粉红
+      </td>
+      <td width="29%" valign="TOP"> 
+        <p>rgb(255, 204, 204)
+      </td>
+      <td width="21%" valign="TOP"> 
+        <p>#FFCCCC
+      </td>
+      <td width="32%" valign="TOP"> 
+        <p>rgb(100%, 80%, 80%)
+      </td>
+    </tr>
+    <tr>
+      <td width="18%" valign="TOP"> 
+        <p>橙色
+      </td>
+      <td width="29%" valign="TOP"> 
+        <p>rgb(255, 204, 204)
+      </td>
+      <td width="21%" valign="TOP"> 
+        <p>#FFCC00
+      </td>
+      <td width="32%" valign="TOP"> 
+        <p>rgb(100%, 80%, 80%)
+      </td>
+    </tr>
+  </table>
+</center>
+<p></p>
+<p><img src="Image/BK000212-55.gif" width=62 height=56 align="left">许多人仍然使用256色的显示器。而且，有些颜色Mac和PC机上有着明显的不同。最可靠的颜色就是16个命名的颜色。</p>
+<p> 次可靠的颜色是只使用十六进制分量00、33、66、99、CC和FF(十进制分别为0、51、102、153、204和255；以百分数单位表示的0%、20%、40%、60%、80%和100%)组成的那些颜色。例如，33FFCC是“浏览器安全”色，因为红色成分是由两个3、绿色由两个F和蓝色由两个C组成的。</p>
+<p>如果只使用三位数字来指定十六进制RGB颜色，那么，CSS就将数字加以重复；例如，#FC0实际上就是#FFCC00，#963实际上是#996633。</p>
+<h5><a name="_Toc467205085">12.7.4 关键字值</a></h5>
+<p>关键字是CSS属性可能具有的四类值中变化最大的。通常，它们随属性而变，但相类似的属性一般支持类似关键字。例如，border-left-styee值可能是none、dotted、dashed、solid、double、groove、ridge、inset或outset任何一个关键字。border-right-style、border-top-style、border-bottom-style和border-style属性也可认为是下列值之一：none、dotted、dashed、solid、double、groove、ridge、inset或outset。各关键字将在有关各自属性的章节中讨论。</p>
+
+ 
+<a href='439.htm'>&lt;&lt;上一篇</a>&nbsp;&nbsp;<a href='441.htm'>下一篇&gt;&gt;</a></td>
+        </tr>
+      </table>
+      <p>&nbsp; </p>
+    </td>
+  </tr>
+</table>
+
+</body>
+
+</html>

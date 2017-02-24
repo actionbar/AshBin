@@ -1,0 +1,215 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+
+
+   <title>8.2. &#20250;&#35805;&#25968;&#25454;&#26292;&#38706;</title>
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="" />
+   <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+   <meta http-equiv="Content-Style-Type" content="text/css" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+</head>
+<body style="margin: 0px 0px 0px 0px; background: #FFFFFF;">
+
+
+<table width="100%" border="0" cellspacing="0" cellpadding="5" bgcolor="#649CCC">
+  <tr valign="middle">
+    <td align="left">
+      <p class="p_Heading1"><span class="f_Heading1">8.2. &#20250;&#35805;&#25968;&#25454;&#26292;&#38706;</span></p>
+
+    </td>
+    <td align="right">
+     <span style="font-size: 9pt">
+     <a href="introduction.htm">Top</a>&nbsp;
+     <a href="new_item48.htm">Previous</a>&nbsp;
+     <a href="new_item50.htm">Next</a>
+     </span>
+    </td>
+  </tr>
+</table>
+
+
+<!-- Placeholder for topic body. -->
+<table width="100%" border="0" cellspacing="0" cellpadding="5"><tr valign="top"><td align="left">
+<p style="line-height: 1.50;">8.2. &#20250;&#35805;&#25968;&#25454;&#26292;&#38706;</p>
+<p style="line-height: 1.50;">  &nbsp; &#24403;&#20320;&#20851;&#27880;&#20110;&#38450;&#27490;&#28304;&#30721;&#30340;&#26292;&#38706;&#26102;&#65292;&#20320;&#30340;&#20250;&#35805;&#25968;&#25454;&#21482;&#21516;&#26679;&#23384;&#22312;&#30528;&#39118;&#38505;&#12290;&#22312;&#40664;&#35748;&#24773;&#20917;&#19979;&#65292;SESSION&#20445;&#23384;&#22312;/tmp&#30446;&#24405;&#19979;&#12290;&#36825;&#26679;&#20570;&#22312;&#24456;&#22810;&#24773;&#24418;&#19979;&#26159;&#24456;&#26041;&#20415;&#30340;&#65292;&#20854;&#20013;&#20043;&#19968;&#26159;&#25152;&#26377;&#29992;&#25143;&#37117;&#26377;&#23545;/tmp&#30340;&#20889;&#20837;&#26435;&#38480;&#65292;&#36825;&#26679;Apache&#21516;&#26679;&#20063;&#26377;&#26435;&#38480;&#36827;&#34892;&#20889;&#20837;&#12290;&#34429;&#28982;&#20854;&#20182;&#29992;&#25143;&#19981;&#33021;&#30452;&#25509;&#20174;shell&#29615;&#22659;&#35835;&#21462;&#36825;&#20123;&#20250;&#35805;&#25991;&#20214;&#65292;&#20294;&#20182;&#20204;&#21487;&#20197;&#20889;&#19968;&#20010;&#31616;&#21333;&#30340;&#33050;&#26412;&#26469;&#36827;&#34892;&#35835;&#21462;&#65306;</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; &lt;?php</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; header('Content-Type: text/plain');</p>
+<p style="line-height: 1.50;">  &nbsp; session_start();</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; $path = ini_get('session.save_path');</p>
+<p style="line-height: 1.50;">  &nbsp; $handle = dir($path);</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; while ($filename = $handle-&gt;read())</p>
+<p style="line-height: 1.50;">  &nbsp; {</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; if (substr($filename, 0, 5) == 'sess_')</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; {</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; &nbsp; $data = file_get_contents("$path/$filename");</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; &nbsp; if (!empty($data))</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; &nbsp; {</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; &nbsp; &nbsp; session_decode($data);</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; &nbsp; &nbsp; $session = $_SESSION;</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; &nbsp; &nbsp; $_SESSION = array();</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; &nbsp; &nbsp; echo "Session [" . substr($filename, 5) . "]\n";</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; &nbsp; &nbsp; print_r($session);</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; &nbsp; &nbsp; echo "\n--\n\n";</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; &nbsp; }</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; }</p>
+<p style="line-height: 1.50;">  &nbsp; }</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; ?&gt;</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; &#36825;&#20010;&#33050;&#26412;&#22312;session.save_path&#25152;&#23450;&#20041;&#30340;&#20250;&#35805;&#25991;&#20214;&#20445;&#23384;&#30446;&#24405;&#20013;&#25628;&#32034;&#20197;sess_&#20026;&#21069;&#32512;&#30340;&#25991;&#20214;&#12290;&#25214;&#21040;&#25991;&#20214;&#21518;&#65292;&#21363;&#23545;&#23427;&#30340;&#20869;&#23481;&#36827;&#34892;&#35299;&#26512;&#24182;&#29992;print_r()&#20989;&#25968;&#26174;&#31034;&#23427;&#30340;&#20869;&#23481;&#12290;&#36825;&#26679;&#20854;&#23427;&#24320;&#21457;&#32773;&#23601;&#23481;&#26131;&#22320;&#21462;&#24471;&#20102;&#20320;&#30340;&#29992;&#25143;&#30340;&#20250;&#35805;&#25968;&#25454;&#12290;</p>
+<p style="line-height: 1.50;">  &nbsp; &#35299;&#20915;&#36825;&#20010;&#38382;&#39064;&#30340;&#26368;&#22909;&#26041;&#27861;&#26159;&#25226;&#20320;&#30340;&#20250;&#35805;&#25968;&#25454;&#23384;&#20837;&#29992;&#29992;&#25143;&#21517;&#21644;&#23494;&#30721;&#20445;&#25252;&#30340;&#25968;&#25454;&#24211;&#20013;&#12290;&#30001;&#20110;&#25968;&#25454;&#24211;&#30340;&#35775;&#38382;&#26159;&#21463;&#25511;&#30340;&#65292;&#36825;&#26679;&#23601;&#22810;&#20102;&#19968;&#23618;&#39069;&#22806;&#30340;&#20445;&#25252;&#12290;&#36890;&#36807;&#24212;&#29992;&#21069;&#33410;&#20013;&#25552;&#21450;&#30340;&#25216;&#24039;&#65292;&#25968;&#25454;&#24211;&#21487;&#20197;&#20026;&#20320;&#30340;&#25935;&#24863;&#25968;&#25454;&#25552;&#20379;&#19968;&#20010;&#23433;&#20840;&#30340;&#23384;&#25918;&#22320;&#65292;&#21516;&#26102;&#20320;&#24212;&#35813;&#20445;&#25345;&#35686;&#24789;&#65292;&#20320;&#30340;&#25968;&#25454;&#24211;&#23433;&#20840;&#24615;&#27491;&#21464;&#24471;&#36234;&#26469;&#36234;&#37325;&#35201;&#12290;</p>
+<p style="line-height: 1.50;">  &nbsp; &#20026;&#22312;&#25968;&#25454;&#24211;&#20013;&#20445;&#23384;&#20250;&#35805;&#25968;&#25454;&#65292;&#39318;&#20808;&#38656;&#35201;&#24314;&#31435;&#19968;&#20010;&#25968;&#25454;&#34920;&#65306;</p>
+<p style="line-height: 1.50;">  &nbsp; CREATE TABLE sessions</p>
+<p style="line-height: 1.50;">  &nbsp; (</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; id varchar(32) NOT NULL,</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; access int(10) unsigned,</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; data text,</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; PRIMARY KEY (id)</p>
+<p style="line-height: 1.50;">  &nbsp; );</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; &#22914;&#26524;&#20320;&#20351;&#29992;&#30340;&#26159;MySQL&#65292;&#21017;&#34920;&#32467;&#26500;&#25551;&#36848;&#22914;&#19979;&#65306;</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; mysql&gt; DESCRIBE sessions;</p>
+<p style="line-height: 1.50;">  &nbsp; +--------+------------------+------+-----+---------+-------+</p>
+<p style="line-height: 1.50;">  &nbsp; | Field &nbsp;| Type &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; | Null | Key | Default | Extra |</p>
+<p style="line-height: 1.50;">  &nbsp; +--------+------------------+------+-----+---------+-------+</p>
+<p style="line-height: 1.50;">  &nbsp; | id &nbsp; &nbsp; | varchar(32) &nbsp; &nbsp; &nbsp;| &nbsp; &nbsp; &nbsp;| PRI | &nbsp; &nbsp; &nbsp; &nbsp; | &nbsp; &nbsp; &nbsp; |</p>
+<p style="line-height: 1.50;">  &nbsp; | access | int(10) unsigned | YES &nbsp;| &nbsp; &nbsp; | NULL &nbsp; &nbsp;| &nbsp; &nbsp; &nbsp; |</p>
+<p style="line-height: 1.50;">  &nbsp; | data &nbsp; | text &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; | YES &nbsp;| &nbsp; &nbsp; | NULL &nbsp; &nbsp;| &nbsp; &nbsp; &nbsp; |</p>
+<p style="line-height: 1.50;">  &nbsp; +--------+------------------+------+-----+---------+-------+</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; &#22914;&#35201;&#20351;&#20250;&#35805;&#25968;&#25454;&#33021;&#20445;&#23384;&#22312;&#27492;&#34920;&#20013;&#65292;&#20320;&#38656;&#35201;&#20351;&#29992;session_set_save_handler( )&#20989;&#25968;&#26469;&#32534;&#36753;PHP&#30340;&#20869;&#24314;&#20250;&#35805;&#26426;&#21046;&#65306;</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; &lt;?php</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; session_set_save_handler('_open',</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;'_close',</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;'_read',</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;'_write',</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;'_destroy',</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;'_clean');</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; ?&gt;</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">Each of these six arguments is the name of a function that you must write. These functions handle the following tasks:</p>
+<p style="line-height: 1.50;">  &nbsp; &#20197;&#19978;&#30340;&#20845;&#20010;&#21442;&#25968;&#27599;&#19968;&#20010;&#37117;&#20195;&#34920;&#30528;&#38656;&#35201;&#20320;&#32534;&#20889;&#30340;&#20989;&#25968;&#30340;&#21517;&#31216;&#65292;&#20182;&#20204;&#23545;&#19979;&#38754;&#30340;&#20219;&#21153;&#36827;&#34892;&#22788;&#29702;&#65306;</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">l &nbsp; &nbsp; &nbsp; &nbsp;&#25171;&#24320;&#20250;&#35805;&#23384;&#20648;</p>
+<p style="line-height: 1.50;">l &nbsp; &nbsp; &nbsp; &nbsp;&#20851;&#38381;&#20250;&#35805;&#23384;&#20648;</p>
+<p style="line-height: 1.50;">l &nbsp; &nbsp; &nbsp; &nbsp;&#35835;&#21462;&#20250;&#35805;&#25968;&#25454;</p>
+<p style="line-height: 1.50;">l &nbsp; &nbsp; &nbsp; &nbsp;&#20889;&#20837;&#20250;&#35805;&#25968;&#25454;</p>
+<p style="line-height: 1.50;">l &nbsp; &nbsp; &nbsp; &nbsp;&#28040;&#28781;&#20250;&#35805;&#25968;&#25454;</p>
+<p style="line-height: 1.50;">l &nbsp; &nbsp; &nbsp; &nbsp;&#28165;&#38500;&#26087;&#20250;&#35805;&#25968;&#25454;</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; &#25105;&#26377;&#24847;&#20351;&#29992;&#20102;&#26377;&#24847;&#20041;&#30340;&#21517;&#31216;&#65292;&#36825;&#26679;&#20320;&#21487;&#20197;&#19968;&#19979;&#30475;&#20986;&#23427;&#20204;&#30340;&#30446;&#30340;&#12290;&#21629;&#21517;&#26159;&#20219;&#24847;&#30340;&#65292;&#20294;&#20320;&#21487;&#33021;&#24076;&#26395;&#29992;&#19979;&#21010;&#32447;&#24320;&#22836;&#65288;&#22914;&#27492;&#22788;&#25152;&#31034;&#65289;&#25110;&#20854;&#23427;&#30340;&#21629;&#21517;&#32422;&#23450;&#26469;&#38450;&#27490;&#21517;&#31216;&#20914;&#31361;&#12290;&#19979;&#38754;&#26159;&#36825;&#20123;&#20989;&#25968;(&#20351;&#29992;MySQL)&#30340;&#31034;&#20363;&#65306;</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; &lt;?php</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; function _open()</p>
+<p style="line-height: 1.50;">  &nbsp; {</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; global $_sess_db;</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; $db_user = $_SERVER['DB_USER'];</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; $db_pass = $_SERVER['DB_PASS'];</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; $db_host = 'localhost';</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; if ($_sess_db = mysql_connect($db_host, $db_user, $db_pass))</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; {</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; &nbsp; return mysql_select_db('sessions', $_sess_db);</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; }</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; return FALSE;</p>
+<p style="line-height: 1.50;">  &nbsp; }</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; function _close()</p>
+<p style="line-height: 1.50;">  &nbsp; {</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; global $_sess_db;</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; return mysql_close($_sess_db);</p>
+<p style="line-height: 1.50;">  &nbsp; }</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; function _read($id)</p>
+<p style="line-height: 1.50;">  &nbsp; {</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; global $_sess_db;</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; $id = mysql_real_escape_string($id);</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; $sql = "SELECT data</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; FROM &nbsp; sessions</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; WHERE &nbsp;id = '$id'";</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; if ($result = mysql_query($sql, $_sess_db))</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; {</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; &nbsp; if (mysql_num_rows($result))</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; &nbsp; {</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; &nbsp; &nbsp; $record = mysql_fetch_assoc($result);</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; &nbsp; &nbsp; return $record['data'];</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; &nbsp; }</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; }</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; return '';</p>
+<p style="line-height: 1.50;">  &nbsp; }</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; function _write($id, $data)</p>
+<p style="line-height: 1.50;">  &nbsp; {</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; global $_sess_db;</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; $access = time();</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; $id = mysql_real_escape_string($id);</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; $access = mysql_real_escape_string($access);</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; $data = mysql_real_escape_string($data);</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; $sql = "REPLACE</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; INTO &nbsp; &nbsp;sessions</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; VALUES &nbsp;('$id', '$access', '$data')";</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; return mysql_query($sql, $_sess_db);</p>
+<p style="line-height: 1.50;">  &nbsp; }</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; function _destroy($id)</p>
+<p style="line-height: 1.50;">  &nbsp; {</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; global $_sess_db;</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; $id = mysql_real_escape_string($id);</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; $sql = "DELETE</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; FROM &nbsp; sessions</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; WHERE id = '$id'";</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; return mysql_query($sql, $_sess_db);</p>
+<p style="line-height: 1.50;">  &nbsp; }</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; function _clean($max)</p>
+<p style="line-height: 1.50;">  &nbsp; {</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; global $_sess_db;</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; $old = time() - $max;</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; $old = mysql_real_escape_string($old);</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; $sql = "DELETE</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; FROM &nbsp; sessions</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; WHERE &nbsp;access &lt; '$old'";</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; return mysql_query($sql, $_sess_db);</p>
+<p style="line-height: 1.50;">  &nbsp; }</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; ?&gt;</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; &#20320;&#24517;&#39035;&#35201;&#22312;session_start( )&#20043;&#21069;&#35843;&#29992;session_set_save_handler( )&#20989;&#25968;&#65292;&#20294;&#20320;&#21487;&#20197;&#22312;&#20219;&#20309;&#22320;&#26041;&#23545;&#36825;&#20123;&#20989;&#25968;&#26412;&#36523;&#36827;&#34892;&#23450;&#20041;&#12290;</p>
+<p style="line-height: 1.50;">  &nbsp; &#36825;&#20010;&#27969;&#31243;&#30340;&#28418;&#20142;&#20043;&#22788;&#22312;&#20110;&#20320;&#26080;&#39035;&#23545;&#20195;&#30721;&#36827;&#34892;&#32534;&#36753;&#25110;&#21464;&#21270;&#20351;&#29992;&#20250;&#35805;&#30340;&#26041;&#24335;&#12290;$_SESSION&#20381;&#28982;&#23384;&#22312;&#65292;&#34892;&#20026;&#20381;&#26087;&#65292;&#36824;&#26159;&#30001;PHP&#26469;&#20135;&#29983;&#19982;&#20256;&#36882;&#20250;&#35782;&#26631;&#35782;&#65292;&#23545;&#26377;&#20851;&#20250;&#35805;&#30340;&#37197;&#32622;&#21464;&#26356;&#21516;&#26679;&#36824;&#20250;&#29983;&#25928;&#12290;&#25152;&#26377;&#20320;&#38656;&#35201;&#20570;&#30340;&#21482;&#26159;&#35843;&#29992;&#36825;&#19968;&#20010;&#20989;&#25968;&#65288;&#21516;&#26102;&#24314;&#31435;&#30001;&#23427;&#25351;&#23450;&#30340;&#25152;&#26377;&#20989;&#25968;&#65289;&#65292;PHP&#23601;&#20250;&#29031;&#39038;&#20313;&#19979;&#30340;&#20107;&#24773;&#12290;</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<hr noshade size=1 ><p style="line-height: 1.50;">&nbsp;</p>
+
+</td></tr></table>
+
+</body>
+</html>

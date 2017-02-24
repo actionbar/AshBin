@@ -1,0 +1,60 @@
+<html>
+<head>
+<title>什么是实体</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+
+<link rel = stylesheet href = "image/style.css">
+</head>
+<body bgcolor="#ffffff">
+<table width="688" border="0" cellspacing="0" cellpadding="0" align="center">
+  <tr bgcolor="EEEEEE"> 
+    <td height="22"><a href="index.htm">主页</a></td>
+  </tr>
+</table><br>
+<table border="0" cellpadding="0" cellspacing="0" width="688" align="center" height="490">
+  <tr valign="top"> 
+    <td rowspan="4" width="91">&nbsp; </td>
+    <td height="68" width="131"> 
+      <p><img src="image/doc.gif"></p>
+    </td>
+    <td rowspan="4" width="18"><b></b> </td>
+    <td height="68" width="387"><img src="image/title_doc.gif"></td>
+    <td rowspan="4" width="61"> 
+      <h6>&nbsp;</h6>
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td rowspan="3" valign="top" class="pt10" align="center" width="131" bgcolor="EEEEEE"> 
+      <p>&nbsp;</p>
+      <p><font color="#FF0000">※ 9.1 什么是实体？</font></p>
+       
+	</td>
+  </tr>
+  <tr valign="top"> 
+    <td width="387" height="308"> 
+      <table width="100%" border="0" cellpadding="0">
+        <tr> 
+          <td>
+<h4>9.1 什么是实体？</h4>
+<p>从逻辑上说，一个XML文档由一个序进程构成，序进程后有一严密地包含了所有其他元素的基本元素。但XML文档的实际数据可以扩展分布在若干文档中。例如，即使一个棒球联盟中包含了大约900个的所有球员，每个PLAYER元素也可以以独立的文件形式存在。包含XML文档细节内容的存储单元称为实体（entities），实体可能是由一个文件、一个数据库记录或其他包含数据的项目组成。例如，本书中所有完整的XML文件都是实体。</p>
+<p>包含XML声明或文档类型声明的存储单元和基本元素称为文档实体（document entity）。不过基本元素和它的派生元素也可包含指向即将插入文档的附加数据的实体引用。进行正确性检查的XML处理器在提交文档给最终应用程序以前或显示文件以前，将把所有不同的实体引用结合为单一逻辑结构的文档。</p>
+<p><img src="Image/BK000209-1.gif" width=38 height=43>不进行正确性检查的处理器可以但不一定插入外部对象；他们必须插入内部对象。</p>
+<p> 实体的主要目的在于保存如下内容：结构完整的XML，其他形式的文本或二进制数据。序进程和文档类型声明是它们所属文档的基本元素的一部分。仅当XSL样式单本身就是一个结构完整的XML文档时，才能作为一个实体。组成XSL样式单的实体并不是应用该样式单的XML文档的组成实体之一。CSS样式单根本就不是一个实体。</p>
+<p>大多数实体具有一个可以引用的名。唯一的例外是包含XML文档的主文件与文档实体（与数据库记录、CGI程序的输出结果或其他数据相对比，文档实体也不一定是文件）。文档实体无论采取何种结构，都是一种存储单元，用于储存XML声明、文档类型声明（如果有）和基本元素。因此每个XML文档至少拥有一个实体。</p>
+<p>有两种类型的实体：内部实体和外部实体。完全在文档实体内部定义的实体称为内部实体。文档本身就是这样的实体，所以所有的XML文档至少有一个内部实体。</p>
+<p>相反，经由URL定位的资源中获取的数据称为外部实体。主文档仅包含一个实际引用数据位置的URL。在HTML中，包含于&lt;HTML&gt;和&lt;/HTML&gt;标记之间的文档本身是内部实体时，而IMG元素（实际的图像数据）代表外部实体。</p>
+<p>实体分为两类：可析和不可析实体。可析实体包含结构完整的XML文本。不可析实体包含二进制数据或非XML文本（类似电子邮件信息）。如果从本质上说，当前大多数XML处理器不能很好地支持（如果不是完全支持的话）不可析实体，本章所关注的是可析实体。</p>
+<p align="left"><img src="Image/BK000209-2.gif" width=49 height=33>第11章，非XML数据和不可析对象的嵌套。</p>
+<p>通过实体引用，可把来源于多个实体的数据合并在一起构成一个单一的文档。通用实体引用把数据并入到文档内容中。参数实体引用把声明并入到文档的DTD中。实中&amp;lt；、&amp;gt；、&amp;apos；、&amp;quote；、&amp;amp；是预定义的体引用，分别指的是文本实体&lt;、&gt;、’、”、&amp;符号。然而也可在文档DTD中定义新的实体。</p>
+ 
+<a href='407.htm'>&lt;&lt;上一篇</a>&nbsp;&nbsp;<a href='409.htm'>下一篇&gt;&gt;</a></td>
+        </tr>
+      </table>
+      <p>&nbsp; </p>
+    </td>
+  </tr>
+</table>
+
+</body>
+
+</html>

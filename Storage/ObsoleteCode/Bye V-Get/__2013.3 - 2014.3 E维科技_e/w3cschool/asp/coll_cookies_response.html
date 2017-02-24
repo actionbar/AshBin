@@ -1,0 +1,206 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="../c3.css" />
+<title>ASP Cookies 集合</title>
+</head>
+<body class="serverscripting">
+<div id="wrapper">
+<div id="header">
+<a href="http://e.v-get.com/w3cschool/" style="float:left;">W3CSchool 在线教程</a>
+<div class="q g"><script type="text/javascript">var cpro_id="u1163355"</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div>
+<div id="navfirst">
+<ul id="menu">
+<li id="h"><a href="../h.html">HTML教程</a></li>
+<li id="x"><a href="../x.html">XML教程</a></li>
+<li id="b"><a href="../b.html">浏览器脚本</a></li>
+<li id="s"><a href="../s.html">服务器脚本</a></li>
+<li id="d"><a href="../d.html">dot net教程</a></li>
+<li id="m"><a href="../m.html">多媒体教程</a></li>
+<li id="w"><a href="../w.html">建站手册</a></li>
+</ul>
+</div><div id="navsecond">
+<div id="course">
+<h2>ASP 教程</h2>
+<ul>
+<li><a href="http://e.v-get.com/w3cschool/">ASP 首页</a></li>
+<li><a href="asp_intro.html">ASP 简介</a></li>
+<li><a href="asp_install.html">ASP 安装</a></li>
+<li><a href="asp_syntax.html">ASP 语法</a></li>
+<li><a href="asp_variables.html">ASP 变量</a></li>
+<li><a href="asp_procedures.html">ASP 程序</a></li>
+<li><a href="asp_inputforms.html">ASP 表单</a></li>
+<li><a href="asp_cookies.html">ASP Cookies</a></li>
+<li><a href="asp_sessions.html">ASP Session</a></li>
+<li><a href="asp_applications.html">ASP Application</a></li>
+<li><a href="asp_incfiles.html">ASP #include</a></li>
+<li><a href="asp_globalasa.html">ASP Global.asa</a></li>
+<li><a href="asp_send_email.html">ASP e-mail</a></li>
+</ul>
+<h2>ASP 对象</h2>
+<ul class="small">
+<li><a href="asp_ref_response.html">ASP Response</a></li>
+<li><a href="asp_ref_request.html">ASP Request</a></li>
+<li><a href="asp_ref_application.html">ASP Application</a></li>
+<li><a href="asp_ref_session.html">ASP Session</a></li>
+<li><a href="asp_ref_server.html">ASP Server</a></li>
+<li><a href="asp_ref_error.html">ASP Error</a></li>
+<li class="list_apart"><a href="asp_ref_filesystem.html">ASP FileSystem</a></li>
+<li><a href="asp_ref_textstream.html">ASP TextStream</a></li>
+<li><a href="asp_ref_drive.html">ASP Drive</a></li>
+<li><a href="asp_ref_file.html">ASP File</a></li>
+<li><a href="asp_ref_folder.html">ASP Folder</a></li>
+<li><a href="asp_ref_dictionary.html">ASP Dictionary</a></li>
+<li><a href="asp_ado.html">ASP ADO</a></li>
+</ul>
+<h2>ASP 组件</h2>
+<ul class="small">
+<li><a href="asp_adrotator.html">ASP AdRotator</a></li>
+<li><a href="asp_browser.html">ASP BrowserCap</a></li>
+<li><a href="asp_contentlinking.html">ASP Content Linking</a></li>
+<li><a href="asp_contentrotator.html">ASP Content Rotator</a></li>
+</ul>
+<h2>ASP 教程总结</h2>
+<ul>
+<li><a href="asp_quickref.html">ASP 快速参考</a></li>
+<li><a href="asp_summary.html">ASP 总结</a></li>
+</ul>
+<h2>实例/测验</h2>
+<ul>
+<li><a href="../example/aspe_examples.html">ASP 实例</a></li>
+<li><a href="asp_quiz.html">ASP 测验</a></li>
+</ul>
+</div>
+<div id="selected">
+<h2>建站手册</h2>
+<ul>
+<li><a href="../site/">网站构建</a></li>
+<li><a href="../w3c/">万维网联盟</a></li>
+<li><a href="http://e.v-get.com/w3c/">W3CSchool 教程</a></li>
+<li><a href="../quality/">网站品质</a></li>
+<li><a href="../semweb/">语义网</a></li>
+<li><a href="../hosting/">网站主机</a></li>
+</ul>
+<h2><a href="http://e.v-get.com/w3c/" class="f13">W3CSchool 教程</a></h2><div class="a120x90"><script type="text/javascript">var cpro_id="u1210867";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div></div>
+</div>
+<div id="maincontent">
+<h1>ASP Cookies 集合</h1>
+<div>
+<p><a href="asp_ref_response.html">返回 response 对象参考手册</a></p>
+</div>
+<div>
+<p>Cookies 集合用于设置或取得 cookie 的值。如果 cookie 不存，就创建它，并赋予它规定的值。</p>
+<p class="note"><span>注释：</span>Response.Cookies 命令必须位于 &lt;html&gt; 标签之前。</p>
+<h3>语法：</h3>
+<pre>Response.Cookies(name)[(key)|.attribute]=value
+variablename=Request.Cookies(name)[(key)|.attribute]</pre>
+</div>
+<div>
+<table class="dataintable"> 
+  <tr>
+    <th>参数</th>
+    <th>描述</th>
+  </tr>  
+  <tr>
+    <td>name </td>
+    <td>必需。cookie 的名称。</td>
+  </tr>
+  <tr>
+    <td>value </td>
+    <td>必需 (对于 Response.Cookies 命令）。cookie 的值。</td>
+  </tr>
+  <tr>
+    <td>attribute </td>
+    <td><p>可选。规定有关 cookie 的信息。可以是下面的参数之一。</p>
+      <ul class="listintable">
+        <li>Domain - 只写；cookie 仅送往到达该域的请求。</li>
+        <li>Expires - 只写；cookie 的失效日期。如果没有规定日期，cookie 会在 session 结束时失效。</li>
+        <li>HasKeys - 只读；规定 cookie 是否拥有 key (这是唯一一个可与 Request.Cookies 命令使用的属性）</li>
+        <li>Path - 只写；如果设置，cookie 仅送往到达此路径的请求。如果没有设置，则使用应用程序的路径。</li>
+        <li>Secure - 只写；指示 cookie 是否安全。</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>key </td>
+    <td>可选。规定在何处赋值的 key。</td>
+  </tr>
+</table>
+</div>
+<div>
+<h2>实例</h2>
+<p>&#34;Response.Cookies&#34; 命令用于创建 cookie 或者设置 cookie 的值：</p>
+<pre>&lt;%
+Response.Cookies(&#34;firstname&#34;)=&#34;Alex&#34;
+%&gt;</pre>
+<p>在上面的代码中，我们创建了一个名为 &#34;firstname&#34; 的 cookie，并为它赋值 alex 。</p>
+<p>也可以为 cookie 设置属性，比如设置 cookie 的失效时间：</p>
+<pre>&lt;%
+Response.Cookies(&#34;firstname&#34;)=&#34;Alex&#34;&nbsp;
+Response.Cookies(&#34;firstname&#34;).Expires=#May 10,2002#
+%&gt;</pre>
+<p>现在，名为 &#34;firstname&#34; 的 cookie 的值是 &#34;Alex&#34;，同时它在用户电脑中的失效日期是 2002 年 5 月 10 日。</p>
+<p>&#34;Request.Cookies&#34; 命令用于取回 cookie 的值。</p>
+<p>在下面的例子中，我们取回了 cookie &#34;firstname&#34; 的值，并把它显示到页面上：</p>
+<pre>&lt;%
+fname=Request.Cookies(&#34;firstname&#34;)
+response.write(&#34;Firstname=&#34; &amp; fname)
+%&gt;</pre>
+<p>输出：</p>
+<p>Firstname=Alex</p>
+<p>一个 cookie 可以包含一个多值的集合。我们称之为 cookie 拥有 key 。</p>
+<p>在下面的例子中，我们要创建一个名为 &#34;user&#34; 的 cookie 集合。&#34;user&#34; cookie 拥有包含有关用户信息的 key 。</p>
+<pre>&lt;%
+Response.Cookies(&#34;user&#34;)(&#34;firstname&#34;)=&#34;John&#34;
+Response.Cookies(&#34;user&#34;)(&#34;lastname&#34;)=&#34;Adams&#34;
+Response.Cookies(&#34;user&#34;)(&#34;country&#34;)=&#34;UK&#34;
+Response.Cookies(&#34;user&#34;)(&#34;age&#34;)=&#34;25&#34;
+%&gt;</pre>
+<p>下面的代码可读出所有服务器已向用户发送的 cookie 。请注意，我们使用了 HasKeys 属性来判断 cookie 是否拥有 key ：</p>
+<pre>&lt;html&gt;
+&lt;body&gt;
+&lt;%
+dim x,y
+for each x in Request.Cookies
+  response.write(&#34;&lt;p&gt;&#34;)
+  if Request.Cookies(x).HasKeys then
+    for each y in Request.Cookies(x)
+      response.write(x &amp; &#34;:&#34; &amp; y &amp; &#34;=&#34;&nbsp;&amp; Request.Cookies(x)(y))
+      response.write(&#34;&lt;br /&#34;)
+    next
+  else
+    Response.Write(x &amp; &#34;=&#34; &amp; Request.Cookies(x) &amp; &#34;&lt;br /&gt;&#34;)
+  end if
+  response.write &#34;&lt;/p&gt;&#34;
+next
+%&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+%&gt;</pre>
+<p>输出：</p>
+<pre>firstname=Alex
+user:firstname=John
+user:lastname=Adams
+user:
+country=UK
+user:
+age=25</pre>
+</div>
+<div>
+<p><a href="asp_ref_response.html">返回 response 对象参考手册</a></p>
+</div>
+</div>
+<div id="sidebar">
+<div class="rs"></div>
+<div id="tools">
+<h5 id="tools_reference"><a href="asp_ref.html">ASP 参考手册</a></h5>
+<h5 id="tools_example"><a href="../example/aspe_examples.html">ASP 实例</a></h5>
+<h5 id="tools_quiz"><a href="asp_quiz.html">ASP 测验</a></h5>
+</div>
+<div class="a120x600"><script type="text/javascript">var cpro_id="u1293136";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div><div class="b"></div>
+</div>
+</body>
+</html>

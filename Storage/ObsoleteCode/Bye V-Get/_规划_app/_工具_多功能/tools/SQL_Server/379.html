@@ -1,0 +1,216 @@
+<HEAD><TITLE>Setup full-text search</TITLE>
+<META content=all name=robots>
+<META content="Article about setup full-text search (with step by step guide). MSSQLCity.Com - all about MS SQL (SQL Server Articles, FAQ, Scripts, Tips and Test Exams)." name=DESCRIPTION>
+<META content="setup full-text search, full-text, full-text indexes, full-text search, sp_fulltext_table, population, catalog, full-text catalog, stored procedure, article, sql, ms sql, sql server, 6.5, 7, 7.0, 2000" name=KEYWORDS>
+<META content="Alexander Chigrik" name=author>
+<META content="Copyright 2002-2003 MSSQLCity.Com" name=copyright>
+<META content=English name=language>
+
+<LINK href="http://www.MSSQLCity.com/lt.css" type=text/css rel=stylesheet><meta http-equiv="content-type" content="text/html; charset=gb2312"></head>
+<BODY leftMargin=0 topMargin=0 marginwidth="0" marginheight="0">
+<TABLE cellSpacing=0 cellPadding=0 width=765 border=1>
+<TBODY>
+<TR>
+<TD vAlign=top bgColor=#ffe4c4>
+<TABLE height=145 cellSpacing=0 cellPadding=0 width=145 border=0>
+<TBODY>
+<TR>
+<TD align=middle><A href="http://www.MSSQLCity.com/AboutUs.htm"><IMG height=125 alt="MSSQLCity.Com - All about MS SQL" src="http://www.MSSQLCity.com/Ads/MSSQLCity.gif" width=125 border=0></A> </TD></TR></TBODY></TABLE>
+<TABLE cellSpacing=0 cellPadding=0 width=145 border=0>
+<TBODY>
+<TR>
+<TD style="WIDTH: 35px" bgColor=#00aacc>&nbsp;</TD>
+<TD style="WIDTH: 95px" bgColor=#00aacc>&nbsp;</TD>
+<TD style="WIDTH: 15px" bgColor=#00aacc>&nbsp;</TD></TR>
+<TR>
+<TD vAlign=center width=35><IMG height=16 src="http://www.MSSQLCity.com/list.gif" width=16 align=right></TD>
+<TD onmouseover="" onmouseout="" width=95><A href="http://www.MSSQLCity.com/AboutUs.htm">About&nbsp;Us</A> </TD>
+<TD width=15>&nbsp;</TD></TR>
+<TR>
+<TD vAlign=center width=35><A href="http://www.MSSQLCity.com/Articles.htm"><IMG height=16 src="http://www.MSSQLCity.com/cbook.gif" width=30 align=right border=0></A></TD>
+<TD onmouseover="" onmouseout="" width=95><A href="http://www.MSSQLCity.com/Articles.htm">Articles</A> </TD>
+<TD width=15>&nbsp;</TD></TR></TBODY></TABLE>
+<TABLE cellSpacing=0 cellPadding=0 width=145 border=0>
+<TBODY>
+<TR>
+<TD vAlign=center width=62 bgColor=#d2b48c><A href="http://www.MSSQLCity.com/Articles/Adm/Adm.htm"><IMG height=16 src="http://www.MSSQLCity.com/obook.gif" width=30 align=right border=0></A></TD>
+<TD width=82 bgColor=#d2b48c><A href="http://www.MSSQLCity.com/Articles/Adm/Adm.htm">Administering</A> </TD>
+<TD width=1 bgColor=#d2b48c>&nbsp;</TD></TR>
+<TR>
+<TD vAlign=center width=62><A href="http://www.MSSQLCity.com/Articles/Compare/Compare.htm"><IMG height=16 src="http://www.MSSQLCity.com/cbook.gif" width=30 align=right border=0></A></TD>
+<TD onmouseover="" onmouseout="" width=82><A href="http://www.MSSQLCity.com/Articles/Compare/Compare.htm">Comparison</A> </TD>
+<TD width=1>&nbsp;</TD></TR>
+<TR>
+<TD vAlign=center width=62><A href="http://www.MSSQLCity.com/Articles/General/General.htm"><IMG height=16 src="http://www.MSSQLCity.com/cbook.gif" width=30 align=right border=0></A></TD>
+<TD onmouseover="" onmouseout="" width=82><A href="http://www.MSSQLCity.com/Articles/General/General.htm">General</A> </TD>
+<TD width=1>&nbsp;</TD></TR>
+<TR>
+<TD vAlign=center width=62><A href="http://www.MSSQLCity.com/Articles/KnowHow/KnowHow.htm"><IMG height=16 src="http://www.MSSQLCity.com/cbook.gif" width=30 align=right border=0></A></TD>
+<TD onmouseover="" onmouseout="" width=82><A href="http://www.MSSQLCity.com/Articles/KnowHow/KnowHow.htm">Know&nbsp;How</A> </TD>
+<TD width=1>&nbsp;</TD></TR>
+<TR>
+<TD vAlign=center width=62><A href="http://www.MSSQLCity.com/Articles/Replic/Replic.htm"><IMG height=16 src="http://www.MSSQLCity.com/cbook.gif" width=30 align=right border=0></A></TD>
+<TD onmouseover="" onmouseout="" width=82><A href="http://www.MSSQLCity.com/Articles/Replic/Replic.htm">Replication</A> </TD>
+<TD width=1>&nbsp;</TD></TR>
+<TR>
+<TD vAlign=center width=62><A href="http://www.MSSQLCity.com/Articles/Tuning/Tuning.htm"><IMG height=16 src="http://www.MSSQLCity.com/cbook.gif" width=30 align=right border=0></A></TD>
+<TD onmouseover="" onmouseout="" width=82><A href="http://www.MSSQLCity.com/Articles/Tuning/Tuning.htm">Tuning</A> </TD>
+<TD width=1>&nbsp;</TD></TR>
+<TR>
+<TD vAlign=center width=62><A href="http://www.MSSQLCity.com/Articles/Undoc/Undoc.htm"><IMG height=16 src="http://www.MSSQLCity.com/cbook.gif" width=30 align=right border=0></A></TD>
+<TD onmouseover="" onmouseout="" width=82><A href="http://www.MSSQLCity.com/Articles/Undoc/Undoc.htm">Undocumented</A> </TD>
+<TD width=1>&nbsp;</TD></TR>
+<TR>
+<TD vAlign=center width=62><A href="http://www.MSSQLCity.com/Articles/UDF/UDF.htm"><IMG height=16 src="http://www.MSSQLCity.com/cbook.gif" width=30 align=right border=0></A></TD>
+<TD onmouseover="" onmouseout="" width=82><A href="http://www.MSSQLCity.com/Articles/UDF/UDF.htm">UDF</A> </TD>
+<TD width=1>&nbsp;</TD></TR>
+<TR>
+<TD vAlign=center width=62><A href="http://www.MSSQLCity.com/Articles/SQL65/SQL65.htm"><IMG height=16 src="http://www.MSSQLCity.com/cbook.gif" width=30 align=right border=0></A></TD>
+<TD onmouseover="" onmouseout="" width=82><A href="http://www.MSSQLCity.com/Articles/SQL65/SQL65.htm">SQL&nbsp;6.5</A> </TD>
+<TD width=1>&nbsp;</TD></TR></TBODY></TABLE>
+<TABLE cellSpacing=0 cellPadding=0 width=145 border=0>
+<TBODY>
+<TR>
+<TD vAlign=center width=35><A href="http://www.MSSQLCity.com/FAQ.htm"><IMG height=16 src="http://www.MSSQLCity.com/cbook.gif" width=30 align=right border=0></A></TD>
+<TD onmouseover="" onmouseout="" width=95><A href="http://www.MSSQLCity.com/FAQ.htm">FAQ</A> </TD>
+<TD width=15>&nbsp;</TD></TR>
+<TR>
+<TD vAlign=center width=35><A href="http://www.MSSQLCity.com/Scripts.htm"><IMG height=16 src="http://www.MSSQLCity.com/cbook.gif" width=30 align=right border=0></A></TD>
+<TD onmouseover="" onmouseout="" width=95><A href="http://www.MSSQLCity.com/Scripts.htm">Scripts</A> </TD>
+<TD width=15>&nbsp;</TD></TR>
+<TR>
+<TD vAlign=center width=35><A href="http://www.MSSQLCity.com/Tips.htm"><IMG height=16 src="http://www.MSSQLCity.com/cbook.gif" width=30 align=right border=0></A></TD>
+<TD onmouseover="" onmouseout="" width=95><A href="http://www.MSSQLCity.com/Tips.htm">Tips</A> </TD>
+<TD width=15>&nbsp;</TD></TR>
+<TR>
+<TD vAlign=center width=35><A href="http://www.MSSQLCity.com/TestExams.htm"><IMG height=16 src="http://www.MSSQLCity.com/cbook.gif" width=30 align=right border=0></A></TD>
+<TD onmouseover="" onmouseout="" width=95><A href="http://www.MSSQLCity.com/TestExams.htm">Test&nbsp;Exams</A> </TD>
+<TD width=15>&nbsp;</TD></TR>
+<TR>
+<TD vAlign=center width=35><IMG height=16 src="http://www.MSSQLCity.com/list.gif" width=16 align=right></TD>
+<TD onmouseover="" onmouseout="" width=95><A href="http://www.MSSQLCity.com/Advertise.htm">Advertise</A> </TD>
+<TD width=15>&nbsp;</TD></TR>
+<TR>
+<TD vAlign=center width=35><IMG height=16 src="http://www.MSSQLCity.com/list.gif" width=16 align=right></TD>
+<TD onmouseover="" onmouseout="" width=95><A href="http://www.MSSQLCity.com/Download.htm">Download</A> </TD>
+<TD width=15>&nbsp;</TD></TR>
+<TR>
+<TD vAlign=center width=35><IMG height=16 src="http://www.MSSQLCity.com/list.gif" width=16 align=right></TD>
+<TD onmouseover="" onmouseout="" width=95><A href="http://www.MSSQLCity.com/History.htm">History</A> </TD>
+<TD width=15>&nbsp;</TD></TR>
+<TR>
+<TD vAlign=center width=35><IMG height=16 src="http://www.MSSQLCity.com/list.gif" width=16 align=right></TD>
+<TD onmouseover="" onmouseout="" width=95><A href="http://www.MSSQLCity.com/MSSQLCity/Search.htm">Search</A> </TD>
+<TD width=15>&nbsp;</TD></TR>
+<TR>
+<TD vAlign=center width=35><IMG height=16 src="http://www.MSSQLCity.com/list.gif" width=16 align=right></TD>
+<TD onmouseover="" onmouseout="" width=95><A href="http://www.MSSQLCity.com/Traffic.htm">Traffic</A> </TD>
+<TD width=15>&nbsp;</TD></TR>
+<TR>
+<TD vAlign=center width=35><IMG height=16 src="http://www.MSSQLCity.com/list.gif" width=16 align=right></TD>
+<TD onmouseover="" onmouseout="" width=95><A href="http://www.MSSQLCity.com/Links.htm">Related&nbsp;Links</A> </TD>
+<TD width=15>&nbsp;</TD></TR>
+<TR>
+<TD width=35 bgColor=#00aacc>&nbsp;</TD>
+<TD width=95 bgColor=#00aacc>&nbsp;</TD>
+<TD width=15 bgColor=#00aacc>&nbsp;</TD></TR></TBODY></TABLE>
+<TABLE cellSpacing=0 cellPadding=0 width=145 border=0>
+<TBODY>
+<TR>
+<TD align=middle height=50><A href="http://www.MSSQLCity.com/Advertise.htm"><IMG height=30 alt="Your button logo" src="http://www.MSSQLCity.com/Ads/100x30.gif" width=100 border=0></A> </TD></TR>
+<TR>
+<TD>
+<CENTER><A href="">Add&nbsp;to&nbsp;Favorites</A></CENTER></TD></TR>
+<TR>
+<TD style="FONT-SIZE: 2pt; WIDTH: 145px; HEIGHT: 10px">&nbsp;</TD></TR>
+<TR>
+<TD bgColor=#00aacc>&nbsp;</TD>
+<TD bgColor=#00aacc>&nbsp;</TD>
+<TD bgColor=#00aacc>&nbsp;</TD></TR></TBODY></TABLE></TD>
+<TD vAlign=top height="100%">
+<TABLE height="100%" cellSpacing=0 cellPadding=0 width=620 border=0>
+<TBODY>
+<TR>
+<TD width=10>&nbsp;</TD>
+<TD style="FONT: 9pt Verdana" vAlign=top width=600><BR>
+<CENTER><A href="http://www.MSSQLCity.com/Advertise.htm"><IMG height=60 src="http://www.MSSQLCity.com/Ads/topArticles.gif" width=468 border=0></A></CENTER><BR>
+<H1>Setup full-text search: step by step guide</H1><FONT face=Verdana size=2><B><I>
+<P>Alexander Chigrik</B></I><BR><A href="http://www.mssqlcity.com/Articles/Adm/SetupFTS/mailto:chigrik@mssqlcity.com">chigrik@mssqlcity.com</A><BR>
+<P>
+<HR>
+
+<P></P>
+<DL>
+<DT><A href="#part_1"><B>Introduction</B></A> 
+<DT><A href="#part_2"><B>General concepts</B></A> 
+<DT><A href="#part_3"><B>Full-text indexes vs. regular SQL indexes</B></A> 
+<DT><A href="#part_4"><B>Maintaining full-text indexes</B></A> 
+<DT><A href="#part_5"><B>SQL Server 2000 full-text search enhancements</B></A> 
+<DT><A href="#part_6"><B>Step by step example</B></A> 
+<DT><A href="#part_7"><B>Literature</B></A> </DT></DL>
+<P>
+<HR>
+
+<P></P>
+<H2><A name=part_1></A>Introduction</H2>In this article, I want to tell you about some general full-text search concepts: about software requirements, about Microsoft Search Service, about maintaining full-text indexes, about the comparison of full-text indexes with regular SQL indexes, and how to setup full-text search step by step.<BR><BR>This document was developed against Microsoft SQL Server 7.0, but full-text search can work in SQL Server 2000 as well, and SQL Server 2000 has some full-text search enhancements.<BR><BR>
+<H2><A name=part_2></A>General concepts</H2>SQL Server 7.0 supports full-text search. This is a new feature, which was not supported in the previous versions. The full-text search allows you to create special indexes for SQL Server character-based data. These special indexes, called full-text indexes, support linguistic and proximity searches on several languages. By using full-text indexes, you can search by words, phrases, words in close proximity to each other, and by inflexional forms of verbs and nouns. The full-text indexes can be created on the following SQL Server character-based data types:<BR><BR>
+<LI>char 
+<LI>nchar 
+<LI>varchar 
+<LI>nvarchar 
+<LI>text 
+<LI>ntext<BR><BR><B>Note.</B> In additional to the above data types, SQL Server 2000 can create full-text indexes of text data stored in image columns (only the text data stored in image columns can be indexed, images or pictures cannot be indexed).<BR><BR>The full-text search runs as a service named Microsoft Search Service (MSSearch service).<BR><BR>To work with full-text search, you should have the following operation systems:<BR><BR>
+<UL>
+<LI><B>Windows NT Server version 4.0</B> (with Service Pack 4 or later for SQL Server 7.0 and Service Pack 5 or later for SQL Server 2000) 
+<LI><B>Windows NT Server Enterprise Edition version 4.0</B> (with Service Pack 4 or later for SQL Server 7.0 and Service Pack 5 or later for SQL Server 2000) 
+<LI><B>Windows 2000 Server</B> 
+<LI><B>Windows 2000 Advanced Server</B> 
+<LI><B>Windows 2000 DataCenter</B> </LI></UL>It's because the MSSearch service cannot be installed on Windows 9x, Windows NT Workstation, or Windows 2000 Professional clients, but these clients can use full-text search, when the MSSearch service installed on the server machine.<BR><BR>The full-text search supported under the following SQL Server editions:<BR><BR>
+<LI><B>SQL Server 7.0 Standard Edition</B> 
+<LI><B>SQL Server 7.0 Enterprise Edition</B> 
+<LI><B>SQL Server 2000 Personal Edition</B> (except on Windows 9x) 
+<LI><B>SQL Server 2000 Standard Edition</B> 
+<LI><B>SQL Server 2000 Developer Edition</B> 
+<LI><B>SQL Server 2000 Enterprise Edition</B> 
+<LI><B>SQL Server 2000 Enterprise Evaluation Edition</B><BR><BR>To install full-text search in SQL Server 7.0, you should choose <B>Custom</B> installation type, because full-text search is not supported under the <B>Typical</B> or <B>Minimum</B> installation types.<BR><BR>To install full-text search in SQL Server 2000, you should choose <B>Typical</B> or <B>Custom</B> installation types, because full-text search is not supported under the <B>Minimum</B> installation type.<BR><BR>Because working with full-text search is very resource expensive, you should have enough physical and virtual memory. Set the virtual memory size to at least 3 times the physical memory installed in the computer, and set the SQL Server <B>max server memory</B> server configuration option to half the virtual memory size setting (1.5 times the physical memory).<BR><BR>
+<H2><A name=part_3></A>Full-text indexes vs. regular SQL indexes</H2>The full-text indexes very differ from the regular SQL Server indexes. The full-text indexes are stored in the full-text catalogs outside of SQL Server databases and managed by the MSSearch service. Full-text catalog is a set of operation system files (the default directory determined during installation is <I>Ftdata</I> subdirectory in the Microsoft SQL Server directory; for example, <I>C:\MSSQL7\Ftdata</I>, the default directory for SQL Server 7.0; and <I>C:\Program Files\Microsoft SQL Server\Mssql\Ftdata</I>, the default directory for SQL Server 2000).<BR><BR>Unlike regular SQL indexes, only one full-text index per table is allowed. 249 nonclustered and 1 clustered regular SQL indexes are allowed per table.<BR><BR>Unlike regular SQL indexes, full-text indexes are not updated automatically when the data upon which they are based is inserted, updated, or deleted. To reflect these changes, you should update full-text indexes manually, or create a job to update these indexes on a scheduled basis.<BR><BR>Unlike regular SQL indexes, full-text indexes cannot be created, managed, or dropped using the Transact-SQL statements, only by using SQL Server Enterprise Manager, wizards, or stored procedures. For example, <B>DROP INDEX</B> and <B>CREATE INDEX</B> statements are not allowed for full-text indexes.<BR>
+<H2><A name=part_4></A>Maintaining full-text indexes</H2>Because full-text indexes are not updated automatically when the data upon which they are based is inserted, updated, or deleted, you should immediately update full-text indexes when data in its associated table changes.<BR><BR>There are two ways under SQL Server 7.0 to synchronize full-text indexes with its table data:<BR><BR>
+<LI><B>Full Population</B> 
+<LI><B>Incremental Population</B><BR><BR><B>Full Population</B> - is a population, when the index entries are built for all the rows in all the full-text catalog's tables.<BR><BR><B>Incremental Population</B> - is a population, which only adjusts index entries for rows that have been added, deleted, or modified after the last population. To make <B>Incremental Population</B> the indexed table must have a column of the timestamp data type. If the indexed table does not have a timestamp column, only full population can be used.<BR><BR>The population of full-text indexes can be made either through Enterprise Manager or through the <B>sp_fulltext_catalog</B> system stored procedure.<BR><BR>Because full-text index population can take time, these populations should be scheduled during CPU idle time and slow production periods, such as in the evenings or on weekends.<BR>
+<H2><A name=part_5></A>SQL Server 2000 full-text search enhancements</H2>SQL Server 2000 introduces a new way to maintain the full-text indexes. There is <B>Change tracking</B>. <B>Change tracking</B> population maintains a log of all changes to the full-text indexed data, and propagates the changes to the full-text index. There are three <B>Change tracking</B> population's options:<BR><BR>
+<LI><B>Background</B> 
+<LI><B>On demand</B> 
+<LI><B>Scheduled</B><BR><BR>With the <B>Background</B> option, changes to rows in the table are propagated to the full-text index as they occur. You can use this option only when you have enough CPU and memory, because it can take many time.<BR><BR>With the <B>On demand</B> option, you should manually update the full-text index by using the sp_fulltext_table with the update_index for the @action parameter.<BR><BR>With the <B>Scheduled</B> option, you can use SQLServerAgent to schedule periodic jobs that execute the sp_fulltext_table system stored procedure with the update_index for the @action parameter.<BR><BR>This is the example to start the <B>Change tracking</B> with the <B>Background</B> option for the Product table in the Sales database:<BR><BR>
+<TABLE width="100%">
+<TBODY>
+<TR bgColor=#dcdcdc>
+<TD><PRE>USE Sales
+GO
+EXEC sp_fulltext_table 'Product', 'Start_change_tracking'
+EXEC sp_fulltext_table 'Product', 'Start_background_updateindex'
+GO
+</PRE></TD></TD></TR></TBODY></TABLE><BR><B>Note.</B> The <B>Change tracking</B> does not track any WRITETEXT or UPDATETEXT operations.<BR><BR>Another SQL Server 2000 full-text search enhancement is image filtering. Image filtering allows you to index and query documents stored in image columns (only the text data stored in image columns can be indexed, images or pictures cannot be indexed).<BR><BR><B>Note.</B> Though a single computer can have multiple instances of SQL Server 2000, only one MSSearch service can exist. So, a single MSSearch service manages the full-text indexes for all the instances of SQL Server 2000 on the computer.<BR><BR>
+<H2><A name=part_6></A>Step by step example</H2>To set up full-text search, you should make the following steps:<BR><BR>
+<LI><B>Enable the database to support full-text indexes.</B> 
+<LI><B>Create a full-text catalog.</B> 
+<LI><B>Register appropriate table(s) for full-text processing.</B> 
+<LI><B>Add each column that participates in a full-text index.</B> 
+<LI><B>Create a full-text index.</B> 
+<LI><B>Start a full population of the full-text catalog.</B><BR><BR>Setup full-text search can be made either through Enterprise Manager or through the system stored procedures.<BR><BR>In this example, I will create a full text index for the <B>pr_info</B> column from the <B>pub_info</B> table in the <B>pubs</B> database. Because using GUI interface is much easier and understandable way to set up full-text search in comparison with using system stored procedures, I will illustrate the setup full-text search using the SQL Server Enterprise Manager.<BR><BR>Run SQL Server Enterprise Manager, expand a server group and expand a server. Expand Databases and click a database to enable. On the Tools menu, click Full-Text Indexing as shown in Figure 1.<BR><BR>
+<CENTER><IMG height=389 alt="Choose SQL Server Full-Text Indexing Wizard" src="http://www.mssqlcity.com/Articles/Adm/SetupFTS/1.gif" width=510><BR>Figure 1.<BR><BR></CENTER>This will launch the SQL Server Full-Text Indexing Wizard shown in Figure 2.<BR><BR>
+<CENTER><IMG height=385 alt="Welcome to the SQL Server Full-Text Indexing Wizard" src="http://www.mssqlcity.com/Articles/Adm/SetupFTS/2.gif" width=498><BR>Figure 2.<BR><BR></CENTER>Selecting the <B>Next</B> button will take you to the choosing of a SQL Server table for full-text indexing as shown in Figure 3.<BR><BR>
+<CENTER><IMG height=385 alt="Select a table" src="http://www.mssqlcity.com/Articles/Adm/SetupFTS/3.gif" width=498><BR>Figure 3.<BR><BR></CENTER>Select the <B>pub_info</B> table and click the <B>Next</B> button. Clicking the <B>Next</B> button will take you to Figure 4.<BR><BR>
+<CENTER><IMG height=385 alt="Select an Index" src="http://www.mssqlcity.com/Articles/Adm/SetupFTS/4.gif" width=498><BR>Figure 4.<BR><BR></CENTER>Now you must select a unique index for the <B>pub_info</B> table. Select <B>UPKCL_pubinfo</B> and click the <B>Next</B> button. Clicking the <B>Next</B> button will take you to Figure 5.<BR><BR>
+<CENTER><IMG height=385 alt="Select Table Columns" src="http://www.mssqlcity.com/Articles/Adm/SetupFTS/5.gif" width=498><BR>Figure 5.<BR><BR></CENTER>Now you should select the character-based columns you want to be eligible for full-text queries. Add <B>pr_info</B> column and click the <B>Next</B> button. Clicking the <B>Next</B> button will take you to Figure 6.<BR><BR>
+<CENTER><IMG height=385 alt="Select a Catalog" src="http://www.mssqlcity.com/Articles/Adm/SetupFTS/6.gif" width=498><BR>Figure 6.<BR><BR></CENTER>Now you must select an existing full-text catalog or create one for the <B>pubs</B> database. Because in our example there are no existing full-text catalogs, you must create the new <B>fcPubs</B> full-text catalog. Clicking the <B>Next</B> button will take you to Figure 7.<BR><BR>
+<CENTER><IMG height=385 alt="Select or Create Population Schedules (Optional)" src="http://www.mssqlcity.com/Articles/Adm/SetupFTS/7.gif" width=498><BR>Figure 7.<BR><BR></CENTER>At this step, you should select or create population schedules. Because in our example there are no existing population schedules, you must created the new schedule by clicking the <B>New schedule</B> button. Clicking this button will take you to Figure 8.<BR><BR>
+<CENTER><IMG height=318 alt="New Full-Text Indexing Schedule" src="http://www.mssqlcity.com/Articles/Adm/SetupFTS/8.gif" width=420><BR>Figure 8.<BR><BR></CENTER>Specify the new population schedule's parameters. Clicking the <B>Change</B> button will take you to Figure 9.<BR><BR>
+<CENTER><IMG height=371 alt="Edit Recurring Full-Text Indexing Job Scheduling" src="http://www.mssqlcity.com/Articles/Adm/SetupFTS/9.gif" width=473><BR>Figure 9.<BR><BR></CENTER>Edit recurring full-text indexing job scheduling as shown in Figure 9 and click the <B>Next</B> button. Clicking the <B>Next</B> button will take you to Figure 10.<BR><BR>
+<CENTER><IMG height=385 alt="Select or Create Population Schedules (Optional)" src="http://www.mssqlcity.com/Articles/Adm/SetupFTS/10.gif" width=498><BR>Figure 10.<BR><BR></CENTER>Selecting the <B>Next</B> button will take you to the completion of the configuration as shown in Figure 11.<BR><BR>
+<CENTER><IMG height=385 alt="Completing the SQL Server Full-Text Indexing Wizard" src="http://www.mssqlcity.com/Articles/Adm/SetupFTS/11.gif" width=498><BR>Figure 11.<BR><BR></CENTER>SQL Server will then perform a number of operations corresponding to the options that were selected. Once completed, you should see Figure 12 confirming that Full-Text Indexing Wizard completed successfully.<BR><BR>
+<CENTER><IMG height=215 alt="Define full-text indexing" src="http://www.mssqlcity.com/Articles/Adm/SetupFTS/12.gif" width=395><BR>Figure 12.<BR><BR></CENTER>Now you should start a full population of the <B>fcPubs</B> full-text catalog as shown in Figure 13.<BR><BR>
+<CENTER><IMG height=336 alt="Start Population" src="http://www.mssqlcity.com/Articles/Adm/SetupFTS/13.gif" width=595><BR>Figure 13.<BR><BR></CENTER>Once completed, you should see Figure 14 confirming that population of full-text catalog started successfully.<BR><BR>
+<CENTER><IMG height=119 alt="Population of full-text catalog started successfully" src="http://www.mssqlcity.com/Articles/Adm/SetupFTS/14.gif" width=320><BR>Figure 14.<BR><BR></CENTER>
+<H2><A name=part_7></A>Literature</H2>1. <A href="http://msdn.microsoft.com/library/en-us/createdb/cm_fullad_3bs2.asp" target=_blank>Full-Text Indexes</A><BR><BR>2. <A href="http://msdn.microsoft.com/library/en-us/architec/8_ar_sa2_5dro.asp" target=_blank>Full-Text Indexing Support</A><BR><BR>3. <A href="http://msdn.microsoft.com/library/en-us/architec/8_ar_sa2_0ehx.asp" target=_blank>Full-Text Query Architecture</A><BR><BR>4. <A href="http://msdn.microsoft.com/library/en-us/createdb/cm_fullad_3ynn.asp" target=_blank>Maintaining Full-Text Indexes</A><BR><BR>5. <A href="http://msdn.microsoft.com/library/en-us/acdata/ac_8_qd_15_5i94.asp" target=_blank>Implementation of Full-text Search</A><BR><BR></FONT>
+<CENTER><A href="http://www.MSSQLCity.com/Advertise.htm"><IMG height=60 src="http://www.MSSQLCity.com/Ads/Adds7.gif" width=468 border=0></A></CENTER><BR></LI></TD>
+<TD style="WIDTH: 10px">&nbsp;</TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></BODY>

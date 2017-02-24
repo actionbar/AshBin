@@ -1,0 +1,110 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title></title>
+</head>
+<body>
+<script type="text/javascript">
+<!--
+var GETstr=location.search.substr(1);
+//alert(GETstr);
+var GET=new Array();
+GETarr=GETstr.split('&'); 
+for(var i=0;i<GETarr.length;i++){
+  Tmp=GETarr[i].split('=');
+  GET[Tmp[0]]=decodeURIComponent(Tmp[1]);
+}
+
+if(GET['clock123']!=1 && GET['clock123']!=2 && GET['clock123']!=3){
+  GET['clock123']=1;
+}
+if(GET['mid']<1 || GET['mid']>15){
+  GET['mid']=1;
+}
+if(!GET['text']){
+  GET['text']='休息，休息一下吧！';
+}
+if(!GET['time'] || !GET['time'].match(/\d+:\d+/)){
+  alert('时间格式'+GET['time']+'出错！设定失败。');
+}
+
+var set_H_M=GET['time'];
+//两个参数，一个是cookie的名子，一个是值escape
+var cookieEnabled=(typeof navigator.cookieEnabled!='undefined' && navigator.cookieEnabled)?true:false;
+
+
+
+
+function setCookie(name,value,time){
+  if(cookieEnabled==false){ alert('您的浏览器未开通cookie，执行失败！'); return false; }
+  if(!time || isNaN(time)) time=365; //此 cookie 将被保存 365 天
+  var expires=new Date();    //new Date("December 31, 9998");
+  expires.setTime(expires.getTime()+time*24*60*60*1000);
+  var cookieStr=encodeURIComponent(value);
+  if(cookieStr.length>3072){ //alert('所设置的cookie数据太大，系统将自动缩减');
+    cookieStr=cookieStr.substring(0,3072).replace(/[\|\s]+$/,'');
+  }
+  document.cookie=name+'='+cookieStr+';expires='+expires.toGMTString()+';path=/;';
+}
+
+function sendMusic(){
+  parent.document.getElementById('tryMusicFr').src='trymusic.html?mid='+GET['mid']+'';
+  setTimeout("openMusic()",3000);
+}
+
+
+
+
+
+
+
+
+
+if(GET['repeat']==1){
+  var cookieexpires=1;
+
+  function tick(){
+    var once=window.setTimeout("tick()",1000);
+    var date=new Date()
+    var time=date.getHours()+':'+date.getMinutes();
+    if(time==set_H_M){
+      sendMusic();
+	  window.clearTimeout(once);
+    }
+  }
+  tick();
+  function openMusic(){
+    window.focus();
+    alert('闹钟'+GET['clock123']+'提醒您：现在是'+set_H_M+'\n'+GET['text']+'\n[点确定关闭]');
+    parent.document.getElementById('tryMusicFr').src='about:blank';
+    parent.document.getElementById('clock'+GET['clock123']+'ye').innerHTML='';
+    parent.document.getElementById('clock'+GET['clock123']+'ye').title='';
+    parent.document.getElementById('clock'+GET['clock123']+'no').innerHTML='';
+    parent.document.getElementById('clock'+GET['clock123']+'no').title='';
+  }
+
+}else{
+  var cookieexpires=365;
+  function tick(){
+    var date=new Date()
+    var time=date.getHours()+':'+date.getMinutes()+':'+date.getSeconds();
+    if(time==set_H_M+':0'){
+      sendMusic();
+    }
+    window.setTimeout("tick()",1000);
+  }
+  tick();
+  function openMusic(){
+    window.focus();
+    alert('闹钟'+GET['clock123']+'提醒您：现在是'+set_H_M+'\n'+GET['text']+'\n[点确定关闭]');
+    parent.document.getElementById('tryMusicFr').src='about:blank';
+  }
+}
+setCookie('cookieColok'+GET['clock123']+'','setclock.html?clock123='+GET['clock123']+'&repeat='+GET['repeat']+'&time='+GET['time']+'&mid='+GET['mid']+'&text='+GET['text']+'',cookieexpires)
+
+-->
+</script>
+
+</body>
+</html>

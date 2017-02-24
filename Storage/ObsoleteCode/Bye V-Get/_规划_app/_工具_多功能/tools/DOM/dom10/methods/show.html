@@ -1,0 +1,100 @@
+<html xmlns:rdl>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<script src="rdl_method.js"></script>
+<base target="_self">
+</head>
+<body>
+
+<script>
+//collFriendObjects=new Array();
+//collFriendProperties=new Array();
+//collFriendMethods=new Array();
+//collFriendEvents=new Array();
+//collFriendCollections=new Array();
+
+collFriendMethods=new Array(
+'createPopup','hide'
+);
+
+collFriendObjects=new Array(
+'popup'
+);
+
+//collIE40=new Array();
+//collIE50=new Array();
+//collIE55=new Array();
+//collIE60=new Array();
+
+collIE55=new Array(
+'popup'
+);
+
+//sStyle='';
+
+sScript=
+'<script>\n'+
+'var oPopup = window.createPopup();\n'+
+'function rdl_doClick(){\n'+
+'var oMessage=document.all("oMessage");\n'+
+'with (oPopup.document.body) {\n'+
+'style.backgroundColor="lightyellow";\n'+
+'style.border="solid black 1px";\n'+
+'innerHTML=oMessage.value;\n'+
+'}\n'+
+'oPopup.show(70, 70, 180, 60);\n'+
+'}\n'+
+'<\/script>\n';
+
+sCode=
+'<input id=oMessage type=text size=40 value="点击弹出窗口外面的区域关闭它。">\n'+
+'<br><br>\n'+
+'<input type=button value=" 显示弹出窗口 " onclick="rdl_doClick();">&nbsp;<input type=button value=" 关闭弹出窗口 " onclick="oPopup.hide();">\n';
+
+iWinWidth=320;
+
+iWinHeight=200;
+
+</script>
+
+<div id=idContent>
+
+<div id=idContentTitle><span id=idTitleName>show</span>版本：DHTML Object Model　返回值：无</div>
+
+<div class=cssColumnTitle>语法：</div>
+<div>
+<i>popup</i><b> . show ( </b><i>iX</i><b> , </b><i>iY</i><b> , </b><i>iWidth</i><b> , </b><i>iHeight</i><b> , </b><i>oElement</i><b> ) </b>
+</div>
+
+<div class=cssColumnTitle>参数：</div>
+<table>
+<tr><td nowrap><i> iX </i></td><td nowrap><b>:</b></td>
+<td><b>必选项</b>。整数(Integet)。指定弹出窗口(<a href="../objects/popup.html"> popup </a>)左上角横坐标。单位为像素(<b> px </b>)。</td></tr>
+<tr><td nowrap><i> iY </i></td><td nowrap><b>:</b></td>
+<td><b>必选项</b>。整数(Integet)。指定弹出窗口(<a href="../objects/popup.html"> popup </a>)左上角纵坐标。单位为像素(<b> px </b>)。</td></tr>
+<tr><td nowrap><i> iWidth </i></td><td nowrap><b>:</b></td>
+<td><b>必选项</b>。整数(Integet)。指定弹出窗口(<a href="../objects/popup.html"> popup </a>)宽度。单位为像素(<b> px </b>)。</td></tr>
+<tr><td nowrap><i> iHeight </i></td><td nowrap><b>:</b></td>
+<td><b>必选项</b>。整数(Integet)。指定弹出窗口(<a href="../objects/popup.html"> popup </a>)高度。单位为像素(<b> px </b>)。</td></tr>
+<tr><td nowrap><i> oElement </i></td><td nowrap><b>:</b></td>
+<td><b>可选项</b>。对象(Element)。指定<i> iX </i>和<i> iY </i>坐标所相对于的对象。如果忽略此参数，则默认相对于桌面(<b>Desktop</b>)。</td></tr>
+</table>
+
+<div class=cssColumnTitle>返回值：</div>
+<div>
+无
+</div>
+
+<div class=cssColumnTitle>说明：</div>
+<div>
+显示弹出窗口(<a href="../objects/popup.html"> popup </a>)。
+</div>
+
+
+
+</div>
+</body>
+</html>
+
+<!-- Part of RDL(TM) - Written by Rain1977 
+HomeSite: http://www.dhtmlet.com  E-Mail: dhtmlet@hotmail.com -->

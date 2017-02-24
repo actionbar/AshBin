@@ -1,0 +1,21 @@
+RewriteEngine on
+RewriteRule ^/?$ http://yiwu.wuliu.v-get.com/news/ [L,R=301]
+
+
+#RewriteRule ^sitemap\.xml$ a/sitemap.php?s=%{HTTP_HOST} [L]
+#RewriteCond %{HTTP_HOST} ^news\.v-get\.com$
+#RewriteRule ^(\d{4})-\d{2}-\d{2}/(\d+)\.html$ f.php?y=$1&i=$2&%{QUERY_STRING} [L]
+#RewriteRule ^view/(\d+)\.html$ f.php?i=$1&%{QUERY_STRING} [L]
+#RewriteCond %{HTTP_HOST} ^news\.v-get\.com$
+
+#RewriteRule ^list/index_(\d+)\.html$ http://yiwu.wuliu.v-get.com/news/ [NC,L,R=302]
+
+#RewriteCond %{HTTP_HOST} ^[\w-]+\.news\.v-get\.com$  
+#RewriteRule ^([a-z]+)/index_(\d+)\.html$ /ex/$1/%{HTTP_HOST}.php?p=$2&%{QUERY_STRING} [L]
+
+#RewriteCond %{HTTP_HOST} ^(\w+)\.news\.v-get\.com$
+#RewriteRule ^/?$ /%{HTTP_HOST}.php?%{QUERY_STRING} [L]
+
+
+
+#ErrorDocument 404 /error.html

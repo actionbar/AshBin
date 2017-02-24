@@ -1,0 +1,396 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>进制转换_可以实现各类进制间的相互转换</title>
+<meta name="keywords" content="进制转换,可以实现各类进制间的相互转换,二进制,进制转换,进制工具,进制计算">
+<meta content="进制转换,可以实现各类进制间的相互转换" name="description" />
+<link href="../images/style.css" rel="stylesheet" type="text/css" />
+<style type="text/css">
+<!--
+body {margin:0; padding:0;background: #FFF url('../images/top3.gif') repeat-x top; font-size:12px;color:#666}
+.style1 {font-size: 14px}
+-->
+</style>
+<SCRIPT language=JavaScript>
+<!--
+self.moveTo(0,0)
+self.resizeTo(screen.availWidth,screen.availHeight)
+//-->
+</SCRIPT>
+
+<SCRIPT>
+ss="0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_@"
+s7nx.value=10
+
+function v10toX(n,m)
+{
+m=String(m).replace(/ /gi,"")
+if(m=="")return ""
+if(parseInt(m)!=m){M("请输入整数！");return ""}
+var t=""
+var a=ss.substr(0,n)
+while(m!=0)
+{
+	var b=m%n
+	t=a.charAt(b)+t
+	m=(m-b)/n
+}
+return t
+}
+
+function vXto10(n,m)
+{
+m=String(m).replace(/ /gi,"")
+if(m=="")return ""
+var a=ss.substr(0,n)
+if(eval("m.replace(/["+a+"]/gi,'')")!=""){M("请输入"+n+"进制数！");return ""}
+var t=0,c=1
+for(var x=m.length-1;x>-1;x--)
+{
+t+=c*(a.indexOf(m.charAt(x)))
+c*=n
+}
+return t
+}
+
+
+function vXtoY(n,m,y)
+{
+a=vXto10(n*1,m)
+if(a=="")return ""
+a=v10toX(y,a)
+return a
+}
+</SCRIPT>
+</HEAD>
+<BODY>
+<table width="960" height="75" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td width="264" rowspan="2" align="center"><a href="../index.html">
+	<img src="../images/logo.gif" width="224" height="38" border="0" /></a></td>
+    <td height="24" valign="top">
+	<table width="321" height="24" border="0" align="right" cellpadding="0" cellspacing="0" background="../images/top2.gif">
+        <tr>
+          <td align="center" class="cwhite12"><a href="#" class="cwhite12">tools.kqiqi.com</a>　<a href="#" OnClick='this.style.behavior="url(#default#homepage)";this.setHomePage("http://tools.kqiqi.com");' class="cwhite12">设为首页</a> | <a href="#" onClick="window.external.AddFavorite('http://tools.kqiqi.com','客齐齐实用查询工具');" class="cwhite12">收藏本站</a></td>
+        </tr>
+    </table></td>
+  </tr>
+</table>
+<table width="960" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td><table height="38" border="0" cellpadding="0" cellspacing="0" style="margin-left:5px">
+      <tr align="center">
+          <td width="88" background="../images/nav1.gif" style="padding-top:5px"><a href="../index.html" class="navfh2">首　页</a></td>
+          <td width="88" background="../images/nav1.gif" style="padding-top:5px"><a href="../admin/index.html" class="navfh2">站长工具</a></td>
+          <td width="88" background="../images/nav1.gif" style="padding-top:5px"><a href="../query/index.html" class="navfh2">查询工具</a></td>
+          <td width="88" background="../images/nav1.gif" style="padding-top:5px"><a href="../calculation/index.html" class="navfh2">计算工具</a></td>
+          <td width="88" background="../images/nav1.gif" style="padding-top:5px"><a href="../password/index.html" class="navfh2">加密解密</a></td>
+          <td width="88" background="../images/nav2.gif" style="padding-top:5px"><a href="index.html" class="navfh1">转换工具</a></td>
+          <td width="88" background="../images/nav1.gif" style="padding-top:5px"><a href="../color/index.html" class="navfh2">颜色工具</a></td>
+          <td width="88" background="../images/nav1.gif" style="padding-top:5px"><a href="../web/index.html" class="navfh2">网络辅助</a></td>
+          <td width="88" background="../images/nav1.gif" style="padding-top:5px"><a href="../picture/index.html" class="navfh2">图片工具</a></td>
+          <td width="88" background="../images/nav1.gif" style="padding-top:5px"><a href="../others/index.html" class="navfh2">其它工具</a></td>
+        </tr>
+    </table></td>
+  </tr>
+</table>
+<script language="javascript" src="../js/others_top.js"></script>
+<table width="960" border="0" align="center" cellpadding="0" cellspacing="0" class="mainbg1">
+  <tr valign="top">
+    <td width="20">　</td>
+    <td width="190">
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td colspan="2" height="10">
+
+</td>
+</tr>
+      <tr>
+        <td width="75%">
+		<img src="../images/t9.gif" width="32" height="32" align="absmiddle" />　<span class="navfh1">工具列表</span></td>
+        <td width="25%">　</td>
+      </tr>
+    </table>
+     <table width="100%"  border="0" cellpadding="0" cellspacing="0" background="../images/t12.gif" class="mar5">
+        <tr>
+          <td height="10"> </td>
+        </tr>
+      </table>
+<table width="100%"  border="0" cellpadding="0" cellspacing="0" class="mar5">
+      <tr>
+        <td>　
+ <div id="menu">
+ <div class="box">
+    <a href="GB2312-BIG5.html">汉字简体繁体转换
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+
+  <div class="box">
+    <a href="JiaGuWen.html">传统中文排版工具
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+    <div class="box">
+    <a href="HanZi-PinYin.html">汉字转换拼音
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+  <div class="box">
+    <a href="PinYinDic.html">拼音字典
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+  <div class="box">
+    <a href="PublicUnitConversion.html">公制单位换算
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+  <div class="box">
+    <a href="CommonUnitConversion.html">普通单位换算
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+  <div class="box">
+    <a href="MoneyExchange.html">世界货币汇率兑换
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+  <div class="box">
+    <a href="JinZhi.html">进制转换
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+<div class="box">
+    <a href="UTF-8.html">UTF-8 转换工具
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+<div class="box">
+    <a href="Html-Js.html">Html-Js代码互转
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+<div class="box">
+    <a href="Html-Asp.html">Html转Asp
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+<div class="box">
+    <a href="Html-Perl.html">Html转Perl
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+<div class="box">
+    <a href="Html-Php.html">Html转Php
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+  <div class="box">
+    <a href="Html-Sws.html">Html转Sws
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+  <div class="box">
+    <a href="SutraTool.html">经典小工具
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+  <div class="box">
+    <a href="AsciiGraphemic.html">ASCII字形生成器
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+  <div class="box">
+    <a href="Gb-Utf.html">GB2312转换UTF-8 工具
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+ 
+</div>
+ </td>
+      </tr>
+    </table>
+
+      <table width="100%" height="17"  border="0" cellpadding="0" cellspacing="0" background="t2.gif" class="mar5">
+        <tr>
+          <td> </td>
+        </tr>
+      </table>
+      
+    </td>
+    <td width="27">　</td>
+    <td width="700">
+     
+            <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+          <tr>
+      <td height="10" colspan="2">
+      </td>
+      </tr>
+        <tr valign="top">
+         <td width="40"><img src="../images/jzzh.gif" width="32" height="31"> </td>
+          <td><span class="navfh1">进制转换</span></td>
+          
+        </tr>
+      </table>
+      <hr size="1" style="color:#E3E8E9" />
+      <table width="100%"  border="0" cellpadding="3" cellspacing="1">
+              <tr>
+          <td>
+             <TABLE cellSpacing=0 cellPadding=0 width=690 align=center border=0>
+  <TBODY>
+  <TR align=middle bgColor=#ffffff>
+    <TD>　</TD></TR></TBODY></TABLE>
+<TABLE style="BORDER-COLLAPSE: collapse" cellPadding=0 width=690 align=center 
+border=0>
+  <TBODY>
+  <TR>
+    <TD vAlign=top align=middle height=31>
+	<font style="color:#FF0000; font-size:14px; font-weight:bolder">进制转换</font></TD></TR>
+  <TR>
+    <TD vAlign=top align=middle height=25>
+      <P><FONT color=#333333>可以实现各类进制间的相互转换</FONT> </P></TD></TR>
+  <TR>
+    <TD vAlign=top>
+      <TABLE style="BORDER-COLLAPSE: collapse" borderColor=#d9d9d9 cellSpacing=0 
+      cellPadding=8 width=690 align=center bgColor=#fcfcfc border=1>
+        <TBODY>
+        <TR>
+          <TD align=middle>
+            <TABLE cellSpacing=0 cellPadding=2 border=0>
+              <TBODY>
+              <TR>
+                <TD><B>10进制转成16进制：</B></TD>
+                <TD align=right><INPUT class=bt_mouseout onMouseOver="this.className='bt_mouseover'" style="PADDING-TOP: 0px" onclick=t1_16.value=v10toX(16,t1_10.value) onMouseOut="this.className='bt_mouseout'" type=button value=" 转 换 " name=button> 
+                </TD></TR>
+              <TR>
+                <TD align=right colSpan=2>十 进 制： <INPUT name=t1_10> → 十六进制： 
+                  <INPUT readOnly name=t1_16> </TD></TR></TBODY></TABLE></TD></TR>
+        <TR>
+          <TD align=middle>
+            <TABLE cellSpacing=0 cellPadding=2 border=0>
+              <TBODY>
+              <TR>
+                <TD><B>16进制转成10进制：</B></TD>
+                <TD align=right><INPUT class=bt_mouseout onMouseOver="this.className='bt_mouseover'" style="PADDING-TOP: 0px" onclick=t2_10.value=vXto10(16,t2_16.value) onMouseOut="this.className='bt_mouseout'" type=button value=" 转 换 " name=button2> 
+                </TD></TR>
+              <TR>
+                <TD align=right colSpan=2>十六进制： <INPUT name=t2_16> → 十 进 制： 
+                  <INPUT readOnly name=t2_10> </TD></TR></TBODY></TABLE></TD></TR>
+        <TR>
+          <TD align=middle>
+            <TABLE cellSpacing=0 cellPadding=2 border=0>
+              <TBODY>
+              <TR>
+                <TD><B>10进制转成2进制：</B></TD>
+                <TD align=right><INPUT class=bt_mouseout onMouseOver="this.className='bt_mouseover'" style="PADDING-TOP: 0px" onclick=t3_2.value=v10toX(2,t3_10.value) onMouseOut="this.className='bt_mouseout'" type=button value=" 转 换 " name=button2> 
+                </TD></TR>
+              <TR>
+                <TD align=right colSpan=2>十 进 制： <INPUT name=t3_10> → 二 进 制： 
+                  <INPUT readOnly name=t3_2> </TD></TR></TBODY></TABLE></TD></TR>
+        <TR>
+          <TD align=middle>
+            <TABLE cellSpacing=0 cellPadding=2 border=0>
+              <TBODY>
+              <TR>
+                <TD><B>2进制转成10进制：</B></TD>
+                <TD align=right><INPUT class=bt_mouseout onMouseOver="this.className='bt_mouseover'" style="PADDING-TOP: 0px" onclick=t4_10.value=vXto10(2,t4_2.value) onMouseOut="this.className='bt_mouseout'" type=button value=" 转 换 " name=button2> 
+                </TD></TR>
+              <TR>
+                <TD align=right colSpan=2>二 进 制： <INPUT name=t4_2> → 十 进 制： 
+                  <INPUT readOnly name=t4_10> </TD></TR></TBODY></TABLE></TD></TR>
+        <TR>
+          <TD align=middle>
+            <TABLE cellSpacing=0 cellPadding=2 border=0>
+              <TBODY>
+              <TR>
+                <TD><B>10进制转成64进制：</B></TD>
+                <TD align=right><INPUT class=bt_mouseout onMouseOver="this.className='bt_mouseover'" style="PADDING-TOP: 0px" onclick=t5_64.value=v10toX(64,t5_10.value) onMouseOut="this.className='bt_mouseout'" type=button value=" 转 换 " name=button2> 
+                </TD></TR>
+              <TR>
+                <TD align=right colSpan=2>十 进 制： <INPUT name=t5_10> → 六四进制： 
+                  <INPUT readOnly name=t5_64> </TD></TR></TBODY></TABLE></TD></TR>
+        <TR>
+          <TD align=middle>
+            <TABLE cellSpacing=0 cellPadding=2 border=0>
+              <TBODY>
+              <TR>
+                <TD><B>64进制转成10进制：</B></TD>
+                <TD align=right><INPUT class=bt_mouseout onMouseOver="this.className='bt_mouseover'" style="PADDING-TOP: 0px" onclick=t6_10.value=vXto10(64,t6_64.value) onMouseOut="this.className='bt_mouseout'" type=button value=" 转 换 " name=button2> 
+                </TD></TR>
+              <TR>
+                <TD align=right colSpan=2>六四进制： <INPUT name=t6_64> → 十 进 制： 
+                  <INPUT readOnly name=t6_10> </TD></TR></TBODY></TABLE></TD></TR>
+        <TR>
+          <TD align=middle>
+            <TABLE cellSpacing=0 cellPadding=2 width='border="0"'>
+              <TBODY>
+              <TR>
+                <TD><B>X进制转成Y进制：</B></TD>
+                <TD align=right><INPUT class=bt_mouseout onMouseOver="this.className='bt_mouseover'" style="PADDING-TOP: 0px" onclick=t7_y.value=vXtoY(s7nx.value,t7_x.value,s7ny.value) onMouseOut="this.className='bt_mouseout'" type=button value=" 转 换 " name=button2> 
+                </TD></TR>
+              <TR>
+                <TD align=right colSpan=2><SELECT name=s7nx> 
+                    <SCRIPT>
+											t=""
+											for(x=2;x<65;x++)t+="<option value="+x+">"+x+"</option>"
+											document.write(t)
+											</SCRIPT>
+                  </SELECT> 进制 <INPUT id=t7_x name=t7_x> → <SELECT name=s7ny> 
+                    <SCRIPT>
+											t=""
+											for(x=2;x<65;x++)t+="<option value="+x+">"+x+"</option>"
+											document.write(t)
+											</SCRIPT>
+                  </SELECT> 进制 <INPUT id=t7_y readOnly name=t7_y> 
+        </TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE>
+   
+          </td>
+        </tr>
+        </table>
+      <br />
+         <script type="text/javascript" src="../js/wz.js"></script>
+         <script type="text/javascript" src="../js/Copy.js"></script>
+           
+      <br />
+      </td>
+    <td width="20">　</td>
+  </tr>
+</table>
+<table width="960" border="0" align="center" cellpadding="0" cellspacing="0" class="mainbg2">
+  <tr>
+    <td height="25"></td>
+  </tr>
+</table>
+
+<table width="960" border="0" align="center" cellpadding="0" cellspacing="0" class="mainbg2">
+  <tr>
+    <td><table width="920"  border="0" align="center" cellpadding="0" cellspacing="20" class="bottombg">
+    <tr>
+        <td align="center">
+          Copyright &copy; <a href="http://tools.kqiqi.com/">客齐齐实用查询工具</a> All rights reserved - <a href="../map.html">网站地图</a> - <a href="../contact.html">联系我们</a> - <script language="javascript" src="../js/bottom.js"></script>
+          </td>
+      </tr>
+    </table></td>
+  </tr>
+</table>
+</body>
+</html>

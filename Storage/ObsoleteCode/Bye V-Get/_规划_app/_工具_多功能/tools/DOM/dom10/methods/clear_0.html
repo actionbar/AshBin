@@ -1,0 +1,102 @@
+<html xmlns:rdl>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<script src="rdl_method.js"></script>
+<base target="_self">
+</head>
+<body>
+
+<script>
+//collFriendObjects=new Array();
+//collFriendProperties=new Array();
+//collFriendMethods=new Array();
+//collFriendEvents=new Array();
+//collFriendCollections=new Array();
+
+collFriendMethods=new Array(
+'write','writeln','open','close'
+);
+
+collFriendObjects=new Array(
+'document'
+);
+
+collFriendEvents=new Array(
+'onbeforeunload','onunload'
+);
+
+//collIE40=new Array();
+//collIE50=new Array();
+//collIE55=new Array();
+//collIE60=new Array();
+
+collIE40=new Array(
+'document'
+);
+
+//sStyle='';
+
+sScript=
+'<script>\n'+
+'function rdl_doAdd(){\n'+
+'var oSelect=document.all("idSelect");\n'+
+//'document.open("text\/html",oSelect.options[oSelect.selectedIndex].value);\n'+
+'document.writeln("");\n'+
+'document.close();\n'+
+'}\n'+
+'<\/script>\n';
+
+sCode=
+'<table height=40 width=90%><tr>\n'+
+/*'<td nowrap>\n'+
+'<select id=idSelect style="width:240px;">\n'+
+'<option value="replace" selected>覆盖<\/option>\n'+
+'<option value="">追加<\/option>\n'+
+'<\/select><\/td>\n'+*/
+'<td nowrap>\n'+
+'<input type=button value=" 清除 " onclick="rdl_doAdd();"><\/td>\n'+
+'<\/tr><\/table>\n';
+
+iWinWidth=320;
+
+iWinHeight=200;
+
+</script>
+
+<div id=idContent>
+
+<div id=idContentTitle><span id=idTitleName>clear</span>版本：DOM1　返回值：无</div>
+
+<div class=cssColumnTitle>语法：</div>
+<div>
+<a href="../objects/document.html"><b>document</b></a><b> . clear () </b>
+</div>
+
+<div class=cssColumnTitle>参数：</div>
+<div>
+无
+</div>
+
+<div class=cssColumnTitle>返回值：</div>
+<div>
+无
+</div>
+
+<div class=cssColumnTitle>说明：</div>
+<div>
+清除当前文档所有内容。<br>
+现在 Internet Explorer 6.0 已不再支持此方法。要清除当前文档内的所有元素，请使用如下代码：<br><br>
+</div>
+<div id=idSimpleCode>
+document.write("") ;<br>
+document.close();
+</div>
+
+
+
+</div>
+</body>
+</html>
+
+<!-- Part of RDL(TM) - Written by Rain1977 
+HomeSite: http://www.dhtmlet.com  E-Mail: dhtmlet@hotmail.com -->

@@ -1,0 +1,77 @@
+{template header}
+
+<form action="{eval echo miniurl('login');}" method="post" id="loginform">
+	<table class="formtable" cellspacing="2" cellpadding="0">
+		<caption>
+			<h2>请登陆</h2>
+			<p>如果您在本站已拥有帐号，请使用已有的帐号信息直接进行登录即可，不需重复注册。</p>
+		</caption>
+	</table>
+	<div class="upax"></div>
+	<div class="ugb">
+		<div class="ugb2">
+			<div class="ugb3">
+				<div class="ugb4">
+					<table class="formtable" cellspacing="6">
+						<tr>
+							<td width="15%" align="right">用户名/Email:</td>
+							<td>
+								<input type="text" class="inp" size="40" name="username" />
+							</td>
+						</tr>
+						<tr>
+							<td width="15%" align="right">密码:</td>
+							<td>
+								<input type="password" class="inp" size="40" name="password" />
+							</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td><input type="checkbox" name="rememberme" /> 下次自动登录</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>
+								<input type="submit" value="登 录" class="btn" />
+							</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+	<input type="hidden" name="submit_post" value="1" />
+</form>
+<div style="height:20px;"></div>
+<table class="formtable">
+	<caption>
+		<h2>还没有注册吗？</h2>
+		<p>如果还没有本站的通行帐号，请先注册一个属于自己的帐号吧。</p>
+	</caption>
+</table>
+<div class="upax"></div>
+<div class="ugb">
+	<div class="ugb2">
+		<div class="ugb3">
+			<div class="ugb4">
+				<table class="formtable" cellspacing="6">
+					<tr>
+						<td width="15%" align="right"></td>
+						<td>
+							<input type="button" value="注 册" class="btn" onclick="location.href='{eval echo miniurl('register');}';" />
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!--{if !empty($error_message)}-->
+<script type="text/javascript">
+$(function(){
+	alert("{$error_message}");
+});
+</script>
+<!--{/if}-->
+{template footer}

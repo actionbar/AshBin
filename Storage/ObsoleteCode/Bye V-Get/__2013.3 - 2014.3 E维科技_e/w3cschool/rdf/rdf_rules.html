@@ -1,0 +1,116 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="../c3.css" />
+<title>RDF 规则</title>
+</head>
+<body class="xml">
+<div id="wrapper">
+<div id="header">
+<a href="http://e.v-get.com/w3cschool/" style="float:left;">W3CSchool 在线教程</a>
+<div class="q g"><script type="text/javascript">var cpro_id="u1163355"</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div>
+<div id="navfirst">
+<ul id="menu">
+<li id="h"><a href="../h.html">HTML教程</a></li>
+<li id="x"><a href="../x.html">XML教程</a></li>
+<li id="b"><a href="../b.html">浏览器脚本</a></li>
+<li id="s"><a href="../s.html">服务器脚本</a></li>
+<li id="d"><a href="../d.html">dot net教程</a></li>
+<li id="m"><a href="../m.html">多媒体教程</a></li>
+<li id="w"><a href="../w.html">建站手册</a></li>
+</ul>
+</div><div id="navsecond">
+<div id="course">
+<h2>RDF 教程</h2>
+<ul>
+<li><a href="http://e.v-get.com/w3cschool/">RDF 首页</a></li>
+<li><a href="rdf_intro.html">RDF 简介</a></li>
+<li><a href="rdf_rules.html" title="">RDF 规则</a></li>
+<li><a href="rdf_example.html" title="">RDF 实例</a></li>
+<li><a href="rdf_main.html" title="">RDF 元素</a></li>
+<li><a href="rdf_containers.html" title="">RDF 容器</a></li>
+<li><a href="rdf_collections.html" title="">RDF 集合</a></li>
+<li><a href="rdf_schema.html" title="">RDF Schema</a></li>
+<li><a href="rdf_dublin.html" title="">RDF 都柏林核心</a></li>
+<li><a href="rdf_owl.html" title="">RDF OWL</a></li>
+</ul>
+</div>
+<div id="selected">
+<h2>建站手册</h2>
+<ul>
+<li><a href="../site/">网站构建</a></li>
+<li><a href="../w3c/">万维网联盟</a></li>
+<li><a href="http://e.v-get.com/w3c/">W3CSchool 教程</a></li>
+<li><a href="../quality/">网站品质</a></li>
+<li><a href="../semweb/">语义网</a></li>
+<li><a href="../hosting/">网站主机</a></li>
+</ul>
+<h2><a href="http://e.v-get.com/w3c/" class="f13">W3CSchool 教程</a></h2><div class="a120x90"><script type="text/javascript">var cpro_id="u1210867";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div></div>
+</div>
+<div id="maincontent">
+<h1>RDF 规则</h1>
+<div id="tpn">
+<ul class="prenext">
+<li class="pre"><a href="rdf_intro.html">上一页</a></li>
+<li class="next"><a href="rdf_example.html">下一页</a></li>
+</ul>
+</div>
+<div id="intro">
+<p><strong>RDF 使用 Web 标识符 (URIs) 来标识资源。</strong></p>
+<p><strong>RDF 使用属性和属性值来描述资源。</strong></p>
+</div>
+<div>
+<h2>RDF 资源、属性和属性值</h2>
+<p>RDF 使用 Web 标识符来标识事物，并通过属性和属性值来描述资源。</p>
+<p>对资源、属性和属性值的解释：</p>
+<ul>
+<li><em>资源</em>是可拥有 URI 的任何事物，比如 &#34;http://e.v-get.com/rdf&#34;</li>
+<li><em>属性</em>是拥有名称的资源，比如 &#34;author&#34; 或 &#34;homepage&#34;</li>
+<li><em>属性值</em>是某个属性的值，比如 &#34;David&#34; 或 &#34;http://e.v-get.com&#34;  (请注意一个属性值可以是另外一个资源）</li>
+</ul>
+<p>下面的 RDF 文档可描述资源 &#34;http://e.v-get.com/rdf&#34;：</p>
+<pre>&lt;?xml version=&#34;1.0&#34;?&gt;
+&lt;RDF&gt;
+  &lt;Description about=&#34;http://e.v-get.com/RDF&#34;&gt;
+    &lt;author&gt;David&lt;/author&gt;
+    &lt;homepage&gt;http://e.v-get.com&lt;/homepage&gt;
+  &lt;/Description&gt;
+&lt;/RDF&gt;</pre>
+<p class="tip"><span>提示：</span>上面是一个简化的例子。命名空间被忽略了。</p>
+</div>
+<div>
+<h2>RDF 陈述</h2>
+<p>资源、属性和属性值的组合可形成一个<em>陈述</em> (被称为陈述的<em>主体</em>、<em>谓语</em>和<em>客体</em>）。</p>
+<p>请看一些陈述的具体例子，来加深理解：</p>
+<p>陈述：&#34;The author of http://e.v-get.com/rdf is David.&#34;</p>
+<ul>
+<li>陈述的主体是：http://e.v-get.com/rdf</li>
+<li>谓语是：author</li>
+<li>客体是：David</li>
+</ul>
+<p>陈述：&#34;The homepage of http://e.v-get.com/rdf is http://e.v-get.com&#34;.</p>
+<ul>
+<li>陈述的主体是：http://e.v-get.com/rdf</li>
+<li>谓语是：homepage</li>
+<li>客体是：http://e.v-get.com</li>
+</ul>
+</div>
+<div id="bpn">
+<ul class="prenext">
+<li class="pre"><a href="rdf_intro.html">上一页</a></li>
+<li class="next"><a href="rdf_example.html">下一页</a></li>
+</ul>
+</div>
+</div>
+<div id="sidebar">
+<div class="rs"></div>
+<div id="tools">
+<h5 id="tools_reference"><a href="rdf_reference.html">RDF 参考手册</a></h5>
+</div>
+<div class="a120x600"><script type="text/javascript">var cpro_id="u1293136";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div><div class="b"></div>
+</div>
+</body>
+</html>

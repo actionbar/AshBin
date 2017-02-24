@@ -1,0 +1,65 @@
+<html>
+<head>
+<title>字符串位置项</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+
+<link rel = stylesheet href = "image/style.css">
+</head>
+<body bgcolor="#ffffff">
+<table width="688" border="0" cellspacing="0" cellpadding="0" align="center">
+  <tr bgcolor="EEEEEE"> 
+    <td height="22"><a href="index.htm">主页</a></td>
+  </tr>
+</table><br>
+<table border="0" cellpadding="0" cellspacing="0" width="688" align="center" height="490">
+  <tr valign="top"> 
+    <td rowspan="4" width="91">&nbsp; </td>
+    <td height="68" width="131"> 
+      <p><img src="image/doc.gif"></p>
+    </td>
+    <td rowspan="4" width="18"><b></b> </td>
+    <td height="68" width="387"><img src="image/title_doc.gif"></td>
+    <td rowspan="4" width="61"> 
+      <h6>&nbsp;</h6>
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td rowspan="3" valign="top" class="pt10" align="center" width="131" bgcolor="EEEEEE"> 
+      <p>&nbsp;</p>
+      <p><font color="#FF0000">※ 17.6 字符串位置项</font></p>
+       
+	</td>
+  </tr>
+  <tr valign="top"> 
+    <td width="387" height="308"> 
+      <table width="100%" border="0" cellpadding="0">
+        <tr> 
+          <td>
+
+           <h4><a name="_Toc467208999">17.6 字符串位置项</a></h4>
+<p>对于指向结构完整的XML文档来说，选择特定的元素几乎总是足够用了。但是，有时需要指向非排列有序的XML数据，或通过CDATA段、注释、处理指令或其他方式嵌入大块非XML文本的XML数据。在这些情况下，可能需要引用文档中特定范围的文本，而这些文本又没有映射到任何特定标记元素上，那么可以使用字符串位置项来达到此目的。</p>
+<p>字符串位置项指向指定字符出现的位置。不像大多数其他位置项那样，字符串位置项可以指向注释、CDATA以及类似方面内部的位置。例如，下面的代码段寻找清单17-1中第一次出现的字符串Harold：</p>
+<p><a href="http://www.theharolds.com/genealogy.xml">http://www.theharolds.com/genealogy.xml#string(l,"Harold")</a></p>
+<p>此句指示紧跟在Charles Walter Harold的NAME元素中Harold的<i>H</i>之前的位置。这与当基于元素的选择符指向整个NAME元素不同。</p>
+<p>可以增加作为可选项的第三个位置参数，以指定从匹配字符串开始往右边有多少个字符要作为目标。例如，由于Harold有六个字母，因此下面的语句将紧跟在第一次出现的字符串Harold之后的任何字符作为目标：</p>
+<p><a href="http://www.theharolds.com/genealogy.xml">http://www.theharolds.com/genealogy.xml#string(l,"Harold",6)</a></p>
+<p>第四个可选项指定要选择的字符的数量。例如，下面的URI选择清单17-1中第一次出现的整个字符串Harold：</p>
+<p><a href="http://www.theharolds.com/genealogy.xml">http://www.theharolds.com/genealogy.xml#string(l,"Harold",1,6)</a></p>
+<p>在字符串位置项中使用空字符串（“”）来指定文档中的特定字符。例如，下面的URI指向文档中第256个字符（更准确地说，指向文档中第255和第256元素之间的位置）。</p>
+<p>http://www.theharolds.com/genealogy.xml#string(256, “ “)</p>
+<p>当匹配字符串时，大小写和空格都要考虑，忽略标记字符。</p>
+<p>使用关键字all作为第一个参数，就能够获得出现的所有字符串而不必请求特定字符串匹配的特定实例。例如，下面的规则选择文档中出现的所有Bellau字符串：</p>
+<p><a href="http://www.theharolds.com/genealogy.xml">http://www.theharolds.com/genealogy.xml#string(all,"Bellau")</a></p>
+<p>这种方式会产生间断性的选择，许多应用程序可能不理解这种选择，所以使用此技术要小心。</p>
+ 
+<a href='565.htm'>&lt;&lt;上一篇</a>&nbsp;&nbsp;<a href='567.htm'>下一篇&gt;&gt;</a></td>
+        </tr>
+      </table>
+      <p>&nbsp; </p>
+    </td>
+  </tr>
+</table>
+
+</body>
+
+</html>

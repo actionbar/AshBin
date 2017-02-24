@@ -1,0 +1,58 @@
+tech 文章   
+  a 第一个类    技术专题 1【主机】域名新闻host/2【建站】web/3云【SOHO】新闻office/4网络【营销】新闻sem/5【视觉】新闻vi/6【软件】新闻soft/ 7 【情感】码农程序猿故事爱情ponkey /8联盟【网赚】代理 union/9【公告】  notice/
+  
+  b= 第二类  网站分类 
+  1【硬件】计算机硬件pc  包括服务器 DNS服务器 黑客 + 软件使用（非开发）+网站安全
+  2【社交+移动】social/
+  3【电商】站shop  + 企业网站+医疗网站
+  
+  4【娱乐】网游娱乐game（小说）/5【影音】音乐影视mv（AV）/
+  6【网络技术】Smart 软件开发，非使用  以及网络编辑
+  7【综合】信息门户综合（功能性）home/
+  8【垂直】垂直网站  vertical/  
+  9【搜索】引擎se (SEO)  + 互联网前景 + 资讯+创业公司+ 网络联盟+网站运营 + 域名 + 网络维权
+  
+  c=第三类   从业者指南：站长之家
+  1 业界【资讯】 news /2 【创业】访谈pioneer/3 网络【维权】ensure/4 【趋势】传言trend/5 【站长】经验交流master/6 好站/软件优秀【推荐】good/ 7 【安全】防护 safe/8【运营】管理 manage/ 9【技术】资源 program
+  
+  e.v-get.com/coding/editor.html
+  e 学习干货（纯代码）：第四类
+  1 editor网络编辑
+  2 API 开发
+  3 CMS/框架开发
+  4 PHP 源代码干货   == HTML /CSS 等难度不大，不需要再用干货
+  5 
+  
+  
+  
+  h=title
+  k=keyword
+  d=description
+  f=file 
+  g=  是否优秀： 默认0， （背景：fg0 fg1,不用逻辑运算，增加速度） 1推荐（一次阅读、时事推荐/） 2 热帖 3 爆料（可能是谣言）4纯图片 5原创 6付费采用  7精华（） 8 优秀（查询类，常用） 9置顶
+  文章：【1推荐 3爆料 8优秀 9置顶】
+   e.v-get.com/tech/top1_1.html  e.v-get.com/tech/top3_1.html
+  m=varchar(16) 用户名英文 ==以后对用户名设定一个 类，可以查看该用户名发布的所有
+    默认： [^]V-Get[^]  
+	   [-]JSP/ASPX/ASP/PHP （开源/Discuz/Ecshop） /  HTML(JS+CSS) /SEO/Datebase /  Sales  / Android /Editor E维科技编辑专用学习   /Server (Linux/Win/服务器  DNS相关)  /Domain 域名[-]   ==> php类文章 
+		   显示大写，查询的时候，一律替换成小写比较
+	       mysql列的别名是忽略大小写的。‘E' = ’e'
+	     e.v-get.com/tech/u/ e.v-get.com/tech/u/PHP_1.html
+  n=转载地
+  t=时间
+
+e.v-get.com/tech/u/PHP_1.html 责任编辑所编辑的文章
+
+e.v-get.com/tech/host_1.html  host_2.html
+
+e.v-get.com/2013-05-06/24.html   分类就不要加在里面了，因为以后分类可能会变
+e.v-get.com/tech/s?sk=
+
+# 开源，链接到文章 #
+e.v-get.com/open/php-soft.html  php 相关编程软件下载（mysql zend notepad++）
+e.v-get.com/open-/php-chat.html  e.v-get.com/open/php-chat-2.html
+e.v-get.com/open/js-chat.html  e.v-get.com/open/php-chat-2.html
+
+
+
+e.v-get.com/tech/good_php_1.html  php的开源站，或者优秀站推荐

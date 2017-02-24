@@ -1,0 +1,19 @@
+<html>
+<head><link rel="stylesheet" type="text/css" href="showcode.css" /></head>
+<body>
+<pre>
+&lt;html&gt;
+&lt;body&gt;
+<code class="aspcode">&lt;%
+Set fs=Server.CreateObject(&#34;Scripting.FileSystemObject&#34;)
+Response.Write(fs.GetBaseName(&#34;c:\windows\cursors\abc.cur&#34;))
+Response.Write(&#34;&lt;br /&gt;&#34;)
+Response.Write(fs.GetBaseName(&#34;c:\windows\cursors\&#34;))
+Response.Write(&#34;&lt;br /&gt;&#34;)
+Response.Write(fs.GetBaseName(&#34;c:\windows\&#34;))
+set fs=nothing
+%&gt;</code>
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+</body>

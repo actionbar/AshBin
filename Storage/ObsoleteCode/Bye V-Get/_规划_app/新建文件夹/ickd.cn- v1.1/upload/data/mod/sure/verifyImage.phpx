@@ -1,0 +1,10 @@
+<?php
+	!defined('IN_TW') && exit ('Access Denied');
+    $request=new HttpClient('www.sure56.com');
+//    $request->setDebug(true);
+//    $TW_SESSION['ASP.NET_SessionId']=$TW_SESSION['ASP_NET_SessionId'];
+    $request->setCookies($TW_SESSION);
+    $request->get('/query/VerifyCode.aspx');
+    header('Content-type:image/Jpeg');
+    echo $request->getContent();
+?>

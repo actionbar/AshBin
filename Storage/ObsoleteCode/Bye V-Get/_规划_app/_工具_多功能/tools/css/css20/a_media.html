@@ -1,0 +1,77 @@
+<html xmlns:rdl>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<script src="rdl_atrules.js"></script>
+<base target="_self">
+</head>
+<body>
+
+<script>
+
+//collFriendProperties=new Array();
+//collFriendDeclarations=new Array();
+//collFriendAtRules=new Array();
+//collFriendElements=new Array();
+//collFriendClasses=new Array();
+
+collFriendAtRules=new Array(
+'@import'
+);
+
+collFriendDeclarations=new Array(
+'!important'
+);
+
+//collIE40=new Array();
+//collIE50=new Array();
+//collIE55=new Array();
+//collIE60=new Array();
+
+//sStyle='';
+
+//sScript='';
+
+//sCode='';
+
+//iWinWidth=360;
+
+//iWinHeight=240;
+
+bRunCode=false;
+
+bElements=false;
+
+</script>
+
+<div id=idContent>
+
+<div id=idContentTitle><span id=idTitleName>@media</span>版本：CSS2　 兼容性：IE5+</div>
+
+<div class=cssColumnTitle>语法：</div>
+<div>
+<b> @media </b><i> sMedia </i><b> { </b><i>sRules</i><b> } </b>
+</div>
+
+<div class=cssColumnTitle>取值：</div>
+<table>
+<tr><td nowrap><i> sMedia </i></td><td nowrap><b>:</b></td><td>指定设备名称。请参阅<a href="z_media.html"> 附录：设备类型 </a></td></tr>
+<tr><td nowrap><i> sRules </i></td><td nowrap><b>:</b></td><td>样式表定义</td></tr>
+</table>
+
+<div class=cssColumnTitle>说明：</div>
+<div>
+指定样式表规则用于指定的设备类型。此规则无默认值。<br>请参阅<b> link </b>对象的<b> media </b>属性(特性)。
+</div>
+
+<div class=cssColumnTitle>示例：</div>
+<div id=idSimpleCode>
+// 设置显示器用字体尺寸<br>@media screen {<br>BODY {font-size:12pt; }<br>}<br>&nbsp;<br>
+// 设置打印机用字体尺寸<br>@media print {<br>@import  "print.css"<br>BODY {font-size:8pt;}<br>}
+</div>
+
+</div>
+</body>
+</html>
+
+<!-- Part of RDL(TM) - Written by Rain1977 
+HomeSite: http://www.dhtmlet.com  E-Mail: dhtmlet@hotmail.com -->

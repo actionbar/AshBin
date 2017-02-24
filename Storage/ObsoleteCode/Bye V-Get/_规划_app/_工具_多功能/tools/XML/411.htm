@@ -1,0 +1,90 @@
+<html>
+<head>
+<title>内部参数实体</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+
+<link rel = stylesheet href = "image/style.css">
+</head>
+<body bgcolor="#ffffff">
+<table width="688" border="0" cellspacing="0" cellpadding="0" align="center">
+  <tr bgcolor="EEEEEE"> 
+    <td height="22"><a href="index.htm">主页</a></td>
+  </tr>
+</table><br>
+<table border="0" cellpadding="0" cellspacing="0" width="688" align="center" height="490">
+  <tr valign="top"> 
+    <td rowspan="4" width="91">&nbsp; </td>
+    <td height="68" width="131"> 
+      <p><img src="image/doc.gif"></p>
+    </td>
+    <td rowspan="4" width="18"><b></b> </td>
+    <td height="68" width="387"><img src="image/title_doc.gif"></td>
+    <td rowspan="4" width="61"> 
+      <h6>&nbsp;</h6>
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td rowspan="3" valign="top" class="pt10" align="center" width="131" bgcolor="EEEEEE"> 
+      <p>&nbsp;</p>
+      <p><font color="#FF0000">※ 9.4 内部参数实体</font></p>
+       
+	</td>
+  </tr>
+  <tr valign="top"> 
+    <td width="387" height="308"> 
+      <table width="100%" border="0" cellpadding="0">
+        <tr> 
+          <td>
+
+           <h4>9.4 内部参数实体</h4>
+<p>通用实体成为文档的一部分，而非DTD的组成成分。通用实体引用仅可用于DTD中能成为文档组成部分的位置上；通用实体引用不能插入那些仅为DTD而非文档内容的文本。然而在DTD中的实体引用通常是有用的，因此XML提供了参数实体引用的手段。</p>
+<p>除了如下两个关键处不同，参数实体引用与通用实体引用非常相似：</p>
+<p>1．参数实体引用以百分号%开始，而非&amp;符号。</p>
+<p>2．参数实体引用仅可在DTD中出现，而不能位于文档内容中。</p>
+<p>参数实体引用在DTD中声明的方法与通用实体类似，只是在实体名前加一百分号。句法结构如下：</p>
+<p>&lt;!ENTITY % name "replacement text"&gt;</p>
+<p>实体名为实体内容的缩写。读者所见为双引号间的替换文本。例如：</p>
+<p>&lt;!ENTITY % ERH "Elliotte Rusty Harold"&gt;</p>
+<p>&lt;!ENTITY COPY99 "Copyright 1999 %ERH;"&gt;</p>
+<p>当使用参数实体引用替换通用实体引用后，前文中无法实现的缩写（#PCDATA）变为有效：</p>
+<p>&lt;!ENTITY % PCD "(#PCDATA)"&gt; </p>
+<p>&lt;!ELEMENT ANTIMAL %PCD;&gt; </p>
+<p>&lt;!ELEMENT FOOD %PCD;&gt;</p>
+<p>在元素间的子元素和属性共享通用列表中呈现参数实体引用的真实值。若替换的文本块较大且使用次数较多，则参数实体引用用处更大。例如，假设在DTD声明中有许多层次结构元素，如PARAGRAPH、CELL和HEADING。每个该类元素都有确定的内联元素数目，类似PERSON、DEGREE、MODEL、PRODUCT、ANIMAL、INGREDIENT等等的内部元素。这些元素的声明可能表现为下述方式：</p>
+<p>&lt;!ELEMENT PARAGRAPH </p>
+<p> (PERSON | DEGREE | MODEL | PRODUCT | ANTIMAL | INGREDIENT)*&gt;</p>
+<p>&lt;!ELEMENT CELL </p>
+<p> (PERSON | DEGREE | MODEL | PRODUCT | ANTIMAL | INGREDIENT)*&gt;</p>
+<p>&lt;!ELEMENT HEADING </p>
+<p> (PERSON | DEGREE | MODEL | PRODUCT | ANTIMAL | INGREDIENT)*&gt;</p>
+<p>容器元素都有相同的内容。假如创建了一个新元素如EQUATION、CD或ACCOUNT，则该元素必须声明为所有三个元素的子元素。若在前两个元素中添加新元素，却忘了在第三个元素中添加，就会引发问题。若元素的数目为30或者300个，而非3个，则问题将成倍增加。</p>
+<p>若对每个容器元素不是给出单独的子元素列表，则DTD的维护将较为简便。替代的方法是子元素列表变为参数实体引用，然后在每个声明元素声明中应用参数实体引用。例如：</p>
+<p>&lt;!ENTITY % inlines </p>
+<p> "(PERSON | DEGREE | MODEL | PRODUCT | ANTIMAL | INGREDIENT)*"&gt;?</p>
+<p>&lt;!ELEMENT PARAGRAPH %inlines;&gt;</p>
+<p>&lt;!ELEMENT CELL %inlines;&gt;</p>
+<p>&lt;!ELEMENT HEADING %inlines;&gt;</p>
+<p>当添加新元素时，仅需简单地改变一个参数实体声明，而勿需改变3个、30或300个元素声明。</p>
+<p>参数实体引用必须在使用前声明。下例是非法的，因为%PCD；引用在使用两次后才加以声明：</p>
+<p>&lt;!ELEMENT FOOD %PCD;&gt; </p>
+<p>&lt;!ELEMENT ANTIMAL %PCD;&gt; </p>
+<p>&lt;!ENTITY % PCD "(#PCDATA)"&gt;</p>
+<p>参数实体引用仅能用于提供外部DTD子集中的声明。也就是说，参数实体引用仅能出现在外部DTD子集的声明中，上述例子若用于内部DTD子集，则所有引用无效。</p>
+<p>在内部DTD子集中，参数实体引用仅能用于声明之外。例如下述语句在内部和外部DTD子集中均有效。</p>
+<p>&lt;!ENTITY % hr "&lt;!ELEMENT HR EMPTY&gt;"&gt;</p>
+<p>%hr;</p>
+<p>当然，这与将HR元素声明为不带参数实体引用相比没有带来使用上的便利：</p>
+<p>&lt;!ELEMENT HR EMPTY&gt;</p>
+<p>参数实体引用主要用于内部DTD子集引用外部参数实体的情况；也就是引入不同文件中的声明或部分声明。下一节将讲述这部分内容。</p>
+ 
+<a href='410.htm'>&lt;&lt;上一篇</a>&nbsp;&nbsp;<a href='412.htm'>下一篇&gt;&gt;</a></td>
+        </tr>
+      </table>
+      <p>&nbsp; </p>
+    </td>
+  </tr>
+</table>
+
+</body>
+
+</html>

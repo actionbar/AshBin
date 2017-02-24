@@ -1,0 +1,236 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>存储过程使用大全</title>
+<style type="text/css">
+<!--
+body {
+	font-size: 10.4pt;
+	line-height: 22px;
+}
+-->
+</style>
+</head>
+
+<body bgcolor="eeeeee" leftmargin="20" marginwidth="20">
+<p><strong>存储过程使用大全</strong></p>
+<hr>
+<p> 1，调用没有参数的存储过程<br>
+  &lt;%<br>
+  set conn=server.CreateObject(&quot;adodb.connection&quot;)<br>
+  set cmd=server.CreateObject(&quot;adodb.command&quot;)<br>
+  strconn=&quot;dsn=pubs;uid=sa;pwd&quot;</p>
+<p>conn.Open strconn<br>
+  set cmd.ActiveConnection=conn</p>
+<p>cmd.CommandText=&quot;{call nono}&quot;</p>
+<p>''set rs=cmc.exe 或者cmd.execute</p>
+<p>set rs=cmd.Execute()</p>
+<p>%&gt;<br>
+  2，一个输入的参数的存储过程<br>
+  &lt;%<br>
+  set conn=server.CreateObject(&quot;adodb.connection&quot;)<br>
+  set cmd=server.CreateObject(&quot;adodb.command&quot;)<br>
+  strconn=&quot;dsn=pubs;uid=sa;pwd&quot;</p>
+<p>conn.Open strconn<br>
+  set cmd.ActiveConnection=conn</p>
+<p>cmd.CommandText=&quot;{call oneinput(?)}&quot;<br>
+  cmd.Parameters.Append cmd.CreateParameter(&quot;@aaa&quot;,adInteger ,adParamInput 
+  )<br>
+  cmd(&quot;@aaa&quot;)=100</p>
+<p>cmd.Execute()</p>
+<p>%&gt;<br>
+  3，一个输入参数和一个输出的参数<br>
+  &lt;%<br>
+  set conn=server.CreateObject(&quot;adodb.connection&quot;)<br>
+  set cmd=server.CreateObject(&quot;adodb.command&quot;)<br>
+  strconn=&quot;dsn=pubs;uid=sa;pwd&quot;</p>
+<p>conn.Open strconn<br>
+  set cmd.ActiveConnection=conn</p>
+<p>cmd.CommandText = &quot;{call oneinout(?,?)}&quot;<br>
+  cmd.Parameters.Append cmd.CreateParameter(&quot;@aaa&quot;,adInteger,adParamInput)<br>
+  cmd(&quot;@aaa&quot;)=10<br>
+  cmd.Parameters.Append cmd.CreateParameter(&quot;@bbb&quot;,adInteger,adParamOutput)</p>
+<p>cmd.Execute()</p>
+<p>bbb=cmd(&quot;@bbb&quot;)<br>
+  %&gt;<br>
+  4，一个输入参数，一个输出参数，和一个返回值<br>
+  &lt;%<br>
+  set conn=server.CreateObject(&quot;adodb.connection&quot;)<br>
+  set cmd=server.CreateObject(&quot;adodb.command&quot;)<br>
+  strconn=&quot;dsn=pubs;uid=sa;pwd&quot;</p>
+<p>conn.Open strconn<br>
+  set cmd.ActiveConnection=conn</p>
+<p>cmd.CommandText=&quot;{?=call onereturn(?,?)}&quot;</p>
+<p>cmd.Parameters.Append cmd.CreateParameter(&quot;@return_value&quot;,adInteger,adParamReturnvalue 
+  )<br>
+  cmd.Parameters.Append cmd.CreateParameter(&quot;@aaa&quot;,adInteger,adParamInput 
+  )<br>
+  cmd(&quot;@aaa&quot;)=10<br>
+  cmd.Parameters.Append cmd.CreateParameter(&quot;@bbb&quot;,adInteger,adParamOutput)</p>
+<p>cmd.Execute()</p>
+<p>bbb=cmd(&quot;@bbb&quot;)<br>
+  rrr=cmd(&quot;@return_value&quot;)<br>
+  %&gt;</p>
+<p><br>
+  作者：ministrybill(生命的烙印)</p>
+<p>ASP调用Procedure</p>
+<p>Microsoft 的Active Server Pages 即ASP，是一套微软开发的服务器端脚本环境，ASP内含于IIS 和PWS之中,通过ASP我们可以结合 
+  HTML 网页、ASP指令和 ActiveX 元件建立动态、交互且高效的WEB服务器应用程序。 </p>
+<p>---- 　　存储过程（Stored-Procedure）是由一些SQL语句和控制语句组成的被封装起来的过程，它驻留在数据库中，可以被客户应用程序调用，也可以从另一个过程或触发器调用。它的参数可以被传递和返回。 
+</p>
+<p>---- 　　ASP包含的ADO（ActiveX Data Object）即ActiveX数据对象技术与ASP相结合提供了强大的站点数据库访问功能。ADO具有操作简单快速，占用内存和硬盘空间少的优点。通过ODBC，ADO可以与包括SQL 
+  Server，Oracle，Sybase等多种数据库相连接。加上ADO支持存储过程，这使得ASP能与大型数据库相结合，完成大型复杂高效率的站点数据库应用成为可能。 
+</p>
+<p>---- 一、采用存储过程的优点： </p>
+<p>---- 　　在客户端工作站中执行大而复杂的SQL批处理时，存储过程提供了诸多方便之处： * 可以在存储过程中利用Transact-SQL的强大功能。一个SQL存储过程可以包含多个SQL语句。通过使用变量和条件。能够用存储过程建立非常复杂的查询，以非常复杂的方式更新数据库。 
+</p>
+<p>快速执行。在第一次执行之后，存储过程在数据库中已经预先经过了优化和编译，存储在高速缓存之中，在接下来的运行中可以直接从高速缓存中执行，省去了以后执行的优化和编译阶段，节省了执行过程的大量时间。 
+</p>
+<p>减少网络通信量。存储过程能包含巨大而复杂的查询或SQL操作。它们已被编译完毕并存储在SQL数据库内，当客户发出执行存储过程的请求时，它们就在SQL Server上运行，只把最终结果传送给客户应用程序。所以使得客户机与服务器的通讯量降至最小，大大减少了网络负荷。 
+</p>
+<p>自动、复杂或敏感的事务处理。在一个存储过程中对某些表进行各种处理，可以保证这些表的数据完整性。 <br>
+  ---- 　　ASP调用存储过程除了具有存储过程本身的优点外还能够减少在ADO中构造复杂SQL语句的难度，省去繁杂的标点符号的处理。通过在多个网页中调用同一个存储过程。可以使站点更易于维护和更新。 
+  <br>
+  ---- 二、ASP调用存储过程的方法： </p>
+<p>---- 　　调用存储过程的方法需要使用ADO的Command对象。Command对象是对一个数据源运行特定命令的定义（例如，一个SQL查询或一个SQL存储过程）。下面以MS 
+  SQL SERVER6.5为后台数据库，介绍ASP调用存储过程的方法。 </p>
+<p>---- 　　例如，在表User中保存了用户名和密码。现在建立一个检查密码的存储过程sp_CheckPass来检查用户是否输入了合法的密码。建立存储过程，可以从Microsoft 
+  SQL Sever程序组中启动ISQL/w。然后，在查询窗口中输入存储过程： </p>
+<p>/*存储过程例程*/<br>
+  CREATE PROCEDURE sp_CheckPass</p>
+<p>@CHKName VARCHAR(30),@CHKPass VARCHAR(30),<br>
+  @ISValid CHAR(8) OUTPUT　　<br>
+  AS</p>
+<p>IF EXISTS(SELECT UserName FROM Users</p>
+<p>WHERE UserName=@CHKName AND UserPwd=@CHKPass)</p>
+<p>SELECT @ISVaid=&quot;pass&quot;</p>
+<p>ELSE</p>
+<p>SELECT @ISValid=&quot;Invalid&quot;</p>
+<p>---- 　　存储过程接收两个输入参数。输入参数@CHKaName向存储过程传递一个用户名。@CHKPass向存储过程传递一个密码。如果有用户拥有指定的密码，输出参数将返回“pass&quot;，否则，返回“Invalid&quot;。 
+  <br>
+  ---- 　　现在我们可以在CheckPass.asp中调用存储过程sp_CheckPass 了。 </p>
+<p><br>
+  CheckPass.asp</p>
+<p>&lt; !--#INCLUDE VIRTUAL=&quot;ADOVBS.inc&quot;-- &gt; ’<br>
+  包含VBSCRIPT的常量定义文件</p>
+<p>&lt; %</p>
+<p>Set DataConn=Sever.CreateObject(&quot;ADODB.Connection&quot;) <br>
+  '建立连接对象</p>
+<p>Dataconn.Open&quot;DSN=user;SERVER=APP_SERVER;<br>
+  UID=sa;PWD=;APP=Microsoft(R) Developer Studio;<br>
+  WSID=APP_SERVER;Regional=Yes&quot;</p>
+<p>Set cmdTemp=Sever.CreateObject(&quot;ADODB.Command&quot;)<br>
+  '建立命令对象</p>
+<p>Set cmdTemp.ActiveConnection=DataConn</p>
+<p>cmdTemp.CommandType=adCMdStoredProc <br>
+  '指定要执行的是一个存储过程</p>
+<p>cmdTemp.CommandText=&quot;sp_CheckPass&quot; <br>
+  '存储过程名称</p>
+<p>Set　tmpFirstParam=cmdTemp.CreateParameter<br>
+  (&quot;UserName&quot;,adVarChar,adParamIntput,30) <br>
+  '创建输入参数对象 </p>
+<p>cmdTemp.Parameters.Append.tmpFirstParam <br>
+  '把参数加到参数集合</p>
+<p>Set tmpSecondParam=cmdTemp.CreateParameter<br>
+  (&quot;UserPwd&quot;,adVarChar,adParamInput,30)</p>
+<p>cmdTemp.ParaMeters.Append tmpSecondParam</p>
+<p>Set tmpThirdParam=cmdTemp.CreateParameter<br>
+  (&quot;RetValue&quot;,adChar,adParamOutput,8) <br>
+  '创建返回参数对象</p>
+<p>cmdTemp.Parameters.Append tmpThirdParam</p>
+<p>cmdTemp(&quot;UserName&quot;)=Request.FORM(&quot;UserName&quot;)<br>
+  ’取得输入参数 </p>
+<p>cmdTemp(&quot;UserPwd&quot;)=Request.FORM(&quot;UserPwd&quot;)</p>
+<p>cmdTemp.Execute ’执行存储过程</p>
+<p>% &gt;</p>
+<p>The Check Result is &lt; %=cmdTemp(&quot;RetValue&quot;)% &gt; <br>
+  '输出返回值</p>
+<p>&lt;%DataConn.Close '关闭数据库连接%&gt;</p>
+<p>//用户输入界面</p>
+<p>&lt;HTML&gt;<br>
+  &lt;HEAD&gt;&lt; TITLE&gt;Registration Page&lt;/TITLE&gt;&lt;/HEAD&gt; <br>
+  &lt;H2&gt;请输入用户名和密码：&lt;/H2&gt; <br>
+  &lt;FORM METHOD=&quot;POST&quot; ACTION=&quot;CheckPass.asp&quot;&gt;<br>
+  &lt;p&gt;用户名: <br>
+  &lt;input name=&quot;UserName&quot; type=&quot;TEXT&quot;&gt;<br>
+  &lt;/p&gt;<br>
+  &lt;p&gt; 密　码: <br>
+  &lt;input name=&quot;UserPwd&quot; type=&quot;PASSWORD&quot;&gt;<br>
+  &lt;input type=&quot;submit&quot; name=&quot;submit&quot; value=&quot;确定&quot;&gt;<br>
+  &lt;/p&gt;<br>
+  &lt;/FORM&gt; &lt;/BODY&gt;<br>
+  &lt;/HTML&gt;</p>
+<p>---- 　　在这个例子中，首先创建了命令对象的一个实例。接着，ActiveConnection属性把命令和一个打开的连接联系在一起。CommandText属性指定要执行的存储过程名。CommandType属性为adCMDStoredProc属性，指明该命令是一个存储过程的定义。而为了得到存储过程的返回状态值必须用命令对象的CreateParameter()方法建立参数。本例中CreateParameter()方法有四个参数： 
+  <br>
+  ---- 第一个参数为新参数指定一个名字； <br>
+  ---- 第二个参数指定数据类型； <br>
+  ---- 第三个参数指定新参数的类型。在此例中，常量adParamReturnValue指明该参数是一个返<br>
+  ---- 回参数。常量adParamInput则指明该参数是一个输入参数； <br>
+  ---- 第四个参数指定了每个参数的最大长度，特别是当建立的参数是变长度数据类型，如<br>
+  ---- VARCHAR型时，就必须指定一个最大长度。 <br>
+  ---- 本例中用CreateParameter()方法建立了三个参数对象。其中两个输入参数，一个输出参数。建立了任何新参数之后，都必须把它添加到命令对象的Parameters集合中。Append方法用来把新参数添加到这个集合中。最后，调用Execute方法执行存储过程。用户输入的用户名和密码被传递给存储过程。如果表中存在这个名字－密码组合，则报告该密码为Pass,否则报告该密码为Invalid。<br>
+  asp开发bs架构的三层系统,对于中小结构的系统把业务逻辑放在sqlserver的存储过程里面是一个很好的实现方法,但这么做出现了一个asp客户端和数据库存储过程之间配合调试的不方便.</p>
+<p>实际开发中我写了下面一个函数,自动把asp端传给数据库的参数取出,自动生成符合sqlserver查询分析器的规则的存储过程执行命令串,放在textarea控件里,可以从页面直接复制到查询分析器里进行存储过程调试,下面就是程序.<br>
+  ‘==================================================================’<br>
+  dim dsn ‘数据源<br>
+  dim storename ‘存储过程名<br>
+  dim con ‘Connection对象<br>
+  dim cmd ‘Command对象<br>
+  dim rs ‘Recordset 对象<br>
+  set con=server.createobject(“ADODB.Connection”)<br>
+  con.open dsn<br>
+  set cmd=server.createobject(&quot;ADODB.Command&quot;) <br>
+  set cmd.ActiveConnection=Con<br>
+  cmd.CommandText= storename <br>
+  cmd.Commandtype=adCmdStoredProc<br>
+  cmd.Parameters.Append cmd.CreateParameter(&quot;@State&quot;,adInteger,adParamInput,4) 
+  <br>
+  cmd.Parameters.Append cmd.CreateParameter(&quot;@WhereT&quot;,adVarChar,adParamInput,200) 
+  <br>
+  cmd.Parameters.Append cmd.CreateParameter(&quot;@BranchType&quot;,adVarChar,adParamInput,50) 
+  <br>
+  cmd(&quot;@State&quot;) = 1 <br>
+  cmd(&quot;@WhereT&quot;)=”2”<br>
+  cmd(&quot;@BranchType&quot;)=”3”<br>
+  getpmt(cmd) ‘获取存储过程的参数<br>
+  set rs=server.CreateObject(&quot;adodb.recordset&quot;) <br>
+  rs.CursorType =3 <br>
+  rs.LockType =3 <br>
+  rs.CursorLocation =3 <br>
+  set rs.Source =cmd <br>
+  rs.Open<br>
+  ‘======================================================’<br>
+  ‘ 形成存储过程的函数<br>
+  ‘=======================’<br>
+  ‘ 输入参数 a= command对象<br>
+  ‘=======================’<br>
+  sub getpmt(a)<br>
+  b=a.CommandText<br>
+  b=replace(b,&quot;?&quot;,&quot;&quot;)<br>
+  b=replace(b,&quot;,&quot;,&quot;&quot;)<br>
+  b=replace(b,&quot;}&quot;,&quot;&quot;)<br>
+  b=replace(b,&quot;{&quot;,&quot;&quot;)<br>
+  b=replace(b,&quot; &quot;,&quot;&quot;)<br>
+  b=replace(b,&quot;call&quot;,&quot;&quot;)<br>
+  b=replace(b,&quot;(&quot;,&quot;&quot;)<br>
+  b=replace(b,&quot;)&quot;,&quot;&quot;)<br>
+  Response.Write &quot;&lt;center&gt;&lt;table border=1 cellpadding =0 cellspacing 
+  =0 bordercolordark=#ffffff bordercolorlight=#cccc88&gt;&lt;tr onclick=&quot;&amp;b&amp;&quot;.style.display=''&gt;&lt;td 
+  bgcolor=#cccc88&gt;&quot; &amp; b &amp; &quot;&lt;/td&gt;&lt;/tr&gt;&lt;tr id=&quot;&amp;b&amp;&quot; 
+  style=display:none&gt;&lt;td&gt;&quot;<br>
+  Response.Write &quot;&lt;TEXTAREA rows=6 cols=70 style='font-color:#ccc888;bgcolor:#ffffc'&gt;&quot;<br>
+  Response.Write b<br>
+  for each element in a.parameters<br>
+  c=element<br>
+  c=&quot;'&quot; &amp; replace(c,&quot;'&quot;,&quot;''&quot;) &amp; &quot;'&quot;<br>
+  d=d &amp; vbcrlf &amp; element.name &amp;&quot;=&quot;&amp; c &amp;&quot;,&quot;<br>
+  next <br>
+  d=left(d,len(d)-1)<br>
+  Response.Write d<br>
+  Response.Write &quot;&lt;/TEXTAREA&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/center&gt;&quot;<br>
+  end sub<br>
+</p>
+<p>&nbsp; </p>
+</body>
+</html>

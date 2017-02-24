@@ -1,0 +1,21 @@
+l  varchar(255) 网址 Primary
+a tinyint()
+   1 中文
+   2 英文
+b tinyint()  
+   1、机构政府  ==银行 
+   2、外贸\内贸平台
+   4、资讯讯息  =非政府的博览会网站
+   5、物流
+   6、创业融资
+   。。。公司分类 
+c  varchar(255) 城市群  yiwu,shanghai,wuhu
+   因为包含公司，而义乌公司就很多，所以这个用城市的
+
+g  varchar(15)  名称5字以内缩写
+h varchar(75) 网站全称
+d varchar(255) 主要经营产品
+f text 网站说明
+
+
+

@@ -1,0 +1,139 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="../c3.css" />
+<title>如何升级至 XHTML？</title>
+</head>
+<body class="html">
+<div id="wrapper">
+<div id="header">
+<a href="http://e.v-get.com/w3cschool/" style="float:left;">W3CSchool 在线教程</a>
+<div class="q g"><script type="text/javascript">var cpro_id="u1163355"</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div>
+<div id="navfirst">
+<ul id="menu">
+<li id="h"><a href="../h.html">HTML教程</a></li>
+<li id="x"><a href="../x.html">XML教程</a></li>
+<li id="b"><a href="../b.html">浏览器脚本</a></li>
+<li id="s"><a href="../s.html">服务器脚本</a></li>
+<li id="d"><a href="../d.html">dot net教程</a></li>
+<li id="m"><a href="../m.html">多媒体教程</a></li>
+<li id="w"><a href="../w.html">建站手册</a></li>
+</ul>
+</div><div id="navsecond">
+<div id="course">
+<h2>XHTML 教程</h2>
+<ul>
+<li><a href="http://e.v-get.com/w3cschool/">XHTML 首页</a></li>
+<li><a href="xhtml_intro.html">XHTML 简介</a></li>
+<li><a href="xhtml_why.html">XHTML Why</a></li>
+<li><a href="xhtml_html.html">XHTML v HTML</a></li>
+<li><a href="xhtml_syntax.html">XHTML 语法</a></li>
+<li><a href="xhtml_dtd.html">XHTML DTD</a></li>
+<li><a href="xhtml_howto.html">XHTML HowTo</a></li>
+<li><a href="xhtml_validate.html">XHTML 验证</a></li>
+<li><a href="xhtml_modules.html">XHTML 模块</a></li>
+<li><a href="xhtml_standardattributes.html">XHTML 属性</a></li>
+<li><a href="xhtml_eventattributes.html">XHTML 事件</a></li>
+<li><a href="xhtml_summary.html">XHTML 总结</a></li>
+<li class="list_apart"><a href="xhtml_structural_01.html">XHTML 结构化 1</a></li>
+<li><a href="xhtml_structural_02.html">XHTML 结构化 2</a></li>
+</ul>
+<h2>测验</h2>
+<ul>
+<li><a href="xhtml_quiz.html">XHTML 测验</a></li>
+</ul>
+<h2>参考手册</h2>
+<ul>
+<li><a href="../tags/">XHTML 标签列表</a></li>
+<li><a href="../tags/html_ref_standardattributes.html">XHTML 属性</a></li>
+<li><a href="../tags/html_ref_eventattributes.html">XHTML 事件</a></li>
+<li><a href="../tags/html_ref_colornames.html">XHTML 颜色名</a></li>
+<li><a href="../tags/html_ref_ascii.html">XHTML ASCII</a></li>
+<li><a href="../tags/html_ref_httpmessages.html">HTTP 消息</a></li>
+</ul>
+</div>
+<div id="selected">
+<h2>建站手册</h2>
+<ul>
+<li><a href="../site/">网站构建</a></li>
+<li><a href="../w3c/">万维网联盟</a></li>
+<li><a href="http://e.v-get.com/w3c/">W3CSchool 教程</a></li>
+<li><a href="../quality/">网站品质</a></li>
+<li><a href="../semweb/">语义网</a></li>
+<li><a href="../hosting/">网站主机</a></li>
+</ul>
+<h2><a href="http://e.v-get.com/w3c/" class="f13">W3CSchool 教程</a></h2><div class="a120x90"><script type="text/javascript">var cpro_id="u1210867";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div></div>
+</div>
+<div id="maincontent">
+<h1>如何升级至 XHTML？</h1>
+<div id="tpn">
+<ul class="prenext">
+<li class="pre"><a href="xhtml_dtd.html">上一页</a></li>
+<li class="next"><a href="xhtml_validate.html">下一页</a></li>
+</ul>
+</div>
+<div>
+<h2>如何将你的网站升级至 XHTML ？</h2>
+<p>为了将站点从 HTML 转换为 XHTML，你首先应该熟悉前几章讲解的 XHTML 语法规则。</p>
+<p>下面讲解具体的步骤。</p>
+</div>
+<div>
+<h2>添加文件类型声明</h2>
+<p>将下面的文件类型声明添加至每页的首行：</p>
+<pre>&lt;!DOCTYPE html PUBLIC
+&#34;-//W3C//DTD XHTML 1.0 Transitional//EN&#34;
+&#34;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&#34;&gt;</pre>
+<p class="important"><span>注意：</span>本站 (W3CSchool) 使用的是严格的 DTD。不过使用过渡的 DTD 也是个不错的选择，因为对于大多数入门的开发人员来说，严格的 DTD 可能显得“太严格了”。</p>
+</div>
+<div>
+<h2>关于文件类型声明的一点提示</h2>
+<p>如果你希望将页面验证为正确的 XHTML，那么页面中必须含有文件类型声明。</p>
+<p>需要注意的是，根据不同的文件类型声明，新式的浏览器 (比如 Internet Explorer 6）对文档的处理方式也是不同的。如果浏览器读到一个文件类型声明，那么它会按照“恰当”的方式来处理文档。如果没有 DOCTYPE，文档也许会以截然不同的方式显示出来。</p>
+</div>
+<div>
+<h2>小写的标签和属性名</h2>
+<p>由于 XHTML 对大小写敏感，同时也由于 XHTML 仅接受小写 HTML 标签和属性名，因此你可以执行一个简单的搜索和替换命令将所有的大写标签改为小写。对属性名也要做同样的处理。我们一直使用在自己的网站使用小写字母，因此基本上，替换功能没有太多地排上用场。</p>
+</div>
+<div>
+<h2>给所有属性加上引号</h2>
+<p>由于 W3C XHTML 1.0 标准中要求所有的属性值都必须加引号，所以，如果以前没有注意到这个细节，你需要逐页地对网站进行检查。这是一项费时的工作，所以绝不要再忘记为属性值加引号了。</p>
+</div>
+<div>
+<h2>空标签：&lt;hr&gt; , &lt;br&gt; 和 &lt;img&gt;</h2>
+<p>在 XHTML 中是不允许使用空标签 (Empty tags）的。&lt;hr&gt; 和 &lt;br&gt; 标签应该被替换为 &lt;hr /&gt; 和 &lt;br /&gt;。</p>
+<p>这样做又产生了一个新问题，Netscape 会误读 &lt;br/&gt; 标签。我们不清楚原因所在，不过将之改为 &lt;br /&gt;后就没有问题了。认识到这一点后，你需要再一次通过搜索和替换功能对标签进行更改。</p>
+<p>其他一些标签 (比如 &lt;img&gt; 标签）也会碰到上述同样的问题。不要使用闭合标签来关闭 &lt;img&gt;，而是要在标签的末端添加 / &gt;。</p>
+</div>
+<div>
+<h2>验证站点</h2>
+<p>做完所有这一切以后，使用下面的链接根据官方的 W3C DTD 对所有修改过的页面进行验证：
+<a href="http://validator.w3.org/check/referer/">XHTML Validator</a>。接下来，可能还会有少数的错误被发现，逐一对这些错误进行 (手工地）修正。我们的经验是，最容易犯的错误是在列表中漏掉了 &lt;/li&gt; 标签。</p>
+<p>我们应该使用转换工具吗 (比方说 TIDY）？对，我们本可以使用 TIDY。</p>
+<p><a href="http://www.w3.org/People/Raggett/tidy/">Dave Raggett 的 HTML TIDY</a>是用来清理HTML代码的免费工具。在处理那些由专门的 HTML 代码编辑器和转换工具生成的难以阅读的HTML代码方面，TIDY 还是做得很棒的。同时，它可以帮助你发现站点中哪些地方需要投入更多精力，使得对于残疾人士，网页具有更强的易用性。</p>
+<p>我们没有使用 Tidy 是出于什么原因呢？当我们开始创建这个网站时，我们已经对 XHTML 非常地熟悉。当时我们已经知道使用小写标签以及为属性加引号。所以在网站测试的过程中，我们只是简单地通过 W3C 的 XHTML 验证器进行了测试，并修正了少许的错误。更重要的是，我们已经学到了很多关于编写 Tidy 式 HTML 代码的知识。</p>
+</div>
+<div>
+<h2>课外阅读</h2>
+<p>如果您希望更深入的理解利用 XHTML 对页面进行结构化的知识，请阅读《<a href="xhtml_structural_01.html">XHTML 结构化</a>》。</p>
+</div>
+<div  id="bpn">
+<ul class="prenext">
+<li class="pre"><a href="xhtml_dtd.html">上一页</a></li>
+<li class="next"><a href="xhtml_validate.html">下一页</a></li>
+</ul>
+</div>
+</div>
+<div id="sidebar">
+<div class="rs"></div>
+<div id="tools">
+<h5 id="tools_reference"><a href="../tags/">HTML 参考手册</a></h5>
+<h5 id="tools_example"><a href="../example/html_examples.html">HTML 实例</a></h5>
+<h5 id="tools_quiz"><a href="xhtml_quiz.html">HTML 测验</a></h5>
+</div>
+<div class="a120x600"><script type="text/javascript">var cpro_id="u1293136";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div><div class="b"></div>
+</div>
+</body>
+</html>

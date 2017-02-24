@@ -1,0 +1,24 @@
+<html>
+<head><link rel="stylesheet" type="text/css" href="showcode.css" /></head>
+<body>
+<pre>
+&lt;html&gt;
+&lt;body&gt;
+&lt;form action=&#34;/example/aspe/demo_aspe_totalbytes.asp&#34; method=&#34;post&#34;&gt;
+请键入一些字符：
+&lt;input type=&#34;text&#34; name=&#34;txt&#34;&gt;&lt;br&gt;&lt;br&gt;
+&lt;input type=&#34;submit&#34; value=&#34;提交&#34;&gt;
+&lt;/form&gt;
+<code class="aspcode">&lt;%
+If Request.Form(&#34;txt&#34;)&lt;&gt;&#34;&#34; Then
+   Response.Write(&#34;您提交了：&#34;)
+   Response.Write(Request.Form)
+   Response.Write(&#34;&lt;br&gt;&lt;br&gt;&#34;)
+   Response.Write(&#34;字节总计：&#34;)
+   Response.Write(Request.Totalbytes)
+End If
+%&gt;</code>
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+</body>

@@ -1,0 +1,5 @@
+<meta http-equiv="content-type" content="text/html; charset=gb2312">很多时候，我们被数据库日志文件大小不断在增加而困挠，虽然可以用截短事务日志的命令dump&nbsp;transaction&nbsp;database_name&nbsp;with&nbsp;no_log来使日志占用实际物理log文件的空间的百分比减小，但数据库log文件的把磁盘的空间霸占着不用，使其他的程序所需的空间受到影响。为此，我做了很多次试验，以探讨能够直接减小log文件大小的方法，请方家指教！
+<P></P>
+<P>根据db_option中的有关选项，在不同设置时，做dump&nbsp;transaction&nbsp;database_name&nbsp;with&nbsp;no_log操作后，发现log文件的total&nbsp;space都不变化，只是used&nbsp;space变小，而free&nbsp;space相应变大。这样的变化意味着，你以后的日志还有可写入的空间，因为空间被预留了。但当这个log文件已经太大，而影响了其他程序的使用空间时，这样的结果并不是我需要的。</P>
+<P>后来我做了一个这样的操作，用bcp命令把数据库中的记录都导出来保存到另一台机器的硬盘上。然后用truncate&nbsp;table&nbsp;table_name的方式把所有的记录都清空，然后执行dump&nbsp;transaction&nbsp;database_name&nbsp;with&nbsp;no_log，发现log文件已经显著地减小，再用bcp命令将之前导出的数据导入到数据库中，导入完成后，log文件又增大了，但再用dump&nbsp;transaction&nbsp;database_name&nbsp;with&nbsp;no_log命令操作时，效果不仅是使日志占用空间减少，日志文件的size也显著地减小。</P>
+<P><BR>对于以上现象，请有兴趣的同道予以验证，至于这个操作对数据库的物件和完整性是否有影响，还望高手指教！</P>

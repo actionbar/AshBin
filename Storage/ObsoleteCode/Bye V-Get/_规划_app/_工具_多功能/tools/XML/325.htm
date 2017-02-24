@@ -1,0 +1,65 @@
+<html>
+<head>
+<title>将样式单附加到XML文档上</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+
+<link rel = stylesheet href = "image/style.css">
+</head>
+<body bgcolor="#ffffff">
+<table width="688" border="0" cellspacing="0" cellpadding="0" align="center">
+  <tr bgcolor="EEEEEE"> 
+    <td height="22"><a href="index.htm">主页</a></td>
+  </tr>
+</table><br>
+<table border="0" cellpadding="0" cellspacing="0" width="688" align="center" height="490">
+  <tr valign="top"> 
+    <td rowspan="4" width="91">&nbsp; </td>
+    <td height="68" width="131"> 
+      <p><img src="image/doc.gif"></p>
+    </td>
+    <td rowspan="4" width="18"><b></b> </td>
+    <td height="68" width="387"><img src="image/title_doc.gif"></td>
+    <td rowspan="4" width="61"> 
+      <h6>&nbsp;</h6>
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td rowspan="3" valign="top" class="pt10" align="center" width="131" bgcolor="EEEEEE"> 
+      <p>&nbsp;</p>
+      <p><font color="#FF0000">※ 3.5 将样式单附加到XML文档上</font></p>
+       
+	</td>
+  </tr>
+  <tr valign="top"> 
+    <td width="387" height="308"> 
+      <table width="100%" border="0" cellpadding="0">
+        <tr> 
+          <td>
+
+           <h4 ALIGN="CENTER">3.5 将样式单附加到XML文档上</h4>
+<P>在编写好XML文档和用于该文档的CSS样式单之后，还需要告诉浏览器将样式单作用到该文档上。长时期以来，可能有许多不同的方法可达到这一目的，包括浏览器-服务器通过HTTP文件头协商、命名约定和浏览器一侧的缺省方法。但是目前，唯一的有效方法是在XML文档中包括另一个处理指令，以便指定所要使用的样式单。</P>
+<P>处理指令是&lt;?xml-stylesheet?&gt;和它的两个特性，type和href。type特性指定所用的样式语言，而href特性指定一个可以找到样式单的URL（可能是相对的）。在清单3-6中，xml-stylesheet处理指令指明施加于文档的样式单文件名为greeting.css，是用CSS样式单语言编写的。</P>
+<P>清单3-6：带有xml样式单处理指令的greeting.xml</P>
+<P><font face="Courier New, Courier, mono"><i>&lt;?xml version="1.0" standalone="yes"?&gt;</i></font></P>
+<P><i><font face="Courier New, Courier, mono">&lt;?xml-stylesheet type="text/css2" 
+  href="greeting.css"?&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;GREETING&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">Hello XML!</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;/GREETING&gt;</font></i></P>
+<P>既然我们已经创建好了第一个XML文档和样式单，那么当然想看一看结果了。我们所要做的就是将清单3-6装入Mozilla或是Internet Explorer 5.0。图3-3是显示在Internet Explorer 5.0中的具有样式的欢迎画面 。图3-4是显示在早期开发版本的Mozilla中的具有样式的欢迎画面。</P>
+<P ALIGN="CENTER"><img src="image/Image23.gif" WIDTH=387 HEIGHT=269></P>
+<P ALIGN="CENTER">图3-3  在Internet Explorer 5.0中显示的styledgreeting.xml文件</P>
+<P ALIGN="CENTER"><img src="image/Image24.gif" WIDTH=395 HEIGHT=270></P>
+<P ALIGN="CENTER">图3-4  在早期的开发者版本的Mozilla中显示的styledgreeting.xml文件</P>
+<P></P> 
+<a href='324.htm'>&lt;&lt;上一篇</a>&nbsp;&nbsp;<a href='326.htm'>下一篇&gt;&gt;</a></td>
+        </tr>
+      </table>
+      <p>&nbsp; </p>
+    </td>
+  </tr>
+</table>
+
+</body>
+
+</html>

@@ -1,0 +1,44 @@
+<html>
+<head><link rel="stylesheet" type="text/css" href="showcode.css" /></head>
+<body>
+<pre>
+&lt;html&gt;
+&lt;body&gt;
+<code class="aspcode">&lt;%
+If Request.QueryString&lt;&gt;&#34;&#34; Then
+      If Request.QueryString(&#34;name&#34;)&lt;&gt;&#34;, &#34; Then
+           name1=Request.QueryString(&#34;name&#34;)(1)
+           name2=Request.QueryString(&#34;name&#34;)(2)
+      end if
+end if
+%&gt;</code>
+&lt;form action=&#34;/example/aspe/demo_aspe_reqquery2.asp&#34; method=&#34;get&#34;&gt;
+First name:
+&lt;input type=&#34;text&#34; name=&#34;name&#34; value=&#34;<code class="aspcode">&lt;%=name1%&gt;</code>&#34; /&gt;
+&lt;br /&gt;
+Last name:
+&lt;input type=&#34;text&#34; name=&#34;name&#34; value=&#34;<code class="aspcode">&lt;%=name2%&gt;</code>&#34; /&gt;
+&lt;br /&gt;
+&lt;input type=&#34;submit&#34; value=&#34;Submit&#34; /&gt;
+&lt;/form&gt;
+&lt;hr&gt;
+<code class="aspcode">&lt;%
+If Request.QueryString&lt;&gt;&#34;&#34; Then
+      Response.Write(&#34;&lt;p&gt;&#34;)
+      Response.Write(&#34;The information received from the form was:&#34;)
+      Response.Write(&#34;&lt;/p&gt;&lt;p&gt;&#34;)
+      Response.Write(&#34;name=&#34; & Request.QueryString(&#34;name&#34;))
+      Response.Write(&#34;&lt;/p&gt;&lt;p&gt;&#34;)
+      Response.Write(&#34;The name property's count is: &#34;)
+      Response.Write(Request.QueryString(&#34;name&#34;).Count)
+      Response.Write(&#34;&lt;/p&gt;&lt;p&gt;&#34;)
+      Response.Write(&#34;First name=&#34; & name1)
+      Response.Write(&#34;&lt;/p&gt;&lt;p&gt;&#34;)
+      Response.Write(&#34;Last name=&#34; & name2)
+      Response.Write(&#34;&lt;/p&gt;&#34;)
+end if
+%&gt;</code>
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+</body>

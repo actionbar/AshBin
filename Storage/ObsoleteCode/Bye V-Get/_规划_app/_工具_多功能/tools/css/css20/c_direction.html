@@ -1,0 +1,119 @@
+<html xmlns:rdl>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<script src="rdl_properties.js"></script>
+<base target="_self">
+</head>
+<body>
+
+<script>
+
+//collFriendProperties=new Array();
+//collFriendDeclarations=new Array();
+//collFriendAtRules=new Array();
+//collFriendElements=new Array();
+//collFriendClasses=new Array();
+
+collFriendProperties=new Array(
+'writing-mode','text-align','vertical-align','unicode-bidi','layout-flow'
+);
+
+//collIE40=new Array();
+//collIE50=new Array();
+//collIE55=new Array();
+//collIE60=new Array();
+
+collIE50=new Array(
+'A','ACRONYM','ADDRESS','B','BDO','BIG','BLOCKQUOTE','BODY','BUTTON','CAPTION','CENTER','CITE','CODE','COL','COLGROUP','currentStyle','CUSTOM','DD','DEL','DFN','DIR','DIV','DL','DT','EM','EMBED','FIELDSET','FONT','FORM','Hn','I','IMG','INPUT type=button','INPUT type=checkbox','INPUT type=file','INPUT type=image','INPUT type=password','INPUT type=radio','INPUT type=reset','INPUT type=submit','INPUT type=text','INS','KBD','LABEL','LEGEND','LI','LISTING','MENU','NOBR','OBJECT','OL','OPTION','P','PLAINTEXT','PRE','Q','RT','RUBY','runtimeStyle','S','SAMP','SELECT','SMALL','SPAN','STRIKE','STRONG','style','SUB','SUP','TABLE','TBODY','TD','TEXTAREA','TFOOT','TH','THEAD','TR','TT','U','UL','VAR','XMP'
+);
+
+collIE55=new Array(
+'defaults'
+);
+
+sStyle=
+'<style>\n'+
+'#idDIV{width:80%;height:40px;background-color:#87CEEB;padding:8px;direction: rtl; unicode-bidi: bidi-override;}\n'+
+'#idCodeDiv{width:80%;padding:4px;font-family:verdana,tahoma;margin:12px 0px 0px 0px;background-color:#EEEEEE;font-weight:bold;}\n'+
+'<\/style>\n';
+
+sScript=
+'<script>\n'+
+'function rdl_change(e){\n'+
+'var oCodeDiv=document.all("idCodeDiv");\n'+
+'var oDiv=document.all("idDiv");\n'+
+'with (document.all("idSel1")) var sValue1=options[selectedIndex].value;\n'+
+'with (document.all("idSel2")) var sValue2=options[selectedIndex].value;\n'+
+'with (oDiv.style) {\n'+
+'direction=sValue1;unicodeBidi=sValue2;\n'+
+'}\n'+
+'oCodeDiv.innerText="direction : "+sValue1+"\\r\\n"+"unicode-bidi : "+sValue2+" ;";\n'+
+'}\n'+
+'<\/script>\n';
+
+sCode=
+'<div id=idDIV>请您用下面的按钮选择这段文字的 direction 和 unicode-bidi 属性的值。看一看会发生什么，然后您就会明白他们的意义。<\/div>\n'+
+'<br>\n'+
+'<table><tr><td>\n'+
+'<select id="idSel1" onchange="rdl_change();">\n'+
+'<option value="ltr">---direction---\n'+
+'<option value="ltr">ltr\n'+
+'<option value="rtl">rtl\n'+
+'<option value="inherit">inherit\n'+
+'<\/select>\n'+
+'<\/td><td>\n'+
+'<select id="idSel2" onchange="rdl_change();">\n'+
+'<option value="normal">---unicode-bidi---\n'+
+'<option value="normal">normal\n'+
+'<option value="bidi-override">bidi-override\n'+
+'<option value="embed">embed\n'+
+'<\/select>\n'+
+'<\/td><\/tr><\/table>\n'+
+'<div id=idCodeDiv>direction: rtl;<br>unicode-bidi: bidi-override;<\/div>\n';
+
+iWinWidth=380;
+
+iWinHeight=320;
+
+//bRunCode=false;
+
+//bElements=false;
+
+</script>
+
+<div id=idContent>
+
+<div id=idContentTitle><span id=idTitleName>direction</span>版本：CSS2　 兼容性：IE5+　继承性：有</div>
+
+<div class=cssColumnTitle>语法：</div>
+<div>
+<b>direction  : </b><span class=cssDefault><b>ltr</b></span> | <b>rtl</b> | <b>inherit</b>
+</div>
+
+<div class=cssColumnTitle>取值：</div>
+<table>
+<tr><td nowrap><b> ltr </b></td><td nowrap><b>:</b></td><td><b>默认值</b>。文本从左到右流入</td></tr>
+<tr><td nowrap><b> rtl </b></td><td nowrap><b>:</b></td><td>文本从右到左流入</td></tr>
+<tr><td nowrap><b> inherit </b></td><td nowrap><b>:</b></td><td>文本流入方向由继承获得</td></tr>
+</table>
+
+<div class=cssColumnTitle>说明：</div>
+<div>
+用于设置文本流入的方向。请参阅对象的<b> dir </b>属性。<br>
+此属性不会影响拉丁文的字母数字字符，它们总是以<b> ltr </b>值被呈递。但是此属性会作用于拉丁文的标点符号。<br>
+假如您想应用此属性于内联文本，您必须设定<a href="c_unicodebidi.html"> unicode-bidi </a>属性为<b> embed </b>或<b> bidi-override </b>。<br>
+此属性对于<b> currentStyle </b>对象而言是只读的。对于其他对象而言是可读写的。<br>
+对应的脚本特性为<b> direction </b>。
+</div>
+
+<div class=cssColumnTitle>示例：</div>
+<div id=idSimpleCode>
+div { direction: rtl; unicode-bidi: bidi-override; } 
+</div>
+
+</div>
+</body>
+</html>
+
+<!-- Part of RDL(TM) - Written by Rain1977 
+HomeSite: http://www.dhtmlet.com  E-Mail: dhtmlet@hotmail.com -->

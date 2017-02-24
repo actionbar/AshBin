@@ -1,0 +1,436 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>ASP生成柱型体，折线图，饼图源代码</title>
+<style type="text/css">
+<!--
+body {
+	font-size: 10.4pt;
+	line-height: 22px;
+}
+-->
+</style>
+</head>
+
+<body bgcolor="eeeeee" leftmargin="20" marginwidth="20">
+<p><strong>ASP生成柱型体，折线图，饼图源代码</strong></p>
+<hr>
+<p> &lt;%<br>
+  function table2(total,table_x,table_y,all_width,all_height,line_no)<br>
+  '参数含义(传递的数组，横坐标，纵坐标，图表的宽度，图表的高度,折线条数)<br>
+  '纯ASP代码生成图表函数2——折线图<br>
+  '作者：龚鸣(Passwordgm) QQ:25968152 MSN:passwordgm@sina.com Email:passwordgm@sina.com<br>
+  '本人非常愿意和ASP,VML,FLASH的爱好者在HTTP://topclouds.126.com进行交流和探讨<br>
+  '版本1.0 最后修改日期 2003-8-11<br>
+  '非常感谢您使用这个函数，请您使用和转载时保留版权信息，这是对作者工作的最好的尊重。</p>
+<p>line_color=&quot;#69f&quot;<br>
+  left_width=70<br>
+  total_no=ubound(total,1)</p>
+<p>temp1=0<br>
+  for i=1 to total_no<br>
+  for j=1 to line_no<br>
+  if temp1&lt;total(i,j) then temp1=total(i,j)<br>
+  next<br>
+  next<br>
+  temp1=int(temp1)<br>
+  if temp1&gt;9 then<br>
+  temp2=mid(cstr(temp1),2,1)<br>
+  if temp2&gt;4 then <br>
+  temp3=(int(temp1/(10^(len(cstr(temp1))-1)))+1)*10^(len(cstr(temp1))-1)<br>
+  else<br>
+  temp3=(int(temp1/(10^(len(cstr(temp1))-1)))+0.5)*10^(len(cstr(temp1))-1)<br>
+  end if<br>
+  else<br>
+  if temp1&gt;4 then temp3=10 else temp3=5<br>
+  end if<br>
+  temp4=temp3<br>
+  response.write &quot;&lt;v:rect id='_x0000_s1027' alt='' style='position:absolute;left:&quot;&amp;table_x+left_width&amp;&quot;px;top:&quot;&amp;table_y&amp;&quot;px;width:&quot;&amp;all_width&amp;&quot;px;height:&quot;&amp;all_height&amp;&quot;px;z-index:-1' 
+  fillcolor='#9cf' stroked='f'&gt;&lt;v:fill rotate='t' angle='-45' focus='100%' 
+  type='gradient'/&gt;&lt;/v:rect&gt;&quot;<br>
+  for i=0 to all_height-1 step all_height/5<br>
+  response.write &quot;&lt;v:line id='_x0000_s1027' alt='' style='position:absolute;left:0;text-align:left;top:0;flip:y;z-index:-1' 
+  from='&quot;&amp;table_x+left_width+length&amp;&quot;px,&quot;&amp;table_y+all_height-length-i&amp;&quot;px' 
+  to='&quot;&amp;table_x+all_width+left_width&amp;&quot;px,&quot;&amp;table_y+all_height-length-i&amp;&quot;px' 
+  strokecolor='&quot;&amp;line_color&amp;&quot;'/&gt;&quot;<br>
+  response.write &quot;&lt;v:line id='_x0000_s1027' alt='' style='position:absolute;left:0;text-align:left;top:0;flip:y;z-index:-1' 
+  from='&quot;&amp;table_x+(left_width-15)&amp;&quot;px,&quot;&amp;table_y+i&amp;&quot;px' 
+  to='&quot;&amp;table_x+left_width&amp;&quot;px,&quot;&amp;table_y+i&amp;&quot;px'/&gt;&quot;<br>
+  response.write &quot;&quot;<br>
+  response.write &quot;&lt;v:shape id='_x0000_s1025' type='#_x0000_t202' alt='' 
+  style='position:absolute;left:&quot;&amp;table_x&amp;&quot;px;top:&quot;&amp;table_y+i&amp;&quot;px;width:&quot;&amp;left_width&amp;&quot;px;height:18px;z-index:1'&gt;&quot;<br>
+  response.write &quot;&lt;v:textbox inset='0px,0px,0px,0px'&gt;&lt;table cellspacing='3' 
+  cellpadding='0' width='100%' height='100%'&gt;&lt;tr&gt;&lt;td align='right'&gt;&quot;&amp;temp4&amp;&quot;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/v:textbox&gt;&lt;/v:shape&gt;&quot;<br>
+  temp4=temp4-temp3/5<br>
+  next<br>
+  response.write &quot;&lt;v:line id='_x0000_s1027' alt='' style='position:absolute;left:0;text-align:left;top:0;flip:y;z-index:-1' 
+  from='&quot;&amp;table_x+left_width&amp;&quot;px,&quot;&amp;table_y+all_height&amp;&quot;px' 
+  to='&quot;&amp;table_x+all_width+left_width&amp;&quot;px,&quot;&amp;table_y+all_height&amp;&quot;px'/&gt;&quot;<br>
+  response.write &quot;&lt;v:line id='_x0000_s1027' alt='' style='position:absolute;left:0;text-align:left;top:0;flip:y;z-index:-1' 
+  from='&quot;&amp;table_x+left_width&amp;&quot;px,&quot;&amp;table_y&amp;&quot;px' 
+  to='&quot;&amp;table_x+left_width&amp;&quot;px,&quot;&amp;table_y+all_height&amp;&quot;px'/&gt;&quot;</p>
+<p>dim line_code<br>
+  redim line_code(line_no,5)<br>
+  for i=1 to line_no<br>
+  line_temp=split(total(0,i),&quot;,&quot;)<br>
+  line_code(i,1)=line_temp(0)<br>
+  line_code(i,2)=line_temp(1)<br>
+  line_code(i,3)=line_temp(2)<br>
+  line_code(i,4)=line_temp(3)<br>
+  line_code(i,5)=line_temp(4)<br>
+  next<br>
+  for j=1 to line_no<br>
+  for i=1 to total_no-1<br>
+  x1=table_x+left_width+all_width*(i-1)/total_no<br>
+  y1=table_y+(temp3-total(i,j))*(all_height/temp3)<br>
+  x2=table_x+left_width+all_width*i/total_no<br>
+  y2=table_y+(temp3-total(i+1,j))*(all_height/temp3)<br>
+  response.write &quot;&lt;v:line id=&quot;&quot;_x0000_s1025&quot;&quot; alt=&quot;&quot;&quot;&quot; 
+  style='position:absolute;left:0;text-align:left;top:0;z-index:1' from=&quot;&quot;&quot;&amp;x1&amp;&quot;px,&quot;&amp;y1&amp;&quot;px&quot;&quot; 
+  to=&quot;&quot;&quot;&amp;x2&amp;&quot;px,&quot;&amp;y2&amp;&quot;px&quot;&quot; 
+  coordsize=&quot;&quot;21600,21600&quot;&quot; strokecolor=&quot;&quot;&quot;&amp;line_code(j,1)&amp;&quot;&quot;&quot; 
+  strokeweight=&quot;&quot;&quot;&amp;line_code(j,2)&amp;&quot;&quot;&quot;&gt;&quot;<br>
+  select case line_code(j,3)<br>
+  case 1<br>
+  case 2<br>
+  response.write &quot;&lt;v:stroke dashstyle='1 1'/&gt;&quot;<br>
+  case 3<br>
+  response.write &quot;&lt;v:stroke dashstyle='dash'/&gt;&quot;<br>
+  case 4<br>
+  response.write &quot;&lt;v:stroke dashstyle='dashDot'/&gt;&quot;<br>
+  case 5<br>
+  response.write &quot;&lt;v:stroke dashstyle='longDash'/&gt;&quot;<br>
+  case 6<br>
+  response.write &quot;&lt;v:stroke dashstyle='longDashDot'/&gt;&quot;<br>
+  case 7<br>
+  response.write &quot;&lt;v:stroke dashstyle='longDashDotDot'/&gt;&quot;<br>
+  case else<br>
+  end select<br>
+  response.write &quot;&lt;/v:line&gt;&quot;&amp;CHR(13)<br>
+  select case line_code(j,4)<br>
+  case 1<br>
+  case 2<br>
+  response.write &quot;&lt;v:rect id=&quot;&quot;_x0000_s1027&quot;&quot; style='position:absolute;left:&quot;&amp;x1-2&amp;&quot;px;top:&quot;&amp;y1-2&amp;&quot;px;width:4px;height:4px; 
+  z-index:2' fillcolor=&quot;&quot;&quot;&amp;line_code(j,1)&amp;&quot;&quot;&quot; 
+  strokecolor=&quot;&quot;&quot;&amp;line_code(j,1)&amp;&quot;&quot;&quot;/&gt;&quot;&amp;CHR(13)<br>
+  case 3<br>
+  response.write &quot;&lt;v:oval id=&quot;&quot;_x0000_s1026&quot;&quot; style='position:absolute;left:&quot;&amp;x1-2&amp;&quot;px;top:&quot;&amp;y1-2&amp;&quot;px;width:4px;height:4px;z-index:1' 
+  fillcolor=&quot;&quot;&quot;&amp;line_code(j,1)&amp;&quot;&quot;&quot; strokecolor=&quot;&quot;&quot;&amp;line_code(j,1)&amp;&quot;&quot;&quot;/&gt;&quot;&amp;CHR(13)<br>
+  end select<br>
+  next<br>
+  select case line_code(j,4)<br>
+  case 1<br>
+  case 2<br>
+  response.write &quot;&lt;v:rect id=&quot;&quot;_x0000_s1027&quot;&quot; style='position:absolute;left:&quot;&amp;x2-2&amp;&quot;px;top:&quot;&amp;y2-2&amp;&quot;px;width:4px;height:4px; 
+  z-index:2' fillcolor=&quot;&quot;&quot;&amp;line_code(j,1)&amp;&quot;&quot;&quot; 
+  strokecolor=&quot;&quot;&quot;&amp;line_code(j,1)&amp;&quot;&quot;&quot;/&gt;&quot;&amp;CHR(13)<br>
+  case 3<br>
+  response.write &quot;&lt;v:oval id=&quot;&quot;_x0000_s1026&quot;&quot; style='position:absolute;left:&quot;&amp;x2-2&amp;&quot;px;top:&quot;&amp;y2-2&amp;&quot;px;width:4px;height:4px;z-index:1' 
+  fillcolor=&quot;&quot;&quot;&amp;line_code(j,1)&amp;&quot;&quot;&quot; strokecolor=&quot;&quot;&quot;&amp;line_code(j,1)&amp;&quot;&quot;&quot;/&gt;&quot;&amp;CHR(13)<br>
+  end select<br>
+  next</p>
+<p>for i=1 to total_no<br>
+  response.write &quot;&lt;v:line id='_x0000_s1027' alt='' style='position:absolute;left:0;text-align:left;top:0;flip:y;z-index:-1' 
+  from='&quot;&amp;table_x+left_width+all_width*(i-1)/total_no&amp;&quot;px,&quot;&amp;table_y+all_height&amp;&quot;px' 
+  to='&quot;&amp;table_x+left_width+all_width*(i-1)/total_no&amp;&quot;px,&quot;&amp;table_y+all_height+15&amp;&quot;px'/&gt;&quot;<br>
+  response.write &quot;&quot;<br>
+  response.write &quot;&lt;v:shape id='_x0000_s1025' type='#_x0000_t202' alt='' 
+  style='position:absolute;left:&quot;&amp;table_x+left_width+all_width*(i-1)/total_no&amp;&quot;px;top:&quot;&amp;table_y+all_height&amp;&quot;px;width:&quot;&amp;all_width/total_no&amp;&quot;px;height:18px;z-index:1'&gt;&quot;<br>
+  response.write &quot;&lt;v:textbox inset='0px,0px,0px,0px'&gt;&lt;table cellspacing='3' 
+  cellpadding='0' width='100%' height='100%'&gt;&lt;tr&gt;&lt;td align='left'&gt;&quot;&amp;total(i,0)&amp;&quot;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/v:textbox&gt;&lt;/v:shape&gt;&quot;<br>
+  next</p>
+<p>tb_height=30<br>
+  response.write &quot;&lt;v:rect id='_x0000_s1025' style='position:absolute;left:&quot;&amp;table_x+all_width+20&amp;&quot;px;top:&quot;&amp;table_y&amp;&quot;px;width:100px;height:&quot;&amp;line_no*tb_height+20&amp;&quot;px;z-index:1'/&gt;&quot;<br>
+  for i=1 to line_no<br>
+  response.write &quot;&lt;v:shape id='_x0000_s1025' type='#_x0000_t202' alt='' 
+  style='position:absolute;left:&quot;&amp;table_x+all_width+25&amp;&quot;px;top:&quot;&amp;table_y+10+(i-1)*tb_height&amp;&quot;px;width:60px;height:&quot;&amp;tb_height&amp;&quot;px;z-index:1'&gt;&quot;<br>
+  response.write &quot;&lt;v:textbox inset='0px,0px,0px,0px'&gt;&lt;table cellspacing='3' 
+  cellpadding='0' width='100%' height='100%'&gt;&lt;tr&gt;&lt;td align='left'&gt;&quot;&amp;line_code(i,5)&amp;&quot;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/v:textbox&gt;&lt;/v:shape&gt;&quot;<br>
+  response.write &quot;&lt;v:rect id='_x0000_s1040' alt='' style='position:absolute;left:&quot;&amp;table_x+all_width+80&amp;&quot;px;top:&quot;&amp;table_y+10+(i-1)*tb_height+4&amp;&quot;px;width:30px;height:20px;z-index:1' 
+  fillcolor='&quot;&amp;line_code(i,1)&amp;&quot;'&gt;&lt;v:fill color2='&quot;&amp;line_code(i,1)&amp;&quot;' 
+  rotate='t' focus='100%' type='gradient'/&gt;&lt;/v:rect&gt;&quot;<br>
+  next</p>
+<p>end function<br>
+  %&gt;</p>
+<p>&lt;%<br>
+  function table1(total,table_x,table_y,thickness,table_width,all_width,all_height,table_type)<br>
+  '参数含义(传递的数组，横坐标，纵坐标，柱子的厚度，柱子的宽度，图表的宽度，图表的高度,图表的类型)<br>
+  '纯ASP代码生成图表函数1——柱状图<br>
+  '作者：龚鸣(Passwordgm) QQ:25968152 MSN:passwordgm@sina.com Email:passwordgm@sina.com<br>
+  '本人非常愿意和ASP,VML,FLASH的爱好者在HTTP://topclouds.126.com进行交流和探讨<br>
+  '版本2.0 最后修改日期 2003-7-22<br>
+  '非常感谢您使用这个函数，请您使用和转载时保留版权信息，这是对作者工作的最好的尊重。<br>
+  dim tb_color(7,2)<br>
+  tb_color(1,1)=&quot;#d1ffd1&quot;<br>
+  tb_color(2,1)=&quot;#ffbbbb&quot;<br>
+  tb_color(3,1)=&quot;#ffe3bb&quot;<br>
+  tb_color(4,1)=&quot;#cff4f3&quot;<br>
+  tb_color(5,1)=&quot;#d9d9e5&quot;<br>
+  tb_color(6,1)=&quot;#ffc7ab&quot;<br>
+  tb_color(7,1)=&quot;#ecffb7&quot;</p>
+<p>tb_color(1,2)=&quot;#00ff00&quot;<br>
+  tb_color(2,2)=&quot;#ff0000&quot;<br>
+  tb_color(3,2)=&quot;#ff9900&quot;<br>
+  tb_color(4,2)=&quot;#33cccc&quot;<br>
+  tb_color(5,2)=&quot;#666699&quot;<br>
+  tb_color(6,2)=&quot;#993300&quot;<br>
+  tb_color(7,2)=&quot;#99cc00&quot;</p>
+<p>line_color=&quot;#69f&quot;<br>
+  left_width=70<br>
+  length=thickness/2<br>
+  total_no=ubound(total,1)</p>
+<p>temp1=0<br>
+  for i=1 to total_no<br>
+  if temp1&lt;total(i,1) then temp1=total(i,1)<br>
+  next<br>
+  temp1=int(temp1)<br>
+  if temp1&gt;9 then<br>
+  temp2=mid(cstr(temp1),2,1)<br>
+  if temp2&gt;4 then <br>
+  temp3=(int(temp1/(10^(len(cstr(temp1))-1)))+1)*10^(len(cstr(temp1))-1)<br>
+  else<br>
+  temp3=(int(temp1/(10^(len(cstr(temp1))-1)))+0.5)*10^(len(cstr(temp1))-1)<br>
+  end if<br>
+  else<br>
+  if temp1&gt;4 then temp3=10 else temp3=5<br>
+  end if<br>
+  temp4=temp3<br>
+  response.write &quot;&lt;!--[if gte vml 1]&gt;&lt;v:rect id='_x0000_s1027' alt='' 
+  style='position:absolute;left:&quot;&amp;table_x+left_width&amp;&quot;px;top:&quot;&amp;table_y&amp;&quot;px;width:&quot;&amp;all_width&amp;&quot;px;height:&quot;&amp;all_height&amp;&quot;px;z-index:-1' 
+  fillcolor='#9cf' stroked='f'&gt;&lt;v:fill rotate='t' angle='-45' focus='100%' 
+  type='gradient'/&gt;&lt;/v:rect&gt;&lt;![endif]--&gt;&quot;<br>
+  response.write &quot;&lt;!--[if gte vml 1]&gt;&lt;v:line id='_x0000_s1027' alt='' 
+  style='position:absolute;left:0;text-align:left;top:0;flip:y;z-index:-1' from='&quot;&amp;table_x+left_width&amp;&quot;px,&quot;&amp;table_y+all_height&amp;&quot;px' 
+  to='&quot;&amp;table_x+all_width+left_width&amp;&quot;px,&quot;&amp;table_y+all_height&amp;&quot;px'/&gt;&lt;![endif]--&gt;&quot;<br>
+  response.write &quot;&lt;!--[if gte vml 1]&gt;&lt;v:line id='_x0000_s1027' alt='' 
+  style='position:absolute;left:0;text-align:left;top:0;flip:y;z-index:-1' from='&quot;&amp;table_x+left_width&amp;&quot;px,&quot;&amp;table_y&amp;&quot;px' 
+  to='&quot;&amp;table_x+left_width&amp;&quot;px,&quot;&amp;table_y+all_height&amp;&quot;px'/&gt;&lt;![endif]--&gt;&quot;</p>
+<p>select case table_type<br>
+  case &quot;A&quot;<br>
+  table_space=(all_width-table_width*total_no)/total_no<br>
+  response.write &quot;&lt;!--[if gte vml 1]&gt;&lt;v:line id='_x0000_s1027' alt='' 
+  style='position:absolute;left:0;text-align:left;top:0;flip:y;z-index:-1' from='&quot;&amp;table_x+left_width+length&amp;&quot;px,&quot;&amp;table_y&amp;&quot;px' 
+  to='&quot;&amp;table_x+left_width+length&amp;&quot;px,&quot;&amp;table_y+all_height-length&amp;&quot;px' 
+  strokecolor='&quot;&amp;line_color&amp;&quot;'/&gt;&lt;![endif]--&gt;&quot;<br>
+  for i=0 to all_height-1 step all_height/5<br>
+  response.write &quot;&lt;!--[if gte vml 1]&gt;&lt;v:line id='_x0000_s1027' alt='' 
+  style='position:absolute;left:0;text-align:left;top:0;flip:y;z-index:-1' from='&quot;&amp;table_x+left_width&amp;&quot;px,&quot;&amp;table_y+all_height-length-i&amp;&quot;px' 
+  to='&quot;&amp;table_x+left_width+length&amp;&quot;px,&quot;&amp;table_y+all_height-i&amp;&quot;px' 
+  strokecolor='&quot;&amp;line_color&amp;&quot;'/&gt;&lt;![endif]--&gt;&quot;<br>
+  response.write &quot;&lt;!--[if gte vml 1]&gt;&lt;v:line id='_x0000_s1027' alt='' 
+  style='position:absolute;left:0;text-align:left;top:0;flip:y;z-index:-1' from='&quot;&amp;table_x+left_width+length&amp;&quot;px,&quot;&amp;table_y+all_height-length-i&amp;&quot;px' 
+  to='&quot;&amp;table_x+all_width+left_width&amp;&quot;px,&quot;&amp;table_y+all_height-length-i&amp;&quot;px' 
+  strokecolor='&quot;&amp;line_color&amp;&quot;'/&gt;&lt;![endif]--&gt;&quot;<br>
+  response.write &quot;&lt;!--[if gte vml 1]&gt;&lt;v:line id='_x0000_s1027' alt='' 
+  style='position:absolute;left:0;text-align:left;top:0;flip:y;z-index:-1' from='&quot;&amp;table_x+(left_width-15)&amp;&quot;px,&quot;&amp;table_y+i&amp;&quot;px' 
+  to='&quot;&amp;table_x+left_width&amp;&quot;px,&quot;&amp;table_y+i&amp;&quot;px'/&gt;&lt;![endif]--&gt;&quot;<br>
+  response.write &quot;&lt;!--[if gte vml 1]&gt;&quot;<br>
+  response.write &quot;&lt;v:shape id='_x0000_s1025' type='#_x0000_t202' alt='' 
+  style='position:absolute;left:&quot;&amp;table_x&amp;&quot;px;top:&quot;&amp;table_y+i&amp;&quot;px;width:&quot;&amp;left_width&amp;&quot;px;height:18px;z-index:1'&gt;&quot;<br>
+  response.write &quot;&lt;v:textbox inset='0px,0px,0px,0px'&gt;&lt;table cellspacing='3' 
+  cellpadding='0' width='100%' height='100%'&gt;&lt;tr&gt;&lt;td align='right'&gt;&quot;&amp;temp4&amp;&quot;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/v:textbox&gt;&lt;/v:shape&gt;&lt;![endif]--&gt;&quot;<br>
+  temp4=temp4-temp3/5<br>
+  next<br>
+  for i=1 to total_no<br>
+  temp_space=table_x+left_width+table_space/2+table_space*(i-1)+table_width*(i-1)<br>
+  response.write &quot;&lt;v:rect id='_x0000_s1025' alt='' style='position:absolute;left:&quot;<br>
+  response.write temp_space<br>
+  response.write &quot;px;top:&quot;<br>
+  response.write table_y+all_height*(1-(total(i,1)/temp3))<br>
+  response.write &quot;px;width:&quot;&amp;table_width&amp;&quot;px;height:&quot;&amp;all_height*(total(i,1)/temp3)&amp;&quot;px;z-index:1' 
+  fillcolor='&quot;&amp;tb_color(i,2)&amp;&quot;'&gt;&quot;<br>
+  response.write &quot;&lt;v:fill color2='&quot;&amp;tb_color(i,1)&amp;&quot;' 
+  rotate='t' type='gradient'/&gt;&quot;<br>
+  response.write &quot;&lt;o:extrusion v:ext='view' backdepth='&quot;&amp;thickness&amp;&quot;pt' 
+  color='&quot;&amp;tb_color(i,2)&amp;&quot;' on='t'/&gt;&quot;<br>
+  response.write &quot;&lt;/v:rect&gt;&quot;<br>
+  response.write &quot;&lt;v:shape id='_x0000_s1025' type='#_x0000_t202' alt='' 
+  style='position:absolute;left:&quot;&amp;temp_space&amp;&quot;px;top:&quot;&amp;table_y+all_height*(1-(total(i,1)/temp3))-table_width&amp;&quot;px;width:&quot;&amp;table_space+15&amp;&quot;px;height:18px;z-index:1'&gt;&quot;<br>
+  response.write &quot;&lt;v:textbox inset='0px,0px,0px,0px'&gt;&lt;table cellspacing='3' 
+  cellpadding='0' width='100%' height='100%'&gt;&lt;tr&gt;&lt;td align='center'&gt;&quot;&amp;total(i,1)&amp;&quot;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/v:textbox&gt;&lt;/v:shape&gt;&quot;</p>
+<p>response.write &quot;&lt;v:shape id='_x0000_s1025' type='#_x0000_t202' alt='' 
+  style='position:absolute;left:&quot;&amp;temp_space-table_space/2&amp;&quot;px;top:&quot;&amp;table_y+all_height+1&amp;&quot;px;width:&quot;&amp;table_space+table_width&amp;&quot;px;height:18px;z-index:1'&gt;&quot;<br>
+  response.write &quot;&lt;v:textbox inset='0px,0px,0px,0px'&gt;&lt;table cellspacing='3' 
+  cellpadding='0' width='100%' height='100%'&gt;&lt;tr&gt;&lt;td align='center'&gt;&quot;&amp;total(i,2)&amp;&quot;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/v:textbox&gt;&lt;/v:shape&gt;&quot;<br>
+  next<br>
+  Case &quot;B&quot;<br>
+  table_space=(all_height-table_width*total_no)/total_no<br>
+  response.write &quot;&lt;!--[if gte vml 1]&gt;&lt;v:line id='_x0000_s1027' alt='' 
+  style='position:absolute;left:0;text-align:left;top:0;flip:y;z-index:-1' from='&quot;&amp;table_x+left_width+length&amp;&quot;px,&quot;&amp;table_y+all_height-length&amp;&quot;px' 
+  to='&quot;&amp;table_x+left_width+all_width&amp;&quot;px,&quot;&amp;table_y+all_height-length&amp;&quot;px' 
+  strokecolor='&quot;&amp;line_color&amp;&quot;'/&gt;&lt;![endif]--&gt;&quot;<br>
+  for i=0 to all_width-1 step all_width/5<br>
+  response.write &quot;&lt;!--[if gte vml 1]&gt;&lt;v:line id='_x0000_s1027' alt='' 
+  style='position:absolute;left:0;text-align:left;top:0;flip:y;z-index:-1' from='&quot;&amp;table_x+left_width+i&amp;&quot;px,&quot;&amp;table_y+all_height-length&amp;&quot;px' 
+  to='&quot;&amp;table_x+left_width+length+i&amp;&quot;px,&quot;&amp;table_y+all_height&amp;&quot;px' 
+  strokecolor='&quot;&amp;line_color&amp;&quot;'/&gt;&lt;![endif]--&gt;&quot;<br>
+  response.write &quot;&lt;!--[if gte vml 1]&gt;&lt;v:line id='_x0000_s1027' alt='' 
+  style='position:absolute;left:0;text-align:left;top:0;flip:y;z-index:-1' from='&quot;&amp;table_x+left_width+length+i&amp;&quot;px,&quot;&amp;table_y+all_height-length&amp;&quot;px' 
+  to='&quot;&amp;table_x+left_width+length+i&amp;&quot;px,&quot;&amp;table_y&amp;&quot;px' 
+  strokecolor='&quot;&amp;line_color&amp;&quot;'/&gt;&lt;![endif]--&gt;&quot;<br>
+  response.write &quot;&lt;!--[if gte vml 1]&gt;&lt;v:line id='_x0000_s1027' alt='' 
+  style='position:absolute;left:0;text-align:left;top:0;flip:y;z-index:-1' from='&quot;&amp;table_x+left_width+i+all_width/5&amp;&quot;px,&quot;&amp;table_y+all_height&amp;&quot;px' 
+  to='&quot;&amp;table_x+left_width+i+all_width/5&amp;&quot;px,&quot;&amp;table_y+all_height+15&amp;&quot;px'/&gt;&lt;![endif]--&gt;&quot;<br>
+  response.write &quot;&lt;!--[if gte vml 1]&gt;&quot;<br>
+  response.write &quot;&lt;v:shape id='_x0000_s1025' type='#_x0000_t202' alt='' 
+  style='position:absolute;left:&quot;&amp;table_x+left_width+i+all_width/5-left_width&amp;&quot;px;top:&quot;&amp;table_y+all_height&amp;&quot;px;width:&quot;&amp;left_width&amp;&quot;px;height:18px;z-index:1'&gt;&quot;<br>
+  response.write &quot;&lt;v:textbox inset='0px,0px,0px,0px'&gt;&lt;table cellspacing='3' 
+  cellpadding='0' width='100%' height='100%'&gt;&lt;tr&gt;&lt;td align='right'&gt;&quot;&amp;temp4&amp;&quot;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/v:textbox&gt;&lt;/v:shape&gt;&lt;![endif]--&gt;&quot;<br>
+  temp4=temp4-temp3/5<br>
+  next</p>
+<p>for i=1 to total_no<br>
+  temp_space=table_space/2+table_space*(i-1)+table_width*(i-1)<br>
+  response.write &quot;&lt;v:rect id='_x0000_s1025' alt='' style='position:absolute;left:&quot;<br>
+  response.write table_x+left_width<br>
+  response.write &quot;px;top:&quot;<br>
+  response.write table_y+temp_space<br>
+  response.write &quot;px;width:&quot;&amp;all_width*(total(i,1)/temp3)&amp;&quot;px;height:&quot;&amp;table_width&amp;&quot;px;z-index:1' 
+  fillcolor='&quot;&amp;tb_color(i,2)&amp;&quot;'&gt;&quot;<br>
+  response.write &quot;&lt;v:fill color2='&quot;&amp;tb_color(i,1)&amp;&quot;' 
+  rotate='t' angle='-90' focus='100%' type='gradient'/&gt;&quot;<br>
+  response.write &quot;&lt;o:extrusion v:ext='view' backdepth='&quot;&amp;thickness&amp;&quot;pt' 
+  color='&quot;&amp;tb_color(i,2)&amp;&quot;' on='t'/&gt;&quot;<br>
+  response.write &quot;&lt;/v:rect&gt;&quot;<br>
+  response.write &quot;&lt;v:shape id='_x0000_s1025' type='#_x0000_t202' alt='' 
+  style='position:absolute;left:&quot;&amp;table_x+left_width+all_width*(total(i,1)/temp3)+thickness/2&amp;&quot;px;top:&quot;&amp;table_y+temp_space&amp;&quot;px;width:&quot;&amp;table_space+15&amp;&quot;px;height:18px;z-index:1'&gt;&quot;<br>
+  response.write &quot;&lt;v:textbox inset='0px,0px,0px,0px'&gt;&lt;table cellspacing='3' 
+  cellpadding='0' width='100%' height='100%'&gt;&lt;tr&gt;&lt;td align='center'&gt;&quot;&amp;total(i,1)&amp;&quot;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/v:textbox&gt;&lt;/v:shape&gt;&quot;</p>
+<p>response.write &quot;&lt;v:shape id='_x0000_s1025' type='#_x0000_t202' alt='' 
+  style='position:absolute;left:&quot;&amp;table_x&amp;&quot;px;top:&quot;&amp;table_y+temp_space&amp;&quot;px;width:&quot;&amp;left_width&amp;&quot;px;height:18px;z-index:1'&gt;&quot;<br>
+  response.write &quot;&lt;v:textbox inset='0px,0px,0px,0px'&gt;&lt;table cellspacing='3' 
+  cellpadding='0' width='100%' height='100%'&gt;&lt;tr&gt;&lt;td align='right'&gt;&quot;&amp;total(i,2)&amp;&quot;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/v:textbox&gt;&lt;/v:shape&gt;&quot;<br>
+  next<br>
+  case else<br>
+  end select</p>
+<p>end function<br>
+  %&gt;</p>
+<p>&lt;%<br>
+  function table3(total,table_x,table_y,all_width,all_height,table_type)<br>
+  '参数含义(传递的数组，横坐标，纵坐标，图表的宽度，图表的高度,图表的类型)<br>
+  '纯ASP代码生成图表函数3——饼图<br>
+  '作者：龚鸣(Passwordgm) QQ:25968152 MSN:passwordgm@sina.com Email:passwordgm@sina.com<br>
+  '本人非常愿意和ASP,VML,FLASH的爱好者在HTTP://topclouds.126.com进行交流和探讨<br>
+  '版本1.0 最后修改日期 2003-8-11<br>
+  '非常感谢您使用这个函数，请您使用和转载时保留版权信息，这是对作者工作的最好的尊重。<br>
+  tb_height=30</p>
+<p>dim tb_color(7,2)<br>
+  tb_color(1,1)=&quot;#d1ffd1&quot;<br>
+  tb_color(2,1)=&quot;#ffbbbb&quot;<br>
+  tb_color(3,1)=&quot;#ffe3bb&quot;<br>
+  tb_color(4,1)=&quot;#cff4f3&quot;<br>
+  tb_color(5,1)=&quot;#d9d9e5&quot;<br>
+  tb_color(6,1)=&quot;#ffc7ab&quot;<br>
+  tb_color(7,1)=&quot;#ecffb7&quot;</p>
+<p>tb_color(1,2)=&quot;#00ff00&quot;<br>
+  tb_color(2,2)=&quot;#ff0000&quot;<br>
+  tb_color(3,2)=&quot;#ff9900&quot;<br>
+  tb_color(4,2)=&quot;#33cccc&quot;<br>
+  tb_color(5,2)=&quot;#666699&quot;<br>
+  tb_color(6,2)=&quot;#993300&quot;<br>
+  tb_color(7,2)=&quot;#99cc00&quot;</p>
+<p>total_no=ubound(total,1)<br>
+  totalpie=0<br>
+  for i=1 to total_no<br>
+  totalpie=totalpie+total(i,1)<br>
+  next</p>
+<p>PreAngle=0<br>
+  for i=1 to total_no<br>
+  response.write &quot;&lt;v:shape id='_x0000_s1025' alt='' style='position:absolute;left:&quot;&amp;table_x&amp;&quot;px;top:&quot;&amp;table_y&amp;&quot;px;width:&quot;&amp;all_width&amp;&quot;px;height:&quot;&amp;all_height&amp;&quot;px;z-index:1' 
+  coordsize='1500,1400' o:spt='100' adj='0,,0' path='m750,700ae750,700,750,700,&quot;&amp;int(23592960*PreAngle)&amp;&quot;,&quot;&amp;int(23592960*total(i,1)/totalpie)&amp;&quot;xe' 
+  fillcolor='&quot;&amp;tb_color(i,1)&amp;&quot;' strokecolor='#FFFFFF'&gt;&lt;v:fill 
+  color2='&quot;&amp;tb_color(i,2)&amp;&quot;' rotate='t' focus='100%' type='gradient'/&gt;&lt;v:stroke 
+  joinstyle='round'/&gt;&lt;v:formulas/&gt;&lt;v:path o:connecttype='segments'/&gt;&lt;/v:shape&gt;&quot;&amp;CHr(13)<br>
+  PreAngle=PreAngle+total(i,1)/totalpie<br>
+  next</p>
+<p>if table_type=&quot;A&quot; then<br>
+  response.write &quot;&lt;v:rect id='_x0000_s1025' style='position:absolute;left:&quot;&amp;table_x+all_width+20&amp;&quot;px;top:&quot;&amp;table_y+20&amp;&quot;px;width:100px;height:&quot;&amp;total_no*tb_height+20&amp;&quot;px;z-index:1'/&gt;&quot;<br>
+  for i=1 to total_no<br>
+  response.write &quot;&lt;v:shape id='_x0000_s1025' type='#_x0000_t202' alt='' 
+  style='position:absolute;left:&quot;&amp;table_x+all_width+25&amp;&quot;px;top:&quot;&amp;table_y+30+(i-1)*tb_height&amp;&quot;px;width:60px;height:&quot;&amp;tb_height&amp;&quot;px;z-index:1'&gt;&quot;<br>
+  response.write &quot;&lt;v:textbox inset='0px,0px,0px,0px'&gt;&lt;table cellspacing='3' 
+  cellpadding='0' width='100%' height='100%'&gt;&lt;tr&gt;&lt;td align='left'&gt;&quot;&amp;total(i,0)&amp;&quot;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/v:textbox&gt;&lt;/v:shape&gt;&quot;<br>
+  response.write &quot;&lt;v:rect id='_x0000_s1040' alt='' style='position:absolute;left:&quot;&amp;table_x+all_width+80&amp;&quot;px;top:&quot;&amp;table_y+30+(i-1)*tb_height+3&amp;&quot;px;width:30px;height:20px;z-index:1' 
+  fillcolor='&quot;&amp;tb_color(i,1)&amp;&quot;'&gt;&lt;v:fill color2='&quot;&amp;tb_color(i,2)&amp;&quot;' 
+  rotate='t' focus='100%' type='gradient'/&gt;&lt;/v:rect&gt;&quot;<br>
+  '显示比例数<br>
+  ' response.write &quot;&lt;v:shape id='_x0000_s1025' type='#_x0000_t202' alt='' 
+  style='position:absolute;left:&quot;&amp;table_x+all_width+110&amp;&quot;px;top:&quot;&amp;table_y+30+(i-1)*tb_height&amp;&quot;px;width:60px;height:&quot;&amp;tb_height&amp;&quot;px;z-index:1'&gt;&quot;<br>
+  ' response.write &quot;&lt;v:textbox inset='0px,0px,0px,0px'&gt;&lt;table cellspacing='3' 
+  cellpadding='0' width='100%' height='100%'&gt;&lt;tr&gt;&lt;td align='left'&gt;&quot;&amp;formatnumber(total(i,1)*100/totalpie,2,-1)&amp;&quot;%&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/v:textbox&gt;&lt;/v:shape&gt;&quot;<br>
+  next<br>
+  end if</p>
+<p>if table_type=&quot;B&quot; then<br>
+  pie=3.14159265358979<br>
+  TempPie=0<br>
+  for i=1 to total_no<br>
+  TempAngle=pie*2*(total(i,1)/(TotalPie*2)+TempPie)<br>
+  x1=table_x+all_width/2+cos(TempAngle)*all_width*3/8<br>
+  y1=table_y+all_height/2-sin(TempAngle)*all_height*3/8<br>
+  x2=table_x+all_width/2+cos(TempAngle)*all_width*3/4<br>
+  y2=table_y+all_height/2-sin(TempAngle)*all_height*3/4<br>
+  if x2&gt;table_x+all_width/2 then<br>
+  x3=x2+20<br>
+  x4=x3<br>
+  else<br>
+  x3=x2-20<br>
+  x4=x3-100<br>
+  end if<br>
+  response.write &quot;&lt;v:oval id='_x0000_s1027' style='position:absolute;left:&quot;&amp;x1-2&amp;&quot;px;top:&quot;&amp;y1-2&amp;&quot;px;width:4px;height:4px; 
+  z-index:2' fillcolor='#111111' strokecolor='#111111'/&gt;&quot;&amp;CHR(13)<br>
+  response.write &quot;&lt;v:line id='_x0000_s1025' alt='' style='position:absolute;left:0;text-align:left;top:0;z-index:1' 
+  from='&quot;&amp;x1&amp;&quot;px,&quot;&amp;y1&amp;&quot;px' to='&quot;&amp;x2&amp;&quot;px,&quot;&amp;y2&amp;&quot;px' 
+  coordsize='21600,21600' strokecolor='#111111' strokeweight='1px'&gt;&lt;/v:line&gt;&quot;<br>
+  response.write &quot;&lt;v:line id='_x0000_s1025' alt='' style='position:absolute;left:0;text-align:left;top:0;z-index:1' 
+  from='&quot;&amp;x2&amp;&quot;px,&quot;&amp;y2&amp;&quot;px' to='&quot;&amp;x3&amp;&quot;px,&quot;&amp;y2&amp;&quot;px' 
+  coordsize='21600,21600' strokecolor='#111111' strokeweight='1px'&gt;&lt;/v:line&gt;&quot;<br>
+  response.write &quot;&lt;v:shape id='_x0000_s1025' type='#_x0000_t202' alt='' 
+  style='position:absolute;left:&quot;&amp;x4&amp;&quot;px;top:&quot;&amp;y2-10&amp;&quot;px;width:100px;height:20px;z-index:1'&gt;&quot;<br>
+  response.write &quot;&lt;v:textbox inset='0px,0px,0px,0px'&gt;&lt;table cellspacing='3' 
+  cellpadding='0' width='100%' height='100%'&gt;&lt;tr&gt;&lt;td align='left'&gt;&quot;&amp;total(i,0)&amp;&quot; 
+  &quot;&amp;formatnumber(total(i,1)*100/totalpie,2,-1)&amp;&quot;%&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/v:textbox&gt;&lt;/v:shape&gt;&quot;<br>
+  TempPie=TempPie+total(i,1)/TotalPie<br>
+  next<br>
+  end if</p>
+<p>end function<br>
+  %&gt;</p>
+<p>纯ASP代码生成图表函数1——柱状图调用示例<br>
+  &lt;%<br>
+  dim total(7,2)<br>
+  total(1,1)=200<br>
+  total(2,1)=800<br>
+  total(3,1)=1000<br>
+  total(4,1)=600<br>
+  total(5,1)=1222<br>
+  total(6,1)=3213<br>
+  total(7,1)=8</p>
+<p>total(1,2)=&quot;中国经营报&quot;<br>
+  total(2,2)=&quot;招聘网&quot;<br>
+  total(3,2)=&quot;51Job&quot;<br>
+  total(4,2)=&quot;新民晚报&quot;<br>
+  total(5,2)=&quot;新闻晚报&quot;<br>
+  total(6,2)=&quot;南方周末&quot;<br>
+  total(7,2)=&quot;羊城晚报&quot;</p>
+<p>total_no=7<br>
+  %&gt;<br>
+  &lt;html xmlns:v=&quot;urn:schemas-microsoft-com:vml&quot; xmlns:o=&quot;urn:schemas-microsoft-com:office:office&quot;&gt;<br>
+  &lt;!--[if !mso]&gt;<br>
+  &lt;style&gt;<br>
+  v\:* { behavior: url(#default#VML) }<br>
+  o\:* { behavior: url(#default#VML) }<br>
+  .shape { behavior: url(#default#VML) }<br>
+  &lt;/style&gt;<br>
+  &lt;![endif]--&gt;<br>
+  &lt;head&gt;<br>
+  &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=gb2312&quot;&gt;<br>
+  &lt;title&gt;&lt;/title&gt;<br>
+  &lt;style&gt;<br>
+  TD { FONT-SIZE: 9pt}<br>
+  &lt;/style&gt;&lt;/head&gt;<br>
+  &lt;body topmargin=5 leftmargin=0 scroll=AUTO&gt;<br>
+  &lt;%call table1(total,200,20,20,30,400,200,&quot;A&quot;)%&gt;<br>
+  &lt;%call table1(total,200,320,20,20,400,250,&quot;B&quot;)%&gt;<br>
+  &lt;/body&gt;<br>
+  &lt;/html&gt;</p>
+<p>&nbsp; </p>
+</body>
+</html>

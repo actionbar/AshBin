@@ -1,0 +1,26 @@
+
+.sso-pop-sign-in{width:270px}
+.sso p{margin:0 0 18px 0}
+.sso-input{position:relative;border:0;height:16px;padding:12px 12px 12px 38px;width:220px;font:400 16px "微软雅黑";}
+
+.sso-label{display: block;
+    position: absolute;
+    top: 8px;
+    left: 6px;
+    width: 24px;height: 24px;text-indent:99px;overflow: hidden;background: url(http://passport.bdimg.com/passApi/img/input_icons_24_915272c4.png) #c00 no-repeat;z-index: 20;}
+
+
+
+.sso-captcha-item{}
+.sso-captcha{width:55px;}
+/* 下面用于配置传递来的验证码图片，字体大小、长宽*/
+.sso-captcha-img{font-size:24px;width:100px;height:40px;margin:0 9px;cursor:default}
+
+.sso-captcha-item a.sso-captcha-change{line-height:42px}
+
+
+
+.sso-submit-item{margin:18px 0}
+.sso-submit{text-align:center;text-decoration:none;border:0;cursor:pointer;width:100%;display:inline-block;height:40px;font:400 18px/40px "微软雅黑";background:#3b5998;color:#fff}
+.sso-submit:hover{background:#79d}
+.sso-submit-item em{display:none;margin:0 9px 0 0;width:16px;height:16px;background:url(http://sso.luexu.com/_static/sso/loading16.gif) no-repeat;}

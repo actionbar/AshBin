@@ -1,0 +1,320 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="../c3.css" />
+<title>XSLT 元素参考手册</title>
+</head>
+<body class="xml">
+<div id="wrapper">
+<div id="header_index"><a href="http://e.v-get.com/w3cschool/">W3CSchool 在线教程</a></div>
+<div id="navfirst">
+<ul id="menu">
+<li id="h"><a href="../h.html">HTML教程</a></li>
+<li id="x"><a href="../x.html">XML教程</a></li>
+<li id="b"><a href="../b.html">浏览器脚本</a></li>
+<li id="s"><a href="../s.html">服务器脚本</a></li>
+<li id="d"><a href="../d.html">dot net教程</a></li>
+<li id="m"><a href="../m.html">多媒体教程</a></li>
+<li id="w"><a href="../w.html">建站手册</a></li>
+</ul>
+</div><div id="navsecond">
+<div id="course">
+<h2>XSLT 基础</h2>
+<ul>
+<li><a href="http://e.v-get.com/w3cschool/">XSLT 首页</a></li>
+<li><a href="xsl_languages.html">XSL  语言</a></li>
+<li><a href="xsl_intro.html">XSLT 简介</a></li>
+<li><a href="xsl_browsers.html">XSLT 浏览器</a></li>
+<li><a href="xsl_transformation.html">XSLT 转换</a></li>
+<li><a href="xsl_templates.html">XSLT &lt;template&gt;</a></li>
+<li><a href="xsl_value_of.html">XSLT &lt;xsl:value-of&gt;</a></li>
+<li><a href="xsl_for_each.html">XSLT &lt;for-each&gt;</a></li>
+<li><a href="xsl_sort.html">XSLT &lt;sort&gt;</a></li>
+<li><a href="xsl_if.html">XSLT &lt;if&gt;</a></li>
+<li><a href="xsl_choose.html">XSLT &lt;choose&gt;</a></li>
+<li><a href="xsl_apply_templates.html">XSLT apply</a></li>
+</ul>
+<h2>XSLT 高级</h2>
+<ul>
+<li><a href="xsl_client.html">XSLT 在客户端</a></li>
+<li><a href="xsl_server.html">XSLT 在服务器端</a></li>
+<li><a href="xsl_editxml.html">XSLT 编辑XML</a></li>
+<li><a href="xsl_editors.html">XSLT 编辑器</a></li>
+<li><a href="xsl_summary.html">XSLT 总结</a></li>
+</ul>
+<h2>参考手册</h2>
+<ul>
+<li><a href="xsl_w3celementref.html">XSLT 元素</a></li>
+<li><a href="xsl_functions.html">XSLT 函数</a></li>
+</ul>
+</div>
+<div id="selected">
+<h2>建站手册</h2>
+<ul>
+<li><a href="../site/">网站构建</a></li>
+<li><a href="../w3c/">万维网联盟</a></li>
+<li><a href="http://e.v-get.com/w3c/">W3CSchool 教程</a></li>
+<li><a href="../quality/">网站品质</a></li>
+<li><a href="../semweb/">语义网</a></li>
+<li><a href="../hosting/">网站主机</a></li>
+</ul>
+<h2><a href="http://e.v-get.com/w3c/" class="f13">W3CSchool 教程</a></h2><div class="a120x90"><script type="text/javascript">var cpro_id="u1210867";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div></div>
+</div>
+<div id="maincontent">
+<h1>XSLT 元素参考手册</h1>
+<div id="tpn">
+<ul class="prenext">
+<li class="pre"><a href="xsl_summary.html">上一页</a></li>
+<li class="next"><a href="xsl_functions.html">下一页</a></li>
+</ul>
+</div>
+<div id="intro">
+<p><strong>源自于 W3C 推荐 (XSLT Version 1.0) 的 XSLT 元素。</strong></p>
+</div>
+<div>
+<h2>XSLT 元素</h2>
+<p>如果您需要有关下列元素的更详细的信息，请点击元素列中的链接。</p>
+<ul>
+<li>N: 表示最早支持此标签的 Netscape 版本</li>
+<li>IE: 表示最早支持此标签的 Internet Explorer 版本</li>
+</ul>
+<p class="note"><span>注释：</span>在 IE 5 中所支持的元素可能出现非标准的行为，这是由于 IE 5 发布于 XSLT 被确立为正式的 W3C 标准之前。</p>
+</div>
+<div>
+<table class="dataintable">
+  <tr>
+    <th>元素</th>
+    <th>描述</th>
+    <th>IE</th>
+    <th>N</th>
+  </tr>
+  <tr>
+    <td><a href="el_apply-imports.html">apply-imports</a></td>
+    <td>应用来自导入样式表中的模版规则。</td>
+    <td>6.0</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td><a href="el_apply-templates.html">apply-templates</a></td>
+    <td>向当前元素或当前元素的子元素应用模板。</td>
+    <td>5.0</td>
+    <td>6.0</td>
+  </tr>
+  <tr>
+    <td><a href="el_attribute.html">attribute</a></td>
+    <td>向元素添加属性。</td>
+    <td>5.0</td>
+    <td>6.0</td>
+  </tr>
+  <tr>
+    <td><a href="el_attributeset.html">attribute-set</a></td>
+    <td>创建命名的属性集。</td>
+    <td>6.0</td>
+    <td>6.0</td>
+  </tr>
+  <tr>
+    <td><a href="el_call-template.html">call-template</a></td>
+    <td>调用一个指定的模板。</td>
+    <td>6.0</td>
+    <td>6.0</td>
+  </tr>
+  <tr>
+    <td><a href="el_choose.html">choose</a></td>
+    <td>与&lt;when&gt;以及&lt;otherwise&gt;协同使用，来表达多重条件测试。</td>
+    <td>5.0</td>
+    <td>6.0</td>
+  </tr>
+  <tr>
+    <td><a href="el_comment.html">comment</a></td>
+    <td>在结果树中创建注释节点。</td>
+    <td>5.0</td>
+    <td>6.0</td>
+  </tr>
+  <tr>
+    <td><a href="el_copy.html">copy</a></td>
+    <td>创建当前节点的一个备份 (无子节点及属性）。</td>
+    <td>5.0</td>
+    <td>6.0</td>
+  </tr>
+  <tr>
+    <td><a href="el_copy-of.html">copy-of</a></td>
+    <td>创建当前节点的一个备份 (带有子节点及属性）。</td>
+    <td>6.0</td>
+    <td>6.0</td>
+  </tr>
+  <tr>
+    <td><a href="el_decimal-format.html">decimal-format</a></td>
+    <td>定义当通过 format-number() 函数把数字转换为字符串时，所要使用的字符和符号。</td>
+    <td>6.0</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td><a href="el_element.html">element</a></td>
+    <td>在输出文档中创建一个元素节点。</td>
+    <td>5.0</td>
+    <td>6.0</td>
+  </tr>
+  <tr>
+    <td><a href="el_fallback.html">fallback</a></td>
+    <td>假如处理器不支持某个XSLT元素，规定一段备用代码来运行。</td>
+    <td>6.0</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td><a href="el_for-each.html">for-each</a></td>
+    <td>遍历指定的节点集中的每个节点。</td>
+    <td>5.0</td>
+    <td>6.0</td>
+  </tr>
+  <tr>
+    <td><a href="el_if.html">if</a></td>
+    <td>包含一个模板，仅当某个指定的条件成立时应用此模板。</td>
+    <td>5.0</td>
+    <td>6.0</td>
+  </tr>
+  <tr>
+    <td><a href="el_import.html">import</a></td>
+    <td>用于把一个样式表中的内容倒入另一个样式表中。</td>
+    <td>6.0</td>
+    <td>6.0</td>
+  </tr>
+  <tr>
+    <td><a href="el_include.html">include</a></td>
+    <td>把一个样式表中的内容包含到另一个样式表中。</td>
+    <td>6.0</td>
+    <td>6.0</td>
+  </tr>
+  <tr>
+    <td><a href="el_key.html">key</a></td>
+    <td>声明一个命名的键。</td>
+    <td>6.0</td>
+    <td>6.0</td>
+  </tr>
+  <tr>
+    <td><a href="el_message.html">message</a></td>
+    <td>向输出写一条消息 (用于错误报告）。</td>
+    <td>6.0</td>
+    <td>6.0</td>
+  </tr>
+  <tr>
+    <td><a href="el_namespace-alias.html">namespace-alias</a></td>
+    <td>把样式表中的命名空间替换为输出中不同的命名空间。</td>
+    <td>6.0</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td><a href="el_number.html">number</a></td>
+    <td>测定当前节点的整数位置，并对数字进行格式化。</td>
+    <td>6.0</td>
+    <td>6.0</td>
+  </tr>
+  <tr>
+    <td><a href="el_otherwise.html">otherwise</a></td>
+    <td>规定 &lt;choose&gt; 元素的默认动作。</td>
+    <td>5.0</td>
+    <td>6.0</td>
+  </tr>
+  <tr>
+    <td><a href="el_output.html">output</a></td>
+    <td>定义输出文档的格式。</td>
+    <td>6.0</td>
+    <td>6.0</td>
+  </tr>
+  <tr>
+    <td><a href="el_param.html">param</a></td>
+    <td>声明一个局部或全局参数。</td>
+    <td>6.0</td>
+    <td>6.0</td>
+  </tr>
+  <tr>
+    <td><a href="el_preserve-space.html">preserve-space</a></td>
+    <td>用于定义保留空白的元素。</td>
+    <td>6.0</td>
+    <td>6.0</td>
+  </tr>
+  <tr>
+    <td><a href="el_processing-instruction.html">processing-instruction</a></td>
+    <td>生成处理指令节点。</td>
+    <td>5.0</td>
+    <td>6.0</td>
+  </tr>
+  <tr>
+    <td><a href="el_sort.html">sort</a></td>
+    <td>对结果进行排序。</td>
+    <td>6.0</td>
+    <td>6.0</td>
+  </tr>
+  <tr>
+    <td><a href="el_preserve-space.html">strip-space</a></td>
+    <td>定义应当删除空白字符的元素。</td>
+    <td>6.0</td>
+    <td>6.0</td>
+  </tr>
+  <tr>
+    <td><a href="el_stylesheet.html">stylesheet</a></td>
+    <td>定义样式表的根元素。</td>
+    <td>5.0</td>
+    <td>6.0</td>
+  </tr>
+  <tr>
+    <td><a href="el_template.html">template</a></td>
+    <td>当指定的节点被匹配时所应用的规则。</td>
+    <td>5.0</td>
+    <td>6.0</td>
+  </tr>
+  <tr>
+    <td><a href="el_text.html">text</a></td>
+    <td>通过样式表生成文本节点。</td>
+    <td>5.0</td>
+    <td>6.0</td>
+  </tr>
+  <tr>
+    <td><a href="el_stylesheet.html">transform</a></td>
+    <td>定义样式表的根元素。</td>
+    <td>6.0</td>
+    <td>6.0</td>
+  </tr>
+  <tr>
+    <td><a href="el_value-of.html">value-of</a></td>
+    <td>提取选定节点的值。</td>
+    <td>5.0</td>
+    <td>6.0</td>
+  </tr>
+  <tr>
+    <td><a href="el_variable.html">variable</a></td>
+    <td>声明局部或者全局的变量。</td>
+    <td>6.0</td>
+    <td>6.0</td>
+  </tr>
+  <tr>
+    <td><a href="el_when.html">when</a></td>
+    <td>规定 &lt;choose&gt; 元素的动作。</td>
+    <td>5.0</td>
+    <td>6.0</td>
+  </tr>
+  <tr>
+    <td><a href="el_with-param.html">with-param</a></td>
+    <td>规定需被传入某个模板的参数的值。</td>
+    <td>6.0</td>
+    <td>6.0</td>
+  </tr>
+</table>
+</div>
+<div id="bpn">
+<ul class="prenext">
+<li class="pre"><a href="xsl_summary.html">上一页</a></li>
+<li class="next"><a href="xsl_functions.html">下一页</a></li>
+</ul>
+</div>
+</div>
+<div id="sidebar">
+<div class="rs"></div>
+<div id="tools">
+<h5 id="tools_reference"><a href="xsl_w3celementref.html">XSLT 参考手册</a></h5>
+</div>
+<div class="a120x600"><script type="text/javascript">var cpro_id="u1293136";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div><div class="b"></div>
+</div>
+</body>
+</html>

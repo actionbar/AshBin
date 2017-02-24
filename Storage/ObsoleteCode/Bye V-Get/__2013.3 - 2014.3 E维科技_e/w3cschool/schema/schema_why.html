@@ -1,0 +1,164 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="../c3.css" />
+<title>为什么要使用XML Schema？</title>
+</head>
+<body class="xml">
+<div id="wrapper">
+<div id="header">
+<a href="http://e.v-get.com/w3cschool/" style="float:left;">W3CSchool 在线教程</a>
+<div class="q g"><script type="text/javascript">var cpro_id="u1163355"</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div>
+<div id="navfirst">
+<ul id="menu">
+<li id="h"><a href="../h.html">HTML教程</a></li>
+<li id="x"><a href="../x.html">XML教程</a></li>
+<li id="b"><a href="../b.html">浏览器脚本</a></li>
+<li id="s"><a href="../s.html">服务器脚本</a></li>
+<li id="d"><a href="../d.html">dot net教程</a></li>
+<li id="m"><a href="../m.html">多媒体教程</a></li>
+<li id="w"><a href="../w.html">建站手册</a></li>
+</ul>
+</div><div id="navsecond">
+<div id="course">
+<h2>Schema 教程</h2>
+<ul>
+<li><a href="http://e.v-get.com/w3cschool/">XSD 首页</a></li>
+<li><a href="schema_intro.html">XSD 简介</a></li>
+<li><a href="schema_why.html">XSD 为何使用</a></li>
+<li><a href="schema_howto.html">XSD 如何使用</a></li>
+<li><a href="schema_schema.html">XSD &lt;schema&gt;</a></li>
+</ul>
+<h2>简单的类型</h2>
+<ul>
+<li><a href="schema_simple.html">XSD 元素</a></li>
+<li><a href="schema_simple_attributes.html">XSD 属性</a></li>
+<li><a href="schema_facets.html">XSD 限定</a></li>
+</ul>
+<h2>复杂的类型</h2>
+<ul>
+<li><a href="schema_complex.html">XSD 元素</a></li>
+<li><a href="schema_complex_empty.html">XSD 空元素</a></li>
+<li><a href="schema_complex_elements.html">XSD 仅含元素</a></li>
+<li><a href="schema_complex_text.html">XSD 仅含文本</a></li>
+<li><a href="schema_complex_mixed.html">XSD 混合内容</a></li>
+<li><a href="schema_complex_indicators.html">XSD 指示器</a></li>
+<li><a href="schema_complex_any.html">XSD &lt;any&gt;</a></li>
+<li><a href="schema_complex_anyattribute.html" title="">XSD &lt;anyAttribute&gt;</a></li>
+<li><a href="schema_complex_subst.html">XSD 元素替换</a></li>
+<li><a href="schema_example.html">XSD 实例</a></li>
+</ul>
+<h2>数据类型</h2>
+<ul>
+<li><a href="schema_dtypes_string.html">XSD 字符串</a></li>
+<li><a href="schema_dtypes_date.html">XSD 日期</a></li>
+<li><a href="schema_dtypes_numeric.html">XSD 数值</a></li>
+<li><a href="schema_dtypes_misc.html">XSD 杂项</a></li>
+<li><a href="schema_summary.html">XSD 总结</a></li>
+</ul>
+<h2>参考手册</h2>
+<ul>
+<li><a href="schema_elements_ref.html">XSD 参考手册</a></li>
+<li><a href="http://www.w3.org/2001/03/webdata/xsv/">XSD 验证器</a></li>
+</ul>
+</div>
+<div id="selected">
+<h2>建站手册</h2>
+<ul>
+<li><a href="../site/">网站构建</a></li>
+<li><a href="../w3c/">万维网联盟</a></li>
+<li><a href="http://e.v-get.com/w3c/">W3CSchool 教程</a></li>
+<li><a href="../quality/">网站品质</a></li>
+<li><a href="../semweb/">语义网</a></li>
+<li><a href="../hosting/">网站主机</a></li>
+</ul>
+<h2><a href="http://e.v-get.com/w3c/" class="f13">W3CSchool 教程</a></h2><div class="a120x90"><script type="text/javascript">var cpro_id="u1210867";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div></div>
+</div>
+<div id="maincontent">
+<h1>为什么要使用 XML Schema？</h1>
+<div  id="tpn">
+<ul class="prenext">
+<li class="pre"><a href="schema_intro.html">上一页</a></li>
+<li class="next"><a href="schema_howto.html">下一页</a></li>
+</ul>
+</div>
+<div id="intro">
+<p><strong>XML Schema 比 DTD 更强大。</strong></p>
+</div>
+<div>
+<h2>XML Schema 支持数据类型</h2>
+<p>XML Schema 最重要的能力之一就是对数据类型的支持。</p>
+<h3>通过对数据类型的支持：</h3>
+<ul>
+<li>可更容易地描述允许的文档内容</li>
+<li>可更容易地验证数据的正确性</li>
+<li>可更容易地与来自数据库的数据一并工作</li>
+<li>可更容易地定义数据约束 (data facets）</li>
+<li>可更容易地定义数据模型 (或称数据格式）</li>
+<li>可更容易地在不同的数据类型间转换数据</li>
+</ul>
+<p class="note"><span>编者注：</span>数据约束，或称 facets，是 XML Schema 原型中的一个术语，中文可译为“面”，用来约束数据类型的容许值。</p>
+</div>
+<div>
+<h2>XML Schema 使用 XML 语法</h2>
+<p>另一个关于 XML Schema 的重要特性是，它们由 XML 编写。</p>
+<h3>由 XML 编写 XML Schema 有很多好处：</h3>
+<ul>
+<li>不必学习新的语言</li>
+<li>可使用 XML 编辑器来编辑 Schema 文件</li>
+<li>可使用 XML 解析器来解析 Schema 文件</li>
+<li>可通过 XML DOM 来处理 Schema</li>
+<li>可通过 XSLT 来转换 Schema</li>
+</ul>
+</div>
+<div>
+<h2>XML Schema 可保护数据通信</h2>
+<p>当数据从发送方被发送到接受方时，其要点是双方应有关于内容的相同的“期望值”。</p>
+<p>通过 XML Schema，发送方可以用一种接受方能够明白的方式来描述数据。</p>
+<p>一种数据，比如 &#34;03-11-2004&#34;，在某些国家被解释为11月3日，而在另一些国家为当作3月11日。</p>
+<p>但是一个带有数据类型的 XML 元素，比如：&lt;date type=&#34;date&#34;&gt;2004-03-11&lt;/date&gt;，可确保对内容一致的理解，这是因为 XML 的数据类型 &#34;date&#34; 要求的格式是 &#34;YYYY-MM-DD&#34;。</p>
+</div>
+<div>
+<h2>XML Schema 可扩展</h2>
+<p>XML Schema 是可扩展的，因为它们由 XML 编写。</p>
+<h3>通过可扩展的 Schema 定义，您可以：</h3>
+<ul>
+<li>在其他 Schema 中重复使用您的 Schema</li>
+<li>创建由标准类型衍生而来的您自己的数据类型</li>
+<li>在相同的文档中引用多重的 Schema</li>
+</ul>
+</div>
+<div>
+<h2>形式良好是不够的</h2>
+<p>我们把符合 XML 语法的文档称为形式良好的 XML 文档，比如：</p>
+<ul>
+<li>它必须以 XML 声明开头</li>
+<li>它必须拥有唯一的根元素</li>
+<li>开始标签必须与结束标签相匹配</li>
+<li>元素对大小写敏感</li>
+<li>所有的元素都必须关闭</li>
+<li>所有的元素都必须正确地嵌套</li>
+<li>必须对特殊字符使用实体</li>
+</ul>
+<p>即使文档的形式良好，仍然不能保证它们不会包含错误，并且这些错误可能会产生严重的后果。</p>
+<p>请考虑下面的情况：您订购的了 5 打激光打印机，而不是 5 台。通过 XML Schema，大部分这样的错误会被您的验证软件捕获到。</p>
+</div>
+<div  id="bpn">
+<ul class="prenext">
+<li class="pre"><a href="schema_intro.html">上一页</a></li>
+<li class="next"><a href="schema_howto.html">下一页</a></li>
+</ul>
+</div>
+</div>
+<div id="sidebar">
+<div class="rs"></div>
+<div id="tools">
+<h5 id="tools_reference"><a href="schema_elements_ref.html">XML Schema 参考手册</a></h5>
+</div>
+<div class="a120x600"><script type="text/javascript">var cpro_id="u1293136";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div><div class="b"></div>
+</div>
+</body>
+</html>

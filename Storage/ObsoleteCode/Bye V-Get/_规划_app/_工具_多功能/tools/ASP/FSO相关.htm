@@ -1,0 +1,306 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>FSO相关</title>
+<style type="text/css">
+<!--
+body {
+	font-size: 10.4pt;
+	line-height: 22px;
+}
+-->
+</style>
+</head>
+
+<body bgcolor="eeeeee" leftmargin="20" marginwidth="20">
+<p><strong>FSO相关</strong></p>
+<hr>
+<p> 使用FSO修改文件特定内容的函数<br>
+  <br>
+  function FSOchange(filename,Target,String)<br>
+  Dim objFSO,objCountFile,FiletempData<br>
+  Set objFSO = Server.CreateObject(&quot;Scripting.FileSystemObject&quot;)<br>
+  Set objCountFile = objFSO.OpenTextFile(Server.MapPath(filename),1,True)<br>
+  FiletempData = objCountFile.ReadAll<br>
+  objCountFile.Close<br>
+  FiletempData=Replace(FiletempData,Target,String)<br>
+  Set objCountFile=objFSO.CreateTextFile(Server.MapPath(filename),True)<br>
+  objCountFile.Write FiletempData <br>
+  objCountFile.Close<br>
+  Set objCountFile=Nothing<br>
+  Set objFSO = Nothing<br>
+  End Function</p>
+<p><br>
+  使用FSO读取文件内容的函数<br>
+  <br>
+  function FSOFileRead(filename)<br>
+  Dim objFSO,objCountFile,FiletempData<br>
+  Set objFSO = Server.CreateObject(&quot;Scripting.FileSystemObject&quot;)<br>
+  Set objCountFile = objFSO.OpenTextFile(Server.MapPath(filename),1,True)<br>
+  FSOFileRead = objCountFile.ReadAll<br>
+  objCountFile.Close<br>
+  Set objCountFile=Nothing<br>
+  Set objFSO = Nothing<br>
+  End Function</p>
+<p><br>
+  使用FSO读取文件某一行的函数<br>
+  <br>
+  function FSOlinedit(filename,lineNum)<br>
+  if linenum &lt; 1 then exit function<br>
+  dim fso,f,temparray,tempcnt<br>
+  set fso = server.CreateObject(&quot;scripting.filesystemobject&quot;)<br>
+  if not fso.fileExists(server.mappath(filename)) then exit function<br>
+  set f = fso.opentextfile(server.mappath(filename),1)<br>
+  if not f.AtEndofStream then<br>
+  tempcnt = f.readall<br>
+  f.close<br>
+  set f = nothing<br>
+  temparray = split(tempcnt,chr(13)&amp;chr(10))<br>
+  if lineNum&gt;ubound(temparray)+1 then<br>
+  exit function<br>
+  else<br>
+  FSOlinedit = temparray(lineNum-1)<br>
+  end if<br>
+  end if<br>
+  end function</p>
+<p><br>
+  使用FSO写文件某一行的函数<br>
+  <br>
+  function FSOlinewrite(filename,lineNum,Linecontent)<br>
+  if linenum &lt; 1 then exit function<br>
+  dim fso,f,temparray,tempCnt<br>
+  set fso = server.CreateObject(&quot;scripting.filesystemobject&quot;)<br>
+  if not fso.fileExists(server.mappath(filename)) then exit function<br>
+  set f = fso.opentextfile(server.mappath(filename),1)<br>
+  if not f.AtEndofStream then<br>
+  tempcnt = f.readall<br>
+  f.close<br>
+  temparray = split(tempcnt,chr(13)&amp;chr(10))<br>
+  if lineNum&gt;ubound(temparray)+1 then<br>
+  exit function<br>
+  else<br>
+  temparray(lineNum-1) = lineContent<br>
+  end if<br>
+  tempcnt = join(temparray,chr(13)&amp;chr(10))<br>
+  set f = fso.createtextfile(server.mappath(filename),true)<br>
+  f.write tempcnt<br>
+  end if<br>
+  f.close<br>
+  set f = nothing<br>
+  end function</p>
+<p><br>
+  使用FSO添加文件新行的函数<br>
+  <br>
+  function FSOappline(filename,Linecontent)<br>
+  dim fso,f<br>
+  set fso = server.CreateObject(&quot;scripting.filesystemobject&quot;)<br>
+  if not fso.fileExists(server.mappath(filename)) then exit function<br>
+  set f = fso.opentextfile(server.mappath(filename),8,1)<br>
+  f.write chr(13)&amp;chr(10)&amp;Linecontent<br>
+  f.close<br>
+  set f = nothing<br>
+  end function</p>
+<p><br>
+  读文件最后一行的函数<br>
+  <br>
+  function FSOlastline(filename)<br>
+  dim fso,f,temparray,tempcnt<br>
+  set fso = server.CreateObject(&quot;scripting.filesystemobject&quot;)<br>
+  if not fso.fileExists(server.mappath(filename)) then exit function<br>
+  set f = fso.opentextfile(server.mappath(filename),1)<br>
+  if not f.AtEndofStream then<br>
+  tempcnt = f.readall<br>
+  f.close<br>
+  set f = nothing<br>
+  temparray = split(tempcnt,chr(13)&amp;chr(10))<br>
+  FSOlastline = temparray(ubound(temparray))<br>
+  end if<br>
+  end function</p>
+<p>利用FSO取得BMP，JPG，PNG，GIF文件信息(大小，宽、高等)<br>
+  <br>
+  &lt;%<br>
+  '::: BMP, GIF, JPG and PNG :::<br>
+  <br>
+  '::: This function gets a specified number of bytes from any :::<br>
+  '::: file, starting at the offset (base 1) :::<br>
+  '::: :::<br>
+  '::: Passed: :::<br>
+  '::: flnm =&gt; Filespec of file to read :::<br>
+  '::: offset =&gt; Offset at which to start reading :::<br>
+  '::: bytes =&gt; How many bytes to read :::<br>
+  '::: :::<br>
+  ':::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::<br>
+  function GetBytes(flnm, offset, bytes)<br>
+  Dim objFSO<br>
+  Dim objFTemp<br>
+  Dim objTextStream<br>
+  Dim lngSize<br>
+  on error resume next<br>
+  Set objFSO = CreateObject(&quot;Scripting.FileSystemObject&quot;)<br>
+  <br>
+  ' First, we get the filesize<br>
+  Set objFTemp = objFSO.GetFile(flnm)<br>
+  lngSize = objFTemp.Size<br>
+  set objFTemp = nothing<br>
+  fsoForReading = 1<br>
+  Set objTextStream = objFSO.OpenTextFile(flnm, fsoForReading)<br>
+  if offset &gt; 0 then<br>
+  strBuff = objTextStream.Read(offset - 1)<br>
+  end if<br>
+  if bytes = -1 then ' Get All!<br>
+  GetBytes = objTextStream.Read(lngSize) 'ReadAll<br>
+  else<br>
+  GetBytes = objTextStream.Read(bytes)<br>
+  end if<br>
+  objTextStream.Close<br>
+  set objTextStream = nothing<br>
+  set objFSO = nothing<br>
+  end function</p>
+<p> ':::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::<br>
+  '::: :::<br>
+  '::: Functions to convert two bytes to a numeric value (long) :::<br>
+  '::: (both little-endian and big-endian) :::<br>
+  '::: :::<br>
+  ':::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::<br>
+  function lngConvert(strTemp)<br>
+  lngConvert = clng(asc(left(strTemp, 1)) + ((asc(right(strTemp, 1)) * 256)))<br>
+  end function<br>
+  function lngConvert2(strTemp)<br>
+  lngConvert2 = clng(asc(right(strTemp, 1)) + ((asc(left(strTemp, 1)) * 256)))<br>
+  end function<br>
+  <br>
+  ':::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::<br>
+  '::: :::<br>
+  '::: This function does most of the real work. It will attempt :::<br>
+  '::: to read any file, regardless of the extension, and will :::<br>
+  '::: identify if it is a graphical image. :::<br>
+  '::: :::<br>
+  '::: Passed: :::<br>
+  '::: flnm =&gt; Filespec of file to read :::<br>
+  '::: width =&gt; width of image :::<br>
+  '::: height =&gt; height of image :::<br>
+  '::: depth =&gt; color depth (in number of colors) :::<br>
+  '::: strImageType=&gt; type of image (e.g. GIF, BMP, etc.) :::<br>
+  '::: :::<br>
+  ':::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::<br>
+  function gfxSpex(flnm, width, height, depth, strImageType)<br>
+  dim strPNG <br>
+  dim strGIF<br>
+  dim strBMP<br>
+  dim strType<br>
+  strType = &quot;&quot;<br>
+  strImageType = &quot;(unknown)&quot;<br>
+  gfxSpex = False<br>
+  strPNG = chr(137) &amp; chr(80) &amp; chr(78)<br>
+  strGIF = &quot;GIF&quot;<br>
+  strBMP = chr(66) &amp; chr(77)<br>
+  strType = GetBytes(flnm, 0, 3)<br>
+  if strType = strGIF then ' is GIF<br>
+  strImageType = &quot;GIF&quot;<br>
+  Width = lngConvert(GetBytes(flnm, 7, 2))<br>
+  Height = lngConvert(GetBytes(flnm, 9, 2))<br>
+  Depth = 2 ^ ((asc(GetBytes(flnm, 11, 1)) and 7) + 1)<br>
+  gfxSpex = True<br>
+  elseif left(strType, 2) = strBMP then ' is BMP<br>
+  strImageType = &quot;BMP&quot;<br>
+  Width = lngConvert(GetBytes(flnm, 19, 2))<br>
+  Height = lngConvert(GetBytes(flnm, 23, 2))<br>
+  Depth = 2 ^ (asc(GetBytes(flnm, 29, 1)))<br>
+  gfxSpex = True<br>
+  elseif strType = strPNG then ' Is PNG<br>
+  strImageType = &quot;PNG&quot;<br>
+  Width = lngConvert2(GetBytes(flnm, 19, 2))<br>
+  Height = lngConvert2(GetBytes(flnm, 23, 2))<br>
+  Depth = getBytes(flnm, 25, 2)<br>
+  select case asc(right(Depth,1))<br>
+  case 0<br>
+  Depth = 2 ^ (asc(left(Depth, 1)))<br>
+  gfxSpex = True<br>
+  case 2<br>
+  Depth = 2 ^ (asc(left(Depth, 1)) * 3)<br>
+  gfxSpex = True<br>
+  case 3<br>
+  Depth = 2 ^ (asc(left(Depth, 1))) '8<br>
+  gfxSpex = True<br>
+  case 4<br>
+  Depth = 2 ^ (asc(left(Depth, 1)) * 2)<br>
+  gfxSpex = True<br>
+  case 6<br>
+  Depth = 2 ^ (asc(left(Depth, 1)) * 4)<br>
+  gfxSpex = True<br>
+  case else<br>
+  Depth = -1<br>
+  end select</p>
+<p> else<br>
+  strBuff = GetBytes(flnm, 0, -1) ' Get all bytes from file<br>
+  lngSize = len(strBuff)<br>
+  flgFound = 0<br>
+  strTarget = chr(255) &amp; chr(216) &amp; chr(255)<br>
+  flgFound = instr(strBuff, strTarget)<br>
+  if flgFound = 0 then<br>
+  exit function<br>
+  end if<br>
+  strImageType = &quot;JPG&quot;<br>
+  lngPos = flgFound + 2<br>
+  ExitLoop = false<br>
+  do while ExitLoop = False and lngPos &lt; lngSize</p>
+<p> do while asc(mid(strBuff, lngPos, 1)) = 255 and lngPos &lt; lngSize<br>
+  lngPos = lngPos + 1<br>
+  loop<br>
+  if asc(mid(strBuff, lngPos, 1)) &lt; 192 or asc(mid(strBuff, lngPos, 1)) &gt; 
+  195 then<br>
+  lngMarkerSize = lngConvert2(mid(strBuff, lngPos + 1, 2))<br>
+  lngPos = lngPos + lngMarkerSize + 1<br>
+  else<br>
+  ExitLoop = True<br>
+  end if<br>
+  loop<br>
+  '<br>
+  if ExitLoop = False then<br>
+  Width = -1<br>
+  Height = -1<br>
+  Depth = -1<br>
+  else<br>
+  Height = lngConvert2(mid(strBuff, lngPos + 4, 2))<br>
+  Width = lngConvert2(mid(strBuff, lngPos + 6, 2))<br>
+  Depth = 2 ^ (asc(mid(strBuff, lngPos + 8, 1)) * 8)<br>
+  gfxSpex = True<br>
+  end if<br>
+  <br>
+  end if<br>
+  end function</p>
+<p> ':::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::<br>
+  '::: Test Harness :::<br>
+  ':::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::<br>
+  <br>
+  ' To test, we'll just try to show all files with a .GIF extension in the root 
+  of C:<br>
+  Set objFSO = CreateObject(&quot;Scripting.FileSystemObject&quot;)<br>
+  Set objF = objFSO.GetFolder(&quot;c:\&quot;)<br>
+  Set objFC = objF.Files<br>
+  response.write &quot;&lt;table border=&quot;&quot;0&quot;&quot; cellpadding=&quot;&quot;5&quot;&quot;&gt;&quot;<br>
+  For Each f1 in objFC<br>
+  if instr(ucase(f1.Name), &quot;.GIF&quot;) then<br>
+  response.write &quot;&lt;tr&gt;&lt;td&gt;&quot; &amp; f1.name &amp; &quot;&lt;/td&gt;&lt;td&gt;&quot; 
+  &amp; f1.DateCreated &amp; &quot;&lt;/td&gt;&lt;td&gt;&quot; &amp; f1.Size &amp; 
+  &quot;&lt;/td&gt;&lt;td&gt;&quot;<br>
+  if gfxSpex(f1.Path, w, h, c, strType) = true then<br>
+  response.write w &amp; &quot; x &quot; &amp; h &amp; &quot; &quot; &amp; c &amp; 
+  &quot; colors&quot;<br>
+  else<br>
+  response.write &quot; &quot;<br>
+  end if<br>
+  response.write &quot;&lt;/td&gt;&lt;/tr&gt;&quot;<br>
+  end if<br>
+  Next<br>
+  response.write &quot;&lt;/table&gt;&quot;<br>
+  set objFC = nothing<br>
+  set objF = nothing<br>
+  set objFSO = nothing</p>
+<p>%&gt;</p>
+<p></p>
+<p><br>
+</p>
+</body>
+</html>

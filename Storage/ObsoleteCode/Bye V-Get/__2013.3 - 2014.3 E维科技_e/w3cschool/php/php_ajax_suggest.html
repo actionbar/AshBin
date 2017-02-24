@@ -1,0 +1,348 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="../c3.css" />
+<title>PHP 和 AJAX 请求</title>
+</head>
+<body class="serverscripting">
+<div id="wrapper">
+<div id="header">
+<a href="http://e.v-get.com/w3cschool/" style="float:left;">W3CSchool 在线教程</a>
+<div class="q g"><script type="text/javascript">var cpro_id="u1163355"</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div>
+<div id="navfirst">
+<ul id="menu">
+<li id="h"><a href="../h.html">HTML教程</a></li>
+<li id="x"><a href="../x.html">XML教程</a></li>
+<li id="b"><a href="../b.html">浏览器脚本</a></li>
+<li id="s"><a href="../s.html">服务器脚本</a></li>
+<li id="d"><a href="../d.html">dot net教程</a></li>
+<li id="m"><a href="../m.html">多媒体教程</a></li>
+<li id="w"><a href="../w.html">建站手册</a></li>
+</ul>
+</div><div id="navsecond">
+<div id="course">
+<h2>PHP 基础</h2>
+<ul>
+<li><a href="http://e.v-get.com/w3cschool/">PHP 教程</a></li>
+<li><a href="php_intro.html">PHP 简介</a></li>
+<li><a href="php_install.html">PHP 安装</a></li>
+<li><a href="php_syntax.html">PHP 语法</a></li>
+<li><a href="php_variables.html">PHP 变量</a></li>
+<li><a href="php_string.html">PHP 字符串</a></li>
+<li><a href="php_operators.html">PHP 运算符</a></li>
+<li><a href="php_if_else.html">PHP If...Else</a></li>
+<li><a href="php_switch.html">PHP Switch</a></li>
+<li><a href="php_arrays.html">PHP 数组</a></li>
+<li><a href="php_looping.html">PHP 循环</a></li>
+<li><a href="php_functions.html">PHP 函数</a></li>
+<li><a href="php_forms.html">PHP 表单</a></li>
+<li><a href="php_get.html">PHP $_GET</a></li>
+<li><a href="php_post.html">PHP $_POST</a></li>
+</ul>
+<h2>PHP 高级</h2>
+<ul>
+<li><a href="php_date.html" title="">PHP 日期</a></li>
+<li><a href="php_includes.html" title="">PHP 引用</a></li>
+<li><a href="php_file.html" title="">PHP 文件</a></li>
+<li><a href="php_file_upload.html" title="">PHP 文件上传</a></li>
+<li><a href="php_cookies.html" title="">PHP Cookies</a></li>
+<li><a href="php_sessions.html" title="">PHP Sessions</a></li>
+<li><a href="php_mail.html" title="">PHP E-mail</a></li>
+<li><a href="php_secure_mail.html" title="">PHP 安全 E-mail</a></li>
+<li><a href="php_error.html" title="">PHP Error</a></li>
+<li><a href="php_exception.html" title="">PHP Exception</a></li>
+<li><a href="php_filter.html" title="">PHP Filter</a></li>
+</ul>
+<h2>PHP 数据库</h2>
+<ul class="small">
+<li><a href="php_mysql_intro.html" title="">MySQL 简介</a></li>
+<li><a href="php_mysql_connect.html" title="">MySQL Connect</a></li>
+<li><a href="php_mysql_create.html" title="">MySQL Create</a></li>
+<li><a href="php_mysql_insert.html" title="">MySQL Insert</a></li>
+<li><a href="php_mysql_select.html" title="">MySQL Select</a></li>
+<li><a href="php_mysql_where.html" title="">MySQL Where</a></li>
+<li><a href="php_mysql_order_by.html" title="">MySQL Order By</a></li>
+<li><a href="php_mysql_update.html" title="">MySQL Update</a></li>
+<li><a href="php_mysql_delete.html" title="">MySQL Delete</a></li>
+<li><a href="php_db_odbc.html" title="">PHP ODBC</a></li>
+</ul>
+<h2>PHP XML</h2>
+<ul class="small">
+<li><a href="php_xml_parser_expat.html" title="">XML Expat Parser</a></li>
+<li><a href="php_xml_dom.html" title="">XML DOM</a></li>
+<li><a href="php_xml_simplexml.html" title="">XML SimpleXML</a></li>
+</ul>
+<h2>PHP 和 AJAX</h2>
+<ul class="small">
+<li><a href="php_ajax_intro.html">AJAX 简介</a></li>
+<li><a href="php_ajax_xmlhttprequest.html">XMLHttpRequest</a></li>
+<li><a href="php_ajax_suggest.html">AJAX Suggest</a></li>
+<li><a href="php_ajax_xml.html">AJAX XML</a></li>
+<li><a href="php_ajax_database.html">AJAX Database</a></li>
+<li><a href="php_ajax_responsexml.html">AJAX responseXML</a></li>
+<li><a href="php_ajax_livesearch.html">AJAX Live Search</a></li>
+<li><a href="php_ajax_rss_reader.html">AJAX RSS Reader</a></li>
+<li><a href="php_ajax_poll.html">AJAX Poll</a></li>
+</ul>
+<h2>PHP 参考手册</h2>
+<ul class="small">
+<li><a href="php_ref_array.html">PHP Array</a></li>
+<li><a href="php_ref_calendar.html">PHP Calendar</a></li>
+<li><a href="php_ref_date.html">PHP Date</a></li>
+<li><a href="php_ref_directory.html">PHP Directory</a></li>
+<li><a href="php_ref_error.html">PHP Error</a></li>
+<li><a href="php_ref_filesystem.html">PHP Filesystem</a></li>
+<li><a href="php_ref_filter.html">PHP Filter</a></li>
+<li><a href="php_ref_ftp.html">PHP FTP</a></li>
+<li><a href="php_ref_http.html">PHP HTTP</a></li>
+<li><a href="php_ref_libxml.html">PHP LibXML</a></li>
+<li><a href="php_ref_mail.html">PHP Mail</a></li>
+<li><a href="php_ref_math.html">PHP Math</a></li>
+<li><a href="php_ref_mysql.html">PHP MySQL</a></li>
+<li><a href="php_ref_simplexml.html">PHP SimpleXML</a></li>
+<li><a href="php_ref_string.html">PHP String</a></li>
+<li><a href="php_ref_xml.html">PHP XML</a></li>
+<li><a href="php_ref_zip.html">PHP Zip</a></li>
+<li><a href="php_ref_misc.html">PHP 杂项</a></li>
+</ul>
+<h2>PHP 测验</h2>
+<ul>
+<li>PHP Quiz</li>
+</ul>
+</div>
+<div id="selected">
+<h2>建站手册</h2>
+<ul>
+<li><a href="../site/">网站构建</a></li>
+<li><a href="../w3c/">万维网联盟</a></li>
+<li><a href="http://e.v-get.com/w3c/">W3CSchool 教程</a></li>
+<li><a href="../quality/">网站品质</a></li>
+<li><a href="../semweb/">语义网</a></li>
+<li><a href="../hosting/">网站主机</a></li>
+</ul>
+<h2><a href="http://e.v-get.com/w3c/" class="f13">W3CSchool 教程</a></h2><div class="a120x90"><script type="text/javascript">var cpro_id="u1210867";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div></div>
+</div>
+<div id="maincontent">
+<h1>PHP 和 AJAX 请求</h1>
+<div  id="tpn">
+<ul class="prenext">
+<li class="pre"><a href="php_ajax_xmlhttprequest.html">上一页</a></li>
+<li class="next"><a href="php_ajax_xml.html">下一页</a></li>
+</ul>
+</div>
+<div>
+<h2>AJAX 请求</h2>
+<p>在下面的 AJAX 例子中，我们将演示当用户向 web 表单中输入数据时，网页如何与在线的 web 服务器进行通信。</p>
+</div>
+<div>
+<h2>在下面的文本框中输入一个名字 (测试说明：该实例功能未实现）</h2>
+<form action="">
+<label>First Name: <input id="txt1" type="text" /></label>
+</form>
+<p>Suggestions: <span id="txtHint"></span></p>
+<p>这个例子包括三张页面：</p>
+<ul>
+<li>a simple HTML form</li>
+<li>a JavaScript</li>
+<li>a PHP page</li>
+</ul>
+</div>
+<div>
+<h2>HTML 表单</h2>
+<p>这是 HTML 表单。它包含一个简单的 HTML 表单和指向 JavaScript 的链接：</p>
+<pre>&lt;html&gt;
+&lt;head&gt;
+&lt;script src=&#34;clienthint.js&#34;&gt;&lt;/script&gt; 
+&lt;/head&gt;
+&lt;body&gt;
+&lt;form&gt; 
+First Name:
+&lt;input type=&#34;text&#34; id=&#34;txt1&#34;
+onkeyup=&#34;showHint(this.value)&#34;&gt;
+&lt;/form&gt;
+&lt;p&gt;Suggestions: &lt;span id=&#34;txtHint&#34;&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+<h3>例子解释 - HTML 表单</h3>
+<p>正如您看到的，上面的 HTML 页面含有一个简单的 HTML 表单，其中带有一个名为 &#34;txt1&#34; 的输入字段。</p>
+<p>该表单是这样工作的：</p>
+<ol>
+<li>当用户在输入域中按下并松开按键时，会触发一个事件</li>
+<li>当该事件被触发时，执行名为 showHint() 的函数</li>
+<li>表单的下面是一个名为 &#34;txtHint&#34; 的 &lt;span&gt;。它用作 showHint() 函数所返回数据的占位符。</li>
+</ol>
+</div>
+<div>
+<h2>JavaScript</h2>
+<p>JavaScript 代码存储在 &#34;clienthint.js&#34; 文件中，它被链接到 HTML 文档：</p>
+<pre>var xmlHttp
+function showHint(str)
+{
+if (str.length==0)
+  { 
+  document.getElementById(&#34;txtHint&#34;).innerHTML=&#34;&#34;
+  return
+  }
+xmlHttp=GetXmlHttpObject()
+if (xmlHttp==null)
+  {
+  alert (&#34;Browser does not support HTTP Request&#34;)
+  return
+  } 
+var url=&#34;gethint.php&#34;
+url=url+&#34;?q=&#34;+str
+url=url+&#34;&amp;sid=&#34;+Math.random()
+xmlHttp.onreadystatechange=stateChanged 
+xmlHttp.open(&#34;GET&#34;,url,true)
+xmlHttp.send(null)
+} 
+function stateChanged() 
+{ 
+if (xmlHttp.readyState==4 || xmlHttp.readyState==&#34;complete&#34;)
+ { 
+ document.getElementById(&#34;txtHint&#34;).innerHTML=xmlHttp.responseText 
+ } 
+}
+function GetXmlHttpObject()
+{
+var xmlHttp=null;
+try
+ {
+ // Firefox, Opera 8.0+, Safari
+ xmlHttp=new XMLHttpRequest();
+ }
+catch (e)
+ {
+ // Internet Explorer
+ try
+  {
+  xmlHttp=new ActiveXObject(&#34;Msxml2.XMLHTTP&#34;);
+  }
+ catch (e)
+  {
+  xmlHttp=new ActiveXObject(&#34;Microsoft.XMLHTTP&#34;);
+  }
+ }
+return xmlHttp;
+}</pre>
+<h3>例子解释：</h3>
+<h4>showHint() 函数</h4>
+<p>每当在输入域中输入一个字符，该函数就会被执行一次。</p>
+<p>如果文本框中有内容 (str.length &gt; 0)，该函数这样执行：</p>
+<ol>
+<li>定义要发送到服务器的 URL (文件名）</li>
+<li>把带有输入域内容的参数 (q) 添加到这个 URL</li>
+<li>添加一个随机数，以防服务器使用缓存文件</li>
+<li>调用 GetXmlHttpObject 函数来创建 XMLHTTP 对象，并在事件被触发时告知该对象执行名为 stateChanged 的函数</li>
+<li>用给定的 URL 来打开打开这个 XMLHTTP 对象</li>
+<li>向服务器发送 HTTP 请求</li>
+</ol>
+<p>如果输入域为空，则函数简单地清空 txtHint 占位符的内容。</p>
+<h4>stateChanged() 函数</h4>
+<p>每当 XMLHTTP 对象的状态发生改变，则执行该函数。</p>
+<p>在状态变成 4  (或 &#34;complete&#34;）时，用响应文本填充 txtHint 占位符 txtHint 的内容。</p>
+<h4>GetXmlHttpObject() 函数</h4>
+<p>AJAX 应用程序只能运行在完整支持 XML 的 web 浏览器中。</p>
+<p>上面的代码调用了名为 GetXmlHttpObject() 的函数。</p>
+<p>该函数的作用是解决为不同浏览器创建不同 XMLHTTP 对象的问题。</p>
+<p>这一点在上一节中已经解释过了。</p>
+</div>
+<div>
+<h2>PHP 页面</h2>
+<p>被 JavaScript 代码调用的服务器页面是一个名为 &#34;gethint.php&#34; 的简单服务器页面。</p>
+<p>&#34;gethint.php&#34; 中的代码会检查名字数组，然后向客户端返回对应的名字：</p>
+<pre>&lt;?php
+// Fill up array with names
+$a[]=&#34;Anna&#34;;
+$a[]=&#34;Brittany&#34;;
+$a[]=&#34;Cinderella&#34;;
+$a[]=&#34;Diana&#34;;
+$a[]=&#34;Eva&#34;;
+$a[]=&#34;Fiona&#34;;
+$a[]=&#34;Gunda&#34;;
+$a[]=&#34;Hege&#34;;
+$a[]=&#34;Inga&#34;;
+$a[]=&#34;Johanna&#34;;
+$a[]=&#34;Kitty&#34;;
+$a[]=&#34;Linda&#34;;
+$a[]=&#34;Nina&#34;;
+$a[]=&#34;Ophelia&#34;;
+$a[]=&#34;Petunia&#34;;
+$a[]=&#34;Amanda&#34;;
+$a[]=&#34;Raquel&#34;;
+$a[]=&#34;Cindy&#34;;
+$a[]=&#34;Doris&#34;;
+$a[]=&#34;Eve&#34;;
+$a[]=&#34;Evita&#34;;
+$a[]=&#34;Sunniva&#34;;
+$a[]=&#34;Tove&#34;;
+$a[]=&#34;Unni&#34;;
+$a[]=&#34;Violet&#34;;
+$a[]=&#34;Liza&#34;;
+$a[]=&#34;Elizabeth&#34;;
+$a[]=&#34;Ellen&#34;;
+$a[]=&#34;Wenche&#34;;
+$a[]=&#34;Vicky&#34;;
+//get the q parameter from URL
+$q=$_GET[&#34;q&#34;];
+//lookup all hints from array if length of q&gt;0
+if (strlen($q) &gt; 0)
+{
+$hint=&#34;&#34;;
+for($i=0; $i&lt;count($a); $i++)
+  {
+  if (strtolower($q)==strtolower(substr($a[$i],0,strlen($q))))
+    {
+    if ($hint==&#34;&#34;)
+      {
+      $hint=$a[$i];
+      }
+    else
+      {
+      $hint=$hint.&#34; , &#34;.$a[$i];
+      }
+    }
+  }
+}
+//Set output to &#34;no suggestion&#34; if no hint were found
+//or to the correct values
+if ($hint == &#34;&#34;)
+{
+$response=&#34;no suggestion&#34;;
+}
+else
+{
+$response=$hint;
+}
+//output the response
+echo $response;
+?&gt;</pre>
+<p>如果存在从 JavaScript 送来的文本 (strlen($q) &gt; 0)，则：</p>
+<ol>
+<li>找到与 JavaScript 所传送的字符相匹配的名字</li>
+<li>如果找到多个名字，把所有名字包含在 response 字符串中</li>
+<li>如果没有找到匹配的名字，把 response 设置为 &#34;no suggestion&#34;</li>
+<li>如果找到一个或多个名字，把 response 设置为这些名字</li>
+<li>把 response 发送到 &#34;txtHint&#34; 占位符</li>
+</ol>
+</div>
+<div id="bpn">
+<ul class="prenext">
+<li class="pre"><a href="php_ajax_xmlhttprequest.html">上一页</a></li>
+<li class="next"><a href="php_ajax_xml.html">下一页</a></li>
+</ul>
+</div>
+</div>
+<div id="sidebar">
+<div class="rs"></div>
+<div id="tools">
+<h5 id="tools_reference"><a href="php_ref.html">PHP 参考手册</a></h5>
+<h5 id="tools_quiz"><a href="php_quiz.html">PHP 测验</a></h5>
+</div>
+<div class="a120x600"><script type="text/javascript">var cpro_id="u1293136";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div><div class="b"></div>
+</div>
+</body>
+</html>

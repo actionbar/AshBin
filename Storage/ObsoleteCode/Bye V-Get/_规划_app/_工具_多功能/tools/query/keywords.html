@@ -1,0 +1,458 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>关键字密度查询</title>
+<meta name="keywords" content="关键字密度查询">
+<meta content="关键字密度查询,关键字密度,关键字,站长工具" name="description" />
+<link href="../images/style.css" rel="stylesheet" type="text/css" />
+<style type="text/css">
+<!--
+body {margin:0; padding:0;background: #FFF url('../images/top3.gif') repeat-x top; font-size:12px;color:#666}
+.style1 {font-size: 14px}
+-->
+</style>
+<SCRIPT language=JavaScript>if(self!=top){top.location=self.location;}</SCRIPT>
+<SCRIPT language=VBScript>
+Sub ClearB_OnClick
+	MyWords.txt_Info.value=""
+	MyWords.txt_OnlyText.value=""
+	MyWords.txt_Info.focus()
+end sub
+
+Sub ChkB_OnClick
+		strKW=MyWords.MyKeyword.value
+		
+		str=replace(MyWords.txt_Info.value," ","")
+		str=replace(str,"&nbsp;","")
+		str=replace(str,"&gt;","")		
+		str=replace(str,"&lt;","")
+		str=replace(str,chr(9),"")
+		str=replace(str,chr(10),"")
+		str=replace(str,chr(13),"")
+		str=replace(str,chr(34),"")		
+		str=str&"<" & "script"&"><"& "/script" & ">"
+
+		
+		htmDes="<metaNAME=DescriptionCONTENT="
+		whereHtmDesL=InStr(1, Str, htmDes,1)
+		if whereHtmDesL>0 then
+			LenDes=len(htmDes)
+			whereHtmDesL=whereHtmDesL+LenDes
+			whereHtmDesR=InStr(whereHtmDesL, Str, ">",1)
+			MyHtmDes=mid(Str,whereHtmDesL,whereHtmDesR-whereHtmDesL)
+			str=MyHtmDes&str
+		end if
+		
+		htmDes="<metaNAME=keywordsCONTENT="
+		whereHtmDesL=InStr(1, Str, htmDes,1)
+		if whereHtmDesL>0 then
+			LenDes=len(htmDes)
+			whereHtmDesL=whereHtmDesL+LenDes
+			whereHtmDesR=InStr(whereHtmDesL, Str, ">",1)
+			MyHtmDes=mid(Str,whereHtmDesL,whereHtmDesR-whereHtmDesL)
+			str=MyHtmDes&str
+		end if		
+		
+		LenStr=len(str)
+		'msgbox "LenStr="&LenStr
+		
+        If InStr(1, Str, "<" & "script",1) > 0 And InStr(1, Str, "<" & "/script" & ">",1) > 0 Then
+            OnlyText = ""
+            i = 1
+            Do Until i > LenStr
+	            
+                tmpStrL = InStr(i , Str, "<" & "script", 1)
+                'MsgBox "tmpStrL="&tmpStrL
+                If tmpStrL > 0 Then
+                    tmpStrR = InStr(tmpStrL, Str, "<" & "/script" & ">",1)
+                    'MsgBox "tmpStrR="&tmpStrR
+  
+                      
+                    If tmpStrR = 0 Then tmpStrR = LenStr
+                    'MsgBox  "i="&i
+                    OnlyText = OnlyText & Mid(Str, i, tmpStrL-i)
+                    'MsgBox Mid(Str, i, tmpStrL-i)
+                          
+                    i = tmpStrR + 9
+                Else
+                    i = i + 1
+                End If
+            Loop
+            Str = OnlyText
+        End If
+	  
+	  	Str =Str&"<%"
+        OnlyText = ""
+        i = 1
+        Do Until i > LenStr
+            
+            tmpStrL = InStr(i, Str, "<%", 1)
+            'MsgBox "tmpStrL=" & tmpStrL
+            If tmpStrL > 0 Then
+                tmpStrR = InStr(tmpStrL, Str, "%>", 1)
+                'MsgBox "tmpStrR=" & tmpStrR
+
+                  
+                If tmpStrR = 0 Then tmpStrR = LenStr
+                'MsgBox "i=" & i
+                OnlyText = OnlyText & Mid(Str, i, tmpStrL - i)
+                'MsgBox Mid(Str, i, tmpStrL - i)
+                      
+                i = tmpStrR + 2
+            Else
+                i = i + 1
+            End If
+        Loop
+        Str = OnlyText
+        	  
+	  	Str =Str&"<"
+        OnlyText = ""
+        i = 1
+        Do Until i > LenStr
+            
+            tmpStrL = InStr(i, Str, "<", 1)
+            'MsgBox "tmpStrL=" & tmpStrL
+            If tmpStrL > 0 Then
+                tmpStrR = InStr(tmpStrL, Str, ">", 1)
+                'MsgBox "tmpStrR=" & tmpStrR
+
+                  
+                If tmpStrR = 0 Then tmpStrR = LenStr
+                'MsgBox "i=" & i
+                OnlyText = OnlyText & Mid(Str, i, tmpStrL - i)
+                'MsgBox Mid(Str, i, tmpStrL - i)
+                      
+                i = tmpStrR + 1
+            Else
+                i = i + 1
+            End If
+        Loop
+        Str = OnlyText
+
+		 
+ 
+		LenStr=len(str)  
+		LenKW=len(replace(strKW," ",""))  
+		  
+		  
+  
+		if LenStr<LenKW then  
+			msgbox "关键字居然比文章长！",64,"不作计算"  
+			exit sub  
+		end if
+
+		MyWords.txt_OnlyText.value=OnlyText
+		
+		if LenKW<>0 then		
+			KeywordTimes=0  
+			i=1  
+			do until i> LenStr  
+				tmpStr=instr(i,str,strKW,1)  
+				if tmpStr>0 then  
+					KeywordTimes=KeywordTimes+1  
+					i=tmpStr+1  
+				else  
+					i=i+1  
+				end if  
+			loop  
+		  
+
+			strlenKW=int(KeywordTimes*LenKW*1000/LenStr+0.5)/10  
+			fmlenKW=cstr(strlenKW)  
+			if left(fmlenKW,1)="." then fmlenKW= "0" & fmlenKW 		  
+			msgbox "有"& LenStr& "个字符，关键字出现"&KeywordTimes&"次，关键字密度为" & strlenKW & "%。" ,64,"www.yuzi.net 字符计算" 
+		else
+			msgbox "有"& LenStr& "个字符" ,64,"字符计算" 
+		end if
+		MyWords.txt_Info.focus()  
+end sub</SCRIPT>
+</HEAD>
+<BODY>
+<table width="960" height="75" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td width="264" rowspan="2" align="center"><a href="../index.html">
+	<img src="../images/logo.gif" width="224" height="38" border="0" /></a></td>
+    <td height="24" valign="top">
+	<table width="321" height="24" border="0" align="right" cellpadding="0" cellspacing="0" background="../images/top2.gif">
+        <tr>
+          <td align="center" class="cwhite12"><a href="#" class="cwhite12">tools.kqiqi.com</a>　<a href="#" OnClick='this.style.behavior="url(#default#homepage)";this.setHomePage("http://tools.kqiqi.com");' class="cwhite12">设为首页</a> | <a href="#" onClick="window.external.AddFavorite('http://tools.kqiqi.com','客齐齐实用查询工具');" class="cwhite12">收藏本站</a></td>
+        </tr>
+    </table></td>
+  </tr>
+</table>
+<table width="960" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td><table height="38" border="0" cellpadding="0" cellspacing="0" style="margin-left:5px">
+      <tr align="center">
+          <td width="88" background="../images/nav1.gif" style="padding-top:5px"><a href="../index.html" class="navfh2">首　页</a></td>
+          <td width="88" background="../images/nav1.gif" style="padding-top:5px"><a href="../admin/index.html" class="navfh2">站长工具</a></td>
+          <td width="88" background="../images/nav2.gif" style="padding-top:5px"><a href="index.html" class="navfh1">查询工具</a></td>
+          <td width="88" background="../images/nav1.gif" style="padding-top:5px"><a href="../calculation/index.html" class="navfh2">计算工具</a></td>
+          <td width="88" background="../images/nav1.gif" style="padding-top:5px"><a href="../password/index.html" class="navfh2">加密解密</a></td>
+          <td width="88" background="../images/nav1.gif" style="padding-top:5px"><a href="../conversion/index.html" class="navfh2">转换工具</a></td>
+          <td width="88" background="../images/nav1.gif" style="padding-top:5px"><a href="../color/index.html" class="navfh2">颜色工具</a></td>
+          <td width="88" background="../images/nav1.gif" style="padding-top:5px"><a href="../web/index.html" class="navfh2">网络辅助</a></td>
+          <td width="88" background="../images/nav1.gif" style="padding-top:5px"><a href="../picture/index.html" class="navfh2">图片工具</a></td>
+          <td width="88" background="../images/nav1.gif" style="padding-top:5px"><a href="../others/index.html" class="navfh2">其它工具</a></td>
+        </tr>
+    </table></td>
+  </tr>
+</table>
+<script language="javascript" src="../js/others_top.js"></script>
+<table width="960" border="0" align="center" cellpadding="0" cellspacing="0" class="mainbg1">
+  <tr valign="top">
+    <td width="20">　</td>
+    <td width="190">
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td colspan="2" height="10">
+
+</td>
+</tr>
+      <tr>
+        <td width="75%">
+		<img src="../images/t9.gif" width="32" height="32" align="absmiddle" />　<span class="navfh1">工具列表</span></td>
+        <td width="25%">　</td>
+      </tr>
+    </table>
+     <table width="100%"  border="0" cellpadding="0" cellspacing="0" background="../images/t12.gif" class="mar5">
+        <tr>
+          <td height="10"> </td>
+        </tr>
+      </table>
+<table width="100%"  border="0" cellpadding="0" cellspacing="0" class="mar5">
+      <tr>
+        <td>　
+ <div id="menu">
+ <div class="box">
+    <a href="http://cy.kqiqi.com" target="_blank">成语查询
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+
+  <div class="box">
+    <a href="Wnl.html">万年历
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+    <div class="box">
+    <a href="../ip">IP查询
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+  <div class="box">
+    <a href="shengxiao.html">生肖查询
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+  <div class="box">
+    <a href="bazi.html">生辰八字查询
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+  <div class="box">
+    <a href="mark.html">标志大全
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+  <div class="box">
+    <a href="xingzuo.html">星座对照表
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+  <div class="box">
+    <a href="ems.html">各类快递查询
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+<div class="box">
+    <a href="nannv.html">生男生女查询
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+<div class="box">
+    <a href="dianhua.html">常用电话号码
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+<div class="box">
+    <a href="chepai.html">车牌号码查询
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+<div class="box">
+    <a href="weizhang.html">全国车辆交通违章查询表
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+<div class="box">
+    <a href="worldtime.html">世界时间查询
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+  <div class="box">
+    <a href="funv.html">妇女安全期查询
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+  <div class="box">
+    <a href="yuansu.html">元素周期表
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+  <div class="box">
+    <a href="health.html">健康查询
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+  <div class="box">
+    <a href="zipcode.html">邮编和电话区号
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+  <div class="box">
+    <a href="id.html">身份证号所在地
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+    <div class="box">
+    <a href="../tel" target="_blank">(手机/电话)归属地
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+    <div class="box">
+    <a href="train.html">列车时刻查询
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+    <div class="box">
+    <a href="sudu.html">上网连接速度测试
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+   <div class="box">
+    <a href="keywords.html">关键字密度查询
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+
+</div>
+ </td>
+      </tr>
+    </table>
+
+      <table width="100%" height="17"  border="0" cellpadding="0" cellspacing="0" background="t2.gif" class="mar5">
+        <tr>
+          <td> </td>
+        </tr>
+      </table>
+      
+    </td>
+    <td width="27">　</td>
+    <td width="700">
+     
+            <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+          <tr>
+      <td height="10" colspan="2">
+      </td>
+      </tr>
+        <tr valign="top">
+         <td width="40"><img src="../images/bang.gif" width="32" height="31"> </td>
+          <td><span class="navfh1">关键字密度查询</span></td>
+          
+        </tr>
+      </table>
+      <hr size="1" style="color:#E3E8E9" />
+      <table width="100%"  border="0" cellpadding="3" cellspacing="1">
+              <tr>
+          <td>
+             <TABLE cellSpacing=1 cellPadding=0 width=690 align=center bgColor=#cccccc 
+border=0>
+  <FORM name=MyWords>
+  <TBODY>
+  <TR>
+    <TD vAlign=top align=left bgColor=#ffffff>
+      <TABLE cellSpacing=0 cellPadding=0 width=690 border=0>
+        <TBODY>
+        <TR>
+          <TD height=10></TD></TR></TBODY></TABLE>
+      <TABLE class=STYLE3 height=10 cellSpacing=0 cellPadding=0 width=690 
+      border=0>
+        <TBODY>
+        <TR>
+          <TD>&nbsp;&nbsp;&nbsp;&nbsp;请拷贝你的网页源文件到此</TD>
+          <TD width=402><B>源码框</B></TD></TR></TBODY></TABLE>
+      <TABLE cellSpacing=0 cellPadding=0 width=698 align=center border=0>
+        <TBODY>
+        <TR>
+          <TD vAlign=center align=middle>
+			<TEXTAREA class=textbox id=txt_Info name=txt_Info rows=10 cols=93></TEXTAREA> 
+          </TD></TR></TBODY></TABLE>
+      <TABLE class=STYLE3 cellSpacing=0 cellPadding=0 width=0 border=0>
+        <TBODY>
+        <TR>
+          <TD>&nbsp;&nbsp;&nbsp;&nbsp;关键字 <INPUT name=MyKeyword></TD>
+          <TD>&nbsp;&nbsp;<INPUT class=button type=button value=检查密度 name=ChkB>&nbsp; 
+<INPUT class=button type=reset value=清除所有 name=ResetB>&nbsp; <INPUT class=button type=button value=清除上方 name=ClearB></TD></TR></TBODY></TABLE>
+      <TABLE class=STYLE3 cellSpacing=0 cellPadding=0 width=0 align=center 
+      border=0>
+        <TBODY>
+        <TR>
+          <TD vAlign=center align=middle><B>结论框</B></TD></TR>
+        <TR>
+          <TD>
+			<TEXTAREA class=textbox id=txt_Info0 name=txt_OnlyText rows=10 cols=94></TEXTAREA></TD></TR></TBODY></TABLE><BR></TD></TR></FORM></TBODY></TABLE>   
+          </td>
+        </tr>
+        </table>
+      <br />
+         <script type="text/javascript" src="../js/wz.js"></script>
+         <script type="text/javascript" src="../js/Copy.js"></script>
+           
+      <br />
+      </td>
+    <td width="20">　</td>
+  </tr>
+</table>
+<table width="960" border="0" align="center" cellpadding="0" cellspacing="0" class="mainbg2">
+  <tr>
+    <td height="25"></td>
+  </tr>
+</table>
+
+<table width="960" border="0" align="center" cellpadding="0" cellspacing="0" class="mainbg2">
+  <tr>
+    <td><table width="920"  border="0" align="center" cellpadding="0" cellspacing="20" class="bottombg">
+    <tr>
+        <td align="center">
+          Copyright &copy; <a href="http://tools.kqiqi.com/">客齐齐实用查询工具</a> All rights reserved - <a href="../map.html">网站地图</a> - <a href="../contact.html">联系我们</a> - <script language="javascript" src="../js/bottom.js"></script>
+          </td>
+      </tr>
+    </table></td>
+  </tr>
+</table>
+</body>
+</html>

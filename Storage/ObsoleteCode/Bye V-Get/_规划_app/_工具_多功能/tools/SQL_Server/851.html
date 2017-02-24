@@ -1,0 +1,5 @@
+<meta http-equiv="content-type" content="text/html; charset=gb2312"><B>个月多少天</B><BR>By:&nbsp;mohit108&nbsp;<BR>Use&nbsp;this&nbsp;function&nbsp;to&nbsp;get&nbsp;the&nbsp;number&nbsp;of&nbsp;days&nbsp;in&nbsp;a&nbsp;given&nbsp;month.
+<P></P>
+<P>Mohit&nbsp;Nayyar<BR>MCP&nbsp;(.Net),&nbsp;MCSD,&nbsp;MCDBA&nbsp;</P>
+<P>create&nbsp;function&nbsp;GetMonths&nbsp;(@Month&nbsp;smallint,&nbsp;@Year&nbsp;int)<BR>returns&nbsp;smallint<BR>as<BR>begin<BR>&nbsp;return(DAY(dateadd(dd,-1,DATEADD(m,1,cast(@Year&nbsp;as&nbsp;varchar(4))&nbsp;+&nbsp;''-''&nbsp;+&nbsp;cast(@Month&nbsp;as&nbsp;varchar(2))&nbsp;+&nbsp;''-01''))))<BR>end</P>
+<P>select&nbsp;DatabaseName.dbo.GetMonths&nbsp;(2,2002)</P>

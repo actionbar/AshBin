@@ -1,0 +1,231 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="../c3.css" />
+<title>ASP PICS 属性</title>
+</head>
+<body class="serverscripting">
+<div id="wrapper">
+<div id="header">
+<a href="http://e.v-get.com/w3cschool/" style="float:left;">W3CSchool 在线教程</a>
+<div class="q g"><script type="text/javascript">var cpro_id="u1163355"</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div>
+<div id="navfirst">
+<ul id="menu">
+<li id="h"><a href="../h.html">HTML教程</a></li>
+<li id="x"><a href="../x.html">XML教程</a></li>
+<li id="b"><a href="../b.html">浏览器脚本</a></li>
+<li id="s"><a href="../s.html">服务器脚本</a></li>
+<li id="d"><a href="../d.html">dot net教程</a></li>
+<li id="m"><a href="../m.html">多媒体教程</a></li>
+<li id="w"><a href="../w.html">建站手册</a></li>
+</ul>
+</div><div id="navsecond">
+<div id="course">
+<h2>ASP 教程</h2>
+<ul>
+<li><a href="http://e.v-get.com/w3cschool/">ASP 首页</a></li>
+<li><a href="asp_intro.html">ASP 简介</a></li>
+<li><a href="asp_install.html">ASP 安装</a></li>
+<li><a href="asp_syntax.html">ASP 语法</a></li>
+<li><a href="asp_variables.html">ASP 变量</a></li>
+<li><a href="asp_procedures.html">ASP 程序</a></li>
+<li><a href="asp_inputforms.html">ASP 表单</a></li>
+<li><a href="asp_cookies.html">ASP Cookies</a></li>
+<li><a href="asp_sessions.html">ASP Session</a></li>
+<li><a href="asp_applications.html">ASP Application</a></li>
+<li><a href="asp_incfiles.html">ASP #include</a></li>
+<li><a href="asp_globalasa.html">ASP Global.asa</a></li>
+<li><a href="asp_send_email.html">ASP e-mail</a></li>
+</ul>
+<h2>ASP 对象</h2>
+<ul class="small">
+<li><a href="asp_ref_response.html">ASP Response</a></li>
+<li><a href="asp_ref_request.html">ASP Request</a></li>
+<li><a href="asp_ref_application.html">ASP Application</a></li>
+<li><a href="asp_ref_session.html">ASP Session</a></li>
+<li><a href="asp_ref_server.html">ASP Server</a></li>
+<li><a href="asp_ref_error.html">ASP Error</a></li>
+<li class="list_apart"><a href="asp_ref_filesystem.html">ASP FileSystem</a></li>
+<li><a href="asp_ref_textstream.html">ASP TextStream</a></li>
+<li><a href="asp_ref_drive.html">ASP Drive</a></li>
+<li><a href="asp_ref_file.html">ASP File</a></li>
+<li><a href="asp_ref_folder.html">ASP Folder</a></li>
+<li><a href="asp_ref_dictionary.html">ASP Dictionary</a></li>
+<li><a href="asp_ado.html">ASP ADO</a></li>
+</ul>
+<h2>ASP 组件</h2>
+<ul class="small">
+<li><a href="asp_adrotator.html">ASP AdRotator</a></li>
+<li><a href="asp_browser.html">ASP BrowserCap</a></li>
+<li><a href="asp_contentlinking.html">ASP Content Linking</a></li>
+<li><a href="asp_contentrotator.html">ASP Content Rotator</a></li>
+</ul>
+<h2>ASP 教程总结</h2>
+<ul>
+<li><a href="asp_quickref.html">ASP 快速参考</a></li>
+<li><a href="asp_summary.html">ASP 总结</a></li>
+</ul>
+<h2>实例/测验</h2>
+<ul>
+<li><a href="../example/aspe_examples.html">ASP 实例</a></li>
+<li><a href="asp_quiz.html">ASP 测验</a></li>
+</ul>
+</div>
+<div id="selected">
+<h2>建站手册</h2>
+<ul>
+<li><a href="../site/">网站构建</a></li>
+<li><a href="../w3c/">万维网联盟</a></li>
+<li><a href="http://e.v-get.com/w3c/">W3CSchool 教程</a></li>
+<li><a href="../quality/">网站品质</a></li>
+<li><a href="../semweb/">语义网</a></li>
+<li><a href="../hosting/">网站主机</a></li>
+</ul>
+<h2><a href="http://e.v-get.com/w3c/" class="f13">W3CSchool 教程</a></h2><div class="a120x90"><script type="text/javascript">var cpro_id="u1210867";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div></div>
+</div>
+<div id="maincontent">
+<h1>ASP PICS 属性</h1>
+<div>
+<p><a href="asp_ref_response.html">返回 response 对象参考手册</a></p>
+</div>
+<div>
+<p>PICS 属性可向响应头部的 PICS 标记追加值。</p>
+<p class="note"><span>注释：</span>此属性可接受任何字符串值，无论是否是合法的 PICS 标记。</p>
+</div>
+<div>
+<h2>什么是 PICS ？</h2>
+<p>PICS (Platform for Internet Content Selection) 分级系统用于对网站内的内容进行分级。它看起来类似这样：</p>
+<pre>
+PICS-1.1 &#34;http://www.rsac.org/ratingsv01.html&#34; by &#34;your@name.com&#34; for
+&#34;http://www.somesite.com&#34; on &#34;2002.10.05T02:15-0800&#34; r (n 0 s 0 v
+0 l 0)
+</pre>
+<table class="dataintable"> 
+  <tr>
+    <th>部分</th>
+    <th>描述</th>
+  </tr>
+  <tr>
+    <td>PICS-1.1</td>
+    <td>PICS 版本号</td>
+  </tr>
+  <tr>
+    <td>&#34;http://www.rsac.org/ratingsv01.html&#34;</td>
+    <td>分级机构</td>
+  </tr>
+  <tr>
+    <td>by &#34;your@name.com&#34;</td>
+    <td>标记的作者</td>
+  </tr>
+  <tr>
+    <td> for &#34;http://www.somesite.com&#34;</td>
+    <td>已被分级的文档的 URL</td>
+  </tr>
+  <tr>
+    <td>on &#34;2002.10.05T02:15-0800&#34;</td>
+    <td>失效日期</td>
+  </tr>
+  <tr>
+    <td> r (n 0 s 0 v 0 l 0)</td>
+    <td>等级</td>
+  </tr>
+</table>
+<p>最流行的分级系统之一是 RSACi (Recreational Software Advisory Council on the Internet) 。RSACi 使用四种类型：violence (暴力）、nudity (裸体）、 sex (性）以及language (不雅言论）。数字从 0 到 4分别分配给了这四种类型。0 表示页面不包含任何攻击性的内容，4 表示潜在攻击性内容的最高级别。</p>
+<table class="dataintable"> 
+  <tr>
+    <th>级别</th>
+    <th>暴力分级</th>
+    <th>裸体分级</th>
+    <th>性分级</th>
+    <th>言论分级</th>
+  </tr>
+  <tr>
+    <td>0</td>
+    <td>None of the below or sports related</td>
+    <td>None of the below</td>
+    <td>None of the below or innocent kissing; romance</td>
+    <td>None of the below</td>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>Injury to human being</td>
+    <td>Revealing attire</td>
+    <td>Passionate kissing</td>
+    <td>Mild expletives</td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td>Destruction of realistic objects</td>
+    <td>Partial nudity</td>
+    <td>Clothed sexual touching</td>
+    <td>Moderate expletives or profanity</td>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td>Aggressive violence or death to humans</td>
+    <td>Frontal nudity</td>
+    <td>Non-explicit sexual acts</td>
+    <td>Strong language or hate speech</td>
+  </tr>
+  <tr>
+    <td>4</td>
+    <td>Rape or wanton, gratuitous violence</td>
+    <td>Frontal nudity (qualifying as provocative display)</td>
+    <td>Explicit sexual acts or sex crimes</td>
+    <td>Crude, vulgar language or extreme hate speech</td>
+  </tr>
+</table>
+<p>您有两种方式为您的网站获得评级。您可以自己为网站评级，或者利用一个评级提供者，比如 RSACi 。他们会要求您填写一些问题。在填写完成后，您会得到用于您的网站的分级标记。</p>
+<p>Microsoft IE 3.0 及更高的版本和 Netscape 4.5 及更高的版本均支持内容分级。您可以在 IE 5 中设置分级，选择工具菜单中的 Internet 选项。选择内容选项卡，然后单击启用。当等级超过了所定义的级别，内容顾问就会阻止此网站。</p>
+<p>我们可以使用 META 标签或者 response.PICS 属性为网站添加分级。</p>
+</div>
+<div>
+<h2>语法</h2>
+<pre>response.PICS(picslabel)</pre>
+<table class="dataintable"> 
+  <tr>
+    <th>参数</th>
+    <th>描述</th>
+  </tr>  
+  <tr>
+    <td>picslabel</td>
+    <td>A properly formatted PICS label</td>
+  </tr>
+</table>
+</div>
+<div>
+<h2>实例</h2>
+<p>ASP 文件包含以下代码：</p>
+<p class="note"><span>注释：</span>由于 PICS 标记含有引号，您必须把引号替换为&#34; &amp; chr(34) &amp; &#34;</p>
+<pre>&lt;% 
+response.PICS(&#34;(PICS-1.1 &lt;http://www.rsac.org/ratingv01.html&gt;
+by &#34; &amp; chr(34) &amp; &#34;your@name.com&#34; &amp; chr(34) &amp;
+&#34; for &#34; &amp; chr(34) &amp; &#34;http://www.somesite.com&#34; &amp; chr(34) &amp;
+&#34; on &#34; &amp; chr(34) &amp; &#34;2002.10.05T02:15-0800&#34; &amp; chr(34) &amp;
+&#34; r (n 2 s 0 v 1 l 2))&#34;) 
+%&gt;</pre>
+<p>被添加的头部：</p>
+<pre>PICS-label:(PICS-1.1 &lt;http://www.rsac.org/ratingv01.html&gt;
+by &#34;your@name.com&#34;
+for &#34;http://www.somesite.com&#34;
+on &#34;2002.10.05T02:15-0800&#34;
+r (n 2 s 0 v 1 l 2))</pre>
+</div>
+<div>
+<p><a href="asp_ref_response.html">返回 response 对象参考手册</a></p>
+</div>
+</div>
+<div id="sidebar">
+<div class="rs"></div>
+<div id="tools">
+<h5 id="tools_reference"><a href="asp_ref.html">ASP 参考手册</a></h5>
+<h5 id="tools_example"><a href="../example/aspe_examples.html">ASP 实例</a></h5>
+<h5 id="tools_quiz"><a href="asp_quiz.html">ASP 测验</a></h5>
+</div>
+<div class="a120x600"><script type="text/javascript">var cpro_id="u1293136";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div><div class="b"></div>
+</div>
+</body>
+</html>

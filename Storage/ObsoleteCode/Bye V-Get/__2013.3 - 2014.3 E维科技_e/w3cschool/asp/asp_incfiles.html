@@ -1,0 +1,189 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="ASP 文件引用,ASP Including Files" />
+<meta name="description" content="本节向您讲解#include命令的作用、语法以及使用时的注意事项。" />
+<link rel="stylesheet" type="text/css" href="../c3.css" />
+<title>ASP 文件引用</title>
+</head>
+<body class="serverscripting">
+<div id="wrapper">
+<div id="header">
+<a href="http://e.v-get.com/w3cschool/" style="float:left;">W3CSchool 在线教程</a>
+<div class="q g"><script type="text/javascript">var cpro_id="u1163355"</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div>
+<div id="navfirst">
+<ul id="menu">
+<li id="h"><a href="../h.html">HTML教程</a></li>
+<li id="x"><a href="../x.html">XML教程</a></li>
+<li id="b"><a href="../b.html">浏览器脚本</a></li>
+<li id="s"><a href="../s.html">服务器脚本</a></li>
+<li id="d"><a href="../d.html">dot net教程</a></li>
+<li id="m"><a href="../m.html">多媒体教程</a></li>
+<li id="w"><a href="../w.html">建站手册</a></li>
+</ul>
+</div><div id="navsecond">
+<div id="course">
+<h2>ASP 教程</h2>
+<ul>
+<li><a href="http://e.v-get.com/w3cschool/">ASP 首页</a></li>
+<li><a href="asp_intro.html">ASP 简介</a></li>
+<li><a href="asp_install.html">ASP 安装</a></li>
+<li><a href="asp_syntax.html">ASP 语法</a></li>
+<li><a href="asp_variables.html">ASP 变量</a></li>
+<li><a href="asp_procedures.html">ASP 程序</a></li>
+<li><a href="asp_inputforms.html">ASP 表单</a></li>
+<li><a href="asp_cookies.html">ASP Cookies</a></li>
+<li><a href="asp_sessions.html">ASP Session</a></li>
+<li><a href="asp_applications.html">ASP Application</a></li>
+<li><a href="asp_incfiles.html">ASP #include</a></li>
+<li><a href="asp_globalasa.html">ASP Global.asa</a></li>
+<li><a href="asp_send_email.html">ASP e-mail</a></li>
+</ul>
+<h2>ASP 对象</h2>
+<ul class="small">
+<li><a href="asp_ref_response.html">ASP Response</a></li>
+<li><a href="asp_ref_request.html">ASP Request</a></li>
+<li><a href="asp_ref_application.html">ASP Application</a></li>
+<li><a href="asp_ref_session.html">ASP Session</a></li>
+<li><a href="asp_ref_server.html">ASP Server</a></li>
+<li><a href="asp_ref_error.html">ASP Error</a></li>
+<li class="list_apart"><a href="asp_ref_filesystem.html">ASP FileSystem</a></li>
+<li><a href="asp_ref_textstream.html">ASP TextStream</a></li>
+<li><a href="asp_ref_drive.html">ASP Drive</a></li>
+<li><a href="asp_ref_file.html">ASP File</a></li>
+<li><a href="asp_ref_folder.html">ASP Folder</a></li>
+<li><a href="asp_ref_dictionary.html">ASP Dictionary</a></li>
+<li><a href="asp_ado.html">ASP ADO</a></li>
+</ul>
+<h2>ASP 组件</h2>
+<ul class="small">
+<li><a href="asp_adrotator.html">ASP AdRotator</a></li>
+<li><a href="asp_browser.html">ASP BrowserCap</a></li>
+<li><a href="asp_contentlinking.html">ASP Content Linking</a></li>
+<li><a href="asp_contentrotator.html">ASP Content Rotator</a></li>
+</ul>
+<h2>ASP 教程总结</h2>
+<ul>
+<li><a href="asp_quickref.html">ASP 快速参考</a></li>
+<li><a href="asp_summary.html">ASP 总结</a></li>
+</ul>
+<h2>实例/测验</h2>
+<ul>
+<li><a href="../example/aspe_examples.html">ASP 实例</a></li>
+<li><a href="asp_quiz.html">ASP 测验</a></li>
+</ul>
+</div>
+<div id="selected">
+<h2>建站手册</h2>
+<ul>
+<li><a href="../site/">网站构建</a></li>
+<li><a href="../w3c/">万维网联盟</a></li>
+<li><a href="http://e.v-get.com/w3c/">W3CSchool 教程</a></li>
+<li><a href="../quality/">网站品质</a></li>
+<li><a href="../semweb/">语义网</a></li>
+<li><a href="../hosting/">网站主机</a></li>
+</ul>
+<h2><a href="http://e.v-get.com/w3c/" class="f13">W3CSchool 教程</a></h2><div class="a120x90"><script type="text/javascript">var cpro_id="u1210867";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div></div>
+</div>
+<div id="maincontent">
+<h1>ASP 文件引用</h1>
+<div  id="tpn">
+<ul class="prenext">
+<li class="pre"><a href="asp_applications.html">上一页</a></li>
+<li class="next"><a href="asp_globalasa.html">下一页</a></li>
+</ul>
+</div>
+<div id="intro">
+<p><strong>#include 命令用于在多重页面上创建需重复使用的函数、页眉、页脚或者其他元素等。</strong></p>
+</div>
+<div>
+<h2>#include 命令</h2>
+<p>通过使用 #include 命令，我们可以在服务器执行 ASP 文件之前，把另一个ASP文件插入这个文件中。#include 命令用于在多重页面上创建需重复使用的函数、页眉、页脚或者其他元素等。</p>
+</div>
+<div>
+<h2>如何使用 #include 命令</h2>
+<p>这里有一个名为 &#34;mypage.asp&#34; 的文件:</p>
+<pre>&lt;html&gt; 
+&lt;body&gt; 
+&lt;h2&gt;Words of Wisdom:&lt;/h2&gt;
+&lt;p&gt;<code>&lt;!--#include file=&#34;wisdom.inc&#34;--&gt;</code>&lt;/p&gt; 
+&lt;h2&gt;The time is:&lt;/h2&gt;
+&lt;p&gt;<code>&lt;!--#include file=&#34;time.inc&#34;--&gt;</code>&lt;/p&gt;
+&lt;/body&gt; 
+&lt;/html&gt; </pre>
+<p>这是 &#34;wisdom.inc&#34; 文件:</p>
+<pre>&#34;One should never increase, beyond what is necessary,
+the number of entities required to explain anything.&#34;</pre>
+<p>这是 &#34;time.inc&#34; 文件:</p>
+<pre>&lt;%
+Response.Write(Time)
+%&gt;</pre>
+<p>在浏览器中查看的源代码应该类似这样：</p>
+<pre>&lt;html&gt;
+&lt;body&gt;
+&lt;h2&gt;Words of Wisdom:&lt;/h2&gt;
+&lt;p&gt;&#34;One should never increase, beyond what is necessary,
+the number of entities required to explain anything.&#34;&lt;/p&gt;
+&lt;h2&gt;The time is:&lt;/h2&gt;
+&lt;p&gt;11:33:42 AM&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+</div>
+<div>
+<h2>Including 文件的语法：</h2>
+<p>如需在 ASP 中引用文件，请把 #include 命令置于注释标签之中：</p>
+<pre>&lt;!--#include virtual=&#34;somefilename&#34;--&gt;</pre>
+<p>或者：</p>
+<pre>&lt;!--#include file =&#34;somefilename&#34;--&gt;</pre>
+<h3>关键词 Virtual</h3>
+<p>关键词 virtual 指示路径以虚拟目录开始。</p>
+<p>如果名为 &#34;header.inc&#34; 位于名为 /html 的虚拟目录中，下面这行代码会插入文件 &#34;header.inc&#34; 中的内容：</p>
+<pre>&lt;!-- #include <code>virtual</code> =&#34;/html/header.inc&#34; --&gt;</pre>
+<h3>关键词 File</h3>
+<p>关键词 File 指示一个相对的路径。相对路径起始于含有引用文件的目录。</p>
+<p>假设文件位于 html 文件夹的子文件夹 headers 中，下面这段代码可引用 &#34;header.inc&#34; 文件的内容：</p>
+<pre>&lt;!-- #include <code>file</code> =&#34;headers\header.inc&#34; --&gt;</pre>
+<p class="important"><span>注意：</span>被引用文件的路径是相对于引用文件的。假如包含 #include 声明的文件不在 html 目录中，这个声明就不会起效。</p>
+<p>您同样可以使用关键词 file 和语法 (..\) 来引用上级目录中的文件。</p>
+</div>
+<div>
+<h2>提示和注释</h2>
+<p>在上面的一节中，我们使用 &#34;.inc&#34; 来作为被引用文件的后缀。注意：假如用户尝试直接浏览 INC 文件，这个文件中内容就会暴露。假如被引用的文件中的内容涉及机密，那么最好还是使用 &#34;asp&#34; 作为后缀。ASP 文件中的源代码被编译后是不可见的。被引用的文件也可引用其他文件，同时一个 ASP 文件可以对同一个文件引用多次。</p>
+<p class="important"><span>重要事项：</span>在脚本执行前，被引用的文件就会被处理和插入。</p>
+<p>下面的代码无法执行，这是由于 ASP 会在为变量赋值之前执行 #include 命令：</p>
+<pre>&lt;%
+fname=&#34;header.inc&#34;
+%&gt;
+&lt;!--#include file=&#34;&lt;%=fname%&gt;&#34;--&gt;</pre>
+<p>不能在脚本分隔符之间包含文件引用：</p>
+<pre>&lt;%
+For i = 1 To n
+  &lt;!--#include file=&#34;count.inc&#34;--&gt;
+Next
+%&gt;</pre>
+<p>但是这段脚本可以工作：</p>
+<pre>&lt;% For i = 1 to n %&gt;
+&lt;!--#include file=&#34;count.inc&#34; --&gt;
+&lt;% Next %&gt;</pre>
+</div>
+<div id="bpn">
+<ul class="prenext">
+<li class="pre"><a href="asp_applications.html">上一页</a></li>
+<li class="next"><a href="asp_globalasa.html">下一页</a></li>
+</ul>
+</div>
+</div>
+<div id="sidebar">
+<div class="rs"></div>
+<div id="tools">
+<h5 id="tools_reference"><a href="asp_ref.html">ASP 参考手册</a></h5>
+<h5 id="tools_example"><a href="../example/aspe_examples.html">ASP 实例</a></h5>
+<h5 id="tools_quiz"><a href="asp_quiz.html">ASP 测验</a></h5>
+</div>
+<div class="a120x600"><script type="text/javascript">var cpro_id="u1293136";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div><div class="b"></div>
+</div>
+</body>
+</html>

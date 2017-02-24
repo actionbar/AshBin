@@ -1,0 +1,164 @@
+<html>
+<head>
+<title>编制样式单以便显示文档</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+
+<link rel = stylesheet href = "image/style.css">
+</head>
+<body bgcolor="#ffffff">
+<table width="688" border="0" cellspacing="0" cellpadding="0" align="center">
+  <tr bgcolor="EEEEEE"> 
+    <td height="22"><a href="index.htm">主页</a></td>
+  </tr>
+</table><br>
+<table border="0" cellpadding="0" cellspacing="0" width="688" align="center" height="490">
+  <tr valign="top"> 
+    <td rowspan="4" width="91">&nbsp; </td>
+    <td height="68" width="131"> 
+      <p><img src="image/doc.gif"></p>
+    </td>
+    <td rowspan="4" width="18"><b></b> </td>
+    <td height="68" width="387"><img src="image/title_doc.gif"></td>
+    <td rowspan="4" width="61"> 
+      <h6>&nbsp;</h6>
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td rowspan="3" valign="top" class="pt10" align="center" width="131" bgcolor="EEEEEE"> 
+      <p>&nbsp;</p>
+      <p><font color="#FF0000">※ 4.4 编制样式单以便显示文档</font></p>
+       
+            <p align="left">4.4 编制样式单以便显示文档</p>
+          
+            <p align="left"><a href='334.htm'>4.4 编制样式单以便显示文档(续)</a></p>
+          
+	</td>
+  </tr>
+  <tr valign="top"> 
+    <td width="387" height="308"> 
+      <table width="100%" border="0" cellpadding="0">
+        <tr> 
+          <td>
+
+           <h3 align="CENTER">4.4 编制样式单以便显示文档</h3>
+<p>图4-1中的XML文档的原始视图对于某些应用来说也是不错的。例如，此视图允许折叠和展开单个的元素，因而可以只看文档中要看的部分。但大多数时候，人们总希望看到更好的形式，特别是，想要在Web上显示数据时。为了提供更好的外观，必须为文档编写样式单。</p>
+<p>在本章中，我们使用的是CSS样式单。CSS样式单将特定的格式化信息与文档中的每个元素联系起来。我们的XML文档中使用的元素的完全列表如下：</p>
+<p><font face="Courier New, Courier, mono"><i>SEASON</i></font></p>
+<p><i><font face="Courier New, Courier, mono">YEAR</font></i></p>
+<p><i><font face="Courier New, Courier, mono">LEAGUE</font></i></p>
+<p><i><font face="Courier New, Courier, mono">LEAGUE_NAME</font></i></p>
+<p><i><font face="Courier New, Courier, mono">DIVISION</font></i></p>
+<p><i><font face="Courier New, Courier, mono">DIVISION_NAME</font></i></p>
+<p><i><font face="Courier New, Courier, mono">TEAM</font></i></p>
+<p><i><font face="Courier New, Courier, mono">TEAM_CITY</font></i></p>
+<p><i><font face="Courier New, Courier, mono">TEAM_NAME</font></i></p>
+<p><i><font face="Courier New, Courier, mono">PLAYER</font></i></p>
+<p><i><font face="Courier New, Courier, mono">SURNAME</font></i></p>
+<p><i><font face="Courier New, Courier, mono">GIVEN_NAME</font></i></p>
+<p><i><font face="Courier New, Courier, mono">POSITION</font></i></p>
+<p><i><font face="Courier New, Courier, mono">GAMES</font></i></p>
+<p><i><font face="Courier New, Courier, mono">GAMES_STARTED</font></i></p>
+<p><i><font face="Courier New, Courier, mono">AT_BATS</font></i></p>
+<p><i><font face="Courier New, Courier, mono">RUNS</font></i></p>
+<p><i><font face="Courier New, Courier, mono">HITS</font></i></p>
+<p><i><font face="Courier New, Courier, mono">DOUBLES</font></i></p>
+<p><i><font face="Courier New, Courier, mono">TRIPLES</font></i></p>
+<p><i><font face="Courier New, Courier, mono">HOME_RUNS</font></i></p>
+<p><i><font face="Courier New, Courier, mono">RBI</font></i></p>
+<p><i><font face="Courier New, Courier, mono">STEALS</font></i></p>
+<p><i><font face="Courier New, Courier, mono">CAUGHT_STEALING</font></i></p>
+<p><i><font face="Courier New, Courier, mono">SACRIFICE_HITS</font></i></p>
+<p><i><font face="Courier New, Courier, mono">SACRIFICE_FLIES</font></i></p>
+<p><i><font face="Courier New, Courier, mono">ERRORS</font></i></p>
+<p><i><font face="Courier New, Courier, mono">WALKS</font></i></p>
+<p><i><font face="Courier New, Courier, mono">STRUCK_OUT</font></i></p>
+<p><i><font face="Courier New, Courier, mono">HIT_BY_PITCH</font></i></p>
+<p>一般来说，我们要用重复的过程来为每个元素增加样式规则，一次一个元素地进行，然后检查是否达到了要求，再处理下一个元素。在本例中，这种办法对于不熟悉样式单属性的人来说也有好处。</p>
+<h5>4.4.1 与样式单连接</h5>
+<p>样式单的名称可随便取。如果只是为一个文档编制样式单，那么习惯上样式单的文件与文档的文件名一样，但是三字母的扩展名是.css而不是.xml。例如，对于XML文档1998shortstats.xml来说，样式单文件可以叫做1998shortstats.css。另一方面，如果同样的样式单还要用于许多文档，那么，可能需要更为普通的文件名，如baseballstats.css。</p>
+<img src="image/Image32.gif" width=50 height=36 align="LEFT" hspace=12> 
+<p>由于CSS样式单是级联的，同一文档可有不止一个样式单。因而baseballstats.css可向文档施加某些一般的样式规则，而1998shortstats.css可覆盖其中的几条规则，以便在同一文档（1998shortstats.xml）中处理特定的细节。我们将第12章“级联样式单（级别1）”中讨论这一问题。</p>
+<p>为了将样式单与文档联系起来，只要像下面所示简单地在XML声明和根元素间增加一个&lt;?xml-stylesheet?&gt;处理指令就可以了：</p>
+<p><font face="Courier New, Courier, mono"><i>&lt;?xml version="1.0" standalone="yes"?&gt;</i></font></p>
+<p><font face="Courier New, Courier, mono"><i>&lt;?xml-stylesheet type="text/css" 
+  href="baseballstats.css"?&gt;</i></font></p>
+<p><font face="Courier New, Courier, mono"><i>&lt;SEASON&gt;</i></font></p>
+<p><font face="Courier New, Courier, mono"><i>...</i></font></p>
+<p>这条指令告诉浏览器读取文档并施加保存在文件baseballstats.css中的样式单。这个文件是假设放在与XML文件同一服务器上的同一目录中的。换句话说，baseballstats.css是个相对的URL。完全的URL也是可以使用的。例如：</p>
+<p><i><font face="Courier New, Courier, mono">&lt;?xml version="1.0" standalone="yes"?&gt;</font></i></p>
+<p><font face="Courier New, Courier, mono"><i>&lt;?xml-stylesheet type="text/css"</i></font></p>
+<p><font face="Courier New, Courier, mono"><i>href="http://metalab.unc.edu/xml/examples/baseballstats.css"?&gt;</i></font></p>
+<p><font face="Courier New, Courier, mono"><i>&lt;SEASON&gt;</i></font></p>
+<p><font face="Courier New, Courier, mono"><i>...</i></font></p>
+<p>开始时，用户可以简单地将一个名为baseballstats.css的空文件放在与XML文档相同的目录中。然后向1998shortstats.xml （清单4-1）中增加适当的指令，该文档现在在浏览器中的外观如图4-2所示。只显示了元素内容。可折叠的大纲视图（图4-1）不见了。元素内容的格式使用的是浏览器的缺省格式，在本例中是黑色12磅的Times 
+  Roman 字体放在白色背景上。</p>
+<p align="CENTER"><img src="image/Image33.gif" width=467 height=338></p>
+<p align="CENTER">图4-2 使用了空白样式之后的1998年两大棒球联赛的统计数字显示</p>
+<p><img src="image/Image34.gif" width=45 height=49>如果在指定位置找不到样式单处理指令（xml-stylesheet）中指定的样式单文件名，也可看到一个很像图4-2的视图。</p>
+<h5>4.4.2 为根元素指定样式规则</h5>
+<p> 用户不必为每个元素指定样式规则。许多元素允许将其父元素的样式串接下来。因而最重要的样式是根元素的样式，在本例中就是SEASON元素。这个样式定义了页面上所有其他元素的缺省样式。大致为72 
+  dpi的分辨率的计算机显示器不如纸上300dpi或更大的分辨率那样高。所以，Web页面通常应该使用较大磅数的字号。首先将缺省样式定义为白色背景上的14磅黑色字，定义如下：</p>
+<p><font face="Courier New, Courier, mono"><i>SEASON {font-size: 14pt; background-color: 
+  white; </i></font></p>
+<p><font face="Courier New, Courier, mono"><i>color: black; display: block}</i></font></p>
+<p> 将这条语句放在一个文本文件中，将其以文件名baseballstats.css与清单4-1中的文件（1998shortstats.xml）保存在同一目录中。在浏览器中打开1998shortstats.xml。我们就会看到如图4-3所示的情况。</p>
+<p> 在图4-2和图4-3之间字号发生了变化，但文本颜色和背景颜色没有变化。其实这没有必要加以设置，因为黑色文本和白色背景是缺省的。但明确地加以设置也没有损失什么。</p>
+<p align="CENTER"><img src="image/Image35.gif" width=490 height=413></p>
+<p align="CENTER">图4-3 以14磅白地黑字显示的棒球统计数据</p>
+<h5>4.4.3 为标题指定样式规则</h5>
+<p> 元素YEAR或多或少可算是文档的标题。因而使其显示得大一些，用32磅的字号也就足够大了。同时，它还应该从文档的其余部分突出出来，而不是简单地与其他内容混在一起。利用下面的样式规则可以达到这些目的：</p>
+<p><font face="Courier New, Courier, mono"><i>YEAR {display: block; font-size: 
+  32pt; font-weight: bold; </i></font></p>
+<p><i><font face="Courier New, Courier, mono">text-align: center}</font></i></p>
+<p> 图4-4显示的是将此规则增加到样式单中之后的文档。请特别注意，在“1998”后面的换行。有这个换行是由于YEAR是块级元素。而在文档中的其他元素都是内联元素。我们只能使块级元素居中（或左对齐、右对齐或两端对齐）。</p>
+<p align="CENTER"><img src="image/Image36.gif" width=494 height=357></p>
+<p align="CENTER">图4-4 将YEAR元素格式化为标题</p>
+<p>在使用了这种样式单的文档中，YEAR元素与HTML中的H1标题元素的功能重复了。 由于这个文档是非常整齐地分支结构，几个其他元素的功能与HTML中的H2、H3等相似。这些元素都可以用相似的规则加以格式化，只是将字号略微减小一些罢了。</p>
+<p>例如，SEASON由两个LEAGUE元素组成。每个LEAGUE的名称，即LEAGUE_NAME元素，起了HTML中的H2元素一样的作用。每个LEAGUE元素又由三个DIVISION元素所组成。每个DIVISION的名称，也就是DIVISION_NAME元素，具有HTML中的H3元素的作用。这两条规则分别将这两种元素加以格式化：</p>
+<p><font face="Courier New, Courier, mono"><i>LEAGUE_NAME {display: block; text-align: 
+  center; font-size:</i></font></p>
+<p><i><font face="Courier New, Courier, mono">28pt; font-weight: bold}</font></i></p>
+<p><i><font face="Courier New, Courier, mono">DIVISION_NAME {display: block; text-align: 
+  center; font-size:</font></i></p>
+<p><i><font face="Courier New, Courier, mono">24pt; font-weight: bold}</font></i></p>
+<p>图4-5显示的是最后的文档。</p>
+<p align="CENTER"><img src="image/Image37.gif" width=419 height=367></p>
+<p align="CENTER">图4-5 将LEAGUE_NAME和DIVISION_NAME元素格式化为下级标题</p>
+<img src="image/Image38.gif" width=33 height=36 align="LEFT" hspace=12> 
+<p>HTML和XML的一个重要区别是，在HTML中通常不会出现在一个元素中既包括节标题（H2、H3、H4等），又包括该节的完整内容的情况。节的内容必须包括在一级标题的结束和下一个同级标题的开始之间。这对于必须分析HTML文档的语法的软件来说是非常重要的，例如，要自动生成目录时。</p>
+<p>Divisions又分成为TEAM元素。要将此格式化需要一些技巧，因为球队的标题并不就是TEAM_NAME元素，而是TEAM_CITY元素与TEAM_NAME拼接在一起的。所以这需要的是内联元素而不是单独的块级元素。然而，它们仍然是标题，因而我们将其设置为粗斜体的20磅字体。图4-6显示的是将这两条规则加到样式单中的结果。</p>
+<p><font face="Courier New, Courier, mono"><i>TEAM_CITY {font-size: 20pt; font-weight: 
+  bold; </i></font></p>
+<p><i><font face="Courier New, Courier, mono"> font-style: italic}</font></i></p>
+<p><i><font face="Courier New, Courier, mono">TEAM_NAME {font-size: 20pt; font-weight: 
+  bold; </font></i></p>
+<p><i><font face="Courier New, Courier, mono"> font-style: italic}</font></i></p>
+<p align="CENTER"><img src="image/Image39.gif" width=405 height=362></p>
+<p align="CENTER">图4-6 为队名设置样式</p>
+<p>到此为止，将队名与城市名作为结合起来的块级元素来排列结果可能会是不错的。有几种办法可达到这个目的。例如，可以向XML文档中增加一个附加的TEAM_TITLE元素，其目的只是为了包括TEAM_NAME和TEAM_CITY。例如：</p>
+<p><i><font face="Courier New, Courier, mono">&lt;TEAM&gt;</font></i></p>
+<p> <font face="Courier New, Courier, mono"><i>&lt;TEAM_TITLE&gt;</i></font></p>
+<p> <font face="Courier New, Courier, mono"><i>&lt;TEAM_CITY&gt;Colorado&lt;/TEAM_CITY&gt;</i></font></p>
+<p> <font face="Courier New, Courier, mono"><i>&lt;TEAM_NAME&gt;Rockies&lt;/TEAM_NAME&gt;</i></font></p>
+<p> <font face="Courier New, Courier, mono"><i>&lt;/TEAM_TITLE&gt;</i></font></p>
+<p><font face="Courier New, Courier, mono"><i>&lt;/TEAM&gt;</i></font></p>
+<p>接着，可以增加一条向TEAM_TITLE施加块级格式化的样式规则：</p>
+<p><i><font face="Courier New, Courier, mono">TEAM_TITLE {display: block; text-align: 
+  center}</font></i></p>
+<p>但是，绝不应该为了使样式单简单一些而重新排列XML文档。毕竟，样式单的总的目的是将格式化信息保存于文档之外。不过，用户可以通过别的办法达到同样的效果。其办法是，使紧挨着的上一个和下一个元素变成块级元素，也就是说，将TEAM和PLAYER变成块级元素。这就将TEAM_NAME和TEAM_CITY放在了由它们本身组成的隐式块级元素之中了。图4-7显示了其结果。</p>
+<p><i><font face="Courier New, Courier, mono">TEAM {display: block}</font></i></p>
+<p><font face="Courier New, Courier, mono"><i>PLAYER {display: block}</i></font></p>
+<p align="CENTER"><img src="image/Image40.gif" width=400 height=354></p>
+<p align="CENTER">图4-7 作为段标题而格式化的队名和城市名</p>
+ 
+<a href='332.htm'>&lt;&lt;上一篇</a>&nbsp;&nbsp;<a href='334.htm'>下一篇&gt;&gt;</a></td>
+        </tr>
+      </table>
+      <p>&nbsp; </p>
+    </td>
+  </tr>
+</table>
+
+</body>
+
+</html>

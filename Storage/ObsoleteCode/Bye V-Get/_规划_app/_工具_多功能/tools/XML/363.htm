@@ -1,0 +1,70 @@
+<html>
+<head>
+<title>空标记</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+
+<link rel = stylesheet href = "image/style.css">
+</head>
+<body bgcolor="#ffffff">
+<table width="688" border="0" cellspacing="0" cellpadding="0" align="center">
+  <tr bgcolor="EEEEEE"> 
+    <td height="22"><a href="index.htm">主页</a></td>
+  </tr>
+</table><br>
+<table border="0" cellpadding="0" cellspacing="0" width="688" align="center" height="490">
+  <tr valign="top"> 
+    <td rowspan="4" width="91">&nbsp; </td>
+    <td height="68" width="131"> 
+      <p><img src="image/doc.gif"></p>
+    </td>
+    <td rowspan="4" width="18"><b></b> </td>
+    <td height="68" width="387"><img src="image/title_doc.gif"></td>
+    <td rowspan="4" width="61"> 
+      <h6>&nbsp;</h6>
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td rowspan="3" valign="top" class="pt10" align="center" width="131" bgcolor="EEEEEE"> 
+      <p>&nbsp;</p>
+      <p><font color="#FF0000">※ 5.3 空标记</font></p>
+       
+	</td>
+  </tr>
+  <tr valign="top"> 
+    <td width="387" height="308"> 
+      <table width="100%" border="0" cellpadding="0">
+        <tr> 
+          <td>
+
+           <h4><a name="_Toc467197027">5.3 空标记</a></h4>
+<p>上一章中没有属性的方式是一种极端的情况，由此可能会想到另一个极端——将所有的信息全部存储在属性中，而不是存储在内容中。通常不推荐使用这种方式。把信息全部存储在元素内容中同样也是极端的，只是实际处理起来更容易。这一节考虑仅使用属性来说明的可能性。</p>
+<p>只要元素中没有内容，就可以使用空标记来简化。可以只包含一个空标记而不是一个起始标记和一个终止标记。空标记与起始标记的区别在于结束标记使用“/&gt;”而不是简单的“&gt;”。例如，不是&lt;PLAYER&gt;&lt;/PLAYER&gt;而是&lt;PLAYER/&gt;。</p>
+<p>空标记可以包含属性。例如，下面是关于Joe Girardi的一个空标记，含有7个属性：</p>
+<p>&lt;PLAYER GIVEN_NAME="Joe" SURNAME="Girardi"</p>
+<p> GAMES="78" AT_BATS="254" RUNS="31" HITS="70"</p>
+<p> DOUBLES="11" TRIPLES="4" HOME_RUNS="3"</p>
+<p> RUNS_BATTED_IN="31" WALKS="14" STRUCK_OUT="38"</p>
+<p> STOLEN_BASES="2" CAUGHT_STEALING="4"</p>
+<p> SACRIFICE_FLY="1" SACRIFICE_HIT="8"</p>
+<p> HIT_BY_PITCH="2"/&gt;</p>
+<p>XML句法分析器对空标记的处理与非空标记是一样的。下面的PLAYER元素与前面的空标记元素PLAYER精确地说是等价的（尽管不是完全一致）：</p>
+<p>&lt;PLAYER GIVEN_NAME="Joe" SURNAME="Girardi"</p>
+<p> GAMES="78" AT_BATS="254" RUNS="31" HITS="70"</p>
+<p> DOUBLES="11" TRIPLES="4" HOME_RUNS="3"</p>
+<p> RUNS_BATTED_IN="31" WALKS="14" STRUCK_OUT="38"</p>
+<p> STOLEN_BASES="2" CAUGHT_STEALING="4"</p>
+<p> SACRIFICE_FLY="1" SACRIFICE_HIT="8"</p>
+<p> HIT_BY_PITCH="2"&gt;&lt;/PLAYER&gt;</p>
+<p>&lt;PLAYER/&gt;与&lt;PLAYER&gt;&lt;/PLAYER&gt;之间的不同只是句法表面的不同，而没有别的不同。如果不喜欢空标记句法或者阅读起来感到困难，就不要使用它。</p>
+ 
+<a href='362.htm'>&lt;&lt;上一篇</a>&nbsp;&nbsp;<a href='364.htm'>下一篇&gt;&gt;</a></td>
+        </tr>
+      </table>
+      <p>&nbsp; </p>
+    </td>
+  </tr>
+</table>
+
+</body>
+
+</html>

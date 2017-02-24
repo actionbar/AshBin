@@ -1,0 +1,12 @@
+<meta http-equiv="content-type" content="text/html; charset=gb2312"><FONT 
+style="FONT-SIZE: 9pt; LINE-HEIGHT: 15pt"><B>提高效率1法：用选择代替迭代－T-SQL系列</B><BR><BR>用选择代替迭代
+<P></P>
+<P>用循环计算三角函数如下：</P>
+<P>DECLARE&nbsp;@angle&nbsp;smallint<BR>SELECT&nbsp;@angle=0<BR>WHILE(@angle&lt;=180)<BR>BEGIN<BR>&nbsp;&nbsp;SELECT&nbsp;ANGLE=@angle,<BR>&nbsp;&nbsp;&nbsp;&nbsp;SINE=STR(SIN(@angle),7,4),<BR>&nbsp;&nbsp;&nbsp;&nbsp;COSINE=STR(COS(@angle),7,4),<BR>&nbsp;&nbsp;&nbsp;&nbsp;TANGENT=STR(TAN(@angle),7,4)</P>
+<P>&nbsp;&nbsp;SELECT&nbsp;@angle=@angle+10<BR>END<BR>用这种方法，每一行都有自己的结果集，这样会降低程序的效率。</P>
+<P>&nbsp;</P>
+<P>用选择代替迭代：</P>
+<P>--创建序数表<BR>CREATE&nbsp;TABLE&nbsp;seq_num<BR>(seq_num&nbsp;INT&nbsp;PRIMARY&nbsp;KEY&nbsp;NOT&nbsp;NULL)</P>
+<P>--在序数表中加序数-500~500<BR>DECLARE&nbsp;@counter&nbsp;int<BR>SELECT&nbsp;@counter=-500<BR>WHILE(@counter&lt;=500)<BR>&nbsp;&nbsp;BEGIN<BR>&nbsp;&nbsp;&nbsp;&nbsp;INSERT&nbsp;seq_num&nbsp;valueS(@counter)<BR>&nbsp;&nbsp;&nbsp;&nbsp;SELECT&nbsp;@counter=@counter+1<BR>&nbsp;&nbsp;END</P>
+<P>--用选择和联结seq_num<BR>SELECT&nbsp;ANGLE=seq_num*10,<BR>&nbsp;&nbsp;SINE=STR(SIN(seq_num*10),7,4),<BR>&nbsp;&nbsp;COSINE=STR(COS(seq_num*10),7,4),<BR>&nbsp;&nbsp;TANGENT=STR(TAN(seq_num*10),7,4)&nbsp;<BR>FROM&nbsp;seq_num<BR>WHERE&nbsp;seq_num&nbsp;BETWEEN&nbsp;0&nbsp;AND&nbsp;18</P>
+<P>这种方法比迭代快很多，它返回一个结果集。</P></FONT>

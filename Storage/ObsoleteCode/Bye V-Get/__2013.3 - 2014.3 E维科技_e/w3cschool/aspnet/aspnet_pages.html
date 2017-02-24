@@ -1,0 +1,191 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="../c3.css" />
+<title>ASP.NET - Web 页面</title>
+</head>
+<body class="dotnet">
+<div id="wrapper">
+<div id="header">
+<a href="http://e.v-get.com/w3cschool/" style="float:left;">W3CSchool 在线教程</a>
+<div class="q g"><script type="text/javascript">var cpro_id="u1163355"</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div>
+<div id="navfirst">
+<ul id="menu">
+<li id="h"><a href="../h.html">HTML教程</a></li>
+<li id="x"><a href="../x.html">XML教程</a></li>
+<li id="b"><a href="../b.html">浏览器脚本</a></li>
+<li id="s"><a href="../s.html">服务器脚本</a></li>
+<li id="d"><a href="../d.html">dot net教程</a></li>
+<li id="m"><a href="../m.html">多媒体教程</a></li>
+<li id="w"><a href="../w.html">建站手册</a></li>
+</ul>
+</div><div id="navsecond">
+<div id="course">
+<h2>ASP.NET 教程</h2>
+<ul>
+<li><a href="http://e.v-get.com/w3cschool/">ASP.NET 首页</a></li>
+<li><a href="aspnet_intro.html">ASP.NET 简介</a></li>
+<li><a href="aspnet_vsasp.html">ASP.NET vs ASP</a></li>
+<li><a href="aspnet_pages.html">ASP.NET 页面</a></li>
+<li><a href="aspnet_controls.html">ASP.NET 控件</a></li>
+<li><a href="aspnet_events.html">ASP.NET 事件</a></li>
+</ul>
+<h2>ASP.NET 窗体</h2>
+<ul>
+<li><a href="aspnet_forms.html">ASP.NET 窗体</a></li>
+<li><a href="aspnet_viewstate.html">ASP.NET ViewState</a></li>
+<li><a href="aspnet_textbox.html">asp:TextBox</a></li>
+<li><a href="aspnet_button.html">asp:Button</a></li>
+</ul>
+<h2>ASP.NET 绑定</h2>
+<ul>
+<li><a href="aspnet_databinding.html">数据绑定</a></li>
+<li><a href="aspnet_arraylist.html">ArrayList</a></li>
+<li><a href="aspnet_hashtable.html">Hashtable</a></li>
+<li><a href="aspnet_sortedlist.html">SortedList</a></li>
+<li><a href="aspnet_xml.html">XML 文件</a></li>
+<li><a href="aspnet_repeater.html">asp:Repeater</a></li>
+<li><a href="aspnet_datalist.html">asp:DataList</a></li>
+</ul>
+<h2>ASP.NET 数据库</h2>
+<ul>
+<li><a href="aspnet_dbconnection.html">数据库连接</a></li>
+</ul>
+<h2>ASP.NET 2.0</h2>
+<ul>
+<li><a href="aspnet_newfeatures.html">2.0 新特性</a></li>
+<li><a href="aspnet_masterpages.html">2.0 母版页</a></li>
+<li><a href="aspnet_navigation.html">2.0 导航</a></li>
+</ul>
+<h2>参考手册</h2>
+<ul>
+<li><a href="aspnet_refhtmlcontrols.html">HTML 控件</a></li>
+<li><a href="aspnet_refwebcontrols.html">Web 控件</a></li>
+<li><a href="aspnet_refvalidationcontrols.html">Validation 控件</a></li>
+</ul>
+<h2>实例</h2>
+<ul>
+<li>ASP.NET 实例</li>
+</ul>
+</div>
+<div id="selected">
+<h2>建站手册</h2>
+<ul>
+<li><a href="../site/">网站构建</a></li>
+<li><a href="../w3c/">万维网联盟</a></li>
+<li><a href="http://e.v-get.com/w3c/">W3CSchool 教程</a></li>
+<li><a href="../quality/">网站品质</a></li>
+<li><a href="../semweb/">语义网</a></li>
+<li><a href="../hosting/">网站主机</a></li>
+</ul>
+<h2><a href="http://e.v-get.com/w3c/" class="f13">W3CSchool 教程</a></h2><div class="a120x90"><script type="text/javascript">var cpro_id="u1210867";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div></div>
+</div>
+<div id="maincontent">
+<h1>ASP.NET - Web 页面</h1>
+<div id="tpn">
+<ul class="prenext">
+<li class="pre"><a href="aspnet_vsasp.html">上一页</a></li>
+<li class="next"><a href="aspnet_controls.html">下一页</a></li>
+</ul>
+</div>
+<div id="intro">
+<p><strong>一个简单的 ASP.NET 页面看上去类似一张普通的 HTML 页面。</strong></p>
+</div>
+<div>
+<h2>Hello W3CSchool</h2>
+<p>为了开始我们的 ASP.NET 学习之旅，首先我们将构造一张简单的 HTML 页面，这张页面将在浏览器中显示 &#34;Hello W3CSchool&#34;：</p>
+<img src="../i/ct_aspnet_helloW3CSchool.gif" alt="" />
+</div>
+<div>
+<h2>用 HTML 编写的 Hello W3CSchool</h2>
+<p>这张 HTML 页面的 HTML 代码：</p>
+<pre>&lt;html&gt;
+&lt;body bgcolor=&#34;yellow&#34;&gt;
+&lt;center&gt;
+&lt;h2&gt;Hello W3CSchool!&lt;/h2&gt;
+&lt;/center&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+<p>如果您希望亲自试一试，可以把这些代码保存在名为 &#34;firstpage.html&#34; 的文件中，然后创建一个到此文件的链接，就像这样：<a href="firstpage.html">firstpage.html</a>。</p>
+</div>
+<div>
+<h2>用 ASP.NET 编写的 Hello W3CSchool</h2>
+<p>把 HTML 页面转换为 ASP.NET 的最简单的方法是，把这个 HTML 文件拷贝为带有 .aspx 后缀的新文件。</p>
+<p>这些将把我们的例子显示为一个 ASP.NET 页面：</p>
+<pre>&lt;html&gt;
+&lt;body bgcolor=&#34;yellow&#34;&gt;
+&lt;center&gt;
+&lt;h2&gt;Hello W3CSchool!&lt;/h2&gt;
+&lt;/center&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+<p>如果您希望亲自试一试，请把这些代码保存在一个名为 &#34;firstpage.aspx&#34; 的文件中，并创建一个到此文件的链接：<a href="firstpage.htmlx">firstpage.aspx</a>。</p>
+</div>
+<div>
+<h2>它如何工作？</h2>
+<p>从根本上讲，ASP.NET 页面与 HTML 完全相同。</p>
+<p>HTML 页面的扩展名是 .htm 或 .html。假如浏览器从服务器请求某张 HTML 页面，服务器不进行任何修改，就会把该页面发往浏览器。</p>
+<p>ASP.NET 页面的扩展名是 .aspx。如果浏览器请求某张 ASP.NET 页面，那么在把结果发回浏览器之前，服务器首先会处理页面中的可执行代码。</p>
+<p>上面的 ASP.NET 页面不包含任何可执行的代码，因此也不会执行任何代码。在下面的例子中，我们将向页面添加一些可执行代码，以便向您演示静态 HTML 页面与动态 ASP 页面的不同之处。</p>
+</div>
+<div>
+<h2>经典的 ASP</h2>
+<p>Active Server Pages (ASP) 已经流行很多年了。通过 ASP，可以把可执行代码放置于 HTML 页面内部。</p>
+<p>ASP.NET 之前的 ASP 版本经常被称为经典 ASP (Classic ASP）。</p>
+<p>ASP.NET 不完全兼容 Classic ASP，但是通过少量的修改，Classic ASP 可以良好地作为 ASP.NET 进行工作。</p>
+<p>如果您希望学习更多有关 Classic ASP 的知识，请访问我们的 <a href="../asp/">ASP 教程</a>。</p>
+</div>
+<div>
+<h2>用 Classic ASP 编写的动态页面</h2>
+<p>为了向您演示如何使用动态内容显示页面，我们向上面的例子添加了一些可执行代码：</p>
+<pre>&lt;html&gt;
+&lt;body bgcolor=&#34;yellow&#34;&gt;
+&lt;center&gt;
+&lt;h2&gt;Hello W3CSchool!&lt;/h2&gt;
+&lt;p&gt;<code>&lt;%Response.Write(now())%&gt;</code>&lt;/p&gt;
+&lt;/center&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+<p>&lt;% --%&gt; 标签内的代码在服务器上执行。</p>
+<p>Response.Write 是 ASP 代码，用来向 HTML 输出流文本。</p>
+<p>Now() 是一个可返回服务器当前日期和时间的函数。</p>
+<p>如果您希望亲自试一试，可以把这些代码保存在名为 &#34;dynpage.asp&#34; 的文件中，并创建一个指向该文件的链接：<a href="dynpage.html">dynpage.asp</a>。</p>
+</div>
+<div>
+<h2>用 ASP .NET 编写的动态页面</h2>
+<p>下面的代码可把我们的例子显示为一个 ASP.NET 页面：</p>
+<pre>&lt;html&gt;
+&lt;body bgcolor=&#34;yellow&#34;&gt;
+&lt;center&gt;
+&lt;h2&gt;Hello W3CSchool!&lt;/h2&gt;
+&lt;p&gt;<code>&lt;%Response.Write(now())%&gt;</code>&lt;/p&gt;
+&lt;/center&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+<p>如果您希望亲自试一试，请把这些代码保存在名为 &#34;dynpage.aspx&#34; 的文件中，然后创建到此文件的链接：<a href="dynpage.htmlx">dynpage.aspx</a>。</p>
+</div>
+<div>
+<h2>ASP.NET vs Classic ASP</h2>
+<p>上面的例子无法展示出 ASP.NET 与 Classic ASP 之间的不同之处。</p>
+<p>正如您在最后的两个例子中看到的，在这个两个 ASP 和 ASP.NET 页面之间，没有什么不同之处。</p>
+<p>在下面的章节，您会看到，服务器控件如何使 ASP.NET 比 Classic ASP 更加强大。</p>
+</div>
+<div  id="bpn">
+<ul class="prenext">
+<li class="pre"><a href="aspnet_vsasp.html">上一页</a></li>
+<li class="next"><a href="aspnet_controls.html">下一页</a></li>
+</ul>
+</div>
+</div>
+<div id="sidebar">
+<div class="rs"></div>
+<div id="tools">
+<h5 id="tools_reference"><a href="aspnet_reference.html">ASP.NET 参考手册</a></h5>
+</div>
+<div class="a120x600"><script type="text/javascript">var cpro_id="u1293136";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div><div class="b"></div>
+</div>
+</body>
+</html>

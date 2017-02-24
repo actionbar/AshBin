@@ -1,0 +1,116 @@
+<html xmlns:rdl>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<script src="rdl_properties.js"></script>
+<base target="_self">
+</head>
+<body>
+
+<script>
+
+//collFriendProperties=new Array();
+//collFriendDeclarations=new Array();
+//collFriendAtRules=new Array();
+//collFriendElements=new Array();
+//collFriendClasses=new Array();
+
+collFriendProperties=new Array(
+'background','background-color','background-image','background-attachment','background-position','background-position-x','background-position-y','layer-background-color','layer-background-image'
+);
+
+//collIE40=new Array();
+//collIE50=new Array();
+//collIE55=new Array();
+//collIE60=new Array();
+
+collIE40=new Array(
+'A','ADDRESS','B','BIG','BLOCKQUOTE','BODY','BUTTON','CAPTION','CENTER','CITE','CODE','COL','COLGROUP','DD','DFN','DIR','DIV','DL','DT','EM','FIELDSET','FORM','Hn','HTML','I','IMG','INPUT type=button','INPUT type=checkbox','INPUT type=file','INPUT type=image','INPUT type=password','INPUT type=radio','INPUT type=reset','INPUT type=submit','INPUT type=text','ISINDEX','KBD','LABEL','LEGEND','LI','LISTING','MARQUEE','MENU','OL','P','PLAINTEXT','PRE','S','SAMP','SELECT','SMALL','SPAN','STRIKE','STRONG','style','SUB','SUP','TABLE','TBODY','TD','TEXTAREA','TFOOT','TH','THEAD','TR','TT','U','UL','VAR','XMP'
+);
+
+collIE50=new Array(
+'currentStyle','CUSTOM','runtimeStyle'
+);
+
+collIE55=new Array(
+'defaults'
+);
+
+sStyle=
+'<style>\n'+
+'#idDiv{width:80%;height:120px;padding:6px;background-color:buttonshadow;background-image:url(images/rdl_tree.jpg);background-repeat:repeat;color:#FFFFFF;}\n'+
+'#idCodeDiv{width:80%;padding:4px;font-family:verdana,tahoma;margin:12px 0px 0px 0px;background-color:#EEEEEE;font-weight:bold;}\n'+
+'<\/style>\n';
+
+sScript=
+'<script>\n'+
+'function rdl_change(e){\n'+
+'var oCodeDiv=document.all("idCodeDiv");\n'+
+'var oDiv=document.all("idDiv");\n'+
+'with (document.all("idSel")){\n'+
+'if (selectedIndex!=0){\n'+
+'var sValue=options[selectedIndex].value;\n'+
+'oDiv.style.backgroundRepeat=sValue;\n'+
+'oCodeDiv.innerText="background-repeat : "+sValue+";";\n'+
+'}\n'+
+'}\n'+
+'}\n'+
+'<\/script>\n';
+
+sCode=
+'<div id=idDiv>请从下方选择背景图片的平铺方式。<\/div>\n'+
+'<br>\n'+
+'<select id="idSel" onchange="rdl_change();">\n'+
+'<option value="null">---请选择---\n'+
+'<option value="repeat">repeat\n'+
+'<option value="no-repeat">no-repeat\n'+
+'<option value="repeat-x">repeat-x\n'+
+'<option value="repeat-y">repeat-y\n'+
+'<\/select>\n'+
+'<br>\n'+
+'<div id=idCodeDiv>background-repeat : repeat ;<\/div>\n';
+
+iWinWidth=360;
+
+iWinHeight=340;
+
+//bRunCode=false;
+
+//bElements=false;
+
+</script>
+
+<div id=idContent>
+
+<div id=idContentTitle><span id=idTitleName>background-repeat</span>版本：CSS1　 兼容性：IE4+ NS4+　继承性：无</div>
+
+<div class=cssColumnTitle>语法：</div>
+<div>
+<b>background-repeat : </b><span class=cssDefault><b>repeat</b></span> | <b>no-repeat</b> | <b>repeat-x</b> | <b>repeat-y</b>
+</div>
+
+<div class=cssColumnTitle>取值：</div>
+<table>
+<tr><td nowrap><b> repeat </b></td><td nowrap><b>:</b></td><td><b>默认值</b>。背景图像在纵向和横向上平铺</td></tr>
+<tr><td nowrap><b> no-repeat </b></td><td nowrap><b>:</b></td><td>背景图像不平铺</td></tr>
+<tr><td nowrap><b> repeat-x </b></td><td nowrap><b>:</b></td><td>背景图像仅在横向上平铺</td></tr>
+<tr><td nowrap><b> repeat-y </b></td><td nowrap><b>:</b></td><td>背景图像仅在纵向上平铺</td></tr>
+</table>
+
+<div class=cssColumnTitle>说明：</div>
+<div>
+设置或检索对象的背景图像是否及如何铺排。必须先指定对象的背景图像(<a href="c_backgroundimage.html"> background-image </a>)。<br>
+此属性对于<b> currentStyle </b>对象而言是只读的。对于其他对象而言是可读写的。<br>
+对应的脚本特性为<b> backgroundRepeat </b>。
+</div>
+
+<div class=cssColumnTitle>示例：</div>
+<div id=idSimpleCode>
+menu { background: url("images/aardvark.gif"); background-repeat: repeat-y; } <br>p { background: url("images/aardvark.gif"); background-repeat: no-repeat; } 
+</div>
+
+</div>
+</body>
+</html>
+
+<!-- Part of RDL(TM) - Written by Rain1977 
+HomeSite: http://www.dhtmlet.com  E-Mail: dhtmlet@hotmail.com -->

@@ -1,0 +1,146 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="../c3.css" />
+<title>DTD - 来自网络的实例</title>
+</head>
+<body class="xml">
+<div id="wrapper">
+<div id="header">
+<a href="http://e.v-get.com/w3cschool/" style="float:left;">W3CSchool 在线教程</a>
+<div class="q g"><script type="text/javascript">var cpro_id="u1163355"</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div>
+<div id="navfirst">
+<ul id="menu">
+<li id="h"><a href="../h.html">HTML教程</a></li>
+<li id="x"><a href="../x.html">XML教程</a></li>
+<li id="b"><a href="../b.html">浏览器脚本</a></li>
+<li id="s"><a href="../s.html">服务器脚本</a></li>
+<li id="d"><a href="../d.html">dot net教程</a></li>
+<li id="m"><a href="../m.html">多媒体教程</a></li>
+<li id="w"><a href="../w.html">建站手册</a></li>
+</ul>
+</div><div id="navsecond">
+<div id="course">
+<h2>DTD 教程</h2>
+<ul>
+<li><a href="http://e.v-get.com/w3cschool/">DTD 首页</a></li>
+<li><a href="dtd_intro.html">DTD 简介</a></li>
+<li><a href="dtd_building.html">DTD 构建模块</a></li>
+<li><a href="dtd_elements.html">DTD 元素</a></li>
+<li><a href="dtd_attributes.html">DTD 属性</a></li>
+<li><a href="dtd_entities.html">DTD 实体</a></li>
+<li><a href="dtd_validation.html">DTD 验证</a></li>
+<li><a href="dtd_examples.html">DTD 实例</a></li>
+<li><a href="dtd_summary.html">DTD 总结</a></li>
+</ul>
+</div>
+<div id="selected">
+<h2>建站手册</h2>
+<ul>
+<li><a href="../site/">网站构建</a></li>
+<li><a href="../w3c/">万维网联盟</a></li>
+<li><a href="http://e.v-get.com/w3c/">W3CSchool 教程</a></li>
+<li><a href="../quality/">网站品质</a></li>
+<li><a href="../semweb/">语义网</a></li>
+<li><a href="../hosting/">网站主机</a></li>
+</ul>
+<h2><a href="http://e.v-get.com/w3c/" class="f13">W3CSchool 教程</a></h2><div class="a120x90"><script type="text/javascript">var cpro_id="u1210867";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div></div>
+</div>
+<div id="maincontent">
+<h1>DTD - 来自网络的实例</h1>
+<div  id="tpn">
+<ul class="prenext">
+<li class="pre"><a href="dtd_validation.html">上一页</a></li>
+<li class="next"><a href="dtd_summary.html">下一页</a></li>
+</ul>
+</div>
+<div>
+<h2>电视节目表 DTD</h2>
+<p>由 David Moisan 创造。拷贝自：<a href="http://www.davidmoisan.org/">http://www.davidmoisan.org/</a></p>
+<pre>&lt;!DOCTYPE TVSCHEDULE [
+&lt;!ELEMENT TVSCHEDULE (CHANNEL+)&gt;
+&lt;!ELEMENT CHANNEL (BANNER,DAY+)&gt;
+&lt;!ELEMENT BANNER (#PCDATA)&gt;
+&lt;!ELEMENT DAY (DATE,(HOLIDAY|PROGRAMSLOT+)+)&gt;
+&lt;!ELEMENT HOLIDAY (#PCDATA)&gt;
+&lt;!ELEMENT DATE (#PCDATA)&gt;
+&lt;!ELEMENT PROGRAMSLOT (TIME,TITLE,DESCRIPTION?)&gt;
+&lt;!ELEMENT TIME (#PCDATA)&gt;
+&lt;!ELEMENT TITLE (#PCDATA)&gt;&nbsp;
+&lt;!ELEMENT DESCRIPTION (#PCDATA)&gt;
+&lt;!ATTLIST TVSCHEDULE NAME CDATA #REQUIRED&gt;
+&lt;!ATTLIST CHANNEL CHAN CDATA #REQUIRED&gt;
+&lt;!ATTLIST PROGRAMSLOT VTR CDATA #IMPLIED&gt;
+&lt;!ATTLIST TITLE RATING CDATA #IMPLIED&gt;
+&lt;!ATTLIST TITLE LANGUAGE CDATA #IMPLIED&gt;
+]&gt;</pre>
+</div>
+<div>
+<h2>报纸文章 DTD </h2>
+<p>拷贝自：<a href="http://www.vervet.com/">http://www.vervet.com/</a></p>
+<pre>&lt;!DOCTYPE NEWSPAPER [&nbsp;
+&lt;!ELEMENT NEWSPAPER (ARTICLE+)&gt;
+&lt;!ELEMENT ARTICLE (HEADLINE,BYLINE,LEAD,BODY,NOTES)&gt;
+&lt;!ELEMENT HEADLINE (#PCDATA)&gt;
+&lt;!ELEMENT BYLINE (#PCDATA)&gt;
+&lt;!ELEMENT LEAD (#PCDATA)&gt;
+&lt;!ELEMENT BODY (#PCDATA)&gt;
+&lt;!ELEMENT NOTES (#PCDATA)&gt;&nbsp;
+&lt;!ATTLIST ARTICLE AUTHOR CDATA #REQUIRED&gt;
+&lt;!ATTLIST ARTICLE EDITOR CDATA #IMPLIED&gt;
+&lt;!ATTLIST ARTICLE DATE CDATA #IMPLIED&gt;
+&lt;!ATTLIST ARTICLE EDITION CDATA #IMPLIED&gt;
+&lt;!ENTITY NEWSPAPER &#34;Vervet Logic Times&#34;&gt;
+&lt;!ENTITY PUBLISHER &#34;Vervet Logic Press&#34;&gt;
+&lt;!ENTITY COPYRIGHT &#34;Copyright 1998 Vervet Logic Press&#34;&gt;
+]&gt;</pre>
+</div>
+<div>
+<h2>产品目录 DTD</h2>
+<p>拷贝自：<a href="http://www.vervet.com/">http://www.vervet.com/</a></p>
+<pre>&lt;!DOCTYPE CATALOG [
+&lt;!ENTITY AUTHOR &#34;John Doe&#34;&gt;
+&lt;!ENTITY COMPANY &#34;JD Power Tools, Inc.&#34;&gt;
+&lt;!ENTITY EMAIL &#34;jd@jd-tools.com&#34;&gt;
+&lt;!ELEMENT CATALOG (PRODUCT+)&gt;
+&lt;!ELEMENT PRODUCT
+(SPECIFICATIONS+,OPTIONS?,PRICE+,NOTES?)&gt;
+&lt;!ATTLIST PRODUCT
+NAME CDATA #IMPLIED
+CATEGORY (HandTool|Table|Shop-Professional) &#34;HandTool&#34;
+PARTNUM CDATA #IMPLIED
+PLANT (Pittsburgh|Milwaukee|Chicago) &#34;Chicago&#34;
+INVENTORY (InStock|Backordered|Discontinued) &#34;InStock&#34;&gt;
+&lt;!ELEMENT SPECIFICATIONS (#PCDATA)&gt;
+&lt;!ATTLIST SPECIFICATIONS
+WEIGHT CDATA #IMPLIED
+POWER CDATA #IMPLIED&gt;
+&lt;!ELEMENT OPTIONS (#PCDATA)&gt;
+&lt;!ATTLIST OPTIONS
+FINISH (Metal|Polished|Matte) &#34;Matte&#34; 
+ADAPTER (Included|Optional|NotApplicable) &#34;Included&#34;
+CASE (HardShell|Soft|NotApplicable) &#34;HardShell&#34;&gt;
+&lt;!ELEMENT PRICE (#PCDATA)&gt;
+&lt;!ATTLIST PRICE
+MSRP CDATA #IMPLIED
+WHOLESALE CDATA #IMPLIED
+STREET CDATA #IMPLIED
+SHIPPING CDATA #IMPLIED&gt;
+&lt;!ELEMENT NOTES (#PCDATA)&gt;
+]&gt;</pre>
+</div>
+<div  id="bpn">
+<ul class="prenext">
+<li class="pre"><a href="dtd_validation.html">上一页</a></li>
+<li class="next"><a href="dtd_summary.html">下一页</a></li>
+</ul>
+</div>
+</div>
+<div id="sidebar">
+<div class="rs"></div><div class="a120x600"><script type="text/javascript">var cpro_id="u1293136";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div><div class="b"></div>
+</div>
+</body>
+</html>

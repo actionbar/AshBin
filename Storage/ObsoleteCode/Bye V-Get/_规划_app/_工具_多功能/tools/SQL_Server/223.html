@@ -1,0 +1,20 @@
+<meta http-equiv="content-type" content="text/html; charset=gb2312"><FONT 
+style="FONT-SIZE: 9pt; LINE-HEIGHT: 15pt"><B>Get&nbsp;Last&nbsp;Friday</B><BR>Function&nbsp;and&nbsp;Procedure&nbsp;:&nbsp;Get&nbsp;Last&nbsp;Friday
+<P></P>
+<P></P>
+<P><BR>&gt;&gt;Script&nbsp;Language&nbsp;and&nbsp;Platform:&nbsp;SQL&nbsp;Server&nbsp;2000&nbsp;,SQL&nbsp;Server&nbsp;7.0<BR>Given&nbsp;any&nbsp;date,this&nbsp;function/procedure&nbsp;will&nbsp;accurately&nbsp;return&nbsp;the&nbsp;date&nbsp;of&nbsp;the&nbsp;previous&nbsp;Friday.&nbsp;</P>
+<P>This&nbsp;can&nbsp;be&nbsp;used&nbsp;in&nbsp;DTS&nbsp;,Job&nbsp;or&nbsp;other&nbsp;query&nbsp;purpose.It&nbsp;can&nbsp;be&nbsp;used&nbsp;to&nbsp;get&nbsp;data&nbsp;of&nbsp;last&nbsp;Friday&nbsp;for&nbsp;statistic&nbsp;analysis&nbsp;or&nbsp;data&nbsp;comparison.&nbsp;</P>
+<P>Author:&nbsp;Claire&nbsp;Hsu&nbsp;</P>
+<P></P>
+<P>/*<BR>&nbsp;&nbsp;&nbsp;*&nbsp;Script&nbsp;Language&nbsp;and&nbsp;Platform:MS&nbsp;SQL&nbsp;2000,MS&nbsp;SQL&nbsp;7.0<BR>&nbsp;&nbsp;&nbsp;*&nbsp;Objecttive:&nbsp;Simple&nbsp;scrip&nbsp;to&nbsp;return&nbsp;last&nbsp;friday&nbsp;<BR>&nbsp;&nbsp;&nbsp;*&nbsp;Author:Claire&nbsp;Hsu&nbsp;&nbsp;<BR>&nbsp;&nbsp;&nbsp;*&nbsp;Date&nbsp;&nbsp;:2003/5/11<BR>&nbsp;&nbsp;&nbsp;*&nbsp;Email:messageclaire@yahoo.com<BR>&nbsp;&nbsp;&nbsp;*&nbsp;Description:This&nbsp;script&nbsp;contains&nbsp;both&nbsp;funciton&nbsp;and&nbsp;procedure.<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;You&nbsp;could&nbsp;apply&nbsp;accordingly<BR>*/</P>
+<P></P>
+<P>--Queried&nbsp;in&nbsp;Function&nbsp;<BR>Create&nbsp;function&nbsp;dbo.getfri&nbsp;(@day&nbsp;datetime)<BR>returns&nbsp;datetime<BR>as<BR>begin<BR>declare&nbsp;@output&nbsp;datetime<BR>if&nbsp;datepart(dw,@day)&nbsp;&lt;&gt;&nbsp;7<BR>set&nbsp;@output&nbsp;=&nbsp;dateadd(d,(-1)*(datepart(dw,@day)+1),@day)<BR>else<BR>set&nbsp;@output&nbsp;=&nbsp;dateadd(d,-1,@day)<BR>return&nbsp;@output<BR>end</P>
+<P></P>
+<P>--Usage1:Used&nbsp;in&nbsp;table<BR>--Example:Table&nbsp;Schedule&nbsp;with&nbsp;2&nbsp;columns&nbsp;date1&nbsp;and&nbsp;date2<BR>--select&nbsp;dbo.getfri(date1),dbo.getfri(date2)&nbsp;from&nbsp;Schedule</P>
+<P>--Usage2:Used&nbsp;in&nbsp;select&nbsp;statement<BR>--select&nbsp;dbo.getfri(getdate())<BR>--select&nbsp;dbo.getfri('5/11/2003')</P>
+<P></P>
+<P>/*****************************************************************/</P>
+<P></P>
+<P>--Queried&nbsp;as&nbsp;procedure<BR>create&nbsp;procedure&nbsp;getfriday&nbsp;@day&nbsp;datetime<BR>as<BR>declare&nbsp;@output&nbsp;datetime<BR>if&nbsp;datepart(dw,@day)&nbsp;&lt;&gt;&nbsp;7<BR>set&nbsp;@output&nbsp;=&nbsp;dateadd(d,(-1)*(datepart(dw,@day)+1),@day)<BR>else<BR>set&nbsp;@output&nbsp;=&nbsp;dateadd(d,-1,@day)<BR>select&nbsp;@output</P>
+<P></P>
+<P>--Usage<BR>--exec&nbsp;getfriday&nbsp;'2/3/2003'</P></FONT>

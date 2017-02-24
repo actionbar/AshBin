@@ -1,0 +1,143 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="../c3.css" />
+<title>SMIL in Parallel</title>
+</head>
+<body class="multimedia">
+<div id="wrapper">
+<div id="header">
+<a href="http://e.v-get.com/w3cschool/" style="float:left;">W3CSchool 在线教程</a>
+<div class="q g"><script type="text/javascript">var cpro_id="u1163355"</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div>
+<div id="navfirst">
+<ul id="menu">
+<li id="h"><a href="../h.html">HTML教程</a></li>
+<li id="x"><a href="../x.html">XML教程</a></li>
+<li id="b"><a href="../b.html">浏览器脚本</a></li>
+<li id="s"><a href="../s.html">服务器脚本</a></li>
+<li id="d"><a href="../d.html">dot net教程</a></li>
+<li id="m"><a href="../m.html">多媒体教程</a></li>
+<li id="w"><a href="../w.html">建站手册</a></li>
+</ul>
+</div><div id="navsecond">
+<div id="course">
+<h2>SMIL 教程</h2>
+<ul>
+<li><a href="http://e.v-get.com/w3cschool/">SMIL 首页</a></li>
+<li><a href="smil_intro.html">SMIL 简介</a></li>
+<li><a href="smil_files.html">SMIL 文件</a></li>
+<li><a href="smil_html.html">SMIL HTML</a></li>
+<li><a href="smil_xhtml.html">SMIL XHTML</a></li>
+<li><a href="smil_timing.html">SMIL Timing</a></li>
+<li><a href="smil_seq.html">SMIL Sequence</a></li>
+<li><a href="smil_parallel.html">SMIL Parallel</a></li>
+<li><a href="smil_transition.html">SMIL Transition</a></li>
+<li><a href="smil_media.html">SMIL Media</a></li>
+<li><a href="smil_reference.html">SMIL 参考</a></li>
+</ul>
+</div>
+<div id="selected">
+<h2>建站手册</h2>
+<ul>
+<li><a href="../site/">网站构建</a></li>
+<li><a href="../w3c/">万维网联盟</a></li>
+<li><a href="http://e.v-get.com/w3c/">W3CSchool 教程</a></li>
+<li><a href="../quality/">网站品质</a></li>
+<li><a href="../semweb/">语义网</a></li>
+<li><a href="../hosting/">网站主机</a></li>
+</ul>
+<h2><a href="http://e.v-get.com/w3c/" class="f13">W3CSchool 教程</a></h2><div class="a120x90"><script type="text/javascript">var cpro_id="u1210867";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div></div>
+</div>
+<div id="maincontent">
+<h1>SMIL in Parallel</h1>
+<div id="tpn">
+<ul class="prenext">
+<li class="pre"><a href="smil_seq.html">上一页</a></li>
+<li class="next"><a href="smil_transition.html">下一页</a></li>
+</ul>
+</div>
+<div id="intro">
+<p><strong>&lt;par&gt; 元素中的对象将同时显示 (并行地）。</strong></p>
+</div>
+<div>
+<h2>并行元素 &lt;par&gt;</h2>
+<p>&lt;par&gt; 元素拥有许多属性。最常用的属性有：</p>
+<table class="dataintable">
+<tr>
+<th>属性</th>
+<th>值</th>
+<th>描述</th>
+</tr>
+<tr>
+<td>begin</td>
+<td>time</td>
+<td>设置元素显示之前的延迟。</td>
+</tr>
+<tr>
+<td>dur</td>
+<td>time</td>
+<td>设置显示的持续时间。</td>
+</tr>
+<tr>
+<td>endsync</td>
+<td>&#34;first&#34;|&#34;last&#34;|id(clip)</td>
+<td>同步元素的停止。</td>
+</tr>
+<tr>
+<td>repeatCount</td>
+<td>number</td>
+<td>设置显示的重复次数。</td>
+</tr>
+</table>
+<p>如需完整的 SMIL 元素和属性列表，请访问 <a href="smil_reference.html">W3CSchool SMIL 参考手册</a>。</p>
+</div>
+<div>
+<h2>同步 (Synchronization ）</h2>
+<p>通过在 &lt;par&gt; 标签中使用 <em>endsync</em> 属性，片段的并行组能够在同时停止。</p>
+<p><em>endsync=&#34;first&#34;</em> 会在最短的片段结束时停止所有 &lt;par&gt; 组中的片段，无论其它片段的时间参数被如何设置。</p>
+<p><em>endsync=&#34;last&#34;</em> 会在所有片段均结束播放时终止 &lt;par&gt; 组。这是默认的。</p>
+<p><em>endsync=&#34;id(ID)&#34;</em> 会在被标示 (ID) 的片段结束时终止 &lt;par&gt; 组。该 ID 将引用该片段的 id 属性的值。</p>
+</div>
+<div>
+<h2>实例：同时显示</h2>
+<pre>&lt;html xmlns:t=&#34;urn:schemas-microsoft-com:time&#34;&gt;
+&lt;head&gt;
+  &lt;?import namespace=&#34;t&#34; implementation=&#34;#default#time2&#34;&gt;
+  &lt;style&gt;.t {behavior: url(#default#time2)}&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;par&gt;
+&lt;t:audio
+src=&#34;liar.wav&#34;
+repeatCount=&#34;indefinite&#34;
+type=&#34;wav&#34; /&gt;
+&lt;t:seq repeatCount=&#34;indefinite&#34;&gt;
+  &lt;h2 class=&#34;t&#34; dur=&#34;1s&#34;&gt;
+  I will display for one second&lt;/h2&gt;
+  &lt;h2 class=&#34;t&#34; dur=&#34;2s&#34;&gt;
+  I will display for two seconds&lt;/h2&gt;
+&lt;/t:seq&gt;
+&lt;/par&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+<p><a href="../tiy/t_707.html">TIY</a></p>
+</div>
+<div id="bpn">
+<ul class="prenext">
+<li class="pre"><a href="smil_seq.html">上一页</a></li>
+<li class="next"><a href="smil_transition.html">下一页</a></li>
+</ul>
+</div>
+</div>
+<div id="sidebar">
+<div class="rs"></div>
+<div id="tools">
+<h5 id="tools_reference"><a href="smil_reference.html">SMIL 参考手册</a></h5>
+</div>
+<div class="a120x600"><script type="text/javascript">var cpro_id="u1293136";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div><div class="b"></div>
+</div>
+</body>
+</html>

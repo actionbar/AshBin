@@ -1,0 +1,175 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="../c3.css" />
+<title>VBScript DateDiff 函数</title>
+</head>
+<body class="browserscripting">
+<div id="wrapper">
+<div id="header">
+<a href="http://e.v-get.com/w3cschool/" style="float:left;">W3CSchool 在线教程</a>
+<div class="q g"><script type="text/javascript">var cpro_id="u1163355"</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div>
+<div id="navfirst">
+<ul id="menu">
+<li id="h"><a href="../h.html">HTML教程</a></li>
+<li id="x"><a href="../x.html">XML教程</a></li>
+<li id="b"><a href="../b.html">浏览器脚本</a></li>
+<li id="s"><a href="../s.html">服务器脚本</a></li>
+<li id="d"><a href="../d.html">dot net教程</a></li>
+<li id="m"><a href="../m.html">多媒体教程</a></li>
+<li id="w"><a href="../w.html">建站手册</a></li>
+</ul>
+</div><div id="navsecond">
+<div id="course">
+<h2>VBScript 教程</h2>
+<ul>
+<li><a href="http://e.v-get.com/w3cschool/">VB 首页</a></li>
+<li><a href="vbscript_intro.html">VB 简介</a></li>
+<li><a href="vbscript_howto.html">VB How to</a></li>
+<li><a href="vbscript_whereto.html">VB Where to</a></li>
+<li><a href="vbscript_variables.html">VB 变量</a></li>
+<li><a href="vbscript_procedures.html">VB 程序</a></li>
+<li><a href="vbscript_conditionals.html">VB 条件语句</a></li>
+<li><a href="vbscript_looping.html">VB 循环语句</a></li>
+<li><a href="vbscript_summary.html">VB 总结</a></li>
+</ul>
+<h2>实例</h2>
+<ul>
+<li><a href="../example/vbst_examples.html">VB 实例</a></li>
+</ul>
+<h2>参考手册</h2>
+<ul>
+<li><a href="vbscript_ref_functions.html">VB 函数</a></li>
+<li><a href="vbscript_ref_keywords.html">VB 关键字</a></li>
+</ul>
+</div>
+<div id="selected">
+<h2>建站手册</h2>
+<ul>
+<li><a href="../site/">网站构建</a></li>
+<li><a href="../w3c/">万维网联盟</a></li>
+<li><a href="http://e.v-get.com/w3c/">W3CSchool 教程</a></li>
+<li><a href="../quality/">网站品质</a></li>
+<li><a href="../semweb/">语义网</a></li>
+<li><a href="../hosting/">网站主机</a></li>
+</ul>
+<h2><a href="http://e.v-get.com/w3c/" class="f13">W3CSchool 教程</a></h2><div class="a120x90"><script type="text/javascript">var cpro_id="u1210867";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div></div>
+</div>
+<div id="maincontent">
+<h1>VBScript DateDiff 函数</h1>
+<div class="backtoreference">
+<p><a href="vbscript_ref_functions.html">返回 VBScript 函数参考手册</a></p>
+</div>
+<div>
+<h2>定义和用法</h2>
+<p>DateDiff 函数可返回两个日期之间的时间间隔数。</p>
+<p>DateDiff 函数用于计算两日期时间的差值，计算方法是 date2 - date1。</p>
+<p>若比较年份，则不管月份一下的数值，若比较月份，则不管天数以下的数值...... 以此类推。</p>
+<p class="note"><span>注释：</span>firstdayofweek 参数会对使用“w”和“ww”间隔符号的计算产生影响。</p>
+<h3>语法</h3>
+<pre>DateDiff(interval,date1,date2[,firstdayofweek[,firstweekofyear]])</pre>
+<table class="dataintable"> 
+  <tr>
+    <th>参数</th>
+    <th>描述</th>
+  </tr>  
+  <tr>
+    <td>interval</td>
+    <td>
+	<p>必需的。计算 date1 和 date2 之间的时间间隔的单位。</p>
+	<p>可采用下面的值：</p>
+    <ul>
+      <li>yyyy - 年</li>
+      <li>q - 季度</li>
+      <li>m - 月</li>
+      <li>y - 当年的第几天</li>
+      <li>d - 日</li>
+      <li>w - 当周的第几天</li>
+      <li>ww - 周</li>
+      <li>h - 小时</li>
+      <li>n - 分钟</li>
+      <li>s - 秒</li>
+    </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>date1,date2</td>
+    <td>必需的。日期表达式。在计算中需要使用的两个日期。</td>
+  </tr>
+  <tr>
+    <td>firstdayofweek</td>
+    <td>
+	<p>可选的。规定一周的日数，即当周的第几天。</p>
+	<p>可采用下面的值：</p>
+    <ul>
+      <li>0 = vbUseSystemDayOfWeek - 使用区域语言支持 (NLS) API 设置。</li>
+      <li>1 = vbSunday - 星期日 (默认)</li>
+      <li>2 = vbMonday - 星期一</li>
+      <li>3 = vbTuesday - 星期二</li>
+      <li>4 = vbWednesday - 星期三</li>
+      <li>5 = vbThursday - 星期四</li>
+      <li>6 = vbFriday - 星期五</li>
+      <li>7 = vbSaturday - 星期六</li>
+    </ul>
+	</td>
+  </tr>
+  <tr>
+    <td>firstweekofyear</td>
+    <td>
+	<p>可选的。规定一年中的第一周。</p>
+	<p>可采用下面的值：</p>
+    <ul>
+      <li>0 = vbUseSystem - 使用区域语言支持 (NLS) API 设置。</li>
+      <li>1 = vbFirstJan1 - 由 1 月 1 日所在的星期开始 (默认）。</li>
+      <li>2 = vbFirstFourDays - 由在新年中至少有四天的第一周开始。</li>
+      <li>3 = vbFirstFullWeek - 由在新的一年中第一个完整的周开始。</li>
+    </ul>
+    </td>
+  </tr>
+</table>
+</div>
+<div>
+<h2>实例</h2>
+<h3>例子 1</h3>
+<pre>document.write(Date &amp; &#34;&lt;br /&gt;&#34;)
+document.write(DateDiff(&#34;m&#34;,Date,&#34;12/31/2002&#34;) &amp; &#34;&lt;br /&gt;&#34;)
+document.write(DateDiff(&#34;d&#34;,Date,&#34;12/31/2002&#34;) &amp; &#34;&lt;br /&gt;&#34;)
+document.write(DateDiff(&#34;n&#34;,Date,&#34;12/31/2002&#34;))</pre>
+<p>输出：</p>
+<pre>1/14/2002
+11
+351
+505440</pre>
+<h3>例子 2</h3>
+<p>请注意在下面的代码中，date1&gt;date2：</p>
+<pre>document.write(Date &amp; &#34;&lt;br /&gt;&#34;)
+document.write(DateDiff(&#34;d&#34;,&#34;12/31/2002&#34;,Date))</pre>
+<p>输出：</p>
+<pre>1/14/2002
+-351</pre>
+<h3>例子 3</h3>
+<pre>'How many weeks (start on Monday),
+'are left between the current date and 10/10/2002
+document.write(Date &amp; &#34;&lt;br /&gt;&#34;)
+document.write(DateDiff(&#34;w&#34;,Date,&#34;10/10/2002&#34;,vbMonday))</pre>
+<p>输出：</p>
+<pre>1/14/2002
+38</pre>
+</div>
+<div class="backtoreference">
+<p><a href="vbscript_ref_functions.html">返回 VBScript 函数参考手册</a></p>
+</div>
+</div>
+<div id="sidebar">
+<div class="rs"></div>
+<div id="tools">
+<h5 id="tools_reference"><a href="vbscript_ref_functions.html">VBScript 参考手册</a></h5>
+<h5 id="tools_example"><a href="../example/vbst_examples.html">VBScript 实例</a></h5>
+</div>
+<div class="a120x600"><script type="text/javascript">var cpro_id="u1293136";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div><div class="b"></div>
+</div>
+</body>
+</html>

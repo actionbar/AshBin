@@ -1,0 +1,99 @@
+<html xmlns:rdl>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<script src="rdl_method.js"></script>
+<base target="_self">
+</head>
+<body>
+
+<script>
+//collFriendObjects=new Array();
+//collFriendProperties=new Array();
+//collFriendMethods=new Array();
+//collFriendEvents=new Array();
+//collFriendCollections=new Array();
+
+collFriendMethods=new Array(
+'clear','empty','createRangeCollection','execCommand'
+);
+
+collFriendObjects=new Array(
+'selection'
+);
+
+collFriendEvents=new Array(
+'onselect','onselectstart'
+);
+
+//collIE40=new Array();
+//collIE50=new Array();
+//collIE55=new Array();
+//collIE60=new Array();
+
+collIE40=new Array(
+'selection'
+);
+
+//sStyle='';
+
+sScript=
+'<script>\n'+
+'function rdl_createRange1(){\n'+
+'var oMessage=document.all("oMessage");\n'+
+'var oNote=document.all("oNote");\n'+
+'var oTextRange=document.body.createTextRange();\n'+
+'with (oTextRange) {\n'+
+'moveToElementText(oMessage);\n'+
+'execCommand("SelectAll");\n'+
+'}\n'+
+'var oTextRange=document.selection.createRange();\n'+
+'oNote.innerText="被建立的TextRange对象的内容为："+oTextRange.text;\n'+
+'}\n'+
+'<\/script>\n';
+
+sCode=
+'<span id=oMessage>我是要被<b>选择<\/b>的信息。<\/span>\n'+
+'<br><br>\n'+
+'<input type=button value=" 建立TextRange " onclick="rdl_createRange1();">\n'+
+'<br><br>\n'+
+'<span id=oNote></span>\n';
+
+iWinWidth=320;
+
+iWinHeight=220;
+
+</script>
+
+<div id=idContent>
+
+<div id=idContentTitle><span id=idTitleName>createRange</span>版本：DHTML Object Model　返回值：有</div>
+
+<div class=cssColumnTitle>语法：</div>
+<div>
+<i>range</i><b> = </b><a href="../objects/selection.html"><b>selection</b></a><b> . createRange () </b>
+</div>
+
+<div class=cssColumnTitle>参数：</div>
+<div>
+无
+</div>
+
+<div class=cssColumnTitle>返回值：</div>
+<table>
+<tr><td nowrap><i> range </i></td><td nowrap><b>:</b></td>
+<td>对象(Element)。返回被建立的<a href="../objects/textrange.html"> TextRange </a>对象。</td></tr>
+</table>
+
+<div class=cssColumnTitle>说明：</div>
+<div>
+从当前的文本选择区(<a href="../objects/selection.html"> selection </a>)建立<a href="../objects/textrange.html"> TextRange </a>对象。或从当前的控件选择区(<a href="../objects/selection.html"> selection </a>)建立<a href="../objects/textrange.html"> controlRange </a>集合。
+</div>
+
+
+
+</div>
+</body>
+</html>
+
+<!-- Part of RDL(TM) - Written by Rain1977 
+HomeSite: http://www.dhtmlet.com  E-Mail: dhtmlet@hotmail.com -->

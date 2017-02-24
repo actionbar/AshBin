@@ -1,0 +1,197 @@
+<html>
+<head>
+<title>决定输出要包含的内容</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+
+<link rel = stylesheet href = "image/style.css">
+</head>
+<body bgcolor="#ffffff">
+<table width="688" border="0" cellspacing="0" cellpadding="0" align="center">
+  <tr bgcolor="EEEEEE"> 
+    <td height="22"><a href="index.htm">主页</a></td>
+  </tr>
+</table><br>
+<table border="0" cellpadding="0" cellspacing="0" width="688" align="center" height="490">
+  <tr valign="top"> 
+    <td rowspan="4" width="91">&nbsp; </td>
+    <td height="68" width="131"> 
+      <p><img src="image/doc.gif"></p>
+    </td>
+    <td rowspan="4" width="18"><b></b> </td>
+    <td height="68" width="387"><img src="image/title_doc.gif"></td>
+    <td rowspan="4" width="61"> 
+      <h6>&nbsp;</h6>
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td rowspan="3" valign="top" class="pt10" align="center" width="131" bgcolor="EEEEEE"> 
+      <p>&nbsp;</p>
+      <p><font color="#FF0000">※ 14.9 决定输出要包含的内容</font></p>
+       
+	</td>
+  </tr>
+  <tr valign="top"> 
+    <td width="387" height="308"> 
+      <table width="100%" border="0" cellpadding="0">
+        <tr> 
+          <td>
+
+           <h4><a name="_Toc467207163">14.9 决定输出要包含的内容</a></h4>
+<p>在未读取输入文档时，推迟决定输出何种标记往往是必要的。例如，或许想将FILENAME元素的内容改为A元素的HREF特性，或者根据特性的值，将输入文档中的某个元素类型用输出文档中的几个不同元素类型代替。这可以通过使用xsl:element、xsl:attribute、xsl:pi、xsl:comment和xsl:text来实现。在这些元素的内容中使用XSL指令，并在这些元素的特性值中使用特性值模板，就能改变它们的输出内容。</p>
+<h5><a name="_Toc467207164">14.9.1 使用特性值模板</a></h5>
+<p>特性值模板将数据从输入中的元素内容复制到样式单中的特性值中。从那里，就可将其写入输出中。例如，假定根据要利用下面的基于特性的形式将周期表转换成空的ATOM元素：</p>
+<p>&lt;ATOM NAME=”Vanadium”</p>
+<p> ATOMIC_WEIGHT=”50.9415”</p>
+<p> ATOMIC_NUMBER=”23”</p>
+<p> OXIDATION_STATES=”5, 4, 3, 2”</p>
+<p> BOILING_POINT=”3650K”</p>
+<p> MELTING_POINT=”2163K”</p>
+<p> SYMBOL=”V”</p>
+<p> DENSITY=”6.11 grams/cubic centimeter”</p>
+<p>/&gt;</p>
+<p>为此，需要提取输入文档中元素的内容，并将这些内容放在输出文档的特性值中。首先，要完成下列内容：</p>
+<p>&lt;xsl:template match=”ATOM”&gt;</p>
+<p> &lt;ATOM NAME=”&lt;xsl:value-of select=’NAME’/&gt;”</p>
+<p> ATOMIC_WEIGHT=”&lt;xsl:value-of select=’ATOMIC_WEIGHT’/&gt;”</p>
+<p> ATOMIC_NUMBER=”&lt;xsl:value-of select=’ATOMIC_NUMBER’/&gt;”</p>
+<p>/&gt;</p>
+<p>&lt;/xsl:template&gt;是畸形的XML。在特性值内部不能使用&lt;字符。而且，要编写在大多数一般情况下都能解析此句的软件，是极其困难的。</p>
+<p>取而代之的是，在特性值内部，以放在花括号{}中的数据来代替xsl:value-of元素。上面的正确编写方式如下：</p>
+<p>&lt;xsl:template match=”ATOM”&gt;</p>
+<p> &lt;ATOM NAME=”{NAME}/&gt;”</p>
+<p> ATOMIC_WEIGHT=”{ATOMIC_WEIGHT}/&gt;”</p>
+<p> ATOMIC_NUMBER=”{ATOMIC_NUMBER}/&gt;”</p>
+<p> /&gt;</p>
+<p>&lt;/xsl:template&gt;</p>
+<p>在输出文档中，{NAME}由当前节点的NAME子元素值所代替。{ATOMIC_WEIGHT}由当前节点的ATOMIC_WEIGHT子元素值所代替。{ATOMIC_NUMBER}由当前节点的ATOMIC_NUMBER子元素值所代替，等等。</p>
+<p>特性值模板的模式比只是一个元素名要复杂。实际上，在特性值模板中，可使用前面讨论过的任何字符串表达式。例如，下面的模板规则以清单14-1中使用的形式来选择DENSITY元素。</p>
+<p>&lt;xsl:template match=”DENSITY”&gt;</p>
+<p> &lt;BULK_PROPERTY</p>
+<p> NAME=”DENSITY”</p>
+<p> ATOM=”{../NAME}”</p>
+<p> VALUE=”{.}”</p>
+<p> UNITS=”{@UNITS}”</p>
+<p> /&gt;</p>
+<p>&lt;/xsl:template&gt;</p>
+<p>上面的模板规则将特性值模板转换成类似于如下所示的BULK_PROPERTY元素：</p>
+<p>&lt; BULK_PROPERTY NAME=”DENSITY” ATOM=”Helium” VALUE=”</p>
+<p> 0.1785</p>
+<p> “ UNITS=”grams/cubic centimeter”/&gt;</p>
+<p>特性值并不局限于在一个特性值模板中使用。可以将特性值模板与文字数据或其他特性值模板组合起来使用。例如，下面的模板规则匹配ATOM元素，并且将元素名以H.html、He.html等格式设置成链接文件，来代替这些元素。此文件名来源于特性值模板{SYMBOL}，而文字数据提供句号和扩展名。</p>
+<p>&lt;xsl:template match=”ATOM”&gt;</p>
+<p> &lt;A HREF=”{SYMBOL}.html”&gt;</p>
+<p> &lt;xsl:value-of select=”NAME”/&gt;</p>
+<p> &lt;/A&gt;</p>
+<p>&lt;/xsl:template&gt;</p>
+<p>在特性值中，可以包含多个特性值模板。例如，下面的模板规则将密度单位作为VALUE特性的一部分，而不是使密度单位成为单独的特性：</p>
+<p>&lt;xsl:template match=”DENSITY”&gt;</p>
+<p> &lt;BULK_PROPERTY</p>
+<p> NAME=”DENSITY”</p>
+<p> ATOM=”{../NAME}”</p>
+<p> VALUE=”{.} {@UNITS}"</p>
+<p> /&gt;</p>
+<p>&lt;/xsl:template&gt;</p>
+<p>可在一个XSL样式单中将特性值模板用于许多特性的值中。这在xsl:element、xs1:attribute和xsl:pi元素中特别重要，因为在这些元素中，特性值模板允许设计者决定在读取输入文档之前，在输出文档中准确地显示何种元素、特性或处理指令。不能将特性值模板作为select或match特性的值、xmlns特性、提供另一个XSL指令元素名的特性或顶层元素（为xsl:stylesheet直系子元素）特性来使用。</p>
+<p><img src="Image/BK000214-19.gif" width=56 height=42 align="left">第18章“命名域”将讨论xmlns特性。</p>
+<h5>&nbsp;</h5>
+<h5><a name="_Toc467207165">14.9.2 使用xsl:element将元素插入到输出文档中</a></h5>
+<p> 通常，只使用文字元素本身就可以将元素插入到输出文档中。例如，要插入P元素，只需要在样式单的适当位置键入&lt;P&gt;和&lt;/P&gt;。但是，偶尔也需要使用输入文档的详细内容，来确定将哪个元素放在输出文档中。例如，当将使用特性来提供信息的源符号集变换成使用元素来提供相同信息的输出符号集时，就是这种情况。</p>
+<p> xsl:element元素将元素插入到输出文档中。元素名由xsl:element元素的name特性中的特性值模板给出。元素的内容来自于xsl:element元素的内容，此元素可能包括要插入这些项的xsl:attribute、xsl:pi和xsl:comment指令（下面讨论所有的指令）。</p>
+<p> 例如，假设根据STATE特性的值，要用GAS、LIQUID和SOLID元素来代替ATOM元素。使用xsl:element将STATE特性值转换为某个元素名，从而只需要一条规则就可以做到这一点。具体作法如下所示：</p>
+<p>&lt;xsl:template match=”ATOM”&gt;</p>
+<p> &lt;xsl:element name=”{@STATE}”&gt;</p>
+<p> &lt;NAME&gt;&lt;xsl:value-of select=”NAME”/&gt;&lt;/NAME&gt;</p>
+<p> &lt;!- rules for other children -&gt;</p>
+<p> &lt;/xsl:element&gt;</p>
+<p>&lt;/xsl:template&gt;</p>
+<p>使用更为复杂的特性值模板，就可以实现所需的大多数运算。</p>
+<h5><a name="_Toc467207166">14.9.3 使用xsl:attribute将特性插入到输出文档中</a></h5>
+<p> 只使用文字特性，就可以将特性包括在输出文档中。例如，要插入带有ALIGN特性（其值为CENTER）的DIV元素，只需在样式单的适当位置处键入&lt;DIV 
+  ALIGN="CENTER"&gt;和&lt;/DIV&gt;即可。但是，为了确定特性值，有时甚至是为了确定特性名，常常不得不依赖于从输入文档中读取的数据。</p>
+<p> 例如，假设要获得一样式单，可选择原子名，并把这些原子名格式化为与H.html、He.html、Li.html等等文件的链接：</p>
+<p>&lt;LI&gt;&lt;A HREF="H.html"&gt;Hydrogen&lt;/A&gt;&lt;/LI&gt;</p>
+<p>&lt;LI&gt;&lt;A HREF="He.html"&gt;Helium&lt;/A&gt;&lt;/LI&gt;</p>
+<p>&lt;LI&gt;&lt;A HREF="Li.html"&gt;Lithium&lt;/A&gt;&lt;/LI&gt;</p>
+<p> 在输入文档中，每个不同的元素都有一个不同的HREF特性值。xsl:attribute元素计算特性名和值，并将它插入到输出文档中。每个xsl:attribute元素要么是xs1:element元素的子元素，要么是文字元素。在输出中，xsl:attribute计算出来的特性关联到与其父元素计算出来的元素上。特性名是由xsl:attribute元素的name特性指定的。特性值是由xsl:attribute元素的内容给出的。例如，下面的模板规则将产生上面显示的输出结果：</p>
+<p>&lt;xsl:template match="ATOM"&gt;</p>
+<p> &lt;LI&gt;&lt;A&gt;</p>
+<p> &lt;xsl:attribute name="HREF"&gt;</p>
+<p> &lt;xsl:value-of select="SYMBOL"/&gt;.html</p>
+<p> &lt;/xsl:attribute&gt;</p>
+<p> &lt;xsl:value-of select="NAME"/&gt;</p>
+<p> &lt;/A&gt;&lt;/LI&gt;</p>
+<p>&lt;/xsl:template&gt;</p>
+<p>所有的xsl:attribute元素都必须放在其父元素的任何其他内容之前。在已经开始写出元素内容之后，就不能将特性加到元素中。例如，下面的模板是非法的：</p>
+<p>&lt;xsl:template match="ATOM"&gt;</p>
+<p> &lt;LI&gt;&lt;A&gt;</p>
+<p> &lt;xsl:value-of select="NAME"/&gt;</p>
+<p> &lt;xsl:attribute name="HREF"&gt;</p>
+<p> &lt;xsl:value-of select="SYMBOL"/&gt;.html</p>
+<p> &lt;/xsl:attribute&gt;</p>
+<p> &lt;/A&gt;&lt;/LI&gt;</p>
+<p>&lt;/xsl:template&gt;</p>
+<h5><a name="_Toc467207167">14.9.4 定义特性集合</a></h5>
+<p>经常需要将同一组特性应用于许多不同的元素（既可是同类的，也可以是不同类的）。例如，将样式特性应用于HTML表中的每个单元格。要使这一操作更加简单，可使用xsl:attribute-set，在样式单的顶层定义一个或多个特性作为特性集合的成员，然后使用xsl:use将此特性集合包括在元素中。</p>
+<p>例如，下面的xsl:attribute-set元素定义一个名为cellstyle的元素，其font-family特性为New York、Times New 
+  Roman、Times和serif，其font-size特性为12pt。</p>
+<p>&lt;xsl:attribute-set name=”cellstyle”&gt;</p>
+<p> &lt;xsl:attribute name=”font-family”&gt;</p>
+<p> New York, Times New Roman, Times, serif</p>
+<p> &lt;/xsl:attribute&gt;</p>
+<p> &lt;xsl:attribute name=”font-size”&gt;12pt&lt;/xsl:attribute&gt;</p>
+<p>&lt;/xsl:attribute-set&gt;</p>
+<p>然后，用下面的模板规则将这些特性应用于输出文档的td元素。与xsl:attribute一样，插入特性集合的xsl:use元素也必须放在作为td子元素而加入的任何内容之前。</p>
+<p>&lt;xsl:template match=”ATOM”&gt;</p>
+<p> &lt;tr&gt;</p>
+<p> &lt;td&gt;</p>
+<p> &lt;xsl:use attribute-set=”cellstyle”/&gt;</p>
+<p> &lt;xsl:value-of select=”NAME”/&gt;</p>
+<p> &lt;/td&gt;</p>
+<p> &lt;td&gt;</p>
+<p> &lt;xsl:use attribute-set=眂ellstyle”/&gt;</p>
+<p> &lt;xsl:value-of select=”ATOMIC_NUMBER”/&gt;</p>
+<p> &lt;/td&gt;</p>
+<p> &lt;/tr&gt;</p>
+<p>&lt;/xsl:template&gt;</p>
+<p>如果某个元素使用一个以上的特性集合，那么，就将所有集合的所有特性应用于该元素。如果一个以上的特性集合使用不同的值定义相同的特性，那么就使用较为重要集合的特性。重要性相同的多个特性集合定义相同的特性，那么此样式单就会出现错误。</p>
+<h5><a name="_Toc467207168">14.9.5 使用xsl:pi生成处理指令</a></h5>
+<p>xsl:pi元素将指令放在输出文档中。处理指令的目标由所需的name特性指定。xsl:pi元素的内容成为处理指令的内容。例如，下面的规则将PROGRAM元素用gcc处理指令代替：</p>
+<p>&lt;xsl:template select="PROGRAM"&gt;</p>
+<p> &lt;xsl:pi name="gcc"&gt; -04&lt;/xsl:pi&gt;</p>
+<p>&lt;/xsl:template&gt;</p>
+<p>输入文档中的PROGRAM元素由输出文档中的下面的处理指令所代替：</p>
+<p>&lt;?gcc -04?&gt;</p>
+<p>若这些指令的结果为纯文本，那么xsl:pi元素的内容可包括xsl:value-of元素和xsl:apply-templates元素。例如，</p>
+<p>&lt;xsl:template select="PROGRAM"&gt;</p>
+<p> &lt;xsl:pi name="gcc"&gt;-04 &lt;xsl:value-of select="NAME"/&gt;&lt;/xsl:pi&gt; 
+</p>
+<p>&lt;/xsl:template&gt;</p>
+<p>xsl:pi的最常用的用途之一，就是当从XML生成XML时，用来插入XML声明（尽管XML声明在技术上并不是处理指令）。例如：</p>
+<p>&lt;xsl:pi name="xml"&gt;version="1.0" standalone="yes"&lt;/xsl:pi&gt;</p>
+<p>xsl:pi元素不能包括xsl:element和在结果中产生元素和特性的其他指令。此外，它还不能包括在输出文档中插入?&gt;的任何指令和文字文本，因为这会使处理指令提前结束。</p>
+<h5><a name="_Toc467207169">14.9.6 使用xsl:comment生成注释</a></h5>
+<p>xsl:comment元素在输出文档中插入注释。它没有特性。其内容为注释文本。例如，</p>
+<p>&lt;xsl:template select=”ATOM”&gt;</p>
+<p> &lt;xsl:comment&gt;There was an atom here once.&lt;/xsl:comment&gt;</p>
+<p>&lt;/xsl:template&gt;</p>
+<p>此规则使用下面的输出代替ATOM节点：</p>
+<p>&lt;!-There was an atom here once.-&gt;</p>
+<p>如果xsl:value-of元素和xsl:apply-templates元素指令的结果是纯文本的话，那么xsl:comment元素的内容可包括这些元素。它不能包括xsl:element以及在结果中产生元素和特性的其他指令。此外，xsl:comment还不能包括在注释中插入双连字号的任何指令或文字文本。这样在输出文档中会使注释很难看，这种情况是不允许的。</p>
+<h5><a name="_Toc467207170">14.9.7 使用xsl:text生成文本</a></h5>
+<p>xsl:text元素将其内容作为文字文本插入到输出文档中。例如，下面的规则将每个ATOM元素用字符串“There was an atom here once”代替。</p>
+<p>&lt;xsl:template select="ATOM"&gt;</p>
+<p> &lt;xsl:text&gt;There was an atom here once.&lt;/xsl:text&gt;</p>
+<p>&lt;/xsl:template&gt;</p>
+<p>xsl:text元素用得不多，这是因为在多数情况下，键入文本更容易。但是，xsl:text的确有一个优点。它可以准确地保留空白。当处理诗句、计算机源代码或空白显示具有重要意义的其他信息时，使用xsl:text是很有用的。</p>
+ 
+<a href='481.htm'>&lt;&lt;上一篇</a>&nbsp;&nbsp;<a href='483.htm'>下一篇&gt;&gt;</a></td>
+        </tr>
+      </table>
+      <p>&nbsp; </p>
+    </td>
+  </tr>
+</table>
+
+</body>
+
+</html>

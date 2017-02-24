@@ -1,0 +1,270 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="../c3.css" />
+<title>PHP 文件上传</title>
+</head>
+<body class="serverscripting">
+<div id="wrapper">
+<div id="header">
+<a href="http://e.v-get.com/w3cschool/" style="float:left;">W3CSchool 在线教程</a>
+<div class="q g"><script type="text/javascript">var cpro_id="u1163355"</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div>
+<div id="navfirst">
+<ul id="menu">
+<li id="h"><a href="../h.html">HTML教程</a></li>
+<li id="x"><a href="../x.html">XML教程</a></li>
+<li id="b"><a href="../b.html">浏览器脚本</a></li>
+<li id="s"><a href="../s.html">服务器脚本</a></li>
+<li id="d"><a href="../d.html">dot net教程</a></li>
+<li id="m"><a href="../m.html">多媒体教程</a></li>
+<li id="w"><a href="../w.html">建站手册</a></li>
+</ul>
+</div><div id="navsecond">
+<div id="course">
+<h2>PHP 基础</h2>
+<ul>
+<li><a href="http://e.v-get.com/w3cschool/">PHP 教程</a></li>
+<li><a href="php_intro.html">PHP 简介</a></li>
+<li><a href="php_install.html">PHP 安装</a></li>
+<li><a href="php_syntax.html">PHP 语法</a></li>
+<li><a href="php_variables.html">PHP 变量</a></li>
+<li><a href="php_string.html">PHP 字符串</a></li>
+<li><a href="php_operators.html">PHP 运算符</a></li>
+<li><a href="php_if_else.html">PHP If...Else</a></li>
+<li><a href="php_switch.html">PHP Switch</a></li>
+<li><a href="php_arrays.html">PHP 数组</a></li>
+<li><a href="php_looping.html">PHP 循环</a></li>
+<li><a href="php_functions.html">PHP 函数</a></li>
+<li><a href="php_forms.html">PHP 表单</a></li>
+<li><a href="php_get.html">PHP $_GET</a></li>
+<li><a href="php_post.html">PHP $_POST</a></li>
+</ul>
+<h2>PHP 高级</h2>
+<ul>
+<li><a href="php_date.html" title="">PHP 日期</a></li>
+<li><a href="php_includes.html" title="">PHP 引用</a></li>
+<li><a href="php_file.html" title="">PHP 文件</a></li>
+<li><a href="php_file_upload.html" title="">PHP 文件上传</a></li>
+<li><a href="php_cookies.html" title="">PHP Cookies</a></li>
+<li><a href="php_sessions.html" title="">PHP Sessions</a></li>
+<li><a href="php_mail.html" title="">PHP E-mail</a></li>
+<li><a href="php_secure_mail.html" title="">PHP 安全 E-mail</a></li>
+<li><a href="php_error.html" title="">PHP Error</a></li>
+<li><a href="php_exception.html" title="">PHP Exception</a></li>
+<li><a href="php_filter.html" title="">PHP Filter</a></li>
+</ul>
+<h2>PHP 数据库</h2>
+<ul class="small">
+<li><a href="php_mysql_intro.html" title="">MySQL 简介</a></li>
+<li><a href="php_mysql_connect.html" title="">MySQL Connect</a></li>
+<li><a href="php_mysql_create.html" title="">MySQL Create</a></li>
+<li><a href="php_mysql_insert.html" title="">MySQL Insert</a></li>
+<li><a href="php_mysql_select.html" title="">MySQL Select</a></li>
+<li><a href="php_mysql_where.html" title="">MySQL Where</a></li>
+<li><a href="php_mysql_order_by.html" title="">MySQL Order By</a></li>
+<li><a href="php_mysql_update.html" title="">MySQL Update</a></li>
+<li><a href="php_mysql_delete.html" title="">MySQL Delete</a></li>
+<li><a href="php_db_odbc.html" title="">PHP ODBC</a></li>
+</ul>
+<h2>PHP XML</h2>
+<ul class="small">
+<li><a href="php_xml_parser_expat.html" title="">XML Expat Parser</a></li>
+<li><a href="php_xml_dom.html" title="">XML DOM</a></li>
+<li><a href="php_xml_simplexml.html" title="">XML SimpleXML</a></li>
+</ul>
+<h2>PHP 和 AJAX</h2>
+<ul class="small">
+<li><a href="php_ajax_intro.html">AJAX 简介</a></li>
+<li><a href="php_ajax_xmlhttprequest.html">XMLHttpRequest</a></li>
+<li><a href="php_ajax_suggest.html">AJAX Suggest</a></li>
+<li><a href="php_ajax_xml.html">AJAX XML</a></li>
+<li><a href="php_ajax_database.html">AJAX Database</a></li>
+<li><a href="php_ajax_responsexml.html">AJAX responseXML</a></li>
+<li><a href="php_ajax_livesearch.html">AJAX Live Search</a></li>
+<li><a href="php_ajax_rss_reader.html">AJAX RSS Reader</a></li>
+<li><a href="php_ajax_poll.html">AJAX Poll</a></li>
+</ul>
+<h2>PHP 参考手册</h2>
+<ul class="small">
+<li><a href="php_ref_array.html">PHP Array</a></li>
+<li><a href="php_ref_calendar.html">PHP Calendar</a></li>
+<li><a href="php_ref_date.html">PHP Date</a></li>
+<li><a href="php_ref_directory.html">PHP Directory</a></li>
+<li><a href="php_ref_error.html">PHP Error</a></li>
+<li><a href="php_ref_filesystem.html">PHP Filesystem</a></li>
+<li><a href="php_ref_filter.html">PHP Filter</a></li>
+<li><a href="php_ref_ftp.html">PHP FTP</a></li>
+<li><a href="php_ref_http.html">PHP HTTP</a></li>
+<li><a href="php_ref_libxml.html">PHP LibXML</a></li>
+<li><a href="php_ref_mail.html">PHP Mail</a></li>
+<li><a href="php_ref_math.html">PHP Math</a></li>
+<li><a href="php_ref_mysql.html">PHP MySQL</a></li>
+<li><a href="php_ref_simplexml.html">PHP SimpleXML</a></li>
+<li><a href="php_ref_string.html">PHP String</a></li>
+<li><a href="php_ref_xml.html">PHP XML</a></li>
+<li><a href="php_ref_zip.html">PHP Zip</a></li>
+<li><a href="php_ref_misc.html">PHP 杂项</a></li>
+</ul>
+<h2>PHP 测验</h2>
+<ul>
+<li>PHP Quiz</li>
+</ul>
+</div>
+<div id="selected">
+<h2>建站手册</h2>
+<ul>
+<li><a href="../site/">网站构建</a></li>
+<li><a href="../w3c/">万维网联盟</a></li>
+<li><a href="http://e.v-get.com/w3c/">W3CSchool 教程</a></li>
+<li><a href="../quality/">网站品质</a></li>
+<li><a href="../semweb/">语义网</a></li>
+<li><a href="../hosting/">网站主机</a></li>
+</ul>
+<h2><a href="http://e.v-get.com/w3c/" class="f13">W3CSchool 教程</a></h2><div class="a120x90"><script type="text/javascript">var cpro_id="u1210867";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div></div>
+</div>
+<div id="maincontent">
+<h1>PHP 文件上传</h1>
+<div  id="tpn">
+<ul class="prenext">
+<li class="pre"><a href="php_file.html">上一页</a></li>
+<li class="next"><a href="php_cookies.html">下一页</a></li>
+</ul>
+</div>
+<div id="intro">
+<p><strong>通过 PHP，可以把文件上传到服务器。</strong></p>
+</div>
+<div>
+<h2>创建一个文件上传表单</h2>
+<p>允许用户从表单上传文件是非常有用的。</p>
+<p>请看下面这个供上传文件的 HTML 表单：</p>
+<pre>&lt;html&gt;
+&lt;body&gt;
+&lt;form action=&#34;upload_file.php&#34; method=&#34;post&#34;
+enctype=&#34;multipart/form-data&#34;&gt;
+&lt;label for=&#34;file&#34;&gt;Filename:&lt;/label&gt;
+&lt;input type=&#34;file&#34; name=&#34;file&#34; id=&#34;file&#34; /&gt; 
+&lt;br /&gt;
+&lt;input type=&#34;submit&#34; name=&#34;submit&#34; value=&#34;Submit&#34; /&gt;
+&lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+<p>请留意如下有关此表单的信息：</p>
+<p>&lt;form&gt; 标签的 enctype 属性规定了在提交表单时要使用哪种内容类型。在表单需要二进制数据时，比如文件内容，请使用 &#34;multipart/form-data&#34;。</p>
+<p>&lt;input&gt; 标签的 type=&#34;file&#34; 属性规定了应该把输入作为文件来处理。举例来说，当在浏览器中预览时，会看到输入框旁边有一个浏览按钮。</p>
+<p class="note"><span>注释：</span>允许用户上传文件是一个巨大的安全风险。请仅仅允许可信的用户执行文件上传操作。</p>
+</div>
+<div>
+<h2>创建上传脚本</h2>
+<p>&#34;upload_file.php&#34; 文件含有供上传文件的代码：</p>
+<pre>&lt;?php
+if ($_FILES[&#34;file&#34;][&#34;error&#34;] &gt; 0)
+  {
+  echo &#34;Error: &#34; . $_FILES[&#34;file&#34;][&#34;error&#34;] . &#34;&lt;br /&gt;&#34;;
+  }
+else
+  {
+  echo &#34;Upload: &#34; . $_FILES[&#34;file&#34;][&#34;name&#34;] . &#34;&lt;br /&gt;&#34;;
+  echo &#34;Type: &#34; . $_FILES[&#34;file&#34;][&#34;type&#34;] . &#34;&lt;br /&gt;&#34;;
+  echo &#34;Size: &#34; . ($_FILES[&#34;file&#34;][&#34;size&#34;] / 1024) . &#34; Kb&lt;br /&gt;&#34;;
+  echo &#34;Stored in: &#34; . $_FILES[&#34;file&#34;][&#34;tmp_name&#34;];
+  }
+?&gt;</pre>
+<p>通过使用 PHP 的全局数组 $_FILES，你可以从客户计算机向远程服务器上传文件。</p>
+<p>第一个参数是表单的 input name，第二个下标可以是 &#34;name&#34;, &#34;type&#34;, &#34;size&#34;, &#34;tmp_name&#34; 或 &#34;error&#34;。就像这样：</p>
+<ul>
+<li>$_FILES[&#34;file&#34;][&#34;name&#34;] - 被上传文件的名称</li>
+<li>$_FILES[&#34;file&#34;][&#34;type&#34;] - 被上传文件的类型</li>
+<li>$_FILES[&#34;file&#34;][&#34;size&#34;] - 被上传文件的大小，以字节计</li>
+<li>$_FILES[&#34;file&#34;][&#34;tmp_name&#34;] - 存储在服务器的文件的临时副本的名称</li>
+<li>$_FILES[&#34;file&#34;][&#34;error&#34;] - 由文件上传导致的错误代码</li>
+</ul>
+<p>这是一种非常简单文件上传方式。基于安全方面的考虑，您应当增加有关什么用户有权上传文件的限制。</p>
+</div>
+<div>
+<h2>上传限制</h2>
+<p>在这个脚本中，我们增加了对文件上传的限制。用户只能上传 .gif 或 .jpeg 文件，文件大小必须小于 20 kb：</p>
+<pre>&lt;?php
+if ((($_FILES[&#34;file&#34;][&#34;type&#34;] == &#34;image/gif&#34;)
+|| ($_FILES[&#34;file&#34;][&#34;type&#34;] == &#34;image/jpeg&#34;)
+|| ($_FILES[&#34;file&#34;][&#34;type&#34;] == &#34;image/pjpeg&#34;))
+&amp;&amp; ($_FILES[&#34;file&#34;][&#34;size&#34;] &lt; 20000))
+  {
+  if ($_FILES[&#34;file&#34;][&#34;error&#34;] &gt; 0)
+    {
+    echo &#34;Error: &#34; . $_FILES[&#34;file&#34;][&#34;error&#34;] . &#34;&lt;br /&gt;&#34;;
+    }
+  else
+    {
+    echo &#34;Upload: &#34; . $_FILES[&#34;file&#34;][&#34;name&#34;] . &#34;&lt;br /&gt;&#34;;
+    echo &#34;Type: &#34; . $_FILES[&#34;file&#34;][&#34;type&#34;] . &#34;&lt;br /&gt;&#34;;
+    echo &#34;Size: &#34; . ($_FILES[&#34;file&#34;][&#34;size&#34;] / 1024) . &#34; Kb&lt;br /&gt;&#34;;
+    echo &#34;Stored in: &#34; . $_FILES[&#34;file&#34;][&#34;tmp_name&#34;];
+    }
+  }
+else
+  {
+  echo &#34;Invalid file&#34;;
+  }
+?&gt;</pre>
+<p class="note"><span>注释：</span>对于 IE，识别 jpg 文件的类型必须是 pjpeg，对于 FireFox，必须是 jpeg。</p>
+</div>
+<div>
+<h2>保存被上传的文件</h2>
+<p>上面的例子在服务器的 PHP 临时文件夹创建了一个被上传文件的临时副本。</p>
+<p>这个临时的复制文件会在脚本结束时消失。要保存被上传的文件，我们需要把它拷贝到另外的位置：</p>
+<pre>&lt;?php
+if ((($_FILES[&#34;file&#34;][&#34;type&#34;] == &#34;image/gif&#34;)
+|| ($_FILES[&#34;file&#34;][&#34;type&#34;] == &#34;image/jpeg&#34;)
+|| ($_FILES[&#34;file&#34;][&#34;type&#34;] == &#34;image/pjpeg&#34;))
+&amp;&amp; ($_FILES[&#34;file&#34;][&#34;size&#34;] &lt; 20000))
+  {
+  if ($_FILES[&#34;file&#34;][&#34;error&#34;] &gt; 0)
+    {
+    echo &#34;Return Code: &#34; . $_FILES[&#34;file&#34;][&#34;error&#34;] . &#34;&lt;br /&gt;&#34;;
+    }
+  else
+    {
+    echo &#34;Upload: &#34; . $_FILES[&#34;file&#34;][&#34;name&#34;] . &#34;&lt;br /&gt;&#34;;
+    echo &#34;Type: &#34; . $_FILES[&#34;file&#34;][&#34;type&#34;] . &#34;&lt;br /&gt;&#34;;
+    echo &#34;Size: &#34; . ($_FILES[&#34;file&#34;][&#34;size&#34;] / 1024) . &#34; Kb&lt;br /&gt;&#34;;
+    echo &#34;Temp file: &#34; . $_FILES[&#34;file&#34;][&#34;tmp_name&#34;] . &#34;&lt;br /&gt;&#34;;
+    if (file_exists(&#34;upload/&#34; . $_FILES[&#34;file&#34;][&#34;name&#34;]))
+      {
+      echo $_FILES[&#34;file&#34;][&#34;name&#34;] . &#34; already exists. &#34;;
+      }
+    else
+      {
+      move_uploaded_file($_FILES[&#34;file&#34;][&#34;tmp_name&#34;],
+      &#34;upload/&#34; . $_FILES[&#34;file&#34;][&#34;name&#34;]);
+      echo &#34;Stored in: &#34; . &#34;upload/&#34; . $_FILES[&#34;file&#34;][&#34;name&#34;];
+      }
+    }
+  }
+else
+  {
+  echo &#34;Invalid file&#34;;
+  }
+?&gt;</pre>
+<p>上面的脚本检测了是否已存在此文件，如果不存在，则把文件拷贝到指定的文件夹。</p>
+<p class="note"><span>注释：</span>这个例子把文件保存到了名为 &#34;upload&#34; 的新文件夹。</p>
+</div>
+<div id="bpn">
+<ul class="prenext">
+<li class="pre"><a href="php_file.html">上一页</a></li>
+<li class="next"><a href="php_cookies.html">下一页</a></li>
+</ul>
+</div>
+</div>
+<div id="sidebar">
+<div class="rs"></div>
+<div id="tools">
+<h5 id="tools_reference"><a href="php_ref.html">PHP 参考手册</a></h5>
+<h5 id="tools_quiz"><a href="php_quiz.html">PHP 测验</a></h5>
+</div>
+<div class="a120x600"><script type="text/javascript">var cpro_id="u1293136";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div><div class="b"></div>
+</div>
+</body>
+</html>

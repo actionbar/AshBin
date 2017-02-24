@@ -1,0 +1,305 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>俄罗斯方块</title>
+<style type="text/css">
+body,td,th {
+	font-family: Tahoma, SimSun;
+}
+</style>
+</head>
+<link rel="stylesheet" type="text/css" href="../index.css" />
+<link rel="stylesheet" type="text/css" href="http://localhost:8080/v-get.com/tool/index.css" />
+<style type="text/css">
+<!--
+.c{margin:25px 0px}
+
+-->
+</style>
+
+
+<script type="text/javascript" src="http://localhost:8080/v-get.com/i/i.js"></script>
+
+
+</head>
+<body  onload="Animate();window.status='XXXX You';return true">>
+<div class="w">
+<div class="t"><div class="q"><div class="p tl"></div><div class="p tc"><a href="">V-Get!首页</a>|<a href="">设为主页</a>|<a href="">收藏本站</a></div><div class="p tr"></div></div></div>
+<div class="u">
+<img src="http://localhost:8080/v-get.com/tool/index.png" />
+</div>
+<div class="n"><a href="http://localhost:8080/tool.v-get.com/">首页</a><a href="http://localhost:8080/v-get.com/tool/biz/">商务办公</a><a href="http://localhost:8080/v-get.com/tool/finance/">金融计算</a><a href="http://localhost:8080/v-get.com/tool/life/">生活助手</a><a href="http://localhost:8080/v-get.com/tool/images/">图片美工</a><a href="http://localhost:8080/v-get.com/tool/editor/">文字设计</a><a href="http://localhost:8080/v-get.com/tool/edu/">教育考试</a><a href="http://localhost:8080/v-get.com/tool/game/" class="no">娱乐游戏</a><a href="http://localhost:8080/v-get.com/tool/pc/">电脑优化</a></div>
+<div class="w4"><a href="#"><img src="http://localhost:8080/v-get.com/i/wuliu/a/zzidc980.gif" /></a></div>
+<!--这里不用include，因为基本这个部分是固定的；广告以后采用js替换，或者固定图片名称-->
+<!--因为都在life文件夹下，而且涉及.no，所以这样更好-->
+<div class="v">
+<div class="p l">
+<h2>生活助手</h2>
+<!--#include file="l.htm"-->
+
+</div>
+<div class="p r">
+<h1>21点纸牌游戏</h1>
+<div class="c">
+<SCRIPT>
+s=250
+sw=eval(screen.width/2-120)
+tl = new Array(
+"   o\n"+
+"  /|\\\n"+
+" */ \\*\n",
+
+"   o_\n"+
+"  \<| *\n"+
+"  *\>\\\n",
+
+"  _o/*\n"+
+" * |\n"+
+"  / \\\n",
+
+" *\o_\n"+
+"  /  *\n"+
+" \<\\\n",
+
+"  _o/*\n"+
+" * |\n"+
+"  / \\\n",
+
+" *\\c/*\n"+
+"   )\n"+
+"  / \>\n",
+
+"     *\n"+
+"  \\__/c\n"+
+"   \> \\*\n",
+
+
+"   __/\n"+
+"    (o_*\n"+
+"     \\*\n",
+
+
+"      \\ /\n"+
+"       |\n"+
+"     */o\\*\n",
+
+"       \\_\n"+
+"       (\n"+
+"     */o\\*\n",
+
+"        \<_\n"+
+"      __(\n"+
+"     * o|*\n",
+
+
+"         /_\n"+
+"      __(\n"+
+"     * o|*\n",
+
+"          ___\n"+
+"       *\/ \>\n"+
+"       o|*\n",
+
+
+"          *\n"+
+"         o|_/\n"+
+"        */  \\\n",
+
+
+
+"         _o/*\n"+
+"        * |\n"+
+"         / \\\n",
+
+
+"        *\\o/*\n"+
+"          |\n"+
+"         / \\\n",
+
+"         c/*\n"+
+"         \<\\\n"+
+"         */\\\n",
+
+"         c__\n"+
+"         \<\ *\n"+
+"         */\\\n",
+
+"         c__\n"+
+"         /\ *\n"+
+"        * /\>\n",
+
+"          c/*\n"+
+"         /(__\n"+
+"        * /\n",
+
+"        __o/*\n"+
+"        * (__\n"+
+"          \<\n",
+
+"          __o_\n"+
+"         * /  *\n"+
+"          \<\\\n",
+
+"         *_o_\n"+
+"           | *\n"+
+"          \< \\\n",
+
+"         *_c_*\n"+
+"           |\n"+
+"           \>\\\n",
+
+"         *_c_*\n"+
+"           |__\n"+
+"           \>\n",
+
+"         *_c_*\n"+
+"         __|__\n"+
+"\n",
+
+" \n"+
+"         *_c_*\n"+
+"         __)__    \n",
+
+" \n"+
+"         *\\c/*\n"+
+"         __)__\n",
+
+
+"           o__*\n"+
+"           / *\n"+
+"          \>\\\n",
+
+
+"        *\\o/*\n"+
+"          (\n"+
+"         / \>\n",
+
+
+"         *\n"+
+"        o\\__/\n"+
+"        */ \<\n",
+
+
+"       \\__\n"+
+"     *_o)\n"+
+"      */\n",
+
+"     \\ /\n"+
+"      |\n"+
+"    */o\\*\n",
+
+"     _/\n"+
+"      )\n"+
+"    */o\\*\n",
+
+"     _\>\n"+
+"      )__\n"+
+"    *|o *\n",
+
+
+"     _\\\n"+
+"      )__\n"+
+"    *|o *\n",
+
+" ___\n"+
+"   \< \\*\n"+
+"   *|o\n",
+
+"   *\n"+
+" \\_|o\n"+
+" /  \\*\n",
+
+" *\\o__\n"+
+"   |  *\n"+
+"  / \\\n",
+
+
+"   o\n"+
+"  /|\\\n"+
+" */ \\*\n",
+
+
+"   o_\n"+
+"  \<| *\n"+
+"  *\>\\\n",
+
+"  _o/*\n"+
+" * |\n"+
+"  / \\\n",
+
+" *\o_\n"+
+"  /  *\n"+
+" \<\\\n",
+
+"  _o/*\n"+
+" * |\n"+
+"  / \\\n",
+
+" *\\c/*\n"+
+"   )\n"+
+"  / \>\n"
+);
+var x=0;
+var xx
+
+
+function place(){
+if (document.layers){
+document.object1.document.write("<pre>"+tl[0]+"</pre>");
+document.object1.document.close()
+document.object1.left=sw}
+if (document.all){
+object1.innerHTML="<pre>"+tl[0]+"</pre>"
+object1.style.pixelLeft=sw
+
+}
+}
+
+function tick(p) {
+clearTimeout(xx)
+if (document.layers){
+document.object1.document.write("<pre>"+tl[x]+"</pre>");
+document.object1.document.close()
+document.object1.left=sw}
+if (document.all){
+object1.innerHTML="<pre>"+tl[x]+"</pre>"
+object1.style.pixelLeft=sw
+}
+
+x++;
+if (x != 45){
+ xx= setTimeout("tick()",s);
+}
+else{x = 0;xx=setTimeout("tick(1)",s)}
+}
+
+</SCRIPT>
+<FORM><INPUT onclick=javascript:s=50 type=button value="加速"> <INPUT onclick=javascript:s=500 type=button value="减速"> <INPUT onclick=javascript:s=150 type=button value=正常速度><BR><BR><INPUT onclick=javascript:tick(1) type=button value=开始跳舞> 
+<INPUT onclick=javascript:clearTimeout(xx) type=button value=停止> 
+</FORM>
+<DIV id=object1 
+style="LEFT: 25px; POSITION: absolute; TOP: 200px; Z-INDEX: 2"></DIV>
+
+
+
+
+
+
+</div>
+
+<!--#include file="c.htm"-->
+
+
+</div>
+
+</div>
+
+<div class="o b">
+ddd
+</div>
+</div>
+
+  
+</body>
+</html>

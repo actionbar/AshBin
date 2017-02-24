@@ -1,0 +1,55 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>ASP技巧:生成包含日期的订单号的代码（20030112001）</title>
+<style type="text/css">
+<!--
+body {
+	font-size: 10.4pt;
+	line-height: 22px;
+}
+-->
+</style>
+</head>
+
+<body bgcolor="#eeeeee" leftmargin="20" marginwidth="20">
+<strong>生成包含日期的订单号的代码（20030112001） </strong> 
+<hr>
+<br>
+&lt;script language="vbScript"&gt;<br>
+&lt;!--<br>
+sub subcode<br>
+dim startyear<br>
+dim startmon<br>
+dim startday<br>
+dim code<br>
+startyear = &lt;%=year(now())%&gt;<br>
+startmon = &lt;%=month(now())%&gt;<br>
+startday = &lt;%=day(now())%&gt;<br>
+if startmon&lt;10 then<br>
+startmon="0"&amp;month(date)<br>
+end if<br>
+if startday&lt;10 then<br>
+startday="0"&amp;day(date)<br>
+end if<br>
+if startyear&amp;startmon&amp;startday&lt;&gt;left(&lt;%=(rs_newcode.Fields.Item("maxer").Value)%&gt;,8) 
+then <br>
+code=001<br>
+else <br>
+code=int(mid(&lt;%=(rs_newcode.Fields.Item("maxer").Value)%&gt;,9,3))+1<br>
+end if<br>
+if len(code)=1 then<br>
+code="00"&amp;cstr(code)<br>
+end if<br>
+if len(code)=2 then<br>
+code="0"&amp;cstr(code)<br>
+end if<br>
+Form1.goods_code.value = startyear &amp; startmon&amp;startday&amp;cstr(code)<br>
+end sub<br>
+--&gt;<br>
+&lt;/script&gt; <br>
+<br>
+<br>
+</body>
+</html>

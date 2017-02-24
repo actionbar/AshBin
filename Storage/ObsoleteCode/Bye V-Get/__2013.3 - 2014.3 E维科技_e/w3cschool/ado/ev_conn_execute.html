@@ -1,0 +1,192 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="../c3.css" />
+<title>ADO WillExecute 和 ExecuteComplete 事件</title>
+</head>
+<body class="serverscripting">
+<div id="wrapper">
+<div id="header">
+<a href="http://e.v-get.com/w3cschool/" style="float:left;">W3CSchool 在线教程</a>
+<div class="q g"><script type="text/javascript">var cpro_id="u1163355"</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div>
+<div id="navfirst">
+<ul id="menu">
+<li id="h"><a href="../h.html">HTML教程</a></li>
+<li id="x"><a href="../x.html">XML教程</a></li>
+<li id="b"><a href="../b.html">浏览器脚本</a></li>
+<li id="s"><a href="../s.html">服务器脚本</a></li>
+<li id="d"><a href="../d.html">dot net教程</a></li>
+<li id="m"><a href="../m.html">多媒体教程</a></li>
+<li id="w"><a href="../w.html">建站手册</a></li>
+</ul>
+</div><div id="navsecond">
+<div id="course">
+<h2>ADO 教程</h2>
+<ul>
+<li><a href="http://e.v-get.com/w3cschool/">ADO 首页</a></li>
+<li><a href="ado_intro.html">ADO 简介</a></li>
+<li><a href="ado_connect.html">ADO 连接</a></li>
+<li><a href="ado_recordset.html">ADO 记录集</a></li>
+<li><a href="ado_display.html">ADO 显示</a></li>
+<li><a href="ado_query.html">ADO 查询</a></li>
+<li><a href="ado_sort.html">ADO 排序</a></li>
+<li><a href="ado_add.html">ADO 添加</a></li>
+<li><a href="ado_update.html">ADO 更新</a></li>
+<li><a href="ado_delete.html">ADO 删除</a></li>
+<li><a href="ado_getstring.html">ADO 加速</a></li>
+</ul>
+<h2>ADO 对象</h2>
+<ul>
+<li><a href="ado_ref_command.html">ADO Command</a></li>
+<li><a href="ado_ref_connection.html">ADO Connection</a></li>
+<li><a href="ado_ref_error.html">ADO Error</a></li>
+<li><a href="ado_ref_field.html">ADO Field</a></li>
+<li><a href="ado_ref_parameter.html">ADO Parameter</a></li>
+<li><a href="ado_ref_property.html">ADO Property</a></li>
+<li><a href="ado_ref_record.html">ADO Record</a></li>
+<li><a href="ado_ref_recordset.html">ADO Recordset</a></li>
+<li><a href="ado_ref_stream.html">ADO Stream</a></li>
+<li><a href="ado_datatypes.html">ADO 数据类型</a></li>
+<li><a href="ado_summary.html">ADO 总结</a></li>
+</ul>
+<h2>实例</h2>
+<ul>
+<li><a href="../example/adoe_examples.html">ADO 实例</a></li>
+</ul>
+</div>
+<div id="selected">
+<h2>建站手册</h2>
+<ul>
+<li><a href="../site/">网站构建</a></li>
+<li><a href="../w3c/">万维网联盟</a></li>
+<li><a href="http://e.v-get.com/w3c/">W3CSchool 教程</a></li>
+<li><a href="../quality/">网站品质</a></li>
+<li><a href="../semweb/">语义网</a></li>
+<li><a href="../hosting/">网站主机</a></li>
+</ul>
+<h2><a href="http://e.v-get.com/w3c/" class="f13">W3CSchool 教程</a></h2><div class="a120x90"><script type="text/javascript">var cpro_id="u1210867";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div></div>
+</div>
+<div id="maincontent">
+<h1>ADO WillExecute 和 ExecuteComplete 事件</h1>
+<div class="backtoreference">
+<p><a href="ado_ref_connection.html">返回 ADO Connection 对象参考手册</a></p>
+</div>
+<div>
+<h2>定义和用法</h2>
+<p>事件是某个具体的操作发生后被自动调用的子例程。</p>
+<ul>
+<li>WillExecute 事件在调用 objcomm.Execute, objconn.Execute 或者 objrs.Open 之前会被触发</li>
+<li>ExecuteComplete 事件会在完成对 objcomm.Execute, objconn.Execute, objrs.Open, objrs.Requery 或 objrs.NextRecordset 的调用之后被触发</li>
+</ul>
+<h3>语法</h3>
+<pre>
+WillExecute src,cursortyp,locktyp,options,status,objcomm,objrs,objconn
+ExecuteComplete recaffected,objerror,status,objcomm,objrs,objconn
+</pre>
+<table class="dataintable"> 
+  <tr>
+    <th>参数</th>
+    <th>描述</th>
+  </tr>  
+  <tr>
+    <td>src</td>
+    <td>字符串，包含 SQL 命令或存储过程名称。</td>
+  </tr>
+  <tr>
+    <td>cursortyp</td>
+    <td>规定要使用的游标类型。<a href="app_cursortypeenum.html">CursorTypeEnum</a> 值之一。</td>
+  </tr>
+  <tr>
+    <td>locktyp</td>
+    <td>规定要使用的锁定类型。<a href="app_locktypeenum.html">LockTypeEnum</a> 值之一。</td>
+  </tr>
+  <tr>
+    <td>options</td>
+    <td>一个或多个 <a href="app_commandtypeenum.html">CommandTypeEnum</a> 或 <a href="app_executeoptionenum.html">ExecuteOptionEnum</a> 值</td>
+  </tr>
+  <tr>
+    <td>recaffected </td>
+    <td>Long 值，该命令影响的记录的数目。</td>
+  </tr>
+  <tr>
+    <td>objerror</td>
+    <td>
+	包含已发生的错误的 Error 对象。
+	<p>注释：EventStatusEnum 值必须被设置为 adStatusErrorsOccurred，以创建该 Error 对象。</td>
+  </tr>
+  <tr>
+    <td>status</td>
+    <td>一个 <a href="#eventstatusenum">EventStatusEnum</a> 值。</td>
+  </tr>
+  <tr>
+    <td>objcomm</td>
+    <td>
+	<p>对于 WillExecute：如果此事件由 Command.Execute 引发，objcomm 参数将引用 Command 对象，objrs 参数将设置为 Nothing。</p>
+    <p>对于 ExecuteComplete：被执行的 Command 对象。</p>
+    </td>
+  </tr>
+  <tr>
+    <td>objrs</td>
+    <td>
+	<p>对于 WillExecute：如果此事件由 Recordset.Open 引发，objrs 参数将引用 Recordset 对象，pCommand 参数将设置为 Nothing。</p>
+    <p>对于 ExecuteComplete：Recordset 对象，是命令执行的结果。</p>
+    </td>
+  </tr>
+  <tr>
+    <td>objconn</td>
+    <td>与命令执行相关联的 Connection 对象。</td>
+  </tr>
+</table>
+</div>
+<div>
+<h2><a id="eventstatusenum">EventStatusEnum 值</a></h2>
+<table class="dataintable">
+    <tr>
+      <th>常量</th>
+      <th>值</th>
+      <th>描述</th>
+    </tr>
+    <tr>
+      <td>adStatusOK</td>
+      <td>1</td>
+      <td>引发该事件的操作成功。</td>
+    </tr>
+    <tr>
+      <td>adStatusErrorsOccurred</td>
+      <td>2</td>
+      <td>引发该事件的操作失败。</td>
+    </tr>
+    <tr>
+      <td>adStatusCantDeny</td>
+      <td>3</td>
+      <td>不能取消挂起操作。</td>
+    </tr>
+    <tr>
+      <td>adStatusCancel</td>
+      <td>4</td>
+      <td>取消导致事件发生的操作。</td>
+    </tr>
+    <tr>
+      <td>adStatusUnwantedEvent</td>
+      <td>5</td>
+      <td>在事件方法执行结束之前禁止后续的通知。</td>
+    </tr>
+</table>
+</div>
+<div class="backtoreference">
+<p><a href="ado_ref_connection.html">返回 ADO Connection 对象参考手册</a></p>
+</div>
+</div>
+<div id="sidebar">
+<div class="rs"></div>
+<div id="tools">
+<h5 id="tools_reference"><a href="ado_reference.html">ADO 参考手册</a></h5>
+<h5 id="tools_example"><a href="../example/adoe_examples.html">ADO 实例</a></h5>
+</div>
+<div class="a120x600"><script type="text/javascript">var cpro_id="u1293136";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div><div class="b"></div>
+</div>
+</body>
+</html>

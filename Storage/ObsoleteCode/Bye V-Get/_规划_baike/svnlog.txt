@@ -1,0 +1,87 @@
+Revision: 461
+Author: xiahao
+Date: 15:56:51, 2013年3月18日
+Message:
+ldap已删除账号管理
+----
+Modified : /trunk/controls/admin/user.ctl.php
+Modified : /trunk/views/admin/admin_user_leave.htm
+
+Revision: 460
+Author: xiahao
+Date: 15:52:31, 2013年3月18日
+Message:
+ldap已删除账号管理
+----
+Modified : /trunk/controls/admin/user.ctl.php
+Modified : /trunk/models/user_leave.mod.php
+Added : /trunk/views/admin/admin_user_leave.htm (Copy from path: /trunk/views/admin/admin_userview.htm, Revision, 458)
+Modified : /trunk/views/admin/admin_usermanage.htm
+
+Revision: 459
+Author: xiahao
+Date: 10:19:59, 2013年3月18日
+Message:
+ip改为host
+----
+Modified : /trunk/models/user_leave.mod.php
+
+Revision: 458
+Author: xiahao
+Date: 14:29:16, 2013年3月1日
+Message:
+离职销售获取接口
+http://auth.intra.hudong.com/api.php?m=user&a=get_leave_user_by_status
+----
+Modified : /trunk/controls/api/user.ctl.php
+Modified : /trunk/models/user_leave.mod.php
+
+Revision: 457
+Author: xiahao
+Date: 18:27:53, 2013年2月27日
+Message:
+更新删除的账号到本地
+----
+Modified : /trunk/controls/console/crontab.ctl.php
+Added : /trunk/models/user_leave.mod.php (Copy from path: /trunk/models/user.mod.php, Revision, 452)
+
+Revision: 456
+Author: ranping
+Date: 16:55:45, 2013年2月22日
+Message:
+根据用户名和部门id判断用户是不是所在部门接口 bug,修复
+----
+Modified : /trunk/models/group.mod.php
+Modified : /trunk/models/un_group_user.mod.php
+
+Revision: 455
+Author: ranping
+Date: 12:13:49, 2013年2月20日
+Message:
+大家好,
+	根据用户名和部门id判断用户是不是所在部门接口
+功能说明：根据传入的用户名及部门id,判断该用户是不是这个部门
+接口地址：http://auth.intra.hudong.com/api.php?m=user&a=user_deparment_is_technical&user_name=&group_id=&seckey= 
+参数说明：
+
+http://auth.intra.hudong.com/api.php?m=user&a=user_deparment_is_technical 参数m,a不用改变
+user_name:用户名
+group_id: 部门id
+seckey:安全密匙
+
+例子:
+http://auth.intra.hudong.com/api.php?m=user&a=user_deparment_is_technical&user_name=ranping&group_id=295&seckey=
+----
+Modified : /trunk/controls/api/user.ctl.php
+Modified : /trunk/models/un_group_user.mod.php
+
+Revision: 454
+Author: ranping
+Date: 15:40:21, 2013年2月19日
+Message:
+删除用户组时，未同步到market user_group的情况
+----
+Modified : /trunk/controls/admin/departmentmanage.ctl.php
+Modified : /trunk/controls/admin/groupmanage.ctl.php
+Modified : /trunk/models/user.mod.php
+

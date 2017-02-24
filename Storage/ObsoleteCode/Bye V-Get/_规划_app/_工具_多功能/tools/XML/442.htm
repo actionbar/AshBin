@@ -1,0 +1,252 @@
+<html>
+<head>
+<title>字体属性</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+
+<link rel = stylesheet href = "image/style.css">
+</head>
+<body bgcolor="#ffffff">
+<table width="688" border="0" cellspacing="0" cellpadding="0" align="center">
+  <tr bgcolor="EEEEEE"> 
+    <td height="22"><a href="index.htm">主页</a></td>
+  </tr>
+</table><br>
+<table border="0" cellpadding="0" cellspacing="0" width="688" align="center" height="490">
+  <tr valign="top"> 
+    <td rowspan="4" width="91">&nbsp; </td>
+    <td height="68" width="131"> 
+      <p><img src="image/doc.gif"></p>
+    </td>
+    <td rowspan="4" width="18"><b></b> </td>
+    <td height="68" width="387"><img src="image/title_doc.gif"></td>
+    <td rowspan="4" width="61"> 
+      <h6>&nbsp;</h6>
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td rowspan="3" valign="top" class="pt10" align="center" width="131" bgcolor="EEEEEE"> 
+      <p>&nbsp;</p>
+      <p><font color="#FF0000">※ 12.9 字体属性</font></p>
+       
+	</td>
+  </tr>
+  <tr valign="top"> 
+    <td width="387" height="308"> 
+      <table width="100%" border="0" cellpadding="0">
+        <tr> 
+          <td>
+
+           <h4>12.9 字体属性</h4>
+<p>CSS1支持下列五种基本的字体属性：</p>
+<p>1．font-family</p>
+<p>2．font-style</p>
+<p>3．font-variant</p>
+<p>4．font-weight</p>
+<p>5．font-size</p>
+<p>此外，还有font这个简略属性，它可以一次设置所有的五个属性。</p>
+<h5><a name="_Toc467205090">12.9.1 font-family属性</a></h5>
+<p>font-family属性值是一组以逗号分隔开来的字体名，如Helvetica、Times、Palatino等。包含空格的字体名(如“Times New 
+  Roman”)应放在双引号内。</p>
+<p>这些名称也可能是这五种一般名称之一：serif、sans-serif、cursive、fantasy和monospace。浏览器使用本地系统上安装的所需类型的字体来代替这些名称。表12-4示例了这些字体。</p>
+<p align="center">表12-4 一般字体</p>
+<p>
+<center>
+  <table BORDER cellspacing=1 cellpadding=7 width=541>
+    <tr> 
+      <td width="21%" valign="TOP"> 
+        <p>名称
+      </td>
+      <td width="18%" valign="TOP"> 
+        <p>典型的字族
+      </td>
+      <td width="31%" valign="TOP"> 
+        <p>显著特征
+      </td>
+      <td width="30%" valign="TOP"> 
+        <p>示例
+      </td>
+    </tr>
+    <tr> 
+      <td width="21%" valign="TOP"> 
+        <p>衬线体(Serif)
+      </td>
+      <td width="18%" valign="TOP"> 
+        <p>Times，Times New Roman，Palatino
+      </td>
+      <td width="31%" valign="TOP"> 
+        <p>在字母的边缘上形成花体，使以小型的大写形式出现于衬线文本更易于阅读
+      </td>
+      <td width="30%" valign="TOP"> 
+        <p>The quick brown fox jumped over the lazy dog.
+      </td>
+    </tr>
+    <tr> 
+      <td width="21%" valign="TOP"> 
+        <p>非衬线体</p>
+        <p>(sans-serif)
+      </td>
+      <td width="18%" valign="TOP"> 
+        <p>Geneva，Helvetica，Verdana
+      </td>
+      <td width="31%" valign="TOP"> 
+        <p>印刷体，常用于大字标题
+      </td>
+      <td width="30%" valign="TOP"> 
+        <p>The quick brown fox jumped over the lazy dog.
+      </td>
+    </tr>
+    <tr> 
+      <td width="21%" valign="TOP"> 
+        <p>等宽字体</p>
+        <p>(Monospace)
+      </td>
+      <td width="18%" valign="TOP"> 
+        <p>Courier，Courier New，Monaco，American，Typewriter
+      </td>
+      <td width="31%" valign="TOP"> 
+        <p>一种打印体，字体中的每个字符的宽度相等，常用于源码和E-mail
+      </td>
+      <td width="30%" valign="TOP"> 
+        <p>The quick brown fox jumped over the lazy dog.
+      </td>
+    </tr>
+    <tr> 
+      <td width="21%" valign="TOP"> 
+        <p>草书(Cursive)
+      </td>
+      <td width="18%" valign="TOP"> 
+        <p>ZapfChancery
+      </td>
+      <td width="31%" valign="TOP"> 
+        <p>手稿字体，模拟书法
+      </td>
+      <td width="30%" valign="TOP"> 
+        <p>The quick brown fox jumped over the lazy dog.
+      </td>
+    </tr>
+    <tr> 
+      <td width="21%" valign="TOP"> 
+        <p>梦幻体(Fantasy)
+      </td>
+      <td width="18%" valign="TOP"> 
+        <p>Western，Critter
+      </td>
+      <td width="31%" valign="TOP"> 
+        <p>具有特定效果的文本；如热情洋溢的字母、歪斜状特技的字母，以及从动物哪里形成的字母，等等
+      </td>
+      <td width="30%" valign="TOP"> 
+        <p>The quick brown fox jumped over the lazy dog.
+      </td>
+    </tr>
+  </table>
+</center>
+<p></p>
+<p>由于在特定的客户系统上无法担保所给的任何字体都可以找到或是合适的(10磅的Times在Macintosh机上就不如Palm Pilot，实际上前者难以辨认)，所以一般提供以一组逗号分开的列表，以便以优先顺序选择字体。在列表中最后选项总是一个通用名。可是，即使不指定一个通用名，以及指定的字体不可用，那么浏览器也会挑选出某个字体名。这也许不会是人们所希望的那个。</p>
+<p>例如，下面的两条规则的第一条使TITLE元素为Helvetica字体，而以任何非衬线体为后备体；第二条规则使其余元素为Times字体，而用Times 
+  New Roman和其他衬线体为后备字体。</p>
+<p>TITLE { font-family: Helvetica, sans serif }</p>
+<p>SYNOPSIS { font-family: Times, "Times New Roman", serif }</p>
+<p>图12-6显示的是把这两条规则加到清单12-8的样式单之后加载到Mozilla 5.0中的剧本大纲。由于在图12-4中Times通常是缺省字体，所以没有发生太大的变化。</p>
+<p>font-family属性可由子元素继承。于是，将SYNOPSIS元素的font-famiey设置为Times字体，所有的子元素也被设置为Times，只是TITLE例外，其自身的font-family属性取代了它继承的属性。</p>
+<p align="center"><img src="Image/BK000212-22.gif" width=280 height=246></p>
+<p align="center">图12-6 标题以Helvetica字体显示的《第十二夜》的大纲</p>
+<h5><a name="_Toc467205091">12.9.2 font-style属性</a></h5>
+<p>font-style属性有三个值：normae、italic和oblique。读者正在阅读的普通文本就是正常体。一般以HTML的EM元素显示的则为斜体的。倾斜字体(oblique)的文本十分类似于斜体文本。但是，绝大多数情况下，倾斜字体的文本是由计算机根据简单的算术运算，使正常的文本倾斜一定的角度实现的。用斜体字印刷的文本，使用的字体手法，通常是为了好看。</p>
+<p>下面的规则使SCENE_NUMBER元素成斜体：</p>
+<p>SCENE_NUMBER { font-style: italic }</p>
+<p>图12-7显示的是把上述规则加到大纲样式单之后再加载到Internet Explorer 5.0中的剧本大纲。</p>
+<p align="center"><img src="Image/BK000212-23.gif" width=364 height=341></p>
+<p align="center">图12-7 带斜体场景号的《第十二夜》剧本大纲</p>
+<h5><a name="_Toc467205092">12.9.3 font-variant属性</a></h5>
+<p>在CSS1中，font-variant属性有两个可能值：normal和small-caps，缺省值为normal。将font-variant属性值设置为small-caps将会用比主体文本字号小一些的大写字母代替小写字母。</p>
+<p>把font-variant属性与first-letter伪元素结合起来使用，可获得极好的效果。例如，定义ACT_NUMBER元素，使属性为font-variant:small-caps。接下来，定义ACT_NUMBER的首字母，为font-variant:normal。这样就产生了如下的剧本的幕序号：</p>
+<p>ACT 1</p>
+<p>下面是其规则：</p>
+<p>ACT_NUMBER { font-variant: small-caps }</p>
+<p>ACT NUMBER: first-letter { font-variant: normal }</p>
+<p>第二个规则覆盖第一个，但仅对幕序号的首字母才如此。</p>
+<h5><a name="_Toc467205093">12.9.4 font-weight属性</a></h5>
+<p>font-weight属性决定文本以多黑(粗)或多浅(细)显示。此属性有13个值：</p>
+<p>normal</p>
+<p>bold</p>
+<p>bolder</p>
+<p>lighter</p>
+<p>100</p>
+<p>200</p>
+<p>300</p>
+<p>400</p>
+<p>500</p>
+<p>600</p>
+<p>700</p>
+<p>800</p>
+<p>900</p>
+<p>粗细的范围是从100(最浅)到900(最暗)。处于各值之间、非整百的值如850是不允许的。正常粗细为400，粗体为700。bolder值会使一个元素变得比其父元素更粗。lighter值会使一个元素变得比其父元素更细。但是，不能保证某个特定的字体具有多达九个独立的粗体级。</p>
+<p>下面举一个简单的规则实例，此规则使TITLE和ACT_NUMBER元素成为粗体。</p>
+<p>TITLE, ACT_NUMBER { font weight: bold }</p>
+<p>图12-8显示的是把上述规则加到清单12-7的样式单之后在Mozilla浏览器中的结果。</p>
+<h5><a name="_Toc467205094">12.9.5 font-size属性</a></h5>
+<p>font-size属性决定字体中典型字符的高和宽度。字号越大，在屏幕中所占的空间也就越大。可以通过这样的几种方式来指定字号：关键字、相对于其父元素的字号、其父元素字号的百分比或绝对数。</p>
+<p align="center"><img src="Image/BK000212-24.gif" width=364 height=342></p>
+<p align="center">图12-8 使用粗体剧名和幕序号的《第十二夜》大纲</p>
+<b>12.9.5.1 关键字</b> 
+<p>绝对大小关键字：</p>
+<p>xx-small</p>
+<p>x-small</p>
+<p>small</p>
+<p>medium</p>
+<p>1arge</p>
+<p>x-large</p>
+<p>xx-large</p>
+<p>这些关键字是设置字号的首选方式，因为它们仍是相对于页的基本字号的。例如，如果用户由于近视度很高而将缺省字号调整为20磅，那么所有其他值也会相应地按比例改变。</p>
+<p>在CSS1中，每种字号是下一个最小字号的1.5倍。缺省值为medium，因此，如果浏览器的缺省值是12磅，那么large类型就是18磅，x-large类型就是27磅，而xx-large类型就是40.5磅。同样，small类型就是8磅；x-small类型就是5.33磅；xx-small类型就是3.56磅，此时字迹几乎模糊不清。</p>
+<p>下面的简单规则使TITLE成为特大字：</p>
+<p>TITLE { font-size: x-large }</p>
+<b>12.9.5.2 相对于父元素的字号值</b> 
+<p></p>
+<p>也可以将相对于父元素的字号指定为larger或smaller。例如，在下列语句中，SCENE_NUMBER将获得比其父元素SCENE字体更小的字体。</p>
+<p>SCENE_NUMBER { font-size: smaller }</p>
+<p>更小的字体准确地小到多少或更大的字体准确地大到多少，没有任何确切的规则可循。一般地，浏览器会从中等(medium)移到小字体(small)、从小字体移到x-small，依次类推。对于较大的字体也同样适用(向另一方向移动)。这样，使一字体变得更大，应将它的字号增加到约50%，而使一字体变得更小，则应将其字号减小约33%，可是，为了匹配现有的字号，浏览器无法自己产生这些值。</p>
+<b>12.9.5.3 父元素字号的百分比</b> 
+<p>如果这些项不够精确，可使用父元素字号的百分比进行更精细的调整。例如，下列规则说明用于SCENE_NUMBER的字体是SCENE字号的50%。</p>
+<p>SCENE_NUMBER { font-size: 50% }</p>
+<b>12.9.5.4 绝对长度值</b> 
+<p></p>
+<p>最后，可能会把字号以绝对长度给出。尽管可以使用像素、厘米或英寸，但测定字体的最通用的单位是磅。例如，下面规则为SYNOPSIS元素设置缺省font-size属性，并且将其子元素字体的大小设置为14磅。</p>
+<p>SYNOPSIS { font-size: 14pt }</p>
+<img src="Image/BK000212-52.gif" width=49 height=49 align="LEFT" hspace=12> 
+<p>我极力劝说读者不要使用绝对单位来描述字号。要选择一种字号，使它在所有用来浏览网页的不同的平台(从手持机到朝代广场的Sony大屏幕)上都可以很清晰、便于阅读是极其困难的(我认为是不可能的)。即使当把它们局限在标准的个人计算机上，大多数设计者选择的字体也会太小。要想让任何文本都能在屏幕上阅读，这些字体应至少为12磅，甚至更大。</p>
+<p>图12-9显示的是将这些规则加到清单12-7的样式单中之后，在Mozilla中输出的结果。场景的文本并不真正的是粗体，它只是变得稍大。在任何情况下，更容易阅读。</p>
+<p align="center"><img src="Image/BK000212-25.gif" width=375 height=336></p>
+<p align="center">图12-9 带有各式各样字号的《第十二夜》剧本大纲</p>
+<h5><a name="_Toc467205095">12.9.6 font简略属性</a></h5>
+<p>font属性是一种简略属性，它允许使用一条规则来设置字体样式、变体、粗细、字号或字族。例如，下列用于TITLE和SCENE_NUMBER元素的两条规则，就把前面各节中提到的六个不同的规则组合在一起了：</p>
+<p>TITLE { font: bold x-large Helvetica, sans-serif }</p>
+<p>SCENE_NUMBER { font: italic smaller serif }</p>
+<p>font属性值必须按下列顺序给出：</p>
+<p>1．以任何顺序给出样式、变体和粗细之一，它们中的任何一个都可以忽略</p>
+<p>2．字号，不可以忽略</p>
+<p>3．可选择的斜杠(/)和行高</p>
+<p>4．字族，不可忽略</p>
+<img src="Image/BK000212-57.gif" width=45 height=53 align="LEFT" hspace=11> 
+<p>如果这听起来很复杂并且难以记住，那是因为本该如此。如不查阅，我肯定记不住这些属性顺序的准确的细节。我宁愿一次只使用一个属性。这样就产生了一个疑问，像这样的简略属性是否真能节省时间。</p>
+<p>清单12-13使用font简略属性，是带有迄今介绍过的所有规则的大纲的样式单。但是，由于font属性准确地等同于其代表的各属性之和，所以显示的文档没有任何变化。</p>
+<p>清单12-13：使用font简略属性的剧本大纲样式单</p>
+<p>SYNOPSIS, TITLE, ACT, SCENE { display: block }</p>
+<p>SCENENUMBER { font: italic smaller serif }</p>
+<p>TITLE { font: bold x-large Helvetica, sans serif }</p>
+<p>SYNOPSIS { font: 14pt Times, "Times New Roman", serif }</p>
+<p>ACTNUMBER { font-variant: small-caps }</p>
+<p>ACTNUMBER:first-letter { font-variant: normal }</p>
+<p>ACTNUMBER { font-weight: bold }</p>
+ 
+<a href='441.htm'>&lt;&lt;上一篇</a>&nbsp;&nbsp;<a href='443.htm'>下一篇&gt;&gt;</a></td>
+        </tr>
+      </table>
+      <p>&nbsp; </p>
+    </td>
+  </tr>
+</table>
+
+</body>
+
+</html>

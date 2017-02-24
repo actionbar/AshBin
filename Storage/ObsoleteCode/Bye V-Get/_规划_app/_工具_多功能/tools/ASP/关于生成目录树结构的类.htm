@@ -1,0 +1,373 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>关于生成目录树结构的类</title>
+<style type="text/css">
+<!--
+body {
+	font-size: 10.4pt;
+	line-height: 22px;
+}
+-->
+</style>
+</head>
+
+<body bgcolor="eeeeee" leftmargin="20" marginwidth="20">
+<p><strong>关于生成目录树结构的类</strong></p>
+<hr>
+<p>本程序有两文件test.asp 和tree.asp 还有一些图标文件<br>
+  1。test.asp 调用类生成树 代码如下<br>
+  &lt;%@ Language=VBScript %&gt;<br>
+  &lt;html&gt;<br>
+  &lt;head&gt;<br>
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;tree.css&quot;&gt;<br>
+  &lt;title&gt;tree&lt;/title&gt;<br>
+  &lt;/head&gt;<br>
+  &lt;!-- #include file=&quot;tree.asp&quot; --&gt;<br>
+  &lt;%<br>
+  <br>
+  '========================================<br>
+  ' BUILDING A TREE PROGRAMATICALLY<br>
+  '========================================<br>
+  ' This approach would be best suited for building<br>
+  ' dynamic trees using For..Next loops and such.<br>
+  <br>
+  Set MyTree2 = New Tree<br>
+  MyTree2.Top = 10<br>
+  MyTree2.Left = 10<br>
+  MyTree2.ExpandImage = &quot;plus.gif&quot;<br>
+  MyTree2.CollapseImage = &quot;minus.gif&quot;<br>
+  MyTree2.LeafImage = &quot;webpage.gif&quot;<br>
+  <br>
+  ' Notice the indentation used to reprensent the hierarchy<br>
+  Set Node1 = MyTree2.CreateChild(&quot;script&quot;)<br>
+  Set SubNode1 = Node1.CreateChild(&quot;server&quot;)<br>
+  Set secSubNode1 = SubNode1.CreateChild(&quot;html&quot;)<br>
+  secSubNode1.CreateChild &quot;&lt;A HREF=&quot;&quot;http://127.0.0.1/&quot;&quot;&gt;asp&lt;/A&gt;&quot;<br>
+  secSubNode1.CreateChild &quot;&lt;A HREF=&quot;&quot;http://127.0.0.1/&quot;&quot;&gt;php&lt;/A&gt;&quot;<br>
+  secSubNode1.CreateChild &quot;&lt;A HREF=&quot;&quot;http://127.0.0.1/&quot;&quot;&gt;jsp&lt;/A&gt;&quot;<br>
+  <br>
+  Set SubNode2 = Node1.CreateChild(&quot;os&quot;)<br>
+  SubNode2.CreateChild &quot;&lt;A HREF=&quot;&quot;#&quot;&quot;&gt;winnt&lt;/A&gt;&quot;<br>
+  SubNode2.CreateChild &quot;&lt;A HREF=&quot;&quot;#&quot;&quot;&gt;win2000&lt;/A&gt;&quot;<br>
+  <br>
+  Set Node2 = MyTree2.CreateChild(&quot;Desktop&quot;)<br>
+  Node2.CreateChild &quot;&lt;A HREF=&quot;&quot;#&quot;&quot;&gt;Area Code Lookup&lt;/A&gt;&quot;<br>
+  Node2.CreateChild &quot;&lt;A HREF=&quot;&quot;#&quot;&quot;&gt;Arin Based Whois 
+  Search&lt;/A&gt;&quot;<br>
+  Node2.CreateChild &quot;&lt;A HREF=&quot;&quot;#&quot;&quot;&gt;World Time Zone 
+  Map&lt;/A&gt;&quot;<br>
+  <br>
+  MyTree2.Draw()<br>
+  <br>
+  Set MyTree2 = Nothing<br>
+  <br>
+  %&gt;<br>
+  <br>
+  &lt;/BODY&gt;<br>
+  &lt;/HTML&gt;<br>
+  2。tree.asp 类的定义 代码如下<br>
+  &lt;%<br>
+  '******************************************************<br>
+  ' Author: Jacob Gilley<br>
+  ' Email: avis7@airmail.net<br>
+  ' My Terms: You can use this control in anyway you see fit<br>
+  ' cause I have no means to enforce any guidelines<br>
+  ' or BS that most developers think they can get<br>
+  ' you to agree to by spouting out words like <br>
+  ' &quot;intellectual property&quot; and &quot;The Code Gods&quot;.<br>
+  ' - Viva la Microsoft!<br>
+  '******************************************************<br>
+  <br>
+  Dim gblTreeNodeCount:gblTreeNodeCount = 1<br>
+  <br>
+  Class TreeNode<br>
+  <br>
+  Public Value<br>
+  Public ExpandImage<br>
+  Public CollapseImage<br>
+  Public LeafImage<br>
+  Public Expanded<br>
+  Private mszName<br>
+  Private mcolChildren<br>
+  Private mbChildrenInitialized<br>
+  <br>
+  Public Property Get ChildCount()<br>
+  ChildCount = mcolChildren.Count<br>
+  End Property<br>
+  <br>
+  Private Sub Class_Initialize()<br>
+  mszName = &quot;node&quot; &amp; CStr(gblTreeNodeCount)<br>
+  gblTreeNodeCount = gblTreeNodeCount + 1<br>
+  <br>
+  mbChildrenInitialized = False<br>
+  Expanded = False<br>
+  End Sub <br>
+  <br>
+  Private Sub Class_Terminate()<br>
+  If mbChildrenInitialized And IsObject(mcolChildren) Then<br>
+  mcolChildren.RemoveAll()<br>
+  Set mcolChildren = Nothing<br>
+  End If<br>
+  End Sub<br>
+  <br>
+  Private Sub InitChildList()<br>
+  Set mcolChildren = Server.CreateObject(&quot;Scripting.Dictionary&quot;)<br>
+  mbChildrenInitialized = True<br>
+  End Sub<br>
+  <br>
+  Private Sub LoadState()<br>
+  If Request(mszName) = &quot;1&quot; Or Request(&quot;togglenode&quot;) = mszName 
+  Then<br>
+  Expanded = True<br>
+  End If<br>
+  End Sub<br>
+  <br>
+  Public Function CreateChild(szValue)<br>
+  <br>
+  If Not mbChildrenInitialized Then InitChildList()<br>
+  <br>
+  Set CreateChild = New TreeNode<br>
+  CreateChild.Value = szValue<br>
+  CreateChild.ExpandImage = ExpandImage<br>
+  CreateChild.CollapseImage = CollapseImage<br>
+  CreateChild.LeafImage = LeafImage<br>
+  <br>
+  mcolChildren.Add mcolChildren.Count + 1, CreateChild<br>
+  <br>
+  End Function<br>
+  <br>
+  Public Sub Draw()<br>
+  <br>
+  LoadState()<br>
+  <br>
+  Response.Write &quot;&lt;table border=&quot;&quot;0&quot;&quot;&gt;&quot; &amp; 
+  vbCrLf<br>
+  Response.Write &quot;&lt;tr&gt;&lt;td&gt;&quot; &amp; vbCrLf<br>
+  <br>
+  If Expanded Then<br>
+  Response.Write &quot;&lt;a href=&quot;&quot;javascript:collapseNode('&quot; 
+  &amp; mszName &amp; &quot;')&quot;&quot;&gt;&lt;img src=&quot;&quot;&quot; &amp; 
+  CollapseImage &amp; &quot;&quot;&quot; border=&quot;&quot;0&quot;&quot;&gt;&lt;/a&gt;&quot; 
+  &amp; vbCrLf<br>
+  ElseIf Not mbChildrenInitialized Then<br>
+  Response.Write &quot;&lt;img src=&quot;&quot;&quot; &amp; LeafImage &amp; &quot;&quot;&quot; 
+  border=0&gt;&quot; &amp; vbCrLf<br>
+  Else<br>
+  Response.Write &quot;&lt;a href=&quot;&quot;javascript:expandNode('&quot; &amp; 
+  mszName &amp; &quot;')&quot;&quot;&gt;&lt;img src=&quot;&quot;&quot; &amp; ExpandImage 
+  &amp; &quot;&quot;&quot; border=&quot;&quot;0&quot;&quot;&gt;&lt;/a&gt;&quot; 
+  &amp; vbCrLf<br>
+  End If<br>
+  <br>
+  Response.Write &quot;&lt;/td&gt;&quot; &amp; vbCrLf<br>
+  Response.Write &quot;&lt;td&gt;&quot; &amp; Value &amp; &quot;&lt;/td&gt;&lt;/tr&gt;&quot; 
+  &amp; vbCrLf<br>
+  <br>
+  If Expanded Then<br>
+  Response.Write &quot;&lt;input type=&quot;&quot;hidden&quot;&quot; name=&quot;&quot;&quot; 
+  &amp; mszName &amp; &quot;&quot;&quot; value=&quot;&quot;1&quot;&quot;&gt;&quot; 
+  &amp; vbCrLf<br>
+  <br>
+  If mbChildrenInitialized Then<br>
+  Response.Write &quot;&lt;tr&gt;&lt;td&gt; &lt;/td&gt;&quot; &amp; vbCrLf<br>
+  Response.Write &quot;&lt;td&gt;&quot; &amp; vbCrLf<br>
+  <br>
+  For Each ChildNode In mcolChildren.Items<br>
+  ChildNode.Draw()<br>
+  Next<br>
+  <br>
+  Response.Write &quot;&lt;/td&gt;&quot; &amp; vbCrLf<br>
+  Response.Write &quot;&lt;/tr&gt;&quot; &amp; vbCrLf<br>
+  End If<br>
+  End If<br>
+  <br>
+  Response.Write &quot;&lt;/table&gt;&quot; &amp; vbCrLf<br>
+  <br>
+  End Sub<br>
+  <br>
+  End Class<br>
+  <br>
+  <br>
+  Class Tree<br>
+  <br>
+  Public Top<br>
+  Public Left<br>
+  Public ExpandImage<br>
+  Public CollapseImage<br>
+  Public LeafImage<br>
+  Private mszPosition<br>
+  Private mcolChildren<br>
+  <br>
+  Public Property Let Absolute(bData)<br>
+  If bData Then mszPosition = &quot;absolute&quot; Else mszPosition = &quot;relative&quot;<br>
+  End Property<br>
+  <br>
+  Public Property Get Absolute()<br>
+  Absolute = CBool(mszPosition = &quot;absolute&quot;)<br>
+  End Property<br>
+  <br>
+  Private Sub Class_Initialize()<br>
+  Set mcolChildren = Server.CreateObject(&quot;Scripting.Dictionary&quot;)<br>
+  mnTop = 0<br>
+  mnLeft = 0<br>
+  mszPosition = &quot;absolute&quot;<br>
+  End Sub <br>
+  <br>
+  Private Sub Class_Terminate()<br>
+  mcolChildren.RemoveAll()<br>
+  Set mcolChildren = Nothing<br>
+  End Sub<br>
+  <br>
+  Public Function CreateChild(szValue)<br>
+  <br>
+  Set CreateChild = New TreeNode<br>
+  <br>
+  CreateChild.Value = szValue<br>
+  CreateChild.ExpandImage = ExpandImage<br>
+  CreateChild.CollapseImage = CollapseImage<br>
+  CreateChild.LeafImage = LeafImage<br>
+  <br>
+  mcolChildren.Add mcolChildren.Count + 1, CreateChild<br>
+  <br>
+  End Function<br>
+  <br>
+  Public Sub LoadTemplate(szFileName)<br>
+  Dim objWorkingNode<br>
+  Dim colNodeStack<br>
+  Dim fsObj, tsObj<br>
+  Dim szLine<br>
+  Dim nCurrDepth, nNextDepth<br>
+  <br>
+  Set colNodeStack = Server.CreateObject(&quot;Scripting.Dictionary&quot;)<br>
+  Set fsObj = CreateObject(&quot;Scripting.FileSystemObject&quot;)<br>
+  Set tsObj = fsObj.OpenTextFile(szFileName, 1)<br>
+  <br>
+  nCurrDepth = 0<br>
+  While Not tsObj.AtEndOfLine<br>
+  nNextDepth = 1<br>
+  szLine = tsObj.ReadLine()<br>
+  <br>
+  If nCurrDepth = 0 Then<br>
+  Set objWorkingNode = CreateChild(Trim(szLine))<br>
+  nCurrDepth = 1<br>
+  Else<br>
+  While Mid(szLine,nNextDepth,1) = vbTab Or Mid(szLine,nNextDepth,1) = &quot; 
+  &quot;<br>
+  nNextDepth = nNextDepth + 1<br>
+  WEnd<br>
+  <br>
+  If nNextDepth &gt; 1 Then szLine = Trim(Mid(szLine,nNextDepth))<br>
+  <br>
+  If szLine &lt;&gt; &quot;&quot; Then<br>
+  If nNextDepth &gt; nCurrDepth Then<br>
+  If colNodeStack.Exists(nCurrDepth) Then<br>
+  Set colNodeStack.Item(nCurrDepth) = objWorkingNode<br>
+  Else<br>
+  colNodeStack.Add nCurrDepth, objWorkingNode<br>
+  End If<br>
+  <br>
+  Set objWorkingNode = objWorkingNode.CreateChild(szLine)<br>
+  <br>
+  nCurrDepth = nCurrDepth + 1<br>
+  ElseIf nNextDepth &lt;= nCurrDepth Then<br>
+  <br>
+  If nNextDepth &gt; 1 Then <br>
+  <br>
+  nNextDepth = nNextDepth - 1<br>
+  While Not colNodeStack.Exists(nNextDepth) And nNextDepth &gt; 1<br>
+  nNextDepth = nNextDepth - 1<br>
+  WEnd<br>
+  <br>
+  Set objWorkingNode = colNodeStack.Item(nNextDepth)<br>
+  Set objWorkingNode = objWorkingNode.CreateChild(szLine)<br>
+  <br>
+  nNextDepth = nNextDepth + 1<br>
+  Else<br>
+  Set objWorkingNode = CreateChild(szLine)<br>
+  End If<br>
+  <br>
+  nCurrDepth = nNextDepth<br>
+  End If<br>
+  End If<br>
+  <br>
+  End If<br>
+  WEnd<br>
+  <br>
+  tsObj.Close()<br>
+  Set tsObj = Nothing <br>
+  Set fsObj = Nothing<br>
+  <br>
+  colNodeStack.RemoveAll()<br>
+  Set colNodeStack = Nothing<br>
+  <br>
+  End Sub<br>
+  <br>
+  <br>
+  Public Sub Draw()<br>
+  <br>
+  AddClientScript()<br>
+  <br>
+  Response.Write &quot;&lt;div id=&quot;&quot;treectrl&quot;&quot; style=&quot;&quot;left: 
+  &quot; &amp; Left &amp; &quot;px; top: &quot; &amp; Top &amp; &quot;px; position: 
+  &quot; &amp; mszPosition &amp; &quot;;&quot;&quot;&gt;&quot; &amp; vbCrLf<br>
+  Response.Write &quot;&lt;form name=&quot;&quot;treectrlfrm&quot;&quot; action=&quot;&quot;&quot; 
+  &amp; Request.ServerVariables(&quot;SCRIPT_NAME&quot;) &amp; &quot;&quot;&quot; 
+  method=&quot;&quot;get&quot;&quot;&gt;&quot; &amp; vbCrLf<br>
+  Response.Write &quot;&lt;table border=&quot;&quot;0&quot;&quot;&gt;&quot; &amp; 
+  vbCrLf<br>
+  Response.Write &quot;&lt;tr&gt;&lt;td&gt;&quot; &amp; vbCrLf<br>
+  <br>
+  For Each ChildNode In mcolChildren.Items<br>
+  ChildNode.Draw()<br>
+  Next<br>
+  <br>
+  Response.Write &quot;&lt;/td&gt;&lt;/tr&gt;&quot; &amp; vbCrLf<br>
+  Response.Write &quot;&lt;/table&gt;&quot; &amp; vbCrLf<br>
+  <br>
+  Response.Write &quot;&lt;input type=&quot;&quot;hidden&quot;&quot; name=&quot;&quot;togglenode&quot;&quot; 
+  value=&quot;&quot;&quot;&quot;&gt;&quot; &amp; vbCrLf<br>
+  Response.Write &quot;&lt;/form&gt;&quot; &amp; vbCrLf<br>
+  Response.Write &quot;&lt;/div&gt;&quot; &amp; vbCrLf<br>
+  <br>
+  End Sub<br>
+  <br>
+  Private Sub AddClientScript()<br>
+  %&gt;<br>
+  &lt;script language=&quot;JavaScript&quot;&gt;<br>
+  <br>
+  function expandNode(szNodeName)<br>
+  {<br>
+  if(document.layers != null) {<br>
+  document.treectrl.document.treectrlfrm.togglenode.value = szNodeName;<br>
+  document.treectrl.document.treectrlfrm.submit();<br>
+  }<br>
+  else {<br>
+  document.all[&quot;treectrlfrm&quot;].togglenode.value = szNodeName;<br>
+  document.all[&quot;treectrlfrm&quot;].submit();<br>
+  }<br>
+  }<br>
+  <br>
+  function collapseNode(szNodeName)<br>
+  {<br>
+  if(document.layers != null) {<br>
+  document.treectrl.document.treectrlfrm.elements[szNodeName].value = -1;<br>
+  document.treectrl.document.treectrlfrm.submit();<br>
+  }<br>
+  else {<br>
+  document.treectrlfrm.elements[szNodeName].value = -1;<br>
+  document.treectrlfrm.submit();<br>
+  }<br>
+  }<br>
+  <br>
+  &lt;/script&gt;<br>
+  &lt;% <br>
+  End Sub<br>
+  <br>
+  End Class<br>
+  <br>
+  %&gt;<br>
+</p>
+</body>
+</html>

@@ -1,0 +1,239 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="../c3.css" />
+<title>SQL NULL 值</title>
+</head>
+<body class="serverscripting">
+<div id="wrapper">
+<div id="header">
+<a href="http://e.v-get.com/w3cschool/" style="float:left;">W3CSchool 在线教程</a>
+<div class="q g"><script type="text/javascript">var cpro_id="u1163355"</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div>
+<div id="navfirst">
+<ul id="menu">
+<li id="h"><a href="../h.html">HTML教程</a></li>
+<li id="x"><a href="../x.html">XML教程</a></li>
+<li id="b"><a href="../b.html">浏览器脚本</a></li>
+<li id="s"><a href="../s.html">服务器脚本</a></li>
+<li id="d"><a href="../d.html">dot net教程</a></li>
+<li id="m"><a href="../m.html">多媒体教程</a></li>
+<li id="w"><a href="../w.html">建站手册</a></li>
+</ul>
+</div><div id="navsecond">
+<div id="course">
+<h2>SQL 基础</h2>
+<ul>
+<li><a href="http://e.v-get.com/w3cschool/">SQL 首页</a></li>
+<li><a href="sql_intro.html">SQL 简介</a></li>
+<li><a href="sql_syntax.html">SQL 语法</a></li>
+<li><a href="sql_select.html">SQL select</a></li>
+<li><a href="sql_distinct.html">SQL distinct</a></li>
+<li><a href="sql_where.html">SQL where</a></li>
+<li><a href="sql_and_or.html">SQL AND &amp; OR</a></li>
+<li><a href="sql_orderby.html">SQL Order By</a></li>
+<li><a href="sql_insert.html">SQL insert</a></li>
+<li><a href="sql_update.html">SQL update</a></li>
+<li><a href="sql_delete.html">SQL delete</a></li>
+</ul>
+<h2>SQL 高级</h2>
+<ul>
+<li><a href="sql_top.html">SQL Top</a></li>
+<li><a href="sql_like.html">SQL Like</a></li>
+<li><a href="sql_wildcards.html">SQL 通配符</a></li>
+<li><a href="sql_in.html">SQL In</a></li>
+<li><a href="sql_between.html">SQL Between</a></li>
+<li><a href="sql_alias.html">SQL Aliases</a></li>
+<li><a href="sql_join.html">SQL Join</a></li>
+<li><a href="sql_join_inner.html">SQL Inner Join</a></li>
+<li><a href="sql_join_left.html">SQL Left Join</a></li>
+<li><a href="sql_join_right.html">SQL Right Join</a></li>
+<li><a href="sql_join_full.html">SQL Full Join</a></li>
+<li><a href="sql_union.html">SQL Union</a></li>
+<li><a href="sql_select_into.html">SQL Select Into</a></li>
+<li><a href="sql_create_db.html">SQL Create DB</a></li>
+<li><a href="sql_create_table.html">SQL Create Table</a></li>
+<li><a href="sql_constraints.html">SQL Constraints</a></li>
+<li><a href="sql_notnull.html">SQL Not Null</a></li>
+<li><a href="sql_unique.html">SQL Unique</a></li>
+<li><a href="sql_primarykey.html">SQL Primary Key</a></li>
+<li><a href="sql_foreignkey.html">SQL Foreign Key</a></li>
+<li><a href="sql_check.html">SQL Check</a></li>
+<li><a href="sql_default.html">SQL Default</a></li>
+<li><a href="sql_create_">SQL Create Index</a></li>
+<li><a href="sql_drop.html">SQL Drop</a></li>
+<li><a href="sql_alter.html">SQL Alter</a></li>
+<li><a href="sql_autoincrement.html">SQL Increment</a></li>
+<li><a href="sql_view.html">SQL View</a></li>
+<li><a href="sql_dates.html">SQL Date</a></li>
+<li><a href="sql_null_values.html">SQL Nulls</a></li>
+<li><a href="sql_isnull.html">SQL isnull()</a></li>
+<li><a href="sql_datatypes.html">SQL 数据类型</a></li>
+<li><a href="sql_server.html">SQL 服务器</a></li>
+</ul>
+<h2>SQL 函数</h2>
+<ul>
+<li><a href="sql_functions.html">SQL functions</a></li>
+<li><a href="sql_func_avg.html">SQL avg()</a></li>
+<li><a href="sql_func_count.html">SQL count()</a></li>
+<li><a href="sql_func_first.html">SQL first()</a></li>
+<li><a href="sql_func_last.html">SQL last()</a></li>
+<li><a href="sql_func_max.html">SQL max()</a></li>
+<li><a href="sql_func_min.html">SQL min()</a></li>
+<li><a href="sql_func_sum.html">SQL sum()</a></li>
+<li><a href="sql_groupby.html">SQL Group By</a></li>
+<li><a href="sql_having.html">SQL Having</a></li>
+<li><a href="sql_func_ucase.html">SQL ucase()</a></li>
+<li><a href="sql_func_lcase.html">SQL lcase()</a></li>
+<li><a href="sql_func_mid.html">SQL mid()</a></li>
+<li><a href="sql_func_len.html">SQL len()</a></li>
+<li><a href="sql_func_round.html">SQL round()</a></li>
+<li><a href="sql_func_now.html">SQL now()</a></li>
+<li><a href="sql_func_format.html">SQL format()</a></li>
+<li class="list_apart"><a href="sql_quickref.html">SQL 快速索引</a></li>
+<li><a href="sql_summary.html">SQL 总结</a></li>
+</ul>
+<h2>实例/测验</h2>
+<ul>
+<li><a href="sql_quiz.html">SQL 测验</a></li>
+</ul>
+</div>
+<div id="selected">
+<h2>建站手册</h2>
+<ul>
+<li><a href="../site/">网站构建</a></li>
+<li><a href="../w3c/">万维网联盟</a></li>
+<li><a href="http://e.v-get.com/w3c/">W3CSchool 教程</a></li>
+<li><a href="../quality/">网站品质</a></li>
+<li><a href="../semweb/">语义网</a></li>
+<li><a href="../hosting/">网站主机</a></li>
+</ul>
+<h2><a href="http://e.v-get.com/w3c/" class="f13">W3CSchool 教程</a></h2><div class="a120x90"><script type="text/javascript">var cpro_id="u1210867";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div></div>
+</div>
+<div id="maincontent">
+<h1>SQL NULL 值</h1>
+<div id="tpn">
+<ul class="prenext">
+<li class="pre"><a href="sql_dates.html">上一页</a></li>
+<li class="next"><a href="sql_isnull.html">下一页</a></li>
+</ul>
+</div>
+<div>
+<p><strong>NULL 值是遗漏的未知数据。</strong></p>
+<p><strong>默认地，表的列可以存放 NULL 值。</strong></p>
+<p><strong>本章讲解 IS NULL 和 IS NOT NULL 操作符。</strong></p>
+</div>
+<div>
+<h2>SQL NULL 值</h2>
+<p>如果表中的某个列是可选的，那么我们可以在不向该列添加值的情况下插入新纪录或更新已有的记录。这意味着该字段将以 NULL 值保存。</p>
+<p>NULL 值的处理方式与其他值不同。</p>
+<p>NULL 用作未知的或不适用的值的占位符。</p>
+<p class="note"><span>注释：</span>无法比较 NULL 和 0；它们是不等价的。</p>
+</div>
+<div>
+<h2>SQL 的 NULL 值处理</h2>
+<p>请看下面的 &#34;Persons&#34; 表：</p>
+<table class="dataintable">
+  <tr>
+    <th>Id</th>
+	<th>LastName</th>
+	<th>FirstName</th>
+	<th>Address</th>
+	<th>City</th>
+  </tr>
+  <tr>
+	<td>1</td>
+	<td>Adams</td>
+	<td>John</td>
+	<td>&nbsp;</td>
+	<td>London</td>
+  </tr>
+  <tr>
+	<td>2</td>
+	<td>Bush</td>
+	<td>George</td>
+	<td>Fifth Avenue</td>
+	<td>New York</td>
+  </tr>
+  <tr>
+	<td>3</td>
+	<td>Carter</td>
+	<td>Thomas</td>
+	<td>&nbsp;</td>
+	<td>Beijing</td>
+  </tr>
+</table>
+<p>假如 &#34;Persons&#34; 表中的 &#34;Address&#34; 列是可选的。这意味着如果在 &#34;Address&#34; 列插入一条不带值的记录，&#34;Address&#34; 列会使用 NULL 值保存。</p>
+<p>那么我们如何测试 NULL 值呢？</p>
+<p>无法使用比较运算符来测试 NULL 值，比如 =, &lt;, 或者 &lt;&gt;。</p>
+<p>我们必须使用 IS NULL 和 IS NOT NULL 操作符。</p>
+</div>
+<div>
+<h2>SQL IS NULL</h2>
+<p>我们如何仅仅选取在 &#34;Address&#34; 列中带有 NULL 值的记录呢？</p>
+<p>我们必须使用 IS NULL 操作符：</p>
+<pre>
+SELECT LastName,FirstName,Address FROM Persons
+WHERE Address IS NULL
+</pre>
+<p>结果集：</p>
+<table class="dataintable">
+  <tr>
+	<th style="width:30%">LastName</th>
+	<th style="width:35%">FirstName</th>
+	<th style="width:35%">Address</th>
+  </tr>
+  <tr>
+	<td>Adams</td>
+	<td>John</td>
+	<td>&nbsp;</td>
+  </tr>
+  <tr>
+	<td>Carter</td>
+	<td>Thomas</td>
+	<td>&nbsp;</td>
+  </tr>
+</table>
+<p class="tip"><span>提示：</span>请始终使用 IS NULL 来查找 NULL 值。</p>
+</div>
+<div>
+<h2>SQL IS NOT NULL</h2>
+<p>我们如何选取在 &#34;Address&#34; 列中不带有 NULL 值的记录呢？</p>
+<p>我们必须使用 IS NOT NULL 操作符：</p>
+<pre>
+SELECT LastName,FirstName,Address FROM Persons
+WHERE Address IS NOT NULL
+</pre>
+<p>结果集：</p>
+<table class="dataintable">
+  <tr>
+	<th style="width:30%">LastName</th>
+	<th style="width:35%">FirstName</th>
+	<th style="width:35%">Address</th>
+  </tr>
+  <tr>
+	<td>Bush</td>
+	<td>George</td>
+	<td>Fifth Avenue</td>
+  </tr>
+</table>
+<p>在下一节中，我们了解 ISNULL()、NVL()、IFNULL() 和 COALESCE() 函数。</p>
+</div>
+<div id="bpn">
+<ul class="prenext">
+<li class="pre"><a href="sql_dates.html">上一页</a></li>
+<li class="next"><a href="sql_isnull.html">下一页</a></li>
+</ul>
+</div>
+</div>
+<div id="sidebar">
+<div class="rs"></div>
+<div id="tools">
+<h5 id="tools_quiz"><a href="sql_quiz.html">SQL 测验</a></h5>
+</div>
+<div class="a120x600"><script type="text/javascript">var cpro_id="u1293136";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div><div class="b"></div>
+</div>
+</body>
+</html>

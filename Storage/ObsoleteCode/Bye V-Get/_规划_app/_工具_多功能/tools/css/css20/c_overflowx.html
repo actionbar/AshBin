@@ -1,0 +1,122 @@
+<html xmlns:rdl>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<script src="rdl_properties.js"></script>
+<base target="_self">
+</head>
+<body>
+
+<script>
+
+//collFriendProperties=new Array();
+//collFriendDeclarations=new Array();
+//collFriendAtRules=new Array();
+//collFriendElements=new Array();
+//collFriendClasses=new Array();
+
+collFriendProperties=new Array(
+'clip','overflow','overflow-y'
+);
+
+//collIE40=new Array();
+//collIE50=new Array();
+//collIE55=new Array();
+//collIE60=new Array();
+
+collIE40=new Array(
+'ADDRESS','APPLET','B','BIG','BLOCKQUOTE','CENTER','CITE','CODE','DD','DFN','DIR','DIV','DL','DT','EM','EMBED','FIELDSET','FORM','Hn','I','KBD','LABEL','LEGEND','LI','LISTING','MENU','OL','P','PRE','S','SAMP','SMALL','SPAN','STRIKE','STRONG','style','SUB','SUP','TEXTAREA','TT','U','UL','VAR','XMP'
+);
+
+collIE50=new Array(
+'A','ACRONYM','BDO','BODY','COL','COLGROUP','currentStyle','CUSTOM','DEL','FONT','INS','Q','RT','RUBY','runtimeStyle','PLAINTEXT'
+);
+
+collIE55=new Array(
+'defaults','INPUT type=button','INPUT type=checkbox','INPUT type=file','INPUT type=image','INPUT type=password','INPUT type=radio','INPUT type=reset','INPUT type=submit','INPUT type=text'
+);
+
+collIE60=new Array(
+'HTML'
+);
+
+sStyle=
+'<style>\n'+
+'#idParentDiv{width:100%;height:80px;padding:6px;background-color:buttonshadow;}\n'+
+'#idDiv{width:80%;height:60px;background-color:#FF6633;color:#FFFFFF;padding:6px;}\n'+
+'#idCodeDiv{width:100%;padding:4px;font-family:verdana,tahoma;margin:12px 0px 0px 0px;background-color:#EEEEEE;font-weight:bold;}\n'+
+'<\/style>\n';
+
+sScript=
+'<script>\n'+
+'function rdl_change(e){\n'+
+'var oCodeDiv=document.all("idCodeDiv");\n'+
+'var oDiv=document.all("idDiv");\n'+
+'with (document.all("idSel")) var sValue=options[selectedIndex].value;\n'+
+'oDiv.style.overflowX=sValue;\n'+
+'oCodeDiv.innerText="overflow-x : "+sValue+" ; ";\n'+
+'}\n'+
+'<\/script>\n';
+
+sCode=
+'<div id=idParentDiv>\n'+
+'<div id=idDiv><span style="width:300px;"><img src="images\/rdl_sex.gif" style="float:left;" width=100 height=70>请选择我的<b> overflow-x <\/b>属性的值。<\/span><\/div>\n'+
+'<\/div>\n'+
+'<br>\n'+
+'<select id="idSel" onchange="rdl_change();">\n'+
+'<option value="visible" style="font-weight:bold;">---请选择---\n'+
+'<option value="hidden">hidden\n'+
+'<option value="scroll">scroll\n'+
+'<option value="auto">auto\n'+
+'<option value="visible">visible\n'+
+'<\/select>\n'+
+'<div id=idCodeDiv>overflow-x : visible ; <\/div>\n';
+
+iWinWidth=360;
+
+iWinHeight=350;
+
+//bRunCode=false;
+
+//bElements=false;
+
+</script>
+
+<div id=idContent>
+
+<div id=idContentTitle><span id=idTitleName>overflow-x</span>版本：IE4+专有属性　继承性：无</div>
+
+<div class=cssColumnTitle>语法：</div>
+<div>
+<b>overflow-x : </b><span class=cssDefault><b>visible</b></span> | <b>auto</b> | <b>hidden</b> | <b>scroll</b>
+</div>
+
+<div class=cssColumnTitle>取值：</div>
+<table>
+<tr><td nowrap><b> visible </b></td><td nowrap><b>:</b></td><td><b>默认值</b>。不剪切内容也不添加滚动条。假如显式声明此默认值，对象将以包含对象的<b> window </b>或<b> frame </b>的尺寸裁切。并且<a href="c_clip.html>"> clip </a>属性设置将失效</td></tr>
+<tr><td nowrap><b> auto </b></td><td nowrap><b>:</b></td><td>在必需时对象内容才会被裁切或显示横向滚动条</td>
+<tr><td nowrap><b> hidden </b></td><td nowrap><b>:</b></td><td>不显示超过对象尺寸的内容</td></tr>
+<tr><td nowrap><b> scroll </b></td><td nowrap><b>:</b></td><td>总是显示横向滚动条</td></tr>
+</table>
+
+<div class=cssColumnTitle>说明：</div>
+<div>
+检索或设置当对象的内容超过其指定宽度时如何管理内容。<br>
+所有对象的默认值是<b> visible </b>，除了<b> textarea </b>对象和<b> body </b>对象的默认值是<b> auto </b>。设置<b> textarea </b>对象此属性值为<b> hidden </b>将隐藏其滚动条。<br>
+对于<b> table </b>来说，假如<a href="c_tablelayout.html"> table-layout </a>属性设置为<b> fixed </b>，则<b> td </b>对象支持带有默认值为<b> hidden </b>的<b> overflow </b>属性。如果设为<b> scroll </b>或者<b> auto </b>，那么超出<b> td </b>尺寸的内容将被剪切。如果设为<b> visible </b>，将导致额外的文本溢出到右边或左边（视<a href="c_direction.html"> direction </a>属性设置而定）的单元格。<br>
+自IE5开始，此属性在MAC平台上可用。<br>
+自IE6开始，当你使用<b> !DOCTYPE </b>声明指定了<b> standards-compliant </b>模式，此属性可以应用于<b> html </b>对象。<br>
+此属性对于<b> currentStyle </b>对象而言是只读的。对于其他对象而言是可读写的。<br>
+对应的脚本特性为<b> overflowX </b>。
+</div>
+
+<div class=cssColumnTitle>示例：</div>
+<div id=idSimpleCode>
+body { overflow-x: hidden; }<br>div { overflow-x: scroll; height: 100px; width: 100px; }
+</div>
+
+</div>
+</body>
+</html>
+
+<!-- Part of RDL(TM) - Written by Rain1977 
+HomeSite: http://www.dhtmlet.com  E-Mail: dhtmlet@hotmail.com -->

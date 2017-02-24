@@ -1,0 +1,32 @@
+<meta http-equiv="content-type" content="text/html; charset=gb2312"><FONT 
+style="FONT-SIZE: 9pt; LINE-HEIGHT: 15pt"><B>谈谈MSSQl锁机制</B><BR>主　　题：&nbsp;&nbsp;******浅谈MS-SQL锁机制*********&nbsp;<BR>作　　者：&nbsp;&nbsp;happydreamer&nbsp;(小黑)&nbsp;&nbsp;<BR>等　　级：&nbsp;&nbsp;&nbsp;&nbsp;<BR>信&nbsp;誉&nbsp;值：&nbsp;&nbsp;174&nbsp;<BR>所属论坛：&nbsp;&nbsp;MS-SQL&nbsp;Server&nbsp;基础类&nbsp;<BR>问题点数：&nbsp;&nbsp;200&nbsp;<BR>回复次数：&nbsp;&nbsp;19&nbsp;<BR>发表时间：&nbsp;&nbsp;2003-5-19&nbsp;10:23:06&nbsp;
+<P></P>
+<P>锁的概述</P>
+<P>一.&nbsp;为什么要引入锁</P>
+<P>多个用户同时对数据库的并发操作时会带来以下数据不一致的问题:</P>
+<P>丢失更新<BR>A,B两个用户读同一数据并进行修改,其中一个用户的修改结果破坏了另一个修改的结果,比如订票系统</P>
+<P>脏读<BR>A用户修改了数据,随后B用户又读出该数据,但A用户因为某些原因取消了对数据的修改,数据恢复原值,此时B得到的数据就与数据库内的数据产生了不一致</P>
+<P>不可重复读<BR>A用户读取数据,随后B用户读出该数据并修改,此时A用户再读取数据时发现前后两次的值不一致</P>
+<P>并发控制的主要方法是封锁,锁就是在一段时间内禁止用户做某些操作以避免产生数据不一致</P>
+<P>二&nbsp;&nbsp;锁的分类</P>
+<P>锁的类别有两种分法：<BR>1.&nbsp;从数据库系统的角度来看：分为独占锁（即排它锁），共享锁和更新锁</P>
+<P>MS-SQL&nbsp;Server&nbsp;使用以下资源锁模式。</P>
+<P>锁模式&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;描述&nbsp;<BR>共享&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(S)&nbsp;用于不更改或不更新数据的操作（只读操作），如&nbsp;SELECT&nbsp;语句。&nbsp;<BR>更新&nbsp;(U)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;用于可更新的资源中。防止当多个会话在读取、锁定以及随后可能进行的资源更新时发生常见形式的死锁。&nbsp;<BR>排它&nbsp;(X)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;用于数据修改操作，例如&nbsp;INSERT、UPDATE&nbsp;或&nbsp;DELETE。确保不会同时同一资源进行多重更新。&nbsp;<BR>意向锁&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;用于建立锁的层次结构。意向锁的类型为：意向共享&nbsp;(IS)、意向排它&nbsp;(IX)&nbsp;以及与意向排它共享&nbsp;(SIX)。&nbsp;<BR>架构锁&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在执行依赖于表架构的操作时使用。架构锁的类型为：架构修改&nbsp;(Sch-M)&nbsp;和架构稳定性&nbsp;(Sch-S)。&nbsp;<BR>大容量更新&nbsp;(BU)&nbsp;向表中大容量复制数据并指定了&nbsp;TABLOCK&nbsp;提示时使用。&nbsp;</P>
+<P>共享锁<BR>共享&nbsp;(S)&nbsp;锁允许并发事务读取&nbsp;(SELECT)&nbsp;一个资源。资源上存在共享&nbsp;(S)&nbsp;锁时，任何其它事务都不能修改数据。一旦已经读取数据，便立即释放资源上的共享&nbsp;(S)&nbsp;锁，除非将事务隔离级别设置为可重复读或更高级别，或者在事务生存周期内用锁定提示保留共享&nbsp;(S)&nbsp;锁。<BR>更新锁<BR>更新&nbsp;(U)&nbsp;锁可以防止通常形式的死锁。一般更新模式由一个事务组成，此事务读取记录，获取资源（页或行）的共享&nbsp;(S)&nbsp;锁，然后修改行，此操作要求锁转换为排它&nbsp;(X)&nbsp;锁。如果两个事务获得了资源上的共享模式锁，然后试图同时更新数据，则一个事务尝试将锁转换为排它&nbsp;(X)&nbsp;锁。共享模式到排它锁的转换必须等待一段时间，因为一个事务的排它锁与其它事务的共享模式锁不兼容；发生锁等待。第二个事务试图获取排它&nbsp;(X)&nbsp;锁以进行更新。由于两个事务都要转换为排它&nbsp;(X)&nbsp;锁，并且每个事务都等待另一个事务释放共享模式锁，因此发生死锁。</P>
+<P>若要避免这种潜在的死锁问题，请使用更新&nbsp;(U)&nbsp;锁。一次只有一个事务可以获得资源的更新&nbsp;(U)&nbsp;锁。如果事务修改资源，则更新&nbsp;(U)&nbsp;锁转换为排它&nbsp;(X)&nbsp;锁。否则，锁转换为共享锁。</P>
+<P>排它锁<BR>排它&nbsp;(X)&nbsp;锁可以防止并发事务对资源进行访问。其它事务不能读取或修改排它&nbsp;(X)&nbsp;锁锁定的数据。</P>
+<P>意向锁<BR>意向锁表示&nbsp;SQL&nbsp;Server&nbsp;需要在层次结构中的某些底层资源上获取共享&nbsp;(S)&nbsp;锁或排它&nbsp;(X)&nbsp;锁。例如，放置在表级的共享意向锁表示事务打算在表中的页或行上放置共享&nbsp;(S)&nbsp;锁。在表级设置意向锁可防止另一个事务随后在包含那一页的表上获取排它&nbsp;(X)&nbsp;锁。意向锁可以提高性能，因为&nbsp;SQL&nbsp;Server&nbsp;仅在表级检查意向锁来确定事务是否可以安全地获取该表上的锁。而无须检查表中的每行或每页上的锁以确定事务是否可以锁定整个表。</P>
+<P>意向锁包括意向共享&nbsp;(IS)、意向排它&nbsp;(IX)&nbsp;以及与意向排它共享&nbsp;(SIX)。</P>
+<P>锁模式&nbsp;描述&nbsp;<BR>意向共享&nbsp;(IS)&nbsp;通过在各资源上放置&nbsp;S&nbsp;锁，表明事务的意向是读取层次结构中的部分（而不是全部）底层资源。&nbsp;<BR>意向排它&nbsp;(IX)&nbsp;通过在各资源上放置&nbsp;X&nbsp;锁，表明事务的意向是修改层次结构中的部分（而不是全部）底层资源。IX&nbsp;是&nbsp;IS&nbsp;的超集。&nbsp;<BR>与意向排它共享&nbsp;(SIX)&nbsp;通过在各资源上放置&nbsp;IX&nbsp;锁，表明事务的意向是读取层次结构中的全部底层资源并修改部分（而不是全部）底层资源。允许顶层资源上的并发&nbsp;IS&nbsp;锁。例如，表的&nbsp;SIX&nbsp;锁在表上放置一个&nbsp;SIX&nbsp;锁（允许并发&nbsp;IS&nbsp;锁），在当前所修改页上放置&nbsp;IX&nbsp;锁（在已修改行上放置&nbsp;X&nbsp;锁）。虽然每个资源在一段时间内只能有一个&nbsp;SIX&nbsp;锁，以防止其它事务对资源进行更新，但是其它事务可以通过获取表级的&nbsp;IS&nbsp;锁来读取层次结构中的底层资源。&nbsp;</P>
+<P>独占锁：只允许进行锁定操作的程序使用，其他任何对他的操作均不会被接受。执行数据更新命令时，SQL&nbsp;Server会自动使用独占锁。当对象上有其他锁存在时，无法对其加独占锁。<BR>共享锁：共享锁锁定的资源可以被其他用户读取，但其他用户无法修改它，在执行Select时，SQL&nbsp;Server会对对象加共享锁。<BR>更新锁：当SQL&nbsp;Server准备更新数据时，它首先对数据对象作更新锁锁定，这样数据将不能被修改，但可以读取。等到SQL&nbsp;Server确定要进行更新数据操作时，他会自动将更新锁换为独占锁，当对象上有其他锁存在时，无法对其加更新锁。<BR>2.&nbsp;从程序员的角度看：分为乐观锁和悲观锁。<BR>乐观锁：完全依靠数据库来管理锁的工作。<BR>悲观锁：程序员自己管理数据或对象上的锁处理。</P>
+<P>MS-SQLSERVER&nbsp;使用锁在多个同时在数据库内执行修改的用户间实现悲观并发控制</P>
+<P><BR>三&nbsp;&nbsp;锁的粒度<BR>&nbsp;&nbsp;&nbsp;&nbsp;锁粒度是被封锁目标的大小,封锁粒度小则并发性高,但开销大,封锁粒度大则并发性低但开销小</P>
+<P>SQL&nbsp;Server支持的锁粒度可以分为为行、页、键、键范围、索引、表或数据库获取锁</P>
+<P>资源&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;描述&nbsp;<BR>RID&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;行标识符。用于单独锁定表中的一行。&nbsp;<BR>键&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;索引中的行锁。用于保护可串行事务中的键范围。&nbsp;<BR>页&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;8&nbsp;千字节&nbsp;(KB)&nbsp;的数据页或索引页。&nbsp;<BR>扩展盘区&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;相邻的八个数据页或索引页构成的一组。&nbsp;<BR>表&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;包括所有数据和索引在内的整个表。&nbsp;<BR>DB&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;数据库。&nbsp;</P>
+<P><BR>四&nbsp;&nbsp;锁定时间的长短</P>
+<P>锁保持的时间长度为保护所请求级别上的资源所需的时间长度。&nbsp;</P>
+<P>用于保护读取操作的共享锁的保持时间取决于事务隔离级别。采用&nbsp;READ&nbsp;COMMITTED&nbsp;的默认事务隔离级别时，只在读取页的期间内控制共享锁。在扫描中，直到在扫描内的下一页上获取锁时才释放锁。如果指定&nbsp;HOLDLOCK&nbsp;提示或者将事务隔离级别设置为&nbsp;REPEATABLE&nbsp;READ&nbsp;或&nbsp;SERIALIZABLE，则直到事务结束才释放锁。</P>
+<P>根据为游标设置的并发选项，游标可以获取共享模式的滚动锁以保护提取。当需要滚动锁时，直到下一次提取或关闭游标（以先发生者为准）时才释放滚动锁。但是，如果指定&nbsp;HOLDLOCK，则直到事务结束才释放滚动锁。</P>
+<P>用于保护更新的排它锁将直到事务结束才释放。&nbsp;<BR>如果一个连接试图获取一个锁，而该锁与另一个连接所控制的锁冲突，则试图获取锁的连接将一直阻塞到：&nbsp;</P>
+<P>将冲突锁释放而且连接获取了所请求的锁。</P>
+<P>连接的超时间隔已到期。默认情况下没有超时间隔，但是一些应用程序设置超时间隔以防止无限期等待</P></FONT>

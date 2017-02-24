@@ -1,0 +1,79 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>ASP 中 DateDiff 函数详解</title>
+<style type="text/css">
+<!--
+body {
+	font-size: 10.4pt;
+	line-height: 22px;
+}
+-->
+</style>
+</head>
+
+<body bgcolor="eeeeee" leftmargin="20" marginwidth="20">
+<p><strong>ASP 中 DateDiff 函数详解</strong></p>
+<hr>
+<p> DateDiff 函数 </p>
+<p>描述 <br>
+  返回两个日期之间的时间间隔。 <br>
+  语法 <br>
+  DateDiff(interval, date1, date2 [,firstdayofweek][, firstweekofyear]]) <br>
+  DateDiff 函数的语法有以下参数： </p>
+<p>参数 描述 <br>
+  interval 必选。字符串表达式，表示用于计算 date1 和 date2 之间的时间间隔。有关数值，请参阅“设置”部分。 <br>
+  date1, date2 必选。日期表达式。用于计算的两个日期。 <br>
+  firstdayofweek 可选。指定星期中第一天的常数。如果没有指定，则默认为星期日。有关数值，请参阅“设置”部分。 <br>
+  firstweekofyear 可选。指定一年中第一周的常数。如果没有指定，则默认为 1 月 1 日所在的星期。有关数值，请参阅“设置”部分。 </p>
+<p><br>
+  设置 <br>
+  interval 参数可以有以下值： <br>
+  设置 描述 <br>
+  yyyy 年 <br>
+  q 季度 <br>
+  m 月 <br>
+  y 一年的日数 <br>
+  d 日 <br>
+  w 一周的日数 <br>
+  ww 周 <br>
+  h 小时 <br>
+  m 分钟 <br>
+  s 秒 </p>
+<p><br>
+  firstdayofweek 参数可以有以下值： </p>
+<p>常数 值 描述 <br>
+  vbUseSystem 0 使用区域语言支持 (NLS) API 设置。 <br>
+  vbSunday 1 星期日（默认） <br>
+  vbMonday 2 星期一 <br>
+  vbTuesday 3 星期二 <br>
+  vbWednesday 4 星期三 <br>
+  vbThursday 5 星期四 <br>
+  vbFriday 6 星期五 <br>
+  vbSaturday 7 星期六 </p>
+<p><br>
+  firstweekofyear 参数可以有以下值： </p>
+<p>常数 值 描述 <br>
+  vbUseSystem 0 使用区域语言支持 (NLS) API 设置。 <br>
+  vbFirstJan1 1 由 1 月 1 日所在的星期开始（默认）。 <br>
+  vbFirstFourDays 2 由在新年中至少有四天的第一周开始。 <br>
+  vbFirstFullWeek 3 由在新的一年中第一个完整的周开始。 </p>
+<p><br>
+  说明 <br>
+  DateDiff 函数用于判断在两个日期之间存在的指定时间间隔的数目。例如可以使用 DateDiff 计算两个日期相差的天数，或者当天到当年最后一天之间的星期数。 
+  <br>
+  要计算 date1 和 date2 相差的天数，可以使用“一年的日数”（“y”）或“日”（“d”）。当 interval 为“一周的日数”（“w”）时，DateDiff 
+  返回两个日期之间的星期数。如果 date1 是星期一，则 DateDiff 计算到 date2 之前星期一的数目。此结果包含 date2 而不包含 date1。如果 
+  interval 是“周”（“ww”），则 DateDiff 函数返回日历表中两个日期之间的星期数。函数计算 date1 和 date2 之间星期日的数目。如果 
+  date2 是星期日，DateDiff 将计算 date2，但即使 date1 是星期日，也不会计算 date1。 </p>
+<p>如果 date1 晚于 date2，则 DateDiff 函数返回负数。 </p>
+<p>firstdayofweek 参数会对使用“w”和“ww”间隔符号的计算产生影响。 </p>
+<p>如果 date1 或 date2 是日期文字，则指定的年度会成为日期的固定部分。但是如果 date1 或 date2 被包括在引号 (&quot; &quot;) 
+  中并且省略年份，则在代码中每次计算 date1 或 date2 表达式时，将插入当前年份。这样就可以编写适用于不同年份的程序代码。 </p>
+<p>在 interval 为“年”（“yyyy”）时，比较 12 月 31 日和来年的 1 月 1 日，虽然实际上只相差一天，DateDiff 返回 1 
+  表示相差一个年份。</p>
+<p></p>
+<p>&nbsp; </p>
+</body>
+</html>

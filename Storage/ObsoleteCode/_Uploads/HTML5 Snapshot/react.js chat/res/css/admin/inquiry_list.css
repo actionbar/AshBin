@@ -1,0 +1,178 @@
+.avatar{border-radius:40px;width:80px;height:80px;}
+
+.replied{cursor:pointer}
+.replied:hover, .wait-for-replying:hover{color:#ccc}
+.wait-for-replying{color:#f00;cursor:pointer}
+
+.inquiry-list-table{
+  max-width:700px;
+}
+.inquiry-list-content{
+  width:250px
+}
+.inquiry-instance-msg-content img, .inquiry-instance-msg-reply-content img{
+  margin:9px 0;
+}
+
+#inquiry_pop_frame{
+  border:1px solid #E2E5E7;
+  z-index:9999;position: absolute;top:20%;left:20%;background:#FCFCFC;
+  border-radius:5px;
+  -moz-box-shadow:9px 9px 9px #DDD;-webkit-box-shadow:9px 9px 9px #DDD;box-shadow:9px 9px 9px #DDD
+}
+:root #inquiry_pop_frame{filter:progid:DXImageTransform.Microsoft.Shadow(color=#DDD,direction=120,strength=9)}
+.inquiry-pop-sub-left{
+  cursor:pointer;
+  height:600px;
+  width:64px;background:#14AEDE;
+  border-radius:5px 0 0 5px;
+}
+.a .inquiry-pop-zoom{
+  font:700 10px/12px "Tahoma";
+  width:12px;height:12px;border-radius:6px;
+  margin:5px 0 0 8px;
+}
+.a .inquiry-pop-close{
+  background:#F85A52
+}
+.a .inquiry-pop-zoom-out{
+  background:#FFBD2E
+}
+.a .inquiry-pop-zoom-in{
+  background:#61CA41
+}
+
+.inquiry-pop-avatar{
+  width:40px;height:40px;border-radius:50%;border:2px solid #5EC9E8;
+  margin:28px 0 5px 10px;
+}
+
+.inquiry-pop-avatar-status i{
+  font:400 10px/10px "Arial";
+  text-indent:2px;
+  color:#fff;
+  width:10px;height:10px;border-radius:5px;
+  display:inline-block; margin:3px 0 0 25px
+}
+.inquiry-pop-avatar-status .status-pending{
+  background: #aaa;
+}
+.inquiry-pop-avatar-status .status-waiting{
+  background: #FFBD2E;
+}
+.status-force-online{
+  background: #68EE39;
+}
+
+.inquiry-pop-list{
+  height:600px;
+  overflow-y:auto;
+  width:180px;background:#FFFFFF;border-right:1px solid #D6D6D7;
+}
+
+.inquiry-pop-list li{
+  height:40px;padding:10px 13px;
+}
+.inquiry-pop-list-li-hover{
+  background: #eee;
+}
+
+.a .inquiry-pop-list-avatar{
+  width:40px;height:40px;border-radius:50%;
+}
+.a .inquiry-pop-list-nickname{
+  font:400 13px/25px "STHeiti Light","微软雅黑";
+  height:25px; margin:9px; width:55px;
+  text-align: left; color:#2C2A2A;
+}
+.a .inquiry-pop-list-msg-notification{
+  min-width:14px;max-width:30px;height:14px; border-radius:9px;
+  font:400 12px/14px "Times";
+  padding:2px;
+  color:#fff; background:#F75F54; margin:10px 0 0 0;
+}
+
+
+.inquiry-pop-c{
+  height:600px;
+  width:535px;
+  background:#FCFCFC;
+}
+.inquiry-pop-c-head{
+  cursor:pointer;
+  height:50px;border-bottom:1px solid #E2E5E7;
+  padding: 10px 15px;
+}
+.inquiry-pop-c-head h1{
+  font:700 18px/28px "Microsoft YaHei";
+}
+.inquiry-pop-c-head p{
+  font:400 12px/22px Arial;
+}
+
+
+
+.inquiry-instance-msg-time{
+  font:400 12px/22px "Heiti SC Light", "Arial", "simsun"; height:22px; color:#ccc;
+  margin:9px 0;
+}
+.inquiry-instance-msg{width:535px;height:395px;overflow-y:auto}
+
+
+.inquiry-instance-msg-inquiry-title{margin-left:16px;font:400 12px/18px Arial;height:18px;color:#ccc;}
+.inquiry-instance-msg-avatar{width:28px;height:28px;border-radius:50%;margin:0 9px;}
+
+
+.inquiry-instance-msg-content-box{position:relative}
+
+.inquiry-instance-msg-content-arrow{position:absolute;top:10px;left:0;
+  width:0;height:0;border:solid 4px;
+  border-color:#fff #00bbee #fff #fff;}
+.inquiry-instance-msg-content{margin-left:8px;
+  max-width:380px;
+  padding:5px 15px;background:#00bbee;border-radius:5px;}
+
+
+
+.inquiry-instance-msg-inquiry, .inquiry-instance-msg-reply{margin:6px 0;}
+.inquiry-instance-msg-inquiry-title{}
+
+.inquiry-instance-msg-reply-content-box{position:relative}
+.inquiry-instance-msg-reply-content-arrow{position:absolute;top:10px;right:0px;
+  width:0;height:0;border:solid 4px;
+  border-color:#fff #fff #fff #EBEBEB;}
+.inquiry-instance-msg-reply-content{margin-right:8px;
+  max-width:380px;
+  padding:5px 15px;border-radius:5px;background:#EBEBEB;text-align: right;border-radius:5px}
+
+
+.inquiry-pop-icons{
+  padding:5px 13px;
+  border-top:1px solid #eee;
+  background:#fff;
+}
+
+
+.inquiry-pop-icons-img{
+  width:20px;height:20px;
+  /* http://www.easyicon.net/api/resizeApi.php?id=1190943&size=20  */
+  background: url(http://www.healthmudi.com/res/img/icon/img_upload_20.png) no-repeat;
+}
+.inquiry-pop-icons-img:hover{
+  background: url(http://www.healthmudi.com/res/img/icon/img_upload_20_hover.png) no-repeat;
+}
+.inquiry-pop-icons-img-upload{
+  cursor:pointer;
+  width:20px;height:20px;
+  position:absolute; left:0;top:0;
+  filter:alpha(opacity:0);opacity: 0;
+}
+.inquiry-pop-c-form{
+
+}
+
+.inquiry-msg{
+  width:515px;height:80px;padding:3px 10px;
+  border:0;
+  font-size:14px;color:#333
+}

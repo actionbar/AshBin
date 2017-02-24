@@ -1,0 +1,436 @@
+<html>
+<head>
+<title>选择元素</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+
+<link rel = stylesheet href = "image/style.css">
+</head>
+<body bgcolor="#ffffff">
+<table width="688" border="0" cellspacing="0" cellpadding="0" align="center">
+  <tr bgcolor="EEEEEE"> 
+    <td height="22"><a href="index.htm">主页</a></td>
+  </tr>
+</table><br>
+<table border="0" cellpadding="0" cellspacing="0" width="688" align="center" height="490">
+  <tr valign="top"> 
+    <td rowspan="4" width="91">&nbsp; </td>
+    <td height="68" width="131"> 
+      <p><img src="image/doc.gif"></p>
+    </td>
+    <td rowspan="4" width="18"><b></b> </td>
+    <td height="68" width="387"><img src="image/title_doc.gif"></td>
+    <td rowspan="4" width="61"> 
+      <h6>&nbsp;</h6>
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td rowspan="3" valign="top" class="pt10" align="center" width="131" bgcolor="EEEEEE"> 
+      <p>&nbsp;</p>
+      <p><font color="#FF0000">※ 13.2 选择元素</font></p>
+       
+	</td>
+  </tr>
+  <tr valign="top"> 
+    <td width="387" height="308"> 
+      <table width="100%" border="0" cellpadding="0">
+        <tr> 
+          <td>
+
+           <h4><a name="_Toc467205928">13.2 选择元素</a></h4>
+<p>支持CSS2的浏览器（如Internet Explorer和Mozilla）可以更明确地选择将样式规则应用于其上的元素或对象。使用CSS2，只需通过指定元素名、标识符或将元素和属性设置组合在一起，就可以根据元素在文档结构中创建的式样来选择元素。</p>
+<h5><a name="_Toc467205929">13.2.1 式样匹配</a></h5>
+<p>CSS2式样匹配可标识文档树状结构中特定的元素。式样匹配选择符的句法可以是从一个简单的元素名到一复杂的上下文式样的系统（如表13-1所示）。如果元素满足指定式样的所有要求，则此元素就与该式样匹配。在XML中，对大小写是敏感的。</p>
+<p align="center">表13-1 用于式样匹配的CSS2选择符句法</p>
+<ol>
+  <center>
+    <table BORDER cellspacing=1 cellpadding=7 width=513>
+      <tr> 
+        <td width="23%" valign="TOP"> 
+          <p>句法 
+        </td>
+        <td width="77%" valign="TOP"> 
+          <p>意义 
+        </td>
+      </tr>
+      <tr> 
+        <td width="23%" valign="TOP"> 
+          <p>* 
+        </td>
+        <td width="77%" valign="TOP"> 
+          <p>这是通配符（universal selector），匹配任何元素 
+        </td>
+      </tr>
+      <tr> 
+        <td width="23%" valign="TOP"> 
+          <p>X 
+        </td>
+        <td width="77%" valign="TOP"> 
+          <p>与名称为X的任何元素匹配 
+        </td>
+      </tr>
+      <tr> 
+        <td width="23%" valign="TOP"> 
+          <p>XY 
+        </td>
+        <td width="77%" valign="TOP"> 
+          <p>匹配带有Y名（是带有X名的元素派生的）的任何元素。例如，SONNET元素的所有VERSE派生元素 
+        </td>
+      </tr>
+      <tr> 
+        <td width="23%" valign="TOP"> 
+          <p>X&gt;Y 
+        </td>
+        <td width="77%" valign="TOP"> 
+          <p>匹配任何为X元素的子元素的Y元素。例如，STANZA元素的所有VERSE子元素 
+        </td>
+      </tr>
+      <tr> 
+        <td width="23%" valign="TOP"> 
+          <p>X:first-child 
+        </td>
+        <td width="77%" valign="TOP"> 
+          <p>匹配所有的X元素（为其父元素的第一个子元素）。例如，在SONNET元素中的第一个STANZA元素 
+        </td>
+      </tr>
+      <tr> 
+        <td width="23%" valign="TOP"> 
+          <p>X:link 
+        </td>
+        <td width="77%" valign="TOP"> 
+          <p>匹配链接中其目标未被访问的所有的X元素 
+        </td>
+      </tr>
+      <tr> 
+        <td width="23%" valign="TOP"> 
+          <p>X:visited 
+        </td>
+        <td width="77%" valign="TOP"> 
+          <p>匹配链接中其目标已被访问的所有的X元素 
+        </td>
+      </tr>
+      <tr> 
+        <td width="23%" valign="TOP"> 
+          <p>X:active 
+        </td>
+        <td width="77%" valign="TOP"> 
+          <p>匹配当前选择的所有X元素 
+        </td>
+      </tr>
+      <tr> 
+        <td width="23%" valign="TOP"> 
+          <p>X:hover 
+        </td>
+        <td width="77%" valign="TOP"> 
+          <p>匹配当前有鼠标在其上方移动的所有X元素 
+        </td>
+      </tr>
+      <tr> 
+        <td width="23%" valign="TOP"> 
+          <p>X:focus 
+        </td>
+        <td width="77%" valign="TOP"> 
+          <p>匹配当前通过选择鼠标或准备输入文本数据而获得用户焦点的所有X元素 
+        </td>
+      </tr>
+      <tr> 
+        <td width="23%" valign="TOP"> 
+          <p>X:lang(<i>i</i>) 
+        </td>
+        <td width="77%" valign="TOP"> 
+          <p>匹配应用xml:lang特性指定使用人类语言<i>i</i>的所有X元素 
+        </td>
+      </tr>
+      <tr> 
+        <td width="23%" valign="TOP"> 
+          <p>X+Y 
+        </td>
+        <td width="77%" valign="TOP"> 
+          <p>匹配其近系同属为X元素的所有Y元素。例如，REFRAIN元素就紧接在STANZA前面 
+        </td>
+      </tr>
+      <tr> 
+        <td width="23%" valign="TOP"> 
+          <p>X[attr] 
+        </td>
+        <td width="77%" valign="TOP"> 
+          <p>匹配设置了attr特性的所有X元素，而不管此特性为何值。例如，带有NAME特性的AUTHOR元素 
+        </td>
+      </tr>
+      <tr> 
+        <td width="23%" valign="TOP"> 
+          <p>X[attr="string"] 
+        </td>
+        <td width="77%" valign="TOP"> 
+          <p>匹配其attr特性的值为“string”的所有X元素。例如，值为19990723的DATA特性的AUTHOR元素 
+        </td>
+      </tr>
+      <tr> 
+        <td width="23%" valign="TOP"> 
+          <p>X[attr~="string"] 
+        </td>
+        <td width="77%" valign="TOP"> 
+          <p>匹配任何X元素，但此元素的attr特性是以空格分开的、其中之一为“string”的一组单词 
+        </td>
+      </tr>
+      <tr> 
+        <td width="23%" valign="TOP"> 
+          <p>X[lang|="langcode"] 
+        </td>
+        <td width="77%" valign="TOP"> 
+          <p>匹配其lang特性设置为特定的“langcode”的所有X元素 
+        </td>
+      </tr>
+      <tr> 
+        <td width="23%" valign="TOP"> 
+          <p>X#myname 
+        </td>
+        <td width="77%" valign="TOP"> 
+          <p>匹配其id特性为“myname”值的任何X元素 
+        </td>
+      </tr>
+    </table>
+  </center>
+</ol>
+<h5><a name="_Toc467205930">13.2.2 通配符</a></h5>
+<p>*符号选择文档中的所有元素。用它能为所有的元素设置缺省样式。例如，下面这条规则将缺省字体设置成New York：</p>
+<p>*{ font-face: “New York” }</p>
+<p>可以将*和特性、伪类和伪元素选择符结合起来，以便把样式应用于带有特定特性、特性值和作用等的元素，从而使这些元素具有指定特性、特性值、角色等。例如：</p>
+<p>*:before { content: “. “ counter(pgraph) “. “;</p>
+<p> counter-increment: pgraph; /*向pgraph加1*/</p>
+<p>*[onmouseover] { text-decoration: blink }</p>
+<p><img src="Image/BK000213-18.gif" width=50 height=44 align="left">如果通配符只与一个属性说明一起使用，那么*就可以忽略。</p>
+<p>&nbsp;</p>
+<p>例如：</p>
+<p> before { content: “. “ counter(pgraph) “. “;</p>
+<p> counter-increment: para }</p>
+<p> [onmouseover] { text-decoration: blink }</p>
+<h5><a name="_Toc467205931">13.2.3 后代和子代选择符</a></h5>
+<p>可以使用子代（child）或后代（descendant）选择符来选择指定类型元素的子代（children）或派生代（descendent）的元素。例如，可以选择包含在SONNET元素中的任何VERSE元素，或成为STANZA元素直系子代的VERSE元素。参见清单13-1，显示的是以XML格式写成的Shakespeare（莎士比亚）的第21首的十四行诗。</p>
+<p>清单13-1： Shakespeare的第21首的十四行诗</p>
+<p>&lt;?xml version=”1.0”?&gt;</p>
+<p>&lt;?xml stylesheet type=”text/css” href=”shakespeare.css”?&gt;</p>
+<p>&lt;SONNET&gt;</p>
+<p> &lt;AUTHOR&gt;William Shakespeare&lt;/AUTHOR&gt;</p>
+<p> &lt;TITLE&gt;Sonnet 21&lt;/TITLE&gt;</p>
+<p> &lt;STANZA id=”st1”&gt;</p>
+<p> &lt;VERSE&gt;SO is it not with me as with that Muse&lt;/VERSE&gt;</p>
+<p> &lt;VERSE&gt;Stirr’d by a painted beauty to his verse,&lt;/VERSE&gt;</p>
+<p> &lt;VERSE&gt;Who heaven itself for ornament doth use&lt;/VERSE&gt;</p>
+<p> &lt;VERSE&gt;And every fair with his fair doth rehearse:&lt;/VERSE&gt;</p>
+<p> &lt;/STANZA&gt;</p>
+<p> &lt;STANZA id=”st2”&gt;</p>
+<p> &lt;VERSE&gt;Making a couplement of proud compare&lt;/VERSE&gt;</p>
+<p> &lt;VERSE&gt;With sun and moon, with earth and sea’s rich</p>
+<p> gems,&lt;/VERSE&gt;</p>
+<p> &lt;VERSE&gt;With April’s first born flowers, and all things</p>
+<p> rare&lt;/VERSE&gt;</p>
+<p> &lt;VERSE&gt;That heavens air in this huge rondure hems.&lt;/VERSE&gt;</p>
+<p> &lt;/STANZA&gt;</p>
+<p> &lt;STANZA id=”st3”&gt;</p>
+<p> &lt;VERSE&gt;O, let me, true in love, but truly write,&lt;/VERSE&gt;</p>
+<p> &lt;VERSE&gt;And then believe me, my love is as fair&lt;/VERSE&gt;</p>
+<p> &lt;VERSE&gt;As any mother’s child, though not so bright&lt;/VERSE&gt;</p>
+<p> &lt;VERSE&gt;As those gold candles fix’d in heaven’s air.&lt;/VERSE&gt;</p>
+<p> &lt;/STANZA&gt;</p>
+<p> &lt;REFRAIN&gt;</p>
+<p> &lt;VERSE&gt;Let them say more that like of hearsay well,&lt;/VERSE&gt;</p>
+<p> &lt;VERSE&gt;L will not praise that purpose not to sell.&lt;/VERSE&gt;</p>
+<p> &lt;/REFRAIN&gt;</p>
+<p>&lt;/SONNET&gt;</p>
+<p>所有的VERSE都是SONNET元素的后代，但不是直系子代（immediate children）。有些VERSE元素是STANZA的直系子代，有些则是REFRAIN元素的直系子代。后代选择符是由一个空格分开的两个或更多个元素标志符组成的。SONNET 
+  VERSE形式的后代选择符匹配VERSE元素，后者是SONNET元素的任意后代。为了指定后代的特定层次，需要使用SONNET*VERSE形式，它强制VERSE元素至少应为孙代，或为SONNET元素更低的后代。</p>
+<p>要指定直系子代元素，可使用STANZA&gt;VERSE的形式。这种形式把规则只应用于成为STANZA元素直系子代的VERSE元素，所以不影响REFRAIN元素的任何VERSE子代。</p>
+<p>可以把后代和子代选择符结合起来，以查找特定的元素。例如，下列选择符查找属于REFRAIN元素第一个子代的所有VERSE元素，而REFRAIN元素又是SONNET元素的后代。</p>
+<p>SONNET REFRAIN&gt;VERSE:first { padding: “2cm” }</p>
+<p>将上述规则应用于清单13-1，则此规则选择诗句“Let them say more that like of hearsay well,”。</p>
+<h5><a name="_Toc467205932">13.2.4 直系同属选择符</a></h5>
+<p>直系同属选择符在元素指示符之间使用加号（+）来识别与其后的另一元素处于同一层次的元素。例如，下面的代码选择与STANZA元素共享一个父元素并紧接在STANZA元素之后的所有REFRAIN元素。</p>
+<p>STANZA+REFRAIN { color: red }</p>
+<h5><a name="_Toc467205933">13.2.5 特性选择符</a></h5>
+<p>特性选择符标识特定的元素/特性的组合。把要匹配的特性名用方括号括起来放在元素名之后。例如，下面的规则将带有NUMBER特性的所有STANZA元素都变成红色：</p>
+<p>STANZA[NUMBER] { color:red }</p>
+<p>此规则将具有NUMBER特性的所有STANZA元素都变成红色，而不管特性值是什么。它包括由DTD提供的具有缺省NUMBER特性的元素，但不包括没有NUMBER特性的STANZA元素。</p>
+<p>要测试特性值，可使用设置特性值的相同句法；也就是说，等于号放在名称后面，值放在等于号后面，并放在引号中。例如，仅指定其NUMBER特性值为3的STANZA元素变为红色，则可使用下面这条规则：</p>
+<p>STANZA [NUMBER="3"] { color:red }</p>
+<h5><a name="_Toc467205934">13.2.6 @规则</a></h5>
+<p>@规则用来完成某项任务，而不是选择元素，并把一些样式应用于这一元素。@规则有五种：</p>
+<blockquote> 
+  <p>1．@page：把样式应用于页面（而不是此页上的元素）</p>
+  <p>2．@import：在当前样式单中嵌入一外部样式单</p>
+  <p>3．@media：把只能用于某种媒体的特性组合起来成为样式规则</p>
+  <p>4．@font-face：描述样式单中用于其他地方的字体</p>
+  <p>5．@charset：定义样式单使用的字符集</p>
+</blockquote>
+<ol>
+</ol>
+<blockquote> 
+  <p><b>13.2.6.1 @page</b></p>
+</blockquote>
+<ol>
+  <p>@page规则选择页面框。在其内部，设计者可指定各页面的大小、版面布局、取向和页边距。页面框是矩形区域，大约为打印页的大小，它包含页面区域和页边距。页面区域包括要显示的内容，框边缘作为一种容器，页面版面就处于分页符之间。与其他框不同，页面框没有边界线或贴边，只有页边距。</p>
+  <p>@page规则选择文档中的每一页面。可使用下面的页面伪类属性之一:first、:left或:right来为各页面类指定不同属性。</p>
+  <p>由于@page规则不知道含有字体的页面内容，所以无法理解以em和ex为单位的尺寸。所有的其他度量单位（包括百分数）都是可以接受的。用于设置页边距的百分数也是总页面框的百分数。页边距可为负值，表示把内容放在通常应用程序或打印机可访问的区域之外。在大多数情况下，只保留可见或可打印区域内的信息。</p>
+  <p> 
+</ol>
+<blockquote> 
+  <p><b>13.2.6.2 @import</b></p>
+</blockquote>
+<ol>
+  <p>@import规则把指定的外部样式单嵌入到现有的样式单中。这样可以根据多个较小、较容易理解的片断生成大样式单。导入的样式单使用.css扩展名。例如，下面的规则导入poetry.css文件。</p>
+  <p>@import url(poetry.css);</p>
+  <p>@import规则可在样式单后面指定媒体类型。如果没有指定媒体类型，@import规则就没有限制，并且可用于所有媒体类型。例如，下列规则导入printmedia.css文件。在这个样式单中的声明只适用于印刷媒体（print 
+    media）。</p>
+  <p>@import url(printmedia.css) print;</p>
+  <p>下面的这条规则导入continuous.css文件，可用于计算机显示器或电视机显示器。</p>
+  <p>@import url(continuous.css) tv, screen;</p>
+  <p>导入到其他样式单中的样式单，在级联中的等级要比导入它的样式单低。例如，假设shakespeare.css为VERSE指定New York字体，而shakeprint.css为VERSE指定Times字体。如果将Shakespeare.css导入到shakeprint.css中，那么，诗句将以Times字体显示。</p>
+  <p> 
+</ol>
+<blockquote> 
+  <p><b>13.2.6.3 @media</b></p>
+</blockquote>
+<ol>
+  <p>可使用多种媒体把信息传递给读者，每种媒体都有其自己的习惯样式和格式。现在还不能使语音合成器较好地以单音调来阅读Shakespeare的诗句，如今可以吗？斜体字对于等宽终端也没有什么意义。</p>
+  <p>CSS2可为显示在不同媒体中的相同元素指定不同的样式。例如，如果正文使用的是非衬线字体，则在屏幕上就更容易阅读，而如果正文是以衬线字体编写在纸上时，通常最容易阅读。可以将只准备用于一种媒体的多个样式规则放入一条指明媒体名的@media规则中。在一篇文档中，@media规则的数量与指定的媒体类型一样多。例如，下面的这些规则将根据是在纸上打印还是在显示器上显示把SONNET元素格式化成不同的样式。</p>
+  <p>@media print {</p>
+  <p> SONNET { font-size: lopt; font family: Times, serif }</p>
+  <p>}</p>
+  <p>@media screen {</p>
+  <p> SONNET { font-size: 12pt;</p>
+  <p> font-family: New York, Times New Roman, serif }</p>
+  <p>}</p>
+  <p>@media screen, print {</p>
+  <p> VERSE { line-height: 1.2 }</p>
+  <p>前两条规则明确定义了为打印机和屏幕媒体类型所使用的样式。由于现在的计算机显示器的分辨率比现在的打印机低得多，所有显示在屏幕上的字体比打印输出要大，并且选择适用于屏幕的字体，这是很重要的。</p>
+  <p>第三条规则提供适用于这两种媒体类型的样式。要为多个媒体类型同时指定样式指令，可简单地将媒体名列在@media规则指定符之后，并以逗号分开。</p>
+  <p>支持CSS2的浏览器允许文档的作者提供决定特定类型媒体如何显示文档的规则。例如，当在屏幕上显示一文档时，与把它发送到打印机相比，很可能应用不同的规则。CSS2识别如下十种媒体类型：</p>
+  <p>1．all：所有的设备</p>
+  <p>2．aural（连续、有听）：语音合成器</p>
+  <p>3．braille（连续、可触知）：用于有视觉障碍的盲文触觉反馈设备</p>
+  <p>4．embossed（分页、可触摸）：分页盲文打印机</p>
+  <p>5．handheld（可视）：PDA（手持机）和其他手持式设备如Windows CE掌上型电脑、Newton和Palm Pilot</p>
+  <p>6．print（分页、可视）：所有的打印、不透明材料</p>
+  <p>7．projection（分页、可视）：展示和幻灯片放映，可将它们直接从计算机上投影或打印在幻灯片上</p>
+  <p>8．screen（连续、可视）：点位图彩色计算机显示器</p>
+  <p>9．tty（连续、可视）：使用位置固定的、单色字符栅格的哑终端和旧的PC显示器</p>
+  <p>10．tv（可听/可视）：电视类设备，如低分辩率、模拟显示器、彩色设备</p>
+  <p>浏览器软件不一定支持所有的这些类型。实际上，我知道没有任何一个设备支持所有的这些类型。但是，样式单设计者应该假设读者可能使用任何一类或所有类型的设备来浏览自己的内容。</p>
+  <p>当然，各个媒体的特性也会随着时间的流逝而改变。我的第一个打印机是144dpi，可是，在21世纪，如此低分辨率的打印机就会很少见。另一方面，显示器最终也将达到300dpi或更高；而彩色打印机也迅速地为越来越多的用户所使用。</p>
+  <p>有些属性只有特定的媒体类型才可用到。例如，pitch属性只用于有声媒体类型。尽管CSS2的确为@media规则提供一组当前值，但它未指定所有可包括的媒体类型。给出的媒体名与大小写无关。</p>
+</ol>
+<blockquote> 
+  <p><b>13.2.6.4 @font-face</b></p>
+  <p>@font-face规则用来描述样式单中其他地方使用的字样。可提供字体名、URL（下载字体的位置）和有关字体点阵（允许适度的精确复制来达到合成的目的）的详细信息。@font-face规则还控制了软件如何根据作者指定的字体来为文档选择字体。可想到的方法包括同等字体匹配、智能字体匹配、合成所需字体、下载服务器上的字体或形成字体。这些方法将在下面描述。</p>
+  <blockquote> </blockquote>
+  <ul>
+    <li>同等字体匹配（Identical Font Matching）：用户软件选择相同字族名的本地系统字体。相同名称的字体在外观上不一定完全一致。客户端使用的字体来源可能与服务器上的字体不同。 
+    </li>
+    <li>智能字体匹配（Intelligent Font Matching）：软件选择客户端系统上现有的字体，并且其外观与所要求的字体最接近。不要求精确地匹配，而应接近。这是根据字型、是否使用衬线、粗细、大写字母的高度以及其他字体的特性来匹配的。 
+    </li>
+    <li>字体合成（Font Synthesis）：Web浏览器生成与指定字体最相似的字体，并共享其点阵。当合成一字体时，通常它的近似程序比使用匹配找到的字体更接近。为了使所有的字体特性都能够保留，这种合成需要精确的代换和位置信息。 
+    </li>
+    <li>字体下载（Font Download）：浏览器软件从指定的URL处下载字体。这个过程与下载同当前文档一起显示的影像或声音是完全一样的。下载字体的用户会经历一段等待，这与下载影像时的情况相似。 
+    </li>
+    <li>字体形成（Font Rendering）：最后可供管理字体的选择办法是渐进形成。这是一种下载和匹配的组合，它能使浏览器创建临时的字体，可以一边下载原字体，一边阅读文档内容。在“真正”的字体下载后，用它来代替生成文档中的合成字体。为了避免文档显示两次，字体描述必须包含描述字体的点阵信息。字体的点阵信息越完整，那么一旦下载完成后，文档需要重新形成的可能性就越小。</li>
+  </ul>
+  <p>CSS2能使文档淖髡咧付ㄔ谠亩料低趁挥兄付ǖ淖痔迨笔褂媚闹址椒ǎㄈ绻械幕埃┭≡褡痔濉font-face规则提供字体的描述。这种字体的描述是由一系列字体描述符创建的，并定义了有关页面上使用的字体的详细信息，可包括用于字体的URL、字族名和字号。</p>
+  <p>字体描述符分为下列三类：</p>
+  <blockquote> </blockquote>
+  <ul>
+    <li>提供字体的样式单用法与其描述之间的链接。 </li>
+    <li>提供字体的位置或其相关信息的URL。 </li>
+    <li>提供字体的字符信息。</li>
+  </ul>
+  <p>@font-face规则只应用于样式单内部指定的字体。在样式单中，对每种字体，都需一个@font-face说明。例如：</p>
+  <p>@font-face { font-family: "Comic Sans";</p>
+  <p> src: url(http://metalab.unc.edu/XML/fonts/comicsans))</p>
+  <p>@font-face { font-family: "Jester"; font-weight: bold;</p>
+  <p> font-style: italic)</p>
+  <p>TITLF { font-family: "Comic Sans")</p>
+  <p>AUTHOR { font-family: "Jester", serif }</p>
+  <p>当软件读到此样式单时，将试图找到指定各元素应如何显示的一组规则。此样式单将所有的TITLE元素设置为Comic Sans字族，同时它又把所有的AUTHOR元素设置为Jester字体。支持CSS1的Web浏览应用程序搜索Comic 
+    Sans和Jester字族。如果找到这些字族，浏览应用程序将其缺省正文字体设为Comic字族，将serif字体指定为Jester字族的后略字体。@font-face规则的字体描述符将被忽略。CSS1软件能安全地跳过这个命令，而不会出现错误。</p>
+  <p>支持CSS2的应用程序将检查@font-face规则，以试图匹配Comic Sans和Jester字体的描述。在上一例子中，浏览软件找到了URL，从此处可下载Comic 
+    Sans字体。如果在客户端系统上找到Comic Sans字体，软件就会使用它来代替下载的字体。对于Jester情况，用户软件将使用匹配规则或合成规则从所提供的描述符来创建一类似的字体。如果Web浏览器没有为指定的字族找到相匹配的@font-face规则的话，那它会试图使用为CSS1指定的规则来匹配字体。</p>
+  <p>CSS2可以跳过浏览器不能识别或无用的任何字体描述符。这就提供了内建的增加描述符的方法以便改善字体置换、匹配或合成所使用的规则。</p>
+</blockquote>
+<ol>
+  <ol>
+  </ol>
+</ol>
+<blockquote> 
+  <p><b>13.2.6.5 @charset</b></p>
+  <p>指定编写样式单的字符集有三种方式，并且以如下的顺序选择优先级：</p>
+  <p>1．Content-Type字段中的HTTP“charset”参数</p>
+  <p>2．@charset规则</p>
+  <p>3．与文档相关联的特性和属性，如与LINK元素一起使用的HTML的charset特性每个样式单都包含一个@charset规则。@charset规则必须出现在文档的最前，前面不能有任何其他字符。使用@charset的句法为：</p>
+  <p>@charset "character set name"</p>
+  <p>本语句中指定的character set name（字符集名称）必须是IANA注册表中描述的名称。在第7章的表7-7中列出了部分字符集。要指定样式单用Latin-1字体来编写，可写为下列形式：</p>
+  <p>@charset "ISO 8859-1"</p>
+  <p><img src="Image/BK000213-19.gif" width=56 height=42 align="left">在第7章 “外国语言和非罗马文字”中，详细地讨论了字符集。</p>
+</blockquote>
+<ol>
+  <ol>
+  </ol>
+</ol>
+<h5>&nbsp;</h5>
+<h5><a name="_Toc467205935">13.2.7 伪元素</a></h5>
+<p>在XML文档中，伪元素在样式单中是作为元素来处理的，但不一定是特定的元素。它们是应用样式单之后显示文档的某一部分（如一段的第一行）。伪元素区分大小写，并直接出现在样式单选择符的主题之后。CSS2引入了两个新的伪元素：:after和:before。</p>
+<p>:after和:before伪元素选择在它们之前的元素的紧前面和紧后面的位置。content属性用来把数据放在这个位置。例如，下面的这条规则将字符串&#0;&#0;&#0;&#0;放在STANZA对象之间，以便将节分开。字符串文字中的\A为分行符的编码：</p>
+<p>STANZA: after { content: "\A&#0;&#0;&#0;&#0;\A" }</p>
+<p>除了文字字符串之外，也可使用下列四个关键字之一作为content属性的值：</p>
+<p>1．open-quote</p>
+<p>2．close-quote</p>
+<p>3．no-open-quote</p>
+<p>4．no-close-quote</p>
+<p>open-quote和close-quote关键字为当前语言和字体插入适当的引号字符（如" 或  ）。no-open-quote和no-close-quote关键字不插入任何字符，但增加嵌套的层次，就像使用引号一样。根据每个嵌套的层次，引号标记从双引号到单引号之间切换，反之亦然。</p>
+<p>还可以使用attr(X)函数作为内容属性的值，将X特性的值插入到标识的元素之前或之后。</p>
+<p>最后，也可以使用counter()或counters()函数，插入自动计数器的当前值。有两种截然不同的形式：counter(name)或counter(name,style)。其中缺省的style参数为十进制。</p>
+<h5><a name="_Toc467205936">13.2.8 伪类</a></h5>
+<p>伪类选择符基于外观而不是元素的名称、特性或内容来选择元素。例如，某一伪类可以基于鼠标的位置、获得焦点的对象或是否是链接对象。当读者与文档产生交互时，元素可不断改变其伪类。某些伪类是互斥的，但大多数能同时应用于同一个元素，并能放在元素选择符内的任何地方。当伪类的确发生冲突时，级联顺序确定激活哪个规则。</p>
+<p><b>13.2.8.1 :first-child </b></p>
+<p>:first-child伪类选择命名元素的第一个子元素，而不管其类型。例如在清单13-1中，VERSE元素的内容是“So is it not with 
+  me as with that Muse”，此元素是STANZA元素的第一个子元素，可由下列规则指定：</p>
+<p>STANZA: first-child { font-style: bold }</p>
+<p><b>13.2.8.2 :link、:visited、:active </b></p>
+<p>在CSS1中，:link、:visited和:active伪类是互斥的。在CSS2中，:link和:visited也是互斥的（在逻辑上不得不如此），但可将两者中一个与:active一起使用。例如，下列的代码段假定AUTHOR元素已指定为链接，并根据此链接的当前状态改变正文的颜色。在下面的代码段中，当鼠标正放在链接的上面时，将未被访问的链接设置为红色，已访问过的链接作为灰色显示，活动链接以橙绿色显示。</p>
+<p>AUTHOR: link { color: "red" }</p>
+<p>AUTHOR: visited { color: "gray" }</p>
+<p>AUTHOR: active { color: "lime" }</p>
+<p><b>13.2.8.3 :hover </b></p>
+<p>:hover伪类选择鼠标或其他指示设备正指着的元素，但不按下鼠标键。例如，下面的这条规则是在鼠标指向AUTHOR元素时，将此元素变成红色。</p>
+<p>AUTHOR: hover { color: "red" }</p>
+<p>当鼠标不再指向AUTHOR元素时，此元素返回到正常颜色。</p>
+<p><b>13.2.8.4 :focus </b></p>
+<p>:focus伪类引用当前获得焦点的元素。当选择了某一元素，并准备接收某种文本输入时，此元素就获得了焦点。下列的规则使焦点的元素变成黑体。</p>
+<p>:focus { text-style: "bold" }</p>
+<p><b>13.2.8.5 :lang() </b></p>
+<p>:lang()伪类选择使用指定语言的元素。为此，在XML中，一般通过XML声明中的xml:lang特性和/或encoding特性来实现的。下列规则改变用希伯来语编写的所有的VERSE元素的方向，以便从右往左阅读，而不是从左往右：</p>
+<p>VERSE: lang(he) { direction: "rtl" }</p>
+<p><b>13.2.8.6 :right、:left、:first </b></p>
+<p>:right、:left和:first伪类只适用于@page规则。可用它们来为文档的第一页、文档的左（一般为偶数）页、文档的右（一般为奇数）页指定不同的样式。例如，下面的这些规则指定很大的页边距：</p>
+<p>@page: right { margin-top: 5cm;</p>
+<p> margin-bottom: 5cm;</p>
+<p> margin-left: 7cm;</p>
+<p> margin-right: 5cm }</p>
+<p>@page: left { margin-top: 5cm;</p>
+<p> margin-bottom: 5cm;</p>
+<p> margin-left: 5cm;</p>
+<p> margin-right: 7cm }</p>
+<p>@page: first { margin top: 10cm;</p>
+<p> margin-bottom: 10cm;</p>
+<p> margin-left: 10cm;</p>
+<p> margin-right: 10cm }</p>
+<p>在用于伪类的规则中，唯一能设置的属性就是页边距属性。</p>
+ 
+<a href='465.htm'>&lt;&lt;上一篇</a>&nbsp;&nbsp;<a href='467.htm'>下一篇&gt;&gt;</a></td>
+        </tr>
+      </table>
+      <p>&nbsp; </p>
+    </td>
+  </tr>
+</table>
+
+</body>
+
+</html>

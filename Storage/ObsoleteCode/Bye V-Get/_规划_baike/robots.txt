@@ -1,0 +1,18 @@
+#
+# robots.txt for HDWiki
+#
+
+User-agent: *
+Disallow: /
+Disallow: index.php
+Disallow: /wiki/
+Disallow: /control/
+Disallow: /view/
+Disallow: /install/
+Disallow: /lib/
+Disallow: /editor/
+Disallow: /model/
+Disallow: /js/
+Disallow: /style/
+Disallow: /data/
+Disallow: /lang/

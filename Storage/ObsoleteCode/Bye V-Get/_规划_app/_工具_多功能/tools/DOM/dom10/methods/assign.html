@@ -1,0 +1,83 @@
+<html xmlns:rdl>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<script src="rdl_method.js"></script>
+<base target="_self">
+</head>
+<body>
+
+<script>
+
+//collFriendObjects=new Array();
+//collFriendProperties=new Array();
+//collFriendMethods=new Array();
+//collFriendEvents=new Array();
+//collFriendCollections=new Array();
+
+collFriendObjects=new Array(
+'location'
+);
+
+collFriendEvents=new Array(
+'onunload','onload'
+);
+
+//collIE40=new Array();
+//collIE50=new Array();
+//collIE55=new Array();
+//collIE60=new Array();
+
+collIE40=new Array(
+'location'
+);
+
+//sStyle='';
+
+//sScript='';
+
+sCode=
+'<input type=button value=" 加载文档 " onclick="window.location.assign(window.opener.location);">\n';
+
+iWinWidth=340;
+
+iWinHeight=210;
+
+</script>
+
+<div id=idContent>
+
+<div id=idContentTitle><span id=idTitleName>assign</span>版本：DHTML Object Model　返回值：无</div>
+
+<div class=cssColumnTitle>语法：</div>
+<div>
+<a href="../objects/location.html"><b>location</b></a><b> . assign ( </b><i>sURL</i><b> ) </b>
+
+</div>
+
+<div class=cssColumnTitle>参数：</div>
+<table>
+<tr><td nowrap><i> sURL </i></td><td nowrap><b>:</b></td>
+<td><b>必选项</b>。字符串(String)。要被加载的HTML文档的<b> URL </b>地址。</td></tr>
+</table>
+
+<div class=cssColumnTitle>返回值：</div>
+<div>
+无
+</div>
+
+<div class=cssColumnTitle>说明：</div>
+<div>
+加载一个新的HTML文档到当前窗口。
+</div>
+
+<div class=cssColumnTitle>示例：</div>
+<div id=idSimpleCode>
+window.location.assign(window.opener.location);
+</div>
+
+</div>
+</body>
+</html>
+
+<!-- Part of RDL(TM) - Written by Rain1977 
+HomeSite: http://www.dhtmlet.com  E-Mail: dhtmlet@hotmail.com -->

@@ -1,0 +1,140 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link rel="stylesheet" type="text/css" href="../c3.css" />
+<title>XQuery 函数</title>
+</head>
+<body class="xml">
+<div id="wrapper">
+<div id="header">
+<a href="http://e.v-get.com/w3cschool/" style="float:left;">W3CSchool 在线教程</a>
+<div class="q g"><script type="text/javascript">var cpro_id="u1163355"</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div>
+<div id="navfirst">
+<ul id="menu">
+<li id="h"><a href="../h.html">HTML教程</a></li>
+<li id="x"><a href="../x.html">XML教程</a></li>
+<li id="b"><a href="../b.html">浏览器脚本</a></li>
+<li id="s"><a href="../s.html">服务器脚本</a></li>
+<li id="d"><a href="../d.html">dot net教程</a></li>
+<li id="m"><a href="../m.html">多媒体教程</a></li>
+<li id="w"><a href="../w.html">建站手册</a></li>
+</ul>
+</div><div id="navsecond">
+<div id="course">
+<h2>XQuery 基础</h2>
+<ul>
+<li><a href="http://e.v-get.com/w3cschool/">XQuery 首页</a></li>
+<li><a href="xquery_intro.html">XQuery 简介</a></li>
+<li><a href="xquery_example.html">XQuery 实例</a></li>
+<li><a href="xquery_flwor.html">XQuery FLWOR</a></li>
+<li><a href="xquery_flwor_html.html">XQuery HTML</a></li>
+<li><a href="xquery_terms.html">XQuery 术语</a></li>
+<li><a href="xquery_syntax.html">XQuery 语法</a></li>
+</ul>
+<h2>XQuery 高级</h2>
+<ul>
+<li><a href="xquery_add.html">XQuery 添加</a></li>
+<li><a href="xquery_select.html">XQuery 选取</a></li>
+<li><a href="xquery_functions.html">XQuery 函数</a></li>
+<li><a href="xquery_summary.html">XQuery 总结</a></li>
+</ul>
+<h2>XQuery 参考手册</h2>
+<ul>
+<li><a href="xquery_reference.html">XQuery 参考手册</a></li>
+</ul>
+</div>
+<div id="selected">
+<h2>建站手册</h2>
+<ul>
+<li><a href="../site/">网站构建</a></li>
+<li><a href="../w3c/">万维网联盟</a></li>
+<li><a href="http://e.v-get.com/w3c/">W3CSchool 教程</a></li>
+<li><a href="../quality/">网站品质</a></li>
+<li><a href="../semweb/">语义网</a></li>
+<li><a href="../hosting/">网站主机</a></li>
+</ul>
+<h2><a href="http://e.v-get.com/w3c/" class="f13">W3CSchool 教程</a></h2><div class="a120x90"><script type="text/javascript">var cpro_id="u1210867";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div></div>
+</div>
+<div id="maincontent">
+<h1>XQuery 函数</h1>
+<div id="tpn">
+<ul class="prenext">
+<li class="pre"><a href="xquery_select.html">上一页</a></li>
+<li class="next"><a href="xquery_summary.html">下一页</a></li>
+</ul>
+</div>
+<div id="intro">
+<p><strong>XQuery 1.0、XPath 2.0 以及 XSLT 2.0 共享相同的函数库。</strong></p>
+</div>
+<div>
+<h2>XQuery 函数</h2>
+<p>XQuery 含有超过 100 个内建的函数。这些函数可用于字符串值、数值、日期以及时间比较、节点和 QName 操作、序列操作、逻辑值等等。您也可在 XQuery 中定义自己的函数。</p>
+</div>
+<div>
+<h2>XQuery 内建函数</h2>
+<p>XQuery 函数命名空间的 URI：</p>
+<p>http://www.w3.org/2005/02/xpath-functions</p>
+<p>函数命名空间的默认前缀是 fn:。</p>
+<p class="tip"><span>提示：</span>函数经常被通过 fn: 前缀进行调用，例如 fn:string()。不过，由于 fn: 是命名空间的默认前缀，所以函数名称不必在被调用时使用前缀。</p>
+<p>您可以在我们的 XPath 教程中找到完整的《<a href="../xpath/xpath_functions.html">内建 XQuery 函数参考手册</a>》。</p>
+</div>
+<div>
+<h2>函数调用实例</h2>
+<p>函数调用可与表达式一同使用。请看下面的例子：</p>
+<h3>例1：在元素中</h3>
+<pre>&lt;name&gt;{uppercase($booktitle)}&lt;/name&gt;</pre>
+<h3>例2: 在路径表达式的谓语中</h3>
+<pre>doc(&#34;books.xml&#34;)/bookstore/book[substring(title,1,5)='Harry']</pre>
+<h3>例3: 在 let 语句中</h3>
+<pre>let $name := (substring($booktitle,1,4))</pre>
+</div>
+<div>
+<h2>XQuery 用户定义函数</h2>
+<p>如果找不到所需的 XQuery 函数，你可编写自己的函数。</p>
+<p>可在查询中或独立的库中定义用户自定义函数。</p>
+<h3>语法</h3>
+<pre>declare function 前缀:函数名($参数 AS 数据类型)
+  AS 返回的数据类型
+{
+(: ...函数代码... :)
+};</pre>
+<h3>关于用户自定义函数的注释：</h3>
+<ul>
+<li>请使用 declare function 关键词</li>
+<li>函数名须使用前缀</li>
+<li>参数的数据类型通常与在 XML Schema 中定义的数据类型一致</li>
+<li>函数主体须被花括号包围</li>
+</ul>
+<h3>一个在查询中声明的用户自定义函数的例子：</h3>
+<pre>declare function local:minPrice(
+  $price as xs:decimal?,
+  $discount as xs:decimal?)
+  AS xs:decimal?
+{
+let $disc := ($price * $discount) div 100
+return ($price - $disc)
+};
+(: Below is an example of how to call the function above :)
+&lt;minPrice&gt;{local:minPrice($book/price, $book/discount)}&lt;/minPrice&gt;</pre>
+</div>
+<div  id="bpn">
+<ul class="prenext">
+<li class="pre"><a href="xquery_select.html">上一页</a></li>
+<li class="next"><a href="xquery_summary.html">下一页</a></li>
+</ul>
+</div>
+</div>
+<div id="sidebar">
+<div class="rs"></div>
+<div id="tools">
+<h5 id="tools_reference"><a href="xquery_reference.html">XQuery 参考手册</a></h5>
+</div>
+<div class="a120x600"><script type="text/javascript">var cpro_id="u1293136";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div><div class="b"></div>
+</div>
+</body>
+</html>

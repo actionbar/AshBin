@@ -1,0 +1,110 @@
+<meta http-equiv="content-type" content="text/html; charset=gb2312">
+<TABLE class=tableborder1 style="TABLE-LAYOUT: fixed; WORD-BREAK: break-all" 
+cellSpacing=1 cellPadding=5 align=center>
+<TBODY>
+<TR>
+<TD class=tablebody1 vAlign=top width=*>
+<BLOCKQUOTE><FONT 
+style="FONT-SIZE: 9pt; LINE-HEIGHT: 15pt"><B>compare&nbsp;table</B><BR>create&nbsp;procedure&nbsp;sp_Compare&nbsp;(<BR>&nbsp;&nbsp;&nbsp;&nbsp;@TableA&nbsp;varchar(50),<BR>&nbsp;&nbsp;&nbsp;&nbsp;@TableB&nbsp;varchar(50),<BR>&nbsp;&nbsp;&nbsp;&nbsp;@ExcludeFields&nbsp;varchar(255),<BR>&nbsp;&nbsp;&nbsp;&nbsp;@JoinFields&nbsp;varchar(255),<BR>&nbsp;&nbsp;&nbsp;&nbsp;@CompType&nbsp;int&nbsp;=&nbsp;0,<BR>&nbsp;&nbsp;&nbsp;&nbsp;@debug&nbsp;bit&nbsp;=&nbsp;0<BR>&nbsp;&nbsp;&nbsp;&nbsp;)<BR>as<BR>begin<BR>&nbsp;--Author:&nbsp;&nbsp;Subhan&nbsp;Munshi<BR>&nbsp;--Date:&nbsp;&nbsp;02/04/2003<BR>&nbsp;--Comments:&nbsp;This&nbsp;sp&nbsp;can&nbsp;compare&nbsp;two&nbsp;tables&nbsp;with&nbsp;the&nbsp;same&nbsp;schema<BR>&nbsp;--&nbsp;&nbsp;and&nbsp;determine&nbsp;which&nbsp;records&nbsp;are&nbsp;different<BR>&nbsp;--Usage:&nbsp;The&nbsp;following&nbsp;example&nbsp;assumes&nbsp;you&nbsp;have&nbsp;created&nbsp;this&nbsp;sp&nbsp;in&nbsp;Pubs&nbsp;and&nbsp;<BR>have&nbsp;created&nbsp;a&nbsp;Titles2&nbsp;table&nbsp;similar&nbsp;to&nbsp;Titles&nbsp;and&nbsp;changed&nbsp;some&nbsp;data<BR>&nbsp;--&nbsp;&nbsp;exec&nbsp;sp_Compare&nbsp;'Titles','Titles2','Notes,PubDate','Title_Id'
+<P></P>
+<P>&nbsp;--CompType&nbsp;1&nbsp;=&nbsp;Records&nbsp;that&nbsp;exist&nbsp;in&nbsp;A&nbsp;but&nbsp;not&nbsp;in&nbsp;B<BR>&nbsp;--&nbsp;&nbsp;2&nbsp;=&nbsp;Records&nbsp;that&nbsp;exist&nbsp;in&nbsp;B&nbsp;but&nbsp;not&nbsp;in&nbsp;A<BR>&nbsp;--&nbsp;&nbsp;3&nbsp;=&nbsp;Records&nbsp;that&nbsp;exist&nbsp;in&nbsp;both&nbsp;A&nbsp;and&nbsp;B&nbsp;but&nbsp;one&nbsp;or&nbsp;more&nbsp;columns&nbsp;compared&nbsp;<BR>have&nbsp;different&nbsp;value<BR>&nbsp;--&nbsp;&nbsp;4&nbsp;=&nbsp;Records&nbsp;that&nbsp;exist&nbsp;in&nbsp;both&nbsp;A&nbsp;and&nbsp;B&nbsp;but&nbsp;all&nbsp;columns&nbsp;compared&nbsp;have&nbsp;<BR>same&nbsp;value<BR>&nbsp;--&nbsp;&nbsp;0&nbsp;=&nbsp;Do&nbsp;all&nbsp;4&nbsp;comparisons</P>
+<P>&nbsp;set&nbsp;nocount&nbsp;on<BR>&nbsp;declare&nbsp;@SQL&nbsp;&nbsp;varchar(8000),<BR>&nbsp;&nbsp;@select1&nbsp;varchar(4000),<BR>&nbsp;&nbsp;@from1&nbsp;varchar(4000),<BR>&nbsp;&nbsp;@where1&nbsp;varchar(4000),<BR>&nbsp;&nbsp;@select2&nbsp;varchar(4000),<BR>&nbsp;&nbsp;@from2&nbsp;varchar(4000),<BR>&nbsp;&nbsp;@where2&nbsp;varchar(4000),<BR>&nbsp;&nbsp;@select3&nbsp;varchar(4000),<BR>&nbsp;&nbsp;@from3&nbsp;varchar(4000),<BR>&nbsp;&nbsp;@where3&nbsp;varchar(4000),<BR>&nbsp;&nbsp;@select4&nbsp;varchar(4000),<BR>&nbsp;&nbsp;@from4&nbsp;varchar(4000),<BR>&nbsp;&nbsp;@where4&nbsp;varchar(4000),<BR>&nbsp;&nbsp;@ColName&nbsp;varchar(50),<BR>&nbsp;&nbsp;@field&nbsp;varchar(50),<BR>&nbsp;&nbsp;@len&nbsp;int,<BR>&nbsp;&nbsp;@start&nbsp;int</P>
+<P><BR>&nbsp;--Parse&nbsp;Exclude&nbsp;Fields&nbsp;and&nbsp;populate&nbsp;a&nbsp;temp&nbsp;table<BR>&nbsp;create&nbsp;table&nbsp;#ExcludeFields(field&nbsp;varchar(50))<BR>&nbsp;select&nbsp;&nbsp;@start&nbsp;=&nbsp;1<BR>&nbsp;select&nbsp;&nbsp;@len&nbsp;=&nbsp;Charindex(',',@ExcludeFields,@start)-1<BR>&nbsp;while&nbsp;@len&lt;&gt;&nbsp;-1<BR>&nbsp;&nbsp;begin<BR>&nbsp;&nbsp;select&nbsp;@field&nbsp;=&nbsp;substring(@ExcludeFields,@start,@len)<BR>&nbsp;&nbsp;insert&nbsp;into&nbsp;#ExcludeFields(field)&nbsp;values&nbsp;('['+@field+']')<BR>&nbsp;&nbsp;select&nbsp;@ExcludeFields&nbsp;=&nbsp;substring(@ExcludeFields,@len&nbsp;+&nbsp;<BR>2,len(@ExcludeFields))<BR>&nbsp;&nbsp;select&nbsp;&nbsp;@len&nbsp;=&nbsp;Charindex(',',@ExcludeFields,@start)-1<BR>&nbsp;&nbsp;end<BR>&nbsp;insert&nbsp;&nbsp;into&nbsp;#ExcludeFields(field)&nbsp;values&nbsp;('['+@Excludefields+']')</P>
+<P>&nbsp;--Parse&nbsp;join&nbsp;fields&nbsp;and&nbsp;populate&nbsp;a&nbsp;temp&nbsp;table<BR>&nbsp;create&nbsp;table&nbsp;#JoinFields(field&nbsp;varchar(50))<BR>&nbsp;select&nbsp;&nbsp;@start&nbsp;=&nbsp;1<BR>&nbsp;select&nbsp;&nbsp;@len&nbsp;=&nbsp;Charindex(',',@JoinFields,@start)-1<BR>&nbsp;while&nbsp;@len&lt;&gt;&nbsp;-1<BR>&nbsp;&nbsp;begin<BR>&nbsp;&nbsp;select&nbsp;@field&nbsp;=&nbsp;substring(@JoinFields,@start,@len)<BR>&nbsp;&nbsp;insert&nbsp;into&nbsp;#JoinFields(field)&nbsp;values&nbsp;('['+@field+']')<BR>&nbsp;&nbsp;select&nbsp;@JoinFields&nbsp;=&nbsp;substring(@JoinFields,@len&nbsp;+&nbsp;2,len(@JoinFields))<BR>&nbsp;&nbsp;select&nbsp;&nbsp;@len&nbsp;=&nbsp;Charindex(',',@JoinFields,@start)-1<BR>&nbsp;&nbsp;end<BR>&nbsp;insert&nbsp;&nbsp;into&nbsp;#JoinFields(field)&nbsp;values&nbsp;('['+@JoinFields+']')</P>
+<P>&nbsp;--Get&nbsp;a&nbsp;list&nbsp;of&nbsp;columns&nbsp;name&nbsp;in&nbsp;a&nbsp;temp&nbsp;table<BR>&nbsp;select&nbsp;ColName&nbsp;=&nbsp;'['&nbsp;+&nbsp;rtrim(sc.Name)&nbsp;+&nbsp;']'<BR>&nbsp;into&nbsp;#Columns<BR>&nbsp;from&nbsp;syscolumns&nbsp;sc&nbsp;inner&nbsp;join&nbsp;sysobjects&nbsp;so&nbsp;on&nbsp;sc.id&nbsp;=&nbsp;so.id<BR>&nbsp;where&nbsp;so.Name&nbsp;=&nbsp;@TableA<BR>&nbsp;order&nbsp;by&nbsp;colid</P>
+<P>&nbsp;--Initialize&nbsp;select&nbsp;from&nbsp;and&nbsp;where&nbsp;clause<BR>&nbsp;set&nbsp;@select1&nbsp;=&nbsp;'select&nbsp;'<BR>&nbsp;set&nbsp;@select2&nbsp;=&nbsp;'select&nbsp;'<BR>&nbsp;set&nbsp;@select3&nbsp;=&nbsp;'select&nbsp;'<BR>&nbsp;set&nbsp;@select4&nbsp;=&nbsp;'select&nbsp;'</P>
+<P>&nbsp;set&nbsp;@from1&nbsp;=&nbsp;'from&nbsp;'&nbsp;+&nbsp;@TableA&nbsp;+&nbsp;'&nbsp;A&nbsp;left&nbsp;outer&nbsp;join&nbsp;'&nbsp;+&nbsp;@TableB&nbsp;+&nbsp;'&nbsp;B&nbsp;on&nbsp;'<BR>&nbsp;set&nbsp;@from2&nbsp;=&nbsp;'from&nbsp;'&nbsp;+&nbsp;@TableA&nbsp;+&nbsp;'&nbsp;A&nbsp;right&nbsp;outer&nbsp;join&nbsp;'&nbsp;+&nbsp;@TableB&nbsp;+&nbsp;'&nbsp;B&nbsp;on&nbsp;<BR>'<BR>&nbsp;set&nbsp;@from3&nbsp;=&nbsp;'from&nbsp;'&nbsp;+&nbsp;@TableA&nbsp;+&nbsp;'&nbsp;A&nbsp;inner&nbsp;join&nbsp;'&nbsp;+&nbsp;@TableB&nbsp;+&nbsp;'&nbsp;B&nbsp;on&nbsp;'<BR>&nbsp;set&nbsp;@from4&nbsp;=&nbsp;'from&nbsp;'&nbsp;+&nbsp;@TableA&nbsp;+&nbsp;'&nbsp;A&nbsp;inner&nbsp;join&nbsp;'&nbsp;+&nbsp;@TableB&nbsp;+&nbsp;'&nbsp;B&nbsp;on&nbsp;'</P>
+<P>&nbsp;set&nbsp;@where1&nbsp;=&nbsp;'where&nbsp;'<BR>&nbsp;set&nbsp;@where2&nbsp;=&nbsp;'where&nbsp;'<BR>&nbsp;set&nbsp;@where3&nbsp;=&nbsp;'where&nbsp;'<BR>&nbsp;set&nbsp;@where4&nbsp;=&nbsp;'where&nbsp;'</P>
+<P>&nbsp;--Build&nbsp;select&nbsp;from&nbsp;and&nbsp;where&nbsp;clauses<BR>&nbsp;declare&nbsp;cBuildSQL&nbsp;cursor&nbsp;for<BR>&nbsp;&nbsp;select&nbsp;ColName<BR>&nbsp;&nbsp;from&nbsp;#Columns</P>
+<P>&nbsp;open&nbsp;cBuildSQL<BR>&nbsp;fetch&nbsp;&nbsp;next&nbsp;from&nbsp;cBuildSQL&nbsp;into&nbsp;@ColName<BR>&nbsp;while&nbsp;&nbsp;@@fetch_status&nbsp;=&nbsp;0<BR>&nbsp;&nbsp;begin<BR>&nbsp;&nbsp;--select&nbsp;clauses<BR>&nbsp;&nbsp;set&nbsp;&nbsp;@ColName&nbsp;=&nbsp;left(@ColName,len(@ColName)-1)<BR>&nbsp;&nbsp;--select&nbsp;1<BR>&nbsp;&nbsp;select&nbsp;@select1&nbsp;=&nbsp;@select1&nbsp;+&nbsp;@ColName&nbsp;+&nbsp;'_A]&nbsp;=&nbsp;A.'&nbsp;+&nbsp;@ColName&nbsp;+&nbsp;'],&nbsp;'</P>
+<P>&nbsp;&nbsp;--select&nbsp;2<BR>&nbsp;&nbsp;select&nbsp;@select2&nbsp;=&nbsp;@select2&nbsp;+&nbsp;@ColName&nbsp;+&nbsp;'_B]&nbsp;=&nbsp;B.'&nbsp;+&nbsp;@ColName&nbsp;+&nbsp;'],&nbsp;'</P>
+<P>&nbsp;&nbsp;--select&nbsp;3<BR>&nbsp;&nbsp;select&nbsp;@select3&nbsp;=&nbsp;@select3&nbsp;+&nbsp;@ColName&nbsp;+&nbsp;'_A]&nbsp;=&nbsp;A.'&nbsp;+&nbsp;@ColName&nbsp;+&nbsp;'],&nbsp;'<BR>&nbsp;&nbsp;select&nbsp;@select3&nbsp;=&nbsp;@select3&nbsp;+&nbsp;@ColName&nbsp;+&nbsp;'_B]&nbsp;=&nbsp;B.'&nbsp;+&nbsp;@ColName&nbsp;+&nbsp;'],&nbsp;'</P>
+<P>&nbsp;&nbsp;--select&nbsp;4<BR>&nbsp;&nbsp;select&nbsp;@select4&nbsp;=&nbsp;@select4&nbsp;+&nbsp;@ColName&nbsp;+&nbsp;'_A]&nbsp;=&nbsp;A.'&nbsp;+&nbsp;@ColName&nbsp;+&nbsp;'],&nbsp;'<BR>&nbsp;&nbsp;select&nbsp;@select4&nbsp;=&nbsp;@select4&nbsp;+&nbsp;@ColName&nbsp;+&nbsp;'_B]&nbsp;=&nbsp;B.'&nbsp;+&nbsp;@ColName&nbsp;+&nbsp;'],&nbsp;'</P>
+<P>&nbsp;&nbsp;set&nbsp;@ColName&nbsp;=&nbsp;@ColName&nbsp;+&nbsp;']'<BR>&nbsp;&nbsp;--from&nbsp;clause&nbsp;-&nbsp;Only&nbsp;include&nbsp;the&nbsp;fields&nbsp;in&nbsp;the&nbsp;Join&nbsp;list<BR>&nbsp;&nbsp;if&nbsp;&nbsp;@ColName&nbsp;in(select&nbsp;field&nbsp;from&nbsp;#JoinFields)<BR>&nbsp;&nbsp;&nbsp;begin<BR>&nbsp;&nbsp;&nbsp;select&nbsp;@from1&nbsp;=&nbsp;@from1&nbsp;+&nbsp;'A.'&nbsp;+&nbsp;@ColName&nbsp;+&nbsp;'&nbsp;=&nbsp;B.'&nbsp;+&nbsp;@ColName&nbsp;+&nbsp;'&nbsp;and&nbsp;'<BR>&nbsp;&nbsp;&nbsp;select&nbsp;@from2&nbsp;=&nbsp;@from2&nbsp;+&nbsp;'A.'&nbsp;+&nbsp;@ColName&nbsp;+&nbsp;'&nbsp;=&nbsp;B.'&nbsp;+&nbsp;@ColName&nbsp;+&nbsp;'&nbsp;and&nbsp;'<BR>&nbsp;&nbsp;&nbsp;select&nbsp;@from3&nbsp;=&nbsp;@from3&nbsp;+&nbsp;'A.'&nbsp;+&nbsp;@ColName&nbsp;+&nbsp;'&nbsp;=&nbsp;B.'&nbsp;+&nbsp;@ColName&nbsp;+&nbsp;'&nbsp;and&nbsp;'<BR>&nbsp;&nbsp;&nbsp;select&nbsp;@from4&nbsp;=&nbsp;@from4&nbsp;+&nbsp;'A.'&nbsp;+&nbsp;@ColName&nbsp;+&nbsp;'&nbsp;=&nbsp;B.'&nbsp;+&nbsp;@ColName&nbsp;+&nbsp;'&nbsp;and&nbsp;'<BR>&nbsp;&nbsp;&nbsp;end</P>
+<P>&nbsp;&nbsp;--where&nbsp;clause&nbsp;-&nbsp;Do&nbsp;not&nbsp;include&nbsp;the&nbsp;fields&nbsp;in&nbsp;the&nbsp;exclusion&nbsp;list<BR>&nbsp;&nbsp;if&nbsp;&nbsp;@ColName&nbsp;not&nbsp;in(select&nbsp;field&nbsp;from&nbsp;#ExcludeFields)<BR>&nbsp;&nbsp;&nbsp;begin<BR>&nbsp;&nbsp;&nbsp;if&nbsp;&nbsp;@ColName&nbsp;in(select&nbsp;field&nbsp;from&nbsp;#JoinFields)<BR>&nbsp;&nbsp;&nbsp;&nbsp;begin<BR>&nbsp;&nbsp;&nbsp;&nbsp;select&nbsp;@where1&nbsp;=&nbsp;@where1&nbsp;+&nbsp;'B.'&nbsp;+&nbsp;@ColName&nbsp;+&nbsp;'&nbsp;is&nbsp;null&nbsp;and&nbsp;'<BR>&nbsp;&nbsp;&nbsp;&nbsp;select&nbsp;@where2&nbsp;=&nbsp;@where2&nbsp;+&nbsp;'A.'&nbsp;+&nbsp;@ColName&nbsp;+&nbsp;'&nbsp;is&nbsp;null&nbsp;and&nbsp;'<BR>&nbsp;&nbsp;&nbsp;&nbsp;end<BR>&nbsp;&nbsp;&nbsp;else<BR>&nbsp;&nbsp;&nbsp;&nbsp;begin<BR>&nbsp;&nbsp;&nbsp;&nbsp;select&nbsp;@where3&nbsp;=&nbsp;@where3&nbsp;+&nbsp;'A.'&nbsp;+&nbsp;@ColName&nbsp;+&nbsp;'&nbsp;&lt;&gt;&nbsp;'&nbsp;+&nbsp;'B.'&nbsp;+&nbsp;@ColName&nbsp;+&nbsp;<BR>'&nbsp;or&nbsp;'<BR>&nbsp;&nbsp;&nbsp;&nbsp;select&nbsp;@where4&nbsp;=&nbsp;@where4&nbsp;+&nbsp;'A.'&nbsp;+&nbsp;@ColName&nbsp;+&nbsp;'&nbsp;=&nbsp;'&nbsp;+&nbsp;'B.'&nbsp;+&nbsp;@ColName&nbsp;+&nbsp;'&nbsp;<BR>and&nbsp;'<BR>&nbsp;&nbsp;&nbsp;&nbsp;end<BR>&nbsp;&nbsp;&nbsp;end</P>
+<P>&nbsp;&nbsp;fetch&nbsp;&nbsp;next&nbsp;from&nbsp;cBuildSQL&nbsp;into&nbsp;@ColName</P>
+<P>&nbsp;&nbsp;end<BR>&nbsp;deallocate&nbsp;cBuildSQL</P>
+<P>&nbsp;--get&nbsp;rid&nbsp;of&nbsp;trailing&nbsp;','&nbsp;from&nbsp;select&nbsp;clause,&nbsp;'and'&nbsp;from&nbsp;from&nbsp;clause&nbsp;and&nbsp;<BR>'or'&nbsp;from&nbsp;where&nbsp;clause<BR>&nbsp;set&nbsp;@select1&nbsp;=&nbsp;left(@select1,len(@select1)-1)<BR>&nbsp;set&nbsp;@select2&nbsp;=&nbsp;left(@select2,len(@select2)-1)<BR>&nbsp;set&nbsp;@select3&nbsp;=&nbsp;left(@select3,len(@select3)-1)<BR>&nbsp;set&nbsp;@select4&nbsp;=&nbsp;left(@select4,len(@select4)-1)</P>
+<P>&nbsp;set&nbsp;@from1&nbsp;=&nbsp;left(@from1,len(@from1)-4)<BR>&nbsp;set&nbsp;@from2&nbsp;=&nbsp;left(@from2,len(@from2)-4)<BR>&nbsp;set&nbsp;@from3&nbsp;=&nbsp;left(@from3,len(@from3)-4)<BR>&nbsp;set&nbsp;@from4&nbsp;=&nbsp;left(@from4,len(@from4)-4)</P>
+<P>&nbsp;set&nbsp;@where1&nbsp;=&nbsp;left(@where1,len(@where1)&nbsp;-&nbsp;4)<BR>&nbsp;set&nbsp;@where2&nbsp;=&nbsp;left(@where2,len(@where2)&nbsp;-&nbsp;4)<BR>&nbsp;set&nbsp;@where3&nbsp;=&nbsp;left(@where3,len(@where3)&nbsp;-&nbsp;3)<BR>&nbsp;set&nbsp;@where4&nbsp;=&nbsp;left(@where4,len(@where4)&nbsp;-&nbsp;4)</P>
+<P>&nbsp;if&nbsp;&nbsp;@debug&nbsp;=&nbsp;1<BR>&nbsp;&nbsp;begin<BR>&nbsp;&nbsp;select&nbsp;&nbsp;field&nbsp;from&nbsp;#ExcludeFields<BR>&nbsp;&nbsp;select&nbsp;&nbsp;field&nbsp;from&nbsp;#JoinFields</P>
+<P>&nbsp;&nbsp;select&nbsp;select1&nbsp;=&nbsp;@select1<BR>&nbsp;&nbsp;select&nbsp;select2&nbsp;=&nbsp;@select2<BR>&nbsp;&nbsp;select&nbsp;select3&nbsp;=&nbsp;@select3<BR>&nbsp;&nbsp;select&nbsp;select4&nbsp;=&nbsp;@select4</P>
+<P>&nbsp;&nbsp;select&nbsp;&nbsp;from1&nbsp;=&nbsp;@from1<BR>&nbsp;&nbsp;select&nbsp;from2&nbsp;=&nbsp;@from2<BR>&nbsp;&nbsp;select&nbsp;from3&nbsp;=&nbsp;@from3<BR>&nbsp;&nbsp;select&nbsp;from4&nbsp;=&nbsp;@from4</P>
+<P>&nbsp;&nbsp;select&nbsp;&nbsp;where1&nbsp;=&nbsp;@where1<BR>&nbsp;&nbsp;select&nbsp;&nbsp;where2&nbsp;=&nbsp;@where2<BR>&nbsp;&nbsp;select&nbsp;&nbsp;where3&nbsp;=&nbsp;@where3<BR>&nbsp;&nbsp;select&nbsp;&nbsp;where4&nbsp;=&nbsp;@where4<BR>&nbsp;&nbsp;end</P>
+<P>&nbsp;if&nbsp;&nbsp;@CompType&nbsp;=&nbsp;0<BR>&nbsp;&nbsp;begin<BR>&nbsp;&nbsp;select&nbsp;Message&nbsp;=&nbsp;'The&nbsp;following&nbsp;are&nbsp;the&nbsp;records&nbsp;that&nbsp;exist&nbsp;in&nbsp;table&nbsp;A&nbsp;but&nbsp;<BR>not&nbsp;in&nbsp;table&nbsp;B'<BR>&nbsp;&nbsp;exec&nbsp;(@select1&nbsp;+&nbsp;'&nbsp;'&nbsp;+&nbsp;@from1&nbsp;+&nbsp;'&nbsp;'&nbsp;+&nbsp;@where1)</P>
+<P>&nbsp;&nbsp;select&nbsp;Message&nbsp;=&nbsp;'The&nbsp;following&nbsp;are&nbsp;the&nbsp;records&nbsp;that&nbsp;exist&nbsp;in&nbsp;table&nbsp;B&nbsp;but&nbsp;<BR>not&nbsp;in&nbsp;table&nbsp;A'<BR>&nbsp;&nbsp;exec&nbsp;(@select2&nbsp;+&nbsp;'&nbsp;'&nbsp;+&nbsp;@from2&nbsp;+&nbsp;'&nbsp;'&nbsp;+&nbsp;@where2)</P>
+<P>&nbsp;&nbsp;select&nbsp;Message&nbsp;=&nbsp;'The&nbsp;following&nbsp;are&nbsp;the&nbsp;records&nbsp;that&nbsp;exist&nbsp;in&nbsp;both&nbsp;table&nbsp;A&nbsp;<BR>and&nbsp;table&nbsp;B&nbsp;but&nbsp;one&nbsp;or&nbsp;more&nbsp;columns&nbsp;compared&nbsp;are&nbsp;different'<BR>&nbsp;&nbsp;exec&nbsp;(@select3&nbsp;+&nbsp;'&nbsp;'&nbsp;+&nbsp;@from3&nbsp;+&nbsp;'&nbsp;'&nbsp;+&nbsp;@where3)</P>
+<P>&nbsp;&nbsp;select&nbsp;Message&nbsp;=&nbsp;'The&nbsp;following&nbsp;are&nbsp;the&nbsp;records&nbsp;that&nbsp;exist&nbsp;in&nbsp;both&nbsp;table&nbsp;A&nbsp;<BR>and&nbsp;table&nbsp;B&nbsp;and&nbsp;all&nbsp;the&nbsp;columns&nbsp;compared&nbsp;are&nbsp;same'<BR>&nbsp;&nbsp;exec&nbsp;(@select4&nbsp;+&nbsp;'&nbsp;'&nbsp;+&nbsp;@from4&nbsp;+&nbsp;'&nbsp;'&nbsp;+&nbsp;@where4)<BR>&nbsp;&nbsp;end</P>
+<P>&nbsp;if&nbsp;&nbsp;@CompType&nbsp;=&nbsp;1<BR>&nbsp;&nbsp;begin<BR>&nbsp;&nbsp;select&nbsp;Message&nbsp;=&nbsp;'The&nbsp;following&nbsp;are&nbsp;the&nbsp;records&nbsp;that&nbsp;exist&nbsp;in&nbsp;table&nbsp;A&nbsp;but&nbsp;<BR>not&nbsp;in&nbsp;table&nbsp;B'<BR>&nbsp;&nbsp;exec&nbsp;(@select1&nbsp;+&nbsp;'&nbsp;'&nbsp;+&nbsp;@from1&nbsp;+&nbsp;'&nbsp;'&nbsp;+&nbsp;@where1)<BR>&nbsp;&nbsp;end</P>
+<P>&nbsp;if&nbsp;&nbsp;@CompType&nbsp;=&nbsp;2<BR>&nbsp;&nbsp;begin<BR>&nbsp;&nbsp;select&nbsp;Message&nbsp;=&nbsp;'The&nbsp;following&nbsp;are&nbsp;the&nbsp;records&nbsp;that&nbsp;exist&nbsp;in&nbsp;table&nbsp;B&nbsp;but&nbsp;<BR>not&nbsp;in&nbsp;table&nbsp;A'<BR>&nbsp;&nbsp;exec&nbsp;(@select2&nbsp;+&nbsp;'&nbsp;'&nbsp;+&nbsp;@from2&nbsp;+&nbsp;'&nbsp;'&nbsp;+&nbsp;@where2)<BR>&nbsp;&nbsp;end</P>
+<P><BR>&nbsp;if&nbsp;&nbsp;@CompType&nbsp;=&nbsp;3<BR>&nbsp;&nbsp;begin<BR>&nbsp;&nbsp;select&nbsp;Message&nbsp;=&nbsp;'The&nbsp;following&nbsp;are&nbsp;the&nbsp;records&nbsp;that&nbsp;exist&nbsp;in&nbsp;both&nbsp;table&nbsp;A&nbsp;<BR>and&nbsp;table&nbsp;B&nbsp;but&nbsp;one&nbsp;or&nbsp;more&nbsp;columns&nbsp;compared&nbsp;are&nbsp;different'<BR>&nbsp;&nbsp;exec&nbsp;(@select3&nbsp;+&nbsp;'&nbsp;'&nbsp;+&nbsp;@from3&nbsp;+&nbsp;'&nbsp;'&nbsp;+&nbsp;@where3)<BR>&nbsp;&nbsp;end</P>
+<P><BR>&nbsp;if&nbsp;&nbsp;@CompType&nbsp;=&nbsp;4<BR>&nbsp;&nbsp;begin<BR>&nbsp;&nbsp;select&nbsp;Message&nbsp;=&nbsp;'The&nbsp;following&nbsp;are&nbsp;the&nbsp;records&nbsp;that&nbsp;exist&nbsp;in&nbsp;both&nbsp;table&nbsp;A&nbsp;<BR>and&nbsp;table&nbsp;B&nbsp;and&nbsp;all&nbsp;the&nbsp;columns&nbsp;compared&nbsp;are&nbsp;same'<BR>&nbsp;&nbsp;exec&nbsp;(@select4&nbsp;+&nbsp;'&nbsp;'&nbsp;+&nbsp;@from4&nbsp;+&nbsp;'&nbsp;'&nbsp;+&nbsp;@where4)<BR>&nbsp;&nbsp;end</P>
+<P>&nbsp;drop&nbsp;table&nbsp;#columns,#ExcludeFields,#JoinFields<BR>end</P>
+<P><BR></FONT></P></BLOCKQUOTE></TD></TR>
+<TR>
+<TD class=tablebody1 vAlign=center align=middle width=175><A 
+href="http://www.pigtwo.com/forum/look_ip.asp?boardid=14&amp;userid=42&amp;ip=61.48.16.211&amp;action=lookip" 
+target=_blank><IMG height=15 alt="点击查看用户来源及管理<br>发贴IP：61.48.16.211" 
+src="http://www.pigtwo.com/forum/pic/ip.gif" width=13 align=absMiddle border=0></A> 2003-5-31 10:44:26</TD>
+<TD class=tablebody1 vAlign=center width=*>
+<TABLE cellSpacing=0 cellPadding=0 width="100%">
+<TBODY>
+<TR>
+<TD vAlign=center align=left><A 
+href="http://www.pigtwo.com/forum/editannounce.asp?BoardID=14&amp;replyID=1012&amp;id=471&amp;star=1"><IMG 
+alt=编辑这个贴子 src="http://www.pigtwo.com/forum/pic/edit.gif" align=absMiddle border=0></A>&nbsp;&nbsp;<A 
+title=同意该帖观点，给他一朵鲜花，将消耗您5点金钱 
+href="http://www.pigtwo.com/forum/postagree.asp?boardid=14&amp;id=471&amp;isagree=1">鲜花</A>(<FONT 
+color=#ff0000>0</FONT>)&nbsp;&nbsp;<A title=不同意该帖观点，给他一个鸡蛋，将消耗您5点金钱 
+href="http://www.pigtwo.com/forum/postagree.asp?boardid=14&amp;id=471&amp;isagree=2">鸡蛋</A>(<FONT 
+color=#ff0000>0</FONT>)</TD>
+<TD vAlign=bottom align=right width=110 nowarp><A title=复制单个贴子到别的版面 
+href="http://www.pigtwo.com/forum/admin_postings.asp?action=复制&amp;BoardID=14&amp;ID=471&amp;replyID=1012"><IMG 
+src="http://www.pigtwo.com/forum/pic/copy.gif" border=0></A>&nbsp;<A title=精华 
+href="http://www.pigtwo.com/forum/admin_postings.asp?action=精华&amp;BoardID=14&amp;ID=471&amp;replyID=1012"><IMG 
+src="http://www.pigtwo.com/forum/pic/jing.gif" border=0></A></TD>
+<TD vAlign=bottom align=right 
+width=4></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE>
+<TABLE class=tableborder1 style="TABLE-LAYOUT: fixed; WORD-BREAK: break-all" 
+cellSpacing=1 cellPadding=5 align=center>
+<TBODY>
+<TR>
+<TD class=tablebody2 vAlign=top width=175>
+<TABLE cellSpacing=0 cellPadding=4 width="100%">
+<TBODY>
+<TR>
+<TD style="FILTER: glow(color=#9898BA,strength=2)" vAlign=center 
+width=*>&nbsp;<A name=1013><FONT color=#990000><B>ugvanxk</B></FONT></A> </TD>
+<TD vAlign=center width=25><IMG alt=帅哥哟，在线，有人找我吗？ src="http://www.pigtwo.com/forum/pic/Male.gif"></TD>
+<TD vAlign=center width=16></TD></TR></TBODY></TABLE>&nbsp;&nbsp;<IMG height=32 
+src="http://www.pigtwo.com/forum/pic/Image1.gif" width=32><BR>&nbsp;&nbsp;<IMG 
+src="http://www.pigtwo.com/forum/pic/level10.gif"><BR>&nbsp;&nbsp;等级：版主<BR>&nbsp;&nbsp;文章：189<BR>&nbsp;&nbsp;积分：494<BR>&nbsp;&nbsp;注册：2002-11-2<BR></TD>
+<TD class=tablebody2 vAlign=top width=*>
+<TABLE width="100%">
+<TBODY>
+<TR>
+<TD width=*><A 
+href=""><IMG 
+alt=给ugvanxk发送一个短消息 src="http://www.pigtwo.com/forum/pic/message.gif" border=0></A>&nbsp;<A 
+href="http://www.pigtwo.com/forum/friendlist.asp?action=addF&amp;myFriend=ugvanxk" target=_blank><IMG 
+alt=把ugvanxk加入好友 src="http://www.pigtwo.com/forum/pic/friend.gif" border=0></A>&nbsp;<A 
+href="http://www.pigtwo.com/forum/dispuser.asp?id=42" target=_blank><IMG alt=查看ugvanxk的个人资料 
+src="http://www.pigtwo.com/forum/pic/profile.gif" border=0></A>&nbsp;<A 
+href="http://www.pigtwo.com/forum/queryResult.asp?stype=1&amp;nSearch=3&amp;keyword=ugvanxk&amp;BoardID=14&amp;SearchDate=ALL" 
+target=_blank><IMG alt="搜索ugvanxk在『数 据 库』的所有贴子" src="http://www.pigtwo.com/forum/pic/find.gif" 
+border=0></A>&nbsp;<A href="http://www.pigtwo.com/forum/mailto:jsqmail@163.com"><IMG alt=点击这里发送电邮给ugvanxk 
+src="http://www.pigtwo.com/forum/pic/email.gif" border=0></A>&nbsp;<A 
+href="http://www.pigtwo.com/forum/reannounce.asp?BoardID=14&amp;replyID=1013&amp;id=471&amp;star=1&amp;reply=true"><IMG 
+alt=引用回复这个贴子 src="http://www.pigtwo.com/forum/pic/reply.gif" border=0></A>&nbsp;<A 
+href="http://www.pigtwo.com/forum/reannounce.asp?BoardID=14&amp;replyID=1013&amp;id=471&amp;star=1"><IMG 
+alt=回复这个贴子 src="http://www.pigtwo.com/forum/pic/reply_a.gif" border=0></A></TD>
+<TD width=50><B>第<FONT color=#ff0000>2</FONT>楼</B></TD></TR>
+<TR>
+<TD bgColor=#6595d6 colSpan=2 height=1></TD></TR></TBODY></TABLE>
+<BLOCKQUOTE><IMG alt=发贴心情 src="http://www.pigtwo.com/forum/face/face0.gif" border=0>&nbsp;<FONT 
+style="FONT-SIZE: 9pt; LINE-HEIGHT: 15pt"><B></B><BR>This&nbsp;sp&nbsp;can&nbsp;compare&nbsp;two&nbsp;tables&nbsp;with&nbsp;the&nbsp;same&nbsp;structure.&nbsp;
+<P></P>
+<P>Parameter&nbsp;Description:<BR>1.&nbsp;@TableA:&nbsp;Name&nbsp;of&nbsp;first&nbsp;table<BR>2.&nbsp;@TableB:&nbsp;Name&nbsp;of&nbsp;second&nbsp;table<BR>3.&nbsp;@ExcludeFields:&nbsp;Comma&nbsp;delimited&nbsp;list&nbsp;of&nbsp;column&nbsp;names&nbsp;that&nbsp;are&nbsp;insignificant&nbsp;in&nbsp;the&nbsp;table&nbsp;comparison&nbsp;for&nbsp;example&nbsp;audit&nbsp;fields,&nbsp;notes&nbsp;fields,&nbsp;etc.<BR>4.&nbsp;@JoinFields:&nbsp;Comma&nbsp;delimited&nbsp;list&nbsp;of&nbsp;column&nbsp;names&nbsp;that&nbsp;would&nbsp;be&nbsp;used&nbsp;to&nbsp;join&nbsp;the&nbsp;two&nbsp;tables.<BR>5.&nbsp;@CompType:&nbsp;<BR>1&nbsp;=&nbsp;Records&nbsp;that&nbsp;exist&nbsp;in&nbsp;A&nbsp;but&nbsp;not&nbsp;in&nbsp;B<BR>2&nbsp;=&nbsp;Records&nbsp;that&nbsp;exist&nbsp;in&nbsp;B&nbsp;but&nbsp;not&nbsp;in&nbsp;A<BR>3&nbsp;=&nbsp;Records&nbsp;that&nbsp;exist&nbsp;in&nbsp;both&nbsp;A&nbsp;and&nbsp;B&nbsp;but&nbsp;one&nbsp;or&nbsp;more&nbsp;columns&nbsp;compared&nbsp;have&nbsp;different&nbsp;values<BR>4&nbsp;=&nbsp;Records&nbsp;that&nbsp;exist&nbsp;in&nbsp;both&nbsp;A&nbsp;and&nbsp;B&nbsp;but&nbsp;all&nbsp;columns&nbsp;compared&nbsp;have&nbsp;same&nbsp;value<BR>0&nbsp;=&nbsp;(Default)Do&nbsp;all&nbsp;4&nbsp;comparisons<BR>6.&nbsp;@debug:&nbsp;Set&nbsp;this&nbsp;parameter&nbsp;to&nbsp;1&nbsp;to&nbsp;see&nbsp;intermediate&nbsp;results</P>
+<P><BR>Usage:<BR>To&nbsp;see&nbsp;it&nbsp;work&nbsp;create&nbsp;this&nbsp;stored&nbsp;procedure&nbsp;in&nbsp;pubs&nbsp;database.&nbsp;Then&nbsp;create&nbsp;a&nbsp;duplicate&nbsp;of&nbsp;Titles&nbsp;table&nbsp;and&nbsp;call&nbsp;it&nbsp;Titles2.&nbsp;Add,&nbsp;delete&nbsp;and&nbsp;modify&nbsp;some&nbsp;records&nbsp;in&nbsp;the&nbsp;Titles2&nbsp;table&nbsp;then&nbsp;compare&nbsp;the&nbsp;two&nbsp;tables&nbsp;using&nbsp;sp_compare&nbsp;as&nbsp;follows.&nbsp;</P>
+<P>exec&nbsp;sp_Compare&nbsp;''Titles'',''Titles2'',''Notes,PubDate'',''Title_Id'',&nbsp;0</P>
+<P>Author:&nbsp;Subhan&nbsp;P.&nbsp;Munshi&nbsp;</P></FONT></BLOCKQUOTE></TD></TR></TBODY></TABLE>

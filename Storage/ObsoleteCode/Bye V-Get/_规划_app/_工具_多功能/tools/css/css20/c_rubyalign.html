@@ -1,0 +1,111 @@
+<html xmlns:rdl>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<script src="rdl_properties.js"></script>
+<base target="_self">
+</head>
+<body>
+
+<script>
+
+//collFriendProperties=new Array();
+//collFriendDeclarations=new Array();
+//collFriendAtRules=new Array();
+//collFriendElements=new Array();
+//collFriendClasses=new Array();
+
+collFriendProperties=new Array(
+'ruby-overhang','ruby-position'
+);
+
+//collIE40=new Array();
+//collIE50=new Array();
+//collIE55=new Array();
+//collIE60=new Array();
+
+collIE50=new Array(
+'currentStyle','RUBY','runtimeStyle','style'
+);
+
+sStyle=
+'<style>\n'+
+'#idDIV{width:100%;padding:8px;background-color:#FFD700;font-family:verdana,tahoma;font-size:14px ;}\n'+
+'#idCodeDiv{width:100%;padding:4px;font-family:verdana,tahoma;margin:12px 0px 0px 0px;background-color:#EEEEEE;font-weight:bold;}\n'+
+'<\/style>\n';
+
+sScript=
+'<script>\n'+
+'function rdl_change(e){\n'+
+'var oCodeDiv=document.all("idCodeDiv");\n'+
+'var oDiv=document.all("idDiv");\n'+
+'with (document.all("idSel")) var sValue=options[selectedIndex].value;\n'+
+'oDiv.style.rubyAlign=sValue;\n'+
+'oCodeDiv.innerText="ruby-align : "+sValue+";";\n'+
+'}\n'+
+'<\/script>\n';
+
+sCode=
+'<ruby id=idDIV>请记住上面这句话。<rt><span style="font-family: Arial; font-size: 8pt; color: red;">Every man dies , Not every man really lives .</span><\/ruby>\n'+
+'<br>\n'+
+'<br>\n'+
+'<select id="idSel" onchange="rdl_change();">\n'+
+'<option value="auto">---ruby-align---\n'+
+'<option value="auto">auto\n'+
+'<option value="left">left\n'+
+'<option value="center">decimal\n'+
+'<option value="right">right\n'+
+'<option value="distribute-letter">distribute-letter\n'+
+'<option value="distribute-space">distribute-space\n'+
+'<option value="line-edge">line-edge\n'+
+'<\/select>\n'+
+'<br>\n'+
+'<div id=idCodeDiv>ruby-align : auto ;<\/div>\n';
+
+iWinWidth=360;
+
+iWinHeight=280;
+
+//bRunCode=false;
+
+//bElements=false;
+
+</script>
+
+<div id=idContent>
+
+<div id=idContentTitle><span id=idTitleName>ruby-align</span>版本：IE5+专有属性　继承性：无</div>
+
+<div class=cssColumnTitle>语法：</div>
+<div>
+<b>ruby-align  : </b><span class=cssDefault><b>auto</b></span> | <b>left</b> | <b>center</b> | <b>right</b> | <b>distribute-letter</b> | <b>distribute-space</b> | <b>line-edge</b>
+</div>
+
+<div class=cssColumnTitle>取值：</div>
+<table>
+<tr><td nowrap><b> auto </b></td><td nowrap><b>:</b></td><td><b>默认值</b>。由浏览器确定对齐方式。对于ideographic(东亚)文本以<b> distribute-space </b>值对齐。对于Latin文本以<b> center </b>值对齐</td></tr>
+<tr><td nowrap><b> left </b></td><td nowrap><b>:</b></td><td>根据基本宽度左对齐</td></tr>
+<tr><td nowrap><b> center </b></td><td nowrap><b>:</b></td><td>根据基本宽度居中对齐。如果基本宽度小于<b> ruby </b>文本的宽度，那么基本宽度在<b> ruby </b>文本的宽度中居中</td></tr>
+<tr><td nowrap><b> right </b></td><td nowrap><b>:</b></td><td>根据基本宽度右对齐</td></tr>
+<tr><td nowrap><b> distribute-letter </b></td><td nowrap><b>:</b></td><td>如果ruby文本的宽度小于基本宽度，则<b> ruby </b>文本在基本宽度中均匀分布。如果<b> ruby </b>文本的宽度大于或等于基本宽度，居中对齐</td></tr>
+<tr><td nowrap><b> distribute-space </b></td><td nowrap><b>:</b></td><td>如果<b> ruby </b>文本的宽度小于基本宽度，则<b> ruby </b>文本在基本宽度中均匀分布。在<b> ruby </b>文本中，在第一个字符的前面后最后字符的后面有半个字距的空白区域。如果<b> ruby </b>文本的宽度大于或等于基本宽度，居中对齐</td></tr>
+<tr><td nowrap><b> line-edge </b></td><td nowrap><b>:</b></td><td>如果<b> ruby </b>文本不相邻行边缘，则其被居中。否则<b> ruby </b>文本行在基本文本边的上方</td></tr>
+</table>
+
+<div class=cssColumnTitle>说明：</div>
+<div>
+设置或检索通过<b> rt </b>对象指定的注释文本或发音指南(参考<b> ruby </b>对象)的对齐位置。<br>
+此属性对于<b> currentStyle </b>对象而言是只读的。对于其他对象而言是可读写的。<br>
+对应的脚本特性为<b> rubyAlign </b>。
+</div>
+
+<div class=cssColumnTitle>示例：</div>
+<div id=idSimpleCode>
+ruby { ruby-align: right; } 
+</div>
+
+</div>
+</body>
+</html>
+
+<!-- Part of RDL(TM) - Written by Rain1977 
+HomeSite: http://www.dhtmlet.com  E-Mail: dhtmlet@hotmail.com -->

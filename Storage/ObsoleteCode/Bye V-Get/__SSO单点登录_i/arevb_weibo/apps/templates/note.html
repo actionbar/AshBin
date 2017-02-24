@@ -1,0 +1,217 @@
+<!--{if $action == 'comment'}-->
+{template header}
+
+<div class="left">
+	<div class="post" id="mytopmenu">微博评论</div>
+	<div class="post" id="oripost">
+		<a href="{eval echo miniurl($note_to_comment['uid']);}"><img src="{$siteurl}avatar.php?uid={$note_to_comment['uid']}&size=middle" /></a>
+		<div class="detail">
+			<p>
+				<a href="{eval echo miniurl($note_to_comment['uid']);}">{$note_to_comment['username']}</a>:
+				{$note_to_comment['note']['message']}
+				<!--{if $note_to_comment['note']['link']}-->
+				<p>分享链接：<a href="{$note_to_comment['note']['link']['url']}">{$note_to_comment['note']['link']['title']}</a></p>
+				<!--{/if}-->
+				<!--{if $note_to_comment['note']['file']}-->
+				<p>分享文件：<a href="{$note_to_comment['note']['file']['url']}">{$note_to_comment['note']['file']['title']}</a></p>
+				<!--{/if}-->
+				<!--{if $note_to_comment['note']['img']}-->
+				<p><img src="{eval echo imgurl($note_to_comment['note']['img']['url']);}" rel="{$note_to_comment['note']['img']['title']}" /></p>
+				<!--{/if}-->
+				<!--{if !empty($note_to_comment['note']['refer'])}-->
+				{eval $note_to_comment_refer = $note_to_comment['note']['refer'];}
+				<div class="upax"></div>
+				<div class="ugb">
+					<div class="ugb2">
+						<div class="ugb3">
+							<div class="ugb4">
+								转发自 {$note_to_comment_refer['message']}
+								<!--{if !empty($note_to_comment_refer['link'])}-->
+								<p>分享链接：<a href="{$note_to_comment_refer['link']['url']}">$note_to_comment_refer['link']['title']</a></p>
+								<!--{/if}-->
+								<!--{if !empty($note_to_comment_refer['file'])}-->
+								<p>分享文件：<a href="{$note_to_comment_refer['file']['url']}">$note_to_comment_refer['file']['title']</a>
+								<!--{/if}-->
+								<!--{if !empty($note_to_comment_refer['img'])}-->
+								<p><img style="float:none" src="{eval echo imgurl($note_to_comment_refer['img']['url']);}" rel="{$note_to_comment_refer['img']['title']}" /></p>
+								<!--{/if}-->
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--{/if}-->
+			</p>
+			<div class="attrs">
+				<div class="lf">
+					<cite>{eval echo sgmdate($note_to_comment['dateline']);}</cite> 来自{$sourcefrom[$note_to_comment['from']]}
+				</div>
+				<div class="rt">
+					<!--{if $logger_uid == $note_to_comment['uid']}-->
+					转发[{$note_to_comment['refers']}]<span>|</span><a href="#flag_postcomment">评论[{$note_to_comment['comments']}]</a><span>|</span><a href="javascript:;" class="delete_a" r="{$note_to_comment['nid']}">删除</a>
+					<!--{else}-->
+					<a href="<!--{if $logger_uid < 1}-->{eval echo miniurl('login');}<!--{else}-->javascript:;<!--{/if}-->" class="refer_a" r="{$note_to_comment['nid']}">转发[{$note_to_comment['refers']}]</a><span>|</span><a href="#flag_postcomment">评论[{$note_to_comment['comments']}]</a>
+					<!--{/if}-->
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--{if !empty($comments)}-->
+	<!--{loop $comments['data'] $comment}-->
+	<div class="postcomment" id="postcomment_{$comment['mid']}">
+		<a href="{eval echo miniurl($comment['uid']);}"><img src="{$siteurl}avatar.php?uid={$comment['uid']}&size=small" /></a>
+		<div class="detail">
+			<p><a href="{eval echo miniurl($comment['uid']);}">{$comment['username']}</a>说：{$comment['comment']} <cite>({eval echo sgmdate($comment['dateline']);})</cite></p>
+			<!--{if $comment['uid'] == $logger_uid}-->
+			<div class="attrs">
+				<a href="javascript:;" class="comment_del_a" r="{$comment['mid']}">删除</a>
+			</div>
+			<!--{/if}-->
+		</div>
+	</div>
+	<!--{/loop}-->
+	<!--{/if}-->
+	<div class="postcomment" id="flag_postcomment">
+		<!--{if $logger_uid < 1}-->
+		<a href="{eval echo miniurl('login')}">>>>登录之后发表评论</a>
+		<!--{else}-->
+		发表评论: <input type="text" size="40" tabindex="1" id="postcomment_cnt" /> <input id="submit_btn" type="button" value=" 提 交 " onclick="oncmt()" tabindex="2" />
+		<p>
+			最多可以发布140个字
+		</p>
+		<!--{/if}-->
+	</div>
+</div>
+<div class="right">
+	<div class="ugb">
+		<div class="ugb2">
+			<div class="ugb3">
+				<div class="ugb4">
+					<div class="userinfo">
+						<div class="user_head">
+							<a href="{eval echo miniurl($people_info['uid']);}"><img src="{$siteurl}avatar.php?uid={$people_info['uid']}&size=middle" style="float:left" /></a><div style="float:left; margin:0 0 0 15px;"><p style="font-size:14px;line-height:33px;"><a href="{eval echo miniurl($people_info['uid']);}">{$people_info['username']}</a></p><p style="color:#999"><!--{if $logger_uid != $people_info['uid']}--><a href="javascript:;" class="to_follow_a" r="{$people_info['uid']}">加关注</a> | <a href="javascript:;" class="pm_send_a" r="{$people_info['uid']}">发私信</a><!--{else}-->上次登录:{eval echo sgmdate($people_info['lastvisit']);}<!--{/if}--></p></div>
+						</div>
+						<div class="user_atten">
+							<ul>
+								<li>
+									<div class="num">
+										<a href="{eval echo miniurl($people_info['uid'].'/follows');}">{$people_info['follows']}</a>
+									</div>
+									<a href="{eval echo miniurl($people_info['uid'].'/follows');}">关注</a>
+								</li>
+								<li>
+									<div class="num">
+										<a href="{eval echo miniurl($people_info['uid'].'/fans');}">{$people_info['fans']}</a>
+									</div>
+									<a href="{eval echo miniurl($people_info['uid'].'/fans');}">粉丝</a>
+								</li>
+								<li style="border:none">
+									<div class="num">
+										<a href="{eval echo miniurl($people_info['uid'].'/notes');}">{$people_info['notes']}</a>
+									</div>
+									<a href="{eval echo miniurl($people_info['uid'].'/notes');}">微博</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="usermenu">
+						<ul>
+							<!--{if $logger_uid == $people_info['uid']}-->
+							<li<!--{if $usermenu == 'index'}--> class="active"<!--{/if}-->><a href="{eval echo miniurl();}">我的首页</a></li>
+							<li<!--{if $usermenu == 'atme'}--> class="active"<!--{/if}-->><a href="{eval echo miniurl($logger_uid.'/atme');}">@我的</a></li>
+							<li<!--{if $usermenu == 'pms'}--> class="active"<!--{/if}-->><a href="{eval echo miniurl('pms');}">我的私信</a></li>
+							<li style="border:none"<!--{if $usermenu == 'cmts'}--> class="active"<!--{/if}-->><a href="{eval echo miniurl($logger_uid.'/comments');}">我的评论</a></li>
+							<!--{else}-->
+							<li<!--{if $usermenu == 'index'}--> class="active"<!--{/if}-->><a href="{eval echo miniurl();}">他的首页</a></li>
+							<li<!--{if $usermenu == 'atme'}--> class="active"<!--{/if}--> style="border:none"><a href="{eval echo miniurl($people_info['uid'].'/atme');}">@他的</a></li>
+							<!--{/if}-->
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+function oncmt(){
+	var cmt = $.trim($("#postcomment_cnt").val());
+	if (cmt == '')
+	{
+		alert("请至少写些文字");
+		return;
+	}
+	$("#submit_btn").attr("disabled", "disabled");
+	$.post("{eval echo miniurl('note/'.$nid.'/comment');}", {submit_post:1,content:cmt}, function(data){
+		data = eval('('+data+')');
+		if (data.success)
+		{
+			location.reload();
+		}
+		else
+		{
+			$("#submit_btn").removeAttr("disabled");
+			alert(data.message);
+		}
+	});
+}
+$(function(){
+	$(".comment_del_a").click(function(){
+		var mid = $(this).attr('r');
+		if (!confirm("您确认要删除此条评论吗？"))
+		{
+			return;
+		}
+		$.post("{$boardurl}comment/"+mid+"/del", {submit_post:1}, function(data){
+			data = eval('('+data+')');
+			if (data.success)
+			{
+				$("#postcomment_"+mid).fadeOut();
+			}
+			else
+			{
+				alert(data.message);
+			}
+		});
+	});
+});
+</script>
+{template footer}
+<!--{elseif $action == 'refer'}-->
+<h2>转发微博 · · · · · ·</h2>
+<form id="pop_win_form" style="width:350px;border-top:1px dashed #ccc;padding-top:2em" method="post" action="{eval echo miniurl('note/'.$nid.'/refer');}">
+<div class="refertxt">
+	转：<a href="{eval echo miniurl($note_to_refer['uid']);}">{$note_to_refer['username']}</a>:{$note_to_refer['note']['message']} <!--{if !empty($note_to_refer['note']['refer']['message'])}-->// {$note_to_refer['note']['refer']['message']}<!--{/if}-->
+</div>
+<div style="float:right;margin-right:13px;color:#080">
+	还能输入<em style="font-style:normal;">140</em>个字
+</div>
+<textarea id="refer_message" style="margin:10px 0;padding 5px;width:330px;height:100px;font-size:12px;overflow:hidden;"></textarea>
+<input id="onbtnrefer" type="button" value="提交" /> <span id="pop_in_msg" style="color:#2E8EFD"></span>
+</form>
+<script>
+$(function(){
+	$("#onbtnrefer").click(function(){
+		var msg = $.trim($("#refer_message").val());
+		if (msg == '')
+		{
+			$("#pop_in_msg").text("请至少写些文字");
+			return false;
+		}
+		$("#pop_in_msg").text("正在处理...");
+		$(this).attr('disabled', 'disabled');
+		$.post($("#pop_win_form").attr('action'), {submit_post:1,content:msg}, function(dat){
+			//$("#pop_in_msg").text(dat);
+			pop_win(dat);
+		});
+	});
+	$("#refer_message").keyup(function(){
+		var left = 140 - $(this).val().length;
+		if (left < 1)
+		{
+			left = 0;
+			$(this).val($(this).val().substr(0, 140));
+		}
+		$("#pop_win_form em").text(left);
+	});
+});
+</script>
+<!--{/if}-->

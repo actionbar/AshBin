@@ -1,0 +1,73 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>十进制与二进制互转函数</title>
+<style type="text/css">
+<!--
+body {
+	font-size: 10.4pt;
+	line-height: 22px;
+}
+-->
+</style>
+</head>
+
+<body bgcolor="#eeeeee" leftmargin="20" marginwidth="20">
+<p><strong>十进制、二进制转换和奇偶数判断函数</strong></p>
+<hr>
+<p>function tento2(num)<br>
+  '十进制转二进制<br>
+  dim num1<br>
+  dim num2(100000)<br>
+  dim i,j<br>
+  i=1<br>
+  num1="1"<br>
+  do while num&gt;1<br>
+  if num mod 2=0 then<br>
+  num2(i)="0"<br>
+  else<br>
+  num2(i)="1"<br>
+  end if<br>
+  i=i+1<br>
+  num=int(num/2)<br>
+  loop<br>
+  'response.write i<br>
+  for j=i to 1 Step -1<br>
+  num1=num1&amp;num2(j)<br>
+  next<br>
+  tento2=num1<br>
+  end function<br>
+</p>
+<p>function to10(num)<br>
+  '二进制转十进制<br>
+  dim b1,b2,b3<br>
+  b1=len(num)<br>
+  b2=1<br>
+  b3=0<br>
+  for b2=1 to b1<br>
+  b3=int(cint(mid(num,b2,1)))*mi(b1-b2)+b3<br>
+  next<br>
+  To10=b3<br>
+  end function</p>
+<P>
+<HR>
+
+<P></P>
+<P><br>
+  function mi(n)<br>
+  '求幂，计算2的n次方<br>
+  dim b4,b5<br>
+  b4=1<br>
+  b5=1<br>
+  for b5=1 to n<br>
+  b4=b4*2<br>
+  next<br>
+  mi=b4<br>
+  end function<br></P>
+<P>判断一个数是奇数还是偶数</P>
+<P>function Is_odd(num) as boolean<BR>n=num mod 2<BR>if n=1 
+then<BR>Is_odd=true<BR>else<BR>Is_odd=false<BR>end if<BR>end 
+function<BR>是奇数返回真，是偶数返回假。</P>
+</body>
+</html>

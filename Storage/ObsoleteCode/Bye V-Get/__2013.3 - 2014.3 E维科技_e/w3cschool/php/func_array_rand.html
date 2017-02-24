@@ -1,0 +1,187 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="../c3.css" />
+<title>PHP array_rand() 函数</title>
+</head>
+<body class="serverscripting">
+<div id="wrapper">
+<div id="header">
+<a href="http://e.v-get.com/w3cschool/" style="float:left;">W3CSchool 在线教程</a>
+<div class="q g"><script type="text/javascript">var cpro_id="u1163355"</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div>
+<div id="navfirst">
+<ul id="menu">
+<li id="h"><a href="../h.html">HTML教程</a></li>
+<li id="x"><a href="../x.html">XML教程</a></li>
+<li id="b"><a href="../b.html">浏览器脚本</a></li>
+<li id="s"><a href="../s.html">服务器脚本</a></li>
+<li id="d"><a href="../d.html">dot net教程</a></li>
+<li id="m"><a href="../m.html">多媒体教程</a></li>
+<li id="w"><a href="../w.html">建站手册</a></li>
+</ul>
+</div><div id="navsecond">
+<div id="course">
+<h2>PHP 基础</h2>
+<ul>
+<li><a href="http://e.v-get.com/w3cschool/">PHP 教程</a></li>
+<li><a href="php_intro.html">PHP 简介</a></li>
+<li><a href="php_install.html">PHP 安装</a></li>
+<li><a href="php_syntax.html">PHP 语法</a></li>
+<li><a href="php_variables.html">PHP 变量</a></li>
+<li><a href="php_string.html">PHP 字符串</a></li>
+<li><a href="php_operators.html">PHP 运算符</a></li>
+<li><a href="php_if_else.html">PHP If...Else</a></li>
+<li><a href="php_switch.html">PHP Switch</a></li>
+<li><a href="php_arrays.html">PHP 数组</a></li>
+<li><a href="php_looping.html">PHP 循环</a></li>
+<li><a href="php_functions.html">PHP 函数</a></li>
+<li><a href="php_forms.html">PHP 表单</a></li>
+<li><a href="php_get.html">PHP $_GET</a></li>
+<li><a href="php_post.html">PHP $_POST</a></li>
+</ul>
+<h2>PHP 高级</h2>
+<ul>
+<li><a href="php_date.html" title="">PHP 日期</a></li>
+<li><a href="php_includes.html" title="">PHP 引用</a></li>
+<li><a href="php_file.html" title="">PHP 文件</a></li>
+<li><a href="php_file_upload.html" title="">PHP 文件上传</a></li>
+<li><a href="php_cookies.html" title="">PHP Cookies</a></li>
+<li><a href="php_sessions.html" title="">PHP Sessions</a></li>
+<li><a href="php_mail.html" title="">PHP E-mail</a></li>
+<li><a href="php_secure_mail.html" title="">PHP 安全 E-mail</a></li>
+<li><a href="php_error.html" title="">PHP Error</a></li>
+<li><a href="php_exception.html" title="">PHP Exception</a></li>
+<li><a href="php_filter.html" title="">PHP Filter</a></li>
+</ul>
+<h2>PHP 数据库</h2>
+<ul class="small">
+<li><a href="php_mysql_intro.html" title="">MySQL 简介</a></li>
+<li><a href="php_mysql_connect.html" title="">MySQL Connect</a></li>
+<li><a href="php_mysql_create.html" title="">MySQL Create</a></li>
+<li><a href="php_mysql_insert.html" title="">MySQL Insert</a></li>
+<li><a href="php_mysql_select.html" title="">MySQL Select</a></li>
+<li><a href="php_mysql_where.html" title="">MySQL Where</a></li>
+<li><a href="php_mysql_order_by.html" title="">MySQL Order By</a></li>
+<li><a href="php_mysql_update.html" title="">MySQL Update</a></li>
+<li><a href="php_mysql_delete.html" title="">MySQL Delete</a></li>
+<li><a href="php_db_odbc.html" title="">PHP ODBC</a></li>
+</ul>
+<h2>PHP XML</h2>
+<ul class="small">
+<li><a href="php_xml_parser_expat.html" title="">XML Expat Parser</a></li>
+<li><a href="php_xml_dom.html" title="">XML DOM</a></li>
+<li><a href="php_xml_simplexml.html" title="">XML SimpleXML</a></li>
+</ul>
+<h2>PHP 和 AJAX</h2>
+<ul class="small">
+<li><a href="php_ajax_intro.html">AJAX 简介</a></li>
+<li><a href="php_ajax_xmlhttprequest.html">XMLHttpRequest</a></li>
+<li><a href="php_ajax_suggest.html">AJAX Suggest</a></li>
+<li><a href="php_ajax_xml.html">AJAX XML</a></li>
+<li><a href="php_ajax_database.html">AJAX Database</a></li>
+<li><a href="php_ajax_responsexml.html">AJAX responseXML</a></li>
+<li><a href="php_ajax_livesearch.html">AJAX Live Search</a></li>
+<li><a href="php_ajax_rss_reader.html">AJAX RSS Reader</a></li>
+<li><a href="php_ajax_poll.html">AJAX Poll</a></li>
+</ul>
+<h2>PHP 参考手册</h2>
+<ul class="small">
+<li><a href="php_ref_array.html">PHP Array</a></li>
+<li><a href="php_ref_calendar.html">PHP Calendar</a></li>
+<li><a href="php_ref_date.html">PHP Date</a></li>
+<li><a href="php_ref_directory.html">PHP Directory</a></li>
+<li><a href="php_ref_error.html">PHP Error</a></li>
+<li><a href="php_ref_filesystem.html">PHP Filesystem</a></li>
+<li><a href="php_ref_filter.html">PHP Filter</a></li>
+<li><a href="php_ref_ftp.html">PHP FTP</a></li>
+<li><a href="php_ref_http.html">PHP HTTP</a></li>
+<li><a href="php_ref_libxml.html">PHP LibXML</a></li>
+<li><a href="php_ref_mail.html">PHP Mail</a></li>
+<li><a href="php_ref_math.html">PHP Math</a></li>
+<li><a href="php_ref_mysql.html">PHP MySQL</a></li>
+<li><a href="php_ref_simplexml.html">PHP SimpleXML</a></li>
+<li><a href="php_ref_string.html">PHP String</a></li>
+<li><a href="php_ref_xml.html">PHP XML</a></li>
+<li><a href="php_ref_zip.html">PHP Zip</a></li>
+<li><a href="php_ref_misc.html">PHP 杂项</a></li>
+</ul>
+<h2>PHP 测验</h2>
+<ul>
+<li>PHP Quiz</li>
+</ul>
+</div>
+<div id="selected">
+<h2>建站手册</h2>
+<ul>
+<li><a href="../site/">网站构建</a></li>
+<li><a href="../w3c/">万维网联盟</a></li>
+<li><a href="http://e.v-get.com/w3c/">W3CSchool 教程</a></li>
+<li><a href="../quality/">网站品质</a></li>
+<li><a href="../semweb/">语义网</a></li>
+<li><a href="../hosting/">网站主机</a></li>
+</ul>
+<h2><a href="http://e.v-get.com/w3c/" class="f13">W3CSchool 教程</a></h2><div class="a120x90"><script type="text/javascript">var cpro_id="u1210867";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div></div>
+</div>
+<div id="maincontent">
+<h1>PHP array_rand() 函数</h1>
+<div class="backtoreference">
+<p><a href="php_ref_array.html">PHP Array 函数</a></p>
+</div>
+<div>
+<h2>定义和用法</h2>
+<p>array_rand() 函数从数组中随机选出一个或多个元素，并返回。</p>
+<p>第二个参数用来确定要选出几个元素。如果选出的元素不止一个，则返回包含随机键名的数组，否则返回该元素的键名。</p>
+<p class="note"><span>注释：</span>自 PHP 4.2.0 起，不再需要用 srand() 或 mt_srand() 函数给随机数发生器播种，现已被自动完成。</p>
+<h3>语法</h3>
+<pre>array_rand(array,number)</pre>
+<table class="dataintable">
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+<tr>
+<td>array</td>
+<td>必需。规定输入的数组参数。</td>
+</tr>
+<tr>
+<td>number</td>
+<td>可选。默认是 1。规定返回多少个随机的元素。</td>
+</tr>
+</table>
+</div>
+<div>
+<h2>例子 1</h2>
+<pre>&lt;?php
+$a=array(&#34;a&#34;=&gt;&#34;Dog&#34;,&#34;b&#34;=&gt;&#34;Cat&#34;,&#34;c&#34;=&gt;&#34;Horse&#34;);
+print_r(array_rand($a,1));
+?&gt;</pre>
+<p>输出：</p>
+<pre>b</pre>
+</div>
+<div>
+<h2>例子 2</h2>
+<p>带有字符串键的数组：</p>
+<pre>&lt;?php
+$a=array(&#34;a&#34;=&gt;&#34;Dog&#34;,&#34;b&#34;=&gt;&#34;Cat&#34;,&#34;c&#34;=&gt;&#34;Horse&#34;);
+print_r(array_rand($a,2));
+?&gt;</pre>
+<p>输出：</p>
+<pre>Array ( [0] =&gt; c [1] =&gt; b )</pre>
+</div>
+<div class="backtoreference">
+<p><a href="php_ref_array.html">PHP Array 函数</a></p>
+</div>
+</div>
+<div id="sidebar">
+<div class="rs"></div>
+<div id="tools">
+<h5 id="tools_reference"><a href="php_ref.html">PHP 参考手册</a></h5>
+<h5 id="tools_quiz"><a href="php_quiz.html">PHP 测验</a></h5>
+</div>
+<div class="a120x600"><script type="text/javascript">var cpro_id="u1293136";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div><div class="b"></div>
+</div>
+</body>
+</html>

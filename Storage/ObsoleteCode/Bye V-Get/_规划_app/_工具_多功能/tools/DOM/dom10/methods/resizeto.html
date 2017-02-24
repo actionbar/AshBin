@@ -1,0 +1,103 @@
+<html xmlns:rdl>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<script src="rdl_method.js"></script>
+<base target="_self">
+</head>
+<body>
+
+<script>
+
+//collFriendObjects=new Array();
+//collFriendProperties=new Array();
+//collFriendMethods=new Array();
+//collFriendEvents=new Array();
+//collFriendCollections=new Array();
+
+collFriendObjects=new Array(
+'window'
+);
+
+collFriendMethods=new Array(
+'resizeBy'
+);
+
+collFriendEvents=new Array(
+'onresize'
+);
+
+collFriendProperties=new Array(
+'screenLeft','screenTop','availHeight','availWidth','height','width'
+);
+
+//collIE40=new Array();
+//collIE50=new Array();
+//collIE55=new Array();
+//collIE60=new Array();
+
+collIE40=new Array(
+'window'
+);
+
+//sStyle='';
+
+sScript=
+'<script>\n'+
+'var iToHeight=iToWidth=300;\n'+
+'var iFromHeight=210;var iFromWidth=240;\n'+
+'function rdl_doResize(){\n'+
+'if (iToHeight==iFromHeight && iToWidth==iFromWidth) return;\n'+
+'if (iFromHeight<iToHeight) iFromHeight++;else if (iFromHeight!=iToHeight) iFromHeight--;\n'+
+'if (iFromWidth<iToWidth) iFromWidth++;else if (iFromWidth!=iToWidth) iFromWidth--;\n'+
+'window.resizeTo(iFromWidth,iFromHeight);\n'+
+'window.setTimeout("rdl_doResize()",1);\n'+
+'}\n'+
+'<\/script>\n';
+
+sCode=
+'<div>点击下面的按钮将改变窗口的尺寸。<\/div><br>\n'+
+'<input type=button value=" 改变尺寸 " onclick="rdl_doResize();">\n';
+
+iWinWidth=240;
+
+iWinHeight=210;
+
+</script>
+
+<div id=idContent>
+
+<div id=idContentTitle><span id=idTitleName>resizeTo</span>版本：DHTML Object Model　返回值：无</div>
+
+<div class=cssColumnTitle>语法：</div>
+<div>
+<a href="../objects/window.html"><b>window</b></a><b> . resizeTo ( </b><i>iWidth</i><b> , </b><i>iHeight</i><b> ) </b>
+
+</div>
+
+<div class=cssColumnTitle>参数：</div>
+<table>
+<tr><td nowrap><i> iWidth </i></td><td nowrap><b>:</b></td>
+<td><b>必选项</b>。整数(Integet)。指定窗口宽度。单位为像素(<b> px </b>)。</td></tr>
+<tr><td nowrap><i> iHeight </i></td><td nowrap><b>:</b></td>
+<td><b>必选项</b>。整数(Integet)。指定窗口高度。单位为像素(<b> px </b>)。</td></tr>
+</table>
+
+<div class=cssColumnTitle>返回值：</div>
+<div>
+无
+</div>
+
+<div class=cssColumnTitle>说明：</div>
+<div>
+根据指定的宽度和高度改变窗口尺寸。<br>
+此方法不可用于对话框窗口。要改变对话框窗口的尺寸，请使用<a href="../properties/dialogheight.html"> dialogHeight </a> , <a href="../properties/dialogwidth.html"> dialogWidth </a> , <a href="../properties/dialogtop.html"> dialogTop </a> , <a href="../properties/dialogleft.html"> dialogLeft </a>属性。
+</div>
+
+
+
+</div>
+</body>
+</html>
+
+<!-- Part of RDL(TM) - Written by Rain1977 
+HomeSite: http://www.dhtmlet.com  E-Mail: dhtmlet@hotmail.com -->

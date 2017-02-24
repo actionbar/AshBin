@@ -1,0 +1,112 @@
+*{padding:0;margin:0}
+body {background:#fff;font-size:12px;color: #333;font-family:Tahoma,Arial;}
+ul{list-style-position:outside;list-style-type: none}
+/*ul是无序的，ol是有序的*/
+li{white-space:nowrap;text-overflow:ellipsis;overflow: hidden;}/*li中内容超过长度后以省略号显示的方法*/
+a{cursor:pointer}
+li,p{line-height:22px}
+select,input,img{vertical-align:middle;}
+a{text-decoration:none}/*发现所有大型"资讯类"网站，都默认链接全部下划线；物流不是资讯类，不需要下划线；资讯类一律用下划线，增加浏览量*/
+.w3 a,.b1{color:#00c;text-decoration:underline}
+.t a, .g a, .n a {color:#000}
+a:hover, .b2,.w3 .b2{color: #c00;text-decoration:underline}
+.br{color:#f00}
+img {border-width:0;}
+.p{float:left}
+.q{float:right}
+.o{clear:both}
+h2{line-height:28px;height:28px;font-weight:400;font-size:14px;}
+
+.f2{color:#c00}
+.f9{color:#f00;font-weight:800}
+.fr{text-align:right}
+.fc{text-align:center}
+.fl{text-align:left}
+.f3{color:#888}
+
+.w,.tc{margin: 0px auto; overflow: hidden; width: 990px}
+.t,.th,.s span,.ss,.nr,.nl{background:url(i.png)}
+.lt h3{ background:url(bg_hotsale.gif)}
+.rii{ background:url(icon2011111801.png)}
+
+/*这个可以被很多利用*/
+/*H头部css*/
+.t{margin: 0px auto;LINE-HEIGHT: 26px;HEIGHT: 26px;border-bottom:#dadada 1px solid}
+.t a{padding:0 5px}
+.i{height:75px;width:200px}
+.s span{margin-top:12px;width:418px;height:30px;background-position:0 -357px;display:inline-block;background:url(http://localhost:8080/v-get.com/www/i-1_0_0.png) no-repeat -304px 0;border:2px solid #d00;border-color:#d90000 #c50000 #b90000 #cd0000;vertical-align:top}
+#k{width:350px;height:28px; background:none; border:none}
+.ss{height:30px;width:68px; border:none;background-position:0 -395px;font-family:"Tahoma","SimSun"; font-weight:800;color:#333; cursor:pointer}
+
+.nr{ background-position:0 -315px; width:753px}
+.nr a,.n .nl{display:inline-block; height:40px;line-height:40px;width:85px; text-align:center; font-weight:800;font-size:14px; color:#fff; text-decoration:none}
+
+.nr a:hover,.nr .no{background:url(i.png);background-position:0 -160px}
+.n .nl{background-position:0 -427px;width:237px;}
+.n .nl:hover{background-position:0 -315px}
+
+
+.l{width:233px}
+#d {position:absolute;background:#fcf4ea; border:#d00000 2px solid; border-top-width:0; padding:3px 0; display:none}
+#d h2{padding-right:6px;border-bottom:#fff 1px solid;border-top:#fcf4ea 1px solid;cursor:pointer}
+#d .oh{ background:#fefefe; border-top:#d00000 1px solid;border-bottom:#d00000 1px solid;position:relative;z-index:9;width:226px;padding:0px;}
+.or{position:absolute; top:3px;left:225px; background:#fefefe;padding:9px;width:500px; border:#d00000 1px solid;z-index:8; display:none;height:397px}
+#d a{margin:0 6px 0 9px}
+#d em{float:left; font-style:normal}
+#d h2 span{font-size:12px;float:right}
+#d h2 span a{color:#777}
+#d h2{ text-align:center;}
+#d ul{padding:9px 0}
+#d li{height:26px;line-height:26px;padding-left:15px}
+#d li a{color:#005EA7}
+
+.lt{background:#fffff5; border:#d00 1px solid;width:230px;padding:2px}
+.lt a{padding-left:7px}
+.lt h2{ background:#c00;padding-left:5px}
+.lt h3{ background-position:0 -655px;height:22px;line-height:22px; border:#EFEFEF 1px solid;padding-left:5px}
+.lt ul a{ display:inline-block;width:105px}
+.lt ul a:hover{ background:#ddd}
+
+
+
+.r{width:743px}
+.r2 a{ text-decoration:none}
+.r2 dl{width:743px; clear:both; border-top:#E7CDAE 1px dashed}
+dl,dt,dd{line-height:34px}
+.r2 dt{width:99px; font-weight:800; overflow:hidden;text-align:right}
+.r2 dd{width:644px; position:relative;float:right}
+dd a{margin:0 9px; color:#005aa0;}
+dd a:hover,.r2o{ background:#4598D2;color:#fff}
+.r2t dl,.r2t dt,.r2t dd{line-height:24px}
+#cb div{float:left;width:106px;}
+
+
+#c li{width:185px;white-space:normal; text-align:center; float:left}
+#c li img{width:160px;height:160px;padding:10px;border:#fff 1px solid}
+.ct{height:38px;line-height:38px;border-top:#c00 2px solid}
+.ct a{margin:3px;padding:5px 12px; border:#CCC 1px solid}
+.ct .cto{ background:#c00;color:#fff;font-weight:800;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.b{ text-align:center;margin-bottom:29px}
+.b a{margin:0 5px}
+.bb img{ height:40px;width:112px;margin:9px 0}

@@ -1,0 +1,430 @@
+<html>
+<head>
+<title>相对位置项参数</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+
+<link rel = stylesheet href = "image/style.css">
+</head>
+<body bgcolor="#ffffff">
+<table width="688" border="0" cellspacing="0" cellpadding="0" align="center">
+  <tr bgcolor="EEEEEE"> 
+    <td height="22"><a href="index.htm">主页</a></td>
+  </tr>
+</table><br>
+<table border="0" cellpadding="0" cellspacing="0" width="688" align="center" height="490">
+  <tr valign="top"> 
+    <td rowspan="4" width="91">&nbsp; </td>
+    <td height="68" width="131"> 
+      <p><img src="image/doc.gif"></p>
+    </td>
+    <td rowspan="4" width="18"><b></b> </td>
+    <td height="68" width="387"><img src="image/title_doc.gif"></td>
+    <td rowspan="4" width="61"> 
+      <h6>&nbsp;</h6>
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td rowspan="3" valign="top" class="pt10" align="center" width="131" bgcolor="EEEEEE"> 
+      <p>&nbsp;</p>
+      <p><font color="#FF0000">※ 17.5 相对位置项参数</font></p>
+       
+	</td>
+  </tr>
+  <tr valign="top"> 
+    <td width="387" height="308"> 
+      <table width="100%" border="0" cellpadding="0">
+        <tr> 
+          <td>
+
+           <h4><a name="_Toc467208995">17.5 相对位置项参数</a></h4>
+<p>每个相对位置项都开始于文档的一个特定位置，此位置称为位置源（location source）。通常，位置源是由绝对位置项（如果没有指定绝对项就使用根位置项）来确定的。此时，在文档中向前或向后搜索满足指定条件的第一次匹配的元素。</p>
+<p>条件是以相对位置项的参数列表给出的。这些条件参数包括要向前或向后搜索的元素号、要搜索的对象类型（元素、注释、处理指令等等）和要搜索的特性值。按下面顺序提供条件参数：</p>
+<p> 1．编号</p>
+<p> 2．类型</p>
+<p> 3．特性</p>
+<p>编号可为正或负的整数，表示从位置源处向前或向后计数。类型为要计数的对象类型，而特性则是一组特性名和要匹配的值。相对位置项可有编号；编号和类型；或编号、类型以及特性列表。</p>
+<p>出现的参数以逗号分开，并且不能加空格。例如：</p>
+<p>child(l,PERSON,FATHER,p2)</p>
+<p>不许加空格的要求是与众不同的，如果存在空格的话，就易于将XPointer接到URL的未尾。例如：</p>
+<p>http://www.theharolds.com/genealogy.xml#child(l,PERSON,FATHER,p2)</p>
+<p>如果允许有空格，则URL就像下列这样具有x-form-www-url-encoded形式：</p>
+<p><a href="http://www.theharolds.com/genealogy.xml">http://www.theharolds.com/genealogy.xml#child(l,%20PERSON</a>,</p>
+<p>%20FATHER,%20p2)</p>
+<p>在大多数情况下，相同的语法可应用于所有的七个相对位置项中。</p>
+<h5><a name="_Toc467208996">17.5.1 根据编号进行选择</a></h5>
+<p>选择的最简单的形式就是根据编号。相对位置项的第一个参数是所指向的节点索引。正值表示在文档中向前计数，而负值则表示向后计数。还可以使用all关键字来指向与条件相匹配的所有的节点。</p>
+<p><b>17.5.1.1 向前编号</b></p>
+<p>例如，在清单17-1中，FAMILYTREE为根元素，它有14个直系子元素、12个PERSON元素和2个FAMILY元素。按顺序为：</p>
+<p><a href="http://www.theharolds.com/genealogy.xml">http://www.theharolds.com/genealogy.xml#root().child(l)</a></p>
+<p><a href="http://www.theharolds.com/genealogy.xml">http://www.theharolds.com/genealogy.xml#root().child(2)</a></p>
+<p><a href="http://www.theharolds.com/genealogy.xml">http://www.theharolds.com/genealogy.xml#root().child(3)</a></p>
+<p><a href="http://www.theharolds.com/genealogy.xml">http://www.theharolds.com/genealogy.xml#root().child(4)</a></p>
+<p><a href="http://www.theharolds.com/genealogy.xml">http://www.theharolds.com/genealogy.xml#root().child(5)</a></p>
+<p><a href="http://www.theharolds.com/genealogy.xml">http://www.theharolds.com/genealogy.xml#root().child(6)</a></p>
+<p><a href="http://www.theharolds.com/genealogy.xml">http://www.theharolds.com/genealogy.xml#root().child(7)</a></p>
+<p><a href="http://www.theharolds.com/genealogy.xml">http://www.theharolds.com/genealogy.xml#root().child(8)</a></p>
+<p><a href="http://www.theharolds.com/genealogy.xml">http://www.theharolds.com/genealogy.xml#root().child(9)</a></p>
+<p><a href="http://www.theharolds.com/genealogy.xml">http://www.theharolds.com/genealogy.xml#root().child(10)</a></p>
+<p><a href="http://www.theharolds.com/genealogy.xml">http://www.theharolds.com/genealogy.xml#root().child(ll)</a></p>
+<p><a href="http://www.theharolds.com/genealogy.xml">http://www.theharolds.com/genealogy.xml#root().child(12)</a></p>
+<p><a href="http://www.theharolds.com/genealogy.xml">http://www.theharolds.com/genealogy.xml#root().child(13)</a></p>
+<p><a href="http://www.theharolds.com/genealogy.xml">http://www.theharolds.com/genealogy.xml#root().child(14)</a></p>
+<p>更大的编号（如http://www.theharolds.com/genealogy.xml #root(). child(15)）不指向任何地方，只是个空URL。</p>
+<p>要对文档中的所有元素而不仅仅是根元素的直系子元素进行计数，可使用descendant来代替child。表17-2显示清单17-1前四个descendant的XPointer以及它们所指向的内容。尤其要注意，root().descendant(1)指向完整的第一个PERSON元素，包括其子元素，而不仅仅是PERSON的开始标记。</p>
+<p align="center">表17-2 根元素的前四个子代元素</p>
+<p> 
+<center>
+  <table BORDER cellspacing=1 cellpadding=7 width=511>
+    <tr> 
+      <td width="37%" valign="MIDDLE"> 
+        <p>XPointer 
+      </td>
+      <td width="63%" valign="MIDDLE"> 
+        <p>指向于 
+      </td>
+    </tr>
+    <tr> 
+      <td width="37%" valign="MIDDLE"> 
+        <p>root().descendant(1) 
+      </td>
+      <td width="63%" valign="TOP"> 
+        <p>&lt;PERSON ID=”p1”&gt;</p>
+        <p> &lt;NAME&gt;Domeniquette Celeste</p>
+        <p> Baudean&lt;/NAME&gt;</p>
+        <p> &lt;BORN&gt;11 Feb 1858&lt;/BORN&gt;</p>
+        <p> &lt;DIED&gt;12 Apr 1898&lt;/DIED&gt;</p>
+        <p> &lt;SPOUSE IDREF=”p2”/&gt;</p>
+        <p> &lt;/PERSON&gt; 
+      </td>
+    </tr>
+    <tr> 
+      <td width="37%" valign="TOP"> 
+        <p>root().descendant(2) 
+      </td>
+      <td width="63%" valign="TOP"> 
+        <p>&lt;NAME&gt;Domeniquette Celeste Baudean&lt;/NAME&gt; 
+      </td>
+    </tr>
+    <tr> 
+      <td width="37%" valign="TOP"> 
+        <p>root().descendant(3) 
+      </td>
+      <td width="63%" valign="TOP"> 
+        <p>&lt;BORN&gt;11 Feb 1858&lt;/BORN&gt; 
+      </td>
+    </tr>
+    <tr> 
+      <td width="37%" valign="TOP"> 
+        <p>root().descendant(4) 
+      </td>
+      <td width="63%" valign="TOP"> 
+        <p>&lt;DIED&gt;12 Apr 1898&lt;/DIED&gt; 
+      </td>
+    </tr>
+  </table>
+</center>
+<p>&nbsp;</p>
+<p><b>17.5.1.2 向后编号</b></p>
+<p>负号可用来从当前元素向后移到所指的项上。在child和descendant情况下，从元素的结束标记向后计数，而不是从开始标记向前计数。例如，下面的XPointer选择紧随ID为f1的元素之前的元素：</p>
+<p><a href="http://www.theharolds.com/genealogy.xml">http://www.theharolds.com/genealogy.xml#id(fl).following(-1)</a></p>
+<p>在本例中，此XPointer是指Honore Bellau的PERSON元素。但是，一般地说，如果有可能时就不要使用负值，并且使用另外的选择符，那么链接代码会更加明了。例如，下面的XPointer选择与上面相同的元素：</p>
+<p><a href="http://www.theharolds.com/genealogy.xml">http://www.theharolds.com/genealogy.xml#id(fl).preceding(l)</a></p>
+<p>在树形选择符（如child和descendant）中，负值表示应从父元素的结尾而不是开始处计数。例如，下面指向文档中的最后PERSON元素：</p>
+<p><a href="http://www.theharolds.com/genealogy.xml">http://www.theharolds.com/genealogy.xml#root().child(-1,person)</a></p>
+<p>下面指向文档中的倒数第二个PERSON元素：</p>
+<p><a href="http://www.theharolds.com/genealogy.xml">http://www.theharolds.com/genealogy.xml#root().child(2,person)</a></p>
+<p>表17-3显示清单17-1的最后四个descendant的XPointer及其所指向的内容。注意，元素的开始顺序是由结束标记而不是开始标记确立的。</p>
+<p align="center">表17-3 根元素的最后四个子代元素</p>
+<p> 
+<center>
+  <table BORDER cellspacing=1 cellpadding=7 width=417>
+    <tr> 
+      <td width="45%" valign="TOP"> 
+        <p>Xpointer 
+      </td>
+      <td width="55%" valign="TOP"> 
+        <p>指向于 
+      </td>
+    </tr>
+    <tr> 
+      <td width="45%" valign="MIDDLE"> 
+        <p>Root().descendant(1) 
+      </td>
+      <td width="55%" valign="TOP"> 
+        <p>&lt;FAMILY ID=”f2”&gt;&lt;HUSBAND</p>
+        <p> IDREF=”p7”/&gt;</p>
+        <p> &lt;WIFE IDREF=”p6”/&gt;</p>
+        <p> &lt;/FAMILY&gt; 
+      </td>
+    </tr>
+    <tr> 
+      <td width="45%" valign="MIDDLE"> 
+        <p>Root().descendant(2) 
+      </td>
+      <td width="55%" valign="TOP"> 
+        <p>&lt;WIFE IDREF=”p6”/&gt; 
+      </td>
+    </tr>
+    <tr> 
+      <td width="45%" valign="MIDDLE"> 
+        <p>Root().descendant(3) 
+      </td>
+      <td width="55%" valign="TOP"> 
+        <p>&lt;HUSBAND IDREF=”p7”/&gt; 
+      </td>
+    </tr>
+    <tr> 
+      <td width="45%" valign="MIDDLE"> 
+        <p>root().descendant(4) 
+      </td>
+      <td width="55%" valign="TOP"> 
+        <p>&lt;FAMILY ID=”f1”&gt;</p>
+        <p> &lt;HUSBAND IDREF=”p2”/&gt;</p>
+        <p> &lt;WIFE IDREF=”p1”/&gt;</p>
+        <p> &lt;CHILD IDREF=”p3”/&gt;</p>
+        <p> &lt;CHILD IDREF=”p5”/&gt;</p>
+        <p> &lt;CHILD IDREF=”p6”/&gt;</p>
+        <p> &lt;CHILD IDREF=”p8”/&gt;</p>
+        <p> &lt;CHILD IDREF=”p10”/&gt;</p>
+        <p> &lt;CHILD IDREF=”p12”/&gt;</p>
+        <p> &lt;/FAMILY&gt; 
+      </td>
+    </tr>
+  </table>
+</center>
+<p><b>17.5.1.3 all</b></p>
+<p>除了可以指定要选择的编号之外，还可允褂霉丶謅ll，它指向与某个条件相匹配的所有节点。例如，下面的规则是指ID为f1的元素的所有子元素：</p>
+<p><a href="http://www.theharolds.com/genealogy.xml">http://www.theharolds.com/genealogy.xml#id(fl).child(all)</a></p>
+<p>也就是说，指向：</p>
+<p>&lt;HUSBAND IDREF=”p2”/&gt;</p>
+<p>&lt;WIFE IDREF=”pl”/&gt;</p>
+<p>&lt;CHILD IDREF=”p3”/&gt;</p>
+<p>&lt;CHILD IDREF=”p5”/&gt;</p>
+<p>&lt;CHILD IDRFF=”p6”/&gt;</p>
+<p>&lt;CHILD IDREF=”p8”/&gt;</p>
+<p>&lt;CHILD IDREF=”pl0”/&gt;</p>
+<p>&lt;CHILD IDREF=”pl2”/&gt;</p>
+<h5><a name="_Toc467208997">17.5.2 根据节点类型进行选择</a></h5>
+<p>上面的规则选择文档中的特定元素。但是，有时可能要选择第五个WIFE或第三个PERSON元素，而不考虑其他类型的元素。如果文档发生变化，那么只根据实例的编号来选择这些元素就会出现错误。在不适当的位置添加或删除一个元素，就会误调只依赖于实例编号的所有链接。</p>
+<p>有时，可能要选择处理指令、注释、CDATA段或文档中的特定原始文本。只要在相对位置项&#0;&#0;编号之后&#0;&#0;加入第二个参数，以指定对哪个节点进行计数，并隐式地忽略哪个节点，就可以实现这一目的。第二个参数可以是要指向的元素名称或表17-4中列出的六个关键字之一：</p>
+<p align="center">表17-4 相对位置项的第二个可能参数</p>
+<p> 
+<center>
+  <table BORDER cellspacing=1 cellpadding=7 width=451>
+    <tr> 
+      <td width="22%" valign="TOP"> 
+        <p>类型 
+      </td>
+      <td width="78%" valign="TOP"> 
+        <p>匹配 
+      </td>
+    </tr>
+    <tr> 
+      <td width="22%" valign="TOP"> 
+        <p>#element 
+      </td>
+      <td width="78%" valign="TOP"> 
+        <p>任何元素 
+      </td>
+    </tr>
+    <tr> 
+      <td width="22%" valign="TOP"> 
+        <p>#pi 
+      </td>
+      <td width="78%" valign="TOP"> 
+        <p>任何处理指令 
+      </td>
+    </tr>
+    <tr> 
+      <td width="22%" valign="TOP"> 
+        <p>#comment 
+      </td>
+      <td width="78%" valign="TOP"> 
+        <p>任何元素 
+      </td>
+    </tr>
+    <tr> 
+      <td width="22%" valign="TOP"> 
+        <p>#text 
+      </td>
+      <td width="78%" valign="TOP"> 
+        <p>任何非标记的字符数据 
+      </td>
+    </tr>
+    <tr> 
+      <td width="22%" valign="TOP"> 
+        <p>#CDATA 
+      </td>
+      <td width="78%" valign="TOP"> 
+        <p>CDATA段 
+      </td>
+    </tr>
+    <tr> 
+      <td width="22%" valign="TOP"> 
+        <p>#all 
+      </td>
+      <td width="78%" valign="TOP"> 
+        <p>上面的所有内容 
+      </td>
+    </tr>
+    <tr> 
+      <td width="22%" valign="TOP"> 
+        <p>名称 
+      </td>
+      <td width="78%" valign="TOP"> 
+        <p>带有指定名称的元素 
+      </td>
+    </tr>
+  </table>
+</center>
+<p></p>
+<p>大部分选择规则包括搜索的元素类型。我们已经看到了这样的例子，如root(). child(6, PERSON)选择根元素的第六个PERSON子元素。如果添加或删除一个PERSON元素，这样的选择规则就可能引用错误的元素，但至少它是一个PERSON元素，而不会像FAMILY这样的其他元素。</p>
+<p>也可以只指定类型并省略实例编号（但不能省略逗号）。例如，下面的URI选择文档中的所有PERSON元素，但不考虑位置：</p>
+<p>http://www.theharolds.com/genealogy.xml#root().child(,PERSON)</p>
+<p>特别要注意PERSON前面的单个逗号，它是由当前XPointer规范版本的BNF语法规则所要求的。其存在使人们阅读XPointer变得较困难，但可使程序解析XPointer更容易些。</p>
+<p>当所有的PERSON元素都被作为对象时，应用程序确切地做什么事，就由应用程序来决定了。通常，由于有多个目标元素存在，不会像只是加载文档，并在目标元素中定位此文档那样容易了。如果应用程序使用一个代码段来决定加载文档中的哪一部分，那么此程序将加载指定类型的所有元素。</p>
+<p>但是，这种情况是不常有的。在大多数时候，根据类型来选择只用于进一步限制被选择的元素，直到只有一个元素被选中为止。</p>
+<p> 
+<p><b>17.5.2.1 名称</b></p>
+<p></p>
+<p>相对位置项的第二个参数最普遍的用途就是提供元素类型的名称。例如，假如要指向根元素的子元素为第一个FAMILY的元素，但并不知道它是如何与PERSON元素混杂在一起的。下面的规则就可实现这一目的：</p>
+<p><a href="http://www.theharolds.com/genealogy.xml">http://www.theharolds.com/genealogy.xml</a>#root().child(1,FAMILY)</p>
+<p>当把选择规则链式连接时，为种方式功能就特别强大。例如，下面指向第一个FAMILY元素的第二个CHILD元素：</p>
+<p><a href="http://www.theharolds.com/genealogy.xml">http://www.theharolds.com/genealogy.xml#root().child(l,FAMILY)</a>.</p>
+<p>child(2,CHILD)</p>
+<p>事实上，指定所选择的元素类型，比不指定更常用。尤其是对于那些与层次毫无关系（如following和preceding）的相对位置项更是如此。</p>
+<p> 
+<p><b>17.5.2.2 #element</b></p>
+<p></p>
+<p>如果不指定第二个参数，那么匹配元素，但不匹配处理指令、注解、CDATA部分、字符数据等等。使用关键字#element作为第二个参数也可获得同样的结果。例如，下面这两个URI是相同的：</p>
+<p>http://www.theharolds.com/genealogy.xml#id(f2).preceding(l)</p>
+<p>http://www.theharolds.com/genealogy.xml#id(f2).preceding</p>
+<p>(1,#element)</p>
+<p>使用#element的主要理由是以后可以使用第三个参数来与特性相匹配。</p>
+<p> 
+<p><b>17.5.2.3 #text</b></p>
+<p></p>
+<p>#text参数选择元素内部的原始文本，最常与混合内容一起使用。例如，考虑下面的来自于第12章中的清单12-3的CITATION元素：</p>
+<p>&lt;CITATION CLASS="TURING" ID="C2"&gt;</p>
+<p> &lt;AUTHOR&gt;Turing, Alan M.&lt;/AUTHOR&gt;</p>
+<p> "&lt;TITLE&gt;On Computable Numbers,</p>
+<p> With an Application to the Entscheidungs problem&lt;/TITLE&gt;"</p>
+<p> &lt;JOURNAL&gt;</p>
+<p> Proceedings of the London Mathematical Society&lt;/JOURNAL&gt;,</p>
+<p> &lt;SERIES&gt;Series 2&lt;/SERIES&gt;,</p>
+<p> &lt;VOLUME&gt;42&lt;/VOLUME&gt;</p>
+<p> (&lt;YEAR&gt;1936&lt;/YEAR&gt;):</p>
+<p> &lt;PAGES&gt;230-65&lt;/PAGES&gt;.</p>
+<p>&lt;/CITATION&gt;</p>
+<p>下面的XPointer引用TITLE元素前的引号：</p>
+<p>id(C2).child(2,#text)</p>
+<p>在这段代码中第一个文本节点是&lt;CITATION CLASS="TURING" ID="C2"&gt;和&lt;AUTHOR&gt;之间的空格。从技术上说，这个XPointer引用&lt;/AUTHOR&gt;和&lt;TITLE&gt;之间的所有文本，包括空格，并且不只包括引号。</p>
+<p><img src="Image/BK000217-34.gif" width=53 height=50 align="left">指向文本节点的XPointer难以处理。我建议如有可能避免这样做，正如避免混合内容一样。当然，这种情况并非总是能够避免的，尤其是如果需要指向其他作者编写的部分文档，而他们又不遵守这种最好的习惯。</p>
+<p>因为字符数据不包含子元素，此外，相对位置项可能没有与紧随选择文本节点的XPointer之后的XPointer相接。由于字符数据没有特性，因此，在#text之后可以不使用特性参数。</p>
+<p> 
+<p><b>17.5.2.4 #cdata</b></p>
+<p></p>
+<p>#cdata参数指定CDATA段（更确切地说是CDATA段中的文本）为要选择的内容。例如，下面的XPointer引用文档中第二个CDATA段：</p>
+<p>root().following(2,#cdata)</p>
+<p>由于CDATA段不能有子段，此外相对位置项可能没有与紧随选择CDATA段的XPointer之后的XPointer相接。由于CDATA段没有特性，因此，在#cdata之后可以不用特性参数。</p>
+<p> 
+<p><b>17.5.2.5 #pi</b></p>
+<p></p>
+<p>在极其偶然的情况下，可能要选择处理指令而不是元素。在此情况下，可使用#pi作为位置项的第二个参数。例如，下面的XPointer选择文档中第三个BEAN元素中的第二个处理指令：</p>
+<p>root().descendant(3,BEAN).child(2,#pi)</p>
+<p>由于处理指令不包含特性或元素，所以不能在选择处理指令的第一个项之后加入另外的相对位置项。但是，可以使用string()位置项来选择处理指令的部分文本。</p>
+<p> 
+<p><b>17.5.2.6 #comment</b></p>
+<p></p>
+<p>XPointer指向注解，与指向处理指令的方式是完全相同的。严格的#comment原样用于位置项的第二个参数。例如，下面的XPointer指向清单17-1中的第三个注解：</p>
+<p>http://www.theharolds.com/genealogy.xml#descendant(3,#comment)</p>
+<p>由于注解不包含特性或元素，因此，不能在选择处理指令的第一项之后添加另外的相对位置项。可以使用string()位置项来选择处理指令的部分文本。</p>
+<p> 
+<p><b>17.5.2.7 #all</b></p>
+<p></p>
+<p>在极其偶然的情况下，可能希望选择文档中一特定的节点，而不管它是否是一个元素、原始字符数据、一个处理指令、一个CDATA段或注释。我认为要这样做的唯一理由是，迭代通过文档中或是元素中的所有节点。使用#all作为相对位置项的第二个参数，可以忽略匹配内容的类型。例如，考查第12章清单12-3的代码段：</p>
+<p>&lt;CITATION CLASS="TURING" ID="C3"&gt;</p>
+<p> &lt;AUTHOR&gt;Turing, Alan M.&lt;/AUTHOR&gt;</p>
+<p> "&lt;TITLE&gt;Computing Machinery &amp;amp; Intelligence&lt;/TITLE&gt;"</p>
+<p> &lt;JOURNAL&gt;Mind&lt;/JOURNAL&gt;</p>
+<p> &lt;VOLUME&gt;59&lt;/VOLUME&gt;</p>
+<p> (&lt;MONTH&gt;October&lt;/MONTH&gt;</p>
+<p> &lt;YEAR&gt;1950&lt;/YEAR&gt;):</p>
+<p> &lt;PAGES&gt;433 60&lt;/PAGES&gt;</p>
+<p>&lt;/CITATION&gt;</p>
+<p>表17-5列出四个XPointer，它们只从CITATION元素开始往下对节点计数，也列出这几个XPointer所指向的内容。</p>
+<p align="center">表17-5 CITATION元素的前四个XPointer节点</p>
+<p>
+<center>
+  <table BORDER cellspacing=1 cellpadding=7 width=464>
+    <tr>
+      <td width="44%" valign="TOP"> 
+        <p>Xpointer
+      </td>
+      <td width="56%" valign="TOP"> 
+        <p>指向于
+      </td>
+    </tr>
+    <tr>
+      <td width="44%" valign="TOP"> 
+        <p>id(C3).following(l,#all)
+      </td>
+      <td width="56%" valign="TOP"> 
+        <p>&lt;CITATION CLASS="TURING" ID="C3"&gt;和&lt;AUTHOR&gt;之间的空格
+      </td>
+    </tr>
+    <tr>
+      <td width="44%" valign="TOP"> 
+        <p>id(C3).following(2,#all)
+      </td>
+      <td width="56%" valign="TOP"> 
+        <p>&lt;AUTHOR&gt;Turing, Alan M.&lt;/AUTHOR&gt;
+      </td>
+    </tr>
+    <tr>
+      <td width="44%" valign="TOP"> 
+        <p>id(C3).following(3,#all)
+      </td>
+      <td width="56%" valign="TOP"> 
+        <p>Turing, Alan M.
+      </td>
+    </tr>
+    <tr>
+      <td width="44%" valign="TOP"> 
+        <p>id(C3).following(4,#all)
+      </td>
+      <td width="56%" valign="TOP"> 
+        <p>"
+      </td>
+    </tr>
+  </table>
+</center>
+<p></p>
+<h5><a name="_Toc467208998">17.5.3 根据特性进行选择</a></h5>
+<p>可以将第三个和第四个参数加到相对位置项中，以根据特性指向元素。第三个参数为特性名。第四个参数为特性值。例如，要找到文档http://www.theharolds.com 
+  /genealogy.xml中的第一个PERSON元素，并且其FATHER特性为Jean Francois Bellau(ID p2)，则可以这样来编写：</p>
+<p>root().child(1,PERSON,FATHER,p2)</p>
+<p>如果包括第三个参数，则必须包括第四个参数。不能只比较特性名，而不比较特性值。但是，可以使用星号作为名称或值，表示与任何内容进行匹配。设置第三个参数为星号（*），表示可允许任何特性名。例如，下面的XPointer选择任何一个特性值为p2的所有元素：</p>
+<p>root().child(all,#element,*,p2)</p>
+<p>下面的规则选择文档中特性值为p2的PERSON元素，而不管此特性是以FATHER、MOTHER、ID还是其他对象出现。</p>
+<p>root().child(l,PERSON,*,p2)</p>
+<p>在清单17-1中，上面选择的是Jean Francois Bellau的PERSON元素。</p>
+<p>将第四个参数设置为星号（*）表示允许任何值，包括从DTD的ATTLIST声明中读取的缺省值。例如，下面的规则选择文档中FATHER特性的第一个元素：</p>
+<p>root().child(l,#element,FATHER,*)</p>
+<p>在清单17-1中，上面的规则选择的是Elodie Bellau的PERSON元素。</p>
+<p>还可以使用#IMPLIED作为第四个参数，以比较既无直接指定值也无缺省设置值的特性。例如，下面的规则寻找无FATHER特性的第一个PERSON元素。</p>
+<p>root().child(1,PERSON,FATHER,#IMPLIED)</p>
+<p>在清单17-1中，上面的规则选择的是Domeniquette Celeste Baudean的PERSON元素。</p>
+<p>特性参数只对选择元素的相对位置项有效。当第二个参数为#text、#CDATA、#pi或#comment时，就不能使用特性参数，这是因为这些节点没有特性。</p>
+ 
+<a href='551.htm'>&lt;&lt;上一篇</a>&nbsp;&nbsp;<a href='566.htm'>下一篇&gt;&gt;</a></td>
+        </tr>
+      </table>
+      <p>&nbsp; </p>
+    </td>
+  </tr>
+</table>
+
+</body>
+
+</html>

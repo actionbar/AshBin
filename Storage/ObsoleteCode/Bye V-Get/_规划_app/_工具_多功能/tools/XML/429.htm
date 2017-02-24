@@ -1,0 +1,108 @@
+<html>
+<head>
+<title>记号</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+
+<link rel = stylesheet href = "image/style.css">
+</head>
+<body bgcolor="#ffffff">
+<table width="688" border="0" cellspacing="0" cellpadding="0" align="center">
+  <tr bgcolor="EEEEEE"> 
+    <td height="22"><a href="index.htm">主页</a></td>
+  </tr>
+</table><br>
+<table border="0" cellpadding="0" cellspacing="0" width="688" align="center" height="490">
+  <tr valign="top"> 
+    <td rowspan="4" width="91">&nbsp; </td>
+    <td height="68" width="131"> 
+      <p><img src="image/doc.gif"></p>
+    </td>
+    <td rowspan="4" width="18"><b></b> </td>
+    <td height="68" width="387"><img src="image/title_doc.gif"></td>
+    <td rowspan="4" width="61"> 
+      <h6>&nbsp;</h6>
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td rowspan="3" valign="top" class="pt10" align="center" width="131" bgcolor="EEEEEE"> 
+      <p>&nbsp;</p>
+      <p><font color="#FF0000">※ 11.1 记号</font></p>
+       
+	</td>
+  </tr>
+  <tr valign="top"> 
+    <td width="387" height="308"> 
+      <table width="100%" border="0" cellpadding="0">
+        <tr> 
+          <td>
+
+<h4>11.1 记号</h4>
+<p>在XML文档中使用非XML格式数据将会遇到的第一个问题是识别数据格式，并通知XML应用程序如何读出和显示这些非XML格式数据。例如，企图在屏幕上画出MP3声音文件就是不合适宜的。</p>
+<p>在一个有限的范围内只利用一套固定的用于特定种类的外部实体的标记，就可在单一应用程序中解决外部非XML数据的读取和显示问题。例如，如果全部图片数据都通过IMAGE元素嵌入，全部声音数据通过AVDIO元素嵌入；那么开发一个知道如何处理这两个元素的浏览器并不是一件很难的事。实际上这正是HTML采用的方法，可是这样的方法不允许文档作者为了能更加清楚地描述它们所需的内容，而创建新的标记；例如PERSON元素碰巧就有一个PHOTO属性，该属性指向那人的JPEG格式图片。</p>
+<p>再者，没有一个应用程序可理解所有可能的文件格式。大多数Web浏览器可以管理和读出GIF、JPEG、PNG图像文件，或许还包括一些其他格式的图像文件；但是它们在EPS、TIFF、FITS文件前都束手无策，对于是几百种普遍和特殊的图像格式就更加力不从心了。图11-1的对话框或许再熟悉不过了。</p>
+<p align="center"><img src="Image/BK000211-14.gif" width="149" height="154"></p>
+<p align="center">图11-1 当Netscape Navigator无法识别一种文件类型时将发生的事情</p>
+<p>理想的情况是希望文档会通知应用程序外部实体的格式，因此不必去依赖应用程序来识别文件类型，或是靠具有魔力的数字或者是并不可靠的文件扩展名。此外，如果应用程序自身无法处理这种格式的图像，也可以为应用程序提供一些关于什么程序可用来显示图像的线索。</p>
+<p>记号提供了部分解决这个问题的方法（尽管不能获得很好的支持）。记号描述非XML数据的格式。在DTD中，NOTATION声明规定特殊的数据类型。DTD在与元素、属性和实体同一层次上声明记号。每个记号声明都包含一个名字和一个外部标识符，语法结构如下：</p>
+<p>&lt;!NOTATION <i>name </i>SYSTEM "<i>externalID</i>"&gt;</p>
+<p><i>name</i>为文档中使用的特殊格式的标识符；<i>external</i>ID就是用来标识记号的有意义的字符串。例如，实体GIF图像的记号可以使用MIME类型：</p>
+<p>&lt;!NOTATION GIF SYSTEM "Image/gif"&gt;</p>
+<p>也可以使用PUBLIC代替SYSTEM标识符，这样做就必须提供public ID和URL。例如：</p>
+<p>&lt;!NOTATION GIF PUBLIC </p>
+<p> "-//IETF// NONSGML Media Type image/gif//EN"</p>
+<p> "http://www.isi.edu/in-notes/iana/assignments/media-types/image/gif"&gt;</p>
+<dir> 
+  <p> 对于如何准确地作出外部标识，还存在激烈的争论。像图像/gif、文本/HTML之类的MIME类型是一种可能性；另一个建议是选择URL，或者其他的标准文档定位方式——像http://www.w3.org/TR/REC-html140/。第三个选择是使用正式的国际标准——如表示日期和时间的ISO 
+    8601标准。某些情况下，可能ISBN或者国会图书馆为文献文档编目的方法更为适用。此外还有其余许多选择。</p>
+  <p> 选取何种方式，取决于对文档生命期的期望值。例如，如果选择不普遍的格式，就不能依赖每个月都会改变的URL方式；如果希望文档在100年内都具有活跃的生命力，那么就该考虑使用在100年中都具有意义的标识符，而不是使用仅具有10年生命力的技术。</p>
+</dir>
+<p>也可以使用记号来描述插入到文档中数据。例如，研究下面的DATA元素：</p>
+<p>&lt;DATE&gt;05-07-06&lt;/DATE&gt;</p>
+<p>05-07-06到底表示哪一天？是公元1906年5月7日还是公元1906年7月5日？答案取决于是按美国格式还是欧洲格式理解这个日期。甚至也可能是2006年5月7日或者2006年7月5日。或者是公元6年5月7日，是西方鼎盛时期的罗马帝国的秋天和中国的汉朝。也有可能这个日期根本不是公元纪年，而是犹太历、穆斯林历法或者中国的农历。没有更多的信息，就无法确定其真实的意义。</p>
+<p>为了避免这样混淆不清的情况，ISO 8601标准为表示日期规定了一个精确的方法。应用这种方法，在XML中，公元2006年7月5日写为20060705，或者是如下格式：</p>
+<p>&lt;DATE&gt;20060705&lt;/DATE&gt;</p>
+<p>这种格式不是与每个人的想法都相同，对所有人都具有同等程度的迷惑性，不偏向任何一种文化（实际上仍然偏向西方传统日历）。</p>
+<p>在DTD中声明记号，并且用记号属性描述嵌入XML文档中的非XML数据的格式。接着再研究日期的例子，清单11-1定义两种日期记号：ISO 8601和美国惯用格式。然后将NOTATION类型必需的FORMAT属性添加到每一个DATE元素中，用来描述特定元素的结构。</p>
+<p>清单11-1：ISO 8601和美国惯用格式DATE元素</p>
+<p>&lt;?xml version="1.0" standalone="yes"?&gt;</p>
+<p>&lt;!DOCTYPE SCHEDULE [</p>
+<p></p>
+<p>&lt;!NOTATION ISODATE SYSTEM </p>
+<p> "http://www.iso.ch/cate/d15903.html"&gt; </p>
+<p>&lt;!NOTATION USDATE SYSTEM </p>
+<p>"http://es.rice.edu/ES/humsoc/Galileo/Things/gregorian_calendar</p>
+<p>.html"&gt; </p>
+<p>&lt;!ELEMENT SCHEDULE (APPOINTMENT*)&gt;</p>
+<p>&lt;!ELEMENT APPOINTMENT (NOTE, DATE, TIME?)&gt;</p>
+<p></p>
+<p>&lt;!ELEMENT NOTE (#PCDATA)&gt;</p>
+<p>&lt;!ELEMENT DATE (#PCDATA)&gt;</p>
+<p>&lt;!ELEMENT TIME (#PCDATA)&gt;</p>
+<p></p>
+<p>&lt;!ATTLIST DATE FORMAT NOTATION (ISODATE | USDATE) #IMPLIED&gt;</p>
+<p></p>
+<p>]&gt;</p>
+<p>&lt;SCHEDULE&gt;</p>
+<p>&lt;APPOINTMENT&gt;</p>
+<p>&lt;NOTE&gt;Deliver presents&lt;/NOTE&gt;</p>
+<p>&lt;DATE FORMAT="ISDATE"&gt;12-25-1999&lt;/DATE&gt;</p>
+<p>&lt;/APPOINTMENT&gt;</p>
+<p>&lt;APPOINTMENT&gt;</p>
+<p>&lt;NOTE&gt;Party like it s 1999&lt;/NOTE&gt;</p>
+<p>&lt;DATE FORMAT="ISODATE"&gt;19991231&lt;/DATE&gt;</p>
+<p>&lt;/APPOINTMENT&gt;</p>
+<p>&lt;/SCHEDULE&gt;</p>
+<p>记号不能强制作者使用记号描述的格式。因此需要提供除XML基本方法以外的几种语言方案——但是在相信作者能正确描述日期的简单应用场合，记号方法是有效的。</p>
+<p>&nbsp; </p>
+ 
+<a href='424.htm'>&lt;&lt;上一篇</a>&nbsp;&nbsp;<a href='430.htm'>下一篇&gt;&gt;</a></td>
+        </tr>
+      </table>
+      <p>&nbsp; </p>
+    </td>
+  </tr>
+</table>
+
+</body>
+
+</html>

@@ -1,0 +1,82 @@
+<html xmlns:rdl>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<script src="rdl_method.js"></script>
+<base target="_self">
+</head>
+<body>
+
+<script>
+//collFriendObjects=new Array();
+//collFriendProperties=new Array();
+//collFriendMethods=new Array();
+//collFriendEvents=new Array();
+//collFriendCollections=new Array();
+
+collFriendObjects=new Array(
+'history'
+);
+
+collFriendMethods=new Array(
+'go','back'
+);
+
+//collIE40=new Array();
+//collIE50=new Array();
+//collIE55=new Array();
+//collIE60=new Array();
+
+collIE40=new Array(
+'history'
+);
+
+//sStyle='';
+
+//sScript='';
+
+//sCode='';
+
+bRunCode=false;
+
+iWinWidth=320;
+
+iWinHeight=200;
+
+</script>
+
+<div id=idContent>
+
+<div id=idContentTitle><span id=idTitleName>forward</span>版本：DHTML Object Model　返回值：无</div>
+
+<div class=cssColumnTitle>语法：</div>
+<div>
+<a href="../objects/history.html"><b>history</b></a><b> . forward () </b>
+</div>
+
+<div class=cssColumnTitle>参数：</div>
+<div>
+无
+</div>
+
+<div class=cssColumnTitle>返回值：</div>
+<div>
+无
+</div>
+
+<div class=cssColumnTitle>说明：</div>
+<div>
+载入历史(<a href="../objects/history.html"> history </a>)列表里的下一个<b> URL </b>地址。<br>
+此方法作用等同于用户点击浏览器的「前进」按钮。也等同于 <a href="../objects/history.html">history</a><b>.</b><a href="go.html">go</a>(1) 。假如用户已经到达历史(<a href="../objects/history.html"> history </a>)列表的最前一项，则会停留在当前的<b> URL </b>地址而不会发生错误。
+</div>
+
+<div class=cssColumnTitle>示例：</div>
+<div id=idSimpleCode>
+window.history.forward();
+</div>
+
+</div>
+</body>
+</html>
+
+<!-- Part of RDL(TM) - Written by Rain1977 
+HomeSite: http://www.dhtmlet.com  E-Mail: dhtmlet@hotmail.com -->

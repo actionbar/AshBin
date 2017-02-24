@@ -1,0 +1,111 @@
+.w{width:980px}
+
+
+
+.v{margin:9px 0;background:#FAFAFA}
+.l {width:728px;background:#fff;_width:700px}
+.c{padding:0 15px 15px 0}
+.m{height:22px;line-height:22px;font-family:"宋体";color:#4BA733;position:relative}
+.m a{color:#4BA733}
+.m span{position:absolute;right:0}
+h1,.ct{line-height:34px;height:34px;overflow:hidden}
+h1{font:400 24px "微软雅黑";color:#000}
+.ct{border-bottom:#ccc 2px solid}
+.ct,.ct a{color:#999}
+#d{margin:25px 0 9px;min-width:1px;font-size:14px;_width:550px}
+#d .f{border-color:#DEDFE1;padding:5px 5px 15px;float:left}
+#d p{height:30px;line-height:30px;margin:0 0 9px 0;text-indent:9px;font-weight:800;border-bottom:#ddd 1px dashed}
+#d li{line-height:25px;height:25px;padding:0 88px 0 25px;background:url(http://localhost/www.v-get.com/tu/g.gif) 9px -1651px no-repeat}
+#d a{text-decoration:underline}
+
+#c{font-size:14px;padding:9px 15px 16px}
+#c h2{height:24px;line-height:24px;font-size:18px;border-bottom:#DEDFE1 1px solid;margin:30px 0 10px;padding:0 0 6px 0}
+
+#c pre{font-size:12px;border:#ddd 1px solid;background:#f7f7f7;padding:9px;list-style-position:inside;list-style-type:decimal;line-height:22px}
+#c pre a{color:#666;text-decoration:none}
+#c pre li{list-style-type:decimal-leading-zero;font-family: Monaco,Consolas,"Lucida Console","Courier New",serif;line-height:22px;color:#666}
+
+
+#c li{line-height:25px}
+#c p,#c ol{text-indent:28px;line-height:26px;margin:9px 0}
+#c a{color:#136EC2;text-decoration:underline}
+#c table{border:#ddd 1px solid;border-collapse:collapse;text-align:center;width:100%;margin:9px 0}
+#c tr{line-height:22px}
+#c th,td{border-right:1px solid #ddd;border-bottom:1px solid #ddd;padding:3px 5px}
+#c td a{margin:0 5px}
+#c img{max-width:100%}
+.l4{line-height:22px;border-bottom:#ccc 1px dashed}
+.l4 h6{border-bottom:#CBCBCB 1px dashed;font-size:14px;height:14px;line-height:14px;margin:0 0 10px;padding:2px 0 5px 0;}
+.l4 .p{width:234px;height:60px}
+.l4 .p a{margin:0 9px 0 0;text-decoration:none}
+.l4 .p a:hover{background:#4BA733;color:#fff;padding:3px 5px}
+.l4 .q{width:470px;padding:0 9px}
+
+
+.l5{height:32px;line-height:32px;width:100%}
+
+
+.h{margin:9px 0}
+.ht{padding:9px 15px;background:#f1f1f1}
+#hn{height:28px;line-height:28px;font-weight:400;padding:0}
+#hn .p a{margin:0 6px 0 0}
+#hn .q{line-height:20px;font-size:18px;margin:0;right:0;font-size:12px;color:#808080}
+#hn .q i{font-family:Constantia,Georgia;font-weight:700;font-size:22px;font-style:italic;font-variant:normal;}
+
+.h textarea{font-size:12px;width:100%;height:81px;border:#ddd 2px solid;box-shadow: 0px 3px 3px rgb(235, 235, 235) inset;}
+.h textarea:hover{border-color:#4BA733}
+
+.hs{width:70px;height:30px;}
+.hv{width:40px;height:24px;}
+
+.l7{padding:0 0 9px 0}
+.l7 a{width:335px;height:22px;background:url(http://localhost/www.v-get.com/tu/g.gif) 14px -1401px no-repeat;line-height:22px;text-align:left;color:#666;padding:0 0 0 25px}
+.l7 a:hover{text-decoration:underline;color:#4BA733}
+.l7 .l7t{border-bottom:#ccc 1px dotted;margin:0 0 9px 0;}
+.l7 .l7t a{height:32px;line-height:32px;background:none}
+.l7 .l7l{border-right:#ddd 1px solid;font:14px "微软雅黑";line-height:32px;color:#333;padding:0 0 0 9px}
+
+
+
+
+.r{width:250px;font-size:14px;_width:237px}
+.r a{color:#000}
+.r a:hover{color:#4BA733}
+.r h4{color:#4BA733;font:400 16px "微软雅黑"}
+.r .f h4{border-bottom:#ddd 1px solid;height:28px;line-height:28px;text-indent:9px}
+.ri a{font-size:12px;margin:9px 0 0 9px}
+.ri a:hover{color:#4BA733}
+.ri img{width:110px;height:90px;border-radius:3px}
+
+.r h3{height:22px;font:400 14px "微软雅黑";margin:0 9px}
+.r dt{width:90px;height:60px;clear:both;margin:7px 0}
+.r dd{width:130px;margin:0 0 0 9px;font-size:12px;color:#666}
+.r4 dd a{color:#666;}
+.r4 dd{font-size:14px;margin:0 0 9px 9px;line-height:25px}
+
+
+.r .f ul{margin:5px 5px 5px 11px}
+.r li{line-height:25px;padding:0 0 0 13px;background:url(http://localhost/www.v-get.com/tu/g.gif) 0 -1474px no-repeat}
+.r5 li{background-position:0 -1350px;}
+.rfa{padding:3px;font-size:12px}
+.rfa h4{font:14px Arial;color:#333;text-indent:9px}
+.rfa .a a{width:110px;margin:0 0 0 9px;text-align:left;color:#666}
+.rfa .a a:hover{color:#4BA733}
+
+.r6 dt{margin:5px 0 0 9px}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.ba{margin-left:263px}

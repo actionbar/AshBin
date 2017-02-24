@@ -1,0 +1,120 @@
+<html xmlns:rdl>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<script src="rdl_method.js"></script>
+<base target="_self">
+</head>
+<body>
+
+<script>
+
+//collFriendObjects=new Array();
+//collFriendProperties=new Array();
+//collFriendMethods=new Array();
+//collFriendEvents=new Array();
+//collFriendCollections=new Array();
+
+collFriendMethods=new Array(
+'doImport'
+);
+
+collFriendObjects=new Array(
+'IMPORT','namespace'
+);
+
+collFriendCollections=new Array(
+'namespaces'
+);
+
+collFriendProperties=new Array(
+'XMLNS'
+);
+
+//collIE40=new Array();
+//collIE50=new Array();
+//collIE55=new Array();
+//collIE60=new Array();
+
+collIE55=new Array(
+'namespaces'
+);
+
+//sStyle='';
+
+sScript=
+'<script>\n'+
+'var oRDL;\n'+
+'function rdl_doLoad() {\n'+
+'oRDL=document.namespaces.add("rdl","rdl:demo","rdl_namespace_demo.htc");\n'+
+/*'oRDL = document.namespaces[0];\n'+
+'oRDL.doImport("rdl_namespace_demo.htc");\n'+*/
+'if(oRDL.readyState != "complete") {  \/\/ 等待元素行为下载完毕\n'+
+'oRDL.attachEvent("onreadystatechange", rdl_addTagnames);\n'+
+'} else { rdl_addTagnames(); }\n'+
+'return true;\n'+
+'}\n'+
+'\n'+
+'function rdl_addTagnames() {\n'+
+'if(oRDL.readyState != "complete") return;\n'+
+'var oABC = document.createElement("rdl:abc");\n'+
+'with (oABC) { innerHTML = "我是一个元素行为( Element Behavior )。我的tagName是<b>"+tagName+"<\/b>。我的Behavior URN是<b>"+behaviorUrns[0]+"<\/b>。"; }\n'+
+'document.body.insertAdjacentElement("afterBegin",oABC);\n'+
+'oRDL.detachEvent("onreadystatechange", rdl_addTagnames);\n'+
+'}\n'+
+'\n'+
+'window.onload=rdl_doLoad;\n'+
+'<\/script>\n';
+
+sCode=
+'\n';
+
+iWinWidth=360;
+
+iWinHeight=200;
+
+//bRunCode=false;
+
+</script>
+
+<div id=idContent>
+
+<div id=idContentTitle><span id=idTitleName>add</span>版本：DHTML Object Model　返回值：有</div>
+
+<div class=cssColumnTitle>语法：</div>
+<div>
+<i>oNamespace</i><b> = </b><a href="../objects/namespaces.html"><b>namespaces</b></a><b> . add ( </b><i>sNamespace</i><b> , </b><i>sUrn</i><b> , </b><i>sUrl</i><b> ) </b>
+</div>
+
+<div class=cssColumnTitle>参数：</div>
+<table>
+<tr><td nowrap><i> sNamespace </i></td><td nowrap><b>:</b></td>
+<td><b>必选项</b>。字符串(String)。指定<a href="../objects/namespace.html"> namespace </a>的名字。</td></tr>
+<tr><td nowrap><i> sUrn </i></td><td nowrap><b>:</b></td>
+<td><b>必选项</b>。字符串(String)。指定<a href="../objects/namespace.html"> namespace </a> 的通用资源名称( <b> URN </b> )。</td></tr>
+<tr><td nowrap><i> sUrl </i></td><td nowrap><b>:</b></td>
+<td><b>可选项</b>。字符串(String)。指定要导入<a href="../objects/namespace.html"> namespace </a> 的元素行为( <b>Element Behavior</b> )的<b> URL </b>地址。指定此参数等同于使用<a href="doimport.html"> doImport </a>方法。</td></tr>
+</table>
+
+<div class=cssColumnTitle>返回值：</div>
+<table>
+<tr><td nowrap><i> oNamespace </i></td><td nowrap><b>:</b></td>
+<td>对象(Element)。返回<a href="../objects/namespace.html"> namespace </a> 对象。</td></tr>
+</table>
+
+<div class=cssColumnTitle>说明：</div>
+<div>
+建立一个新的<a href="../objects/namespace.html"> namespace </a> 对象并加入<a href="../objects/namespaces.html"> namespaces </a>集合。<br>
+如果同名的<a href="../objects/namespace.html"> namespace </a>已经存在，它将被覆盖。
+</div>
+
+<div class=cssColumnTitle>示例：</div>
+<div id=idSimpleCode>
+document.namespaces.add("rdl","rdl:demo","rdl_namespace_demo.htc");
+</div>
+
+</div>
+</body>
+</html>
+
+<!-- Part of RDL(TM) - Written by Rain1977 
+HomeSite: http://www.dhtmlet.com  E-Mail: dhtmlet@hotmail.com -->

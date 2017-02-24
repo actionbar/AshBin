@@ -1,0 +1,99 @@
+<html>
+<head>
+<title>文档类型声明</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+
+<link rel = stylesheet href = "image/style.css">
+</head>
+<body bgcolor="#ffffff">
+<table width="688" border="0" cellspacing="0" cellpadding="0" align="center">
+  <tr bgcolor="EEEEEE"> 
+    <td height="22"><a href="index.htm">主页</a></td>
+  </tr>
+</table><br>
+<table border="0" cellpadding="0" cellspacing="0" width="688" align="center" height="490">
+  <tr valign="top"> 
+    <td rowspan="4" width="91">&nbsp; </td>
+    <td height="68" width="131"> 
+      <p><img src="image/doc.gif"></p>
+    </td>
+    <td rowspan="4" width="18"><b></b> </td>
+    <td height="68" width="387"><img src="image/title_doc.gif"></td>
+    <td rowspan="4" width="61"> 
+      <h6>&nbsp;</h6>
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td rowspan="3" valign="top" class="pt10" align="center" width="131" bgcolor="EEEEEE"> 
+      <p>&nbsp;</p>
+      <p><font color="#FF0000">※ 8.2 文档类型声明</font></p>
+       
+	</td>
+  </tr>
+  <tr valign="top"> 
+    <td width="387" height="308"> 
+      <table width="100%" border="0" cellpadding="0">
+        <tr> 
+          <td>
+
+           <h4>8.2 文档类型声明</h4>
+<p>文档类型声明指定了文档使用的DTD。文档类型声明出现在文档的序言部分，处在XML声明之后和基本元素之前。它可能包括文档类型定义或是标识文档类型定义所在文档的URL。有些情况下文档类型定义有内外两个子集，则文档类型声明可能同时包括以上两种情况。</p>
+<p><img src="Image/BK000208-23.gif"> 文档类型声明同文档类型定义不是一回事。只有文档类型定义缩写为DTD。文档类型声明必须包含或者引用文档类型定义，但文档类型定义从不包括文档类型声明。我同意这造成了不必要的混乱。遗憾的是XML似乎与这术语密不可分，幸运的是多数情况下二者的区别并不重要。</p>
+<p>请回顾一下第3章清单3-2（greeting.xml），如下所示： </p>
+<p>&lt;?xml version="1.0" standalone="yes"?&gt;</p>
+<p>&lt;GREETING&gt;</p>
+<p>Hello XML!</p>
+<p>&lt;/GREETING&gt;</p>
+<p>这个文档包含单一元素GREETING。（请记住，〈？xml version="1.0" standalone="yes"？〉是一条处理指令，不是元素。）清单8-1显示了这一文档，但这次带有文档类型声明。文档类型声明声明了基本元素是GREETING。文档类型声明也包含文档类型定义，它声明了GREETING元素包含可析的字符数据。</p>
+<p>清单8-1：带有DTD的Hello XML</p>
+<p>&lt;?xml version="1.0" standalone="yes"?&gt;</p>
+<p>&lt;!DOCTYPE GREETING [</p>
+<p> &lt;!ELEMENT GREETING (#PCDATA)&gt;</p>
+<p>]&gt;</p>
+<p>&lt;GREETING&gt;</p>
+<p>Hello XML!</p>
+<p>&lt;/GREETING&gt;</p>
+<p>清单3-2与清单8-1的唯一区别在于清单8-1增加了3行：</p>
+<p>&lt;!DOCTYPE GREETING [</p>
+<p>&lt;!ELEMENT GREETING (#PCDATA)&gt;</p>
+<p>]&gt;</p>
+<p>这几行是清单8-1的文档类型声明。文档类型声明在XML声明与文档本身之间。XML声明与文档类型声明统称为文档序言（Prolog）。在本例中，&lt;?xml 
+  version="1.0" standalone="yes"?&gt;是XML声明；&lt;!DOCTYPE GREETING [ &lt;!ELEMENT 
+  GREETING (#PCDATA)&gt; ]&gt;是文档类型声明；&lt;!ELEMENT GREETING (#PCDATA)&gt;是文档类型定义；&lt;GREETING&gt; 
+  Hello XML! &lt;/GREETING&gt;是文档或基本元素。</p>
+<p>文档类型声明以&lt;!DOCTYPE为开始，以]&gt;结束。通常将开始和结束放在不同的行上，但断行和多余的空格并不重要。同一文档类型声明也可以写成一行：</p>
+<p>&lt;!DOCTYPE GREETING [&lt;!ELEMENT GREETING (#PCDATA)&gt; ]&gt;</p>
+<p>本例中基本元素名称——GREETING跟在&lt;!DOCTYPE之后。这不仅是一个名称，也是一项要求。任何带有这种文档类型声明的合法文档必须有基本元素。在[和]之间的内容是文档类型定义。</p>
+<p>DTD由一系列声明了特写的元素、实体和属性的标记声明所组成。其中的一项声明基本元素。清单8-1中整个DTD只是如下简单的一行：</p>
+<p>&lt;!ELEMENT GREETING (#PCDATA)&gt;</p>
+<p>通常情况下DTD当然会更长更复杂。</p>
+<p>单个行&lt;!ELEMENT GREETING (#PCDATA)&gt;（正如XML中的大多数对象一样是区分大小写的）是一项元素类型声明。在本例中，声明的元素名称是GREETING。它是唯一的元素。这一元素可以包含可析的字符数据（或#PCDATA）。可析的字符实质上是除标记文本外的任何文本。这也包括实体引用如&amp;amp;，在对文档进行语法分析时，实体引用就被文本所取代。</p>
+<p>可以把这一文档像通常一样装入一种XML浏览器中。图8-1显示了清单8-1在Internet Explorer 5.0中的情况。结果可能正如人们所料，文档源以可折叠的大纲视图出现。Internet 
+  Explorer使&lt;!DOCTYPE GREETING ( View Source for　full doctype…)&gt;一行变蓝指明有文档类型声明。</p>
+<p align="center"><img src="Image/BK000208-24.gif" width=361 height=160></p>
+<p align="center">图8-1 Internet Explorer 5.0中显示的带有DTD的Hello XML</p>
+<p>当然，文档可以与样式单结合起来，就像第3章的清单3-6中一样。实际上可以用同一个样式单。如清单8-2所示，只要在序言中增加通常的&lt;?xml-stylesheet?&gt;处理指令。</p>
+<p>清单８-２：带有DTD和样式单的Hello XML</p>
+<p>&lt;?xml version="1.0" standalone="yes"?&gt;</p>
+<p>&lt;?xml-stylesheet type="text/css" href="greeting.css"?&gt;</p>
+<p>&lt;!DOCTYPE GREETING [</p>
+<p> &lt;!ELEMENT GREETING (#PCDATA)&gt;</p>
+<p>]&gt;</p>
+<p>&lt;GREETING&gt;</p>
+<p>Hello XML!</p>
+<p>&lt;/GREETING&gt;</p>
+<p>图8-2显示的是结果网页。这同第3章中没有DTD的图3-3相同。格式化时通常不考虑DTD。</p>
+<p align="center"><img src="Image/BK000208-25.gif" width=388 height=194></p>
+<p align="center">图8-2 Internet Explorer 5.0所示的带DTD和样式单的Hello XML </p>
+ 
+<a href='396.htm'>&lt;&lt;上一篇</a>&nbsp;&nbsp;<a href='398.htm'>下一篇&gt;&gt;</a></td>
+        </tr>
+      </table>
+      <p>&nbsp; </p>
+    </td>
+  </tr>
+</table>
+
+</body>
+
+</html>

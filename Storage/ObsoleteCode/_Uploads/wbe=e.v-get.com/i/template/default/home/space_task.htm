@@ -1,0 +1,6 @@
+<!--{template common/header}--><div id="pt" class="bm cl"><div class="z"><a href="http://e.v-get.com/" class="nvhm" title="E维科技"></a> <em>&rsaquo;</em> <a href="http://e.v-get.com/i/">论坛</a> <em>&rsaquo;</em> <a href="http://e.v-get.com/i/home.php?mod=task">任务</a></div></div><div id="ct" class="ct2_a wp cl"><div class="mn"><div class="bm bw0">
+		<!--{if empty($do)}-->
+			<!--{subtemplate home/space_task_list}-->
+		<!--{elseif $do == 'view'}-->
+			<!--{subtemplate home/space_task_detail}-->
+		<!--{/if}--></div></div><div class="appl"><div class="tbn"><h2 class="mt bbda">任务</h2><ul><li$actives[new]><a href="http://e.v-get.com/i/home.php?mod=task&item=new">新任务</a></li><li$actives[doing]><a href="http://e.v-get.com/i/home.php?mod=task&item=doing">进行中的任务</a></li><li$actives[done]><a href="http://e.v-get.com/i/home.php?mod=task&item=done">已完成的任务</a></li><li$actives[failed]><a href="http://e.v-get.com/i/home.php?mod=task&item=failed">失败的任务</a></li></ul></div></div></div><!--{template common/footer}-->

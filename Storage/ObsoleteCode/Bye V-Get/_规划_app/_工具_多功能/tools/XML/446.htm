@@ -1,0 +1,203 @@
+<html>
+<head>
+<title>框属性</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+
+<link rel = stylesheet href = "image/style.css">
+</head>
+<body bgcolor="#ffffff">
+<table width="688" border="0" cellspacing="0" cellpadding="0" align="center">
+  <tr bgcolor="EEEEEE"> 
+    <td height="22"><a href="index.htm">主页</a></td>
+  </tr>
+</table><br>
+<table border="0" cellpadding="0" cellspacing="0" width="688" align="center" height="490">
+  <tr valign="top"> 
+    <td rowspan="4" width="91">&nbsp; </td>
+    <td height="68" width="131"> 
+      <p><img src="image/doc.gif"></p>
+    </td>
+    <td rowspan="4" width="18"><b></b> </td>
+    <td height="68" width="387"><img src="image/title_doc.gif"></td>
+    <td rowspan="4" width="61"> 
+      <h6>&nbsp;</h6>
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td rowspan="3" valign="top" class="pt10" align="center" width="131" bgcolor="EEEEEE"> 
+      <p>&nbsp;</p>
+      <p><font color="#FF0000">※ 12.13 框属性</font></p>
+       
+	</td>
+  </tr>
+  <tr valign="top"> 
+    <td width="387" height="308"> 
+      <table width="100%" border="0" cellpadding="0">
+        <tr> 
+          <td>
+
+           <h4><a name="_Toc467205113">12.13 框属性</a></h4>
+<ol>
+  <ol>
+    <p></p>
+  </ol>
+</ol>
+<p>CSS描述了两维的绘制输出内容的一块画布。在这块画布上绘制的元素被包围在虚构的矩形中，这些矩形称为框(box)。这些框总是平行于画布的边缘放置。使用框属性使人们能够指定单个框的宽度、高度、页边距、贴边、边、大小和位置。图12-26显示这些属性之间的关系。</p>
+<p align="center"><img src="Image/BK000212-41.gif" width=253 height=158></p>
+<p align="center">图12-26 具有页边距、边框线和贴边的CSS框</p>
+<h5><a name="_Toc467205114">12.13.1 页边距属性</a></h5>
+<p>页边距属性指定加到框的边框线外面的间距。也可使用margin-top、margin-bottom、margin-right和margin-left分别设置顶端、底、右和左页边距。各页边距可使用绝对长度或父元素宽度大小的百分数来表示。例如，按下面的规则和图12-27演示的那样，设置ACT的margin-top属性为1ex，就可以在每个ACT元素和其前面的元素之间增加额外的间距。</p>
+<p> ACT { margin-top: 1ex }</p>
+<p align="center"><img src="Image/BK000212-42.gif" width=334 height=250></p>
+<p align="center">图12-27 ACT元素的顶端边距变大</p>
+<p>也可以使用简略的margin属性一次设置所有的四个边距。例如，为基本元素(本例为SYNOPSIS)设置页边距属性，就可以在整个《第十二夜》文档周围增加额外的空间。</p>
+<p>SYNOPSIS { margin: 1cm 1cm 1cm 1cm }</p>
+<p>事实上，这与页边距单独使用一个值是一样的，CSS会将这个值认为可应用于所有四个边上。</p>
+<p>SYNOPSIS { margin: 1cm }</p>
+<p>若给出两个margin值，则第一个应用于顶端和底部，第二个应用于右和左边。若给出三个margin值，则第一个应用于顶端，第二个应用于右和左边，第三个应用于底部。只使用各自的margin-top、margin-bottom、margin-right和margin-left属性也许更容易。</p>
+<p align="center"><img src="Image/BK000212-43.gif" width=335 height=250></p>
+<p align="center">图12-28 在整个大纲周围增加1厘米空间</p>
+<h5><a name="_Toc467205115">12.13.2 边框线属性</a></h5>
+<p>大多数框都有边框。它们是影响基本内容布局的想像中的框，但也许读者无法看见这些框。但是，可以使用边框线属性在其周围绘出线，从而使框可见。边框线属性允许指定边框线的样式、宽度和颜色。</p>
+<ol>
+  <ol>
+    <ol>
+      <ol>
+      </ol>
+    </ol>
+  </ol>
+</ol>
+<b>12.13.2.1 边框线样式</b> 
+<p>缺省条件下，不管边框线的宽度和颜色是否设置，在框的周围不会绘制任何边界。要使某一边界可见，必须把框的border-style属性从其缺省值none改变为下列值之一：</p>
+<p> dotted</p>
+<p> dashed</p>
+<p> solid</p>
+<p> double</p>
+<p> groove</p>
+<p> ridge</p>
+<p> inset</p>
+<p> outset</p>
+<p>border-style属性可有一到四个值。正如margin属性一样，一个值适用于所有四个边界。使用两个值时，第一个值表示第一样式，用来设置顶和底边界，第二个值表示第二样式，用来设置右和左边界。使用三个值时，则按顺序设置顶、右及左和底边界。当使用四个值时，则表示按从顶、右、底和左的顺序设置每个边界。例如，下列这条规则使用实线边框把整个SYNOPSIS围住。图12-29是Internet 
+  Explorer 5.0显示的情景。在这种情况下，边框对使页边距更加明显的效果不太大(记住，页边距在边框之外)。</p>
+<p>SYNOPSIS { border-style: solid }</p>
+<p align="center"><img src="Image/BK000212-44.gif" width=336 height=343></p>
+<p align="center">图12-29 大纲周围的边框</p>
+<p><img src="Image/BK000212-59.gif" width=41 height=41 align="LEFT" hspace=12>Internet 
+  Explorer 5.0只显示实线边框。其他样式都是作为简单地实线边框绘出。</p>
+<p>&nbsp;</p>
+<b>12.13.2.2 边框线宽度 </b> 
+<p>&nbsp;</p>
+<p>为了指定沿框的顶端、底部、右和左边缘指定边框线的宽度，共有四个border-width属性。它们是：</p>
+<p>1．border-top-width</p>
+<p>2．border-right-width</p>
+<p>3．border-bottom-width</p>
+<p>4．border-left-width</p>
+<p>每个属性都可以用绝对长度或三个关键字之一：thin、medium或thick来指定。边框线宽度不可为负值，但可以为零。</p>
+<p>例如，要使SYNOPSIS元素围在1个像素宽的实线边框(任何计算机显示器都能显示的最细边框)内，可使用下面的规则来设置这四个属性：</p>
+<p>SYNOPSIS { border style: solid;</p>
+<p> border-top-width: 1px;</p>
+<p> border-right-width: 1px;</p>
+<p> border-bottom-width: 1px;</p>
+<p> border-left-width: 1px }</p>
+<p>如果想要把所有的或几个边框设置为相同的宽度，则使用border-width简略属性更方便。这个属性可有一到四个值。一个值时，设置所有四个边框线宽度。使用两个值时，设置顶和底边为第一个值，右和左边为第二个值。使用三个值时，则表示按顺序设置顶端、右及左和底宽。当使用四个值时，则表示按从顶、右、底和左的顺序设置每个边框。例如，下列的规则与前述的规则是等价的：</p>
+<p>SYNOPSIS { border-style: solid; border-width: 1px }</p>
+<b>12.13.2.3 边框颜色 </b> 
+<p>border-color属性设置一到四个边框的颜色。只使用一个值，是指设置所有四个边框的颜色。当使用两个值时，表示把顶和底边框设置为第一个颜色，右和左边框设置为第二个颜色。当使用三个值时，表示按顶端、右及左和底边顺序设置。使用四个值时，表示按顶端、右、底和左的顺序设置每个边颜色。有效值是任何公认的颜色名或RGB基色值。例如，要把SYNOPSIS元素放置在1个像素、实线的红边框线内，可使用下面这条规则：</p>
+<p>SYNOPSIS { border style: solid;</p>
+<p> border-width: 1px;</p>
+<p> border-color: red }</p>
+<p>由于本书是以黑白形式印刷的，所以我将这张图留给读者自己解决。</p>
+<b>12.13.2.4 边框线简略属性 </b> 
+<p>有五个简略边框线属性可以使用一条规则同时设置宽度、样式和边框颜色。它们是：</p>
+<p>1．border-top</p>
+<p>2．border-right</p>
+<p>3．border-bottom</p>
+<p>4．border-left</p>
+<p>5．border</p>
+<p>例如，border-top属性为顶边框提供宽度、样式和颜色。border-right、border-bottom和border-left相类似。省略的属性被设置为父元素的值。例如，图12-30显示在每一幕下面有一个2像素实线的蓝边框线(如果喜欢可作为水平尺)。要获得这种效果，可使用下面的规则：</p>
+<p>ACT { border-bottom: 2px solid blue }</p>
+<p align="center"><img src="Image/BK000212-45.gif" width=335 height=343></p>
+<p align="center">图12-30 两像素、实线底边框，与HTML的HR元素相类似</p>
+<p>border属性把所有四个侧边设置成指定的宽度、样式和高度。例如，下列规则在CHART元素四周绘出3像素宽、实线的红边框。</p>
+<p>CHART { border: 3pt solid red }</p>
+<h5><a name="_Toc467205116">12.13.3 贴边属性</a></h5>
+<p>贴边属性指定框的边界内部间距量。如果显示，框的边框落在页边距和贴边之间。使用padding-top、padding-bottom、padding-right和padding-left属性，可以对顶、底、右和左贴边分别进行设置。每个贴边都可以用绝对长度或父元素宽度大小的百分数来表示。例如，按下面规则所示来设置其贴边属性，可将SYNOPSIS与其边分开。</p>
+<p>SYNOPSIS { padding-bottom: 1em;</p>
+<p> padding-top: 1em;</p>
+<p> padding-right: 1em;</p>
+<p> padding-left: 1em }</p>
+<p>还可以使用简略的padding属性一次设置所有的四个值。例如，下面的规则与前面的相同：</p>
+<p>SYNOPSIS { padding: 1em 1em 1em 1em }</p>
+<p>事实上，这与使用padding属性的一个值也是完全一样的，CSS把此当作适用于所有四个边来看待。</p>
+<p>SYNOPSIS { padding: 1em }</p>
+<p>提供两个padding值时，第一个应用于顶和底，第二个应用于右和左。提供三个padding值时，第一个应用于顶，第二个应用于右和左，第三个应用于底。使用各自的padding-top、padding-bottom、padding-right和padding-left可能更容易。</p>
+<p>在剧本大纲的幕名下面的蓝边似乎靠得太紧，所以我们使用padding-bottom属性在剧幕的结尾和边框之间增加1ex贴边(如下面的规则所示)。图12-31显示的就是这种情景。一般地，在边框周围使用一点贴边是一个很好的主意，这样可以使文本更容易阅读。</p>
+<p>ACT { padding-bottom: 1ex }</p>
+<h5><a name="_Toc467205117">12.13.4 大小属性</a></h5>
+<p>使用width和height属性可强制框为给定的大小。框的内容随需要成比例变化，以适应框的要求。尽管可以将此属性应用到文本框上，但更普通、更有用的是将此属性用于像影像和Java小程序这样的替代元素。为了指示浏览器应使用真实的大小，其宽度和高度可用绝对长度、父元素高度和宽度的百分数或关键字auto(缺省值)给出。例如，下面的这条规则把整个SYNOPSIS调整为3英寸高和3英寸宽。</p>
+<p>SYNOPSIS { padding: 1em; width: 3in; height: 3in }</p>
+<p align="center"><img src="Image/BK000212-46.gif" width=317 height=325></p>
+<p align="center">图12-31 贴边使边框更容易看到</p>
+<p>图12-32显示的是Internet Explorer 5.0中的效果。当面对一个比其框还大的元素时，Internet Explorer缩小宽度，但扩展其高度。Mozilla使文本超出框之外，有可能覆盖下面的元素。当内容与有准确大小的框不相适用时，各浏览器的处理结果无法一致、并且也无法预测。</p>
+<p align="center"><img src="Image/BK000212-47.gif" width=334 height=342></p>
+<p align="center">图12-32 在Mozilla中显示的3英寸高3英寸宽的大纲</p>
+<p>如果将width设置为绝对或相对单位，将高度设置为auto，那么高度按照宽度成比例调整。</p>
+<h5><a name="_Toc467205118">12.13.5 定位属性</a></h5>
+<p>在缺省条件下，嵌套在相同父元素内的块级元素在网页上一个挨一个地排列。它们不会并排，也不会折行。可以灵活的使用float和clear属性改变这种情况。</p>
+<h5><a name="_Toc467205119">12.13.6 float属性</a></h5>
+<p>float属性的缺省值为none，可把它设置为left或right。如果其值为left，那么元素移到网页的左侧，文本在右边围绕着元素的周围。在HTML中，这与使用ALIGN 
+  = "LEFT"的IMG标记的效果一致。如此值为right，则元素移到网页的右侧，文本在左侧围绕着元素的周围。在HTML中，这与使用ALIGN = "RIGHT"的IMG的标记效果一致。</p>
+<p>要在XML文件中嵌入影像，没有任何标准方法，所以对于本例，我们用一背景影像，并灵活的使用CSS属性来仿造嵌入影像的效果，清单12-16是一个稍加修改的舞会请谏，它有一空的IMAGE元素。清单12-17是一样式单，它将party.gif文件设置为IMAGE元素的背景。也可以设置IMAGE元素的宽度和高度属性。最后，设置float为left。图12-33显示运行后的结果。</p>
+<p>清单12-16：有空IMAGE元素的舞会请谏</p>
+<p>&lt;?xml version="1.0"?&gt;</p>
+<p>&lt;?xml stylesheet type="text/css" href="12-17.css"?&gt;</p>
+<p>&lt;INVITATION&gt;</p>
+<p> &lt;IMAGE /&gt;</p>
+<p> &lt;TEXT&gt;</p>
+<p> You re invited to a party on December 31, 1999 to celebrate</p>
+<p> the new millennium! You re invited to a party on December 31,</p>
+<p> 1999 to celebrate the new millennium! You re invited to a</p>
+<p> party on December 31, 1999 to celebrate the new millennium! </p>
+<p> You re invited to a party on December 31, 1999 to celebrate</p>
+<p> the new millennium! You re invited to a party on December 31,</p>
+<p> 1999 to celebrate the new millennium! You re invited to a</p>
+<p> party on December 31, 1999 to celebrate the new millennium! </p>
+<p> You re invited to a party on December 31, 1999 to celebrate</p>
+<p> the new millennium! You re invited to a party on December 31,</p>
+<p> 1999 to celebrate the new millennium! You re invited to a</p>
+<p> party on December 31, 1999 to celebrate the new millennium! </p>
+<p> You re invited to a party on December 31, 1999 to celebrate</p>
+<p> the new millennium! You re invited to a party on December 31,</p>
+<p> 1999 to celebrate the new millennium!</p>
+<p> &lt;/TEXT&gt;</p>
+<p>&lt;/INVITATION&gt;</p>
+<p>清单12-17：加载一个IMAGE的样式单</p>
+<p>INVITATION { display:block; }</p>
+<p>IMAGE { background: url(party.gif) no-repeat center center;</p>
+<p> width: 134px;</p>
+<p> height: 196px; </p>
+<p> float: left; }</p>
+<p>TEXT { display: block }</p>
+<h5><a name="_Toc467205120">12.13.7 clear属性</a></h5>
+<p>clear属性指定元素是否可以在其各边有浮动元素。如果不能，元素将移到任何在此元素之前的浮动元素之下。它与HTML中的&lt;BR CLEAR="ALL"&gt;元素有关。其可能值为：</p>
+<p> none right</p>
+<p> left both</p>
+<p align="center"><img src="Image/BK000212-48.gif" width=372 height=248></p>
+<p align="center">图12-33 在左边浮动的舞会请谏上的影像</p>
+<p>缺省值none使浮动元素出现在元素的两侧。left值预示浮动元素出现在元素的左侧。right值预示浮动元素出现在元素的右侧。both值预示浮动元素出现在元素的两侧。例如，假设把下列规则加入到清单12-17的样式单中：</p>
+<p>TEXT { clear: left }</p>
+<p>现在，尽管IMAGE元素想浮动在TEXT元素的左边，但TEXT元素不允许这样做(如图12-34所示)。IMAGE元素仍然处于左边，但现在TEXT被推到影像之下。</p>
+<p align="center"><img src="Image/BK000212-49.gif" width=372 height=247></p>
+<p align="center">图12-34 将clear设置为left的舞会请谏</p>
+ 
+<a href='445.htm'>&lt;&lt;上一篇</a>&nbsp;&nbsp;<a href='447.htm'>下一篇&gt;&gt;</a></td>
+        </tr>
+      </table>
+      <p>&nbsp; </p>
+    </td>
+  </tr>
+</table>
+
+</body>
+
+</html>

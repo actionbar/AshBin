@@ -1,0 +1,28 @@
+<!DOCTYPE HTML><html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"/><title>站点地图_商务物流网_V-Get!</title><link href="http://weigeti.com/p0/favicon.ico" type="image/ico" rel="shortcut icon" /><link rel="stylesheet" type="text/css" href="c.css" /><script src="#"></script></head><body>
+<div class="t"><div class="tc"><div class="p"><a href="http://www.v-get.com/"><strong>V-Get!</strong></a><a href="http://news.v-get.com/">新闻</a>-<a href="http://baike.v-get.com/">百科</a></div></div></div>
+<div class="w">
+<div class="u"></div>
+<div class="n"><a href="http://wuliu.v-get.com/">首页</a></div>
+<div class="v">
+<div class="p l"><h5>用户协议</h5><ul><li><a href="about.html">关于我们</a></li><li><a href="contact.html">联系我们</a></li><ul><li><a href="about.html">帮助中心</a></li><li><a href="sitemap.shtml" class="lo">站点地图</a></li><li><a href="privacy.html">隐私策略</a></li><li><a href="agree.html">用户协议</a></li><li><a href="law.html">法律声明</a></li></ul></div>
+<div class="q c">
+<h5>站点地图</h5>
+<div class="cc"><div class="cu">
+<!-- 要判断是否是$SERVER_NAME= wuliu.v-get.com 还是 *.wuliu.v-get.com -->
+<!--#if expr="$SERVER_NAME=\"wuliu.v-get.com\""-->
+
+<!--#else--><h2>国内物流公司</h2><ul><li><a href="#"><strong>推荐物流商</strong></a></li><li><a href="/tuoyun/s?sk=快递">快递公司</a></li><li><a href="/keyun/">客车行李托运</a></li><li><a href="/join/">托运场查询</a></li><li><a href="/banjia/">搬厂搬家公司</a></li><li><a href="/cangku/">仓库出租</a></li><li><a href="/join/s?sk=火车">火车货运场</a></li><li><a href="/shebei/">物流设备</a></li></ul>
+<h2>国际货运代理</h2><ul><li><a href="#">推荐物流商</a></li><li><a href="/huodai/s?sk=海运">国际海运代理</a></li><li><a href="/huodai/s?sk=空运">国际空运代理</a></li><li><a href="/huodai/s?sk=陆运">国际陆运代理</a></li><li><a href="/huodai/s?sk=报关行">报关行</a></li><li><a href="/huodai/s?sk=理货公司">理货公司</a></li><li><a href="/huodai/s?sk=快递">国际快递公司</a></li><li><a href="/huodai/s?sk=码头">港务局（码头）</a></li></ul>
+<!--endif-->
+<!-- 以后独立在wuliu.v-get.com上面设立运价系统 -->
+<h2>物流运价</h2><ul><li><a href="#">集装箱整箱运价</a></li><li><a href="#">集装箱拼箱运价</a></li><li><a href="#">散杂货运价</a></li><li><a href="#">空运运价</a></li><li><a href="#">快递运价</a></li><li><a href="#">铁路运价</a></li><li><a href="#">公路运价</a></li><li><a href="#">热门集装箱整箱运价</a></li><li><a href="#">热门集装箱拼箱运价</a></li><li><a href="#">热门散杂货运价</a></li><li><a href="#">热门空运运价</a></li><li><a href="#">热门快递运价</a></li><li><a href="#">热门铁路运价</a></li><li><a href="#">热门公路运价</a></li></ul><h2>物流百科</h2><ul class="cu"><li><strong><a href="#">推荐物流服务 </a></strong></li><li><a href="#">物流服务首页 </a></li><li><a href="#">海运整箱</a></li><li><a href="#">海运拼箱</a></li><li><a href="#">海运特种柜</a></li><li><a href="#">海运散杂</a></li><li><a href="#">空运服务</a></li><li><a href="#">快递服务</a></li><li><a href="#">陆路运输</a></li><li><a href="#">多式联运</a></li><li><a href="#">仓储配送</a></li><li><a href="#">报关报检</a></li><li><a href="#">海外业务</a></li><li><a href="#">综合物流服务</a></li></ul><h2>物流资讯</h2><ul><li><a href="">物流新闻</a></li><li><a href="#">航运动态</a></li><li><a href="#">空运动态</a></li><li><a href="#">陆运动态</a></li><li><a href="#">快递动态</a></li><li><a href="#">港口动态</a></li><li><a href="#">综合物流</a></li><li><a href="#">行业展会</a></li></ul><h2>公告讲座</h2><ul><li><a href="#">物流百科</a></li><li><a href="#">物流案例</a></li><li><a href="#">物流数据</a></li><li><a href="#">前沿研究</a></li><li><a href="#">外贸知识</a></li><li><a href="#">企业访谈</a></li><li><a href="#">物流政策法规</a></li><li>物流公告</li><li><a href="#">我网动态</a></li><li><a href="#">承运人公告</a></li></ul>
+</div>
+</div>
+</div>
+</div>
+<div class="o b">&copy; V-Get.com </div>
+
+</div>
+
+
+</body></html>

@@ -1,0 +1,101 @@
+<html xmlns:rdl>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<script src="rdl_method.js"></script>
+<base target="_self">
+</head>
+<body>
+
+<script>
+
+//collFriendObjects=new Array();
+//collFriendProperties=new Array();
+//collFriendMethods=new Array();
+//collFriendEvents=new Array();
+//collFriendCollections=new Array();
+
+collFriendMethods=new Array(
+'applyElement','insertAdjacentElement','insertBefore'
+);
+
+//collIE40=new Array();
+//collIE50=new Array();
+//collIE55=new Array();
+//collIE60=new Array();
+
+collIE50=new Array(
+'A','ACRONYM','ADDRESS','B','BDO','BIG','BLOCKQUOTE','BODY','BUTTON','CAPTION','CENTER','CITE','CODE','COL','COLGROUP','COMMENT','DD','DEL','DFN','DIR','DIV','DL','DT','EM','FIELDSET','FONT','FORM','FRAMESET','HEAD','Hn','HTML','I','IFRAME','INPUT type=button','INPUT type=checkbox','INPUT type=file','INPUT type=image','INPUT type=password','INPUT type=radio','INPUT type=reset','INPUT type=submit','INPUT type=text','INS','KBD','LABEL','LEGEND','LI','LISTING','MAP','MARQUEE','MENU','nextID','OL','OPTION','P','PLAINTEXT','PRE','Q','S','SAMP','SMALL','SPAN','STRIKE','STRONG','SUB','SUP','TABLE','TBODY','TD','TEXTAREA','TFOOT','TH','THEAD','TR','TT','U','UL','VAR','XMP'
+);
+
+collIE60=new Array(
+'attribute'
+);
+
+//sStyle='';
+
+sScript=
+'<script>\n'+
+'var i_nowline=1;var i_nowwidth=320;var i_nowheight=200;\n'+
+'function rdl_fnAppend(){\n'+
+'var oNewNode=document.createElement("li");\n'+
+'oList.appendChild(oNewNode);\n'+
+'i_nowline=i_nowline+1;i_nowheight+=15;\n'+
+'oNewNode.innerText="第"+i_nowline.toString()+"个列表项目";\n'+
+'window.resizeTo(i_nowwidth,i_nowheight);\n'+
+'}\n'+
+'<\/script>\n';
+
+sCode=
+'<ul id=oList>\n'+
+'<li>第1个列表项目\n'+
+'<\/ul>\n'+
+'<input type=button value=" 添加 " onclick="rdl_fnAppend()">\n';
+
+iWinWidth=320;
+
+iWinHeight=200;
+
+</script>
+
+<div id=idContent>
+
+<div id=idContentTitle><span id=idTitleName>appendChild</span>版本：DOM1　返回值：有</div>
+
+<div class=cssColumnTitle>语法：</div>
+<div>
+<i>oElement</i><b> = </b><i>object</i><b> . appendChild ( </b><i>oNode</i><b> ) </b>
+</div>
+
+<div class=cssColumnTitle>参数：</div>
+<table>
+<tr><td nowrap><i> oNode </i></td><td nowrap><b>:</b></td>
+<td><b>必选项</b>。对象(Element)。要被添加的对象。</td></tr>
+</table>
+
+<div class=cssColumnTitle>返回值：</div>
+<table>
+<tr><td nowrap><i> oElement </i></td><td nowrap><b>:</b></td>
+<td>对象(Element)。返回被添加对象的引用。</td></tr>
+</table>
+
+<div class=cssColumnTitle>说明：</div>
+<div>
+将<i> oNode </i>添加为<i> object </i>的最后一个子对象。即<i> object </i>的<a href="../objects/childnodes.html"> childNodes </a>集合的最后一项。
+<br><i> oNode </i>被添加前，必须先被建立。
+<br>要使被添加的<i> oNode </i>可视，它必须在文档结构中位于<a href="../objects/body.html"> body </a>对象以内。
+<br>如果<i> oNode </i>是已经在文档结构中存在定位的对象，该对象将被移动到你指定的插入位置，而不会有新对象被创建。
+<br>在运行时使用此方法是可以的。在对象的关闭标签被解析之前移除对象，则文档空间可能未被呈递。
+</div>
+
+<div class=cssColumnTitle>示例：</div>
+<div id=idSimpleCode>
+var oNewNode=document.createElement("div");<br>
+document.body.appendChild(oNewNode);
+</div>
+
+</div>
+</body>
+</html>
+
+<!-- Part of RDL(TM) - Written by Rain1977 
+HomeSite: http://www.dhtmlet.com  E-Mail: dhtmlet@hotmail.com -->

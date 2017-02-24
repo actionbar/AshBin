@@ -1,0 +1,84 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>网址和邮件地址的转换函数</title>
+<style type="text/css">
+<!--
+body {
+	font-size: 10.4pt;
+	line-height: 22px;
+}
+-->
+</style>
+</head>
+
+<body bgcolor="eeeeee" leftmargin="20" marginwidth="20">
+<p><strong>网址和邮件地址的转换函数</strong></p>
+<hr>
+<p>&lt;%<br>
+  function URLconvert(str) <br>
+  convertstr=str<br>
+  urlLocation=instr(convertstr,&quot;http://&quot;)</p>
+<p>if (urlLocation=0) and (mailLocation=0) then <br>
+  URLconvert=convertstr<br>
+  exit function<br>
+  end if</p>
+<p>if urlLocation&lt;&gt;0 then<br>
+  rightstr=str<br>
+  Do while urlLocation&lt;&gt;urlLocationend<br>
+  urlLocation=instr(rightstr,&quot;http://&quot;)<br>
+  urlLocationend=InStrRev(rightstr,&quot;http://&quot;)<br>
+  finalstr=finalstr&amp;left(rightstr,urlLocation-1)<br>
+  midurlstr=mid(rightstr,urlLocation+1,1)<br>
+  do while (asc(midurlstr)&gt;=45) and (asc(midurlstr)&lt;=126)<br>
+  loopint=loopint+1<br>
+  midurlstr=mid(rightstr,urlLocation+loopint,1)<br>
+  if midurlstr=&quot;&quot; then exit do<br>
+  loop<br>
+  endURLstr=mid(rightstr,urllocation,loopint)<br>
+  URLstr=&quot;&lt;a href=&quot;&amp;endURLstr&amp;&quot;&gt;&quot;&amp;endURLstr&amp;&quot;&lt;/a&gt;&quot;<br>
+  rightstr=mid(rightstr,urllocation+loopint)<br>
+  finalstr=finalstr&amp;URLstr<br>
+  loopint=1<br>
+  Loop <br>
+  end if<br>
+  finalstr=finalstr&amp;rightstr</p>
+<p>convertstr1=finalstr<br>
+  finalstr=&quot;&quot;<br>
+  mailLocation=instr(convertstr1,&quot;@&quot;)<br>
+  if mailLocation&lt;&gt;0 then<br>
+  Do while mailLocation&lt;&gt;mailLocationend<br>
+  mailLocation=instr(convertstr1,&quot;@&quot;)<br>
+  mailLocationend=InStrRev(convertstr1,&quot;@&quot;)<br>
+  mainmidmailstr=mid(convertstr1,mailLocation+1,1)<br>
+  midmailstr=mainmidmailstr<br>
+  do while (asc(midmailstr)&gt;=45) and (asc(midmailstr)&lt;=126)<br>
+  loopint1=loopint1+1<br>
+  midmailstr=mid(convertstr1,mailLocation-loopint1,1)<br>
+  loop<br>
+  firstSTR=mid(convertstr1,mailLocation-loopint1+1,loopint1-1)</p>
+<p>finalstr=finalstr&amp;left(convertstr1,mailLocation-loopint1)</p>
+<p>midmailstr1=mainmidmailstr <br>
+  do while (asc(midmailstr1)&gt;=45) and (asc(midmailstr1)&lt;=126)<br>
+  loopint2=loopint2+1<br>
+  midmailstr1=mid(convertstr1,mailLocation+loopint2,1)<br>
+  if midmailstr1=&quot;&quot; then exit do<br>
+  loop<br>
+  secondSTR=mid(convertstr1,mailLocation,loopint2)</p>
+<p>endmailstr=firstSTR&amp;secondSTR<br>
+  mailstr=&quot;&lt;a href=mailto:&quot;&amp;endmailstr&amp;&quot;&gt;&quot;&amp;endmailstr&amp;&quot;&lt;/a&gt;&quot;<br>
+  finalstr=finalstr&amp;mailstr<br>
+  convertstr1=mid(convertstr1,maillocation+loopint2)<br>
+  loopint1=1<br>
+  loopint2=1<br>
+  Loop<br>
+  end if<br>
+  finalstr=finalstr&amp;convertstr1<br>
+  URLconvert=finalstr<br>
+  end function<br>
+  %&gt;<br>
+</p>
+<p>&nbsp; </p>
+</body>
+</html>

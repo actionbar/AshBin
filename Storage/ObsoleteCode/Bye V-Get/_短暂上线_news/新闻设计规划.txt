@@ -1,0 +1,29 @@
+新闻独立到站点内，信息相对不需要专业，
+
+news.v-get.com/fair/  展会信息
+ news.v-get.com/fair/yibohui/
+
+
+#所有外站页码都是  site.news.v-get.com/menu/index_1.html
+  三级子域名 去掉点 ： yiwuwuliu.news.v-get.com/logistics/index_1.html  
+   wuliu.news.v-get.com/logistics/index_1.html  
+   文件在  /ex/logistics/下
+ *.wuliu-->logistics
+   wuliu.news.v-get.com/logistics/index_1.html
+   e-->internet 
+   e.news.v-get.com/internet/index_1.html
+   
+#
+
+RewriteCond %{HTTP_HOST} ^[\w-]+\.news\.v-get\.com$
+RewriteRule ^([a-z]+)/index_(\d+)\.html$ /ex/$1/%{HTTP_HOST}.php?p=$2&%{QUERY_STRING} [L]
+
+
+news.v-get.com/2013-12-07/id.html
+2013开始
+数据库名字叫做 年 ，每年一个
+新闻战略：用户可以上传，内容可以是物流公司招聘、庆典 ， 开放平台
+
+
+百科战略：用户上传的相对难被采用，内容较专业、学术，不报新闻
+ 

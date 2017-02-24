@@ -1,0 +1,18 @@
+<meta http-equiv="content-type" content="text/html; charset=gb2312"><FONT 
+style="FONT-SIZE: 9pt; LINE-HEIGHT: 15pt"><B>Most&nbsp;Legible&nbsp;Date&nbsp;Format&nbsp;Function</B><BR>Most&nbsp;Legible&nbsp;Date&nbsp;Format&nbsp;Function
+<P></P>
+<P></P>
+<P><BR>&gt;&gt;Script&nbsp;Language&nbsp;and&nbsp;Platform:&nbsp;MS&nbsp;SQL&nbsp;2000<BR>Datetime&nbsp;coversion&nbsp;is&nbsp;always&nbsp;a&nbsp;headache&nbsp;for&nbsp;SQL&nbsp;technical&nbsp;users.&nbsp;Through&nbsp;this&nbsp;function,&nbsp;you&nbsp;can&nbsp;get&nbsp;the&nbsp;most&nbsp;legible&nbsp;way&nbsp;of&nbsp;representing&nbsp;the&nbsp;date.&nbsp;It&nbsp;can&nbsp;be&nbsp;applied&nbsp;on&nbsp;any&nbsp;single&nbsp;day,&nbsp;any&nbsp;table&nbsp;with&nbsp;datetime&nbsp;field&nbsp;columns.&nbsp;</P>
+<P>Author:&nbsp;Claire&nbsp;Hsu&nbsp;</P>
+<P></P>
+<P>create&nbsp;function&nbsp;dbo.date(@date&nbsp;datetime)<BR>returns&nbsp;varchar(20)<BR>As</P>
+<P><BR>--Script&nbsp;Language&nbsp;and&nbsp;Platform:MS&nbsp;SQL&nbsp;2000<BR>--Objecttive:&nbsp;New&nbsp;way&nbsp;of&nbsp;displaying&nbsp;date.This&nbsp;function&nbsp;can&nbsp;<BR>--give&nbsp;you&nbsp;the&nbsp;most&nbsp;legible&nbsp;way&nbsp;to&nbsp;present&nbsp;a&nbsp;date<BR>--Usage&nbsp;Ex:&nbsp;select&nbsp;dbo.date(DOB)&nbsp;from&nbsp;customers<BR>--Author:Claire&nbsp;Hsu&nbsp;&nbsp;<BR>--Date&nbsp;&nbsp;:2003/4/30<BR>--Email:messageclaire@yahoo.com</P>
+<P></P>
+<P>begin<BR>declare&nbsp;@string&nbsp;varchar(20)<BR>set&nbsp;@string&nbsp;=&nbsp;<BR>(select&nbsp;left(datename(month,@date),3)+"&nbsp;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+convert(varchar(2),day(@date))+(case&nbsp;<BR>when&nbsp;right(day(@date),1)=1&nbsp;and&nbsp;day(@date)&lt;&gt;11&nbsp;then&nbsp;'st'<BR>when&nbsp;right(day(@date),1)=2&nbsp;and&nbsp;day(@date)&lt;&gt;12&nbsp;then&nbsp;'nd'<BR>when&nbsp;right(day(@date),1)=3&nbsp;and&nbsp;day(@date)&lt;&gt;13&nbsp;then&nbsp;'rd'<BR>else&nbsp;'th'&nbsp;end)+"'"+datename(year,@date))</P>
+<P>return&nbsp;(@string)<BR>end</P>
+<P></P>
+<P>--Usage<BR>--select&nbsp;dbo.date(datetime_filed_column)&nbsp;from&nbsp;table_name<BR>--select&nbsp;dbo.date('2/24/2001')&nbsp;as&nbsp;DATE</P>
+<P><BR>/*This&nbsp;is&nbsp;the&nbsp;result&nbsp;display</P>
+<P>Jan&nbsp;1st'2001</P>
+<P>Mar&nbsp;3rd'2003</P>
+<P>Mar&nbsp;15th'2002<BR>*/</P></FONT>

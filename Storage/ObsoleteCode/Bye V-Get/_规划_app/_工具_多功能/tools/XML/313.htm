@@ -1,0 +1,92 @@
+<html>
+<head>
+<title>用于XML的XML</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+
+<link rel = stylesheet href = "image/style.css">
+</head>
+<body bgcolor="#ffffff">
+<table width="688" border="0" cellspacing="0" cellpadding="0" align="center">
+  <tr bgcolor="EEEEEE"> 
+    <td height="22"><a href="index.htm">主页</a></td>
+  </tr>
+</table><br>
+<table border="0" cellpadding="0" cellspacing="0" width="688" align="center" height="490">
+  <tr valign="top"> 
+    <td rowspan="4" width="91">&nbsp; </td>
+    <td height="68" width="131"> 
+      <p><img src="image/doc.gif"></p>
+    </td>
+    <td rowspan="4" width="18"><b></b> </td>
+    <td height="68" width="387"><img src="image/title_doc.gif"></td>
+    <td rowspan="4" width="61"> 
+      <h6>&nbsp;</h6>
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td rowspan="3" valign="top" class="pt10" align="center" width="131" bgcolor="EEEEEE"> 
+      <p>&nbsp;</p>
+      <p><font color="#FF0000">※ 2.2 用于XML的XML</font></p>
+       
+	</td>
+  </tr>
+  <tr valign="top"> 
+    <td width="387" height="308"> 
+      <table width="100%" border="0" cellpadding="0">
+        <tr> 
+          <td>
+
+           <h4 ALIGN="CENTER"><A NAME="_Toc467196744">2.2 用于XML的XML</A></h4>
+<P>XML对于文本数据来说是最通用的格式。它所用于的某些事物还进一步地完善了XML本身。这包括XSL样式单语言、XLL链接语言和用于XML的文档内容描述（Document Content Description，简写为DCD）。</P>
+<h5><A NAME="_Toc467196745">2.2.1 XSL</A></h5>
+<P>XSL（Extensible Style Language，可扩展的样式语言）本身就是XML应用。XSL有两个主要部分。第一部分定义了将XML文档加以转换的词汇表。这一部分的XSL包括用于树的XML标记、节点、式样、模板和其他用于将XML文档从一种标记词汇转换成另一种（或是同一种却以不同的顺序）所需要的元素。</P>
+<P>XSL的第二部分定义了用于格式化转换后的XML文档（由第一部分产生的）的词汇表。这包括用于格式化对象（如分页、块、字符、列表、图形、方框、字体和其他）的XML标记。清单2-12中列出了一个典型的XSL样式单：</P>
+<P>清单2-12：一个XSL样式单</P>
+<P><font face="Courier New, Courier, mono"><i>&lt;?xml version="1.0"?&gt;</i></font></P>
+<P><i><font face="Courier New, Courier, mono">&lt;xsl:stylesheet</font></i></P>
+<P><i><font face="Courier New, Courier, mono"> xmlns:xsl="http://www.w3.org/T 
+  /WD-xsl"</font></i></P>
+<P><i><font face="Courier New, Courier, mono"> xmlns:fo="http://www.w3.org/T /WD-xsl/FO"</font></i></P>
+<P><i><font face="Courier New, Courier, mono"> result-ns="fo"&gt;</font></i></P>
+<P> <i><font face="Courier New, Courier, mono">&lt;xsl:template match="/"&gt;</font></i></P>
+<P> <i><font face="Courier New, Courier, mono">&lt;fo:basic-page-sequence &gt;</font></i></P>
+<P> <i><font face="Courier New, Courier, mono">&lt;xsl:apply-templates/&gt;</font></i></P>
+<P> <i><font face="Courier New, Courier, mono">&lt;/fo:basic-page-sequence&gt;</font></i></P>
+<P> <i><font face="Courier New, Courier, mono">&lt;/xsl:template&gt;</font></i></P>
+<P></P>
+<P> <i><font face="Courier New, Courier, mono">&lt;xsl:template match="ATOM"&gt;</font></i></P>
+<P> <i><font face="Courier New, Courier, mono">&lt;fo:block font-size="10pt" font-family="serif" 
+  space-before="12pt"&gt;</font></i></P>
+<P> <i><font face="Courier New, Courier, mono">&lt;xsl:value-of select="NAME"/&gt;</font></i></P>
+<P> <i><font face="Courier New, Courier, mono">&lt;/fo:block&gt;</font></i></P>
+<P> <i><font face="Courier New, Courier, mono">&lt;/xsl:template&gt;</font></i></P>
+<P></P>
+<P><i><font face="Courier New, Courier, mono">&lt;/xsl:stylesheet&gt;</font></i></P>
+<P><img src="image/Image4.gif" WIDTH=45 HEIGHT=33>  我们将在第14章和15章中详细讨论XSL。</P>
+<h5><A NAME="_Toc467196746">2.2.2 XLL</A></h5>
+<P>可扩展的链接语言（Extensible Linking Language，简写为XLL）定义了新的名为XLink的更一般种类的链接。XLinks可完成用HTML中的以URL为基础的超链接所能完成的所有任务。例如，脚注元素可像下例一样直接链接注解的文本：</P>
+<P>&lt;footnote xlink:form="simple" href="footnote7.xml"&gt;7&lt;/footnote&gt;</P>
+<P>进一步说，XLink可以做HTML链接不能做的事。XLink可以是双向的，因而读者可以返回原来所在的页面（跳转前所在页面）。XLink可以链接到文档中的任意位置。XLink可将文本或是图形数据嵌入文档内部，而不需要用户去激活链接（更像HTML中的&lt;IMG&gt;标记，但更灵活）。简短说，XLink使超链接的功能更为强大。</P>
+<P><img src="image/Image4.gif" WIDTH=45 HEIGHT=33>      在第16章“XLink”中将要更加详细地讨论XLink方面的内容。</P>
+<h5><A NAME="_Toc467196747">2.2.3 DCD</A></h5>
+<P>XML的用于声明XML元素内容应该如何格式化的工具对于不存在的内容显得功能不足。例如，假设作为数据的一部分，像下面一样建立了MONTH元素：</P>
+<P>&lt;MONTH&gt;9&lt;/MONTH&gt;</P>
+<P>我们能看到MONTH元素的内容应该是字符数据。我们不能说必须给这个元素以从1到12的整数。</P>
+<P>已经提出了几种XML本身的方案，以便更严格地限制什么可以出现在任意给定的内容中。有一种方案就是文档内容描述（Document Content Description，简写为DCD）例如，这里有一个DCD，声明了MONTH元素只能含有1到12的整数：</P>
+<P><font face="Courier New, Courier, mono"><i>&lt;DCD&gt;</i></font></P>
+<P> <i><font face="Courier New, Courier, mono">&lt;ElementDef Type="MONTH" Model="Data" 
+  Datatype="i1" </font></i></P>
+<P><i><font face="Courier New, Courier, mono"> Min="1" Max="12" /&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;/DCD&gt;</font></i></P>
+<P>我还可以向读者展示好多的用于XML的XML的例子，但是上例已经表明了基本的观点：XML强大得足以来描述和扩展本身。此外，这还意味着，XML规范可以保持短小和简单。完全可以没有XML 2.0，因为任何主要的所需的附加内容都可以根据原来的XML加以建立，而不必成为XML的新功能。需要加强功能的人们和程序员们可以使用这些新功能，而不需要的人可以将其忽略。用户不必了解什么是不使用的。XML提供了“砖和泥”，利用这些“砖和泥”既可以建起“小屋”也可以建起高耸的“城堡”。</P> 
+<a href='312.htm'>&lt;&lt;上一篇</a>&nbsp;&nbsp;<a href='314.htm'>下一篇&gt;&gt;</a></td>
+        </tr>
+      </table>
+      <p>&nbsp; </p>
+    </td>
+  </tr>
+</table>
+
+</body>
+
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="../c3.css" />
+<title>WSDL 端口</title>
+</head>
+<body class="xml">
+<div id="wrapper">
+<div id="header">
+<a href="http://e.v-get.com/w3cschool/" style="float:left;">W3CSchool 在线教程</a>
+<div class="q g"><script type="text/javascript">var cpro_id="u1163355"</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div>
+<div id="navfirst">
+<ul id="menu">
+<li id="h"><a href="../h.html">HTML教程</a></li>
+<li id="x"><a href="../x.html">XML教程</a></li>
+<li id="b"><a href="../b.html">浏览器脚本</a></li>
+<li id="s"><a href="../s.html">服务器脚本</a></li>
+<li id="d"><a href="../d.html">dot net教程</a></li>
+<li id="m"><a href="../m.html">多媒体教程</a></li>
+<li id="w"><a href="../w.html">建站手册</a></li>
+</ul>
+</div><div id="navsecond">
+<div id="course">
+<h2>WSDL 教程</h2>
+<ul>
+<li><a href="http://e.v-get.com/w3cschool/">WSDL 首页</a></li>
+<li><a href="wsdl_intro.html">WSDL 简介</a></li>
+<li><a href="wsdl_documents.html">WSDL 文档</a></li>
+<li><a href="wsdl_ports.html">WSDL 端口</a></li>
+<li><a href="wsdl_binding.html">WSDL 绑定</a></li>
+<li><a href="wsdl_uddi.html">WSDL 和 UDDI</a></li>
+<li><a href="wsdl_syntax.html">WSDL 语法</a></li>
+<li><a href="wsdl_summary.html">WSDL 总结</a></li>
+</ul>
+</div>
+<div id="selected">
+<h2>建站手册</h2>
+<ul>
+<li><a href="../site/">网站构建</a></li>
+<li><a href="../w3c/">万维网联盟</a></li>
+<li><a href="http://e.v-get.com/w3c/">W3CSchool 教程</a></li>
+<li><a href="../quality/">网站品质</a></li>
+<li><a href="../semweb/">语义网</a></li>
+<li><a href="../hosting/">网站主机</a></li>
+</ul>
+<h2><a href="http://e.v-get.com/w3c/" class="f13">W3CSchool 教程</a></h2><div class="a120x90"><script type="text/javascript">var cpro_id="u1210867";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div></div>
+</div>
+<div id="maincontent">
+<h1>WSDL 端口</h1>
+<div id="tpn">
+<ul class="prenext">
+<li class="pre"><a href="wsdl_documents.html">上一页</a></li>
+<li class="next"><a href="wsdl_binding.html">下一页</a></li>
+</ul>
+</div>
+<div id="intro">
+<p><strong>WSDL 端口可描述由某个 web service 提供的界面 (合法操作）。</strong></p>
+</div>
+<div>
+<h2>WSDL 端口</h2>
+<p><em>&lt;portType&gt;</em> 元素是最重要的 WSDL 元素。</p>
+<p>它可描述一个 <em>web service</em>、可被执行的<em>操作</em>，以及相关的<em>消息</em>。</p>
+<p>端口定义了指向某个 web service 的连接点。可以把该元素比作传统编程语言中的一个函数库 (或一个模块、或一个类），而把每个操作比作传统编程语言中的一个函数。</p>
+</div>
+<div>
+<h2>操作类型</h2>
+<p>请求-响应是最普通的操作类型，不过 WSDL 定义了四种类型：</p>
+<table class="dataintable">
+<tr>
+<th>类型</th>
+<th>定义</th>
+</tr>
+<tr>
+<td>One-way</td>
+<td>此操作可接受消息，但不会返回响应。</td>
+</tr>
+<tr>
+<td>Request-response</td>
+<td>此操走可接受一个请求并会返回一个响应</td>
+</tr>
+<tr>
+<td>Solicit-response</td>
+<td>此操作可发送一个请求，并会等待一个响应。</td>
+</tr>
+<tr>
+<td>Notification</td>
+<td>此操作可发送一条消息，但不会等待响应。</td>
+</tr>
+</table>
+</div>
+<div>
+<h2>One-Way 操作</h2>
+<p>一个 one-way 操作的例子：</p>
+<pre>&lt;message name=&#34;newTermValues&#34;&gt;
+   &lt;part name=&#34;term&#34; type=&#34;xs:string&#34;/&gt;
+   &lt;part name=&#34;value&#34; type=&#34;xs:string&#34;/&gt;
+&lt;/message&gt;
+&lt;portType name=&#34;glossaryTerms&#34;&gt;
+   &lt;operation name=&#34;setTerm&#34;&gt;
+      &lt;input name=&#34;newTerm&#34; message=&#34;newTermValues&#34;/&gt;
+   &lt;/operation&gt;
+&lt;/portType &gt;</pre>
+<p>在这个例子中，端口 &#34;glossaryTerms&#34; 定义了一个名为 &#34;setTerm&#34; 的 one-way 操作。</p>
+<p>这个 &#34;setTerm&#34; 操作可接受新术语表项目消息的输入，这些消息使用一条名为 &#34;newTermValues&#34; 的消息，此消息带有输入参数 &#34;term&#34; 和 &#34;value&#34;。不过，没有为这个操作定义任何输出。</p>
+</div>
+<div>
+<h2>Request-Response 操作</h2>
+<p>一个 request-response 操作的例子：</p>
+<pre>&lt;message name=&#34;getTermRequest&#34;&gt;
+   &lt;part name=&#34;term&#34; type=&#34;xs:string&#34;/&gt;
+&lt;/message&gt;
+&lt;message name=&#34;getTermResponse&#34;&gt;
+   &lt;part name=&#34;value&#34; type=&#34;xs:string&#34;/&gt;
+&lt;/message&gt;
+&lt;portType name=&#34;glossaryTerms&#34;&gt;
+  &lt;operation name=&#34;getTerm&#34;&gt;
+    &lt;input message=&#34;getTermRequest&#34;/&gt;
+    &lt;output message=&#34;getTermResponse&#34;/&gt;
+  &lt;/operation&gt;
+&lt;/portType&gt;</pre>
+<p>在这个例子中，端口 &#34;glossaryTerms&#34; 定义了一个名为 &#34;getTerm&#34; 的 request-response 操作。</p>
+<p>&#34;getTerm&#34; 操作会请求一个名为 &#34;getTermRequest&#34; 的输入消息，此消息带有一个名为 &#34;term&#34; 的参数，并将返回一个名为 &#34;getTermResponse&#34; 的输出消息，此消息带有一个名为 &#34;value&#34; 的参数。</p>
+</div>
+<div id="bpn">
+<ul class="prenext">
+<li class="pre"><a href="wsdl_documents.html">上一页</a></li>
+<li class="next"><a href="wsdl_binding.html">下一页</a></li>
+</ul>
+</div>
+</div>
+<div class="r q"></div><div class="b"></div>
+</div>
+</body>
+</html>

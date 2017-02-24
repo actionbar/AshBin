@@ -1,0 +1,1254 @@
+<html>
+<head>
+<title>检查数据(续)</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+
+<link rel = stylesheet href = "image/style.css">
+</head>
+<body bgcolor="#ffffff">
+<table width="688" border="0" cellspacing="0" cellpadding="0" align="center">
+  <tr bgcolor="EEEEEE"> 
+    <td height="22"><a href="index.htm">主页</a></td>
+  </tr>
+</table><br>
+<table border="0" cellpadding="0" cellspacing="0" width="688" align="center" height="490">
+  <tr valign="top"> 
+    <td rowspan="4" width="91">&nbsp; </td>
+    <td height="68" width="131"> 
+      <p><img src="image/doc.gif"></p>
+    </td>
+    <td rowspan="4" width="18"><b></b> </td>
+    <td height="68" width="387"><img src="image/title_doc.gif"></td>
+    <td rowspan="4" width="61"> 
+      <h6>&nbsp;</h6>
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td rowspan="3" valign="top" class="pt10" align="center" width="131" bgcolor="EEEEEE"> 
+      <p>&nbsp;</p>
+      <p><font color="#FF0000">※ 4.1 检查数据(续)</font></p>
+       
+            <p align="left"><a href='328.htm'>4.1 检查数据</a></p>
+          
+            <p align="left">4.1 检查数据(续)</p>
+          
+	</td>
+  </tr>
+  <tr valign="top"> 
+    <td width="387" height="308"> 
+      <table width="100%" border="0" cellpadding="0">
+        <tr> 
+          <td>
+
+           <h5 align="left">4.1.2 投球手</h5>
+<p>人们并不指望投球手成为全垒跑的击球手或是偷袭能手。确实偶尔到达第一垒的投球手是对一个队的意外奖励。对投球手的评价要根据表4-2中列出的全场的不同种类的数字。这个表的每列也定义了一个元素。这些元素中的一部分，如姓名和位置对于投球手和击球手都是有的。其他元素如解救（saves）和成功防守（shutouts）只适用于投球手。还有几个，如得分（runs）和全垒跑（home 
+  runs）与击球手统计中的名称相同，但是具有不同意义。例如，击球手的得分数是击球手获得的分数。而对于投球手来说，是指对方在这个投球手下得到的分数。</p>
+<h5>4.1.3 XML数据的组织</h5>
+<p>XML是建立在容器模型的基础之上的。每个XML元素可以包含文本或是称为子元素的其他XML元素。有几个XML元素既可以包含文本也可以包含子元素。虽然通常来说，这并不是一种好形式，是应该尽量避免的。</p>
+<p>不过，常常有不止一种组织数据的方法，这要取决于需要。XML的一个好处是，它使得编写程序来以不同形式组织数据变得相当直接。在第14章我们讨论XSL变换时还要讨论这一问题。</p>
+<p>作为开始，必须注意的第一个问题是什么包含什么？例如，相当明显的是，联赛包含分部，分部包含球队，球队又包含球员，而球员又可在指定的时间进行交易，每个球员必定属于一个球队，每个球队又必定属于一个分部。类似的，一个赛季包含许多场比赛，每场比赛又包含几局，而局又包含击球阶段，击球阶段又包含投球阶段。</p>
+<p>但是，赛季包括联赛吗或是联赛包括赛季吗？这个问题就不是很明显。确实对这样的问题没有唯一的答案。将赛季元素定义为联赛元素的子元素还是将联赛元素变为赛季元素的子元素有更多的意义，这要依赖于数据要用来干什么。用户甚至可以创建新的既包含赛季也包含联赛的根元素，哪个元素也不是另外元素的子元素（虽然要有效地这样做，还需要某些先进的技术，在以下几章还讨论不到这些技术）。用户可按用户的意愿来组织数据。</p>
+<p align="CENTER">表4-2 1998年Yankees队的投球手</p>
+<p align="CENTER">
+<center>
+  <table BORDER width=698 cellpadding=0 cellspacing=0>
+    <tr bgcolor="#999999"> 
+      <td width="12%" valign="MIDDLE" height="28"> 
+        <p align="CENTER"><font size="2">Name </font>
+      </td>
+      <td width="8%" valign="MIDDLE" height="28"> 
+        <p align="CENTER"><font size="2">P </font>
+      </td>
+      <td width="3%" valign="MIDDLE" height="28"> 
+        <p align="CENTER"><font size="2">W </font>
+      </td>
+      <td width="3%" valign="MIDDLE" height="28"> 
+        <p align="CENTER"><font size="2">L </font>
+      </td>
+      <td width="3%" valign="MIDDLE" height="28"> 
+        <p align="CENTER"><font size="2">S </font>
+      </td>
+      <td width="3%" valign="MIDDLE" height="28"> 
+        <p align="CENTER"><font size="2">G </font>
+      </td>
+      <td width="4%" valign="MIDDLE" height="28"> 
+        <p align="CENTER"><font size="2">GS </font>
+      </td>
+      <td width="4%" valign="MIDDLE" height="28"> 
+        <p align="CENTER"><font size="2">CG </font>
+      </td>
+      <td width="5%" valign="MIDDLE" height="28"> 
+        <p align="CENTER"><font size="2">SHO </font>
+      </td>
+      <td width="6%" valign="MIDDLE" height="28"> 
+        <p align="CENTER"><font size="2">ERA </font>
+      </td>
+      <td width="6%" valign="MIDDLE" height="28"> 
+        <p align="CENTER"><font size="2">IP </font>
+      </td>
+      <td width="5%" valign="MIDDLE" height="28"> 
+        <p align="CENTER"><font size="2">H </font>
+      </td>
+      <td width="4%" valign="MIDDLE" height="28"> 
+        <p align="CENTER"><font size="2">HR </font>
+      </td>
+      <td width="3%" valign="MIDDLE" height="28"> 
+        <p align="CENTER"><font size="2">R </font>
+      </td>
+      <td width="4%" valign="MIDDLE" height="28"> 
+        <p align="CENTER"><font size="2">ER </font>
+      </td>
+      <td width="5%" valign="MIDDLE" height="28"> 
+        <p align="CENTER"><font size="2">HB </font>
+      </td>
+      <td width="4%" valign="MIDDLE" height="28"> 
+        <p align="CENTER"><font size="2">WP </font>
+      </td>
+      <td width="5%" valign="MIDDLE" height="28"> 
+        <p align="CENTER"><font size="2">BK </font>
+      </td>
+      <td width="4%" valign="MIDDLE" height="28"> 
+        <p align="CENTER"><font size="2">WB </font>
+      </td>
+      <td width="5%" valign="MIDDLE" height="28"> 
+        <p align="CENTER"><font size="2">SO </font>
+      </td>
+    </tr>
+    <tr> 
+      <td width="12%" valign="MIDDLE"> 
+        <p><font size="2">Joe</font></p>
+        <p><font size="2">Borowski </font>
+      </td>
+      <td width="8%" valign="MIDDLE"> 
+        <p><font size="2">Relief Pitcher </font>
+      </td>
+      <td width="3%" valign="MIDDLE"> 
+        <p><font size="2">1 </font>
+      </td>
+      <td width="3%" valign="MIDDLE"> 
+        <p><font size="2">0 </font>
+      </td>
+      <td width="3%" valign="MIDDLE"> 
+        <p><font size="2">0 </font>
+      </td>
+      <td width="3%" valign="MIDDLE"> 
+        <p><font size="2">8 </font>
+      </td>
+      <td width="4%" valign="MIDDLE"> 
+        <p><font size="2">0 </font>
+      </td>
+      <td width="4%" valign="MIDDLE"> 
+        <p><font size="2">0 </font>
+      </td>
+      <td width="5%" valign="MIDDLE"> 
+        <p><font size="2">0 </font>
+      </td>
+      <td width="6%" valign="MIDDLE"> 
+        <p><font size="2">6.52 </font>
+      </td>
+      <td width="6%" valign="MIDDLE"> 
+        <p><font size="2">9.2 </font>
+      </td>
+      <td width="5%" valign="MIDDLE"> 
+        <p><font size="2">11 </font>
+      </td>
+      <td width="4%" valign="MIDDLE"> 
+        <p><font size="2">0 </font>
+      </td>
+      <td width="3%" valign="MIDDLE"> 
+        <p><font size="2">7 </font>
+      </td>
+      <td width="4%" valign="MIDDLE"> 
+        <p><font size="2">7 </font>
+      </td>
+      <td width="5%" valign="MIDDLE"> 
+        <p><font size="2">0 </font>
+      </td>
+      <td width="4%" valign="MIDDLE"> 
+        <p><font size="2">0 </font>
+      </td>
+      <td width="5%" valign="MIDDLE"> 
+        <p><font size="2">0 </font>
+      </td>
+      <td width="4%" valign="MIDDLE"> 
+        <p><font size="2">4 </font>
+      </td>
+      <td width="5%" valign="MIDDLE"> 
+        <p><font size="2">7 </font>
+      </td>
+    </tr>
+    <tr> 
+      <td width="12%" valign="MIDDLE"> 
+        <p><font size="2">Ryan Bradley </font>
+      </td>
+      <td width="8%" valign="MIDDLE"> 
+        <p><font size="2">Relief Pitcher </font>
+      </td>
+      <td width="3%" valign="MIDDLE"> 
+        <p><font size="2">2 </font>
+      </td>
+      <td width="3%" valign="MIDDLE"> 
+        <p><font size="2">1 </font>
+      </td>
+      <td width="3%" valign="MIDDLE"> 
+        <p><font size="2">0 </font>
+      </td>
+      <td width="3%" valign="MIDDLE"> 
+        <p><font size="2">5 </font>
+      </td>
+      <td width="4%" valign="MIDDLE"> 
+        <p><font size="2">1 </font>
+      </td>
+      <td width="4%" valign="MIDDLE"> 
+        <p><font size="2">0 </font>
+      </td>
+      <td width="5%" valign="MIDDLE"> 
+        <p><font size="2">0 </font>
+      </td>
+      <td width="6%" valign="MIDDLE"> 
+        <p><font size="2">5.68 </font>
+      </td>
+      <td width="6%" valign="MIDDLE"> 
+        <p><font size="2">12.2 </font>
+      </td>
+      <td width="5%" valign="MIDDLE"> 
+        <p><font size="2">12 </font>
+      </td>
+      <td width="4%" valign="MIDDLE"> 
+        <p><font size="2">2 </font>
+      </td>
+      <td width="3%" valign="MIDDLE"> 
+        <p><font size="2">9 </font>
+      </td>
+      <td width="4%" valign="MIDDLE"> 
+        <p><font size="2">8 </font>
+      </td>
+      <td width="5%" valign="MIDDLE"> 
+        <p><font size="2">1 </font>
+      </td>
+      <td width="4%" valign="MIDDLE"> 
+        <p><font size="2">0 </font>
+      </td>
+      <td width="5%" valign="MIDDLE"> 
+        <p><font size="2">0 </font>
+      </td>
+      <td width="4%" valign="MIDDLE"> 
+        <p><font size="2">9 </font>
+      </td>
+      <td width="5%" valign="MIDDLE"> 
+        <p><font size="2">13 </font>
+      </td>
+    </tr>
+    <tr> 
+      <td width="12%" valign="MIDDLE"> 
+        <p><font size="2">Jim Bruske </font>
+      </td>
+      <td width="8%" valign="MIDDLE"> 
+        <p><font size="2">Relief Pitcher </font>
+      </td>
+      <td width="3%" valign="MIDDLE"> 
+        <p><font size="2">1 </font>
+      </td>
+      <td width="3%" valign="MIDDLE"> 
+        <p><font size="2">0 </font>
+      </td>
+      <td width="3%" valign="MIDDLE"> 
+        <p><font size="2">0 </font>
+      </td>
+      <td width="3%" valign="MIDDLE"> 
+        <p><font size="2">3 </font>
+      </td>
+      <td width="4%" valign="MIDDLE"> 
+        <p><font size="2">1 </font>
+      </td>
+      <td width="4%" valign="MIDDLE"> 
+        <p><font size="2">0 </font>
+      </td>
+      <td width="5%" valign="MIDDLE"> 
+        <p><font size="2">0 </font>
+      </td>
+      <td width="6%" valign="MIDDLE"> 
+        <p><font size="2">3 </font>
+      </td>
+      <td width="6%" valign="MIDDLE"> 
+        <p><font size="2">9 </font>
+      </td>
+      <td width="5%" valign="MIDDLE"> 
+        <p><font size="2">9 </font>
+      </td>
+      <td width="4%" valign="MIDDLE"> 
+        <p><font size="2">2 </font>
+      </td>
+      <td width="3%" valign="MIDDLE"> 
+        <p><font size="2">3 </font>
+      </td>
+      <td width="4%" valign="MIDDLE"> 
+        <p><font size="2">3 </font>
+      </td>
+      <td width="5%" valign="MIDDLE"> 
+        <p><font size="2">0 </font>
+      </td>
+      <td width="4%" valign="MIDDLE"> 
+        <p><font size="2">0 </font>
+      </td>
+      <td width="5%" valign="MIDDLE"> 
+        <p><font size="2">0 </font>
+      </td>
+      <td width="4%" valign="MIDDLE"> 
+        <p><font size="2">1 </font>
+      </td>
+      <td width="5%" valign="MIDDLE"> 
+        <p><font size="2">3 </font>
+      </td>
+    </tr>
+    <tr> 
+      <td width="12%" valign="MIDDLE"> 
+        <p><font size="2">Mike Buddie </font>
+      </td>
+      <td width="8%" valign="MIDDLE"> 
+        <p><font size="2">Relief Pitcher </font>
+      </td>
+      <td width="3%" valign="MIDDLE"> 
+        <p><font size="2">4 </font>
+      </td>
+      <td width="3%" valign="MIDDLE"> 
+        <p><font size="2">1 </font>
+      </td>
+      <td width="3%" valign="MIDDLE"> 
+        <p><font size="2">0 </font>
+      </td>
+      <td width="3%" valign="MIDDLE"> 
+        <p><font size="2">24 </font>
+      </td>
+      <td width="4%" valign="MIDDLE"> 
+        <p><font size="2">2 </font>
+      </td>
+      <td width="4%" valign="MIDDLE"> 
+        <p><font size="2">0 </font>
+      </td>
+      <td width="5%" valign="MIDDLE"> 
+        <p><font size="2">0 </font>
+      </td>
+      <td width="6%" valign="MIDDLE"> 
+        <p><font size="2">5.62 </font>
+      </td>
+      <td width="6%" valign="MIDDLE"> 
+        <p><font size="2">41.2 </font>
+      </td>
+      <td width="5%" valign="MIDDLE"> 
+        <p><font size="2">46 </font>
+      </td>
+      <td width="4%" valign="MIDDLE"> 
+        <p><font size="2">5 </font>
+      </td>
+      <td width="3%" valign="MIDDLE"> 
+        <p><font size="2">29 </font>
+      </td>
+      <td width="4%" valign="MIDDLE"> 
+        <p><font size="2">26 </font>
+      </td>
+      <td width="5%" valign="MIDDLE"> 
+        <p><font size="2">3 </font>
+      </td>
+      <td width="4%" valign="MIDDLE"> 
+        <p><font size="2">2 </font>
+      </td>
+      <td width="5%" valign="MIDDLE"> 
+        <p><font size="2">1 </font>
+      </td>
+      <td width="4%" valign="MIDDLE"> 
+        <p><font size="2">13 </font>
+      </td>
+      <td width="5%" valign="MIDDLE"> 
+        <p><font size="2">20 </font>
+      </td>
+    </tr>
+    <tr> 
+      <td width="12%" valign="MIDDLE"> 
+        <p><font size="2">David Cone </font>
+      </td>
+      <td width="8%" valign="MIDDLE"> 
+        <p><font size="2">Starting Pitcher </font>
+      </td>
+      <td width="3%" valign="MIDDLE"> 
+        <p><font size="2">20 </font>
+      </td>
+      <td width="3%" valign="MIDDLE"> 
+        <p><font size="2">7 </font>
+      </td>
+      <td width="3%" valign="MIDDLE"> 
+        <p><font size="2">0 </font>
+      </td>
+      <td width="3%" valign="MIDDLE"> 
+        <p><font size="2">31 </font>
+      </td>
+      <td width="4%" valign="MIDDLE"> 
+        <p><font size="2">31 </font>
+      </td>
+      <td width="4%" valign="MIDDLE"> 
+        <p><font size="2">3 </font>
+      </td>
+      <td width="5%" valign="MIDDLE"> 
+        <p><font size="2">0 </font>
+      </td>
+      <td width="6%" valign="MIDDLE"> 
+        <p><font size="2">3.55 </font>
+      </td>
+      <td width="6%" valign="MIDDLE"> 
+        <p><font size="2">207.2 </font>
+      </td>
+      <td width="5%" valign="MIDDLE"> 
+        <p><font size="2">186 </font>
+      </td>
+      <td width="4%" valign="MIDDLE"> 
+        <p><font size="2">20 </font>
+      </td>
+      <td width="3%" valign="MIDDLE"> 
+        <p><font size="2">89 </font>
+      </td>
+      <td width="4%" valign="MIDDLE"> 
+        <p><font size="2">82 </font>
+      </td>
+      <td width="5%" valign="MIDDLE"> 
+        <p><font size="2">15 </font>
+      </td>
+      <td width="4%" valign="MIDDLE"> 
+        <p><font size="2">6 </font>
+      </td>
+      <td width="5%" valign="MIDDLE"> 
+        <p><font size="2">0 </font>
+      </td>
+      <td width="4%" valign="MIDDLE"> 
+        <p><font size="2">59 </font>
+      </td>
+      <td width="5%" valign="MIDDLE"> 
+        <p><font size="2">209 </font>
+      </td>
+    </tr>
+    <tr> 
+      <td width="12%" valign="MIDDLE"> 
+        <p><font size="2">Todd Erdos </font>
+      </td>
+      <td width="8%" valign="MIDDLE"> 
+        <p><font size="2">Relief Pitcher </font>
+      </td>
+      <td width="3%" valign="MIDDLE"> 
+        <p><font size="2">0 </font>
+      </td>
+      <td width="3%" valign="MIDDLE"> 
+        <p><font size="2">0 </font>
+      </td>
+      <td width="3%" valign="MIDDLE"> 
+        <p><font size="2">0 </font>
+      </td>
+      <td width="3%" valign="MIDDLE"> 
+        <p><font size="2">2 </font>
+      </td>
+      <td width="4%" valign="MIDDLE"> 
+        <p><font size="2">0 </font>
+      </td>
+      <td width="4%" valign="MIDDLE"> 
+        <p><font size="2">0 </font>
+      </td>
+      <td width="5%" valign="MIDDLE"> 
+        <p><font size="2">0 </font>
+      </td>
+      <td width="6%" valign="MIDDLE"> 
+        <p><font size="2">9 </font>
+      </td>
+      <td width="6%" valign="MIDDLE"> 
+        <p><font size="2">2 </font>
+      </td>
+      <td width="5%" valign="MIDDLE"> 
+        <p><font size="2">5 </font>
+      </td>
+      <td width="4%" valign="MIDDLE"> 
+        <p><font size="2">0 </font>
+      </td>
+      <td width="3%" valign="MIDDLE"> 
+        <p><font size="2">2 </font>
+      </td>
+      <td width="4%" valign="MIDDLE"> 
+        <p><font size="2">2 </font>
+      </td>
+      <td width="5%" valign="MIDDLE"> 
+        <p><font size="2">0 </font>
+      </td>
+      <td width="4%" valign="MIDDLE"> 
+        <p><font size="2">0 </font>
+      </td>
+      <td width="5%" valign="MIDDLE"> 
+        <p><font size="2">0 </font>
+      </td>
+      <td width="4%" valign="MIDDLE"> 
+        <p><font size="2">1 </font>
+      </td>
+      <td width="5%" valign="MIDDLE"> 
+        <p><font size="2">0 </font>
+      </td>
+    </tr>
+    <tr> 
+      <td width="12%" valign="MIDDLE"> 
+        <p><font size="2">Orlando Hernandez </font>
+      </td>
+      <td width="8%" valign="MIDDLE"> 
+        <p><font size="2">Starting Pitcher </font>
+      </td>
+      <td width="3%" valign="MIDDLE"> 
+        <p><font size="2">12 </font>
+      </td>
+      <td width="3%" valign="MIDDLE"> 
+        <p><font size="2">4 </font>
+      </td>
+      <td width="3%" valign="MIDDLE"> 
+        <p><font size="2">0 </font>
+      </td>
+      <td width="3%" valign="MIDDLE"> 
+        <p><font size="2">21 </font>
+      </td>
+      <td width="4%" valign="MIDDLE"> 
+        <p><font size="2">21 </font>
+      </td>
+      <td width="4%" valign="MIDDLE"> 
+        <p><font size="2">3 </font>
+      </td>
+      <td width="5%" valign="MIDDLE"> 
+        <p><font size="2">1 </font>
+      </td>
+      <td width="6%" valign="MIDDLE"> 
+        <p><font size="2">3.13 </font>
+      </td>
+      <td width="6%" valign="MIDDLE"> 
+        <p><font size="2">141 </font>
+      </td>
+      <td width="5%" valign="MIDDLE"> 
+        <p><font size="2">113 </font>
+      </td>
+      <td width="4%" valign="MIDDLE"> 
+        <p><font size="2">11 </font>
+      </td>
+      <td width="3%" valign="MIDDLE"> 
+        <p><font size="2">53 </font>
+      </td>
+      <td width="4%" valign="MIDDLE"> 
+        <p><font size="2">49 </font>
+      </td>
+      <td width="5%" valign="MIDDLE"> 
+        <p><font size="2">6 </font>
+      </td>
+      <td width="4%" valign="MIDDLE"> 
+        <p><font size="2">5 </font>
+      </td>
+      <td width="5%" valign="MIDDLE"> 
+        <p><font size="2">2 </font>
+      </td>
+      <td width="4%" valign="MIDDLE"> 
+        <p><font size="2">52 </font>
+      </td>
+      <td width="5%" valign="MIDDLE"> 
+        <p><font size="2">131 </font>
+      </td>
+    </tr>
+    <tr> 
+      <td width="12%" valign="MIDDLE"> 
+        <p><font size="2">Darren Holmes </font>
+      </td>
+      <td width="8%" valign="MIDDLE"> 
+        <p><font size="2">Relief Pitcher </font>
+      </td>
+      <td width="3%" valign="MIDDLE"> 
+        <p><font size="2">0 </font>
+      </td>
+      <td width="3%" valign="MIDDLE"> 
+        <p><font size="2">3 </font>
+      </td>
+      <td width="3%" valign="MIDDLE"> 
+        <p><font size="2">2 </font>
+      </td>
+      <td width="3%" valign="MIDDLE"> 
+        <p><font size="2">34 </font>
+      </td>
+      <td width="4%" valign="MIDDLE"> 
+        <p><font size="2">0 </font>
+      </td>
+      <td width="4%" valign="MIDDLE"> 
+        <p><font size="2">0 </font>
+      </td>
+      <td width="5%" valign="MIDDLE"> 
+        <p><font size="2">0 </font>
+      </td>
+      <td width="6%" valign="MIDDLE"> 
+        <p><font size="2">3.33 </font>
+      </td>
+      <td width="6%" valign="MIDDLE"> 
+        <p><font size="2">51.1 </font>
+      </td>
+      <td width="5%" valign="MIDDLE"> 
+        <p><font size="2">53 </font>
+      </td>
+      <td width="4%" valign="MIDDLE"> 
+        <p><font size="2">4 </font>
+      </td>
+      <td width="3%" valign="MIDDLE"> 
+        <p><font size="2">19 </font>
+      </td>
+      <td width="4%" valign="MIDDLE"> 
+        <p><font size="2">19 </font>
+      </td>
+      <td width="5%" valign="MIDDLE"> 
+        <p><font size="2">2 </font>
+      </td>
+      <td width="4%" valign="MIDDLE"> 
+        <p><font size="2">1 </font>
+      </td>
+      <td width="5%" valign="MIDDLE"> 
+        <p><font size="2">0 </font>
+      </td>
+      <td width="4%" valign="MIDDLE"> 
+        <p><font size="2">14 </font>
+      </td>
+      <td width="5%" valign="MIDDLE"> 
+        <p><font size="2">31 </font>
+      </td>
+    </tr>
+    <tr> 
+      <td width="12%" valign="MIDDLE"> 
+        <p><font size="2">Hideki Irabu </font>
+      </td>
+      <td width="8%" valign="MIDDLE"> 
+        <p><font size="2">Starting Pitcher </font>
+      </td>
+      <td width="3%" valign="MIDDLE"> 
+        <p><font size="2">13 </font>
+      </td>
+      <td width="3%" valign="MIDDLE"> 
+        <p><font size="2">9 </font>
+      </td>
+      <td width="3%" valign="MIDDLE"> 
+        <p><font size="2">0 </font>
+      </td>
+      <td width="3%" valign="MIDDLE"> 
+        <p><font size="2">29 </font>
+      </td>
+      <td width="4%" valign="MIDDLE"> 
+        <p><font size="2">28 </font>
+      </td>
+      <td width="4%" valign="MIDDLE"> 
+        <p><font size="2">2 </font>
+      </td>
+      <td width="5%" valign="MIDDLE"> 
+        <p><font size="2">1 </font>
+      </td>
+      <td width="6%" valign="MIDDLE"> 
+        <p><font size="2">4.06 </font>
+      </td>
+      <td width="6%" valign="MIDDLE"> 
+        <p><font size="2">173 </font>
+      </td>
+      <td width="5%" valign="MIDDLE"> 
+        <p><font size="2">148 </font>
+      </td>
+      <td width="4%" valign="MIDDLE"> 
+        <p><font size="2">27 </font>
+      </td>
+      <td width="3%" valign="MIDDLE"> 
+        <p><font size="2">79 </font>
+      </td>
+      <td width="4%" valign="MIDDLE"> 
+        <p><font size="2">78 </font>
+      </td>
+      <td width="5%" valign="MIDDLE"> 
+        <p><font size="2">9 </font>
+      </td>
+      <td width="4%" valign="MIDDLE"> 
+        <p><font size="2">6 </font>
+      </td>
+      <td width="5%" valign="MIDDLE"> 
+        <p><font size="2">1 </font>
+      </td>
+      <td width="4%" valign="MIDDLE"> 
+        <p><font size="2">76 </font>
+      </td>
+      <td width="5%" valign="MIDDLE"> 
+        <p><font size="2">126 </font>
+      </td>
+    </tr>
+    <tr> 
+      <td width="12%" valign="MIDDLE"> 
+        <p><font size="2">Mike Jerzembeck </font>
+      </td>
+      <td width="8%" valign="MIDDLE"> 
+        <p><font size="2">Starting Pitcher </font>
+      </td>
+      <td width="3%" valign="MIDDLE"> 
+        <p><font size="2">0 </font>
+      </td>
+      <td width="3%" valign="MIDDLE"> 
+        <p><font size="2">1 </font>
+      </td>
+      <td width="3%" valign="MIDDLE"> 
+        <p><font size="2">0 </font>
+      </td>
+      <td width="3%" valign="MIDDLE"> 
+        <p><font size="2">3 </font>
+      </td>
+      <td width="4%" valign="MIDDLE"> 
+        <p><font size="2">2 </font>
+      </td>
+      <td width="4%" valign="MIDDLE"> 
+        <p><font size="2">0 </font>
+      </td>
+      <td width="5%" valign="MIDDLE"> 
+        <p><font size="2">0 </font>
+      </td>
+      <td width="6%" valign="MIDDLE"> 
+        <p><font size="2">12.79 </font>
+      </td>
+      <td width="6%" valign="MIDDLE"> 
+        <p><font size="2">6.1 </font>
+      </td>
+      <td width="5%" valign="MIDDLE"> 
+        <p><font size="2">9 </font>
+      </td>
+      <td width="4%" valign="MIDDLE"> 
+        <p><font size="2">2 </font>
+      </td>
+      <td width="3%" valign="MIDDLE"> 
+        <p><font size="2">9 </font>
+      </td>
+      <td width="4%" valign="MIDDLE"> 
+        <p><font size="2">9 </font>
+      </td>
+      <td width="5%" valign="MIDDLE"> 
+        <p><font size="2">0 </font>
+      </td>
+      <td width="4%" valign="MIDDLE"> 
+        <p><font size="2">1 </font>
+      </td>
+      <td width="5%" valign="MIDDLE"> 
+        <p><font size="2">1 </font>
+      </td>
+      <td width="4%" valign="MIDDLE"> 
+        <p><font size="2">4 </font>
+      </td>
+      <td width="5%" valign="MIDDLE"> 
+        <p><font size="2">1 </font>
+      </td>
+    </tr>
+    <tr> 
+      <td width="12%" valign="MIDDLE"> 
+        <p><font size="2">Graeme Lloyd </font>
+      </td>
+      <td width="8%" valign="MIDDLE"> 
+        <p><font size="2">Relief Pitcher </font>
+      </td>
+      <td width="3%" valign="MIDDLE"> 
+        <p><font size="2">3 </font>
+      </td>
+      <td width="3%" valign="MIDDLE"> 
+        <p><font size="2">0 </font>
+      </td>
+      <td width="3%" valign="MIDDLE"> 
+        <p><font size="2">0 </font>
+      </td>
+      <td width="3%" valign="MIDDLE"> 
+        <p><font size="2">50 </font>
+      </td>
+      <td width="4%" valign="MIDDLE"> 
+        <p><font size="2">0 </font>
+      </td>
+      <td width="4%" valign="MIDDLE"> 
+        <p><font size="2">0 </font>
+      </td>
+      <td width="5%" valign="MIDDLE"> 
+        <p><font size="2">0 </font>
+      </td>
+      <td width="6%" valign="MIDDLE"> 
+        <p><font size="2">1.67 </font>
+      </td>
+      <td width="6%" valign="MIDDLE"> 
+        <p><font size="2">37.2 </font>
+      </td>
+      <td width="5%" valign="MIDDLE"> 
+        <p><font size="2">26 </font>
+      </td>
+      <td width="4%" valign="MIDDLE"> 
+        <p><font size="2">3 </font>
+      </td>
+      <td width="3%" valign="MIDDLE"> 
+        <p><font size="2">10 </font>
+      </td>
+      <td width="4%" valign="MIDDLE"> 
+        <p><font size="2">7 </font>
+      </td>
+      <td width="5%" valign="MIDDLE"> 
+        <p><font size="2">2 </font>
+      </td>
+      <td width="4%" valign="MIDDLE"> 
+        <p><font size="2">2 </font>
+      </td>
+      <td width="5%" valign="MIDDLE"> 
+        <p><font size="2">0 </font>
+      </td>
+      <td width="4%" valign="MIDDLE"> 
+        <p><font size="2">6 </font>
+      </td>
+      <td width="5%" valign="MIDDLE"> 
+        <p><font size="2">20 </font>
+      </td>
+    </tr>
+    <tr> 
+      <td width="12%" valign="MIDDLE"> 
+        <p><font size="2">Ramiro Mendoza </font>
+      </td>
+      <td width="8%" valign="MIDDLE"> 
+        <p><font size="2">Relief Pitcher </font>
+      </td>
+      <td width="3%" valign="MIDDLE"> 
+        <p><font size="2">10 </font>
+      </td>
+      <td width="3%" valign="MIDDLE"> 
+        <p><font size="2">2 </font>
+      </td>
+      <td width="3%" valign="MIDDLE"> 
+        <p><font size="2">1 </font>
+      </td>
+      <td width="3%" valign="MIDDLE"> 
+        <p><font size="2">41 </font>
+      </td>
+      <td width="4%" valign="MIDDLE"> 
+        <p><font size="2">14 </font>
+      </td>
+      <td width="4%" valign="MIDDLE"> 
+        <p><font size="2">1 </font>
+      </td>
+      <td width="5%" valign="MIDDLE"> 
+        <p><font size="2">1 </font>
+      </td>
+      <td width="6%" valign="MIDDLE"> 
+        <p><font size="2">3.25 </font>
+      </td>
+      <td width="6%" valign="MIDDLE"> 
+        <p><font size="2">130.1 </font>
+      </td>
+      <td width="5%" valign="MIDDLE"> 
+        <p><font size="2">131 </font>
+      </td>
+      <td width="4%" valign="MIDDLE"> 
+        <p><font size="2">9 </font>
+      </td>
+      <td width="3%" valign="MIDDLE"> 
+        <p><font size="2">50 </font>
+      </td>
+      <td width="4%" valign="MIDDLE"> 
+        <p><font size="2">47 </font>
+      </td>
+      <td width="5%" valign="MIDDLE"> 
+        <p><font size="2">9 </font>
+      </td>
+      <td width="4%" valign="MIDDLE"> 
+        <p><font size="2">3 </font>
+      </td>
+      <td width="5%" valign="MIDDLE"> 
+        <p><font size="2">0 </font>
+      </td>
+      <td width="4%" valign="MIDDLE"> 
+        <p><font size="2">30 </font>
+      </td>
+      <td width="5%" valign="MIDDLE"> 
+        <p><font size="2">56 </font>
+      </td>
+    </tr>
+    <tr> 
+      <td width="12%" valign="MIDDLE"> 
+        <p><font size="2">Jeff Nelson </font>
+      </td>
+      <td width="8%" valign="MIDDLE"> 
+        <p><font size="2">Relief Pitcher </font>
+      </td>
+      <td width="3%" valign="MIDDLE"> 
+        <p><font size="2">5 </font>
+      </td>
+      <td width="3%" valign="MIDDLE"> 
+        <p><font size="2">3 </font>
+      </td>
+      <td width="3%" valign="MIDDLE"> 
+        <p><font size="2">3 </font>
+      </td>
+      <td width="3%" valign="MIDDLE"> 
+        <p><font size="2">45 </font>
+      </td>
+      <td width="4%" valign="MIDDLE"> 
+        <p><font size="2">0 </font>
+      </td>
+      <td width="4%" valign="MIDDLE"> 
+        <p><font size="2">0 </font>
+      </td>
+      <td width="5%" valign="MIDDLE"> 
+        <p><font size="2">0 </font>
+      </td>
+      <td width="6%" valign="MIDDLE"> 
+        <p><font size="2">3.79 </font>
+      </td>
+      <td width="6%" valign="MIDDLE"> 
+        <p><font size="2">40.1 </font>
+      </td>
+      <td width="5%" valign="MIDDLE"> 
+        <p><font size="2">44 </font>
+      </td>
+      <td width="4%" valign="MIDDLE"> 
+        <p><font size="2">1 </font>
+      </td>
+      <td width="3%" valign="MIDDLE"> 
+        <p><font size="2">18 </font>
+      </td>
+      <td width="4%" valign="MIDDLE"> 
+        <p><font size="2">17 </font>
+      </td>
+      <td width="5%" valign="MIDDLE"> 
+        <p><font size="2">8 </font>
+      </td>
+      <td width="4%" valign="MIDDLE"> 
+        <p><font size="2">2 </font>
+      </td>
+      <td width="5%" valign="MIDDLE"> 
+        <p><font size="2">0 </font>
+      </td>
+      <td width="4%" valign="MIDDLE"> 
+        <p><font size="2">22 </font>
+      </td>
+      <td width="5%" valign="MIDDLE"> 
+        <p><font size="2">35 </font>
+      </td>
+    </tr>
+    <tr> 
+      <td width="12%" valign="MIDDLE"> 
+        <p><font size="2">Andy Pettitte </font>
+      </td>
+      <td width="8%" valign="MIDDLE"> 
+        <p><font size="2">Starting Pitcher </font>
+      </td>
+      <td width="3%" valign="MIDDLE"> 
+        <p><font size="2">16 </font>
+      </td>
+      <td width="3%" valign="MIDDLE"> 
+        <p><font size="2">11 </font>
+      </td>
+      <td width="3%" valign="MIDDLE"> 
+        <p><font size="2">0 </font>
+      </td>
+      <td width="3%" valign="MIDDLE"> 
+        <p><font size="2">33 </font>
+      </td>
+      <td width="4%" valign="MIDDLE"> 
+        <p><font size="2">32 </font>
+      </td>
+      <td width="4%" valign="MIDDLE"> 
+        <p><font size="2">5 </font>
+      </td>
+      <td width="5%" valign="MIDDLE"> 
+        <p><font size="2">0 </font>
+      </td>
+      <td width="6%" valign="MIDDLE"> 
+        <p><font size="2">4.24 </font>
+      </td>
+      <td width="6%" valign="MIDDLE"> 
+        <p><font size="2">216.1 </font>
+      </td>
+      <td width="5%" valign="MIDDLE"> 
+        <p><font size="2">226 </font>
+      </td>
+      <td width="4%" valign="MIDDLE"> 
+        <p><font size="2">20 </font>
+      </td>
+      <td width="3%" valign="MIDDLE"> 
+        <p><font size="2">10 </font>
+      </td>
+      <td width="4%" valign="MIDDLE"> 
+        <p><font size="2">2 </font>
+      </td>
+      <td width="5%" valign="MIDDLE"> 
+        <p><font size="2">6 </font>
+      </td>
+      <td width="4%" valign="MIDDLE"> 
+        <p><font size="2">5 </font>
+      </td>
+      <td width="5%" valign="MIDDLE"> 
+        <p><font size="2">0 </font>
+      </td>
+      <td width="4%" valign="MIDDLE"> 
+        <p><font size="2">87 </font>
+      </td>
+      <td width="5%" valign="MIDDLE"> 
+        <p><font size="2">146 </font>
+      </td>
+    </tr>
+    <tr> 
+      <td width="12%" valign="MIDDLE"> 
+        <p><font size="2">Mariano Rivera </font>
+      </td>
+      <td width="8%" valign="MIDDLE"> 
+        <p><font size="2">Relief Pitcher </font>
+      </td>
+      <td width="3%" valign="MIDDLE"> 
+        <p><font size="2">3 </font>
+      </td>
+      <td width="3%" valign="MIDDLE"> 
+        <p><font size="2">0 </font>
+      </td>
+      <td width="3%" valign="MIDDLE"> 
+        <p><font size="2">36 </font>
+      </td>
+      <td width="3%" valign="MIDDLE"> 
+        <p><font size="2">54 </font>
+      </td>
+      <td width="4%" valign="MIDDLE"> 
+        <p><font size="2">0 </font>
+      </td>
+      <td width="4%" valign="MIDDLE"> 
+        <p><font size="2">0 </font>
+      </td>
+      <td width="5%" valign="MIDDLE"> 
+        <p><font size="2">0 </font>
+      </td>
+      <td width="6%" valign="MIDDLE"> 
+        <p><font size="2">1.91 </font>
+      </td>
+      <td width="6%" valign="MIDDLE"> 
+        <p><font size="2">61.1 </font>
+      </td>
+      <td width="5%" valign="MIDDLE"> 
+        <p><font size="2">48 </font>
+      </td>
+      <td width="4%" valign="MIDDLE"> 
+        <p><font size="2">3 </font>
+      </td>
+      <td width="3%" valign="MIDDLE"> 
+        <p><font size="2">13 </font>
+      </td>
+      <td width="4%" valign="MIDDLE"> 
+        <p><font size="2">13 </font>
+      </td>
+      <td width="5%" valign="MIDDLE"> 
+        <p><font size="2">1 </font>
+      </td>
+      <td width="4%" valign="MIDDLE"> 
+        <p><font size="2">0 </font>
+      </td>
+      <td width="5%" valign="MIDDLE"> 
+        <p><font size="2">0 </font>
+      </td>
+      <td width="4%" valign="MIDDLE"> 
+        <p><font size="2">17 </font>
+      </td>
+      <td width="5%" valign="MIDDLE"> 
+        <p><font size="2">36 </font>
+      </td>
+    </tr>
+    <tr> 
+      <td width="12%" valign="MIDDLE"> 
+        <p><font size="2">Mike Stanton </font>
+      </td>
+      <td width="8%" valign="MIDDLE"> 
+        <p><font size="2">Relief Pitcher </font>
+      </td>
+      <td width="3%" valign="MIDDLE"> 
+        <p><font size="2">4 </font>
+      </td>
+      <td width="3%" valign="MIDDLE"> 
+        <p><font size="2">1 </font>
+      </td>
+      <td width="3%" valign="MIDDLE"> 
+        <p><font size="2">6 </font>
+      </td>
+      <td width="3%" valign="MIDDLE"> 
+        <p><font size="2">67 </font>
+      </td>
+      <td width="4%" valign="MIDDLE"> 
+        <p><font size="2">0 </font>
+      </td>
+      <td width="4%" valign="MIDDLE"> 
+        <p><font size="2">0 </font>
+      </td>
+      <td width="5%" valign="MIDDLE"> 
+        <p><font size="2">0 </font>
+      </td>
+      <td width="6%" valign="MIDDLE"> 
+        <p><font size="2">5.47 </font>
+      </td>
+      <td width="6%" valign="MIDDLE"> 
+        <p><font size="2">79 </font>
+      </td>
+      <td width="5%" valign="MIDDLE"> 
+        <p><font size="2">71 </font>
+      </td>
+      <td width="4%" valign="MIDDLE"> 
+        <p><font size="2">13 </font>
+      </td>
+      <td width="3%" valign="MIDDLE"> 
+        <p><font size="2">51 </font>
+      </td>
+      <td width="4%" valign="MIDDLE"> 
+        <p><font size="2">48 </font>
+      </td>
+      <td width="5%" valign="MIDDLE"> 
+        <p><font size="2">4 </font>
+      </td>
+      <td width="4%" valign="MIDDLE"> 
+        <p><font size="2">0 </font>
+      </td>
+      <td width="5%" valign="MIDDLE"> 
+        <p><font size="2">0 </font>
+      </td>
+      <td width="4%" valign="MIDDLE"> 
+        <p><font size="2">26 </font>
+      </td>
+      <td width="5%" valign="MIDDLE"> 
+        <p><font size="2">69 </font>
+      </td>
+    </tr>
+    <tr> 
+      <td width="12%" valign="MIDDLE"> 
+        <p><font size="2">Jay Tessmer </font>
+      </td>
+      <td width="8%" valign="MIDDLE"> 
+        <p><font size="2">Relief Pitcher </font>
+      </td>
+      <td width="3%" valign="MIDDLE"> 
+        <p><font size="2">1 </font>
+      </td>
+      <td width="3%" valign="MIDDLE"> 
+        <p><font size="2">0 </font>
+      </td>
+      <td width="3%" valign="MIDDLE"> 
+        <p><font size="2">0 </font>
+      </td>
+      <td width="3%" valign="MIDDLE"> 
+        <p><font size="2">7 </font>
+      </td>
+      <td width="4%" valign="MIDDLE"> 
+        <p><font size="2">0 </font>
+      </td>
+      <td width="4%" valign="MIDDLE"> 
+        <p><font size="2">0 </font>
+      </td>
+      <td width="5%" valign="MIDDLE"> 
+        <p><font size="2">0 </font>
+      </td>
+      <td width="6%" valign="MIDDLE"> 
+        <p><font size="2">3.12 </font>
+      </td>
+      <td width="6%" valign="MIDDLE"> 
+        <p><font size="2">8.2 </font>
+      </td>
+      <td width="5%" valign="MIDDLE"> 
+        <p><font size="2">4 </font>
+      </td>
+      <td width="4%" valign="MIDDLE"> 
+        <p><font size="2">1 </font>
+      </td>
+      <td width="3%" valign="MIDDLE"> 
+        <p><font size="2">3 </font>
+      </td>
+      <td width="4%" valign="MIDDLE"> 
+        <p><font size="2">3 </font>
+      </td>
+      <td width="5%" valign="MIDDLE"> 
+        <p><font size="2">0 </font>
+      </td>
+      <td width="4%" valign="MIDDLE"> 
+        <p><font size="2">1 </font>
+      </td>
+      <td width="5%" valign="MIDDLE"> 
+        <p><font size="2">0 </font>
+      </td>
+      <td width="4%" valign="MIDDLE"> 
+        <p><font size="2">4 </font>
+      </td>
+      <td width="5%" valign="MIDDLE"> 
+        <p><font size="2">6 </font>
+      </td>
+    </tr>
+    <tr> 
+      <td width="12%" valign="MIDDLE"> 
+        <p><font size="2">David Wells </font>
+      </td>
+      <td width="8%" valign="MIDDLE"> 
+        <p><font size="2">Starting Pitcher </font>
+      </td>
+      <td width="3%" valign="MIDDLE"> 
+        <p><font size="2">18 </font>
+      </td>
+      <td width="3%" valign="MIDDLE"> 
+        <p><font size="2">4 </font>
+      </td>
+      <td width="3%" valign="MIDDLE"> 
+        <p><font size="2">0 </font>
+      </td>
+      <td width="3%" valign="MIDDLE"> 
+        <p><font size="2">30 </font>
+      </td>
+      <td width="4%" valign="MIDDLE"> 
+        <p><font size="2">30 </font>
+      </td>
+      <td width="4%" valign="MIDDLE"> 
+        <p><font size="2">8 </font>
+      </td>
+      <td width="5%" valign="MIDDLE"> 
+        <p><font size="2">5 </font>
+      </td>
+      <td width="6%" valign="MIDDLE"> 
+        <p><font size="2">3.49 </font>
+      </td>
+      <td width="6%" valign="MIDDLE"> 
+        <p><font size="2">214.1 </font>
+      </td>
+      <td width="5%" valign="MIDDLE"> 
+        <p><font size="2">195 </font>
+      </td>
+      <td width="4%" valign="MIDDLE"> 
+        <p><font size="2">29 </font>
+      </td>
+      <td width="3%" valign="MIDDLE"> 
+        <p><font size="2">86 </font>
+      </td>
+      <td width="4%" valign="MIDDLE"> 
+        <p><font size="2">83 </font>
+      </td>
+      <td width="5%" valign="MIDDLE"> 
+        <p><font size="2">1 </font>
+      </td>
+      <td width="4%" valign="MIDDLE"> 
+        <p><font size="2">2 </font>
+      </td>
+      <td width="5%" valign="MIDDLE"> 
+        <p><font size="2">0 </font>
+      </td>
+      <td width="4%" valign="MIDDLE"> 
+        <p><font size="2">29 </font>
+      </td>
+      <td width="5%" valign="MIDDLE"> 
+        <p><font size="2">163 </font>
+      </td>
+    </tr>
+  </table>
+</center>
+<p></p>
+<p><br>
+  <img src="image/Image26.gif" width=36 height=41 align="LEFT" hspace=12>熟悉数据库理论的读者可能会将XML模型看作为分支型的数据库，因而也就认为与分支数据库具有同样的缺点（和少数优点）。许多时候以表为基础的关系型方法更有实际意义。在本例中，也属于有实际意义的情况。但是，XML并不遵循关系模型。 
+</p>
+<p>另一方面，将实际数据保存在关系数据库的多个表中，然后生成XML也是可能的。确实，本书所附光盘上的较大型的示例就是以这种方式创建的。这使得一套数据可以多种格式表示。将数据带着样式单加以转化为数据提供了更多的可能的视图。</p>
+<p>由于我个人的兴趣在于分析每个运动员在单一赛季的场上表现，因而我要把赛季作为文档的根元素。每个赛季包括联赛，联赛包括分部，分部包括队员。我不会去将数据分成单个的场、节、局，因为虽然有用，但却会使示例太长。</p>
+<p>读者或许有其他兴趣。如果读者选择以其他方式组织数据，也是可行的。在XML中总是有不止一种方法来组织数据的。事实上，我们在几章以后还要回到这个示例上来，那时我们要探讨另外的标记词汇表。</p>
+ 
+<a href='328.htm'>&lt;&lt;上一篇</a>&nbsp;&nbsp;<a href='330.htm'>下一篇&gt;&gt;</a></td>
+        </tr>
+      </table>
+      <p>&nbsp; </p>
+    </td>
+  </tr>
+</table>
+
+</body>
+
+</html>

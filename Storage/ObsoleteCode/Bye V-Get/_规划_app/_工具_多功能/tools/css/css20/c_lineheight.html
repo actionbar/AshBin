@@ -1,0 +1,114 @@
+<html xmlns:rdl>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<script src="rdl_properties.js"></script>
+<base target="_self">
+</head>
+<body>
+
+<script>
+
+//collFriendProperties=new Array();
+//collFriendDeclarations=new Array();
+//collFriendAtRules=new Array();
+//collFriendElements=new Array();
+//collFriendClasses=new Array();
+
+collFriendProperties=new Array(
+'font','letter-spacing'
+);
+
+//collIE40=new Array();
+//collIE50=new Array();
+//collIE55=new Array();
+//collIE60=new Array();
+
+collIE40=new Array(
+'A','ADDRESS','B','BIG','BLOCKQUOTE','BODY','BUTTON','CAPTION','CENTER','CITE','CODE','COL','COLGROUP','DD','DFN','DIR','DIV','DL','DT','EM','FIELDSET','FORM','Hn','HTML','I','IMG','INPUT type=button','INPUT type=checkbox','INPUT type=file','INPUT type=image','INPUT type=password','INPUT type=radio','INPUT type=reset','INPUT type=submit','INPUT type=text','ISINDEX','KBD','LABEL','LEGEND','LI','LISTING','MARQUEE','MENU','OL','P','PLAINTEXT','PRE','S','SAMP','SELECT','SMALL','SPAN','STRIKE','STRONG','style','SUB','SUP','TABLE','TBODY','TD','TEXTAREA','TFOOT','TH','THEAD','TR','TT','U','UL','VAR','XMP'
+);
+
+collIE50=new Array(
+'currentStyle','CUSTOM','runtimeStyle'
+);
+
+collIE55=new Array(
+'defaults'
+);
+
+sStyle=
+'<style>\n'+
+'#idParentDIV{width:100%;height:80px;padding:6px;background-color:buttonshadow;}\n'+
+'#idDIV{width:100%;height:40px;background-color:#FF6633;color:#FFFFFF;padding:6px;}\n'+
+'#idCodeDiv{width:80%;padding:4px;font-family:verdana,tahoma;margin:12px 0px 0px 0px;background-color:#EEEEEE;font-weight:bold;}\n'+
+'<\/style>\n';
+
+sScript=
+'<script>\n'+
+'function rdl_change(e){\n'+
+'var oCodeDiv=document.all("idCodeDiv");\n'+
+'var oDiv=document.all("idDiv");\n'+
+'with (document.all("idSel")) var sValue=options[selectedIndex].value;\n'+
+'if (sValue=="-5px") oCodeDiv.innerHTML="这个<b> DIV </b>对象内包含有<b> B </b>对象，此时行高不可以为负值。";\n'+
+'else { oDiv.style.lineHeight=sValue;oCodeDiv.innerText="line-height : "+sValue+";"; }\n'+
+'}\n'+
+'<\/script>\n';
+
+sCode=
+'<div id=idParentDIV><div id=idDIV>请从下方选择我的<b> line-height <\/b>值。<br>我的行高会依据您的选择进行调整。<\/div><\/div>\n'+
+'<br>\n'+
+'<select id="idSel" onchange="rdl_change();">\n'+
+'<option value="normal">---line-height---\n'+
+'<option value="normal">normal\n'+
+'<option value="20px">20px\n'+
+'<option value="-5px">-5px\n'+
+'<option value="15%">15%\n'+
+'<option value="1cm">1cm\n'+
+'<\/select>\n'+
+'<br>\n'+
+'<div id=idCodeDiv>line-height : normal ;<\/div>\n';
+
+iWinWidth=360;
+
+iWinHeight=340;
+
+//bRunCode=false;
+
+//bElements=false;
+
+</script>
+
+<div id=idContent>
+
+<div id=idContentTitle><span id=idTitleName>line-height</span>版本：CSS1　 兼容性：IE4+ NS4+　继承性：有</div>
+
+<div class=cssColumnTitle>语法：</div>
+<div>
+<b>line-height : </b><span class=cssDefault><b>normal</b></span> | <i>length</i>
+</div>
+
+<div class=cssColumnTitle>取值：</div>
+<table>
+<tr><td nowrap><b> normal </b></td><td nowrap><b>:</b></td><td><b>默认值</b>。默认行高</td></tr>
+<tr><td nowrap><i> length </i></td><td nowrap><b>:</b></td><td>百分比数字 | 由浮点数字和单位标识符组成的长度值，允许为负值。其百分比取值是基于字体的高度尺寸。请参阅<a href="d_length.html"> 长度单位 </a></td></tr>
+</table>
+
+<div class=cssColumnTitle>说明：</div>
+<div>
+检索或设置对象的行高。即字体最底端与字体内部顶端之间的距离。<br>
+行高是字体下延与字体内部高度的顶端之间的距离。为负值的行高可用来实现阴影效果。<br>
+假如一个格式化的行包括不止一个对象，则最大行高会被应用。在这种情况下，此属性不可以为负值。<br>
+此属性对于<b> currentStyle </b>对象而言是只读的。对于其他对象而言是可读写的。<br>
+对应的脚本特性为<b> lineHeight </b>。
+</div>
+
+<div class=cssColumnTitle>示例：</div>
+<div id=idSimpleCode>
+div {line-height:6px; } <br>div {line-height:10.5; } 
+</div>
+
+</div>
+</body>
+</html>
+
+<!-- Part of RDL(TM) - Written by Rain1977 
+HomeSite: http://www.dhtmlet.com  E-Mail: dhtmlet@hotmail.com -->

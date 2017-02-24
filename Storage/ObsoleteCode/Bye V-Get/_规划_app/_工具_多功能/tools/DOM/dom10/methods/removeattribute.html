@@ -1,0 +1,137 @@
+<html xmlns:rdl>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<script src="rdl_method.js"></script>
+<base target="_self">
+</head>
+<body>
+
+<script>
+//collFriendObjects=new Array();
+//collFriendProperties=new Array();
+//collFriendMethods=new Array();
+//collFriendEvents=new Array();
+//collFriendCollections=new Array();
+
+collFriendMethods=new Array(
+'createAttribute','setAttribute','getAttribute','mergeAttributes','clearAttributes'
+);
+
+collFriendCollections=new Array(
+'attributes'
+);
+
+//collIE40=new Array();
+//collIE50=new Array();
+//collIE55=new Array();
+//collIE60=new Array();
+
+collIE50=new Array(
+'runtimeStyle','CUSTOM'
+);
+
+collIE40=new Array(
+'A','ADDRESS','APPLET','AREA','B','BASE','BASEFONT','BGSOUND','BIG','BLOCKQUOTE','BODY','BR','BUTTON','CAPTION','CENTER','CITE','CODE','COL','COLGROUP','COMMENT','DD','DFN','DIR','DIV','DL','DT','EM','EMBED','FIELDSET','FONT','FORM','FRAME','FRAMESET','HEAD','Hn','HR','HTML','I','IFRAME','IMG','INPUT type=button','INPUT type=checkbox','INPUT type=file','INPUT type=hidden','INPUT type=image','INPUT type=password','INPUT type=radio','INPUT type=reset','INPUT type=submit','INPUT type=text','KBD','LABEL','LEGEND','LI','LINK','LISTING','MAP','MARQUEE','MENU','META','nextID','NOBR','OBJECT','OL','OPTION','P','PLAINTEXT','PRE','S','SAMP','SCRIPT','SELECT','SMALL','SPAN','STRIKE','STRONG','style','SUB','SUP','TABLE','TBODY','TD','TEXTAREA','TFOOT','TH','THEAD','TITLE','TR','TT','U','UL','VAR','WBR','XMP'
+);
+
+sStyle=
+'#idFont{text-decoration:underline;}\n'+
+'#idCodeDiv{width:100%;padding:4px;font-family:verdana,tahoma;margin:12px 0px 0px 0px;background-color:#EEEEEE;font-weight:bold;}\n';
+
+sScript=
+'<script>\n'+
+'var oCodeDiv;\n'+
+'var oFont;\n'+
+'var oSel;\n'+
+'\n'+
+'function window.onload(){\n'+
+'oCodeDiv=document.all("idCodeDiv");\n'+
+'oFont=document.all("idFont");\n'+
+'oSel=document.all("idSel");\n'+
+'rdlRefresh();\n'+
+'}\n'+
+'function rdlRefresh(){\n'+
+'while (oSel.options.length>1) oSel.options.remove(oSel.options.length-1);\n'+
+'for (m=0;m<oFont.attributes.length;m++) {\n'+
+'if (oFont.attributes[m].specified){\n'+
+'var oOption=document.createElement("option");\n'+
+'oSel.options.add(oOption,1); \n'+
+'with (oOption) {value=innerText=oFont.attributes[m].nodeName}\n'+
+'}\n'+
+'}\n'+
+'oCodeDiv.innerText=oFont.outerHTML;\n'+
+'}\n'+
+'\n'+
+'function doRemove(){\n'+
+'with (oSel) {var sAttribute=options[selectedIndex].value;};\n'+
+'oFont.removeAttribute(sAttribute);\n'+
+'rdlRefresh();\n'+
+'}\n'+
+'\n'+
+'function doReset(){\n'+
+'window.location.reload();\n'+
+'}\n'+
+'\n'+
+'<\/script>\n';
+
+sCode=
+'<input type=button color=red style="font-weight:bold" name=rdl case=died onmouseover="this.style.color=\'blue\';" onmouseout="this.style.color=\'black\';" id=idFont value="这里有一些文字"></input>\n'+
+'<br><br><br>\n'+
+'<select id="idSel">\n'+
+'<option value="" style="font-weight:bold;">---请选择属性---\n'+
+'<\/select>\n'+
+'<input type=button value="删除属性" onclick="doRemove();"><input type=button value="全部复位" onclick="doReset();">\n'+
+'<br><br><div id=idCodeDiv></div>\n';
+
+iWinWidth=420;
+
+iWinHeight=300;
+
+</script>
+
+<div id=idContent>
+
+<div id=idContentTitle><span id=idTitleName>removeAttribute</span>版本：DOM1　返回值：有</div>
+
+<div class=cssColumnTitle>语法：</div>
+<div>
+<i>bSuccess</i><b> = </b><i>object</i><b> . removeAttribute ( </b><i>sName</i><b> , </b><i>iCaseSensitive</i><b> ) </b>
+</div>
+
+<div class=cssColumnTitle>参数：</div>
+<table>
+<tr><td nowrap><i> sName </i></td><td nowrap><b>:</b></td>
+<td><b>必选项</b>。字符串(String)。指定要被移除的属性。</td></tr>
+<tr><td nowrap><i> iCaseSensitive </i></td><td nowrap><b>:</b></td>
+<td><b>可选项</b>。整数值(Integer)。指定是否使用大小写敏感的搜索方式定位属性。默认值为<span class=cssDefault><b> 1 </b></span>。表明严格的按照<i> sName </i>每一个字母的大小写判断确定要被删除的属性。这样，假如对象有多个名字一样但字母大小写不同的属性，那么在不同的平台上，此方法获取的属性可能会不同。
+</td></tr>
+</table>
+
+<div class=cssColumnTitle>返回值：</div>
+<table>
+<tr><td nowrap><i> bSuccess </i></td><td nowrap><b>:</b></td>
+<td>布尔值(Boolean)。<b>false</b> | <b>true</b>
+<table>
+<tr><td nowrap><b> false </b></td><td nowrap><b>:</b></td>
+<td>没有成功删除属性。</td></tr>
+<tr><td nowrap><b> true </b></td><td nowrap><b>:</b></td>
+<td>属性被成功的删除了。</td></tr>
+</table>
+</td></tr>
+</table>
+
+<div class=cssColumnTitle>说明：</div>
+<div>
+从<i> object </i>删除指定的属性。<br>
+假如对象有多个名字一样但字母大小写不同的属性，并且<i> iCaseSensitive </i>参数被设为<b> 0 </b>，那么只有其中最后被建立的那一个会被删除。而其他的则会被忽略。<br>
+当使用此方法删除<a href="../properties/class.html"> CLASS </a>属性时，需要将<i> sName </i>参数指定为<a href="../properties/classname.html"> className </a>。这是<a href="../properties/class.html"> CLASS </a>属性所对应的 DHTML 特性。<br>
+对于<a href="../objects/input.html"> INPUT </a>对象而言，其<a href="../properties/type.html"> TYPE </a>属性不可以被删除。<br>
+此方法仅仅可以由从 HTML 组件建立的事件使用。
+</div>
+
+</div>
+</body>
+</html>
+
+<!-- Part of RDL(TM) - Written by Rain1977 
+HomeSite: http://www.dhtmlet.com  E-Mail: dhtmlet@hotmail.com -->

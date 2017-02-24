@@ -1,0 +1,259 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="ASP Content Linking Component" />
+<meta name="description" content="Content Linking组件的应用例子、语法、用法以及相关方法 (Method）。" />
+<link rel="stylesheet" type="text/css" href="../c3.css" />
+<title>ASP Content Linking 组件</title>
+</head>
+<body class="serverscripting">
+<div id="wrapper">
+<div id="header">
+<a href="http://e.v-get.com/w3cschool/" style="float:left;">W3CSchool 在线教程</a>
+<div class="q g"><script type="text/javascript">var cpro_id="u1163355"</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div>
+<div id="navfirst">
+<ul id="menu">
+<li id="h"><a href="../h.html">HTML教程</a></li>
+<li id="x"><a href="../x.html">XML教程</a></li>
+<li id="b"><a href="../b.html">浏览器脚本</a></li>
+<li id="s"><a href="../s.html">服务器脚本</a></li>
+<li id="d"><a href="../d.html">dot net教程</a></li>
+<li id="m"><a href="../m.html">多媒体教程</a></li>
+<li id="w"><a href="../w.html">建站手册</a></li>
+</ul>
+</div><div id="navsecond">
+<div id="course">
+<h2>ASP 教程</h2>
+<ul>
+<li><a href="http://e.v-get.com/w3cschool/">ASP 首页</a></li>
+<li><a href="asp_intro.html">ASP 简介</a></li>
+<li><a href="asp_install.html">ASP 安装</a></li>
+<li><a href="asp_syntax.html">ASP 语法</a></li>
+<li><a href="asp_variables.html">ASP 变量</a></li>
+<li><a href="asp_procedures.html">ASP 程序</a></li>
+<li><a href="asp_inputforms.html">ASP 表单</a></li>
+<li><a href="asp_cookies.html">ASP Cookies</a></li>
+<li><a href="asp_sessions.html">ASP Session</a></li>
+<li><a href="asp_applications.html">ASP Application</a></li>
+<li><a href="asp_incfiles.html">ASP #include</a></li>
+<li><a href="asp_globalasa.html">ASP Global.asa</a></li>
+<li><a href="asp_send_email.html">ASP e-mail</a></li>
+</ul>
+<h2>ASP 对象</h2>
+<ul class="small">
+<li><a href="asp_ref_response.html">ASP Response</a></li>
+<li><a href="asp_ref_request.html">ASP Request</a></li>
+<li><a href="asp_ref_application.html">ASP Application</a></li>
+<li><a href="asp_ref_session.html">ASP Session</a></li>
+<li><a href="asp_ref_server.html">ASP Server</a></li>
+<li><a href="asp_ref_error.html">ASP Error</a></li>
+<li class="list_apart"><a href="asp_ref_filesystem.html">ASP FileSystem</a></li>
+<li><a href="asp_ref_textstream.html">ASP TextStream</a></li>
+<li><a href="asp_ref_drive.html">ASP Drive</a></li>
+<li><a href="asp_ref_file.html">ASP File</a></li>
+<li><a href="asp_ref_folder.html">ASP Folder</a></li>
+<li><a href="asp_ref_dictionary.html">ASP Dictionary</a></li>
+<li><a href="asp_ado.html">ASP ADO</a></li>
+</ul>
+<h2>ASP 组件</h2>
+<ul class="small">
+<li><a href="asp_adrotator.html">ASP AdRotator</a></li>
+<li><a href="asp_browser.html">ASP BrowserCap</a></li>
+<li><a href="asp_contentlinking.html">ASP Content Linking</a></li>
+<li><a href="asp_contentrotator.html">ASP Content Rotator</a></li>
+</ul>
+<h2>ASP 教程总结</h2>
+<ul>
+<li><a href="asp_quickref.html">ASP 快速参考</a></li>
+<li><a href="asp_summary.html">ASP 总结</a></li>
+</ul>
+<h2>实例/测验</h2>
+<ul>
+<li><a href="../example/aspe_examples.html">ASP 实例</a></li>
+<li><a href="asp_quiz.html">ASP 测验</a></li>
+</ul>
+</div>
+<div id="selected">
+<h2>建站手册</h2>
+<ul>
+<li><a href="../site/">网站构建</a></li>
+<li><a href="../w3c/">万维网联盟</a></li>
+<li><a href="http://e.v-get.com/w3c/">W3CSchool 教程</a></li>
+<li><a href="../quality/">网站品质</a></li>
+<li><a href="../semweb/">语义网</a></li>
+<li><a href="../hosting/">网站主机</a></li>
+</ul>
+<h2><a href="http://e.v-get.com/w3c/" class="f13">W3CSchool 教程</a></h2><div class="a120x90"><script type="text/javascript">var cpro_id="u1210867";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div></div>
+</div>
+<div id="maincontent">
+<h1>ASP Content Linking 组件</h1>
+<div  id="tpn">
+<ul class="prenext">
+<li class="pre"><a href="asp_browser.html">上一页</a></li>
+<li class="next"><a href="asp_contentrotator.html">下一页</a></li>
+</ul>
+</div>
+<div class="example">
+<h2>实例</h2>
+<dl>
+<dt><a href="../tiy/s_90.html">Content Linking 组件</a></dt>
+<dd>本例会构建一个内容列表。</dd>
+<dt><a href="../tiy/s_91.html">Content Linking 组件 2</a></dt>
+<dd>本例使用 Content Linking 组件在一个文本文件所列的页面间进行导航。</dd>
+</dl>
+</div>
+<div>
+<h2>ASP Content Linking 组件</h2>
+<p>ASP Content Linking 组件用于创建快捷便利的导航系统。</p>
+<p>Content Linking 组件会返回一个 Nextlink 对象，这个对象用于容纳需要导航网页的一个列表。</p>
+<h3>语法</h3>
+<pre>&lt;%
+Set nl=Server.CreateObject( &#34;MSWC.NextLink&#34; )
+%&gt;</pre>
+<p>首先，我们会创建文本文件 - &#34;links.txt&#34;。此文件包含需要导航的页面的相关信息。页面的排列顺序应该与它们的显示顺序相同，并包含对每个文件的描述 (使用制表符来分隔文件名和描述信息）。</p>
+<p class="note"><span>注释：</span>如果你希望向列表添加文件信息，或者改变在列表中的页面顺序，那么你需要做的所有事情仅仅是修改这个文本文件而已！然后导航系统会自动地更新！</p>
+<p>&#34;links.txt&#34;:</p>
+<pre>
+asp_intro.asp ASP 简介
+asp_syntax.asp ASP 语法
+asp_variables.asp ASP 变量
+asp_procedures.asp ASP 程序 
+</pre>
+<p>请在上面列出的页面中放置这行代码：&lt;!-- #include file=&#34;nlcode.inc&#34;--&gt;。这行代码会在 &#34;links.txt&#34; 中列出每个页面上引用下面这段代码，这样导航就可以工作了。</p>
+<p>&#34;nlcode.inc&#34;:</p>
+<pre>&lt;%
+'Use the Content Linking Component 
+'to navigate between the pages listed
+'in links.txt
+dim nl
+Set nl=Server.CreateObject(&#34;MSWC.NextLink&#34;)
+if (nl.GetListIndex(&#34;links.txt&#34;)&gt;1) then
+  Response.Write(&#34;&lt;a href='&#34; &amp; nl.GetPreviousURL(&#34;links.txt&#34;))
+  Response.Write(&#34;'&gt;上一页&lt;/a&gt;&#34;)
+end if
+Response.Write(&#34;&lt;a href='&#34; &amp; nl.GetNextURL(&#34;links.txt&#34;))
+Response.Write(&#34;'&gt;下一页&lt;/a&gt;&#34;)
+%&gt;</pre>
+</div>
+<div>
+<h2>ASP Content Linking 组件的方法</h2>
+<h3>GetListCount 方法</h3>
+<p>返回内容链接列表文件中所列项目的数目：</p>
+<pre>&lt;%
+dim nl,c
+Set nl=Server.CreateObject(&#34;MSWC.NextLink&#34;) 
+c=nl.GetListCount(&#34;links.txt&#34;) 
+Response.Write(&#34;There are &#34;)
+Response.Write(c)
+Response.Write(&#34; items in the list&#34;)
+%&gt;</pre>
+<p>输出：</p>
+<p>There are 4 items in the list</p>
+<h3>GetListIndex 方法</h3>
+<p>返回在内容链接列表文件中当前文件的索引号。第一个条目的索引号是 1。假如当前页面不在列表文件中，则返回 0。</p>
+<h4>例子</h4>
+<pre>&lt;%
+dim nl,c
+Set nl=Server.CreateObject(&#34;MSWC.NextLink&#34;) 
+c=nl.GetListIndex(&#34;links.txt&#34;) 
+Response.Write(&#34;Item number &#34;)
+Response.Write(c)
+%&gt;</pre>
+<p>输出：</p>
+<p>Item number 3</p>
+<h3>GetNextDescription 方法</h3>
+<p>返回在内容链接列表文件中所列的下一个条目的文本描述。假如在列表文件中没有找到当前文件，则列表中最后一个页面的文本描述。</p>
+<h4>例子</h4>
+<pre>
+&lt;%
+dim nl,c
+Set nl=Server.CreateObject(&#34;MSWC.NextLink&#34;) 
+c=nl.GetNextDescription(&#34;links.txt&#34;) 
+Response.Write(&#34;Next &#34;)
+Response.Write(&#34;description is: &#34;)
+Response.Write(c)
+%&gt;
+</pre>
+<p>输出：Next description is: ASP Variables</p>
+<h3>GetNextURL 方法</h3>
+<p>返回在内容链接列表文件中所列的下一个条目的 URL。假如在列表文件中没有找到当前文件，则列表中最后一个页面的 URL。</p>
+<h4>例子</h4>
+<pre>&lt;%
+dim nl,c
+Set nl=Server.CreateObject(&#34;MSWC.NextLink&#34;) 
+c=nl.GetNextURL(&#34;links.txt&#34;) 
+Response.Write(&#34;Next &#34;)
+Response.Write(&#34;URL is: &#34;)
+Response.Write(c)
+%&gt;</pre>
+<p>输出：Next URL is: asp_variables.asp</p>
+<h3>GetNthDescription 方法</h3>
+<p>返在内容链接列表文件中所列的第 N 个页面的描述信息。</p>
+<h4>例子</h4>
+<pre>&lt;%
+dim nl,c
+Set nl=Server.CreateObject(&#34;MSWC.NextLink&#34;) 
+c=nl.GetNthDescription(&#34;links.txt&#34;,3) 
+Response.Write(&#34;Third &#34;)
+Response.Write(&#34;description is: &#34;)
+Response.Write(c)
+%&gt;</pre>
+<p>输出：Third description is: ASP Variables</p>
+<h3>GetNthURL 方法</h3>
+<p>返在内容链接列表文件中所列的第 N 个页面的 URL。</p>
+<h4>例子</h4>
+<pre>&lt;%
+dim nl,c
+Set nl=Server.CreateObject(&#34;MSWC.NextLink&#34;) 
+c=nl.GetNthURL(&#34;links.txt&#34;,3) 
+Response.Write(&#34;Third &#34;)
+Response.Write(&#34;URL is: &#34;)
+Response.Write(c)
+%&gt;</pre>
+<p>输出：Third URL is: asp_variables.asp</p>
+<h3>GetPreviousDescription 方法</h3>
+<p>返回在内容链接列表文件中所列前一个条目的文本描述。假如在列表文件中没有找到当前文件，则列表中第一个页面的文本描述。</p>
+<h4>例子</h4>
+<pre>&lt;%
+dim nl,c
+Set nl=Server.CreateObject(&#34;MSWC.NextLink&#34;) 
+c=nl.GetPreviousDescription(&#34;links.txt&#34;) 
+Response.Write(&#34;Previous &#34;)
+Response.Write(&#34;description is: &#34;)
+Response.Write(c)
+%&gt;</pre>
+<p>输出：Previous description is: ASP Variables</p>
+<h3>GetPreviousURL 方法</h3>
+<p>返回在内容链接列表文件中所列前一个条目的 URL。假如在列表文件中没有找到当前文件，则列表中第一个页面的URL。</p>
+<h4>例子</h4>
+<pre>&lt;%
+dim nl,c
+Set nl=Server.CreateObject(&#34;MSWC.NextLink&#34;) 
+c=nl.GetPreviousURL(&#34;links.txt&#34;) 
+Response.Write(&#34;Previous &#34;)
+Response.Write(&#34;URL is: &#34;)
+Response.Write(c)
+%&gt;</pre>
+<p>输出：Previous URL is: asp_variables.asp</p>
+</div>
+<div id="bpn">
+<ul class="prenext">
+<li class="pre"><a href="asp_browser.html">上一页</a></li>
+<li class="next"><a href="asp_contentrotator.html">下一页</a></li>
+</ul>
+</div>
+</div>
+<div id="sidebar">
+<div class="rs"></div>
+<div id="tools">
+<h5 id="tools_reference"><a href="asp_ref.html">ASP 参考手册</a></h5>
+<h5 id="tools_example"><a href="../example/aspe_examples.html">ASP 实例</a></h5>
+<h5 id="tools_quiz"><a href="asp_quiz.html">ASP 测验</a></h5>
+</div>
+<div class="a120x600"><script type="text/javascript">var cpro_id="u1293136";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div><div class="b"></div>
+</div>
+</body>
+</html>

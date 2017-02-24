@@ -1,0 +1,90 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>产生一个密码，并记录到数据库，然后发送给用户</title>
+<style type="text/css">
+<!--
+body {
+	font-size: 10.4pt;
+	line-height: 22px;
+}
+-->
+</style>
+</head>
+
+<body bgcolor="eeeeee" leftmargin="20" marginwidth="20">
+<p><strong>产生一个密码，并记录到数据库，然后发送给用户</strong></p>
+<hr>
+<p><br>
+  This article Generates a password random, Requires a database and Mails the 
+  Password.</p>
+<p></p>
+<p>&lt;%@language=&quot;vbscript&quot; %&gt;</p>
+<p></p>
+<p>******************************<br>
+  &lt;% <br>
+  'code by Manikantan<br>
+  'Web Developer <br>
+  '3rd Agenda<br>
+  'Nungambakkam, Chennai India <br>
+  %&gt;</p>
+<p></p>
+<p>&lt;% </p>
+<p></p>
+<p>set mail= server.CreateObject(&quot;cdonts.newmail&quot;) <br>
+  mail.subject=&quot;Thank You for Registering&quot; <br>
+  mail.to = mailid mail.from =&quot;Webmaster@thesite&quot; <br>
+  mail.body= &quot;This is the Initial Password to our site....&quot; &amp; vbcrlf 
+  <br>
+  &amp;href='mailto:mailid=&quot;user@ursite.com'&gt;mailid=&quot;user@ursite.com&quot;<br>
+  address=&quot;address&quot;</p>
+<p></p>
+<p><br>
+  'other data like phone number as per the member database in the site<br>
+  'all these values are obtained from the request method from a .htm which submits 
+  to this file<br>
+  'Mainly employed in registration<br>
+  'Assumes You have cdonts.dll installed in the web server.</p>
+<p></p>
+<p>set conn = server.CreateObject(&quot;adodb.connection&quot;)<br>
+  conn.Open &quot;dsn&quot;,&quot;uid&quot;,&quot;pwd&quot;<br>
+  set rec= conn.Execute(&quot;select count(*) from membertable&quot;)<br>
+  id = cint(rec.fields(0))+1 <br>
+  r=rnd *50<br>
+  Response.Write r &amp; &quot;&lt;br&gt;&quot;<br>
+  for i = 0 to 20<br>
+  if cint(r)&gt;0 and cint(r)&lt;26 then str=str +chr(97 + cint(r))<br>
+  r=rnd *100<br>
+  next </p>
+<p></p>
+<p>Response.Write str<br>
+  pwd=left(str,2)<br>
+  pwd=pwd &amp; id<br>
+  pwd=pwd &amp; right(str,2)<br>
+  pwd=pwd &amp; second(time)</p>
+<p></p>
+<p>'An Update Query can be Passed from here for the username ,password and other 
+  details or can be triggered <br>
+  from another page 'when the user responds to the mail...Something like sending 
+  a url as a mail and on <br>
+  click of the url in the mail..call another page 'which updates ..so we can be 
+  sure that only confirmed <br>
+  users are updated</p>
+<p></p>
+<p>%&gt;<br>
+  &lt;br&gt;<br>
+  &lt;% <br>
+  set mail= server.CreateObject(&quot;cdonts.newmail&quot;)<br>
+  mail.subject=&quot;Thank You for Registering&quot;<br>
+  mail.to = mailid<br>
+  mail.from =&quot;Webmaster@thesite&quot;<br>
+  mail.body= &quot;This is the Initial Password to our site....&quot; &amp; vbcrlf 
+  &amp; &quot;Change it if You Want&quot; &amp; vbcrlf &amp; <br>
+  pwd &amp; vbcrlf &amp; &quot;Thank You for Using the Site&quot;<br>
+  mail.send<br>
+  %&gt;</p>
+<p></p>
+<p>&nbsp; </p>
+</body>
+</html>

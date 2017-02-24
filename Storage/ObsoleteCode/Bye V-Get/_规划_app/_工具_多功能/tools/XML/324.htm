@@ -1,0 +1,63 @@
+<html>
+<head>
+<title>为XML文档编写样式单</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+
+<link rel = stylesheet href = "image/style.css">
+</head>
+<body bgcolor="#ffffff">
+<table width="688" border="0" cellspacing="0" cellpadding="0" align="center">
+  <tr bgcolor="EEEEEE"> 
+    <td height="22"><a href="index.htm">主页</a></td>
+  </tr>
+</table><br>
+<table border="0" cellpadding="0" cellspacing="0" width="688" align="center" height="490">
+  <tr valign="top"> 
+    <td rowspan="4" width="91">&nbsp; </td>
+    <td height="68" width="131"> 
+      <p><img src="image/doc.gif"></p>
+    </td>
+    <td rowspan="4" width="18"><b></b> </td>
+    <td height="68" width="387"><img src="image/title_doc.gif"></td>
+    <td rowspan="4" width="61"> 
+      <h6>&nbsp;</h6>
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td rowspan="3" valign="top" class="pt10" align="center" width="131" bgcolor="EEEEEE"> 
+      <p>&nbsp;</p>
+      <p><font color="#FF0000">※ 3.4 为XML文档编写样式单</font></p>
+       
+	</td>
+  </tr>
+  <tr valign="top"> 
+    <td width="387" height="308"> 
+      <table width="100%" border="0" cellpadding="0">
+        <tr> 
+          <td>
+
+           <h4 ALIGN="CENTER">3.4 为XML文档编写样式单</h4>
+<P>XML允许用户来创建任何所需要的标记。当然，由于用户在创建标记上有完全的自由，因而通用的浏览器无法预期用户的标记的意义，也无法为显示这些标记而提供规则。因而，用户必须为文档编写样式单，告诉浏览器如何显示特定的标记。与标记集类似，用户创建的样式单可由不同的文档不同的人所共享，还可将自己创建的样式单与其他人编写的样式单集成在一起。</P>
+<P>正如在第1章中所讨论的，现在有不止一种样式单语言可以使用。这里所用的是级联样式单（Cascading Style Sheets，简写为CSS）。CSS的优势在于它是W3C制定的标准，为编写HTML的许多人所熟悉，且被前卫的具有XML能力的浏览器所支持。</P>
+<img src="image/Image19.gif" WIDTH=36 HEIGHT=37 ALIGN="LEFT" HSPACE=12>
+<P> 正如在第1章所注意到的，另一种可能的选择是可扩展的样式语言（Extensible Style Language）。XSL是当前最强大和灵活的样式语言，是特别为应用XML而设计的。但是，XSL比CSS更为复杂，而且未被很好地支持，同时还没有完成。</P>
+
+<P><img src="image/Image21.gif" WIDTH=42 HEIGHT=31> XSL将在第5、14和15章中加以讨论。</P>
+
+<P>清单3-2中的greeting.xml示例只包括一个标记&lt;GREETING&gt;，因而所需做的一切是为GREETING元素定义样式。清单3-5是一个很简单的样式单，指定GREETING元素的内容应该以24磅的粗体显示为块级的元素。</P>
+<P>清单3-5：greeting.xsl</P>
+<P><i><font face="Courier New, Courier, mono">GREETING{display: block; font-size: 
+  24pt; font-weight: bold;}</font></i></P>
+<P>清单3-5应该在文本编辑器中键入，保存为名为greeting.css的新文件，放在与清单3-2中的文件所在的同一目录中。扩展名.css代表级联样式单（Cascading Style Sheet）。同样.css扩展名是重要的，而文件名却不怎么重要。如果打算将这一样式单只用在一个XML文档上的话，那么与XML具有同样的文件名（扩展名为.css而不是.xml）常常更为方便。</P>
+<P></P> 
+<a href='323.htm'>&lt;&lt;上一篇</a>&nbsp;&nbsp;<a href='325.htm'>下一篇&gt;&gt;</a></td>
+        </tr>
+      </table>
+      <p>&nbsp; </p>
+    </td>
+  </tr>
+</table>
+
+</body>
+
+</html>

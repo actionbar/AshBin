@@ -1,0 +1,35 @@
+BODY {FONT-SIZE: 12px;FONT-FAMILY: "宋体",Arial,simsun,sans-serif;BACKGROUND-COLOR: #E0CB89; COLOR: #464646}
+BODY,H1,H6,P,UL{PADDING: 0px; MARGIN: 0px;LIST-STYLE-POSITION:outside;LIST-STYLE-TYPE: none}
+IMG {BORDER-WIDTH: 0px;PADDING: 0px; BORDER: 0px; LIST-STYLE-TYPE: none; MARGIN: 0px;}
+A {COLOR: #63401B; TEXT-DECORATION: none;cursor:pointer}
+A:hover {COLOR: #c00; TEXT-DECORATION: underline}
+.YT {Z-INDEX:150;WIDTH: 950px;MARGIN: 0px auto; OVERFLOW: hidden; POSITION: relative; LINE-HEIGHT: 30px;HEIGHT: 26px}
+.YT A {MARGIN: 0px 4px; COLOR: #1e50a2}
+.YT SPAN{position:absolute;right:5px;}
+.YT SPAN A{color:#F00;font-weight:bold;}
+.YH {WIDTH: 100%; background: url(ty/yhb.jpg) no-repeat center top;CLEAR: both}
+.YHA {Z-INDEX: 100; POSITION: relative; MARGIN: 0px auto; WIDTH: 950px; HEIGHT: 265px; CLEAR: both}
+.YHT {POSITION: absolute; TOP: 35%; LEFT: 115px}
+.YHA H1 {FONT-FAMILY: "微软雅黑","黑体"; COLOR: #000; FONT-SIZE: 24px; FONT-WEIGHT: 300}
+.YHTR {MARGIN-LEFT: 5px;MARGIN: 0px 0px 0px 3px; ZOOM: 1; FONT-FAMILY: "宋体"; WHITE-SPACE: nowrap; FONT-SIZE: 12px; FONT-WEIGHT: normal}
+.YHTB {COLOR: #333; PADDING-TOP: 5px}
+.YHN {POSITION: absolute; WIDTH: 250px; HEIGHT: 38px; TOP: 60%; LEFT: 110px}
+.YHN A{BACKGROUND: url(ty/yh.png) right -242px; PADDING:0 9px; BACKGROUND-REPEAT: no-repeat;FLOAT: left; FONT-SIZE: 14px; OVERFLOW: hidden;}
+
+
+.XA {Z-index:10;MARGIN: 0px auto;OVERFLOW: hidden; HEIGHT: 100%;WIDTH: 950px;clear:both}
+
+
+.YL {FLOAT: left; OVERFLOW: hidden;  MARGIN-RIGHT: 8px;WIDTH:210px;}
+.L{background:#FFF;BORDER: #c9b67b 1px solid;margin-bottom:9px;height:100%}
+.L CENTER{margin:9px 0;}
+.LT UL,.LT P{Padding:3px 0 5px 13px;border-bottom:1px #999 dotted}
+.LT UL LI{background:url(ty/s1.png) no-repeat 70px;line-height:22px;}
+.LT P{line-height:22px;}
+.LT P IMG{width:16px;height:16px}
+
+.YL H6{height:26px;line-height:30px; text-indent:9px;font-size:12px;background:url(ty/ylh.gif) repeat-x;OVERFLOW: hidden;color:#876028}
+/*YL下面各个组建高度不限定，这样方便添加任意数量的内容*/
+
+.YC {float:right;BORDER: #c9b67b 1px solid;OVERFLOW: hidden;WIDTH: 729px;background:#FFF}
+.YC H6{height:26px;line-height:30px; text-indent:9px;font-size:12px;background:url(ty/ylh.gif) repeat-x;OVERFLOW: hidden;color:#876028}

@@ -1,0 +1,157 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>ASP的对象结构 </title>
+<style type="text/css">
+<!--
+body {
+	font-size: 10.4pt;
+	line-height: 22px;
+}
+-->
+</style>
+</head>
+
+<body bgcolor="eeeeee" leftmargin="20" marginwidth="20">
+<p><strong>ASP的对象结构 </strong></p>
+<p> 现在我们要系统地了解一下ASP的对象结构，然后，大家就可以举一反三，不用我过多解释每一个例子了。这一部分，可能有些困难。</p>
+<hr>
+<p>　<strong>　一、Request</strong><br>
+  　　Request对象把客户信息保存在几个集合中，供ASP应用使用。通用的访问方法为：Request.Collection(&quot;membername&quot;)<br>
+  　　当你不指定集合名时，以(1)QueryString,(2)Form,(3)Cookie和(4)ServerVariable<br>
+  的顺序搜索所有集合，当发现第一个匹配的变量时，就认定他是要引用的成员。当然，为了提高效率，你最好显式指定是那个集合中的成员。<br>
+  　　QueryString集合<br>
+  　　当HTML表单使用GET方法向ASP文件传递数据时，数据被保存在集合QueryString中。其成员可以具有与之相关的多个值，也就是说，同一个表单中，多个元素可以有相同的名字，下面的代码访问这些数据：<br>
+  &lt;%For each item in Request.QueryString(&quot;Name&quot;)<br>
+  Response.write Item &amp;&quot;&lt;br&gt;&quot;<br>
+  Next %&gt;<br>
+  　　Form集合<br>
+  　　当表单用POST方法时，数据被保存在Form集合中。<br>
+  　　ServerVariable集合<br>
+  　　保存了随HTTP请求一起传送HTTP头的信息，可以通过他获取有关浏览器的信息，主要成员有：<br>
+  REMOTE_ADDR 远程主机IP地址<br>
+  REMOTE_HOST 远程主机名称<br>
+  REMOTE_USER 客户名称<br>
+  REQUEST_METHOD 请求方法（如POST，GET，HEAD）<br>
+  SERVER_NAME 服务器名<br>
+  SERVER_PROTOCOL 服务器版本号（如HTTP/1。0）</p>
+<p>　　<strong>二、Response对象</strong><br>
+  　　用来控制向客户返回的HTML的内容，有若干属性和方法。下面介绍我认为重要的：<br>
+  　　Buffer属性<br>
+  　　如果为True,则Response的内容要写入缓冲区，当脚本处理完时再发给客户。<br>
+  　　Status属性<br>
+  传递HTTP Response报文的状态。服务器返回的状态代码由三位数字组成，可以用于测试阶段和转换控制到其他站点（即Forward）<br>
+  　　Write方法<br>
+  　　向客户输出HTML，可以是任何合法的HTML脚本。<br>
+  　　Redirect方法<br>
+  　　使浏览器重新定向到另外一个URL上，如：<br>
+  &lt;%browsetype=Request.ServerVariables(&quot;HTTP_USER_AGENT&quot;)<br>
+  IF Left(browsetype,11)=&quot;Mozilla/2.0&quot; then<br>
+  Response.Redirect &quot;FancyStart.asp&quot;<br>
+  Else<br>
+  Response.Redirect &quot;OldStart.asp&quot;<br>
+  End if%&gt;<br>
+  　　Clear方法<br>
+  　　如果设Buffer属性为True，则Clear方法清楚所有缓冲区内容。<br>
+  　　Flush方法<br>
+  　　将缓冲内容立即发送给客户。<br>
+  　　End方法<br>
+  　　当Active Server遇到该方法时，立即停止处理ASP文件，如果有缓冲，立即发送内容到客户。<br>
+  　　BinaryWrite方法<br>
+  　　输出二进制数据</p>
+<p>　　<strong>三、Request对象和Response对象的Cookies集合</strong><br>
+  　　1.写入Cookies<br>
+  　　Response.Cookies(&quot;Cookie名称&quot;)[(&quot;键名称&quot;).属性]=值<br>
+  　　如果该Cookie已经存在，则值被新值替代，否则，创建该cookie<br>
+  　　例如：<br>
+  &lt;% Response.Cookies(&quot;NewCookie&quot;)=&quot;New Cookie Value&quot; %&gt;<br>
+  　　2.读取Cookies<br>
+  　　如：<br>
+  &lt;%=Request.Cookies(&quot;NewCookie&quot;)%&gt;<br>
+  　　Cookie还有一些属性，请参见有关资料。</p>
+<p>　　<strong>四、Application对象</strong><br>
+  　　Active Server应用程序是虚拟目录及其子目录下的所有文件，即一个WEB。可以使用Application对象在应用软件的所有用户中共享信息，并可以在服务器运行期间持久地保存数据。他有一些控制访问应用层数据的方法和事件。<br>
+  　　Application本身没有内置属性，可以有用户定义：Application(&quot;属性名&quot;)=值<br>
+  　　保存在Application对象中的数据可以被Application的所有用户读取。如用来做访问记数：Application(&quot;aVisits&quot;)=Application(&quot;aVisits&quot;)+1<br>
+  　　方法有两个：<br>
+  　　Lock:<br>
+  　　当用户调用Lock时，只有当前用户能够编辑或增加Application对象的属性。<br>
+  　　Unlock:<br>
+  　　一定要记住，调用了Lock，完成时一定要调用Unlock.<br>
+  　　事件也有两个：<br>
+  　　Application_OnStart事件：应用程序启动时调用。<br>
+  　　Application_OnStart事件：应用程序终止时调用。<br>
+  　　这两个事件再加上Session的两个事件的处理程序都放在文件Global.asp中，一个Web应用只有一个Global.asa文件，且放在该应用的根目录下。一个Global.asp文件的例子如下：<br>
+  &lt;Script Language=&quot;VBScript&quot; Runat=&quot;Server&quot;&gt;<br>
+  Sub Application_OnStart<br>
+  Dim laChats(15)<br>
+  Application(&quot;gaChats&quot;)=maChats<br>
+  Application(&quot;giCounter&quot;)=0<br>
+  End Sub</p>
+<p>　　<strong>五、Session对象</strong><br>
+  Active Server使用会话设置为使用应用程序的单个用户持久保持数据。当用户请求Active Server应用程序中ASP文件的URL时，要启动Session。在缺省情况下，如果没有用户请求，则服务器只保留Session20分钟。用户也可以通过设Session的属性TimeOut来改变。或显示地调用Session.Abandon方法来释放Session对象。<br>
+  　　SessionID属性<br>
+  　　唯一标识一个会话的标识符。<br>
+  　　TimeOut属性<br>
+  　　定义Session保留的时限，单位为分钟，如Session.TimeOut=10<br>
+  　　像Application一样，Session也可由用户来定义属性。<br>
+  　　Session的唯一方法是Abandon,用来取消用户的Session对象，并释放其占用的服务器资源。如：&lt;%Session.Abandon%&gt;<br>
+  　　事件有Session_OnStart和Session_OnEnd,其处理程序应放在文件Glabal.asa中。</p>
+<p>　　<strong>六、Server对象</strong><br>
+  　　1.HTMLEncode方法<br>
+  　　对特定的字符串进行HTML编码，如你本来要显示下列内容：<br>
+  The Underline tag(&lt;u&gt;&lt;/u&gt;) is used to underline the surrounded text.<br>
+  　　但很可能实际显示成：<br>
+  The Underline tag() is used to underline the surrounded text.<br>
+  　　为了避免这种情况，可以调用Server对象的HTMLEncode方法，如：<br>
+  &lt;%<br>
+  Response.Write Server.HTMLEncode(&quot;The Underline tag(&lt;U&gt;&lt;/U&gt;) 
+  is used to underline the surrounded text.&quot;)<br>
+  %&gt;<br>
+  　　2.URLEncode方法<br>
+  　　根据URL规则对字符串进行编码。当字符串数据以URL格式传递到服务器时，串中间不能有空格，不能有特殊字符，这时，你就必须用URL编码。<br>
+  　　3.CreateObject方法<br>
+  　　用于创建已注册到服务器机器上的ActiveX组件例程，这恐怕是最重要的一个方法了:<br>
+  　　句法如下：<br>
+  Server.CreateObject(&quot;ComponentName&quot;)<br>
+  　　可以作为例程启动的组件可以是ActiveX能够使用的所有内置组件，实际上是存在于服务器上的任何ActiveX组件。比如，要使用金融计算，步骤如下：<br>
+  　　1.创建对象<br>
+  &lt;%<br>
+  set x=server.createobject(&quot;extend.financial&quot;);<br>
+  %&gt;<br>
+  　　2.调用对象的方法<br>
+  &lt;%<br>
+  set x=server.createobject(&quot;extend.financial&quot;)<br>
+  response.write Format(x.futval(.07/12,200,-500),&quot;###,###,##0.00&quot;)<br>
+  %&gt;<br>
+  　　3.释放例程<br>
+  &lt;%<br>
+  set x=Nothing<br>
+  %&gt;</p>
+<p>　　<strong>七、FileSystem和TextStream对象</strong><br>
+  　　FileSystem和TextStream对象可用于建立对文件系统的访问，并提供顺序访问文件的机制。FileSystem没有属性，只有两个方法，第一个方法是CreateTextFile方法，可以在宿主机上创建新的文本文件，并返回TextStream对象以提供对新创建文件的访问机制。第二个是OpenTextFile方法，用于打开文本文件供顺序访问并返回一个TextStream对象。如：</p>
+<p>&lt;%<br>
+  set fsFilesys=CreateObject(&quot;Scripting.FileSystemObject&quot;)<br>
+  set tsCoffee=fsFilesys.CreateTextFile(&quot;c:\coffe.txt&quot;,True)<br>
+  tsCoffee.WriteLine(&quot;Man,I Could use some coffee.&quot;)<br>
+  tsCoffee.Close<br>
+  %&gt;<br>
+  　　TextStream对象的使用有：<br>
+  　　AtEndOfLine:如果文件当前字符处在行的末尾则返回true<br>
+  　　AtEndOfScreen:如果当前字符在文件的末尾则返回true<br>
+  　　Column:返回当前字符的列号<br>
+  　　Line:返回当前字符的行号<br>
+  　　TextStream对象的方法为：<br>
+  　　Close:关闭并释放TextStream对象<br>
+  　　Read:从一个文件中读取给定个数的字符到一个变量中<br>
+  　　ReadAll:读取文件的全部内容到一个变量中<br>
+  　　ReadLine:读取给定行号的内容到一个变量中<br>
+  　　Skip:跳过给定个数的字符<br>
+  　　SkipLine:跳过给顶的行书<br>
+  　　Write:写如字符串<br>
+  　　WriteLine:写入以换行结束的字符串<br>
+  　　WriteBlankLines:写入给顶数量的空格<br>
+</p>
+</body>
+</html>

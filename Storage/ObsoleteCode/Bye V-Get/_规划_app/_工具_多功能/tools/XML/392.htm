@@ -1,0 +1,860 @@
+<html>
+<head>
+<title>Unicode字符集</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+
+<link rel = stylesheet href = "image/style.css">
+</head>
+<body bgcolor="#ffffff">
+<table width="688" border="0" cellspacing="0" cellpadding="0" align="center">
+  <tr bgcolor="EEEEEE"> 
+    <td height="22"><a href="index.htm">主页</a></td>
+  </tr>
+</table><br>
+<table border="0" cellpadding="0" cellspacing="0" width="688" align="center" height="490">
+  <tr valign="top"> 
+    <td rowspan="4" width="91">&nbsp; </td>
+    <td height="68" width="131"> 
+      <p><img src="image/doc.gif"></p>
+    </td>
+    <td rowspan="4" width="18"><b></b> </td>
+    <td height="68" width="387"><img src="image/title_doc.gif"></td>
+    <td rowspan="4" width="61"> 
+      <h6>&nbsp;</h6>
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td rowspan="3" valign="top" class="pt10" align="center" width="131" bgcolor="EEEEEE"> 
+      <p>&nbsp;</p>
+      <p><font color="#FF0000">※ 7.4 Unicode字符集</font></p>
+       
+	</td>
+  </tr>
+  <tr valign="top"> 
+    <td width="387" height="308"> 
+      <table width="100%" border="0" cellpadding="0">
+        <tr> 
+          <td>
+
+           <h4><a name="_Toc467197061">7.4 Unicode字符集</a></h4>
+<p>为了使不同的字符集能够处理好不同的文字和语言，必须满足：</p>
+<ol>
+  <p>
+  <li>不同时引用多种文字。</li>
+  <p></p>
+  <p>
+  <li>不与使用不同字符集的人交换文件。</li>
+  <p></p>
+</ol>
+<p>由于Mac和PC机都使用不同的字符集，越来越多的人无法遵循以上原则。很明显的是需要一种得到大家的认可并且编码了全世界各种文字的字符集。建立这样的字符集很难，需要对成百上千种语言和文字有细致的了解。要使软件开发商们同意使用这种字符集就更难了。不过这方面的努力一直在进行，终于创建了一个符合要求的字符集&#0;&#0;Unicode。而且主要卖方（微软、苹果、IBM、Sun、Be等）正逐步趋向于使用它。XML把Unicode当作自己的默认字符集。</p>
+<p>Unicode使用0~65,535的双字节无符号数对每一个字符进行编码。目前已经定义了40,000多个不同的Unicode字符，剩余25,000个空缺留给将来扩展之用。其中大约20,000个字符用于汉字，另外11,000左右的字符用于韩语音节。Unicode中0~`255的字符与Latin-1中的一致。</p>
+<p>如果在本书中显示所有的Unicode字符，那么除了这些字符表格外，书中将容纳不下别的任何东西。如果需要知道Unicode中不同字符的确定编码，买一册Unicode标准（第二版，ISBN 
+  0-201-48346-9，Addison-Wesley出版）。该书共950页，包括对Unicode 2.0的全部详细说明，还包括Unicode 2.0中定义的所有字符集的图表。还可以在Unicode协会的网址：http://www.unicode.org/和http://charts.unicode.org/中发现在线信息。表7-6列出了由Unicode编码的文字，由此可知Unicode的广泛性。每一种文字的字符通常编码在65,536个号码中的一个连续区域内。许多语言都能使用其中某一区域的字符书写（例如，使用古斯拉夫语书写俄语），尽管有一些语言，如克罗地亚语或土耳其语需要混合匹配前4个拉丁文区域中的字符。</p>
+<p>表7-6 Unicode文字块</p>
+<p>
+<center>
+  <table BORDER cellspacing=0 cellpadding=0 width=621>
+    <tr>
+      <td width="24%" valign="MIDDLE"> 
+        <p>文 字
+      </td>
+      <td width="10%" valign="MIDDLE"> 
+        <p>范 围
+      </td>
+      <td width="66%" valign="MIDDLE"> 
+        <p>目 的
+      </td>
+    </tr>
+    <tr>
+      <td width="24%" valign="MIDDLE"> 
+        <p>Basic Latin</p>
+        <p>基本拉丁语
+      </td>
+      <td width="10%" valign="MIDDLE"> 
+        <p>0-127
+      </td>
+      <td width="66%" valign="MIDDLE"> 
+        <p>ASCII码，美式英语
+      </td>
+    </tr>
+    <tr>
+      <td width="24%" valign="MIDDLE"> 
+        <p>Latin-1 Supplement</p>
+        <p>拉丁语补充-1
+      </td>
+      <td width="10%" valign="MIDDLE"> 
+        <p>126-255
+      </td>
+      <td width="66%" valign="MIDDLE"> 
+        <p>ISO Latin-1前半部分结合Basic Latin能处理丹麦语、荷兰语、英语、法罗群岛语、佛兰德语、德语、夏威夷语、冰岛语、印度尼西亚语、爱尔兰语、挪威语、葡萄牙语、西班牙语、斯瓦西里语和瑞典语
+      </td>
+    </tr>
+    <tr>
+      <td width="24%" valign="MIDDLE"> 
+        <p>Latin Extended-A</p>
+        <p>拉丁文扩展集-A
+      </td>
+      <td width="10%" valign="MIDDLE"> 
+        <p>256-383
+      </td>
+      <td width="66%" valign="MIDDLE"> 
+        <p>该字符块增添了ISO 8859字符集Latin-2、Latin-3、Latin-4中的字符，而且是Basic Latin和Latin-1没有的字符。同它们结合能够编码南非荷兰语、法国布里多尼语、巴斯克语、加泰罗尼亚语、捷克语、世界语、爱沙尼亚语、法语、Friesland语、格陵兰岛语、匈牙利语、拉脱维亚语、立陶宛语、马耳它语、波兰语、普罗旺斯语、罗马尼亚语、吉普塞语、斯洛伐克语、斯洛文尼亚语、土耳其语和威尔士语
+      </td>
+    </tr>
+    <tr>
+      <td width="24%" valign="MIDDLE"> 
+        <p>Latin Extended-B</p>
+        <p>拉丁文扩展集-B
+      </td>
+      <td width="10%" valign="MIDDLE"> 
+        <p>383-591
+      </td>
+      <td width="66%" valign="MIDDLE"> 
+        <p>大部分字符用于扩展Latin文字以处理使用非传统文字写的语言，包括许多非洲语言、克罗地亚连字符，与塞尔维亚古斯拉夫字母、中国的拼音和Latin-10中的Sami 
+          characters相匹配
+      </td>
+    </tr>
+    <tr>
+      <td width="24%" valign="MIDDLE"> 
+        <p>IPA扩展字符集
+      </td>
+      <td width="10%" valign="MIDDLE"> 
+        <p>592-687
+      </td>
+      <td width="66%" valign="MIDDLE"> 
+        <p>国际音标字母
+      </td>
+    </tr>
+    <tr>
+      <td width="24%" valign="MIDDLE"> 
+        <p>间距调节字符
+      </td>
+      <td width="10%" valign="MIDDLE"> 
+        <p>686-767
+      </td>
+      <td width="66%" valign="MIDDLE"> 
+        <p>通常能够改变前面字母发音的小符号
+      </td>
+    </tr>
+    <tr>
+      <td width="24%" valign="MIDDLE"> 
+        <p>可识别的连接字符
+      </td>
+      <td width="10%" valign="MIDDLE"> 
+        <p>766-879
+      </td>
+      <td width="66%" valign="MIDDLE"> 
+        <p>不独立存在，一般与前面的字母连用(放置在上边)的可识别的记号，如：~、‘and ??
+      </td>
+    </tr>
+    <tr>
+      <td width="24%" valign="MIDDLE"> 
+        <p>希腊
+      </td>
+      <td width="10%" valign="MIDDLE"> 
+        <p>880-1023
+      </td>
+      <td width="66%" valign="MIDDLE"> 
+        <p>基于ISO 8859-7的现代希腊语，同时提供古埃及语字符
+      </td>
+    </tr>
+    <tr>
+      <td valign="MIDDLE" colspan=3> 
+        <p>续表
+      </td>
+    </tr>
+    <tr>
+      <td width="24%" valign="MIDDLE"> 
+        <p>文 字
+      </td>
+      <td width="10%" valign="MIDDLE"> 
+        <p>范 围
+      </td>
+      <td width="66%" valign="MIDDLE"> 
+        <p>目 的
+      </td>
+    </tr>
+    <tr>
+      <td width="24%" valign="MIDDLE"> 
+        <p>古斯拉夫
+      </td>
+      <td width="10%" valign="MIDDLE"> 
+        <p>1024-1279
+      </td>
+      <td width="66%" valign="MIDDLE"> 
+        <p>基于ISO 8859-5上的语言,俄语和多数斯拉夫语(乌克兰语、Byelorussian等),前苏联的许多非斯拉夫语言(Azerbaijani,Ossetian,卡巴尔德语,Chechen,Tajik等).几种语言(库尔德语,阿布哈西亚语)需要Latin和古斯拉夫字母
+      </td>
+    </tr>
+    <tr>
+      <td width="24%" valign="MIDDLE"> 
+        <p>美国
+      </td>
+      <td width="10%" valign="MIDDLE"> 
+        <p>1326-1423
+      </td>
+      <td width="66%" valign="MIDDLE"> 
+        <p>美语
+      </td>
+    </tr>
+    <tr>
+      <td width="24%" valign="MIDDLE"> 
+        <p>希伯来
+      </td>
+      <td width="10%" valign="MIDDLE"> 
+        <p>1424-1535
+      </td>
+      <td width="66%" valign="MIDDLE"> 
+        <p>希伯来语（古典和现代）、依地语、Judezmo、早期美语。
+      </td>
+    </tr>
+    <tr>
+      <td width="24%" valign="MIDDLE"> 
+        <p>阿拉伯
+      </td>
+      <td width="10%" valign="MIDDLE"> 
+        <p>1536-1791
+      </td>
+      <td width="66%" valign="MIDDLE"> 
+        <p>阿拉伯语，波斯语、Pashto、Sindhi、库尔德语和早期土耳其语
+      </td>
+    </tr>
+    <tr>
+      <td width="24%" valign="MIDDLE"> 
+        <p>梵文字母
+      </td>
+      <td width="10%" valign="MIDDLE"> 
+        <p>2304-2431
+      </td>
+      <td width="66%" valign="MIDDLE"> 
+        <p>梵语，北印度语，尼泊尔语和印度次大陆语言，包括： <br>
+          Awadhi,Bagheli,Bhatneri,Bhili,Bihari,BrajBhasha,<br>
+          Chhattisgarhi,Garhwali,Gondi,Harauti,Ho,Jaipuri,<br>
+          KachchhiKanauji,Konkani,Kului,Kumaoni,Kurku,Kurukh,<br>
+          Marwari,Mundari,Newari,Palpa,and Santali </p>
+        </td>
+    </tr>
+    <tr>
+      <td width="24%" valign="MIDDLE"> 
+        <p>孟加拉语
+      </td>
+      <td width="10%" valign="MIDDLE"> 
+        <p>2432-2559
+      </td>
+      <td width="66%" valign="MIDDLE"> 
+        <p>一种北印度文字，使用于印度的西孟加拉州和孟加拉国的孟加拉语、阿萨姆语、<br>
+          Daphla、Garo、Hallam、Khasi、Manipuri、<br>
+          Mizo、Naga、Munda、Rian、Santali 
+      </td>
+    </tr>
+    <tr>
+      <td width="24%" valign="MIDDLE"> 
+        <p>Gurmukhi
+      </td>
+      <td width="10%" valign="MIDDLE"> 
+        <p>2560-2687
+      </td>
+      <td width="66%" valign="MIDDLE"> 
+        <p>Punjabi
+      </td>
+    </tr>
+    <tr>
+      <td width="24%" valign="MIDDLE"> 
+        <p>Gujarati
+      </td>
+      <td width="10%" valign="MIDDLE"> 
+        <p>2686-2815
+      </td>
+      <td width="66%" valign="MIDDLE"> 
+        <p>Gujarati
+      </td>
+    </tr>
+    <tr>
+      <td width="24%" valign="MIDDLE"> 
+        <p>Oriya
+      </td>
+      <td width="10%" valign="MIDDLE"> 
+        <p>2816-2943
+      </td>
+      <td width="66%" valign="MIDDLE"> 
+        <p>Oriya、Khondi、Santali
+      </td>
+    </tr>
+    <tr>
+      <td width="24%" valign="MIDDLE"> 
+        <p>泰米尔语
+      </td>
+      <td width="10%" valign="MIDDLE"> 
+        <p>2944-3071
+      </td>
+      <td width="66%" valign="MIDDLE"> 
+        <p>泰米尔语和Badaga、使用于南印度、斯里兰卡、新加坡和马来西亚部分地区
+      </td>
+    </tr>
+    <tr>
+      <td width="24%" valign="MIDDLE"> 
+        <p>Telugu
+      </td>
+      <td width="10%" valign="MIDDLE"> 
+        <p>3072-3199
+      </td>
+      <td width="66%" valign="MIDDLE"> 
+        <p>Telugu、Gondi、Lambadi
+      </td>
+    </tr>
+    <tr>
+      <td width="24%" valign="MIDDLE"> 
+        <p>埃纳德语
+      </td>
+      <td width="10%" valign="MIDDLE"> 
+        <p>3200-3327
+      </td>
+      <td width="66%" valign="MIDDLE"> 
+        <p>埃纳德语、Tulu
+      </td>
+    </tr>
+    <tr>
+      <td width="24%" valign="MIDDLE"> 
+        <p>Malalayam
+      </td>
+      <td width="10%" valign="MIDDLE"> 
+        <p>3326-3455
+      </td>
+      <td width="66%" valign="MIDDLE"> 
+        <p>Malalayam
+      </td>
+    </tr>
+    <tr>
+      <td width="24%" valign="MIDDLE"> 
+        <p>泰国语
+      </td>
+      <td width="10%" valign="MIDDLE"> 
+        <p>3584-3711
+      </td>
+      <td width="66%" valign="MIDDLE"> 
+        <p>泰国语、Kuy、Lavna、巴利语
+      </td>
+    </tr>
+    <tr>
+      <td width="24%" valign="MIDDLE"> 
+        <p>老挝语
+      </td>
+      <td width="10%" valign="MIDDLE"> 
+        <p>3712-3839
+      </td>
+      <td width="66%" valign="MIDDLE"> 
+        <p>老挝语
+      </td>
+    </tr>
+    <tr>
+      <td width="24%" valign="MIDDLE"> 
+        <p>西藏语
+      </td>
+      <td width="10%" valign="MIDDLE"> 
+        <p>3840-4031
+      </td>
+      <td width="66%" valign="MIDDLE"> 
+        <p>喜玛拉雅语包括西藏语、Ladakhi和Lahuli
+      </td>
+    </tr>
+    <tr>
+      <td width="24%" valign="MIDDLE"> 
+        <p>乔治亚语
+      </td>
+      <td width="10%" valign="MIDDLE"> 
+        <p>4256-4351
+      </td>
+      <td width="66%" valign="MIDDLE"> 
+        <p>乔治亚语，黑海边乔治亚前苏维埃共和国语
+      </td>
+    </tr>
+    <tr>
+      <td width="24%" valign="MIDDLE"> 
+        <p>Hangul Jamo
+      </td>
+      <td width="10%" valign="MIDDLE"> 
+        <p>4352-4607
+      </td>
+      <td width="66%" valign="MIDDLE"> 
+        <p>朝鲜、韩国音节的字母组成部分
+      </td>
+    </tr>
+    <tr>
+      <td width="24%" valign="MIDDLE"> 
+        <p>Latin的附加扩展集
+      </td>
+      <td width="10%" valign="MIDDLE"> 
+        <p>7680-7935
+      </td>
+      <td width="66%" valign="MIDDLE"> 
+        <p>标准的Latin字母如E和Y与可识别的记号组合在一起,除了用于越南语元音中，很少使用
+      </td>
+    </tr>
+    <tr>
+      <td width="24%" valign="MIDDLE"> 
+        <p>希腊语扩展集
+      </td>
+      <td width="10%" valign="MIDDLE"> 
+        <p>7936-8191
+      </td>
+      <td width="66%" valign="MIDDLE"> 
+        <p>希腊字母与可识别记号的组合,用于正统的希腊语中
+      </td>
+    </tr>
+    <tr>
+      <td width="24%" valign="MIDDLE"> 
+        <p>通用的标点符号
+      </td>
+      <td width="10%" valign="MIDDLE"> 
+        <p>8192-8303
+      </td>
+      <td width="66%" valign="MIDDLE"> 
+        <p>各种标点符号
+      </td>
+    </tr>
+    <tr>
+      <td width="24%" valign="MIDDLE"> 
+        <p>上标和下标
+      </td>
+      <td width="10%" valign="MIDDLE"> 
+        <p>8304-8351
+      </td>
+      <td width="66%" valign="MIDDLE"> 
+        <p>普通的上标和下标
+      </td>
+    </tr>
+    <tr>
+      <td width="24%" valign="MIDDLE"> 
+        <p>货币符号
+      </td>
+      <td width="10%" valign="MIDDLE"> 
+        <p>8352-8399
+      </td>
+      <td width="66%" valign="MIDDLE"> 
+        <p>货币符号，一般在别的地方找不到
+      </td>
+    </tr>
+    <tr>
+      <td width="24%" valign="MIDDLE"> 
+        <p>用于符号的组合记号
+      </td>
+      <td width="10%" valign="MIDDLE"> 
+        <p>8400-8447
+      </td>
+      <td width="66%" valign="MIDDLE"> 
+        <p>给多个字符做记号
+      </td>
+    </tr>
+    <tr>
+      <td width="24%" valign="MIDDLE"> 
+        <p>像字母的符号
+      </td>
+      <td width="10%" valign="MIDDLE"> 
+        <p>8446-8527
+      </td>
+      <td width="66%" valign="MIDDLE"> 
+        <p>像字母的符号，如&trade;
+      </td>
+    </tr>
+    <tr>
+      <td width="24%" valign="MIDDLE"> 
+        <p>数表
+      </td>
+      <td width="10%" valign="MIDDLE"> 
+        <p>8526-8591
+      </td>
+      <td width="66%" valign="MIDDLE"> 
+        <p>分数和罗马数字
+      </td>
+    </tr>
+    <tr>
+      <td width="24%" valign="MIDDLE"> 
+        <p>箭头符号
+      </td>
+      <td width="10%" valign="MIDDLE"> 
+        <p>8592-8703
+      </td>
+      <td width="66%" valign="MIDDLE"> 
+        <p>箭头符号
+      </td>
+    </tr>
+    <tr>
+      <td width="24%" valign="MIDDLE"> 
+        <p>数学符号
+      </td>
+      <td width="10%" valign="MIDDLE"> 
+        <p>8704-8959
+      </td>
+      <td width="66%" valign="MIDDLE"> 
+        <p>不常出现的数学运算符
+      </td>
+    </tr>
+    <tr>
+      <td width="24%" valign="MIDDLE"> 
+        <p>技术杂项
+      </td>
+      <td width="10%" valign="MIDDLE"> 
+        <p>8960-9039
+      </td>
+      <td width="66%" valign="MIDDLE"> 
+        <p>APL编程语言需要的符号和其他各种技术符号
+      </td>
+    </tr>
+    <tr>
+      <td width="24%" valign="MIDDLE"> 
+        <p>控制图形
+      </td>
+      <td width="10%" valign="MIDDLE"> 
+        <p>9216-9279
+      </td>
+      <td width="66%" valign="MIDDLE"> 
+        <p>ASCII控制字符图形，常用于调试
+      </td>
+    </tr>
+    <tr>
+      <td width="24%" valign="MIDDLE"> 
+        <p>光学字符识别
+      </td>
+      <td width="10%" valign="MIDDLE"> 
+        <p>9280-9311
+      </td>
+      <td width="66%" valign="MIDDLE"> 
+        <p>在打印支票上的OCR-A（光学字符识别）和MICR（磁性墨水字符识别）符号
+      </td>
+    </tr>
+    <tr>
+      <td valign="MIDDLE" colspan=3> 
+        <p>续表
+      </td>
+    </tr>
+    <tr>
+      <td width="24%" valign="MIDDLE"> 
+        <p>文 字
+      </td>
+      <td width="10%" valign="MIDDLE"> 
+        <p>范 围
+      </td>
+      <td width="66%" valign="MIDDLE"> 
+        <p>目 的
+      </td>
+    </tr>
+    <tr>
+      <td width="24%" valign="MIDDLE"> 
+        <p>附加字符
+      </td>
+      <td width="10%" valign="MIDDLE"> 
+        <p>9312-9471
+      </td>
+      <td width="66%" valign="MIDDLE"> 
+        <p>放在圆和括号中的字母和数字
+      </td>
+    </tr>
+    <tr>
+      <td width="24%" valign="MIDDLE"> 
+        <p>画方框字符
+      </td>
+      <td width="10%" valign="MIDDLE"> 
+        <p>9472-9599
+      </td>
+      <td width="66%" valign="MIDDLE"> 
+        <p>用于在等间距终端上画方框的字符
+      </td>
+    </tr>
+    <tr>
+      <td width="24%" valign="MIDDLE"> 
+        <p>块元素
+      </td>
+      <td width="10%" valign="MIDDLE"> 
+        <p>9600-9631
+      </td>
+      <td width="66%" valign="MIDDLE"> 
+        <p>用于DOS和其他用途的等间距终端图形
+      </td>
+    </tr>
+    <tr>
+      <td width="24%" valign="MIDDLE"> 
+        <p>几何形状
+      </td>
+      <td width="10%" valign="MIDDLE"> 
+        <p>9632-9727
+      </td>
+      <td width="66%" valign="MIDDLE"> 
+        <p>正方形、菱形、三角形等
+      </td>
+    </tr>
+    <tr>
+      <td width="24%" valign="MIDDLE"> 
+        <p>杂项符号
+      </td>
+      <td width="10%" valign="MIDDLE"> 
+        <p>9726-9983
+      </td>
+      <td width="66%" valign="MIDDLE"> 
+        <p>纸牌、象棋、占卜等
+      </td>
+    </tr>
+    <tr>
+      <td width="24%" valign="MIDDLE"> 
+        <p>Dingbats
+      </td>
+      <td width="10%" valign="MIDDLE"> 
+        <p>9984-10175
+      </td>
+      <td width="66%" valign="MIDDLE"> 
+        <p>Zapf Dingbat字符
+      </td>
+    </tr>
+    <tr>
+      <td width="24%" valign="MIDDLE"> 
+        <p>CJK符号和标点
+      </td>
+      <td width="10%" valign="MIDDLE"> 
+        <p>12286-12351
+      </td>
+      <td width="66%" valign="MIDDLE"> 
+        <p>用于中国\日本和韩国的标点符号
+      </td>
+    </tr>
+    <tr>
+      <td width="24%" valign="MIDDLE"> 
+        <p>平假名
+      </td>
+      <td width="10%" valign="MIDDLE"> 
+        <p>12352-12447
+      </td>
+      <td width="66%" valign="MIDDLE"> 
+        <p>日文字母的草体.
+      </td>
+    </tr>
+    <tr>
+      <td width="24%" valign="MIDDLE"> 
+        <p>片假名
+      </td>
+      <td width="10%" valign="MIDDLE"> 
+        <p>12446-12543
+      </td>
+      <td width="66%" valign="MIDDLE"> 
+        <p>非草体的日文字母,通常用于西方的外来词汇，像"keyboard"
+      </td>
+    </tr>
+    <tr>
+      <td width="24%" valign="MIDDLE"> 
+        <p>汉语拼音字母
+      </td>
+      <td width="10%" valign="MIDDLE"> 
+        <p>12544-12591
+      </td>
+      <td width="66%" valign="MIDDLE"> 
+        <p>中国的发音字母表
+      </td>
+    </tr>
+    <tr>
+      <td width="24%" valign="MIDDLE"> 
+        <p>Hangul Compatibility Jamo
+      </td>
+      <td width="10%" valign="MIDDLE"> 
+        <p>12592-12687
+      </td>
+      <td width="66%" valign="MIDDLE"> 
+        <p>与KSC 5601代码兼容的韩国字符
+      </td>
+    </tr>
+    <tr>
+      <td width="24%" valign="MIDDLE"> 
+        <p>Kanbun
+      </td>
+      <td width="10%" valign="MIDDLE"> 
+        <p>12686-12703
+      </td>
+      <td width="66%" valign="MIDDLE"> 
+        <p>在日文中用于指示古典中文的阅读顺序的记号
+      </td>
+    </tr>
+    <tr>
+      <td width="24%" valign="MIDDLE"> 
+        <p>括起来的CJK字母和月份
+      </td>
+      <td width="10%" valign="MIDDLE"> 
+        <p>12800-13055
+      </td>
+      <td width="66%" valign="MIDDLE"> 
+        <p>用圆和括号括起来的Hangul和片假名字符
+      </td>
+    </tr>
+    <tr>
+      <td width="24%" valign="MIDDLE"> 
+        <p>CJK Compatibility
+      </td>
+      <td width="10%" valign="MIDDLE"> 
+        <p>13056-13311
+      </td>
+      <td width="66%" valign="MIDDLE"> 
+        <p>只用于编码KSC 5601和CNS 11643的字符
+      </td>
+    </tr>
+    <tr>
+      <td width="24%" valign="MIDDLE"> 
+        <p>统一的CJK象形文字
+      </td>
+      <td width="10%" valign="MIDDLE"> 
+        <p>19966-40959
+      </td>
+      <td width="66%" valign="MIDDLE"> 
+        <p>用于中文、日文和韩文的Han象形文字
+      </td>
+    </tr>
+    <tr>
+      <td width="24%" valign="MIDDLE"> 
+        <p>Hangul音节
+      </td>
+      <td width="10%" valign="MIDDLE"> 
+        <p>44032-55203
+      </td>
+      <td width="66%" valign="MIDDLE"> 
+        <p>一种韩国音节
+      </td>
+    </tr>
+    <tr>
+      <td width="24%" valign="MIDDLE"> 
+        <p>Surrogates
+      </td>
+      <td width="10%" valign="MIDDLE"> 
+        <p>55296-57343
+      </td>
+      <td width="66%" valign="MIDDLE"> 
+        <p>目前还不能使用，将来可用于扩展Unicode，使它包括超过百万的字符
+      </td>
+    </tr>
+    <tr>
+      <td width="24%" valign="MIDDLE"> 
+        <p>个人使用
+      </td>
+      <td width="10%" valign="MIDDLE"> 
+        <p>57344-63743
+      </td>
+      <td width="66%" valign="MIDDLE"> 
+        <p>软件开发者可以在此包含自己的术语，与正在执行的字符不同
+      </td>
+    </tr>
+    <tr>
+      <td width="24%" valign="MIDDLE"> 
+        <p>CJK兼容性象形文字
+      </td>
+      <td width="10%" valign="MIDDLE"> 
+        <p>63744-64255
+      </td>
+      <td width="66%" valign="MIDDLE"> 
+        <p>为了保持与现有的标准的一致性如KSC 5601,而使用的一些汉字象形文字
+      </td>
+    </tr>
+    <tr>
+      <td width="24%" valign="MIDDLE"> 
+        <p>字母的表现方式
+      </td>
+      <td width="10%" valign="MIDDLE"> 
+        <p>64256-64335
+      </td>
+      <td width="66%" valign="MIDDLE"> 
+        <p>使用于Latin、美语和希伯来语中的连字和变种
+      </td>
+    </tr>
+    <tr>
+      <td width="24%" valign="MIDDLE"> 
+        <p>阿拉伯表象形式
+      </td>
+      <td width="10%" valign="MIDDLE"> 
+        <p>64336-65023
+      </td>
+      <td width="66%" valign="MIDDLE"> 
+        <p>各种阿拉伯字符的变种
+      </td>
+    </tr>
+    <tr>
+      <td width="24%" valign="MIDDLE"> 
+        <p>组合半记号
+      </td>
+      <td width="10%" valign="MIDDLE"> 
+        <p>65056-65071
+      </td>
+      <td width="66%" valign="MIDDLE"> 
+        <p>把跨越多个字符的多个可识别记号连成一个可识别的记号
+      </td>
+    </tr>
+    <tr>
+      <td width="24%" valign="MIDDLE"> 
+        <p>CJK兼容性形式
+      </td>
+      <td width="10%" valign="MIDDLE"> 
+        <p>65072-65103
+      </td>
+      <td width="66%" valign="MIDDLE"> 
+        <p>用于台湾汉字象形文字
+      </td>
+    </tr>
+    <tr>
+      <td width="24%" valign="MIDDLE"> 
+        <p>小型变种
+      </td>
+      <td width="10%" valign="MIDDLE"> 
+        <p>65104-65135
+      </td>
+      <td width="66%" valign="MIDDLE"> 
+        <p>用于台湾的ASCII标点符号的小的版本
+      </td>
+    </tr>
+    <tr>
+      <td width="24%" valign="MIDDLE"> 
+        <p>附加的阿拉伯表象形式
+      </td>
+      <td width="10%" valign="MIDDLE"> 
+        <p>65136-65279
+      </td>
+      <td width="66%" valign="MIDDLE"> 
+        <p>各种阿拉伯字符变种
+      </td>
+    </tr>
+    <tr>
+      <td width="24%" valign="MIDDLE"> 
+        <p>半宽和全宽形式
+      </td>
+      <td width="10%" valign="MIDDLE"> 
+        <p>65280-65519
+      </td>
+      <td width="66%" valign="MIDDLE"> 
+        <p>能够在中文和日文的不同代码间转换的字符
+      </td>
+    </tr>
+    <tr>
+      <td width="24%" valign="MIDDLE"> 
+        <p>特殊字符
+      </td>
+      <td width="10%" valign="MIDDLE"> 
+        <p>65520-65535
+      </td>
+      <td width="66%" valign="MIDDLE"> 
+        <p>字节顺序记号和零宽度的非中断性空格，常用于Unicode 文件的开始
+      </td>
+    </tr>
+  </table>
+</center>
+<p></p>
+<h5><a name="_Toc467197062">7.4.1 UTF-8</a></h5>
+<p>Unicode使用双字节表示一个字符，因此使用Unicode的英文文本文件大小是使用ASCII码或Latin-1文件的两倍。UTF-8是一个压缩的Unicode版本，使用单个字节表示最常用的字符，即0到127的ASCII字符，较少见的字符使用三个字节表示，特制是韩国音节和汉字。如果主要使用英文，UTF-8能够将文件压缩为原来的一半。如果主要使用汉语、朝语或者日语，UTF-8会使文件的尺寸增加50%&#0;&#0;因此应当谨慎使用UTF-8。UTF-8几乎不能处理非罗马文字和非CJK文字，如希腊语、阿拉伯语、古斯拉夫语和希伯来语。</p>
+<p>XML处理器在没有被预先通知的情况下假定文本数据是UTF-8格式。这意味着XML处理器能够阅读ASCII码文件，但是使用它处理其他格式的文件像MacRoman 
+  或者 Latin-1会有困难。我们很快就能学会如何在短时间内解决这个问题。</p>
+<h5><a name="_Toc467197063">7.4.2 通用字符系统</a></h5>
+<p>Unicode因为没有包含足够多的语言和文字而受到批评，特别是亚洲东部的语言。它只定义了中国、日本、朝鲜和古越南使用的80,000象形文字中的20,000个左右。（现代越南语使用一种罗马字母。）</p>
+<p>UCS （Universal Character System）&#0;&#0;通用字符系统，也称作ISO 10646，使用四个字节（确切地说是31位）表示一个字符，以给20多亿不同的字符提供足够的空间。这样能容易地覆盖地球上任何一种文字和语言使用的每个字符。而且还可以给每一种语言指定一个完整的字符集，使法语中的“e”不同于英语和德语中的“e”等等。</p>
+<p>与Unicode一样，UCS定义了许多不同的变种和压缩形式。纯粹的Unicode有时指USC-2，是双字节的UCS。UTF-16是一种特别的编码，它把一些UCS字符安排在长度变化的字符串中，在这种方式下Unicode（UCS-2）数据不会改变。</p>
+<p>UCS超越Unicode的优点主要是理论方面的。在UCS中实际定义过的字符就是Unicode中已有的字符。但是UCS为以后的字符扩充提供了更多的空间。</p>
+ 
+<a href='391.htm'>&lt;&lt;上一篇</a>&nbsp;&nbsp;<a href='393.htm'>下一篇&gt;&gt;</a></td>
+        </tr>
+      </table>
+      <p>&nbsp; </p>
+    </td>
+  </tr>
+</table>
+
+</body>
+
+</html>

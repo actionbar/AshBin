@@ -1,0 +1,326 @@
+<html>
+<head>
+<title>页面布局</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+
+<link rel = stylesheet href = "image/style.css">
+</head>
+<body bgcolor="#ffffff">
+<table width="688" border="0" cellspacing="0" cellpadding="0" align="center">
+  <tr bgcolor="EEEEEE"> 
+    <td height="22"><a href="index.htm">主页</a></td>
+  </tr>
+</table><br>
+<table border="0" cellpadding="0" cellspacing="0" width="688" align="center" height="490">
+  <tr valign="top"> 
+    <td rowspan="4" width="91">&nbsp; </td>
+    <td height="68" width="131"> 
+      <p><img src="image/doc.gif"></p>
+    </td>
+    <td rowspan="4" width="18"><b></b> </td>
+    <td height="68" width="387"><img src="image/title_doc.gif"></td>
+    <td rowspan="4" width="61"> 
+      <h6>&nbsp;</h6>
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td rowspan="3" valign="top" class="pt10" align="center" width="131" bgcolor="EEEEEE"> 
+      <p>&nbsp;</p>
+      <p><font color="#FF0000">※ 15.3 页面布局</font></p>
+       
+	</td>
+  </tr>
+  <tr valign="top"> 
+    <td width="387" height="308"> 
+      <table width="100%" border="0" cellpadding="0">
+        <tr> 
+          <td>
+
+           <h4><a name="_Toc467207750">15.3 页面布局</a></h4>
+<p>格式化对象的根元素是fo:root。此元素包含一个fo:layout-master-set元素和零或多个fo:page-sequence元素。fo:root元素通常有xmlns:fo特性，其特性值为http: 
+  //www.w3.org /XSL /Format /1.0，并且可能（尽管通常情况下没有）有一个id特性。fo:root元素的存在只为了声明命名域和文档根元素，它对页面布局或格式化没有直接的影响。</p>
+<h5><a name="_Toc467207751">15.3.1 主控页面</a></h5>
+<p>fo:layout-master-set元素为一容器，用于文档使用的所有不同的主控页面。简单的页面控制与Quark XPress主控页面或PowerPoint幻灯母板的用途类似。每个都定义页面（包括此页的页边距、页眉大小、页脚、文本区域等等）的通用布局。在显示文档中的每个实际页面都基于主控页，以及从此主控页面中继承某些属性，如页边距、页编号和布局。</p>
+<p><b>15.3.1.1 简单的页面控制</b></p>
+<p>每个主控页面都是由fo:simple-page-master元素表示的。fo:layout-master-set可以包含一个或多个主控页面。一个fo:simple-page-master元素定义页的布局，包括页前区、主体区、后区、结束区以及开始区的大小。图15-2显示这些部分的典型布局。正文是中间留下来的所有内容。</p>
+<p align="center"><img src="Image/BK000215-32.gif" width=145 height=188></p>
+<p align="center">图15-2 一页简单的英语文本各部分的布局</p>
+<p><img src="Image/BK000215-30.gif" width=51 height=53 align="left"> 在正常的英语文本中，结束区处于页的右侧，开始区处于页的左侧。而在希伯来语或阿拉伯语的文本中，则反过来，因为这些语言是从右往左阅读。在几乎所有的现代语言中，前区是页眉，后区则是页脚，但在以从底部往顶部书写的语言中，这种情况则相反。</p>
+<p>设计者利用适当的区域子元素可设置正文（中间部分）区、页眉、页脚、结束区和开始区的大小以及它们之间的距离。下面就是这些区域子元素：</p>
+<ul>
+  <p>
+  <li>fo:region-before</li>
+  <p></p>
+  <p>
+  <li>fo:region-after</li>
+  <p></p>
+  <p>
+  <li>fo:region-body</li>
+  <p></p>
+  <p>
+  <li>fo:region-start</li>
+  <p></p>
+  <p>
+  <li>fo:region-end</li>
+  <p></p>
+</ul>
+<p>这五个简单页面控制中的每一个区域都可以用fo:flow或fo:static-content元素来填充。</p>
+<p>simple-page-master元素通常有三个主要特性：</p>
+<p> 1．page-master-name：这一页面控制的名称，页序列使用此名来选择依赖于特定页的主控页</p>
+<p> 2．page-height：页的高度</p>
+<p> 3．page-width：页的宽度</p>
+<p>page-height和page-width可归入一个缩略属性size中。如果不提供这两个特性，那么格式化部分根据所使用的媒体（例如11"&#180; 
+  8.5"）来选择合理的缺省值。</p>
+<p>例如，此处的fo:layout-master-set，含有两个fo:simple-page-master元素：一个用于偶数（左）页，一个用于奇数（右）页。它们两个都指定11英寸长，8.5英寸宽的页面大小。它们的顶和底页边距为0.5英寸。按照通常页面相对的情况，每个元素的的内侧页边距为0.5英寸，外侧页边距为1英寸，</p>
+<p>&lt;fo:layout-master-set&gt;</p>
+<p> &lt;fo:simple-page-master page-master-name="even"</p>
+<p> height="8.5in" width="11in"</p>
+<p> margin-top="0.5in" margin-bottom="0.5in"</p>
+<p> margin-left="l.0in" margin-right="0.5in"&gt;</p>
+<p> &lt;fo:region-body/&gt;</p>
+<p> &lt;/fo:simple-page-master&gt;</p>
+<p></p>
+<p> &lt;fo:simple-page-master page-master-name="odd"</p>
+<p> height="8.5in" width="11in"</p>
+<p> margin-top="0.5in" margin-bottom="0.5in"</p>
+<p> margin-left="0.5in" margin-right="1.0in"&gt;</p>
+<p> &lt;fo:region-body/&gt;</p>
+<p> &lt;/fo:simple-page-master&gt;</p>
+<p>&lt;/fo:layout-master-set&gt;</p>
+<p>通常用于页面控制的其他特性包括：</p>
+<ul>
+  <p>
+  <li>影响页面边距的特性：margin-bottom、margin-left、margin-right、margin-top、margin</li>
+  <p></p>
+  <p>
+  <li>影响页面书写方向的特性：writing-mode、reference-orientation</li>
+  <p></p>
+</ul>
+<p><b>15.3.1.2 区域属性</b></p>
+<p>五个区域（before、after、body、start、end）共享相同的基本属性。这些属性有：</p>
+<ul>
+  <p>
+  <li>确定超出区域边界的内容如何处理的特性：clip、over-flow</li>
+  <p></p>
+  <p>
+  <li>确定内容在栏中如何折行的特性：column-count（区域中的栏号）以及column-gap（栏之间的距离）</li>
+  <p></p>
+  <p>
+  <li>影响区域背景的特性：background、background-attachment、background-color、background-image、background-repeat、background-position</li>
+  <p></p>
+  <p>
+  <li>影响区域边界的特性：border-before-color、border-before-style、border-before-width、border-after-color、border-after-style、border-after-width、border-start-color、border-start-style、border-start-width、border-end-color、border-end-style、border-end-width、border-top-color、border-top-style、border-top-width、border-bottom- 
+    color、border-bottom-style、border-bottom-width、border-left-color、border-left-style、border-left-width、border-right-color、border-right-style、border-right-width、border、border-top、border-bottom、border-left、border-right、border-color、border-style、border- 
+    width</li>
+  <p></p>
+  <p>
+  <li>影响区域贴边的特性：padding-bottom、padding-left、padding-right、padding-top、padding-bottom、padding-start、padding-end、padding-before、padding-after、padding</li>
+  <p></p>
+  <p>
+  <li>影响区域页边距的特性：margin-bottom、margin-left、margin-right、margin-top、margin、space-before、space-after、start-indent、end 
+    indent</li>
+  <p></p>
+  <p>
+  <li>影响区域中的书写方向的特性：writing-mode、reference-orientation</li>
+  <p></p>
+</ul>
+<p>大多数属性与CSS属性同名，从CSS属性中就已很熟悉了。如果不明确地设置这些属性值，则选择合理的缺省值。对它们进行调整，就可以对页面的整个布局施加影响。</p>
+<p>此外，四个外面区域（前、后、开始以及结束但不是正文）都有一个extent属性，它用来确定区域的大小。在去掉这四个区域之后，中间剩下来部分，就是主体正文的大小。</p>
+<p>例如，下面的fo:layout-master-set使所有的外面区域都为1英寸。每个区域都有两个像素的黑色边界。而且，此页在所有的侧面上都有0.5英寸的页边距。</p>
+<p>&lt;fo:layout-master-set&gt;</p>
+<p> &lt;fo:simple-page-master page-master-name="only"</p>
+<p> height="8.5in" width="11in"</p>
+<p> margin-top="0.5in" margin-bottom="0.5in"</p>
+<p> margin-left="l.0in" margin-right="0.5in"&gt;</p>
+<p> &lt;fo:region-start extent="l.0in"</p>
+<p> border-color="black" border-width="2px"/&gt;</p>
+<p> &lt;fo:region-before extent="l.0in"</p>
+<p> border-color="black" border-width="2px"/&gt;</p>
+<p> &lt;fo:region-body</p>
+<p> border-color="black" border-width="2px"/&gt;</p>
+<p> &lt;fo:region-end extent="1.0in"</p>
+<p> border-color="black" border-width="2px"/&gt;</p>
+<p> &lt;fo:region-after extent="l.0in"</p>
+<p> border-color="black" border-width="2px"/&gt;</p>
+<p> &lt;/fo:simple-page-master&gt;</p>
+<p>&lt;/fo:layout-master-set&gt;</p>
+<p>基于页面控制的正文页为5.5英寸宽，8英寸高。此值可以通过此页的大小减去此页上剩下来的其他部分的大小计算获得。</p>
+<h5><a name="_Toc467207752">15.3.2 页序列</a></h5>
+<p>除fo:layout-master-set外，每个格式化对象文档通常还包含一个或多个fo:page-sequence元素。每个页序列按下列顺序含有三项内容：</p>
+<ul>
+  <p>
+  <li>一个fo:sequences-pecification元素，以定义主控页使用顺序</li>
+  <p></p>
+  <p>
+  <li>零个或多个fo:static-content元素，其中包含每页上要放置的文本</li>
+  <p></p>
+  <p>
+  <li>一个fo:flow元素，其中包含要在各页上依次放置的数据</li>
+  <p></p>
+</ul>
+<p>fo:flow和fo:static-content之间的主要区别是，文本流（flow）中的文本并不放在多个页面上，但静态内容则是如此。例如，读者现在在阅读的这些行是文本流内容，只出现在此页上，而此页顶上的部分和章节标题则是静态内容，它在每页都是重复的。</p>
+<p>fo:sequence-specification为此序列提供一组主控页。序列中的每页都有相关的页面控制，以定义页面的外观。清单15-1只使用一个主控页，但通常有多个主控页；例如，用于一章的第一页的主控页，用于所有的连续的左手页的主控页以及用于所有的连续的右手页的主控页。例如，可能有一个简单的页面控制用于目录，另一个用于正文文本，第三个用于索引。在这种情况下，目录、正文文本以及索引每个都对应有一个页面序列。</p>
+<p>fo:flow元素按顺序包含本页上要放置的元素。当各页都以文本流的元素填充时，就会使用序列规格中的下一个控制布局方式为文本流中存在的元素创建新页。</p>
+<p>fo:static-content元素包含每页上要放置的信息。例如，可将书的标题放在每页的页眉中。静态内容可以根据主控页来调节。例如，部分的标题可能放在左手的页上，章节的标题放在右手页上。还可以将fo:static-content元素用于像页码这样的项目，页码必须从一页到另一页不断地重复进行计算。换句话说，静态的实质并不是文本，而是产生文本的运算。</p>
+<b>15.3.2.1 序列规格</b> 
+<p>使用铝腥鲎釉刂械囊桓龌蚨喔觯琭o:sequence-specification元素可列出特定的主控页被说明的顺序：</p>
+<ul>
+  <p>
+  <li>fo:sequence-specifier-single</li>
+  <p></p>
+  <p>
+  <li>fo:sequence-specifier-alternating</li>
+  <p></p>
+  <p>
+  <li>fo:sequence-specifier-repeating</li>
+  <p></p>
+</ul>
+<p>每个子元素都有特性，此特性确定何时使用哪个主控页。最简单的是fo:sequence-specifier-single，其page-master-name特性标识准备说明的主控页。例如，下面的fo:sequence-specification元素说明所有的内容都必须放在名为letter的主控页的一个实例上。</p>
+<p>&lt;fo:sequence-specification&gt;</p>
+<p> &lt;fo:sequence-specifier-single page-master-name="letter"/&gt;</p>
+<p>&lt;/fo:sequence-specification&gt;</p>
+<p>如果有更多的内容可以填充在一页上，那么，超过的内容要么切去顶端，要么上卷，这要根据放置此内容各区域的clip和overflow特性值而定。但是，创建页数不会多于一页。现在来考虑一下下面的序列规格：</p>
+<p>&lt;fo:sequence-specification&gt;</p>
+<p> &lt;fo:sequence-specifier-single page-master-name="letter"/&gt;</p>
+<p> &lt;fo:sequence-specifier-single page-master-name="letter"/&gt;</p>
+<p>&lt;/fo:sequence-specification&gt;</p>
+<p>此段代码为每个基于letter页面控制的所有页都提供了序列规格。如果第一页填满，就创建第二页。如果那页填满，那么内容就被切去或上卷。</p>
+<p>同样可将这一技术用来施加不同的主控页。例如，下面的序列规格将第一页以名为letterl的主控页为基础，第二页以名为letter2的主控页为基础。</p>
+<p>&lt;fo:sequence-specification&gt;</p>
+<p> &lt;fo:sequence-specifier-single page-master-name="letterl"/&gt;</p>
+<p> &lt;fo:sequence-specifier-single page-master-name="letter2"/&gt;</p>
+<p>&lt;/fo:sequence-specification&gt;</p>
+<p>当然，大多数时候不会预先精确地知道有多少页。fo:sequence-specifier-alternating和fo:sequence-specifier-repeating元素可用来指定按实际需要的页数来保存内容。fo:sequence-specifier-repeating元素为第一页指定一个主控页，为所有的后续页指定第二个主控页。fo:sequence-specifier-alternating元素为第一页、有内容的偶数页、有内容的奇数页、空白偶数页、最后的偶数页以及最后的奇数页指定多达六个不同的主控页。</p>
+<p>例如，下面的序列说明符表示第一页的输出应使用名为letter_first的主控页，但所有的后续页都使用名为letter的主控页：</p>
+<p>&lt;fo:sequence-specification&gt;</p>
+<p> &lt;fo:sequence-specifier-repeating</p>
+<p> page-master-first="letter_first"</p>
+<p> page-master-repeating="letter"</p>
+<p> /&gt;</p>
+<p>&lt;/fo:sequence-specification&gt;</p>
+<p>如果整个内容都超出第一页，那么它就放在第二页上。如果超出第二页，那么就创建第三页。按照需要保存所有内容来建立页数。</p>
+<p><img src="Image/BK000215-30.gif" width=49 height=45 align="left">在撰写本书时，仍未确定内容是否需要page-master-first和page-master-repeating。但如果只有单一主控页，肯定要像下面这样将其作为值重新用于page-master-first和page-master-repeating：</p>
+<p> &lt;fo:sequence-specification&gt;</p>
+<p> &lt;fo:sequence-specifier-repeating</p>
+<p> page-master-first="letter"</p>
+<p> page-master repeating="letter"</p>
+<p> /&gt;</p>
+<p> &lt;/fo:sequence-specification&gt;</p>
+<p>fo:sequence-specifier-alternating元素多用于打印书籍的章节，习惯上书籍的第一和最后一页，以及奇偶页上的页边距、页眉和页脚都不同。这个元素的特性可用来为这些所有不同页指定主控页。例如：</p>
+<p>&lt;fo:sequence-specification&gt;</p>
+<p> &lt;fo:sequence-specifier-repeating</p>
+<p> page-master-first="chapter_first"</p>
+<p> page-master-even="chapter_even"</p>
+<p> page-master-blank-even="chapter_blank"</p>
+<p> page-master-odd="chapter_odd"</p>
+<p> page-master-last-even="chapter_last_even"</p>
+<p> page-master-last-odd="chapter_last_odd"</p>
+<p> page-Master-repeating="letter"</p>
+<p> /&gt;</p>
+<p>&lt;/fo:sequence-specification&gt;</p>
+<p><img src="Image/BK000215-30.gif" width=47 height=51 align="left">如果上面的特性似乎不对称的话&#0;&#0;例如没有page-master-blank-odd特性&#0;&#0;这是由于传统的出版物不对称。如果仔细看看本书的所有页，并看看你所拥有的任何一本书，将会注意到编成奇数号的页总是在右边，编成偶数号的页总是在左边，并且章号总是在右手页上。章可以结束于右手（奇数）页，也可以结束于左手（偶数）页，但如果章确实结束于奇数页，那么就插入一空白的偶数页，以便下一章起始于奇数页。</p>
+<p> 
+<p><b>15.3.2.2 文本流</b></p>
+<p></p>
+<p>fo:flow对象保存放置在由序列规格指定的主控页实例上的真实内容。此内容是由一系列fo:block、fo:display-graphic、fo:display-link、fo:display-rule以及其他块级元素组成的。在本节，我们将集中于基本的fo:block元素，它大体上与HTML的DIV元素等价。在本章的后面，我们将看到文本流包含的更多的块级元素。</p>
+<p>例如，下面的这个基本文本流，包含几个原子的名称，它们分别放在各自的块中：</p>
+<p>&lt;fo:flow name="xsl-body"&gt;</p>
+<p> &lt;fo:block&gt;Actinium&lt;/fo:block&gt;</p>
+<p> &lt;fo:block&gt;Aluminum&lt;/fo:block&gt;</p>
+<p> &lt;fo:block&gt;Americium&lt;/fo:block&gt;</p>
+<p>&lt;/fo:flow&gt;</p>
+<p>fo:flow的name特性（此处有xsl-body值）指定此文本流的内容将放在该页中五个区域的哪个区域上。允许值为：</p>
+<ul>
+  <p>
+  <li>xsl-body</li>
+  <p></p>
+  <p>
+  <li>xsl-after</li>
+  <p></p>
+  <p>
+  <li>xsl-before</li>
+  <p></p>
+  <p>
+  <li>xsl-start</li>
+  <p></p>
+  <p>
+  <li>xsl-end</li>
+  <p></p>
+</ul>
+<p>例如，页眉的flow（从左到右，从上到下的英语文本）的flow- name具有值为xsl-before。下面是用于页脚的文本流：</p>
+<p>&lt;fo:flow id="q2" flow-name="xsl-after"&gt;</p>
+<p> &lt;fo:block&gt;</p>
+<p> The XML Bible</p>
+<p> Chapter 15: XSL Formatting Objects</p>
+<p> &lt;/fo:block&gt;</p>
+<p>&lt;/fo:flow&gt;</p>
+<p> 
+<p><b>15.3.2.3 静态内容</b></p>
+<p></p>
+<p>尽管fo:flow元素的每条内容都出现在一页上，但fo:static-content元素的每条内容则出现在每页上；例如，页眉或页脚。不一定要使用fo:static-content元素，但如果使用，必须放在页序列中所有的fo:flow元素之前。</p>
+<p>fo:static-content元素的特性和内容与fo:flow的相同。但是，由于fo:static-content不能将自己的内容放在多个页面上，如果必须如此，那么通常其内容要比fo:flow少。例如，下面是用于页眉的fo:static-content：</p>
+<p>&lt;fo:static-content id="sc2" flow-name="xsl-before"&gt;</p>
+<p> &lt;fo:block&gt;</p>
+<p> The XML Bible</p>
+<p> Chapter 15: XSL Formatting Objects</p>
+<p> &lt;/fo:block&gt;</p>
+<p>&lt;/fo:static-content&gt;</p>
+<p> 
+<p><b>15.3.2.4 页的编号</b></p>
+<p></p>
+<p>除了任何格式化对象所具有的常用的id特性外，fo:page-sequence元素还有六个可选的特性，它们可为序列定义页编号。这六个特性为：</p>
+<ul>
+  <p>
+  <li>initial-page-number</li>
+  <p></p>
+  <p>
+  <li>format</li>
+  <p></p>
+  <p>
+  <li>letter-value</li>
+  <p></p>
+  <p>
+  <li>digit-group-sep</li>
+  <p></p>
+  <p>
+  <li>n-digits-per-group</li>
+  <p></p>
+  <p>
+  <li>sequence-src</li>
+  <p></p>
+</ul>
+<p>initial-page-number特性定义此序列中的第一页号码。此特性的最可能的值是1，但如果前面的页存在于不同的文件中，那么此值可能比较大。剩下来的五个特性的句法和含义，与作为XSL转换语言的xsl:number元素的特性使用时完全相同。</p>
+<p><img src="Image/BK000215-30.gif" width=58 height=41 align="left">xsl:number元素和format、letter-value、digit-group-sep、n-digits-per-group、sequence-src特性已在第14章“XSL变换”的“数字到字符串的转换”中讨论过。</p>
+<p>fo:page-number格式化对象是一空的内联元素，用于插入当前页的号码。格式化程序负责确定使用什么样的号码。此元素只有唯一的一个特性&#0;&#0;id。此外，可将fo:page-number包装在fo:inline-sequence、fo:block或类似的元素中，以便将字体属性和类似的属性应用于此元素。例如，下面的页脚使用fo:static-content和fo:page-number来将页码放在每页的底部：</p>
+<p>&lt;fo:static-content id="sc2" flow-name="xsl-after"&gt;</p>
+<p> &lt;fo:block&gt;</p>
+<p> &lt;fo:page-number/&gt;</p>
+<p> &lt;/fo:block&gt;</p>
+<p>&lt;/fo:static-content&gt;</p>
+<p>下面的页序列指定该页码使用小罗马数字，并从10开始计数。</p>
+<p>&lt;fo:page-sequence initial-page-number="10" format="i"&gt;</p>
+<p></p>
+<p> &lt;!- sequence specification -&gt;</p>
+<p></p>
+<p> &lt;fo:static-content flow-name="xsl-after"&gt;</p>
+<p> &lt;fo:block text-align-last="centered" font-size="10pt"&gt;</p>
+<p> &lt;fo:page-number/&gt;</p>
+<p> &lt;/fo:block&gt;</p>
+<p> &lt;/fo:static-content&gt;</p>
+<p></p>
+<p> &lt;!- flows -&gt;</p>
+<p></p>
+<p>&lt;/fo:page-sequence&gt;</p>
+<h4><a name="_Toc467207753"></a></h4>
+ 
+<a href='525.htm'>&lt;&lt;上一篇</a>&nbsp;&nbsp;<a href='527.htm'>下一篇&gt;&gt;</a></td>
+        </tr>
+      </table>
+      <p>&nbsp; </p>
+    </td>
+  </tr>
+</table>
+
+</body>
+
+</html>

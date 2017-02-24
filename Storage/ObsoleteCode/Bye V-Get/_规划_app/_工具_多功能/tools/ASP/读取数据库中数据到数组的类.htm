@@ -1,0 +1,73 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>读取数据库中数据到数组的类</title>
+<style type="text/css">
+<!--
+body {
+	font-size: 10.4pt;
+	line-height: 22px;
+}
+-->
+</style>
+</head>
+
+<body bgcolor="eeeeee" leftmargin="20" marginwidth="20">
+<p><strong>读取数据库中数据到数组的类 </strong></p>
+<hr>
+<p><br>
+  ' ===================================================================<br>
+  ' 读取数据库中数据到数组的类<br>
+  ' 作者:心飞翔<br>
+  ' QQ:85166 E-MAIL:Apwmj@hotmail.com<br>
+  ' 声明: <br>
+  ' 如采用本类模块,请不要去掉这个说明,这段注释不会影响执行的速度.<br>
+  ' 各种用途均可免费使用,但是修改后必须把修改后的文件发送一份给作者.<br>
+  ' 2004年5月18日<br>
+  ' ===================================================================</p>
+<p><br>
+  DbPath = &quot;test.mdb&quot;'数据库位置<br>
+  ConnStr = &quot;Provider = Microsoft.Jet.OLEDB.4.0;Data Source = &quot; &amp; 
+  Server.MapPath(DbPath)<br>
+  Set Conn = Server.CreateObject(&quot;ADODB.Connection&quot;)<br>
+  Conn.open ConnStr</p>
+<p><br>
+  Class Class_Read<br>
+  Public Arr,Rs,SQL,ArrTR,ArrTD,Page,TotalRead,TotalPage<br>
+  Public Function Read(SQL,TD,TR,PG)<br>
+  SQL = Replace(SQL,&quot;'&quot;,&quot;&quot;)<br>
+  Page= Int(PG)<br>
+  Set Rs = Server.CreateObject(&quot;ADODB.Recordset&quot;) : Rs.open SQL,conn,1,1<br>
+  TotalRead= Rs.RecordCount<br>
+  If TotalRead&gt;0 Then<br>
+  If TR&gt;0 Then : Rs.PageSize = TR : Else : TR=TotalRead<br>
+  If TD&gt;Rs.Fields.Count or TD&lt;1 Then TD = Rs.Fields.Count<br>
+  If TotalRead Mod TR &lt;&gt;0 Then TotalPage = 1 : End If : TotalPage = TotalPage 
+  + Int(TotalRead/TR)<br>
+  If Page&gt;=TotalPage Then Page=TotalPage : TR = TotalRead-TR*(TotalPage-1)<br>
+  If Page&gt;1 Then Rs.absolutePage=Page Else Page=1<br>
+  End If<br>
+  reDim Arr(TD-1,TR)<br>
+  For ArrTR = 0 to TR-1 : If Rs.Eof Then Exit For<br>
+  For ArrTD = 0 to TD-1 : Arr(ArrTD,ArrTR) = Rs(ArrTD) : Next : Rs.MoveNext<br>
+  Next<br>
+  ArrTR = ArrTR-1<br>
+  Rs.Close<br>
+  Set Rs=Nothing<br>
+  End Function<br>
+  End Class<br>
+  '使用方法<br>
+  Dim C:Set C = New Class_Read<br>
+  C.Read (&quot;SQL语句&quot;,&quot;读取列数&quot;,&quot;读取行数[既每页显示条数]&quot;,&quot;当前页数&quot;)<br>
+  Dim i<br>
+  For i=0 To C.ArrTR<br>
+  Response.Write &quot;&lt;br&gt;内容:&quot;&amp;C.Arr(0,i)<br>
+  Next<br>
+  Response.Write &quot;&lt;br&gt;总记录条数:&quot;&amp;C.TotalRead<br>
+  Response.Write &quot;&lt;br&gt;总页数 :&quot;&amp;C.TotalPage<br>
+  Response.Write &quot;&lt;br&gt;当前页 :&quot;&amp;C.Page<br>
+  Response.Write &quot;&lt;br&gt;当前记录数:&quot;&amp;C.ArrTR+1</p>
+<p></p>
+</body>
+</html>

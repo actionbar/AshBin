@@ -1,0 +1,222 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="ASP Session 对象,ASP Session Object" />
+<meta name="description" content="本节向您讲解ASP Session对象的概念、作用、如何使用该对象、如何操作Session变量" />
+<link rel="stylesheet" type="text/css" href="../c3.css" />
+<title>ASP Session 对象</title>
+</head>
+<body class="serverscripting">
+<div id="wrapper">
+<div id="header">
+<a href="http://e.v-get.com/w3cschool/" style="float:left;">W3CSchool 在线教程</a>
+<div class="q g"><script type="text/javascript">var cpro_id="u1163355"</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div>
+<div id="navfirst">
+<ul id="menu">
+<li id="h"><a href="../h.html">HTML教程</a></li>
+<li id="x"><a href="../x.html">XML教程</a></li>
+<li id="b"><a href="../b.html">浏览器脚本</a></li>
+<li id="s"><a href="../s.html">服务器脚本</a></li>
+<li id="d"><a href="../d.html">dot net教程</a></li>
+<li id="m"><a href="../m.html">多媒体教程</a></li>
+<li id="w"><a href="../w.html">建站手册</a></li>
+</ul>
+</div><div id="navsecond">
+<div id="course">
+<h2>ASP 教程</h2>
+<ul>
+<li><a href="http://e.v-get.com/w3cschool/">ASP 首页</a></li>
+<li><a href="asp_intro.html">ASP 简介</a></li>
+<li><a href="asp_install.html">ASP 安装</a></li>
+<li><a href="asp_syntax.html">ASP 语法</a></li>
+<li><a href="asp_variables.html">ASP 变量</a></li>
+<li><a href="asp_procedures.html">ASP 程序</a></li>
+<li><a href="asp_inputforms.html">ASP 表单</a></li>
+<li><a href="asp_cookies.html">ASP Cookies</a></li>
+<li><a href="asp_sessions.html">ASP Session</a></li>
+<li><a href="asp_applications.html">ASP Application</a></li>
+<li><a href="asp_incfiles.html">ASP #include</a></li>
+<li><a href="asp_globalasa.html">ASP Global.asa</a></li>
+<li><a href="asp_send_email.html">ASP e-mail</a></li>
+</ul>
+<h2>ASP 对象</h2>
+<ul class="small">
+<li><a href="asp_ref_response.html">ASP Response</a></li>
+<li><a href="asp_ref_request.html">ASP Request</a></li>
+<li><a href="asp_ref_application.html">ASP Application</a></li>
+<li><a href="asp_ref_session.html">ASP Session</a></li>
+<li><a href="asp_ref_server.html">ASP Server</a></li>
+<li><a href="asp_ref_error.html">ASP Error</a></li>
+<li class="list_apart"><a href="asp_ref_filesystem.html">ASP FileSystem</a></li>
+<li><a href="asp_ref_textstream.html">ASP TextStream</a></li>
+<li><a href="asp_ref_drive.html">ASP Drive</a></li>
+<li><a href="asp_ref_file.html">ASP File</a></li>
+<li><a href="asp_ref_folder.html">ASP Folder</a></li>
+<li><a href="asp_ref_dictionary.html">ASP Dictionary</a></li>
+<li><a href="asp_ado.html">ASP ADO</a></li>
+</ul>
+<h2>ASP 组件</h2>
+<ul class="small">
+<li><a href="asp_adrotator.html">ASP AdRotator</a></li>
+<li><a href="asp_browser.html">ASP BrowserCap</a></li>
+<li><a href="asp_contentlinking.html">ASP Content Linking</a></li>
+<li><a href="asp_contentrotator.html">ASP Content Rotator</a></li>
+</ul>
+<h2>ASP 教程总结</h2>
+<ul>
+<li><a href="asp_quickref.html">ASP 快速参考</a></li>
+<li><a href="asp_summary.html">ASP 总结</a></li>
+</ul>
+<h2>实例/测验</h2>
+<ul>
+<li><a href="../example/aspe_examples.html">ASP 实例</a></li>
+<li><a href="asp_quiz.html">ASP 测验</a></li>
+</ul>
+</div>
+<div id="selected">
+<h2>建站手册</h2>
+<ul>
+<li><a href="../site/">网站构建</a></li>
+<li><a href="../w3c/">万维网联盟</a></li>
+<li><a href="http://e.v-get.com/w3c/">W3CSchool 教程</a></li>
+<li><a href="../quality/">网站品质</a></li>
+<li><a href="../semweb/">语义网</a></li>
+<li><a href="../hosting/">网站主机</a></li>
+</ul>
+<h2><a href="http://e.v-get.com/w3c/" class="f13">W3CSchool 教程</a></h2><div class="a120x90"><script type="text/javascript">var cpro_id="u1210867";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div></div>
+</div>
+<div id="maincontent">
+<h1>ASP Session 对象</h1>
+<div  id="tpn">
+<ul class="prenext">
+<li class="pre"><a href="asp_cookies.html">上一页</a></li>
+<li class="next"><a href="asp_applications.html">下一页</a></li>
+</ul>
+</div>
+<div id="intro">
+<p><strong>Session 对象用于存储用户的信息。存储于 session 对象中的变量握有单一用户的信息，并且对于一个应用程序中的所有页面都是可用的。</strong></p>
+</div>
+<div>
+<h2>Session 对象</h2>
+<p>当您操作某个应用程序时，您打开它，做些改变，然后将它关闭。这很像一次对话 (Session）。计算机知道您是谁。它清楚您在何时打开和关闭应用程序。但是在因特网上有一个问题：由于 HTTP 地址无法存留状态，web 服务器并不知道您是谁以及您做什么。</p>
+<p>ASP 通过为每位用户创建一个唯一的 cookie 的方式解决了这个问题。cookie 被传送至客户端，它含有可识别用户的信息。这种接口被称作 Session 对象。</p>
+<p>Session 对象用于存储关于用户的信息，或者为一个用户的 session 更改设置。存储于 session 对象中的变量握有单一用户的信息，并且对于应用程序中的所有页面都是可用的。存储于 session 对象中的信息通常是 name、id 以及参数。服务器会为每个新的用户创建一个新的 Session，并在 session 到期时撤销掉这个 Session 对象。</p>
+</div>
+<div>
+<h2>Session 何时开始？</h2>
+<p>Session 开始于：</p>
+<ul>
+<li>当某个新用户请求了一个 ASP 文件，并且 Global.asa 文件引用了 Session_OnStart 子程序时；</li>
+<li>当某个值存储在 Session 变量中时；</li>
+<li>当某个用户请求了一个 ASP 文件，并且 Global.asa 使用 &lt;object&gt; 标签通过 session 的 scope 来例示某个对象时；</li>
+</ul>
+</div>
+<div>
+<h2>Session 何时结束?</h2>
+<p>假如用户没有在规定的时间内在应用程序中请求或者刷新页面，session 就会结束。默认值为 20 分钟。</p>
+<p>如果您希望将超时的时间间隔设置得更长或更短，可以设置 <em>Timeout</em> 属性。</p>
+<p>下面的例子设置了 5 分钟的超时时间间隔：</p>
+<pre>&lt;%
+Session.<code>Timeout</code>=5
+%&gt;</pre>
+<p>要立即结束 session，可使用 <em>Abandon</em> 方法：</p>
+<pre>&lt;%
+Session.<code>Abandon</code>
+%&gt;</pre>
+<p class="important"><span>注意：</span>使用 session 时主要的问题是它们该在何时结束。我们不会知道用户最近的请求是否是最后的请求。因此我们不清楚该让 session“ 存活”多久。为某个空闲的 session 等待太久会耗尽服务器的资源。然而假如 session 被过早地删除，那么用户就不得不一遍又一遍地重新开始，这是因为服务器已经删除了所有的信息。寻找合适的超时间隔时间是很困难的。</p>
+<p class="tip"><span>提示：</span>如果您正在使用 session 变量，请不要在其中存储大量的数据。</p>
+</div>
+<div>
+<h2>存储和取回 session 变量</h2>
+<p>Session 对象最大的优点是可在其中存储变量，以供后续的网页读取，其应用范围是很广的。</p>
+<p>下面的例子把 &#34;Donald Duck&#34; 赋值给名为 username 的 session 变量，并把 &#34;50&#34; 赋值给名为 age 的 session 变量：</p>
+<pre>&lt;%
+Session(&#34;username&#34;)=&#34;Donald Duck&#34;
+Session(&#34;age&#34;)=50
+%&gt;</pre>
+<p>一旦值被存入 session 变量，它就能被 ASP 应用程序中的任何页面使用：</p>
+<pre>Welcome &lt;%Response.Write(Session(&#34;username&#34;))%&gt;</pre>
+<p>上面这行程序返回的结果是: &#34;Welcome Donald Duck&#34;。</p>
+<p>也可以在 session 对象中保存用户参数，然后通过访问这些参数来决定向用户返回什么页面。</p>
+<p>下面的例子规定，假如用户使用低显示器分辨率，则返回纯文本版本的页面：</p>
+<pre>&lt;%If Session(&#34;screenres&#34;)=&#34;low&#34; Then%&gt;&nbsp;
+  This is the text version of the page
+&lt;%Else%&gt;&nbsp;
+  This is the multimedia version of the page
+&lt;%End If%&gt;</pre>
+</div>
+<div>
+<h2>移除 session 变量</h2>
+<p>contents 集合包含所有的 session 变量。</p>
+<p>可通过 remove 方法来移除 session 变量。</p>
+<p>在下面的例子中，假如 session 变量 &#34;age&#34; 的值小于 18，则移除 session 变量 &#34;sale&#34;：</p>
+<pre>&lt;%
+If Session.Contents(&#34;age&#34;)&lt;18 then&nbsp;
+  <code>Session.Contents.Remove(&#34;sale&#34;)</code>
+End If&nbsp;
+%&gt;</pre> 
+<p>如需移除 session 中的所有变量，请使用 RemoveAll 方法：</p>
+<pre>&lt;%
+Session.Contents.RemoveAll()
+%&gt;</pre>
+</div>
+<div>
+<h2>遍历 contents 集合</h2>
+<p>contents 集合包含所有的 session 变量。可通过遍历 contents 集合，来查看其中存储的变量：</p>
+<pre>&lt;%
+Session(&#34;username&#34;)=&#34;Donald Duck&#34;
+Session(&#34;age&#34;)=50
+dim i
+For Each i in <code>Session.Contents</code>
+  Response.Write(i &amp; &#34;&lt;br /&gt;&#34;)
+Next
+%&gt;</pre>
+<p>结果：</p>
+<pre>username
+age</pre>
+<p>如果需要了解 contents 集合中的项目数量，可使用 count 属性：</p>
+<pre>&lt;%
+dim i
+dim j
+j=<code>Session.Contents.Count</code>
+Response.Write(&#34;Session variables: &#34; &amp; j)
+For i=1 to j
+  Response.Write(Session.Contents(i) &amp; &#34;&lt;br /&gt;&#34;)
+Next
+%&gt;</pre>
+<p>结果：</p>
+<pre>Session variables: 2
+Donald Duck
+50</pre>
+</div>
+<div>
+<h2>遍历 StaticObjects 集合</h2>
+<p>可通过循环 StaticObjects 集合，来查看存储在 session 对象中所有对象的值：</p>
+<pre>&lt;%
+dim i
+For Each i in <code>Session.StaticObjects</code>
+  Response.Write(i &amp; &#34;&lt;br /&gt;&#34;)
+Next
+%&gt;</pre>
+</div>
+<div id="bpn">
+<ul class="prenext">
+<li class="pre"><a href="asp_cookies.html">上一页</a></li>
+<li class="next"><a href="asp_applications.html">下一页</a></li>
+</ul>
+</div>
+</div>
+<div id="sidebar">
+<div class="rs"></div>
+<div id="tools">
+<h5 id="tools_reference"><a href="asp_ref.html">ASP 参考手册</a></h5>
+<h5 id="tools_example"><a href="../example/aspe_examples.html">ASP 实例</a></h5>
+<h5 id="tools_quiz"><a href="asp_quiz.html">ASP 测验</a></h5>
+</div>
+<div class="a120x600"><script type="text/javascript">var cpro_id="u1293136";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div><div class="b"></div>
+</div>
+</body>
+</html>

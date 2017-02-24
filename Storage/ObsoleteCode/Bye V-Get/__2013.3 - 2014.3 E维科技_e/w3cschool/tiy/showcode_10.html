@@ -1,0 +1,43 @@
+<html>
+<head><link rel="stylesheet" type="text/css" href="showcode.css" /></head>
+<body>
+<pre>
+&lt;html&gt;
+&lt;body&gt;
+&lt;table border=&#34;1&#34; width=&#34;100%&#34; bgcolor=&#34;#fff5ee&#34;&gt;
+&lt;tr&gt;
+&lt;th align=&#34;left&#34; bgcolor=&#34;#b0c4de&#34;&gt;
+&lt;a href=&#34;/example/adoe/demo_adoe_sort_3.asp?sort=companyname&#34;&gt;Company&lt;/a&gt;
+&lt;/th&gt;
+&lt;th align=&#34;left&#34; bgcolor=&#34;#b0c4de&#34;&gt;
+&lt;a href=&#34;/example/adoe/demo_adoe_sort_3.asp?sort=contactname&#34;&gt;Contact&lt;/a&gt;
+&lt;/th&gt;
+&lt;/tr&gt;
+<code class="aspcode">&lt;%
+if request.querystring(&#34;sort&#34;)&lt;&gt;&#34;&#34; then
+   sort=request.querystring(&#34;sort&#34;)
+else
+   sort=&#34;companyname&#34;
+end if
+set conn=Server.CreateObject(&#34;ADODB.Connection&#34;)
+conn.Provider=&#34;Microsoft.Jet.OLEDB.4.0&#34;
+conn.Open(Server.Mappath(&#34;/db/northwind.mdb&#34;))
+set rs=Server.CreateObject(&#34;ADODB.recordset&#34;)
+sql=&#34;SELECT Companyname,Contactname FROM Customers ORDER BY &#34; & sort
+rs.Open sql,conn
+do until rs.EOF
+   response.write(&#34;&lt;tr&gt;&#34;)
+   for each x in rs.Fields
+     response.write(&#34;&lt;td&gt;&#34; & x.value & &#34;&lt;/td&gt;&#34;)
+   next
+   rs.MoveNext
+   response.write(&#34;&lt;/tr&gt;&#34;)
+loop
+rs.close
+conn.close
+%&gt;</code>
+&lt;/table&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+</body>

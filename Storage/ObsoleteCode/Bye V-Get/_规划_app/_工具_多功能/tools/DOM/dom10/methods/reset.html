@@ -1,0 +1,87 @@
+<html xmlns:rdl>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<script src="rdl_method.js"></script>
+<base target="_self">
+</head>
+<body>
+
+<script>
+
+//collFriendObjects=new Array();
+//collFriendProperties=new Array();
+//collFriendMethods=new Array();
+//collFriendEvents=new Array();
+//collFriendCollections=new Array();
+
+collFriendMethods=new Array(
+'submit'
+);
+
+collFriendObjects=new Array(
+'FORM','INPUT','INPUT type=reset'
+);
+
+collFriendEvents=new Array(
+'onsubmit','onreset'
+);
+
+//collIE40=new Array();
+//collIE50=new Array();
+//collIE55=new Array();
+//collIE60=new Array();
+
+collIE40=new Array(
+'FORM'
+);
+
+//sStyle='';
+
+sCode=
+'<form action="mailto:baby@rongshu.com?subject=DHTMLET(TM)" encType="text/plain" method="POST" name="oForm" onsubmit="alert(\'我被提交了\');" onreset="alert(\'我被重置了\');">\n'+
+'姓名: <input type=text size=24 name="username" id=oInput>\n'+
+'<br>\n'+
+'<br>\n'+
+'<input type=button value=" 提 交 " onclick="document.all(\'oForm\').fireEvent(\'onsubmit\');document.all(\'oForm\').submit();">&nbsp;\n'+
+'<input type=button value=" 重 置 " onclick="document.all(\'oForm\').reset();">&nbsp;\n'+
+'<\/form>\n';
+
+
+iWinWidth=360;
+
+iWinHeight=220;
+
+</script>
+
+<div id=idContent>
+
+<div id=idContentTitle><span id=idTitleName>reset</span>版本：DOM1　返回值：无</div>
+
+<div class=cssColumnTitle>语法：</div>
+<div>
+<a href="../objects/form.html"><b>form</b></a><b> . reset () </b>
+</div>
+
+<div class=cssColumnTitle>参数：</div>
+<div>
+无
+</div>
+
+<div class=cssColumnTitle>返回值：</div>
+<div>
+无
+</div>
+
+<div class=cssColumnTitle>说明：</div>
+<div>
+重置一个表单(<a href="../objects/form.html"> form </a>)。即模拟重置按钮(<a href="../objects/input type=reset.html"> INPUT type=reset </a>)的一次单击(<a href="click.html"> click </a>)。同时激发<a href="../events/onreset.html"> onreset </a>事件。
+</div>
+
+
+
+</div>
+</body>
+</html>
+
+<!-- Part of RDL(TM) - Written by Rain1977 
+HomeSite: http://www.dhtmlet.com  E-Mail: dhtmlet@hotmail.com -->

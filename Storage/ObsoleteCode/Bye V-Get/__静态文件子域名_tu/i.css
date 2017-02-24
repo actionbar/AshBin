@@ -1,0 +1,270 @@
+/*
+*html .class{}    ie6 
+.class{_width:200px}   ie 6
+*+html .class{}    ie7
+   *+html 对IE7的HACK 必须保证HTML顶部有如下声明：
+   <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"　"http://www.w3.org/TR/html4/loose.dtd">
+   *+html 与 *html 是IE特有的标签, firefox 暂不支持.而*+html 又为 IE7特有标签.
+   #wrapper { width: 120px; } FireFox
+   *html #wrapper { width: 80px;} ie6 fixed 
+   *+html #wrapper { width: 60px;} ie7 fixed, 注意顺序 
+   
+   
+
+
+.class{width:200px !important}  ie7 8 9 ff
+   随着IE7对!important的支持, !important 方法现在只针对IE6的HACK.(注意写法.记得该声明位置需要提前.)
+   #wrapper{width: 100px!important; IE7+FF   width: 80px; IE6 }
+   
+
+.class{*width:200px}  ie7 ie6 （不支持ie8）
+
+* .class{}   ie8 7 6  （支持ie8）
+.class{width:200px\0/}  ie8 ie9
+ .class{width:200px\9}  ie8 ie9
+:root .class{width:200px\9\0} ie9
+
+IE不认得min-这个定义，但实际上它把正常的width和height当作有min的情况来使。这样问题就大了，如果只用宽度和高度，
+正常的浏览器里这两个值就不会变，如果只用min-width和min-height的话，IE下面根本等于没有设置宽度和高度。
+比如要设置背景图片，这个宽度是比较重要的。要解决这个问题，可以这样：
+#box{ width: 80px; height: 35px;}html>body #box{ width: auto; height: auto; min-width: 80px; min-height: 35px;}
+然后CSS这样设计：
+#container{ min-width: 600px; width:expression(document.body.clientWidth < 600? "600px": "auto" );}
+第一个min-width是正常的；但第2行的width使用了Javascript，这只有IE才认得，这也会让你的HTML文档不太正规。它实际上通过Javascript的判断来实现最小宽度。
+*/
+
+
+/*类似c.js ，公用，以后考虑兼容性，所以文件可能会很大的*/
+/*不要过多公定义，否则自定义需要一一注释掉比较烦*/
+/*  
+
+命名： v+子站点缩写+子站点内站点缩写+位置+命名
+
+ */
+
+*{margin:0;padding:0;}
+/*防止 chrome外围边框*/
+*:focus {outline: none}
+body {font:12px/1.5 arial,\5b8b\4f53,sans-serif;-webkit-text-size-adjust:none;}
+/*不必使用body{text-align:center} ，因为只有ie5不支持.w，而ie5已经没有市场了*/
+
+
+
+/* q:before,q:after{content:''} 引用，很多大型站都有*/
+
+/* abbr,acronym{border:0;font-variant:normal;}
+sup{vertical-align:text-top;}
+sub{vertical-align:text-bottom;} 
+pre,code,kbd,samp,tt{font-family:monospace;line-height:100%;}
+
+*/
+
+ul{list-style-position:outside;list-style-type:none}
+
+/* white-space：normal 	默认。空白会被浏览器忽略。
+pre 	空白会被浏览器保留。其行为方式类似 HTML 中的 <pre> 标签。
+nowrap 	文本不会换行，文本会在在同一行上继续，直到遇到 <br> 标签为止。
+pre-wrap 	保留空白符序列，但是正常地进行换行。
+pre-line 	合并空白符序列，但是保留换行符。
+inherit 	规定应该从父元素继承 white-space 属 */
+
+ul li{list-style:none}
+/* 其中，overflow: hidden和white-space: nowrap都是必须的否则不会显示省略号；-o-text-overflow: ellipsis针对Opera；而宽度的设定主要是针对IE6；该方法支持Internet Explorer, Safari, Chrome 和 Opera，但FF并不支持*/
+li,.a a,.al li,.ai h3,a.ct h2{line-height:22px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;-o-text-overflow:ellipsis;_width:100%}
+p{line-height:22px;}
+/* 这句是百度/chinaz都会用到的blockquote:before,blockquote:after,q:before,q:after{content:"";} */
+
+
+a{color:#122E67;text-decoration:none;cursor:pointer}a:hover{text-decoration:underline;color:#C00}
+/*清除链接虚框，下面是sohu的，但是检测不可用*/
+/*a,area {blr:expression(this.onFocus=this.blur()) }  for IE 
+:focus {-moz-outline-style: none; }  for Firefox   
+*/
+/*fieldset默认有边框，这里需要去除，然后只保留上*/
+i{font-style:normal}
+/*g.gif 里面的图片在a的时候*/
+
+
+img,fieldset{border:0}fieldset{display:block;border-top:1px solid #DDD} select,input,img{vertical-align:middle}textarea{resize:none}
+
+.u h1{display:none}
+h2{font-size:14px}h3,h4{font-size:12px;line-height:22px;height:22px}
+/* 
+#c h2{height:24px;line-height:24px;font-size:18px;border-bottom:#DEDFE1 1px solid;margin:30px 0 10px;padding:0 0 6px 0}
+#c h3{font-size:16px;margin:15px 0 5px 0}*/
+
+h4{position:relative;height:32px;line-height:32px}
+/*.ad是广告 根据ad自动判断*/
+/*.al==>ul */
+h4,.a,.al{display:block}
+
+h4 a:hover,.a a{text-decoration:none}
+.a a,.al li,.ai a,#na a{display:inline-block;float:left;text-align:center}
+/*fh表示 li 或者同一行的p ，或者a 超过部分用...代替*/
+.a a,.al li,a.ct h2{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.a200x200{width:200px;height:200px}.a234x60{width:234px;height:60px}.a250x250{width:250px;height:250px}.a468x60{width:468px;height:60px}.a728x90{width:728px;height:90px}
+
+.p{float:left}.o{clear:both}.q{float:right}
+.fo{text-align:center}.fq{text-align:right}
+/* .php 已经被pre征用 
+<pre class="php/pjs/phtm/pvb/pcpp/pjava">*/
+.ph{overflow:hidden;}.po{position:relative}.pr{position:absolute;right:0;top:0;}
+.pn{display:none}
+/*page上一页，下一页*/
+.pg{height:30px;line-height:28px;text-align:right}.pg a{padding:0 5px}.pg a.po{text-decoration:none;color:#666}
+/* box-shadow:默认：投影/inset内阴影 位移 阴影大小 扩散默认0 颜色 */
+/* box-shadow:投影 位移3px 阴影3px  扩散0 颜色#DDD*/
+.f,.ff{border:1px solid #DDD}
+.ai img,.ff{border-radius:5px;-moz-box-shadow:3px 3px 3px #DDD;-webkit-box-shadow:3px 3px 3px #DDD;box-shadow:3px 3px 3px #DDD}:root .ai img,:root .ff{filter:progid:DXImageTransform.Microsoft.Shadow(color=#DDD,direction=120,strength=3)}
+
+/*fb 背景，用于表格背景色*/
+.fb{background:#F7F7F7}
+/* fa  暗链，文章内部，颜色和文本颜色一样，这里默认是#000 
+f8:紫色 */
+.f0,a.f0{color:#f00}.f1{color:#080}.f2{color:#00f}.f3,a.f3{color:#c00}.f6{color:#f60}.f7{color:#999}.f8{color:#8000ff}.f9{color:#333}.f12{color:#069}.f13{color:#933}
+/*  仅id*/
+/*.ai 两张图片下面有文字描述or not，宽度自己页内设置，这里默认250宽度的 两张图片宽度高度，.ai a overflow:不能是hidden<因为有超出来的shadow，所以
+
+*/
+/* fg fg0 fg1 1推荐（一次阅读/） 2 热帖 3 爆料（可能是谣言）4纯图片 5原创 6付费采用  7精华（） 8 优秀（查询类，常用） 9置顶 */
+/* 默认文章列表都是35px */
+.fg1,.fg2,.fg3,.fg4,.fg5,.fg6,.fg7,.fg8,.fg9{background:url(http://localhost/www.v-get.com/tu/g.gif) 0 -2054px no-repeat;width:25px;height:16px;display:inline-block;margin:0 3px 0 0}
+.fg2{background-position:0 -2079px}.fg3{background-position:0 -2104px}.fg4{background-position:0 -2129px}.fg5{background-position:0 -2154px}.fg6{background-position:0 -2179px}.fg7{background-position:0 -2204px}.fg8{background-position:0 -2228px}.fg9{background-position:0 -2254px}
+
+
+
+.ai a{margin:9px 0 0 8px;line-height:25px;width:112px;font-size:12px;white-space:nowrap;overflow:hidden}
+.ai img{width:110px;height:90px;border:1px solid #333;border-radius:3px}
+/* 如果 .ai 是 a -->img h3 p 那么 一张图，然后左右结构 */
+a.ai img{float:left;width:60px;height:60px}
+.ai h3,a.ai p{float:right;width:163px}
+a.ai p{line-height:18px;color:#666;}
+
+/* ct 上h2,下 p */
+a.ct:hover{text-decoration:none}
+a.ct h2{text-align:center;height:30px;line-height:30px;margin:9px 0 0 0;font:bold 20px "Palatino Linotype","Times New Roman",Times}
+a.ct h2:hover{text-decoration:underline}
+a.ct p{text-indent:23px;color:#666;line-height:20px}
+/* rl ul li */
+.rl{padding:9px 0;border-top:#C8C8C8 1px dotted}
+.rl li{font-size:14px;height:25px;line-height:25px;padding:0 0 0 9px;background:url(http://localhost/www.v-get.com/tu/g.gif) 0 -1474px no-repeat}
+
+
+.mf{margin:9px 25px;_margin:4px 12px}.mf p{text-indent:25px}
+.mb{margin:0 0 6px 0;_margin:0 0 3px 0}.mg{margin:0 0 9px 0;_margin:0 0 4px 0}.mh{height:9px}.mr{margin:0 15px 0 0;_margin:0 7px 0 0}.ml{margin:0 0 0 15px;_margin:0 0 0 7px}
+/*同时50x50头像：more  更多&gt;&gt; 详情&gt;&gt; 的宽度*/
+.mo{width:50px}
+/*QQ*/
+.mq{width:22px}
+
+
+.w{margin:0 auto;overflow:hidden;width:960px;}
+
+.ig,.yn,.zo,a.zo:hover,.z0{background:url(http://localhost/www.v-get.com/tu/g.gif) no-repeat;}
+.wt,.wt .wto,.wt a:hover,.t,#n .no,#na i,.zs{background:url(http://localhost/www.v-get.com/tu/f.png) repeat-x}
+
+
+/* i 默认都是  如果不是默认的就是 ui/ul  */
+.i{width:234px;height:60px;margin:15px 9px 15px 0}
+.ig{display:inline-block;height:25px;padding:0 0 0 25px;line-height:25px}
+.iv{font:bold 12px "黑体","微软雅黑"}
+/* logo 一律 234x60px 高度设计 */
+/*图片前后页.ii*/
+.iii{display:table-cell;vertical-align:middle}.iia{z-index:3}.iia a{background:none;*background:#FFF;background:#FFF\0/;background:#FFF\9;filter:Alpha(opacity=0);opacity:0;_background:none;filter:none}a.iil:hover{cursor:url(http://localhost/www.v-get.com/tu/g/iil.ico),w-resize}a.iir:hover{cursor:url(http://localhost/www.v-get.com/tu/g/iir.ico),e-resize}
+
+/* yn0 x  yn1 y  yn2 ? */
+.yn{display:inline-block;width:16px;height:16px;vertical-align:middle}.yn0{background-position:0 -505px}.yn1{background-position:0 -480px}.yn2{background-position:0 -534px}
+
+
+.wt,.wt .wto,.wt a:hover{background-position:0 -550px}
+.wt .w{background:none}
+.wt{height:32px;width:100%;border-bottom:2px solid #f80;font-size:14px;position:fixed;*position:relative;z-index:98}
+.wt a{color:#fff;width:60px;height:32px;padding:0 5px;line-height:32px}
+.wt .wti,.wt a.wti:hover{width:65px;background:url(http://localhost/tu.v-get.com/i72x23.png) 0 5px no-repeat}
+#wt,a#wt:hover{font-size:12px;width:89px;color:#ccc;text-align:left;background:none}
+#wtr{display:none}
+#ws{background:url(http://localhost/tu.v-get.com/f/s.png) 0 -78px no-repeat;float:left;width:238px;height:28px;line-height:23px;margin:2px 5px;_margin:1px 2px}
+#ws:hover{background-position:0 -106px}
+#ws input{background:none;border:none}
+.wsk{width:200px;margin:0 3px;_margin:0 1px;height:20px}
+.wss{width:20px;cursor:pointer}
+#wtz{position:fixed;*position:relative;top:10px;width:410px;height:100px;z-index:99;display:none}
+#wtz h4{background:#fff;width:170px;height:28px;line-height:28px;font-size:12px}
+#wtz table{background:#fff;margin:0;border-top:none;padding:0 0 9px 15px}
+#wtz th{text-align:left;background:#f4f9ff}
+.wtzo,.wtzv{background:#DFEDFE}
+#wtz td{margin:3px;cursor:pointer}
+
+
+
+/*
+f.png 背景
+g.gif 25*25图标
+h.gif 16*16图标
+
+
+*/
+.t{height:28px;line-height:28px;border-bottom:1px solid #DADADA;padding:0 9px;position:relative;color:#e0e0e0}
+.t strong{color:#178FD4;font-weight:400}
+.t strong a{color:#333}
+.t span{position:absolute;right:0}
+.t a{padding:0 8px}
+/* 默认n */
+#n{background:url(http://localhost/www.v-get.com/tu/f.png) #007BD3 0 -150px repeat-x;position:relative;height:33px;padding-top:6px;font:400 14px "微软雅黑";border:solid #447EA4;border-width:0 1px;border-radius:3px}
+#na a{width:87px;text-decoration:none;color:#fff;height:32px;line-height:28px;*line-height:32px;line-height:32px\9;margin:0 5px}
+#n .no{border-top-left-radius:3px;border-top-right-radius:3px;}
+#n .no,#n .no:hover{line-height:28px;*line-height:30px;line-height:30px\9;background-position:0 -190px;color:#595656;font-weight:700;border:solid #0069ac;border-width:1px 1px 0}
+/* #n .a  a:hover{background-position:0 -411px;border:#94c9ed solid;line-height:26px;*line-height:30px;line-height:30px\9;border-width:1px 1px 0;width:78px;border-top-left-radius:3px;border-top-right-radius:3px;} */
+#na i{display:inline-block;float:left;width:10px;height:26px;background-position:50% -223px;background-repeat:no-repeat}
+
+.n{position:absolute;display:none;left:4px;top:0;*top:-6px;filter:Alpha(opacity=95);opacity:0.95;border:solid #1B74D2;border-width:0 2px 2px;width:200px;z-index:88;background:#F3F2F2}
+.n h3,.n h3 a{font-size:14px;height:28px;line-height:28px;color:#3074B5;text-decoration:none}
+.n ul{margin:0 0 9px}
+.n ul a{color:#333}
+.n li{line-height:24px;height:24px}
+.nl{padding:9px 50px 9px 25px;float:left;background:#FFF;border-right:1px dashed #CCC}
+.nr{padding:9px 20px;width:220px;float:right}
+.nr dl{margin:15px 0 0}
+.nr dt{width:80px;margin:0 9px 0 0}
+.nr dt img{width:80px;height:76px}
+.n h4{font:normal 14px "微软雅黑","黑体";height:22px;line-height:22px}
+.n h4 a{color:#000}
+.nr dd{width:130px;color:#555}
+.nr li a,.nr dd p.fq a{color:#555}
+/*页内分别对.n0 .n1 .n2 设定宽度*/
+
+.b{text-align:center;padding:9px 0}.b p{height:28px;line-height:28px}.b p a{padding:0 5px}.b p.bn a{padding:0 9px}
+
+/* .ba{height:40px;overflow:hidden;margin:9px 250px;_margin:4px 125px;background:url(http://localhost/www.v-get.com/tu/g/ba.gif) no-repeat}.ba a{margin:0 6px 0 0;_margin:0 3px 0 0;width:108px;height:40px} */
+
+
+
+
+
+
+
+
+
+
+#e{position:absolute;background:#fff;border:1px solid #CCC;width:420px;height:300px;z-index:99;display:none;color:#333}#e a{color:#03C;margin:0 15px;_margin:0 7px}.et{height:35px;line-height:35px;background:#fcfcfc;border-bottom:1px solid #F2F2F2;cursor:move}.et .p{margin:0 20px;_margin:0 10px;font-weight:700;font-size:14px;}.et .q{background:url(http://localhost/www.v-get.com/tu/g.gif) 0 -456px no-repeat;margin:10px;_margin:5px;width:14px;height:13px;cursor:pointer}.et .q:hover{background-position:0 -481px}#e form{margin:20px;_margin:10px;}#e form div{height:48px;line-height:48px}#e label{font-size:14px;margin:0 9px 0 33px;_margin:0 4px 0 16px}.es{background:url(http://localhost/www.v-get.com/tu/f.png) 0 -450px repeat-x;width:250px;padding:5px 6px;border:1px solid #CCC;font-size:12px;height:20px}#e form .er{padding:0 0 0 71px;height:16px;line-height:16px}#e form .eb{padding:0 0 9px 71px;margin:9px 0;_margin:4px 0;border-bottom:1px dotted #ddd}.eb input{background:url(http://localhost/www.v-get.com/tu/f.png) 0 -480px repeat-x;width:99px;height:32px;padding:0 0 3px 0;border:solid #4388cd;border-width:0 1px;border-radius:2px;color:#fff;font-size:14px;cursor:pointer}.eb input:hover{background-position:0 -515px}#eb{background:#000000;width:100%;height:100%;position:fixed;top:0;left:0;z-index:98;opacity:0.3;filter:Alpha(opacity=30)}
+
+
+
+
+
+
+
+
+#z{width:110px;top:166px;right:0;position:fixed;border:1px solid #dfdfdf;background:#fff}
+#z a{text-decoration:none}
+a.zo{position:absolute;top:1px;right:1px;width:12px;height:12px;line-height:12px;font-size:10px;display:block;overflow:hidden;text-align:center;background-position:0 -404px;cursor:pointer;color:#fff}
+a.zo:hover{background-position:0 -429px}
+.zz{text-align:center;padding:20px 0;background:url(http://localhost/www.v-get.com/tu/b/bd4ccc2.png) 0 100% repeat-x;margin:0 5px;_margin:0 2px}
+.z0{line-height:25px;height:25px;color:#666;font-weight:700}
+.zd{line-height:21px}
+.z6{font:700 14px Arial;height:25px;line-height:25px;color:#F80}
+.zs{margin:8px auto 0;_margin:4px auto 0;background-position:0 -64px;width:83px;height:20px;line-height:20px;display:block;color:#666;border:#B8D6E7 1px solid;border-radius:3px}
+.z2{line-height:19px;height:19px;background-position:5px -25px;margin:0 0 0 5px;_margin:0 0 0 2px;font-weight:700}
+.z1{line-height:24px;height:24px;background-position:5px -50px}
+
+

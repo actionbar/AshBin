@@ -1,0 +1,26 @@
+[!]  co  三级域名公司 [!]
+
+	 
+	 
+
+
+价格必须是注册用户才能用！！！
+
+不设整车价格，整车在  车辆出租那里
+
+p1= 托运价格
+i smallint(5)  =自动id 
+a smallint(5)  =对应 c里面的i
+b mediumint(8)  =出发城市
+c tinyint(3)     =出发镇
+d mediumint(8)  =到达城市
+e tinyint(3)    =到达精确
+o smallint(5)   =起步价，最低一票价格
+j smallint(5)   =附加费
+p float(4,2)  =重货价格/公斤
+q float(4,2)  =大量重货会员价  最低价  默认0
+r smallint(5)  =泡货价格/立方 
+s smallint(5) =大量：泡货价格/立方  默认0
+x tinyint(3)  =运输时间=小时
+y varchar(21)  =运输方式
+t datetime

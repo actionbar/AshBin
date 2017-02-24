@@ -1,0 +1,134 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="../c3.css" />
+<title>Web Service 使用</title>
+</head>
+<body class="xml">
+<div id="wrapper">
+<div id="header">
+<a href="http://e.v-get.com/w3cschool/" style="float:left;">W3CSchool 在线教程</a>
+<div class="q g"><script type="text/javascript">var cpro_id="u1163355"</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div>
+<div id="navfirst">
+<ul id="menu">
+<li id="h"><a href="../h.html">HTML教程</a></li>
+<li id="x"><a href="../x.html">XML教程</a></li>
+<li id="b"><a href="../b.html">浏览器脚本</a></li>
+<li id="s"><a href="../s.html">服务器脚本</a></li>
+<li id="d"><a href="../d.html">dot net教程</a></li>
+<li id="m"><a href="../m.html">多媒体教程</a></li>
+<li id="w"><a href="../w.html">建站手册</a></li>
+</ul>
+</div><div id="navsecond">
+<div id="course">
+<h2>Web Services 基础</h2>
+<ul>
+<li><a href="http://e.v-get.com/w3cschool/">WS 首页</a></li>
+<li><a href="ws_intro.html">WS 简介</a></li>
+<li><a href="ws_why.html">Why WS?</a></li>
+<li><a href="ws_platform.html">WS 平台</a></li>
+<li><a href="ws_example.html">WS 实例</a></li>
+<li><a href="ws_use.html">WS 使用</a></li>
+<li><a href="ws_summary.html">WS 总结</a></li>
+</ul>
+</div>
+<div id="selected">
+<h2>建站手册</h2>
+<ul>
+<li><a href="../site/">网站构建</a></li>
+<li><a href="../w3c/">万维网联盟</a></li>
+<li><a href="http://e.v-get.com/w3c/">W3CSchool 教程</a></li>
+<li><a href="../quality/">网站品质</a></li>
+<li><a href="../semweb/">语义网</a></li>
+<li><a href="../hosting/">网站主机</a></li>
+</ul>
+<h2><a href="http://e.v-get.com/w3c/" class="f13">W3CSchool 教程</a></h2><div class="a120x90"><script type="text/javascript">var cpro_id="u1210867";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div></div>
+</div>
+<div id="maincontent">
+<h1>Web Service 使用</h1>
+<div id="tpn">
+<ul class="prenext">
+<li class="pre"><a href="ws_example.html">上一页</a></li>
+<li class="next"><a href="ws_summary.html">下一页</a></li>
+</ul>
+</div>
+<div>
+<h2>使用我们的 ASP.NET Web Service 例子</h2>
+<p>在上一节，我们创建了一个 <a href="http://e.v-get.com/webservices/tempconvert.asmx">Web Service 的例子</a>。</p>
+<p>请在此测试华氏度转换摄氏度函数：<a href="http://e.v-get.com/webservices/tempconvert.asmx?op=FahrenheitToCelsius">华氏度转换为摄氏度</a></p>
+<p>请在此测试摄氏度转换华氏度函数：<a href="http://e.v-get.com/webservices/tempconvert.asmx?op=CelsiusToFahrenheit">摄氏度转换为华氏度</a></p>
+</div>
+<div>
+<h2>这些函数会向您发送一个 XML 回答</h2>
+<p>本测试使用 HTTP POST，会发送类似这样的 XML 响应：</p>
+<pre>&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34; ?&gt; 
+&lt;short xmlns=&#34;http://tempuri.org/&#34;&gt;38&lt;/short&gt;</pre>
+</div>
+<div>
+<h2>使用表单来访问 Web Service</h2>
+<p>通过使用表单和 HTTP POST，您可以把 web service 置于您的站点上，比如这样：</p>
+<form target="_blank" action='http://e.v-get.com/webservices/tempconvert.asmx/FahrenheitToCelsius' method="POST">
+		<label>华氏度转换为摄氏度：</label>
+		<p>
+		<span><input class="frmInput" type="text" size="30" name="Fahrenheit"></span>
+		<span><input type="submit" value="提交" class="button"></span>
+		</p>
+</form>
+<form target="_blank" action='http://e.v-get.com/webservices/tempconvert.asmx/CelsiusToFahrenheit' method="POST">
+		<label>摄氏度转换为华氏度：</label>
+		<p>
+		<span><input class="frmInput" type="text" size="30" name="Celsius"></span>
+		<span><input type="submit" value="提交" class="button"></span>
+		</p>
+</form>
+</div>
+<div>
+<h2>您可以把 web service 置于您的站点上</h2>
+<p>您可以使用这些代码把 web service 放置在您的站点上：</p>
+<pre>
+&lt;form target=&#34;_blank&#34; 
+action='http://e.v-get.com/webservices/tempconvert.asmx/FahrenheitToCelsius' 
+method=&#34;POST&#34;&gt;
+  &lt;label&gt;华氏度转换为摄氏度：&lt;/label&gt;
+  &lt;p&gt;
+  
+    &lt;span&gt;
+      &lt;input class=&#34;frmInput&#34; type=&#34;text&#34; size=&#34;30&#34; name=&#34;Fahrenheit&#34;&gt;
+    &lt;/span&gt;
+  
+    &lt;span&gt;
+      &lt;input type=&#34;submit&#34; value=&#34;提交&#34; class=&#34;button&#34;&gt;
+    &lt;/span&gt;
+  
+  &lt;/p&gt;
+&lt;/form&gt;
+&lt;form target=&#34;_blank&#34; 
+action='http://e.v-get.com/webservices/tempconvert.asmx/CelsiusToFahrenheit' 
+method=&#34;POST&#34;&gt;
+  &lt;label&gt;摄氏度转换为华氏度：&lt;/label&gt;
+  &lt;p&gt;
+  
+    &lt;span&gt;
+     &lt;input class=&#34;frmInput&#34; type=&#34;text&#34; size=&#34;30&#34; name=&#34;Celsius&#34;&gt;
+    &lt;/span&gt;
+  
+    &lt;span&gt;
+     &lt;input type=&#34;submit&#34; value=&#34;提交&#34; class=&#34;button&#34;&gt;
+    &lt;/span&gt;
+  
+  &lt;/p&gt;
+&lt;/form&gt;</pre>
+</div>
+<div id="bpn">
+<ul class="prenext">
+<li class="pre"><a href="ws_example.html">上一页</a></li>
+<li class="next"><a href="ws_summary.html">下一页</a></li>
+</ul>
+</div>
+</div>
+<div class="r q"></div><div class="b"></div>
+</div>
+</body>
+</html>

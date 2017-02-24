@@ -1,0 +1,167 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="../c3.css" />
+<title>XSL-FO 页面</title>
+</head>
+<body class="xml">
+<div id="wrapper">
+<div id="header">
+<a href="http://e.v-get.com/w3cschool/" style="float:left;">W3CSchool 在线教程</a>
+<div class="q g"><script type="text/javascript">var cpro_id="u1163355"</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div>
+<div id="navfirst">
+<ul id="menu">
+<li id="h"><a href="../h.html">HTML教程</a></li>
+<li id="x"><a href="../x.html">XML教程</a></li>
+<li id="b"><a href="../b.html">浏览器脚本</a></li>
+<li id="s"><a href="../s.html">服务器脚本</a></li>
+<li id="d"><a href="../d.html">dot net教程</a></li>
+<li id="m"><a href="../m.html">多媒体教程</a></li>
+<li id="w"><a href="../w.html">建站手册</a></li>
+</ul>
+</div><div id="navsecond">
+<div id="course">
+<h2>XSLFO 教程</h2>
+<ul>
+<li><a href="http://e.v-get.com/w3cschool/">XSLFO 首页</a></li>
+<li><a href="xslfo_intro.html">XSLFO 简介</a></li>
+<li><a href="xslfo_documents.html">XSLFO 文档</a></li>
+<li><a href="xslfo_areas.html">XSLFO 区域</a></li>
+<li><a href="xslfo_output.html">XSLFO 输出</a></li>
+<li><a href="xslfo_flow.html">XSLFO 流</a></li>
+<li><a href="xslfo_pages.html">XSLFO 页面</a></li>
+<li><a href="xslfo_blocks.html">XSLFO 块</a></li>
+<li><a href="xslfo_lists.html">XSLFO 列表</a></li>
+<li><a href="xslfo_tables.html">XSLFO 表格</a></li>
+<li><a href="xslfo_xslt.html">XSLFO 与 XSLT</a></li>
+</ul>
+<h2>XSLFO 参考手册</h2>
+<ul>
+<li><a href="xslfo_reference.html">XSLFO 对象</a></li>
+</ul>
+</div>
+<div id="selected">
+<h2>建站手册</h2>
+<ul>
+<li><a href="../site/">网站构建</a></li>
+<li><a href="../w3c/">万维网联盟</a></li>
+<li><a href="http://e.v-get.com/w3c/">W3CSchool 教程</a></li>
+<li><a href="../quality/">网站品质</a></li>
+<li><a href="../semweb/">语义网</a></li>
+<li><a href="../hosting/">网站主机</a></li>
+</ul>
+<h2><a href="http://e.v-get.com/w3c/" class="f13">W3CSchool 教程</a></h2><div class="a120x90"><script type="text/javascript">var cpro_id="u1210867";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div></div>
+</div>
+<div id="maincontent">
+<h1>XSL-FO 页面</h1>
+<div id="tpn">
+<ul class="prenext">
+<li class="pre"><a href="xslfo_flow.html">上一页</a></li>
+<li class="next"><a href="xslfo_blocks.html">下一页</a></li>
+</ul>
+</div>
+<div id="intro">
+<p><strong>XSL-FO 使用名为 &#34;Page Masters&#34; 的页面模板来定义页面的布局。</strong></p>
+</div>
+<div>
+<h2>XSL-FO 页面模板</h2>
+<p>XSL-FO 使用名为 &#34;Page Masters&#34; 的页面模板来定义页面的布局。每个模板必须拥有一个唯一的名称：</p>
+<pre>&lt;fo:simple-page-master master-name=&#34;intro&#34;&gt;
+  &lt;fo:region-body margin=&#34;5in&#34; /&gt;
+&lt;/fo:simple-page-master&gt;
+&lt;fo:simple-page-master master-name=&#34;left&#34;&gt;
+  &lt;fo:region-body margin-left=&#34;2in&#34; margin-right=&#34;3in&#34; /&gt;
+&lt;/fo:simple-page-master&gt;
+&lt;fo:simple-page-master master-name=&#34;right&#34;&gt;
+  &lt;fo:region-body margin-left=&#34;3in&#34; margin-right=&#34;2in&#34; /&gt;
+&lt;/fo:simple-page-master&gt;</pre>
+<p>在上面的例子中，三个 &lt;fo:simple-page-master&gt; 元素，定义了三个不同的模板。每个模板 (page-master）都有不同的名称。</p>
+<p>第一个模板名为 &#34;intro&#34;。它可作为介绍页面的模板使用。</p>
+<p>第二个和第三个模板名为 &#34;left&#34; 和 &#34;right&#34;。它们可被用于偶数和奇数页码的页面。</p>
+</div>
+<div>
+<h2>XSL-FO 页面尺寸</h2>
+<p>XSL-FO 使用下面的属性来定义页面尺寸：</p>
+<dl class="define">
+<dt>page-width</dt>
+<dd>定义页面的宽度</dd>
+<dt>page-height</dt>
+<dd>定义页面的高度</dd>
+</dl>
+</div>
+<div>
+<h2>XSL-FO 页面边距</h2>
+<p>XSL-FO 使用下面的属性定义页面边距：</p>
+<dl class="define">
+<dt>margin-top</dt>
+<dd>定义顶边距</dd>
+<dt>margin-bottom</dt>
+<dd>定义底边距</dd>
+<dt>margin-left</dt>
+<dd>定义左边距</dd>
+<dt>margin-right</dt>
+<dd>定义右边距</dd>
+<dt>margin</dt>
+<dd>定义所有边的边距</dd>
+</dl>
+</div>
+<div>
+<h2>XSL-FO 页面去 (Page Regions）</h2>
+<p>XSL-FO 使用下面的元素来定义页面的区：</p>
+<dl class="define">
+<dt>region-body</dt>
+<dd>定义主体区</dd>
+<dt>region-before</dt>
+<dd>定义顶部区 (页眉)</dd>
+<dt>region-after</dt>
+<dd>定义底部区 (页脚)</dd>
+<dt>region-start</dt>
+<dd>定义左侧区 (左侧栏)</dd>
+<dt>region-end</dt>
+<dd>定义右侧区 (右侧栏)</dd>
+</dl>
+<p class="note"><span>注释：</span>region-before、region-after、region-start 以及 region-end 是主体区的一部分。为了避免主体区的文本覆盖到这些区域，主题区的边距至少要等于其他区的尺寸。</p>
+<h3>图示：</h3>
+<img class="illustration" src="i/xslfo_pages_01.gif" />
+</div>
+<div>
+<h2>XSL-FO 实例</h2>
+<p>这是从某个 XSL-FO 文档中提取的一个片断：</p>
+<pre>&lt;fo:simple-page-master master-name=&#34;A4&#34;
+ page-width=&#34;297mm&#34; page-height=&#34;210mm&#34;
+ margin-top=&#34;1cm&#34;   margin-bottom=&#34;1cm&#34;
+ margin-left=&#34;1cm&#34;  margin-right=&#34;1cm&#34;&gt;
+  &lt;fo:region-body   margin=&#34;3cm&#34;/&gt;
+  &lt;fo:region-before extent=&#34;2cm&#34;/&gt;
+  &lt;fo:region-after  extent=&#34;2cm&#34;/&gt;
+  &lt;fo:region-start  extent=&#34;2cm&#34;/&gt;
+  &lt;fo:region-end    extent=&#34;2cm&#34;/&gt;
+&lt;/fo:simple-page-master&gt;</pre>
+<p>上面的代码定义了名称为 &#34;A4&#34; 的 &#34;Simple Page Master Template&#34;。</p>
+<p>页面的宽度是 297 毫米，高度是 210 毫米。</p>
+<p>页面的四个边距均为 1 厘米。</p>
+<p>主体的边距是 3 厘米 (四个边都是）。</p>
+<p>before、after、start 以及 end 区均为 2 厘米。</p>
+<p>上面的例子中的主体的宽度可通过页面宽度减去左右边距以及 region-body 的边距来计算得出：</p>
+<p>297mm - (2 x 1cm) - (2 x 3cm) = 297mm - 20mm - 60mm = 217mm.</p>
+<p class="note"><span>注释：</span>region  (region-start 和 region-end） 没有被计算进来。正如之前讲解过的，这些区 (region）是主体的组成部分。</p>
+</div>
+<div id="bpn">
+<ul class="prenext">
+<li class="pre"><a href="xslfo_flow.html">上一页</a></li>
+<li class="next"><a href="xslfo_blocks.html">下一页</a></li>
+</ul>
+</div>
+</div>
+<div id="sidebar">
+<div class="rs"></div>
+<div id="tools">
+<h5 id="tools_reference"><a href="xslfo_reference.html">XSL-FO 参考手册</a></h5>
+</div>
+<div class="a120x600"><script type="text/javascript">var cpro_id="u1293136";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div><div class="b"></div>
+</div>
+</body>
+</html>

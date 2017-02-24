@@ -1,0 +1,138 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="../c3.css" />
+<title>ADO 数据库连接</title>
+</head>
+<body class="serverscripting">
+<div id="wrapper">
+<div id="header">
+<a href="http://e.v-get.com/w3cschool/" style="float:left;">W3CSchool 在线教程</a>
+<div class="q g"><script type="text/javascript">var cpro_id="u1163355"</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div>
+<div id="navfirst">
+<ul id="menu">
+<li id="h"><a href="../h.html">HTML教程</a></li>
+<li id="x"><a href="../x.html">XML教程</a></li>
+<li id="b"><a href="../b.html">浏览器脚本</a></li>
+<li id="s"><a href="../s.html">服务器脚本</a></li>
+<li id="d"><a href="../d.html">dot net教程</a></li>
+<li id="m"><a href="../m.html">多媒体教程</a></li>
+<li id="w"><a href="../w.html">建站手册</a></li>
+</ul>
+</div><div id="navsecond">
+<div id="course">
+<h2>ADO 教程</h2>
+<ul>
+<li><a href="http://e.v-get.com/w3cschool/">ADO 首页</a></li>
+<li><a href="ado_intro.html">ADO 简介</a></li>
+<li><a href="ado_connect.html">ADO 连接</a></li>
+<li><a href="ado_recordset.html">ADO 记录集</a></li>
+<li><a href="ado_display.html">ADO 显示</a></li>
+<li><a href="ado_query.html">ADO 查询</a></li>
+<li><a href="ado_sort.html">ADO 排序</a></li>
+<li><a href="ado_add.html">ADO 添加</a></li>
+<li><a href="ado_update.html">ADO 更新</a></li>
+<li><a href="ado_delete.html">ADO 删除</a></li>
+<li><a href="ado_getstring.html">ADO 加速</a></li>
+</ul>
+<h2>ADO 对象</h2>
+<ul>
+<li><a href="ado_ref_command.html">ADO Command</a></li>
+<li><a href="ado_ref_connection.html">ADO Connection</a></li>
+<li><a href="ado_ref_error.html">ADO Error</a></li>
+<li><a href="ado_ref_field.html">ADO Field</a></li>
+<li><a href="ado_ref_parameter.html">ADO Parameter</a></li>
+<li><a href="ado_ref_property.html">ADO Property</a></li>
+<li><a href="ado_ref_record.html">ADO Record</a></li>
+<li><a href="ado_ref_recordset.html">ADO Recordset</a></li>
+<li><a href="ado_ref_stream.html">ADO Stream</a></li>
+<li><a href="ado_datatypes.html">ADO 数据类型</a></li>
+<li><a href="ado_summary.html">ADO 总结</a></li>
+</ul>
+<h2>实例</h2>
+<ul>
+<li><a href="../example/adoe_examples.html">ADO 实例</a></li>
+</ul>
+</div>
+<div id="selected">
+<h2>建站手册</h2>
+<ul>
+<li><a href="../site/">网站构建</a></li>
+<li><a href="../w3c/">万维网联盟</a></li>
+<li><a href="http://e.v-get.com/w3c/">W3CSchool 教程</a></li>
+<li><a href="../quality/">网站品质</a></li>
+<li><a href="../semweb/">语义网</a></li>
+<li><a href="../hosting/">网站主机</a></li>
+</ul>
+<h2><a href="http://e.v-get.com/w3c/" class="f13">W3CSchool 教程</a></h2><div class="a120x90"><script type="text/javascript">var cpro_id="u1210867";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div></div>
+</div>
+<div id="maincontent">
+<h1>ADO 数据库连接</h1>
+<div id="tpn">
+<ul class="prenext">
+<li class="pre"><a href="ado_intro.html">上一页</a></li>
+<li class="next"><a href="ado_recordset.html">下一页</a></li>
+</ul>
+</div>
+<div>
+<p><strong>在从某个网页访问数据之前，必须先建立一个数据库连接。</strong></p>
+</div>
+<div>
+<h2>创建一个 DSN-less 数据库连接</h2>
+<p>连接到某一个数据库的最简单的方法是使用一个 DSN-less 连接。DSN-less 连接可被用于您的站点上的任何微软 Access 数据库。</p>
+<p>假设您拥有一个名为 &#34;northwind.mdb&#34; 的数据库位于 &#34;c:/webdata/&#34; 的 web 目录中，您可以使用下面的 ASP 代码连接到此数据库：</p>
+<pre>&lt;%
+set conn=Server.CreateObject(&#34;ADODB.Connection&#34;)
+conn.Provider=&#34;Microsoft.Jet.OLEDB.4.0&#34;
+conn.Open &#34;c:/webdata/northwind.mdb&#34;
+%&gt;</pre>
+<p>注意，在上面的例子中，您必须规定微软的 Access 数据库驱动程序 (Provider），以及此数据库在计算机上的物理路径。</p>
+</div>
+<div>
+<h2>创建一个 ODBC 数据库连接</h2>
+<p>假设您拥有一个名为 &#34;northwind&#34; 的 ODBC 数据库，您可以使用下面的 ASP 代码连接到此数据库：</p>
+<pre>&lt;%
+set conn=Server.CreateObject(&#34;ADODB.Connection&#34;) 
+conn.Open &#34;northwind&#34;
+%&gt;</pre>
+<p>通过一个 ODBC 连接，您可以连接到您的网络中任何计算机上的任何数据库，只要 ODBC 连接是可用的。</p>
+</div>
+<div>
+<h2>到 MS Access 数据库的 ODBC 连接</h2>
+<p>下面为您讲解如何创建到一个 MS Access 数据库的连接：</p>
+<ol>
+<li>打开控制面板中的 <em>ODBC</em> 图标</li>
+<li>选择系统 <em>ODBC 选项卡</em></li>
+<li>点击 ODBC 选项卡中的<em>添加</em>按钮</li>
+<li><em>选择</em> Driver to Microsoft Access，然后点击<em>完成</em>按钮</li>
+<li>在下一个窗口中点击“选择”按钮来定位数据库</li>
+<li>为此数据库赋予一个数据源名称 (<em>D</em>ata <em>S</em>ource <em>N</em>ame，DSN）</li>
+<li>点击&#34;<em>确定</em>&#34;</li>
+</ol>
+<p class="note"><span>注意：</span>此配置必须在您的网站所在的计算机上完成。假如您正在自己的计算机上运行PWS或者IIS，此架构是可以运行的，但是假如您的网站位于一台远程的服务器，您就必须拥有此服务器的物理访问权限，或者请您的 web 主机提供商为您做这些事情。</p>
+</div>
+<div>
+<h2>ADO 连接对象 (ADO Connection Object）</h2>
+<p>ADO 连接对象用来创建到某个数据源的开放连接。通过此连接，您可以对此数据库进行访问和操作。</p>
+<p>查看此连接对象的所有方法和属性。</p>
+</div>
+<div  id="bpn">
+<ul class="prenext">
+<li class="pre"><a href="ado_intro.html">上一页</a></li>
+<li class="next"><a href="ado_recordset.html">下一页</a></li>
+</ul>
+</div>
+</div>
+<div id="sidebar">
+<div class="rs"></div>
+<div id="tools">
+<h5 id="tools_reference"><a href="ado_reference.html">ADO 参考手册</a></h5>
+<h5 id="tools_example"><a href="../example/adoe_examples.html">ADO 实例</a></h5>
+</div>
+<div class="a120x600"><script type="text/javascript">var cpro_id="u1293136";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div><div class="b"></div>
+</div>
+</body>
+</html>

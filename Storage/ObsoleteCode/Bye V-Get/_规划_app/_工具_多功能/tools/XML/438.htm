@@ -1,0 +1,84 @@
+<html>
+<head>
+<title>级联过程</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+
+<link rel = stylesheet href = "image/style.css">
+</head>
+<body bgcolor="#ffffff">
+<table width="688" border="0" cellspacing="0" cellpadding="0" align="center">
+  <tr bgcolor="EEEEEE"> 
+    <td height="22"><a href="index.htm">主页</a></td>
+  </tr>
+</table><br>
+<table border="0" cellpadding="0" cellspacing="0" width="688" align="center" height="490">
+  <tr valign="top"> 
+    <td rowspan="4" width="91">&nbsp; </td>
+    <td height="68" width="131"> 
+      <p><img src="image/doc.gif"></p>
+    </td>
+    <td rowspan="4" width="18"><b></b> </td>
+    <td height="68" width="387"><img src="image/title_doc.gif"></td>
+    <td rowspan="4" width="61"> 
+      <h6>&nbsp;</h6>
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td rowspan="3" valign="top" class="pt10" align="center" width="131" bgcolor="EEEEEE"> 
+      <p>&nbsp;</p>
+      <p><font color="#FF0000">※ 12.5 级联过程</font></p>
+       
+	</td>
+  </tr>
+  <tr valign="top"> 
+    <td width="387" height="308"> 
+      <table width="100%" border="0" cellpadding="0">
+        <tr> 
+          <td>
+
+           <h4><a name="_Toc467205076">12.5 级联过程</a></h4>
+<p></p>
+<p>将一个以上的样式单与一个文档相连接是可能的。例如，一个浏览器可能有一个缺省的样式单，把此缺省的样式单加入到设计者为此页提供的样式单中。在此情况下，有可能有多个规则作用于一个元素，这些规则很可能会发生冲突。于是，确定以何种顺序应用这些规则就显示得尤其重要。此过程称为级联(cascade)，级联样式单在这个过程中获得自己的名称。</p>
+<p>CSS样式单与XML文档相连接有几种方法：</p>
+<p>1．把&lt;?xml-stylesheet?&gt;处理指令包括在XML文档中。</p>
+<p>2．使用@import，样式单本身可以导入其他样式单。</p>
+<p>3．用户可以使用浏览器的内部运行机制为文档指定一个样式单。</p>
+<p>4．浏览器为大多数属性提供缺省的样式。</p>
+<h5><a name="_Toc467205077">12.5.1 @import指令</a></h5>
+<p>样式单中包括@import指令来加载保存在其他文件中的样式单。可使用绝对或相对的URL来标识导入的样式单。例如，</p>
+<p>@import url(<a href="http://www.w3.org/basicstyles.css);">http://www.w3.org/basicstyles.css);</a></p>
+<p>@import url(/styles/baseball.css);</p>
+<p>@import指令必须出现在样式单的开头并在任何规则之前。导入样式单的样式单中的规则总要覆盖被导入的样式单中的规则。被导入的样式单以它们导入的顺序级联排列。禁止循环导入(如，poem.css导入stanza.css，而stanza.css又要导入poem.css)。</p>
+<h5><a name="_Toc467205078">12.5.2 !important声明</a></h5>
+<p>在CSS1中，作者规则覆盖读者规则，除非读者规则把!important声明与属性相连接。例如，下列的规则说明TITLE元素应该着成蓝色，即使文档的作者要求是其他颜色。另一方面，只要作者规则不冲突，font-family应该为serif。</p>
+<p>TITLE { color: blue !important font-family: serif }</p>
+<p>但是，作者规则也可以声明为重要的。在此情况下，作者规则覆盖读者规则。</p>
+<img src="Image/BK000212-54.gif" width=45 height=53 align="LEFT" hspace=11> 
+<p>这是一种很坏的观念。读者总该有权选择自己的浏览方式。不过，要使写出的样式单同时适合于下列几种人，则是不可能做到的：使用彩色显示器和黑白显示器的人们；使用21英寸显示器或电视机与使用手持机(PDA)的人们；视觉健康与视觉有缺陷的人们。许多Web设计者都指定了太多的样式，只能生成出系统完全无法读取的、与原来不完全一致的网页。幸运的是，CSS2将这种优先权过程颠倒，以致读者规则决定最终的样式。</p>
+<h5><a name="_Toc467205079">12.5.3 级联顺序</a></h5>
+<p>样式是从适用于一个元素的现有的样式规则中选择出来的。一般地，越专门的规则，优先权越高。例如，考察下面的这个片段：</p>
+<p>&lt;OUEVRE&gt;</p>
+<p> &lt;PLAY ID=”x02” CLASS=”WILDE”&gt;</p>
+<p> The Importance of Being Earnest</p>
+<p> &lt;/PLAY&gt;</p>
+<p>&lt;/OUEVRE&gt;</p>
+<p>最专门的规则就会优先。于是，通过其ID选择PLAY元素将优于使用其CLASS选择PLAY元素。使用其CLASS来选择PLAY元素的规则将先于包含在OUEVER元素中选择PLAY元素的规则。当然，如果不使用任何规则，将选择通用的PLAY规则。如果选择符不匹配，将使用从父元素那里继承来的值。如果从父元素那里没有继承任何值，就使用缺省值。</p>
+<p>如果在给定的特征级中有多个规则，那么级联顺序按下列优先级决定：</p>
+<p>1．作者标记为重要的声明。</p>
+<p>2．读者标记为重要的声明。</p>
+<p>3．作者未标记为重要的声明。</p>
+<p>4．读者未标记为重要的声明。</p>
+<p>5．样式单中的最近的规则。</p>
+<p><img src="Image/BK000212-55.gif" width=62 height=56 align="left">应尽量避免依赖于级联顺序。指定尽可以少的样式，并且让读者浏览器的优选项处于主控地位，就会很少出现错误。</p>
+ 
+<a href='437.htm'>&lt;&lt;上一篇</a>&nbsp;&nbsp;<a href='439.htm'>下一篇&gt;&gt;</a></td>
+        </tr>
+      </table>
+      <p>&nbsp; </p>
+    </td>
+  </tr>
+</table>
+
+</body>
+
+</html>

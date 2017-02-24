@@ -1,0 +1,198 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="../c3.css" />
+<title>XML 验证器</title>
+<script type="text/javascript">
+function validateXML(txt)
+{
+// code for IE
+if (window.ActiveXObject)
+  {
+  var xmlDoc = new ActiveXObject("Microsoft.XMLDOM");
+  xmlDoc.async="false";
+  xmlDoc.loadXML(document.all(txt).value);
+  if(xmlDoc.parseError.errorCode!=0)
+    {
+    txt="Error Code: " + xmlDoc.parseError.errorCode + "\n";
+    txt=txt+"Error Reason: " + xmlDoc.parseError.reason;
+    txt=txt+"Error Line: " + xmlDoc.parseError.line;
+    alert(txt);
+    }
+  else
+    {
+    alert("No errors found");
+    }
+  }
+// code for Mozilla, Firefox, Opera, etc.
+else if (document.implementation.createDocument)
+  {
+var parser=new DOMParser();
+var text=document.getElementById(txt).value;
+var xmlDoc=parser.parseFromString(text,"text/xml");
+  if (xmlDoc.documentElement.nodeName=="parsererror")
+    {
+    alert(xmlDoc.documentElement.childNodes[0].nodeValue);
+    }
+  else
+    {
+    alert("No errors found");
+    }
+  }
+else
+  {
+  alert('Your browser cannot handle XML validation');
+  }
+}
+</script>
+</head>
+<body class="xml">
+<div id="wrapper">
+<div id="header">
+<a href="http://e.v-get.com/w3cschool/" style="float:left;">W3CSchool 在线教程</a>
+<div class="q g"><script type="text/javascript">var cpro_id="u1163355"</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div>
+<div id="navfirst">
+<ul id="menu">
+<li id="h"><a href="../h.html">HTML教程</a></li>
+<li id="x"><a href="../x.html">XML教程</a></li>
+<li id="b"><a href="../b.html">浏览器脚本</a></li>
+<li id="s"><a href="../s.html">服务器脚本</a></li>
+<li id="d"><a href="../d.html">dot net教程</a></li>
+<li id="m"><a href="../m.html">多媒体教程</a></li>
+<li id="w"><a href="../w.html">建站手册</a></li>
+</ul>
+</div><div id="navsecond">
+<div id="course">
+<h2>XML 基础</h2>
+<ul>
+<li><a href="http://e.v-get.com/w3cschool/">XML 首页</a></li>
+<li><a href="xml_intro.html">XML 简介</a></li>
+<li><a href="xml_usedfor.html">XML 用途</a></li>
+<li><a href="xml_tree.html">XML 树结构</a></li>
+<li><a href="xml_syntax.html">XML 语法</a></li>
+<li><a href="xml_elements.html">XML 元素</a></li>
+<li><a href="xml_attributes.html">XML 属性</a></li>
+<li><a href="xml_dtd.html">XML 验证</a></li>
+<li><a href="xml_validator.html">XML 验证器</a></li>
+<li><a href="xml_browsers.html">XML 浏览器</a></li>
+<li><a href="xml_view.html">XML 查看</a></li>
+<li><a href="xml_display.html">XML CSS</a></li>
+<li><a href="xml_xsl.html">XML XSLT</a></li>
+</ul>
+<h2>XML JavaScript</h2>
+<ul>
+<li><a href="xml_parser.html">XML 解析器</a></li>
+<li><a href="xml_dom.html">XML DOM</a></li>
+<li><a href="xml_to_html.html">XML to HTML</a></li>
+<li><a href="xml_http.html">XML HTTP Request</a></li>
+<li><a href="xml_applications.html">XML 应用程序</a></li>
+</ul>
+</ul>
+<h2>XML 高级</h2>
+<ul>
+<li><a href="xml_namespaces.html">XML 命名空间</a></li>
+<li><a href="xml_cdata.html">XML CDATA</a></li>
+<li><a href="xml_encoding.html">XML 编码</a></li>
+<li><a href="xml_server.html">XML 服务器</a></li>
+<li><a href="xml_dom_advanced.html">XML DOM 高级</a></li>
+<li><a href="xml_dont.html">XML Don't</a></li>
+<li><a href="xml_savedata.html">XML 数据存储</a></li>
+<li><a href="xml_technologies.html">XML 技术</a></li>
+<li><a href="xml_real_life.html">XML 现实案例</a></li>
+<li><a href="xml_editors.html">XML 编辑器</a></li>
+<li><a href="xml_summary.html">XML 总结</a></li>
+</ul>
+<h2>实例/测验</h2>
+<ul>
+<li><a href="../example/xmle_examples.html">XML 实例</a></li>
+<li><a href="xml_quiz.html">XML 测验</a></li>
+</ul>
+</div>
+<div id="selected">
+<h2>建站手册</h2>
+<ul>
+<li><a href="../site/">网站构建</a></li>
+<li><a href="../w3c/">万维网联盟</a></li>
+<li><a href="http://e.v-get.com/w3c/">W3CSchool 教程</a></li>
+<li><a href="../quality/">网站品质</a></li>
+<li><a href="../semweb/">语义网</a></li>
+<li><a href="../hosting/">网站主机</a></li>
+</ul>
+<h2><a href="http://e.v-get.com/w3c/" class="f13">W3CSchool 教程</a></h2><div class="a120x90"><script type="text/javascript">var cpro_id="u1210867";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div></div>
+</div>
+<div id="maincontent">
+<h1>XML 验证器</h1>
+<div  id="tpn">
+<ul class="prenext">
+<li class="pre"><a href="xml_dtd.html">上一页</a></li>
+<li class="next"><a href="xml_browsers.html">下一页</a></li>
+</ul>
+</div>
+<div>
+<h2>XML 错误会终止您的程序</h2>
+<p>XML 文档中的错误会终止你的 XML 程序。</p>
+<p>W3C 的 XML 规范声明：如果 XML 文档存在错误，那么程序就不应当继续处理这个文档。理由是，XML 软件应当轻巧，快速，具有良好的兼容性。</p>
+<p>如果使用 HTML，创建包含大量错误的文档是有可能的 (比如你忘记了结束标签）。其中一个主要的原因是 HTML 浏览器相当臃肿，兼容性也很差，并且它们有自己的方式来确定当发现错误时文档应该显示为什么样子。</p>
+<p>使用 XML 时，这种情况不应当存在。</p>
+</div>
+<div>
+<h2>对您的 XML 进行语法检查 - 仅用于 IE 浏览器</h2>
+<p>为了帮助您对 XML 进行语法检查，我们创建了一个 XML 验证器。</p>
+<p>把您的 XML 粘贴到下面的文本框中，然后点击&#34;验证&#34;按钮来进行语法检查。</p>
+<form action="">
+<p><textarea id="validxml1" rows="10" cols="75">
+&lt;?xml version=&#34;1.0&#34; ?&gt; 
+&lt;note&gt;
+&lt;to&gt;George&lt;/to&gt; 
+&lt;from&gt;John&lt;/Ffrom&gt; 
+&lt;heading&gt;Reminder&lt;/heading&gt; 
+&lt;body&gt;Don't forget the meeting!&lt;/body&gt; 
+&lt;/note&gt;
+</textarea></p>
+<p><input type="button" value="验证" onclick="validateXML('validxml1')" /></p>
+</form>
+</div>
+<div>
+<h2>根据 DTD 来验证 XML</h2>
+<p>只要把 DOCTYPE 声明添加到您的 XML 中，然后点击验证按钮即可：</p>
+<form action="">
+<p><textarea id="validxml2" rows="17" cols="75">
+&lt;?xml version=&#34;1.0&#34; ?&gt; 
+&lt;!DOCTYPE note [
+  &lt;!ELEMENT note (to,from,heading,body)&gt;
+  &lt;!ELEMENT to      (#PCDATA)&gt;
+  &lt;!ELEMENT from    (#PCDATA)&gt;
+  &lt;!ELEMENT heading (#PCDATA)&gt;
+  &lt;!ELEMENT body    (#PCDATA)&gt;
+]&gt;
+&lt;note&gt;
+&lt;to&gt;George&lt;/to&gt; 
+&lt;from&gt;John&lt;/Ffrom&gt; 
+&lt;heading&gt;Reminder&lt;/heading&gt; 
+&lt;body&gt;Don't forget the meeting!&lt;/body&gt; 
+&lt;/note&gt;
+</textarea></p>
+<p><input type="button" value="验证" onclick="validateXML('validxml2')" /></p>
+</form>
+<p class="note"><span>注释：</span>只有在 Internet Explorer 中，可以根据 DTD 来验证 XML。Firefox, Mozilla, Netscape 以及 Opera 做不到这一点。</p>
+</div>
+<div  id="bpn">
+<ul class="prenext">
+<li class="pre"><a href="xml_dtd.html">上一页</a></li>
+<li class="next"><a href="xml_browsers.html">下一页</a></li>
+</ul>
+</div>
+</div>
+<div id="sidebar">
+<div class="rs"></div>
+<div id="tools">
+<h5 id="tools_example"><a href="../example/xmle_examples.html">XML 实例</a></h5>
+<h5 id="tools_quiz"><a href="xml_quiz.html">XML 测验</a></h5>
+</div>
+<div class="a120x600"><script type="text/javascript">var cpro_id="u1293136";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div><div class="b"></div>
+</div>
+</body>
+</html>

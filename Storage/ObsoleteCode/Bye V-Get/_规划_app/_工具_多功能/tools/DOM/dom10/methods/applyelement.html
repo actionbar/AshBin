@@ -1,0 +1,116 @@
+<html xmlns:rdl>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<script src="rdl_method.js"></script>
+<base target="_self">
+</head>
+<body>
+
+<script>
+
+//collFriendObjects=new Array();
+//collFriendProperties=new Array();
+//collFriendMethods=new Array();
+//collFriendEvents=new Array();
+//collFriendCollections=new Array();
+
+collFriendMethods=new Array(
+'appendChild','insertAdjacentElement','insertBefore'
+);
+
+//collIE40=new Array();
+//collIE50=new Array();
+//collIE55=new Array();
+//collIE60=new Array();
+
+collIE50=new Array(
+'A','ACRONYM','ADDRESS','APPLET','AREA','B','BASE','BASEFONT','BDO','BGSOUND','BIG','BLOCKQUOTE','BODY','BR','BUTTON','CAPTION','CENTER','CITE','CODE','COL','COLGROUP','COMMENT','CUSTOM','DD','DEL','DFN','DIR','DIV','DL','DT','EM','EMBED','FIELDSET','FONT','FORM','FRAME','FRAMESET','HEAD','Hn','HR','HTML','I','IFRAME','IMG','INPUT type=button','INPUT type=checkbox','INPUT type=file','INPUT type=hidden','INPUT type=image','INPUT type=password','INPUT type=radio','INPUT type=reset','INPUT type=submit','INPUT type=text','INS','KBD','LABEL','LEGEND','LI','LINK','LISTING','MAP','MARQUEE','MENU','nextID','OBJECT','OL','OPTION','P','PLAINTEXT','PRE','Q','S','SAMP','SCRIPT','SELECT','SMALL','SPAN','STRIKE','STRONG','SUB','SUP','TABLE','TBODY','TD','TEXTAREA','TFOOT','TH','THEAD','TITLE','TR','TT','U','UL','VAR','XMP'
+);
+
+//sStyle='';
+
+sScript=
+'<script>\n'+
+'function rdl_doApply(e){\n'+
+'with (document.all("oSelect1")) var sParam1=options[selectedIndex].value;\n'+
+'with (document.all("oSelect2")) var sParam2=options[selectedIndex].value;\n'+
+'var oNewNode=document.createElement(sParam1);\n'+
+'oList.applyElement(oNewNode,sParam2);\n'+
+'rdl_doCode();\n'+
+'}\n'+
+'function rdl_doCode(){\n'+
+'document.all("oView").innerText=document.all("oCode").innerHTML;\n'+
+'}\n'+
+'window.onload=rdl_doCode;\n'+
+'<\/script>\n';
+
+sCode=
+'<div id=oCode>\n'+
+'<ul id=oList>\n'+
+'<li>列表项目1\n'+
+'<li>列表项目2\n'+
+'<\/ul>\n'+
+'<\/div>\n'+
+'<table height=56><tr>\n'+
+'<td><select style="width:100px;" id=oSelect1>\n'+
+'<option value="button" selected>button<\/option>\n'+
+'<option value="textarea">textarea<\/option>\n'+
+'<\/select><\/td>\n'+
+'<td><select style="width:100px;" id=oSelect2>\n'+
+'<option value="outside" selected>outside<\/option>\n'+
+'<option value="inside">inside<\/option>\n'+
+'<\/select><\/td>\n'+
+'<td><input type=button value=" 添加 " onclick="rdl_doApply()"><\/td>\n'+
+'<\/tr><\/table>\n'+
+'<div id=oView style="width:80%;font-size:10px;line-height:16px;background:#DFDFDF;padding:8px;"><\/div>\n';
+
+iWinWidth=360;
+
+iWinHeight=320;
+
+</script>
+
+<div id=idContent>
+
+<div id=idContentTitle><span id=idTitleName>applyElement</span>版本：DHTML Object Model　返回值：无</div>
+
+<div class=cssColumnTitle>语法：</div>
+<div>
+<i>object</i><b> . applyElement ( </b><i>oElement</i><b> , </b><i>sWhere</i><b> ) </b>
+</div>
+
+<div class=cssColumnTitle>参数：</div>
+<table>
+<tr><td nowrap><i> oElement </i></td><td nowrap><b>:</b></td>
+<td><b>必选项</b>。对象(Element)。要被添加的对象。</td></tr>
+<tr><td nowrap><i> sWhere </i></td><td nowrap><b>:</b></td>
+<td><b>可选项</b>。字符串(String)。<span class=cssDefault><b>outside</b></span> | <b>inside</b>
+<table>
+<tr><td nowrap><b> outside </b></td><td nowrap><b>:</b></td>
+<td><b>默认值</b>。将<i> oElement </i>添加为<i> object </i>的父对象。</td></tr>
+<tr><td nowrap><b> inside </b></td><td nowrap><b>:</b></td>
+<td>将<i> oElement </i>添加为<i> object </i>的子对象。但<i> oElement </i>将成为<i> object </i>的原所有子对象的父对象。</td></tr>
+</table>
+</td></tr>
+</table>
+
+<div class=cssColumnTitle>返回值：</div>
+<div>
+无
+</div>
+
+<div class=cssColumnTitle>说明：</div>
+<div>
+将<i> oElement </i>添加为<i> object </i>的父对象或子对象。
+<br><i> oElement </i>被添加前，必须先被建立。
+<br>在运行时使用此方法是可以的。在对象的关闭标签被解析之前移除对象，则文档空间可能未被呈递。
+</div>
+
+
+
+</div>
+</body>
+</html>
+
+<!-- Part of RDL(TM) - Written by Rain1977 
+HomeSite: http://www.dhtmlet.com  E-Mail: dhtmlet@hotmail.com -->

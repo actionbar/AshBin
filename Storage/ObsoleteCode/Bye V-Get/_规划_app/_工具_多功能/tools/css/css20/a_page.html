@@ -1,0 +1,78 @@
+<html xmlns:rdl>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<script src="rdl_atrules.js"></script>
+<base target="_self">
+</head>
+<body>
+
+<script>
+
+//collFriendProperties=new Array();
+//collFriendDeclarations=new Array();
+//collFriendAtRules=new Array();
+//collFriendElements=new Array();
+//collFriendClasses=new Array();
+
+collFriendClasses=new Array(
+':first',':left',':right'
+);
+
+collFriendDeclarations=new Array(
+'page','page-break-after','page-break-before','orphans','marks','page-break-inside','size','widows'
+);
+
+//collIE40=new Array();
+//collIE50=new Array();
+//collIE55=new Array();
+//collIE60=new Array();
+
+//sStyle='';
+
+//sScript='';
+
+//sCode='';
+
+//iWinWidth=360;
+
+//iWinHeight=240;
+
+bRunCode=false;
+
+bElements=false;
+
+</script>
+
+<div id=idContent>
+
+<div id=idContentTitle><span id=idTitleName>@page</span>版本：CSS1　 兼容性：IE5.5+</div>
+
+<div class=cssColumnTitle>语法：</div>
+<div>
+<b> @page </b><i> pseudo-class </i><b> { </b><i>sRules</i><b> } </b>
+</div>
+
+<div class=cssColumnTitle>取值：</div>
+<table>
+<tr><td nowrap><i> pseudo-class </i></td><td nowrap><b>:</b></td><td>伪类。<a href="p_first.html">:first</a> | <a href="p_left.html">:left</a> | <a href="p_right.html">:right</a></td></tr>
+<tr><td nowrap><i> sRules </i></td><td nowrap><b>:</b></td><td>样式表定义</td></tr>
+</table>
+
+<div class=cssColumnTitle>说明：</div>
+<div>
+设置页面容器的版式，方向，补丁等。此规则无默认值。<br>
+页面容器是一个矩形区域，包括页面内容区域和补丁区域。页面内容区域包含页面的内容，像文本和图片等，补丁区域环绕内容区域外围。<br>
+虽然此规则定义会被描述在IE5.5+的样式表对象模型内，但是这些定义并不会被IE默认的打印模板使用。它们能够被MSHTML宿主程序用于打印模板开发。在这些程序中，像<a href="c_size.html"> size </a>和<a href="c_margin.html"> margin </a>等不被明确提供的属性作为自定义(<b> expando </b>)属性被使用。
+</div>
+
+<div class=cssColumnTitle>示例：</div>
+<div id=idSimpleCode>
+@page thin:first { size: 3in 8in }
+</div>
+
+</div>
+</body>
+</html>
+
+<!-- Part of RDL(TM) - Written by Rain1977 
+HomeSite: http://www.dhtmlet.com  E-Mail: dhtmlet@hotmail.com -->

@@ -1,0 +1,240 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>asp的19个基本技巧</title>
+<style type="text/css">
+<!--
+body {
+	font-size: 10.4pt;
+	line-height: 22px;
+}
+-->
+</style>
+</head>
+
+<body bgcolor="eeeeee" leftmargin="20" marginwidth="20">
+<p><strong>asp的19个基本技巧 </strong></p>
+<hr>
+<p> 1. 现在的日期时间命令是<br>
+  &lt;%=now%&gt; 即可</p>
+<p>2.ASP取得表格(from)数据输入的方法，是使用一个内置的对象(object)—Requect,<br>
+  它以get,post而异。</p>
+<p>3.若要自己用VB或其它语言编写，.dll文件供ASP使用需将DLL文件注册方可：DOS下<br>
+  输入 regsbr32 *.dll</p>
+<p>4.显示五个重复的句子，字体越来越大<br>
+  &lt;% for i=1 to 5 %&gt;<br>
+  &lt;font size=&lt;% =i %&gt; color=#00ffff&gt;<br>
+  快速ASP<br>
+  &lt;/font&gt;<br>
+  &lt;br&gt;<br>
+  &lt;% next %&gt;</p>
+<p>5.传送字符串到用户端<br>
+  response.write string<br>
+  如：&lt;% response.write &quot;Welcome&quot; %&gt;</p>
+<p>6.链接到指定的URL地址<br>
+  response.redirect url<br>
+  如：<br>
+  &lt;% response.redirect &quot;homepage.asp&quot;<br>
+  %&gt;</p>
+<p>*但是如果此.ASP的文件内容已经传送到用户断，则再用redirect时会发生错误。</p>
+<p>7.其他语言与ASP的结合：<br>
+  如：早上显示早安，下午显示你好<br>
+  &lt;%<br>
+  if time&gt;+#12:00:00 AM# and time&lt;#12:00:00 PM #<br>
+  then<br>
+  greeting=&quot;早安!&quot;<br>
+  else<br>
+  greeting=&quot;你好!&quot;<br>
+  end if<br>
+  %&gt;<br>
+  &lt;%=greeting %&gt;</p>
+<p>8.&lt;script&gt;标记在ASP中的应用<br>
+  例：</p>
+<p>&lt;html&gt;<br>
+  &lt;body&gt;<br>
+  &lt;% call function1 %&gt;<br>
+  &lt;/body&gt;<br>
+  &lt;/html&gt;<br>
+  &lt;script runat=server language=javascript&gt;<br>
+  function function1()<br>
+  {<br>
+  ...<br>
+  }<br>
+  &lt;/script&gt;</p>
+<p>9.#include 包括其它文件<br>
+  &lt;!--#include virtual|file=&quot;filename&quot;--&gt;<br>
+  virtual指虚拟的文件地址。<br>
+  file 代表绝对的文件地址。<br>
+  如：<br>
+  &lt;!--#include virtual=&quot;/booksamp/test.asp&quot;--&gt;<br>
+  &lt;!--#include file=&quot;/test/test.asp&quot;--&gt;</p>
+<p>而且可以层层嵌套。另外#include 不能在&lt;%--%&gt;之内</p>
+<p>10.ASP取得表格输入数据的方法<br>
+  ：GET POST<br>
+  一.get:用户端将数据加到URL后，格式为”？字段1=输入数据1&amp;字段2=输入数据2&amp;...&quot;,<br>
+  再将其送到服务器。<br>
+  如: action为www.abc.com, 字段Name输入数据为jack,字段age的数据为15，则用get方法为<br>
+  http://www.abc.com?Name=jack&amp;Age=15</p>
+<p>二.post:用户端用http信息数据传送到服务器<br>
+  ASP中：<br>
+  get:使用“输入数据= Request.QueryString(&quot;字段名&quot;)&quot;,将附加于URL的数据取出。<br>
+  post:使用“输入数据=Request.Forml&quot;(字段名&quot;)&quot;,读取HTTP信息数据字段。<br>
+  * Request.QueryString范例<br>
+  如：〈A hery=&quot;aspform.asp?Name=jack&amp;Age=15&quot;&gt;<br>
+  按此〈/A〉〈p〉<br>
+  Name:&lt;%=request.QueryString(&quot;Name&quot;)%)<br>
+  Age:&lt;%=request.QeueryString(&quot;Age&quot;)%)<br>
+  * get 范例<br>
+  ·aspturm.asp:<br>
+  &lt;form action=&quot;asp1b.asp&quot; method=&quot;get&quot;&gt;<br>
+  姓名: &lt;input type=text name=&quot;input1&quot; value=&quot;Your name&quot;&gt;<br>
+  &lt;p&gt;<br>
+  特征: &lt;select name=&quot;input2&quot;&gt;<br>
+  &lt;option&gt;cool!<br>
+  &lt;option&gt;handsome<br>
+  &lt;option&gt;warmhearted<br>
+  &lt;/select&gt;<br>
+  &lt;input type=submit value=&quot;ok&quot;&gt;<br>
+  &lt;/form&gt;<br>
+  asp1b.asp的内容<br>
+  &lt;html&gt;&lt;body&gt;<br>
+  &lt;% =request.querystring(&quot;input1&quot;) %&gt; hi, your character is<br>
+  &lt;%= request.querystring(&quot;input2&quot;) %&gt;<br>
+  &lt;/body&gt;&lt;/html&gt;<br>
+  11.request.From<br>
+  语法： request.From(name)[(index)|.count]<br>
+  name:字段名<br>
+  index:当同一字段输入多个值时，指针值index指定要读取同一字段的那一个值，范围由1到<br>
+  request.From(name).count<br>
+  count:由request.From(name).count可知name字段输入几个值，若无此name字段，count为0</p>
+<p><br>
+  如下例：<br>
+  &lt;%<br>
+  forI=1 to request.fron(&quot;input1&quot;).count<br>
+  response.write request.From(&quot;input1&quot;)(I)&amp;&quot;&lt;br&gt;&quot;<br>
+  next<br>
+  %&gt;<br>
+  若input1有两个值则都显示出<br>
+  *若未采用index指定读取哪个.可用<br>
+  〈%<br>
+  for each item request.From(&quot;input&quot;))<br>
+  repomse.write item &amp;&quot;&lt;br&gt;&quot;<br>
+  next<br>
+  %&gt;<br>
+  也可用&quot; for each x in tewuest.From&quot;重复取得所有字段的输入值。</p>
+<p>&lt;% for each x in request.Form %&gt;<br>
+  request.From (&lt;%=x%)=&lt;%=request.Form<br>
+  (x)%&gt; &lt;br&gt;<br>
+  &lt;% next %&gt;</p>
+<p><br>
+  12.<br>
+  获取客户端TCP/IP端口的方法:<br>
+  如: tcp/ip port is &lt;%=request(&quot;server_port&quot;)%&gt;<br>
+  使用server_port可以得到接收HTTP request的连接port信息</p>
+<p><br>
+  13.<br>
+  通过HTTP_ACCEPT_LANGUAGE的HTTP表头信息,可以得到用户端的使用语言<br>
+  环境.<br>
+  以下例子判断用户端的语言环境,给出不同的页面.<br>
+  &lt;% language=request.servervariables(&quot;HTTP_ACCEPT_LANGUAGE&quot;)<br>
+  if language=&quot;en&quot; then %&gt;<br>
+  &lt;!--#include file=&quot;english.asp&quot;&gt;<br>
+  &lt;% else %&gt;<br>
+  &lt;!--#include file=&quot;china.asp&quot;&gt;<br>
+  &lt;% end if%&gt;</p>
+<p>14.主页保留的期限<br>
+  如果用户端浏览器在一个主页保留的期限内,再度浏览此主页,则原在用<br>
+  户端硬盘上的主页内容将被显示.<br>
+  response.expires[=number]<br>
+  其中NUMBER为记录数据盒(PAGE BOX)的保留期限,单位是分钟.<br>
+  或:<br>
+  response.expiresabsolute[=[date][time]]<br>
+  如:设定一个主页保留期到某个日子.</p>
+<p>15.连接到指定的URL地址<br>
+  如:你希望确认用户已经看过INDEX.HTM,则可以检查是否已经看过,如<br>
+  尚未确认,则自动连接到首页<br>
+  &lt;%<br>
+  if not session(&quot;BEEN_to_home_page&quot;) then<br>
+  response.redirect &quot;index.asp&quot;<br>
+  end if<br>
+  %&gt;</p>
+<p>16.判断是回到本页还是第一次进入<br>
+  &lt;%<br>
+  if user_has_been_here_before then<br>
+  response.write &quot;&lt;h3 align=center&gt; Welcome Back<br>
+  again&quot;<br>
+  else<br>
+  response.write &quot;Welcome!&quot;<br>
+  end if<br>
+  %&gt;</p>
+<p><br>
+  17.显示数据库中的图片与超级连接</p>
+<p>&lt;%<br>
+  set conn=server.creatobject(&quot;ADODB.connection&quot;)<br>
+  conn.open &quot;myaddress&quot;<br>
+  set rs=conn.execute(&quot;select name,tel,url,image from<br>
+  myaddress&quot;)<br>
+  %&gt;</p>
+<p>&lt;p&gt;<br>
+  &lt;tabel&gt;<br>
+  &lt;tr&gt;<br>
+  &lt;% for i=0 to rs.fields.count-1 %&gt;<br>
+  &lt;td&gt;<br>
+  &lt;b&gt;<br>
+  &lt;%=rs(i).name %&gt;<br>
+  &lt;/b&gt;<br>
+  &lt;/td&gt;<br>
+  &lt;% next %&gt;<br>
+  &lt;/tr&gt;<br>
+  &lt;% do while not rs.eof %&gt;<br>
+  &lt;tr&gt;<br>
+  &lt;% for i=0 to rs.fields.count-1 %&gt;<br>
+  &lt;td valign =top&gt;<br>
+  &lt;%<br>
+  if rs(i).name=&quot;image&quot; then<br>
+  response.write &quot;&lt;img src=&quot;&quot;&quot;&amp;rs(i)&amp;&quot;&quot;&quot; 
+  &gt;&quot;<br>
+  else<br>
+  if rs(i).name=&quot;url&quot; then<br>
+  response.write &quot;&lt;a href=&quot;&quot;&quot;&amp;rs(i)&amp;&quot;&quot;&quot;&gt;&quot;&amp;rs(i)&amp;&quot;&lt;/a&gt;&quot;<br>
+  else<br>
+  response.write rs(i)<br>
+  end if<br>
+  end if<br>
+  %&gt;<br>
+  &lt;/td&gt;<br>
+  &lt;%next%&gt;<br>
+  &lt;/tr&gt;<br>
+  &lt;% rs.movenext<br>
+  loop<br>
+  rs.close<br>
+  conn.close<br>
+  %&gt;<br>
+  &lt;/html&gt;</p>
+<p></p>
+<p>18. 用ASP取得浏览器信息<br>
+  &lt;%<br>
+  set a=server.creatobject(&quot;MSWC.BROWSERTYPE&quot;)<br>
+  msg=&quot;您使用的浏览器是:&quot;+a.browser+&quot;version&quot;+a.version<br>
+  %&gt;<br>
+  &lt;%=msg%&gt;</p>
+<p><br>
+  19. asp访问cookies的方式(使用response和request)<br>
+  如下：<br>
+  写入cookies:<br>
+  response.cookies(&quot;待写入的coookies名称&quot;)<br>
+  =&quot;待写入数据“<br>
+  读取cookies:<br>
+  读取数据=request.cookies(&quot;待读的cookies名称&quot;)</p>
+<p>* 写入时注意<br>
+  @ 写入cookies的response.cookies程序段必须放在&lt;html&gt;标记<br>
+  之前。而且不可以有任何的其他html代码<br>
+  @ COOKIES中必须使用expires设定有效期， COOKIES才能真正的<br>
+  写入客户端硬盘中。如：<br>
+  response.cookies(&quot;待写入的名称“).expires=#july 1,1998#<br>
+  或response.cookies(&quot;名称&quot;).expires=DATE+365</p>
+<p></p>
+<p>&nbsp; </p>
+</body>
+</html>

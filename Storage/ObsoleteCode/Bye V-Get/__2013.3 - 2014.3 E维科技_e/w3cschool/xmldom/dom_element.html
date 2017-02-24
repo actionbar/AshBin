@@ -1,0 +1,607 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="../c3.css" />
+<title>XML DOM - Element 对象</title>
+</head>
+<body class="xml">
+<div id="wrapper">
+<div id="header">
+<a href="http://e.v-get.com/w3cschool/" style="float:left;">W3CSchool 在线教程</a>
+<div class="q g"><script type="text/javascript">var cpro_id="u1163355"</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div>
+<div id="navfirst">
+<ul id="menu">
+<li id="h"><a href="../h.html">HTML教程</a></li>
+<li id="x"><a href="../x.html">XML教程</a></li>
+<li id="b"><a href="../b.html">浏览器脚本</a></li>
+<li id="s"><a href="../s.html">服务器脚本</a></li>
+<li id="d"><a href="../d.html">dot net教程</a></li>
+<li id="m"><a href="../m.html">多媒体教程</a></li>
+<li id="w"><a href="../w.html">建站手册</a></li>
+</ul>
+</div><div id="navsecond">
+<div id="course">
+<h2>XML DOM 教程</h2>
+<ul>
+<li><a href="http://e.v-get.com/w3cschool/">DOM 首页</a></li>
+<li><a href="dom_intro.html">DOM 简介</a></li>
+<li><a href="dom_nodes.html">DOM 节点</a></li>
+<li><a href="dom_nodetree.html">DOM 节点树</a></li>
+<li><a href="dom_parser.html">DOM 解析</a></li>
+<li><a href="dom_loadxmldoc.html">DOM 加载</a></li>
+<li><a href="dom_methods.html">DOM 属性和方法</a></li>
+<li><a href="dom_nodes_access.html">DOM 访问节点</a></li>
+<li><a href="dom_nodes_info.html">DOM 节点信息</a></li>
+<li><a href="dom_nodes_nodelist.html">DOM 节点列表</a></li>
+<li><a href="dom_nodes_traverse.html">DOM 遍历节点</a></li>
+<li><a href="dom_mozilla_vs_ie.html">DOM 浏览器</a></li>
+<li><a href="dom_nodes_navigate.html">DOM 定位节点</a></li>
+</ul>
+<h2>节点操作</h2>
+<ul>
+<li><a href="dom_nodes_get.html">DOM 获取节点</a></li>
+<li><a href="dom_nodes_set.html">DOM 改变节点</a></li>
+<li><a href="dom_nodes_remove.html">DOM 删除节点</a></li>
+<li><a href="dom_nodes_replace.html">DOM 替换节点</a></li>
+<li><a href="dom_nodes_create.html">DOM 创建节点</a></li>
+<li><a href="dom_nodes_add.html">DOM 添加节点</a></li>
+<li><a href="dom_nodes_clone.html">DOM 克隆节点</a></li>
+<li><a href="dom_httprequest.html">DOM HttpRequest</a></li>
+</ul>
+<h2>XML DOM 参考手册</h2>
+<ul class="small">
+<li><a href="xmldom_reference.html">DOM 手册目录</a></li>
+<li><a href="dom_nodetype.html">DOM 节点类型</a></li>
+<li><a href="dom_attribute.html">DOM Attr</a></li>
+<li><a href="dom_cdatasection.html">DOM CDATASection</a></li>
+<li><a href="dom_comment.html">DOM Comment</a></li>
+<li><a href="dom_document.html">DOM Document</a></li>
+<li><a href="dom_documenttype.html">DOM DocumentType</a></li>
+<li><a href="dom_domexception.html">DOM DOMException</a></li>
+<li><a href="dom_domparser.html">DOM DOMParser</a></li>
+<li><a href="dom_element.html">DOM Element</a></li>
+<li><a href="dom_event.html">DOM Event</a></li>
+<li><a href="dom_domimplementation.html">DOM Implementation</a></li>
+<li><a href="dom_namednodemap.html">DOM NamedNodeMap</a></li>
+<li><a href="dom_node.html">DOM Node</a></li>
+<li><a href="dom_nodelist.html">DOM NodeList</a></li>
+<li><a href="dom_errors.html">DOM ParseError</a></li>
+<li><a href="dom_processinginstruction.html">DOM ProcessingInstr</a></li>
+<li><a href="dom_range.html">DOM Range</a></li>
+<li><a href="dom_text.html">DOM Text</a></li>
+<li><a href="dom_http.html">DOM XMLHttpRequest</a></li>
+<li><a href="dom_xmlserializer.html">DOM XMLSerializer</a></li>
+<li><a href="dom_xpathexpression.html">DOM XPathExpression</a></li>
+<li><a href="dom_xpathresult.html">DOM XPathResult</a></li>
+<li><a href="dom_xsltprocessor.html">DOM XSLTProcessor</a></li>
+<li class="list_apart"><a href="dom_summary.html">DOM 总结</a></li>
+</ul>
+<h2>实例</h2>
+<ul>
+<li><a href="../example/xdom_examples.html">DOM 实例</a></li>
+<li>DOM 验证器</li>
+</ul>
+</div>
+<div id="selected">
+<h2>建站手册</h2>
+<ul>
+<li><a href="../site/">网站构建</a></li>
+<li><a href="../w3c/">万维网联盟</a></li>
+<li><a href="http://e.v-get.com/w3c/">W3CSchool 教程</a></li>
+<li><a href="../quality/">网站品质</a></li>
+<li><a href="../semweb/">语义网</a></li>
+<li><a href="../hosting/">网站主机</a></li>
+</ul>
+<h2><a href="http://e.v-get.com/w3c/" class="f13">W3CSchool 教程</a></h2><div class="a120x90"><script type="text/javascript">var cpro_id="u1210867";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div></div>
+</div>
+<div id="maincontent">
+<h1>XML DOM - Element 对象</h1>
+<div id="tpn">
+<ul class="prenext">
+<li class="pre"><a href="dom_domparser.html">上一页</a></li>
+<li class="next"><a href="dom_event.html">下一页</a></li>
+</ul>
+</div>
+<div id="intro">
+<p><strong>Element 对象表示 XML 文档中的元素。</strong></p>
+</div>
+<div>
+<h2>Element 对象</h2>
+<p>Element 对象表示 XML 文档中的元素。元素可包含属性、其他元素或文本。如果元素含有文本，则在文本节点中表示该文本。</p>
+<p class="important"><span>重要事项：</span>文本永远存储在文本节点中。在 DOM 处理过程中的一个常见的错误是，导航到元素节点，并认为此节点含有文本。不过，即使最简单的元素节点之下也拥有文本节点。举例，在 &lt;year&gt;2005&lt;/year&gt; 中，有一个元素节点 (year），同时此节点之下存在一个文本节点，其中含有文本 (2005）。</p>
+<p>由于元素对象也是一种节点，因此它可继承 Node 对象的属性和方法。</p>
+</div>
+<div>
+<h2>Element 对象的属性</h2>
+<table class="dataintable">
+<tr>
+<th>属性</th>
+<th>描述</th>
+<th>IE</th>
+<th>F</th>
+<th>O</th>
+<th>W3C</th>
+</tr>
+<tr>
+	<td><a href="prop_element_attributes.html">attributes</a></td>
+	<td>返回元素的属性的 NamedNodeMap</td>
+	<td>5</td>
+	<td>1</td>
+	<td>9</td>
+	<td>Yes</td>
+</tr>
+<tr>
+	<td><a href="prop_element_baseuri.html">baseURI</a></td>
+	<td>返回元素的绝对基准 URI</td>
+	<td>No</td>
+	<td>1</td>
+	<td>No</td>
+	<td>Yes</td>
+</tr>
+<tr>
+	<td><a href="prop_element_childnodes.html">childNodes</a></td>
+	<td>返回元素的子节点的 NodeList</td>
+	<td>5</td>
+	<td>1</td>
+	<td>9</td>
+	<td>Yes</td>
+</tr>
+<tr>
+	<td><a href="prop_element_firstchild.html">firstChild</a></td>
+	<td>返回元素的首个子节点</td>
+	<td>5</td>
+	<td>1</td>
+	<td>9</td>
+	<td>Yes</td>
+</tr>
+<tr>
+	<td><a href="prop_element_lastchild.html">lastChild</a></td>
+	<td>返回元素的最后一个子节点</td>
+	<td>5</td>
+	<td>1</td>
+	<td>9</td>
+	<td>Yes</td>
+</tr>
+<tr>
+	<td><a href="prop_element_localname.html">localName</a></td>
+	<td>返回元素名称的本地部分</td>
+	<td>No</td>
+	<td>1</td>
+	<td>9</td>
+	<td>Yes</td>
+</tr>
+<tr>
+	<td><a href="prop_element_namespaceuri.html">namespaceURI</a></td>
+	<td>返回元素的命名空间 URI</td>
+	<td>No</td>
+	<td>1</td>
+	<td>9</td>
+	<td>Yes</td>
+</tr>
+<tr>
+	<td><a href="prop_element_nextsibling.html">nextSibling</a></td>
+	<td>返回元素之后紧跟的节点</td>
+	<td>5</td>
+	<td>1</td>
+	<td>9</td>
+	<td>Yes</td>
+</tr>
+<tr>
+	<td><a href="prop_element_nodename.html">nodeName</a></td>
+	<td>返回节点的名称，依据其类型。</td>
+	<td>5</td>
+	<td>1</td>
+	<td>9</td>
+	<td>Yes</td>
+</tr>
+<tr>
+	<td><a href="prop_element_nodetype.html">nodeType</a></td>
+	<td>返回节点的类型</td>
+	<td>5</td>
+	<td>1</td>
+	<td>9</td>
+	<td>Yes</td>
+</tr>
+<tr>
+	<td><a href="prop_element_ownerdocument.html">ownerDocument</a></td>
+	<td>返回元素所属的根元素 (document 对象)</td>
+	<td>5</td>
+	<td>1</td>
+	<td>9</td>
+	<td>Yes</td>
+</tr>
+<tr>
+	<td><a href="prop_element_parentnode.html">parentNode</a></td>
+	<td>返回元素的父节点</td>
+	<td>5</td>
+	<td>1</td>
+	<td>9</td>
+	<td>Yes</td>
+</tr>
+<tr>
+	<td><a href="prop_element_prefix.html">prefix</a></td>
+	<td>设置或返回元素的命名空间前缀</td>
+	<td>No</td>
+	<td>1</td>
+	<td>9</td>
+	<td>Yes</td>
+</tr>
+<tr>
+	<td><a href="prop_element_previoussibling.html">previousSibling</a></td>
+	<td>返回元素之前紧随的节点</td>
+	<td>5</td>
+	<td>1</td>
+	<td>9</td>
+	<td>Yes</td>
+</tr>
+<tr>
+	<td>schemaTypeInfo</td>
+	<td>返回与元素相关联的类型信息</td>
+	<td>&nbsp;</td>
+	<td>&nbsp;</td>
+	<td>No</td>
+	<td>Yes</td>
+</tr>
+<tr>
+	<td><a href="prop_element_tagname.html">tagName</a></td>
+	<td>返回元素的名称</td>
+	<td>5</td>
+	<td>1</td>
+	<td>9</td>
+	<td>Yes</td>
+</tr>
+<tr>
+	<td><a href="prop_element_textcontent.html">textContent</a></td>
+	<td>设置或返回元素及其后代的文本内容</td>
+	<td>No</td>
+	<td>1</td>
+	<td>No</td>
+	<td>Yes</td>
+</tr>
+<tr>
+	<td><a href="prop_element_text.html">text</a></td>
+	<td>返回节点及其后代的文本 (IE-only)</td>
+	<td>5</td>
+	<td>No</td>
+	<td>No</td>
+	<td>No</td>
+</tr>
+<tr>
+	<td><a href="prop_element_xml.html">xml</a></td>
+	<td>返回节点及其后代的 XML (IE-only)</td>
+	<td>5</td>
+	<td>No</td>
+	<td>No</td>
+	<td>No</td>
+</tr>
+</table>
+</div>
+<div>
+<h2>Element 对象的方法</h2>
+<table class="dataintable">
+<tr>
+<th>方法</th>
+<th>描述</th>
+<th>IE</th>
+<th>F</th>
+<th>O</th>
+<th>W3C</th>
+</tr>
+<tr>
+	<td><a href="met_element_appendchild.html">appendChild()</a></td>
+	<td>向节点的子节点列表末尾添加新的子节点。</td>
+	<td>5</td>
+	<td>1</td>
+	<td>9</td>
+	<td>Yes</td>
+</tr>
+<tr>
+	<td><a href="met_element_clonenode.html">cloneNode()</a></td>
+	<td>克隆节点。</td>
+	<td>5</td>
+	<td>1</td>
+	<td>9</td>
+	<td>Yes</td>
+</tr>
+<tr>
+	<td class="no_wrap"><a href="met_element_comparedocumentposition.html">compareDocumentPosition()</a></td>
+	<td>比较两节点的文档位置。</td>
+	<td>No</td>
+	<td>1</td>
+	<td>No</td>
+	<td>Yes</td>
+</tr>
+<tr>
+	<td><a href="met_element_dispatchevent.html">dispatchEvent()</a></td>
+	<td>给节点分派一个合成事件。</td>
+	<td>5</td>
+	<td>1</td>
+	<td>9</td>
+	<td>Yes</td>
+</tr>
+<tr>
+	<td><a href="met_element_getattribute.html">getAttribute()</a></td>
+	<td>返回属性的值。</td>
+	<td>5</td>
+	<td>1</td>
+	<td>9</td>
+	<td>Yes</td>
+</tr>
+<tr>
+	<td><a href="met_element_getattributens.html">getAttributeNS()</a></td>
+	<td>返回属性的值。</td>
+	<td>No</td>
+	<td>1</td>
+	<td>9</td>
+	<td>Yes</td>
+</tr>
+<tr>
+	<td><a href="met_element_getattributenode.html">getAttributeNode()</a></td>
+	<td>以 Attribute 对象返回属性节点。</td>
+	<td>5</td>
+	<td>1</td>
+	<td>9</td>
+	<td>Yes</td>
+</tr>
+<tr>
+	<td><a href="met_element_getattributenodens.html">getAttributeNodeNS()</a></td>
+	<td>以 Attribute 对象返回属性节点。</td>
+	<td>No</td>
+	<td>&nbsp;</td>
+	<td>9</td>
+	<td>Yes</td>
+</tr>
+<tr>
+	<td><a href="met_element_getelementsbytagname.html">getElementsByTagName()</a></td>
+	<td>找到具有指定标签名的子孙元素。</td>
+	<td>5</td>
+	<td>1</td>
+	<td>9</td>
+	<td>Yes</td>
+</tr>
+<tr>
+	<td><a href="met_element_getelementsbytagnamens.html">getElementsByTagNameNS()</a></td>
+	<td>找到具有指定标签名和命名空间的元素。</td>
+	<td>No</td>
+	<td>1</td>
+	<td>9</td>
+	<td>Yes</td>
+</tr>
+<tr>
+	<td>getFeature(feature,version)</td>
+	<td>返回 DOM 对象，此对象可执行拥有指定特性和版本的专门的 API。</td>
+	<td>&nbsp;</td>
+	<td>&nbsp;</td>
+	<td>No</td>
+	<td>Yes</td>
+</tr>
+<tr>
+	<td>getUserData(key)</td>
+	<td>返回关联节点上键的对象。此对象必须首先通过使用相同的键来调用 setUserData 来设置到此节点。</td>
+	<td>&nbsp;</td>
+	<td>&nbsp;</td>
+	<td>No</td>
+	<td>Yes</td>
+</tr>
+<tr>
+	<td><a href="met_element_hasattribute.html">hasAttribute()</a></td>
+	<td>返回元素是否拥有指定的属性。</td>
+	<td>5</td>
+	<td>1</td>
+	<td>9</td>
+	<td>Yes</td>
+</tr>
+<tr>
+	<td><a href="met_element_hasattributens.html">hasAttributeNS()</a></td>
+	<td>返回元素是否拥有指定的属性。</td>
+	<td>No</td>
+	<td>1</td>
+	<td>9</td>
+	<td>Yes</td>
+</tr>
+<tr>
+	<td><a href="met_element_hasattributes.html">hasAttributes()</a></td>
+	<td>返回元素是否拥有属性。</td>
+	<td>5</td>
+	<td>1</td>
+	<td>9</td>
+	<td>Yes</td>
+</tr>
+<tr>
+	<td><a href="met_element_haschildnodes.html">hasChildNodes()</a></td>
+	<td>返回元素是否拥有子节点。</td>
+	<td>5</td>
+	<td>1</td>
+	<td>9</td>
+	<td>Yes</td>
+</tr>
+<tr>
+	<td><a href="met_element_insertbefore.html">insertBefore()</a></td>
+	<td>在已有的子节点之前插入一个新的子节点。</td>
+	<td>5</td>
+	<td>1</td>
+	<td>9</td>
+	<td>Yes</td>
+</tr>
+<tr>
+	<td>isDefaultNamespace(URI)</td>
+	<td>返回指定的命名空间 URI 是否为默认。</td>
+	<td>&nbsp;</td>
+	<td>&nbsp;</td>
+	<td>No</td>
+	<td>Yes</td>
+</tr>
+<tr>
+	<td><a href="met_element_isequalnode.html">isEqualNode()</a></td>
+	<td>检查两节点是否相等。</td>
+	<td>No</td>
+	<td>No</td>
+	<td>No</td>
+	<td>Yes</td>
+</tr>
+<tr>
+	<td><a href="met_element_issamenode.html">isSameNode()</a></td>
+	<td>检查两节点是否为同一节点。</td>
+	<td>No</td>
+	<td>1</td>
+	<td>No</td>
+	<td>Yes</td>
+</tr>
+<tr>
+	<td>isSupported(feature,version)</td>
+	<td>返回指定的特性是否在此元素上得到支持。</td>
+	<td>&nbsp;</td>
+	<td>&nbsp;</td>
+	<td>9</td>
+	<td>Yes</td>
+</tr>
+<tr>
+	<td><a href="met_element_lookupnamespaceuri.html">lookupNamespaceURI()</a></td>
+	<td>返回匹配指定前缀的命名空间 URI。</td>
+	<td>No</td>
+	<td>1</td>
+	<td>No</td>
+	<td>Yes</td>
+</tr>
+<tr>
+	<td><a href="met_element_lookupprefix.html">lookupPrefix()</a></td>
+	<td>返回匹配指定的命名空间 URI 的前缀。</td>
+	<td>No</td>
+	<td>1</td>
+	<td>No</td>
+	<td>Yes</td>
+</tr>
+<tr>
+	<td>normalize()</td>
+	<td>&nbsp;</td>
+	<td>5</td>
+	<td>1</td>
+	<td>9</td>
+	<td>Yes</td>
+</tr>
+<tr>
+	<td><a href="met_element_removeattribute.html">removeAttribute()</a></td>
+	<td>删除指定的属性。</td>
+	<td>5</td>
+	<td>1</td>
+	<td>9</td>
+	<td>Yes</td>
+</tr>
+<tr>
+	<td><a href="met_element_removeattributens.html">removeAttributeNS()</a></td>
+	<td>删除指定的属性。</td>
+	<td>No</td>
+	<td>1</td>
+	<td>9</td>
+	<td>Yes</td>
+</tr>
+<tr>
+	<td><a href="met_element_removeattributenode.html">removeAttributeNode()</a></td>
+	<td>删除指定的属性节点。</td>
+	<td>5</td>
+	<td>1</td>
+	<td>9</td>
+	<td>Yes</td>
+</tr>
+<tr>
+	<td><a href="met_element_removechild.html">removeChild()</a></td>
+	<td>删除子节点。</td>
+	<td>5</td>
+	<td>1</td>
+	<td>9</td>
+	<td>Yes</td>
+</tr>
+<tr>
+	<td><a href="met_element_replacechild.html">replaceChild()</a></td>
+	<td>替换子节点。</td>
+	<td>5</td>
+	<td>1</td>
+	<td>9</td>
+	<td>Yes</td>
+</tr>
+<tr>
+	<td>setUserData(key,data,handler)</td>
+	<td>把对象关联到元素上的键。</td>
+	<td>&nbsp;</td>
+	<td>&nbsp;</td>
+	<td>No</td>
+	<td>Yes</td>
+</tr>
+<tr>
+	<td><a href="met_element_setattribute.html">setAttribute()</a></td>
+	<td>添加新属性。</td>
+	<td>5</td>
+	<td>1</td>
+	<td>9</td>
+	<td>Yes</td>
+</tr>
+<tr>
+	<td><a href="met_element_setattributens.html">setAttributeNS()</a></td>
+	<td>添加新属性。</td>
+	<td>&nbsp;</td>
+	<td>1</td>
+	<td>9</td>
+	<td>Yes</td>
+</tr>
+<tr>
+	<td><a href="met_element_setattributenode.html">setAttributeNode()</a></td>
+	<td>添加新的属性节点。</td>
+	<td>5</td>
+	<td>1</td>
+	<td>9</td>
+	<td>Yes</td>
+</tr>
+<tr>
+	<td>setAttributeNodeNS(attrnode)</td>
+	<td>添加新的属性节点。</td>
+	<td>&nbsp;</td>
+	<td>&nbsp;</td>
+	<td>9</td>
+	<td>Yes</td>
+</tr>
+<tr>
+	<td>setIdAttribute(name,isId)</td>
+	<td>如果 Attribute 对象 isId 属性为 true，那么此方法会把指定的属性声明为一个用户确定 ID 的属性 (user-determined ID attribute）。</td>
+	<td>&nbsp;</td>
+	<td>&nbsp;</td>
+	<td>No</td>
+	<td>Yes</td>
+</tr>
+<tr>
+	<td>setIdAttributeNS(uri,name,isId)</td>
+	<td>如果 Attribute 对象 isId 属性为 true，那么此方法会把指定的属性声明为一个用户确定 ID 的属性 (user-determined ID attribute） (带有命名空间）。</td>
+	<td>&nbsp;</td>
+	<td>&nbsp;</td>
+	<td>No</td>
+	<td>Yes</td>
+</tr>
+<tr>
+	<td>setIdAttributeNode(idAttr,isId)</td>
+	<td>如果 Attribute 对象 isId 属性为 true，那么此方法会把指定的属性声明为一个用户确定 ID 的属性 (user-determined ID attribute）。</td>
+	<td>&nbsp;</td>
+	<td>&nbsp;</td>
+	<td>No</td>
+	<td>Yes</td>
+</tr>
+</table>
+</div>
+<div id="bpn">
+<ul class="prenext">
+<li class="pre"><a href="dom_domparser.html">上一页</a></li>
+<li class="next"><a href="dom_event.html">下一页</a></li>
+</ul>
+</div>
+</div>
+<div id="sidebar">
+<div class="rs"></div>
+<div id="tools">
+<h5 id="tools_reference"><a href="xmldom_reference.html">XML DOM 参考手册</a></h5>
+<h5 id="tools_example"><a href="../example/xdom_examples.html">XML DOM 实例</a></h5>
+</div>
+<div class="a120x600"><script type="text/javascript">var cpro_id="u1293136";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div><div class="b"></div>
+</div>
+</body>
+</html>

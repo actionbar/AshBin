@@ -1,0 +1,9 @@
+[DEFAULT]
+BASEURL=http://robinhong.cn/
+[InternetShortcut]
+URL=http://www.idcpop.com/
+IconFile=http://robinhong.cn/favicon.ico
+IconIndex=1
+Modified=70FD32B9E353CC015B
+[{000214A0-0000-0000-C000-000000000046}]
+Prop3=19,2

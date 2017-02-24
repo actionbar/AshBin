@@ -1,0 +1,21 @@
+<html>
+<head><link rel="stylesheet" type="text/css" href="showcode.css" /></head>
+<body>
+<pre>
+&lt;html&gt;
+&lt;body&gt;
+<code class="aspcode">&lt;%
+dim h
+h=hour(now())
+response.write(&#34;&lt;p&gt;&#34; & now())
+response.write(&#34; (Beijing Time) &lt;/p&gt;&#34;)
+If h&lt;12 then
+   response.write(&#34;Good Morning!&#34;)
+else
+   response.write(&#34;Good day!&#34;)
+end if
+%&gt;</code>
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+</body>

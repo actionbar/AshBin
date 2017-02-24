@@ -1,0 +1,45 @@
+{php include MooTemplate("tools_header"); }
+<div id="tab1">
+	<div id="page">   
+       <div class="toolbox">
+            	<div class="title">
+								<div>{php echo $tpl_name; } </div>
+							</div>
+									
+             <div class="inner" style="display:block">
+		             	<div class="jsform">
+		                <form method="post" action="position.php">
+		                	<input type="text" class="it" size="36" name="value" id="value" value="$value" />
+		                	<input type="submit" class="bt" name="Submit" value="开始查询" />
+							<br />
+						<span style="margin-left: -270px;">
+							<input type="radio" name="radiobutton" value="baidu" <!--{if $SearchE !== 'google'}-->checked="checked" <!--{/if}--> />百度
+							<input type="radio" name="radiobutton" value="google" <!--{if $SearchE == 'google'}-->checked="checked" <!--{/if}--> />Google
+						</span>
+		                </form>
+		                    <ul>
+		                        <li>查询结果如下:</li>
+		                    </ul>
+		               </div>
+	                 <div class="result" style="padding:5px; background:#fff;">
+	                	<table cellpadding="5" cellspacing="0" id="tab">
+	                        <tr><td align="left"><!--{if $value}-->
+							<!--{if $BaiduP || $GoogleP}-->
+							您网站 <font color=green>{php echo $domain;}</font> 的关键词: <font color=red><strong>{php echo str_replace('+', ' ', $keyword);}</strong></font> 在<!--{if $SearchE == 'google'}--> <strong>Google</strong> <!--{else}--> <strong>百度</strong> <!--{/if}-->搜索结果中排名第 <strong>{php echo $BaiduP; echo $GoogleP;}</strong>
+							<!--{elseif $BaiduP == '0' || $GoogleP == '0'}-->
+							很遗憾, 您网站 <font color=green>{php echo $domain;}</font> 里的关键字<font color=red><strong>{php echo str_replace('+', ' ', $keyword);}</strong></font> 没有进<!--{if $SearchE == 'google'}--> <strong>Google</strong> <!--{else}--> <strong>百度</strong> <!--{/if}-->的前100位, 加紧努力哦
+							<!--{elseif !$keyword}-->
+								请检查您输入的格式是否正确! 正确的格式实例: <font color=blue>www.kqiqi.com:客齐齐</font>(网站地址:关键字)
+							<!--{/if}-->
+						<!--{else}-->	
+							 例如: <font color=blue>www.kqiqi.com:客齐齐</font>(网站地址:关键字)
+							 <br />只检索搜索引擎前100位, 再往后将不检测
+							 <br />请注意: kqiqi.com和www.kqiqi.com是不一样的
+						<!--{/if}--></td></tr>
+	                    </table>
+	                 </div>
+              </div>
+       </div>      
+	</div>
+</div>
+{php include MooTemplate("tools_footer"); }

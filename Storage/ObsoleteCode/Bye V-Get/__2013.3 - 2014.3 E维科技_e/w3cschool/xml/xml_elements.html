@@ -1,0 +1,187 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="../c3.css" />
+<title>XML 元素</title>
+</head>
+<body class="xml">
+<div id="wrapper">
+<div id="header">
+<a href="http://e.v-get.com/w3cschool/" style="float:left;">W3CSchool 在线教程</a>
+<div class="q g"><script type="text/javascript">var cpro_id="u1163355"</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div>
+<div id="navfirst">
+<ul id="menu">
+<li id="h"><a href="../h.html">HTML教程</a></li>
+<li id="x"><a href="../x.html">XML教程</a></li>
+<li id="b"><a href="../b.html">浏览器脚本</a></li>
+<li id="s"><a href="../s.html">服务器脚本</a></li>
+<li id="d"><a href="../d.html">dot net教程</a></li>
+<li id="m"><a href="../m.html">多媒体教程</a></li>
+<li id="w"><a href="../w.html">建站手册</a></li>
+</ul>
+</div><div id="navsecond">
+<div id="course">
+<h2>XML 基础</h2>
+<ul>
+<li><a href="http://e.v-get.com/w3cschool/">XML 首页</a></li>
+<li><a href="xml_intro.html">XML 简介</a></li>
+<li><a href="xml_usedfor.html">XML 用途</a></li>
+<li><a href="xml_tree.html">XML 树结构</a></li>
+<li><a href="xml_syntax.html">XML 语法</a></li>
+<li><a href="xml_elements.html">XML 元素</a></li>
+<li><a href="xml_attributes.html">XML 属性</a></li>
+<li><a href="xml_dtd.html">XML 验证</a></li>
+<li><a href="xml_validator.html">XML 验证器</a></li>
+<li><a href="xml_browsers.html">XML 浏览器</a></li>
+<li><a href="xml_view.html">XML 查看</a></li>
+<li><a href="xml_display.html">XML CSS</a></li>
+<li><a href="xml_xsl.html">XML XSLT</a></li>
+</ul>
+<h2>XML JavaScript</h2>
+<ul>
+<li><a href="xml_parser.html">XML 解析器</a></li>
+<li><a href="xml_dom.html">XML DOM</a></li>
+<li><a href="xml_to_html.html">XML to HTML</a></li>
+<li><a href="xml_http.html">XML HTTP Request</a></li>
+<li><a href="xml_applications.html">XML 应用程序</a></li>
+</ul>
+</ul>
+<h2>XML 高级</h2>
+<ul>
+<li><a href="xml_namespaces.html">XML 命名空间</a></li>
+<li><a href="xml_cdata.html">XML CDATA</a></li>
+<li><a href="xml_encoding.html">XML 编码</a></li>
+<li><a href="xml_server.html">XML 服务器</a></li>
+<li><a href="xml_dom_advanced.html">XML DOM 高级</a></li>
+<li><a href="xml_dont.html">XML Don't</a></li>
+<li><a href="xml_savedata.html">XML 数据存储</a></li>
+<li><a href="xml_technologies.html">XML 技术</a></li>
+<li><a href="xml_real_life.html">XML 现实案例</a></li>
+<li><a href="xml_editors.html">XML 编辑器</a></li>
+<li><a href="xml_summary.html">XML 总结</a></li>
+</ul>
+<h2>实例/测验</h2>
+<ul>
+<li><a href="../example/xmle_examples.html">XML 实例</a></li>
+<li><a href="xml_quiz.html">XML 测验</a></li>
+</ul>
+</div>
+<div id="selected">
+<h2>建站手册</h2>
+<ul>
+<li><a href="../site/">网站构建</a></li>
+<li><a href="../w3c/">万维网联盟</a></li>
+<li><a href="http://e.v-get.com/w3c/">W3CSchool 教程</a></li>
+<li><a href="../quality/">网站品质</a></li>
+<li><a href="../semweb/">语义网</a></li>
+<li><a href="../hosting/">网站主机</a></li>
+</ul>
+<h2><a href="http://e.v-get.com/w3c/" class="f13">W3CSchool 教程</a></h2><div class="a120x90"><script type="text/javascript">var cpro_id="u1210867";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div></div>
+</div>
+<div id="maincontent">
+<h1>XML 元素</h1>
+<div  id="tpn">
+<ul class="prenext">
+<li class="pre"><a href="xml_syntax.html">上一页</a></li>
+<li class="next"><a href="xml_attributes.html">下一页</a></li>
+</ul>
+</div>
+<div id="intro">
+<p><strong>XML 文档包含 XML 元素。</strong></p>
+</div>
+<div>
+<h2>什么是 XML 元素？</h2>
+<p><em>XML 元素</em>指的是从 (且包括）开始标签直到 (且包括）结束标签的部分。</p>
+<p>元素可包含其他元素、文本或者两者的混合物。元素也可以拥有属性。</p>
+<pre>
+&lt;bookstore&gt;
+&lt;book category=&#34;CHILDREN&#34;&gt;
+  &lt;title&gt;Harry Potter&lt;/title&gt; 
+  &lt;author&gt;J K. Rowling&lt;/author&gt; 
+  &lt;year&gt;2005&lt;/year&gt; 
+  &lt;price&gt;29.99&lt;/price&gt; 
+&lt;/book&gt;
+&lt;book category=&#34;WEB&#34;&gt;
+  &lt;title&gt;Learning XML&lt;/title&gt; 
+  &lt;author&gt;Erik T. Ray&lt;/author&gt; 
+  &lt;year&gt;2003&lt;/year&gt; 
+  &lt;price&gt;39.95&lt;/price&gt; 
+&lt;/book&gt;
+&lt;/bookstore&gt; 
+</pre>
+<p>在上例中，&lt;bookstore&gt; 和 &lt;book&gt; 都拥有<em>元素内容</em>，因为它们包含了其他元素。&lt;author&gt; 只有<em>文本内容</em>，因为它仅包含文本。</p>
+<p>在上例中，只有 &lt;book&gt; 元素拥有<em>属性</em> (category=&#34;CHILDREN&#34;)。</p>
+</div>
+<div>
+<h2>XML 命名规则</h2>
+<p>XML 元素必须遵循以下命名规则：</p>
+<ul>
+<li>名称可以含字母、数字以及其他的字符</li>
+<li>名称不能以数字或者标点符号开始 </li>
+<li>名称不能以字符 “xml” (或者 XML、Xml）开始 </li>
+<li>名称不能包含空格 </li>
+</ul>
+<p>可使用任何名称，没有保留的字词。</p>
+</div>
+<div>
+<h2>最佳命名习惯</h2>
+<p>使名称具有描述性。使用下划线的名称也很不错。</p>
+<p>名称应当比较简短，比如：&lt;book_title&gt;，而不是：&lt;the_title_of_the_book&gt;。</p>
+<p>避免 &#34;-&#34; 字符。如果您按照这样的方式进行命名：&#34;first-name&#34;，一些软件会认为你需要提取第一个单词。</p>
+<p>避免 &#34;.&#34; 字符。如果您按照这样的方式进行命名：&#34;first.name&#34;，一些软件会认为 &#34;name&#34; 是对象 &#34;first&#34; 的属性。</p>
+<p>避免 &#34;:&#34; 字符。冒号会被转换为命名空间来使用 (稍后介绍）。</p>
+<p>XML 文档经常有一个对应的数据库，其中的字段会对应 XML 文档中的元素。有一个实用的经验，即使用数据库的名称规则来命名 XML 文档中的元素。</p>
+<p>非英语的字母比如 éòá 也是合法的 XML 元素名，不过需要留意当软件开发商不支持这些字符时可能出现的问题。</p>
+</div>
+<div>
+<h2>XML 元素是可扩展的</h2>
+<p>XML 元素是可扩展，以携带更多的信息。</p>
+<p>请看下面这个 XML 例子：</p>
+<pre>
+&lt;note&gt;
+&lt;to&gt;George&lt;/to&gt;
+&lt;from&gt;John&lt;/from&gt;
+&lt;body&gt;Don't forget the meeting!&lt;/body&gt;
+&lt;/note&gt; 
+</pre>
+<p>让我们设想一下，我们创建了一个应用程序，可将 &lt;to&gt;、&lt;from&gt; 以及 &lt;body&gt; 元素提取出来，并产生以下的输出：</p>
+<pre style="background-color:#FFFF00">
+<span style="font-family:Verdana, Arial, Helvetica, sans-serif; font-weight:bold; color:#000000">MESSAGE</span>
+To: George
+From: John
+Don't forget the meeting!
+</pre>
+<p>想象一下，之后这个 XML 文档作者又向这个文档添加了一些额外的信息：</p>
+<pre>
+&lt;note&gt;
+&lt;date&gt;2008-08-08&lt;/date&gt;
+&lt;to&gt;George&lt;/to&gt;
+&lt;from&gt;John&lt;/from&gt;
+&lt;heading&gt;Reminder&lt;/heading&gt;
+&lt;body&gt;Don't forget the meeting!&lt;/body&gt;
+&lt;/note&gt;
+</pre>
+<p>那么这个应用程序会中断或崩溃吗？</p>
+<p>不会。这个应用程序仍然可以找到 XML 文档中的 &lt;to&gt;、&lt;from&gt; 以及 &lt;body&gt; 元素，并产生同样的输出。</p>
+<p>XML 的优势之一，就是可以经常在不中断应用程序的情况进行扩展。</p>
+</div>
+<div  id="bpn">
+<ul class="prenext">
+<li class="pre"><a href="xml_syntax.html">上一页</a></li>
+<li class="next"><a href="xml_attributes.html">下一页</a></li>
+</ul>
+</div>
+</div>
+<div id="sidebar">
+<div class="rs"></div>
+<div id="tools">
+<h5 id="tools_example"><a href="../example/xmle_examples.html">XML 实例</a></h5>
+<h5 id="tools_quiz"><a href="xml_quiz.html">XML 测验</a></h5>
+</div>
+<div class="a120x600"><script type="text/javascript">var cpro_id="u1293136";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div><div class="b"></div>
+</div>
+</body>
+</html>

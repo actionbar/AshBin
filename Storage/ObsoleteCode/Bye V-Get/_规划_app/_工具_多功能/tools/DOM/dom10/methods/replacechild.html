@@ -1,0 +1,110 @@
+<html xmlns:rdl>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<script src="rdl_method.js"></script>
+<base target="_self">
+</head>
+<body>
+
+<script>
+
+//collFriendObjects=new Array();
+//collFriendProperties=new Array();
+//collFriendMethods=new Array();
+//collFriendEvents=new Array();
+//collFriendCollections=new Array();
+
+collFriendMethods=new Array(
+'replaceNode','swapNode','cloneNode','removeNode'
+);
+
+collFriendCollections=new Array(
+'children'
+);
+
+//collIE40=new Array();
+//collIE50=new Array();
+//collIE55=new Array();
+//collIE60=new Array();
+
+collIE50=new Array(
+'A','ACRONYM','ADDRESS','B','BDO','BIG','BLOCKQUOTE','BODY','BUTTON','CAPTION','CENTER','CITE','CODE','COL','COLGROUP','COMMENT','DD','DEL','DFN','DIR','DIV','DL','DT','EM','FIELDSET','FONT','FORM','FRAMESET','HEAD','Hn','HTML','I','IFRAME','INPUT type=button','INPUT type=checkbox','INPUT type=file','INPUT type=hidden','INPUT type=image','INPUT type=password','INPUT type=radio','INPUT type=reset','INPUT type=submit','INPUT type=text','INS','KBD','LABEL','LEGEND','LI','LISTING','MAP','MARQUEE','MENU','nextID','OL','OPTION','P','PLAINTEXT','PRE','Q','S','SAMP','SELECT','SMALL','SPAN','STRIKE','STRONG','SUB','SUP','TABLE','TBODY','TD','TEXTAREA','TFOOT','TH','THEAD','TR','TT','U','UL','VAR','XMP'
+);
+
+collIE60=new Array(
+'attribute'
+);
+
+//sStyle='';
+
+sScript=
+'<script>\n'+
+'function rdl_replaceElement(){\n'+
+'var oChild=Div1.children(0);\n'+
+'var sInnerHTML=oChild.innerHTML;\n'+
+'if (oChild.tagName.toLowerCase()=="b"){\n'+
+'oNewChild=document.createElement("i");\n'+
+'Div1.replaceChild(oNewChild, oChild);\n'+
+'oNewChild.innerHTML=sInnerHTML;\n'+
+'} else {\n'+
+'oNewChild=document.createElement("b");\n'+
+'Div1.replaceChild(oNewChild, oChild);\n'+
+'oNewChild.innerHTML=sInnerHTML;\n'+
+'}\n'+
+'}\n'+
+'<\/script>\n';
+
+sCode=
+'<div id=Div1>点击下方的按钮将导致<b>这里的文字</b>在粗体和斜体之间切换。<\/div>\n'+
+'<br>\n'+
+'<input type=button value=" 切换 "  onclick="rdl_replaceElement();">\n';
+
+iWinWidth=310;
+
+iWinHeight=200;
+
+</script>
+
+<div id=idContent>
+
+<div id=idContentTitle><span id=idTitleName>replaceChild</span>版本：DOM1　返回值：有</div>
+
+<div class=cssColumnTitle>语法：</div>
+<div>
+<i>oElement</i><b> = </b><i>object</i><b> . replaceChild ( </b><i>oNewNode</i><b> , </b><i>oChild</i><b> ) </b>
+</div>
+
+<div class=cssColumnTitle>参数：</div>
+<table>
+<tr><td nowrap><i> oNewNode </i></td><td nowrap><b>:</b></td>
+<td><b>必选项</b>。对象(Element)。用于替换<i> oChild </i>的对象。</td></tr>
+<tr><td nowrap><i> oChild </i></td><td nowrap><b>:</b></td>
+<td><b>必选项</b>。对象(Element)。被<i> oNewNode </i>替换的对象。</td></tr>
+</table>
+
+<div class=cssColumnTitle>返回值：</div>
+<table>
+<tr><td nowrap><i> oElement </i></td><td nowrap><b>:</b></td>
+<td>对象(Element)。返回被替换对象的引用。</td></tr>
+</table>
+
+<div class=cssColumnTitle>说明：</div>
+<div>
+用<i> oNewNode </i>替换<i> object </i>的子对象<i> oChild </i>。
+<br><i> oChild </i>为<i> object </i>的直系子对象。即必须为<i> object </i>的<a href="../objects/children.html"> children </a>集合中的一项。
+<br>当<i> oChild </i>被替换时，所有与之相关的属性内容都将被移除。
+<br><i> oNewNode </i>必须先被建立。
+<br>在运行时使用此方法是可以的。在对象的关闭标签被解析前，文档空间可能不能被呈递。
+</div>
+
+
+
+</div>
+</body>
+</html>
+
+<!-- Part of RDL(TM) - Written by Rain1977 
+HomeSite: http://www.dhtmlet.com  E-Mail: dhtmlet@hotmail.com -->
+</div>
+</body>
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>网页配色方案创建工具三</title>
+<meta name="keywords" content="网页配色方案创建工具，网页配色，网页配色工具，配色方案，配色工具">
+<meta content="网页配色方案创建工具三" name="description" />
+<link rel="STYLESHEET" type="text/css" href="default.css">
+<script language="JavaScript" type="text/javascript" src="funcs.js"></script>
+</HEAD>
+<BODY onLoad="ChangeColors(51,102,255);">
+
+
+      <div align="center">
+<div id="width760">
+<div ID="ColorInput">
+  <div class="sideHead">当前颜色</div>
+  <div class="currentBorder"><div ID="currentColor">　</div></div>
+  <form name="codes" id="codes">
+  <div class="currentBorder">
+  <div class="navBox">
+  <table align="center" cellspacing="0" cellpadding="0" border="0">
+  <tr>
+    <td>R:</td>
+    <td><input type="text" name="r" value="0" maxlength="3" class="rgbBox"></td>
+  </tr>
+  <tr>
+    <td>G:</td>
+    <td><input type="text" name="g" value="0" maxlength="3" class="rgbBox"></td>
+  </tr>
+  <tr>
+    <td>B:</td>
+    <td><input type="text" name="b" value="0" maxlength="3" class="rgbBox"></td>
+  </tr>
+  <tr>
+    <td colspan="2"><input type="button" class="button" value="调整 RGB" onClick="ChangeColors(document.getElementById('codes').r.value,document.getElementById('codes').g.value,document.getElementById('codes').b.value);"></td>
+  </tr>
+  <tr>
+    <td colspan="2">#<input type="text" class="hexBox" name="hex" value="000000" maxlength="6"></td>
+  </tr>
+  <tr>
+    <td colspan="2"><input type="button" class="button" value="调整 HEX" onClick="SetHex(document.getElementById('codes').hex.value);"></td>
+  </tr>
+  </table>
+  <input type="button" class="button" value="变  亮" onClick="LightenScheme();" style="margin-bottom: 0px;">
+<input type="button" class="button" value="变  暗" onClick="DarkenScheme();">
+  </div></div>
+  </form>
+</div>
+
+<div ID="Wheel" align="center">
+  <div ID="swatch0" class="swatch">
+    <div class="border"><div ID="0" class="color" onClick="SetHex(this.style.backgroundColor);">　</div></div>
+    <div ID="0RGB" class="rgb">255.255.255</div>
+    <div ID="0HEX" class="hex">#FFFFFF</div>
+  </div>
+  <div ID="swatch1" class="swatch">
+    <div class="border"><div ID="1" class="color" onClick="SetHex(this.style.backgroundColor);">　</div></div>
+    <div ID="1RGB" class="rgb">255.255.255</div>
+    <div ID="1HEX" class="hex">#FFFFFF</div>
+  </div>
+  <div ID="swatch2" class="swatch">
+    <div class="border"><div ID="2" class="color" onClick="SetHex(this.style.backgroundColor);">　</div></div>
+    <div ID="2RGB" class="rgb">255.255.255</div>
+    <div ID="2HEX" class="hex">#FFFFFF</div>
+  </div>
+  <div ID="swatch3" class="swatch">
+    <div class="border"><div ID="3" class="color" onClick="SetHex(this.style.backgroundColor);">　</div></div>
+    <div ID="3RGB" class="rgb">255.255.255</div>
+    <div ID="3HEX" class="hex">#FFFFFF</div>
+  </div>
+  <div ID="swatch4" class="swatch">
+    <div class="border"><div ID="4" class="color" onClick="SetHex(this.style.backgroundColor);">　</div></div>
+    <div ID="4RGB" class="rgb">255.255.255</div>
+    <div ID="4HEX" class="hex">#FFFFFF</div>
+  </div>
+  <div ID="swatch5" class="swatch">
+    <div class="border"><div ID="5" class="color" onClick="SetHex(this.style.backgroundColor);">　</div></div>
+    <div ID="5RGB" class="rgb">255.255.255</div>
+    <div ID="5HEX" class="hex">#FFFFFF</div>
+  </div>
+  <div ID="swatch6" class="swatch">
+    <div class="border"><div ID="6" class="color" onClick="SetHex(this.style.backgroundColor);">　</div></div>
+    <div ID="6RGB" class="rgb">255.255.255</div>
+    <div ID="6HEX" class="hex">#FFFFFF</div>
+  </div>
+  <div ID="swatch7" class="swatch">
+    <div class="border"><div ID="7" class="color" onClick="SetHex(this.style.backgroundColor);">　</div></div>
+    <div ID="7RGB" class="rgb">255.255.255</div>
+    <div ID="7HEX" class="hex">#FFFFFF</div>
+  </div>
+  <div ID="swatch8" class="swatch">
+    <div class="border"><div ID="8" class="color" onClick="SetHex(this.style.backgroundColor);">　</div></div>
+    <div ID="8RGB" class="rgb">255.255.255</div>
+    <div ID="8HEX" class="hex">#FFFFFF</div>
+  </div>
+  <div ID="swatch9" class="swatch">
+    <div class="border"><div ID="9" class="color" onClick="SetHex(this.style.backgroundColor);">　</div></div>
+    <div ID="9RGB" class="rgb">255.255.255</div>
+    <div ID="9HEX" class="hex">#FFFFFF</div>
+  </div>
+  <div ID="swatch10" class="swatch">
+    <div class="border"><div ID="10" class="color" onClick="SetHex(this.style.backgroundColor);">　</div></div>
+    <div ID="10RGB" class="rgb">255.255.255</div>
+    <div ID="10HEX" class="hex">#FFFFFF</div>
+  </div>
+  <div ID="swatch11" class="swatch">
+    <div class="border"><div ID="11" class="color" onClick="SetHex(this.style.backgroundColor);">　</div></div>
+    <div ID="11RGB" class="rgb">255.255.255</div>
+    <div ID="11HEX" class="hex">#FFFFFF</div>
+  </div>
+
+  <div ID="swatchm1" class="swatch">
+    <div class="border"><div ID="m1" class="color" onClick="SetHex(this.style.backgroundColor);">　</div></div>
+    <div ID="m1RGB" class="rgb">255.255.255</div>
+    <div ID="m1HEX" class="hex">#FFFFFF</div>
+  </div>
+  <div ID="swatchm2" class="swatch">
+    <div class="border"><div ID="m2" class="color" onClick="SetHex(this.style.backgroundColor);">　</div></div>
+    <div ID="m2RGB" class="rgb">255.255.255</div>
+    <div ID="m2HEX" class="hex">#FFFFFF</div>
+  </div>
+  <div ID="swatchm3" class="swatch">
+    <div class="border"><div ID="m3" class="color" onClick="SetHex(this.style.backgroundColor);">　</div></div>
+    <div ID="m3RGB" class="rgb">255.255.255</div>
+    <div ID="m3HEX" class="hex">#FFFFFF</div>
+  </div>
+  <div ID="swatchm4" class="swatch">
+    <div class="border"><div ID="m4" class="color" onClick="SetHex(this.style.backgroundColor);">　</div></div>
+    <div ID="m4RGB" class="rgb">255.255.255</div>
+    <div ID="m4HEX" class="hex">#FFFFFF</div>
+  </div>
+</div>
+<script language="JavaScript">DrawPalette();</script>
+</div>
+</div>  
+     
+      
+</body>
+</html>

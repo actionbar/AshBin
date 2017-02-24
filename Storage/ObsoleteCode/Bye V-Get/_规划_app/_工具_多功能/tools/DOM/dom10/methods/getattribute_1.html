@@ -1,0 +1,130 @@
+<html xmlns:rdl>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<script src="rdl_method.js"></script>
+<base target="_self">
+</head>
+<body>
+
+<script>
+//collFriendObjects=new Array();
+//collFriendProperties=new Array();
+//collFriendMethods=new Array();
+//collFriendEvents=new Array();
+//collFriendCollections=new Array();
+
+collFriendMethods=new Array(
+'createAttribute','setAttribute','mergeAttributes','removeAttribute','clearAttributes'
+);
+
+collFriendCollections=new Array(
+'attributes'
+);
+
+//collIE40=new Array();
+//collIE50=new Array();
+//collIE55=new Array();
+//collIE60=new Array();
+
+collIE40=new Array(
+'userProfile'
+);
+
+//sStyle='';
+
+//sScript='';
+
+sCode=
+'navigator.userProfile.addReadRequest("vcard.displayname");\n'+
+'navigator.userProfile.addReadRequest("vcard.gender");\n'+
+'\n'+
+'// Request access to the information.\n'+
+'navigator.userProfile.doReadRequest(0, "Acme Corporation");\n'+
+'\n'+
+'// Now perform read operations to access the information.\n'+
+'name = navigator.userProfile.getAttribute("vcard.displayname");\n'+
+'gender = navigator.userProfile.getAttribute("vcard.gender");\n'+
+'\n'+
+'// The script can now use the "name" and "gender" variables\n'+
+'// to personalize content or to send information back to the server.\n'+
+'\n'+
+'// Clear the request queue to prepare for future information requests.\n'+
+'navigator.userProfile.clearRequest();\n';
+
+iWinWidth=420;
+
+iWinHeight=300;
+
+bRunCode=false;
+
+</script>
+
+<div id=idContent>
+
+<div id=idContentTitle><span id=idTitleName>getAttribute</span>版本：DOM1　返回值：有</div>
+
+<div class=cssColumnTitle>语法：</div>
+<div>
+<i>sValue</i><b> = </b><a href="../objects/userprofile.html"><b>userProfile</b></a><b> . getAttribute ( </b><isAttributeName</i><b> ) </b>
+</div>
+
+<div class=cssColumnTitle>参数：</div>
+<table>
+<tr><td nowrap><i> sAttributeName </i></td><td nowrap><b>:</b></td>
+<td><b>必选项</b>。字符串(String)。指定一个基本的<b> vCard </b>名称。假如这些名称中的一个没有被使用，则请求会被忽略。</td></tr>
+</table>
+</td></tr>
+</table>
+
+<div class=cssColumnTitle>返回值：</div>
+<table>
+<tr><td nowrap><i> sValue </i></td><td nowrap><b>:</b></td>
+<td>字符串(String)。假如对<i> sAttributeName </i>的读访问不可用将返回一个空字符串。
+</td></tr>
+</table>
+
+<div class=cssColumnTitle>说明：</div>
+<div>
+返回<a href="../objects/userprofile.html"><b> userProfile </b></a>对象的具名属性的值。<br>
+下面的数据结构模式语句用于用户数据存储的域名称。当你使用<a href="../objects/userprofile.html"><b> userProfile </b></a>对象的此方法时指定这些名称。请注意格式已经由<b> vCard_xxx </b>改为了<b> vCard.xxx </b>。旧的格式不再被支持。<br>
+<table cellpadding=1 cellspacing=1 class=cssCommonTable><tr><td>
+<span class=cssIEA style="width:160px;">vCardNames</span><span 
+class=cssIEA style="width:160px;">vCard.Business.City</span><span 
+class=cssIEA style="width:160px;">vCard.Business.Country</span><span 
+class=cssIEA style="width:160px;">vCard.Business.Fax</span><span 
+class=cssIEA style="width:160px;">vCard.Business.Phone</span><span 
+class=cssIEA style="width:160px;">vCard.Business.State</span><span 
+class=cssIEA style="width:160px;">vCard.Business.StreetAddress</span><span 
+class=cssIEA style="width:160px;">vCard.Business.URL</span><span 
+class=cssIEA style="width:160px;">vCard.Business.Zipcode</span><span 
+class=cssIEA style="width:160px;">vCard.Cellular</span><span 
+class=cssIEA style="width:160px;">vCard.Company</span><span 
+class=cssIEA style="width:160px;">vCard.Department</span><span 
+class=cssIEA style="width:160px;">vCard.DisplayName</span><span 
+class=cssIEA style="width:160px;">vCard.Email</span><span 
+class=cssIEA style="width:160px;">vCard.FirstName</span><span 
+class=cssIEA style="width:160px;">vCard.Gender*</span><span 
+class=cssIEA style="width:160px;">vCard.Home.City</span><span 
+class=cssIEA style="width:160px;">vCard.Home.Country</span><span 
+class=cssIEA style="width:160px;">vCard.Home.Fax</span><span 
+class=cssIEA style="width:160px;">vCard.Home.Phone</span><span 
+class=cssIEA style="width:160px;">vCard.Home.State</span><span 
+class=cssIEA style="width:160px;">vCard.Home.StreetAddress</span><span 
+class=cssIEA style="width:160px;">vCard.Home.Zipcode</span><span 
+class=cssIEA style="width:160px;">vCard.Homepage</span><span 
+class=cssIEA style="width:160px;">vCard.JobTitle</span><span 
+class=cssIEA style="width:160px;">vCard.LastName</span><span 
+class=cssIEA style="width:160px;">vCard.MiddleName</span><span 
+class=cssIEA style="width:160px;">vCard.Notes</span><span 
+class=cssIEA style="width:160px;">vCard.Office</span><span 
+class=cssIEA style="width:160px;">vCard.Pager</span>
+</td></tr></table><br>
+注意: 星号(*)表示数据结构模式扩展。扩展是作为在<b> vCard </b>模式内定义的 X- 元素被提供引用的。
+</div>
+
+</div>
+</body>
+</html>
+
+<!-- Part of RDL(TM) - Written by Rain1977 
+HomeSite: http://www.dhtmlet.com  E-Mail: dhtmlet@hotmail.com -->

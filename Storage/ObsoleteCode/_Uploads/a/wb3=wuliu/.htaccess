@@ -1,0 +1,48 @@
+RewriteEngine on
+RewriteCond %{HTTP_HOST} ^wuliu\.v-get\.com$ [OR]
+RewriteCond %{HTTP_HOST} ^[a-z]{1,4}\.wuliu\.v-get\.com$
+RewriteRule ^sitemap\.xml$ /a/sitemap.php?s=%{HTTP_HOST} [L]
+RewriteRule ^j/(\w+)$ /j/$1.php?%{QUERY_STRING} [L]
+ErrorDocument 404 /a/404.php 
+  
+  
+RewriteCond %{HTTP_HOST} ^yiwu\.wuliu\.v-get\.com$  
+RewriteRule ^(\d+)$ http://wuliu.v-get.com/$1 [R=301]
+
+RewriteCond %{HTTP_HOST} ^wuliu\.v-get\.com$  
+RewriteRule ^(\d+)$ f.php?i=$1 [L]
+RewriteCond %{HTTP_HOST} ^wuliu\.v-get\.com$  
+RewriteRule ^(\d+)map$ fmap.php?i=$1 [L]
+RewriteCond %{HTTP_HOST} ^wuliu\.v-get\.com$
+RewriteRule ^news/((20\d{2})-\d{2}-\d{2})/(\d+).html$ /news.php?d=$1&y=$2&i=$3 [L]
+
+
+
+RewriteCond %{HTTP_HOST} ^wuliu\.v-get\.com$ 
+RewriteRule ^/?$ http://yiwu.wuliu.v-get.com/ [R=302]
+
+RewriteCond %{HTTP_HOST} ^[\w-]{5,9}\.wuliu\.v-get\.com$ 
+RewriteRule ^logistics/([a-z]+)\.html$ /f/$1.php?l=%{HTTP_HOST}&%{QUERY_STRING}
+RewriteCond %{HTTP_HOST} ^[\w-]{5,9}\.wuliu\.v-get\.com$ 
+RewriteRule ^logistics/$ /f/logistics.php?l=%{HTTP_HOST}
+RewriteCond %{HTTP_HOST} ^[\w-]{5,9}\.wuliu\.v-get\.com$ 
+RewriteRule ^sitemap.xml$ /f/sitemap.php?l=%{HTTP_HOST}
+RewriteCond %{HTTP_HOST} ^[\w-]{5,9}\.wuliu\.v-get\.com$ 
+RewriteRule ^/?$ /f/index.php?l=%{HTTP_HOST}
+
+
+RewriteCond %{HTTP_HOST} ^[a-z]{1,4}\.wuliu\.v-get\.com$
+RewriteRule ^news/s?$ /ct/%{HTTP_HOST}news.php?%{QUERY_STRING} [L]
+RewriteCond %{HTTP_HOST} ^[a-z]{1,4}\.wuliu\.v-get\.com$
+RewriteRule ^news-(\d+)/s?$ /ct/%{HTTP_HOST}news.php?sp=$1&%{QUERY_STRING} [L]
+
+
+
+RewriteCond %{HTTP_HOST} ^[a-z]{1,4}\.wuliu\.v-get\.com$
+RewriteRule ^([a-z]+)/s?$ /ct/%{HTTP_HOST}.php?sa=$1&%{QUERY_STRING}
+RewriteCond %{HTTP_HOST} ^[a-z]{1,4}\.wuliu\.v-get\.com$
+RewriteRule ^([a-z]+)-(\d+)/s?$ /ct/%{HTTP_HOST}.php?sa=$1&sp=$2&%{QUERY_STRING}
+RewriteCond %{HTTP_HOST} ^[a-z]{1,4}\.wuliu\.v-get\.com$
+RewriteRule ^/?$ /ct/%{HTTP_HOST}.html
+
+ 

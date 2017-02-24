@@ -1,0 +1,12 @@
+<meta http-equiv="content-type" content="text/html; charset=gb2312"><FONT 
+style="FONT-SIZE: 9pt; LINE-HEIGHT: 15pt"><B>installshield的数据库安装程序制作</B><BR>Delphi具有强大的数据库应用程序开发功能，其Client／Sever版本可以开发一般的单机数据库应用系统、普通Client／Sever应用系统直至基于Web的多层应用，其中自然离不开Borland数据库引擎（BDE）的功劳。不过在没有安装过Delphi程序的计算机上运行数据库程序时，必须同时分发庞大的BDE文件，Borland建议用户用Delphi附带的InstallShield制作安装程序来解决这些问题。但怎样选择BDE文件才能使自己的安装程序更加精炼呢？我首先介绍一下其中几个必须的文件：&nbsp;
+<P></P>
+<P>　　Idapi32.dll：BDE基本函数库&nbsp;</P>
+<P>　　Blw32.dll：语言驱动函数库&nbsp;</P>
+<P>　　Idr20009.dll：错误信息库&nbsp;</P>
+<P>　　Fareast.bll：远东语言驱动程序&nbsp;</P>
+<P>　　Usa.bll：美国语言驱动程序&nbsp;</P>
+<P>　　以下文件为根据需要可选：&nbsp;<BR>　　如用Paradox，则应选择：Idpdx32.dll&nbsp;<BR>　　如用Dbase，则应选择：Iddbas32.dll&nbsp;<BR>　　如用Access，则应选择：Iddao32.dll&nbsp;<BR>　　如用Ascii，则应选择：Idasci32.dll&nbsp;<BR>　　如用TBatchMove，则应选择：Idbat32.dll&nbsp;<BR>　　如用Data&nbsp;Repostitory，则应选择：Iddr32.dll&nbsp;<BR>　　如用ODBC，则应选择：Idodbc32.dll&nbsp;<BR>　　如用BDE&nbsp;DataSet&nbsp;Provider&nbsp;DLL，则应选择：Idprov32.dll&nbsp;<BR>　　如用SQL查询，则应选择：Idsql32.dll&nbsp;</P>
+<P>　　下面我们就以用InstallShield来制作一个Paradox数据库应用系统的安装程序为例：&nbsp;<BR>　　1.启动程序设置有关文件目录路径，进入Setup&nbsp;Checklist；&nbsp;<BR>　　2.在Set&nbsp;the&nbsp;Visual&nbsp;Design中设置程序名、程序目录、安装程序主窗口等；&nbsp;<BR>　　3.在Specify&nbsp;Components&nbsp;and&nbsp;Files中设置Groups&nbsp;and&nbsp;Files项，在Program&nbsp;Files中加入用户所有程序文件和数据库表文件，以及下列文件：Idbat32.dll、Usa.btl、Idapi.cfg、Charset.cvb、Bantam.dll、BLW32.dll、Idapi32.dll、Fareast.btl、Idpdx32.dll、Idr20009.dll、Idsql32.dll&nbsp;<BR>（以上文件必须含目录路径）；&nbsp;</P>
+<P>　　4.在Dialog&nbsp;Boxes中设置所需安装对话框；&nbsp;<BR>　　5.在Make&nbsp;Registry&nbsp;Changes中设置Keys项，在&nbsp;<BR>HKEY_LOCAL_MACHINE中加入software\borland\blw32和software\borland\database&nbsp;engine两项，并且在blw32值中加入“Blapipath&nbsp;‘以上文件目录’”、“LOCALE_LIB0&nbsp;‘以上文件目录’\Fareast.bll”和“LOCALE_LIB1&nbsp;‘以上文件目录’\Usa.bll”，在database&nbsp;engine值中加入“Dllpath&nbsp;‘以上文件目录’”、“Configfile01&nbsp;‘以上文件目录’\Idapi.cfg”；&nbsp;</P>
+<P>　　6.在Specify&nbsp;Folder&nbsp;and&nbsp;Icons中根据实际要求设置有关项目；&nbsp;<BR>　　7.在Run&nbsp;Disk&nbsp;Builder中设置安装盘的有关信息；&nbsp;<BR>　　8.最后进行Test&nbsp;the&nbsp;Installation和Create&nbsp;Distribution&nbsp;Media即可完成安装程序的制作</P></FONT>

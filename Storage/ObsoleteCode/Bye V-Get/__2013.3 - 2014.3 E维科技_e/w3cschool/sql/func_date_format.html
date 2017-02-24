@@ -1,0 +1,194 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="../c3.css" />
+<title>MySQL DATE_FORMAT() 函数</title>
+</head>
+<body class="serverscripting">
+<div id="wrapper">
+<div id="header">
+<a href="http://e.v-get.com/w3cschool/" style="float:left;">W3CSchool 在线教程</a>
+<div class="q g"><script type="text/javascript">var cpro_id="u1163355"</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div>
+<div id="navfirst">
+<ul id="menu">
+<li id="h"><a href="../h.html">HTML教程</a></li>
+<li id="x"><a href="../x.html">XML教程</a></li>
+<li id="b"><a href="../b.html">浏览器脚本</a></li>
+<li id="s"><a href="../s.html">服务器脚本</a></li>
+<li id="d"><a href="../d.html">dot net教程</a></li>
+<li id="m"><a href="../m.html">多媒体教程</a></li>
+<li id="w"><a href="../w.html">建站手册</a></li>
+</ul>
+</div><div id="navsecond">
+<div id="course">
+<h2>SQL 基础</h2>
+<ul>
+<li><a href="http://e.v-get.com/w3cschool/">SQL 首页</a></li>
+<li><a href="sql_intro.html">SQL 简介</a></li>
+<li><a href="sql_syntax.html">SQL 语法</a></li>
+<li><a href="sql_select.html">SQL select</a></li>
+<li><a href="sql_distinct.html">SQL distinct</a></li>
+<li><a href="sql_where.html">SQL where</a></li>
+<li><a href="sql_and_or.html">SQL AND &amp; OR</a></li>
+<li><a href="sql_orderby.html">SQL Order By</a></li>
+<li><a href="sql_insert.html">SQL insert</a></li>
+<li><a href="sql_update.html">SQL update</a></li>
+<li><a href="sql_delete.html">SQL delete</a></li>
+</ul>
+<h2>SQL 高级</h2>
+<ul>
+<li><a href="sql_top.html">SQL Top</a></li>
+<li><a href="sql_like.html">SQL Like</a></li>
+<li><a href="sql_wildcards.html">SQL 通配符</a></li>
+<li><a href="sql_in.html">SQL In</a></li>
+<li><a href="sql_between.html">SQL Between</a></li>
+<li><a href="sql_alias.html">SQL Aliases</a></li>
+<li><a href="sql_join.html">SQL Join</a></li>
+<li><a href="sql_join_inner.html">SQL Inner Join</a></li>
+<li><a href="sql_join_left.html">SQL Left Join</a></li>
+<li><a href="sql_join_right.html">SQL Right Join</a></li>
+<li><a href="sql_join_full.html">SQL Full Join</a></li>
+<li><a href="sql_union.html">SQL Union</a></li>
+<li><a href="sql_select_into.html">SQL Select Into</a></li>
+<li><a href="sql_create_db.html">SQL Create DB</a></li>
+<li><a href="sql_create_table.html">SQL Create Table</a></li>
+<li><a href="sql_constraints.html">SQL Constraints</a></li>
+<li><a href="sql_notnull.html">SQL Not Null</a></li>
+<li><a href="sql_unique.html">SQL Unique</a></li>
+<li><a href="sql_primarykey.html">SQL Primary Key</a></li>
+<li><a href="sql_foreignkey.html">SQL Foreign Key</a></li>
+<li><a href="sql_check.html">SQL Check</a></li>
+<li><a href="sql_default.html">SQL Default</a></li>
+<li><a href="sql_create_">SQL Create Index</a></li>
+<li><a href="sql_drop.html">SQL Drop</a></li>
+<li><a href="sql_alter.html">SQL Alter</a></li>
+<li><a href="sql_autoincrement.html">SQL Increment</a></li>
+<li><a href="sql_view.html">SQL View</a></li>
+<li><a href="sql_dates.html">SQL Date</a></li>
+<li><a href="sql_null_values.html">SQL Nulls</a></li>
+<li><a href="sql_isnull.html">SQL isnull()</a></li>
+<li><a href="sql_datatypes.html">SQL 数据类型</a></li>
+<li><a href="sql_server.html">SQL 服务器</a></li>
+</ul>
+<h2>SQL 函数</h2>
+<ul>
+<li><a href="sql_functions.html">SQL functions</a></li>
+<li><a href="sql_func_avg.html">SQL avg()</a></li>
+<li><a href="sql_func_count.html">SQL count()</a></li>
+<li><a href="sql_func_first.html">SQL first()</a></li>
+<li><a href="sql_func_last.html">SQL last()</a></li>
+<li><a href="sql_func_max.html">SQL max()</a></li>
+<li><a href="sql_func_min.html">SQL min()</a></li>
+<li><a href="sql_func_sum.html">SQL sum()</a></li>
+<li><a href="sql_groupby.html">SQL Group By</a></li>
+<li><a href="sql_having.html">SQL Having</a></li>
+<li><a href="sql_func_ucase.html">SQL ucase()</a></li>
+<li><a href="sql_func_lcase.html">SQL lcase()</a></li>
+<li><a href="sql_func_mid.html">SQL mid()</a></li>
+<li><a href="sql_func_len.html">SQL len()</a></li>
+<li><a href="sql_func_round.html">SQL round()</a></li>
+<li><a href="sql_func_now.html">SQL now()</a></li>
+<li><a href="sql_func_format.html">SQL format()</a></li>
+<li class="list_apart"><a href="sql_quickref.html">SQL 快速索引</a></li>
+<li><a href="sql_summary.html">SQL 总结</a></li>
+</ul>
+<h2>实例/测验</h2>
+<ul>
+<li><a href="sql_quiz.html">SQL 测验</a></li>
+</ul>
+</div>
+<div id="selected">
+<h2>建站手册</h2>
+<ul>
+<li><a href="../site/">网站构建</a></li>
+<li><a href="../w3c/">万维网联盟</a></li>
+<li><a href="http://e.v-get.com/w3c/">W3CSchool 教程</a></li>
+<li><a href="../quality/">网站品质</a></li>
+<li><a href="../semweb/">语义网</a></li>
+<li><a href="../hosting/">网站主机</a></li>
+</ul>
+<h2><a href="http://e.v-get.com/w3c/" class="f13">W3CSchool 教程</a></h2><div class="a120x90"><script type="text/javascript">var cpro_id="u1210867";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div></div>
+</div>
+<div id="maincontent">
+<h1>MySQL DATE_FORMAT() 函数</h1>
+<div class="backtoreference">
+<p><a href="sql_dates.html">MySQL Date 函数</a></p>
+</div>
+<div>
+<h2>定义和用法</h2>
+<p>DATE_FORMAT() 函数用于以不同的格式显示日期/时间数据。</p>
+<h3>语法</h3>
+<pre>DATE_FORMAT(date,format)</pre>
+<p><i>date</i> 参数是合法的日期。<i>format</i> 规定日期/时间的输出格式。</p>
+<p>可以使用的格式有：</p>
+<table class="dataintable">
+<tr>
+<th>格式</th>
+<th>描述</th>
+</tr>
+<tr><td>%a</td><td>缩写星期名</td></tr>
+<tr><td>%b</td><td>缩写月名</td></tr>
+<tr><td>%c</td><td>月，数值</td></tr>
+<tr><td>%D</td><td>带有英文前缀的月中的天</td></tr>
+<tr><td>%d</td><td>月的天，数值(00-31)</td></tr>
+<tr><td>%e</td><td>月的天，数值(0-31)</td></tr>
+<tr><td>%f</td><td>微妙</td></tr>
+<tr><td>%H</td><td>小时 (00-23)</td></tr>
+<tr><td>%h</td><td>小时 (01-12)</td></tr>
+<tr><td>%I</td><td>小时 (01-12)</td></tr>
+<tr><td>%i</td><td>分钟，数值(00-59)</td></tr>
+<tr><td>%j</td><td>年的天 (001-366)</td></tr>
+<tr><td>%k</td><td>小时 (0-23)</td></tr>
+<tr><td>%l</td><td>小时 (1-12)</td></tr>
+<tr><td>%M</td><td>月名</td></tr>
+<tr><td>%m</td><td>月，数值(00-12)</td></tr>
+<tr><td>%p</td><td>AM 或 PM</td></tr>
+<tr><td>%r</td><td>时间，12-小时 (hh:mm:ss AM 或 PM）</td></tr>
+<tr><td>%S</td><td>秒(00-59)</td></tr>
+<tr><td>%s</td><td>秒(00-59)</td></tr>
+<tr><td>%T</td><td>时间, 24-小时 (hh:mm:ss)</td></tr>
+<tr><td>%U</td><td>周 (00-53) 星期日是一周的第一天</td></tr>
+<tr><td>%u</td><td>周 (00-53) 星期一是一周的第一天</td></tr>
+<tr><td>%V</td><td>周 (01-53) 星期日是一周的第一天，与 %X 使用</td></tr>
+<tr><td>%v</td><td>周 (01-53) 星期一是一周的第一天，与 %x 使用</td></tr>
+<tr><td>%W</td><td>星期名</td></tr>
+<tr><td>%w</td><td>周的天  (0=星期日, 6=星期六）</td></tr>
+<tr><td>%X</td><td>年，其中的星期日是周的第一天，4 位，与 %V 使用</td></tr>
+<tr><td>%x</td><td>年，其中的星期一是周的第一天，4 位，与 %v 使用</td></tr>
+<tr><td>%Y</td><td>年，4 位</td></tr>
+<tr><td>%y</td><td>年，2 位</td></tr>
+</table>
+</div>
+<div>
+<h2>实例</h2>
+<p>下面的脚本使用 DATE_FORMAT() 函数来显示不同的格式。我们使用 NOW() 来获得当前的日期/时间：</p>
+<pre>
+DATE_FORMAT(NOW(),'%b %d %Y %h:%i %p')
+DATE_FORMAT(NOW(),'%m-%d-%Y')
+DATE_FORMAT(NOW(),'%d %b %y')
+DATE_FORMAT(NOW(),'%d %b %Y %T:%f')
+</pre>
+<p>结果类似：</p>
+<pre>
+Dec 29 2008 11:45 PM
+12-29-2008
+29 Dec 08
+29 Dec 2008 16:25:46.635
+</pre>
+</div>
+<div class="backtoreference">
+<p><a href="sql_dates.html">MySQL Date 函数</a></p>
+</div>
+</div>
+<div id="sidebar">
+<div class="rs"></div>
+<div id="tools">
+<h5 id="tools_quiz"><a href="sql_quiz.html">SQL 测验</a></h5>
+</div>
+<div class="a120x600"><script type="text/javascript">var cpro_id="u1293136";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div><div class="b"></div>
+</div>
+</body>
+</html>

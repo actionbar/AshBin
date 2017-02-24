@@ -1,0 +1,65 @@
+{template header}
+
+<p>
+	<!--{if $action == 'post'}-->
+	您将要发送的微博信息超过了140字，点击确认系统自动截断字符发送<br />
+	<anchor title="确定">确定<go method="post" href="{eval echo miniurl('note/post')}"><postfield name="content" value="{$content}" /><postfield name="submit_post" value="1" /></go></anchor>
+	<anchor title="confirm"><prev/>取消</anchor>
+	<!--{elseif $action == 'refer'}-->
+	请输入您要说的话:<br />
+	<input type="text" name="content" size="20" />
+	<anchor><go method="post" href="{eval echo miniurl('note/'.$nid.'/refer');}"><postfield name="content" value="$(content)" /><postfield name="submit_post" value="1" /></go>发布</anchor>
+	<!--{elseif $action == 'refermore'}-->
+	您将要发送的微博信息超过了140字，点击确认系统自动截断字符发送<br />
+	<anchor title="确定">确定<go method="post" href="{eval echo miniurl('note/'.$nid.'/refer')}"><postfield name="content" value="{$content}" /><postfield name="submit_post" value="1" /></go></anchor>
+	<anchor title="confirm"><prev/>取消</anchor>
+	<!--{elseif $action == 'comment'}-->
+	<!--{if $comments}-->
+	<!--{if $note_to_comment['uid'] == $logger_uid}-->我说<!--{else}--><a href="{eval echo miniurl($note_to_comment['uid']);}">{$note_to_comment['username']}</a><!--{/if}-->[{eval echo sgmdate($note_to_comment['dateline'], 1);}]:{$note_to_comment['note']['message']} <br />
+	<!--{if !empty($note_to_comment['note']['refer'])}-->
+	{eval $note_to_comment_refer = $note_to_comment['note']['refer'];}
+	转自:{$note_to_comment_refer['message']}<br />
+	<!--{if !empty($note_to_comment_refer['link'])}-->
+	原文分享链接:<a href="{$note_to_comment_refer['link']['url']}">$note_to_comment_refer['link']['title']</a><br />
+	<!--{/if}-->
+	<!--{if !empty($note_to_comment_refer['file'])}-->
+	原文分享文件:<a href="{$note_to_comment_refer['file']['url']}">$note_to_comment_refer['file']['title']</a><br />
+	<!--{/if}-->
+	<!--{if !empty($note_to_comment_refer['img'])}-->
+	原文分享图片:<a href="{eval echo imgurl($note_to_comment['note']['img']['url']);}" rel="{$note_to_comment_refer['img']['title']}">打开</a><br />
+	<!--{/if}-->
+	<!--{/if}-->
+	<!--{if !empty($note_to_comment['note']['link'])}-->
+	分享链接:<a href="{$note_to_comment['note']['link']['url']}">$note_to_comment['note']['link']['title']</a><br />
+	<!--{/if}-->
+	<!--{if !empty($note_to_comment['note']['file'])}-->
+	分享文件:<a href="{$note_to_comment['note']['file']['url']}">$note_to_comment['note']['file']['title']</a><br />
+	<!--{/if}-->
+	<!--{if !empty($note_to_comment['note']['img'])}-->
+	分享图片:<a href="{eval echo imgurl($note_to_comment['note']['img']['url']);}" rel="{$note_to_comment['note']['img']['title']}">打开</a><br />
+	<!--{/if}-->
+	{eval $display_index=($comments['current']-1)*$comments['perpage'];}
+	<!--{loop $comments['data'] $cmt_item}-->
+	{eval $display_index++;}
+	{$display_index}. <a href="{eval echo miniurl($cmt_item['uid']);}">{$cmt_item['username']}</a>: {$cmt_item['comment']} [{eval echo sgmdate($cmt_item['dateline']);}] <!--{if $logger_uid == $cmt_item['uid']}--><a href="{eval echo miniurl('comment/'.$cmt_item['mid'].'/del');}">删除</a><!--{/if}--><br />
+	<!--{/loop}-->
+	<!--{/if}-->
+	<!--{if $logger_uid > 0}-->
+	我要评论:<br />
+	<input type="text" name="content" size="20" />
+	<anchor><go method="post" href="{eval echo miniurl('note/'.$nid.'/comment');}"><postfield name="content" value="$(content)" /><postfield name="submit_post" value="1" /></go>发布</anchor>
+	<!--{else}-->
+	登录之后发表评论
+	<!--{/if}-->
+	<!--{elseif $action == 'commentmore'}-->
+	您将要评论的内容超过了140字，点击确认系统自动截断字符发送<br />
+	<anchor title="确定">确定<go method="post" href="{eval echo miniurl('note/'.$nid.'/comment')}"><postfield name="content" value="{$content}" /><postfield name="submit_post" value="1" /></go></anchor>
+	<anchor title="confirm"><prev/>取消</anchor>
+	<!--{elseif $action == 'del'}-->
+	您确认要删除此条微博吗？<br />
+	<anchor title="确定">确定<go method="post" href="{eval echo miniurl('note/'.$nid.'/del')}"><postfield name="submit_post" value="1" /></go></anchor>
+	<anchor title="confirm"><prev/>取消</anchor>
+	<!--{/if}-->
+</p>
+
+{template footer}

@@ -1,0 +1,626 @@
+<html>
+<head>
+<title>元素声明</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+
+<link rel = stylesheet href = "image/style.css">
+</head>
+<body bgcolor="#ffffff">
+<table width="688" border="0" cellspacing="0" cellpadding="0" align="center">
+  <tr bgcolor="EEEEEE"> 
+    <td height="22"><a href="index.htm">主页</a></td>
+  </tr>
+</table><br>
+<table border="0" cellpadding="0" cellspacing="0" width="688" align="center" height="490">
+  <tr valign="top"> 
+    <td rowspan="4" width="91">&nbsp; </td>
+    <td height="68" width="131"> 
+      <p><img src="image/doc.gif"></p>
+    </td>
+    <td rowspan="4" width="18"><b></b> </td>
+    <td height="68" width="387"><img src="image/title_doc.gif"></td>
+    <td rowspan="4" width="61"> 
+      <h6>&nbsp;</h6>
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td rowspan="3" valign="top" class="pt10" align="center" width="131" bgcolor="EEEEEE"> 
+      <p>&nbsp;</p>
+      <p><font color="#FF0000">※ 8.5 元素声明</font></p>
+       
+	</td>
+  </tr>
+  <tr valign="top"> 
+    <td width="387" height="308"> 
+      <table width="100%" border="0" cellpadding="0">
+        <tr> 
+          <td>
+
+           <h4>8.5 元素声明</h4>
+<p>在合法的XML文档中使用的每项标记都要在DTD中的元素声明中加以声明。一项元素声明指明了元素名称和元素可能的内容。内容清单有时称为内容规格。内容规格使用一种简单的语法精确地指明文档中允许什么和不允许什么。这听起来复杂，却只需在元素名称上加上如*、？或＋的标点以便指明它可能出现不止一次，可能出现或可能不出现，或必须出现至少一次。</p>
+<p>DTD很保守，没有明确允许的就是禁止的。然而，DTD句法使您能够严格地区分那些用语句很难说清的关系。例如，DTD很容易地说明GIVEN_NAME要在SURNAME前，而SURNAME必须放在POSITION前，POSITION要放在GAME前，GAME要放在GAMES_STARTED前，GAMES_STARTED要放在AT_BATS前，AT_BATS要放在RUNS前，RUNS要在HITS前，所有这些只能出现在一个PLAYER元素内。</p>
+<p>从外到内，逐级建立DTD是最容易的。这使您能在建立DTD的同时建立一份样本文档来验证DTD本身是合法的和真正地描述您想要的格式。</p>
+<h5>8.5.1 ANY</h5>
+<p>要做的第一件事是标识基本元素。在棒球的例子中，SEASON是基本元素。!DOCTYPE声明指明了这一点：</p>
+<p>&lt;!DOCTYPE SEASON [</p>
+<p>]&gt;</p>
+<p>但是，这仅仅是说基本标记是SEASON，而没有提到元素能或不能包含的内容，这就是为什么接下来要在元素声明中声明SEASON元素。这可通过下列一行代码来实现：</p>
+<p>&lt;!ELEMENT SEASON ANY&gt;</p>
+<p>所有的元素类型声明都以&lt;!ELEMENT（区分大小写）开头而以&gt;结束。其中包括声明的元素名称（本例中为SEASON）后接内容规格。关键词ANY（也要区分大小写）表明所有可能的元素以及可析的字符数据都可以是SEASON元素的子元素。</p>
+<p>基本元素使用ANY是通常的作法——尤其是对未结构化的文档——但对多数其他元素则应避免使用ANY。通常每项标记的内容应尽可能准确。DTD 经常是在整个开发过程中逐步完善的，随着反映应用情况和首制作中未预料的情况，严格性将减少。所以，最好是开始时严格，以后再放松些。</p>
+<h5>8.5.2 #PCDATA</h5>
+<p>尽管文档中可以出现任何元素，但出现的元素必须声明。第一个需要声明的元素是YEAR，下面是YEAR元素的元素声明：</p>
+<p>&lt;!ELEMENT YEAR (#PCDATA)&gt;</p>
+<p>该声明说明YEAR只能包含可析的字符数据，即非标记文本，但它不能包含自己的子元素。所以，下面这个YEAR元素是合法的：</p>
+<p>&lt;YEAR&gt;1998&lt;/YEAR&gt;</p>
+<p>以下这些YEAR元素都是合法的：</p>
+<p>&lt;YEAR&gt;98&lt;/YEAR&gt;</p>
+<p>&lt;YEAR&gt;1998 C.E.&lt;/YEAR&gt;</p>
+<p>&lt;YEAR&gt;</p>
+<p>The year of our lord one thousand,</p>
+<p>nine hundred, &amp;amp; ninety-eight</p>
+<p>&lt;/YEAR&gt;</p>
+<p>甚至下面这个YEAR元素也是合法的，因为XML不会去检查PCDATA的内容，只要是不包括标记的文本就可以。</p>
+<p>&lt;YEAR&gt;Delicious, delicious, oh how boring&lt;/YEAR&gt;</p>
+<p>但是，下面的YEAR元素是非法的，因为它包含了子元素：</p>
+<p>&lt;YEAR&gt;</p>
+<p>&lt;MONTH&gt;January&lt;/MONTH&gt;</p>
+<p>&lt;MONTH&gt;February&lt;/MONTH&gt;</p>
+<p>&lt;MONTH&gt;March&lt;/MONTH&gt;</p>
+<p>&lt;MONTH&gt;April&lt;/MONTH&gt;</p>
+<p>&lt;MONTH&gt;May&lt;/MONTH&gt;</p>
+<p>&lt;MONTH&gt;June&lt;/MONTH&gt;</p>
+<p>&lt;MONTH&gt;July&lt;/MONTH&gt;</p>
+<p>&lt;MONTH&gt;August&lt;/MONTH&gt;</p>
+<p>&lt;MONTH&gt;September&lt;/MONTH&gt;</p>
+<p>&lt;MONTH&gt;October&lt;/MONTH&gt;</p>
+<p>&lt;MONTH&gt;November&lt;/MONTH&gt;</p>
+<p>&lt;MONTH&gt;December&lt;/MONTH&gt;</p>
+<p>&lt;/YEAR&gt;</p>
+<p>SEASON和YEAR元素声明应包括在文档类型声明中，如下所示：</p>
+<p>&lt;!DOCTYPE SEASON [</p>
+<p> &lt;!ELEMENT SEASON ANY&gt;</p>
+<p> &lt;!ELEMENT YEAR (#PCDATA)&gt;</p>
+<p>]&gt;</p>
+<p>通常，空格和缩进无关紧要。元素声明的顺序也不重要。下面这一文档类型声明的作用与上面的声明相同：</p>
+<p>&lt;!DOCTYPE SEASON [</p>
+<p>&lt;!ELEMENT YEAR (#PCDATA)&gt;</p>
+<p>&lt;!ELEMENT SEASON ANY&gt;</p>
+<p>]&gt;</p>
+<p>上面两个文档声明都是说一个SEASON元素可以包含可析的字符数据和以任意顺序声明的任意数量的其他元素。本例中如此声明的元素只有YEAR，它只能包含可析的字符数据。例如考虑清单8-5中的文档。</p>
+<p>清单8-5：一个合法的文档</p>
+<p> &lt;?xml version="1.0" standalone="yes"?&gt;</p>
+<p> &lt;!DOCTYPE SEASON [</p>
+<p>&lt;!ELEMENT YEAR (#PCDATA)&gt;</p>
+<p>&lt;!ELEMENT SEASON ANY&gt;</p>
+<p> ]&gt;</p>
+<p> &lt;SEASON&gt;</p>
+<p>&lt;YEAR&gt;1998&lt;/YEAR&gt;</p>
+<p> &lt;/SEASON&gt;</p>
+<p>因为SEASON元素也可以包含可析的字符数据，所以可以在YEAR元素之外附加文本，如清单8-6所示。</p>
+<p>清单8-6：包含YEAR元素和正常文本的合法的文档</p>
+<p> &lt;?xml version="1.0" standalone="yes"?&gt;</p>
+<p> &lt;!DOCTYPE SEASON [</p>
+<p>&lt;!ELEMENT YEAR (#PCDATA)&gt;</p>
+<p>&lt;!ELEMENT SEASON ANY&gt;</p>
+<p> ]&gt;</p>
+<p> &lt;SEASON&gt;</p>
+<p>&lt;YEAR&gt;1998&lt;/YEAR&gt;</p>
+<p> Major League Baseball</p>
+<p> &lt;/SEASON&gt;</p>
+<p>我们最后是不接受这样的文档的。但是此时它是合法的，因为SEASON被声明为可以接受ANY内容。大多数时候，在定义一个元素的所有子元素之前以ANY代替一个元素，就比较容易起步。然后再用实际的子元素来替换ANY。</p>
+<p>您可以向清单8-6上附加一份简单的样式单，如第4章中创建的baseballstats.css，如清单8-7所示。然后将其装入Web浏览器，结果显示在图8-7中。baseballstats.css样式单包含一些没有出现在DTD或是清单8-7列出的文档部分中的元素的样式规则，但这没有问题。Web浏览器会忽略任何文档中没有的元素的样式规则。</p>
+<p>清单8-7：包含样式单、一个YEAR元素和正常文本的合法文档</p>
+<p>&lt;?xml version="1.0" standalone="yes"?&gt;</p>
+<p>&lt;?xml-stylesheet type="text/css" href="greeting.css"?&gt;</p>
+<p>&lt;!DOCTYPE SEASON [</p>
+<p>&lt;!ELEMENT YEAR (#PCDATA)&gt;</p>
+<p>&lt;!ELEMENT SEASON ANY&gt;</p>
+<p>]&gt;</p>
+<p>&lt;SEASON&gt;</p>
+<p>&lt;YEAR&gt;1998&lt;/YEAR&gt;</p>
+<p>Major League Baseball</p>
+<p>&lt;/SEASON&gt;</p>
+<p align="center"><img src="Image/BK000208-34.gif" width=395 height=206></p>
+<p align="center">图8-7 在Internet Explorer 5.0中显示的包含样式单、YEAR元素和正常文本的文档</p>
+<h5>8.5.3 子元素列表</h5>
+<p>由于SEASON元素被声明为可以接受任何元素作为子元素，因而可以接受各种各样的元素。当遇到那些多多少少有些非结构化的文本，如杂志文章时，这种情况就很有用。这时段落、副栏、项目列表、序号列表、图形、照片以及子标题可出现在文档的任意位置。然而，有时可能想对数据的安排上多实行些规则和控制。例如，可能会要求每一个LEAGUE元素有一个LEAGUE_NAME子元素，而每个PLAYER元素要有一个GIVEN_NAME和SURNAME子元素，并且GIVEN_NAME要放在SURNAME之前。</p>
+<p>为了声明LEAGUE元素必须有一个名称，只要声明LEAGUE_NAME元素，然后在LEAGUE声明后的括号内加入LEAGUE_NAME，如下面这样：</p>
+<p>&lt;!ELEMENT LEAGUE (LEAGUE_NAME)&gt;</p>
+<p>&lt;!ELEMENT LEAGUE_NAME (#PCDATA)&gt;</p>
+<p>每个元素只能在其&lt;!ELEMENT&gt;内声明一次，即使它以其他&lt;!ELEMENT&gt;声明的子元素出现也一样。这里，我把LEAGUE_NAME声明放在引用它的LEAGUE声明之后，这没有关系。XML允许这一类提前引用。只要声明全部包含在DTD中，元素标记出现的顺序无关紧要。</p>
+<p>可以向文档中添加这两项声明，然后在SEASON元素中包括LEAGUE和LEAGUE_NAME元素。如清单8-8所示。图8-8是显示出来的文档。</p>
+<p>清单8-8：有两个LEAGUE子元素的SEASON元素</p>
+<p>&lt;?xml version="1.0" standalone="yes"?&gt;</p>
+<p>&lt;?xml-stylesheet type="text/css" href="greeting.css"?&gt;</p>
+<p>&lt;!DOCTYPE SEASON [</p>
+<p> &lt;!ELEMENT YEAR (#PCDATA)&gt;</p>
+<p> &lt;!ELEMENT LEAGUE (LEAGUE_NAME)&gt;</p>
+<p> &lt;!ELEMENT LEAGUE_NAME (#PCDATA)&gt;</p>
+<p> &lt;!ELEMENT SEASON ANY&gt;</p>
+<p>]&gt;</p>
+<p>&lt;SEASON&gt;</p>
+<p> &lt;YEAR&gt;1998&lt;/YEAR&gt;</p>
+<p> &lt;LEAGUE&gt;</p>
+<p> &lt;LEAGUE_NAME&gt;American League&lt;/LEAGUE_NAME&gt;</p>
+<p> &lt;/LEAGUE&gt;</p>
+<p> &lt;LEAGUE&gt;</p>
+<p> &lt;LEAGUE_NAME&gt;National League&lt;/LEAGUE_NAME&gt;</p>
+<p> &lt;/LEAGUE&gt;</p>
+<p>&lt;/SEASON&gt;</p>
+<p align="center"><img src="Image/BK000208-35.gif" width=486 height=303></p>
+<p align="center">图8-8 包含样式单、YEAR元素和两个LEAGUE子元素的合法的文档</p>
+<h5>8.5.4 序列</h5>
+<p>让我们限制一下SEASON元素。一个SEASON元素包含正好一个YEAR元素和其后的两个LEAGUE子元素。不把SEASON元素声明为可以包含ANY元素，我们在SEASON元素声明中包括这三个子元素，用括号括起来并用逗号分隔开，如下所示：</p>
+<p>&lt;!ELEMENT SEASON (YEAR, LEAGUE, LEAGUE)&gt;</p>
+<p>用逗号隔开的一系列子元素称为一个序列。利用这一声明，每个合法的SEASON元素必须包含正好一个YEAR元素，后面正好是两个LEAGUE元素，没有别的。整个文档类型定义现在看上去是下面的样子：</p>
+<p>&lt;!DOCTYPE SEASON [</p>
+<p> &lt;!ELEMENT YEAR (#PCDATA)&gt;</p>
+<p> &lt;!ELEMENT LEAGUE (LEAGUE_NAME)&gt;</p>
+<p> &lt;!ELEMENT LEAGUE_NAME (#PCDATA)&gt;</p>
+<p> &lt;!ELEMENT SEASON (YEAR, LEAGUE, LEAGUE)&gt;</p>
+<p>]&gt;</p>
+<p>清单8-8所列的文档部分确实符合这项DTD的规定，因为它的SEASON元素包含一个YEAR子元素，后接两个LEAGUE子元素，再没有别的。但是，如果文档只包括一个SEASON元素，那么这个文档尽管结构完整，也将是非法的。同样，如果LEAGUE在YEAR之前而不是在其后，或者如果LEAGUE有YEAR子元素，或者文档在其他任何方面不符合DTD，那么文档就是不合法的，合法性检查程序将拒绝这样的文档。</p>
+<p>可直接将此种技术推广到DIVISION元素。每个LEAGUE有一个LEAGUE_NAME和三个DIVISION子元素。例如：</p>
+<p>&lt;!ELEMENT LEAGUE (LEAGUE_NAME, DIVISION, DIVISION, DIVISION)&gt;</p>
+<h5>8.5.5 一个或多个子元素</h5>
+<p>每个DIVISION有一个DIVISION_NAME和四到六个TEAM子元素。指定DIVISION_NAME很容易，方法如下：</p>
+<p>&lt;!ELEMENT DIVISION (DIVISION_NAME)&gt;</p>
+<p>&lt;!ELEMENT DIVISION_NAME (#PCDATA)&gt;</p>
+<p>但是，TEAM子元素就很棘手。指明DIVISION元素有四个TEAM子元素很容易，如下所示：</p>
+<p>&lt;!ELEMENT DIVISION (DIVISION_NAME, TEAM, TEAM, TEAM, TEAM)&gt;</p>
+<p>五个和六个也不难。但是您怎样说明有四到六个TEAM子元素呢？实际上，XML没有提供实现的简单方法。但是可以在子元素清单的元素名后放一个加号（＋）来说明有一个或多个子元素，例如：</p>
+<p>&lt;!ELEMENT DIVISION (DIVISION_NAME, TEAM+)&gt;</p>
+<p>这就是说一个DIVISION元素必须包含一个DIVISION_NAME子元素，后接一个或多个TEAM子元素。</p>
+<p><img src="Image/BK000208-36.gif" width=60 height=74>说明DIVISION元素有四到六个TEAM元素，而不是三到七个，这就难了。由于非常复杂，实际上很少有人使用。当读完本章时，看一看您是否已经想出怎样做了。</p>
+<h5>8.5.6 零或多个子元素</h5>
+<p>每个TEAM要包含一个TEAM_CITY，一个TEAM_NAME和不确定数目的PLAYER元素。实际上，棒球队至少要九名球员。但是，本书的很多例子中由于篇幅的原因而没有列出球员。因而，我们要指明一个TEAM元素可包含零或多个PLAYER子元素。在子元素清单中在元素名上附加一个星号（*）来实现这一目的。例如：</p>
+<p>&lt;!ELEMENT TEAM (TEAM_CITY, TEAM_NAME, PLAYER*)&gt;</p>
+<p>&lt;!ELEMENT TEAM_CITY (#PCDATA)&gt;</p>
+<p>&lt;!ELEMENT TEAM_NAME (#PCDATA)&gt;</p>
+<h5>8.5.7 零或一个子元素</h5>
+<p>文档中出现的最后的元素是PLAYER子元素。它们全部是只包含文本的简单元素。下面是它们的声明：</p>
+<p>&lt;!ELEMENT SURNAME (#PCDATA)&gt;</p>
+<p>&lt;!ELEMENT GIVEN_NAME (#PCDATA)&gt;</p>
+<p>&lt;!ELEMENT POSITION (#PCDATA)&gt;</p>
+<p>&lt;!ELEMENT GAMES (#PCDATA)&gt;</p>
+<p>&lt;!ELEMENT GAMES_STARTED (#PCDATA)&gt;</p>
+<p>&lt;!ELEMENT AT_BATS (#PCDATA)&gt;</p>
+<p>&lt;!ELEMENT RUNS (#PCDATA)&gt;</p>
+<p>&lt;!ELEMENT HITS (#PCDATA)&gt;</p>
+<p>&lt;!ELEMENT DOUBLES (#PCDATA)&gt;</p>
+<p>&lt;!ELEMENT TRIPLES (#PCDATA)&gt;</p>
+<p>&lt;!ELEMENT HOME_RUNS (#PCDATA)&gt;</p>
+<p>&lt;!ELEMENT RBI (#PCDATA)&gt;</p>
+<p>&lt;!ELEMENT STEALS (#PCDATA)&gt;</p>
+<p>&lt;!ELEMENT CAUGHT_STEALING (#PCDATA)&gt;</p>
+<p>&lt;!ELEMENT SACRIFICE_ HITS (#PCDATA)&gt;</p>
+<p>&lt;!ELEMENT SACRIFICE_FLIES (#PCDATA)&gt;</p>
+<p>&lt;!ELEMENT ERRORS (#PCDATA)&gt;</p>
+<p>&lt;!ELEMENT WALKS (#PCDATA)&gt;</p>
+<p>&lt;!ELEMENT STRUCK_OUT (#PCDATA)&gt;</p>
+<p>&lt;!ELEMENT HIT_BY_PITCH (#PCDATA)&gt;</p>
+<p>&lt;!ELEMENT COMPLETE_GAMES (#PCDATA)&gt;</p>
+<p>&lt;!ELEMENT SHUT_OUTS (#PCDATA)&gt;</p>
+<p>&lt;!ELEMENT ERA (#PCDATA)&gt;</p>
+<p>&lt;!ELEMENT INNINGS (#PCDATA)&gt;</p>
+<p>&lt;!ELEMENT EARNED_RUNS (#PCDATA)&gt;</p>
+<p>&lt;!ELEMENT HIT_BATTER (#PCDATA)&gt;</p>
+<p>&lt;!ELEMENT WILD_PITCHES (#PCDATA)&gt;</p>
+<p>&lt;!ELEMENT BALK (#PCDATA)&gt;</p>
+<p>&lt;!ELEMENT WALKED_BATTER (#PCDATA)&gt;</p>
+<p>&lt;!ELEMENT WINS (#PCDATA)&gt;</p>
+<p>&lt;!ELEMENT LOSSES (#PCDATA)&gt;</p>
+<p>&lt;!ELEMENT SAVES (#PCDATA)&gt;</p>
+<p>&lt;!ELEMENT COMPLETE_GAMES (#PCDATA)&gt;</p>
+<p>&lt;!ELEMENT STRUCK_OUT_BATTER (#PCDATA)&gt;</p>
+<p>现在我们可以编写PLAYER的元素声明了。所有球员有一个GIVEN_NAME、一个SURNAME、一个POSITION、一个GAMES。我们可声明每个PLAYER元素有一个AT_BATS、RUNS、HITS等等。但是，对于没有击球的投球手列出零得分是否准确还不敢确定。因为这可能出现这样一种情况，就是在开始计算平均击球数等问题时会导致被零除的错误。如果某一特定的元素不适合于给定的球员，或没有这一元素，那么就应该从该球员信息中忽略这一元素的统计。对于给定的球员我们不允许多于一个这样的元素。因而，我们就需要给定类型的零个或一个元素。在子元素列表后面附加一个问号（？）可表明这一点，如下所示：</p>
+<p>&lt;!ELEMENT PLAYER (GIVEN_NAME, SURNAME, POSITION,</p>
+<p>GAMES,GAMES_STARTED,AT_BATS?,RUNS?,HITS?,DOUBLES?,</p>
+<p>TRIPLES?, HOME_RUNS?, RBI?, STEALS?, CAUGHT_STEALING?,</p>
+<p>SACRIFICE_ HITS?, SACRIFICE_FLIES?,ERRORS?, WALKS?,</p>
+<p>STRUCK_OUT?, HIT_BY_PITCH ?, WINS?, LOSSES?, SAVES?,</p>
+<p> COMPLETE_GAMES?,SHUT_OUTS?,ERA?,INNINGS EARNED_RUNS?,HIT_BATTER?,WILD_PITCHES?,</p>
+<p> BALK?,WALKED_BATTER?,STRUCK_OUT_BATTER?)</p>
+<p>&gt;</p>
+<p>这就是说每个PLAYER元素有一个GIVEN_NAME、SURNAME、POSITION、GAMES和GAMES_STARTED子元素。而且，每名球员可能有或可能没有AT_BATS、RUNS、HITS、DOUBLES、TRIPLES、HOME_RUNS、RBI、STEALS、CAUGHT_STEALING、SACRIFICE_HITS、SACRIFICE_FLIES、ERRORS、WALKS、STRUCK_OUT和HIT_BY_PITCH。</p>
+<h5>8.5.8 完整的文档和DTD</h5>
+<p>我们现在有了棒球统计的完整的DTD。这一DTD连同清单8-4中的文档部分一起，列在清单8-9中。</p>
+<dir> 
+  <p>清单8-9只包括一个队和九名球员。在本书后附CD-ROM上的examples/baseball/1998validstats.xml目录下可找到1998年主要联赛球队和队员的统计文档。<img src="Image/BK000208-12.gif" width=49 height=50></p>
+</dir>
+<p>清单8-9：一份合法的棒球统计文档和DTD</p>
+<p> &lt;?xml version="1.0" standalone="yes"?&gt;</p>
+<p> &lt;!DOCTYPE SEASON [</p>
+<p> &lt;!ELEMENT YEAR (#PCDATA)&gt;</p>
+<p> &lt;!ELEMENT LEAGUE (LEAGUE_NAME, DIVISION, DIVISION, DIVISION)&gt;</p>
+<p> &lt;!ELEMENT LEAGUE_NAME (#PCDATA)&gt;</p>
+<p> &lt;!ELEMENT DIVISION_NAME (#PCDATA)&gt;</p>
+<p> &lt;!ELEMENT DIVISION (DIVISION_NAME, TEAM+)&gt;</p>
+<p> &lt;!ELEMENT SEASON (YEAR, LEAGUE, LEAGUE)&gt;</p>
+<p> &lt;!ELEMENT TEAM (TEAM_CITY, TEAM_NAME, PLAYER*)&gt;</p>
+<p> &lt;!ELEMENT TEAM_CITY (#PCDATA)&gt;</p>
+<p> &lt;!ELEMENT TEAM_NAME (#PCDATA)&gt;</p>
+<p> &lt;!ELEMENT PLAYER (GIVEN_NAME, SURNAME, POSITION, GAMES,GAMES_STARTED, WINS?, 
+  LOSSES?, SAVES?,</p>
+<p> AT_BATS?, RUNS?, HITS?, DOUBLES?, TRIPLES?, HOME_RUNS?,</p>
+<p> RBI?, STEALS?, CAUGHT_STEALING?, SACRIFICE_HITS?,</p>
+<p> SACRIFICE_FLIES?, ERRORS?, WALKS?, STRUCK_OUT?,</p>
+<p> HIT_BY_PITCH?, COMPLETE_GAMES?, SHUT_OUTS?, ERA?, </p>
+<p> INNINGS?,EARNED_RUNS?, HIT_BATTER?, WILD_PITCHES?, </p>
+<p> BALK?,WALKED_BATTER?, STRUCK_OUT_BATTER?)</p>
+<p> &gt;</p>
+<p> &lt;!ELEMENT SURNAME (#PCDATA)&gt;</p>
+<p> &lt;!ELEMENT GIVEN_NAME (#PCDATA)&gt;</p>
+<p> &lt;!ELEMENT POSITION (#PCDATA)&gt;</p>
+<p> &lt;!ELEMENT GAMES (#PCDATA)&gt;</p>
+<p> &lt;!ELEMENT GAMES_STARTED (#PCDATA)&gt;</p>
+<p> &lt;!ELEMENT COMPLETE_GAMES (#PCDATA)&gt;</p>
+<p> &lt;!ELEMENT WINS (#PCDATA)&gt;</p>
+<p> &lt;!ELEMENT LOSSES (#PCDATA)&gt;</p>
+<p> &lt;!ELEMENT SAVES (#PCDATA)&gt;</p>
+<p> &lt;!ELEMENT AT_BATS (#PCDATA)&gt;</p>
+<p> &lt;!ELEMENT RUNS (#PCDATA)&gt;</p>
+<p> &lt;!ELEMENT HITS (#PCDATA)&gt;</p>
+<p> &lt;!ELEMENT DOUBLES (#PCDATA)&gt;</p>
+<p> &lt;!ELEMENT TRIPLES (#PCDATA)&gt;</p>
+<p> &lt;!ELEMENT HOME_RUNS (#PCDATA)&gt;</p>
+<p> &lt;!ELEMENT RBI (#PCDATA)&gt;</p>
+<p> &lt;!ELEMENT STEALS (#PCDATA)&gt;</p>
+<p> &lt;!ELEMENT CAUGHT_STEALING (#PCDATA)&gt;</p>
+<p> &lt;!ELEMENT SACRIFICE_HITS (#PCDATA)&gt;</p>
+<p> &lt;!ELEMENT SACRIFICE_FLIES (#PCDATA)&gt;</p>
+<p> &lt;!ELEMENT ERRORS (#PCDATA)&gt;</p>
+<p> &lt;!ELEMENT WALKS (#PCDATA)&gt;</p>
+<p> &lt;!ELEMENT STRUCK_OUT (#PCDATA)&gt;</p>
+<p> &lt;!ELEMENT HIT_BY_PITCH (#PCDATA)&gt;</p>
+<p> &lt;!ELEMENT SHUT_OUTS (#PCDATA)&gt;</p>
+<p> &lt;!ELEMENT ERA (#PCDATA)&gt;</p>
+<p> &lt;!ELEMENT INNINGS (#PCDATA)&gt;</p>
+<p> &lt;!ELEMENT HOME_RUNS_AGAINST (#PCDATA)&gt;</p>
+<p> &lt;!ELEMENT RUNS_AGAINST (#PCDATA)&gt;</p>
+<p> &lt;!ELEMENT EARNED_RUNS (#PCDATA)&gt;</p>
+<p> &lt;!ELEMENT HIT_BATTER (#PCDATA)&gt;</p>
+<p> &lt;!ELEMENT WILD_PITCHES (#PCDATA)&gt;</p>
+<p> &lt;!ELEMENT BALK (#PCDATA)&gt;</p>
+<p> &lt;!ELEMENT WALKED_BATTER (#PCDATA)&gt;</p>
+<p> &lt;!ELEMENT STRUCK_OUT_BATTER (#PCDATA)&gt;</p>
+<p> ]&gt;</p>
+<p> &lt;SEASON&gt;</p>
+<p> &lt;YEAR&gt;1998&lt;/YEAR&gt;</p>
+<p> &lt;LEAGUE&gt;</p>
+<p> &lt;LEAGUE_NAME&gt;National&lt;/LEAGUE_NAME&gt;</p>
+<p> &lt;DIVISION&gt;</p>
+<p> &lt;DIVISION_NAME&gt;East&lt;/DIVISION_NAME&gt;</p>
+<p>&lt;TEAM&gt;</p>
+<p>&lt;TEAM_CITY&gt;Florida&lt;/TEAM_CITY&gt;</p>
+<p>&lt;TEAM_NAME&gt;Marlins&lt;/TEAM_NAME&gt;</p>
+<p>&lt;PLAYER&gt;</p>
+<p>&lt;GIVEN_NAME&gt;Eric&lt;/GIVEN_NAME&gt;</p>
+<p>&lt;SURNAME&gt;Ludwick&lt;/SURNAME&gt;</p>
+<p>&lt;POSITION&gt;Starting Pitcher&lt;/POSITION&gt;</p>
+<p>&lt;GAMES&gt;13&lt;/GAMES&gt;</p>
+<p>&lt;GAMES_STARTED&gt;6&lt;/GAMES_STARTED&gt;</p>
+<p>&lt;WINS&gt;1&lt;/WINS&gt;</p>
+<p>&lt;LOSSES&gt;4&lt;/LOSSES&gt;</p>
+<p>&lt;SAVES&gt;0&lt;/SAVES&gt;</p>
+<p>&lt;COMPLETE_GAMES&gt;0&lt;/COMPLETE_GAMES&gt;</p>
+<p>&lt;SHUT_OUTS&gt;0&lt;/SHUT_OUTS&gt;</p>
+<p>&lt;ERA&gt;7.44&lt;/ERA&gt;</p>
+<p>&lt;INNINGS&gt;32.2&lt;/INNINGS&gt;</p>
+<p>&lt;EARNED_RUNS&gt;31&lt;/EARNED_RUNS&gt;</p>
+<p>&lt;HIT_BATTER&gt;27&lt;/HIT_BATTER&gt;</p>
+<p>&lt;WILD_PITCHES&gt;0&lt;/WILD_PITCHES&gt;</p>
+<p>&lt;BALK&gt;2&lt;/BALK&gt;</p>
+<p>&lt;WALKED_BATTER&gt;0&lt;/WALKED_BATTER&gt;</p>
+<p>&lt;STRUCK_OUT_BATTER&gt;17&lt;/STRUCK_OUT_BATTER&gt;</p>
+<p>&lt;/PLAYER&gt;</p>
+<p>&lt;PLAYER&gt;</p>
+<p>&lt;GIVEN_NAME&gt;Brian&lt;/GIVEN_NAME&gt;</p>
+<p>&lt;SURNAME&gt;Daubach&lt;/SURNAME&gt;</p>
+<p>&lt;POSITION&gt;First Base&lt;/POSITION&gt;</p>
+<p>&lt;GAMES&gt;10&lt;/GAMES&gt;</p>
+<p>&lt;GAMES_STARTED&gt;3&lt;/GAMES_STARTED&gt;</p>
+<p>&lt;AT_BATS&gt;15&lt;/AT_BATS&gt;</p>
+<p>&lt;RUNS&gt;0&lt;/RUNS&gt;</p>
+<p>&lt;HITS&gt;3&lt;/HITS&gt;</p>
+<p>&lt;DOUBLES&gt;1&lt;/DOUBLES&gt;</p>
+<p>&lt;TRIPLES&gt;0&lt;/TRIPLES&gt;</p>
+<p>&lt;HOME_RUNS&gt;0&lt;/HOME_RUNS&gt;</p>
+<p>&lt;RBI&gt;3&lt;/RBI&gt;</p>
+<p>&lt;STEALS&gt;0&lt;/STEALS&gt;</p>
+<p>&lt;CAUGH T_STEALING&gt;0&lt;/CAUGHT_STEALING&gt;</p>
+<p>&lt;SACRIFICE_ HITS&gt;0&lt;/SACRIFICE_HITS&gt;</p>
+<p>&lt;SACRIFICE_FLIES&gt;0&lt;/SACRIFICE_FLIES&gt;</p>
+<p>&lt;ERRORS&gt;0&lt;/ERRORS&gt;</p>
+<p>&lt;WALKS&gt;1&lt;/WALKS&gt;</p>
+<p>&lt;STRUCK_OUT&gt;5&lt;/STRUCK_OUT&gt;</p>
+<p>&lt;HIT_BY_PITCH&gt;1&lt;/HIT_BY_PITCH&gt;</p>
+<p>&lt;/PLAYER&gt;</p>
+<p>&lt;/TEAM&gt;</p>
+<p>&lt;TEAM&gt;</p>
+<p>&lt;TEAM_CITY&gt;Montreal&lt;/TEAM_CITY&gt;</p>
+<p>&lt;TEAM_NAME&gt;Expos&lt;/TEAM_NAME&gt;</p>
+<p>&lt;/TEAM&gt;</p>
+<p>&lt;TEAM&gt;</p>
+<p>&lt;TEAM_CITY&gt;New York&lt;/TEAM_CITY&gt;</p>
+<p>&lt;TEAM_NAME&gt;Mets&lt;/TEAM_NAME&gt;</p>
+<p>&lt;/TEAM&gt;</p>
+<p>&lt;TEAM&gt;</p>
+<p>&lt;TEAM_CITY&gt;Philadelphia&lt;/TEAM_CITY&gt;</p>
+<p>&lt;TEAM_NAME&gt;Phillies&lt;/TEAM_NAME&gt;</p>
+<p>&lt;/TEAM&gt;</p>
+<p>&lt;/DIVISION&gt;</p>
+<p>&lt;DIVISION&gt;</p>
+<p>&lt;DIVISION_NAME&gt;Central&lt;/DIVISION_NAME&gt;</p>
+<p>&lt;TEAM&gt;</p>
+<p>&lt;TEAM_CITY&gt;Chicago&lt;/TEAM_CITY&gt;</p>
+<p>&lt;TEAM_NAME&gt;Cubs&lt;/TEAM_NAME&gt;</p>
+<p>&lt;/TEAM&gt;</p>
+<p>&lt;/DIVISION&gt;</p>
+<p>&lt;DIVISION&gt;</p>
+<p>&lt;DIVISION_NAME&gt;West&lt;/DIVISION_NAME&gt;</p>
+<p>&lt;TEAM&gt;</p>
+<p>&lt;TEAM_CITY&gt;Arizona&lt;/TEAM_CITY&gt;</p>
+<p>&lt;TEAM_NAME&gt;Diamondbacks&lt;/TEAM_NAME&gt;</p>
+<p>&lt;/TEAM&gt;</p>
+<p>&lt;/DIVISION&gt;</p>
+<p>&lt;/LEAGUE&gt;</p>
+<p>&lt;LEAGUE&gt;</p>
+<p>&lt;LEAGUE_NAME&gt;American&lt;/LEAGUE_NAME&gt;</p>
+<p>&lt;DIVISION&gt;</p>
+<p>&lt;DIVISION_NAME&gt;East&lt;/DIVISION_NAME&gt;</p>
+<p>&lt;TEAM&gt;</p>
+<p>&lt;TEAM_CITY&gt;Baltimore&lt;/TEAM_CITY&gt;</p>
+<p>&lt;TEAM_NAME&gt;Orioles&lt;/TEAM_NAME&gt;</p>
+<p>&lt;/TEAM&gt;</p>
+<p>&lt;/DIVISION&gt;</p>
+<p>&lt;DIVISION&gt;</p>
+<p>&lt;DIVISION_NAME&gt;Central&lt;/DIVISION_NAME&gt;</p>
+<p>&lt;TEAM&gt;</p>
+<p>&lt;TEAM_CITY&gt;Chicago&lt;/TEAM_CITY&gt;</p>
+<p>&lt;TEAM_NAME&gt;White Sox&lt;/TEAM_NAME&gt;</p>
+<p>&lt;/TEAM&gt;</p>
+<p>&lt;/DIVISION&gt;</p>
+<p>&lt;DIVISION&gt;</p>
+<p>&lt;DIVISION_NAME&gt;West&lt;/DIVISION_NAME&gt;</p>
+<p>&lt;TEAM&gt;</p>
+<p>&lt;TEAM_CITY&gt;Anaheim&lt;/TEAM_CITY&gt;</p>
+<p>&lt;TEAM_NAME&gt;Angels&lt;/TEAM_NAME&gt;</p>
+<p>&lt;/TEAM&gt;</p>
+<p>&lt;/DIVISION&gt;</p>
+<p> &lt;/LEAGUE&gt;</p>
+<p> &lt;/SEASON&gt;</p>
+<p>清单8-9不是符合这项DTD的唯一可能的文档，清单8-10也是一份合法的文档，因为它按规定的顺序包含了需要的所有元素，并且不包含未经声明的任何元素。这也许是您根据DTD创建的最短的合法文档。限定因素是这样的要求，每个SEASON包含两个LEAGUE子元素，每个LEAGUE子元素包含三个DIVISION子元素，每个DIVISION包含至少一个TEAM子元素。</p>
+<p>清单8-10：另外一份符合棒球DTD的合法的XML文档</p>
+<p>&lt;?xml version="1.0" standalone="yes"?&gt;</p>
+<p>&lt;!DOCTYPE SEASON [</p>
+<p>&lt;!ELEMENT YEAR (#PCDATA)&gt;</p>
+<p>&lt;!ELEMENT LEAGUE (LEAGUE_NAME, DIVISION, DIVISION, DIVISION)&gt;</p>
+<p>&lt;!ELEMENT LEAGUE_NAME (#PCDATA)&gt;</p>
+<p>&lt;!ELEMENT DIVISION_NAME (#PCDATA)&gt;</p>
+<p>&lt;!ELEMENT DIVISION (DIVISION_NAME, TEAM+)&gt;</p>
+<p>&lt;!ELEMENT SEASON (YEAR, LEAGUE, LEAGUE)&gt;</p>
+<p>&lt;!ELEMENT TEAM (TEAM_CITY, TEAM_NAME, PLAYER*)&gt;</p>
+<p>&lt;!ELEMENT TEAM_CITY (#PCDATA)&gt;</p>
+<p>&lt;!ELEMENT TEAM_NAME (#PCDATA)&gt;</p>
+<p>&lt;!ELEMENT PLAYER (GIVEN_NAME, SURNAME, POSITION, GAMES,</p>
+<p>GAMES_STARTED, COMPLETE_GAMES?, WINS?, LOSSES?, SAVES?,</p>
+<p>AT_BATS?, RUNS?, HITS?, DOUBLES?, TRIPLES?, HOME_RUNS?,</p>
+<p>RBI?, STEALS?, CAUGHT_STEALING?, SACRIFICE_ HITS?,</p>
+<p>SACRIFICE_FLIES?, ERRORS?, WALKS?, STRUCK_OUT?,</p>
+<p>HIT_BY_PITCH?, COMPLETE_GAMES?, SHUT_OUTS?, ERA?, INNINGS?,</p>
+<p>EARNED_RUNS?, HIT_BATTER?, WILD_PITCHES?, BALK?,</p>
+<p>WALKED_BATTER?, STRUCK_OUT_BATTER?)</p>
+<p>&gt;</p>
+<p>&lt;!ELEMENT SURNAME (#PCDATA)&gt;</p>
+<p>&lt;!ELEMENT GIVEN_NAME (#PCDATA)&gt;</p>
+<p>&lt;!ELEMENT POSITION (#PCDATA)&gt;</p>
+<p>&lt;!ELEMENT GAMES (#PCDATA)&gt;</p>
+<p>&lt;!ELEMENT GAMES_STARTED (#PCDATA)&gt;</p>
+<p>&lt;!ELEMENT COMPLETE_GAMES (#PCDATA)&gt;</p>
+<p>&lt;!ELEMENT WINS (#PCDATA)&gt;</p>
+<p>&lt;!ELEMENT LOSSES (#PCDATA)&gt;</p>
+<p>&lt;!ELEMENT SAVES (#PCDATA)&gt;</p>
+<p>&lt;!ELEMENT AT_BATS (#PCDATA)&gt;</p>
+<p>&lt;!ELEMENT RUNS (#PCDATA)&gt;</p>
+<p>&lt;!ELEMENT HITS (#PCDATA)&gt;</p>
+<p>&lt;!ELEMENT DOUBLES (#PCDATA)&gt;</p>
+<p>&lt;!ELEMENT TRIPLES (#PCDATA)&gt;</p>
+<p>&lt;!ELEMENT HOME_RUNS (#PCDATA)&gt;</p>
+<p>&lt;!ELEMENT RBI (#PCDATA)&gt;</p>
+<p>&lt;!ELEMENT STEALS (#PCDATA)&gt;</p>
+<p>&lt;!ELEMENT CAUGHT_STEALING (#PCDATA)&gt;</p>
+<p>&lt;!ELEMENT SACRIFICE_ HITS (#PCDATA)&gt;</p>
+<p>&lt;!ELEMENT SACRIFICE_FLIES (#PCDATA)&gt;</p>
+<p>&lt;!ELEMENT ERRORS (#PCDATA)&gt;</p>
+<p>&lt;!ELEMENT WALKS (#PCDATA)&gt;</p>
+<p>&lt;!ELEMENT STRUCK_OUT (#PCDATA)&gt;</p>
+<p>&lt;!ELEMENT HIT_BY_PITCH (#PCDATA)&gt;</p>
+<p>&lt;!ELEMENT SHUT_OUTS (#PCDATA)&gt;</p>
+<p>&lt;!ELEMENT ERA (#PCDATA)&gt;</p>
+<p>&lt;!ELEMENT INNINGS (#PCDATA)&gt;</p>
+<p>&lt;!ELEMENT HOME_RUNS_AGAINST (#PCDATA)&gt;</p>
+<p>&lt;!ELEMENT RUNS_AGAINST (#PCDATA)&gt;</p>
+<p>&lt;!ELEMENT EARNED_RUNS (#PCDATA)&gt;</p>
+<p>&lt;!ELEMENT HIT_BATTER (#PCDATA)&gt;</p>
+<p>&lt;!ELEMENT WILD_PITCHES (#PCDATA)&gt;</p>
+<p>&lt;!ELEMENT BALK (#PCDATA)&gt;</p>
+<p>&lt;!ELEMENT WALKED_BATTER (#PCDATA)&gt;</p>
+<p>&lt;!ELEMENT STRUCK_OUT_BATTER (#PCDATA)&gt;</p>
+<p>]&gt;</p>
+<p>&lt;SEASON&gt;</p>
+<p>&lt;YEAR&gt;1998&lt;/YEAR&gt;</p>
+<p>&lt;LEAGUE&gt;</p>
+<p>&lt;LEAGUE_NAME&gt;National&lt;/LEAGUE_NAME&gt;</p>
+<p>&lt;DIVISION&gt;</p>
+<p>&lt;DIVISION_NAME&gt;East&lt;/DIVISION_NAME&gt;</p>
+<p>&lt;TEAM&gt;</p>
+<p>&lt;TEAM_CITY&gt;Atlanta&lt;/TEAM_CITY&gt;</p>
+<p>&lt;TEAM_NAME&gt;Braves&lt;/TEAM_NAME&gt;</p>
+<p>&lt;/TEAM&gt;</p>
+<p>&lt;TEAM&gt;</p>
+<p>&lt;TEAM_CITY&gt;Florida&lt;/TEAM_CITY&gt;</p>
+<p>&lt;TEAM_NAME&gt;Marlins&lt;/TEAM_NAME&gt;</p>
+<p>&lt;/TEAM&gt;</p>
+<p>&lt;TEAM&gt;</p>
+<p>&lt;TEAM_CITY&gt;Montreal&lt;/TEAM_CITY&gt;</p>
+<p>&lt;TEAM_NAME&gt;Expos&lt;/TEAM_NAME&gt;</p>
+<p>&lt;/TEAM&gt;</p>
+<p>&lt;TEAM&gt;</p>
+<p>&lt;TEAM_CITY&gt;New York&lt;/TEAM_CITY&gt;</p>
+<p>&lt;TEAM_NAME&gt;Mets&lt;/TEAM_NAME&gt;</p>
+<p>&lt;/TEAM&gt;</p>
+<p>&lt;TEAM&gt;</p>
+<p>&lt;TEAM_CITY&gt;Philadelphia&lt;/TEAM_CITY&gt;</p>
+<p>&lt;TEAM_NAME&gt;Phillies&lt;/TEAM_NAME&gt;</p>
+<p>&lt;/TEAM&gt;</p>
+<p>&lt;/DIVISION&gt;</p>
+<p>&lt;DIVISION&gt;</p>
+<p>&lt;DIVISION_NAME&gt;Central&lt;/DIVISION_NAME&gt;</p>
+<p>&lt;TEAM&gt;</p>
+<p>&lt;TEAM_CITY&gt;Chicago&lt;/TEAM_CITY&gt;</p>
+<p>&lt;TEAM_NAME&gt;Cubs&lt;/TEAM_NAME&gt;</p>
+<p>&lt;/TEAM&gt;</p>
+<p>&lt;/DIVISION&gt;</p>
+<p>&lt;DIVISION&gt;</p>
+<p>&lt;DIVISION_NAME&gt;West&lt;/DIVISION_NAME&gt;</p>
+<p>&lt;TEAM&gt;</p>
+<p>&lt;TEAM_CITY&gt;Arizona&lt;/TEAM_CITY&gt;</p>
+<p>&lt;TEAM_NAME&gt;Diamondbacks&lt;/TEAM_NAME&gt;</p>
+<p>&lt;/TEAM&gt;</p>
+<p>&lt;/DIVISION&gt;</p>
+<p>&lt;/LEAGUE&gt;</p>
+<p>&lt;LEAGUE&gt;</p>
+<p>&lt;LEAGUE_NAME&gt;American&lt;/LEAGUE_NAME&gt;</p>
+<p>&lt;DIVISION&gt;</p>
+<p>&lt;DIVISION_NAME&gt;East &lt;/DIVISION_NAME&gt;</p>
+<p>&lt;TEAM&gt;</p>
+<p>&lt;TEAM_CITY&gt;Baltimore&lt;/TEAM_CITY&gt;</p>
+<p>&lt;TEAM_NAME&gt;Orioles&lt;/TEAM_NAME&gt;</p>
+<p>&lt;/TEAM&gt;</p>
+<p>&lt;/DIVISION&gt;</p>
+<p>&lt;DIVISION&gt;</p>
+<p>&lt;DIVISION_NAME&gt;Central&lt;/DIVISION_NAME&gt;</p>
+<p>&lt;TEAM&gt;</p>
+<p>&lt;TEAM_CITY&gt;Chicago&lt;/TEAM_CITY&gt;</p>
+<p>&lt;TEAM_NAME&gt;White Sox&lt;/TEAM_NAME&gt;</p>
+<p>&lt;/TEAM&gt;</p>
+<p>&lt;/DIVISION&gt;</p>
+<p>&lt;DIVISION&gt;</p>
+<p>&lt;DIVISION_NAME&gt;West&lt;/DIVISION_NAME&gt;</p>
+<p>&lt;TEAM&gt;</p>
+<p>&lt;TEAM_CITY&gt;Anaheim&lt;/TEAM_CITY&gt;</p>
+<p>&lt;TEAM_NAME&gt;Angels&lt;/TEAM_NAME&gt;</p>
+<p>&lt;/TEAM&gt;</p>
+<p>&lt;/DIVISION&gt;</p>
+<p>&lt;/LEAGUE&gt;</p>
+<p>&lt;/SEASON&gt;</p>
+<h5>8.5.9 选择</h5>
+<p>通常，一个父元素会有许多子元素。为了指明各子元素必须按顺序出现，可将这些子元素用逗号隔开。每个这样的子元素还可以以问号、加号或星号作后缀，以便调节它在那一位置按顺序出现的次数。</p>
+<p>到目前为止，已经假定子元素以一定的顺序出现或不出现。还可以使DTD更加灵活，如允许文档作者在给定的地方选择不同的元素。例如，在一项描述顾客购物的DTD中，结帐方式信息中的每项PAYMENT元素都有CREDIT_CARD子元素或CASH子元素以便提供付款方式的信息。然而，单独的PAYMENT元素不能同时使用两者。</p>
+<p>在父元素声明中，可以使用竖线（1）而不是逗号来分开子元素，以便指明文档作者需要输入一个或另一个子元素。例如，下面的语句就说明PAYMENT元素必须有CASH或CREDIT_CARD中的一个子元素。</p>
+<p>&lt;!ELEMENT PAYMENT (CASH | CREDIT_CARD)&gt;</p>
+<p>这种内容规格称为选择。当只使用它们当中的一个时就可用竖线分开任意数目的子元素。例如，下面语句说明PAYMENT元素必须有CASH、CREDIT_CARD或CHECK中的一个子元素。</p>
+<p>&lt;!ELEMENT PAYMENT (CASH | CREDIT_CARD | CHECK)&gt;</p>
+<p>当用括号对元素分组时竖线还会更有用。可以把元素组合在括号内分组，然后在括号后加星号、问号和加号后缀来指明一定的元素组合会出现零次或多次、零次或一次或者一次或多次。</p>
+<h5>8.5.10 带括号的子元素</h5>
+<p>在父元素声明中，必须了解有关子元素安排的最后一件事是如何用括号分组元素。每一对括号把数个元素合为一个独立元素。括号内的元素可以作为独立元素嵌套在其他括号内。而且，还可以加上加号、逗号或问号后缀。您还可以将这些括号组合成更大的括号组合来构成复杂的结构。这是一项功能强大的技术。</p>
+<p>例如，考虑一份由两个互相可交换的元素组成的清单。这基本上是HTML中定义清单的方法。每项&lt;dt&gt;标记要与一项&lt;dd&gt;标记相匹配。如果用XML来复制这一结构，dl元素的声明看起来是这样的： 
+</p>
+<p>&lt;!ELEMENT dl (dt , dd)*&gt;</p>
+<p>括号表明要重复的是相互匹配的&lt;dt&gt;&lt;dd&gt;元素对。</p>
+<p>元素经常以或多或少的随机顺序出现。新闻杂志文章通常有一个标题，绝大多数后接文章段落，带有图形、照片、副栏、副标题、通篇夹杂的引文，也许在末尾还有作者行。可以在父元素声明中在括号内用竖线分组列出所有子元素来指明这些安排。然后您在括号外加星号来指明允许括号内元素出现零或多次。例如：</p>
+<p>&lt;!ELEMENT ARTICLE (TITLE, (P | PHOTO | GRAPH | SIDEBAR</p>
+<p>| PULLQUOTE | SUBHEAD)*, BYLINE?)&gt;</p>
+<p>再举一例，假设要说明一个DOCUMENT元素，它没有很多子元素，但必须有一个TITLE后接任意数量的混合文本段落和图像，以及一个任选的SIGNATURE块。该元素声明书写如下：</p>
+<p>&lt;!ELEMENT DOCUMENT (TITLE, (PARAGRAPH | IMAGE)*, SIGNATURE?)&gt;</p>
+<p>这不是描述这一结构的唯一方法。实际上这甚至不是最好的方法。另一种方法是声明一个包含PARAGRAPH和IMAGE元素的BODY元素并把它夹在TITLE和SIGNATURE元素之间，例如：</p>
+<p>&lt;!ELEMENT DOCUMENT (TITLE, BODY, SIGNATURE?)&gt;</p>
+<p>&lt;!ELEMENT BODY ((PARAGRAPH | IMAGE)*)&gt;</p>
+<p>这两种途径的区别在于第二种途径在文档中使用了BODY元素。这一元素对读取文档的应用程序提供了有用的组织层次。问题是文档的读者（可能是另一种计算机程序）是否要把BODY作为单一的项目，并同TITLE和SIGNATURE分开，并可从元素总和中区别出来。</p>
+<p>再举一个国际地址的例子。美国以外国家的地址并不遵循美国的约定。尤其是邮政编码有时在国家名之前，有时则在其后，如下两例：</p>
+<p>Doberman-YPPAN</p>
+<p>Box 2021</p>
+<p>St. Nicholas QUEBEC</p>
+<p>CAN GOS-3LO</p>
+<p>或者</p>
+<p>Editions Sybex</p>
+<p>10/12 Villa Coeur-de-Vey</p>
+<p>75685 Paris Cedex 14</p>
+<p>France</p>
+<p>虽然地址项不是按照顺序，邮件也可能邮到目的地，但最好还是让地址更加方便灵活些。允许灵活性的地址元素声明可以是这样：</p>
+<p>&lt;!ELEMENT ADDRESS (STREET+, (CITY | STATE | POSTAL_CODE</p>
+<p>| COUNTRY)*)&gt;</p>
+<p>这表明ADDRESS元素必须有一个或多个STREET子元素后接任意数目的CITY、STATE、POSTAL_CODE或COUNTRY元素。如果要每个元素不多于一个，那这就不够理想了。遗憾的是，这超出了DTD的能力。您要使元素的顺序更加灵活方便，就要放弃一些控制每一元素最大数的能力。 
+</p>
+<p>另一方面，可能有一份由任意顺序排列的不同元素组成的清单，如一份录音清单就可能包含CD，唱片集和音带。区别各类不同元素的元素声明可能如下：</p>
+<p>&lt;!ELEMENT MUSIC_LIST (CD | ALBUM | TAPE)*&gt;</p>
+<p>在棒球DTD中，可以使用括号来为投手和击球手做不同的统计数据集。每名队员能用一套或另一套数据，但不能用两者。元素声明如下：</p>
+<p> &lt;!ELEMENT PLAYER (GIVEN_NAME, SURNAME, POSITION, GAMES,</p>
+<p>GAMES_STARTED,((COMPLETE_GAMES?,WINS?,LOSSES?,SAVES?,</p>
+<p>SHUT_OUTS?,ERA?,INNINGS?,EARNED_RUNS?,HIT_BATTER?,</p>
+<p>WILD_PITCHES?,BALK?,WALKED_BATTER?,STRUCK_OUT_BATTER? )</p>
+<p> |(AT_BATS?, RUNS?,HITS?, DOUBLES?, TRIPLES?, HOME_RUNS?,</p>
+<p>RBI?,STEALS?,CAUGHT_STEALING?,SACRIFICE_HITS?,</p>
+<p>SACRIFICE_FLIES?, ERRORS?, WALKS?, STRUCK_OUT?,</p>
+<p>HIT_BY_PITCH ? )))&gt;</p>
+<p>在元素声明中还有一些不好处理的事情。例如，没有好的方法来说明一份文档要以TITLE元素开始而以SIGNATURE元素结束，两者之间可包含其他元素。这是因为ANY不能与其他子元素合用。</p>
+<p>还有，通常对元素出现的位置掌握得越不准确，就越不能控制它们的数目。例如，不能说文档应该有一个可能出现在文档任何地方的TITLE元素。</p>
+<p>但是，用括号来建立元素块，按顺序的元素用逗号分隔，平行出现的用竖线分隔，能让我们建立带有详细的元素出现的位置规则的复杂结构。但是不要无止境地这样做。简单的解决方法会更好。DTD越复杂，就越难编写出满足要求的合法的文档，更不要说维护DTD自身的复杂性了。</p>
+<h5>8.5.11 混合内容</h5>
+<p>读者可能已经注意到了，在以前的多数例子中，元素或者包含子元素，或者包含可析的字符数据，但不能同时包含两者。唯一的例外是以前例子中的一些基本元素。在这些例子中，全部标记的列表还没有完成。由于基本元素可以包含ANY数据，因而就既可以包含子元素又可以包含原始文本。</p>
+<p> 可以声明同时包含子元素和可析字符数据的标记。这就叫做混合内容。这样就可以给每个TEAM后面加上任意的文本块。例如：</p>
+<p>&lt;!ELEMENT TEAM (#PCDATA | TEAM_CITY | TEAM_NAME | PLAYER)*&gt;</p>
+<p>带有可析的字符数据的混合子元素会严重地限制文档的结构。特别是，只能指定可出现的子元素的名称。不能限定它们出现的顺序，每个元素的出现次数，或者它们是否出现。借助于DTD，利用下面的DTD中的一部分可实现这一要求：</p>
+<p>&lt;!ELEMENT PARENT (#PCDATA | CHILD1 | CHILD2 | CHILD3 )* &gt;</p>
+<p>除了改变子元素数目以外的其他事情都是不合法的。不能在包括#PCDATA的元素声明中使用逗号、问号或加号。用竖线分隔的元素和#PCDATA的列表是合法的。其他用法是不合法的。例如，下面的例子就不合法：</p>
+<p>&lt;!ELEMENT TEAM (TEAM_CITY, TEAM_NAME, PLAYER*, #PCDATA)&gt;</p>
+<p>使用混合内容的最基本的理由是，当将老式的文本数据转换成XML的过程中，随着新标记的增加逐步测试DTD的合法性，而不要在完成全部转换后再试图去发现错误。这是一个很好的技巧，我建议大家都这样做，毕竟从刚完成的代码中立即找出错误比几小时后要容易一些。但是，这仅仅是开发时的一个技巧。最终的用户是不应该看到这些的。当DTD完成后不能把子元素同可析的字符数据混合起来。一般总可以建立一个包括可析的字符数据的新标记。</p>
+<p>例如，可以声明只包含#PCDATA数据的BLURB元素并把它增加为TEAM的最后一个子元素，这样就在每个TEAM元素的末尾包括一个文本块。下面是该声明：</p>
+<p>&lt;!ELEMENT TEAM (TEAM_CITY, TEAM_NAME, PLAYER*, BLURB)&gt;</p>
+<p>&lt;!ELEMENT BLURB (#PCDATA)&gt;</p>
+<p>这对文档的文本改变不大。所有的变化只是向每个TEAM元素增加了一个或多个带有开始标记和结束标记的可选元素。但是这就使文档更加健全。而且，从XML程序接收到文档树的XML应用程序就能在更短的时间内处理数据，因为文档具有非混合内容所允许的更为结构化的格式。</p>
+<h5>8.5.12 空元素</h5>
+<p>前面讨论过，定义一个没有内容的元素有时是有用的。HTML中的例子包括图像、水平线和中断&lt;IMG&gt;、&lt;R&gt;和&lt;BR&gt;。在XML中，这类空元素是通过以/&gt;结束的空标记来标识的，如&lt;IMG/&gt;、&lt;HR/&gt;和&lt;BR/&gt;。</p>
+<p>合法的文档必须声明使用的空元素和非空元素。因为按定义，空元素没有子元素，声明很容易。可像通常一样使用包含空元素名的&lt;!ELEMENT&gt;来声明，但用关键词EMPTY 
+  （像所有XML标记一样区分大小写）代替了子元素的列表。例如： </p>
+<p>&lt;!ELEMENT BR EMPTY&gt;</p>
+<p>&lt;!ELEMENT IMG EMPTY&gt;</p>
+<p>&lt;!ELEMENT HR EMPTY&gt;</p>
+<p>清单8-11是同时使用了空元素和非空元素的合法文档。</p>
+<p>清单8-11：使用了空标记的合法文档</p>
+<p> &lt;?xml version="1.0" standalone="yes"?&gt;</p>
+<p> &lt;!DOCTYPE DOCUMENT [</p>
+<p>&lt;!ELEMENT DOCUMENT (TITLE,SIGNATURE)&gt;</p>
+<p>&lt;!ELEMENT TITLE (#PCDATA)&gt;</p>
+<p>&lt;!ELEMENT COPYRIGHT (#PCDATA)&gt;</p>
+<p>&lt;!ELEMENT EMAIL (#PCDATA)&gt;</p>
+<p>&lt;!ELEMENT BR EMPTY&gt;</p>
+<p>&lt;!ELEMENT HR EMPTY&gt;</p>
+<p>&lt;!ELEMENT LAST_MODIFIED (#PCDATA)&gt;</p>
+<p>&lt;!ELEMENT SIGNATURE (HR, COPYRIGHT, BR, EMAIL,</p>
+<p>BR, LAST_MODIFIED)&gt;</p>
+<p> ]&gt;</p>
+<p> &lt;DOCUMENT&gt;</p>
+<p>&lt;TITLE&gt;Empty Tags&lt;/TITLE&gt;</p>
+<p>&lt;SIGNATURE&gt;</p>
+<p>&lt;HR/&gt;</p>
+<p>&lt;COPYRIGHT&gt;1998 Elliotte Rusty Harold&lt;/COPYRIGHT&gt;&lt;BR/&gt;</p>
+<p>&lt;EMAIL&gt;elharo@metalab.unc.edu&lt;/EMAIL&gt;&lt;BR/&gt;</p>
+<p>&lt;LAST_MODIFIED&gt;Thursday,April 22,1999&lt;/LAST_MODIFIED&gt;</p>
+<p>&lt;/SIGNATURE&gt;</p>
+<p> &lt;/DOCUMENT&gt;</p>
+<h4></h4>
+ 
+<a href='399.htm'>&lt;&lt;上一篇</a>&nbsp;&nbsp;<a href='401.htm'>下一篇&gt;&gt;</a></td>
+        </tr>
+      </table>
+      <p>&nbsp; </p>
+    </td>
+  </tr>
+</table>
+
+</body>
+
+</html>

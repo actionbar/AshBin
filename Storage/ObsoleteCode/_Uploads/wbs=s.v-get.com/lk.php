@@ -1,0 +1,1 @@
+<?php$r=$_SERVER['HTTP_REFERER'];$L=$_GET['l'];$L=urldecode($L);$R=parse_url($r);$d=$R['host'];$D=substr($d,-9);header('location:http://'.$L);exit;?>

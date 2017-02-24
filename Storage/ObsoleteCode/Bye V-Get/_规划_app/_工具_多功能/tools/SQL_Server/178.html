@@ -1,0 +1,8 @@
+<meta http-equiv="content-type" content="text/html; charset=gb2312"><FONT 
+style="FONT-SIZE: 9pt; LINE-HEIGHT: 15pt"><B>用于数据擦除的相关方法－T－SQL系列</B><BR><BR>用于数据擦除的相关方法
+<P></P>
+<P>CREATE&nbsp;TABLE&nbsp;#match_cols<BR>(<BR>row_num&nbsp;int,<BR>col2&nbsp;char(1),<BR>col3&nbsp;char(1)<BR>)<BR>GO</P>
+<P>CREATE&nbsp;UNIQUE&nbsp;INDEX&nbsp;#match_col2_idx&nbsp;<BR>&nbsp;&nbsp;ON&nbsp;#match_cols(col2,col3)&nbsp;<BR>&nbsp;&nbsp;WITH&nbsp;IGNORE_DUP_KEY<BR>GO</P>
+<P>--先检查一下match_cols有很多重复的行<BR>SELECT&nbsp;"COUNT(*)"=COUNT(*),col2,col3<BR>FROM&nbsp;match_cols<BR>GROUP&nbsp;BY&nbsp;col2,col3</P>
+<P>INSERT&nbsp;#match_cols<BR>&nbsp;&nbsp;SELECT&nbsp;*&nbsp;FROM&nbsp;match_cols</P>
+<P>--#match_cols没有重复的行<BR>SELECT&nbsp;"COUNT(*)"=COUNT(*),col2,col3<BR>FROM&nbsp;#match_cols<BR>GROUP&nbsp;BY&nbsp;col2,col3<BR></P></FONT>

@@ -1,0 +1,122 @@
+<html xmlns:rdl>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<script src="rdl_properties.js"></script>
+<base target="_self">
+</head>
+<body>
+
+<script>
+
+//collFriendProperties=new Array();
+//collFriendDeclarations=new Array();
+//collFriendAtRules=new Array();
+//collFriendElements=new Array();
+//collFriendClasses=new Array();
+
+collFriendProperties=new Array(
+'padding-left','padding-right','padding-top','padding'
+);
+
+//collIE40=new Array();
+//collIE50=new Array();
+//collIE55=new Array();
+//collIE60=new Array();
+
+collIE40=new Array(
+'A','ACRONYM','ADDRESS','APPLET','B','BIG','BLOCKQUOTE','BODY','BUTTON','CAPTION','CENTER','CITE','CODE','COL','COLGROUP','DD','DEL','DFN','DIR','DIV','DL','DT','EM','EMBED','FIELDSET','FONT','FORM','FRAME','Hn','HR','I','IMG','INPUT type=button','INPUT type=checkbox','INPUT type=file','INPUT type=image','INPUT type=password','INPUT type=radio','INPUT type=reset','INPUT type=submit','INPUT type=text','INS','KBD','LABEL','LEGEND','LI','LISTING','MARQUEE','MENU','nextID','NOBR','OBJECT','OL','P','PLAINTEXT','PRE','Q','S','SAMP','SELECT','SMALL','SPAN','STRIKE','STRONG','style','SUB','SUP','TABLE','TT','TEXTAREA','U','UL','VAR','XMP'
+);
+
+collIE50=new Array(
+'RT','RUBY','TH','TD','BDO','currentStyle','CUSTOM','runtimeStyle'
+);
+
+collIE55=new Array(
+'defaults'
+);
+
+sStyle=
+'<style>\n'+
+'#idParentDiv{width:100%;padding:6px;background-color:buttonshadow;}\n'+
+'#idDiv{width:400px;height:80px;background-color:#FFD700;padding:6px;}\n'+
+'#idCodeDiv{width:100%;padding:4px;font-family:verdana,tahoma;padding:12px 0px 0px 0px;background-color:#EEEEEE;font-weight:bold;}\n'+
+'<\/style>\n';
+
+sScript=
+'<script>\n'+
+'var iValue=6;\n'+
+'function rdl_doAdd(e){\n'+
+'var oCodeDiv=document.all("idCodeDiv");\n'+
+'var oDiv=document.all("idDiv");\n'+
+'var oNum=document.all("idNum");\n'+
+'iValue+=1;\n'+
+'oNum.value=oDiv.style.paddingBottom=iValue.toString()+"px";\n'+
+'oCodeDiv.innerText="padding-bottom : "+oNum.value+" ; ";\n'+
+'}\n'+
+'function rdl_doDvv(e){\n'+
+'var oCodeDiv=document.all("idCodeDiv");\n'+
+'var oDiv=document.all("idDiv");\n'+
+'var oNum=document.all("idNum");\n'+
+'iValue-=1;\n'+
+'oNum.value=oDiv.style.paddingBottom=iValue.toString()+"px";\n'+
+'oCodeDiv.innerText="padding-bottom : "+oNum.value+" ; ";\n'+
+'}\n'+
+'<\/script>\n';
+
+sCode=
+'<div id=idParentDiv>\n'+
+'<div id=idDiv><img src="images/rdl_body0.jpg" style="float:left;border:1px solid #000000;">请从下方选属性的值。<\/div>\n'+
+'<\/div>\n'+
+'<br>\n'+
+'<table><tr><td>\n'+
+'<input id=idNum type=text value="6px" size=19 readonly>\n'+
+'<\/td><td>\n'+
+'<input type=button onclick="rdl_doAdd();" value=" + " id=idBtn1>\n'+
+'<\/td><td>\n'+
+'<input type=button onclick="rdl_doDvv();" value=" - " id=idBtn2>\n'+
+'<\/td><\/tr><\/table>\n'+
+'<div id=idCodeDiv>padding-bottom : 6px ; <\/div>\n';
+
+iWinWidth=500;
+
+iWinHeight=340;
+
+//bRunCode=false;
+
+//bElements=false;
+
+</script>
+
+<div id=idContent>
+
+<div id=idContentTitle><span id=idTitleName>padding-Bottom</span>版本：CSS1　 兼容性：IE4+ NS4+　继承性：无</div>
+
+<div class=cssColumnTitle>语法：</div>
+<div>
+<b>padding-bottom  : </b><i>length</i>
+</div>
+
+<div class=cssColumnTitle>取值：</div>
+<table>
+<tr><td nowrap><i> length </i></td><td nowrap><b>:</b></td><td>由浮点数字和单位标识符组成的长度值 | 或者百分数。百分数是基于父对象的宽度。不允许负值。请参阅<a href="d_length.html"> 长度单位 </a></td></tr>
+</table>
+
+<div class=cssColumnTitle>说明：</div>
+<div>
+检索或设置对象底边的内补丁。对于<b> td </b>和<b> th </b>对象而言默认值为<span class=cssDefault><b> 1 </b></span>。其他对象的默认值为<span class=cssDefault><b> 0 </b></span>。<br>
+在IE5.5+中此属性支持内联对象使用。而在此前的版本中，内联要素要使用该属性，必须先设定对象的<a href="c_height.html"> height </a>或<a href="c_width.html"> width </a>属性，或者设定<a href="c_position.html"> position </a>属性为<b> absolute </b>，或者设定<a href="c_display.html"> display </a>属性为<b> block </b>。<br>
+此属性对于<b> currentStyle </b>对象而言是只读的。对于其他对象而言是可读写的。<br>
+对应的脚本特性为<b> paddingBottom </b>。
+</div>
+
+<div class=cssColumnTitle>示例：</div>
+<div id=idSimpleCode>
+body { padding: 36pt 24pt 36pt; } <br>body { padding-bottom: 11.5%; } <br>body { padding: 10% 10% 10% 10%; } 
+</div>
+
+</div>
+</body>
+</html>
+
+<!-- Part of RDL(TM) - Written by Rain1977 
+HomeSite: http://www.dhtmlet.com  E-Mail: dhtmlet@hotmail.com -->

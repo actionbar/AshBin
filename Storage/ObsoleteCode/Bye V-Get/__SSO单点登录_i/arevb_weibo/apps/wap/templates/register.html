@@ -1,0 +1,28 @@
+{template header}
+
+<p>
+<!--{if $error_message}-->
+出现错误：{$error_message}
+<!--{/if}-->
+</p>
+<p>
+	用户名: <input type="text" name="username" format="M*m" /><br />
+	密码: <input type="password" name="password" format="M*m" /><br />
+	再输密码: <input type="password" name="repassword" format="M*m" /><br />
+	电子邮件: <input type="text" name="email" format="M*m" /><br />
+	验证码: <input type="text" name="seccode" format="M*m" /><br />
+	请计算 
+	<img src="{eval echo miniurl('seccode').'&amp;hash='.random(6, 1);}" />
+	<a href="{eval echo miniurl('register/seccode');}">看不清</a><br />
+	<anchor title="提交">提交<go method="post" href="{eval echo miniurl('register');}">
+		<postfield name="submit_post" value="1" />
+		<postfield name="username" value="$(username)" />
+		<postfield name="password" value="$(password)" />
+		<postfield name="repassword" value="$(repassword)" />
+		<postfield name="email" value="$(email)" />
+		<postfield name="seccode" value="$(seccode)" />
+	</go>
+	</anchor>
+</p>
+
+{template footer}

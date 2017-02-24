@@ -1,0 +1,333 @@
+BODY {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+DIV {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+DL {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+DT {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+DD {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+UL {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+OL {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+LI {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+H1 {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+H2 {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+H3 {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+H4 {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+H5 {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+H6 {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+PRE {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+FORM {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+FIELDSET {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+INPUT {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+TEXTAREA {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+P {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+BLOCKQUOTE {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+TH {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+TD {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+BUTTON {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+INPUT {
+	FONT: 12px/18px Simsun, Helvetica, Arial, sans-serif
+}
+LABEL {
+	FONT: 12px/18px Simsun, Helvetica, Arial, sans-serif
+}
+SELECT {
+	FONT: 12px/18px Simsun, Helvetica, Arial, sans-serif
+}
+OPTION {
+	FONT: 12px/18px Simsun, Helvetica, Arial, sans-serif
+}
+TEXTAREA {
+	FONT: 12px/18px Simsun, Helvetica, Arial, sans-serif
+}
+BUTTON {
+	FONT: 12px/18px Simsun, Helvetica, Arial, sans-serif
+}
+FIELDSET {
+	FONT: 12px/18px Simsun, Helvetica, Arial, sans-serif
+}
+LEGEND {
+	FONT: 12px/18px Simsun, Helvetica, Arial, sans-serif
+}
+TABLE {
+	FONT: 12px/18px Verdana, Simsun, Helvetica, Arial, sans-serif; BORDER-COLLAPSE: collapse; border-spacing: 0
+}
+UL {
+	LIST-STYLE-TYPE: none
+}
+IMG {
+	BORDER-TOP-STYLE: none; BORDER-RIGHT-STYLE: none; BORDER-LEFT-STYLE: none; BORDER-BOTTOM-STYLE: none
+}
+BUTTON {
+	CURSOR: pointer
+}
+INPUT {
+	FONT-SIZE: 12px
+}
+TEXTAREA {
+	FONT-SIZE: 12px
+}
+BODY {
+	FONT: 12px/18px Simsun, Helvetica, Arial, sans-serif; TEXT-ALIGN: center
+}
+#container {
+	MARGIN: 0px auto; WIDTH: 960px; COLOR: #2b2b2b; TEXT-ALIGN: left
+}
+#container .none {
+	DISPLAY: none
+}
+#container TD {
+	VERTICAL-ALIGN: top; FONT-FAMILY: simsun
+}
+#container .mid_td {
+	VERTICAL-ALIGN: middle
+}
+A {
+	COLOR: #138b09; TEXT-DECORATION: none
+}
+A:hover {
+	COLOR: #cc0000; TEXT-DECORATION: underline
+}
+.img_wrap {
+	DISPLAY: block; TEXT-ALIGN: center
+}
+.img_wrap SPAN {
+	DISPLAY: block; TEXT-ALIGN: center
+}
+.img_wrap:hover {
+	TEXT-DECORATION: none
+}
+.img_wrap:hover IMG {
+	TEXT-DECORATION: none
+}
+.img_wrap:hover SPAN {
+	TEXT-DECORATION: none
+}
+.green_a {
+	COLOR: #138b09
+}
+.yel_a {
+	COLOR: #e86800
+}
+.lh_22 {
+	LINE-HEIGHT: 22px
+}
+.lh_24 {
+	LINE-HEIGHT: 24px
+}
+.bk_a {
+	COLOR: #333333
+}
+.wrap {
+	MARGIN-BOTTOM: 4px; POSITION: relative
+}
+.wrap .bg_t {
+	DISPLAY: block; BACKGROUND: url(http://mat1.gtimg.com/edu/images3/campus2010/bg_t.png) no-repeat 0px 0px; LEFT: -25px; WIDTH: 25px; POSITION: absolute; TOP: 0px; HEIGHT: 116px
+}
+.table_1 .in7 {
+	TEXT-INDENT: 7px
+}
+.a_btn {
+	COLOR: #a0880d; TEXT-INDENT: 0px
+}
+.img_wrap {
+	BORDER-RIGHT: #d0d0d0 1px solid; PADDING-RIGHT: 2px; BORDER-TOP: #d0d0d0 1px solid; PADDING-LEFT: 2px; BACKGROUND: #ffffff; MARGIN-BOTTOM: 3px; PADDING-BOTTOM: 2px; BORDER-LEFT: #d0d0d0 1px solid; PADDING-TOP: 2px; BORDER-BOTTOM: #d0d0d0 1px solid
+}
+.table_2 .img_wrap {
+	WIDTH: 105px
+}
+.table_2 A {
+	COLOR: #333333
+}
+.table_2 .more {
+	PADDING-RIGHT: 10px; COLOR: #53b629
+}
+.gray_td {
+	COLOR: #808080; LINE-HEIGHT: 22px
+}
+.mx_btn {
+	MARGIN-TOP: 12px; DISPLAY: block; OVERFLOW: hidden; WIDTH: 60px; TEXT-INDENT: -9999px; HEIGHT: 60px
+}
+#focus {
+	BORDER-RIGHT: #42ae39 1px solid; BORDER-TOP: #42ae39 1px solid; MARGIN: 0px auto; BORDER-LEFT: #42ae39 1px solid; WIDTH: 296px; BORDER-BOTTOM: #42ae39 1px solid; HEIGHT: 396px
+}
+.dy_btn {
+	DISPLAY: block; MARGIN: 0px auto; OVERFLOW: hidden; WIDTH: 290px; TEXT-INDENT: -9999px; HEIGHT: 38px
+}
+.tit_a {
+	FONT: 18px simhei; COLOR: #333333
+}
+.sel_td {
+	DISPLAY: block; MARGIN: 0px auto; WIDTH: 227px
+}
+.img_wrap1 {
+	WIDTH: 100px
+}
+.img_wrap2 {
+	MARGIN: 0px auto; WIDTH: 200px
+}
+.img_wrap3 {
+	WIDTH: 105px
+}
+.img_wrap5 {
+	FLOAT: right; WIDTH: 130px
+}
+.p_1 {
+	WIDTH: 106px; TEXT-ALIGN: center
+}
+.p_2 {
+	MARGIN: 5px auto 0px; WIDTH: 206px; TEXT-ALIGN: center
+}
+.p_3 {
+	WIDTH: 111px; TEXT-ALIGN: center
+}
+.p_4 {
+	MARGIN-TOP: 5px; WIDTH: 130px; TEXT-ALIGN: center
+}
+.table_3 .img_wrap {
+	WIDTH: 130px
+}
+.table_3 P {
+	WIDTH: 136px; TEXT-ALIGN: center
+}
+.more_1 {
+	FLOAT: right; OVERFLOW: hidden; WIDTH: 33px; TEXT-INDENT: -9999px; HEIGHT: 20px
+}
+.list_tab {
+	PADDING-TOP: 4px
+}
+.list_tab LI {
+	MARGIN-BOTTOM: 1px; VERTICAL-ALIGN: top; WIDTH: 219px; CURSOR: pointer; HEIGHT: 25px
+}
+.list_tab LI SPAN {
+	BACKGROUND: #c0a217; FLOAT: left; MARGIN: 4px 25px 0px 2px; WIDTH: 30px; COLOR: #ffffff; TEXT-INDENT: 2px; HEIGHT: 15px
+}
+.list_tab LI A {
+	MARGIN-TOP: 4px; FLOAT: left; COLOR: #827205
+}
+.list_tab LI.on {
+	BACKGROUND: url(http://mat1.gtimg.com/edu/images3/campus2010/li_bg.png) no-repeat 0px 0px
+}
+.list_tab LI.on SPAN {
+	BACKGROUND: #ffffff; COLOR: #827205
+}
+.list_tab LI.on A {
+	COLOR: #333333
+}
+.tab_con {
+	MARGIN: 10px auto 0px; WIDTH: 140px
+}
+.tab_con .p_4 {
+	MARGIN-TOP: 3px; LINE-HEIGHT: 22px
+}
+.img_wrap4 {
+	PADDING-RIGHT: 3px; PADDING-LEFT: 3px; PADDING-BOTTOM: 3px; WIDTH: 220px; PADDING-TOP: 3px
+}
+.bl_a {
+	COLOR: #019cbe; TEXT-DECORATION: underline
+}
+.wbList:unknown {
+	CLEAR: both; DISPLAY: block; VISIBILITY: hidden; LINE-HEIGHT: 0; HEIGHT: 0px; content: '.'
+}
+.wbList {
+	MARGIN: 0px auto; OVERFLOW: hidden; WIDTH: 100%; ZOOM: 1; HEIGHT: 180px
+}
+.wbList LI {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; BACKGROUND: #fff; FLOAT: left; PADDING-BOTTOM: 10px; WIDTH: 100%; LINE-HEIGHT: 1.75; PADDING-TOP: 12px; BORDER-BOTTOM: #d8d8d8 1px dashed; FONT-FAMILY: Tahoma
+}
+.wbList .userPic {
+	FLOAT: left; WIDTH: 56px
+}
+.wbList .userPic IMG {
+	BORDER-RIGHT: #d2d2d2 1px solid; BORDER-TOP: #d2d2d2 1px solid; DISPLAY: block; BACKGROUND: #fff; BORDER-LEFT: #d2d2d2 1px solid; WIDTH: 50px; BORDER-BOTTOM: #d2d2d2 1px solid; HEIGHT: 50px
+}
+.wbList .msgBox {
+	FLOAT: right; WIDTH: 220px
+}
+.wbList .msgCnt {
+	OVERFLOW: hidden; COLOR: #808080; WORD-WRAP: break-word
+}
+.wbList .msgCnt STRONG {
+	MARGIN-RIGHT: 5px
+}
+.wbList .pubInfo {
+	MARGIN-TOP: 4px; FONT-SIZE: 12px; COLOR: #999; LINE-HEIGHT: 1.231
+}
+.jy_btn {
+	FLOAT: right; MARGIN-BOTTOM: 10px; OVERFLOW: hidden; WIDTH: 127px; TEXT-INDENT: -9999px; HEIGHT: 20px
+}
+.zs_btn {
+	FLOAT: right; MARGIN-BOTTOM: 10px; OVERFLOW: hidden; WIDTH: 127px; TEXT-INDENT: -9999px; HEIGHT: 20px
+}
+.bl_a1 {
+	COLOR: #0d8ccd
+}
+.red_a {
+	COLOR: #e03d75
+}
+.rj_td {
+	PADDING-TOP: 25px
+}
+.rj_td A {
+	PADDING-RIGHT: 5px; DISPLAY: block; PADDING-LEFT: 5px; PADDING-BOTTOM: 3px; PADDING-TOP: 3px
+}
+.rj_td .red_a {
+	BORDER-BOTTOM: #fe84ad 1px dotted
+}
+.rj_td .bl_a1 {
+	BORDER-BOTTOM: #80d2fc 1px dotted
+}
+.hz_box {
+	BORDER-RIGHT: #c4edb1 1px solid; BORDER-TOP: #c4edb1 1px solid; BACKGROUND: #f1fae6; BORDER-LEFT: #c4edb1 1px solid; TEXT-INDENT: 10px; LINE-HEIGHT: 25px; BORDER-BOTTOM: #c4edb1 1px solid; HEIGHT: 25px
+}
+.link_td {
+	BORDER-RIGHT: #d0d0d0 1px solid; BORDER-TOP: #d0d0d0 0px; PADDING-LEFT: 10px; BORDER-LEFT: #d0d0d0 1px solid; PADDING-TOP: 5px; BORDER-BOTTOM: #d0d0d0 1px solid
+}
+.link_td A {
+	MARGIN-RIGHT: 13px
+}

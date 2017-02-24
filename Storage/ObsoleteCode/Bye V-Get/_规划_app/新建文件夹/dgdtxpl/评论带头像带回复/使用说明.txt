@@ -1,0 +1,72 @@
+帝国评论带头像带回复GBK插件包
+
+主要功能：
+
+1. 评论带头像
+
+2，回复评论楼层显示
+
+3，评论IP物理地址显示
+
+4，无刷新提交评论
+
+5，AJAX无刷新评论
+
+6，评论增加评论会员积分
+
+7，屏蔽敏感字符提交
+
+使用方法：
+
+1，extend,skin直接解压覆盖到extend,skin下就可以了
+
+2，评论表情QQface放skin下,注意修改一下ali.js 的urlpath,我的是根目录
+
+3.评论数据主表 enewspl 增加了字段  repl 字段 ，到后台执行SQL即可
+
+ALTER TABLE `[!db.pre!]enewspl` ADD `repl` int(11) NOT NULL;
+
+<!--分页评论模板变量-->
+<script type="text/javascript" src="[!--news.url--]skin/js/jquery.js"></script>
+<script type="text/javascript" src="/skin/js/jquery.raty.min.js"></script>
+<script type="text/javascript" src="/skin/js/meishi.js"></script>
+<div class="mt1"><dl class="tbox"><dt><strong>最新评论</strong>
+<span class="more"><a href="[!--news.url--]e/pl/?classid=[!--classid--]&amp;id=[!--id--]">进入详细评论页&gt;&gt;</a></span></dt><!-- //评论内容区 -->
+<dd id='commetcontentNew'><span  id="infocommentarea"><img src="/img/loading.gif" border="0" />正在载入评论数据中... </span></dd></dl>
+    <div class="mt1"><dl class="tbox"><dt><strong>发表评论------------共有<span id="infocommentnumarea">0</span>条评论</strong>
+<span class="more"></span></dt><dd><div class="dede_comment_post"><div class="dcmp-title">
+<small>发表读后感：(登录评论积分增加2点,评论无需输入验证码！)表情符号[1] , ......  [22] <font color="red"> 登录状态：<script src="/e/extend/loginjs.php"></script></font></small>
+</div><div class="dcmp-content">
+         <a name="m_huifu" id="m_huifu"></a>
+    <div class="huifu">
+    	<div id="qqface"></div>
+    	<span class="reface"><a href="javascript://" onclick="showqqface();">表情</a></span>
+        <span>
+        <textarea id="content" name="content"></textarea>
+        <input name="id" type="hidden" id="id" value="[!--id--]" />
+        <input name="classid" type="hidden" id="classid" value="[!--classid--]" />
+        <input name="enews" id="enews" type="hidden" value="ajaxpl" />
+        <input name="repid" type="hidden" id="repid" value="0" />
+        </span>
+    </div>
+  </div><!-- /dcmp-mood --><div class="dcmp-post"><!--未登陆--><div class="dcmp-userinfo" id="_ajax_feedback">
+用户名:<input type="text" name="username" id="username" size="16" class="ipt-txt" />
+密码:<input name="password" type="password" id="password" size="16" class="ipt-txt"/>
+验证码:<input type='text' name='key' size='4' class='ipt-txt'> <img src="/img/yanzhengma.gif" id="checkcode" onClick="this.src='/e/ShowKey/?v=pl&ecms'+Math.random();" style="cursor:pointer;" align="middle"  /></span>         
+        <input type="submit"  id="submit" value=" 提 交 " style="width:63px; height:26px; background:url([!--news.url--]skin/images/colorbtn.gif) 0px -102px; border:0px; color:#FFF;" onclick="plsubmit();"/>
+      <span id="itip"></span>
+</div></div></div></dd></dl></div></div>
+<!--分页评论模板变量-->
+
+-------------
+
+<!--此段JS代码加在内容模板最底部-->
+<script type="text/javascript" src="[!--news.url--]skin/qqface/ali/ali.js"></script>
+<script src="[!--news.url--]e/extend/infocomment/commentajax.php?classid=[!--classid--]&id=[!--id--]"></script>
+<!--此段JS代码加在内容模板最底部-->
+
+
+
+skin/meishi里面的CSS加在你网站的CSS文件里面
+
+

@@ -1,0 +1,115 @@
+<html xmlns:rdl>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<script src="rdl_method.js"></script>
+<base target="_self">
+</head>
+<body>
+
+<script>
+
+//collFriendObjects=new Array();
+//collFriendProperties=new Array();
+//collFriendMethods=new Array();
+//collFriendEvents=new Array();
+//collFriendCollections=new Array();
+
+collFriendMethods=new Array(
+'confirm','showModelessDialog','showModalDialog','createPopup','alert','prompt','ShowBrowserUI'
+);
+
+collFriendObjects=new Array(
+'window'
+);
+
+collFriendEvents=new Array(
+'onbeforeprint','onafterprint'
+);
+
+//collIE40=new Array();
+//collIE50=new Array();
+//collIE55=new Array();
+//collIE60=new Array();
+
+collIE50=new Array(
+'window'
+);
+
+//sStyle='';
+
+sScript=
+'<script>\n'+
+'function window.onbeforeprint() {\n'+
+'var arrColls = document.all.tags("DIV");\n'+
+'if (arrColls!=null) {\n'+
+'for (i=0; i<arrColls.length; i++) if (arrColls[i].className == "arrCollsapsed") {\n'+
+'arrColls[i].className = "expanded";\n'+
+'arrColls[i].bExpandedForPrinting = true;\n'+
+'}\n'+
+'else if (arrColls[i].className == "expanded") arrColls[i].bExpandedForPrinting = false;\n'+
+'}\n'+
+'}\n'+
+'\n'+
+'function window.onafterprint() {\n'+
+'var arrColls = document.all.tags("DIV");\n'+
+'if (arrColls!=null) {\n'+
+'for (i=0; i < arrColls.length; i++) if ((arrColls[i].className == "expanded") && (arrColls[i].bExpandedForPrinting)) {\n'+
+'arrColls[i].className = "arrCollsapsed";\n'+
+'arrColls[i].bExpandedForPrinting = false;\n'+
+'}\n'+
+'}\n'+
+'}\n'+
+'\n'+
+'<\/script>\n';
+
+sCode=
+'\n';
+
+iWinWidth=240;
+
+iWinHeight=210;
+
+bRunCode=false;
+
+</script>
+
+<div id=idContent>
+
+<div id=idContentTitle><span id=idTitleName>print</span>版本：DHTML Object Model　返回值：无</div>
+
+<div class=cssColumnTitle>语法：</div>
+<div>
+<a href="../objects/window.html"><b>window</b></a><b> . print () </b>
+
+</div>
+
+<div class=cssColumnTitle>参数：</div>
+<div>
+无
+</div>
+
+<div class=cssColumnTitle>返回值：</div>
+<div>
+无
+</div>
+
+<div class=cssColumnTitle>说明：</div>
+<div>
+打印当前窗口内的文档。<br>
+调用此方法等同于从 Microsoft&reg; Internet Explorer 文件菜单内选择「打印」。此方法将激活系统打印对话框供用户选择打印设置。<br> 当用户点击「确定」时，将依次发生下列事件：<br>
+<ol>
+<li><a href="../events/onbeforeprint.html"> onbeforeprint </a>事件被触发。
+<li>文档被打印。<br>
+<li><a href="../events/onafterprint.html"> onafterprint </a>事件被触发。
+</ol>
+当并非所有页面信息在任何时候总是可见的情况下，<a href="../events/onbeforeprint.html"> onbeforeprint </a>和<a href="../events/onafterprint.html"> onafterprint </a>事件是非常有用的。使用<a href="../events/onbeforeprint.html"> onbeforeprint </a>事件可以检测文档以保障打印时所有页面信息都是可见的。使用<a href="../events/onafterprint.html"> onafterprint </a>事件可以恢复文档到它的最初状态。
+</div>
+
+
+
+</div>
+</body>
+</html>
+
+<!-- Part of RDL(TM) - Written by Rain1977 
+HomeSite: http://www.dhtmlet.com  E-Mail: dhtmlet@hotmail.com -->

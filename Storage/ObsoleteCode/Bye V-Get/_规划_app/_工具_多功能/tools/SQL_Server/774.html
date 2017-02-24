@@ -1,0 +1,9 @@
+<meta http-equiv="content-type" content="text/html; charset=gb2312"><FONT 
+style="FONT-SIZE: 9pt; LINE-HEIGHT: 15pt"><B>SPLIT&nbsp;Function</B><BR>SPLIT&nbsp;Function<BR>Script&nbsp;Rating&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Total&nbsp;number&nbsp;of&nbsp;votes&nbsp;[8]&nbsp;<BR>By:&nbsp;pnbushan&nbsp;<BR>This&nbsp;function&nbsp;works&nbsp;just&nbsp;inverse&nbsp;of&nbsp;COALESCE&nbsp;Function.
+<P></P>
+<P><BR>CREATE&nbsp;FUNCTION&nbsp;SPLIT&nbsp;(<BR>@str_in&nbsp;&nbsp;VARCHAR(8000),<BR>@separator&nbsp;VARCHAR(4)&nbsp;)<BR>RETURNS&nbsp;@strtable&nbsp;TABLE&nbsp;(strval&nbsp;&nbsp;VARCHAR(8000))<BR>AS<BR>BEGIN</P>
+<P>DECLARE<BR>&nbsp;@Occurrences&nbsp;INT,<BR>&nbsp;@Counter&nbsp;INT,<BR>&nbsp;@tmpStr&nbsp;VARCHAR(8000)</P>
+<P>&nbsp;SET&nbsp;@Counter&nbsp;=&nbsp;0<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IF&nbsp;SUBSTRING(@str_in,LEN(@str_in),1)&nbsp;&lt;&gt;&nbsp;@separator&nbsp;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SET&nbsp;@str_in&nbsp;=&nbsp;@str_in&nbsp;+&nbsp;@separator</P>
+<P>&nbsp;SET&nbsp;@Occurrences&nbsp;=&nbsp;(DATALENGTH(REPLACE(@str_in,@separator,@separator+'#'))&nbsp;-&nbsp;&nbsp;DATALENGTH(@str_in))/&nbsp;DATALENGTH(@separator)<BR>&nbsp;SET&nbsp;@tmpStr&nbsp;=&nbsp;@str_in</P>
+<P>&nbsp;WHILE&nbsp;@Counter&nbsp;&lt;=&nbsp;@Occurrences&nbsp;<BR>&nbsp;BEGIN<BR>&nbsp;&nbsp;SET&nbsp;@Counter&nbsp;=&nbsp;@Counter&nbsp;+&nbsp;1<BR>&nbsp;&nbsp;INSERT&nbsp;INTO&nbsp;@strtable<BR>&nbsp;&nbsp;valueS&nbsp;(&nbsp;SUBSTRING(@tmpStr,1,CHARINDEX(@separator,@tmpStr)-1))</P>
+<P>&nbsp;&nbsp;SET&nbsp;@tmpStr&nbsp;=&nbsp;SUBSTRING(@tmpStr,CHARINDEX(@separator,@tmpStr)+1,8000)<BR>&nbsp;&nbsp;<BR>&nbsp;&nbsp;IF&nbsp;DATALENGTH(@tmpStr)&nbsp;=&nbsp;0<BR>&nbsp;&nbsp;&nbsp;BREAK<BR>&nbsp;&nbsp;<BR>&nbsp;END<BR>&nbsp;RETURN&nbsp;<BR>END</P></FONT>

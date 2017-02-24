@@ -1,0 +1,19 @@
+<meta http-equiv="content-type" content="text/html; charset=gb2312"><FONT size=+0><B>SQL Database Maintenance Script</B></FONT><BR><FONT 
+face="Verdana, Arial, Helvetica, sans-serif" 
+size=-1><!--content_start--><BR><BR><!-- Details of script -->
+<P style="FONT-SIZE: small; FONT-FAMILY: Arial, Helvetica, serif">Here is a 
+small script that will perform maintenance on all databases on a SQL server. 
+</P>
+<P style="FONT-SIZE: small; FONT-FAMILY: Arial, Helvetica, serif">The script 
+looks at what databases are configured on the SQL Server then retrieves a list 
+of tables for each DB on the SQL Server. The script then uses this list to 
+perform DBCC DBREINDEX on each table in the DB. It also performs UPDATE 
+STATISTICS on the table. When the script has finished re-indexing and updating 
+the statistics on each table in the DB, it then performs a DBCC CHECKDB on the 
+database. </P>
+<P style="FONT-SIZE: small; FONT-FAMILY: Arial, Helvetica, serif">The script 
+then moves onto the next database on the SQL server until all databases have 
+been maintained. </P>
+<P style="FONT-SIZE: small; FONT-FAMILY: Arial, Helvetica, serif">The advantages 
+of using this type of script is that the script doesn't need to be modified if 
+tables, indexes or databases are added, altered or deleted. </P></FONT>

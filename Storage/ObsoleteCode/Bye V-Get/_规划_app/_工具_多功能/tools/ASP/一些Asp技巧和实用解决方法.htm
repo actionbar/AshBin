@@ -1,0 +1,74 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>一些Asp技巧和实用解决方法</title>
+<style type="text/css">
+<!--
+body {
+	font-size: 10.4pt;
+	line-height: 22px;
+}
+-->
+</style>
+</head>
+
+<body bgcolor="#eeeeee" leftmargin="20" marginwidth="20">
+<p><strong>一些Asp技巧和实用解决方法</strong></p>
+<hr>
+<p><font color="#cc3300">随机数:</font></p>
+<p> &lt;%randomize%&gt;<br>
+  &lt;%=(int(rnd()*n)+1)%&gt;</p>
+<p><font color="#cc3300">查询数据时得到的记录关键字用红色显示：</font></p>
+<p><font color="#cc3300"> </font>&lt;% =replace(RS("字段X"),searchname,"&lt;font 
+  color=#FF0000&gt;" &amp; searchname &amp; "&lt;/font&gt;") %&gt;</p>
+<p> <font color="#cc3300">通过asp的手段来检查来访者是否用了代理</font></p>
+<p> &lt;% if Request.ServerVariables("HTTP_X_FORWARDED_FOR")&lt;&gt;"" 
+  then<br>
+  response.write "&lt;font color=#FF0000&gt;您通过了代理服务器，"&amp; _<br>
+  "真实的IP为"&amp;Request.ServerVariables("HTTP_X_FORWARDED_FOR")<br>
+  end if<br>
+  %&gt; </p>
+<p><font color="#cc3300">判断上一页的来源</font></p>
+<p> request.servervariables("HTTP_REFERER")<br>
+  javascript: document.referrer</p>
+<p><font color="#cc3300">清除缓存，重新加载页面</font></p>
+<p>&lt;%response.expires = 0 <br>
+  response.expiresabsolute = now() - 1<br>
+  response.addHeader "pragma","no-cache"<br>
+  response.addHeader "cache-control","private"<br>
+  Response.cachecontrol = "no-cache"<br>
+  %&gt;</p>
+<p><font color="#cc3300">在下拉菜单中显示年和月</font></p>
+<p>&lt;select name="select"&gt;<br>
+  &lt;%<br>
+  Dim M_Year <br>
+  Dim M_Month<br>
+  Dim M_MonthJ<br>
+  Dim M_TheMonth<br>
+  Dim M_YM<br>
+  For M_Year = 2000 To Year(Date) <br>
+  M_Month = 12 <br>
+  If M_Year =
+     Year(Date) Then <br>
+  M_Month = Month(Date) <br>
+  End If<br>
+  For M_MonthJ=1 To M_Month<br>
+  If M_MonthJ &lt; 10 Then<br>
+  M_TheMonth = "0" &amp; M_MonthJ<br>
+  Else<br>
+  M_TheMonth = M_MonthJ<br>
+  End If<br>
+  M_YM = M_Year&amp; "-" &amp; M_TheMonth %&gt;<br>
+  &lt;option value="&lt;%= M_YM %&gt;"&gt;&lt;%= M_YM %&gt;&lt;/option&gt;<br>
+  &lt;%<br>
+  Next<br>
+  Next %&gt;<br>
+  &lt;/select&gt;</p>
+<P><FONT color=#e40f3a><FONT color=#e43a0f>检索并删除数据库里的重复记录</FONT><FONT 
+color=#e40f3a></FONT></P></FONT>
+<P>conn.execute("delete from table where id not in (select distinct from 
+table)")</P>
+<P>&nbsp;</P>
+</body>
+</html>

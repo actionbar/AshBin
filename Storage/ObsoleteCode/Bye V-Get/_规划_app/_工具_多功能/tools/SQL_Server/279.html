@@ -1,0 +1,14 @@
+<meta http-equiv="content-type" content="text/html; charset=gb2312"><FONT style="FONT-SIZE: 9pt; LINE-HEIGHT: 15pt"><B>异构数据库导数据（碧血剑)</B><BR><IMG 
+src="http://www.pigtwo.com/forum/pic/url.gif" align=absMiddle border=0><A 
+href="http://www.delphibbs.com/delphibbs/dispq.asp?lid=1691966" 
+target=_blank>http://www.delphibbs.com/delphibbs/dispq.asp?lid=1691966</A><BR>看一下SQLServer联机帮助的<BR>OpenDataSource和OpenRowSet函数
+<P></P>
+<P>告诉你一个最快的方法，用SQLServer连接DBF<BR>在SQLServer中执行<BR>SELECT&nbsp;*&nbsp;into&nbsp;bmk<BR>FROM&nbsp;OpenDataSource(&nbsp;'Microsoft.Jet.OLEDB.4.0',<BR>&nbsp;&nbsp;'Data&nbsp;Source="e:\share";User&nbsp;ID=Admin;Password=;Extended&nbsp;properties=dBase&nbsp;5.0')...bmk<BR>这样就可以把e:\share中的bmk.dbf表导入到Sqlserver中，<BR>速度是最快的<BR>把压箱底的方法都告诉大家<BR>在Form上放一个ADOConnection,连结指向目标Access库<BR>比如txt文件在c:\temp\aaaa.txt<BR>就执行<BR>ADOConnection.Connected&nbsp;:=&nbsp;True;<BR>ADOConnection.Execute('Select&nbsp;*&nbsp;Into&nbsp;abcd&nbsp;From&nbsp;[Text;Database=c:\temp].aaaa.txt');<BR>就一切Ok了,这个方法一定行的，我好不容易才研究出来的<BR>有了这两个例子，异构数据库之间导数据的问题就举一反三，迎刃而解了。</P>
+<P>把Excel导入到Access中,同txt类似<BR>select&nbsp;*&nbsp;into&nbsp;&lt;table&nbsp;name&gt;&nbsp;from&nbsp;[excel&nbsp;8.0;database=&lt;filename&gt;].[&lt;sheetname&gt;$]</P>
+<P>当然可以在程序中运行<BR>SQL&nbsp;Server表导出和txt导入一个道理<BR>基本上都是用Jet4.0&nbsp;和&nbsp;ODBC连结实现<BR>先用用Jet4.0连结dbf,access,txt然后利用SQL语句导出导入<BR>在此我就不详细说了，一句话，都可以的<BR>列出连结串属性Extended&nbsp;properties,<BR>DBase&nbsp;5.0<BR>DBASE&nbsp;IV<BR>FoxPro&nbsp;3.0<BR>Paradox&nbsp;7.X<BR>Excel&nbsp;8.0<BR>text;HDR=YES;FMT=Delimited</P>
+<P>Excel联接ADO串<BR>Provider=Microsoft.Jet.OLEDB.4.0;Data&nbsp;Source=C:\temp\a.xls;Extended&nbsp;<BR>Properties="Excel&nbsp;8.0;HDR=Yes;";Persist&nbsp;Security&nbsp;Info=False</P>
+<P>SQLServer从Excel取数<BR>SELECT&nbsp;*&nbsp;<BR>FROM&nbsp;OpenDataSource('Microsoft.Jet.OLEDB.4.0','Data&nbsp;Source="C:\temp\b.xls";Extended&nbsp;Properties="Excel&nbsp;5.0;HDR=Yes;";Persist&nbsp;Security&nbsp;Info=False')...sheet1$</P>
+<P><BR>txt导入SQLServer<BR>select&nbsp;*&nbsp;from&nbsp;OpenRowset('MSDASQL',&nbsp;'Driver={Microsoft&nbsp;Text&nbsp;Driver&nbsp;(*.txt;&nbsp;*.csv)};<BR>DefaultDir=c:\temp;','select&nbsp;*&nbsp;from&nbsp;aaaa.txt')</P>
+<P>c:\temp\aaa.dbf&nbsp;to&nbsp;Access,<BR>ADOConnection&nbsp;指向Access<BR>语句是&nbsp;&nbsp;select&nbsp;*&nbsp;into&nbsp;bbb&nbsp;from&nbsp;aaa&nbsp;in&nbsp;'c:\temp'&nbsp;'dbase&nbsp;5.0;'</P>
+<P>sql&nbsp;server导出到access<BR>ADOConnection&nbsp;指向Access<BR>SELECT&nbsp;*&nbsp;into&nbsp;table&nbsp;&nbsp;FROM&nbsp;Tab1&nbsp;IN&nbsp;[ODBC]<BR>[ODBC;Driver=SQL&nbsp;Server;UID=sa;PWD=;Server=127.0.0.1;DataBase=Demo;]</P>
+<P>sql&nbsp;server导出到excel和sql&nbsp;server导出到Access是一样的<BR>ADOConnection&nbsp;指向excel,&nbsp;用Jet4.0&nbsp;,Extended&nbsp;properties设为Excel&nbsp;8.0<BR>SELECT&nbsp;*&nbsp;into&nbsp;table&nbsp;&nbsp;FROM&nbsp;Tab1&nbsp;IN&nbsp;[ODBC]<BR>[ODBC;Driver=SQL&nbsp;Server;UID=sa;PWD=;Server=127.0.0.1;DataBase=Demo;]</P></FONT>

@@ -1,0 +1,5 @@
+<meta http-equiv="content-type" content="text/html; charset=gb2312"><FONT 
+style="FONT-SIZE: 9pt; LINE-HEIGHT: 15pt"><B>函数-生成临时表</B><BR>create&nbsp;function&nbsp;ufn_emp(@vcity&nbsp;nvarchar(15))<BR>returns&nbsp;@emptab&nbsp;table<BR>(<BR>&nbsp;fname&nbsp;char(10),<BR>&nbsp;lname&nbsp;char(10)<BR>)<BR>begin<BR>&nbsp;insert&nbsp;@emptab&nbsp;select&nbsp;firstname,lastname&nbsp;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;from&nbsp;employees&nbsp;where&nbsp;city=@vcity<BR>return<BR>end 
+
+<P></P>
+<P>//应用<BR>&nbsp;&nbsp;select&nbsp;*&nbsp;from&nbsp;ufn_emp(''seattle'')</P></FONT>

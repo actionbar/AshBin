@@ -1,0 +1,206 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="application/vnd.wap.xhtml+xml;charset=UTF-8"/>
+<meta http-equiv="Cache-Control" content="no-cache"/>
+<meta name="viewport" content="width=device-width; initial-scale=1.0; minimum-scale=1.0; maximum-scale=2.0"/>
+<meta name="MobileOptimized" content="240"/>
+<title>{$cache_settings['title']} - powered by skuii.com</title>
+<style type="text/css">
+body,div,p,td{
+	margin:0;
+	padding:0;
+}
+body{
+	font-size:13px;
+	background-color:#fff;
+	font-family:arial,sans-serif;
+}
+input,select{
+	font-size:13px;
+}
+.btn{
+	background:url({$siteurl}public/images/3g/search2.gif) no-repeat 0 0;
+	width:66px;
+	height:20px;
+	text-align:center;
+	border:0;
+}
+td{
+	font-size:13px;
+}
+.left{
+	float:left;
+}
+a{
+	color:#000;
+	text-decoration:none;
+}
+a:visited{
+	color:#83006f;
+}
+a:hover{
+	color:#ba2636;
+	text-decoration:underline;
+}
+.cBlue,.cBlue:visited,.cBlue a{
+	color:#1e50a2;
+}
+.ucBlue,.ucBlue:visited,.ucBlue a{
+	color:#1e50a2;
+	text-decoration:underline;
+}
+.cGreen,.cGreen:visited,.cGreen a{
+	color:#008000;
+}
+.cRed,.cRed:visited,.cRed a{
+	color:#ff0000;
+}
+.cDRed,.cDRed:visited,.cDRed a{
+	color:#ba2636;
+}
+.cDGray,.cDGray:visited,.cDGray a{
+	color:#8b8b8b;
+}
+.cRed a:hover,a.cRed:hover,.cBlue a:hover,a.cBlue:hover,.cDRed a:hover,a.cDRed:hover,.cDGray a:hover,a.cDGray:hover{
+	color:#ba2636;
+}
+.fB{
+	font-weight:bold;
+}
+hr{
+	border:none;
+	border-bottom:1px solid #dcdddd;
+	height:0px;
+	overflow:hidden;
+	margin:2px 0 5px;
+}
+.hidden{
+	display:none;
+}
+.center{
+	text-align:center;
+}
+img{
+	border:none;
+}
+form{
+	margin:5px 0;
+}
+.clear{
+
+	clear:both;
+	height:0;
+	overflow:hidden;
+	display:block;
+}
+.header{
+	padding:0 3px;
+	background:url({$siteurl}public/images/3g/headbar_bg.jpg) left top repeat-x #f5f8fd;
+	line-height:21px;
+	margin-bottom:5px;
+}
+.header #top{
+	padding:5px 0 0px 20px !important;
+	padding:5px 0 5px 20px;
+}
+.header .til{
+	height:22px;
+	margin-top:6px;
+	border-bottom:1px solid #bdd7f2;
+}
+.header .til .tab,.header .til .tabmore{
+	float:left;
+	margin-left:-1px;
+	line-height:21px;
+	background:#dfeeff;
+	border:1px solid #bdd7f2;
+	text-align:center;
+}
+.header .til .tab{
+	width:53px;
+}
+.header .til .tabmore{
+	width:60px;
+}
+.header .til span.tab, .header .til span.tabmore{
+	background:#fff;
+	border:1px solid #bdd7f2;
+	border-bottom-color:#fff;
+	line-height:21px;
+	color:#000;
+}
+.header .til span.tab{
+	width:48px;
+}
+.header .til span.tabmore{
+	width:55px;
+}
+.header .til strong{
+	float:left;
+	line-height:21px;
+	padding:0 10px 0 6px;
+}
+.unlink{
+	padding:5px 10px 5px 15px;
+	background:#f4f4f4;
+}
+.backtop{
+	text-align:center;
+	margin-bottom:6px;
+}
+.footer{
+	line-height:21px;
+	background:#f2f5fa;
+	padding:5px 10px;
+	border-top:1px solid #aaa;
+}
+.footer:visited,.foot a{
+	color:#1e50a2;
+}
+.entext{
+	font-size:11px;
+}
+.content{
+	line-height:19px;
+	margin:0 5px 7px;
+}
+</style>
+</head>
+<body>
+	<div class="header">
+		<p><img src="{$siteurl}public/images/alogo.jpg" alt="{$cache_settings['title']}" id="top" /></p>
+		<p class="til cBlue">
+			<img src="{$siteurl}public/images/3g/icon_title.gif" alt="v" class="left"/>
+			<strong>导航</strong>
+			<!--{if $logger_uid < 1}-->
+			<span class="tab">首页</span>
+			<a href="{$boardurl}login" class="tab">登陆</a>
+			<a href="{$boardurl}travel" class="tabmore">随便看看</a>
+			<!--{else}-->
+			<span class="tabmore">我的首页</span>
+			<a href="{$siteurl}post" class="tabmore">发布微博</a>
+			<a href="{$siteurl}travel" class="tabmore">随便看看</a>
+			<!--{/if}-->
+		</p>
+	</div>
+	<div class="content">
+	</div>
+	<p class="backtop"><a id="btm" href="#top"><img src="{$siteurl}public/images/3g/backtop.gif"/></a></p>
+	<div class="unlink cDGray">
+		<a href="{$boardurl}help">帮助</a>
+		<a href="{$boardurl}ads">广告</a>
+		<a href="{$boardurl}links">友链</a>
+		<a href="{$boardurl}aboutus">关于</a>
+	</div>
+	<div class="footer">
+		<!--{if $logger_uid > 0}-->
+		<span><a href="{$boardurl}" class="cBlue">&gt;&gt;网站首页</a> - <a href="{$boardurl}home" class="cBlue">我的首页</a> - <a href="{$boardurl}travel" class="cBlue">随便看看</a> - <a href="{$boardurl}logout" class="cBlue">退出</a></span>
+		<!--{else}-->
+		<span><a href="{$boardurl}" class="cBlue">&gt;&gt;网站首页</a> - <a href="{$boardurl}travel" class="cBlue">随便看看</a> - <a href="{$boardurl}login" class="cBlue">登录</a></span>
+		<!--{/if}-->
+		<br />
+		<span class="entext">powered by <a href="http://3g.skuii.com" class="cBlue">skuii.com</a> [{eval echo date($_DSESSION['dateformat'].' '.$_DSESSION['timeformat'], $timestamp);}]</span>
+	</div>
+</body>
+</html>

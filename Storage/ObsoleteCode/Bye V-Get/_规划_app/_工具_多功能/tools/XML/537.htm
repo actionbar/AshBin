@@ -1,0 +1,970 @@
+<html>
+<head>
+<title>XSL格式化属性</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+
+<link rel = stylesheet href = "image/style.css">
+</head>
+<body bgcolor="#ffffff">
+<table width="688" border="0" cellspacing="0" cellpadding="0" align="center">
+  <tr bgcolor="EEEEEE"> 
+    <td height="22"><a href="index.htm">主页</a></td>
+  </tr>
+</table><br>
+<table border="0" cellpadding="0" cellspacing="0" width="688" align="center" height="490">
+  <tr valign="top"> 
+    <td rowspan="4" width="91">&nbsp; </td>
+    <td height="68" width="131"> 
+      <p><img src="image/doc.gif"></p>
+    </td>
+    <td rowspan="4" width="18"><b></b> </td>
+    <td height="68" width="387"><img src="image/title_doc.gif"></td>
+    <td rowspan="4" width="61"> 
+      <h6>&nbsp;</h6>
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td rowspan="3" valign="top" class="pt10" align="center" width="131" bgcolor="EEEEEE"> 
+      <p>&nbsp;</p>
+      <p><font color="#FF0000">※ 15.14 XSL格式化属性</font></p>
+       
+	</td>
+  </tr>
+  <tr valign="top"> 
+    <td width="387" height="308"> 
+      <table width="100%" border="0" cellpadding="0">
+        <tr> 
+          <td>
+
+           <h4><a name="_Toc467207767">15.14 XSL格式化属性</a></h4>
+<p>由字面意思可知，格式化对象相对来讲完全没有说明如何格式化内容。它们只是将内容摆放在各个绝对的框中，而这些框放置在一页中的各个特定部分。各种格式化对象的特性确定如何设置这些框中内容的样式。</p>
+<p>正像已经介绍的那样，大约有200个独立的格式化属性。并非所有的属性都可以与所有的元素关联。例如，指定fo:display<i>-</i>graphic的font-style的特点就不很多。但是，大多数属性都可以用于多种格式化对象元素（只有少数几个不能，如href和provisional-label-separation，在上面已与使用它们的格式化对象一起讨论过了）。当一个属性为多个格式化对象所共有时，它的句法和含义就与这些对象相同。例如，使用相同代码来将fo:list-label格式化成14磅粗体Times，就如同将fo:block格式化成14磅粗体Times那样。</p>
+<p>许多XSL属性都与CSS属性类似。CSS的font-family属性值与XSL的font-family特性值是一样的。如果已经阅读过第12章和13章，那么就已经学完了XSL属性一半以上的内容。</p>
+<h5><a name="_Toc467207768">15.14.1 单位和数据类型</a></h5>
+<p>XSL格式化属性的值可能是一关键字，如auto、italic或transparent；或者为文字值，如true、5px、-5.0cm或http: //www.w3.org/index.html。在XSL中，文字值是以24个数据类型之一来表示，它些数据类型列于表15-2中。</p>
+<p align="center">表15-2 格式化属性数据类型</p>
+<p>
+<center>
+  <table BORDER cellspacing=1 cellpadding=7 width=548>
+    <tr>
+      <td width="24%" valign="MIDDLE"> 
+        <p>数据类型
+      </td>
+      <td width="49%" valign="TOP"> 
+        <p>定义
+      </td>
+      <td width="27%" valign="TOP"> 
+        <p>实例
+      </td>
+    </tr>
+    <tr>
+      <td width="24%" valign="MIDDLE"> 
+        <p>Name
+      </td>
+      <td width="49%" valign="TOP"> 
+        <p>表示XML名称记号
+      </td>
+      <td width="27%" valign="TOP"> 
+        <p>q1</p>
+        <p>copyright
+      </td>
+    </tr>
+    <tr>
+      <td width="24%" valign="MIDDLE"> 
+        <p>ID
+      </td>
+      <td width="49%" valign="TOP"> 
+        <p>表示唯一的XML名称记号
+      </td>
+      <td width="27%" valign="TOP"> 
+        <p>q1</p>
+        <p>copyright
+      </td>
+    </tr>
+    <tr>
+      <td width="24%" valign="MIDDLE"> 
+        <p>IDREF
+      </td>
+      <td width="49%" valign="TOP"> 
+        <p>表示与文档中元素的ID相匹配的名称
+      </td>
+      <td width="27%" valign="TOP"> 
+        <p>q1</p>
+        <p>copyright
+      </td>
+    </tr>
+    <tr>
+      <td width="24%" valign="MIDDLE"> 
+        <p>Boolean
+      </td>
+      <td width="49%" valign="TOP"> 
+        <p>为字符串true或字符串false
+      </td>
+      <td width="27%" valign="TOP"> 
+        <p>False</p>
+        <p>True
+      </td>
+    </tr>
+    <tr>
+      <td width="24%" valign="MIDDLE"> 
+        <p>Char
+      </td>
+      <td width="49%" valign="TOP"> 
+        <p>单一的、无空白的Unicode字符
+      </td>
+      <td width="27%" valign="TOP"> 
+        <p>A</p>
+        <p>_
+      </td>
+    </tr>
+    <tr>
+      <td width="24%" valign="MIDDLE"> 
+        <p>Signed Integer
+      </td>
+      <td width="49%" valign="TOP"> 
+        <p>一系列数字，作为选项可用加号或减号作前缀
+      </td>
+      <td width="27%" valign="TOP"> 
+        <p>0</p>
+        <p>–28</p>
+        <p>+1000000000
+      </td>
+    </tr>
+    <tr>
+      <td width="24%" valign="MIDDLE"> 
+        <p>Unsigned Integer
+      </td>
+      <td width="49%" valign="TOP"> 
+        <p>一系列数字
+      </td>
+      <td width="27%" valign="TOP"> 
+        <p>0</p>
+        <p>28</p>
+        <p>1000000000
+      </td>
+    </tr>
+    <tr>
+      <td width="24%" valign="MIDDLE"> 
+        <p>Positive Integer
+      </td>
+      <td width="49%" valign="TOP"> 
+        <p>一系列数字，包括至少有一个非零数字
+      </td>
+      <td width="27%" valign="TOP"> 
+        <p>28</p>
+        <p>1000000000
+      </td>
+    </tr>
+    <tr>
+      <td width="24%" valign="MIDDLE"> 
+        <p>Signed Real
+      </td>
+      <td width="49%" valign="TOP"> 
+        <p>浮点数值，以符号-数字-小数点-数字格式表示。不支持指数表示法。对于正数的+为可选的
+      </td>
+      <td width="27%" valign="TOP"> 
+        <p>+0.879</p>
+        <p>-31.14</p>
+        <p>2.71828
+      </td>
+    </tr>
+    <tr>
+      <td width="24%" valign="MIDDLE"> 
+        <p>Unsigned Real
+      </td>
+      <td width="49%" valign="TOP"> 
+        <p>非负的浮点数，其格式为数字-小数点-数字。不支持指数表示法
+      </td>
+      <td width="27%" valign="TOP"> 
+        <p>0.0</p>
+        <p>31.14</p>
+        <p>2.71828
+      </td>
+    </tr>
+    <tr>
+      <td width="24%" valign="MIDDLE"> 
+        <p>Positive Real
+      </td>
+      <td width="49%" valign="TOP"> 
+        <p>正浮点数，其格式为数字-小数点-数字。不支持指数表示法
+      </td>
+      <td width="27%" valign="TOP"> 
+        <p>0.01</p>
+        <p>31.14</p>
+        <p>2.71828
+      </td>
+    </tr>
+    <tr>
+      <td width="24%" valign="MIDDLE"> 
+        <p>Signed Length
+      </td>
+      <td width="49%" valign="TOP"> 
+        <p>后面带有单位的有符号整数或有符号实数
+      </td>
+      <td width="27%" valign="TOP"> 
+        <p>5px</p>
+        <p>-0.5in
+      </td>
+    </tr>
+    <tr>
+      <td width="24%" valign="MIDDLE"> 
+        <p>Unsigned Length
+      </td>
+      <td width="49%" valign="TOP"> 
+        <p>后面带有单位的无符号整数或无符号实数
+      </td>
+      <td width="27%" valign="TOP"> 
+        <p>10px</p>
+        <p>0.5cm
+      </td>
+    </tr>
+    <tr>
+      <td width="24%" valign="MIDDLE"> 
+        <p>Positive Length
+      </td>
+      <td width="49%" valign="TOP"> 
+        <p>后面带有单位的正整数或正实数
+      </td>
+      <td width="27%" valign="TOP"> 
+        <p>10px</p>
+        <p>1pc
+      </td>
+    </tr>
+    <tr>
+      <td width="24%" valign="MIDDLE"> 
+        <p>Percent
+      </td>
+      <td width="49%" valign="TOP"> 
+        <p>能被100整除以获得其真正值的有符号实数
+      </td>
+      <td width="27%" valign="TOP"> 
+        <p>100.0</p>
+        <p>-43.2</p>
+        <p>0.0
+      </td>
+    </tr>
+    <tr>
+      <td width="24%" valign="MIDDLE"> 
+        <p>Space Specifier
+      </td>
+      <td width="49%" valign="TOP"> 
+        <p>最小长度；最大长度；最佳长度；优先级；限制条件
+      </td>
+      <td width="27%" valign="TOP"> 
+        <p>0px;72px;12px; force;discard
+      </td>
+    </tr>
+    <tr>
+      <td width="24%" valign="MIDDLE"> 
+        <p>Limit Specifier
+      </td>
+      <td width="49%" valign="TOP"> 
+        <p>最小长度分号最大长度
+      </td>
+      <td width="27%" valign="TOP"> 
+        <p>0px;72px
+      </td>
+    </tr>
+    <tr>
+      <td width="24%" valign="MIDDLE"> 
+        <p>Color
+      </td>
+      <td width="49%" valign="TOP"> 
+        <p>命名颜色或#RRGGBB形式的十六进制的三元参数
+      </td>
+      <td width="27%" valign="TOP"> 
+        <p>white</p>
+        <p>#FFFFFF
+      </td>
+    </tr>
+    <tr>
+      <td width="24%" valign="MIDDLE"> 
+        <p>URI
+      </td>
+      <td width="49%" valign="TOP"> 
+        <p>统一源标识符；实际上为URL
+      </td>
+      <td width="27%" valign="TOP"> 
+        <p>http://www.w3 .org/index.html /index.html/ ../index.html
+      </td>
+    </tr>
+    <tr>
+      <td width="24%" valign="MIDDLE"> 
+        <p>Language
+      </td>
+      <td width="49%" valign="TOP"> 
+        <p>ISO 639语言码
+      </td>
+      <td width="27%" valign="TOP"> 
+        <p>en</p>
+        <p>la
+      </td>
+    </tr>
+    <tr>
+      <td width="24%" valign="MIDDLE"> 
+        <p>Font Name
+      </td>
+      <td width="49%" valign="TOP"> 
+        <p>以实际名或符号表示的字体名
+      </td>
+      <td width="27%" valign="TOP"> 
+        <p>Times New Roman</p>
+        <p>serif
+      </td>
+    </tr>
+    <tr>
+      <td width="24%" valign="MIDDLE"> 
+        <p>Font List
+      </td>
+      <td width="49%" valign="TOP"> 
+        <p>以逗号（并可能有空白）分隔的字体名
+      </td>
+      <td width="27%" valign="TOP"> 
+        <p>Times New Roman, Times, serif
+      </td>
+    </tr>
+    <tr>
+      <td width="24%" valign="MIDDLE"> 
+        <p>Enumeration
+      </td>
+      <td width="49%" valign="TOP"> 
+        <p>XML的枚举类型
+      </td>
+      <td width="27%" valign="TOP"> 
+        <p>(airplane | train | car | horse)
+      </td>
+    </tr>
+    <tr>
+      <td width="24%" valign="MIDDLE"> 
+        <p>String
+      </td>
+      <td width="49%" valign="TOP"> 
+        <p>任何的字符序列
+      </td>
+      <td width="27%" valign="TOP"> 
+        <p>Fred Lucy and Ethel Castles don’t have phones.
+      </td>
+    </tr>
+  </table>
+</center>
+<p></p>
+<h5><a name="_Toc467207769">15.14.2 消息属性</a></h5>
+<p>有两个消息属性，它们可用于任何格式化对象。但是，两者对格式化都没有直接的影响。从本质上来讲，它们都是非格式化属性。</p>
+<p> 
+<p><b>15.14.2.1 id属性</b></p>
+<p></p>
+<p>第一个这样的属性就是id。它是一个XML的ID类型的特性。所以，此属性值必须是样式单中和输出格式化对象文档内的唯一的XML名。由于样式单中的一个模板规则可能在输出文档中产生几百个元素，所以最后的要求就有点棘手。XSL变换的generate-id()函数在此处就很有用。</p>
+<p> 
+<p><b>15.14.2.2 语言属性</b></p>
+<p></p>
+<p>第二个这样的属性就是language。它指定此元素中所包括的内容的语言。通常，此属性值是ISO 639语言码，如en（English）或la（Latin）。它还可以为关键字none或use-document。后者表示只使用xml:lang特性指定的输入文档的语言。例如，以凯撒的Gallic 
+  Wars第一首诗为例：</p>
+<p>&lt;fo:block id="versel.l.l" language="la"&gt;</p>
+<p> Gallia est omnis divisa in partes tres,</p>
+<p> quarum unam incolunt Belgae, aliam Aquitani,</p>
+<p> tertiam qui ipsorum lingua Celtae, nostra Galli appellantur</p>
+<p>&lt;/fo:block&gt;</p>
+<p>尽管language属性对格式化没有直接的影响，但如果格式化程序根据语言选择布局算法的话，那么它就可能有直接的影响。例如，格式化程序可以将不同的缺省书写模式用于阿拉伯语和英语的文本。这就导致如何确定开始和结束的区域，以及内联的行进方向。</p>
+<h5><a name="_Toc467207770">15.14.3 段落属性</a></h5>
+<p>
+<ul>
+  <li>在传统的字处理程序中，段落属性应用于整个文本块时，通常被作为样式来看待，尽管在这里作为块级文本属性或许更恰当些。例如，缩进是一种段落属性，这是因为是将一个段落进行缩进，而不能将单词独立于包含它的段落加以缩进。</li>
+</ul>
+<p></p>
+<p> 
+<p><b>15.14.3.1 分隔符属性</b></p>
+<p></p>
+<p>分隔符属性指定放置分页符的位置。有五个关系不太紧密的分隔符属性：</p>
+<ul>
+  <p>
+  <li>keep-with-next</li>
+  <p></p>
+  <p>
+  <li>keep-with-previous</li>
+  <p></p>
+  <p>
+  <li>break-before</li>
+  <p></p>
+  <p>
+  <li>break-after</li>
+  <p></p>
+  <p>
+  <li>inhibit-line-breaks</li>
+  <p></p>
+</ul>
+<p>keep-with-next和keep-with-previous属性都是布尔类型，它们指定格式化对象是否与下面的和前面的格式化对象分别处于相同父格式化对象中。这对保持两个格式化对象处于同一页有影响，但这种影响比那种与父格式化对象的定位关系更苟刻。</p>
+<p>break-before属性将一分隔符插入到格式化对象的开始之前。要进行分隔的内容可能有column、page、odd-page和even-page。值也可能为none或auto-page。break-after属性将一分隔符插入到格式化对象的完成之后。可将相同的值用于break-before。例如，下面的模板规则确保每个SONNET在其自身的一页中有足够小的打印尺寸。</p>
+<p>&lt;xsl:template match="SONNET"&gt;</p>
+<p> &lt;fo:block break-before="page" break-after="page"&gt;</p>
+<p> &lt;xsl:apply-templates/&gt;</p>
+<p> &lt;/fo:block&gt;</p>
+<p>&lt;/xsl:template&gt;</p>
+<p>最后，inhibit-line-breaks也是布尔值，它可以设置为true，以指示哪怕是一个换行符也不允许有，更不用提分页符了。</p>
+<p> 
+<p><b>15.14.3.2 断字属性</b></p>
+<p></p>
+<p>断字属性确定是否允许用连字符号连接以及如何使用。它只用于软或“随意”连字号，如有时在一行的结束用于分隔长单词的连字号。它不用于硬连字号，如单词mother-in-law中的连字号。尽管这些连字号可能影响软连字号的位置。有如下六个断字属性：</p>
+<ul>
+  <p>
+  <li>hyphenate：只有在布尔属性的值为true时，才允许自动断字</li>
+  <p></p>
+  <p>
+  <li>hyphenation-char：用于以连字符号连接单词的Unicode字符，如英语中的-</li>
+  <p></p>
+  <p>
+  <li>hyphenation-keep：四个关键字之一（column、none、page、spread），指定在相对页或栏的结束处是否使用连字符号连接</li>
+  <p></p>
+  <p>
+  <li>hyphenation-ladder-count：无符号整数，指定一行中连字号线条的最大个数</li>
+  <p></p>
+  <p>
+  <li>hyphenation-push-char-count：无符号整数，指定必须跟在自动插入的连字符后面的最少字符个数（分开短音节显得不利）</li>
+  <p></p>
+  <p>
+  <li>hyphenation-remain-char-count：无符号整数，指定必须跟在自动插入的连字符前面的最少字符个数</li>
+  <p></p>
+</ul>
+<p>断字还依赖于所使用的语言和文字。因此，下面的这三个属性具有特殊的效果：</p>
+<ul>
+  <p>
+  <li>country</li>
+  <p></p>
+  <p>
+  <li>language</li>
+  <p></p>
+  <p>
+  <li>script</li>
+  <p></p>
+</ul>
+<p>例如：</p>
+<p>&lt;fo:block hyphenate=true</p>
+<p> hyphenation-char="-"</p>
+<p> hyphenation-keep="none"</p>
+<p> hyphenation-ladder-count="2"</p>
+<p> hyphenation-push-char-count="4"</p>
+<p> hyphenation-remain-char-count="4" &gt;</p>
+<p> some content ...</p>
+<p>&lt;/fo:block&gt;</p>
+<p>XSL不指定分隔音节的算法来确定在何处使用软连字符。甚至对于允许使用连字符连接的属性，仍然完全要由格式化程序来决定如何以连字符来连接各个单词。</p>
+<p> 
+<p><b>15.14.3.3 垂直对齐属性</b></p>
+<p></p>
+<p>vertical-align属性确定其行上的格式化对象的垂直位置，与同名的CSS2属性的行为是一样的。此属性可能有下列八个关键字的值：</p>
+<p> 1．baseline：将框的基线与行框的基线对齐</p>
+<p> 2．sub：将框的基线与行框内部的下标基线对齐</p>
+<p> 3．super：将框的基线上升到行框中的上标基线处</p>
+<p> 4．top：将框的顶端与行框的顶端对齐</p>
+<p> 5．middle：将框的中点对齐于行框的基线加上行框x高度的一半处</p>
+<p> 6．bottom：将框的底部与行框的底部对齐</p>
+<p> 7．text-top：将框的顶部与字体的顶部对齐</p>
+<p> 8．text-bottom：将框的底部与字体的底部对齐</p>
+<p>还可以将vertical-align设置为有符号的长度，以提升或降低此框到与基线的指定距离。</p>
+<p> 
+<p><b>15.14.3.4 缩进属性</b></p>
+<p></p>
+<p>缩进属性有四个：start-indent、end-indent、text-indent和last-line-end-indent，它们指定缩进的行离文本边有多远。start-indent属性从开始边（英文中为左边）移动所有的行。end-indent属性从结束边（英文中为右边）移动所有的行。text-indent属性只从开始边移动第一行。last-line-end-indent属性只从开始边移动最后一行。这些值是以有符号的长度来表示的。对start-indent取正值，text-indent取负值，就会创建一个悬挂式缩进（hanging 
+  indent）。例如，可按照下列方式，格式化一个第一行缩进0.5英寸的标准段落：</p>
+<p>&lt;fo:block text-indent="0.5in"&gt;</p>
+<p> The first line of this paragraph is indented</p>
+<p>&lt;/fo:block&gt;</p>
+<p>按下列方式，将一个块引用格式化成左右两边所有的行都缩进1英寸：</p>
+<p>&lt;fo:block start-indent="l.0in" end-indent="l.0in"&gt;</p>
+<p> This text is offset one inch from both edges.</p>
+<p>&lt;/fo:block&gt;</p>
+<h5><a name="_Toc467207771">15.14.4 字符属性</a></h5>
+<p>字符属性描述各个字符的性质，尽管它们可应用于包含字符的元素（如fo:block和fo:list-item-body）。这些属性包括颜色、字体、样式、粗细以及类似的属性。</p>
+<p> 
+<p><b>15.14.4.1 颜色属性</b></p>
+<p></p>
+<p>color属性设置内容的背景颜色，其句法与CSS的color属性相同。例如，下面将文本“Lions and tigers and bears, oh 
+  my!”着成粉红色：</p>
+<p>&lt;fo:inline-sequence color="#FFCCCC"&gt;</p>
+<p> Lions and tigers and bears, oh my!</p>
+<p>&lt;/fo:inline-sequence&gt;</p>
+<p> 
+<p><b>15.14.4.2 字体属性</b></p>
+<p></p>
+<p>处理文本的任何格式化对象都有广泛的字体属性。其中的大多数都已从CSS中了解到，其中包括：</p>
+<ul>
+  <p>
+  <li>font-family：按优先级顺序排列的一组字体名</li>
+  <p></p>
+  <p>
+  <li>font-size：有符号长度</li>
+  <p></p>
+  <p>
+  <li>font-size-adjust：通常为在x高度和字体大小之间的比值，以无符号的实数值或none来表示</li>
+  <p></p>
+  <p>
+  <li>font-stretch：字体的“宽度”，以下列一个关键字来表示：condensed、expanded、extra-condensed、extra-expanded、narrower、normal、semi-condensed、semi-expanded、ultra-condensed、ultra-expanded或wider</li>
+  <p></p>
+  <p>
+  <li>font-style：字体的样式，指定为下列关键字之一：italic、normal、oblique、reverse-normal或reverse-oblique</li>
+  <p></p>
+  <p>
+  <li>font-variant：为normal或small-caps</li>
+  <p></p>
+  <p>
+  <li>font-weight：绘制字体的笔划的粗细，以下列关键字之一给出：100、200、300、400、500、600、700、800、900、bold、bolder、lighter、normal</li>
+  <p></p>
+</ul>
+<p> 
+<p><b>15.14.4.3 text-transform属性</b></p>
+<p></p>
+<p>text-transform属性定义文本如何大写，与同名的CSS属性一致。有四个可能的值：</p>
+<ul>
+  <p>
+  <li>none：不改变大小写（缺省值）</li>
+  <p></p>
+  <p>
+  <li>capitalize：每个单词的第一个字母大写，后续的所有字母都为小写</li>
+  <p></p>
+  <p>
+  <li>uppercase：所有的字母都大写</li>
+  <p></p>
+  <p>
+  <li>lowercase：所有的字母都小写</li>
+  <p></p>
+</ul>
+<p>此属性多少与语言有关（例如，汉语不分大小写）。当将格式化程序用于非拉丁文-1的文本时，就会任意忽略大小写的推荐值。</p>
+<p> 
+<p><b>15.14.4.4 text-shadow属性</b></p>
+<p></p>
+<p>text-shadow属性在文本中使用阴影（shadow），类似于背景色，但区别是，阴影加在文本本身之上，而不是加在含有文本的框之上。</p>
+<p>&lt;fo:inline-seqence text-shadow="FFFF66"&gt;</p>
+<p> This sentence is yellow.</p>
+<p>&lt;/fo:inline-sequence&gt;</p>
+<p> 
+<p><b>15.14.4.5 text-decoration属性</b></p>
+<p></p>
+<p>text-decoration属性与CSS2的text-decoration属性相同，它有下列五个可能值：</p>
+<ul>
+  <p>
+  <li>none</li>
+  <p></p>
+  <p>
+  <li>underline</li>
+  <p></p>
+  <p>
+  <li>overline</li>
+  <p></p>
+  <p>
+  <li>line-through</li>
+  <p></p>
+  <p>
+  <li>blink</li>
+  <p></p>
+</ul>
+<p>缺省值为none。</p>
+<p> 
+<p><b>15.14.4.6 score-space属性</b></p>
+<p></p>
+<p>划线（Scoring）是个包罗万象的词，用于下划线（underline）、删除线（line through）、双删除线（double strike-through）等等。score-space属性确定是否在空白处划线。例如，<u>If</u> 
+  score-space <u>is</u> true, <u>an underlined sentence looks like this</u>.（如果score-space 
+  为true，则加上下划线的句子与此类似）。<u>If</u> Score-space <u>is</u> false, <u>an</u> <u>underlined</u> 
+  <u>scntence looks</u> <u>uke</u> <u>this</u>.（如果score-space为false，则加上下划线的句子于此类似。</p>
+<h5><a name="_Toc467207772">15.14.5 句子属性</a></h5>
+<p>句子属性用于字符组，也就是说，每次只对一个以上的字符才有意义，如字母或单词之间的空格。</p>
+<p> 
+<p><b>15.14.5.1 字符间距属性</b></p>
+<p></p>
+<p>文本的字距调整测定两个字符分开的空间有多大，这种测定方法需要小心对待。它不是一个绝对值。大多数格式化程序基于本地需要&#0;&#0;特别是在对齐文本方面&#0;&#0;来调整字母之间的空间。此外，高度品质的字体在不同的字形之间使用不同数量的空间。但是，可以使文本完全变得更宽松或更紧密。</p>
+<p>letter-spacing属性在每对字形之间添加额外的空间，此空间超过字距调整所获得的空间。以有符号的长度来表示，以指定加入的额外空间的数量。例如：</p>
+<p>&lt;fo:block letter-spacing="1.5px"&gt;</p>
+<p> This is fairly loose text</p>
+<p>&lt;/fo:block&gt;</p>
+<p>可以使长度为负值，以紧缩文本。但格式化程序通常对允许在字母之间加入或移走多少额外空间具有限制。</p>
+<p> 
+<p><b>15.14.5.2 字间距属性</b></p>
+<p></p>
+<p>word-spacing属性调整单词之间的间隔数量。另外，它的行为很像字符间距属性。其值为一有符号的长度，表示在两个单词之间要加入的额外空间的数量。例如：</p>
+<p>&lt;fo:block word-spacing="0.3cm"&gt;</p>
+<p> This is pretty loose text.</p>
+<p>&lt;/fo:block&gt;</p>
+<p> 
+<p><b>15.14.5.3 行距属性</b></p>
+<p></p>
+<p>XSL格式化引擎将块区域分成行区域。不能从XSL中直接创建行区域。但是，使用下面的五个属性，就可以对如何在垂直方向留下间隔施加影响：</p>
+<ul>
+  <p>
+  <li>line-height：一行的最小高度</li>
+  <p></p>
+  <p>
+  <li>line-height-shift-adjustment：如果下标和上标大到一行的高度，则为consider-shifts；否则为disregard-shifts</li>
+  <p></p>
+  <p>
+  <li>line-stacking-strategy：line-height（CSS模型，为缺省值）；font-height（加上font-height-override-before和font-height-override-after之后，使行与字体一样高）；或者max-height（最大的上行字母高度和最大的下行字母深度之间的距离）</li>
+  <p></p>
+  <p>
+  <li>font-height-override-after：有符号长度，指定在每行之后添加额外的垂直空间；也可以为关键字use-font-metrics（缺省值）来指示根据字体设置垂直空间距离</li>
+  <p></p>
+  <p>
+  <li>font-height-override-before：有符号长度，指定在每行之前添加最小的额外垂直空间；也可以为关键字use-font-metrics（缺省值）来指示根据字体设置垂直空间距离</li>
+  <p></p>
+</ul>
+<p>在很大程度上，行高还依赖于行的字体大小。字体越大，其行自然也就越高。例如，下面的开始段落来自于Mary Wollstonecraft的Of the Rights 
+  of Woman，实际上为二倍间隔：</p>
+<p>&lt;fo:block font-size="12pt" line-height="24pt"&gt;</p>
+<p> In the present state of society it appears necessary to go</p>
+<p> back to first principles in search of the most simple truths,</p>
+<p> and to dispute with some prevailing prejudice every inch of</p>
+<p> ground. To clear my way, I must be allowed to ask some plain</p>
+<p> questions, and the answers will probably appear as</p>
+<p> unequivocal as the axioms on which reasoning is built;</p>
+<p> though, when entangled with various motives of action, they</p>
+<p> are formally contradicted, either by the words or conduct</p>
+<p> of men.</p>
+<p>&lt;/fo:block&gt;</p>
+<p> 
+<p><b>15.14.5.4 文本对齐属性</b></p>
+<p></p>
+<p>text-align和text-align-last属性指定内联内容在其框内如何水平对齐。可有六个值：</p>
+<p> 1．start：在从右往左的文字中进行左对齐</p>
+<p> 2．centered：居中</p>
+<p> 3．end：在从右往左的文字中右对齐</p>
+<p> 4．justify：按照需要使用额外的空间对文本进行扩大，以便填满整行</p>
+<p> 5．page-inside：与页的内侧对齐，也就是说，两个面对页的左页上的右边或两个面对页的右页上的左边</p>
+<p> 6．page-outside：与页的外侧对齐，也就是说，两个面对页的左页上的左边或两个面对页的右页上的右边</p>
+<p>text-align-last属性能够用来为块中的最后一行指定不同的值。这对于对齐文本尤为重要，因为在文本中最后行通常单词不多，需要进行调整。其值可为start、end、justified和relative。relative值使用的值与text-align属性值是一样的，除非text-align为justified，在这种情况下，最后行与开始边对齐。</p>
+<p> 
+<p><b>15.14.5.5 空白属性</b></p>
+<p></p>
+<p>whitespace-treatment属性指定在最初的源文档转换成格式化对象之后，格式化引擎使用仍旧存在的空白来做什么。可以为下列三个值：</p>
+<p> 1．preserve：按原样保留空白</p>
+<p> 2．collapse：将所有的空白压缩成一个空格</p>
+<p> 3．ignore：删除首尾空白</p>
+<p>我偏爱于保留在转换之后仍剩下的所有的空白。如果空白毫无意义，那么就很容易使用xsl:strip-space让转换过程删除空白。</p>
+<p> 
+<p><b>15.14.5.6 wrap-option（折行选项）属性</b></p>
+<p></p>
+<p>wrap-option属性确定如何处理太长的无法容纳在一行中的文本。此属性有两个关键字值：</p>
+<p> 1．wrap：将文本软折行到下一行</p>
+<p> 2．no-wrap：文本不折行</p>
+<h5><a name="_Toc467207773">15.14.6 区域属性</a></h5>
+<p>区域属性施加于框。这些属性既可以是块级也可以是内联框。每个框都有：</p>
+<ul>
+  <p>
+  <li>背景</li>
+  <p></p>
+  <p>
+  <li>页边距</li>
+  <p></p>
+  <p>
+  <li>边界</li>
+  <p></p>
+  <p>
+  <li>贴边</li>
+  <p></p>
+  <p>
+  <li>大小</li>
+  <p></p>
+</ul>
+<p> 
+<p><b>15.14.6.1 背景属性</b></p>
+<p></p>
+<p>背景属性基本上与CSS1的背景属性相同，有五个属性：</p>
+<ul>
+  <p>
+  <li>background-color属性指定框背景的颜色。其值可以是颜色或关键字transparent。</li>
+  <p></p>
+  <p>
+  <li>background-image属性给出用作背景影像的URI。其值可以为关键字none。</li>
+  <p></p>
+  <p>
+  <li>background-attachment属性指定背景影像是否加到窗口或文档上。其值为fixed或scroll关键字之一。</li>
+  <p></p>
+  <p>
+  <li>background-position属性指定背景影像如何放在框中。其值有center、left、right、bottom、middle、top或给出坐标。</li>
+  <p></p>
+  <p>
+  <li>background-repeat属性指定如果背景影像比其框小时，如何以及是否将背景影像平铺显示。可能值为repeat、no-repeat、repeat-x和repeat-y。</li>
+  <p></p>
+</ul>
+<p>下列的块表明了background-image、background-position、background-repeat和background-color的用法：</p>
+<p>&lt;fo:block background-image="/bg/paper.gif"</p>
+<p> background-position="0,0"</p>
+<p> background-repeat="repeat"</p>
+<p> background-color="white"&gt;</p>
+<p> Two strings walk into a bar ...</p>
+<p>&lt;/fo:block&gt;</p>
+<p> 
+<p><b>15.14.6.2 边框属性</b></p>
+<p></p>
+<p>边框属性描述框周围边界的外观。它们几乎都与CSS边框属性相同。但是，除了border-<i>XXX</i>-bottom、border-<i>XXX</i>-top、border-<i>XXX</i>-left和border-<i>XXX-</i>right属性之外，XSL版本还有border-<i>XXX</i>-before、border-<i>XXX-</i>after、border-<i>XXX</i>-start和border-<i>XXX</i>-end版本。总共有31个边界属性，它们是：</p>
+<ul>
+  <p>
+  <li>颜色：border-color、border-before-color、border-after-color、border-start-color、border-end-color、border-top-color、border-bottom-color、border-left-color、border-right-color。缺省边界颜色为黑色。</li>
+  <p></p>
+  <p>
+  <li>宽度：border-width、border-before-width、border-after-width、border-start-width、border-end-width、border-top-width、border-bottom-width、border-left-width、border-right-width。</li>
+  <p></p>
+  <p>
+  <li>样式：border-style、border-before-style、border-after-style、border-start-style、border-end-style、border-top-style、border-bottom-style、border-left-style、border-right-style。</li>
+  <p></p>
+  <p>
+  <li>缩略属性：border、border-top、border-bottom、border-left、border-right、border-color、border-style、border-width。</li>
+  <p></p>
+</ul>
+<p>例如，下面的语句在一个块周围绘制一个2像素宽的蓝色框：</p>
+<p>&lt;fo:block border-before-color="blue" border-before-width-"2px"</p>
+<p> border-after-color="blue" border-after-width="2px"</p>
+<p> border-start-color="blue" border-start-width="2px"</p>
+<p> border-end-color="blue" border-end-width="2px"&gt;</p>
+<p> Two strings walk into a bar ...</p>
+<p>&lt;/fo:block&gt;</p>
+<p> 
+<p><b>15.14.6.3 贴边属性</b></p>
+<p></p>
+<p>贴边属性指定框的边界和框的内容之间的空间数量。框的边界线如果显示出来的话，就落在页边距和贴边之间。贴边属性绝大多数与CSS的贴边属性相同。但是，除了padding-bottom、padding-top、padding-left和padding-right属性之外，XSL版本还有padding-before、padding-after、padding-start和padding-end版本。因此，总共有八个贴边属性，每个都是以有符号的长度作为值。它们是：</p>
+<ul>
+  <p>
+  <li>padding-after</li>
+  <p></p>
+  <p>
+  <li>padding-before</li>
+  <p></p>
+  <p>
+  <li>padding-bottom</li>
+  <p></p>
+  <p>
+  <li>padding-end</li>
+  <p></p>
+  <p>
+  <li>padding-left</li>
+  <p></p>
+  <p>
+  <li>padding-start</li>
+  <p></p>
+  <p>
+  <li>padding-right</li>
+  <p></p>
+  <p>
+  <li>padding-top</li>
+  <p></p>
+</ul>
+<p>例如，下面块的所有边都有0.5宽的贴边：</p>
+<p>&lt;fo:block padding-before="0.5cm" padding-after="0.5cm"</p>
+<p> padding-start="0.5cm" padding-end="0.5cm"&gt;</p>
+<p> Two strings walk into a bar ...</p>
+<p>&lt;/fo:block&gt;</p>
+<p> 
+<p><b>15.14.6.4 块的页边距属性</b></p>
+<p></p>
+<p>有五个页边距属性，每个的值都为无符号的长度，它们是：</p>
+<ul>
+  <p>
+  <li>margin-top</li>
+  <p></p>
+  <p>
+  <li>margin-bottom</li>
+  <p></p>
+  <p>
+  <li>margin-left</li>
+  <p></p>
+  <p>
+  <li>margin-right</li>
+  <p></p>
+  <p>
+  <li>margin</li>
+  <p></p>
+</ul>
+<p>但是，这些属性在此只用于与CSS兼容。通常，推荐使用下列属性来代替，它们能更好地满足XSL格式化模型：</p>
+<ul>
+  <p>
+  <li>space-before</li>
+  <p></p>
+  <p>
+  <li>space-after</li>
+  <p></p>
+  <p>
+  <li>start-indent</li>
+  <p></p>
+  <p>
+  <li>end-indent</li>
+  <p></p>
+</ul>
+<p>space-before和space-after属性分别与margin-top和margin-bottom严格地等价。start-indent属性等于padding-left、border-left-width和margin-left之和。end-indent属性与padding-right、border-right-width和margin-right之和相等。图15-3对此作了更清晰地说明。</p>
+<p align="center"><img src="Image/BK000215-33.gif" width=273 height=180></p>
+<p align="center">图15-3 贴边、缩进、边界和XSL框之前和之后的空间</p>
+<p>例如，下面的块在其开始和结束侧边保留0.5厘米的页边距：</p>
+<p>&lt;fo:block start-indent="0.5cm" end-indent="0.5cm"&gt;</p>
+<p> Two strings walk into a bar ...</p>
+<p>&lt;/fo:block&gt;</p>
+<p> 
+<p><b>15.14.6.5 内联框页边距属性</b></p>
+<p></p>
+<p>用于内联元素的页边距属性有两个，它们是：</p>
+<ul>
+  <p>
+  <li>space-end</li>
+  <p></p>
+  <p>
+  <li>space-start</li>
+  <p></p>
+</ul>
+<p>它们的值是空间说明符，以便在元素之前和之后添加额外的空间范围。实际的空间可能更小或更大。由于空间不是框本身的一部分，所以框的结束空间可以是下一框的开始空间的部分。</p>
+<p>空间说明符的值范围有最小、最大和最佳值。格式化程序可任意选取此范围内的值，以便适应页的限制。此外，空间说明符还包括优先级和限制条件值。所有的这五个值都是用分号分开的。</p>
+<p>优先级既可以是整数，也可以为关键字force。优先条件确定当内联区域的space-end与下一个space-start发生冲突时，应出现什么情况。优先级更高的区域占上风。缺省的优先级为0。</p>
+<p>限制条件为两个关键字之一：discard或retain。这些关键字确定一行的结束处对额外空间产生什么影响。缺省值为放弃额外空间。</p>
+<p>
+<ul>
+  <li>15.14.6.6 内容高度和宽度属性</li>
+</ul>
+<p></p>
+<p>有四个属性可用来指定框的内容区域的高度和宽度，都是无符号的长度值，它们是：</p>
+<ul>
+  <p>
+  <li>height</li>
+  <p></p>
+  <p>
+  <li>width</li>
+  <p></p>
+  <p>
+  <li>max-height</li>
+  <p></p>
+  <p>
+  <li>max-width</li>
+  <p></p>
+</ul>
+<p>这些属性不指定框的总宽度和总高度，也不指定页边距、贴边和边界。只指定内容区域的宽度和高度。除了无符号长度之外，可以将height和width属性设置为关键字auto，以基于框中内容的数量来选择高度和宽度。但是，在任何情况下，高度和宽度都不会比max-height和max-width属性指定的值大。例如：</p>
+<p>&lt;fo:block height="2in" width="2in"&gt;</p>
+<p> Two strings walk into a bar ...</p>
+<p>&lt;/fo:block&gt;</p>
+<p> 
+<p><b>15.14.6.7 overflow（溢出）属性</b></p>
+<p></p>
+<p>overflow属性确定如果内容太多无法容进指定大小的框中时要出现什么情况。可以是使用尺寸属性的显式说明，或者是基于页大小或其他限制的隐式说明。有四个可能性，每一种都使用一个关键字来表示：</p>
+<p> 1．auto：如果有超出部分，则使用滚动条；如果没有，则不使用滚动条</p>
+<p> 2．hidden：不显示到达框之外的任何内容</p>
+<p> 3．scroll：将滚动条加到框上，以便读者可以滚动其他内容</p>
+<p> 4．visible：如果需要，不考虑框的大小限制，显示完整的内容</p>
+<p>如果overflow属性没有visible值，那么clip属性就指定剪切区的形状。缺省的剪切区只是框的本身。但是，可以像下面这样指定一个特定的矩形，从而改变这种情况：</p>
+<p>clip=rect(top_offset right_offset bottom_offset left_offset)</p>
+<p>此处的<i>top_offset</i>、<i>right_offset</i>、<i>bottom_offset</i>和<i>left_offset</i>为有符号的长度，以框的顶、右、底和左侧的剪切区的偏移量来表示。这样可以使剪切区比框的本身更小。</p>
+<p> 
+<p><b>15.14.6.8 reference-orientation（参考方位）属性</b></p>
+<p></p>
+<p>reference-orientation属性可用来指定框的内容以相对于正常方向的90&#176; 增量旋转。唯一的有效值为90&#176; 增量，是以反时针方向计算的，也就是说可以为0、90、180和270。还可以指定为-90、-180和-270。例如，下面为90&#176; 
+  旋转：</p>
+<p>&lt;fo:block reference-orientation="90"&gt;</p>
+<p> Bottom to Top</p>
+<p>&lt;/fo:block&gt;</p>
+<p> 
+<p><b>15.14.6.9 书写方式属性</b></p>
+<p></p>
+<p>书写方式指定框中的内容的方向。这对框中格式化对象的排列具有重要的意义。在大多数时候，说英语和其他西方语言的人采取的都是左至右、上至下的书写方式，譬如：</p>
+<p> A B C D E F G</p>
+<p> H I J K L M N</p>
+<p> O P Q R S T U</p>
+<p> V W X Y Z</p>
+<p>而在说希伯来语和阿拉伯语的国家里，书写顺序为右至左、上至下，如下面的方式似乎更自然：</p>
+<p> G F E D C B A</p>
+<p> N M L K J I H</p>
+<p> U T S R Q P O</p>
+<p> Z Y X W V</p>
+<p>在台湾，由上至下、由右至左的顺序更轻松自在：</p>
+<p> Y U Q M I E A</p>
+<p> Z V R N J F B</p>
+<p> W S O K G C</p>
+<p> X T P L H D</p>
+<p>在XSL格式化语言中，书写方式不只影响文本，还影响文本流或序列中对象的排列、换行等等。读者已注意到许多属性都可以用来控制开头、结尾、前和后的变化，而不是左、右、上和下的变化。根据开头、结尾、前和后，而不是左、右、上和下指定的样式规则会产生更加强健、更具有本地化特点的样式单。</p>
+<p>writing-mode属性指定某一地区的书写方式。此属性可取下列14个关键字值之一：</p>
+<p> 1．bt-lr：自下而上、从左往右</p>
+<p> 2．bt-rl：自下而上、从右往左</p>
+<p> 3．lr-alternating-rl-bt：从左往右数行交替为从右往左数行、自下而上</p>
+<p> 4．lr-alternating-rl-tb：从左往右一行，然后从右往左一行交互排列、自上而下</p>
+<p> 5．lr-bt：从左往右、自下而上</p>
+<p> 6．lr-inverting-rl-bt：从左往右，然后向上移到下一行并从右往左（即，如同自下而上的S那样迂回向上到达整个页面）</p>
+<p> 7．lr-inverting-rl-tb：从右往左，然后向下移到下一行并从右往左（即，如同反向的S那样迂回向下到达整个页面）</p>
+<p> 8．lr-tb：从左往右、自上而下</p>
+<p> 9．rl-bt：从右往左、自下而上</p>
+<p> 10．rl-tb：从右往左、自上而下</p>
+<p> 11．tb-lr：自上而下、从左往右</p>
+<p> 12．tb-rl：自上而下、从右往左</p>
+<p> 13．tb-rl-in-rl-pairs：自上而下、从右往左</p>
+<p> 14．use-page-writing-mode：显示此对象的页使用任意一种书写方式；此为缺省值</p>
+<p> 
+<p><b>15.14.6.10 孤行和寡行</b></p>
+<p></p>
+<p>对于排字机来说，孤行（orphan）是在页面底端段落的首行。寡行（widow）是在页面顶端段落的末行。好的排字机可以将额外的一行按要求从前页移到下一行，以避免孤行和寡行现象。可以将orphans属性设置为无符号的整数，从而调整认为是孤行的行数。可以将widows属性设置为无符号的整数，从而调整认为是寡行的行数。例如，如果想确保页尾的每个段落都至少有三行，可将orphans属性设置为3。例如：</p>
+<p>&lt;fo:simple-page-master page-master-name="even"</p>
+<p> orphans="3" page-height="8.5in" page width="11in"</p>
+<p>/&gt;</p>
+<h5><a name="_Toc467207774">15.14.7 听觉属性</a></h5>
+<p>XSL支持全部的CSS2音频样式单属性的集合，包括：</p>
+<ul>
+  <p>
+  <li>azimuth</li>
+  <p></p>
+  <p>
+  <li>cue</li>
+  <p></p>
+  <p>
+  <li>cue-after</li>
+  <p></p>
+  <p>
+  <li>cue-before</li>
+  <p></p>
+  <p>
+  <li>elevation</li>
+  <p></p>
+  <p>
+  <li>pause</li>
+  <p></p>
+  <p>
+  <li>pause-after</li>
+  <p></p>
+  <p>
+  <li>pause-before</li>
+  <p></p>
+  <p>
+  <li>pitch</li>
+  <p></p>
+  <p>
+  <li>pitch-range</li>
+  <p></p>
+  <p>
+  <li>play-during</li>
+  <p></p>
+  <p>
+  <li>richness</li>
+  <p></p>
+  <p>
+  <li>speak</li>
+  <p></p>
+  <p>
+  <li>speak-header</li>
+  <p></p>
+  <p>
+  <li>speak-numeral</li>
+  <p></p>
+  <p>
+  <li>speak-punctuation</li>
+  <p></p>
+  <p>
+  <li>speech-rate</li>
+  <p></p>
+  <p>
+  <li>stress</li>
+  <p></p>
+  <p>
+  <li>voice-family</li>
+  <p></p>
+  <p>
+  <li>volume</li>
+  <p></p>
+</ul>
+<p><img src="Image/BK000215-30.gif" width=47 height=51 align="left">听觉样式单属性在第13章“级联样式单级别2”的最后一节中讨论过。在XSL格式化对象中，这些属性的语义和句法与CSS2中的完全一样。</p>
+<p>&nbsp;</p>
+ 
+<a href='536.htm'>&lt;&lt;上一篇</a>&nbsp;&nbsp;<a href='538.htm'>下一篇&gt;&gt;</a></td>
+        </tr>
+      </table>
+      <p>&nbsp; </p>
+    </td>
+  </tr>
+</table>
+
+</body>
+
+</html>

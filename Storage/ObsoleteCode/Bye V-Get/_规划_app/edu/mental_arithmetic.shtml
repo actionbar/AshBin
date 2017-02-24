@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>微工具心算能力训练测试</title>
+<style type="text/css">
+body,td,th {
+	font-family: Tahoma, SimSun;
+}
+</style>
+</head>
+<link rel="stylesheet" type="text/css" href="../index.css" />
+<link rel="stylesheet" type="text/css" href="http://localhost:8080/v-get.com/tool/index.css" />
+<style type="text/css">
+<!--
+.c{margin:25px 50px}
+.c p{line-height:22px}
+.cl{}
+#c{font-size:36px;text-align:center}
+#s1{ display:none}
+.c input{width:70px}
+-->
+</style>
+
+
+<script type="text/javascript" src="http://localhost:8080/v-get.com/i/i.js"></script>
+
+
+</head>
+<body>
+<div class="w">
+<div class="t"><div class="q"><div class="p tl"></div><div class="p tc"><a href="">V-Get!首页</a>|<a href="">设为主页</a>|<a href="">收藏本站</a></div><div class="p tr"></div></div></div>
+<div class="u">
+<img src="http://localhost:8080/v-get.com/tool/index.png" />
+</div>
+<div class="n"><a href="http://localhost:8080/tool.v-get.com/">首页</a><a href="http://localhost:8080/v-get.com/tool/biz/">商务办公</a><a href="http://localhost:8080/v-get.com/tool/finance/">金融计算</a><a href="http://localhost:8080/v-get.com/tool/life/">生活助手</a><a href="http://localhost:8080/v-get.com/tool/images/">图片美工</a><a href="http://localhost:8080/v-get.com/tool/editor/">文字设计</a><a href="http://localhost:8080/v-get.com/tool/edu/" class="no">教育考试</a><a href="http://localhost:8080/v-get.com/tool/game/">娱乐游戏</a><a href="http://localhost:8080/v-get.com/tool/pc/">电脑优化</a></div>
+<div class="w4"><a href="#"><img src="http://localhost:8080/v-get.com/i/wuliu/a/zzidc980.gif" /></a></div>
+<!--这里不用include，因为基本这个部分是固定的；广告以后采用js替换，或者固定图片名称-->
+<!--因为都在life文件夹下，而且涉及.no，所以这样更好-->
+<div class="v">
+<div class="p l">
+<h2>生活助手</h2>
+<!--#include file="l.htm"-->
+
+</div>
+<div class="p r">
+<h1>微工具心算能力训练测试</h1>
+<div class="c">
+<div class="p cl">
+<form action="javascript:void(0)" onsubmit="if($('sn').value==x){e++;sm();H(c,'恭喜你，答对了！<br />'+sd());}else {sm();H(c,'很遗憾，答错了！<br />'+sd())}">
+<div id="s0"><p>最大数字：<input type="text" value="10" id="sz" /></p><p>运算次数：<input type="text" value="2" id="sr" /></p><p>闪动毫秒：<input type="text" value="1000" id="st" /></p><p><input type="button" value="开始测试" onclick="es()" /></p></div>
+<div id="s1"><input type="text" id="sn" /><input type="submit" value="确定" id="ss" /><input type="button" value="查看答案" onclick="javascript:H(c,sd());" /></div>
+<div><p id="sv">正确率：0%</p><p id="se">答对个数：0</p><p id="sa">测试数目：0</p></div>
+</form>
+</div>
+<div id="c" class="q"></div>
+</div>
+<div class="o"></div>
+<!--#include file="c.htm"-->
+
+
+</div>
+
+</div>
+
+<div class="o b">
+ddd
+</div>
+</div>
+<script language="javascript" type="text/javascript">
+ <!--
+ var v=0,e=0,a=0,x,s,c=$("c"),sd=function(){D($("s1")); D($("s0"),1);return s+"="+x+"<br />您的正确率是："+v+"%"}
+ function sm(){a++;v=Math.floor((e*100)/a);H($('sv'),'正确率'+v+'%');H($("se"),'答对个数：'+e);H($("sa"),'测试总数：'+a)}
+ 
+ function es() {  
+ D($("s0"));
+ var f; 
+ var t=$i($("st").value);/*设置闪烁时间，秒*/
+ var z=$i($("sz").value);;/*设置数字为30以内的*/
+ var I=1,r=$i($("sr").value);/*设置数字运算次数*/
+  function h(n){return Math.ceil(Math.random()*n)}
+  function q(){c.style.color="rgb("+h(200)+","+h(200)+","+h(200)+")"}
+ x=h(z),s=x;
+H(c,x);
+ 
+var fun=function(){
+	q();
+	var g=h(z);
+ if(Math.random()>0.5){f="+"+g;H(c,f);s+=f;x+=g}else {f="-"+g;H(c,f);s+=f;x-=g}
+ if(I<r){$o(fun,t);I++}else{$o(function(){q();H(c,s+"=");$o(function(){q();H(c,"请写出答案");$("sn").value="";D($("s1"),1)},t)},t);}
+ }
+	 
+	 $o(fun,t);
+ }
+-->
+ </script>
+  
+</body>
+</html>

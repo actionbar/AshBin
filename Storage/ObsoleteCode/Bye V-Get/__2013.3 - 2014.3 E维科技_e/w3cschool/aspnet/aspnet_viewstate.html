@@ -1,0 +1,156 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="../c3.css" />
+<title>ASP.NET - 维持 ViewState</title>
+</head>
+<body class="dotnet">
+<div id="wrapper">
+<div id="header">
+<a href="http://e.v-get.com/w3cschool/" style="float:left;">W3CSchool 在线教程</a>
+<div class="q g"><script type="text/javascript">var cpro_id="u1163355"</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div>
+<div id="navfirst">
+<ul id="menu">
+<li id="h"><a href="../h.html">HTML教程</a></li>
+<li id="x"><a href="../x.html">XML教程</a></li>
+<li id="b"><a href="../b.html">浏览器脚本</a></li>
+<li id="s"><a href="../s.html">服务器脚本</a></li>
+<li id="d"><a href="../d.html">dot net教程</a></li>
+<li id="m"><a href="../m.html">多媒体教程</a></li>
+<li id="w"><a href="../w.html">建站手册</a></li>
+</ul>
+</div><div id="navsecond">
+<div id="course">
+<h2>ASP.NET 教程</h2>
+<ul>
+<li><a href="http://e.v-get.com/w3cschool/">ASP.NET 首页</a></li>
+<li><a href="aspnet_intro.html">ASP.NET 简介</a></li>
+<li><a href="aspnet_vsasp.html">ASP.NET vs ASP</a></li>
+<li><a href="aspnet_pages.html">ASP.NET 页面</a></li>
+<li><a href="aspnet_controls.html">ASP.NET 控件</a></li>
+<li><a href="aspnet_events.html">ASP.NET 事件</a></li>
+</ul>
+<h2>ASP.NET 窗体</h2>
+<ul>
+<li><a href="aspnet_forms.html">ASP.NET 窗体</a></li>
+<li><a href="aspnet_viewstate.html">ASP.NET ViewState</a></li>
+<li><a href="aspnet_textbox.html">asp:TextBox</a></li>
+<li><a href="aspnet_button.html">asp:Button</a></li>
+</ul>
+<h2>ASP.NET 绑定</h2>
+<ul>
+<li><a href="aspnet_databinding.html">数据绑定</a></li>
+<li><a href="aspnet_arraylist.html">ArrayList</a></li>
+<li><a href="aspnet_hashtable.html">Hashtable</a></li>
+<li><a href="aspnet_sortedlist.html">SortedList</a></li>
+<li><a href="aspnet_xml.html">XML 文件</a></li>
+<li><a href="aspnet_repeater.html">asp:Repeater</a></li>
+<li><a href="aspnet_datalist.html">asp:DataList</a></li>
+</ul>
+<h2>ASP.NET 数据库</h2>
+<ul>
+<li><a href="aspnet_dbconnection.html">数据库连接</a></li>
+</ul>
+<h2>ASP.NET 2.0</h2>
+<ul>
+<li><a href="aspnet_newfeatures.html">2.0 新特性</a></li>
+<li><a href="aspnet_masterpages.html">2.0 母版页</a></li>
+<li><a href="aspnet_navigation.html">2.0 导航</a></li>
+</ul>
+<h2>参考手册</h2>
+<ul>
+<li><a href="aspnet_refhtmlcontrols.html">HTML 控件</a></li>
+<li><a href="aspnet_refwebcontrols.html">Web 控件</a></li>
+<li><a href="aspnet_refvalidationcontrols.html">Validation 控件</a></li>
+</ul>
+<h2>实例</h2>
+<ul>
+<li>ASP.NET 实例</li>
+</ul>
+</div>
+<div id="selected">
+<h2>建站手册</h2>
+<ul>
+<li><a href="../site/">网站构建</a></li>
+<li><a href="../w3c/">万维网联盟</a></li>
+<li><a href="http://e.v-get.com/w3c/">W3CSchool 教程</a></li>
+<li><a href="../quality/">网站品质</a></li>
+<li><a href="../semweb/">语义网</a></li>
+<li><a href="../hosting/">网站主机</a></li>
+</ul>
+<h2><a href="http://e.v-get.com/w3c/" class="f13">W3CSchool 教程</a></h2><div class="a120x90"><script type="text/javascript">var cpro_id="u1210867";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div></div>
+</div>
+<div id="maincontent">
+<h1>ASP.NET - 维持 ViewState</h1>
+<div id="tpn">
+<ul class="prenext">
+<li class="pre"><a href="aspnet_forms.html">上一页</a></li>
+<li class="next"><a href="aspnet_textbox.html">下一页</a></li>
+</ul>
+</div>
+<div id="intro">
+<p><strong>通过在 Web 表单中维持对象的 ViewState  (视图状态），您可以省去大量的编码工作。</strong></p>
+</div>
+<div>
+<h2>维持 ViewState  (视图状态）</h2>
+<p>当 classic ASP 中的表单被提交时，所有的表单值都会被清空。设想一下，您提交了一张带有大量信息的表单，而服务器返回了一个错误。您将不得不返回表单，然后更正其中的信息。您点击后退按钮，然后会发生什么呢... 所有的表单值都被清空了，而您将不得不重新开始所有的一切。站点不会维持您的 ViewState。</p>
+<p>当 ASP .NET 中的表单被提交时，表单会随所有表单值一同重新出现。如何做到的呢？这是由于 ASP .NET 维持了您的 ViewState。ViewState 会在页面被提交到服务器时指示其状态。通过在每张页面中的一个 &lt;form runat=&#34;server&#34;&gt; 控件中放置一个隐藏域，我们就可以定义页面的状态了。源代码可能类似这样：</p>
+<pre>&lt;form name=&#34;_ctl0&#34; method=&#34;post&#34; action=&#34;page.aspx&#34; id=&#34;_ctl0&#34;&gt;
+&lt;input type=&#34;hidden&#34; name=&#34;__VIEWSTATE&#34;
+value=&#34;dDwtNTI0ODU5MDE1Ozs+ZBCF2ryjMpeVgUrY2eTj79HNl4Q=&#34; /&gt;
+.....some code
+&lt;/form&gt;</pre>
+<p>维持 ViewState 是 ASP.NET Web 表单的默认设置。如果您不希望维持 ViewState，请在 .aspx 页面的顶部包含指令： &lt;%@ Page EnableViewState=&#34;false&#34; %&gt;，或为任意控件添加属性：EnableViewState=&#34;false&#34;。</p>
+<p>请看下面的 .aspx 文件。它演示了老的运行方式。当您单击提交按钮时，表单值就会消失：</p>
+<pre>&lt;html&gt;
+&lt;body&gt;
+&lt;form action=&#34;demo_classicasp.aspx&#34; method=&#34;post&#34;&gt;
+Your name: &lt;input type=&#34;text&#34; name=&#34;fname&#34; size=&#34;20&#34;&gt;
+&lt;input type=&#34;submit&#34; value=&#34;Submit&#34;&gt;
+&lt;/form&gt;
+&lt;%
+dim fname
+fname=Request.Form(&#34;fname&#34;)
+If fname&lt;&gt;&#34;&#34; Then
+Response.Write(&#34;Hello &#34; &amp; fname &amp; &#34;!&#34;)
+End If
+%&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+<p>TIY</p>
+<p>这是新的 ASP .NET 方式。当您点击提交按钮时，表单值不会消失：</p>
+<pre>&lt;script runat=&#34;server&#34;&gt;
+Sub submit(sender As Object, e As EventArgs)
+lbl1.Text=&#34;Hello &#34; &amp; txt1.Text &amp; &#34;!&#34;
+End Sub
+&lt;/script&gt;
+&lt;html&gt;
+&lt;body&gt;
+&lt;form runat=&#34;server&#34;&gt;
+Your name: &lt;asp:TextBox id=&#34;txt1&#34; runat=&#34;server&#34; /&gt;
+&lt;asp:Button OnClick=&#34;submit&#34; Text=&#34;Submit&#34; runat=&#34;server&#34; /&gt;
+&lt;p&gt;&lt;asp:Label id=&#34;lbl1&#34; runat=&#34;server&#34; /&gt;&lt;/p&gt;
+&lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+<p>TIY  (请在右边的框架中点击“查看原文档”，您可以看到 ASP .NET 已经向表单中添加了一个隐藏域，这样就可以维持 ViewState。）</p>
+</div>
+<div id="bpn">
+<ul class="prenext">
+<li class="pre"><a href="aspnet_forms.html">上一页</a></li>
+<li class="next"><a href="aspnet_textbox.html">下一页</a></li>
+</ul>
+</div>
+</div>
+<div id="sidebar">
+<div class="rs"></div>
+<div id="tools">
+<h5 id="tools_reference"><a href="aspnet_reference.html">ASP.NET 参考手册</a></h5>
+</div>
+<div class="a120x600"><script type="text/javascript">var cpro_id="u1293136";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div><div class="b"></div>
+</div>
+</body>
+</html>

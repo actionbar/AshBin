@@ -1,0 +1,89 @@
+<html>
+<head>
+<title>指定属性的缺省值</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+
+<link rel = stylesheet href = "image/style.css">
+</head>
+<body bgcolor="#ffffff">
+<table width="688" border="0" cellspacing="0" cellpadding="0" align="center">
+  <tr bgcolor="EEEEEE"> 
+    <td height="22"><a href="index.htm">主页</a></td>
+  </tr>
+</table><br>
+<table border="0" cellpadding="0" cellspacing="0" width="688" align="center" height="490">
+  <tr valign="top"> 
+    <td rowspan="4" width="91">&nbsp; </td>
+    <td height="68" width="131"> 
+      <p><img src="image/doc.gif"></p>
+    </td>
+    <td rowspan="4" width="18"><b></b> </td>
+    <td height="68" width="387"><img src="image/title_doc.gif"></td>
+    <td rowspan="4" width="61"> 
+      <h6>&nbsp;</h6>
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td rowspan="3" valign="top" class="pt10" align="center" width="131" bgcolor="EEEEEE"> 
+      <p>&nbsp;</p>
+      <p><font color="#FF0000">※ 10.4 指定属性的缺省值</font></p>
+       
+	</td>
+  </tr>
+  <tr valign="top"> 
+    <td width="387" height="308"> 
+      <table width="100%" border="0" cellpadding="0">
+        <tr> 
+          <td>
+
+           <h4><a name="_Toc467197320">10.4 指定属性的缺省值</a></h4>
+<p>若不采用明确指定一个缺省属性值（如0px）的方式，属性声明可以要求作者提供属性值，或者完全忽略该属性值，甚至总是使用缺省值。这三种类型分别由三个关键词#REQUIRED、#IMPLIED、#FIXED加以指定。</p>
+<h5><a name="_Toc467197321">10.4.1 #REQUIRED</a></h5>
+<p>有时要选一个恰当的缺省属性值并不容易。例如，在为创建一个用于内部网的DTD时，可能要求所有的文档都至少有一个空的&lt;AUTHOR1&gt;标记；这些标记通常情况下并不显示，但可用来识别创建文档的作者。标记中拥有NAME、EMAIL和EXTENSION属性，以便与作者联系。例如：</p>
+<p>&lt;AUTHOR NAME="Elliotte Rusty Harold" </p>
+<p> EMAIL= elharo@metalab.unc.edu EXTENSION= "3459"/&gt;</p>
+<p>假设要强制要求在内部网上张贴文档人的表明身份，就不采取为这些属性提供缺省值的方法。然而XML无法阻止任何人把作者身份定为“Luke Skywalker”（洛克天行者），但至少可通过使用#REQUIRED的缺省值方式，要求指定作者身份为某个人。例如：</p>
+<p>&lt;!ELEMENT AUTHOR EMPTY&gt;</p>
+<p>&lt;!ATTLIST AUTHOR NAME CDATA #REQUIRED&gt;</p>
+<p>&lt;!ATTLIST AUTHOR EMAIL CDATA #REQUIRED&gt;</p>
+<p>&lt;!ATTLIST AUTHOR EXTENSION CDATA #REQUIRED&gt;</p>
+<p>如果语法分析器遇到一个&lt;AUTHOR/&gt;标记，该标记没有包含这些属性中的一个或几个时，将返回一个错误。</p>
+<p>也可使用#REQUIRED强迫作者提交IMG元素的WIDTH、HEIGHT和ALT属性。例如：</p>
+<p>&lt;!ELEMENT IMG EMPTY&gt;</p>
+<p>&lt;!ATTLIST IMG ALT CDATA #REQUIRED&gt;</p>
+<p>&lt;!ATTLIST IMG WIDTH CDATA #REQUIRED&gt;</p>
+<p>&lt;!ATTLIST IMG HEIGHT CDATA #REQUIRED&gt;</p>
+<p>任何试图忽略这些属性的行为（这样的Web页面太多了）都将产生一个不合法文档。XML处理器将注意到这种错误，并且将通知缺少这些属性的作者。</p>
+<h5><a name="_Toc467197322">10.4.2 #IMPLIED</a></h5>
+<p>有时可能找到一个好的属性缺省值，但也不想要求文档作者包含这属性值。例如，假设在内部网上张贴文档的一些人拥有电子邮件地址，但它们没有电话分机号；为此，不想要求它们在&lt;AUTHOR/&gt;标记中包含EXTENSION（分机号）属性部分。例如：</p>
+<p>&lt;AUTHOR NAME="Elliotte Rusty Harold" </p>
+<p> EMAIL="elharo@metalab.unc.edu "/&gt;</p>
+<p>如果依然不想为EXTENSION（分机号）提供缺省属性值，但是想提供作者引入这种类似属性的能力。在这种情况下，就可使用#IMPLIED的缺省值。如下所示：</p>
+<p>&lt;!ELEMENT AUTHOR EMPTY&gt;</p>
+<p>&lt;!ATTLIST AUTHOR NAME CDATA #REQUIRED&gt;</p>
+<p>&lt;!ATTLIST AUTHOR EMAIL CDATA #REQUIRED&gt;</p>
+<p>&lt;!ATTLIST AUTHOR EXTENSION CDATA #IMPLIED&gt;</p>
+<p>如果XML处理器遇到没有EXTENSION属性的&lt;AUTHOR/&gt;标记，就不向XML应用程序提供有用的属性值。应用程序按收到的通知进行相应的选择。例如，应用程序把元素送入SQL数据库中，属性映射为字段，应用程序或许在数据库相应字段中插入空的数据。</p>
+<h5><a name="_Toc467197323">10.4.3 #FIXED</a></h5>
+<p>最后，可能想提供一个不允许作者更改的属性缺省值。例如，希望为在内部网上张贴文档的人员的AUTHOR元素指定一个同等的COMPANY标识属性。方法如下：</p>
+<p>&lt;AUTHOR NAME= "Elliotte Rusty Harold" COMPANY="TIC"</p>
+<p> EMAIL= "elharo@metalab.unc.edu" EXTENSION="3459"/&gt;</p>
+<p>可通过指定缺省值为#FIXED，其后跟随实际的缺省值，来要求所有的人员对COMPANY属性使用该缺省值。例如：</p>
+<p>&lt;!ELEMENT AUTHOR EMPTY&gt;</p>
+<p>&lt;!ATTLIST AUTHOR NAME CDATA #REQUIRED&gt;</p>
+<p>&lt;!ATTLIST AUTHOR EMAIL CDATA #REQUIRED&gt;</p>
+<p>&lt;!ATTLIST AUTHOR EXTENSION CDATA #IMPLIED&gt;</p>
+<p>&lt;!ATTLIST AUTHOR COMPANY CDATA #FIXED "TIC"&gt;</p>
+<p>文档作者不需要在它们各自的标记中真正地引用固定的属性。如果它们没有包括固定属性，则使用缺省值；如果包括了固定的属性，无论如何它们使用的属性值必须一致，否则语法分析器将返回一个错误信号。</p>
+ 
+<a href='419.htm'>&lt;&lt;上一篇</a>&nbsp;&nbsp;<a href='421.htm'>下一篇&gt;&gt;</a></td>
+        </tr>
+      </table>
+      <p>&nbsp; </p>
+    </td>
+  </tr>
+</table>
+
+</body>
+
+</html>

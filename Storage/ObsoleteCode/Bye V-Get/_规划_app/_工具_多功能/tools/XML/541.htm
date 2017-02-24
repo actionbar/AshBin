@@ -1,0 +1,393 @@
+<html>
+<head>
+<title>简单链接</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+
+<link rel = stylesheet href = "image/style.css">
+</head>
+<body bgcolor="#ffffff">
+<table width="688" border="0" cellspacing="0" cellpadding="0" align="center">
+  <tr bgcolor="EEEEEE"> 
+    <td height="22"><a href="index.htm">主页</a></td>
+  </tr>
+</table><br>
+<table border="0" cellpadding="0" cellspacing="0" width="688" align="center" height="490">
+  <tr valign="top"> 
+    <td rowspan="4" width="91">&nbsp; </td>
+    <td height="68" width="131"> 
+      <p><img src="image/doc.gif"></p>
+    </td>
+    <td rowspan="4" width="18"><b></b> </td>
+    <td height="68" width="387"><img src="image/title_doc.gif"></td>
+    <td rowspan="4" width="61"> 
+      <h6>&nbsp;</h6>
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td rowspan="3" valign="top" class="pt10" align="center" width="131" bgcolor="EEEEEE"> 
+      <p>&nbsp;</p>
+      <p><font color="#FF0000">※ 16.2 简单链接</font></p>
+       
+	</td>
+  </tr>
+  <tr valign="top"> 
+    <td width="387" height="308"> 
+      <table width="100%" border="0" cellpadding="0">
+        <tr> 
+          <td>
+
+           <h4 align="left"><a name="_Toc467208491">16.2 简单链接</a></h4>
+<p>在HTML中，链接是用&lt;A&gt;标记来定义的。但就像XML使用描述元素的标记更灵活一样，使用引用外部资源的标记也更为灵活。在XML中，几乎任何标记都可以是一个链接。包括链接的元素称作链接元素（linking 
+  element）。</p>
+<p>链接元素是由值为simple或extended的xlink:form特性来标识的。而且，每个链接元素包含一个值为链接资源的URI的href特性。例如，下面是三个链接元素：</p>
+<p>&lt;FOOTNOTE xlink:form=”simple” href=”footnote7.xml”&gt;7&lt;/FOOTNOTE&gt;</p>
+<p>&lt;COMPOSER xlink:form=”simple” inline=”true”</p>
+<p> href=”http://www.users.interport.net/~beand/”&gt;</p>
+<p> Beth Anderson</p>
+<p>&lt;/COMPOSFR&gt;</p>
+<p>&lt;IMAGE xlink:form=”simple” href=”logo.gif”/&gt;</p>
+<p>注意，此元素具有描述它们所包含内容的语义名称，而不是这些元素如何表现。这些元素使链接的信息包含在标记的特性中。</p>
+<p>这三个例子是简单的XLink。简单的XLink类似于标准的HTML链接，并在更复杂（以及功能强大）的扩展链接之前很可能为应用程序的软件所支持，所以，我首先使用它们。扩展链接在下节讨论。</p>
+<p>在上面的FOOTNOTE实例中，链接目标特性名为href。其值为相对的URL footnote7.xml。此文档的协议、主机以及路径都取自出现这种链接的文档中的协议、主机以及路径。</p>
+<p>在上面的COMPOSER示例中，链接目标特性名为href。此href特性值为绝对的URL http: //wwwusers.interport.net/~beand/。在上面的第三个示例IMAGE中，链接目标特性名为href。此href特性值为相对的URL 
+  logo.gif。这时同样本文档的协议、主机以及路径都取自出现这种链接的文档中的协议、主机以及路径。</p>
+<p>如果文档有一个DTD，那么这些特性必须和其他特性一样进行声明。例如，FOOTNOTE、COMPOSER和IMAGE元素的DTD声明可以按下面的方式进行：</p>
+<p>&lt;!ELEMENT FOOTNOTE (#PCDATA)&gt;</p>
+<p>&lt;!ATTLIST FOOTNOTE</p>
+<p> xlink:form CDATA #FIXED “simple”</p>
+<p> href CDATA #REQUIRED</p>
+<p>&gt;</p>
+<p>&lt;!ELEMENT COMPOSER (#PCDATA)&gt;</p>
+<p>&lt;!ATTLIST COMPOSER</p>
+<p> xlink:form CDATA #FIXED “simple”</p>
+<p> href CDATA #REQUIRED</p>
+<p>&gt;</p>
+<p>&lt;!ELEMENT IMAGE EMPTY&gt;</p>
+<p>&lt;IATTLIST IMAGE</p>
+<p> xlink:form CDATA #FIXED “simple”</p>
+<p> href CDATA #REQUIRED</p>
+<p>&gt;</p>
+<p>使用这些声明，xlink:form特性就有一个确定值。所以，这一特性就不需要包括在元素的实例中，现在可以将这些元素按照下列方式书写得更简洁一些：</p>
+<p>&lt;FOOTNOTE href=”footnote7.xml”&gt;7&lt;/FOOTNOTE&gt;</p>
+<p>&lt;COMPOSER href=”http://www.users.interport.net/~beand/”&gt;</p>
+<p> Beth Anderson</p>
+<p>&lt;/COMPOSER&gt;</p>
+<p>&lt;IMAGE href=”logo.gif”/&gt;</p>
+<p>使一元素成为链接元素对元素的其他特性或内容不存在限制。链接元素可以包含任意的子元素或其他特性，当然总是受制于DTD。例如，下面为IMAGE元素的更真实的声明。注意，大多数特性与链接无关。</p>
+<p>&lt;!ELEMENT IMAGE EMPTY&gt;</p>
+<p>&lt;!ATTLIST IMAGE</p>
+<p> xlink:form CDATA #FIXED “simple”</p>
+<p> href CDATA #REQUIRED</p>
+<p> ALT CDATA #REQUIRED</p>
+<p> HEIGHT CDATA #REQUIRED</p>
+<p> WIDTH CDATA #REQUIRED</p>
+<p>&gt;</p>
+<h5><a name="_Toc467208492">16.2.1 本地资源的描述</a></h5>
+<p>链接元素可以包含可选的content-role和content-title元素，这两个元素用于在链接元素出现的文档内提供附加的信息，并进一步描述此链接的目的。例如：</p>
+<p>&lt;AUTHOR href=<a href="http://www.macfaq.com/personal.html">http://www.macfaq.com/personal.html</a></p>
+<p> content-title="author of the page"</p>
+<p> content-role="whom to contact for questions about this page"&gt;</p>
+<p> Elliotte Rusty Harold</p>
+<p>&lt;/AUTHOR&gt;</p>
+<p>content-role和content-title特性描述本地资源，即链接元素的内容（本例中的Elliotte Rusty Harold）。但是，这些特性不描述远程的资源（如本例中为位于<a href="http://www.macfaq.com/personal.html">http://www.macfaq.com/personal.html</a>处的文档）。因此，本例说明Elliotte 
+  Rusty Harold具有“author of the page”的头衔，其作用为“whom to contact for questions about 
+  this page”。本例也无需与在http://www.macfaq.com/personal.html处找到的文档有任何关系。</p>
+<p>content-title特性通常是由读入XML的应用程序所使用，以便在用户将鼠标移到链接的元素之上时，在浏览器状态条上或通过工具提示为用户显示一些附加信息。但是，应用程序不一定要为用户显示这种信息。如果此特性选择了这么做，那么它就只能如此。</p>
+<p>content-role特性表示文档中链接元素的目的。此特性与准备将数据传递给读入XML的应用程序中的处理指令相类似。可是，它的真正目的并不是作为XML来使用，并且应用程序可以任意忽略此特性。</p>
+<p>像所有的其他特性一样，content-title和content-role为了用于包含它们的所有元素也应在DTD中进行声明。例如，下面的合理声明可用于上面的AUTHOR元素：</p>
+<p>&lt;!ELEMENT AUTHOR (#PCDATA)&gt;</p>
+<p>&lt;IATTLIST AUTHOR</p>
+<p> xlink:form CDATA #FIXED "simple"</p>
+<p> href CDATA #REQUIRED</p>
+<p> content-title CDATA #IMPLIED</p>
+<p> content-role CDATA #IMPLIED</p>
+<h5><a name="_Toc467208493">16.2.2 远程资源的描述</a></h5>
+<p>链接元素可以包含可选的role和title特性，用来描述远程资源，即链接所指向的文档或其他资源。例如：</p>
+<p>&lt;AUTHOR href=<a href="http://www.macfaq.com/personal.html">http://www.macfaq.com/personal.html</a></p>
+<p> title="Elliotte Rusty Harold s personal home page"</p>
+<p> role="further information about the author of this page"</p>
+<p> content-title="author of the page"</p>
+<p> content-role="whom to contact for questions about this page"&gt;</p>
+<p> Elliotte Rusty Harold</p>
+<p>&lt;/AUTHOR&gt;</p>
+<p>role和title特性描述远程资源，而不是本地元素。在上面的实例中，远程资源就是<a href="http://www.macfaq.com/personal.html">http://www.macfaq.com/personal.html</a>处的文档。因此，下面的实例说明<a href="http://www.macfaq.com/personal.html">http://www.macfaq.com/personal.html</a>处的网页标题为“Elliotte 
+  Rusty Harold s personal home page”，作用为“further information about the author 
+  of this page”。要使title与链接网页的TITLE元素内容相同是很平常的，尽管不必这样做。</p>
+<p>读入XML的应用程序可以使用这两个特性来为用户显示附加的信息。但应用程序无需将这种信息显示给用户或用它来做任何事。</p>
+<p>在链接文档（链接出发的文档）中，role特性说明远程资源（被链接的文档）的目的。例如，可用特性来区别脚注、尾注和引文。</p>
+<p>与所有的其他特性一样，为了用于包含它们的所有元素，应在DTD中声明title和role特性。例如，下面的合法声明可用于上面的author元素：</p>
+<p>&lt;!ELEMENT AUTHOR (#PCDATA)&gt;</p>
+<p>&lt;!ATTLIST AUTHOR</p>
+<p> xlink:form CDATA #FIXED "simple"</p>
+<p> href CDATA #REQUIRED</p>
+<p> content-title CDATA #IMPLIED</p>
+<p> content-role CDATA #IMPLIED</p>
+<p> title CDATA #IMPLIED</p>
+<p> role CDATA #IMPLIED</p>
+<p>&gt;</p>
+<h5><a name="_Toc467208494">16.2.3 链接行为</a></h5>
+<p>链接元素可以包含三个可选特性，这些特性可以建议应用程序如何将远程资源与当前页关联。下面即为这三种特性：</p>
+<p>1．show</p>
+<p>2．actuate</p>
+<p>3．behavior</p>
+<p>show特性提示当激活链接时，应如何显示内容，例如，通过打开一个新窗口来保存内容。actuate特性提示此链接是否可以自动切断或是否要求有明确的用户请求。behavior特性可为应用程序提供有关如何准确地切断链接的详细信息，如在切断链接之前的一段时间迟延。但是，这些特性都是与应用程序相关的，并且应用程序可任意忽略这些提示。</p>
+<p> 
+<p><b>16.2.3.1 show特性</b></p>
+<p></p>
+<p>show特性有三个合法值：replace、new和embed。</p>
+<p>当激活链接（通常是由单击此链接而发生的，至少在GUI浏览器中是如此）时使用replace值，则链接的目标代替同一个窗口中的当前文档。这是HTML链接的缺省行为。例如：</p>
+<p>&lt;COMPOSER href="http://www.users.interport.net/~beand/"</p>
+<p> show="replace"&gt;</p>
+<p> Beth Anderson</p>
+<p>&lt;/COMPOSER&gt;</p>
+<p>使用new值时，激活链接就打开新的窗口，以显示目标资源。这种行为与target特性设置为_blank时的HTML链接类似。例如：</p>
+<p>&lt;WEBSITE href="http://www.quackwatch.com/" show="new"&gt;</p>
+<p> Check this out, but don t leave our site completely!</p>
+<p>&lt;/WEBSITE&gt;</p>
+<p><img src="Image/BK000216-34.gif" width=53 height=50 align="left">读者不希望在单击链接后打开新的窗口，倒希望在单击链接后，把新页加载到当前窗口中，除非明确地要求在新窗口中打开这种链接。</p>
+<p>有些公司相当自傲，以至他们认为任何一个用户从不会离开他们自己的站点。于是，他们就“帮助”读者打开新的窗口。在大多数时候，这只能使读者感到困惑和厌恶。如果没有一个很好的理由，就不要改变用户所期望的那种行为。让读者在站点上花费额外的两秒钟，或者多浏览一页，多看一页的广告，这种浮浅的欲望是毫无道理的。</p>
+<p>使用embed值，激活链接将会在现有的文档中插入目标资源。其准确的含义是与应用程序相关的。但是，可以想象，此值用于Web页的客户端“嵌入”功能。例如，下面的这个元素（并没有直接包括家庭成员的各个元素）将家庭成员的各个元素从各自的文件ThomasCorwinAnderson.xml、LeAnahDeMintEnglish.xml、JohnJayAnderson.xml和SamuelEnglishAnderson.xml中复制出来。</p>
+<p>&lt;FAMILY ID="f732"&gt;</p>
+<p> &lt;HUSBAND href="ThomasCorwinAnderson.xml" show="embed"/&gt;</p>
+<p> &lt;WIFE href="LeAnahDeMintEnglish.xml" show="embed"/&gt;</p>
+<p> &lt;CHILD href="JohnJayAnderson.xml" show="embed"/&gt;</p>
+<p> &lt;CHILD href="SamuelEnglishAnderson.xml" show="embed"/&gt;</p>
+<p>&lt;/FAMILY&gt;</p>
+<p>切断链接并将其内容嵌入到FAMILY元素中之后，结果如下所示：</p>
+<p>&lt;FAMILY ID="f732"&gt;</p>
+<p> &lt;PERSON ID="plO35" SEX="M"&gt;</p>
+<p> &lt;NAME&gt;</p>
+<p> &lt;GIVEN&gt;Thomas Corwin&lt;/GIVEN&gt;</p>
+<p> &lt;SURNAME&gt;Anderson&lt;/SURNAME&gt;</p>
+<p> &lt;/NAME&gt;</p>
+<p> &lt;BIRTH&gt;</p>
+<p> &lt;DATE&gt;24 Aug 1845&lt;/DATE&gt;</p>
+<p> &lt;/BIRTH&gt;</p>
+<p> &lt;DEATH&gt;</p>
+<p> &lt;PLACE&gt;Mt. Sterling, KY&lt;/PLACE&gt;</p>
+<p> &lt;DATE&gt;18 Sep 1889&lt;/DATE&gt;</p>
+<p> &lt;/DEATH&gt;</p>
+<p> &lt;/PERSON&gt;</p>
+<p> &lt;PERSON ID="pl098" SEX="F"&gt;</p>
+<p> &lt;NAME&gt;</p>
+<p> &lt;GIVEN&gt;LeAnah (Lee Anna, Annie) DeMint&lt;/GIVEN&gt;</p>
+<p> &lt;SURNAME&gt;English&lt;/SURNAME&gt;</p>
+<p> &lt;/NAME&gt;</p>
+<p> &lt;BIRTH&gt;</p>
+<p> &lt;PLACE&gt;Louisville, KY&lt;/PLACE&gt;</p>
+<p> &lt;DATE&gt;1 Mar 1843&lt;/DATE&gt;</p>
+<p> &lt;/BIRTH&gt;</p>
+<p> &lt;DEATH&gt;</p>
+<p> &lt;PLACE&gt;acute Bright s disease, 504 E. Broadway&lt;/PLACE&gt;</p>
+<p> &lt;DATE&gt;31 Oct 1898&lt;/DATE&gt;</p>
+<p> &lt;/DEATH&gt;</p>
+<p> &lt;/PERSON&gt;</p>
+<p> &lt;PERSON ID="pll02" SEX="M"&gt;</p>
+<p> &lt;NAME&gt;</p>
+<p> &lt;GIVEN&gt;John Jay (Robin Adair )&lt;/GIVEN&gt;</p>
+<p> &lt;SURNAME&gt;Anderson&lt;/SURNAME&gt;</p>
+<p> &lt;/NAME&gt;</p>
+<p> &lt;BIRTH&gt;</p>
+<p> &lt;PLACE&gt;Sideview&lt;/PLACE&gt;</p>
+<p> &lt;DATE&gt;13 May 1873&lt;/DATE&gt;</p>
+<p> &lt;/BIRTH&gt;</p>
+<p> &lt;DEATH&gt;</p>
+<p> &lt;DATE&gt;18 Sep 1889 &lt;/DATE&gt;</p>
+<p> &lt;/DEATH&gt;</p>
+<p> &lt;/PERSON&gt;</p>
+<p> &lt;PERSON ID="p37" SEX="M"&gt;</p>
+<p> &lt;NAME&gt;</p>
+<p> &lt;GIVEN&gt;Samuel English&lt;/GIVEN&gt;</p>
+<p> &lt;SURNAME&gt;Anderson&lt;/SURNAME&gt;</p>
+<p> &lt;/NAME&gt;</p>
+<p> &lt;BIRTH&gt;</p>
+<p> &lt;PLACE&gt;Sideview&lt;/PLACE&gt;</p>
+<p> &lt;DATE&gt;25 Aug 1871&lt;/DATE&gt;</p>
+<p> &lt;/BIRTH&gt;</p>
+<p> &lt;DEATH&gt;</p>
+<p> &lt;PLACE&gt;Mt. Sterling, KY&lt;/PLACE&gt;</p>
+<p> &lt;DATE&gt;10 Nov 1919&lt;/DATE&gt;</p>
+<p> &lt;/DEATH&gt;</p>
+<p> &lt;/PERSON&gt;</p>
+<p>&lt;/FAMILY&gt;</p>
+<p>尽管每个PERSON元素都存在于独立的文件中，但处理全部的FAMILY元素就像是在一个文件中一样。</p>
+<p>像合法文档中的所有特性一样，对于DTD的链接元素，show特性必须在&lt;!ATTLIST&gt;声明语句加以声明。例如：</p>
+<p>&lt;!ELEMENT WEBSITE (#PCDATA)&gt;</p>
+<p>&lt;!ATTLIST WEBSITE</p>
+<p> xlink:form CDATA #FIXED "simple"</p>
+<p> href CDATA #REQUIRED</p>
+<p> show (new | replace | embed) "new"</p>
+<p>&gt;</p>
+<p> 
+<p><b>16.2.3.2 actuate特性</b></p>
+<p></p>
+<p>链接元素的actuate特性有两个可能的值：user和auto。user值为缺省值，它指定仅当用户请求时，才切断链接。另一方面，如果链接元素的actuate特性设置成auto，则在同一个链接元素的其他目标资源被切断时，都要切断此链接。</p>
+<p>正如合法文档中的所有特性一样，对于出现链接的链接元素，actuate特性必须在DTD的&lt;!ATTLIST&gt;声明语句中声明。例如：</p>
+<p>&lt;!ELEMENT WEBSITE (#PCDATA)&gt;</p>
+<p>&lt;IATTLIST WEBSITE</p>
+<p> xlink:form CDATA #FIXED "simple"</p>
+<p> href CDATA #REQUIRED</p>
+<p> show (new | replace | embed) "new"</p>
+<p> actuate (user | auto) "user"</p>
+<p>&gt;</p>
+<p> 
+<p><b>16.2.3.3 behavior特性</b></p>
+<p></p>
+<p>behavior特性用来将任意格式的任意数据传递给读入此数据的应用程序中。应用程序使用这些数据来对如何进行链接作出附加说明。例如，如果要指定在切断链接时，播放声音文件fanfare.au，可按下面进行编写：</p>
+<p>&lt;COMPOSER xlink:form="simple"</p>
+<p> href="http://www.users.interport.net/-beand/"</p>
+<p> behavior="sound: fanfare.au"&gt;</p>
+<p> Beth Anderson</p>
+<p>&lt;/COMPOSER&gt;</p>
+<table cellspacing=0 border=0 cellpadding=7 width=562>
+  <tr>
+    <td valign="TOP" bgcolor="#ffffff"> 
+      <p>用于DTD的快捷方式
+    </td>
+  </tr>
+  <tr>
+    <td valign="TOP" bgcolor="#ffffff"> 
+      <p>由于特性名及类型都是标准化的，如果在一篇文档中有多个链接元素，那么将特性声明变成参数实体引用，并只在每个链接元素的声明中重复这种引用常常是方便的。例如：
+    </td>
+  </tr>
+  <tr>
+    <td valign="TOP" bgcolor="#ffffff"> 
+      <p>&lt;!ENTITY % link-attributes
+    </td>
+  </tr>
+  <tr>
+    <td valign="TOP" bgcolor="#ffffff"> 
+      <p> "xlink:form CDATA #FIXED &#162; simple&#162; 
+    </td>
+  </tr>
+  <tr>
+    <td valign="TOP" bgcolor="#ffffff"> 
+      <p> href CDATA #REQUIRED
+    </td>
+  </tr>
+  <tr>
+    <td valign="TOP" bgcolor="#ffffff"> 
+      <p> behavior CDATA #IMPLIED
+    </td>
+  </tr>
+  <tr>
+    <td valign="TOP" bgcolor="#ffffff"> 
+      <p> content-role CDATA #IMPLIED
+    </td>
+  </tr>
+  <tr>
+    <td valign="TOP" bgcolor="#ffffff"> 
+      <p> content-title CDATA #IMPLIED
+    </td>
+  </tr>
+  <tr>
+    <td valign="TOP" bgcolor="#ffffff"> 
+      <p> role CDATA #IMPLIED
+    </td>
+  </tr>
+  <tr>
+    <td valign="TOP" bgcolor="#ffffff"> 
+      <p> title CDATA #IMPLIED
+    </td>
+  </tr>
+  <tr>
+    <td valign="TOP" bgcolor="#ffffff"> 
+      <p> show (new | replace | embed) &#162; new&#162; 
+    </td>
+  </tr>
+  <tr>
+    <td valign="TOP" bgcolor="#ffffff"> 
+      <p> actuate (use | auto) &#162; use&#162; 
+    </td>
+  </tr>
+  <tr>
+    <td valign="TOP" bgcolor="#ffffff"> 
+      <p> behavior CDATA #IMPLIED"
+    </td>
+  </tr>
+  <tr>
+    <td valign="TOP" bgcolor="#ffffff"> 
+      <p>&gt;
+    </td>
+  </tr>
+  <tr>
+    <td valign="TOP" bgcolor="#ffffff"> 
+      <p>&lt;!ELEMENT COMPOSER (#PCDATA)&gt;
+    </td>
+  </tr>
+  <tr>
+    <td valign="TOP" bgcolor="#ffffff"> 
+      <p>&lt;!ATTLIST COMPOSER 
+    </td>
+  </tr>
+  <tr>
+    <td valign="TOP" bgcolor="#ffffff"> 
+      <p> %link-attributes;
+    </td>
+  </tr>
+  <tr>
+    <td valign="TOP" bgcolor="#ffffff"> 
+      <p>&gt;
+    </td>
+  </tr>
+  <tr>
+    <td valign="TOP" bgcolor="#ffffff"> 
+      <p>&lt;!ELEMENT AUTHOR (#PCDATA)&gt;
+    </td>
+  </tr>
+  <tr>
+    <td valign="TOP" bgcolor="#ffffff"> 
+      <p>&lt;!ATTLIST AUTHOR
+    </td>
+  </tr>
+  <tr>
+    <td valign="TOP" bgcolor="#ffffff"> 
+      <p> %link-attributes;
+    </td>
+  </tr>
+  <tr>
+    <td valign="TOP" bgcolor="#ffffff"> 
+      <p>&gt;
+    </td>
+  </tr>
+  <tr>
+    <td valign="TOP" bgcolor="#ffffff"> 
+      <p>&lt;!ELEMENT WEBSITE (#PCDATA)&gt;
+    </td>
+  </tr>
+  <tr>
+    <td valign="TOP" bgcolor="#ffffff"> 
+      <p>&lt;!ATTLIST WEBSITE
+    </td>
+  </tr>
+  <tr>
+    <td valign="TOP" bgcolor="#ffffff"> 
+      <p> %link-attributes;
+    </td>
+  </tr>
+  <tr>
+    <td valign="TOP" bgcolor="#ffffff"> 
+      <p>&gt;
+    </td>
+  </tr>
+</table>
+<p>但是，这样就要求读入XML文件的应用程序理解带有值为sound:fanfare.au的behavior特性即意味着当切断链接时，应播放fanfare.au声音文件。大多数（或许所有的）应用都不能理解这种含义。但是，它们可以将behavior特性当作易于使用的保存它们确实能够理解的非标准信息的地点。</p>
+<p>正如合法文档中的所有特性一样，对于出现链接的链接元素，其behavior特性必须在DTD中声明才行。例如：下面的COMPOSER元素可按下面方式声明：</p>
+<p>&lt;!ELEMENT COMPOSER (#PCDATA)&gt;</p>
+<p>&lt;!ATTLIST COMPOSER</p>
+<p> xlink:form CDATA #FIXED "simple"</p>
+<p> href CDATA #REQUIRED</p>
+<p> behavior CDATA #IMPLIED</p>
+<p>&gt;</p>
+ 
+<a href='540.htm'>&lt;&lt;上一篇</a>&nbsp;&nbsp;<a href='542.htm'>下一篇&gt;&gt;</a></td>
+        </tr>
+      </table>
+      <p>&nbsp; </p>
+    </td>
+  </tr>
+</table>
+
+</body>
+
+</html>

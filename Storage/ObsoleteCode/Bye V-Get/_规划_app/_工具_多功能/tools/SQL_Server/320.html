@@ -1,0 +1,50 @@
+<meta http-equiv="content-type" content="text/html; charset=gb2312"><FONT 
+style="FONT-SIZE: 9pt; LINE-HEIGHT: 15pt"><B>FAQ:SQL&nbsp;Mail（2）&lt;译&gt;(潇湘剑公子)</B><BR>常见的&nbsp;SQL&nbsp;Mail&nbsp;问题(一)
+<P></P>
+<P>本文适用于以下&nbsp;Microsoft&nbsp;SQL&nbsp;Server&nbsp;数据库版本:<BR>·&nbsp;&nbsp;&nbsp;&nbsp;Microsoft&nbsp;SQL&nbsp;Server&nbsp;2000&nbsp;(all&nbsp;editions)&nbsp;<BR>·&nbsp;&nbsp;&nbsp;&nbsp;Microsoft&nbsp;SQL&nbsp;Server&nbsp;versions&nbsp;6.5&nbsp;,&nbsp;7.0&nbsp;</P>
+<P>摘要</P>
+<P>本文采用一问一答的形式列出了一些在你使用&nbsp;SQL&nbsp;Mail&nbsp;过程中可能遇到的问题，并且向你提供一些解决该类问题的技巧。绝大多数的SQL&nbsp;Mail&nbsp;问题都可以归结于不正确的配置。更多信息如何正确的配置你的&nbsp;SQL&nbsp;Mail&nbsp;的信息，请通过以下链接访问微软产品技术服务站点：</P>
+<P><IMG src="http://www.pigtwo.com/forum/pic/url.gif" align=absMiddle border=0><A 
+href="http://support.microsoft.com/default.aspx?scid=kb" 
+target=_blank>http://support.microsoft.com/default.aspx?scid=kb</A>;en-us;Q263556</P>
+<P>本文假定读者已具备&nbsp;Q263556&nbsp;的应用知识背景。除非另作说明，本文中关于&nbsp;SQL&nbsp;Mail&nbsp;的注释同样适用于&nbsp;SQLAgentMail&nbsp;。</P>
+<P>更多信息</P>
+<P>检查你们的配置&nbsp;<BR>更正不正确的配置可以解决绝大多数&nbsp;SQL&nbsp;Mail&nbsp;问题。如何确认你已经正确的配置了你的&nbsp;SQL&nbsp;Mail&nbsp;，请看以下的列表：</P>
+<P>·&nbsp;&nbsp;&nbsp;&nbsp;在你运行&nbsp;SQL&nbsp;Server&nbsp;的计算机上必须安装了mail&nbsp;client&nbsp;(比如&nbsp;Microsoft&nbsp;Outlook)</P>
+<P>·&nbsp;&nbsp;&nbsp;&nbsp;使用&nbsp;Microsoft&nbsp;Outlook&nbsp;2000&nbsp;时，应当选择&nbsp;Corporate&nbsp;or&nbsp;Workgroup&nbsp;选项(Microsoft&nbsp;Outlook&nbsp;2002&nbsp;没有&nbsp;Corporate&nbsp;or&nbsp;Workgroup&nbsp;选项)。选择该选项，在Tools&nbsp;菜单点击Options&nbsp;，然后双击&nbsp;Mail&nbsp;Services&nbsp;图标。在Mail&nbsp;Services&nbsp;对话框中点击&nbsp;Mail&nbsp;Support&nbsp;命令。除非&nbsp;Outlook&nbsp;client&nbsp;允许一直运行，当你使用&nbsp;Internet&nbsp;mail&nbsp;server&nbsp;时，Microsoft&nbsp;Outlook&nbsp;2002&nbsp;不支持与&nbsp;SQL&nbsp;Mail&nbsp;一起使用。</P>
+<P>·&nbsp;&nbsp;&nbsp;&nbsp;必须有一个工作的邮件服务器，比如Microsoft&nbsp;Exchange&nbsp;或者&nbsp;Internet&nbsp;mail&nbsp;(Post&nbsp;Office&nbsp;Protocol&nbsp;3&nbsp;[POP3]&nbsp;或者&nbsp;Simple&nbsp;Mail&nbsp;Transport&nbsp;Protocol&nbsp;[SMTP])&nbsp;server。邮件发送服务器不必与邮件接收服务器一样；但是，你必须有一个用邮件帐户配置的有效的邮件接收服务器，即便是你从来不打算向&nbsp;SQL&nbsp;Maie&nbsp;发送邮件。</P>
+<P>·&nbsp;&nbsp;&nbsp;&nbsp;当使用&nbsp;Exchange&nbsp;server&nbsp;时，用于启动&nbsp;SQL&nbsp;Server&nbsp;service&nbsp;的帐户必须是一个域帐户。这个域帐户在&nbsp;Exchange&nbsp;server&nbsp;必须有一个邮箱。如果你使用&nbsp;Internet&nbsp;mail&nbsp;server，那么你可以使用本地帐户启动&nbsp;SQL&nbsp;Server;但是，在任何环境下，用于启动&nbsp;SQL&nbsp;Server&nbsp;的帐户不能是本地的系统帐户。当你使用&nbsp;SQLAgentMail&nbsp;时，以上规定同样适用于启动&nbsp;SQL&nbsp;Agent&nbsp;的帐户。</P>
+<P>·&nbsp;&nbsp;&nbsp;&nbsp;因为&nbsp;mail&nbsp;profiles&nbsp;与&nbsp;Microsoft&nbsp;Windows&nbsp;的登录帐户有关，在登录系统时应使用&nbsp;SQL&nbsp;Server&nbsp;service&nbsp;的启动帐户运行&nbsp;SQL&nbsp;Server，以检查mail&nbsp;profile&nbsp;对&nbsp;SQL&nbsp;Server&nbsp;是否可用。例如，打开控制面板，在控制面板对话框中，双击&nbsp;Mail&nbsp;.&nbsp;在&nbsp;Mail&nbsp;对话框中,&nbsp;双击&nbsp;Show&nbsp;Profiles&nbsp;.使用&nbsp;SQLAgentMail&nbsp;，&nbsp;当&nbsp;SQL&nbsp;Agent&nbsp;service&nbsp;帐户与&nbsp;SQL&nbsp;Server&nbsp;service&nbsp;帐户不同时,你同样需要用SQL&nbsp;Agent&nbsp;service&nbsp;启动帐户登录以检查mail&nbsp;profiles&nbsp;对&nbsp;SQL&nbsp;Agent&nbsp;是否可用.&nbsp;</P>
+<P>·&nbsp;&nbsp;&nbsp;&nbsp;你应该能够打开mail&nbsp;client&nbsp;向&nbsp;mail&nbsp;server&nbsp;测试发送和接收邮件。SQL&nbsp;Mail&nbsp;用mail&nbsp;client&nbsp;来发送邮件。因为&nbsp;SQL&nbsp;Mail&nbsp;在SQL&nbsp;Server&nbsp;service下运行，对话框将被送给&nbsp;SQL&nbsp;Server&nbsp;service&nbsp;的&nbsp;"virtual&nbsp;desktop"&nbsp;而不出现在界面上.&nbsp;因为没有交互，所以&nbsp;SQL&nbsp;Mail停止响应(挂起)。</P>
+<P>·&nbsp;&nbsp;&nbsp;&nbsp;你需要向&nbsp;SQL&nbsp;Mail&nbsp;提供用来检查邮件结构的&nbsp;mail&nbsp;profile。这样做,&nbsp;在企业管理器中,&nbsp;打开&nbsp;Support&nbsp;Services&nbsp;文件夹.在&nbsp;Support&nbsp;Services&nbsp;文件夹中,于&nbsp;SQL&nbsp;Mail&nbsp;上按右键选择&nbsp;Properties&nbsp;.如果你使用的是&nbsp;SQLAgentMail,&nbsp;你需要向&nbsp;SQL&nbsp;Agent&nbsp;提供&nbsp;mail&nbsp;profile.&nbsp;这样做,&nbsp;在企业管理器中,&nbsp;打开&nbsp;Management&nbsp;文件夹,&nbsp;于&nbsp;SQL&nbsp;Agent&nbsp;上按右键并选择&nbsp;&nbsp;Properties&nbsp;.</P>
+<P>·&nbsp;&nbsp;&nbsp;&nbsp;默认的&nbsp;Internet&nbsp;e-mail&nbsp;计划应该与你用于检查邮件结构的&nbsp;mail&nbsp;client&nbsp;是一样的.&nbsp;确认你已经有了正确的计划,&nbsp;打开控制面板,&nbsp;双击&nbsp;Internet&nbsp;Options&nbsp;,&nbsp;选择&nbsp;Programs&nbsp;图标.</P>
+<P>·&nbsp;&nbsp;&nbsp;&nbsp;要使按照如前所述作出的改变生效，你需要重新启动&nbsp;SQL&nbsp;Server&nbsp;service&nbsp;。如果你重新配置了&nbsp;mail&nbsp;profile,&nbsp;那么需要重新启动电脑才能使新的配置生效。<BR>常见问题</P>
+<P>以下是顾客使用中常遇到的SQL&nbsp;Mail&nbsp;相关问题列表。我们将以问答的形式来讨论各种各样的问题。这些问题并非按照发生频率来排列，尽管类似的问题被放在了一起。对于问题的回答，并非是面面俱到的，但是基本涵盖了导致一个特殊问题的大多数原因。</P>
+<P>Q1:&nbsp;为什么升级到&nbsp;SQL&nbsp;Server&nbsp;2000&nbsp;之后&nbsp;SQL&nbsp;Mai&nbsp;停止了工作？</P>
+<P>A1&nbsp;:&nbsp;SQL&nbsp;Server&nbsp;2000&nbsp;对&nbsp;SQL&nbsp;Mail&nbsp;引入了重大的改变。主要的改变是&nbsp;SQL&nbsp;Mail&nbsp;现在使用扩展&nbsp;Mail&nbsp;Application&nbsp;Programming&nbsp;Interface&nbsp;(MAPI)&nbsp;替代简单的&nbsp;MAPI.&nbsp;关于简单与扩展&nbsp;MAPI&nbsp;的更多信息，请通过以下链接访问微软产品技术服务站点:</P>
+<P><IMG src="http://www.pigtwo.com/forum/pic/url.gif" align=absMiddle border=0><A 
+href="http://support.microsoft.com/default.aspx?scid=kb" 
+target=_blank>http://support.microsoft.com/default.aspx?scid=kb</A>;en-us;Q200018</P>
+<P>如果你使用SQL&nbsp;Server&nbsp;2000,&nbsp;Microsoft&nbsp;强烈建议你在使用&nbsp;SQL&nbsp;Mail&nbsp;前安装&nbsp;Microsoft&nbsp;SQL&nbsp;Server&nbsp;2000&nbsp;Service&nbsp;Pack&nbsp;2&nbsp;(SP2),或者以后的补丁版本。</P>
+<P></P>
+<P>Q2:&nbsp;为什么当我升级&nbsp;Microsoft&nbsp;Outlook&nbsp;或者应用&nbsp;Outlook&nbsp;安全补丁之后&nbsp;SQL&nbsp;Mail停止了工作？</P>
+<P>A2&nbsp;:&nbsp;2001年八月，为阻止计算机蠕虫病毒自动发送到你的地址簿上所有信箱，发布了一个新的&nbsp;Outlook&nbsp;2000&nbsp;安全升级版本。当该安全补丁发现有&nbsp;non-Outlook&nbsp;program发送的电子邮件时，将弹出对话框做如下提示：<BR>A&nbsp;program&nbsp;is&nbsp;trying&nbsp;to&nbsp;automatically&nbsp;send&nbsp;e-mail&nbsp;on&nbsp;your&nbsp;behalf.&nbsp;Do&nbsp;you&nbsp;want&nbsp;to&nbsp;allow&nbsp;this?</P>
+<P>如果你相将该邮件发送出去，按&nbsp;YES&nbsp;。</P>
+<P>SQL&nbsp;Server&nbsp;6.5&nbsp;和&nbsp;SQL&nbsp;Server&nbsp;7.0&nbsp;的&nbsp;SQL&nbsp;Mail&nbsp;试图发送邮件时被当作&nbsp;non-Outlook&nbsp;program.&nbsp;然而,&nbsp;因为&nbsp;SQL&nbsp;Mail&nbsp;在&nbsp;SQL&nbsp;Server&nbsp;service&nbsp;被呼叫,&nbsp;对话框将被送给&nbsp;SQL&nbsp;Server&nbsp;service&nbsp;的&nbsp;"virtual&nbsp;desktop"&nbsp;而不出现在界面上.&nbsp;因为没有交互，所以&nbsp;SQL&nbsp;Mail停止响应。&nbsp;</P>
+<P>这个安全特性会因为Exchange&nbsp;administrator而不严格；更好的解决方法是升级数据库版本到&nbsp;SQL&nbsp;Server&nbsp;2000。SQL&nbsp;Server&nbsp;2000&nbsp;的&nbsp;SQL&nbsp;Mail&nbsp;建立了一个为安全对话框设置迂回的扩展&nbsp;MAPI&nbsp;连接。关于&nbsp;Outlook&nbsp;安全补丁的更多信息，请通过以下链接访问微软产品技术服务站点:</P>
+<P><IMG src="http://www.pigtwo.com/forum/pic/url.gif" align=absMiddle border=0><A 
+href="http://support.microsoft.com/default.aspx?scid=kb" 
+target=_blank>http://support.microsoft.com/default.aspx?scid=kb</A>;en-us;Q262631</P>
+<P>如果你已经使用&nbsp;SQL&nbsp;Server&nbsp;2000&nbsp;，当升级&nbsp;Outlook&nbsp;2002&nbsp;后&nbsp;SQL&nbsp;Mail&nbsp;停止工作，你可以使用一个Internet&nbsp;Mail&nbsp;server。你可以配置&nbsp;Outlook&nbsp;的早期版本，这样可以从&nbsp;Microsoft&nbsp;Windows&nbsp;service&nbsp;发送邮件。在non-Exchange&nbsp;mai&nbsp;模式下改进性能，当你发送邮件时，需要&nbsp;Outlook&nbsp;client&nbsp;一直运行。&nbsp;如果你不希望&nbsp;Outlook&nbsp;2002&nbsp;client&nbsp;一直在服务器上运行&nbsp;(需要你登录到服务器),&nbsp;你可以使用一个&nbsp;Exchange&nbsp;server&nbsp;作为你的邮件服务器或者回滚到早期的&nbsp;Microsoft&nbsp;Outlook&nbsp;版本。</P>
+<P></P>
+<P>Q3:&nbsp;怎样得知在我的服务器上是否已经安装了Outlook&nbsp;安全补丁？</P>
+<P>A3&nbsp;:&nbsp;在&nbsp;Outlook&nbsp;的&nbsp;HELP&nbsp;菜单中，点击&nbsp;About&nbsp;Microsoft&nbsp;Outlook&nbsp;。如果你的Outlook&nbsp;2000&nbsp;版本是&nbsp;9.0.0.4201&nbsp;或者以后的版本，那么就说明已经安装了&nbsp;Outlook&nbsp;电子邮件安全补丁。</P>
+<P></P>
+<P>Q4:&nbsp;当安装了Outlook&nbsp;安全补丁或者使用&nbsp;Outlook&nbsp;XP&nbsp;时，怎样防止&nbsp;SQL&nbsp;Mail&nbsp;被挂起？</P>
+<P>A4&nbsp;:&nbsp;你需要使用&nbsp;Exchange&nbsp;administrator&nbsp;来更改默认的安全设置。详细的设置取决于你使用的是Outlook&nbsp;2000&nbsp;还是&nbsp;Outlook&nbsp;2002&nbsp;(Office&nbsp;XP&nbsp;提供)。关于更改&nbsp;Exchange&nbsp;安全设置的更多信息，请通过以下链接访问微软产品技术服务站点:</P>
+<P><IMG src="http://www.pigtwo.com/forum/pic/url.gif" align=absMiddle border=0><A 
+href="http://support.microsoft.com/default.aspx?scid=kb" 
+target=_blank>http://support.microsoft.com/default.aspx?scid=kb</A>;en-us;Q263297<BR><IMG 
+src="http://www.pigtwo.com/forum/pic/url.gif" align=absMiddle border=0><A 
+href="http://support.microsoft.com/default.aspx?scid=kb" 
+target=_blank>http://support.microsoft.com/default.aspx?scid=kb</A>;en-us;Q290499</P></FONT>

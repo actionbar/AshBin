@@ -1,0 +1,10 @@
+<meta http-equiv="content-type" content="text/html; charset=gb2312"><FONT 
+style="FONT-SIZE: 9pt; LINE-HEIGHT: 15pt"><B>Auto&nbsp;start&nbsp;SQL&nbsp;Agent</B><BR>--&nbsp;sp_sqlagent_autostart<BR>--&nbsp;created&nbsp;by&nbsp;gertd@sqldev.net<BR>--&nbsp;NOTE:&nbsp;works&nbsp;on&nbsp;NT/Win2K/WinXP&nbsp;only,&nbsp;not&nbsp;in&nbsp;Win9x<BR>--<BR>use&nbsp;master<BR>go
+<P></P>
+<P>if&nbsp;exists&nbsp;(select&nbsp;*&nbsp;from&nbsp;sysobjects&nbsp;where&nbsp;name&nbsp;=&nbsp;'sp_sqlagent_autostart'&nbsp;and&nbsp;type&nbsp;=&nbsp;'P')<BR>&nbsp;&nbsp;&nbsp;&nbsp;drop&nbsp;proc&nbsp;dbo.sp_sqlagent_autostart<BR>go</P>
+<P>create&nbsp;proc&nbsp;dbo.sp_sqlagent_autostart<BR>as<BR>set&nbsp;nocount&nbsp;on</P>
+<P>declare&nbsp;@service&nbsp;nvarchar(128)</P>
+<P>if&nbsp;(charindex(N'7.00',&nbsp;@@version,&nbsp;0)&nbsp;&gt;&nbsp;0)<BR>begin<BR>&nbsp;&nbsp;&nbsp;&nbsp;select&nbsp;@service&nbsp;=&nbsp;N'SQLServerAgent'<BR>end</P>
+<P>if&nbsp;(charindex(N'8.00',&nbsp;@@version,&nbsp;0)&nbsp;&gt;&nbsp;0)<BR>begin<BR>&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(serverproperty('instancename')&nbsp;is&nbsp;null)<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;select&nbsp;@service&nbsp;=&nbsp;N'SQLServerAgent'<BR>&nbsp;&nbsp;&nbsp;&nbsp;else<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;select&nbsp;@service&nbsp;=&nbsp;N'SQLAgent$'&nbsp;+&nbsp;convert(nvarchar(128),&nbsp;serverproperty('InstanceName'))<BR>end</P>
+<P>exec&nbsp;master.dbo.xp_servicecontrol&nbsp;'START',&nbsp;@service<BR>go</P>
+<P>exec&nbsp;master.dbo.sp_procoption&nbsp;'sp_sqlagent_autostart',&nbsp;'startup',&nbsp;'true'<BR>go<BR></P></FONT>

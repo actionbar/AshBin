@@ -1,0 +1,35 @@
+<meta http-equiv="content-type" content="text/html; charset=gb2312"><FONT style="FONT-SIZE: 9pt; LINE-HEIGHT: 15pt"><B>DTS(下)</B><BR>数据泵：转换数据&nbsp;
+<P></P>
+<P>　　DTS&nbsp;数据泵是一个&nbsp;DTS对象，它驱动数据的导入、导出和转换操作。&nbsp;<BR>在执行数据转换、数据驱动查询和并行数据泵任务期间将使用数据泵。执&nbsp;<BR>行这些任务的过程是：在源和目标连接上创建行集合，然后创建数据泵实&nbsp;<BR>例在源和目标间移动这些行。在复制每一行时，将进行转换操作。&nbsp;</P>
+<P>　　下图中，在第二个步骤中，转换数据任务在&nbsp;Access&nbsp;DB任务和&nbsp;SQL&nbsp;<BR>Production&nbsp;DB任务之间进行。转换数据任务用连接间的灰色箭头表示。&nbsp;</P>
+<P>　　　　　　　　　图&nbsp;7.&nbsp;示例：转换数据任务&nbsp;</P>
+<P>　　要定义从源连接收集的数据，可以生成一个转换任务的查询。DTS&nbsp;支&nbsp;<BR>持参数化查询，参数化查询允许在执行查询时定义查询值。&nbsp;</P>
+<P>　　可以将查询键入任务的“属性”对话框，也可以使用数据转换服务查&nbsp;<BR>询设计器，它是一个用图形化方式生成&nbsp;DTS任务查询的工具。下图中，使&nbsp;<BR>用查询设计器来生成一个查询，该查询联接&nbsp;pubs&nbsp;数据库中的三个表。&nbsp;<BR>　　　　<BR>　　　　　　　　图&nbsp;8.&nbsp;数据转换服务查询设计器界面&nbsp;</P>
+<P>　　在转换任务中，还可以定义要对数据进行的更改。下表说明&nbsp;DTS提供&nbsp;<BR>的内置转换。&nbsp;</P>
+<P></P>
+<P>转换&nbsp;说明&nbsp;<BR>复制列&nbsp;用于在不应用任何转换的情况下将数据直接从源列复制到目标列。&nbsp;<BR>ActiveX&nbsp;脚本&nbsp;用于生成自定义转换。请注意，因为转换将逐行进行，ActiveX&nbsp;脚本可能影响&nbsp;DTS&nbsp;软件包的执行速度。&nbsp;<BR>DateTime&nbsp;字符串&nbsp;用于将源列中的日期或时间转换为目标列中的另一种格式。&nbsp;&nbsp;<BR>小写字符串&nbsp;用于将源列转换为小写字符形式，如需要，将其转换为目标数据类型。&nbsp;<BR>大写字符串&nbsp;用于将源列转换为全大写字符形式，如需要，将其转换为目标数据类型。&nbsp;<BR>中间字符串&nbsp;用于从源列抽取子字符串，对其进行转换后将结果复制到目标列。&nbsp;<BR>修剪字符串&nbsp;用于删除源列中字符串的前导空格、尾随空格和嵌入空格，然后将结果复制到目标列。&nbsp;<BR>读取文件&nbsp;用于打开文件内容（文件名称在源列中指定），然后将内容复制到目标列。&nbsp;<BR>写入文件&nbsp;用于将源列（数据列）的内容复制到一个文件中，该文件的路径由第二个源列（文件名列）指定。&nbsp;</P>
+<P>　　还可以用编程方式创建自己的自定义转换。生成自定义转换最快速的&nbsp;<BR>方式是使用活动模板库（ATL&nbsp;）自定义转换模板，SQL&nbsp;Server&nbsp;2000&nbsp;DTS&nbsp;<BR>样本程序中包括该模板。&nbsp;</P>
+<P>数据泵错误记录&nbsp;</P>
+<P>　　SQL&nbsp;Server&nbsp;2000&nbsp;中提供了一种记录转换错误的新方法。可以定义三&nbsp;<BR>种异常情况记录文件来记录软件包执行期间的情况：错误文本文件、源错&nbsp;<BR>误行文件和目标错误行文件。&nbsp;<BR>●一般错误信息将写入错误文本文件中。&nbsp;<BR>●如果转换失败，源行出现错误，该行将写入源错误行文件。&nbsp;<BR>●如果插入失败，目标行出现错误，该行将写入目标错误行文件。&nbsp;</P>
+<P>　　在转换数据的任务中将定义异常情况日志文件。每个转换任务都有自&nbsp;<BR>己的日志文件。&nbsp;</P>
+<P>数据泵阶段&nbsp;</P>
+<P>　　默认情况下，数据泵有一个阶段，即行转换。该阶段是在未选择阶段&nbsp;<BR>的情况下，在转换数据任务、数据驱动查询任务和并行数据泵任务中映射&nbsp;<BR>列一级的转换时配置的。&nbsp;</P>
+<P>　　多个数据泵阶段是&nbsp;SQL&nbsp;Server&nbsp;2000中新增的。通过在&nbsp;SQL&nbsp;Server&nbsp;<BR>企业管理器中选择多阶段数据泵选项，在数据泵操作过程中的不同阶段都&nbsp;<BR>可以访问数据泵并添加功能。&nbsp;</P>
+<P>　　将数据行从源复制到目标时，数据泵将按照下图中所显示的基本进程&nbsp;<BR>进行操作。&nbsp;<BR>　　　<BR>　　　　　　　　　　　　图&nbsp;9.&nbsp;数据泵进程&nbsp;</P>
+<P>　　数据泵处理完最后一行数据后，任务结束，数据泵操作终止。&nbsp;</P>
+<P>　　如果高级用户要向软件包添加功能，以便软件包能支持任何数据泵阶&nbsp;<BR>段，可以执行以下操作：&nbsp;<BR>●为每个要自定义的数据泵阶段编写一个&nbsp;ActiveX&nbsp;脚本阶段函数。如果&nbsp;<BR>　使用&nbsp;ActiveX&nbsp;脚本函数来自定义数据泵阶段，不需要该软件包以外的&nbsp;<BR>　其它任何代码。&nbsp;<BR>●使用&nbsp;Microsoft&nbsp;Visual&nbsp;C++?&nbsp;创建&nbsp;COM&nbsp;对象来自定义所选的数据泵阶&nbsp;<BR>　段。在该软件包之外开发此程序，在执行转换过程中每个所选的阶段时&nbsp;<BR>　将调用该程序。访问数据泵阶段的&nbsp;ActiveX&nbsp;脚本方法中每个所选阶段&nbsp;<BR>　都使用不同的函数和输入点；而这种方法则不同，它在数据泵任务执行&nbsp;<BR>　期间提供一个单一输入点，该输入点将被多个数据泵阶段调用。&nbsp;</P>
+<P>保存&nbsp;DTS&nbsp;软件包的选项&nbsp;</P>
+<P>以下选项可用于保存&nbsp;DTS&nbsp;软件包：&nbsp;<BR>●Microsoft&nbsp;SQL&nbsp;Server&nbsp;<BR>　　如果要将软件包存储到网络中&nbsp;SQL&nbsp;Server&nbsp;的任意实例上，该选项将&nbsp;<BR>DTS&nbsp;软件包保存到&nbsp;Microsoft&nbsp;SQL&nbsp;Server&nbsp;，保留一个便于使用的这些软&nbsp;<BR>件包的清单，并在软件包开发进程中添加和删除软件包版本。&nbsp;</P>
+<P>●SQL&nbsp;Server&nbsp;2000&nbsp;元数据服务&nbsp;<BR>　　如果准备跟踪软件包版本、元数据和数据系列信息，该选项将&nbsp;DTS软&nbsp;<BR>件包保存到元数据服务。&nbsp;</P>
+<P>●结构化存储文件&nbsp;<BR>　　如希望在网络间复制、移动和发送软件包而不必将其存储在Microsoft&nbsp;<BR>SQL&nbsp;Server数据库中，该选项将&nbsp;DTS软件包保存到结构化存储文件。&nbsp;</P>
+<P>●Microsoft&nbsp;Visual&nbsp;Basic&nbsp;<BR>　　如果要将&nbsp;DTS软件包合并到&nbsp;Visual&nbsp;Basic&nbsp;程序中或将其用作&nbsp;DTS应&nbsp;<BR>用程序开发的原型，该选项将通过&nbsp;DTS设计器或&nbsp;DTS导入/&nbsp;导出向导所创&nbsp;<BR>建的&nbsp;DTS软件包保存到&nbsp;Microsoft&nbsp;Visual&nbsp;Basic&nbsp;文件。&nbsp;</P>
+<P>DTS&nbsp;作为应用程序开发平台&nbsp;</P>
+<P>　　DTS&nbsp;设计器为数据移动任务提供了多种解决方案。因为提供通过编程&nbsp;<BR>方式访问&nbsp;DTS对象模型的功能，DTS&nbsp;扩展了可用的解决方案的数目。使用&nbsp;<BR>Microsoft&nbsp;Visual&nbsp;Basic、Microsoft&nbsp;Visual&nbsp;C++或任何其它支持&nbsp;COM的&nbsp;<BR>应用程序开发系统，都可以使用图形化工具所不支持的功能开发出适合于&nbsp;<BR>您的环境的自定义&nbsp;DTS解决方案。&nbsp;</P>
+<P>DTS&nbsp;为开发人员提供多种不同方式的支持：&nbsp;<BR>●生成软件包&nbsp;<BR>　　无需使用&nbsp;DTS设计器或&nbsp;DTS导入/&nbsp;导出向导，您就可以开发极为复杂&nbsp;<BR>的软件包，并可访问对象模型中的全套功能。&nbsp;</P>
+<P>●扩展软件包&nbsp;<BR>　　通过构建自定义任务和转换，可以添加一些适用于您的业务并可在&nbsp;DTS&nbsp;<BR>内重复使用的新功能。&nbsp;</P>
+<P>●执行程序包&nbsp;<BR>　　并非一定要使用所提供的工具来执行&nbsp;DTS软件包，可以用编程方式执&nbsp;<BR>行DTS软件包并通过&nbsp;COM事件显示进度，并允许构建嵌入的或自定义的DTS&nbsp;<BR>执行环境。&nbsp;</P>
+<P>　　样本DTS程序有助于了解DTS编程的入门知识。该样本可与SQL&nbsp;Server&nbsp;<BR>2000一起安装。&nbsp;</P>
+<P>　　如果开发&nbsp;DTS应用程序，可以重新分发&nbsp;DTS文件。有关详细信息，请&nbsp;<BR>参阅&nbsp;SQL&nbsp;Server&nbsp;2000光盘上的&nbsp;Redist.txt。&nbsp;</P>
+<P>　　　&nbsp;摘自<IMG src="http://www.pigtwo.com/forum/pic/url.gif" align=absMiddle border=0><A 
+href="http://www.microsoft.com/china/msdn/?MSCOMTB=ICP_MSDN" 
+target=_blank>http://www.microsoft.com/china/msdn/?MSCOMTB=ICP_MSDN</A></P></FONT>

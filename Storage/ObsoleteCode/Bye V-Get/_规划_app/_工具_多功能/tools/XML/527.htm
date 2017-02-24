@@ -1,0 +1,246 @@
+<html>
+<head>
+<title>内容</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+
+<link rel = stylesheet href = "image/style.css">
+</head>
+<body bgcolor="#ffffff">
+<table width="688" border="0" cellspacing="0" cellpadding="0" align="center">
+  <tr bgcolor="EEEEEE"> 
+    <td height="22"><a href="index.htm">主页</a></td>
+  </tr>
+</table><br>
+<table border="0" cellpadding="0" cellspacing="0" width="688" align="center" height="490">
+  <tr valign="top"> 
+    <td rowspan="4" width="91">&nbsp; </td>
+    <td height="68" width="131"> 
+      <p><img src="image/doc.gif"></p>
+    </td>
+    <td rowspan="4" width="18"><b></b> </td>
+    <td height="68" width="387"><img src="image/title_doc.gif"></td>
+    <td rowspan="4" width="61"> 
+      <h6>&nbsp;</h6>
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td rowspan="3" valign="top" class="pt10" align="center" width="131" bgcolor="EEEEEE"> 
+      <p>&nbsp;</p>
+      <p><font color="#FF0000">※ 15.4 内容</font></p>
+       
+	</td>
+  </tr>
+  <tr valign="top"> 
+    <td width="387" height="308"> 
+      <table width="100%" border="0" cellpadding="0">
+        <tr> 
+          <td>
+
+           <h4><a name="_Toc467207753">15.4 内容</a></h4>
+<p>XSL格式化对象文档的内容（与标记相反）几乎都是文本。除此之外，还可链接于外部影像，这种方式类似于HTML的IMG元素。这种内容保存在于下列几类元素中：</p>
+<ul>
+  <p>
+  <li>块级格式化对象</li>
+  <p></p>
+  <p>
+  <li>内联格式化对象</li>
+  <p></p>
+  <p>
+  <li>表格式化对象</li>
+  <p></p>
+  <p>
+  <li>外联格式化对象</li>
+  <p></p>
+</ul>
+<p>所有的这些元素都是fo:flow或fo:static-content元素的后代。它们从不直接放在控制页或页序列上。</p>
+<h5><a name="_Toc467207754">15.4.1 块级格式化对象</a></h5>
+<p>块级格式化对象以矩形区域绘制，各矩形区域以换行符分开，可能在其前或后的内容中还有多余的空白。块可能包括其他块，在此情况下，被包括的块也是通过换行符（可能使用多余的空白）与用来包括的块分开。块级格式化对象包括：</p>
+<ul>
+  <p>
+  <li>fo:block</li>
+  <p></p>
+  <p>
+  <li>fo:display-graphic</li>
+  <p></p>
+  <p>
+  <li>fo:display-rule</li>
+  <p></p>
+  <p>
+  <li>fo:display-included-container</li>
+  <p></p>
+  <p>
+  <li>fo:display-sequence</li>
+  <p></p>
+  <p>
+  <li>fo:list</li>
+  <p></p>
+  <p>
+  <li>fo:list-item</li>
+  <p></p>
+</ul>
+<p>fo:block元素是CSS中的display:block或HTML中的DIV元素的XSL等价元素。块可能包括在fo:flow元素、其他fo:block元素以及fo:static-content元素中。fo:block元素可能包括其他fo:block元素、其他块级元素（如fo:display<i>-</i>graphic和fo:display-rule）以及内联元素（如fo: 
+  inline-sequence和fo:page-number）。还可能包括原始文本。例如：</p>
+<p>&lt;fo:block&gt;</p>
+<p> &lt;fo:inline-sequence font-style="italic"&gt;</p>
+<p> The XML Bible</p>
+<p> &lt;/fo:inline-sequence&gt;</p>
+<p> Page &lt;fo:page-number/&gt;</p>
+<p> &lt;fo:inline-sequence&gt;</p>
+<p> Chapter 15: XSL Formatting Objects</p>
+<p> &lt;/fo:inline-sequence&gt;</p>
+<p>&lt;/fo:block&gt;</p>
+<p>fo:block元素通常都有用于区域属性和文本格式化属性的特性。文本格式化属性可被块的任何子元素所继承，除非被覆盖。允许的属性包括：</p>
+<ul>
+  <p>
+  <li>对齐属性：text-align和text-align-last</li>
+  <p></p>
+  <p>
+  <li>听觉属性：azimuth、cue、cue-after、cue-before、elevation、pause、pause-after、pause-before、pitch、pitch-range、play-during、richness、speak、speak-header、speak-numeral、speak-punctuation、speech-rate、stress、voice-family和volume</li>
+  <p></p>
+  <p>
+  <li>背景属性：background、background-attachment、background-color、background-image、background-position和background-repeat</li>
+  <p></p>
+  <p>
+  <li>边界属性：border-before-color、border-before-style、border-before-width、border-after-color、border-after-style、border-after-width、border-start-color、border-start-style、border-start-width、border-end-color、border-end-style、border-end-width、border-top-color、border-top-style、border-top-width、border-bottom-color、border-bottom-style、border-bottom-width、border-left-color、border-left-style、border-left-width、border-right-color、border-right-style、border-right-width、border、 
+    border-top、border-bottom、border-left、border-right、border-color、border-style以及border-width</li>
+  <p></p>
+  <p>
+  <li>分行属性：page-break-inside、widows、orphans和wrap-option</li>
+  <p></p>
+  <p>
+  <li>颜色属性：color</li>
+  <p></p>
+  <p>
+  <li>栏属性：span</li>
+  <p></p>
+  <p>
+  <li>字体属性：font-family、system-font、font-size、font-size-adjust、font-stretch、font-style、font-variant、font-weight和font</li>
+  <p></p>
+  <p>
+  <li>断字属性：country、hyphenate、hyphenation-char、hyphenation-push-char-count、hyphenation-remain-char-count、language、script、hyphenation-keep和hyphenation-ladder-count</li>
+  <p></p>
+  <p>
+  <li>缩排属性：text-indent和1ast-line-end-indent</li>
+  <p></p>
+  <p>
+  <li>分层属性：z-index</li>
+  <p></p>
+  <p>
+  <li>行高属性：line-height、line-height-shift-adjustment和line-stacking-strategy</li>
+  <p></p>
+  <p>
+  <li>页边距属性：margin-bottom、margin-left、margin-right、margin-top、margin、space-before、space-after、start-indent和end-indent</li>
+  <p></p>
+  <p>
+  <li>贴边属性：padding-top、padding-bottom、padding-left、padding-right、padding-before、padding-after、padding-start和padding-end</li>
+  <p></p>
+  <p>
+  <li>位置属性：position、top、bottom、right和left</li>
+  <p></p>
+  <p>
+  <li>文本方向属性：writing-mode</li>
+  <p></p>
+  <p>
+  <li>可视属性：visibility</li>
+  <p></p>
+  <p>
+  <li>空白属性：white-space-treatment</li>
+  <p></p>
+</ul>
+<p>大多数属性从CSS中就熟悉了，其余的将在下面讨论。其他块级元素都有很相似的属性列表。</p>
+<h5><a name="_Toc467207755">15.4.2 内联格式化对象</a></h5>
+<p>内联格式化对象是以矩形区域来描述的，这个区域可以包括文本或其他内联区域。内联区域几乎通常都是从左到右以行排列。当一行填满时，在前一行的下面开始新行。但是，内联元素放置的准确顺序要依赖于书写方式。例如，当使用希伯来语或阿拉伯语时，它要了解左边第一位置的内联元素的意义，然后从右边填充。内联格式化对象包括：</p>
+<ul>
+  <p>
+  <li>fo:bidi-override</li>
+  <p></p>
+  <p>
+  <li>fo:character</li>
+  <p></p>
+  <p>
+  <li>fo:first-line-marker</li>
+  <p></p>
+  <p>
+  <li>fo:inline-graphic</li>
+  <p></p>
+  <p>
+  <li>fo:inline-included-container</li>
+  <p></p>
+  <p>
+  <li>fo: inline-rule</li>
+  <p></p>
+  <p>
+  <li>fo:inline-sequence</li>
+  <p></p>
+  <p>
+  <li>fo:list-item-body</li>
+  <p></p>
+  <p>
+  <li>fo:list-item-label</li>
+  <p></p>
+  <p>
+  <li>fo:page-number</li>
+  <p></p>
+  <p>
+  <li>fo:page-number-citation</li>
+  <p></p>
+</ul>
+<h5><a name="_Toc467207756">15.4.3 表格格式化对象</a></h5>
+<p>设计的表格格式化对象是CSS2表格属性的XSL等价物。但是，表格在XSL中的工作方式确实比CSS中的稍微自然些。对于大部分内容来说，各个表都是块级对象，而表中的内容则不是真正的内联级，也不是块级。但是，整个一张表可以通过将它包装在fo:inline-included-container中，从而转换成内联对象。</p>
+<p>有下列九个XSL表格格式化对象：</p>
+<ul>
+  <p>
+  <li>fo:table-and-caption</li>
+  <p></p>
+  <p>
+  <li>fo:table</li>
+  <p></p>
+  <p>
+  <li>fo:table-caption</li>
+  <p></p>
+  <p>
+  <li>fo:table-column</li>
+  <p></p>
+  <p>
+  <li>fo:table-header</li>
+  <p></p>
+  <p>
+  <li>fo:table-footer</li>
+  <p></p>
+  <p>
+  <li>fo:table-body</li>
+  <p></p>
+  <p>
+  <li>fo:table-row</li>
+  <p></p>
+  <p>
+  <li>fo:table-cell</li>
+  <p></p>
+</ul>
+<p>表的根元素不是fo:table，而是fo:table-and-caption，它包括一个fo:table和一个fo:caption。fo:table包含fo:table-header、fo:table-body和fo:table-footer。表的正文包括fo:table-row元素，而此元素可划分到fo:table-cell元素中。</p>
+<h5><a name="_Toc467207757">15.4.4 外联格式化对象</a></h5>
+<p>有下列三个外联格式化对象：</p>
+<ul>
+  <p>
+  <li>fo:float</li>
+  <p></p>
+  <p>
+  <li>fo:footnote</li>
+  <p></p>
+  <p>
+  <li>fo:footnote-citation</li>
+  <p></p>
+</ul>
+<p>外联格式化对象从现存的内联或块对象那里“借用”空间。在页面上，它们不必出现在相同的元素之间，而在输出格式化对象的XML树形结构中，它们则出现在相同的元素之间。</p>
+ 
+<a href='526.htm'>&lt;&lt;上一篇</a>&nbsp;&nbsp;<a href='528.htm'>下一篇&gt;&gt;</a></td>
+        </tr>
+      </table>
+      <p>&nbsp; </p>
+    </td>
+  </tr>
+</table>
+
+</body>
+
+</html>

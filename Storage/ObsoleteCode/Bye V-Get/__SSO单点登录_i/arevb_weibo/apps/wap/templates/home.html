@@ -1,0 +1,53 @@
+{template header}
+<p>
+	<!--{if $hot_tags}-->
+	热门话题:<a href="{eval echo miniurl('search/tags')}">更多</a><br />
+	<!--{eval $tag_num = 0;}-->
+	<!--{loop $hot_tags $hot_tag}-->
+	<!--{eval $tag_num++;}-->
+	<a href="{eval echo miniurl('search/tag?keyword='.$hot_tag['tagname']);}">{$hot_tag['tagname']}</a><!--{if $tag_num%4==0}--><br /><!--{else}-->.<!--{/if}-->
+	<!--{/loop}-->
+	<!--{if $tag_num%4 != 0}--><br /><!--{/if}-->
+	<!--{/if}-->
+	<!--{if $hot_peos}-->
+	活跃用户:<a href="{eval echo miniurl('search/peoples')}">更多</a><br />
+	<!--{eval $peo_num = 0;}-->
+	<!--{loop $hot_peos $hot_peo}-->
+	<!--{eval $peo_num++;}-->
+	<a href="{eval echo miniurl($hot_peo['uid']);}">{eval echo htmlspecialchars($hot_peo['username']);}</a><!--{if $peo_num%4==0}--><br /><!--{else}-->.<!--{/if}-->
+	<!--{/loop}-->
+	<!--{if $peo_num%4 != 0}--><br /><!--{/if}-->
+	<!--{/if}-->
+	人气微博>><a href="{eval echo miniurl('travel?filter=refers');}">转发</a>>><a href="{eval echo miniurl('travel?filter=comments');}">评论</a><br />
+	<!--{loop $hot_blogs $hot_blog}-->
+	<a href="{eval echo miniurl($hot_blog['uid']);}">{$hot_blog['username']}</a>:{$hot_blog['note']['message']} <br />
+	<!--{if !empty($hot_blog['note']['refer'])}-->
+	{eval $hot_blog_refer = $hot_blog['note']['refer'];}
+	转自:{$hot_blog_refer['message']}<br />
+	<!--{if !empty($hot_blog_refer['link'])}-->
+	原文分享链接:<a href="{$hot_blog_refer['link']['url']}">$hot_blog_refer['link']['title']</a><br />
+	<!--{/if}-->
+	<!--{if !empty($hot_blog_refer['file'])}-->
+	原文分享文件:<a href="{$hot_blog_refer['file']['url']}">$hot_blog_refer['file']['title']</a><br />
+	<!--{/if}-->
+	<!--{if !empty($hot_blog_refer['img'])}-->
+	原文分享图片:<a href="{eval echo imgurl($hot_blog['note']['img']['url']);}" rel="{$hot_blog_refer['img']['title']}">打开</a><br />
+	<!--{/if}-->
+	<!--{/if}-->
+	<!--{if !empty($hot_blog['note']['link'])}-->
+	分享链接:<a href="{$hot_blog['note']['link']['url']}">$hot_blog['note']['link']['title']</a><br />
+	<!--{/if}-->
+	<!--{if !empty($hot_blog['note']['file'])}-->
+	分享文件:<a href="{$hot_blog['note']['file']['url']}">$hot_blog['note']['file']['title']</a><br />
+	<!--{/if}-->
+	<!--{if !empty($hot_blog['note']['img'])}-->
+	分享图片:<a href="{eval echo imgurl($hot_blog['note']['img']['url']);}" rel="{$hot_blog['note']['img']['title']}">打开</a><br />
+	<!--{/if}-->
+	<!--{if $logger_uid == $hot_blog['uid']}-->
+	转发[{$hot_blog['refers']}] <a href="{eval echo miniurl('note/'.$hot_blog['nid'].'/comment');}">评论[{$hot_blog['comments']}]</a> <a href="{eval echo miniurl('note/'.$hot_blog['nid'].'/del');}">删除</a>
+	<!--{else}-->
+	<a href="{eval echo miniurl('note/'.$hot_blog['nid'].'/refer');}">转发[{$hot_blog['refers']}]</a> <a href="{eval echo miniurl('note/'.$hot_blog['nid'].'/comment');}">评论[{$hot_blog['comments']}]</a>
+	<!--{/if}--><br />
+	<!--{/loop}-->
+</p>
+{template footer}

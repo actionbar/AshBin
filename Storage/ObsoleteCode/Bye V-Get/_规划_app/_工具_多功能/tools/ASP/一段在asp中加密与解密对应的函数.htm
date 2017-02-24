@@ -1,0 +1,148 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>一段在asp中加密与解密对应的函数</title>
+<style type="text/css">
+<!--
+body {
+	font-size: 10.4pt;
+	line-height: 22px;
+}
+-->
+</style>
+</head>
+
+<body bgcolor="eeeeee" leftmargin="20" marginwidth="20">
+<p><strong>一段在asp中加密与解密对应的函数</strong></p>
+<hr>
+<p>在ASP中加密方法有对应的解密方法好象不多,现在根据前辈资料整理出在asp中加密与解密函数 </p>
+<p>rsa.asp <br>
+  &lt;% <br>
+  rem 在ASP中实现加密与解密,加密方法:根据RSA <br>
+  rem 联系:hnsoso@sina.com <br>
+  Class clsRSA </p>
+<p>　　Public PrivateKey <br>
+  　　Public PublicKey <br>
+  　　Public Modulus <br>
+  　　 <br>
+  　　 <br>
+  　　 <br>
+  　　Public Function Crypt(pLngMessage, pLngKey) <br>
+  　　　　On Error Resume Next <br>
+  　　　　Dim lLngMod <br>
+  　　　　Dim lLngResult <br>
+  　　　　Dim lLngIndex <br>
+  　　　　If pLngKey Mod 2 = 0 Then <br>
+  　　　　　　lLngResult = 1 <br>
+  　　　　　　For lLngIndex = 1 To pLngKey / 2 <br>
+  　　　　　　　　lLngMod = (pLngMessage ^ 2) Mod Modulus <br>
+  　　　　　　　　' Mod may error on key generation <br>
+  　　　　　　　　lLngResult = (lLngMod * lLngResult) Mod Modulus <br>
+  　　　　　　　　If Err Then Exit Function <br>
+  　　　　　　Next <br>
+  　　　　Else <br>
+  　　　　　　lLngResult = pLngMessage <br>
+  　　　　　　For lLngIndex = 1 To pLngKey / 2 <br>
+  　　　　　　　　lLngMod = (pLngMessage ^ 2) Mod Modulus <br>
+  　　　　　　　　On Error Resume Next <br>
+  　　　　　　　　' Mod may error on key generation <br>
+  　　　　　　　　lLngResult = (lLngMod * lLngResult) Mod Modulus <br>
+  　　　　　　　　If Err Then Exit Function <br>
+  　　　　　　Next <br>
+  　　　　End If <br>
+  　　　　Crypt = lLngResult <br>
+  　　End Function </p>
+<p></p>
+<p>　　Public Function Encode(ByVal pStrMessage) <br>
+  　　　　Dim lLngIndex <br>
+  　　　　Dim lLngMaxIndex <br>
+  　　　　Dim lBytAscii <br>
+  　　　　Dim lLngEncrypted <br>
+  　　　　lLngMaxIndex = Len(pStrMessage) <br>
+  　　　　If lLngMaxIndex = 0 Then Exit Function <br>
+  　　　　For lLngIndex = 1 To lLngMaxIndex <br>
+  　　　　　　lBytAscii = Asc(Mid(pStrMessage, lLngIndex, 1)) <br>
+  　　　　　　lLngEncrypted = Crypt(lBytAscii, PublicKey) <br>
+  　　　　　　Encode = Encode &amp; NumberToHex(lLngEncrypted, 4) <br>
+  　　　　Next <br>
+  　　End Function <br>
+  　　 <br>
+  　　Public Function Decode(ByVal pStrMessage) <br>
+  　　　　Dim lBytAscii <br>
+  　　　　Dim lLngIndex <br>
+  　　　　Dim lLngMaxIndex <br>
+  　　　　Dim lLngEncryptedData <br>
+  　　　　Decode = &quot;&quot; <br>
+  　　　　lLngMaxIndex = Len(pStrMessage) <br>
+  　　　　For lLngIndex = 1 To lLngMaxIndex Step 4 <br>
+  　　　　　　lLngEncryptedData = HexToNumber(Mid(pStrMessage, lLngIndex, 4)) <br>
+  　　　　　　lBytAscii = Crypt(lLngEncryptedData, PrivateKey) <br>
+  　　　　　　Decode = Decode &amp; Chr(lBytAscii) <br>
+  　　　　Next <br>
+  　　End Function <br>
+  　　 <br>
+  　　Private Function NumberToHex(ByRef pLngNumber, ByRef pLngLength) <br>
+  　　　　NumberToHex = Right(String(pLngLength, &quot;0&quot;) &amp; Hex(pLngNumber), 
+  pLngLength) <br>
+  　　End Function </p>
+<p>　　Private Function HexToNumber(ByRef pStrHex) <br>
+  　　　　HexToNumber = CLng(&quot;&amp;h&quot; &amp; pStrHex) <br>
+  　　End Function </p>
+<p>End Class <br>
+  %&gt; </p>
+<p></p>
+<p>test.asp <br>
+  &lt;!--#INCLUDE FILE=&quot;RSA.asp&quot;--&gt; <br>
+  &lt;% <br>
+  function Encryptstr(Message) <br>
+  Dim LngKeyE <br>
+  Dim LngKeyD <br>
+  Dim LngKeyN <br>
+  Dim StrMessage <br>
+  Dim ObjRSA </p>
+<p><br>
+  　　LngKeyE = &quot;32823&quot; <br>
+  　　LngKeyD = &quot;20643&quot; <br>
+  　　LngKeyN = &quot;29893&quot; <br>
+  　　StrMessage = Message <br>
+  　　 <br>
+  　　Set ObjRSA = New clsRSA <br>
+  　　 <br>
+  　 <br>
+  　　　　　　ObjRSA.PublicKey = LngKeyE <br>
+  　　　　　　ObjRSA.Modulus = LngKeyN <br>
+  　　　　　　Encryptstr = ObjRSA.Encode(StrMessage) <br>
+  　　Set ObjRSA = Nothing <br>
+  end function </p>
+<p></p>
+<p><br>
+  function decryptstr(Message) <br>
+  Dim LngKeyE <br>
+  Dim LngKeyD <br>
+  Dim LngKeyN <br>
+  Dim StrMessage <br>
+  Dim ObjRSA </p>
+<p><br>
+  　　LngKeyE = &quot;32823&quot; <br>
+  　　LngKeyD = &quot;20643&quot; <br>
+  　　LngKeyN = &quot;29893&quot; <br>
+  　　StrMessage = Message <br>
+  　　 <br>
+  　　Set ObjRSA = New clsRSA </p>
+<p>　　　　　　ObjRSA.PrivateKey =LngKeyD <br>
+  　　　　　　ObjRSA.Modulus=LngKeyN <br>
+  　　　　　　decryptstr=ObjRSA.Decode(StrMessage) <br>
+  　　Set ObjRSA = Nothing <br>
+  end function </p>
+<p></p>
+<p>dim last,first <br>
+  first=&quot;sohu&quot; <br>
+  Response.Write &quot;加密前为:&quot;&amp;first <br>
+  last=Encryptstr(first) <br>
+  Response.Write &quot;加密后为&quot;&amp;last <br>
+  Response.Write &quot;解密后为&quot; &amp;decryptstr(last) </p>
+<p>%&gt;</p>
+<p></p>
+</body>
+</html>

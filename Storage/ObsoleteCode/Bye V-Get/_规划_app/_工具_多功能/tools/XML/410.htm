@@ -1,0 +1,92 @@
+<html>
+<head>
+<title>外部通用实体</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+
+<link rel = stylesheet href = "image/style.css">
+</head>
+<body bgcolor="#ffffff">
+<table width="688" border="0" cellspacing="0" cellpadding="0" align="center">
+  <tr bgcolor="EEEEEE"> 
+    <td height="22"><a href="index.htm">主页</a></td>
+  </tr>
+</table><br>
+<table border="0" cellpadding="0" cellspacing="0" width="688" align="center" height="490">
+  <tr valign="top"> 
+    <td rowspan="4" width="91">&nbsp; </td>
+    <td height="68" width="131"> 
+      <p><img src="image/doc.gif"></p>
+    </td>
+    <td rowspan="4" width="18"><b></b> </td>
+    <td height="68" width="387"><img src="image/title_doc.gif"></td>
+    <td rowspan="4" width="61"> 
+      <h6>&nbsp;</h6>
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td rowspan="3" valign="top" class="pt10" align="center" width="131" bgcolor="EEEEEE"> 
+      <p>&nbsp;</p>
+      <p><font color="#FF0000">※ 9.3 外部通用实体</font></p>
+       
+	</td>
+  </tr>
+  <tr valign="top"> 
+    <td width="387" height="308"> 
+      <table width="100%" border="0" cellpadding="0">
+        <tr> 
+          <td>
+
+           <h4>9.3 外部通用实体</h4>
+<p>包含基本元素/文档实体的主文件以外的数据称为外部实体。通过外部实体引用可在文档中嵌入外部实体和从若干相互独立的文件中获取数据组建为XML文档。</p>
+<p>仅使用内部实体的文档非常类似于HTML模式。文档的完整文本存放于单一文件中，图像、JAVA小程序、声音和非HTML数据也可链接入文件中，但至少在文件中要有所有的文本。当然，HTML模式存在一些问题。特别在文档中嵌入动态信息的过程是一件非常困难的事情。可通过使用CGI、JAVA小程序所爱好的数据库软件、服务器方面提供的手段和其他各种各样的方法嵌入动态信息，但HTML仅提供静态文档支持。从若干文件中获取数据组建文档的行为必须在HTML外部进行。HTML中解决这问题的最简单的方法是使用框架，但这是非常糟糕的用户界面，通常令用户迷惑和讨厌。</p>
+<p>部分问题是HTML文档不能自然地插入到另一个HTML文档中，每个HTML文档有且仅有一个BODY，服务器端嵌入法仅能提供把HTML片段嵌入文档的能力，而不是嵌入有效的文档实体，此外服务器端提供的引用需依赖于服务器的存在，而不是真正的HTML文档部分。</p>
+<p>然而，XML更加灵活。一个文档的基本元素没有必要与另一文档基本元素相同。即使两个文档共享同一基本元素，DTD也可声明元素对自身的包含。在适当的时候，XML标准并不制止结构完整的XML文档嵌入另一结构完整的XML文档的做法。</p>
+<p>但是，XML走得更远一些，可定义一个机制，利用这机制可在若干本地或远程系统上的、较小的XML文档的基础上建立新的XML文档。语法分析器的任务就是按固定的序列把所有不同文档组合起来。文档中可包含另一文档，或许这个还包含其他文档。只要没有递归的文档包含行为（处理器可报告的错误），应用程序就仅能看见一个单一、完整的文档。从本质上说，这种机制提供客户端嵌入的功能。</p>
+<p>对XML而言，可使用外部通用实体引用的方法，在文档中嵌入另一文档。在DTD中，可按下述语法结构声明外部引用：</p>
+<p>&lt;!ENTITY name SYSTEM "URI"&gt;</p>
+<p>URI就是Uniform Resource Identifier，与URL类似，但允许更加精确的资源链接规范。从理论上说，URI把资源与其储存位置分开，所以Web浏览器可以选择最近的或最空闲的几个镜像几个镜像站点，而无需明确指明该链接。URI领域的研究非常活跃，争论激烈，因此在实际应用中和在本书中，URI就是多用途的URL。</p>
+<p>例如，可能想在站点的每个页面中都放置相同的签字块。为明确所见，我们假设签字块为清单9-3所示的XML代码，而且假定可从URL http://metalab.unc.edu/xml/signature.xml.上获得该代码。</p>
+<p>清单9-3：XML签字文件</p>
+<p>&lt;?xml version="1.0"&gt;</p>
+<p>&lt;SIGNATURE&gt;</p>
+<p> &lt;COPYRIGHT&gt;1999 Elliotte Rusty Harold&lt;/COPYRIGHT&gt;</p>
+<p> &lt;EMAIL&gt;elharo@metalab.unc.edu&lt;/EMAIL&gt;</p>
+<p>&lt;/SIGNATURE&gt;</p>
+<p>在DTD中添加如下声明，可把实体引用&amp;SIG;与这个文件联系在一起：</p>
+<p>&lt;!ENTITY SIG SYSTEM "http://metalab.unc.edu/xml/signature.xml"&gt;</p>
+<p>也可使用相关的URL。例如：</p>
+<p>&lt;!ENTITY SIG SYSTEM "xml/signature.xml"&gt;</p>
+<p>如果被引用的文件放置于与引用该文件的文件所处的同一目录中，那么仅需使用一文件名进行引用。例如：</p>
+<p>&lt;!ENTITY SIG SYSTEM "signature.xml"&gt;</p>
+<p>利用上述任一种声明，仅需使用&amp;SIG；，就可在文档的任意位置引用签字文件的内容。如清单9-4中的简单的文档，图9-2显示的是在Internet 
+  Explorer 5.0中交付的文档。</p>
+<p align="center"><img src="Image/BK000209-4.gif" width=516 height=317></p>
+<p align="center">图9-2 使用外部通用实体引用的文档</p>
+<p>清单9-4：SIG外部通用实体引用</p>
+<p>&lt;?xml version="1.0" standalone="no"&gt;</p>
+<p>&lt;!DOCTYPE DOCUMENT [</p>
+<p> &lt;!ELEMENT DOCUMENT (TITLE, SIGNATURE)&gt;</p>
+<p> &lt;!ELEMENT TITLE (#PCDATA)&gt;</p>
+<p> &lt;!ELEMENT COPYRIGHT (#PCDATA)&gt;</p>
+<p> &lt;!ELEMENT EMAIL (#PCDATA)&gt;</p>
+<p> &lt;!ELEMENT SIGNATURE (COPYRIGHT, EMAIL)&gt;</p>
+<p> &lt;!ENTITY SIG SYSTEM </p>
+<p> "http://metalab.unc.edu/xml/signature.xml"?</p>
+<p>]&gt;</p>
+<p>&lt;/DOCUMENT&gt;</p>
+<p> &lt;TITLE&gt;Entity references&lt;/TITLE&gt;</p>
+<p> &amp;SIG;</p>
+<p>&lt;/DOCUMENT&gt;</p>
+<p>注意外部实体引用的附加作用，因为文件不再完整，所以XML声明中的standalone属性值为no。解析文件表明该文件需要外部文件signature.xml中的数据。</p>
+ 
+<a href='409.htm'>&lt;&lt;上一篇</a>&nbsp;&nbsp;<a href='411.htm'>下一篇&gt;&gt;</a></td>
+        </tr>
+      </table>
+      <p>&nbsp; </p>
+    </td>
+  </tr>
+</table>
+
+</body>
+
+</html>

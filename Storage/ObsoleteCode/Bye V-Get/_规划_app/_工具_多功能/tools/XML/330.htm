@@ -1,0 +1,269 @@
+<html>
+<head>
+<title>数据的XML化</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+
+<link rel = stylesheet href = "image/style.css">
+</head>
+<body bgcolor="#ffffff">
+<table width="688" border="0" cellspacing="0" cellpadding="0" align="center">
+  <tr bgcolor="EEEEEE"> 
+    <td height="22"><a href="index.htm">主页</a></td>
+  </tr>
+</table><br>
+<table border="0" cellpadding="0" cellspacing="0" width="688" align="center" height="490">
+  <tr valign="top"> 
+    <td rowspan="4" width="91">&nbsp; </td>
+    <td height="68" width="131"> 
+      <p><img src="image/doc.gif"></p>
+    </td>
+    <td rowspan="4" width="18"><b></b> </td>
+    <td height="68" width="387"><img src="image/title_doc.gif"></td>
+    <td rowspan="4" width="61"> 
+      <h6>&nbsp;</h6>
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td rowspan="3" valign="top" class="pt10" align="center" width="131" bgcolor="EEEEEE"> 
+      <p>&nbsp;</p>
+      <p><font color="#FF0000">※ 4.2 数据的XML化</font></p>
+       
+            <p align="left">4.2 数据的XML化</p>
+          
+            <p align="left"><a href='331.htm'>4.2 数据的XML化(续)</a></p>
+          
+	</td>
+  </tr>
+  <tr valign="top"> 
+    <td width="387" height="308"> 
+      <table width="100%" border="0" cellpadding="0">
+        <tr> 
+          <td>
+
+           <h3 align="CENTER">4.2 数据的XML化</h3>
+<p>让我们用XML处理1998年的Major League赛季数据的标记开始。请记住，在XML内，允许我们创建标记。我们已经决定，文档的根元素是赛季（season）。赛季包括联赛（leagues），而联赛包括分部（divisions），分部又包括球队（teams），球队包括队员（players）。队员的统计数字包括参加的场数（games 
+  played）、击球次数（at bats）、得分数（runs）、击中数（hits）、双垒（doubles）、三垒（triples）、全垒得分（home 
+  runs）、击球得分（runs batted in）、走步数（walks）和被投手击中数（hits by pitch）。</p>
+<h5>4.2.1 开始编写文档：XML声明和根元素</h5>
+<p>XML文档可由XML声明加以识别。这是放在所有XML文档的开头的一条处理指令，标识正在使用的XML版本。当前可理解的唯一版本号是1.0。</p>
+<p><font face="Courier New, Courier, mono"><i>&lt;?xml version="1.0"?&gt;</i></font></p>
+<p>每个合格的XML文档（所谓合格有特定的意义，这将在下一章中加以讨论）必须有一个根元素。这是一个完全包括文档中其他所有元素的元素。根元素的起始标记要放在所有其他元素的起始标记之前，而根元素的结束标记要放在所有其他元素的结束标记之后。对于我们的根元素SEASON，其起始标记是&lt;SEASON&gt;，而结束标记是&lt;/SEASON&gt;。文档现在看起来像下面的样子：</p>
+<p><font face="Courier New, Courier, mono"><i>&lt;?xml version="1.0"?&gt;</i></font></p>
+<p><i><font face="Courier New, Courier, mono">&lt;SEASON&gt;</font></i></p>
+<p><i><font face="Courier New, Courier, mono">&lt;/SEASON&gt;</font></i></p>
+<p>XML声明既不是元素也不是标记。它是处理指令。因而不需要将声明放在根元素SEASON之内。但是，我们在文档中放入的每个元素都得放在起始标记&lt;SEASON&gt;和结束标记&lt;/SEASON&gt;之间。</p>
+<p>根元素的这种选择方法说明我们已经不能在一个文件中保存多个赛季的数据了。如果想要保存多个赛季的数据的话，可以定义一个新的包括赛季（seasons）的根元素，例如，</p>
+<p><font face="Courier New, Courier, mono"><i>&lt;?xml version="1.0"?&gt;</i></font></p>
+<p><i><font face="Courier New, Courier, mono">&lt;DOCUMENT&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;SEASON&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;/SEASON&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;SEASON&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;/SEASON&gt;</font></i></p>
+<p><i><font face="Courier New, Courier, mono">&lt;/DOCUMENT&gt;</font></i></p>
+<b> 
+<p>命名约定</p>
+</b> 
+<p>在开始之前，我还要说几句关于命名约定的话。正如我们在下一章中所见到的，XML的元素名是比较灵活的，可以包括任意数目的字母和数字，既可是大写的也可是小写的。可以将XML标记写成下面的任何样子：</p>
+<p><i><font face="Courier New, Courier, mono">&lt;SEASON&gt;</font></i></p>
+<p><font face="Courier New, Courier, mono"><i>&lt;Season&gt;</i></font></p>
+<p><font face="Courier New, Courier, mono"><i>&lt;season&gt;</i></font></p>
+<p><font face="Courier New, Courier, mono"><i>&lt;season1998&gt;</i></font></p>
+<p><font face="Courier New, Courier, mono"><i>&lt;Season98&gt;</i></font></p>
+<p><font face="Courier New, Courier, mono"><i>&lt;season_98&gt;</i></font></p>
+<p>这就会有成千上万种可能的变化。全使用大写、全使用小写或是混合大小写都是可以的。但是，我推荐使用一种约定，并坚持下去。</p>
+<p>当然，我们对所谈到的赛季加以标识。为达此目的，可为SEASON元素定义一个名为YEAR的子元素。例如：</p>
+<p><i><font face="Courier New, Courier, mono">&lt;?xml version="1.0"?&gt;</font></i></p>
+<p><font face="Courier New, Courier, mono"><i>&lt;SEASON&gt;</i></font></p>
+<p> <font face="Courier New, Courier, mono"><i>&lt;YEAR&gt;</i></font></p>
+<p><font face="Courier New, Courier, mono"><i> 1998</i></font></p>
+<p> <font face="Courier New, Courier, mono"><i>&lt;/YEAR&gt;</i></font></p>
+<p><font face="Courier New, Courier, mono"><i>&lt;/SEASON&gt;</i></font></p>
+<p>我在此处以及其他例子中使用了缩进，以便指明元素YEAR是元素SEASON的子元素，而文本1998是元素YEAR的内容。这是一种很好的编程习惯，但这不是必须的。XML中的空白没有特殊的意义。同样的例子也可写成下面的样子：</p>
+<p><i><font face="Courier New, Courier, mono">&lt;?xml version="1.0"?&gt;</font></i></p>
+<p><font face="Courier New, Courier, mono"><i>&lt;SEASON&gt;</i></font></p>
+<p> <font face="Courier New, Courier, mono"><i>&lt;YEAR&gt;1998&lt;/YEAR&gt;</i></font></p>
+<p><font face="Courier New, Courier, mono"><i>&lt;/SEASON&gt;</i></font></p>
+<p>确实，我经常将元素压缩到一行上（当一行上可以放得下，而空间又比较紧张时）。还可以将文档再加以压缩，即使压缩成一行也可以，但这要失去可读性。例如：</p>
+<p><i><font face="Courier New, Courier, mono">&lt;?xml version="1.0"?&gt;&lt;SEASON&gt;&lt;YEAR&gt;1998&lt;/YEAR&gt;&lt;/SEASON&gt;</font></i></p>
+<p>当然这样的文档是比较难以阅读和理解的，这也就是为什么我没有这样书写的原因。XML 1.0规范中的第十条目的中写道：“Terseness in XML 
+  markup is of minimal importance.”翻译成中文是，“XML标记中的简捷性是不太重要的。”棒球示例完全反映出了这个目的。</p>
+<h5>4.2.2 联赛（League）、（分部）Division和（球队）Team数据的XML化</h5>
+<p>主要棒球联赛分成两个联赛：American League和National League。每个联赛都有名称。两个名称可如下编码：</p>
+<p><font face="Courier New, Courier, mono"><i>&lt;?xml version="1.0"?&gt;</i></font></p>
+<p><i><font face="Courier New, Courier, mono">&lt;SEASON&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;YEAR&gt;1998&lt;/YEAR&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;LEAGUE&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;LEAGUE_NAME&gt;National League&lt;/LEAGUE_NAME&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;/LEAGUE&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;LEAGUE&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;LEAGUE_NAME&gt;American League&lt;/LEAGUE_NAME&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;/LEAGUE&gt;</font></i></p>
+<p><i><font face="Courier New, Courier, mono">&lt;/SEASON&gt;</font></i></p>
+<p>我在这里将联赛的名称定义为元素LEAGUE_NAME，而不是简单的NAME元素。因为NAME太普遍了，而且还打算将其用在其他场合。例如，分部、球队和球员都有名称。</p>
+<img src="image/Image27.gif" width=47 height=43 align="LEFT" hspace=12> 
+<p>带有相同的名称的不同领域的元素可以利用命名域（namespaces）结合在一起。命名域的问题将在第18章中加以讨论。但是，即使使用命名域，也不要将同一领域（如本例中的TEAM和LEAGUE）的多个术语给予同样的名称。</p>
+<p>每个联赛可分为东部（east）、西部（west）和中部（central）分部，可编码如下：</p>
+<p><font face="Courier New, Courier, mono"><i>&lt;LEAGUE&gt;</i></font></p>
+<p> <font face="Courier New, Courier, mono"><i>&lt;LEAGUE_NAME&gt;National League&lt;/LEAGUE_NAME&gt;</i></font></p>
+<p> <font face="Courier New, Courier, mono"><i>&lt;DIVISION&gt;</i></font></p>
+<p> <font face="Courier New, Courier, mono"><i>&lt;DIVISION_NAME&gt;East&lt;/DIVISION_NAME&gt;</i></font></p>
+<p> <font face="Courier New, Courier, mono"><i>&lt;/DIVISION&gt;</i></font></p>
+<p> <font face="Courier New, Courier, mono"><i>&lt;DIVISION&gt;</i></font></p>
+<p> <font face="Courier New, Courier, mono"><i>&lt;DIVISION_NAME&gt;Central&lt;/DIVISION_NAME&gt;</i></font></p>
+<p> <font face="Courier New, Courier, mono"><i>&lt;/DIVISION&gt;</i></font></p>
+<p> <font face="Courier New, Courier, mono"><i>&lt;DIVISION&gt;</i></font></p>
+<p> <font face="Courier New, Courier, mono"><i>&lt;DIVISION_NAME&gt;West&lt;/DIVISION_NAME&gt;</i></font></p>
+<p> <font face="Courier New, Courier, mono"><i>&lt;/DIVISION&gt;</i></font></p>
+<p><font face="Courier New, Courier, mono"><i>&lt;/LEAGUE&gt;</i></font></p>
+<p><font face="Courier New, Courier, mono"><i>&lt;LEAGUE&gt;</i></font></p>
+<p> <font face="Courier New, Courier, mono"><i>&lt;LEAGUE_NAME&gt;American League&lt;/LEAGUE_NAME&gt;</i></font></p>
+<p> <font face="Courier New, Courier, mono"><i>&lt;DIVISION&gt;</i></font></p>
+<p> <font face="Courier New, Courier, mono"><i>&lt;DIVISION_NAME&gt;East&lt;/DIVISION_NAME&gt;</i></font></p>
+<p> <font face="Courier New, Courier, mono"><i>&lt;/DIVISION&gt;</i></font></p>
+<p> <font face="Courier New, Courier, mono"><i>&lt;DIVISION&gt;</i></font></p>
+<p> <font face="Courier New, Courier, mono"><i>&lt;DIVISION_NAME&gt;Central&lt;/DIVISION_NAME&gt;</i></font></p>
+<p> <font face="Courier New, Courier, mono"><i>&lt;/DIVISION&gt;</i></font></p>
+<p> <font face="Courier New, Courier, mono"><i>&lt;DIVISION&gt;</i></font></p>
+<p> <font face="Courier New, Courier, mono"><i>&lt;DIVISION_NAME&gt;West&lt;/DIVISION_NAME&gt;</i></font></p>
+<p> <font face="Courier New, Courier, mono"><i>&lt;/DIVISION&gt;</i></font></p>
+<p><font face="Courier New, Courier, mono"><i>&lt;/LEAGUE&gt;</i></font></p>
+<p>元素的实际值依赖于包括该元素的父元素。American League和National League都有East分部，但是这不是一回事。</p>
+<p>每个分部又分为多个球队。每个球队都有一个队名和城市名。例如，与American League联赛East分部有关的名称可编码如下：</p>
+<p><i><font face="Courier New, Courier, mono">&lt;DIVISION&gt;</font></i></p>
+<p> <font face="Courier New, Courier, mono"><i>&lt;DIVISION_NAME&gt;East&lt;/DIVISION_NAME&gt;</i></font></p>
+<p> <font face="Courier New, Courier, mono"><i>&lt;TEAM&gt;</i></font></p>
+<p> <font face="Courier New, Courier, mono"><i>&lt;TEAM_CITY&gt;Baltimore&lt;/TEAM_CITY&gt;</i></font></p>
+<p> <font face="Courier New, Courier, mono"><i>&lt;TEAM_NAME&gt;Orioles&lt;/TEAM_NAME&gt;</i></font></p>
+<p> <font face="Courier New, Courier, mono"><i>&lt;/TEAM&gt;</i></font></p>
+<p> <font face="Courier New, Courier, mono"><i>&lt;TEAM&gt;</i></font></p>
+<p> <font face="Courier New, Courier, mono"><i>&lt;TEAM_CITY&gt;Boston&lt;/TEAM_CITY&gt;</i></font></p>
+<p> <font face="Courier New, Courier, mono"><i>&lt;TEAM_NAME&gt;Red Sox&lt;/TEAM_NAME&gt;</i></font></p>
+<p> <font face="Courier New, Courier, mono"><i>&lt;/TEAM&gt;</i></font></p>
+<p> <font face="Courier New, Courier, mono"><i>&lt;TEAM&gt;</i></font></p>
+<p> <font face="Courier New, Courier, mono"><i>&lt;TEAM_CITY&gt;New York&lt;/TEAM_CITY&gt;</i></font></p>
+<p> <font face="Courier New, Courier, mono"><i>&lt;TEAM_NAME&gt;Yankees&lt;/TEAM_NAME&gt;</i></font></p>
+<p> <font face="Courier New, Courier, mono"><i>&lt;/TEAM&gt;</i></font></p>
+<p> <font face="Courier New, Courier, mono"><i>&lt;TEAM&gt;</i></font></p>
+<p> <font face="Courier New, Courier, mono"><i>&lt;TEAM_CITY&gt;Tampa Bay&lt;/TEAM_CITY&gt;</i></font></p>
+<p> <font face="Courier New, Courier, mono"><i>&lt;TEAM_NAME&gt;Devil Rays&lt;/TEAM_NAME&gt;</i></font></p>
+<p> <font face="Courier New, Courier, mono"><i>&lt;/TEAM&gt;</i></font></p>
+<p> <font face="Courier New, Courier, mono"><i>&lt;TEAM&gt;</i></font></p>
+<p> <font face="Courier New, Courier, mono"><i>&lt;TEAM_CITY&gt;Toronto&lt;/TEAM_CITY&gt;</i></font></p>
+<p> <font face="Courier New, Courier, mono"><i>&lt;TEAM_NAME&gt;Blue Jays&lt;/TEAM_NAME&gt;</i></font></p>
+<p> <font face="Courier New, Courier, mono"><i>&lt;/TEAM&gt;</i></font></p>
+<p><font face="Courier New, Courier, mono"><i>&lt;/DIVISION&gt;</i></font></p>
+<h5>4.2.3 球员数据的XML化</h5>
+<p>每个球队是由球员组成的。每个球员都有姓和名。将姓和名分开是重要的，这样一来既可以根据名来分类也可以根据姓来分类。1998年Yankees阵容第一个出场的投球手的数据可编码如下：</p>
+<p><i><font face="Courier New, Courier, mono">&lt;TEAM&gt;</font></i></p>
+<p> <font face="Courier New, Courier, mono"><i>&lt;TEAM_CITY&gt;New York&lt;/TEAM_CITY&gt;</i></font></p>
+<p> <font face="Courier New, Courier, mono"><i>&lt;TEAM_NAME&gt;Yankees&lt;/TEAM_NAME&gt;</i></font></p>
+<p> <font face="Courier New, Courier, mono"><i>&lt;PLAYER&gt;</i></font></p>
+<p> <font face="Courier New, Courier, mono"><i>&lt;GIVEN_NAME&gt;Orlando&lt;/GIVEN_NAME&gt;</i></font></p>
+<p> <font face="Courier New, Courier, mono"><i>&lt;SURNAME&gt;Hernandez&lt;/SURNAME&gt;</i></font></p>
+<p> <font face="Courier New, Courier, mono"><i>&lt;/PLAYER&gt;</i></font></p>
+<p> <font face="Courier New, Courier, mono"><i>&lt;PLAYER&gt;</i></font></p>
+<p> <font face="Courier New, Courier, mono"><i>&lt;GIVEN_NAME&gt;David&lt;/GIVEN_NAME&gt;</i></font></p>
+<p> <font face="Courier New, Courier, mono"><i>&lt;SURNAME&gt;Cone&lt;/SURNAME&gt;</i></font></p>
+<p> <font face="Courier New, Courier, mono"><i>&lt;/PLAYER&gt;</i></font></p>
+<p> <font face="Courier New, Courier, mono"><i>&lt;PLAYER&gt;</i></font></p>
+<p> <font face="Courier New, Courier, mono"><i>&lt;GIVEN_NAME&gt;David&lt;/GIVEN_NAME&gt;</i></font></p>
+<p> <font face="Courier New, Courier, mono"><i>&lt;SURNAME&gt;Wells&lt;/SURNAME&gt;</i></font></p>
+<p> <font face="Courier New, Courier, mono"><i>&lt;/PLAYER&gt;</i></font></p>
+<p> <font face="Courier New, Courier, mono"><i>&lt;PLAYER&gt;</i></font></p>
+<p> <font face="Courier New, Courier, mono"><i>&lt;GIVEN_NAME&gt;Andy&lt;/GIVEN_NAME&gt;</i></font></p>
+<p> <font face="Courier New, Courier, mono"><i>&lt;SURNAME&gt;Pettitte&lt;/SURNAME&gt;</i></font></p>
+<p> <font face="Courier New, Courier, mono"><i>&lt;/PLAYER&gt;</i></font></p>
+<p> <font face="Courier New, Courier, mono"><i>&lt;PLAYER&gt;</i></font></p>
+<p> <font face="Courier New, Courier, mono"><i>&lt;GIVEN_NAME&gt;Hideki&lt;/GIVEN_NAME&gt;</i></font></p>
+<p> <font face="Courier New, Courier, mono"><i>&lt;SURNAME&gt;Irabu&lt;/SURNAME&gt;</i></font></p>
+<p> <font face="Courier New, Courier, mono"><i>&lt;/PLAYER&gt;</i></font></p>
+<p><font face="Courier New, Courier, mono"><i>&lt;/TEAM&gt;</i></font></p>
+<img src="image/Image28.gif" width=44 height=53 align="LEFT" hspace=12> 
+<p>为了更明显起见，使用标记&lt;GIVEN_NAME&gt;和&lt;SURNAME&gt;比使用&lt;FIRST_NAME&gt; 和&lt;LAST_NAME&gt;或者&lt;FIRST_NAME&gt;和&lt;FAMILY_NAME&gt;更好一些。由于不同国家的文化背景不同，可能名（given 
+  name）在先也可能姓（family name）在先。同时在所有的文化背景下，别号（surnames）不一定就是姓（family names）。</p>
+<h5>4.2.4 球员统计数据的XML化</h5>
+<p>以下几个步骤提供了每个球员的统计数据。统计数据看起来对于投球手和击球手并没有一点不同，特别是对于American League联赛，这里没有几个投球员击过球。下面是Joe 
+  Girardi在1998年的统计数据。他是一个接球手，因而我们使用击球的统计数据：</p>
+<p><font face="Courier New, Courier, mono"><i>&lt;PLAYER&gt;</i></font></p>
+<p><i><font face="Courier New, Courier, mono">&lt;GIVEN_NAME&gt;Joe &lt;/GIVEN_NAME&gt;</font></i></p>
+<p><i><font face="Courier New, Courier, mono">&lt;SURNAME&gt;Girard &lt;/SURNAME&gt;</font></i></p>
+<p><i><font face="Courier New, Courier, mono">&lt;POSITION&gt;Catcher&lt;/POSITION&gt;</font></i></p>
+<p><i><font face="Courier New, Courier, mono">&lt;GAMES&gt;78&lt;/GAMES&gt;</font></i></p>
+<p><i><font face="Courier New, Courier, mono">&lt;GAMES_STARTED&gt;76&lt;/GAMES_STARTED&gt;</font></i></p>
+<p><i><font face="Courier New, Courier, mono">&lt;AT_BATS&gt;254&lt;/AT_BATS&gt;</font></i></p>
+<p><i><font face="Courier New, Courier, mono">&lt;RUNS&gt;31&lt;/RUNS&gt;</font></i></p>
+<p><i><font face="Courier New, Courier, mono">&lt;HITS&gt;70&lt;/HITS&gt;</font></i></p>
+<p><i><font face="Courier New, Courier, mono">&lt;DOUBLES&gt;11&lt;/DOUBLES&gt;</font></i></p>
+<p><i><font face="Courier New, Courier, mono">&lt;TRIPLES&gt;4&lt;/TRIPLES&gt;</font></i></p>
+<p><i><font face="Courier New, Courier, mono">&lt;HOME_RUNS&gt;3&lt;/HOME_RUNS&gt;</font></i></p>
+<p><i><font face="Courier New, Courier, mono">&lt;RBI&gt;31&lt;/RBI&gt;</font></i></p>
+<p><i><font face="Courier New, Courier, mono">&lt;STEALS&gt;2&lt;/STEALS&gt;</font></i></p>
+<p><i><font face="Courier New, Courier, mono">&lt;CAUGHT_STEALING&gt;4&lt;/CAUGHT_STEALING&gt;</font></i></p>
+<p><i><font face="Courier New, Courier, mono">&lt;SACRIFICE_HITS&gt;8&lt;/SACRIFICE_HITS&gt;</font></i></p>
+<p><i><font face="Courier New, Courier, mono">&lt;SACRIFICE_FLIES&gt;1&lt;/SACRIFICE_FLIES&gt;</font></i></p>
+<p><i><font face="Courier New, Courier, mono">&lt;ERRORS&gt;3&lt;/ERRORS&gt;</font></i></p>
+<p><i><font face="Courier New, Courier, mono">&lt;WALKS&gt;14&lt;/WALKS&gt;</font></i></p>
+<p><i><font face="Courier New, Courier, mono">&lt;STRUCK_OUT&gt;38&lt;/STRUCK_OUT&gt;</font></i></p>
+<p><i><font face="Courier New, Courier, mono">&lt;HIT_BY_PITCH&gt;2&lt;/HIT_BY_PITCH&gt;</font></i></p>
+<p><i><font face="Courier New, Courier, mono">&lt;/PLAYER&gt;</font></i></p>
+<p>现在让我们看一下一个投球手的统计数据。虽然投球手在American League中很少击球，但在National League中却常常击球，到目前为止，投球手击球的次数还是比其他球员少。根据投球手的投球表现，雇用或解雇、表扬或批评。如果投球手偶尔击中一球，则会得到额外的奖励。投球的统计包括比赛场数（games 
+  played）、得胜场数（wins）、失败场数（losses）、投球局数（innings pitched）、得分（earned runs）、成功防守次数（shutouts）、击中数（hits 
+  against）、走步放弃（walks given up）和其他数据。下面是Hideki Irabu1998年统计数据的XML编码：</p>
+<p><font face="Courier New, Courier, mono"><i>&lt;PLAYER&gt;</i></font></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;GIVEN_NAME&gt;Hideki&lt;/GIVEN_NAME&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;SURNAME&gt;Irabu&lt;/SURNAME&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;POSITION&gt;Start ng P tcher&lt;/POSITION&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;WINS&gt;13&lt;/WINS&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;LOSSES&gt;9&lt;/LOSSES&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;SAVES&gt;0&lt;/SAVES&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;GAMES&gt;29&lt;/GAMES&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;GAMES_STARTED&gt;28&lt;/GAMES_STARTED&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;COMPLETE_GAMES&gt;2&lt;/COMPLETE_GAMES&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;SHUT_OUTS&gt; &lt;/SHUT_OUTS&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;ERA&gt;4.06&lt;/ERA&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;INNINGS&gt; 73&lt;/INNINGS&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;HOME_RUNS&gt;148&lt;/HOME_RUNS&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;RUNS&gt;27&lt;/RUNS&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;EARNED_RUNS&gt;79&lt;/EARNED_RUNS&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;HIT_BATTER&gt;78&lt;/HIT_BATTER&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;WILD_PITCHES&gt;9&lt;/WILD_PITCHES&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;BALK&gt;6&lt;/BALK&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;WALKED_BATTER&gt;1&lt;/WALKED_BATTER&gt;</font></i></p>
+<p> <i><font face="Courier New, Courier, mono">&lt;STRUCK_OUT_BATTER&gt;76&lt;/STRUCK_OUT_BATTER&gt;</font></i></p>
+<p><i><font face="Courier New, Courier, mono">&lt;/PLAYER&gt;</font></i></p>
+<b> 
+<p>XML标记的简洁性不是太重要</p>
+</b> 
+<p>从整个示例来看，我已经遵循了XML的明显的原则：“Terseness in XML markup is of minimal importance.”（XML标记的简洁性不是太重要的。）这当然对非棒球文化下的读者很有帮助。这些读者对于棒球术语及其简写不是很熟悉。比如无法了解为什么 
+  walk的简写是 BB(base on balls)而不是人们以为的W。如果文档的大小是个问题的话，将文档用Zip一类的工具进行压缩还是很容易的。</p>
+<p>但是，这并不意味着XML是相当长的，也不意味着手工键入是非常枯燥无味的。我承认，本例强烈地吸引我使用简略语来书写，这样一来，清晰性就丧失殆尽。如果我使用简写，那么典型的PLAYER元素可能如下：</p>
+<p><i><font face="Courier New, Courier, mono">&lt;PLAYER&gt;</font></i></p>
+<p> <font face="Courier New, Courier, mono"><i>&lt;GIVEN_NAME&gt;Joe&lt;/GIVEN_NAME&gt;</i></font></p>
+<p> <font face="Courier New, Courier, mono"><i>&lt;SURNAME&gt;Girard &lt;/SURNAME&gt;</i></font></p>
+<p> <font face="Courier New, Courier, mono"><i>&lt;P&gt;C&lt;/P&gt;</i></font></p>
+<p> <font face="Courier New, Courier, mono"><i>&lt;G&gt;78&lt;/G&gt;</i></font></p>
+<p> <font face="Courier New, Courier, mono"><i>&lt;AB&gt;254&lt;/AB&gt;</i></font></p>
+<p> <font face="Courier New, Courier, mono"><i>&lt;R&gt;31&lt;/R&gt;</i></font></p>
+<p> <font face="Courier New, Courier, mono"><i>&lt;H&gt;70&lt;/H&gt;</i></font></p>
+<p> <font face="Courier New, Courier, mono"><i>&lt;DO&gt;11&lt;/DO&gt;</i></font></p>
+<p> <font face="Courier New, Courier, mono"><i>&lt;TR&gt;4&lt;/TR&gt;</i></font></p>
+<p> <font face="Courier New, Courier, mono"><i>&lt;HR&gt;3&lt;/HR&gt;</i></font></p>
+<p> <font face="Courier New, Courier, mono"><i>&lt;RBI&gt;3 &lt;/RBI&gt;</i></font></p>
+<p> <font face="Courier New, Courier, mono"><i>&lt;BB&gt;14&lt;/BB&gt;</i></font></p>
+<p> <font face="Courier New, Courier, mono"><i>&lt;SO&gt;38&lt;/SO&gt;</i></font></p>
+<p> <font face="Courier New, Courier, mono"><i>&lt;SB&gt;2&lt;/SB&gt;</i></font></p>
+<p> <font face="Courier New, Courier, mono"><i>&lt;CS&gt;4&lt;/CS&gt;</i></font></p>
+<p> <font face="Courier New, Courier, mono"><i>&lt;HBP&gt;2&lt;/HBP&gt;</i></font></p>
+<p><font face="Courier New, Courier, mono"><i>&lt;/PLAYER&gt;</i></font></p>
+ 
+<a href='329.htm'>&lt;&lt;上一篇</a>&nbsp;&nbsp;<a href='331.htm'>下一篇&gt;&gt;</a></td>
+        </tr>
+      </table>
+      <p>&nbsp; </p>
+    </td>
+  </tr>
+</table>
+
+</body>
+
+</html>

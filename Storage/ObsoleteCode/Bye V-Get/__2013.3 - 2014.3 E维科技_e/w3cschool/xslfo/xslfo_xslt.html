@@ -1,0 +1,134 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="../c3.css" />
+<title>XSL-FO 与 XSLT</title>
+</head>
+<body class="xml">
+<div id="wrapper">
+<div id="header">
+<a href="http://e.v-get.com/w3cschool/" style="float:left;">W3CSchool 在线教程</a>
+<div class="q g"><script type="text/javascript">var cpro_id="u1163355"</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div>
+<div id="navfirst">
+<ul id="menu">
+<li id="h"><a href="../h.html">HTML教程</a></li>
+<li id="x"><a href="../x.html">XML教程</a></li>
+<li id="b"><a href="../b.html">浏览器脚本</a></li>
+<li id="s"><a href="../s.html">服务器脚本</a></li>
+<li id="d"><a href="../d.html">dot net教程</a></li>
+<li id="m"><a href="../m.html">多媒体教程</a></li>
+<li id="w"><a href="../w.html">建站手册</a></li>
+</ul>
+</div><div id="navsecond">
+<div id="course">
+<h2>XSLFO 教程</h2>
+<ul>
+<li><a href="http://e.v-get.com/w3cschool/">XSLFO 首页</a></li>
+<li><a href="xslfo_intro.html">XSLFO 简介</a></li>
+<li><a href="xslfo_documents.html">XSLFO 文档</a></li>
+<li><a href="xslfo_areas.html">XSLFO 区域</a></li>
+<li><a href="xslfo_output.html">XSLFO 输出</a></li>
+<li><a href="xslfo_flow.html">XSLFO 流</a></li>
+<li><a href="xslfo_pages.html">XSLFO 页面</a></li>
+<li><a href="xslfo_blocks.html">XSLFO 块</a></li>
+<li><a href="xslfo_lists.html">XSLFO 列表</a></li>
+<li><a href="xslfo_tables.html">XSLFO 表格</a></li>
+<li><a href="xslfo_xslt.html">XSLFO 与 XSLT</a></li>
+</ul>
+<h2>XSLFO 参考手册</h2>
+<ul>
+<li><a href="xslfo_reference.html">XSLFO 对象</a></li>
+</ul>
+</div>
+<div id="selected">
+<h2>建站手册</h2>
+<ul>
+<li><a href="../site/">网站构建</a></li>
+<li><a href="../w3c/">万维网联盟</a></li>
+<li><a href="http://e.v-get.com/w3c/">W3CSchool 教程</a></li>
+<li><a href="../quality/">网站品质</a></li>
+<li><a href="../semweb/">语义网</a></li>
+<li><a href="../hosting/">网站主机</a></li>
+</ul>
+<h2><a href="http://e.v-get.com/w3c/" class="f13">W3CSchool 教程</a></h2><div class="a120x90"><script type="text/javascript">var cpro_id="u1210867";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div></div>
+</div>
+<div id="maincontent">
+<h1>XSL-FO 与 XSLT</h1>
+<div id="tpn">
+<ul class="prenext">
+<li class="pre"><a href="xslfo_tables.html">上一页</a></li>
+<li class="next"><a href="xslfo_reference.html">下一页</a></li>
+</ul>
+</div>
+<div id="intro">
+<p><strong>XSL-FO 与 XSLT 可彼此互助。</strong></p>
+</div>
+<div>
+<h2>还记得这个例子吗？</h2>
+<pre>&lt;fo:block
+    font-size=&#34;14pt&#34; font-family=&#34;verdana&#34; color=&#34;red&#34;
+    space-before=&#34;5mm&#34; space-after=&#34;5mm&#34;&gt;
+W3CSchool
+&lt;/fo:block&gt;
+&lt;fo:block
+    text-indent=&#34;5mm&#34;
+    font-family=&#34;verdana&#34; font-size=&#34;12pt&#34;
+    space-before=&#34;5mm&#34; space-after=&#34;5mm&#34;&gt;
+At W3CSchool you will find all the Web-building tutorials you
+need, from basic HTML and XHTML to advanced XML, XSL, Multimedia
+and WAP.
+&lt;/fo:block&gt;</pre>
+<h3>结果：</h3>
+<img class="illustration" src="i/xslfo_blocks_02.gif" />
+ 
+<p>此例来自有关 XSL-FO 块区域的那一节。</p>
+</div>
+<div>
+<h2>来自 XSLT 的帮助</h2>
+<h3>从文档移除 XSL-FO 信息：</h3>
+<pre>&lt;header&gt;
+W3CSchool
+&lt;/header&gt;
+&lt;paragraph&gt;
+At W3CSchool you will find all the Web-building tutorials you
+need, from basic HTML and XHTML to advanced XML, XSL, Multimedia
+and WAP.
+&lt;/paragraph&gt;</pre>
+<h3>添加 XSLT 转换：</h3>
+<pre>&lt;xsl:template match=&#34;header&#34;&gt;
+&lt;fo:block
+    font-size=&#34;14pt&#34; font-family=&#34;verdana&#34; color=&#34;red&#34;
+    space-before=&#34;5mm&#34; space-after=&#34;5mm&#34;&gt;
+    &lt;xsl:apply-templates/&gt;
+&lt;/fo:block&gt;
+&lt;/xsl:template&gt;
+&lt;xsl:template match=&#34;paragraph&#34;&gt;
+&lt;fo:block
+    text-indent=&#34;5mm&#34;
+    font-family=&#34;verdana&#34; font-size=&#34;12pt&#34;
+    space-before=&#34;5mm&#34; space-after=&#34;5mm&#34;&gt;
+    &lt;xsl:apply-templates/&gt;
+&lt;/fo:block&gt;
+&lt;/xsl:template&gt;</pre>
+<h3>产生的结果是相同的：</h3>
+<img class="illustration" src="i/xslfo_blocks_02.gif" />
+</div>
+<div id="bpn">
+<ul class="prenext">
+<li class="pre"><a href="xslfo_tables.html">上一页</a></li>
+<li class="next"><a href="xslfo_reference.html">下一页</a></li>
+</ul>
+</div>
+</div>
+<div id="sidebar">
+<div class="rs"></div>
+<div id="tools">
+<h5 id="tools_reference"><a href="xslfo_reference.html">XSL-FO 参考手册</a></h5>
+</div>
+<div class="a120x600"><script type="text/javascript">var cpro_id="u1293136";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div><div class="b"></div>
+</div>
+</body>
+</html>

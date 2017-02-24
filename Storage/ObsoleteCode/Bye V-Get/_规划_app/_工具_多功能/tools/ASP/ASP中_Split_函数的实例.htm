@@ -1,0 +1,56 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>ASP 中 Split 函数的实例</title>
+<style type="text/css">
+<!--
+body {
+	font-size: 10.4pt;
+	line-height: 22px;
+}
+-->
+</style>
+</head>
+
+<body bgcolor="eeeeee" leftmargin="20" marginwidth="20">
+<p><strong>ASP 中 Split 函数的实例</strong></p>
+<hr>
+<p> 　　大家有碰到过要想取一字符串里的某些值而无从下手？有没有觉得看书或教材对split的写法糊里糊涂……如果有此疑问的话，请看下面我对例子的解释，相信您会对这个有一定的了解。 
+</p>
+<p>　　我先介绍一下Split函数的用法:<br>
+  　返回值数组 = Split(&quot;字符串&quot;,&quot;分割符&quot;)</p>
+<p><br>
+  　　假设变量strURL保存着URL值，如strURL = &quot;ftp://username:password@server&quot;，这是我们在ＩＥ中登录到FTP上时的ＵＲＬ形式，如果我们想把其中的username和password取出来的话，该怎么办呢？当然解决的方法有许多，在这里我们只介绍用Split来解决的方法。首先，我们找出分割符。我们发现在这个字符串中，username和password之间有个冒号把它们隔开了，所以我们就把这个冒号作为Split函数的&quot;分割符&quot;来分割整个字符串，最后达到取username和password的目的。代码如下： 
+  <br>
+  strURL = &quot;ftp://username:password@server&quot;<br>
+  aryReturn = Split(strURL,&quot;:&quot;)</p>
+<p>　　这样我们就把字符串用冒号分割开了，分割后的结果保存在aryReturn中（aryReturn是一个数组）。 </p>
+<p>　　下面我们就来看看这个最终的结果吧，因为Split函数最终返回的是一个数组，所以我们主要就是显示数组中的元素了，就要涉及到一些跟数组有关的函数:IsArray()判断是否数组的函数,LBound()取数组的下标,UBound()取数组的上标。 
+</p>
+<p><br>
+  Response.Write(&quot;返回值是否为数组:&quot; &amp; IsArray(aryReturn) &amp; &quot;&lt;br&gt;&quot;)<br>
+  For i = LBound(aryReturn) To UBound(aryReturn)<br>
+  Response.Write(&quot;返回值数组中的元素[&quot; &amp; i &amp; &quot;]：&quot; &amp; Right(aryReturn(i),Len(aryReturn(i))-2) 
+  &amp; &quot;&lt;br&gt;&quot;)<br>
+  Next </p>
+<p>　　通过上面的代码，我们看到字符串被分割成三个部分，即：&quot;ftp&quot;、&quot;//username&quot;、&quot;password@server&quot;。我们要取username和password需要进一步的处理，我就不多说了，直接给出代码。<br>
+  　　取username的代码：<br>
+  strUsername = Right(aryReturn(1),Len(aryReturn(1))-2) <br>
+  　　取password的代码：</p>
+<p><br>
+  '取password我们又用到Split函数了，不过这回的分割符是&quot;@&quot; <br>
+  aryTemp = Split(aryReturn(2),&quot;@&quot;) <br>
+  strPassword = aryTemp(0) <br>
+  '我们可以顺便取出server<br>
+  strServer = aryTemp(1) </p>
+<p>　　分割符可以是一个字符，也可以是一个字符串。如：<br>
+  aryReturn = Split(&quot;ftp://username:password@server,&quot;//&quot;) </p>
+<p>　　注意：<br>
+  　　1.一般来说，ＡＳＰ中可以不声明变量，使用Split函数时，如果要声明返回值的变量的话，只能用Dim，而不能用Redim。虽然说其返回是一个数组，应该是用Redim也可以，但在实际使用过程中是不行。不知是怎么回事？<br>
+  　　2. 如果用Split函数来分割一个字符串中并不存在的分割符时，将返回整个字符串，其结果是只有一个元素的数组。</p>
+<p>　　后话，对于要取一字符串中的某些字符或部分，只要抓住规律，再加上用split就可以很好做成各种效果。写此文，希望对大家的学习有所帮助，同时也希望各路高手能够指点一二！<br>
+</p>
+<p>&nbsp; </p>
+</body>
+</html>

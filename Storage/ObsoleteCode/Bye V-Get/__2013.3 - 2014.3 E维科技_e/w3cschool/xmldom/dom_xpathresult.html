@@ -1,0 +1,197 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="../c3.css" />
+<title>XML DOM - XPathResult 对象</title>
+</head>
+<body class="xml">
+<div id="wrapper">
+<div id="header">
+<a href="http://e.v-get.com/w3cschool/" style="float:left;">W3CSchool 在线教程</a>
+<div class="q g"><script type="text/javascript">var cpro_id="u1163355"</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div>
+<div id="navfirst">
+<ul id="menu">
+<li id="h"><a href="../h.html">HTML教程</a></li>
+<li id="x"><a href="../x.html">XML教程</a></li>
+<li id="b"><a href="../b.html">浏览器脚本</a></li>
+<li id="s"><a href="../s.html">服务器脚本</a></li>
+<li id="d"><a href="../d.html">dot net教程</a></li>
+<li id="m"><a href="../m.html">多媒体教程</a></li>
+<li id="w"><a href="../w.html">建站手册</a></li>
+</ul>
+</div><div id="navsecond">
+<div id="course">
+<h2>XML DOM 教程</h2>
+<ul>
+<li><a href="http://e.v-get.com/w3cschool/">DOM 首页</a></li>
+<li><a href="dom_intro.html">DOM 简介</a></li>
+<li><a href="dom_nodes.html">DOM 节点</a></li>
+<li><a href="dom_nodetree.html">DOM 节点树</a></li>
+<li><a href="dom_parser.html">DOM 解析</a></li>
+<li><a href="dom_loadxmldoc.html">DOM 加载</a></li>
+<li><a href="dom_methods.html">DOM 属性和方法</a></li>
+<li><a href="dom_nodes_access.html">DOM 访问节点</a></li>
+<li><a href="dom_nodes_info.html">DOM 节点信息</a></li>
+<li><a href="dom_nodes_nodelist.html">DOM 节点列表</a></li>
+<li><a href="dom_nodes_traverse.html">DOM 遍历节点</a></li>
+<li><a href="dom_mozilla_vs_ie.html">DOM 浏览器</a></li>
+<li><a href="dom_nodes_navigate.html">DOM 定位节点</a></li>
+</ul>
+<h2>节点操作</h2>
+<ul>
+<li><a href="dom_nodes_get.html">DOM 获取节点</a></li>
+<li><a href="dom_nodes_set.html">DOM 改变节点</a></li>
+<li><a href="dom_nodes_remove.html">DOM 删除节点</a></li>
+<li><a href="dom_nodes_replace.html">DOM 替换节点</a></li>
+<li><a href="dom_nodes_create.html">DOM 创建节点</a></li>
+<li><a href="dom_nodes_add.html">DOM 添加节点</a></li>
+<li><a href="dom_nodes_clone.html">DOM 克隆节点</a></li>
+<li><a href="dom_httprequest.html">DOM HttpRequest</a></li>
+</ul>
+<h2>XML DOM 参考手册</h2>
+<ul class="small">
+<li><a href="xmldom_reference.html">DOM 手册目录</a></li>
+<li><a href="dom_nodetype.html">DOM 节点类型</a></li>
+<li><a href="dom_attribute.html">DOM Attr</a></li>
+<li><a href="dom_cdatasection.html">DOM CDATASection</a></li>
+<li><a href="dom_comment.html">DOM Comment</a></li>
+<li><a href="dom_document.html">DOM Document</a></li>
+<li><a href="dom_documenttype.html">DOM DocumentType</a></li>
+<li><a href="dom_domexception.html">DOM DOMException</a></li>
+<li><a href="dom_domparser.html">DOM DOMParser</a></li>
+<li><a href="dom_element.html">DOM Element</a></li>
+<li><a href="dom_event.html">DOM Event</a></li>
+<li><a href="dom_domimplementation.html">DOM Implementation</a></li>
+<li><a href="dom_namednodemap.html">DOM NamedNodeMap</a></li>
+<li><a href="dom_node.html">DOM Node</a></li>
+<li><a href="dom_nodelist.html">DOM NodeList</a></li>
+<li><a href="dom_errors.html">DOM ParseError</a></li>
+<li><a href="dom_processinginstruction.html">DOM ProcessingInstr</a></li>
+<li><a href="dom_range.html">DOM Range</a></li>
+<li><a href="dom_text.html">DOM Text</a></li>
+<li><a href="dom_http.html">DOM XMLHttpRequest</a></li>
+<li><a href="dom_xmlserializer.html">DOM XMLSerializer</a></li>
+<li><a href="dom_xpathexpression.html">DOM XPathExpression</a></li>
+<li><a href="dom_xpathresult.html">DOM XPathResult</a></li>
+<li><a href="dom_xsltprocessor.html">DOM XSLTProcessor</a></li>
+<li class="list_apart"><a href="dom_summary.html">DOM 总结</a></li>
+</ul>
+<h2>实例</h2>
+<ul>
+<li><a href="../example/xdom_examples.html">DOM 实例</a></li>
+<li>DOM 验证器</li>
+</ul>
+</div>
+<div id="selected">
+<h2>建站手册</h2>
+<ul>
+<li><a href="../site/">网站构建</a></li>
+<li><a href="../w3c/">万维网联盟</a></li>
+<li><a href="http://e.v-get.com/w3c/">W3CSchool 教程</a></li>
+<li><a href="../quality/">网站品质</a></li>
+<li><a href="../semweb/">语义网</a></li>
+<li><a href="../hosting/">网站主机</a></li>
+</ul>
+<h2><a href="http://e.v-get.com/w3c/" class="f13">W3CSchool 教程</a></h2><div class="a120x90"><script type="text/javascript">var cpro_id="u1210867";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div></div>
+</div>
+<div id="maincontent">
+<h1>XML DOM - XPathResult 对象</h1>
+<div id="tpn">
+<ul class="prenext">
+<li class="pre"><a href="dom_xpathexpression.html">上一页</a></li>
+<li class="next"><a href="dom_xsltprocessor.html">下一页</a></li>
+</ul>
+</div>
+<div id="intro">
+<p><strong>XPath 查询的结果。</strong></p>
+</div>
+<div>
+<h2>XPathResult 对象</h2>
+<p>XPathResult 对象表示一个 XPath 表达式的值。该类型的对象由 <a href="met_document_evaluate.html">Document.evaluate()</a> 和 <a href="dom_xpathexpression.html">XPathExpression.evaluate()</a> 返回。XPath 查询可以计算为字符串、数字、布尔值、节点以及节点的列表。XPath 实现可以以几种不同的方式返回节点的列表，因此，这个对象为获取一个 XPath 查询的实际结果而定义了略为复杂的 API。</p>
+<p>要使用一个 XPathResult，首先检查 resultType 属性。它将保存一个 XPathResult 常量。这个属性的值告诉你需要使用哪个属性和方法来确定结果值。调用不是为当前的 resultType 定义的方法或者读取不是为它定义的属性会导致异常。</p>
+<p>IE 不支持 XPathResult API。要在 IE 中执行 XPath 查询，参阅 <a href="met_node_selectnodes.html">Node.selectNodes()</a> 和 <a href="met_node_selectsinglenode.html">Node.selectSingleNode()</a> 。</p>
+</div>
+<div>
+<h2>XPathResult 对象的常量</h2>
+<p>如下常量定义了一个 XPath 查询可能返回的类型。XPathResult 对象的 resultType 属性保存了这些值中的一个，用来指定对象保存何种结果。这些常量与 Document.evaluate() 和 XPathExpression.evaluate() 一起使用，用来指定期待的结果类型。</p>
+<p>这些常量及其含义如下：</p>
+<h3>ANY_TYPE</h3>
+<p>把这个值传递给 Document.evaluate() 或 XPathExpression.evaluate() 来指定可接受的结果类型。属性 resultType 并不设置这个值。</p>
+<h3>NUMBER_TYPE</h3>
+numbervalue 保存结果。
+<h3>STRING_TYPE</h3>
+<p>stringvalue 保存结果。</p>
+<h3>BOOLEAN_TYPE</h3>
+<p>booleanValue 保存结果。</p>
+<h3>UNORDERED_NODE_ITERATOR_TYPE</h3>
+<p>这个结果是节点的无序集合，可以通过重复调用 iterateNext() 直到返回 null 来依次访问。在此迭代过程中，文档必须不被修改。</p>
+<h3>ORDERED_NODE_ITERATOR_TYPE</h3>
+<p>结果是节点的列表，按照文档中的属性排列，可以通过重复调用 iterateNext() 直到返回 null 来依次访问。在此迭代过程中，文档必须不被修改。</p>
+<h3>UNORDERED_NODE_SNAPSHOT_TYPE</h3>
+<p>结果是一个随机访问的节点列表。snapshotLength 属性指定了列表的长度，并且 snapshotItem() 方法返回指定下标的节点。节点可能和它们出现在文档中的顺序不一样。既然这种结果是一个“快照”，因此即便文档发生变化，它也有效。</p>
+<h3>ORDERED_NODE_SNAPSHOT_TYPE</h3>
+<p>这个结果是一个随机访问的节点列表，就像 UNORDERED_NODE_SNAPSHOT_TYPE，只不过这个列表是按照文档中的顺序排列的。</p>
+<h3>ANY_UNORDERED_NODE_TYPE</h3>
+<p>singleNodeValue 属性引用和查询匹配的一个节点，如果没有匹配的节点则为 null。如果有多个节点和查询匹配，singleNodeValue 可能是任何一个匹配节点。</p>
+<h3>FIRST_ORDERED_NODE_TYPE</h3>
+<p>singleNodeValue 保存了文档中的第一个和查询匹配的节点，如果没有匹配的节点，则为 null。</p>
+</div>
+<div>
+<h2>XPathResult 对象的实例属性</h2>
+<p>这里的很多属性只有当 resultType 保存了一个特定的值时才有效。访问并非为当前 resultType 定义的属性会导致异常。</p>
+<h3>booleanValue </h3>
+<p>当 resultType 为 BOOLEAN_TYPE 时，保存结果值。</p>
+<h3>invalidIteratorState</h3>
+<p>如果 resultType 是 ITERATOR_TYPE 常量中的一个并且文档已经修改，则为 true；它使迭代无效，因为结果已经返回。</p>
+<h3>numberValue</h3>
+<p>当 resultType 为 NUMBER_TYPE 时，保存结果值。</p>
+<h3>resultType</h3>
+<p>使用 XPath 查询返回何种结果。它的值是前面列出等常量之一。这个属性的值告诉你可以使用那些其他属性和方法。</p>
+<h3>singleNodeValue</h3>
+<p>当 resultType 为 XPathResult.ANY_UNORDERED_NODE_TYPE 或 XPathResult.FIRST_UNORDERED_NODE_TYPE 时，保存结果值。</p>
+<h3>snapshotLength</h3>
+<p>当 resultType 为 UNORDERED_NODE_SNAPSHOT_TYPE 或 ORDERED_NODE_ITERATOR_TYPE 时，指定返回的节点数。和 snapshotItem() 联合使用这一属性。</p>
+<h3>stringValue</h3>
+<p>当 resultType 为 STRING_TYPE 时，保存结果值。</p>
+</div>
+<div>
+<h2>XPathResult 对象的方法</h2>
+<table class="dataintable">
+<tr>
+<th>方法</th>
+<th>描述</th>
+</tr>
+<tr>
+	<td class="no_wrap"><a href="met_iteratenext.html" title="">iterateNext()</a></td>
+	<td>如果 resultType 是 UNORDERED_NODE_ITERATOR_TYPE 或 ORDERED_NODE_ITERATOR_TYPE，使用这个一方法。</td>
+</tr>
+<tr>
+	<td class="no_wrap"><a href="met_snapshotitem.html" title="">snapshotItem()</a></td>
+	<td>返回结果节点列表中指定下标的节点。这个方法只有在 resultType 是 UNORDERED_NODE_SNAPSHOT_TYPE 或 ORDERED_NODE_SNAPSHOT_TYPE 的时候才能使用。snapshotLength 属性和这个方法一起使用。</td>
+</tr>
+</table>
+</div>
+<div>
+<h3>参阅</h3>
+<p><a href="met_document_evaluate.html">Document.evaluate()</a> 和 <a href="dom_xpathexpression.html#evaluate">XPathExpression.evaluate()</a></p>
+</div>
+<div id="bpn">
+<ul class="prenext">
+<li class="pre"><a href="dom_xpathexpression.html">上一页</a></li>
+<li class="next"><a href="dom_xsltprocessor.html">下一页</a></li>
+</ul>
+</div>
+</div>
+<div id="sidebar">
+<div class="rs"></div>
+<div id="tools">
+<h5 id="tools_reference"><a href="xmldom_reference.html">XML DOM 参考手册</a></h5>
+<h5 id="tools_example"><a href="../example/xdom_examples.html">XML DOM 实例</a></h5>
+</div>
+<div class="a120x600"><script type="text/javascript">var cpro_id="u1293136";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div><div class="b"></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,172 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="../c3.css" />
+<title>XForms 输入控件</title>
+</head>
+<body class="xml">
+<div id="wrapper">
+<div id="header">
+<a href="http://e.v-get.com/w3cschool/" style="float:left;">W3CSchool 在线教程</a>
+<div class="q g"><script type="text/javascript">var cpro_id="u1163355"</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div>
+<div id="navfirst">
+<ul id="menu">
+<li id="h"><a href="../h.html">HTML教程</a></li>
+<li id="x"><a href="../x.html">XML教程</a></li>
+<li id="b"><a href="../b.html">浏览器脚本</a></li>
+<li id="s"><a href="../s.html">服务器脚本</a></li>
+<li id="d"><a href="../d.html">dot net教程</a></li>
+<li id="m"><a href="../m.html">多媒体教程</a></li>
+<li id="w"><a href="../w.html">建站手册</a></li>
+</ul>
+</div><div id="navsecond">
+<div id="course">
+<h2>XForms 教程</h2>
+<ul>
+<li><a href="http://e.v-get.com/w3cschool/">XForms 首页</a></li>
+<li><a href="xforms_intro.html">XForms 简介</a></li>
+<li><a href="xforms_model.html">XForms 模型</a></li>
+<li><a href="xforms_namespace.html">XForms 命名空间</a></li>
+<li><a href="xforms_example.html">XForms 实例</a></li>
+<li><a href="xforms_xpath.html">XForms XPath</a></li>
+<li><a href="xforms_input.html">XForms 输入</a></li>
+<li><a href="xforms_selections.html">XForms 选择</a></li>
+<li><a href="xforms_datatypes.html">XForms 数据类型</a></li>
+<li><a href="xforms_properties.html">XForms 属性</a></li>
+<li><a href="xforms_actions.html">XForms 行为</a></li>
+<li><a href="xforms_functions.html">XForms 函数</a></li>
+</ul>
+<h2>参考手册</h2>
+<ul>
+<li><a href="xforms_typeref.html">XForms 数据类型</a></li>
+</ul>
+</div>
+<div id="selected">
+<h2>建站手册</h2>
+<ul>
+<li><a href="../site/">网站构建</a></li>
+<li><a href="../w3c/">万维网联盟</a></li>
+<li><a href="http://e.v-get.com/w3c/">W3CSchool 教程</a></li>
+<li><a href="../quality/">网站品质</a></li>
+<li><a href="../semweb/">语义网</a></li>
+<li><a href="../hosting/">网站主机</a></li>
+</ul>
+<h2><a href="http://e.v-get.com/w3c/" class="f13">W3CSchool 教程</a></h2><div class="a120x90"><script type="text/javascript">var cpro_id="u1210867";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div></div>
+</div>
+<div id="maincontent">
+<h1>XForms 输入控件</h1>
+<div id="tpn">
+<ul class="prenext">
+<li class="pre"><a href="xforms_xpath.html">上一页</a></li>
+<li class="next"><a href="xforms_selections.html">下一页</a></li>
+</ul>
+</div>
+<div id="intro">
+<p><strong>XForms 的用户界面使用 XForms 控件。</strong></p>
+</div>
+<div>
+<h2>XForms 控件</h2>
+<p>XForms 中的用户界面元素被称为 <em>XForms 控件</em>。</p>
+<p>最常用的控件元素是 &lt;input&gt; 和 &lt;submit&gt;。</p>
+<p>每个控件元素均有 ref 属性指回 XForms 的数据模型。</p>
+</div>
+<div>
+<h2>独立于设备的控件</h2>
+<p>理解 XForms 用户界面并不会确切地描述如何显示 XForms 控件是很重要。</p>
+<p>由于 XForms 是独立于平台和设备的，XForms 把如何显示这些空间的权利留给了浏览器。</p>
+<p>正因如此，XForms 可被用于所有类型的设备，个人电脑，移动电话、手持计算机等等。XForms 同时也是为残障人士定义用户界面的完美解决方案。</p>
+</div>
+<div>
+<h2>input 控件</h2>
+<p>input 控件是最常用的 XForms 控件。它用于输入一行文本：</p>
+<pre>&lt;input ref=&#34;name/fname&#34;&gt;
+&lt;label&gt;First Name&lt;/label&gt;
+&lt;/input&gt;</pre>
+<p>大多数时候，input 控件会被显示为类似这样的输入域：</p>
+<img src="i/xforms_input_input.gif" align="input 控件的显示" />
+<p>Try it yourself</p>
+</div>
+<div>
+<h2>&lt;label&gt; 元素</h2>
+<p>&lt;label&gt; 元素是所有 XForms 输入控件的强制子元素。</p>
+<p>这一点的原因是为了确保表单可用于所有类型的设备 (因为标签可通过不同的方式来处理。）对于语音软件，标签可被读出，而对于某些手持设备，标签必须一屏接一屏的跟随输入。</p>
+</div>
+<div>
+<h2>Secret 控件</h2>
+<p>Secret 控件是 input 空间的特殊变体，被设计用于输入密码或其他隐藏的信息：</p>
+<pre>&lt;secret ref=&#34;name/password&#34;&gt;
+&lt;label&gt;Password:&lt;/label&gt;
+&lt;/secret&gt;</pre>
+<p>大多数时候，secret 控件会显示为这样一个输入域：</p>
+<img src="i/xforms_input_secret.gif" align="Secret 控件的显示" />
+</div>
+<div>
+<h2>Textarea 控件</h2>
+<p>Textarea 控件用于多行的输入：</p>
+<pre>&lt;textarea ref=&#34;message&#34;&gt;
+&lt;label&gt;Message&lt;/label&gt;
+&lt;/textarea&gt;</pre>
+<p>textarea 控件可显示为这样的输入域：</p>
+<img src="i/xforms_input_textarea.gif" align="Textarea 控件的显示" />
+</div>
+<div>
+<h2>Submit 控件</h2>
+<p>Submit 控件用于提交数据：</p>
+<pre>&lt;submit submission=&#34;form1&#34;&gt;
+&lt;label&gt;Submit&lt;/label&gt;
+&lt;/submit&gt;</pre>
+</div>
+<div>
+<h2>Trigger 控件</h2>
+<p>trigger 控件用于触发某个动作：</p>
+<pre>&lt;trigger ref=&#34;calculate&#34;&gt;
+&lt;label&gt;Calculate!&lt;/label&gt;
+&lt;/trigger&gt;</pre>
+</div>
+<div>
+<h2>Output 控件：</h2>
+<p>output 空间用于显示 XForms 数据：</p>
+<pre>&lt;p&gt;First Name: &lt;output ref=&#34;name/fname&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Last Name:  &lt;output ref=&#34;name/lname&#34; /&gt;&lt;/p&gt;</pre>
+<p>上面的例子仅仅可输出 XForms XML 文档 (XForms 实例）中的 &lt;fname&gt; and &lt;lname&gt; 节点的内容：</p>
+<pre>&lt;instance&gt;
+  &lt;person&gt;
+    &lt;name&gt;
+      <code>&lt;fname&gt;David&lt;/fname&gt;</code>
+      <code>&lt;lname&gt;Smith&lt;/lname&gt;</code>
+    &lt;/name&gt;
+  &lt;/person&gt;
+&lt;/instance&gt;</pre>
+<p>显示为这样：</p>
+<pre>First Name: David
+Last Name: Smith</pre>
+<p>Try it yourself</p>
+</div>
+<div>
+<h2>Upload 控件</h2>
+<p>upload 控件是为向服务器上传文件而设计的：</p>
+<pre>&lt;upload bind=&#34;name&#34;&gt;
+&lt;label&gt;File to upload:&lt;/label&gt;
+&lt;filename bind=&#34;file&#34;/&gt;
+&lt;mediatype bind=&#34;media&#34;/&gt;
+&lt;/upload&gt;</pre>
+</div>
+<div id="bpn">
+<ul class="prenext">
+<li class="pre"><a href="xforms_xpath.html">上一页</a></li>
+<li class="next"><a href="xforms_selections.html">下一页</a></li>
+</ul>
+</div>
+</div>
+<div id="sidebar">
+<div class="rs"></div>
+<div id="tools">
+<h5 id="tools_reference"><a href="xforms_typeref.html">XForms 参考手册</a></h5>
+</div>
+<div class="a120x600"><script type="text/javascript">var cpro_id="u1293136";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div><div class="b"></div>
+</div>
+</body>
+</html>

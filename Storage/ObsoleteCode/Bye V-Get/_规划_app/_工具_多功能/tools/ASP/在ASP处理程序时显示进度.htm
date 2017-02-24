@@ -1,0 +1,72 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>在ASP处理程序时显示进度</title>
+<style type="text/css">
+<!--
+body {
+	font-size: 10.4pt;
+	line-height: 22px;
+}
+-->
+</style>
+</head>
+
+<body bgcolor="eeeeee" leftmargin="20" marginwidth="20">
+<p><strong>在ASP处理程序时显示进度</strong></p>
+<p></p>
+<hr>
+<p> 用过软件的朋友都知道，进度条是一个优秀软件的重要组成部分。<br>
+  它的存在能够使用户及时掌握程序的运行进度，确认应用程序正常工作。可是ASP中似乎没有上述标准控件，控制起来也比较麻烦。<br>
+  那幺如何实现进度条呢？<br>
+  以下是本人的一些观点(仅供参考)<br>
+  我们通常在用ASP处理程序(指的是写文件或操作数据库)的时候，会专门用一个页面(*.asp)去处理或控制这些程序，当处理完毕的时候再跳转到显示页面。这时我们就可以通过这些处理页面显示进度条。其方法是根据程序处理的进度依次画一百张同样的图形(如有颜色的矩形)，从而形成进度条。其效果与用其它编程工具所实现的基本相似<br>
+  以下是一些Source，希望能够给各位有个启发。<br>
+  response.buffer=true<br>
+  dim lostnum<br>
+  dim shownum<br>
+  delayshow(dstep,dmax)过程是用于显示多少img(画多少进度)<br>
+  其中dmax为表示整个程序需要处理多少(dmax)步才能完成整个处理程序.<br>
+  其中dstep表示当前处理的步骤占整个处理过程中的分量，用数量表示。<br>
+  变量lostnum的存在是由于dmax过大(比如10000)，而dstep过小(比如1)造成的。如果调用delayshow(1,10000)势必不可能画一次img,事实上<br>
+  delayshow(100,10000)才画一次，表示完成1%，因为100占10000的1%.<br>
+  sub delayshow(dstep,dmax)<br>
+  dim total //显示画面100张img<br>
+  dim dtemp //过渡变量<br>
+  total=100<br>
+  dtemp=dstep<br>
+  dstep=dstep+lostnum<br>
+  if (dstep*total)/dmax&lt;1 then <br>
+  //判断当要处理的东西连1%都没有时，不画img同时用变量lostnum存放未画的处理总数，便于下次调用本过程时在处理。<br>
+  lostnum=lostnum+dtemp<br>
+  else<br>
+  for ccc=1 to fix((dstep*total)/dmax) //取整数<br>
+  Response.Write &quot;&lt;img src=&quot;&quot;../images/delay1.jpg&quot;&quot;&gt;&quot; 
+  <br>
+  next<br>
+  Response.Flush //将缓存里的东西(图片)显示出来<br>
+  //变量shownum用于存放目前已经画的img<br>
+  shownum=shownum+fix((dstep*total)/dmax) <br>
+  lostnum=0<br>
+  end if<br>
+  end sub<br>
+  //由于算法的问题，主要是取余造成不能完全画100次，这时就需要<br>
+  过程showlost()将余下未画的img,通通显示处理，实现进度条的等长<br>
+  sub showlost()<br>
+  for ccc=1 to (100-shownum)<br>
+  Response.Write (&quot;&lt;img src=&quot;&quot;../images/delay1.jpg&quot;&quot;&gt;&quot;) 
+  <br>
+  next<br>
+  Response.Write &quot;&lt;BR&gt;&quot; <br>
+  Response.Flush <br>
+  end sub </p>
+<p>最后请注意<br>
+  这里需要用到缓存技术<br>
+  response.buffer=true;<br>
+  response.flush;<br>
+  response.end<br>
+  这些请参考MSDN帮助</p>
+<p>&nbsp;</p>
+</body>
+</html>

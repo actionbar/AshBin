@@ -1,0 +1,81 @@
+<html xmlns:rdl>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<script src="rdl_method.js"></script>
+<base target="_self">
+</head>
+<body>
+
+<script>
+//collFriendObjects=new Array();
+//collFriendProperties=new Array();
+//collFriendMethods=new Array();
+//collFriendEvents=new Array();
+//collFriendCollections=new Array();
+
+collFriendMethods=new Array(
+'alert','confirm','showModelessDialog','showModalDialog','prompt'
+);
+
+//collIE40=new Array();
+//collIE50=new Array();
+//collIE55=new Array();
+//collIE60=new Array();
+
+collIE50=new Array(
+'external'
+);
+
+//sStyle='';
+
+//sScript='';
+
+sCode=
+'<button onclick="window.external.ShowBrowserUI(\'LanguageDialog\', null)">打开「选择语言」对话框</button>\n'+
+'<button onclick="window.external.ShowBrowserUI(\'OrganizeFavorites\', null)">打开「整理收藏夹」对话框</button>\n';
+
+iWinWidth=320;
+
+iWinHeight=200;
+
+</script>
+
+<div id=idContent>
+
+<div id=idContentTitle><span id=idTitleName>ShowBrowserUI</span>版本：DHTML Object Model　返回值：有</div>
+
+<div class=cssColumnTitle>语法：</div>
+<div>
+<i>vReturn</i><b> = </b><a href="../objects/external.html"><b>external</b></a><b> . ShowBrowserUI ( </b><i>sUI</i><b> , </b><b>null</b><b> ) </b>
+</div>
+
+<div class=cssColumnTitle>参数：</div>
+<table>
+<tr><td nowrap><i> sUI </i></td><td nowrap><b>:</b></td>
+<td><b>必选项</b>。字符串(String)。指定一种浏览器对话框。<b>LanguageDialog</b> | <b>OrganizeFavorites</b>
+<table>
+<tr><td nowrap><b> LanguageDialog <b></td><td nowrap><b>:</b></td><td>打开「选择语言」对话框。</td></tr>
+<tr><td nowrap><b> OrganizeFavorites </b></td><td nowrap><b>:</b></td><td>打开「整理收藏夹」对话框。</td></tr>
+</table>
+</td></tr>
+<tr><td nowrap><b> null </b></td><td nowrap><b>:</b></td>
+<td><b>必选项</b>。<b> null </b>值。</td></tr>
+</table>
+
+<div class=cssColumnTitle>返回值：</div>
+<table>
+<tr><td nowrap><i> vReturn </i></td><td nowrap><b>:</b></td>
+<td>返回值由对话框决定。可能是任何类型的变量。</td></tr>
+</table>
+
+<div class=cssColumnTitle>说明：</div>
+<div>
+打开指定的一种浏览器对话框。
+</div>
+
+</div>
+</body>
+</html>
+
+<!-- Part of RDL(TM) - Written by Rain1977 
+HomeSite: http://www.dhtmlet.com  E-Mail: dhtmlet@hotmail.com -->

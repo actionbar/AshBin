@@ -1,0 +1,118 @@
+<html>
+<head>
+<title>XML的后台应用</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+
+<link rel = stylesheet href = "image/style.css">
+</head>
+<body bgcolor="#ffffff">
+<table width="688" border="0" cellspacing="0" cellpadding="0" align="center">
+  <tr bgcolor="EEEEEE"> 
+    <td height="22"><a href="index.htm">主页</a></td>
+  </tr>
+</table><br>
+<table border="0" cellpadding="0" cellspacing="0" width="688" align="center" height="490">
+  <tr valign="top"> 
+    <td rowspan="4" width="91">&nbsp; </td>
+    <td height="68" width="131"> 
+      <p><img src="image/doc.gif"></p>
+    </td>
+    <td rowspan="4" width="18"><b></b> </td>
+    <td height="68" width="387"><img src="image/title_doc.gif"></td>
+    <td rowspan="4" width="61"> 
+      <h6>&nbsp;</h6>
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td rowspan="3" valign="top" class="pt10" align="center" width="131" bgcolor="EEEEEE"> 
+      <p>&nbsp;</p>
+      <p><font color="#FF0000">※ 2.3 XML的后台应用</font></p>
+       
+	</td>
+  </tr>
+  <tr valign="top"> 
+    <td width="387" height="308"> 
+      <table width="100%" border="0" cellpadding="0">
+        <tr> 
+          <td>
+
+           <h4 ALIGN="CENTER"><A NAME="_Toc467196748">2.3 XML的后台应用</A></h4>
+<P>并不是所有的XML应用都是公开的、开放的标准。有许多软件开发商正在将其自身的数据转向XML，只是因为XML是被公众很好理解的、通用目的的格式，可以用容易获得的、便宜或免费的工具加以处理。</P>
+<P>Microsoft Office 2000已将HTML变为与它的内建二进制格式同等的格式。不过， HTML 4.0还不能提供对Office所需的所有功能的全面支持，如修订跟踪、脚注、批注、索引和术语表项等等。不能用HTML表达的附加数据嵌入到XML的小型代码块中。Word的矢量图形保存在VML中。在这种情况下，嵌入的XML在标准的浏览器中的不可见性是个关键因素。</P>
+<P>Federal Express公司将详细跟踪的信息用作为与其他送货公司（如UPS（美国快寄服务公司和Post Office（邮局））相比更有竞争力的优点。首先这种信息来源于顾客软件，然后是通过Web。最近，FedEx公司开始对其API（应用程序接口）和库函数（第三方和内部开发者可使用这些API将他们的软件和系统与FedEx的加以集成）的?测试。这种服务的数据格式就是XML。</P>
+<P>Netscape Navigator 5.0 支持XML在Web浏览器上的直接显示，但是，Netscape 实际在内部早在4.5版时就已经开始使用XML了。当用户请求Netscape显示与当前站点相联系的站点的列表时，浏览器就连接到运行在Netscape服务器上的一个CGI程序上。服务器送回来的数据就是XML。清单2-13就是与站点http://metalab.unc.edu/相联系的站点的XML数据：</P>
+<P>清单2-13：与http://metalab.unc.edu/相联系的站点的XML数据</P>
+<P><font face="Courier New, Courier, mono"><i>&lt;?xml version="1.0"?&gt;</i></font></P>
+<P><i><font face="Courier New, Courier, mono">&lt;RDF:RDF&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;RelatedLinks&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;aboutPage</font></i></P>
+<P><i><font face="Courier New, Courier, mono">href="http://in fo.netscape.com/fwd/rl/http://metalab.unc.edu:80/*"&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;/aboutPage&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;child instanceOf="Separator1"&gt;&lt;/child&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;child</font></i></P>
+<P><i><font face="Courier New, Courier, mono">href="http://info.netscape.com/fwd/rl/http://www.sun.com/"</font></i></P>
+<P><i><font face="Courier New, Courier, mono">name="Sun Microsystems"&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;/child&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;child</font></i></P>
+<P><i><font face="Courier New, Courier, mono">href="http://info.netscape.com/fwd/rl/http://www.unc.edu/"</font></i></P>
+<P><i><font face="Courier New, Courier, mono">name="Unc"&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;/child&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;child</font></i></P>
+<P><i><font face="Courier New, Courier, mono">href="http://info.netscape.com/fwd/rl/http://sunsite.sut.ac.jp/" 
+  </font></i></P>
+<P><i><font face="Courier New, Courier, mono">name="SunSITE Japan"&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;/child&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;child</font></i></P>
+<P><i><font face="Courier New, Courier, mono">href="http://info.netscape.com/fwd/rl/http://sunsite.nus.sg/"</font></i></P>
+<P><i><font face="Courier New, Courier, mono">name="SunSITE Singapore"&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;/child&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;child</font></i></P>
+<P><i><font face="Courier New, Courier, mono">href="http://info.netscape.com/fwd/rl/http://sunsite.berkeley.edu/"</font></i></P>
+<P><i><font face="Courier New, Courier, mono"> name="Berkeley Digital Library 
+  SunSITE"&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;/child&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;child</font></i></P>
+<P><i><font face="Courier New, Courier, mono">href="http://info.netscape.com/fwd/rl/http://www.sun.com/sunsite"</font></i></P>
+<P><i><font face="Courier New, Courier, mono"> name="SunSITE on the net"&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;/child&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;child</font></i></P>
+<P><i><font face="Courier New, Courier, mono">href="http://info.netscape.com/fwd/rl/http://www.sunsite.auc.dk/"</font></i></P>
+<P><i><font face="Courier New, Courier, mono"> name="SunSITE Denmark"&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;/child&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;child</font></i></P>
+<P><i><font face="Courier New, Courier, mono">href="http://info.netscape.com/fwd/rl/http://sunsite.edu.cn/"</font></i></P>
+<P><i><font face="Courier New, Courier, mono">name="SunSITE China"&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;/child&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;child</font></i></P>
+<P><i><font face="Courier New, Courier, mono">href="http://info.netscape.com/fwd/rl/http://sunsite.stanford.org/"</font></i></P>
+<P><i><font face="Courier New, Courier, mono"> name="Stanford University SunSITE"&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;/child&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;child</font></i></P>
+<P><i><font face="Courier New, Courier, mono">href="http://info.netscape.com/fwd/rl/http://www.cdromshop.com/</font></i></P>
+<P><i><font face="Courier New, Courier, mono">cdshop/desc/p.061590000085.html" 
+  name="SunSITE Archive"&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;/child&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;child instanceOf="Separator1"&gt;&lt;/child&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;child instanceOf="Separator1"&gt;&lt;/child&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;child href="http://home.netscape.com/escapes/smart_browsing"</font></i></P>
+<P><i><font face="Courier New, Courier, mono">name="Learn About Smart Browsing..."&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;/child&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;/RelatedLinks&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;/RDF:RDF&gt;</font></i></P>
+<P>这一切都完全发生在幕后。用户决不会知道那些数据正在用XML加以传送。实际上显示的是Netscape Navigator中的菜单，而不是XML或HTML页面。</P>
+<P>这些实际上还只是将XML用于内部数据的不成熟的表面现象。许多其他使用XML的项目还刚刚起步，还有一些项目将在明年起步。大多数这样的项目不会受公开注意，也不会在商业出版物上受到吹捧，但是不管怎样，在其项目存活期内它们都具有潜力可为公司节约成千上万美元的开发费用。XML的自说明性对于公司内部的数据也是很有用的。例如，许多公司现在正在匆忙地设法找出20年前退休的程序员是否用了两位数字的日期。如果你正在干这样的事情，你是愿意将数据写成下面的样子呢：</P>
+<P>3c 79 65 61 72 3e 39 39 3c 2f 79 65 61 72 3e</P>
+<P>还是下面的样子：</P>
+<P>&lt;YEAR&gt;99&lt;/YEAR&gt; </P>
+<P>不幸的是，许多程序员现在还坚持将数据写成第一种格式。XML还可使错误容易发现和修改。</P> 
+<a href='313.htm'>&lt;&lt;上一篇</a>&nbsp;&nbsp;<a href='315.htm'>下一篇&gt;&gt;</a></td>
+        </tr>
+      </table>
+      <p>&nbsp; </p>
+    </td>
+  </tr>
+</table>
+
+</body>
+
+</html>

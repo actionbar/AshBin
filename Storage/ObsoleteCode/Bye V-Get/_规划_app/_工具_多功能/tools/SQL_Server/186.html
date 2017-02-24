@@ -1,0 +1,8 @@
+<meta http-equiv="content-type" content="text/html; charset=gb2312"><FONT 
+style="FONT-SIZE: 9pt; LINE-HEIGHT: 15pt"><B>Database&nbsp;Backup</B><BR>Database&nbsp;Backup&nbsp;Script
+<P></P>
+<P></P>
+<P><BR>Here's&nbsp;a&nbsp;small&nbsp;script&nbsp;that&nbsp;will&nbsp;perform&nbsp;a&nbsp;backup&nbsp;of&nbsp;all&nbsp;the&nbsp;databases&nbsp;into&nbsp;a&nbsp;specified&nbsp;directory&nbsp;(d:\backup&nbsp;testing&nbsp;by&nbsp;default).&nbsp;The&nbsp;script&nbsp;needs&nbsp;to&nbsp;be&nbsp;run&nbsp;in&nbsp;master&nbsp;database&nbsp;and&nbsp;has&nbsp;been&nbsp;tested&nbsp;both&nbsp;in&nbsp;SQL&nbsp;Server&nbsp;7.0&nbsp;and&nbsp;2000.&nbsp;</P>
+<P>Author:&nbsp;C.S.&nbsp;Senthil&nbsp;Kumar&nbsp;</P>
+<P></P>
+<P>declare&nbsp;@dbname&nbsp;as&nbsp;varchar(40)<BR>declare&nbsp;@msgdb&nbsp;as&nbsp;varchar(40)<BR>declare&nbsp;@dbbkpname&nbsp;as&nbsp;varchar(40)<BR>declare&nbsp;rs_cursor&nbsp;CURSOR&nbsp;for&nbsp;select&nbsp;name&nbsp;from&nbsp;master.dbo.sysdatabases<BR>open&nbsp;rs_cursor&nbsp;<BR>Fetch&nbsp;next&nbsp;from&nbsp;rs_cursor&nbsp;into&nbsp;@dbname<BR>IF&nbsp;@@FETCH_STATUS&nbsp;&lt;&gt;&nbsp;0&nbsp;<BR>&nbsp;&nbsp;PRINT&nbsp;"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;&lt;db&gt;&gt;"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<BR>WHILE&nbsp;@@FETCH_STATUS&nbsp;=&nbsp;0<BR>BEGIN<BR>&nbsp;&nbsp;select&nbsp;@msgdb=&nbsp;"database&nbsp;backup&nbsp;on&nbsp;progress:&nbsp;"&nbsp;+&nbsp;@dbname<BR>&nbsp;&nbsp;PRINT&nbsp;@msgdb<BR>&nbsp;&nbsp;select&nbsp;@dbbkpname='d:\backup&nbsp;testing\'&nbsp;+&nbsp;@dbname&nbsp;+&nbsp;'.dat'<BR>&nbsp;&nbsp;backup&nbsp;database&nbsp;@dbname&nbsp;to&nbsp;disk=@dbbkpname<BR>&nbsp;&nbsp;FETCH&nbsp;NEXT&nbsp;FROM&nbsp;rs_cursor&nbsp;INTO&nbsp;@dbname<BR>END<BR>CLOSE&nbsp;rs_cursor<BR>deallocate&nbsp;rs_cursor</P></FONT>

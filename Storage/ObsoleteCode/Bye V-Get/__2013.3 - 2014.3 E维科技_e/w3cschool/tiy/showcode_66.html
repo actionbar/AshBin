@@ -1,0 +1,19 @@
+<html>
+<head><link rel="stylesheet" type="text/css" href="showcode.css" /></head>
+<body>
+<pre>
+&lt;html&gt;
+&lt;body&gt;
+<code class="aspcode">&lt;%
+Set fs=Server.CreateObject(&#34;Scripting.FileSystemObject&#34;)
+Set f=fs.OpenTextFile(Server.MapPath(&#34;testread.txt&#34;), 1)
+Response.Write(f.Read(2))
+Response.Write(&#34;&lt;p&gt;指针目前位于文本文件中的位置 &#34; & f.Column & &#34;。&lt;/p&gt;&#34;)
+f.Close
+Set f=Nothing
+Set fs=Nothing
+%&gt;</code>
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+</body>

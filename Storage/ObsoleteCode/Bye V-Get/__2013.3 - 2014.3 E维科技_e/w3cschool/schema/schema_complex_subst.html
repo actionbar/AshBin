@@ -1,0 +1,164 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="../c3.css" />
+<title>XSD 元素替换 (Element Substitution）</title>
+</head>
+<body class="xml">
+<div id="wrapper">
+<div id="header">
+<a href="http://e.v-get.com/w3cschool/" style="float:left;">W3CSchool 在线教程</a>
+<div class="q g"><script type="text/javascript">var cpro_id="u1163355"</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div>
+<div id="navfirst">
+<ul id="menu">
+<li id="h"><a href="../h.html">HTML教程</a></li>
+<li id="x"><a href="../x.html">XML教程</a></li>
+<li id="b"><a href="../b.html">浏览器脚本</a></li>
+<li id="s"><a href="../s.html">服务器脚本</a></li>
+<li id="d"><a href="../d.html">dot net教程</a></li>
+<li id="m"><a href="../m.html">多媒体教程</a></li>
+<li id="w"><a href="../w.html">建站手册</a></li>
+</ul>
+</div><div id="navsecond">
+<div id="course">
+<h2>Schema 教程</h2>
+<ul>
+<li><a href="http://e.v-get.com/w3cschool/">XSD 首页</a></li>
+<li><a href="schema_intro.html">XSD 简介</a></li>
+<li><a href="schema_why.html">XSD 为何使用</a></li>
+<li><a href="schema_howto.html">XSD 如何使用</a></li>
+<li><a href="schema_schema.html">XSD &lt;schema&gt;</a></li>
+</ul>
+<h2>简单的类型</h2>
+<ul>
+<li><a href="schema_simple.html">XSD 元素</a></li>
+<li><a href="schema_simple_attributes.html">XSD 属性</a></li>
+<li><a href="schema_facets.html">XSD 限定</a></li>
+</ul>
+<h2>复杂的类型</h2>
+<ul>
+<li><a href="schema_complex.html">XSD 元素</a></li>
+<li><a href="schema_complex_empty.html">XSD 空元素</a></li>
+<li><a href="schema_complex_elements.html">XSD 仅含元素</a></li>
+<li><a href="schema_complex_text.html">XSD 仅含文本</a></li>
+<li><a href="schema_complex_mixed.html">XSD 混合内容</a></li>
+<li><a href="schema_complex_indicators.html">XSD 指示器</a></li>
+<li><a href="schema_complex_any.html">XSD &lt;any&gt;</a></li>
+<li><a href="schema_complex_anyattribute.html" title="">XSD &lt;anyAttribute&gt;</a></li>
+<li><a href="schema_complex_subst.html">XSD 元素替换</a></li>
+<li><a href="schema_example.html">XSD 实例</a></li>
+</ul>
+<h2>数据类型</h2>
+<ul>
+<li><a href="schema_dtypes_string.html">XSD 字符串</a></li>
+<li><a href="schema_dtypes_date.html">XSD 日期</a></li>
+<li><a href="schema_dtypes_numeric.html">XSD 数值</a></li>
+<li><a href="schema_dtypes_misc.html">XSD 杂项</a></li>
+<li><a href="schema_summary.html">XSD 总结</a></li>
+</ul>
+<h2>参考手册</h2>
+<ul>
+<li><a href="schema_elements_ref.html">XSD 参考手册</a></li>
+<li><a href="http://www.w3.org/2001/03/webdata/xsv/">XSD 验证器</a></li>
+</ul>
+</div>
+<div id="selected">
+<h2>建站手册</h2>
+<ul>
+<li><a href="../site/">网站构建</a></li>
+<li><a href="../w3c/">万维网联盟</a></li>
+<li><a href="http://e.v-get.com/w3c/">W3CSchool 教程</a></li>
+<li><a href="../quality/">网站品质</a></li>
+<li><a href="../semweb/">语义网</a></li>
+<li><a href="../hosting/">网站主机</a></li>
+</ul>
+<h2><a href="http://e.v-get.com/w3c/" class="f13">W3CSchool 教程</a></h2><div class="a120x90"><script type="text/javascript">var cpro_id="u1210867";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div></div>
+</div>
+<div id="maincontent">
+<h1>XSD 元素替换 (Element Substitution）</h1>
+<div  id="tpn">
+<ul class="prenext">
+<li class="pre"><a href="schema_complex_anyattribute.html">上一页</a></li>
+<li class="next"><a href="schema_example.html">下一页</a></li>
+</ul>
+</div>
+<div id="intro">
+<p><strong>通过 XML Schema，一个元素可对另一个元素进行替换。</strong></p>
+</div>
+<div>
+<h2>元素替换</h2>
+<p>让我们举例说明：我们的用户来自英国和挪威。我们希望有能力让用户选择在 XML 文档中使用挪威语的元素名称还是英语的元素名称。</p>
+<p>为了解决这个问题，我们可以在 XML schema 中定义一个 <em>substitutionGroup</em>。首先，我们声明主元素，然后我们会声明次元素，这些次元素可声明它们能够替换主元素。</p>
+<pre>&lt;xs:element name=&#34;name&#34; type=&#34;xs:string&#34;/&gt;
+&lt;xs:element name=&#34;navn&#34; <code>substitutionGroup=&#34;name&#34;</code>/&gt;</pre>
+<p>在上面的例子中，&#34;name&#34; 元素是主元素，而 &#34;navn&#34; 元素可替代 &#34;name&#34; 元素。</p>
+<p>请看一个 XML schema 的片段：</p>
+<pre>&lt;xs:element name=&#34;name&#34; type=&#34;xs:string&#34;/&gt;
+&lt;xs:element name=&#34;navn&#34; substitutionGroup=&#34;name&#34;/&gt;
+&lt;xs:complexType name=&#34;custinfo&#34;&gt;
+  &lt;xs:sequence&gt;
+    &lt;xs:element ref=&#34;name&#34;/&gt;
+  &lt;/xs:sequence&gt;
+&lt;/xs:complexType&gt;
+&lt;xs:element name=&#34;customer&#34; type=&#34;custinfo&#34;/&gt;
+&lt;xs:element name=&#34;kunde&#34; substitutionGroup=&#34;customer&#34;/&gt;</pre>
+<p>有效的 XML 文档类似这样 (根据上面的 schema）：</p>
+<pre>&lt;customer&gt;
+  &lt;name&gt;John Smith&lt;/name&gt;
+&lt;/customer&gt;</pre>
+<p>或类似这样：</p>
+<pre>&lt;kunde&gt;
+  &lt;navn&gt;John Smith&lt;/navn&gt;
+&lt;/kunde&gt;</pre>
+</div>
+<div>
+<h2>阻止元素替换</h2>
+<p>为防止其他的元素替换某个指定的元素，请使用 block 属性：</p>
+<pre>&lt;xs:element name=&#34;name&#34; type=&#34;xs:string&#34; <code>block=&#34;substitution&#34;</code>/&gt;</pre>
+<p>请看某个 XML schema 的片段：</p>
+<pre>&lt;xs:element name=&#34;name&#34; type=&#34;xs:string&#34; block=&#34;substitution&#34;/&gt;
+&lt;xs:element name=&#34;navn&#34; substitutionGroup=&#34;name&#34;/&gt;
+&lt;xs:complexType name=&#34;custinfo&#34;&gt;
+  &lt;xs:sequence&gt;
+    &lt;xs:element ref=&#34;name&#34;/&gt;
+  &lt;/xs:sequence&gt;
+&lt;/xs:complexType&gt;
+&lt;xs:element name=&#34;customer&#34; type=&#34;custinfo&#34; block=&#34;substitution&#34;/&gt;
+&lt;xs:element name=&#34;kunde&#34; substitutionGroup=&#34;customer&#34;/&gt;</pre>
+<p>合法的 XML 文档应该类似这样 (根据上面的 schema）：</p>
+<pre>&lt;customer&gt;
+  &lt;name&gt;John Smith&lt;/name&gt;
+&lt;/customer&gt;</pre>
+<p>但是下面的文档不再合法：</p>
+<pre>&lt;kunde&gt;
+  &lt;navn&gt;John Smith&lt;/navn&gt;
+&lt;/kunde&gt;</pre>
+</div>
+<div>
+<h2>使用 substitutionGroup</h2>
+<p>可替换元素的类型必须和主元素相同，或者从主元素衍生而来。假如可替换元素的类型与主元素的类型相同，那么您就不必规定可替换元素的类型了。</p>
+<p>请注意，substitutionGroup 中的所有元素 (主元素和可替换元素）必须被声明为全局元素，否则就无法工作！</p>
+</div>
+<div>
+<h2>什么是全局元素 (Global Elements）？</h2>
+<p>全局元素指 &#34;schema&#34; 元素的直接子元素！本地元素 (Local elements）指嵌套在其他元素中的元素。</p>
+</div>
+<div  id="bpn">
+<ul class="prenext">
+<li class="pre"><a href="schema_complex_anyattribute.html">上一页</a></li>
+<li class="next"><a href="schema_example.html">下一页</a></li>
+</ul>
+</div>
+</div>
+<div id="sidebar">
+<div class="rs"></div>
+<div id="tools">
+<h5 id="tools_reference"><a href="schema_elements_ref.html">XML Schema 参考手册</a></h5>
+</div>
+<div class="a120x600"><script type="text/javascript">var cpro_id="u1293136";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div><div class="b"></div>
+</div>
+</body>
+</html>

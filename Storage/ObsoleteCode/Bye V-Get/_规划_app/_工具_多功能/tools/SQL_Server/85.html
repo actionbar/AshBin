@@ -1,0 +1,16 @@
+<meta http-equiv="content-type" content="text/html; charset=gb2312"><FONT 
+style="FONT-SIZE: 9pt; LINE-HEIGHT: 15pt"><B>OPENDATASOURCE</B><BR>OPENDATASOURCE<BR>不使用链接的服务器名，而提供特殊的连接信息，并将其作为四部分对象名的一部分。
+<P></P>
+<P>语法<BR>OPENDATASOURCE&nbsp;(&nbsp;provider_name,&nbsp;init_string&nbsp;)</P>
+<P>参数<BR>provider_name</P>
+<P>注册为用于访问数据源的&nbsp;OLE&nbsp;DB&nbsp;提供程序的&nbsp;PROGID&nbsp;的名称。provider_name&nbsp;的数据类型为&nbsp;char，没有默认值。</P>
+<P>init_string</P>
+<P>连接字符串，这些字符串将要传递给目标提供程序的&nbsp;IDataInitialize&nbsp;接口。提供程序字符串语法是以关键字值对为基础的，这些关键字值对由分号隔开，例如："keyword1=value;&nbsp;keyword2=value."</P>
+<P>在&nbsp;Microsoft?&nbsp;Data&nbsp;Access&nbsp;SDK&nbsp;中定义了基本语法。有关所支持的特定关键字值对的信息，请参见提供程序中的文档。下表列出&nbsp;init_string&nbsp;参数中最常用的关键字。</P>
+<P>关键字&nbsp;OLE&nbsp;DB&nbsp;属性&nbsp;有效值和描述&nbsp;<BR>数据源&nbsp;DBPROP_INIT_DATASOURCE&nbsp;要连接的数据源的名称。不同的提供程序用不同的方法对此进行解释。对于&nbsp;SQL&nbsp;Server&nbsp;OLE&nbsp;DB&nbsp;提供程序来说，这会指明服务器的名称。对于&nbsp;Jet&nbsp;OLE&nbsp;DB&nbsp;提供程序来说，这会指明&nbsp;.mdb&nbsp;文件或&nbsp;.xls&nbsp;文件的完整路径。&nbsp;<BR>位置&nbsp;DBPROP_INIT_LOCATION&nbsp;要连接的数据库的位置。&nbsp;<BR>扩展属性&nbsp;DBPROP_INIT_PROVIDERSTRING&nbsp;提供程序特定的连接字符串。&nbsp;<BR>连接超时&nbsp;DBPROP_INIT_TIMEOUT&nbsp;超时值，在该超时值后，连接尝试将失败。&nbsp;<BR>用户&nbsp;ID&nbsp;DBPROP_AUTH_USERID&nbsp;用于该连接的用户&nbsp;ID。&nbsp;<BR>密码&nbsp;DBPROP_AUTH_PASSWORD&nbsp;用于该连接的密码。&nbsp;<BR>目录&nbsp;DBPROP_INIT_CATALOG&nbsp;连接到数据源时的初始或默认的目录名称。&nbsp;</P>
+<P><BR>注释<BR>OPENDATASOURCE&nbsp;函数可以在能够使用链接服务器名的相同&nbsp;Transact-SQL&nbsp;语法位置中使用。因此，就可以将&nbsp;OPENDATASOURCE&nbsp;用作四部分名称的第一部分，该名称指的是&nbsp;SELECT、INSERT、UPDATE&nbsp;或&nbsp;DELETE&nbsp;语句中的表或视图的名称；或者指的是&nbsp;EXECUTE&nbsp;语句中的远程存储过程。当执行远程存储过程时，OPENDATASOURCE&nbsp;应该指的是另一个&nbsp;SQL&nbsp;Server。OPENDATASOURCE&nbsp;不接受参数变量。</P>
+<P>与&nbsp;OPENROWSET&nbsp;函数类似，OPENDATASOURCE&nbsp;应该只引用那些不经常访问的&nbsp;OLE&nbsp;DB&nbsp;数据源。对于访问次数稍多的任何数据源，请为它们定义链接的服务器。无论&nbsp;OPENDATASOURCE&nbsp;还是&nbsp;OPENROWSET&nbsp;都不能提供链接的服务器定义的全部功能，例如，安全管理以及查询目录信息的能力。每次调用&nbsp;OPENDATASOURCE&nbsp;时，都必须提供所有的连接信息（包括密码）。</P>
+<P>示例<BR>下面的示例访问来自某个表的数据，该表在&nbsp;SQL&nbsp;Server&nbsp;的另一个实例中。</P>
+<P>SELECT&nbsp;&nbsp;&nbsp;*<BR>FROM&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;OPENDATASOURCE(<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'SQLOLEDB',<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'Data&nbsp;Source=ServerName;User&nbsp;ID=MyUID;Password=MyPass'<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;).Northwind.dbo.Categories</P>
+<P>下面是个查询的示例，它通过用于&nbsp;Jet&nbsp;的&nbsp;OLE&nbsp;DB&nbsp;提供程序查询&nbsp;Excel&nbsp;电子表格。</P>
+<P>SELECT&nbsp;*&nbsp;<BR>FROM&nbsp;OpenDataSource(&nbsp;'Microsoft.Jet.OLEDB.4.0',<BR>&nbsp;&nbsp;'Data&nbsp;Source="c:\Finance\account.xls";User&nbsp;ID=Admin;Password=;Extended&nbsp;properties=Excel&nbsp;5.0')...xactions</P></FONT>

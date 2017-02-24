@@ -1,0 +1,124 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="../c3.css" />
+<title>ADO CreateParameter 方法</title>
+</head>
+<body class="serverscripting">
+<div id="wrapper">
+<div id="header">
+<a href="http://e.v-get.com/w3cschool/" style="float:left;">W3CSchool 在线教程</a>
+<div class="q g"><script type="text/javascript">var cpro_id="u1163355"</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div>
+<div id="navfirst">
+<ul id="menu">
+<li id="h"><a href="../h.html">HTML教程</a></li>
+<li id="x"><a href="../x.html">XML教程</a></li>
+<li id="b"><a href="../b.html">浏览器脚本</a></li>
+<li id="s"><a href="../s.html">服务器脚本</a></li>
+<li id="d"><a href="../d.html">dot net教程</a></li>
+<li id="m"><a href="../m.html">多媒体教程</a></li>
+<li id="w"><a href="../w.html">建站手册</a></li>
+</ul>
+</div><div id="navsecond">
+<div id="course">
+<h2>ADO 教程</h2>
+<ul>
+<li><a href="http://e.v-get.com/w3cschool/">ADO 首页</a></li>
+<li><a href="ado_intro.html">ADO 简介</a></li>
+<li><a href="ado_connect.html">ADO 连接</a></li>
+<li><a href="ado_recordset.html">ADO 记录集</a></li>
+<li><a href="ado_display.html">ADO 显示</a></li>
+<li><a href="ado_query.html">ADO 查询</a></li>
+<li><a href="ado_sort.html">ADO 排序</a></li>
+<li><a href="ado_add.html">ADO 添加</a></li>
+<li><a href="ado_update.html">ADO 更新</a></li>
+<li><a href="ado_delete.html">ADO 删除</a></li>
+<li><a href="ado_getstring.html">ADO 加速</a></li>
+</ul>
+<h2>ADO 对象</h2>
+<ul>
+<li><a href="ado_ref_command.html">ADO Command</a></li>
+<li><a href="ado_ref_connection.html">ADO Connection</a></li>
+<li><a href="ado_ref_error.html">ADO Error</a></li>
+<li><a href="ado_ref_field.html">ADO Field</a></li>
+<li><a href="ado_ref_parameter.html">ADO Parameter</a></li>
+<li><a href="ado_ref_property.html">ADO Property</a></li>
+<li><a href="ado_ref_record.html">ADO Record</a></li>
+<li><a href="ado_ref_recordset.html">ADO Recordset</a></li>
+<li><a href="ado_ref_stream.html">ADO Stream</a></li>
+<li><a href="ado_datatypes.html">ADO 数据类型</a></li>
+<li><a href="ado_summary.html">ADO 总结</a></li>
+</ul>
+<h2>实例</h2>
+<ul>
+<li><a href="../example/adoe_examples.html">ADO 实例</a></li>
+</ul>
+</div>
+<div id="selected">
+<h2>建站手册</h2>
+<ul>
+<li><a href="../site/">网站构建</a></li>
+<li><a href="../w3c/">万维网联盟</a></li>
+<li><a href="http://e.v-get.com/w3c/">W3CSchool 教程</a></li>
+<li><a href="../quality/">网站品质</a></li>
+<li><a href="../semweb/">语义网</a></li>
+<li><a href="../hosting/">网站主机</a></li>
+</ul>
+<h2><a href="http://e.v-get.com/w3c/" class="f13">W3CSchool 教程</a></h2><div class="a120x90"><script type="text/javascript">var cpro_id="u1210867";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div></div>
+</div>
+<div id="maincontent">
+<h1>ADO CreateParameter 方法</h1>
+<div class="backtoreference">
+<p><a href="ado_ref_command.html">返回 ADO Command 对象参考手册</a></p>
+</div>
+<div>
+<h2>定义和用法</h2>
+<p>CreateParameter 方法可创建和返回一个 Parameter 对象，该对象包含指定的属性，比如名称、类型、方向、大小和值。</p>
+<p class="note"><span>注释：</span>此方法不会将 Parameter 对象自动追加到 Command 对象的 Parameters 集合。如需向 Parameters 集合添加 Parameter 对象，请使用 Append 属性。</p>
+<h3>语法</h3>
+<pre>Set objparameter=objcommand.CreateParameter
+(name,type,direction,size,value)</pre>
+<table class="dataintable"> 
+  <tr>
+    <th>参数</th>
+    <th>描述</th>
+  </tr>  
+  <tr>
+    <td>name</td>
+    <td>可选。Parameter 对象的名称。</td>
+  </tr>
+  <tr>
+    <td>type</td>
+    <td>可选。<a href="app_datatypeenum.html">DataTypeEnum</a> 常量之一，指定 Parameter 对象的数据类型。默认是 adEmpty。如果你选择可变长度的数据类型，则需要规定 Size 参数或 Size 属性。如果规定 adDecimal 或者 adNumeric 数据类型，则必须设置 Parameter 对象的NumericScale 和 Precision 属性。</td>
+  </tr>
+  <tr>
+    <td>direction</td>
+    <td>可选。<a href="app_parameterdirenum.html">ParameterDirectionEnum</a> 常量之一，定义 Parameter 对象的方向。默认是 adParamInput。</td>
+  </tr>
+  <tr>
+    <td>size</td>
+    <td>可选。规定可变数据类型的长度，假如此类类型被声明于 <em>Type</em> 参数中。默认是 0。</td>
+  </tr>
+  <tr>
+    <td>value</td>
+    <td>可选。Parameter 对象的值。</td>
+  </tr>
+</table>
+</div>
+<div class="backtoreference">
+<p><a href="ado_ref_command.html">返回 ADO Command 对象参考手册</a></p>
+</div>
+</div>
+<div id="sidebar">
+<div class="rs"></div>
+<div id="tools">
+<h5 id="tools_reference"><a href="ado_reference.html">ADO 参考手册</a></h5>
+<h5 id="tools_example"><a href="../example/adoe_examples.html">ADO 实例</a></h5>
+</div>
+<div class="a120x600"><script type="text/javascript">var cpro_id="u1293136";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div><div class="b"></div>
+</div>
+</body>
+</html>

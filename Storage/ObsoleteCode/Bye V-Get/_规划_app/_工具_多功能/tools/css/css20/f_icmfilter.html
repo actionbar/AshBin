@@ -1,0 +1,110 @@
+<html xmlns:rdl>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<script src="rdl_filters.js"></script>
+<base target="_self">
+</head>
+<body>
+
+<script>
+
+collFriendProperties=new Array(
+'filter'
+);
+
+//collIE40=new Array();
+//collIE50=new Array();
+//collIE55=new Array();
+//collIE60=new Array();
+
+collIE55=new Array(
+'A','ACRONYM','ADDRESS','B','BDO','BIG','BLOCKQUOTE','BODY','BUTTON','CAPTION','CENTER','CITE','CODE','CUSTOM','DD','DEL','DFN','DIR','DIV','DL','DT','EM','FIELDSET','FONT','FORM','FRAME','Hn','IFRAME','FRAMESET','I','INS','IMG','INPUT type=button','INPUT type=checkbox','INPUT type=file','INPUT type=image','INPUT type=password','INPUT type=radio','INPUT type=reset','INPUT type=submit','INPUT type=text','KBD','LABEL','LEGEND','LI','MARQUEE','MENU','NOBR','OBJECT','OL','P','PLAINTEXT','PRE','Q','RT','RUBY','S','SAMP','SMALL','SPAN','STRIKE','STRONG','SUB','SUP','TABLE','TEXTAREA','TH','TD','TT','U','UL','VAR','XMP'
+);
+
+sStyle='';
+
+sScript='';
+
+sCode='';
+
+iWinWidth=360;
+
+iWinHeight=350;
+
+bRunCode=false;
+
+//bElements=false;
+
+</script>
+
+<div id=idContent>
+
+<div id=idContentTitle><span id=idTitleName>ICMFilter</span>兼容性：IE5.5+</div>
+
+<div class=cssColumnTitle>语法：</div>
+<div>
+<b>filter : progid:DXImageTransform.Microsoft.ICMFilter ( colorSpace=</b><i>sPathFilename</i><b> , </b><b>intent =</b><i>sIntent</i><b> ) </b> 
+</div>
+
+<div class=cssColumnTitle>属性：</div>
+<table>
+<tr><td nowrap><b> colorSpace </b></td><td nowrap><b>:</b></td><td>
+可选项。字符串(String)。设置或检索颜色配置文件(.icm)的路径和名称。如果颜色配置文件(.icm)被指定，滤镜输出将模拟使用此颜色配置文件(.icm)的硬件设备的输出。<br>
+颜色配置文件(.icm)为硬件装置定义了色彩内容与<b> sRGB </b>标准的映射比较。
+<span class=cssDefault><b>sFile</b></span> | <b>sRGB</b>
+<table>
+<tr><td nowrap><b> sFile </b></td><td nowrap><b>:</b></td><td><b>默认值</b>。确定颜色配置文件(.icm)的路径和名称。
+</td></tr>
+<tr><td nowrap><b> sRGB </b></td><td nowrap><b>:</b></td><td>确定标准颜色空间。
+</td></tr>
+</table>
+</td></tr>
+
+<tr><td nowrap><b> intent </b></td><td nowrap><b>:</b></td><td>
+可选项。字符串(String)。设置或检索对象的色彩内容的预定效果。滤镜会根据选择的效果调整色彩输出改善内容显示。<br>
+要获取你的显示器或打印机的色彩处理能力的最大优势，选择最符合你的内容的此属性值。
+<span class=cssDefault><b>Picture</b></span> | <b>Graphic</b> | <b>Proof</b> | <b>Match</b>
+<table>
+<tr><td nowrap><b> Picture </b></td><td nowrap><b>:</b></td><td>
+<b>默认值</b>。强调色彩连续性。适用于图像和照片。
+</td></tr>
+<tr><td nowrap><b> Graphic </b></td><td nowrap><b>:</b></td><td>
+强调颜色的饱和度胜过其色调和明度。适用于商业图片。
+</td></tr>
+<tr><td nowrap><b> Proof </b></td><td nowrap><b>:</b></td><td>
+使用最接近的颜色匹配不被支持的颜色。白点不被保护。
+</td></tr>
+<tr><td nowrap><b> Match </b></td><td nowrap><b>:</b></td><td>
+使用最接近的颜色匹配不被支持的颜色。白点受到保护。
+</td></tr>
+</table>
+
+</td></tr>
+</table>
+
+<div class=cssColumnTitle>特性：</div>
+<table>
+<tr><td nowrap><b> ColorSpace </b></td><td nowrap><b>:</b></td><td>可读写。字符串(String)。参阅<b> colorSpace </b>属性。</td></tr>
+<tr><td nowrap><b> Intent </b></td><td nowrap><b>:</b></td><td>可读写。字符串(String)。参阅<b> intent </b>属性。</td></tr>
+</table>
+
+<div class=cssColumnTitle>说明：</div>
+<div>
+根据颜色配置文件(.icm)转换对象的色彩内容。这样能激活对某些细节内容的显示改良，或对硬件设备输出的模拟显示。像打印机或显示器。<br>
+通过根据要显示内容的类型匹配恰当的<b> Intent </b>特性值可以改善内容显示或打印的质量。例如，当你打印时，可以设置<b> Intent </b>特性值为<b> Graphic </b>从而确保颜色对比度的恰当。较高的对比度能够使打印出的内容清晰易读。<br>
+要模拟硬件设备的色彩输出，你必须定位硬件设备的颜色配置文件(.icm)，假如制造商提供了这个文件。将这个颜色配置文件(.icm)的路径和名称指给<b> ColorSpace </b>特性，并且对硬件装置要使用的内容应用此滤镜。颜色配置文件(.icm)为你的显示器定义了内容的颜色与显示器标准颜色的偏差。这样滤镜显示就可以模拟
+其他硬件设备的输出。
+
+</div>
+
+<div class=cssColumnTitle>示例：</div>
+<div id=idSimpleCode>
+#idDiv{ filter:progid:DXImageTransform.Microsoft.ICMFilter(colorSpace=sRGB, intent=Picture);}<br>
+</div>
+
+</div>
+</body>
+</html>
+
+<!-- Part of RDL(TM) - Written by Rain1977 
+HomeSite: http://www.dhtmlet.com  E-Mail: dhtmlet@hotmail.com -->

@@ -1,0 +1,187 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>闹钟提醒和限时自动打开网页</title>
+<style type="text/css">
+body,td,th {
+	font-family: Tahoma, SimSun;
+}
+</style>
+</head>
+<link rel="stylesheet" type="text/css" href="../index.css" />
+<link rel="stylesheet" type="text/css" href="http://localhost:8080/v-get.com/tool/index.css" />
+<style type="text/css">
+<!--
+.ct{ position:relative;height:30px;width:100%}
+.time { font-size:12px;font-weight:800; line-height: 14pt;position:absolute}
+#tim1{height:20px; top:10px;right:30px;color:#06C}
+#tim2{top:12px;right:28px;color:#cc0}
+.c form p{line-height:28px}
+-->
+</style>
+
+
+<script type="text/javascript" src="http://localhost:8080/v-get.com/i/i.js"></script>
+
+
+</head>
+<SCRIPT language=JavaScript>
+
+<!-- Hiding
+var days=['日','一','二','三','四','五','六'];
+function FT(){var t=new Date();this.y=t.getFullYear();this.m=t.getMonth();this.d=t.getDate();this.h=t.getHours();this.f=t.getMinutes();this.s=t.getSeconds();this.w=t.getDay()}
+var t=new FT();
+
+var ctimer;
+function init(){
+	
+	//var s=CG('tool_life_alarm_clock');
+
+    var g=new Array();a=CG('tool_life_alarm_clock').split('&'); 
+	
+	
+   for(I=0;I<L(a);I++){x=a[I].split('=');g[x[0]]=x[1]}
+	var t=new FT();
+	
+	var b=g['b'],h=g['h'],m=g['m'],x=h+':'+m;
+	if(L(b)>0)H($('c1'),b);else H($('c1'),x);;	
+	$('sb').value=b;
+	$('sh').value=h;
+	$('sm').value=m;
+	$('sl').value=g['l'];  
+	$('se').value=g['e'];
+	$o(function(){if(h==t.h&&m==t.f){$('mediaplayer1').filename="1.mid";}},60000);
+	settimes();}
+function settimes(){
+var t=new FT();
+if(t.h<10)t.h="0"+t.h;
+if(t.f<10)t.m="0"+t.f;
+if (t.s<10)t.s="0"+t.s;
+H($('tim1'),t.y+'年'+t.m+'月'+t.d+'日 '+t.h+":"+t.f+":"+t.s+' 星期'+days[t.w]);
+H($('tim2'),t.y+'年'+t.m+'月'+t.d+'日 '+t.h+":"+t.f+":"+t.s+' 星期'+days[t.w]);
+ctimer=setTimeout('settimes()',960);
+}
+// Done hiding -->
+</SCRIPT>
+<body bgcolor="#fef4d9" onLoad="init()">
+<div class="w">
+<div class="t"><div class="q"><div class="p tl"></div><div class="p tc"><a href="">V-Get!首页</a>|<a href="">设为主页</a>|<a href="">收藏本站</a></div><div class="p tr"></div></div></div>
+<div class="u">
+<img src="http://localhost:8080/v-get.com/tool/index.png" />
+</div>
+<div class="n"><a href="http://localhost:8080/tool.v-get.com/">首页</a><a href="http://localhost:8080/v-get.com/tool/biz/">商务办公</a><a href="http://localhost:8080/v-get.com/tool/finance/">金融计算</a><a href="http://localhost:8080/v-get.com/tool/life/" class="no">生活助手</a><a href="http://localhost:8080/v-get.com/tool/images/">图片美工</a><a href="http://localhost:8080/v-get.com/tool/edite/">文字设计</a><a href="http://localhost:8080/v-get.com/tool/edu/">教育考试</a><a href="http://localhost:8080/v-get.com/tool/game/">娱乐游戏</a><a href="http://localhost:8080/v-get.com/tool/pc/">电脑优化</a></div>
+<div class="w4"><a href="#"><img src="http://localhost:8080/v-get.com/i/wuliu/a/zzidc980.gif" /></a></div>
+<!--这里不用include，因为基本这个部分是固定的；广告以后采用js替换，或者固定图片名称-->
+<!--因为都在life文件夹下，而且涉及.no，所以这样更好-->
+<div class="v">
+<div class="p l">
+<h2>生活助手</h2>
+<!--#include file="l.htm"-->
+
+</div>
+<div class="p r">
+<h1>闹钟提醒和限时自动打开网页</h1>
+<div class="c">
+您是不是再为等待网上看一场球赛而守在电脑旁苦苦等待，而时常又错过了开始的时间呢？您是不是在等着限时抢购眼睛不停的盯着某个网站，而浪费了做其他事情的时间呢？那么，现在设定自动闹钟，或者自动限时打开网页吧～～～
+
+
+<div class="ct">
+<div style="display:none">
+<object id="mediaplayer1" classid="clsid:22d6f312-b0f6-11d0-94ab-0080c74c7e95" codebase="http://activex.microsoft.com/activex/controls/mplayer/en/nsmp2inf.cab#version=6,4,5,715" standby="V-Get! onload..." type="application/x-oleobject">
+<param name="invokeurls" value="0">
+<param name="filename" value="">
+<param name="showcontrols" value="1">
+<param name="showpositioncontrols" value="0">
+<param name="showaudiocontrols" value="1">
+<param name="showtracker" value="1">
+<param name="showdisplay" value="0">
+<param name="showstatusbar" value="1">
+<param name="autosize" value="0">
+<param name="showgotobar" value="0">
+<param name="showcaptioning" value="0">
+<param name="autostart" value="1">
+<param name="playcount" value="0">
+<param name="animationatstart" value="0">
+<param name="transparentatstart" value="0">
+<param name="allowscan" value="1">
+<param name="enablecontextmenu" value="1">
+<param name="clicktoplay" value="0">
+<param name="defaultframe" value="datawindow">
+<embed src="" type="application/x-mplayer2" pluginspage="http://www.microsoft.com/isapi/redir.dll?prd=windows&amp;sbp=mediaplayer&amp;ar=media&amp;sba=plugin&amp;" name="mediaplayer" showcontrols="1" showpositioncontrols="0" showaudiocontrols="1" showtracker="1" showdisplay="0" showstatusbar="1" autosize="0" showgotobar="0" showcaptioning="0" autostart="0" autorewind="0" animationatstart="0" transparentatstart="0" allowscan="1" enablecontextmenu="1" clicktoplay="0" defaultframe="datawindow" invokeurls="0">
+</embed>
+</object>
+
+
+</div>
+
+
+
+<DIV class="time" id="tim2"></DIV>
+<DIV class="time" id="tim1"></DIV>
+
+</div>
+<form action="javascript:void(0)" onsubmit="javascript:sf()">
+<p><input type="hidden" value="1" name="sa" />
+
+闹钟1；<a href="" id="c1"></a>闹钟2；闹钟3</p>
+<!--采用多闹钟任务，写进cookies，这样可以多次使用-->
+<p>提醒标题：<input type="text" id="sb"  /></p>
+<p>提醒时间：
+<select id="sh">
+<script language="javascript" type="text/javascript">
+
+for(I=0;I<24;I++){document.write('<option value="'+I+'" '+(t.h==I?'selected':'')+'/>'+I+'</option>');}
+</script>
+</select>时
+<select id="sm">
+<script language="javascript" type="text/javascript">
+for(I=0;I<60;I++){document.write('<option value="'+I+'" '+(t.f==I?'selected':'')+'/>'+I+'</option>');}
+</script>
+</select>分
+</p>
+
+<p>闹钟音乐：
+<select id="se">
+<option></option>
+<script language="javascript" type="text/javascript">
+var music={'誓死':'http://aabc.mp3','吻别-张学友':'http://aaa.aps'};
+for(I in music){document.write('<option value="'+music[I]+'" />'+I+'</option>');}
+</script>
+</select><input type="button" value="试听" /><a href="#">自定义音乐</a>
+
+</p>
+
+<p>提醒网址：<input type="text" value="" id="sl"/>闹钟时间自动打开的网址</p>
+<p>文字弹窗：<input type="text" value="" id="sk"/>闹钟时间显示提示的文字</p>
+
+<!--采用多闹钟任务，写进cookies，这样可以多次使用-->
+<p><input type="submit" value="设定闹钟" /></p>
+</form>
+</div>
+
+<!--#include file="c.htm"-->
+
+
+</div>
+
+</div>
+
+<div class="o b">
+ddd
+</div>
+</div>
+<script language="javascript" type="text/javascript">
+function sf(){
+	var h=$v($('sh')),m=$v($('sm')),e=$('se').value,k=$('sk').value,l=$("sl").value;
+	if(L(e)>0||L(l)>0){
+		var s='b='+$('sb').value+'&h='+h+'&m='+m+'&e='+e+'&x'+'自定义歌曲'+'&k='+k+'&l='+l;
+		CS('tool_life_alarm_clock',s,99);
+		}
+	else {alert('闹钟音乐、打开网址至少要写一个')}
+	
+	}
+
+</script>
+</body>
+</html>

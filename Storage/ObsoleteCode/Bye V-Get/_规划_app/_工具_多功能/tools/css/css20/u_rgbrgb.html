@@ -1,0 +1,65 @@
+<html xmlns:rdl>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<script src="rdl_units.js"></script>
+<base target="_self">
+</head>
+<body>
+
+<script>
+
+//collFriendProperties=new Array();
+//collFriendDeclarations=new Array();
+//collFriendAtRules=new Array();
+//collFriendElements=new Array();
+//collFriendClasses=new Array();
+
+collFriendUnits=new Array(
+'color name','#RRGGBB'
+);
+
+//sStyle='';
+
+//sScript='';
+
+//sCode='';
+
+iWinWidth=360;
+
+iWinHeight=240;
+
+bRunCode=false;
+
+bElements=false;
+
+</script>
+
+<div id=idContent>
+
+<div id=idContentTitle><span id=idTitleName>rgb ( <span style="font-weight:normal;font-style:italic;">R , G , B</span> ) </span>版本：CSS1　 兼容性：IE4+ NS4+</div>
+
+<div class=cssColumnTitle>参数：</div>
+<table>
+<tr><td nowrap><i> R </i></td><td nowrap><b>:</b></td><td>红色值。正整数 | 百分数</td></tr>
+<tr><td nowrap><i> G </i></td><td nowrap><b>:</b></td><td>绿色值。正整数 | 百分数</td></tr>
+<tr><td nowrap><i> B </i></td><td nowrap><b>:</b></td><td>蓝色值。正整数 | 百分数</td></tr>
+</table>
+
+<div class=cssColumnTitle>说明：</div>
+<div>
+颜色单位。<br>
+以上三个参数，正整数值的取值范围为：0 - 255。百分数值的取值范围为：0.0% - 100.0%。超出范围的数值将被截至其最接近的取值极限。<br>
+并非所有浏览器都支持使用百分数值。<br>请参阅<a href="z_color.html"> 附录：颜色表 </a>。
+</div>
+
+<div class=cssColumnTitle>示例：</div>
+<div id=idSimpleCode>
+div { color: rgb(132,20,180); } <br>div { color: rgb(12%,200,50%); }  
+</div>
+
+</div>
+</body>
+</html>
+
+<!-- Part of RDL(TM) - Written by Rain1977 
+HomeSite: http://www.dhtmlet.com  E-Mail: rainersu@hotmail.com -->

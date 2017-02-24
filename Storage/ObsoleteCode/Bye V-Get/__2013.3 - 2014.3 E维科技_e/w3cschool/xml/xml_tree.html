@@ -1,0 +1,182 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="../c3.css" />
+<title>XML 树结构</title>
+</head>
+<body class="xml">
+<div id="wrapper">
+<div id="header">
+<a href="http://e.v-get.com/w3cschool/" style="float:left;">W3CSchool 在线教程</a>
+<div class="q g"><script type="text/javascript">var cpro_id="u1163355"</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div>
+<div id="navfirst">
+<ul id="menu">
+<li id="h"><a href="../h.html">HTML教程</a></li>
+<li id="x"><a href="../x.html">XML教程</a></li>
+<li id="b"><a href="../b.html">浏览器脚本</a></li>
+<li id="s"><a href="../s.html">服务器脚本</a></li>
+<li id="d"><a href="../d.html">dot net教程</a></li>
+<li id="m"><a href="../m.html">多媒体教程</a></li>
+<li id="w"><a href="../w.html">建站手册</a></li>
+</ul>
+</div><div id="navsecond">
+<div id="course">
+<h2>XML 基础</h2>
+<ul>
+<li><a href="http://e.v-get.com/w3cschool/">XML 首页</a></li>
+<li><a href="xml_intro.html">XML 简介</a></li>
+<li><a href="xml_usedfor.html">XML 用途</a></li>
+<li><a href="xml_tree.html">XML 树结构</a></li>
+<li><a href="xml_syntax.html">XML 语法</a></li>
+<li><a href="xml_elements.html">XML 元素</a></li>
+<li><a href="xml_attributes.html">XML 属性</a></li>
+<li><a href="xml_dtd.html">XML 验证</a></li>
+<li><a href="xml_validator.html">XML 验证器</a></li>
+<li><a href="xml_browsers.html">XML 浏览器</a></li>
+<li><a href="xml_view.html">XML 查看</a></li>
+<li><a href="xml_display.html">XML CSS</a></li>
+<li><a href="xml_xsl.html">XML XSLT</a></li>
+</ul>
+<h2>XML JavaScript</h2>
+<ul>
+<li><a href="xml_parser.html">XML 解析器</a></li>
+<li><a href="xml_dom.html">XML DOM</a></li>
+<li><a href="xml_to_html.html">XML to HTML</a></li>
+<li><a href="xml_http.html">XML HTTP Request</a></li>
+<li><a href="xml_applications.html">XML 应用程序</a></li>
+</ul>
+</ul>
+<h2>XML 高级</h2>
+<ul>
+<li><a href="xml_namespaces.html">XML 命名空间</a></li>
+<li><a href="xml_cdata.html">XML CDATA</a></li>
+<li><a href="xml_encoding.html">XML 编码</a></li>
+<li><a href="xml_server.html">XML 服务器</a></li>
+<li><a href="xml_dom_advanced.html">XML DOM 高级</a></li>
+<li><a href="xml_dont.html">XML Don't</a></li>
+<li><a href="xml_savedata.html">XML 数据存储</a></li>
+<li><a href="xml_technologies.html">XML 技术</a></li>
+<li><a href="xml_real_life.html">XML 现实案例</a></li>
+<li><a href="xml_editors.html">XML 编辑器</a></li>
+<li><a href="xml_summary.html">XML 总结</a></li>
+</ul>
+<h2>实例/测验</h2>
+<ul>
+<li><a href="../example/xmle_examples.html">XML 实例</a></li>
+<li><a href="xml_quiz.html">XML 测验</a></li>
+</ul>
+</div>
+<div id="selected">
+<h2>建站手册</h2>
+<ul>
+<li><a href="../site/">网站构建</a></li>
+<li><a href="../w3c/">万维网联盟</a></li>
+<li><a href="http://e.v-get.com/w3c/">W3CSchool 教程</a></li>
+<li><a href="../quality/">网站品质</a></li>
+<li><a href="../semweb/">语义网</a></li>
+<li><a href="../hosting/">网站主机</a></li>
+</ul>
+<h2><a href="http://e.v-get.com/w3c/" class="f13">W3CSchool 教程</a></h2><div class="a120x90"><script type="text/javascript">var cpro_id="u1210867";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div></div>
+</div>
+<div id="maincontent">
+<h1>XML 树结构</h1>
+<div id="tpn">
+<ul class="prenext">
+<li class="pre"><a href="xml_usedfor.html">上一页</a></li>
+<li class="next"><a href="xml_syntax.html">下一页</a></li>
+</ul>
+</div>
+<div id="intro">
+<p><strong>XML 文档形成了一种树结构，它从“根部”开始，然后扩展到“枝叶”。</strong></p>
+</div>
+<div>
+<h2>一个 XML 文档实例</h2>
+<p>XML 使用了简单的具有自我描述性的语法：</p>
+<pre>
+&lt;?xml version=&#34;1.0&#34; encoding=&#34;ISO-8859-1&#34;?&gt;
+&lt;note&gt;
+&lt;to&gt;George&lt;/to&gt;
+&lt;from&gt;John&lt;/from&gt;
+&lt;heading&gt;Reminder&lt;/heading&gt;
+&lt;body&gt;Don't forget the meeting!&lt;/body&gt;
+&lt;/note&gt;
+</pre>
+<p>第一行是 XML 声明。它定义 XML 的版本 (1.0) 和所使用的编码 (ISO-8859-1 = Latin-1/西欧字符集)。</p>
+<p>下一行描述文档的<em>根元素</em> (像在说：“本文档是一个便签”）：</p>
+<pre>&lt;note&gt;</pre>
+<p>接下来 4 行描述根的 4 个<em>子元素</em> (to, from, heading 以及 body）：</p>
+<pre>
+&lt;to&gt;George&lt;/to&gt;
+&lt;from&gt;John&lt;/from&gt;
+&lt;heading&gt;Reminder&lt;/heading&gt;
+&lt;body&gt;Don't forget the meeting!&lt;/body&gt;
+</pre>
+<p>最后一行定义根元素的结尾：</p>
+<pre>&lt;/note&gt;</pre>
+<p>从本例可以设想，该 XML 文档包含了 John 给 George 的一张便签。</p>
+<p>XML 具有出色的自我描述性，你同意吗？</p>
+</div>
+<div>
+<h2>XML 文档形成一种树结构</h2>
+<p>XML 文档必须包含<em>根元素</em>。该元素是所有其他元素的父元素。</p>
+<p>XML 文档中的元素形成了一棵文档树。这棵树从根部开始，并扩展到树的最底端。</p>
+<p>所有元素均可拥有子元素：</p>
+<pre>
+&lt;root&gt;
+  &lt;child&gt;
+    &lt;subchild&gt;.....&lt;/subchild&gt;
+  &lt;/child&gt;
+&lt;/root&gt;
+</pre>
+<p>父、子以及同胞等术语用于描述元素之间的关系。父元素拥有子元素。相同层级上的子元素成为同胞 (兄弟或姐妹）。</p>
+<p>所有元素均可拥有文本内容和属性 (类似 HTML 中）。</p>
+</div>
+<div>
+<h2>实例</h2>
+<img src="../i/ct_nodetree1.gif" />
+<p>上图表示下面的 XML 中的一本书：</p>
+<pre>
+&lt;bookstore&gt;
+&lt;book category=&#34;COOKING&#34;&gt;
+  &lt;title lang=&#34;en&#34;&gt;Everyday Italian&lt;/title&gt; 
+  &lt;author&gt;Giada De Laurentiis&lt;/author&gt; 
+  &lt;year&gt;2005&lt;/year&gt; 
+  &lt;price&gt;30.00&lt;/price&gt; 
+&lt;/book&gt;
+&lt;book category=&#34;CHILDREN&#34;&gt;
+  &lt;title lang=&#34;en&#34;&gt;Harry Potter&lt;/title&gt; 
+  &lt;author&gt;J K. Rowling&lt;/author&gt; 
+  &lt;year&gt;2005&lt;/year&gt; 
+  &lt;price&gt;29.99&lt;/price&gt; 
+&lt;/book&gt;
+&lt;book category=&#34;WEB&#34;&gt;
+  &lt;title lang=&#34;en&#34;&gt;Learning XML&lt;/title&gt; 
+  &lt;author&gt;Erik T. Ray&lt;/author&gt; 
+  &lt;year&gt;2003&lt;/year&gt; 
+  &lt;price&gt;39.95&lt;/price&gt; 
+&lt;/book&gt;
+&lt;/bookstore&gt;
+</pre>
+<p>例子中的根元素是 &lt;bookstore&gt;。文档中的所有 &lt;book&gt; 元素都被包含在 &lt;bookstore&gt; 中。</p>
+<p>&lt;book&gt; 元素有 4 个子元素：&lt;title&gt;、&lt; author&gt;、&lt;year&gt;、&lt;price&gt;。</p>
+</div>
+<div  id="bpn">
+<ul class="prenext">
+<li class="pre"><a href="xml_usedfor.html">上一页</a></li>
+<li class="next"><a href="xml_syntax.html">下一页</a></li>
+</ul>
+</div>
+</div>
+<div id="sidebar">
+<div class="rs"></div>
+<div id="tools">
+<h5 id="tools_example"><a href="../example/xmle_examples.html">XML 实例</a></h5>
+<h5 id="tools_quiz"><a href="xml_quiz.html">XML 测验</a></h5>
+</div>
+<div class="a120x600"><script type="text/javascript">var cpro_id="u1293136";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div><div class="b"></div>
+</div>
+</body>
+</html>

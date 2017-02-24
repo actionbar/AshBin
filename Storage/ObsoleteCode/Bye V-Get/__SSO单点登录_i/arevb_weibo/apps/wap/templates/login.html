@@ -1,0 +1,14 @@
+{template header}
+
+<p>
+	用户名/Email: <input type="text" name="username" maxlength="15" format="M*m" /><br />
+	密码: <input type="password" name="password" format="M*m" /><br />
+	<anchor title="提交">提交<go method="post" href="{eval echo miniurl('login');}">
+		<postfield name="submit_post" value="1" />
+		<postfield name="username" value="$(username)" />
+		<postfield name="password" value="$(password)" />
+		</go>
+	</anchor>
+</p>
+
+{template footer}

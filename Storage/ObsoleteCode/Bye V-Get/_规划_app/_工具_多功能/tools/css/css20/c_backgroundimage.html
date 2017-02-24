@@ -1,0 +1,103 @@
+<html xmlns:rdl>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<script src="rdl_properties.js"></script>
+<base target="_self">
+</head>
+<body>
+
+<script>
+
+//collFriendProperties=new Array();
+//collFriendDeclarations=new Array();
+//collFriendAtRules=new Array();
+//collFriendElements=new Array();
+//collFriendClasses=new Array();
+
+collFriendProperties=new Array(
+'background','background-color','background-repeat','background-attachment','background-position','background-position-x','background-position-y','layer-background-color','layer-background-image'
+);
+
+//collIE40=new Array();
+//collIE50=new Array();
+//collIE55=new Array();
+//collIE60=new Array();
+
+collIE40=new Array(
+'A','ADDRESS','B','BIG','BLOCKQUOTE','BODY','BUTTON','CAPTION','CENTER','CITE','CODE','COL','COLGROUP','DD','DFN','DIR','DIV','DL','DT','EM','FIELDSET','FORM','Hn','HTML','I','IMG','INPUT type=button','INPUT type=checkbox','INPUT type=file','INPUT type=image','INPUT type=password','INPUT type=radio','INPUT type=reset','INPUT type=submit','INPUT type=text','ISINDEX','KBD','LABEL','LEGEND','LI','LISTING','MARQUEE','MENU','OL','P','PLAINTEXT','PRE','runtimeStyle','S','SAMP','SMALL','SPAN','STRIKE','STRONG','style','SUB','SUP','TABLE','TBODY','TD','TEXTAREA','TFOOT','TH','THEAD','TR','TT','U','UL','VAR','XMP'
+);
+
+collIE50=new Array(
+'currentStyle','CUSTOM','runtimeStyle'
+);
+
+collIE55=new Array(
+'defaults'
+);
+
+sStyle=
+'<style>\n'+
+'#idDiv{width:100%;height:100px;line-height:18px;padding:6px;color:#FFFFFF;background:buttonshadow none no-repeat scroll right 10px;}\n'+
+'#idCodeDiv{width:100%;padding:4px;font-family:verdana,tahoma;margin:12px 0px 0px 0px;background-color:#EEEEEE;font-weight:bold;}\n'+
+'input{padding:1px 4px 0px 4px;letter-spacing:1px;}\n'+
+'<\/style>\n';
+
+sScript=
+'<script>\n'+
+'function rdl_change(e){\n'+
+'document.all("idDiv").style.backgroundImage="url(images/rdl_cup.jpg)";\n'+
+'document.all("idCodeDiv").innerText="background-color : buttonshadow ;\\r\\nbackground-image : url(images/rdl_cup.jpg) ;";\n'+
+'}\n'+
+'<\/script>\n';
+
+sCode=
+'<div id=idDiv>请点击下方的按钮，<br>您将看到背景图片是如何被设置<br>以及与背景色的关系。<\/div>\n'+
+'<br>\n'+
+'<input value=" 更改设置 " onclick="rdl_change()" type=button>\n'+
+'<br>\n'+
+'<div id=idCodeDiv>background-color : darkshadow ;<\/div>\n';
+
+iWinWidth=360;
+
+iWinHeight=320;
+
+//bRunCode=false;
+
+//bElements=false;
+
+</script>
+
+<div id=idContent>
+
+<div id=idContentTitle><span id=idTitleName>background-image</span>版本：CSS1　 兼容性：IE4+ NS4+　继承性：无</div>
+
+<div class=cssColumnTitle>语法：</div>
+<div>
+<b>background-image : </b><span class=cssDefault><b>none</b></span> | <b>url  ( </b><i>url</i><b> ) </b>
+</div>
+
+<div class=cssColumnTitle>取值：</div>
+<table>
+<tr><td nowrap><b> none </b></td><td nowrap><b>:</b></td><td><b>默认值</b>。无背景图</td></tr>
+<tr><td nowrap><b> url  ( </b><i>url</i><b> ) </b></td><td nowrap><b>:</b></td><td>使用绝对或相对<i> url </i>地址指定背景图像</td></tr>
+</table>
+
+<div class=cssColumnTitle>说明：</div>
+<div>
+设置或检索对象的背景图像。<br>
+当背景图像与背景颜色(<a href="c_backgroundcolor.html"><b> background-color </b></a>)都被设定了时，背景图片将覆盖于背景颜色之上。<br>
+此属性对于<b> currentStyle </b>对象而言是只读的。对于其他对象而言是可读写的。<br>
+对应的脚本特性为<b> backgroundImage </b>。
+</div>
+
+<div class=cssColumnTitle>示例：</div>
+<div id=idSimpleCode>
+code { background-image: url("comet.jpg"); }<br>blockquote { background-image: url("c:\InetPub\MyPixs\comet.jpg"); } <br>br { background-image: url(http://Fred.com/ImageFile/Q.gif); } <br>body { background-image: none; } 
+</div>
+
+</div>
+</body>
+</html>
+
+<!-- Part of RDL(TM) - Written by Rain1977 
+HomeSite: http://www.dhtmlet.com  E-Mail: dhtmlet@hotmail.com -->

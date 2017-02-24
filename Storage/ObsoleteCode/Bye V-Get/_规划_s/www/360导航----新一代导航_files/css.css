@@ -1,0 +1,1062 @@
+HTML {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+BODY {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+DIV {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+H1 {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+H2 {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+H3 {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+H4 {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+H5 {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+H6 {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+P {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+SPAN {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+EM {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+A {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+IMG {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+UL {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+LI {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+OL {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+DL {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+DT {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+DD {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+FORM {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+INPUT {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+BUTTON {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+H1 {
+	FONT-SIZE: 100%
+}
+H2 {
+	FONT-SIZE: 100%
+}
+H3 {
+	FONT-SIZE: 100%
+}
+IMG {
+	BORDER-TOP-WIDTH: 0px; BORDER-LEFT-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; BORDER-RIGHT-WIDTH: 0px
+}
+OL {
+	LIST-STYLE-TYPE: none
+}
+UL {
+	LIST-STYLE-TYPE: none
+}
+EM {
+	FONT-STYLE: normal
+}
+STRONG {
+	FONT-WEIGHT: normal
+}
+BUTTON {
+	FONT-SIZE: 12px; COLOR: #666666
+}
+INPUT {
+	FONT-SIZE: 12px; COLOR: #666666
+}
+LABEL {
+	VERTICAL-ALIGN: middle; FONT-FAMILY: tahoma
+}
+INPUT {
+	VERTICAL-ALIGN: middle; FONT-FAMILY: tahoma
+}
+LABEL {
+	CURSOR: pointer
+}
+BUTTON {
+	CURSOR: pointer
+}
+BODY {
+	BACKGROUND: url(../images/t_bg.png) #fbfbfc repeat-x 0px 0px; FONT: 12px/1.5 Arial,tahoma,宋体,Helvetica,sans-serif; COLOR: #444444; TEXT-ALIGN: left
+}
+A {
+	COLOR: #68696a; TEXT-DECORATION: none; webkit-transition: all .5s linear; transition: all .5s linear; moz-transition: all .5s linear; outline: none
+}
+A:hover {
+	COLOR: #1c8bd9; TEXT-DECORATION: underline; outline: none
+}
+A:active {
+	COLOR: #1c8bd9; TEXT-DECORATION: underline; outline: none
+}
+.hlight A {
+	COLOR: #ff0000
+}
+.hlight A:hover {
+	COLOR: #ff0000
+}
+.hlight A:active {
+	COLOR: #ff0000
+}
+.hlight2 A {
+	COLOR: #209526
+}
+.hlight2 A:hover {
+	COLOR: #209526
+}
+.hlight2 A:active {
+	COLOR: #209526
+}
+.c_hlight A {
+	COLOR: #3366bb
+}
+.c_hlight A:hover {
+	COLOR: #3366bb
+}
+.c_hlight A:active {
+	COLOR: #3366bb
+}
+.search_tab LI A:hover {
+	COLOR: #3366bb
+}
+.weather A {
+	COLOR: #3366bb
+}
+.btn {
+	DISPLAY: block; OVERFLOW: hidden; TEXT-INDENT: -999em
+}
+.search_box LABEL SPAN {
+	DISPLAY: block; OVERFLOW: hidden; TEXT-INDENT: -999em
+}
+.indent {
+	DISPLAY: block; OVERFLOW: hidden; TEXT-INDENT: -999em
+}
+.hide {
+	LEFT: -999em; POSITION: absolute
+}
+.search_box {
+	BACKGROUND: url(bg_spr.png) no-repeat -999em -999em
+}
+.lab_list {
+	BACKGROUND: url(bg_spr.png) no-repeat -999em -999em
+}
+.search_box LABEL SPAN {
+	BACKGROUND: url(bg_spr.png) no-repeat -999em -999em
+}
+.cover {
+	BACKGROUND: url(bg_spr.png) no-repeat -999em -999em
+}
+.header H1 {
+	BACKGROUND: url(bg_spr.png) no-repeat -999em -999em
+}
+.guid_list_head A {
+	BACKGROUND: url(bg_spr.png) no-repeat -999em -999em
+}
+.user_tool .home {
+	BACKGROUND: url(bg_spr.png) no-repeat -999em -999em
+}
+.clear {
+	CLEAR: both
+}
+.clearfix {
+	ZOOM: 1
+}
+.item {
+	ZOOM: 1
+}
+.item {
+	MARGIN: 0px auto; WIDTH: 950px; POSITION: relative
+}
+.head {
+	Z-INDEX: 200; POSITION: relative
+}
+.head .item {
+	BOTTOM: -1px
+}
+H1 {
+	HEIGHT: 27px
+}
+.date {
+	LEFT: 0px; COLOR: #444444; POSITION: absolute; TOP: 2px
+}
+.date A {
+	COLOR: #333333
+}
+.date A:hover {
+	COLOR: #1c8bd9
+}
+.date SPAN {
+	MARGIN-LEFT: 2px
+}
+.weather_op {
+	RIGHT: 0px; WIDTH: 196px; POSITION: absolute; TOP: 4px; HEIGHT: 100%; BACKGROUND-COLOR: #f7fbff
+}
+.weather_op_ck {
+	PADDING-TOP: 4px
+}
+.weather_op_ck BUTTON {
+	VERTICAL-ALIGN: middle; MARGIN-RIGHT: 10px
+}
+.search_tab {
+	Z-INDEX: 5; MARGIN-LEFT: 329px; POSITION: relative; HEIGHT: 32px
+}
+.search_tab LI {
+	FLOAT: left; WIDTH: 44px; MARGIN-RIGHT: 4px
+}
+.search_tab LI A {
+	PADDING-RIGHT: 8px; PADDING-LEFT: 8px; FONT-SIZE: 14px; PADDING-BOTTOM: 0px; COLOR: #3a3a3a; LINE-HEIGHT: 21px; PADDING-TOP: 0px
+}
+.search_tab LI A:hover {
+	TEXT-DECORATION: underline
+}
+.ico {
+	DISPLAY: block; Z-INDEX: 2; BACKGROUND: url(../images/logo1.png) no-repeat; LEFT: 0px; WIDTH: 93px; POSITION: absolute; TOP: 0px; HEIGHT: 26px
+}
+.ico_gg {
+	BACKGROUND-POSITION: -10px -8px
+}
+.ico_bd {
+	BACKGROUND-POSITION: -10px -39px
+}
+.ico_kk {
+	BACKGROUND-POSITION: -10px -74px
+}
+.ico_sg {
+	BACKGROUND-POSITION: -10px -111px
+}
+.ico_ss {
+	BACKGROUND-POSITION: -10px -142px
+}
+.ico_sech {
+	BACKGROUND-POSITION: 0px -108px
+}
+.search_box LABEL .ico_gg {
+	BACKGROUND-POSITION: -117px -8px
+}
+.search_box LABEL .ico_bd {
+	BACKGROUND-POSITION: -117px -39px
+}
+.search_box LABEL .ico_kk {
+	BACKGROUND-POSITION: -117px -74px
+}
+.search_box LABEL .ico_sg {
+	BACKGROUND-POSITION: -117px -111px
+}
+.search_box LABEL .ico_ss {
+	BACKGROUND-POSITION: -117px -142px
+}
+.lab_list {
+	BORDER-RIGHT: #e0e0e0 1px solid; PADDING-RIGHT: 2px; BORDER-TOP: #e0e0e0 1px solid; PADDING-LEFT: 2px; Z-INDEX: 3; BACKGROUND: #fdfdfd; LEFT: 1px; PADDING-BOTTOM: 0px; BORDER-LEFT: #e0e0e0 1px solid; WIDTH: 95px; PADDING-TOP: 2px; BORDER-BOTTOM: #e0e0e0 1px solid; ZOOM: 1; WHITE-SPACE: nowrap; POSITION: absolute; TOP: 34px
+}
+.lab_list LI {
+	MARGIN-BOTTOM: 4px; BORDER-BOTTOM: #f0f0f0 1px solid
+}
+.lab_list .last {
+	BORDER-BOTTOM-WIDTH: 0px
+}
+.lab_list A {
+	DISPLAY: block; FILTER: alpha(opacity=40); OVERFLOW: hidden; CURSOR: pointer; COLOR: #4b4b4b; TEXT-INDENT: 25px; LINE-HEIGHT: 27px; ZOOM: 1; POSITION: relative; HEIGHT: 30px; opacity: 0.4
+}
+.lab_list A:hover {
+	FILTER: alpha(opacity=100); TEXT-DECORATION: none; opacity: 1
+}
+.lab_list A.on {
+	FILTER: alpha(opacity=100); TEXT-DECORATION: none; opacity: 1
+}
+.search_box LABEL {
+	LEFT: 3px; WIDTH: 97px; POSITION: absolute; TOP: 3px; HEIGHT: 26px
+}
+.search_box LABEL SPAN {
+	BACKGROUND-POSITION: -100px -138px; DISPLAY: block; Z-INDEX: 3; LEFT: 84px; WIDTH: 8px; POSITION: absolute; TOP: 12px; HEIGHT: 4px
+}
+.search_box INPUT {
+	BORDER-RIGHT: #ffffff 1px solid; PADDING-RIGHT: 2px; BORDER-TOP: #ffffff 1px solid; PADDING-LEFT: 8px; FONT-SIZE: 14px; LEFT: 101px; PADDING-BOTTOM: 4px; BORDER-LEFT: #ffffff 1px solid; WIDTH: 330px; COLOR: #969696; LINE-HEIGHT: 17px; PADDING-TOP: 6px; BORDER-BOTTOM: #ffffff 1px solid; POSITION: absolute; TOP: 1px; HEIGHT: 19px; BACKGROUND-COLOR: transparent; outline: none; webkit-appearance: inherit
+}
+.search_box INPUT:unknown {
+	BORDER-LEFT-COLOR: #b7cee8; BORDER-BOTTOM-COLOR: #b7cee8; COLOR: #29547c; BORDER-TOP-COLOR: #b7cee8; BORDER-RIGHT-COLOR: #b7cee8
+}
+.search_box .focus {
+	BORDER-LEFT-COLOR: #b7cee8; BORDER-BOTTOM-COLOR: #b7cee8; COLOR: #29547c; BORDER-TOP-COLOR: #b7cee8; BORDER-RIGHT-COLOR: #b7cee8
+}
+.relate_list {
+	BORDER-RIGHT: #b7cee8 1px solid; BORDER-TOP: #b7cee8 1px solid; Z-INDEX: 5; LEFT: 101px; BORDER-LEFT: #b7cee8 1px solid; WIDTH: 340px; BORDER-BOTTOM: #b7cee8 1px solid; POSITION: absolute; TOP: 30px; BACKGROUND-COLOR: #ffffff
+}
+.relate_list LI {
+	OVERFLOW: hidden; TEXT-INDENT: 8px; LINE-HEIGHT: 22px; HEIGHT: 22px
+}
+.relate_list LI:hover {
+	CURSOR: pointer; COLOR: #3366bb; BACKGROUND-COLOR: #c9dbf2
+}
+.relate_list .on {
+	CURSOR: pointer; COLOR: #3366bb; BACKGROUND-COLOR: #c9dbf2
+}
+.btn {
+	BACKGROUND-POSITION: -335px -55px; BACKGROUND-COLOR: transparent
+}
+.btn:hover {
+	BACKGROUND-POSITION: -335px -95px
+}
+.btn_hover {
+	BACKGROUND-POSITION: -335px -95px
+}
+.btn:active {
+	BACKGROUND-POSITION: -335px -135px
+}
+.btn_active {
+	BACKGROUND-POSITION: -335px -135px
+}
+.search_hottag {
+	LEFT: 102px; OVERFLOW: hidden; POSITION: absolute; TOP: 38px; HEIGHT: 20px
+}
+.search_hottag LI {
+	PADDING-RIGHT: 12px; FLOAT: left; WHITE-SPACE: nowrap
+}
+.search_hottag LI A {
+	COLOR: #b4b6b8
+}
+.item H2 {
+	FONT-WEIGHT: normal; FONT-SIZE: 14px; MARGIN-BOTTOM: 30px; COLOR: #09439f
+}
+.cover {
+	BACKGROUND-POSITION: 0px -55px; DISPLAY: block; Z-INDEX: 2; LEFT: 0px; WIDTH: 56px; POSITION: absolute; TOP: 1px; HEIGHT: 57px; webkit-transition: all .8s linear; transition: all .8s linear; moz-transition: all .8s linear
+}
+.topguid_list .item {
+	Z-INDEX: 100; MARGIN-RIGHT: 20px; PADDING-TOP: 25px; TOP: -1px
+}
+.topguid_list UL {
+	WIDTH: 1020px
+}
+.topguid_list LI {
+	DISPLAY: inline; FLOAT: left; WIDTH: 62px; MARGIN-RIGHT: 39px; HEIGHT: 88px; TEXT-ALIGN: center
+}
+.guid_list_item LI SPAN {
+	COLOR: #68696a
+}
+.topguid_list P SPAN {
+	COLOR: #68696a
+}
+.topguid_list P {
+	OVERFLOW: hidden; HEIGHT: 18px
+}
+.topguid_list .pic {
+	DISPLAY: block; MARGIN-LEFT: -2px; OVERFLOW: hidden; WIDTH: 56px; CURSOR: pointer; COLOR: #4b4b4b; POSITION: relative; HEIGHT: 59px; outline: none
+}
+.app_content .pic {
+	DISPLAY: block; MARGIN-LEFT: -2px; OVERFLOW: hidden; WIDTH: 56px; CURSOR: pointer; COLOR: #4b4b4b; POSITION: relative; HEIGHT: 59px; outline: none
+}
+.game_content .pic {
+	DISPLAY: block; MARGIN-LEFT: -2px; OVERFLOW: hidden; WIDTH: 56px; CURSOR: pointer; COLOR: #4b4b4b; POSITION: relative; HEIGHT: 59px; outline: none
+}
+.topguid_list A:hover .cover {
+	BACKGROUND-POSITION: 0px -115px
+}
+.app_content A:hover .cover {
+	BACKGROUND-POSITION: 0px -115px
+}
+.game_content A:hover .cover {
+	BACKGROUND-POSITION: 0px -115px
+}
+.topguid_list .pic IMG {
+	DISPLAY: block; LEFT: 3px; COLOR: #a0a5a9; POSITION: absolute; TOP: 2px
+}
+.app_content .pic IMG {
+	DISPLAY: block; LEFT: 3px; COLOR: #a0a5a9; POSITION: absolute; TOP: 2px
+}
+.game_content .pic IMG {
+	DISPLAY: block; LEFT: 3px; COLOR: #a0a5a9; POSITION: absolute; TOP: 2px
+}
+.textlk_list {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; MIN-HEIGHT: 28px; PADDING-BOTTOM: 3px; PADDING-TOP: 6px; HEIGHT: 28px
+}
+.textlk_list H2 {
+	PADDING-RIGHT: 4px; DISPLAY: inline; FONT-SIZE: 12px; FLOAT: left; MARGIN-BOTTOM: 0px; COLOR: #333333; LINE-HEIGHT: 24px; FONT-FAMILY: 宋体
+}
+.textlk_list UL {
+	FLOAT: left; WIDTH: 894px
+}
+.textlk_list LI {
+	DISPLAY: inline; FLOAT: left; LINE-HEIGHT: 24px; MARGIN-RIGHT: 13px; WHITE-SPACE: nowrap; HEIGHT: 26px
+}
+.guid_list_head {
+	FONT-SIZE: 0px; BACKGROUND: url(bg_spr.png) repeat-x 0px 15px; MARGIN-BOTTOM: 15px; MARGIN-LEFT: -9px; COLOR: #f7fbff; LINE-HEIGHT: 0; PADDING-TOP: 6px; FONT-FAMILY: Helvetica; HEIGHT: 17px
+}
+.guid_list_head A {
+	PADDING-RIGHT: 6px; BACKGROUND-POSITION: -523px -163px; PADDING-LEFT: 9px; FONT-SIZE: 14px; FLOAT: left; PADDING-BOTTOM: 0px; COLOR: #3366bb; LINE-HEIGHT: 17px; PADDING-TOP: 0px; BACKGROUND-COLOR: #fbfbfc
+}
+.guid_list_head .n1 {
+	BACKGROUND: #fbfbfc
+}
+.guid_list {
+	PADDING-BOTTOM: 20px; OVERFLOW: hidden
+}
+.guid_list H2 {
+	PADDING-LEFT: 2px; FLOAT: left; WIDTH: 58px; LINE-HEIGHT: 26px
+}
+.guid_list_item {
+	BORDER-RIGHT: #f7fbff 1px solid; BORDER-TOP: #f7fbff 1px solid; MARGIN-BOTTOM: 6px; OVERFLOW: hidden; BORDER-LEFT: #f7fbff 1px solid; WIDTH: 965px; BORDER-BOTTOM: #f7fbff 1px solid; HEIGHT: 24px
+}
+.hover {
+	BORDER-RIGHT: #cde7f3 1px solid; BORDER-TOP: #cde7f3 1px solid; BACKGROUND: #eef9fe; BORDER-LEFT: #cde7f3 1px solid; BORDER-BOTTOM: #cde7f3 1px solid
+}
+.guid_list_item:hover {
+	BORDER-RIGHT: #cde7f3 1px solid; BORDER-TOP: #cde7f3 1px solid; BACKGROUND: #eef9fe; BORDER-LEFT: #cde7f3 1px solid; BORDER-BOTTOM: #cde7f3 1px solid
+}
+.guid_list_item A:hover {
+	COLOR: #1b89d9
+}
+.guid_list_item UL {
+	FLOAT: left; WIDTH: 970px
+}
+.guid_list_item LI {
+	DISPLAY: inline; FONT-SIZE: 14px; FLOAT: left; WIDTH: 99px; LINE-HEIGHT: 27px; MARGIN-RIGHT: 17px; HEIGHT: 26px
+}
+.topchannel {
+	Z-INDEX: 300; BACKGROUND: url(../images/t_bg.png) #f0f0f0 repeat-x; MARGIN: 0px auto; LINE-HEIGHT: 30px; POSITION: relative; HEIGHT: 37px; min-width: 970px
+}
+.top_nav {
+	LEFT: 0px; POSITION: absolute; TOP: 0px
+}
+.top_nav LI {
+	FLOAT: left; LINE-HEIGHT: 30px; HEIGHT: 30px
+}
+.top_nav LI A {
+	PADDING-RIGHT: 10px; PADDING-LEFT: 10px; FLOAT: left; PADDING-BOTTOM: 0px; COLOR: #08509c; PADDING-TOP: 0px; HEIGHT: 30px
+}
+.top_nav LI A:hover {
+	BACKGROUND: #dbefff; TEXT-DECORATION: none
+}
+.top_nav LI.on A {
+	BACKGROUND: #dbefff; TEXT-DECORATION: none
+}
+.user_tool {
+	Z-INDEX: 200; RIGHT: -112px; COLOR: #858587; POSITION: absolute; TOP: 0px
+}
+.user_tool A {
+	COLOR: #858587
+}
+.user_tool A:hover {
+	COLOR: #005ca9
+}
+.user_tool .home {
+	BACKGROUND-POSITION: -515px -67px; PADDING-LEFT: 17px
+}
+.user_tool SPAN {
+	MARGIN: 0px 5px
+}
+.user_tool {
+	PADDING-TOP: 3px
+}
+.user_tool {
+	COLOR: #000000
+}
+.user_tool A {
+	COLOR: #000000
+}
+.user_tool INPUT {
+	COLOR: #000000
+}
+.user_tool A:hover {
+	COLOR: #1c8bd9
+}
+.user_tool A.on {
+	FONT-WEIGHT: bold; CURSOR: default; COLOR: #1c8bd9; TEXT-DECORATION: none
+}
+.user_tool A.on:hover {
+	FONT-WEIGHT: bold; CURSOR: default; COLOR: #1c8bd9; TEXT-DECORATION: none
+}
+.top_icon {
+	DISPLAY: inline-block; BACKGROUND: url(../images/top_icon.jpg) no-repeat; MARGIN-BOTTOM: -6px; WIDTH: 22px; MARGIN-RIGHT: 7px; HEIGHT: 16px
+}
+.top_icon1 {
+	RIGHT: 318px; POSITION: absolute; TOP: 8px
+}
+.top_icon2 {
+	BACKGROUND-POSITION: 0px -26px; HEIGHT: 20px
+}
+.top_icon3 {
+	BACKGROUND-POSITION: 0px -56px; HEIGHT: 20px
+}
+.top_icon4 {
+	BACKGROUND-POSITION: 0px -86px; HEIGHT: 20px
+}
+.email {
+	PADDING-RIGHT: 20px; FLOAT: left
+}
+.email INPUT {
+	BORDER-RIGHT: #d7d7d7 1px solid; PADDING-RIGHT: 3px; BORDER-TOP: #d7d7d7 1px solid; PADDING-LEFT: 3px; PADDING-BOTTOM: 3px; BORDER-LEFT: #d7d7d7 1px solid; WIDTH: 107px; PADDING-TOP: 3px; BORDER-BOTTOM: #d7d7d7 1px solid; HEIGHT: 14px
+}
+.email_input1 {
+	RIGHT: 200px; POSITION: absolute; TOP: 6px
+}
+.email_input {
+	PADDING-RIGHT: 5px; PADDING-LEFT: 5px; Z-INDEX: 200; RIGHT: 193px; BACKGROUND: url(../images/email_on.png) no-repeat; PADDING-BOTTOM: 6px; WIDTH: 117px; PADDING-TOP: 6px; POSITION: absolute; TOP: 0px; HEIGHT: 120px
+}
+.email_input P {
+	PADDING-BOTTOM: 7px; OVERFLOW: hidden; HEIGHT: 22px
+}
+.email_input .at INPUT {
+	FLOAT: left; WIDTH: 81px; CURSOR: pointer
+}
+.email_input .at SPAN {
+	BORDER-RIGHT: #d9d9d9 1px solid; BORDER-TOP: #d9d9d9 1px solid; DISPLAY: block; BACKGROUND: url(../images/email_bg.png) #f1f1f1 no-repeat 8px -53px; FLOAT: left; MARGIN: 0px; OVERFLOW: hidden; BORDER-LEFT: #d9d9d9 1px; WIDTH: 25px; CURSOR: pointer; TEXT-INDENT: -9999px; BORDER-BOTTOM: #d9d9d9 1px solid; HEIGHT: 20px
+}
+.email_input BUTTON {
+	DISPLAY: block; BACKGROUND: url(../images/email_bg.png) no-repeat; FLOAT: left; OVERFLOW: hidden; BORDER-TOP-STYLE: none; TEXT-INDENT: -9999px; BORDER-RIGHT-STYLE: none; BORDER-LEFT-STYLE: none; HEIGHT: 25px; BORDER-BOTTOM-STYLE: none
+}
+.email_input .login {
+	WIDTH: 52px; MARGIN-RIGHT: 10px
+}
+.email_input .cancel {
+	BACKGROUND-POSITION: 0px -25px; WIDTH: 53px
+}
+.email_input UL {
+	BORDER-RIGHT: #d7d7d7 1px solid; BORDER-TOP: #d7d7d7 1px solid; Z-INDEX: 250; RIGHT: 7px; BACKGROUND: #ffffff; BORDER-LEFT: #d7d7d7 1px solid; WIDTH: 113px; BORDER-BOTTOM: #d7d7d7 1px solid; FONT-FAMILY: tahoma; POSITION: absolute; TOP: 57px
+}
+.email_input LI {
+	PADDING-LEFT: 8px; CURSOR: pointer; LINE-HEIGHT: 24px
+}
+.email_input LI.tit {
+	CURSOR: default
+}
+.email_input LI.on {
+	BACKGROUND: #e6f5fd
+}
+.topguid_list {
+	MARGIN: 0px auto; WIDTH: 970px
+}
+.topguid_list .item1 {
+	FLOAT: left; OVERFLOW: hidden; WIDTH: 467px; MARGIN-RIGHT: 36px
+}
+.topguid_list .item2 {
+	FLOAT: left; OVERFLOW: hidden; WIDTH: 467px; MARGIN-RIGHT: 36px
+}
+.topguid_list .item1 UL {
+	WIDTH: 505px
+}
+.topguid_list .item2 UL {
+	WIDTH: 505px
+}
+.topguid_list .item2 {
+	MARGIN-RIGHT: 0px
+}
+.topguid_list .item1 A:hover {
+	COLOR: #1b89d9
+}
+.topguid_list .item2 A:hover {
+	COLOR: #1b89d9
+}
+.title {
+	BORDER-TOP: #e9e9e9 1px solid; BORDER-BOTTOM: #ffffff 1px solid; POSITION: relative; HEIGHT: 0px
+}
+.title .t {
+	PADDING-RIGHT: 5px; BACKGROUND: #fbfbfc; LEFT: 0px; COLOR: #09439f; POSITION: absolute; TOP: -11px
+}
+.icon {
+	DISPLAY: inline-block; MARGIN-BOTTOM: -3px; WIDTH: 24px; HEIGHT: 16px
+}
+.icon IMG {
+	MARGIN: 0px 5px -2px 0px
+}
+.icon2 IMG {
+	MARGIN: 0px 10px 2px 0px
+}
+.guid_list_head {
+	MARGIN-TOP: 17px
+}
+.guid_list H2 {
+	MARGIN-TOP: 3px; WIDTH: 93px
+}
+.guid_list H2 A {
+	COLOR: #0e4395
+}
+.guid_list_item UL {
+	WIDTH: 864px
+}
+.guid_list_item .more {
+	MARGIN-LEFT: 17px; WIDTH: 35px; MARGIN-RIGHT: 0px
+}
+.guid_list_item .more A {
+	FONT-SIZE: 12px; COLOR: #868686
+}
+.guid_list_item H2 {
+	MARGIN-BOTTOM: 0px
+}
+.user_tool A {
+	MARGIN-TOP: 6px; DISPLAY: inline-block
+}
+.content {
+	BORDER-RIGHT: #f8f8f9 1px solid; BORDER-TOP: #e4e4e4 1px solid; FONT-SIZE: 14px; BACKGROUND: #fcfdfd; MARGIN: 20px auto; BORDER-LEFT: #e4e4e4 1px solid; WIDTH: 968px; BORDER-BOTTOM: #e4e4e4 1px solid
+}
+.content_list {
+	BORDER-RIGHT: #e4e4e4 1px solid; PADDING-RIGHT: 0px; BORDER-TOP: #e4e4e4 1px solid; PADDING-LEFT: 0px; PADDING-BOTTOM: 24px; OVERFLOW: hidden; PADDING-TOP: 24px
+}
+.content .first {
+	BORDER-TOP-STYLE: none
+}
+.content_list1 {
+	BACKGROUND: #fcfdfd
+}
+.content_list2 {
+	BACKGROUND: #ffffff
+}
+.content_list H2 {
+	PADDING-BOTTOM: 13px; COLOR: #0a4498; TEXT-INDENT: 35px
+}
+.content_list H2 SPAN {
+	FONT-WEIGHT: normal; COLOR: #3a3a3a
+}
+.content_list UL {
+	PADDING-BOTTOM: 20px
+}
+.content_list LI {
+	FLOAT: left; MARGIN: 0px 31px; WIDTH: 113px; BORDER-BOTTOM: #ededed 1px solid
+}
+.content_list LI.last {
+	BORDER-BOTTOM-STYLE: none
+}
+.content_list LI A {
+	PADDING-RIGHT: 15px; DISPLAY: block; PADDING-LEFT: 15px; PADDING-BOTTOM: 0px; MARGIN: 4px 0px; OVERFLOW: hidden; WIDTH: 84px; COLOR: #3a3a3a; LINE-HEIGHT: 25px; PADDING-TOP: 0px; HEIGHT: 25px
+}
+.content_list LI A:hover {
+	BACKGROUND: #cdecff; COLOR: #3a3a3a; TEXT-DECORATION: none; border-radius: 3px
+}
+.rank .list B {
+	FLOAT: left
+}
+.rank .list A {
+	DISPLAY: inline-block; FLOAT: left; OVERFLOW: hidden; WIDTH: 130px; HEIGHT: 16px
+}
+.list_detail {
+	WIDTH: 212px
+}
+.list_detail P {
+	PADDING-LEFT: 10px; FLOAT: left
+}
+.list_detail P A {
+	OVERFLOW: hidden; WIDTH: 142px; HEIGHT: 28px
+}
+.list_detail .download {
+	TOP: 44px
+}
+.rank .list {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 5px; PADDING-TOP: 5px
+}
+.title .m {
+	DISPLAY: block; PADDING-LEFT: 5px; FONT-SIZE: 12px; RIGHT: 0px; BACKGROUND: #fbfbfc; COLOR: #868686; POSITION: absolute; TOP: -11px
+}
+.guid_list_item .icon IMG {
+	MARGIN-BOTTOM: -2px
+}
+.switch {
+	LEFT: inherit;
+	POSITION: absolute;
+	TOP: 0px
+}
+.switch A {
+	DISPLAY: block; PADDING-LEFT: 8px; FLOAT: left; WIDTH: 94px; HEIGHT: 32px; moz-border-radius-topleft: 3px; webkit-border-top-left-radius: 3px; border-top-left-radius: 3px; moz-border-radius-topright: 3px; webkit-border-top-right-radius: 3px; border-top-right-radius: 3px
+}
+.switch B {
+	MARGIN-TOP: 5px; DISPLAY: block; FLOAT: left
+}
+.switch .on {
+	BORDER-RIGHT: #e4e4e4 1px solid; BORDER-TOP: #e4e4e4 1px solid; FONT-WEIGHT: bold; BACKGROUND: #fbfbfc; BORDER-LEFT: #e4e4e4 1px solid; BORDER-BOTTOM: #fbfbfc 1px solid
+}
+.switch .on:hover {
+	COLOR: #68696a; TEXT-DECORATION: none
+}
+.home {
+	RIGHT: 0px; COLOR: #dcdcdc; POSITION: absolute; TOP: 3px
+}
+.home B {
+	MARGIN-TOP: 9px; DISPLAY: block; BACKGROUND: url(../images/home.jpg) no-repeat; FLOAT: left; WIDTH: 16px; HEIGHT: 12px
+}
+.home A {
+	MARGIN: 0px 2px; COLOR: #999999
+}
+.home A:hover {
+	COLOR: #1c8bd9
+}
+.minipop {
+	BORDER-RIGHT: #efe5ba 1px solid; PADDING-RIGHT: 13px; BORDER-TOP: #efe5ba 1px solid; PADDING-LEFT: 10px; BACKGROUND: #ffffd7; LEFT: 347px; PADDING-BOTTOM: 10px; BORDER-LEFT: #efe5ba 1px solid; WIDTH: 133px; COLOR: #676865; LINE-HEIGHT: 24px; PADDING-TOP: 5px; BORDER-BOTTOM: #efe5ba 1px solid; POSITION: absolute; TOP: 37px; box-shadow: 2px 2px 2px #DEDEDE
+}
+.minipop B {
+	DISPLAY: block; BACKGROUND: url(../images/pop.png) no-repeat; LEFT: 57px; OVERFLOW: hidden; WIDTH: 8px; POSITION: absolute; TOP: -7px; HEIGHT: 7px
+}
+.minipop .close {
+	DISPLAY: block; RIGHT: 5px; BACKGROUND: url(../images/pop.png) no-repeat 0px -7px; OVERFLOW: hidden; WIDTH: 8px; TEXT-INDENT: -9999px; POSITION: absolute; TOP: 5px; HEIGHT: 9px
+}
+.minipop .pop_btn {
+	MARGIN-TOP: 5px; BACKGROUND: #339ae2; FLOAT: right; MARGIN-LEFT: 10px; WIDTH: 69px; COLOR: #c3e3f7; LINE-HEIGHT: 21px; HEIGHT: 20px; TEXT-ALIGN: center; border-radius: 2px
+}
+.minipop .pop_btn:hover {
+	COLOR: #c3e3f7; TEXT-DECORATION: none
+}
+.setting {
+	RIGHT: -37px; LEFT: auto; WIDTH: 165px
+}
+.setting B {
+	LEFT: 134px
+}
+.setting INPUT {
+	MARGIN-RIGHT: 4px
+}
+.time_weather {
+	LEFT: 0px; WIDTH: 190px; POSITION: absolute; TOP: 43px
+}
+.time P {
+	FONT-SIZE: 20px; FLOAT: left; COLOR: #3a3a3a; FONT-FAMILY: Microsoft Yahei
+}
+.time P B {
+	FONT-WEIGHT: normal
+}
+.time P .small {
+	FONT-SIZE: 14px; MARGIN-LEFT: 5px
+}
+.time SPAN {
+	DISPLAY: block; FLOAT: left; MARGIN: 8px 0px 0px 4px; COLOR: #dcdbdb
+}
+.time A {
+	MARGIN: 0px 3px; COLOR: #666666
+}
+.time A:hover {
+	COLOR: #1c8bd9
+}
+.hit {
+	LEFT: 785px; WIDTH: 184px; POSITION: absolute; TOP: 74px; HEIGHT: 18px
+}
+.hit B {
+	MARGIN-TOP: 2px; DISPLAY: block; BACKGROUND: url(../images/hit.png) no-repeat; WIDTH: 12px; HEIGHT: 12px
+}
+.hit_if {
+	LEFT: 18px; WIDTH: 166px; POSITION: absolute; TOP: 0px; HEIGHT: 18px
+}
+.lately {
+	BORDER-RIGHT: #e8f3f8 1px solid; PADDING-RIGHT: 10px; BORDER-TOP: #e8f3f8 1px solid; PADDING-LEFT: 10px; Z-INDEX: 50; PADDING-BOTTOM: 5px; OVERFLOW: hidden; BORDER-LEFT: #e8f3f8 1px solid; COLOR: #666666; PADDING-TOP: 5px; BORDER-BOTTOM: #e8f3f8 1px solid; POSITION: relative; HEIGHT: 22px
+}
+.lately A {
+	COLOR: #999999
+}
+.lately SPAN {
+	PADDING-RIGHT: 19px; DISPLAY: inline-block; PADDING-LEFT: 4px; PADDING-BOTTOM: 0px; PADDING-TOP: 4px; POSITION: relative
+}
+.lately .close {
+	DISPLAY: none
+}
+.lately .hover {
+	BACKGROUND: #e8f3f8; BORDER-TOP-STYLE: none; BORDER-RIGHT-STYLE: none; BORDER-LEFT-STYLE: none; BORDER-BOTTOM-STYLE: none
+}
+.lately .hover .close {
+	DISPLAY: block; RIGHT: 6px; BACKGROUND: url(../images/pop.png) no-repeat 0px -16px; OVERFLOW: hidden; WIDTH: 8px; TEXT-INDENT: -9999px; POSITION: absolute; TOP: 7px; HEIGHT: 8px
+}
+.close_div {
+	DISPLAY: block; RIGHT: 10px; BACKGROUND: url(../images/pop.png) no-repeat 0px -24px; WIDTH: 10px; TEXT-INDENT: -9999px; POSITION: absolute; TOP: 12px; HEIGHT: 10px
+}
+.lately .none {
+	PADDING-RIGHT: 0px
+}
+.software {
+	BORDER-RIGHT: #cde7f3 1px solid; BORDER-TOP: #cde7f3 1px solid; MARGIN-TOP: 20px; BORDER-LEFT: #cde7f3 1px solid; BORDER-BOTTOM: #cde7f3 1px solid; HEIGHT: auto
+}
+.software:hover {
+	BACKGROUND: #fbfbfc
+}
+.software1 {
+	WIDTH: 965px;
+	POSITION: relative;
+	HEIGHT: 56px
+}
+.software H2 {
+	PADDING-LEFT: 4px; FONT-WEIGHT: normal; FONT-SIZE: 14px; FLOAT: left; WIDTH: 90px; COLOR: #074496
+}
+.software UL {
+	OVERFLOW: hidden;
+	WIDTH: 820px;
+	HEIGHT: 56px
+}
+.software LI {
+	FONT-SIZE: 12px; WIDTH: auto; MARGIN-RIGHT: 15px
+}
+.software .more {
+	RIGHT: 6px; POSITION: absolute; TOP: -1px
+}
+.s_01 {
+	WIDTH: 965px; POSITION: relative; HEIGHT: 28px
+}
+.app_content {
+	MARGIN: 0px auto; OVERFLOW: hidden; WIDTH: 970px
+}
+.game_content {
+	MARGIN: 0px auto; OVERFLOW: hidden; WIDTH: 970px
+}
+.app_nav {
+	PADDING-LEFT: 1px; BACKGROUND: url(../images/app_nav.png) no-repeat; OVERFLOW: hidden; WIDTH: 969px; HEIGHT: 35px
+}
+.game_nav {
+	PADDING-LEFT: 1px; BACKGROUND: url(../images/app_nav.png) no-repeat; OVERFLOW: hidden; WIDTH: 969px; HEIGHT: 35px
+}
+.app_nav LI {
+	FLOAT: left
+}
+.game_nav LI {
+	FLOAT: left
+}
+.app_nav A {
+	DISPLAY: block; FONT-WEIGHT: bold; FONT-SIZE: 14px; WIDTH: 103px; COLOR: #d4e9ff; LINE-HEIGHT: 35px; HEIGHT: 35px; TEXT-ALIGN: center
+}
+.game_nav A {
+	DISPLAY: block; FONT-WEIGHT: bold; FONT-SIZE: 14px; WIDTH: 103px; COLOR: #d4e9ff; LINE-HEIGHT: 35px; HEIGHT: 35px; TEXT-ALIGN: center
+}
+.app_nav A:hover {
+	BACKGROUND: url(../images/app_nav_hover.png) no-repeat; TEXT-DECORATION: none
+}
+.app_nav .on A {
+	BACKGROUND: url(../images/app_nav_hover.png) no-repeat; TEXT-DECORATION: none
+}
+.game_nav A:hover {
+	BACKGROUND: url(../images/app_nav_hover.png) no-repeat; TEXT-DECORATION: none
+}
+.game_nav .on A {
+	BACKGROUND: url(../images/app_nav_hover.png) no-repeat; TEXT-DECORATION: none
+}
+.game_nav A {
+	WIDTH: 86px
+}
+.game_nav A:hover {
+	BACKGROUND: url(../images/game_nav_hover.png) no-repeat
+}
+.game_nav .on A {
+	BACKGROUND: url(../images/game_nav_hover.png) no-repeat
+}
+.app_nav A:hover {
+	COLOR: #d4e9ff
+}
+.game_nav A:hover {
+	COLOR: #d4e9ff
+}
+.app_nav .on A {
+	COLOR: #ffffff
+}
+.app_nav .on A:hover {
+	COLOR: #ffffff
+}
+.game_nav .on A {
+	COLOR: #ffffff
+}
+.game_nav .on A:hover {
+	COLOR: #ffffff
+}
+.app_content .article {
+	BORDER-RIGHT: #e6e6e6 1px solid; PADDING-RIGHT: 0px; BORDER-TOP: #e6e6e6 1px solid; MARGIN-TOP: 14px; PADDING-LEFT: 12px; BACKGROUND: #ffffff; PADDING-BOTTOM: 14px; OVERFLOW: hidden; BORDER-LEFT: #e6e6e6 1px solid; WIDTH: 956px; PADDING-TOP: 14px; BORDER-BOTTOM: #e6e6e6 1px solid
+}
+.game_content .article {
+	BORDER-RIGHT: #e6e6e6 1px solid; PADDING-RIGHT: 0px; BORDER-TOP: #e6e6e6 1px solid; MARGIN-TOP: 14px; PADDING-LEFT: 12px; BACKGROUND: #ffffff; PADDING-BOTTOM: 14px; OVERFLOW: hidden; BORDER-LEFT: #e6e6e6 1px solid; WIDTH: 956px; PADDING-TOP: 14px; BORDER-BOTTOM: #e6e6e6 1px solid
+}
+.app_content .article LI {
+	BORDER-RIGHT: #ffffff 1px solid; PADDING-RIGHT: 0px; BORDER-TOP: #ffffff 1px solid; PADDING-LEFT: 14px; FLOAT: left; PADDING-BOTTOM: 0px; BORDER-LEFT: #ffffff 1px solid; WIDTH: 210px; MARGIN-RIGHT: 13px; PADDING-TOP: 14px; BORDER-BOTTOM: #ffffff 1px solid; HEIGHT: 70px
+}
+.app_content .pic {
+	FLOAT: left
+}
+.app_content P {
+	PADDING-LEFT: 10px; FLOAT: left; LINE-HEIGHT: 19px
+}
+.app_content P A {
+	DISPLAY: block; FONT-SIZE: 14px; OVERFLOW: hidden; WIDTH: 126px; COLOR: #3366bb; HEIGHT: 21px; max-width: 126px
+}
+.app_content P SPAN {
+	COLOR: #adacac
+}
+.topguid_list P SPAN {
+	FONT-WEIGHT: bold
+}
+.topguid_list LI.active {
+	Z-INDEX: 20; POSITION: relative
+}
+.topguid_list LI.active .cover {
+	BACKGROUND-POSITION: 0px -115px
+}
+.fastenter {
+	DISPLAY: none
+}
+.topguid_list LI.active .fastenter {
+	BORDER-RIGHT: #529fe7 1px solid; PADDING-RIGHT: 1px; BORDER-TOP: #529fe7 1px solid; DISPLAY: block; PADDING-LEFT: 1px; Z-INDEX: 20; BACKGROUND: #f3f9fc; LEFT: -8px; PADDING-BOTTOM: 1px; OVERFLOW: hidden; BORDER-LEFT: #529fe7 1px solid; WIDTH: 75px; PADDING-TOP: 1px; BORDER-BOTTOM: #529fe7 1px solid; POSITION: absolute; TOP: 58px; HEIGHT: 216px
+}
+.fastenter UL {
+	WIDTH: 75px
+}
+.fastenter LI {
+	FLOAT: none; MARGIN: 0px; WIDTH: 75px; HEIGHT: 27px
+}
+.fastenter A {
+	DISPLAY: block; BACKGROUND: #f3f9fc; WIDTH: 75px; COLOR: #3e80b8; LINE-HEIGHT: 25px; HEIGHT: 27px; webkit-transition: all .2s linear; transition: all .2s linear; moz-transition: all .2s linear
+}
+.fastenter A:hover {
+	BACKGROUND: #6dbcf7; COLOR: #ffffff; TEXT-DECORATION: none
+}
+.app .user_tool {
+	RIGHT: -147px
+}
+.topchannel .item {
+	HEIGHT: 37px
+}
+.app_content .pager {
+	CLEAR: both; PADDING-RIGHT: 27px; PADDING-LEFT: 27px; FONT-SIZE: 12px; FLOAT: none; PADDING-BOTTOM: 27px; PADDING-TOP: 27px; FONT-FAMILY: Tahoma, Geneva, sans-serif; TEXT-ALIGN: center
+}
+.game_content .pager {
+	CLEAR: both; PADDING-RIGHT: 27px; PADDING-LEFT: 27px; FONT-SIZE: 12px; FLOAT: none; PADDING-BOTTOM: 27px; PADDING-TOP: 27px; FONT-FAMILY: Tahoma, Geneva, sans-serif; TEXT-ALIGN: center
+}
+.app_content .pager A {
+	BORDER-RIGHT: #cccccc 1px solid; PADDING-RIGHT: 8px; BORDER-TOP: #cccccc 1px solid; DISPLAY: inline-block; PADDING-LEFT: 8px; FONT-SIZE: 12px; PADDING-BOTTOM: 0px; MARGIN-LEFT: 3px; VERTICAL-ALIGN: middle; BORDER-LEFT: #cccccc 1px solid; COLOR: #323232; LINE-HEIGHT: 18px; PADDING-TOP: 0px; BORDER-BOTTOM: #cccccc 1px solid; HEIGHT: 18px; TEXT-ALIGN: center
+}
+.pager STRONG {
+	BORDER-RIGHT: #cccccc 1px solid; PADDING-RIGHT: 8px; BORDER-TOP: #cccccc 1px solid; DISPLAY: inline-block; PADDING-LEFT: 8px; FONT-SIZE: 12px; PADDING-BOTTOM: 0px; MARGIN-LEFT: 3px; VERTICAL-ALIGN: middle; BORDER-LEFT: #cccccc 1px solid; COLOR: #323232; LINE-HEIGHT: 18px; PADDING-TOP: 0px; BORDER-BOTTOM: #cccccc 1px solid; HEIGHT: 18px; TEXT-ALIGN: center
+}
+.pager SPAN {
+	BORDER-RIGHT: #cccccc 1px solid; PADDING-RIGHT: 8px; BORDER-TOP: #cccccc 1px solid; DISPLAY: inline-block; PADDING-LEFT: 8px; FONT-SIZE: 12px; PADDING-BOTTOM: 0px; MARGIN-LEFT: 3px; VERTICAL-ALIGN: middle; BORDER-LEFT: #cccccc 1px solid; COLOR: #323232; LINE-HEIGHT: 18px; PADDING-TOP: 0px; BORDER-BOTTOM: #cccccc 1px solid; HEIGHT: 18px; TEXT-ALIGN: center
+}
+.game_content .pager A {
+	BORDER-RIGHT: #cccccc 1px solid; PADDING-RIGHT: 8px; BORDER-TOP: #cccccc 1px solid; DISPLAY: inline-block; PADDING-LEFT: 8px; FONT-SIZE: 12px; PADDING-BOTTOM: 0px; MARGIN-LEFT: 3px; VERTICAL-ALIGN: middle; BORDER-LEFT: #cccccc 1px solid; COLOR: #323232; LINE-HEIGHT: 18px; PADDING-TOP: 0px; BORDER-BOTTOM: #cccccc 1px solid; HEIGHT: 18px; TEXT-ALIGN: center
+}
+.pager SPAN {
+	BORDER-TOP-STYLE: none; BORDER-RIGHT-STYLE: none; BORDER-LEFT-STYLE: none; BORDER-BOTTOM-STYLE: none
+}
+.pager .next_page {
+	BORDER-RIGHT: #cccccc 1px solid; BORDER-TOP: #cccccc 1px solid; BORDER-LEFT: #cccccc 1px solid; BORDER-BOTTOM: #cccccc 1px solid
+}
+.pager STRONG {
+	FONT-WEIGHT: bold; BORDER-LEFT-COLOR: #106bb7; BACKGROUND: url(../images/pager_bg.png) repeat-x; BORDER-BOTTOM-COLOR: #106bb7; COLOR: #ffffff; BORDER-TOP-COLOR: #106bb7; TEXT-DECORATION: none; BORDER-RIGHT-COLOR: #106bb7
+}
+.app_content .pager A:hover {
+	BORDER-LEFT-COLOR: #106bb7; BACKGROUND: url(../images/pager_bg.png) repeat-x; BORDER-BOTTOM-COLOR: #106bb7; COLOR: #ffffff; BORDER-TOP-COLOR: #106bb7; TEXT-DECORATION: none; BORDER-RIGHT-COLOR: #106bb7; webkit-transition: all 0s linear; transition: all 0s linear; moz-transition: all 0s linear
+}
+.game_content .pager A:hover {
+	BORDER-LEFT-COLOR: #106bb7; BACKGROUND: url(../images/pager_bg.png) repeat-x; BORDER-BOTTOM-COLOR: #106bb7; COLOR: #ffffff; BORDER-TOP-COLOR: #106bb7; TEXT-DECORATION: none; BORDER-RIGHT-COLOR: #106bb7; webkit-transition: all 0s linear; transition: all 0s linear; moz-transition: all 0s linear
+}
+.pager SPAN {
+	COLOR: #8c8c8c
+}
+.pager .next_page {
+	PADDING-RIGHT: 12px; PADDING-LEFT: 12px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px
+}
+.pager EM {
+	MARGIN-LEFT: 3px
+}
+.game_site {
+	BORDER-RIGHT: #e6e6e6 1px solid; PADDING-RIGHT: 28px; BORDER-TOP: #e6e6e6 1px solid; MARGIN-TOP: 14px; PADDING-LEFT: 28px; FONT-SIZE: 14px; BACKGROUND: #fbfefd; PADDING-BOTTOM: 0px; OVERFLOW: hidden; BORDER-LEFT: #e6e6e6 1px solid; LINE-HEIGHT: 31px; PADDING-TOP: 0px; BORDER-BOTTOM: #e6e6e6 1px solid; HEIGHT: 31px
+}
+.game_site A {
+	MARGIN-LEFT: 30px; COLOR: #323232
+}
+.game_site A:hover {
+	COLOR: #1a88d5
+}
+.game_content .article {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px
+}
+.game_content H2 {
+	PADDING-RIGHT: 17px; PADDING-LEFT: 17px; FONT-SIZE: 14px; BACKGROUND: url(../images/game_nav.png) repeat-x; PADDING-BOTTOM: 0px; LINE-HEIGHT: 32px; PADDING-TOP: 0px; BORDER-BOTTOM: #e6e6e6 1px solid; POSITION: relative; HEIGHT: 32px
+}
+.game_content H2 A {
+	FONT-WEIGHT: normal; FONT-SIZE: 12px; RIGHT: 17px; POSITION: absolute; TOP: 0px
+}
+.game_content H2 EM {
+	COLOR: #ff0000
+}
+.sort {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 20px; PADDING-BOTTOM: 0px; PADDING-TOP: 9px; HEIGHT: 81px
+}
+.sort DL {
+	MARGIN-TOP: 11px; OVERFLOW: hidden; WIDTH: 316px; LINE-HEIGHT: 16px; HEIGHT: 16px
+}
+.sort DL {
+	FLOAT: left
+}
+.sort DT {
+	FLOAT: left
+}
+.sort DD {
+	FLOAT: left
+}
+.sort DT {
+	BACKGROUND: url(../images/game_bg.png) no-repeat; WIDTH: 34px; COLOR: #ffffff; TEXT-INDENT: 4px; HEIGHT: 16px
+}
+.sort DD {
+	WIDTH: 273px; COLOR: #cccccc
+}
+.sort A {
+	MARGIN: 0px 8px; COLOR: #333333
+}
+.sort A:hover {
+	COLOR: #1b89d9
+}
+.game_content .article {
+	MARGIN-TOP: 10px
+}
+.game_content .article UL {
+	MARGIN: 20px 0px 0px
+}
+.game_content .article LI {
+	FLOAT: left; MARGIN: 0px 16px; WIDTH: 62px; HEIGHT: 88px; TEXT-ALIGN: center
+}
+.game .article {
+	WIDTH: 968px
+}
+.game .article2 {
+	FLOAT: left; WIDTH: 478px; MARGIN-RIGHT: 10px
+}
+.game .article3 {
+	FLOAT: left; WIDTH: 478px; MARGIN-RIGHT: 10px
+}
+.game .article3 {
+	MARGIN-RIGHT: 0px
+}
+.game_content .article2 LI {
+	MARGIN: 0px 15px
+}
+.game_content .article3 LI {
+	MARGIN: 0px 15px
+}
+.game_content P {
+	OVERFLOW: hidden; HEIGHT: 18px
+}
+.game .user_tool {
+	RIGHT: -120px
+}
+.blank {
+	CLEAR: both; HEIGHT: 100px
+}
+.app_content {
+	PADDING-BOTTOM: 50px
+}

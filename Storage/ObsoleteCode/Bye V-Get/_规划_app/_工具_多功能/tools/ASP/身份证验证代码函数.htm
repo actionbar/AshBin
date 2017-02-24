@@ -1,0 +1,85 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>身份证验证代码函数</title>
+<style type="text/css">
+<!--
+body {
+	font-size: 10.4pt;
+	line-height: 22px;
+}
+-->
+</style>
+</head>
+
+<body bgcolor="eeeeee" leftmargin="20" marginwidth="20">
+<p><strong>身份证验证代码函数</strong></p>
+<hr>
+<p> Function CheckCardId(e)</p>
+<p> arrVerifyCode = Split(&quot;1,0,x,9,8,7,6,5,4,3,2&quot;, &quot;,&quot;)</p>
+<p> Wi = Split(&quot;7,9,10,5,8,4,2,1,6,3,7,9,10,5,8,4,2&quot;, &quot;,&quot;)</p>
+<p> Checker = Split(&quot;1,9,8,7,6,5,4,3,2,1,1&quot;, &quot;,&quot;)<br>
+  <br>
+  If Len(e) &lt; 15 Or Len(e) = 16 Or Len(e) = 17 Or Len(e) &gt; 18 Then<br>
+  CheckCardId= &quot;身份证号共有 15 码或18位&quot;<br>
+  CheckCardId = False<br>
+  Exit Function<br>
+  End If<br>
+  <br>
+  Dim Ai<br>
+  If Len(e) = 18 Then<br>
+  Ai = Mid(e, 1, 17)<br>
+  ElseIf Len(e) = 15 Then<br>
+  Ai = e<br>
+  Ai = Left(Ai, 6) &amp; &quot;19&quot; &amp; Mid(Ai, 7, 9)<br>
+  End If<br>
+  If Not IsNumeric(Ai) Then<br>
+  CheckCardId= &quot;身份证除最后一位外，必须为数字！&quot;<br>
+  <br>
+  Exit Function<br>
+  End If<br>
+  Dim strYear, strMonth, strDay<br>
+  strYear = CInt(Mid(Ai, 7, 4))<br>
+  strMonth = CInt(Mid(Ai, 11, 2))<br>
+  strDay = CInt(Mid(Ai, 13, 2))</p>
+<p>BirthDay = Trim(strYear) + &quot;-&quot; + Trim(strMonth) + &quot;-&quot; + 
+  Trim(strDay)<br>
+  If IsDate(BirthDay) Then<br>
+  If DateDiff(&quot;yyyy&quot;,Now,BirthDay)&lt;-140 or cdate(BirthDay)&gt;date() 
+  Then<br>
+  <br>
+  CheckCardId= &quot;身份证输入错误！&quot;</p>
+<p> Exit Function<br>
+  End If<br>
+  If strMonth &gt; 12 Or strDay &gt; 31 Then<br>
+  CheckCardId= &quot;身份证输入错误！&quot;</p>
+<p> Exit Function<br>
+  End If<br>
+  Else<br>
+  CheckCardId= &quot;身份证输入错误！&quot;</p>
+<p> Exit Function<br>
+  End If<br>
+  Dim i, TotalmulAiWi<br>
+  For i = 0 To 16<br>
+  TotalmulAiWi = TotalmulAiWi + CInt(Mid(Ai, i + 1, 1)) * Wi(i)<br>
+  Next<br>
+  Dim modValue<br>
+  modValue = TotalmulAiWi Mod 11<br>
+  Dim strVerifyCode<br>
+  strVerifyCode = arrVerifyCode(modValue)<br>
+  Ai = Ai &amp; strVerifyCode<br>
+  CheckCardId = Ai<br>
+  <br>
+  If Len(e) = 18 And e &lt;&gt; Ai Then<br>
+  CheckCardId= &quot;身份证号码输入错误！&quot;<br>
+  Exit Function<br>
+  End If<br>
+  End Function</p>
+<p>response.write CheckCardId(&quot;528337194801020025&quot;) '''''''''这个不知是谁的身份证,我一试就出来了~~~~~~~~~哈哈</p>
+<p></p>
+<p>'''''这个如果返回的是输入的身份证,则表明正确,否则会提示出错...</p>
+<p></p>
+<p>&nbsp; </p>
+</body>
+</html>

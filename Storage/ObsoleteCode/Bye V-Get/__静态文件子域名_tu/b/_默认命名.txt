@@ -1,0 +1,10 @@
+b  == border 
+  b[width][name]  非平铺
+           [name] {3}     三位相近颜色 ，  或者     3位英文名字
+    b960eee  默认 960 的border
+    b000abe  默认全屏border
+ bd[总宽]颜色[点宽]
+    bd4ccc2
+	
+bgf0  背景 f0f0f0 --> ffffff
+div

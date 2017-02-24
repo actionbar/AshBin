@@ -1,0 +1,24 @@
+<html>
+<head><link rel="stylesheet" type="text/css" href="showcode.css" /></head>
+<body>
+<pre>
+&lt;html&gt;
+&lt;body&gt;
+<code class="aspcode">&lt;%
+dim fs,d,n
+set fs=Server.CreateObject(&#34;Scripting.FileSystemObject&#34;)
+set d=fs.GetDrive(&#34;c:&#34;)
+n = &#34;此 &#34; & d.DriveLetter
+if d.IsReady=true then 
+    n = n & &#34; 驱动器已就绪。&#34;
+else
+    n = n & &#34; 驱动器未就绪。&#34;
+end if 
+Response.Write(n)
+set d=nothing
+set fs=nothing
+%&gt;</code>
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+</body>

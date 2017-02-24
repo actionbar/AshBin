@@ -1,0 +1,103 @@
+*{padding:0;margin:0}
+body {font-size:12px;color: #333333;font-family:tahoma,simsun}
+ul{list-style-position:outside;list-style-type: none}
+li{white-space:nowrap;text-overflow:ellipsis;-o-text-overflow:ellipsis;overflow: hidden;}/*li中内容超过长度后以省略号显示的方法*/
+li,a,input{cursor:pointer}
+a {color: #333; text-decoration: none;}
+a:hover {color: #c00;text-decoration: underline;}
+img {border-width:0;}
+.p{float:left}.o{clear:both}.q{float:right}
+
+
+
+.w{margin: 0px auto; overflow: hidden; width: 960px;}
+.t{line-height: 30px;height: 30px}
+.t a{margin: 0px 4px; color: #1e50a2}
+
+
+
+.w2{BORDER: #dddcdc 1px solid; BACKGROUND: #f3f2f2; OVERFLOW: hidden; PADDING-TOP: 7px;POSITION: relative; HEIGHT: 116px}
+
+
+.n { OVERFLOW: hidden; LINE-HEIGHT: 28px; HEIGHT: 28px; }
+.n SPAN A {MARGIN: 0px 5px}
+.n FORM {FLOAT: right; VERTICAL-ALIGN: middle; OVERFLOW: hidden; LINE-HEIGHT: 25px; FONT-FAMILY: tahoma; HEIGHT: 25px;}
+.n SELECT{float:right;margin:4px;}
+.n INPUT {FONT-SIZE: 12px;VERTICAL-ALIGN: middle;}
+.n .YS0{BORDER: #033 1px solid;PADDING-TOP: 3px;BACKGROUND: url(../../S/YS0.png) repeat-x;WIDTH: 202px; COLOR: #ddd;HEIGHT: 17px;TEXT-ALIGN: left}
+.n .YS1 {BORDER: #145098 1px solid; Padding:0px;BACKGROUND: url(../../S/YS1.png) repeat-x;WIDTH: 44px; COLOR: #000;HEIGHT: 22px}
+
+
+.v {margin-bottom: 8px; width: 100%;background: #fff; overflow: hidden; height: 100%}
+.l {display: inline; float: left; overflow: hidden; width: 640px; margin-right: 8px;}
+.c {border: #c6d3e6 1px solid; background: #f4f9ff; overflow: hidden; width: 638px;}
+.c h1 {font-size: 24px; margin: 27px 0px 12px; overflow: hidden; line-height: 24px; height: 24px; text-align: center}
+.c .c2 {padding:0 70px 3px 0px;margin: 0px 25px; color: #7e7e7e; line-height: 24px; border-bottom: #cc0000 1px solid; position: relative; height: 24px; text-align: center}
+.c2 span{right: 0px; width: 70px; color: #7e7e7e; position: absolute; top: 0px}
+.c2 span a {margin: 0px 3px; color: #7e7e7e}
+.cn{margin: 15px 33px 0 45px;height:130px}
+.cnl{width:300px;padding-left:10px;font-size: 14px;}
+.cn li{overflow:hidden; line-height:26px; height:26px;}
+.cn li a{color:#1e50a2}
+.cnr img{filter:progid:dximagetransform.microsoft.basicimage(grayscale=1);height:130px;width:250px}
+#c{font-size: 14px; margin: 0px 35px 0px 40px; overflow: hidden; width: 561px}
+#c p{margin: 15px 0px; line-height: 24px}
+
+.l2{BORDER: #c3c2c2 1px solid;MARGIN:10px 0px; OVERFLOW: hidden; WIDTH: 638px;}
+.l2v{OVERFLOW: hidden; height:24px;line-height:24px;margin:0 18px;}
+.l2v a{margin-right:30px;color:#555}
+.l2c {MARGIN: 0px auto; OVERFLOW: hidden; HEIGHT: 90px; TEXT-ALIGN: center}
+
+
+.XB{ BACKGROUND: #f4f9ff; BORDER: #c6d3e6 1px solid;  }
+/*公共部分*/
+.XB {PADDING:0 24px;MARGIN-TOP: 10px; OVERFLOW: hidden; WIDTH: 588px; }
+.YD {MARGIN-TOP: 10px; POSITION: relative}
+.YD span{position:absolute;right:0px}
+.YD SPAN A{margin:auto 4px;}
+.YD FORM {VERTICAL-ALIGN: middle; OVERFLOW: hidden; LINE-HEIGHT: 25px; FONT-FAMILY: tahoma; }
+.YD .YD1{PADDING-RIGHT: 15px; FONT-SIZE: 14px; COLOR: #cc0000;font-weight:bold;}
+.YD INPUT {FONT-SIZE: 12px;VERTICAL-ALIGN: middle;}
+#fb0{PADDING: 2px 2px 0px;WIDTH: 80px; HEIGHT: 14px;TEXT-ALIGN: left}
+.YD .fb1 {BORDER: #145098 1px solid; Padding:0px;BACKGROUND: url(S/YS1.png) repeat-x;WIDTH: 38px; COLOR: #000;HEIGHT: 18px}
+
+.YD H5 {FONT-WEIGHT: normal; FONT-SIZE: 12px; RIGHT: 30px; WIDTH: 150px; POSITION: absolute; TOP: 3px; TEXT-ALIGN: right}
+.YD H5 LABEL {VERTICAL-ALIGN: middle}
+.YD H5 INPUT {VERTICAL-ALIGN: middle}
+.YD H5 INPUT {BORDER-RIGHT: #c3c2c2 1px solid; BORDER-TOP: #c3c2c2 1px solid; BORDER-LEFT: #c3c2c2 1px solid; WIDTH: 90px; COLOR: #666; BORDER-BOTTOM: #c3c2c2 1px solid; HEIGHT: 15px}
+.YD A {FONT-SIZE: 12px; COLOR: #1e50a2}
+.YD TEXTAREA { PADDING:2px;  FONT-SIZE: 12px; MARGIN: 0px auto; BORDER: #c3c2c2 1px solid; WIDTH: 582px;  HEIGHT: 142px}
+.YDT{font-size:14px;}
+.YDT li a{margin:auto 4px}
+.YDT h4{font-weight: normal;color:#999;font-size:12px;border-bottom: #999 1px dashed;}
+.YDT p{line-height:25px;padding-left:18px}
+.GG5{margin:8px;width:100%;height:90px;}
+.XB H2 {PADDING-LEFT: 18px; FONT-SIZE: 14px; BACKGROUND: url(../images/cont10_h2.png) no-repeat left -878px; OVERFLOW: hidden; COLOR: #cc0000; LINE-HEIGHT: 27px; BORDER-BOTTOM: #a2b9da 1px dashed; HEIGHT: 27px}
+.XB H2 A {COLOR: #cc0000}
+.XB OL {MARGIN: 10px 0 0 40px;}
+.XB OL LI {FONT-SIZE: 14px; LINE-HEIGHT: 28px; HEIGHT: 28px}
+.XB OL SPAN {PADDING-LEFT: 10px; FONT-SIZE: 12px; COLOR: #666666}
+.XB OL SPAN A {COLOR: #cc0000}
+.XBG{OVERFLOW: hidden; WIDTH: 700px}
+.XBG LI {FLOAT: left; MARGIN: 14px 23px 0px 0px;}
+.XBG LI .XB2_1 {BORDER: #c3c2c2 1px solid; BACKGROUND: #fff; WIDTH: 128px; HEIGHT: 114px}
+.XBG LI span{FONT-SIZE: 12px; BACKGROUND: url(../images/cont10_h2.png) no-repeat left -962px; MARGIN-LEFT: 4px; OVERFLOW: hidden; TEXT-INDENT: 10px; LINE-HEIGHT: 20px; HEIGHT: 20px}
+.XBG LI IMG {DISPLAY: block; MARGIN: 0px auto; WIDTH: 120px; HEIGHT: 90px}
+.XBG LI P {MARGIN: 3px 0px 0px; OVERFLOW: hidden; LINE-HEIGHT: 25px; HEIGHT: 25px; TEXT-ALIGN: center}
+.XBG H2 A {COLOR: #cc0000}
+
+
+.r{FLOAT: right; OVERFLOW: hidden; WIDTH: 312px}
+.YR2 {BORDER: #c6d3e6 1px solid;BACKGROUND: #f4f9ff; }
+.YR2 H2 {BORDER-BOTTOM: #c6d3e6 1px solid; HEIGHT: 28px;font-size:12px;LINE-HEIGHT: 28px;MARGIN-LEFT: 14px; OVERFLOW: hidden; }
+.YR2 H2 A {margin-right:18px;COLOR: #014393;}
+.YR2 H2 SPAN {FONT-SIZE: 14px;}
+.YR2 H3 {FONT-SIZE: 14px; MARGIN: 6px 10px 0px; OVERFLOW: hidden; LINE-HEIGHT: 22px; HEIGHT: 22px}
+.YR2 UL {MARGIN: 6px 14px;OVERFLOW: hidden;}
+.YR2 LI {PADDING-LEFT: 12px; OVERFLOW: hidden; LINE-HEIGHT: 22px; HEIGHT: 22px}
+.YR OL LI {color:#F00}
+.YRG {MARGIN: 10px 0px 0px; OVERFLOW: hidden; WIDTH: 100%}
+.YRG LI {FLOAT: left; PADDING-BOTTOM: 0px; WIDTH: 120px; PADDING-TOP: 0px; HEIGHT: 121px}
+.YRG LI P {OVERFLOW: hidden; LINE-HEIGHT: 24px; HEIGHT: 24px; TEXT-ALIGN: center}
+.YRG LI IMG {DISPLAY: block; WIDTH: 120px; HEIGHT: 90px}
+.YD1D {BACKGROUND: url(YD1D.png) repeat-x;}

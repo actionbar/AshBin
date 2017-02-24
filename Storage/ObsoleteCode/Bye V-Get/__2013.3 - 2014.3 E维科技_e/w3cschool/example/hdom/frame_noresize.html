@@ -1,0 +1,23 @@
+<html>
+<head>
+<script type="text/javascript">
+function disableResize()
+  {
+  parent.document.getElementById("leftFrame").noResize=true
+  parent.document.getElementById("rightFrame").noResize=true
+  }
+function enableResize()
+  {
+  parent.document.getElementById("leftFrame").noResize=false
+  parent.document.getElementById("rightFrame").noResize=false
+  }
+</script>
+</head>
+
+<body>
+<input type="button" onclick="disableResize()" value="No resize" />
+<input type="button" onclick="enableResize()" value="Resize" />
+<p>Try to resize the frames.</p>
+</body>
+
+</html>

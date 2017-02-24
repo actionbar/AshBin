@@ -1,0 +1,513 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>提前还贷计算器</title>
+<meta name="keywords" content="提前还贷计算器房产工具,贷款工具,购房工具,银行贷款,购房计算器">
+<meta content="提前还贷计算器房产工具,贷款工具,购房工具,银行贷款,购房计算器" name="description" />
+<link href="../images/style.css" rel="stylesheet" type="text/css" />
+<style type="text/css">
+<!--
+body {margin:0; padding:0;background: #FFF url('../images/top3.gif') repeat-x top; font-size:12px;color:#666}
+.style1 {font-size: 14px}
+-->
+</style>
+<SCRIPT language=javascript>
+function play(){
+
+ if (document.myform.dkze.value=='') 
+
+ {
+
+ alert('请填入贷款总额');
+
+ return false;
+
+ }
+
+ else
+
+ sm=parseFloat(document.myform.dkze.value)*10000;
+
+ if(document.myform.hklx[1].checked)
+
+ {
+
+ if(document.myform.hklxje.value=='')
+
+ {
+
+ alert('请填入部分提前还款额度');
+
+ return false;
+
+ }
+
+ }
+
+ stime=parseInt(document.myform.ydkqx.options[document.myform.ydkqx.selectedIndex].value);
+
+ if(document.myform.dklx[0].checked && stime<=60) srate=0.003;
+
+ if(document.myform.dklx[0].checked && stime>60) srate=0.003375;
+
+ if(document.myform.dklx[1].checked && stime<=60) srate=0.003975;
+
+ if(document.myform.dklx[1].checked && stime>60) srate=0.0042;
+
+ md=(parseInt(document.myform.yjtqhksjn.options[document.myform.yjtqhksjn.selectedIndex].value)-parseInt(document.myform.dychksjn.options[document.myform.dychksjn.selectedIndex].value))*12 + (parseInt(document.myform.yjtqhksjy.options[document.myform.yjtqhksjy.selectedIndex].value)-parseInt(document.myform.dychksjy.options[document.myform.dychksjy.selectedIndex].value));
+
+ if(md<0 || md>stime)
+
+ {
+
+ alert('预计提前还款时间与第一次还款时间有矛盾，请查实');
+
+ return false;
+
+ }
+
+ yhk=sm*(srate*Math.pow((1+srate),stime))/(Math.pow((1+srate),stime)-1);
+
+ lrq=(parseInt(document.myform.dychksjn.options[document.myform.dychksjn.selectedIndex].value)+Math.floor((stime+parseInt(document.myform.dychksjy.options[document.myform.dychksjy.selectedIndex].value)-2)/12))+'年'+((stime+parseInt(document.myform.dychksjy.options[document.myform.dychksjy.selectedIndex].value)-2) % 12+1)+'月';
+
+ pol=yhk*md;
+
+ rsd=0;
+
+ uir=0;
+
+ for(i=1;i<=md;i++){
+
+ rsd=rsd+(sm-uir)*srate;
+
+ uir=uir+yhk-(sm-uir)*srate;
+
+ }
+
+ remark='';
+
+ if(document.myform.hklx[1].checked){
+
+ ert=document.myform.hklxje.value*10000;
+
+ if(ert+yhk>=yhk*(1/srate-1/(srate*Math.pow((1+srate),(stime-md))))){
+
+ remark='您的提前还款额已经可以一次还清所有未还款项！';
+
+ }else{
+
+ if(document.myform.clfs[0].checked){
+
+ wer=0;
+
+ qwa=0;
+
+ for(j=sm-uir-yhk-ert;j>=0;j=j-qwa){
+
+ qwa=yhk/Math.pow((1+srate),wer);
+
+ wer++;
+
+ }
+
+ vbr=(sm-uir-yhk-ert)*(srate*Math.pow((1+srate),wer))/(Math.pow((1+srate),wer)-1);
+
+ bnf=yhk+ert;
+
+ thx=yhk*stime-pol-bnf-vbr*wer;
+
+ bncc=(parseInt(document.myform.dychksjn.options[document.myform.dychksjn.selectedIndex].value)+Math.floor((wer+md+parseInt(document.myform.dychksjy.options[document.myform.dychksjy.selectedIndex].value)-2)/12))+'年'+((wer+md+parseInt(document.myform.dychksjy.options[document.myform.dychksjy.selectedIndex].value)-2) % 12+1)+'月';
+
+ }else{
+
+ vbr=(sm-uir-yhk-ert)*(srate*Math.pow((1+srate),(stime-md)))/(Math.pow((1+srate),(stime-md))-1);
+
+ bnf=yhk+ert;
+
+ thx=yhk*stime-pol-bnf-vbr*(stime-md);
+ bncc=lrq;
+
+ }
+
+ }
+
+ }
+
+ if(document.myform.hklx[0].checked || remark!=''){
+
+ bnf=(sm-uir)*(1+srate);
+
+ vbr=0;
+
+ thx=yhk*stime-pol-bnf;
+
+ bncc=document.myform.yjtqhksjn.options[document.myform.yjtqhksjn.selectedIndex].value+'年'+document.myform.yjtqhksjy.options[document.myform.yjtqhksjy.selectedIndex].value+'月';
+
+ }
+
+ document.myform.ykhke.value=chgnum(yhk);
+
+ document.myform.yzhhkq.value=lrq;
+
+ document.myform.yhkze.value=chgnum(pol);
+
+ document.myform.yhlxe.value=chgnum(rsd);
+
+ document.myform.gyyihke.value=chgnum(bnf);
+
+ document.myform.xyqyhke.value=chgnum(vbr);
+
+ document.myform.jslxzc.value=chgnum(thx);
+
+ document.myform.xdzhhkq.value=bncc;
+
+ document.myform.jsjgts.value=remark;
+
+}
+
+function chgnum(sum){
+
+ return Math.round(sum*100)/100;
+
+}
+</SCRIPT>
+</HEAD>
+<BODY>
+<table width="960" height="75" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td width="264" rowspan="2" align="center"><a href="../index.html">
+	<img src="../images/logo.gif" width="224" height="38" border="0" /></a></td>
+    <td height="24" valign="top">
+	<table width="321" height="24" border="0" align="right" cellpadding="0" cellspacing="0" background="../images/top2.gif">
+        <tr>
+          <td align="center" class="cwhite12"><a href="#" class="cwhite12">tools.kqiqi.com</a>　<a href="#" OnClick='this.style.behavior="url(#default#homepage)";this.setHomePage("http://tools.kqiqi.com");' class="cwhite12">设为首页</a> | <a href="#" onClick="window.external.AddFavorite('http://tools.kqiqi.com','客齐齐实用查询工具');" class="cwhite12">收藏本站</a></td>
+        </tr>
+    </table></td>
+  </tr>
+</table>
+<table width="960" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td><table height="38" border="0" cellpadding="0" cellspacing="0" style="margin-left:5px">
+      <tr align="center">
+          <td width="88" background="../images/nav1.gif" style="padding-top:5px"><a href="../index.html" class="navfh2">首　页</a></td>
+          <td width="88" background="../images/nav1.gif" style="padding-top:5px"><a href="../admin/index.html" class="navfh2">站长工具</a></td>
+          <td width="88" background="../images/nav1.gif" style="padding-top:5px"><a href="../query/index.html" class="navfh2">查询工具</a></td>
+          <td width="88" background="../images/nav2.gif" style="padding-top:5px"><a href="index.html" class="navfh1">计算工具</a></td>
+          <td width="88" background="../images/nav1.gif" style="padding-top:5px"><a href="../password/index.html" class="navfh2">加密解密</a></td>
+          <td width="88" background="../images/nav1.gif" style="padding-top:5px"><a href="../conversion/index.html" class="navfh2">转换工具</a></td>
+          <td width="88" background="../images/nav1.gif" style="padding-top:5px"><a href="../color/index.html" class="navfh2">颜色工具</a></td>
+          <td width="88" background="../images/nav1.gif" style="padding-top:5px"><a href="../web/index.html" class="navfh2">网络辅助</a></td>
+          <td width="88" background="../images/nav1.gif" style="padding-top:5px"><a href="../picture/index.html" class="navfh2">图片工具</a></td>
+          <td width="88" background="../images/nav1.gif" style="padding-top:5px"><a href="../others/index.html" class="navfh2">其它工具</a></td>
+        </tr>
+    </table></td>
+  </tr>
+</table>
+<script language="javascript" src="../js/others_top.js"></script>
+<table width="960" border="0" align="center" cellpadding="0" cellspacing="0" class="mainbg1">
+  <tr valign="top">
+    <td width="20">　</td>
+    <td width="190">
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td colspan="2" height="10">
+
+</td>
+</tr>
+      <tr>
+        <td width="75%">
+		<img src="../images/t9.gif" width="32" height="32" align="absmiddle" />　<span class="navfh1">工具列表</span></td>
+        <td width="25%">　</td>
+      </tr>
+    </table>
+     <table width="100%"  border="0" cellpadding="0" cellspacing="0" background="../images/t12.gif" class="mar5">
+        <tr>
+          <td height="10"> </td>
+        </tr>
+      </table>
+<table width="100%"  border="0" cellpadding="0" cellspacing="0" class="mar5">
+      <tr>
+        <td>　
+ <div id="menu">
+ <div class="box">
+    <a href="Calculator.html">多功能计算器
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+
+  <div class="box">
+    <a href="Subarea.html">整数分区计算器
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+    <div class="box">
+    <a href="IncomeTax.html">个人所得税计算器
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+  <div class="box">
+    <a href="HouseEvaluation.html">二手房买卖评估计算
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+  <div class="box">
+    <a href="PublicLoan.html">公积金贷款计算器
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+  <div class="box">
+    <a href="MortgageLoan.html">按揭贷款计算器
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+  <div class="box">
+    <a href="BusinessHouse.html">商品房购房计算器
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+  <div class="box">
+    <a href="BusinessLoan.html">个房商业贷款计算器
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+<div class="box">
+    <a href="AccumulationFund.html">个房公积金贷款计算
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+<div class="box">
+    <a href="PrePayLoan.html">提前还贷计算器
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+<div class="box">
+    <a href="HouseLoan.html">住房贷款利率计算器
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+<div class="box">
+    <a href="CreditStandard.html">个人信用评级计算
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+<div class="box">
+    <a href="AnJieLiLv.html">购房按揭利率计算器
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+  
+</div>
+ </td>
+      </tr>
+    </table>
+
+      <table width="100%" height="17"  border="0" cellpadding="0" cellspacing="0" background="t2.gif" class="mar5">
+        <tr>
+          <td> </td>
+        </tr>
+      </table>
+      
+    </td>
+    <td width="27">　</td>
+    <td width="700">
+     
+            <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+          <tr>
+      <td height="10" colspan="2">
+      </td>
+      </tr>
+        <tr valign="top">
+         <td width="40"><img src="../images/bang.gif" width="32" height="31"> </td>
+          <td><span class="navfh1">提前还贷计算器</span></td>
+          
+        </tr>
+      </table>
+      <hr size="1" style="color:#E3E8E9" />
+      <table width="100%"  border="0" cellpadding="3" cellspacing="1">
+              <tr>
+          <td>
+          
+<DIV align=center>
+<TABLE cellPadding=3 width=690 align=center border=0>
+  <TBODY>
+  <TR>
+    <TD width=1072>
+      <TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+        <TBODY>
+        <TR>
+          <TD bgColor=#D9D9D9>
+            <TABLE height=225 cellSpacing=0 cellPadding=0 width="100%" border=0>
+			  <TBODY>
+              <FORM name=myform>
+              <TR>
+                <TD>
+                  <TABLE cellSpacing=1 cellPadding=4 width="100%" border=0>
+                    <TBODY>
+                    <TR>
+                      <TD bgColor=#ffffff 
+                        height=30>&nbsp;&nbsp;&nbsp;&nbsp;如果您能够在贷款期间一次性偿还相当金额的还款，那么将会减少您的贷款负担，借款人提前还款时，应提前10日向银行提出书面申请，经银行确认后即为不可撤消的承诺，作为变更借款合同的补充条款。借款人可在约定期限内提前归还全部或部分剩余贷款本金，原来按期计收的贷款利息不予退还，提前归还的贷款不计收利息。（本计算器仅供参考。利率计算日期自2000年2月21日起）</TD></TR>
+                    <TBODY>
+                    <TR>
+                      <TD class=font bgColor=#ffffff height=30>贷款总额： <INPUT 
+                        size=10 name=dkze> 万元原贷款期限： <SELECT size=1 name=ydkqx> 
+                          <OPTION value=24>2年(24期)</OPTION> <OPTION 
+                          value=36>3年(36期)</OPTION> <OPTION 
+                          value=48>4年(48期)</OPTION> <OPTION 
+                          value=60>5年(60期)</OPTION> <OPTION 
+                          value=72>6年(72期)</OPTION> <OPTION 
+                          value=84>7年(84期)</OPTION> <OPTION 
+                          value=96>8年(96期)</OPTION> <OPTION 
+                          value=108>9年(108期)</OPTION> <OPTION 
+                          value=120>10年(120期)</OPTION> <OPTION 
+                          value=132>11年(132期)</OPTION> <OPTION 
+                          value=144>12年(144期)</OPTION> <OPTION 
+                          value=156>13年(156期)</OPTION> <OPTION 
+                          value=168>14年(168期)</OPTION> <OPTION value=180 
+                          selected>15年(180期)</OPTION> <OPTION 
+                          value=240>20年(240期)</OPTION> <OPTION 
+                          value=300>25年(300期)</OPTION> <OPTION 
+                          value=360>30年(360期)</OPTION></SELECT> </TD></TR>
+                    <TR bgColor=#dffacd>
+                      <TD class=font bgColor=#ffffff height=30>第一次还款时间： 
+                        <SELECT name=dychksjn> <OPTION value=1997 
+                          selected>1997</OPTION> <OPTION 
+                          value=1998>1998</OPTION> <OPTION 
+                          value=1999>1999</OPTION> <OPTION 
+                          value=2000>2000</OPTION> <OPTION 
+                          value=2001>2001</OPTION> <OPTION 
+                          value=2002>2002</OPTION> <OPTION 
+                          value=2003>2003</OPTION>
+                          <option value="2004">2004</option>
+                          <option value="2005">2005</option>
+                          <option value="2006">2006</option>
+                          <option value="2007">2007</option>
+                          <option value="2008">2008</option>
+                          <option value="2009">2009</option>
+                          <option value="2010">2010</option>
+                        </SELECT> 年 <SELECT 
+                        name=dychksjy> <OPTION value=1 selected>1<OPTION 
+                          value=2>2<OPTION value=3>3<OPTION value=4>4<OPTION 
+                          value=5>5<OPTION value=6>6<OPTION value=7>7<OPTION 
+                          value=8>8<OPTION value=9>9<OPTION value=10>10<OPTION 
+                          value=11>11<OPTION value=12>12</OPTION></SELECT> 
+                        月<BR>
+                        预提前还款时间： 
+                        <SELECT name=yjtqhksjn> <OPTION 
+                          value=2003 selected>2003<OPTION value=2004>2004<OPTION 
+                          value=2005>2005<OPTION value=2006>2006<OPTION 
+                          value=2007>2007<OPTION value=2008>2008<OPTION 
+                          value=2009>2009<OPTION value=2010>2010<OPTION 
+                          value=2011>2011<OPTION value=2012>2012<OPTION 
+                          value=2013>2013<OPTION value=2014>2014<OPTION 
+                          value=2015>2015<OPTION value=2016>2016<OPTION 
+                          value=2017>2017<OPTION value=2018>2018<OPTION 
+                          value=2019>2019<OPTION value=2020>2020<OPTION 
+                          value=2021>2021<OPTION value=2022>2022<OPTION 
+                          value=2023>2023<OPTION value=2024>2024<OPTION 
+                          value=2025>2025<OPTION value=2026>2026<OPTION 
+                          value=2027>2027<OPTION value=2028>2028<OPTION 
+                          value=2029>2029<OPTION value=2030>2030<OPTION 
+                          value=2031>2031<OPTION value=2032>2032</OPTION>
+                        </SELECT>
+                        年 
+                        <SELECT name=yjtqhksjy> <OPTION value=1 
+                          selected>1<OPTION value=2>2<OPTION value=3>3<OPTION 
+                          value=4>4<OPTION value=5>5<OPTION value=6>6<OPTION 
+                          value=7>7<OPTION value=8>8<OPTION value=9>9<OPTION 
+                          value=10>10<OPTION value=11>11<OPTION 
+                          value=12>12</OPTION></SELECT> 月</TD></TR>
+                    <TR bgColor=#dffacd>
+                      <TD class=font bgColor=#ffffff height=30>贷款类型： <INPUT 
+                        type=radio CHECKED name=dklx> 公积金贷款 <INPUT type=radio 
+                        name=dklx> 商业性贷款</TD></TR>
+                    <TR bgColor=#dffacd>
+                      <TD class=font bgColor=#ffffff height=30><INPUT 
+                        type=radio CHECKED name=hklx> 一次提前还清 <INPUT type=radio 
+                        name=hklx> 部分提前还款 <INPUT size=6 name=hklxje> 
+                        万元（不含当月应还款额）</TD></TR>
+                    <TR bgColor=#dffacd>
+                      <TD class=font bgColor=#ffffff height=14>处理方式： <INPUT 
+                        type=radio CHECKED name=clfs> 缩短还款年限，月还款额基本不变 <INPUT 
+                        type=radio name=clfs> 减少月还款额，还款期不变</TD></TR>
+                    <TR bgColor=#dffacd>
+                      <TD align=middle bgColor=#ffffff height=15><INPUT onclick=play() type=button value=开始计算 name=button> 
+<INPUT type=reset value=重新计算 name=reset> 
+                  </TD></TR></TBODY></TABLE>
+                  <TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+                    <TBODY>
+                    <TR>
+                      <TD bgColor=#ffffff height=20>　</TD></TR></TBODY></TABLE>
+                  <TABLE cellSpacing=1 cellPadding=4 width="100%" border=0>
+                    <TBODY>
+                    <TR bgColor=#dffacd>
+                      <TD class=font bgColor=#ffffff height=30>原月还款额： <INPUT 
+                        size=12 name=ykhke> 元 原最后还款期： <INPUT size=12 
+                        name=yzhhkq> </TD></TR>
+                    <TR bgColor=#dffacd>
+                      <TD class=font bgColor=#ffffff height=30>已还款总额： <INPUT 
+                        size=12 name=yhkze> 元 已还利息额： <INPUT size=12 
+                        name=yhlxe> 元</TD></TR>
+                    <TR bgColor=#dffacd>
+                      <TD class=font bgColor=#ffffff height=30>该月一次还款额： <INPUT 
+                        size=12 name=gyyihke> 元 下月起月还款额： <INPUT size=12 
+                        name=xyqyhke> 元</TD></TR>
+                    <TR bgColor=#dffacd>
+                      <TD class=font bgColor=#ffffff height=30>节省利息支出： <INPUT 
+                        size=12 name=jslxzc> 元</TD></TR>
+                    <TR bgColor=#dffacd>
+                      <TD class=font bgColor=#ffffff height=30>新的最后还款期： <INPUT 
+                        size=12 name=xdzhhkq> </TD></TR>
+                    <TR bgColor=#dffacd>
+                      <TD class=font bgColor=#ffffff height=30>计算结果提示： <INPUT 
+                        size=40 name=jsjgts> 
+              </TD></TR>
+			  </TBODY></TABLE></TD></TR></FORM>
+			  </TBODY></TABLE></TD></TR>
+			  </TBODY></TABLE></TD></TR>
+			  </TBODY></TABLE></DIV>
+   
+          </td>
+        </tr>
+        </table>
+      <br />
+         <script type="text/javascript" src="../js/wz.js"></script>
+         <script type="text/javascript" src="../js/Copy.js"></script>
+           
+      <br />
+      </td>
+    <td width="20">　</td>
+  </tr>
+</table>
+<table width="960" border="0" align="center" cellpadding="0" cellspacing="0" class="mainbg2">
+  <tr>
+    <td height="25"></td>
+  </tr>
+</table>
+
+<table width="960" border="0" align="center" cellpadding="0" cellspacing="0" class="mainbg2">
+  <tr>
+    <td><table width="920"  border="0" align="center" cellpadding="0" cellspacing="20" class="bottombg">
+    <tr>
+        <td align="center">
+          Copyright &copy; <a href="http://tools.kqiqi.com/">客齐齐实用查询工具</a> All rights reserved - <a href="../map.html">网站地图</a> - <a href="../contact.html">联系我们</a> - <script language="javascript" src="../js/bottom.js"></script>
+          </td>
+      </tr>
+    </table></td>
+  </tr>
+</table>
+</body>
+</html>

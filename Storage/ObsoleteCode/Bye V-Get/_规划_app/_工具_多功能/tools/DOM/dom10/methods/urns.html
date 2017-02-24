@@ -1,0 +1,98 @@
+<html xmlns:rdl>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<script src="rdl_method.js"></script>
+<base target="_self">
+</head>
+<body>
+
+<script>
+
+//collFriendObjects=new Array();
+//collFriendProperties=new Array();
+//collFriendMethods=new Array();
+//collFriendEvents=new Array();
+//collFriendCollections=new Array();
+
+collFriendCollections=new Array(
+'behaviorUrns'
+);
+
+//collIE40=new Array();
+//collIE50=new Array();
+//collIE55=new Array();
+//collIE60=new Array();
+
+collIE50=new Array(
+'all','anchors','applets','areas','boundElements','cells','childNodes','children','elements','embeds','FORM','forms','images','links','options','rows','scripts','SELECT','styleSheets','tBodies'
+);
+
+sStyle=
+'li{behavior:url(rdl_urns_demo.htc);}\n';
+
+sScript=
+'<script>\n'+
+'function rdl_doAdd(){\n'+
+'var coll  = document.all.urns("rdl:demo");\n'+
+'var sUrn = coll[0].behaviorUrns[0];\n'+
+'document.all("id_show").innerHTML="共有<b> "+coll.length.toString()+" <\/b>个<font color=#FF3300> URN = "+sUrn+" <\/font>的对象";\n'+
+'window.resizeTo(360,260);\n'+
+'}\n'+
+'<\/script>\n';
+
+sCode=
+'<ul id=oList>\n'+
+'<li>第1个列表项目\n'+
+'<li>第2个列表项目\n'+
+'<li>第3个列表项目\n'+
+'<\/ul>\n'+
+'<input type=button value=" 捕 获 " onclick="rdl_doAdd();">\n'+
+'<br><br><div id=id_show><\/div>\n';
+
+
+iWinWidth=360;
+
+iWinHeight=240;
+
+//bRunCode=false;
+
+</script>
+
+<div id=idContent>
+
+<div id=idContentTitle><span id=idTitleName>urns</span>版本：DHTML Object Model　返回值：有</div>
+
+<div class=cssColumnTitle>语法：</div>
+<div>
+<i>arrObjects</i><b> = </b><i>object</i><b> . urns ( </b><i>sUrn</i><b> ) </b>
+</div>
+
+<div class=cssColumnTitle>参数：</div>
+<table>
+<tr><td nowrap><i> sUrn </i></td><td nowrap><b>:</b></td>
+<td><b>必选项</b>。字符串(String)。指定行为(<b>  behavior </b>) 的通用资源名称( <b> URN </b> )。</td></tr>
+</table>
+
+<div class=cssColumnTitle>返回值：</div>
+<table>
+<tr><td nowrap><i> arrObjects </i></td><td nowrap><b>:</b></td>
+<td>数组(Array)。成功则返回对象集合，否则返回<b> null </b>。</td></tr>
+</table>
+
+<div class=cssColumnTitle>说明：</div>
+<div>
+返回绑定了指定行为(<b> behavior</b>) 的一组对象的引用。<br>
+使用<a href="../properties/length.html"> length </a>属性可以获取<i> arrObjects </i>包含的对象数目。使用<a href="item.html"> item </a>方法可以获取<i> arrObjects </i>中某个对象的具体细节。
+</div>
+
+<div class=cssColumnTitle>示例：</div>
+<div id=idSimpleCode>
+var coll  = document.all.urns("rdl:demo");
+</div>
+
+</div>
+</body>
+</html>
+
+<!-- Part of RDL(TM) - Written by Rain1977 
+HomeSite: http://www.dhtmlet.com  E-Mail: dhtmlet@hotmail.com -->

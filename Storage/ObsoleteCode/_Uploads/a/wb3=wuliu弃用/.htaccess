@@ -1,0 +1,13 @@
+RewriteEngine on
+RewriteRule ^(\d+)$ f.php?i=$1 [L]
+RewriteRule ^help/([a-z]+)_([a-z]+)\.html$ /help/f$2.php?i=$1 [L]
+RewriteRule ^j/(\w+)$ /j/$1.php?%{QUERY_STRING} [L]
+
+#暂时过渡一下，搜索一律用 /s?结尾，否则不利于SEO。
+RewriteRule ^([a-z]+)/s?$ /%{HTTP_HOST}.php?sa=$1&%{QUERY_STRING} [L]
+RewriteRule ^([a-z]+)-(\d+)/s?$ /%{HTTP_HOST}.php?sa=$1&sp=$2&%{QUERY_STRING} [L]
+RewriteCond %{HTTP_HOST} ^([a-z]+)\.wuliu\.v-get\.com$
+RewriteRule ^/?$ /%{HTTP_HOST}.html
+RewriteRule ^([a-z])/\d+-\d-\d/index_\d+?\.html$ http://wuliu.$1.v-get.com/?%{QUERY_STRING} [R=301]
+RewriteRule ^([a-z])/[a-z]+/[a-z]+/index_\d+.html$ http://wuliu.$1.v-get.com/?%{QUERY_STRING}[R=301]
+ErrorDocument 404 /a/missing.html

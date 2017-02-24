@@ -1,0 +1,128 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="../c3.css" />
+<title>Web Service 实例</title>
+</head>
+<body class="xml">
+<div id="wrapper">
+<div id="header">
+<a href="http://e.v-get.com/w3cschool/" style="float:left;">W3CSchool 在线教程</a>
+<div class="q g"><script type="text/javascript">var cpro_id="u1163355"</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div>
+<div id="navfirst">
+<ul id="menu">
+<li id="h"><a href="../h.html">HTML教程</a></li>
+<li id="x"><a href="../x.html">XML教程</a></li>
+<li id="b"><a href="../b.html">浏览器脚本</a></li>
+<li id="s"><a href="../s.html">服务器脚本</a></li>
+<li id="d"><a href="../d.html">dot net教程</a></li>
+<li id="m"><a href="../m.html">多媒体教程</a></li>
+<li id="w"><a href="../w.html">建站手册</a></li>
+</ul>
+</div><div id="navsecond">
+<div id="course">
+<h2>Web Services 基础</h2>
+<ul>
+<li><a href="http://e.v-get.com/w3cschool/">WS 首页</a></li>
+<li><a href="ws_intro.html">WS 简介</a></li>
+<li><a href="ws_why.html">Why WS?</a></li>
+<li><a href="ws_platform.html">WS 平台</a></li>
+<li><a href="ws_example.html">WS 实例</a></li>
+<li><a href="ws_use.html">WS 使用</a></li>
+<li><a href="ws_summary.html">WS 总结</a></li>
+</ul>
+</div>
+<div id="selected">
+<h2>建站手册</h2>
+<ul>
+<li><a href="../site/">网站构建</a></li>
+<li><a href="../w3c/">万维网联盟</a></li>
+<li><a href="http://e.v-get.com/w3c/">W3CSchool 教程</a></li>
+<li><a href="../quality/">网站品质</a></li>
+<li><a href="../semweb/">语义网</a></li>
+<li><a href="../hosting/">网站主机</a></li>
+</ul>
+<h2><a href="http://e.v-get.com/w3c/" class="f13">W3CSchool 教程</a></h2><div class="a120x90"><script type="text/javascript">var cpro_id="u1210867";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div></div>
+</div>
+<div id="maincontent">
+<h1>Web Service 实例</h1>
+<div  id="tpn">
+<ul class="prenext">
+<li class="pre"><a href="ws_platform.html">上一页</a></li>
+<li class="next"><a href="ws_use.html">下一页</a></li>
+</ul>
+</div>
+<div id="intro">
+<p><strong>任何应用程序都可拥有 Web Service 组件。</strong></p>
+<p><strong>Web Services 的创建与编程语言的种类无关。</strong></p>
+</div>
+<div>
+<h2>一个实例：ASP.NET Web Service</h2>
+<p>在这个例子中，我们会使用 ASP.NET 来创建一个简单的 Web Service。</p>
+<pre>&lt;%@ WebService Language=&#34;VB&#34; Class=&#34;TempConvert&#34; %&gt;
+Imports System
+Imports System.Web.Services
+Public Class TempConvert :Inherits WebService
+&lt;WebMethod()&gt; Public Function FahrenheitToCelsius
+(ByVal Fahrenheit As Int16) As Int16
+	Dim celsius As Int16 
+	celsius = ((((Fahrenheit) - 32) / 9) * 5) 
+	Return celsius
+End Function
+&lt;WebMethod()&gt; Public Function CelsiusToFahrenheit
+(ByVal Celsius As Int16) As Int16
+	Dim fahrenheit As Int16
+	fahrenheit = ((((Celsius) * 9) / 5) + 32) 
+	Return fahrenheit
+End Function
+End Class
+</pre>
+<p>此文档是一个 .asmx 文件。这是用于 XML Web Services 的 ASP.NET 文件扩展名。</p>
+</div>
+<div>
+<h2>要运行这个例子，我们需要一个 .NET 服务器</h2>
+<p>此文档中第一行表明这是一个 Web Service，由 VB 编写，其 class 名称是 &#34;TempConvert&#34;。</p>
+<pre>&lt;%@ WebService Language=&#34;VB&#34; Class=&#34;TempConvert&#34; %&gt;</pre>
+<p>接下来的代码行从 .NET 框架导入了命名空间 &#34;System.Web.Services&#34;。</p>
+<pre>Imports System
+Imports System.Web.Services</pre>
+<p>下面这一行定义 &#34;TempConvert&#34; 类是一个 WebSerivce 类：</p>
+<pre>Public Class TempConvert :Inherits WebService</pre>
+<p>接下来的步骤是基础的 VB 编程。此应用程序有两个函数。一个把华氏度转换为摄氏度，而另一个把摄氏度转换为华氏度。</p>
+<p>与普通的应用程序唯一的不同是，此函数被定义为 &#34;WebMethod&#34;。</p>
+<p>请在您希望其成为 web services 的应用程序中使用 &#34;WebMethod&#34; 来标记函数。</p>
+<pre>&lt;WebMethod()&gt; Public Function FahrenheitToCelsius
+(ByVal Fahrenheit As Int16) As Int16
+	Dim celsius As Int16 
+	celsius = ((((Fahrenheit) - 32) / 9) * 5) 
+	Return celsius
+End Function
+&lt;WebMethod()&gt; Public Function CelsiusToFahrenheit
+(ByVal Celsius As Int16) As Int16
+	Dim fahrenheit As Int16
+	fahrenheit = ((((Celsius) * 9) / 5) + 32) 
+	Return fahrenheit
+End Function</pre>
+<p>最后要做的事情是终止函数和类：</p>
+<pre>End Function
+End Class</pre>
+<p>假如您把此文件另存为 .asmx 文件，并发布于支持 .NET 的服务器上，那么您就拥有了第一个可工作的 Web Service。</p>
+</div>
+<div>
+<h2>ASP.NET 的自动化处理</h2>
+<p>通过 ASP.NET，你不必亲自编写 WSDL 和 SOAP 文档。</p>
+<p>如果您仔细研究我们的这个例子，您会发现 ASP.NET 会自动创建 WSDL 和 SOAP 请求。</p>
+</div>
+<div  id="bpn">
+<ul class="prenext">
+<li class="pre"><a href="ws_platform.html">上一页</a></li>
+<li class="next"><a href="ws_use.html">下一页</a></li>
+</ul>
+</div>
+</div>
+<div class="r q"></div><div class="b"></div>
+</div>
+</body>
+</html>

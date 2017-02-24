@@ -1,0 +1,61 @@
+<html>
+<head>
+<title>为什么要使用XPointer</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+
+<link rel = stylesheet href = "image/style.css">
+</head>
+<body bgcolor="#ffffff">
+<table width="688" border="0" cellspacing="0" cellpadding="0" align="center">
+  <tr bgcolor="EEEEEE"> 
+    <td height="22"><a href="index.htm">主页</a></td>
+  </tr>
+</table><br>
+<table border="0" cellpadding="0" cellspacing="0" width="688" align="center" height="490">
+  <tr valign="top"> 
+    <td rowspan="4" width="91">&nbsp; </td>
+    <td height="68" width="131"> 
+      <p><img src="image/doc.gif"></p>
+    </td>
+    <td rowspan="4" width="18"><b></b> </td>
+    <td height="68" width="387"><img src="image/title_doc.gif"></td>
+    <td rowspan="4" width="61"> 
+      <h6>&nbsp;</h6>
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td rowspan="3" valign="top" class="pt10" align="center" width="131" bgcolor="EEEEEE"> 
+      <p>&nbsp;</p>
+      <p><font color="#FF0000">※ 17.1 为什么要使用XPointer</font></p>
+       
+	</td>
+  </tr>
+  <tr valign="top"> 
+    <td width="387" height="308"> 
+      <table width="100%" border="0" cellpadding="0">
+        <tr> 
+          <td>
+
+           <p align="left"><font color="#FF3333"><b><i><font color="#FF0033">注意:</font></i></b><font color="#FF0033"><i>本章内容基于XPointer的早期草案，与现在的规范有较大出入。但为了保证完整性，我们仍将本章完整刊出。本章的最新英文版本见http://www.ibiblio.org/xml/books/bible/updates/17.html，XPointer规范最新版本见http://www.w3.org/TR/xptr。</i></font></font></p>
+<h4><a name="_Toc467208981">17.1 为什么要使用XPointer</a></h4>
+<p>URL简单、易用，但其功能还是非常有限的。首先，URL仅指向单一的、完整的文档。超过此范围（如与某文档的第17段第三句相链接）就需要作为目标文档的作者手工在目标位置插入命名的定位符。进行此链接的文档作者无法做这一点，除非他或她具有对正在链接的文档的写入访问权。即使进行链接的作者将命名的定位符插入到目标文档中，在大多数情况下也总是不方便的。</p>
+<p>如果能够在一页上链接特定的元素或一组元素可能更有用。例如，对于给定的较大的页（如第4和第5章的整个棒球统计表），可能想只与一个队或一个球员相链接。那么，对此问题就可以划分几个部分。第一部分是查询各个元素的地址，此部分由XPointer来解决。XPointer可以通过编号、名称、类型或与文档中其他元素的关系来将给定的元素作为目标加以定位。</p>
+<p>此问题的第二个部分就是协议（protocol），浏览器根据此协议要求Web服务器只发送文档的一部分而不是整个内容。这正是人们需要积极研究并认真加以思考的领域。需要做更多的工作。XPointer无法解决这个问题，它只能提供这种系统的建立。例如，到此为止最大的成就是HTTP 
+  1.1中所谓的“HTTP的字节范围扩展（byte range extensions to HTTP）”。迄今为止这些都没有获得广泛的采用，主要原因是Web作者在文档内指定字节范围有困难。而且，字节范围也极其脆弱。对文档进行很小的编辑，甚至只是重新格式化，就可能破坏字节域的链接。除了原始的字节之外，HTTP 
+  1.1确实允许使用其他的范围单元（如XML元素），但并不要求Web服务器或浏览器支持这种单元。现在仍有很多工作要做。</p>
+<p>此问题的第三个部分就是确保被检索的文档在没有其他文档伴随存在的情况下也同样有意义。在XML上下文中，这一要求就强烈地意味着被链接的部分是结构完整的或者是合法的。这是个难以处理的问题，因为大多数XML文档，尤其是带有重要序言的文档，就不会很好地分解。同样，XPointer无法处理这个问题。W3C 
+  XML Fragment Working Group正在着手解决这个问题，但此项工作才刚刚开始。</p>
+<p>所以，目前XPointer可以作为索引用于整个文档，加载所有的内容，然后定位于XPointer所指定的位置。长期以来，对XML、XLink、HTTP和其他协议的扩充，使XPointer的使用更加完善。例如，可以借助于利用XPointer在要引用的段落中只包括一个XLink，就可引用远程的文档，而不必重新键入引用的文本。还可以在文档内部包括交叉引用，这样一旦修改此文档，那么交叉引用就会自动更新。但是，这些用途还得等到几个下一代的技术开发出来才行。而目前，我们必须满足现状：当跟随XLink时，只能标识要跳转到的文档部分。</p>
+<p>&nbsp;</p>
+ 
+<a href='547.htm'>&lt;&lt;上一篇</a>&nbsp;&nbsp;<a href='549.htm'>下一篇&gt;&gt;</a></td>
+        </tr>
+      </table>
+      <p>&nbsp; </p>
+    </td>
+  </tr>
+</table>
+
+</body>
+
+</html>

@@ -1,0 +1,304 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>转换工具-客齐齐实用查询工具</title>
+<meta name="keywords" content="转换工具,长度换算，宽度换算，体积换算，重量换算，温度换算">
+<meta content="最全面的转换工具:长度换算，宽度换算，体积换算，重量换算，温度换算!" name="description" />
+<link href="../images/style.css" rel="stylesheet" type="text/css" />
+<style type="text/css">
+<!--
+body {margin:0; padding:0;background: #FFF url('../images/top3.gif') repeat-x top; font-size:12px;color:#666}
+.style1 {font-size: 14px}
+-->
+</style>
+<SCRIPT language=JavaScript>
+<!--
+self.moveTo(0,0)
+self.resizeTo(screen.availWidth,screen.availHeight)
+//-->
+</SCRIPT>
+
+<SCRIPT language=javascript>
+var arr1=new Array(""," thousand"," million"," billion");var arr2=new Array("zero","ten","twenty","thirty","forty","fifty","sixty","seventy","eighty","ninety");var arr3=new Array("zero","one","two","three","four","five","six","sever","eight","nine");;var arr4=new Array("ten","eleven","twelve","thirteen","fourteen","fifteen","sixteen","seventeen","eighteen","nineteen");function Translate(num){;var len=num.length,i,j=0,strRet="";;var cols=Math.ceil(len/3);;var first=len-cols*3;var strRet="";for(i=first;i<len;i+=3){++j;if(i>=0)num3=num.substring(i,i+3);else num3=num.substring(0,first+3)
+strEng=English(num3);if(strEng!=""){if(strRet!="")strRet+=",";strRet+=English(num3)+arr1[cols-j]}}return strRet}function English(num){strRet="";if((num.length==3)&&(num.substr(0,3)!="000")){if((num.substr(0,1)!="0")){strRet+=arr3[num.substr(0,1)]+" hundred";if(num.substr(1,2)!="00")strRet+=" and "}num=num.substring(1)}if((num.length==2)){if((num.substr(0,1)=="0")){num=num.substring(1)}else if((num.substr(0,1)=="1")){strRet+=arr4[num.substr(1,2)]}else{strRet+=arr2[num.substr(0,1)];if(num.substr(1,1)!="0")strRet+="-";num=num.substring(1)}}if((num.length==1)&&(num.substr(0,1)!="0")){strRet+=arr3[num.substr(0,1)]}return strRet}function showRGB(){hexcode="#";for(x=0;x<3;x++){;var n=r1e[x].value;if(n=="")n="0";if(parseInt(n)!=n)return M("请输入数字！");if(a<0 && a>255)return M("数字在0-255之间！");var c="0123456789abcdef";var b="";var a=n%16;b=c.substr(a,1)
+a=(n-a)/16;hexcode+=c.substr(a,1)+b}color1.bgColor=a_mo2.innerText=hexcode}function showRGB2(){;var a=rgb2.value;if(a.substr(0,1)=="#")a=a.substring(1);if(a.length!=6)return M("请输入正确的颜色编码！")
+color2.bgColor="#"+a;a=a.toLowerCase()
+b=new Array();for(x=0;x<3;x++){b[0]=a.substr(x*2,2)
+b[3]="0123456789abcdef";b[1]=b[0].substr(0,1)
+b[2]=b[0].substr(1,1)
+b[20+x]=b[3].indexOf(b[1])*16+b[3].indexOf(b[2])}a_mo3.innerText=b[20]+","+b[21]+","+b[22];}function Transform(){;var whole = document.all.num.value;;var num;;var dig;if(whole.indexOf(".") == -1){num = whole;dig = "";}else{num = whole.substr(0,whole.indexOf("."));dig = whole.substr( whole.indexOf(".")+1, whole.length);};var i=1;;var len = num.length;;var dw2 = new Array("","万","亿");;var dw1 = new Array("拾","佰","千");;var dw = new Array("","壹","贰","叁","肆","伍","陆","柒","捌","玖");;var dws = new Array("零","壹","贰","叁","肆","伍","陆","柒","捌","玖");;var k1=0;;var k2=0;;var str="";for(i=1;i<=len;i++){;var n = num.charAt(len-i);if(n=="0"){if(k1!=0)
+str = str.substr( 1, str.length-1);}str = dw[Number(n)].concat(str);if(len-i-1>=0){if(k1!=3){str = dw1[k1].concat(str);k1++;}else{k1=0;;var temp = str.charAt(0);if(temp=="万" || temp=="亿")
+str = str.substr( 1, str.length-1);str = dw2[k2].concat(str);}};if(k1==3){k2++;}};var strdig="";for(i=0;i<2;i++){;var n=dig.charAt(i);strdig+=dws[Number(n)];}if(strdig!='零零')str += " 点 "+strdig;a_mo5.innerText=str;}function getRanPass(){a=num6.value;b=str6.value;t="";for(x=0;x<a;x++){c=Math.floor(Math.random()*99999)%b.length;t+=b.substr(c,1)}a_mo6.innerText=t;}function order7(){a=str7.value;t="";while(a!=""){b=a.length;c=Math.floor(Math.random()*99999)%b;t+=a.substr(c,1)
+a=a.substr(0,c)+a.substring(c+1)}a_mo7.innerText=t;}function ss(i){for(j=3;j<=i;j+=2){c=i*j;if(c>b)return;a[c]=1}};
+</SCRIPT>
+</HEAD>
+<BODY>
+<table width="960" height="75" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td width="264" rowspan="2" align="center"><a href="../index.html">
+	<img src="../images/logo.gif" width="224" height="38" border="0" /></a></td>
+    <td height="24" valign="top">
+	<table width="321" height="24" border="0" align="right" cellpadding="0" cellspacing="0" background="../images/top2.gif">
+       <tr>
+          <td align="center" class="cwhite12"><a href="#" class="cwhite12">tools.kqiqi.com</a>　<a href="#" OnClick='this.style.behavior="url(#default#homepage)";this.setHomePage("http://tools.kqiqi.com");' class="cwhite12">设为首页</a> | <a href="#" onClick="window.external.AddFavorite('http://tools.kqiqi.com','客齐齐实用查询工具');" class="cwhite12">收藏本站</a></td>
+        </tr>
+    </table></td>
+  </tr>
+</table>
+<table width="960" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td><table height="38" border="0" cellpadding="0" cellspacing="0" style="margin-left:5px">
+      <tr align="center">
+          <td width="88" background="../images/nav1.gif" style="padding-top:5px"><a href="../index.html" class="navfh2">首　页</a></td>
+          <td width="88" background="../images/nav1.gif" style="padding-top:5px"><a href="../admin/index.html" class="navfh2">站长工具</a></td>
+          <td width="88" background="../images/nav1.gif" style="padding-top:5px"><a href="../query/index.html" class="navfh2">查询工具</a></td>
+          <td width="88" background="../images/nav1.gif" style="padding-top:5px"><a href="../calculation/index.html" class="navfh2">计算工具</a></td>
+          <td width="88" background="../images/nav1.gif" style="padding-top:5px"><a href="../password/index.html" class="navfh2">加密解密</a></td>
+          <td width="88" background="../images/nav2.gif" style="padding-top:5px"><a href="index.html" class="navfh1">转换工具</a></td>
+          <td width="88" background="../images/nav1.gif" style="padding-top:5px"><a href="../color/index.html" class="navfh2">颜色工具</a></td>
+          <td width="88" background="../images/nav1.gif" style="padding-top:5px"><a href="../web/index.html" class="navfh2">网络辅助</a></td>
+          <td width="88" background="../images/nav1.gif" style="padding-top:5px"><a href="../picture/index.html" class="navfh2">图片工具</a></td>
+          <td width="88" background="../images/nav1.gif" style="padding-top:5px"><a href="../others/index.html" class="navfh2">其它工具</a></td>
+        </tr>
+    </table></td>
+  </tr>
+</table>
+<script language="javascript" src="../js/others_top.js"></script>
+<table width="960" border="0" align="center" cellpadding="0" cellspacing="0" class="mainbg1">
+  <tr valign="top">
+    <td width="20">　</td>
+    <td width="190">
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td colspan="2" height="10">
+
+</td>
+</tr>
+      <tr>
+        <td width="75%">
+		<img src="../images/t9.gif" width="32" height="32" align="absmiddle" />　<span class="navfh1">工具列表</span></td>
+        <td width="25%">　</td>
+      </tr>
+    </table>
+     <table width="100%"  border="0" cellpadding="0" cellspacing="0" background="../images/t12.gif" class="mar5">
+        <tr>
+          <td height="10"> </td>
+        </tr>
+      </table>
+<table width="100%"  border="0" cellpadding="0" cellspacing="0" class="mar5">
+      <tr>
+        <td>　
+   <div id="menu">
+ <div class="box">
+    <a href="GB2312-BIG5.html">汉字简体繁体转换
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+
+  <div class="box">
+    <a href="JiaGuWen.html">传统中文排版工具
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+    <div class="box">
+    <a href="HanZi-PinYin.html">汉字转换拼音
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+  <div class="box">
+    <a href="PinYinDic.html">拼音字典
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+  <div class="box">
+    <a href="PublicUnitConversion.html">公制单位换算
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+  <div class="box">
+    <a href="CommonUnitConversion.html">普通单位换算
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+  <div class="box">
+    <a href="MoneyExchange.html">世界货币汇率兑换
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+  <div class="box">
+    <a href="JinZhi.html">进制转换
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+<div class="box">
+    <a href="UTF-8.html">UTF-8 转换工具
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+<div class="box">
+    <a href="Html-Js.html">Html-Js代码互转
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+<div class="box">
+    <a href="Html-Asp.html">Html转Asp
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+<div class="box">
+    <a href="Html-Perl.html">Html转Perl
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+<div class="box">
+    <a href="Html-Php.html">Html转Php
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+  <div class="box">
+    <a href="Html-Sws.html">Html转Sws
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+  <div class="box">
+    <a href="SutraTool.html">经典小工具
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+  <div class="box">
+    <a href="AsciiGraphemic.html">ASCII字形生成器
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+  <div class="box">
+    <a href="Gb-Utf.html">GB2312转换UTF-8 工具
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+ 
+</div>
+       </td>
+      </tr>
+    </table>
+
+      <table width="100%" height="17"  border="0" cellpadding="0" cellspacing="0" background="t2.gif" class="mar5">
+        <tr>
+          <td> </td>
+        </tr>
+      </table>
+     
+    </td>
+    <td width="27">　</td>
+    <td width="700">
+      <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+          <tr>
+      <td height="10">
+      </td>
+      </tr>
+        <tr>
+         <td width="40"><img src="../images/bang.gif" width="32" height="31"> </td>
+          <td><span class="navfh1">经典小工具集</span></td>
+        </tr>
+      </table>
+      <hr size="1" style="color:#E3E8E9" />
+      <table width="100%"  border="0" cellpadding="3" cellspacing="1">
+              <tr>
+          <td>
+          <TABLE width=690 border=0 align=center cellPadding=5 cellspacing="1" bgcolor="#CCCCCC" style="BORDER-COLLAPSE: collapse">
+  <TBODY>
+  <TR>
+    <TD height=25 align=middle vAlign=middle bgcolor="#FFFFFF">
+      <P><FONT color=#333333>把你需要转换的内容粘贴在下面的输入框，然后点击按钮即可</FONT> </P></TD></TR>
+  <TR>
+    <TD vAlign=top bgcolor="#FFFFFF">
+      <TABLE style="BORDER-COLLAPSE: collapse" borderColor=#d9d9d9 cellSpacing=0 
+      cellPadding=8 width=100 align=center bgColor=#fcfcfc border=1>
+        <TBODY>
+        <TR>
+          <TD><B>阿拉伯数字译成英文：</B><BR><INPUT id=number value=12345 name=Input> <INPUT onclick=a_mo.innerText=Translate(number.value) type=button value=翻译成英文 name=button> 
+
+            <DIV id=a_mo style="COLOR: red">　</DIV></TD></TR>
+        <TR>
+          <TD><B>RGB颜色转化成十六位颜色代码：</B> 
+            <TABLE cellSpacing=4 width=203>
+              <TBODY>
+              <TR>
+                <TD width=141><INPUT size=3 value=100 name=r1e> <INPUT size=3 
+                  value=255 name=r1e> <INPUT size=3 value=0 name=r1e> <INPUT onclick=showRGB() type=button value=转换 name=button> </TD>
+                <TD id=color1 width=44>　</TD></TR></TBODY></TABLE>
+            <DIV id=a_mo2 style="COLOR: red">　</DIV></TD></TR>
+        <TR>
+          <TD><B>十六位颜色代码转化成RGB颜色：</B> 
+            <TABLE cellSpacing=4 width=202>
+              <TBODY>
+              <TR>
+                <TD width=143><INPUT size=10 value=#CC00FF name=rgb2> <INPUT onclick=showRGB2() type=button value=转换 name=button> 
+</TD>
+                <TD id=color2 width=44>　</TD></TR></TBODY></TABLE>
+            <DIV id=a_mo3 style="COLOR: red">　</DIV></TD></TR>
+        <TR>
+          <TD><B>计算你的生肖：</B><BR>请输入你的出生年份： <INPUT size=5 value=1986 
+            name=inyear> <INPUT onclick='b="猴鸡狗猪鼠牛虎兔龙蛇马羊";a_mo4.innerText=b.substr([inyear.value%12],1)' type=button value=确定 name=button> 
+            <BR><B><SPAN id=a_mo4 
+            style="FONT-SIZE: 14px; COLOR: red; FONT-FAMILY: Verdana">&nbsp;</SPAN></B> 
+            <FONT color=#aaaaaa>鼠牛虎兔龙蛇马羊猴鸡狗猪</FONT> </TD></TR>
+        <TR>
+          <TD><B>转换小写数字成中文大写：</B><BR><INPUT size=12 value=12345 name=num> <INPUT onclick=Transform() type=button value=确定 name=button> 
+            <DIV id=a_mo5 style="COLOR: red">　</DIV></TD></TR>
+        <TR>
+          <TD><B>生成随机密码：</B><BR>所用符号 <INPUT size=70 
+            value=0123456789abcdefghijklmnopqrstuvwxyz name=str6> <BR>密码位数 
+            <INPUT value=8 name=num6> <INPUT onclick=getRanPass() type=button value=确定 name=button> 
+            <DIV id=a_mo6 style="COLOR: red">　</DIV></TD></TR>
+        <TR>
+          <TD><B>字符随机排列工具：</B><BR>所用符号 <INPUT size=70 
+            value=0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ name=str7> <BR><INPUT onclick=order7() type=button value=确定 name=button> 
+<DIV id=a_mo7 
+  style="COLOR: red">　</DIV></TD></TR></TBODY></TABLE></TD>
+  </TR></TBODY></TABLE>
+          
+          </td>
+        </tr>
+        </table>
+      <br />
+      </td>
+    <td width="20">　</td>
+  </tr>
+</table>
+<table width="960" border="0" align="center" cellpadding="0" cellspacing="0" class="mainbg2">
+  <tr>
+    <td height="25"></td>
+  </tr>
+</table>
+
+<table width="960" border="0" align="center" cellpadding="0" cellspacing="0" class="mainbg2">
+  <tr>
+    <td><table width="920"  border="0" align="center" cellpadding="0" cellspacing="20" class="bottombg">
+      <tr>
+        <td align="center">
+          Copyright &copy; <a href="http://tools.kqiqi.com/">客齐齐实用查询工具</a> All rights reserved - <a href="../map.html">网站地图</a> - <a href="../contact.html">联系我们</a> - <script language="javascript" src="../js/bottom.js"></script>
+          </td>
+      </tr>
+    </table></td>
+  </tr>
+</table>
+</body>
+</html>

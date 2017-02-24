@@ -1,0 +1,84 @@
+<html xmlns:rdl>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<script src="rdl_properties.js"></script>
+<base target="_self">
+</head>
+<body>
+
+<script>
+
+//collFriendProperties=new Array();
+//collFriendDeclarations=new Array();
+//collFriendAtRules=new Array();
+//collFriendElements=new Array();
+//collFriendClasses=new Array();
+
+collFriendProperties=new Array(
+'content','include-source','counter-increment','counter-reset'
+);
+
+collFriendElements=new Array(
+':after',':before'
+);
+
+//collIE40=new Array();
+//collIE50=new Array();
+//collIE55=new Array();
+//collIE60=new Array();
+
+sStyle='';
+
+sScript='';
+
+sCode='';
+
+iWinWidth=360;
+
+iWinHeight=240;
+
+bRunCode=false;
+
+bElements=false;
+
+</script>
+
+<div id=idContent>
+
+<div id=idContentTitle><span id=idTitleName>quotes</span>版本：CSS2　 兼容性：无　继承性：无</div>
+
+<div class=cssColumnTitle>语法：</div>
+<div>
+<b>quotes : </b><span class=cssDefault><b>none</b></span> | <i>string</i>
+</div>
+
+<div class=cssColumnTitle>取值：</div>
+<table>
+<tr><td nowrap><b> none </b></td><td nowrap><b>:</b></td><td><b>默认值</b>。<a href="c_content.html"> content </a>属性的<b> open-quote </b>和<b> close-quote </b>值将不会生成任何嵌套标记</td></tr>
+<tr><td nowrap><i> string </i></td><td nowrap><b>:</b></td><td>用引号括起的嵌套标记定义。两个为一组。第一个<i> string </i>定义前标记（例："&lt;"），第二个<i> string </i>定义后标记（例："&gt;"）。组之间用空格格开。嵌套标记的应用深度按定义顺序内推</td></tr>
+</table>
+
+<div class=cssColumnTitle>说明：</div>
+<div>
+设置或检索对象内使用的嵌套标记。<br>
+对应的脚本特性为<b> quotes </b>。
+</div>
+
+<div class=cssColumnTitle>示例：</div>
+<div id=idSimpleCode>
+blockquote[lang-=fr] { quotes: "\201C" "\201D" }
+<br>blockquote[lang-=en] { quotes: "\00AB" "\00BB" }
+<br>blockquote:before { content: open-quote }
+<br>blockquote:after { content: close-quote }
+<br>&nbsp;<br>q { quotes: """ """ "'" "'"; }
+<br>&nbsp;<br>&lt;q&gt;This is an &lt;q&gt;emedded&lt;/q&gt; quote.&lt;/q&gt;
+<br>&nbsp;<br>显示结果如下：
+<br>&nbsp;<br>"This is an 'embedded' quote."
+</div>
+
+</div>
+</body>
+</html>
+
+<!-- Part of RDL(TM) - Written by Rain1977 
+HomeSite: http://www.dhtmlet.com  E-Mail: dhtmlet@hotmail.com -->

@@ -1,0 +1,106 @@
+<html xmlns:rdl>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<script src="rdl_properties.js"></script>
+<base target="_self">
+</head>
+<body>
+
+<script>
+
+//collFriendProperties=new Array();
+//collFriendDeclarations=new Array();
+//collFriendAtRules=new Array();
+//collFriendElements=new Array();
+//collFriendClasses=new Array();
+
+collFriendProperties=new Array(
+'word-spacing','line-height'
+);
+
+//collIE40=new Array();
+//collIE50=new Array();
+//collIE55=new Array();
+//collIE60=new Array();
+
+collIE50=new Array(
+'DDRESS','BLOCKQUOTE','BODY','CENTER','currentStyle','DD','DIR','DIV','DL','DT','FIELDSET','FORM','Hn','HR','LEGEND','LI','LISTING','MARQUEE','MENU','OL','P','PLAINTEXT','PRE','runtimeStyle','style','TABLE','TD','TH','TR','UL','XMP'
+);
+
+sStyle=
+'<style>\n'+
+'#idParentDIV{width:100%;height:80px;padding:6px;background-color:buttonshadow;}\n'+
+'#idDIV{width:80%;height:40px;background-color:#FF6633;color:#FFFFFF;padding:6px;}\n'+
+'#idCodeDiv{width:80%;padding:4px;font-family:verdana,tahoma;margin:12px 0px 0px 0px;background-color:#EEEEEE;font-weight:bold;}\n'+
+'<\/style>\n';
+
+sScript=
+'<script>\n'+
+'function rdl_change(e){\n'+
+'var oCodeDiv=document.all("idCodeDiv");\n'+
+'var oDiv=document.all("idDiv");\n'+
+'with (document.all("idSel")) var sValue=options[selectedIndex].value;\n'+
+'oDiv.style.letterSpacing=sValue;\n'+
+'oCodeDiv.innerText="letter-spacing : "+sValue+";";\n'+
+'}\n'+
+'<\/script>\n';
+
+sCode=
+'<div id=idParentDIV><div id=idDIV>请从下方选择我的<b> letter-spacing <\/b>值。<\/div><\/div>\n'+
+'<br>\n'+
+'<select id="idSel" onchange="rdl_change();">\n'+
+'<option value="normal">---letter-spacing---\n'+
+'<option value="normal">normal\n'+
+'<option value="5px">5px\n'+
+'<option value="-5px">-5px\n'+
+'<option value="15">15\n'+
+'<option value="0cm">0cm\n'+
+'<\/select>\n'+
+'<br>\n'+
+'<div id=idCodeDiv>letter-spacing : normal ;<\/div>\n';
+
+iWinWidth=360;
+
+iWinHeight=320;
+
+//bRunCode=false;
+
+//bElements=false;
+
+</script>
+
+<div id=idContent>
+
+<div id=idContentTitle><span id=idTitleName>letter-spacing</span>版本：CSS1　 兼容性：IE4+ NS6+　继承性：有</div>
+
+<div class=cssColumnTitle>语法：</div>
+<div>
+<b>letter-spacing : </b><span class=cssDefault><b>normal</b></span> | <i>length</i>
+</div>
+
+<div class=cssColumnTitle>取值：</div>
+<table>
+<tr><td nowrap><b> normal </b></td><td nowrap><b>:</b></td><td><b>默认值</b>。默认间隔</td></tr>
+<tr><td nowrap><i> length </i></td><td nowrap><b>:</b></td><td>由浮点数字和单位标识符组成的长度值，允许为负值。请参阅<a href="d_length.html" >长度单位 </a></td></tr>
+</table>
+
+<div class=cssColumnTitle>说明：</div>
+<div>
+检索或设置对象中的文字之间的间隔。<br>
+该属性将指定的间隔添加到每个文字之后，但最后一个字将被排除在外。<br>
+字符间距会受对齐调整影响。<br>
+此属性对于<b> currentStyle </b>对象而言是只读的。对于其他对象而言是可读写的。<br>
+对应的脚本特性为<b> letterSpacing </b>。
+</div>
+
+<div class=cssColumnTitle>示例：</div>
+<div id=idSimpleCode>
+div {letter-spacing:6px; } <br>div {letter-spacing:0.5pt; } 
+</div>
+
+</div>
+</body>
+</html>
+
+<!-- Part of RDL(TM) - Written by Rain1977 
+HomeSite: http://www.dhtmlet.com  E-Mail: dhtmlet@hotmail.com -->

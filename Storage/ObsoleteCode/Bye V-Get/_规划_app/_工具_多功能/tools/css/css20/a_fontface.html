@@ -1,0 +1,74 @@
+<html xmlns:rdl>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<script src="rdl_atrules.js"></script>
+<base target="_self">
+</head>
+<body>
+
+<script>
+
+//collFriendProperties=new Array();
+//collFriendDeclarations=new Array();
+//collFriendAtRules=new Array();
+//collFriendElements=new Array();
+//collFriendClasses=new Array();
+
+collFriendAtRules=new Array(
+'@charset','@fontdef'
+);
+
+//collIE40=new Array();
+//collIE50=new Array();
+//collIE55=new Array();
+//collIE60=new Array();
+
+//sStyle='';
+
+//sScript='';
+
+//sCode='';
+
+//iWinWidth=360;
+
+//iWinHeight=240;
+
+bRunCode=false;
+
+bElements=false;
+
+</script>
+
+<div id=idContent>
+
+<div id=idContentTitle><span id=idTitleName>@font-face</span>版本：CSS2　 兼容性：IE4+</div>
+
+<div class=cssColumnTitle>语法：</div>
+<div>
+<b> @font-face { font-family : </b><i>name</i><b> ;  src : url ( </b><i>url</i><b> ) ; </b><i>sRules</i><b> } </b>
+</div>
+
+<div class=cssColumnTitle>取值：</div>
+<table>
+<tr><td nowrap><i> name </i></td><td nowrap><b>:</b></td><td>字体名称。任何可能的<a href="c_fontfamily.html"> font-family </a>属性的值</td></tr>
+<tr><td nowrap><b> url ( </b><i>url</i><b> ) </b></td><td nowrap><b>:</b></td><td>使用绝对或相对<i> url </i>地址指定OpenType字体文件</td></tr>
+<tr><td nowrap><i> sRules </i></td><td nowrap><b>:</b></td><td>样式表定义</td></tr>
+</table>
+
+<div class=cssColumnTitle>说明：</div>
+<div>
+设置嵌入HTML文档的字体。此规则无默认值。<br>
+此规则使你能够在网页上使用客户端本地系统上可能没有的字体。<i> url </i>地址必须指向<b> OpenType </b>字体文件(.eot或.ote)。此文件包含可以转换为<b> TrueType </b>字体的压缩字体数据，可以用来提供HTML文档使用该字体，或取代客户端系统已有的同名字体。此文件可以使用 Microsoft WEFT 工具制作。<br>
+</div>
+
+<div class=cssColumnTitle>示例：</div>
+<div id=idSimpleCode>
+@font-face { font-family:comic;src:url(http://valid_url/some_font_file.eot); }<br>@font-face { font-family: dreamy; font-weight: bold; src: url(http://www.example.com/font.eot); }
+</div>
+
+</div>
+</body>
+</html>
+
+<!-- Part of RDL(TM) - Written by Rain1977 
+HomeSite: http://www.dhtmlet.com  E-Mail: dhtmlet@hotmail.com -->

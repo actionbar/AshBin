@@ -1,0 +1,196 @@
+<html>
+<head>
+<title>绝对位置项</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+
+<link rel = stylesheet href = "image/style.css">
+</head>
+<body bgcolor="#ffffff">
+<table width="688" border="0" cellspacing="0" cellpadding="0" align="center">
+  <tr bgcolor="EEEEEE"> 
+    <td height="22"><a href="index.htm">主页</a></td>
+  </tr>
+</table><br>
+<table border="0" cellpadding="0" cellspacing="0" width="688" align="center" height="490">
+  <tr valign="top"> 
+    <td rowspan="4" width="91">&nbsp; </td>
+    <td height="68" width="131"> 
+      <p><img src="image/doc.gif"></p>
+    </td>
+    <td rowspan="4" width="18"><b></b> </td>
+    <td height="68" width="387"><img src="image/title_doc.gif"></td>
+    <td rowspan="4" width="61"> 
+      <h6>&nbsp;</h6>
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td rowspan="3" valign="top" class="pt10" align="center" width="131" bgcolor="EEEEEE"> 
+      <p>&nbsp;</p>
+      <p><font color="#FF0000">※ 17.3 绝对位置项</font></p>
+       
+	</td>
+  </tr>
+  <tr valign="top"> 
+    <td width="387" height="308"> 
+      <table width="100%" border="0" cellpadding="0">
+        <tr> 
+          <td>
+
+           <h4><a name="_Toc467208983">17.3 绝对位置项</a></h4>
+<p>XPointer是根据<i>位置项</i>（location term）创建的。每个位置项指定目标文档中的一个点，通常为相对于某个其他已知点（如文档的开始或另一个位置项）。位置项的类型是由关键字如id()、root()或child()来给定。</p>
+<p>有些位置项在圆括号内有参数。为了说明这一点，看一看具体的实例是有用的。清单17-1就是无需加以说明就可以理解的一个简单、合法的文档。它包含有关两个相关家庭及其成员的信息。根元素为FAMILYTREE。FAMILYTREE包含PERSON和FAMILY元素。每个PERSON和FAMILY元素都有一个必要的ID特性。人是由名字、出生日期和死亡日期组成的。家庭是由丈夫、妻子以及零个或多个孩子组成的。家庭中的每个人可对应其ID。可以省略任何元素中的任何子元素。</p>
+<p><img src="Image/BK000217-19.gif" width=57 height=41>这个XML应用程序在第23章“设计新的XML应用程序”中将再次涉及。</p>
+<p>清单17-1：家谱</p>
+<p>&lt;?xml version="1.0"?&gt;</p>
+<p>&lt;!DOCTYPE FAMILYTREE [</p>
+<p></p>
+<p> &lt;!ELEMENT FAMILYTREE (PERSON | FAMILY)*&gt;</p>
+<p></p>
+<p> &lt;!- PERSON elements -&gt;</p>
+<p> &lt;!ELEMENT PERSON (NAME*, BORN*, DIED*, SPOUSE*)&gt;</p>
+<p> &lt;!ATTLIST PERSON</p>
+<p> ID ID #REQUIRED</p>
+<p> FATHER CDATA #IMPLIED</p>
+<p> MOTHER CDATA #IMPLIED</p>
+<p> &gt;</p>
+<p> &lt;!ELEMENT NAME (#PCDATA)&gt;</p>
+<p> &lt;!ELEMENT BORN (#PCDATA)&gt;</p>
+<p> &lt;!ELEMENT DIED (#PCDATA)&gt;</p>
+<p> &lt;!ELEMENT SPOUSE EMPTY&gt;</p>
+<p> &lt;IATTLIST SPOUSE IDREF IDREF #REQUIRED&gt;</p>
+<p></p>
+<p> &lt;!-FAMILY-&gt;</p>
+<p> &lt;!ELEMENT FAMILY (HUSBAND?, WIFE?, CHILD*) &gt;</p>
+<p> &lt;!ATTLIST FAMILY ID ID #REQUIRED&gt;</p>
+<p></p>
+<p> &lt;!ELEMENT HUSBAND EMPTY&gt;</p>
+<p> &lt;!ATTLIST HUSBAND IDREF IDREF #REQUIRED&gt;</p>
+<p> &lt;!ELEMENT WIFE EMPTY&gt;</p>
+<p> &lt;!ATTLIST WIFE IDRFF IDREF #REQUIRED&gt;</p>
+<p> &lt;!ELEMENT CHILD EMPTY&gt;</p>
+<p> &lt;!ATTLIST CHILD IDREF IDREF #REQUIRED&gt;</p>
+<p></p>
+<p>]&gt;</p>
+<p>&lt;FAMILYTREE&gt;</p>
+<p></p>
+<p> &lt;PERSON ID="p1"&gt;</p>
+<p> &lt;NAME&gt;Domeniquette Celeste Baudean&lt;/NAME&gt;</p>
+<p> &lt;BORN&gt;ll Feb 1858&lt;/BORN&gt;</p>
+<p> &lt;DIED&gt;12 Apr 1898&lt;/DIED&gt;</p>
+<p> &lt;SPOUSE IDREF="p2"/&gt;</p>
+<p> &lt;/PERSON&gt;</p>
+<p></p>
+<p> &lt;PERSON ID="p2"&gt;</p>
+<p> &lt;NAME&gt;Jean Francois Bellau&lt;/NAME&gt;</p>
+<p> &lt;SPOUSE IDREF="pl"/&gt;</p>
+<p> &lt;/PERSON&gt;</p>
+<p></p>
+<p> &lt;PERSON ID="p3" FATHER="p2" MOTHER="pl"&gt;</p>
+<p> &lt;NAME&gt;Elodie Bellau&lt;/NAME&gt;</p>
+<p> &lt;BORN&gt;ll Feb 1858&lt;/BORN&gt;</p>
+<p> &lt;DIED&gt;12 Apr 1898&lt;/DIED&gt;</p>
+<p> &lt;SPOUSE IDREF="p4"/&gt;</p>
+<p> &lt;/PERSON&gt;</p>
+<p></p>
+<p> &lt;PERSON ID="p4" FATHER="p2" MOTHER="p1"&gt;</p>
+<p> &lt;NAME&gt;John P. Muller&lt;/NAME&gt;</p>
+<p> &lt;SPOUSE IDREF="p3"/&gt;</p>
+<p> &lt;/PERSON&gt;</p>
+<p></p>
+<p> &lt;PERSON ID="p7"&gt;</p>
+<p> &lt;NAME&gt;Adolf Eno&lt;/NAME&gt;</p>
+<p> &lt;SPOUSE IDREF="p6"/&gt;</p>
+<p> &lt;/PERSON&gt;</p>
+<p></p>
+<p> &lt;PERSON ID="p6" FATHER="p2" MOTHER="p1"&gt;</p>
+<p> &lt;NAME&gt;Maria Bellau&lt;/NAME&gt;</p>
+<p> &lt;SPOUSE IDREF="p7"/&gt;</p>
+<p> &lt;/PERSON&gt;</p>
+<p></p>
+<p> &lt;PERSON ID="p5" FATHER="p2" MOTHER="p1"&gt;</p>
+<p> &lt;NAME&gt;Eugene Bellau&lt;/NAME&gt;</p>
+<p> &lt;/PERSON&gt;</p>
+<p></p>
+<p> &lt;PERSON ID="p8" FATHER="p2" MOTHER="p1"&gt;</p>
+<p> &lt;NAME&gt;Louise Pauline Bellau&lt;/NAME&gt;</p>
+<p> &lt;BORN&gt;29 Oct 1868&lt;/BORN&gt;</p>
+<p> &lt;DIED&gt;ll May 1879&lt;/DIED&gt;</p>
+<p> &lt;SPOUSE IDREF="p9"/&gt;</p>
+<p> &lt;/PERSON&gt;</p>
+<p></p>
+<p> &lt;PERSON ID="p9"&gt;</p>
+<p> &lt;NAME&gt;Charles Walter Harold&lt;/NAME&gt;</p>
+<p> &lt;BORN&gt;about 1861&lt;/BORN&gt;</p>
+<p> &lt;DIED&gt;about 1938&lt;/DIED&gt;</p>
+<p> &lt;SPOUSE IDREF="p8"/&gt;</p>
+<p> &lt;/PERSON&gt;</p>
+<p></p>
+<p> &lt;PERSON ID="p1O" FATHER="p2" MOTHER="p1"&gt;</p>
+<p> &lt;NAME&gt;Victor Joseph Bellau&lt;/NAME&gt;</p>
+<p> &lt;SPOUSE IDREF="p11"/&gt;</p>
+<p> &lt;/PERSON&gt;</p>
+<p></p>
+<p> &lt;PERSON ID="p11"&gt;</p>
+<p> &lt;NAME&gt;Ellen Gilmore&lt;/NAME&gt;</p>
+<p> &lt;SPOUSE IDREF="p1O"/&gt;</p>
+<p> &lt;/PERSON&gt;</p>
+<p></p>
+<p> &lt;PERSON ID="pl2" FATHER="p2" MOTHER="p1"&gt;</p>
+<p> &lt;NAME&gt;Honore Bellau&lt;/NAME&gt;</p>
+<p> &lt;/PERSON&gt;</p>
+<p></p>
+<p> &lt;FAMILY ID="f1"&gt;</p>
+<p> &lt;HUSBAND IDREF="p2"/&gt;</p>
+<p> &lt;WIFE IDREF="p1"/&gt;</p>
+<p> &lt;CHILD IDREF="p3"/&gt;</p>
+<p> &lt;CHILD IDREF="p5"/&gt;</p>
+<p> &lt;CHILD IDREF="p6"/&gt;</p>
+<p> &lt;CHILD IDREF="p8"/&gt;</p>
+<p> &lt;CHILD IDREF="p1O"/&gt;</p>
+<p> &lt;CHILD IDREF="p12"/&gt;</p>
+<p> &lt;/FAMILY&gt;</p>
+<p></p>
+<p> &lt;FAMILY ID="f2"&gt;</p>
+<p> &lt;HUSBAND IDREF="p7"/&gt;</p>
+<p> &lt;WIFE IDREF="p6"/&gt;</p>
+<p> &lt;/FAMILY&gt;</p>
+<p></p>
+<p>&lt;/FAMILYTREE&gt;</p>
+<p>在下面几节中，文档假设放在URL的<a href="http://www.theharolds.com/genealogy.xml">http://www.theharolds.com 
+  /genealogy.xml</a>中。这并非真正的URL，但这里重点是选择文档的各部分，而不是整个文档。</p>
+<h5><a name="_Toc467208984">17.3.1 id()</a></h5>
+<p>id()位置项是最简单最有用的位置项之一。它选择文档中指定值的ID类型属性的元素。例如，以URI <a href="http://www.theharolds.com/genealogy.xml">http://www.theharolds.com/genealogy.xml</a> 
+  #id(p12)为例。如果翻回到清单17-1，可以发现下面的元素：</p>
+<p>&lt;PERSON ID="pl2" FATHER="p2" MOTHER="pl"&gt;</p>
+<p> &lt;NAME&gt;Honore Bellau&lt;/NAME&gt;</p>
+<p>&lt;/PERSON&gt;</p>
+<p>由于ID类型特性是唯一的，所以可以知道没有其他元素与此XPointer相匹配。因此，<a href="http://www.theharolds.com/genealogy.xml">http:// 
+  www .theharolds .com/ genealogy.xml</a> #id(p12)肯定是指Honore Bellau的PERSON元素。注意，XPointer选择它所引用的整个元素，包括其所有的子元素，而不仅仅是开始标记。</p>
+<p>id()位置项的缺点是它需要借助于目标文档。如果要指定的元素没有ID类型的特性，那么运气就不好。如果文档中的其他元素有ID类型特性，就可以指向它们当中的一个，并使用相对的XPointer（在下一节讨论）来指向真正想要指向的元素。但是，当控制目标文档和链接文档时，ID类型特性表现出最佳的优势，所以可以确定ID与此链接相匹配，即使文档更新、随着时间的流逝而改变时也是如此。</p>
+<p>在某些情况下，如没有DTD的文档，尽管目标文档可能有ID命名的特性，但也可能没有任何ID类型特性。在此情况下，应用程序可能（也可能不）试图推测正在针对的是哪个元素。通常，应用程序选择文档中任何类型特性、值与所需的ID相匹配的名称的第一个元素。另一方面，应用程序也可以不选择任何元素。</p>
+<h5><a name="_Toc467208985">17.3.2 root()</a></h5>
+<p>root()位置项指向文档的根元素，没有参数。例如，XML 1.0规范（站址为<a href="http://www.w3.org/TR/REC-xml">http:// 
+  www.w3.org/TR/REC-xml</a>）的根元素为spec。所以，要选择此根元素，可以使用下面的URI：</p>
+<p><a href="http://www.w3.org/TR/REC-xml">http://www.w3.org/TR/REC-xml</a> #root()</p>
+<p>root()位置项主要用于组合XPointer，作为开始点的依据。事实上，如果在组合的位置项中不包括绝对位置项的话，就假定是root()。但在URI中使用 
+  | 时，root()可以用来选择URI中的整个文档，此 | 表示只正常加载一部分。例如：</p>
+<p><a href="http://www.w3.org/TR/1999/REC-xml-names-19990114/xml-">http://www.w3.org/TR/1999/REC-xml-names-19990114/xml-</a></p>
+<p>names.xml | root()</p>
+<h5><a name="_Toc467208986">17.3.3 html()</a></h5>
+<p>html()位置项选择HTML文档中的命名定位符，只有一个参数，为此位置项引用的定位符名称。例如，下面的命名定位符存在于文件<a href="http://metalab.unc.edu/xml/">http://metalab.unc.edu/xml/</a>中：</p>
+<p>&lt;a name="quote"&gt;&lt;font color="#AA0000"&gt;Quote of the Day&lt;/font&gt;&lt;/a&gt;</p>
+<p>引用此元素的XPointer是：</p>
+<p><a href="http://metalab.unc.edu/xml">http://metalab.unc.edu/xml</a> #html(quote)</p>
+<p>html()位置项主要是为了向后兼容，即允许XLink引用HTML文档。假如所有的特性值都已引用，A元素及其特性又在DTD中声明，并且所有的其他结构完整性准则都满足，那么就可以在XML文档中使用命名的定位符。但是，一般来说，XML中有比命名定位符更好的标识位置的方法。</p>
+ 
+<a href='549.htm'>&lt;&lt;上一篇</a>&nbsp;&nbsp;<a href='551.htm'>下一篇&gt;&gt;</a></td>
+        </tr>
+      </table>
+      <p>&nbsp; </p>
+    </td>
+  </tr>
+</table>
+
+</body>
+
+</html>

@@ -1,0 +1,135 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>常见的80004005错误及其解决方法</title>
+<style type="text/css">
+<!--
+body {
+	font-size: 10.4pt;
+	line-height: 22px;
+}
+-->
+</style>
+</head>
+
+<body bgcolor="eeeeee" leftmargin="20" marginwidth="20">
+<strong>常见的80004005错误及其解决方法 </strong> 
+<p></p>
+<hr>
+在编写WEB应用程序的过程中，我们常常要跟数据库打交道，例如我们日常经常用的数据库ACCESS、SQL SERVER等。在连接这些数据库的时候，系统往往会给我们一些象这类“80004005”错误，这些五花八门的错误信息很另人头痛。为了方便网友解决这类问题，本文将详细的介绍和解答这类问题。
+<p>[错误信息]<br>
+  Microsoft OLE DB Provider for ODBC Drivers error '80004005'<br>
+  [Microsoft][ODBC Microsoft Access 97 Driver] The Microsoft Jet database<br>
+  engine cannot open the file '(unknown)'. It is already opened exclusively<br>
+  by another user, or you need permission to view its data. <br>
+  [原因]<br>
+  这个错误发生在IIS使用匿名帐号(通常是IUSR)时,该帐号在NT中对数据库所在目录<br>
+  没有正确的权限.</p>
+<p>[解决方法]<br>
+  1、检查文件和目录的权限. 保证Evryone能够在该目录中有新建和删除临时文件的权限。<br>
+  2、检查数据源文件（DSN）是否被别的程序标志在使用中，这些程序一般都是Visual InterDev，关闭任何一个正在InterDev中打开和数据库连接的项目。<br>
+  3、检查ACCESS中的某个表是否在这时已连在一个网络服务器上。<br>
+  [错误信息]<br>
+  Microsoft OLE DB Provider for ODBC Drivers error '80004005'<br>
+  [Microsoft][ODBC Microsoft Access 97 Driver] Couldn't use '(unknown)'; file<br>
+  already in use. <br>
+  [原因]<br>
+  要连接ACCESS数据库这时正在被使用使数据库被锁定，导致无法访问。</p>
+<p>[错误信息]<br>
+  Microsoft OLE DB Provider for ODBC Drivers error '80004005'<br>
+  [Microsoft][ODBC Driver Manager] Data source name not found and no default<br>
+  driver specified. <br>
+  [原因]<br>
+  可能的原因是ConnectString在global.asa中初始化的Application连接字符串 ，而这时global.asa文件却没有正常工作。</p>
+<p>[解决方法]</p>
+<p>检查赋值时是否正确，在asp中加入下面的代码：<br>
+  &lt;%= &quot;'auth_user' is &quot; &amp; request.servervariables(&quot;auth_user&quot;)%&gt;<br>
+  &lt;P&gt;<br>
+  &lt;%= &quot;'auth_type' is &quot; &amp; request.servervariables(&quot;auth_type&quot;)%&gt;<br>
+  &lt;P&gt;<br>
+  &lt;%= &quot;connection string is &quot; &amp; session(&quot;your_connectionstring&quot;)%&gt;<br>
+  &lt;P&gt; <br>
+  还有一个原因就是在ConnectString中加入了空格，例如<br>
+  DSN = MyDSN; Database = Pubs; <br>
+  试试改成下面这个样子：<br>
+  DSN=MyDSN;Database=Pubs;<br>
+  如果是global.asa还没有被运行，检查该文件是否在运用程序的根目录中,或者是虚拟目录的根目录中。<br>
+  还有可能错误出现的原因是DSN名称没找着，这可以采用我提供的id=36767的办法解决。最后是检查是否安装了最新的驱动程序，既是否是最新的MDAC版本。</p>
+<p>[错误信息]<br>
+  Microsoft OLE DB Provider for ODBC Drivers error '80004005'<br>
+  [Microsoft][ODBC Driver Manager] Data source name not ?? <br>
+  [原因]<br>
+  这个错误有可能是出现在你的计算机上软件安装（或则反安装）的顺序上。如果ODBC的版本不一致的话，就会发生该错误。<br>
+  [解决方法]</p>
+<p>办法是安装最新版本的MDAC。</p>
+<p><br>
+  [错误信息]<br>
+  Microsoft OLE DB Provider for ODBC Drivers error '80004005'<br>
+  [Microsoft][ODBC Access 97 ODBC driver Driver]General error Unable to open<br>
+  registry key 'DriverId'. <br>
+  [原因]<br>
+  这个错误发生在从注册表中读取数值的时候。 使用regedit32.exe检查注册表的权限。</p>
+<p>[错误信息]<br>
+  Microsoft OLE DB Provider for ODBC Drivers error '80004005'<br>
+  [Microsoft][ODBC SQL Server Driver][dbnmpntw]ConnectionOpen (CreateFile()).<br>
+  [原因]<br>
+  原因之一：当一个数据库中包含有分别在不用机器上的许可关系时，这也可能发生在同一台机器上，当给一个关系设置了UNC路径，而另一个关系却是本地路径。<br>
+  原因之二：当用户使用IIS匿名帐号登录后，对本地这台机器而言他是有权的，但是对于一个UNC路径的机器，另外这台机器是不会认为你当前匿名登录的帐号在它那上面也是合法的。这样它就不允许你访问它上面的资源，导致错误。</p>
+<p>[解决方法]<br>
+  1、在IIS工具中，改变IIS匿名帐号成另外一个基于域的帐号。（也就是不使用匿名登录）<br>
+  2、或则在那台你要访问资源的机器上也创建一个和当前匿名帐号同样的帐号，使用同样的密码。</p>
+<p>[错误信息]<br>
+  Microsoft OLE DB Provider for ODBC Drivers error '80004005' Microsoft][ODBC<br>
+  Microsoft SQL Driver] Logon Failed() <br>
+  [原因]<br>
+  该错误是由SQL Server产生的，当它不接受或则不能够认识这个登录帐号的时候，或者没有使用管理员身份登录，<br>
+  也可能是在NT中没有SQL影射帐号造成的。<br>
+  [解决方法]<br>
+  用系统管理员帐号(SA)登录，一般密码应该为空.注意，这时必须使用CoonectString而不能够使用DSN文件。因为DSN中没有保存用户名和密码。检查NT是否给SQL映射了帐号。</p>
+<p><br>
+  [错误信息]<br>
+  Microsoft OLE DB Provider for ODBC Drivers error '80004005'<br>
+  [Microsoft][ODBC SQL Server Driver][SQL Server] Login failed- User: Reason:<br>
+  Not defined as a valid user of a trusted SQL Server connection. <br>
+  [原因]<br>
+  该错误是由SQL Server产生的，当它不接受或则不能够认识这个登录帐号的时候，或者没有使用管理员身份登录，<br>
+  也可能是在NT中没有SQL影射帐号造成的。<br>
+  [解决方法]</p>
+<p>在SQL Server的Enterprise Manager中，选择Server/SQL Server/Configure[ASCII<br>
+  133]/Security Options/Standard。如果是运行在IIS4中，取消选择该项目的Password Synchronization选项。</p>
+<p>[错误信息]<br>
+  Microsoft OLE DB Provider for ODBC Drivers error '80004005'<br>
+  [Microsoft][ODBC Microsoft Access 97 Driver] Couldn't lock file. <br>
+  [原因]<br>
+  也许是没有正确的权限生成Access数据库的锁定文件(.ldb)<br>
+  默认时，该文件和你的数据库是同一个目录的。<br>
+  给匿名帐号全权访问数据库共享目录的权限。<br>
+  有时是因为文件是因为共享时有意使用了只读的权限限制。</p>
+<p>[解决方法]<br>
+  Set Conn = Server.CreateObject(&quot;ADODB.Connection&quot;)<br>
+  Conn.Mode = adModeShareDenyWrite '8</p>
+<p>[错误信息]<br>
+  Microsoft OLE DB Provider for ODBC Drivers error '80004005'<br>
+  [Microsoft][ODBC Microsoft Access 97 Driver] '(unknown)' isn't a valid<br>
+  path. Make sure that the path name is spelled correctly and that you are<br>
+  connected to the server on which the file resides. <br>
+  [原因]<br>
+  路径非法。最可能发生在当Global.asa和CoonecntString被使用到另外一台机器上的时候。</p>
+<p>[错误信息]<br>
+  Microsoft OLE DB Provider for ODBC Drivers error '80004005'<br>
+  [Microsoft][ODBC SQL Server Driver][SQL Server] The query and the views in<br>
+  it exceed the limit of 16 tables. </p>
+<p>[原因]<br>
+  对查询有限制。</p>
+<p>[错误信息]<br>
+  Microsoft OLE DB Provider for ODBC Drivers error '80004005'<br>
+  [Microsoft][ODBC SQL Server Driver][DBMSSOCN] General network error. Check<br>
+  your network document <br>
+  [原因]<br>
+  装有SQL Server的机器被改名，但数据库名（DSN）还使用了原来的机器名。</p>
+<p>[解决方法]</p>
+<p>重新设置DSN。<br>
+</p>
+</body>
+</html>

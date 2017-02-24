@@ -1,0 +1,33 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>天气预报</title>
+<style type="text/css">
+<!--
+body {
+        margin-left: 0px;
+        margin-top: 0px;
+        margin-right: 0px;
+        margin-bottom: 0px;
+}
+-->
+</style>
+<script language="JavaScript" type="text/JavaScript">
+document.oncontextmenu=new Function('event.returnValue=false;');
+document.onselectstart=new Function('event.returnValue=false;');
+//以上是禁止鼠标右键
+<!--
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+//-->
+</script>
+</head>
+<body>
+<div id="Layer1" style="position:absolute; width:260px; height:35px; z-index:1; left: 0; top: 0;"><img src="images/times.gif" alt="天气预报" width="260" height="35"></div>
+<iframe src="http://weather.cn.yahoo.com/cframe.html" width="260" height="30" frameborder="0" scrolling="no"></iframe>
+</body>
+</html>

@@ -1,0 +1,179 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>在SQL Server中保存和输出图片</title>
+<style type="text/css">
+<!--
+body {
+	font-size: 10.4pt;
+	line-height: 22px;
+}
+-->
+</style>
+</head>
+
+<body bgcolor="eeeeee" leftmargin="20" marginwidth="20">
+<p><strong>在SQL Server中保存和输出图片</strong></p>
+<hr>
+<p> 介绍 <br>
+  <br>
+  <br>
+  有时候我们需要保存一些binary data进数据库。SQL Server提供一个叫做image的特殊数据类型供我们保存binary data。Binary 
+  data可以是图片、文档等。在这篇文章中我们将看到如何在SQL Server中保存和输出图片。 <br>
+  <br>
+  <br>
+  建表 <br>
+  <br>
+  <br>
+  为了试验这个例子你需要一个含有数据的table(你可以在现在的库中创建它，也可以创建一个新的数据库)，下面是它的结构： <br>
+  <br>
+  <br>
+  Column Name <br>
+  Datatype <br>
+  Purpose <br>
+  <br>
+  ID <br>
+  Integer <br>
+  identity column Primary key <br>
+  <br>
+  IMGTITLE <br>
+  Varchar(50) <br>
+  Stores some user friendly title to identity the image <br>
+  <br>
+  IMGTYPE <br>
+  Varchar(50) <br>
+  Stores image content type. This will be same as recognized content types of 
+  ASP.NET <br>
+  <br>
+  IMGDATA <br>
+  Image <br>
+  Stores actual image or binary data. <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  保存images进SQL Server数据库 <br>
+  <br>
+  <br>
+  为了保存图片到table你首先得从客户端上传它们到你的web服务器。你可以创建一个web form，用TextBox得到图片的标题，用HTML File 
+  Server Control得到图片文件。确信你设定了Form的encType属性为multipart/form-data。 <br>
+  <br>
+  <br>
+  Stream imgdatastream = File1.PostedFile.InputStream; <br>
+  <br>
+  int imgdatalen = File1.PostedFile.ContentLength; <br>
+  <br>
+  string imgtype = File1.PostedFile.ContentType; <br>
+  <br>
+  string imgtitle = TextBox1.Text; <br>
+  <br>
+  byte[] imgdata = new byte[imgdatalen]; <br>
+  <br>
+  int n = imgdatastream.Read(imgdata,0,imgdatalen); <br>
+  <br>
+  string connstr= <br>
+  <br>
+  ((NameValueCollection)Context.GetConfig <br>
+  <br>
+  (&quot;appSettings&quot;))[&quot;connstr&quot;]; <br>
+  <br>
+  SqlConnection connection = new SqlConnection(connstr); <br>
+  <br>
+  SqlCommand command = new SqlCommand <br>
+  <br>
+  (&quot;INSERT INTO ImageStore(imgtitle,imgtype,imgdata) <br>
+  <br>
+  VALUES ( @imgtitle, @imgtype,@imgdata )&quot;, connection ); <br>
+  <br>
+  <br>
+  <br>
+  SqlParameter paramTitle = new SqlParameter <br>
+  <br>
+  (&quot;@imgtitle&quot;, SqlDbType.VarChar,50 ); <br>
+  <br>
+  paramTitle.Value = imgtitle; <br>
+  <br>
+  command.Parameters.Add( paramTitle); <br>
+  <br>
+  <br>
+  <br>
+  SqlParameter paramData = new SqlParameter <br>
+  <br>
+  ( &quot;@imgdata&quot;, SqlDbType.Image ); <br>
+  <br>
+  paramData.Value = imgdata; <br>
+  <br>
+  command.Parameters.Add( paramData ); <br>
+  <br>
+  <br>
+  <br>
+  SqlParameter paramType = new SqlParameter <br>
+  <br>
+  ( &quot;@imgtype&quot;, SqlDbType.VarChar,50 ); <br>
+  <br>
+  paramType.Value = imgtype; <br>
+  <br>
+  command.Parameters.Add( paramType ); <br>
+  <br>
+  <br>
+  <br>
+  connection.Open(); <br>
+  <br>
+  int numRowsAffected = command.ExecuteNonQuery(); <br>
+  <br>
+  connection.Close(); <br>
+  <br>
+  <br>
+  <br>
+  从数据库中输出图片 <br>
+  <br>
+  <br>
+  <br>
+  现在让我们从数据库中取出我们刚刚保存的图片，在这儿，我们将直接将图片输出至浏览器。你也可以将它保存为一个文件或做任何你想做的。 <br>
+  <br>
+  <br>
+  <br>
+  private void Page_Load(object sender, System.EventArgs e) <br>
+  <br>
+  { <br>
+  <br>
+  string imgid =Request.QueryString[&quot;imgid&quot;]; <br>
+  <br>
+  string connstr=((NameValueCollection) <br>
+  <br>
+  Context.GetConfig(&quot;appSettings&quot;))[&quot;connstr&quot;]; <br>
+  <br>
+  string sql=&quot;SELECT imgdata, imgtype FROM ImageStore WHERE id = &quot; <br>
+  <br>
+  + imgid; <br>
+  <br>
+  SqlConnection connection = new SqlConnection(connstr); <br>
+  <br>
+  SqlCommand command = new SqlCommand(sql, connection); <br>
+  <br>
+  connection.Open(); <br>
+  <br>
+  SqlDataReader dr = command.ExecuteReader(); <br>
+  <br>
+  if(dr.Read()) <br>
+  <br>
+  { <br>
+  <br>
+  Response.ContentType = dr[&quot;imgtype&quot;].ToString(); <br>
+  <br>
+  Response.BinaryWrite( (byte[]) dr[&quot;imgdata&quot;] ); <br>
+  <br>
+  } <br>
+  <br>
+  connection.Close(); <br>
+  <br>
+  } <br>
+  <br>
+  <br>
+  <br>
+  在上面的代码中我们使用了一个已经打开的数据库，通过datareader选择images。接着用Response.BinaryWrite代替Response.Write来显示image文件。 
+  <br>
+</p>
+</body>
+</html>

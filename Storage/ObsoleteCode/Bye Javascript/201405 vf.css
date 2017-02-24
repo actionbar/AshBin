@@ -1,0 +1,78 @@
+
+
+.l{width:770px;float:left;padding:0 30px 0 0;background:#FFF}
+
+/* 文章列表*/
+.vb1c{font-size:14px;border:solid #DDD;border-width:2px 1px 1px;padding:9px 15px}
+.vb1c h2{overflow:hidden;height:25px;line-height:25px;border-top:1px dashed #ddd;padding:13px 0 0;margin:13px 0 0;font-size:16px}
+.vb1c h2 a{color:#08F}
+.vb1c h2 a:hover{background:#08F;color:#FFF;text-decoration:none}
+.vb1c h2 i{font-size:10px;font-weight:400;margin:0 9px}
+.vb1c p{line-height:25px;margin:0 9px 0 0}
+
+
+.c{margin:9px 0}
+.ct{line-height:34px;height:34px}
+
+/* 标题上的 m,*/ 
+.m{font:400 12px/40px "宋体B8B\4F53";border-bottom:1px solid #DDD;height:40px;padding:0;background:#FFF;position:relative}
+.m span{position:absolute;right:0}
+/* 标题下的*/
+.ct{border-bottom:#ccc 2px solid}
+.ct,.ct a{color:#999}
+.ct i{margin:0 9px}
+.ct #bdshare{float:right}
+h1 {font:400 24px/34px "微软雅黑"}
+
+
+#d{margin:25px 0 9px;min-width:1px;font-size:14px;_width:550px}
+#d .f{border-color:#DEDFE1;padding:5px 5px 15px;float:left}
+#d p{height:30px;line-height:30px;margin:0 0 9px 0;text-indent:9px;font-weight:800;border-bottom:#ddd 1px dashed}
+#d li{line-height:25px;height:25px;padding:0 88px 0 25px;background:url(http://localhost/www.v-get.com/tu/g.gif) 9px -1651px no-repeat}
+#d a{text-decoration:underline;color:#08F}
+
+#c{font-size:14px;color:#252525;padding:9px 0 16px}
+#c h2{height:24px;line-height:24px;font-size:18px;border-bottom:#DEDFE1 1px solid;margin:30px 0 10px;padding:0 0 6px 0}
+#c h3{font-size:16px;margin:15px 0 5px 0}
+
+
+#c div.po p{color:#666}
+#c li{line-height:25px}
+#c p,#c ol{text-indent:35px;line-height:25px;margin:13px 0}
+/* 其他区域基本用不到这些 */
+table{border:1px solid #E9E9E9;font-size:12px;border-collapse:collapse;width:100%}tr{line-height:22px}th,td{border:solid #E9E9E9;border-width:0 1px 1px 0;padding:3px 5px}
+blockquote:before,blockquote:after,q:before,q:after{content:"";}
+blockquote {background:#fafafa;border:3px dashed #DDD;margin:9px 0;padding:9px 20px;quotes:"\201C""\201D""\2018""\2019";}
+pre{font:400 12px/22px "Courier New", Courier, monospace;border:#ddd 1px solid;background:#f7f7f7;padding:9px;list-style-position:inside;list-style-type:decimal;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space:-o-pre-wrap;word-wrap:break-word;}
+#c blockquote p{text-indent:0}
+#c .fo{text-indent:0}
+#c a{color:#136EC2;text-decoration:none;border-bottom:1px dotted #136EC2}
+#c a:hover{background:#EBF2FA}
+#c a strong{font-weight:400}
+#c table{border:#ddd 1px solid;border-collapse:collapse;text-align:center;width:100%;margin:9px 0}
+#c tr{line-height:22px}
+#c th,td{border-right:1px solid #ddd;border-bottom:1px solid #ddd;padding:3px 5px}
+#c td a{margin:0 5px}
+#c img{max-width:100%}
+#c img.p,#c img.q{margin:0 9px 0 0}
+
+
+
+
+/* 文章下面关键词，标签 */
+.ck{height:50px;line-height:50px;position:relative}
+.ck a{padding:9px;font-size:14px;color:#315AAA}
+.ck i{position:absolute;right:0;}
+.ck i a{padding:0}
+
+
+.r{width:300px;float:right;font-size:14px;_width:287px}
+.r a{color:#252525}
+.r a:hover{color:#4BA733}
+.r h4 a{color:#4BA733;font:400 16px "微软雅黑"}
+.r .f h4{border-bottom:#ddd 1px solid;height:28px;line-height:28px;text-indent:9px}
+.r h3{height:25px;line-height:25px;font:bold 14px "微软雅黑";margin:5px 9px;overflow:hidden}
+.r .f ul{margin:5px 5px 5px 11px}
+.r li{line-height:25px;padding:0 0 0 13px;background:url(http://localhost/www.v-get.com/tu/g.gif) 0 -1474px no-repeat}
+
+/* .ai img 可以确定图片  默认对应300px 方框， 图片两张并列  130 × 90 */

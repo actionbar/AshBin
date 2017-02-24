@@ -1,0 +1,117 @@
+<html xmlns:rdl>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<script src="rdl_properties.js"></script>
+<base target="_self">
+</head>
+<body>
+
+<script>
+
+//collFriendProperties=new Array();
+//collFriendDeclarations=new Array();
+//collFriendAtRules=new Array();
+//collFriendElements=new Array();
+//collFriendClasses=new Array();
+
+collFriendProperties=new Array(
+'line-break','white-space','word-wrap'
+);
+
+//collIE40=new Array();
+//collIE50=new Array();
+//collIE55=new Array();
+//collIE60=new Array();
+
+collIE50=new Array(
+'ADDRESS','BLOCKQUOTE','BODY','CENTER','currentStyle','DD','DIR','DIV','DL','DT','FIELDSET','FORM','Hn','HR','LEGEND','LI','LISTING','MARQUEE','MENU','OL','P','PLAINTEXT','PRE','runtimeStyle','style','TABLE','TD','TH','TR','UL','XMP'
+);
+
+sStyle=
+'<style>\n'+
+'#idParentDiv{width:300px;height:120px;padding:6px;background-color:buttonshadow;overflow:auto;}\n'+
+'#idDIV{width:100%;background-color:#87CEEB;padding:6px;word-break:normal;word-wrap : normal ; word-break : normal;}\n'+
+'#idCodeDiv{width:100%;padding:4px;font-family:verdana,tahoma;margin:12px 0px 0px 0px;background-color:#EEEEEE;font-weight:bold;}\n'+
+'<\/style>\n';
+
+sScript=
+'<script>\n'+
+'function rdl_change(e){\n'+
+'document.body.style.overflowY="scroll";\n'+
+'var oCodeDiv=document.all("idCodeDiv");\n'+
+'var oDiv=document.all("idDiv");\n'+
+'with (document.all("idSel1")) var sValue1=options[selectedIndex].value;\n'+
+'with (document.all("idSel2")) var sValue2=options[selectedIndex].value;\n'+
+'with (oDiv.style) {\n'+
+'wordWrap=sValue1;wordBreak=sValue2;\n'+
+'}\n'+
+'oCodeDiv.innerText="word-wrap : "+sValue1+" ;\\r\\n"+"word-break : "+sValue2+" ;";\n'+
+'}\n'+
+'<\/script>\n';
+
+sCode=
+'<div id=idParentDiv>\n'+
+'<div id=idDIV>LongWordLongWordLongWordLongWordLongWordLongWordLongWordLongWordLongWordLongWordLongWordLongWordLongWordLongWordLongWordLongWordLongWordLongWordLongWordLongWordLongWordLongWordLongWordLongWordLongWordLongWordLongWordLongWordLongWordLongWordLongWordLongWordLongWordLongWordLongWordLongWordLongWordLongWordLongWordLongWord<\/div>\n'+
+'<\/div>\n'+
+'<br>\n'+
+'<table><tr><td>\n'+
+'<select id="idSel1" onchange="rdl_change();">\n'+
+'<option value="normal">---word-wrap---\n'+
+'<option value="break-word">break-word\n'+
+'<option value="normal">normal\n'+
+'<\/select>\n'+
+'<\/td><td>\n'+
+'<select id="idSel2" onchange="rdl_change();">\n'+
+'<option value="normal">---word-break---\n'+
+'<option value="break-all">break-all\n'+
+'<option value="keep-all">keep-all\n'+
+'<option value="normal">normal\n'+
+'<\/select>\n'+
+'<\/td><\/tr><\/table>\n'+
+'<div id=idCodeDiv>word-wrap : normal ;<br>word-break : normal ;<\/div>\n';
+
+iWinWidth=360;
+
+iWinHeight=360;
+
+//bRunCode=false;
+
+//bElements=false;
+
+</script>
+
+<div id=idContent>
+
+<div id=idContentTitle><span id=idTitleName>word-break</span>版本：IE5+专有属性　继承性：有</div>
+
+<div class=cssColumnTitle>语法：</div>
+<div>
+<b>word-break : </b><span class=cssDefault><b>normal</b></span> | <b>break-all</b> | <b>keep-all</b>
+</div>
+
+<div class=cssColumnTitle>取值：</div>
+<table>
+<tr><td nowrap><b> normal </b></td><td nowrap><b>:</b></td><td><b>默认值</b>。允许在词间换行</td></tr>
+<tr><td nowrap><b> break-all </b></td><td nowrap><b>:</b></td><td>该行为与亚洲语言的<b> normal </b>相同。也允许非亚洲语言文本行的任意字内断开。该值适合包含一些非亚洲文本的亚洲文本</td></tr>
+<tr><td nowrap><b> keep-all </b></td><td nowrap><b>:</b></td><td>与所有非亚洲语言的<b> normal </b>相同。对于中文，韩文，日文，不允许字断开。适合包含少量亚洲文本的非亚洲文本</td></tr>
+</table>
+
+<div class=cssColumnTitle>说明：</div>
+<div>
+设置或检索对象内文本的字内换行行为。尤其在出现多种语言时。<br>
+对于中文，应该使用<b> break-all </b>。<br>
+此属性对于<b> currentStyle </b>对象而言是只读的。对于其他对象而言是可读写的。<br>
+对应的脚本特性为<b> wordBreak </b>。
+</div>
+
+<div class=cssColumnTitle>示例：</div>
+<div id=idSimpleCode>
+div {word-break : break-all; } 
+</div>
+
+</div>
+</body>
+</html>
+
+<!-- Part of RDL(TM) - Written by Rain1977 
+HomeSite: http://www.dhtmlet.com  E-Mail: dhtmlet@hotmail.com -->

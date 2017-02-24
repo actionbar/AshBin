@@ -1,0 +1,745 @@
+<html>
+<head>
+<title>列出元素</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+
+<link rel = stylesheet href = "image/style.css">
+</head>
+<body bgcolor="#ffffff">
+<table width="688" border="0" cellspacing="0" cellpadding="0" align="center">
+  <tr bgcolor="EEEEEE"> 
+    <td height="22"><a href="index.htm">主页</a></td>
+  </tr>
+</table><br>
+<table border="0" cellpadding="0" cellspacing="0" width="688" align="center" height="490">
+  <tr valign="top"> 
+    <td rowspan="4" width="91">&nbsp; </td>
+    <td height="68" width="131"> 
+      <p><img src="image/doc.gif"></p>
+    </td>
+    <td rowspan="4" width="18"><b></b> </td>
+    <td height="68" width="387"><img src="image/title_doc.gif"></td>
+    <td rowspan="4" width="61"> 
+      <h6>&nbsp;</h6>
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td rowspan="3" valign="top" class="pt10" align="center" width="131" bgcolor="EEEEEE"> 
+      <p>&nbsp;</p>
+      <p><font color="#FF0000">※ 8.4 列出元素</font></p>
+       
+	</td>
+  </tr>
+  <tr valign="top"> 
+    <td width="387" height="308"> 
+      <table width="100%" border="0" cellpadding="0">
+        <tr> 
+          <td>
+
+           <h4>8.4 列出元素</h4>
+<p>要为一个文档创建适当的DTD的第一步是了解用DTD中定义的元素编码的信息结构。有时候信息就像通讯地址列表一样。有时则具有相对自由的形式，如说明短文或杂志文章。</p>
+<p>让我们以已经相对结构化的文档为例，回到第4章所示的棒球统计示例中。在那份文档上加一个DTD，就使我们能把以前只有通过约定才能遵守的约束条件付诸实施。例如，我们可以要求SEASON元素包含正好两个LEAGUE子元素，每个TEAM有TEAM_CITY和TEAM_NAME子元素，并且TEAM_CITY总在TEAM_NAME之前。</p>
+<p>回想起来，完整的棒球统计文档包含下面一些元素：</p>
+<p>SEASON RBI</p>
+<p>YEAR STEALS</p>
+<p>LEAGUE CAUGHT－STEALING</p>
+<p>LEAGUE－NAME&#9;&#9;&#9;&#9;&#9; SACRIFICE_ HITS</p>
+<p>DIVISION&#9;&#9;&#9;&#9; SACRIFICE_FLIES</p>
+<p>DIVISION_NAME ERRORS</p>
+<p>TEAM&#9;&#9;&#9;&#9;&#9;&#9; WALKS</p>
+<p>TEAM_CITY&#9;&#9;&#9;&#9;&#9; STRUCK_OUT</p>
+<p>TEAM_NAME HIT_BY_PITCH</p>
+<p>PLAYER&#9;&#9;&#9;&#9;&#9;&#9; COMPLETE_GAMES</p>
+<p>SURNAME&#9;&#9;&#9;&#9;&#9;&#9; SHUT_OUTS</p>
+<p>GIVEN_NAME&#9;&#9;&#9;&#9;&#9; ERA</p>
+<p>POSITION&#9;&#9;&#9;&#9;&#9; INNINGS</p>
+<p>GAMES&#9;&#9;&#9;&#9;&#9;&#9; HOME_RUNS</p>
+<p>GAMES_STARTED&#9;&#9;&#9;&#9; RUNS</p>
+<p>AT_BATS&#9;&#9;&#9;&#9;&#9;&#9; EARNED_RUNS</p>
+<p>RUNS&#9;&#9;&#9;&#9;&#9;&#9; HIT_BATTER</p>
+<p>HITS&#9;&#9;&#9;&#9;&#9;&#9; WILD_PITCHES</p>
+<p>DOUBLES&#9;&#9;&#9;&#9;&#9;&#9; BALK</p>
+<p>TRIPLES&#9;&#9;&#9;&#9;&#9;&#9; WALKED_BATTER</p>
+<p>HOME_RUNS&#9;&#9;&#9;&#9;&#9; STRUCK_OUT_BATTER</p>
+<p>WINS&#9;&#9;&#9;&#9;&#9;&#9; COMPLETE_GAMES</p>
+<p>LOSSES&#9;&#9;&#9;&#9;&#9;&#9; SHUT_OUTS</p>
+<p>SAVES</p>
+<p>所编写的DTD要为每个元素作元素声明。每一元素声明列出元素名和它的子元素。例如，DTD规定一个LEAGUE元素有三个DIVISION子元素。还规定SURNAME要放在PLAYER之内而不能在它外面。还规定每个DIVISION有不确定的TEAM元素数目但绝不能少于一个。</p>
+<p>DTD可要求PLAYER只有一个GIVEN_NAME、SURNAME、POSITION和GAMES元素，但是否有RBI和ERA元素则任意。而且要求GIVEN_NAME、SURNAME、POSITION和GAMES元素以特定的顺序出现。例如，GIVEN_NAME、SURNAME、POSITION和GAMES只能在PLAYER元素内使用。</p>
+<p>如果头脑中有一份具体的结构完整的示例文档，该文档使用了想要出现在DTD中所有的元素，那么开始就很容易了。第4章中的例子在这里就可起这一作用。清单8-4是经过整理的第4章清单4-1的简化版。尽管它只有两名球员，却可以说明所有基本的元素。</p>
+<p>清单8-4：需要编写DTD结构完整的XML文档</p>
+<p>&lt;?xml version="1.0" standalone="yes"?&gt;</p>
+<p>&lt;SEASON&gt;</p>
+<p> &lt;YEAR&gt;1998&lt;/YEAR&gt;</p>
+<p> &lt;LEAGUE&gt;</p>
+<dir> 
+  <p>&lt;LEAGUE_NAME&gt;National&lt;/LEAGUE_NAME&gt;</p>
+  <p>&lt;DIVISION&gt;</p>
+  <p> &lt;DIVISION_NAME&gt;East &lt;/DIVISION_NAME&gt;</p>
+  <dir> 
+    <dir> 
+      <p>&lt;TEAM&gt;</p>
+    </dir>
+  </dir>
+</dir>
+<p>&lt;TEAM_CITY&gt;Florida&lt;/TEAM_CITY&gt;</p>
+<p>&lt;TEAM_NAME&gt;Marlins&lt;/TEAM_NAME&gt;</p>
+<p>&lt;PLAYER&gt;</p>
+<p>&lt;SURNAME&gt;Ludwick&lt;/SURNAME&gt;</p>
+<p>&lt;GIVEN_NAME&gt;Eric&lt;/GIVEN_NAME&gt;</p>
+<p>&lt;POSITION&gt;Starting Pitcher&lt;/POSITION&gt;</p>
+<p>&lt;WINS&gt;1&lt;/WINS&gt;</p>
+<p>&lt;LOSSES&gt;4&lt;/LOSSES&gt;</p>
+<p>&lt;SAVES&gt;0&lt;/SAVES&gt;</p>
+<p>&lt;GAMES&gt;13&lt;/GAMES&gt;</p>
+<p>&lt;GAMES_STARTED&gt;6&lt;/GAMES_STARTED&gt;</p>
+<p>&lt;COMPLETE_GAMES&gt;0&lt;/COMPLETE_GAMES&gt;</p>
+<p>&lt;SHUT_OUTS&gt;0&lt;/SHUT_OUTS&gt;</p>
+<p>&lt;ERA&gt;7.44&lt;/ERA&gt;</p>
+<p>&lt;INNINGS&gt;32.2&lt;/INNINGS&gt;</p>
+<p>&lt;HOME_RUNS&gt;46&lt;/ HOME_RUNS&gt;</p>
+<p>&lt;RUNS&gt;7&lt;/RUNS&gt;</p>
+<p>&lt;EARNED_RUNS&gt;31&lt;/EARNED_RUNS&gt;</p>
+<p>&lt;HIT_BATTER&gt;27&lt;/ HIT_BATTER&gt;</p>
+<p>&lt;WILD_PITCHES&gt;0&lt;/WILD_PITCHES&gt;</p>
+<p>&lt;WALKED_BATTER&gt;0&lt;/WALKED_BATTER&gt;</p>
+<p>&lt;STRUCK_OUT_BATTER&gt;17&lt;/STRUCK_OUT_BATTER&gt;</p>
+<p>&lt;/PLAYER&gt;</p>
+<p>&lt;PLAYER&gt;</p>
+<p>&lt;SURNAME&gt;Daubach&lt;/SURNAME&gt;</p>
+<p>&lt;GIVEN_NAME&gt;Brian&lt;/GIVEN_NAME&gt;</p>
+<p>&lt;POSITION&gt;First Base&lt;/POSITION&gt;</p>
+<p>&lt;GAMES&gt;10&lt;/GAMES&gt;</p>
+<p>&lt;GAMES_STARTED&gt;3&lt;/GAMES_STARTED&gt;</p>
+<p>&lt;AT_BATS&gt;15&lt;/AT_BATS&gt;</p>
+<p>&lt;RUNS&gt;0&lt;/RUNS&gt;</p>
+<p>&lt; HITS&gt;3&lt;/HITS&gt;</p>
+<p>&lt;DOUBLES&gt;1&lt;/DOUBLES&gt;</p>
+<p>&lt;TRIPLES&gt;0&lt;/TRIPLES&gt;</p>
+<p>&lt;HOME_RUNS&gt;0&lt;/HOME_RUNS&gt;</p>
+<p>&lt;RBI&gt;3&lt;/RBI&gt;</p>
+<p>&lt;STEALS&gt;0&lt;/STEALS&gt;</p>
+<p>&lt;CAUGHT_STEALING&gt;0&lt;/CAUGHT_STEALING&gt;</p>
+<p>&lt;SACRIFICE_ HITS&gt;0&lt;/SACRIFICE_HITS&gt;</p>
+<p>&lt;SACRIFICE_FLIES&gt;0&lt;/SACRIFICE_FLIES&gt;</p>
+<p>&lt;ERRORS&gt;0&lt;/ERRORS&gt;</p>
+<p>&lt;WALKS&gt;1&lt;/WALKS&gt;</p>
+<p>&lt;STRUCK_OUT&gt;5&lt;/STRUCK_OUT&gt;</p>
+<p>&lt;HIT_BY_PITCH&gt;1&lt;/HIT_BY_PITCH &gt;</p>
+<p>&lt;/PLAYER&gt;</p>
+<p>&lt;/TEAM&gt;</p>
+<p>&lt;TEAM&gt;</p>
+<p>&lt;TEAM_CITY&gt;Montreal&lt;/TEAM_CITY&gt;</p>
+<p>&lt;TEAM_NAME&gt;Expos&lt;/TEAM_NAME&gt;</p>
+<p>&lt;/TEAM&gt;</p>
+<p>&lt;TEAM&gt;</p>
+<p>&lt;TEAM_CITY&gt;New York&lt;/TEAM_CITY&gt;</p>
+<p>&lt;TEAM_NAME&gt;Mets&lt;/TEAM_NAME&gt;</p>
+<p>&lt;/TEAM&gt;</p>
+<p>&lt;TEAM&gt;</p>
+<p>&lt;TEAM_CITY&gt;Philadelphia&lt;/TEAM_CITY&gt;</p>
+<p>&lt;TEAM_NAME&gt;Phillies&lt;/TEAM_NAME&gt;</p>
+<p>&lt;/TEAM&gt;</p>
+<p>&lt;/DIVISION&gt;</p>
+<p>&lt;DIVISION&gt;</p>
+<p>&lt;DIVISION_NAME&gt;Central&lt;/DIVISION_NAME&gt;</p>
+<p>&lt;TEAM&gt;</p>
+<p>&lt;TEAM_CITY&gt;Chicago&lt;/TEAM_CITY&gt;</p>
+<p>&lt;TEAM_NAME&gt;Cubs&lt;/TEAM_NAME&gt;</p>
+<p>&lt;/TEAM&gt;</p>
+<p>&lt;/DIVISION&gt;</p>
+<p>&lt;DIVISION&gt;</p>
+<p>&lt;DIVISION_NAME&gt;West&lt;/DIVISION_NAME&gt;</p>
+<p>&lt;TEAM&gt;</p>
+<p>&lt;TEAM_CITY&gt;Arizona&lt;/TEAM_CITY&gt;</p>
+<p>&lt;TEAM_NAME&gt;Diamondbacks&lt;/TEAM_NAME&gt;</p>
+<p>&lt;/TEAM&gt;</p>
+<p>&lt;/DIVISION&gt;</p>
+<p>&lt;/LEAGUE&gt;</p>
+<p>&lt;LEAGUE&gt;</p>
+<p>&lt;LEAGUE_NAME&gt;American&lt;/LEAGUE_NAME&gt;</p>
+<p>&lt;DIVISION&gt;</p>
+<p>&lt;DIVISION_NAME&gt;East &lt;/DIVISION_NAME&gt;</p>
+<p>&lt;TEAM&gt;</p>
+<p>&lt;TEAM_CITY&gt;Baltimore&lt;/TEAM_CITY&gt;</p>
+<p>&lt;TEAM_NAME&gt;Orioles&lt;/TEAM_NAME&gt;</p>
+<p>&lt;/TEAM&gt;</p>
+<p>&lt;/DIVISION&gt;</p>
+<p>&lt;DIVISION&gt;</p>
+<p>&lt;DIVISION_NAME&gt;Central&lt;/DIVISION_NAME&gt;</p>
+<p>&lt;TEAM&gt;</p>
+<p>&lt;TEAM_CITY&gt;Chicago&lt;/TEAM_CITY&gt;</p>
+<p>&lt;TEAM_NAME&gt;White Sox&lt;/TEAM_NAME&gt;</p>
+<p>&lt;/TEAM&gt;</p>
+<p>&lt;/DIVISION&gt;</p>
+<p>&lt;DIVISION&gt;</p>
+<p>&lt;DIVISION_NAME&gt;West&lt;/DIVISION_NAME&gt;</p>
+<p>&lt;TEAM&gt;</p>
+<p>&lt;TEAM_CITY&gt;Anaheim&lt;/TEAM_CITY&gt;</p>
+<p>&lt;TEAM_NAME&gt;Angels&lt;/TEAM_NAME&gt;</p>
+<p>&lt;/TEAM&gt;</p>
+<p>&lt;/DIVISION&gt;</p>
+<p> &lt;/LEAGUE&gt;</p>
+<p> &lt;/SEASON&gt;</p>
+<p>表8-1列出了本例中的元素及它们必须遵守的条件。每一元素都有它必须包含的元素、它可能包含的元素以及必须包含它的元素。有些情况下，一个元素可能包含不止一个同一类型的子元素。SEASON元素包含一个YEAR和两个LEAG 
+  UE元素。一个DIVISION通常包含不止一个TEAM元素。较不明显的是，一些击球手在各场比赛中在指定的投球手和外场之间交替出现。这样，一个PLAYER元素就可能有不止一个POSITION。在该表格中，要求的子元素的数目是通过在元素前加数字来指明的（如2 
+  LEAGUE），而多子元素的可能性是通过在元素名尾加（s）指明的，如PLAYER（s）。</p>
+<p>清单8-4遵守了这些条件。如果把两个PLAYER元素和一些TEAM元素省略，文档可以短些。如果包括进其他一些PLAYER元素，文档就会长些。但是其他元素的位置都不能变动。</p>
+<p><img src="Image/BK000208-32.gif" align="absbottom"> XML元素有两种基本类型。简单元素包含文本，也就是所谓的可析字符数据，即上下文中的#PCDATA或PCDATA。复合元素包含其他元素，有的还包含文本和其他元素。标准XML没有整数、浮点、日期或其他数据类型。因而不能使用DTD说明走步数一定是一个非负的整数，或ERA一定是0.0和1.0之间的一个浮点数，尽管在如本例一样的例子中这样做是有用的。有人做过努力来定义一种方案，以便使用XML句法描述传统上DTD中编码的信息以及数据类型信息。直到1999年中期，这些努力仍主要是理论上的，很少有实际的实现方式。</p>
+<dir> 
+  <dir> 
+    <dir> 
+      <dir> 
+        <dir> 
+          <dir> 
+            <dir> 
+              <div align="left">表格8-1 棒球统计中的元素</div>
+            </dir>
+          </dir>
+        </dir>
+      </dir>
+    </dir>
+  </dir>
+</dir>
+<div align="center"> 
+  <table BORDER cellspacing=0 cellpadding=0 width=548>
+    <tr> 
+      <td width="25%" valign="MIDDLE"> 
+        <p><b>元素</b> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><b>必须包含的元素</b> 
+      </td>
+      <td width="30%" valign="MIDDLE"> 
+        <p><b>可能包含的元素</b> 
+      </td>
+      <td width="18%" valign="TOP"> 
+        <p><b>必须包含它的元素</b> 
+      </td>
+    </tr>
+    <tr> 
+      <td width="25%" valign="TOP"> 
+        <p>SEASON 
+      </td>
+      <td valign="TOP" colspan=2> 
+        <p>YEAR 
+      </td>
+      <td width="30%" valign="TOP"> 
+        <p>2 LEAGUE 
+      </td>
+      <td width="18%" valign="TOP">　</td>
+    </tr>
+    <tr> 
+      <td width="25%" valign="TOP"> 
+        <p>YEAR 
+      </td>
+      <td valign="TOP" colspan=2> 
+        <p><b>文本</b> 
+      </td>
+      <td width="30%" valign="TOP">　</td>
+      <td width="18%" valign="TOP"> 
+        <p>SEASON 
+      </td>
+    </tr>
+    <tr> 
+      <td width="25%" valign="MIDDLE"> 
+        <p>LEAGUE 
+      </td>
+      <td valign="TOP" colspan=2> 
+        <p>LEAGUE_NAME,</p>
+        <p>3 DIVISION 
+      </td>
+      <td width="30%" valign="TOP">　</td>
+      <td width="18%" valign="MIDDLE"> 
+        <p>SEASON 
+      </td>
+    </tr>
+    <tr> 
+      <td width="25%" valign="TOP"> 
+        <p>LEAGUE_NAME 
+      </td>
+      <td valign="TOP" colspan=2> 
+        <p><b>文本</b> 
+      </td>
+      <td width="30%" valign="TOP">　</td>
+      <td width="18%" valign="TOP"> 
+        <p>LEAGUE 
+      </td>
+    </tr>
+    <tr> 
+      <td width="25%" valign="MIDDLE"> 
+        <p>DIVISION 
+      </td>
+      <td valign="TOP" colspan=2> 
+        <p>DIVISION_NAME,</p>
+        <p>TEAM 
+      </td>
+      <td width="30%" valign="MIDDLE"> 
+        <p>TEAM(s) 
+      </td>
+      <td width="18%" valign="MIDDLE"> 
+        <p>LEAGUE 
+      </td>
+    </tr>
+    <tr> 
+      <td width="25%" valign="TOP"> 
+        <p>DIVISION_NAME 
+      </td>
+      <td valign="TOP" colspan=2> 
+        <p><b>文本</b> 
+      </td>
+      <td width="30%" valign="TOP">　</td>
+      <td width="18%" valign="TOP"> 
+        <p>DIVISION 
+      </td>
+    </tr>
+    <tr> 
+      <td width="25%" valign="MIDDLE"> 
+        <p>TEAM 
+      </td>
+      <td valign="TOP" colspan=2> 
+        <p>TEAM_CITY,</p>
+        <p>TEAM_NAME 
+      </td>
+      <td width="30%" valign="MIDDLE"> 
+        <p>PLAYER(s) 
+      </td>
+      <td width="18%" valign="MIDDLE"> 
+        <p>DIVISION 
+      </td>
+    </tr>
+    <tr> 
+      <td width="25%" valign="TOP"> 
+        <p>TEAM_CITY 
+      </td>
+      <td valign="TOP" colspan=2> 
+        <p><b>文本</b> 
+      </td>
+      <td width="30%" valign="TOP">　</td>
+      <td width="18%" valign="TOP"> 
+        <p>TEAM 
+      </td>
+    </tr>
+    <tr> 
+      <td width="25%" valign="TOP"> 
+        <p>TEAM_NAME 
+      </td>
+      <td valign="TOP" colspan=2> 
+        <p><b>文本</b> 
+      </td>
+      <td width="30%" valign="TOP">　</td>
+      <td width="18%" valign="TOP"> 
+        <p>TEAM 
+      </td>
+    </tr>
+    <tr> 
+      <td width="25%" valign="TOP" height="295"> 
+        <p>PLAYER 
+      </td>
+      <td valign="TOP" colspan=2 height="295"> 
+        <p>SURNAME, GIVEN_NAME, POSITION, GAMES 
+      </td>
+      <td width="30%" valign="TOP" height="295"> 
+        <p>GAMES_STARTED, AT_BATS,RUNS, HITS,<br>
+          DOUBLES,TRIPLES,<br>
+          HOME_RUNS, RBI,<br>
+          STEALS, <br>
+          CAUGHT_STEALING,<br>
+          SACRIFICE_HITS,<br>
+          SACRIFICE_FLIES,<br>
+          ERRORS, WALKS,<br>
+          STRUCK_OUT,<br>
+          HIT_BY_PITCH,<br>
+          COMPLETE_GAMES, SHUT_OUTS,<br>
+          ERA, INNINGS, <br>
+          HIT_BATTER, <br>
+          WILD_PITCHES, BALK,<br>
+          WALKED_BATTER,<br>
+          STRUCK_OUT_BATTER</p>
+        <p> 
+      </td>
+      <td width="18%" valign="TOP" height="295"> 
+        <p>TEAM 
+      </td>
+    </tr>
+    <tr> 
+      <td width="25%" valign="TOP"> 
+        <p>SURNAME 
+      </td>
+      <td valign="TOP" colspan=2> 
+        <p><b>文本</b> 
+      </td>
+      <td width="30%" valign="TOP">　</td>
+      <td width="18%" valign="TOP"> 
+        <p>PLAYER 
+      </td>
+    </tr>
+    <tr> 
+      <td width="25%" valign="TOP"> 
+        <p>GIVEN_NAME 
+      </td>
+      <td valign="TOP" colspan=2> 
+        <p><b>文本</b> 
+      </td>
+      <td width="30%" valign="TOP">　</td>
+      <td width="18%" valign="TOP"> 
+        <p>PLAYER 
+      </td>
+    </tr>
+    <tr> 
+      <td width="25%" valign="TOP"> 
+        <p>POSITION 
+      </td>
+      <td valign="TOP" colspan=2> 
+        <p><b>文本</b> 
+      </td>
+      <td width="30%" valign="TOP">　</td>
+      <td width="18%" valign="TOP"> 
+        <p>PLAYER 
+      </td>
+    </tr>
+    <tr> 
+      <td valign="TOP"> 
+        <p>GAMES 
+      </td>
+      <td width="23%" valign="TOP" colspan=2> 
+        <p><b>文本</b> 
+      </td>
+      <td width="30%" valign="TOP">　</td>
+      <td width="18%" valign="TOP"> 
+        <p>PLAYER 
+      </td>
+    </tr>
+    <tr> 
+      <td valign="TOP"> 
+        <p>GAMES_STARTED 
+      </td>
+      <td width="23%" valign="TOP" colspan=2> 
+        <p><b>文本</b> 
+      </td>
+      <td width="30%" valign="TOP">　</td>
+      <td width="18%" valign="TOP"> 
+        <p>PLAYER 
+      </td>
+    </tr>
+    <tr> 
+      <td valign="TOP"> 
+        <p>AT_BATS 
+      </td>
+      <td width="23%" valign="TOP" colspan=2> 
+        <p><b>文本</b> 
+      </td>
+      <td width="30%" valign="TOP">　</td>
+      <td width="18%" valign="TOP"> 
+        <p>PLAYER 
+      </td>
+    </tr>
+    <tr> 
+      <td valign="TOP"> 
+        <p>RUNS 
+      </td>
+      <td width="23%" valign="TOP" colspan=2> 
+        <p><b>文本</b> 
+      </td>
+      <td width="30%" valign="TOP">　</td>
+      <td width="18%" valign="TOP"> 
+        <p>PLAYER 
+      </td>
+    </tr>
+    <tr> 
+      <td valign="TOP"> 
+        <p>HITS 
+      </td>
+      <td width="23%" valign="TOP" colspan=2> 
+        <p><b>文本</b> 
+      </td>
+      <td width="30%" valign="TOP">　</td>
+      <td width="18%" valign="TOP"> 
+        <p>PLAYER 
+      </td>
+    </tr>
+    <tr> 
+      <td valign="TOP"> 
+        <p>DOUBLES 
+      </td>
+      <td width="23%" valign="TOP" colspan=2> 
+        <p><b>文本</b> 
+      </td>
+      <td width="30%" valign="TOP">　</td>
+      <td width="18%" valign="TOP"> 
+        <p>PLAYER 
+      </td>
+    </tr>
+    <tr> 
+      <td valign="TOP"> 
+        <p>TRIPLES 
+      </td>
+      <td width="23%" valign="TOP" colspan=2> 
+        <p><b>文本</b> 
+      </td>
+      <td width="30%" valign="TOP">　</td>
+      <td width="18%" valign="TOP"> 
+        <p>PLAYER 
+      </td>
+    </tr>
+    <tr> 
+      <td valign="TOP"> 
+        <p>HOME_RUNS 
+      </td>
+      <td width="23%" valign="TOP" colspan=2> 
+        <p><b>文本</b> 
+      </td>
+      <td width="30%" valign="TOP">　</td>
+      <td width="18%" valign="TOP"> 
+        <p>PLAYER 
+      </td>
+    </tr>
+    <tr> 
+      <td valign="TOP"> 
+        <p>RBI 
+      </td>
+      <td width="23%" valign="TOP" colspan=2> 
+        <p><b>文本</b> 
+      </td>
+      <td width="30%" valign="TOP">　</td>
+      <td width="18%" valign="TOP"> 
+        <p>PLAYER 
+      </td>
+    </tr>
+    <tr> 
+      <td valign="TOP"> 
+        <p>STEALS 
+      </td>
+      <td width="23%" valign="TOP" colspan=2> 
+        <p><b>文本</b> 
+      </td>
+      <td width="30%" valign="TOP">　</td>
+      <td width="18%" valign="TOP"> 
+        <p>PLAYER 
+      </td>
+    </tr>
+    <tr> 
+      <td valign="TOP"> 
+        <p>CAUGHT_STEALING 
+      </td>
+      <td width="23%" valign="TOP" colspan=2> 
+        <p><b>文本</b> 
+      </td>
+      <td width="30%" valign="TOP">　</td>
+      <td width="18%" valign="TOP"> 
+        <p>PLAYER 
+      </td>
+    </tr>
+    <tr> 
+      <td valign="TOP"> 
+        <p>SACRIFICE_HITS 
+      </td>
+      <td width="23%" valign="TOP" colspan=2> 
+        <p><b>文本</b> 
+      </td>
+      <td width="30%" valign="TOP">　</td>
+      <td width="18%" valign="TOP"> 
+        <p>PLAYER 
+      </td>
+    </tr>
+    <tr> 
+      <td valign="TOP"> 
+        <p>SACRIFICE_FLIES 
+      </td>
+      <td width="23%" valign="TOP" colspan=2> 
+        <p><b>文本</b> 
+      </td>
+      <td width="30%" valign="TOP">　</td>
+      <td width="18%" valign="TOP"> 
+        <p>PLAYER 
+      </td>
+    </tr>
+    <tr> 
+      <td valign="TOP"> 
+        <p>ERRORS 
+      </td>
+      <td width="23%" valign="TOP" colspan=2> 
+        <p><b>文本</b> 
+      </td>
+      <td width="30%" valign="TOP">　</td>
+      <td width="18%" valign="TOP"> 
+        <p>PLAYER 
+      </td>
+    </tr>
+    <tr> 
+      <td valign="TOP"> 
+        <p>WALKS 
+      </td>
+      <td width="23%" valign="TOP" colspan=2> 
+        <p><b>文本</b> 
+      </td>
+      <td width="30%" valign="TOP">　</td>
+      <td width="18%" valign="TOP"> 
+        <p>PLAYER 
+      </td>
+    </tr>
+    <tr> 
+      <td valign="TOP"> 
+        <p>STRUCK_OUT 
+      </td>
+      <td width="23%" valign="TOP" colspan=2> 
+        <p><b>文本</b> 
+      </td>
+      <td width="30%" valign="TOP">　</td>
+      <td width="18%" valign="TOP"> 
+        <p>PLAYER 
+      </td>
+    </tr>
+    <tr> 
+      <td valign="TOP"> 
+        <p>HIT_BY_PITCH 
+      </td>
+      <td width="23%" valign="TOP" colspan=2> 
+        <p><b>文本</b> 
+      </td>
+      <td width="30%" valign="TOP">　</td>
+      <td width="18%" valign="TOP"> 
+        <p>PLAYER 
+      </td>
+    </tr>
+    <tr> 
+      <td valign="TOP"> 
+        <p>COMPLETE_GAMES 
+      </td>
+      <td width="23%" valign="TOP" colspan=2> 
+        <p><b>文本</b> 
+      </td>
+      <td width="30%" valign="TOP">　</td>
+      <td width="18%" valign="TOP"> 
+        <p>PLAYER 
+      </td>
+    </tr>
+    <tr> 
+      <td valign="TOP"> 
+        <p>SHUT_OUTS 
+      </td>
+      <td width="23%" valign="TOP" colspan=2> 
+        <p><b>文本</b> 
+      </td>
+      <td width="30%" valign="TOP">　</td>
+      <td width="18%" valign="TOP"> 
+        <p>PLAYER 
+      </td>
+    </tr>
+    <tr> 
+      <td valign="TOP"> 
+        <p>ERA 
+      </td>
+      <td width="23%" valign="TOP" colspan=2> 
+        <p><b>文本</b> 
+      </td>
+      <td width="30%" valign="TOP">　</td>
+      <td width="18%" valign="TOP"> 
+        <p>PLAYER 
+      </td>
+    </tr>
+    <tr> 
+      <td valign="TOP"> 
+        <p>INNINGS 
+      </td>
+      <td width="23%" valign="TOP" colspan=2> 
+        <p><b>文本</b> 
+      </td>
+      <td width="30%" valign="TOP">　</td>
+      <td width="18%" valign="TOP"> 
+        <p>PLAYER 
+      </td>
+    </tr>
+    <tr> 
+      <td valign="TOP"> 
+        <p>HOME_RUNS_AGAINST 
+      </td>
+      <td width="23%" valign="TOP" colspan=2> 
+        <p><b>文本</b> 
+      </td>
+      <td width="30%" valign="TOP">　</td>
+      <td width="18%" valign="TOP"> 
+        <p>PLAYER 
+      </td>
+    </tr>
+    <tr> 
+      <td valign="TOP"> 
+        <p>RUNS_AGAINST 
+      </td>
+      <td width="23%" valign="TOP" colspan=2> 
+        <p><b>文本</b> 
+      </td>
+      <td width="30%" valign="TOP">　</td>
+      <td width="18%" valign="TOP"> 
+        <p>PLAYER 
+      </td>
+    </tr>
+    <tr> 
+      <td valign="TOP"> 
+        <p>HIT_BATTER 
+      </td>
+      <td width="23%" valign="TOP" colspan=2> 
+        <p><b>文本</b> 
+      </td>
+      <td width="30%" valign="TOP">　</td>
+      <td width="18%" valign="TOP"> 
+        <p>PLAYER 
+      </td>
+    </tr>
+    <tr> 
+      <td valign="TOP"> 
+        <p>WILD_PITCHES 
+      </td>
+      <td width="23%" valign="TOP" colspan=2> 
+        <p><b>文本</b> 
+      </td>
+      <td width="30%" valign="TOP">　</td>
+      <td width="18%" valign="TOP"> 
+        <p>PLAYER 
+      </td>
+    </tr>
+    <tr> 
+      <td valign="TOP"> 
+        <p>BATTER 
+      </td>
+      <td width="23%" valign="TOP" colspan=2> 
+        <p><b>文本</b> 
+      </td>
+      <td width="30%" valign="TOP">　</td>
+      <td width="18%" valign="TOP"> 
+        <p>PLAYER 
+      </td>
+    </tr>
+    <tr> 
+      <td valign="TOP"> 
+        <p>STRUCK_OUT_BATTER 
+      </td>
+      <td width="23%" valign="TOP" colspan=2> 
+        <p><b>文本</b> 
+      </td>
+      <td width="30%" valign="TOP">　</td>
+      <td width="18%" valign="TOP"> 
+        <p>PLAYER 
+      </td>
+    </tr>
+  </table>
+</div>
+<p>&nbsp;</p>
+<p>既然已经标识了要存储的数据，以及这些元素间可选的和必然的关系，就可以为简明概括那些联系的文档建立DTD了。</p>
+<p>从一个DTD剪切和粘贴到另一个往往是很可行和方便的。许多元素可以在其他上下文中再使用。例如，对TEAM的描写同样可应用于足球、曲棍球和很多其他在队间进行的运动。</p>
+<p>可以把一个DTD包括在另一个之内，这样文档就可以从两个DTD中得到标记。例如，可以使用一份详细地描写单个队员的统计数据的DTD然后把该DTD嵌套在更广泛的球队运动的DTD内。如想从棒球转换到足球，只要简单地把棒球球员DTD换为足球球员DTD就可以了。</p>
+<dir> 
+  <p><img src="Image/BK000208-33.gif" width=61 height=50>为达到此目的，包含DTD的文档就被定义为外部实体。外部参数实体引用将在第9章“实体”中讨论。</p>
+</dir>
+ 
+<a href='398.htm'>&lt;&lt;上一篇</a>&nbsp;&nbsp;<a href='400.htm'>下一篇&gt;&gt;</a></td>
+        </tr>
+      </table>
+      <p>&nbsp; </p>
+    </td>
+  </tr>
+</table>
+
+</body>
+
+</html>

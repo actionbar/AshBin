@@ -1,0 +1,298 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="../c3.css" />
+<title>ECMAScript Boolean 运算符</title>
+</head>
+<body class="browserscripting">
+<div id="wrapper" class="as">
+<div id="header">
+<a href="http://e.v-get.com/w3cschool/" style="float:left;">W3CSchool 在线教程</a>
+<div class="q g"><script type="text/javascript">var cpro_id="u1163355"</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div>
+<div id="navfirst">
+<ul id="menu">
+<li id="h"><a href="../h.html">HTML教程</a></li>
+<li id="x"><a href="../x.html">XML教程</a></li>
+<li id="b"><a href="../b.html">浏览器脚本</a></li>
+<li id="s"><a href="../s.html">服务器脚本</a></li>
+<li id="d"><a href="../d.html">dot net教程</a></li>
+<li id="m"><a href="../m.html">多媒体教程</a></li>
+<li id="w"><a href="../w.html">建站手册</a></li>
+</ul>
+</div><div id="navsecond">
+<div id="afterschool">
+<h2>JavaScript 简介</h2>
+<ul>
+<li><a href="index_as.html">JavaScript 高级教程</a></li>
+<li><a href="as_js_history.html">JavaScript 历史</a></li>
+<li><a href="as_js_implement.html">JavaScript 实现</a></li>
+</ul>
+<h2>ECMAScript 基础</h2>
+<ul>
+<li><a href="as_js_syntax.html">ECMAScript 语法</a></li>
+<li><a href="as_js_variables.html">ECMAScript 变量</a></li>
+<li><a href="as_js_keywords.html">ECMAScript 关键字</a></li>
+<li><a href="as_js_reservedwords.html">ECMAScript 保留字</a></li>
+<li><a href="as_js_value.html">ECMAScript 值</a></li>
+<li><a href="as_js_primitivetypes.html">ECMAScript 原始类型</a></li>
+<li><a href="as_js_typeconversion.html">ECMAScript 类型转换</a></li>
+<li><a href="as_js_referencetypes.html">ECMAScript 引用类型</a></li>
+</ul>
+<h2>ECMAScript 运算符</h2>
+<ul>
+<li><a href="as_js_operators_unary.html">一元运算符</a></li>
+<li><a href="as_js_operators_bitwise.html">位运算符</a></li>
+<li><a href="as_js_operators_boolean.html">逻辑运算符</a></li>
+<li><a href="as_js_operators_multiplicative.html">乘性运算符</a></li>
+<li><a href="as_js_operators_additive.html">加性运算符</a></li>
+<li><a href="as_js_operators_relational.html">关系运算符</a></li>
+<li><a href="as_js_operators_equality.html">等性运算符</a></li>
+<li><a href="as_js_operators_conditional.html">条件运算符</a></li>
+<li><a href="as_js_operators_assignment.html">赋值运算符</a></li>
+<li><a href="as_js_operators_comma.html">逗号运算符</a></li>
+</ul>
+<h2>ECMAScript 语句</h2>
+<ul>
+<li><a href="as_js_statements_if.html">if 语句</a></li>
+<li><a href="as_js_statements_iterative.html">迭代语句</a></li>
+<li><a href="as_js_statements_labeled.html">标签语句</a></li>
+<li><a href="as_js_statements_break-continue.html">break 语句</a></li>
+<li><a href="as_js_statements_break-continue.html">continue 语句</a></li>
+<li><a href="as_js_statements_with.html">with 语句</a></li>
+<li><a href="as_js_statements_switch.html">switch 语句</a></li>
+</ul>
+<h2>ECMAScript 函数</h2>
+<ul>
+<li><a href="as_js_functions.html">函数概述</a></li>
+<li><a href="as_js_functions_arguments-object.html">arguments 对象</a></li>
+<li><a href="as_js_functions_function-object.html">Function 对象</a></li>
+<li><a href="as_js_functions_closures.html">闭包 (closure）</a></li>
+</ul>
+<h2>实例/测验</h2>
+<ul>
+<li><a href="../example/jseg_examples.html">JS 实例</a></li>
+<li><a href="../example/jsrf_examples.html">JS 对象实例</a></li>
+<li><a href="js_quiz.html">JS 测验</a></li>
+</ul>
+<h2>JS 参考手册</h2>
+<ul>
+<li><a href="js_reference.html">JS 对象</a></li>
+<li><a href="../htmldom/htmldom_reference.html">JS HTML DOM</a></li>
+</ul>
+</div>
+<div id="selected">
+<h2>建站手册</h2>
+<ul>
+<li><a href="../site/">网站构建</a></li>
+<li><a href="../w3c/">万维网联盟</a></li>
+<li><a href="http://e.v-get.com/w3c/">W3CSchool 教程</a></li>
+<li><a href="../quality/">网站品质</a></li>
+<li><a href="../semweb/">语义网</a></li>
+<li><a href="../hosting/">网站主机</a></li>
+</ul>
+<h2><a href="http://e.v-get.com/w3c/" class="f13">W3CSchool 教程</a></h2><div class="a120x90"><script type="text/javascript">var cpro_id="u1210867";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div></div>
+</div>
+<div id="maincontent">
+<h1>ECMAScript Boolean 运算符</h1>
+<div id="tpn">
+<ul class="prenext">
+<li class="pre"><a href="as_js_operators_bitwise.html">上一页</a></li>
+<li class="next"><a href="as_js_operators_multiplicative.html">下一页</a></li>
+</ul>
+</div>
+<div>
+<p><strong>Boolean 运算符非常重要，它使得程序语言得以正常运行。</strong></p>
+<p><strong>Boolean 运算符有三种：NOT、AND 和 OR。</strong></p>
+</div>
+<div>
+<h2>逻辑 NOT 运算符</h2>
+<p>在 ECMAScript 中，逻辑 NOT 运算符与 C 和 Java 中的逻辑 NOT 运算符相同，都由感叹号 (!）表示。</p>
+<p>与逻辑 OR 和逻辑 AND 运算符不同的是，<strong>逻辑 NOT 运算符返回的一定是 Boolean 值</strong>。</p>
+<p>逻辑 NOT 运算符的行为如下：</p>
+<ul>
+<li>如果运算数是对象，返回 false</li>
+<li>如果运算数是数字 0，返回 true</li>
+<li>如果运算数是 0 以外的任何数字，返回 false</li>
+<li>如果运算数是 null，返回 true</li>
+<li>如果运算数是 NaN，返回 true</li>
+<li>如果运算数是 undefined，发生错误</li>
+</ul>
+<p>通常，该运算符用于控制循环：</p>
+<pre>
+var bFound = false;
+var i = 0;
+<code>while (!bFound)</code> {
+  if (aValue[i] == vSearchValues) {
+    bFound = true;
+  } else {
+    i++;
+  }
+}
+</pre>
+<p>在这个例子中，Boolean 变量 (bFound）用于记录检索是否成功。找到问题中的数据项时，bFound 将被设置为 true，!bFound 将等于 false，意味着运行将跳出 while 循环。</p>
+<p>判断 ECMAScript 变量的 Boolean 值时，也可以使用逻辑 NOT 运算符。这样做需要在一行代码中使用两个 NOT 运算符。无论运算数是什么类型，第一个 NOT 运算符返回 Boolean 值。第二个 NOT 将对该 Boolean 值求负，从而给出变量真正的 Boolean 值。</p>
+<pre>
+var bFalse = false;
+var sRed = &#34;red&#34;;
+var iZero = 0;
+var iThreeFourFive = 345;
+var oObject = new Object;
+document.write(&#34;bFalse 的逻辑值是 &#34; + (!!bFalse));
+document.write(&#34;sBlue 的逻辑值是 &#34; + (!!sBlue));
+document.write(&#34;iZero 的逻辑值是 &#34; + (!!iZero));
+document.write(&#34;iThreeFourFive 的逻辑值是 &#34; + (!!iThreeFourFive));
+document.write(&#34;oObject 的逻辑值是 &#34; + (!!oObject));
+</pre>
+<p>结果：</p>
+<pre>
+bFalse 的逻辑值是 false
+sRed 的逻辑值是 true
+iZero 的逻辑值是 false
+iThreeFourFive 的逻辑值是 true
+oObject 的逻辑值是 true 
+</pre>
+</div>
+<div>
+<h2>逻辑 AND 运算符</h2>
+<p>在 ECMAScript 中，逻辑 AND 运算符用双和号 (&amp;&amp;）表示：</p>
+<p>例如：</p>
+<pre>
+var bTrue = true;
+var bFalse = false;
+var bResult = bTrue &amp;&amp; bFalse;
+</pre>
+<p>下面的真值表描述了逻辑 AND 运算符的行为：</p>
+<table class="dataintable">
+<tr>
+<th>运算数 1</th>
+<th>运算数 2</th>
+<th>结果</th>
+</tr>
+<tr>
+<td>true</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td>true</td>
+<td>false</td>
+<td>false</td>
+</tr>
+<tr>
+<td>false</td>
+<td>true</td>
+<td>false</td>
+</tr>
+<tr>
+<td>false</td>
+<td>false</td>
+<td>false</td>
+</tr>
+</table>
+<p><strong>逻辑 AND 运算的运算数可以是任何类型的，不止是 Boolean 值。</strong></p>
+<p>如果某个运算数不是原始的 Boolean 型值，逻辑 AND 运算并不一定返回 Boolean 值：</p>
+<ul>
+<li>如果一个运算数是对象，另一个是 Boolean 值，返回该对象。</li>
+<li>如果两个运算数都是对象，返回第二个对象。</li>
+<li>如果某个运算数是 null，返回 null。</li>
+<li>如果某个运算数是 NaN，返回 NaN。</li>
+<li>如果某个运算数是 undefined，发生错误。</li>
+</ul>
+<p>与 Java 中的逻辑 AND 运算相似，ECMAScript 中的逻辑 AND 运算也是简便运算，即如果第一个运算数决定了结果，就不再计算第二个运算数。对于逻辑 AND 运算来说，如果第一个运算数是 false，那么无论第二个运算数的值是什么，结果都不可能等于 true。</p>
+<p>考虑下面的例子：</p>
+<pre>
+var bTrue = true;
+var bResult = (bTrue &amp;&amp; bUnknown);	<span>//发生错误</span>
+alert(bResult);			<span>//这一行不会执行</span>
+</pre>
+<p>这段代码在进行逻辑 AND 运算时将引发错误，因为变量 bUnknown 是未定义的。变量 bTrue 的值为 true，因为逻辑 AND 运算将继续计算变量 bUnknown。这样做就会引发错误，因为 bUnknown 的值是 undefined，不能用于逻辑 AND 运算。</p>
+<p>如果修改这个例子，把第一个数设为 false，那么就不会发生错误：</p>
+<pre>
+var bFalse = false;
+var bResult = (bFalse &amp;&amp; bUnknown);
+alert(bResult);			<span>//输出 &#34;false&#34;</span>
+</pre>
+<p>在这段代码中，脚本将输出逻辑 AND 运算返回的值，即字符串 &#34;false&#34;。即使变量 bUnknown 的值为 undefined，它也不会被计算，因为第一个运算数的值是 false。</p>
+<p class="tip"><span>提示：</span>在使用逻辑 AND 运算符时，必须记住它的这种简便计算特性。</p>
+</div>
+<div>
+<h2>逻辑 OR 运算符</h2>
+<p>ECMAScript 中的逻辑 OR 运算符与 Java 中的相同，都由双竖线 (||）表示：</p>
+<pre>
+var bTrue = true;
+var bFalse = false;
+var bResult = bTrue || bFalse;
+</pre>
+<p>下面的真值表描述了逻辑 OR 运算符的行为：</p>
+<table class="dataintable">
+<tr>
+<th>运算数 1</th>
+<th>运算数 2</th>
+<th>结果</th>
+</tr>
+<tr>
+<td>true</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td>true</td>
+<td>false</td>
+<td>true</td>
+</tr>
+<tr>
+<td>false</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td>false</td>
+<td>false</td>
+<td>false</td>
+</tr>
+</table>
+<p>与逻辑 AND 运算符相似，如果某个运算数不是 Boolean 值，逻辑 OR 运算并不一定返回 Boolean 值：</p>
+<ul>
+<li>如果一个运算数是对象，另一个是 Boolean 值，返回该对象。</li>
+<li>如果两个运算数都是对象，返回第一个对象。</li>
+<li>如果某个运算数是 null，返回 null。</li>
+<li>如果某个运算数是 NaN，返回 NaN。</li>
+<li>如果某个运算数是 undefined，发生错误。</li>
+</ul>
+<p>与逻辑 AND 运算符一样，逻辑 OR 运算也是简便运算。对于逻辑 OR 运算符来说，如果第一个运算数值为 true，就不再计算第二个运算数。</p>
+<p>例如：</p>
+<pre>
+var bTrue = true;
+var bResult = (bTrue || bUnknown);
+alert(bResult);			<span>//输出 &#34;true&#34;</span>
+</pre>
+<p>与前面的例子相同，变量 bUnknown 是未定义的。不过，由于变量 bTrue 的值为 true，bUnknown 不会被计算，因此输出的是 &#34;true&#34;。</p>
+<p>如果把 bTrue 改为 false，将发生错误：</p>
+<pre>
+var bFalse = false;
+var bResult = (bFalse || bUnknown);	<span>//发生错误</span>
+alert(bResult);			<span>//不会执行这一行</span>
+</pre>
+</div>
+<div id="bpn">
+<ul class="prenext">
+<li class="pre"><a href="as_js_operators_bitwise.html">上一页</a></li>
+<li class="next"><a href="as_js_operators_multiplicative.html">下一页</a></li>
+</ul>
+</div>
+</div>
+<div id="sidebar">
+<div class="rs"></div>
+<div id="tools">
+<h5 id="tools_reference"><a href="js_reference.html">JavaScript 参考手册</a></h5>
+<h5 id="tools_example"><a href="../example/jseg_examples.html">JavaScript 实例</a></h5>
+<h5 id="tools_quiz"><a href="js_quiz.html">JavaScript 测验</a></h5>
+<h5 id="tools_search"><a href="../search/search.html">W3CSchool 搜索</a></h5>
+</div>
+<div class="a120x600"><script type="text/javascript">var cpro_id="u1293136";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div><div class="b"></div>
+</div>
+</body>
+</html>

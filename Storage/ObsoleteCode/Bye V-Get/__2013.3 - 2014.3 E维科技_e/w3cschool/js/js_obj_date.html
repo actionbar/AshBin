@@ -1,0 +1,185 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="../c3.css" />
+<title>JavaScript Date (日期）对象</title>
+</head>
+<body class="browserscripting">
+<div id="wrapper">
+<div id="header">
+<a href="http://e.v-get.com/w3cschool/" style="float:left;">W3CSchool 在线教程</a>
+<div class="q g"><script type="text/javascript">var cpro_id="u1163355"</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div>
+<div id="navfirst">
+<ul id="menu">
+<li id="h"><a href="../h.html">HTML教程</a></li>
+<li id="x"><a href="../x.html">XML教程</a></li>
+<li id="b"><a href="../b.html">浏览器脚本</a></li>
+<li id="s"><a href="../s.html">服务器脚本</a></li>
+<li id="d"><a href="../d.html">dot net教程</a></li>
+<li id="m"><a href="../m.html">多媒体教程</a></li>
+<li id="w"><a href="../w.html">建站手册</a></li>
+</ul>
+</div><div id="navsecond">
+<div id="course">
+<h2>JavaScript 基础</h2>
+<ul>
+<li><a href="http://e.v-get.com/w3cschool/">JS 教程</a></li>
+<li><a href="js_intro.html">JS 简介</a></li>
+<li><a href="js_howto.html">JS 实现</a></li>
+<li><a href="js_whereto.html">JS 放置</a></li>
+<li><a href="js_statements.html">JS 语句</a></li>
+<li><a href="js_comments.html">JS 注释</a></li>
+<li><a href="js_variables.html">JS 变量</a></li>
+<li><a href="js_operators.html">JS 运算符</a></li>
+<li><a href="js_comparisons.html">JS 比较</a></li>
+<li><a href="js_if_else.html">JS If...Else</a></li>
+<li><a href="js_switch.html">JS Switch</a></li>
+<li><a href="js_popup.html">JS 消息框</a></li>
+<li><a href="js_functions.html">JS 函数</a></li>
+<li><a href="js_loop_for.html">JS For Loop</a></li>
+<li><a href="js_loop_while.html">JS While Loop</a></li>
+<li><a href="js_break.html">JS Break Loops</a></li>
+<li><a href="js_loop_for_in.html">JS For...In</a></li>
+<li><a href="js_events.html">JS 事件</a></li>
+<li><a href="js_try_catch.html">JS Try...Catch</a></li>
+<li><a href="js_throw.html">JS Throw</a></li>
+<li><a href="js_onerror.html">JS onerror</a></li>
+<li><a href="js_special_characters.html">JS 特殊字符</a></li>
+<li><a href="js_guidelines.html">JS 指导方针</a></li>
+</ul>
+<h2>JavaScript 对象</h2>
+<ul>
+<li><a href="js_obj_intro.html">JS 对象简介</a></li>
+<li><a href="js_obj_string.html">JS 字符串</a></li>
+<li><a href="js_obj_date.html">JS 日期</a></li>
+<li><a href="js_obj_array.html">JS 数组</a></li>
+<li><a href="js_obj_boolean.html">JS 逻辑</a></li>
+<li><a href="js_obj_math.html">JS 算数</a></li>
+<li><a href="js_obj_regexp.html">JS RegExp</a></li>
+<li><a href="js_obj_htmldom.html">JS HTML DOM</a></li>
+</ul>
+<h2>JavaScript 高级</h2>
+<ul>
+<li><a href="js_browser.html">JS 浏览器</a></li>
+<li><a href="js_cookies.html">JS Cookies</a></li>
+<li><a href="js_form_validation.html">JS 验证</a></li>
+<li><a href="js_animation.html">JS 动画</a></li>
+<li><a href="js_image_maps.html">JS 图像地图</a></li>
+<li><a href="js_timing.html">JS 计时</a></li>
+<li><a href="js_objects.html">JS 创建对象</a></li>
+<li><a href="js_summary.html">JS 总结</a></li>
+</ul>
+<h2>实例/测验</h2>
+<ul>
+<li><a href="../example/jseg_examples.html">JS 实例</a></li>
+<li><a href="../example/jsrf_examples.html">JS 对象实例</a></li>
+<li><a href="js_quiz.html">JS 测验</a></li>
+</ul>
+<h2>JS 参考手册</h2>
+<ul>
+<li><a href="js_reference.html">JS 对象</a></li>
+<li><a href="../htmldom/htmldom_reference.html">JS HTML DOM</a></li>
+</ul>
+</div>
+<div id="selected">
+<h2>建站手册</h2>
+<ul>
+<li><a href="../site/">网站构建</a></li>
+<li><a href="../w3c/">万维网联盟</a></li>
+<li><a href="http://e.v-get.com/w3c/">W3CSchool 教程</a></li>
+<li><a href="../quality/">网站品质</a></li>
+<li><a href="../semweb/">语义网</a></li>
+<li><a href="../hosting/">网站主机</a></li>
+</ul>
+<h2><a href="http://e.v-get.com/w3c/" class="f13">W3CSchool 教程</a></h2><div class="a120x90"><script type="text/javascript">var cpro_id="u1210867";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div></div>
+</div>
+<div id="maincontent">
+<h1>JavaScript Date (日期）对象</h1>
+<div id="tpn">
+<ul class="prenext">
+<li class="pre"><a href="js_obj_string.html">上一页</a></li>
+<li class="next"><a href="js_obj_array.html">下一页</a></li>
+</ul>
+</div>
+<div id="intro">
+<p><strong>日期对象用于处理日期和时间。</strong></p>
+</div>
+<div class="example">
+<h2>JavaScript Date (日期）对象 实例</h2>
+<dl>
+<dt><a href="../tiy/t_245.html">返回当日的日期和时间</a></dt>
+<dd>如何使用 Date() 方法或者当日的日期。</dd>
+<dt><a href="../tiy/t_246.html">getTime()</a></dt>
+<dd>使用 getTime() 计算从 1970 年到今天有多少年。</dd>
+<dt><a href="../tiy/t_247.html">setFullYear()</a></dt>
+<dd>如何使用 setFullYear() 得到精确的日期。</dd>
+<dt><a href="../tiy/t_248.html">toUTCString()</a></dt>
+<dd>如何使用 toUTCString() 将当日的日期 (根据 UTC）转换为字符串。</dd>
+<dt><a href="../tiy/t_249.html">getDay()</a></dt>
+<dd>如何使用 getDay() 来显示星期，而不仅仅是数字。</dd>
+<dt><a href="../tiy/t_250.html">显示一个钟表</a></dt>
+<dd>如何在网页上显示一个钟表。</dd>
+</dl>
+</div>
+<div>
+<h2>完整的 Date 对象参考手册</h2>
+<p>我们提供 <a href="jsref_obj_date.html">JavaScript Date 对象参考手册</a>，其中包括所有可用于日期对象的属性和方法。</p>
+<p>该手册包含了对每个属性和方法的详细描述以及相关实例。</p>
+</div>
+<div>
+<h2>定义日期</h2>
+<p>Date 对象用于处理日期和时间。</p>
+<p>可以通过 new 关键词来定义 Date 对象。以下代码定义了名为 myDate 的 Date 对象：</p>
+<pre>var myDate=<code>new</code> Date() </pre>
+<p class="note"><span>注释：</span>Date 对象自动使用当前的日期和时间作为其初始值。</p>
+</div>
+<div>
+<h2>操作日期</h2>
+<p>通过使用针对日期对象的方法，我们可以很容易地对日期进行操作。</p>
+<p>在下面的例子中，我们为日期对象设置了一个特定的日期 (2008 年 8 月 9 日)：</p>
+<pre>var myDate=new Date()
+myDate.<code>setFullYear</code>(2008,7,9)</pre>
+<p class="important"><span>注意：</span>表示月份的参数介于 0 到 11 之间。也就是说，如果希望把月设置为 8 月，则参数应该是 7。</p>
+<p>在下面的例子中，我们将日期对象设置为 5 天后的日期：</p>
+<pre>var myDate=new Date()
+myDate.<code>setDate</code>(myDate.getDate()+5)</pre>
+<p class="important"><span>注意：</span>如果增加天数会改变月份或者年份，那么日期对象会自动完成这种转换。</p>
+</div>
+<div>
+<h2>比较日期</h2>
+<p>日期对象也可用于比较两个日期。</p>
+<p>下面的代码将当前日期与 2008 年 8 月 9 日做了比较：</p>
+<pre>var myDate=new Date();
+myDate.setFullYear(2008,7,9);
+var today = new Date();
+if (myDate&gt;today)
+{
+alert(&#34;Today is before 9th August 2008&#34;);
+}
+else
+{
+alert(&#34;Today is after 9th August 2008&#34;);
+}</pre>
+</div>
+<div  id="bpn">
+<ul class="prenext">
+<li class="pre"><a href="js_obj_string.html">上一页</a></li>
+<li class="next"><a href="js_obj_array.html">下一页</a></li>
+</ul>
+</div>
+</div>
+<div id="sidebar">
+<div class="rs"></div>
+<div id="tools">
+<h5 id="tools_reference"><a href="js_reference.html">JavaScript 参考手册</a></h5>
+<h5 id="tools_example"><a href="../example/jseg_examples.html">JavaScript 实例</a></h5>
+<h5 id="tools_quiz"><a href="js_quiz.html">JavaScript 测验</a></h5>
+<h5 id="tools_search"><a href="../search/search.html">W3CSchool 搜索</a></h5>
+</div>
+<div class="a120x600"><script type="text/javascript">var cpro_id="u1293136";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div><div class="b"></div>
+</div>
+</body>
+</html>

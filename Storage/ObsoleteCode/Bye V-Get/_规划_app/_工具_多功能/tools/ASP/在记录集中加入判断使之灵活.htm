@@ -1,0 +1,55 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>在记录集中加入判断使之灵活</title>
+<style type="text/css">
+<!--
+body {
+	font-size: 10.4pt;
+	line-height: 22px;
+}
+-->
+</style>
+</head>
+
+<body bgcolor="eeeeee" leftmargin="20" marginwidth="20">
+<p><strong>在记录集中加入判断使之灵活</strong></p>
+<hr>
+<p>在应用中，有时候会要求按照日期来排列数据，并且还会需要简单的按日期来检索数据，比如在页面上加入一个跳转菜单，包含数据的日期列表，然后选择日期后传递日期参数跳转。这种做法在没有日期的时候应该显示哪一天的数据呢？<br>
+  通常会用“DATE()”作为没有参数情况下的选择，就是显示当天的数据，但如果当天没有数据呢？<br>
+  “DATE()-1”？似乎不能解决问题。<br>
+  先看看Dreamweaver MX 自动生成记录集的SQL代码：</p>
+<p>SCSJ.Source = &quot;SELECT * FROM dbo.MCIS_生产数据 WHERE 日期 = '&quot; + Replace(SCSJ__MMColParam, 
+  &quot;'&quot;, &quot;''&quot;) + &quot;' ORDER BY 日期 DESC&quot;</p>
+<p>在日期字段的过滤上使用了“=”，大家都知道如果是文本类型的话可以使用“LIKE”操作符配合“%”来获得所有记录，如果可以做到，那么在没有日期参数传递的情况下就显示所有的记录倒是不错的选择。<br>
+  这里的实现方法就是修改Dreamweaver MX 自动生成的记录集代码，加入判断，当URL参数不存在的时候，记录集SQL过滤使用“LIKE”操作符获得所有记录，否则使用“=”操作符获得属于参数日期的记录。</p>
+<p>下面是代码，应该很好理解的。</p>
+<p>&lt;%<br>
+  Dim SCSJ__MMColParam<br>
+  SCSJ__MMColParam = &quot;%&quot;<br>
+  If (Request.QueryString(&quot;MCISDATE&quot;) &lt;&gt; &quot;&quot;) Then <br>
+  SCSJ__MMColParam = Request.QueryString(&quot;MCISDATE&quot;)<br>
+  End If<br>
+  %&gt;<br>
+  &lt;%<br>
+  Dim SCSJ<br>
+  Dim SCSJ_numRows</p>
+<p>Set SCSJ = Server.CreateObject(&quot;ADODB.Recordset&quot;)<br>
+  SCSJ.ActiveConnection = MM_jbcjsql_STRING<br>
+  If (Request.QueryString(&quot;MCISDATE&quot;) &lt;&gt; &quot;&quot;) Then <br>
+  SCSJ.Source = &quot;SELECT * FROM dbo.MCIS_生产数据 WHERE 日期 = '&quot; + Replace(SCSJ__MMColParam, 
+  &quot;'&quot;, &quot;''&quot;) + &quot;' ORDER BY 日期 DESC&quot;<br>
+  ELSE<br>
+  SCSJ.Source = &quot;SELECT * FROM dbo.MCIS_生产数据 WHERE 日期 LIKE '&quot; + Replace(SCSJ__MMColParam, 
+  &quot;'&quot;, &quot;''&quot;) + &quot;' ORDER BY 日期 DESC&quot;<br>
+  END IF<br>
+  SCSJ.CursorType = 0<br>
+  SCSJ.CursorLocation = 2<br>
+  SCSJ.LockType = 1<br>
+  SCSJ.Open()</p>
+<p>SCSJ_numRows = 0<br>
+  %&gt;<br>
+</p>
+</body>
+</html>

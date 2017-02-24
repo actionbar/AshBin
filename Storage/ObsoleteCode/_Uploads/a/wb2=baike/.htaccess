@@ -1,0 +1,17 @@
+RewriteEngine on
+
+RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteCond %{REQUEST_FILENAME} !-d
+	RewriteRule ^wiki/(.*)$ index.php?doc-innerlink-$1 [L]
+	
+RewriteRule ^sitemap\.xml$ a/sitemap.php?s=%{HTTP_HOST} [L]
+RewriteCond %{HTTP_HOST} ^baike\.v-get\.com$
+RewriteRule ^view/(\d+)\.html$ f.php?i=$1&%{QUERY_STRING} [L]
+RewriteCond %{HTTP_HOST} ^\w+\.baike\.v-get\.com$  
+RewriteRule ^([a-z]+)/index_(\d+)\.html$ /ex/$1/%{HTTP_HOST}.php?p=$2&%{QUERY_STRING} [L]
+RewriteCond %{HTTP_HOST} ^(\w+)\.baike\.v-get\.com$
+
+
+
+
+ErrorDocument 404 /error.html

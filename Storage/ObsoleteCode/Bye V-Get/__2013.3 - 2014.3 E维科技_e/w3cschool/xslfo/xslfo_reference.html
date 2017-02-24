@@ -1,0 +1,313 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="../c3.css" />
+<title>XSL-FO 参考手册</title>
+</head>
+<body class="xml">
+<div id="wrapper">
+<div id="header_index"><a href="http://e.v-get.com/w3cschool/">W3CSchool 在线教程</a></div>
+<div id="navfirst">
+<ul id="menu">
+<li id="h"><a href="../h.html">HTML教程</a></li>
+<li id="x"><a href="../x.html">XML教程</a></li>
+<li id="b"><a href="../b.html">浏览器脚本</a></li>
+<li id="s"><a href="../s.html">服务器脚本</a></li>
+<li id="d"><a href="../d.html">dot net教程</a></li>
+<li id="m"><a href="../m.html">多媒体教程</a></li>
+<li id="w"><a href="../w.html">建站手册</a></li>
+</ul>
+</div><div id="navsecond">
+<div id="course">
+<h2>XSLFO 教程</h2>
+<ul>
+<li><a href="http://e.v-get.com/w3cschool/">XSLFO 首页</a></li>
+<li><a href="xslfo_intro.html">XSLFO 简介</a></li>
+<li><a href="xslfo_documents.html">XSLFO 文档</a></li>
+<li><a href="xslfo_areas.html">XSLFO 区域</a></li>
+<li><a href="xslfo_output.html">XSLFO 输出</a></li>
+<li><a href="xslfo_flow.html">XSLFO 流</a></li>
+<li><a href="xslfo_pages.html">XSLFO 页面</a></li>
+<li><a href="xslfo_blocks.html">XSLFO 块</a></li>
+<li><a href="xslfo_lists.html">XSLFO 列表</a></li>
+<li><a href="xslfo_tables.html">XSLFO 表格</a></li>
+<li><a href="xslfo_xslt.html">XSLFO 与 XSLT</a></li>
+</ul>
+<h2>XSLFO 参考手册</h2>
+<ul>
+<li><a href="xslfo_reference.html">XSLFO 对象</a></li>
+</ul>
+</div>
+<div id="selected">
+<h2>建站手册</h2>
+<ul>
+<li><a href="../site/">网站构建</a></li>
+<li><a href="../w3c/">万维网联盟</a></li>
+<li><a href="http://e.v-get.com/w3c/">W3CSchool 教程</a></li>
+<li><a href="../quality/">网站品质</a></li>
+<li><a href="../semweb/">语义网</a></li>
+<li><a href="../hosting/">网站主机</a></li>
+</ul>
+<h2><a href="http://e.v-get.com/w3c/" class="f13">W3CSchool 教程</a></h2><div class="a120x90"><script type="text/javascript">var cpro_id="u1210867";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div></div>
+</div>
+<div id="maincontent">
+<h1>XSL-FO 参考手册</h1>
+<div id="tpn">
+<ul class="prenext">
+<li class="pre"><a href="xslfo_xslt.html">上一页</a></li>
+<li class="next"><a href="http://e.v-get.com/w3cschool/">下一页</a></li>
+</ul>
+</div>
+<div id="intro">
+<p><strong>将描述转换为呈现的过程被称为格式化 (formatting）。</strong></p>
+</div>
+<div>
+<table class="dataintable">
+<tr>
+<th>对象</th>
+<th>描述</th>
+</tr>
+  <tr>
+    <td>basic-link</td>
+    <td>定义一个链接的起始资源</td>
+  </tr>
+  <tr>
+    <td>bidi-override</td>
+    <td>Overrides the default Unicode BIDI direction</td>
+  </tr>
+  <tr>
+    <td>block</td>
+    <td>定义一个输出块 (比如段落和标题）</td>
+  </tr>
+  <tr>
+    <td>block-container</td>
+    <td>定义一个块级的引用区域 (reference-area）</td>
+  </tr>
+  <tr>
+    <td>character</td>
+    <td>定义一个字符，该字符会被映射为供呈现的字形</td>
+  </tr>
+  <tr>
+    <td>color-profile</td>
+    <td>定义样式表的一个颜色配置文件</td>
+  </tr>
+  <tr>
+    <td>conditional-page-master-reference</td>
+    <td>规定一个当所定义的条件成立时使用的page-master</td>
+  </tr>
+  <tr>
+    <td>declarations</td>
+    <td>组合针对某个样式表的全局声明</td>
+  </tr>
+  <tr>
+    <td>external-graphic</td>
+    <td>用于图像数据位于XML结果树之外的某个图形</td>
+  </tr>
+  <tr>
+    <td>float</td>
+    <td>典型的用法是，在页面起始位置的某个单独的区域放置一幅图片，或者把一幅图片放置到一侧，而内容则流动至图片的旁边。</td>
+  </tr>
+  <tr>
+    <td>flow</td>
+    <td>包含所有被输出到页面的元素</td>
+  </tr>
+  <tr>
+    <td>footnote</td>
+    <td>定义在页面的region-body内部的一个脚注</td>
+  </tr>
+  <tr>
+    <td>footnote-body</td>
+    <td>定义脚注的内容</td>
+  </tr>
+  <tr>
+    <td>initial-property-set</td>
+    <td>格式化&lt;fo:block&gt;的第一行</td>
+  </tr>
+  <tr>
+    <td>inline</td>
+    <td>通过背景或者将其包围在一个边框中，来格式化文本的某个部分</td>
+  </tr>
+  <tr>
+    <td>inline-container</td>
+    <td>定义一个行内的引用区域 (inline reference-area）</td>
+  </tr>
+  <tr>
+    <td>instream-foreign-object</td>
+    <td>用于行内图形 (inline graphics）或用于普通对象，其中对象的数据作为&lt;fo:instream-foreign-object&gt;的后代存在。</td>
+  </tr>
+  <tr>
+    <td>layout-master-set</td>
+    <td>存有所有用在文档中的master</td>
+  </tr>
+  <tr>
+    <td>leader</td>
+    <td>用来生成&#34;.&#34;由内容表格中的页码来分隔标题，或者创建表单中的输入域，或者创建水平线</td>
+  </tr>
+  <tr>
+    <td>list-block</td>
+    <td>定义列表</td>
+  </tr>
+  <tr>
+    <td>list-item</td>
+    <td>包含列表中的每个项目</td>
+  </tr>
+  <tr>
+    <td>list-item-body</td>
+    <td>包含列表项的内容或主体</td>
+  </tr>
+  <tr>
+    <td>list-item-label</td>
+    <td>包含列表项的标号 (有代表性的是数据、字符等等）</td>
+  </tr>
+  <tr>
+    <td>marker</td>
+    <td>与fo:retrieve-marker使用来创建连续的页面或页脚</td>
+  </tr>
+  <tr>
+    <td>multi-case</td>
+    <td>包含 XSL-FO对象的每个供选择的子树 (在&lt;fo:multi-switch&gt;内部）。父元素&lt;fo:multi-switch&gt;会选择显示那个选项并隐藏其余的选项。</td>
+  </tr>
+  <tr>
+    <td>multi-properties</td>
+    <td>用来在两个或更多的属性集 (property-sets）间转换</td>
+  </tr>
+  <tr>
+    <td>multi-property-set</td>
+    <td>规定一个可供选择的属性集，这个属性集会被根据用户代理的状态来进行应用。</td>
+  </tr>
+  <tr>
+    <td>multi-switch</td>
+    <td>存有一个或多个&lt;fo:multi-case&gt;对象，并控制它们之间的切换 (通过&lt;fo:multi-toggle&gt;激活）</td>
+  </tr>
+  <tr>
+    <td>multi-toggle</td>
+    <td>用来切换到另一个&lt;fo:multi-case&gt;</td>
+  </tr>
+  <tr>
+    <td>page-number</td>
+    <td>表示当前的页面</td>
+  </tr>
+  <tr>
+    <td>page-number-citation</td>
+    <td>为页面引用页码，此页面包含首个由被引用对象返回的标准区域。</td>
+  </tr>
+  <tr>
+    <td>page-sequence</td>
+    <td>一个针对页面输出元素的容器。在其中一个&lt;fo:page-sequence&gt;对象针对每个页面布局。</td>
+  </tr>
+  <tr>
+    <td>page-sequence-master</td>
+    <td>规定使用哪个simple-page-master，以及使用次序。</td>
+  </tr>
+  <tr>
+    <td>region-after</td>
+    <td>定义页脚</td>
+  </tr>
+  <tr>
+    <td>region-before</td>
+    <td>定义页眉</td>
+  </tr>
+  <tr>
+    <td>region-body</td>
+    <td>定义页面主体</td>
+  </tr>
+  <tr>
+    <td>region-end</td>
+    <td>定义页面的右侧栏</td>
+  </tr>
+  <tr>
+    <td>region-start</td>
+    <td>定义页面的左侧栏</td>
+  </tr>
+  <tr>
+    <td>repeatable-page-master-alternatives</td>
+    <td>定义一套simple-page-master的副本</td>
+  </tr>
+  <tr>
+    <td>repeatable-page-master-reference</td>
+    <td>规定一个简单的simple-page-master的副本</td>
+  </tr>
+  <tr>
+    <td>retrieve-marker</td>
+    <td>与&lt;fo:marker&gt;一同使用来创建连续页眉或者页脚</td>
+  </tr>
+  <tr>
+    <td>root</td>
+    <td>XSL-FO文档的根 (顶）节点</td>
+  </tr>
+  <tr>
+    <td>simple-page-master</td>
+    <td>定义页面的尺寸和形状</td>
+  </tr>
+  <tr>
+    <td>single-page-master-reference</td>
+    <td>规定用在页面序列的某个给定的点的一个</td>
+  </tr>
+  <tr>
+    <td>static-content</td>
+    <td>包含在许多页面上重复的静态内容 (比如页眉和页脚）</td>
+  </tr>
+  <tr>
+    <td>table</td>
+    <td>格式化一个表格的表格式的材料</td>
+  </tr>
+  <tr>
+    <td>table-and-caption</td>
+    <td>格式化一个表格及其标题</td>
+  </tr>
+  <tr>
+    <td>table-body</td>
+    <td>表格行和表格单元的容器</td>
+  </tr>
+  <tr>
+    <td>table-caption</td>
+    <td>包含一个表格的标题</td>
+  </tr>
+  <tr>
+    <td>table-cell</td>
+    <td>定义表格单元</td>
+  </tr>
+  <tr>
+    <td>table-column</td>
+    <td>格式化表格的列</td>
+  </tr>
+  <tr>
+    <td>table-footer</td>
+    <td>定义表格的页脚</td>
+  </tr>
+  <tr>
+    <td>table-header</td>
+    <td>定义表格的页眉</td>
+  </tr>
+  <tr>
+    <td>table-row</td>
+    <td>定义表格的行</td>
+  </tr>
+  <tr>
+    <td>title</td>
+    <td>为页面序列定义一个标题</td>
+  </tr>
+  <tr>
+    <td>wrapper</td>
+    <td>为一组XSL-FO对象规定继承属性</td>
+  </tr>
+</table>
+</div>
+<div id="bpn">
+<ul class="prenext">
+<li class="pre"><a href="xslfo_xslt.html">上一页</a></li>
+<li class="next"><a href="http://e.v-get.com/w3cschool/">下一页</a></li>
+</ul>
+</div>
+</div>
+<div id="sidebar">
+<div class="rs"></div>
+<div id="tools">
+<h5 id="tools_reference"><a href="xslfo_reference.html">XSL-FO 参考手册</a></h5>
+</div>
+<div class="a120x600"><script type="text/javascript">var cpro_id="u1293136";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div><div class="b"></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,149 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="../c3.css" />
+<title>AJAX 浏览器支持</title>
+</head>
+<body class="browserscripting">
+<div id="wrapper">
+<div id="header">
+<a href="http://e.v-get.com/w3cschool/" style="float:left;">W3CSchool 在线教程</a>
+<div class="q g"><script type="text/javascript">var cpro_id="u1163355"</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div>
+<div id="navfirst">
+<ul id="menu">
+<li id="h"><a href="../h.html">HTML教程</a></li>
+<li id="x"><a href="../x.html">XML教程</a></li>
+<li id="b"><a href="../b.html">浏览器脚本</a></li>
+<li id="s"><a href="../s.html">服务器脚本</a></li>
+<li id="d"><a href="../d.html">dot net教程</a></li>
+<li id="m"><a href="../m.html">多媒体教程</a></li>
+<li id="w"><a href="../w.html">建站手册</a></li>
+</ul>
+</div><div id="navsecond">
+<div id="course">
+<h2>AJAX 基础</h2>
+<ul>
+<li><a href="http://e.v-get.com/w3cschool/">AJAX 首页</a></li>
+<li><a href="ajax_intro.html">AJAX 简介</a></li>
+<li><a href="ajax_httprequest.html">AJAX HTTP 请求</a></li>
+<li><a href="ajax_example.html">AJAX 实例</a></li>
+<li><a href="ajax_browsers.html">AJAX 浏览器支持</a></li>
+<li style="font-size:11px;"><a href="ajax_xmlhttprequest.html">AJAX XMLHttpRequest</a></li>
+<li><a href="ajax_server.html">AJAX 请求服务器</a></li>
+<li><a href="ajax_serverscript.html">AJAX 服务器脚本</a></li>
+</ul>
+<h2>AJAX 高级</h2>
+<ul>
+<li><a href="ajax_example_suggest.html">AJAX 请求实例</a></li>
+<li><a href="ajax_source.html">AJAX 请求源代码</a></li>
+<li><a href="ajax_database.html">AJAX 数据库实例</a></li>
+<li><a href="ajax_xmlfile.html">AJAX XML 实例</a></li>
+<li><a href="ajax_responsexml.html">AJAX ResponseXML</a></li>
+</ul>
+<h2>AJAX 实例</h2>
+<ul>
+<li><a href="../example/ajax_examples.html">AJAX 实例</a></li>
+</ul>
+</div>
+<div id="selected">
+<h2>建站手册</h2>
+<ul>
+<li><a href="../site/">网站构建</a></li>
+<li><a href="../w3c/">万维网联盟</a></li>
+<li><a href="http://e.v-get.com/w3c/">W3CSchool 教程</a></li>
+<li><a href="../quality/">网站品质</a></li>
+<li><a href="../semweb/">语义网</a></li>
+<li><a href="../hosting/">网站主机</a></li>
+</ul>
+<h2><a href="http://e.v-get.com/w3c/" class="f13">W3CSchool 教程</a></h2><div class="a120x90"><script type="text/javascript">var cpro_id="u1210867";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div></div>
+</div>
+<div id="maincontent">
+<h1>AJAX 浏览器支持</h1>
+<div id="tpn">
+<ul class="prenext">
+<li class="pre"><a href="ajax_example.html">上一页</a></li>
+<li class="next"><a href="ajax_xmlhttprequest.html">下一页</a></li>
+</ul>
+</div>
+<div>
+<h2>AJAX - 浏览器支持</h2>
+<p>AJAX 的要点是 XMLHttpRequest 对象。</p>
+<p>不同的浏览器创建 XMLHttpRequest 对象的方法是有差异的。</p>
+<p>IE 浏览器使用 <em>ActiveXObject</em>，而其他的浏览器使用名为 <em>XMLHttpRequest</em> 的 JavaScript 内建对象。</p>
+<p>如需针对不同的浏览器来创建此对象，我们要使用一条 &#34;try and catch&#34; 语句。您可以在我们的 JavaScript 教程中阅读更多有关 <a href="../js/js_try_catch.html">try 和 catch 语句</a> 的内容。</p>
+<p>让我们用这段创建 XMLHttpRequest 对象的 JavaScript 来更新一下我们的 &#34;testAjax.htm&#34; 文件：</p>
+<pre>
+&lt;html&gt;
+&lt;body&gt;
+&lt;script type=&#34;text/javascript&#34;&gt;
+function ajaxFunction()
+ {
+ var <code>xmlHttp</code>;
+ 
+ try
+    {
+   <span>// Firefox, Opera 8.0+, Safari</span>
+    <code>xmlHttp=new XMLHttpRequest();</code>
+    }
+ catch (e)
+    {
+  <span>// Internet Explorer</span>
+   try
+      {
+      <code>xmlHttp=new ActiveXObject(&#34;Msxml2.XMLHTTP&#34;);</code>
+      }
+   catch (e)
+      {
+      try
+         {
+         <code>xmlHttp=new ActiveXObject(&#34;Microsoft.XMLHTTP&#34;);</code>
+         }
+      catch (e)
+         {
+         alert(&#34;您的浏览器不支持AJAX！&#34;);
+         return false;
+         }
+      }
+    }
+ }
+&lt;/script&gt;
+&lt;form name=&#34;myForm&#34;&gt;
+用户: &lt;input type=&#34;text&#34; name=&#34;username&#34; /&gt;
+时间: &lt;input type=&#34;text&#34; name=&#34;time&#34; /&gt;
+&lt;/form&gt;&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+<h3>例子解释：</h3>
+<p>首先声明一个保存 XMLHttpRequest 对象的 xmlHttp 变量。</p>
+<p>然后使用 XMLHttp=new XMLHttpRequest() 来创建此对象。这条语句针对 Firefox、Opera 以及 Safari 浏览器。假如失败，则尝试针对 Internet Explorer 6.0+ 的 xmlHttp=new ActiveXObject(&#34;Msxml2.XMLHTTP&#34;)，假如也不成功，则尝试针对 Internet Explorer 5.5+ 的 xmlHttp=new ActiveXObject(&#34;Microsoft.XMLHTTP&#34;)。</p>
+<p>假如这三种方法都不起作用，那么这个用户所使用的浏览器已经太过时了，他或她会看到一个声明此浏览器不支持 AJAX 的提示。</p>
+<p class="note"><span>注释：</span>上面这些浏览器定制的代码很长，也很复杂。不过，每当您希望创建 XMLHttpRequest 对象时，这些代码就能派上用场，因此您可以在任何需要使用的时间拷贝粘贴这些代码。上面这些代码兼容所有的主流浏览器：Internet Explorer、Opera、Firefox 以及 Safari。</p>
+<p>下一节为您展示如何使用 XMLHttpRequest 对象与服务器进行通信。</p>
+</div>
+<div  id="bpn">
+<ul class="prenext">
+<li class="pre"><a href="ajax_example.html">上一页</a></li>
+<li class="next"><a href="ajax_xmlhttprequest.html">下一页</a></li>
+</ul>
+</div>
+</div>
+<div id="sidebar">
+<div class="rs"></div><div id="ad">
+<script type="text/javascript"><!--
+google_ad_client = "pub-3381531532877742";
+/* 120x600, sidebar_pic_1 */
+google_ad_slot = "0951690603";
+google_ad_width = 120;
+google_ad_height = 600;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div>
+</div><div class="b"></div>
+</div>
+</body>
+</html>

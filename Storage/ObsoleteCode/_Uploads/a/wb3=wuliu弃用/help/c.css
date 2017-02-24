@@ -1,0 +1,46 @@
+*{padding:0;margin:0}
+body {background:#fff;font-size:12px;color:#333;font-family:arial,'宋体';background:url(http://weigeti.com/p0/3b.jpg) repeat-x}
+ul{list-style-position:outside;list-style-type:none}
+li{white-space:nowrap;overflow:hidden}
+a{color:#1C3D72; text-decoration:none}
+a:hover{color:#c00;text-decoration:underline}
+img {border-width:0}
+.p{float:left}.o{clear:both}.q{float:right}
+.t{background:url(http://weigeti.com/p0/3c.png)}
+.f1{color:#f00}
+li,p{line-height:25px}
+.tc,.w {width:960px;overflow:hidden;margin:0px auto}
+.u{padding:15px 0 9px 0;}
+.i{background:url(http://weigeti.com/p0/i3winter.jpg);width:390px;height:66px}
+h1{display:none}
+#n{background:#07c;height:30px;line-height:30px;font-size:14px}
+#n .w{border-left:1px solid #fff;}
+#n a{display:inline;float:left;width:79px;text-align:center;border-right:1px solid #fff;color:#fff;text-decoration:none}
+#n a:hover,.no{background:#F76E2A}
+#m{height:35px;line-height:33px;background:#F4F5FE;color:#666;font-family:"宋体"}
+#m strong{color:#FFB401;font-size:20px;font-weight:400;margin-right:9px;font-family:"微软雅黑"}
+#m a{color:#666;text-decoration:none;padding:0 5px}
+#m a:hover{color:#FFB401}
+#m .q{height:22px;padding-top:10px}
+.v {margin:9px auto}
+.l{width:180px;border:#ddd 1px solid}
+.l li{line-height:25px;padding:0 20px}
+.l li a{text-decoration:none}
+.l li a:hover{color:#f60}
+.l .lo{color:#f60}
+h5{height:28px;line-height:28px;font-size:14px;background:#eee;color:#333;padding:0 9px;margin-top:1px;border-bottom:#ddd 1px solid}
+h5 span{font-size:12px;font-weight:400;color:#666}
+.c{width:765px;border:#ddd 1px solid}
+.c h2{font-size:12px;line-height:38px}
+.c p{text-indent:25px}
+.cc{padding:20px 30px}
+.cu li{display:inline-block;float:left;width:175px;text-align:center}
+.cu h2{clear:both;}
+.cu a{padding:3px 9px;}
+.ct p{line-height:28px;padding:0 40px}
+.ct span{font-size:16px;color:#f60;font-weight:800;margin:0 9px}
+table{border:#eee 1px solid;font-size:12px;border-collapse:collapse;text-align:center;width:100%;margin:9px 0}
+tr{line-height:22px}
+th,td{border-right:1px solid #eee;border-bottom:1px solid #eee;padding:3px 5px}
+.cth th{text-align:right;padding:3px 9px}
+.b {line-height:50px;height:50px;text-align:center;color:#666}

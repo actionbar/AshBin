@@ -1,0 +1,96 @@
+<html xmlns:rdl>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<script src="rdl_method.js"></script>
+<base target="_self">
+</head>
+<body>
+
+<script>
+//collFriendObjects=new Array();
+//collFriendProperties=new Array();
+//collFriendMethods=new Array();
+//collFriendEvents=new Array();
+//collFriendCollections=new Array();
+
+collFriendCollections=new Array(
+'controlRange','TextRange','TextRectangle'
+);
+
+collFriendMethods=new Array(
+'moveToElementText','createControlRange','createRange','createRangeCollection'
+);
+
+collFriendObjects=new Array(
+'TextRange','TextRectangle'
+);
+
+collFriendProperties=new Array(
+'htmlText'
+);
+
+//collIE40=new Array();
+//collIE50=new Array();
+//collIE55=new Array();
+//collIE60=new Array();
+
+collIE50=new Array(
+'BODY'
+);
+
+sScript=
+'<script>\n'+
+'var oControlRange;\n'+
+'function rdl_doRange(){\n'+
+'var oMessage=document.all("idMessage");\n'+
+'oControlRange=document.body.createControlRange();\n'+
+'oControlRange.add(oMessage);\n'+
+'oControlRange.select();\n'+
+//'oControlRange.execCommand("Delete");\n'+
+'}\n'+
+'<\/script>\n';
+
+sCode=
+'<span>这个例子演示了如何建立 <b>body<\/b> 对象的 <b>ControlRange<\/b>集合，然后添加非文本元素。<\/span><br>\n'+
+'<br>\n'+
+'<input type=button value=" 建立选择区并添加这个按钮" onclick="rdl_doRange();" id=idMessage>\n';
+
+iWinWidth=420;
+
+iWinHeight=220;
+
+</script>
+
+<div id=idContent>
+
+<div id=idContentTitle><span id=idTitleName>createControlRange</span>版本：DHTML Object Model　返回值：有</div>
+
+<div class=cssColumnTitle>语法：</div>
+<div>
+<i>arrControlRange</i><b> = <a href="../objects/BODY.html"> BODY </a> . createControlRange () </b>
+</div>
+
+<div class=cssColumnTitle>参数：</div>
+<div>
+无
+</div>
+
+<div class=cssColumnTitle>返回值：</div>
+<table>
+<tr><td nowrap><i> arrControlRange </i></td><td nowrap><b>:</b></td>
+<td>数组(Array)。如果成功的话返回被建立的<a href="../objects/controlrange.html"> ControlRange </a>集合。</td></tr>
+</table>
+
+<div class=cssColumnTitle>说明：</div>
+<div>
+为非文本对象建立<a href="../objects/controlrange.html"> ControlRange </a>集合。<br>
+为控件选择区而非文本选择区建立选择范围对象。<br>
+假如一个<a href="../objects/controlrange.html"> ControlRange </a>集合已经存在了，此方法会将它覆盖。否则，将返回被建立对象的引用指针。
+</div>
+
+</div>
+</body>
+</html>
+
+<!-- Part of RDL(TM) - Written by Rain1977 
+HomeSite: http://www.dhtmlet.com  E-Mail: dhtmlet@hotmail.com -->

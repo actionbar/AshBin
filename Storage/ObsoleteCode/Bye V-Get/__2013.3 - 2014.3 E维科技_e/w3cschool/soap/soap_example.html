@@ -1,0 +1,105 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="../c3.css" />
+<title>SOAP 实例</title>
+</head>
+<body class="xml">
+<div id="wrapper">
+<div id="header">
+<a href="http://e.v-get.com/w3cschool/" style="float:left;">W3CSchool 在线教程</a>
+<div class="q g"><script type="text/javascript">var cpro_id="u1163355"</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div>
+<div id="navfirst">
+<ul id="menu">
+<li id="h"><a href="../h.html">HTML教程</a></li>
+<li id="x"><a href="../x.html">XML教程</a></li>
+<li id="b"><a href="../b.html">浏览器脚本</a></li>
+<li id="s"><a href="../s.html">服务器脚本</a></li>
+<li id="d"><a href="../d.html">dot net教程</a></li>
+<li id="m"><a href="../m.html">多媒体教程</a></li>
+<li id="w"><a href="../w.html">建站手册</a></li>
+</ul>
+</div><div id="navsecond">
+<div id="course">
+<h2>SOAP 教程</h2>
+<ul>
+<li><a href="http://e.v-get.com/w3cschool/">SOAP 首页</a></li>
+<li><a href="soap_intro.html">SOAP 简介</a></li>
+<li><a href="soap_syntax.html">SOAP 语法</a></li>
+<li><a href="soap_envelope.html">SOAP Envelope</a></li>
+<li><a href="soap_header.html">SOAP Header</a></li>
+<li><a href="soap_body.html">SOAP Body</a></li>
+<li><a href="soap_fault.html">SOAP Fault</a></li>
+<li><a href="soap_httpbinding.html">SOAP HTTP Binding</a></li>
+<li><a href="soap_example.html">SOAP 实例</a></li>
+<li><a href="soap_summary.html">SOAP 总结</a></li>
+</ul>
+</div>
+<div id="selected">
+<h2>建站手册</h2>
+<ul>
+<li><a href="../site/">网站构建</a></li>
+<li><a href="../w3c/">万维网联盟</a></li>
+<li><a href="http://e.v-get.com/w3c/">W3CSchool 教程</a></li>
+<li><a href="../quality/">网站品质</a></li>
+<li><a href="../semweb/">语义网</a></li>
+<li><a href="../hosting/">网站主机</a></li>
+</ul>
+<h2><a href="http://e.v-get.com/w3c/" class="f13">W3CSchool 教程</a></h2><div class="a120x90"><script type="text/javascript">var cpro_id="u1210867";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div></div>
+</div>
+<div id="maincontent">
+<h1>SOAP 实例</h1>
+<div id="tpn">
+<ul class="prenext">
+<li class="pre"><a href="soap_httpbinding.html">上一页</a></li>
+<li class="next"><a href="soap_summary.html">下一页</a></li>
+</ul>
+</div>
+<div>
+<h2>一个 SOAP 实例</h2>
+<p>在下面的例子中，一个 GetStockPrice 请求被发送到了服务器。此请求有一个 StockName 参数，而在响应中则会返回一个 Price 参数。此功能的命名空间被定义在此地址中： &#34;http://www.example.org/stock&#34;</p>
+<h3>SOAP 请求：</h3>
+<pre>POST /InStock HTTP/1.1
+Host: www.example.org
+Content-Type: application/soap+xml; charset=utf-8
+Content-Length: nnn
+&lt;?xml version=&#34;1.0&#34;?&gt;
+&lt;soap:Envelope
+xmlns:soap=&#34;http://www.w3.org/2001/12/soap-envelope&#34;
+soap:encodingStyle=&#34;http://www.w3.org/2001/12/soap-encoding&#34;&gt;
+  &lt;soap:Body xmlns:m=&#34;http://www.example.org/stock&#34;&gt;
+&nbsp;&nbsp;  &lt;m:GetStockPrice&gt;
+      &lt;m:StockName&gt;IBM&lt;/m:StockName&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/m:GetStockPrice&gt;
+  &lt;/soap:Body&gt;
+  
+&lt;/soap:Envelope&gt;</pre>
+<h3>SOAP 响应：</h3>
+<pre>HTTP/1.1 200 OK
+Content-Type: application/soap+xml; charset=utf-8
+Content-Length: nnn
+&lt;?xml version=&#34;1.0&#34;?&gt;
+&lt;soap:Envelope
+xmlns:soap=&#34;http://www.w3.org/2001/12/soap-envelope&#34;
+soap:encodingStyle=&#34;http://www.w3.org/2001/12/soap-encoding&#34;&gt;
+  &lt;soap:Body xmlns:m=&#34;http://www.example.org/stock&#34;&gt;
+    &lt;m:GetStockPriceResponse&gt;
+      &lt;m:Price&gt;34.5&lt;/m:Price&gt;
+    &lt;/m:GetStockPriceResponse&gt;
+  &lt;/soap:Body&gt;
+  
+&lt;/soap:Envelope&gt;</pre>
+</div>
+<div id="bpn">
+<ul class="prenext">
+<li class="pre"><a href="soap_httpbinding.html">上一页</a></li>
+<li class="next"><a href="soap_summary.html">下一页</a></li>
+</ul>
+</div>
+</div>
+<div class="r q"></div><div class="b"></div>
+</div>
+</body>
+</html>

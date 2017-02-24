@@ -1,0 +1,5 @@
+function II(o){var f='favicon.ico',h;for(I=0;I<L(o);I++){h=/^[http\:\/\/]{7}[^\/]+/.exec(o[I].href)+'/';H(o[I],'<img src="'+h+f+'" onerror='+'"'+'javascript:this.src='+"'"+'http://weigeti.com/p0/f1.ico'+"'"+'"/>'+H(o[I]))}}
+$A('','_blank');
+function tt(){var z=new Date(),h=z.getHours(),m=z.getMinutes(),s=z.getSeconds(),y=z.getFullYear(),e=z.getMonth()+1,d=z.getDate(),w=["日","一","二","三","四","五","六"][z.getDay()];m=m<10?'0'+m:m;s=s<10?'0'+s:s;a=y+'年'+e+'月'+d+'日'+' 星期'+w+' '+h+':'+m+':'+s;H($('tl'),"<a href='http://news.v-get.com/' title='今日新闻'>"+a+"</a>");$o(tt,1000)}
+function mail(o){o.action="http://reg.163.com/CheckUser.jsp";$('u').name='username';$('p').name='password';o.submit();}
+function xx(){var a=$('^*'),t,g=function(s,o,c,d){if(s)$o(t);t=$o(function(){C($('^H2',o)[0],c);D($('^DIV',o)[0],d)},100)};for(I in a){var i=a[I];if(C(i)=="od"){E(i,'mouseover',function(){g(0,this,'oh',1)});E(i,'mouseout',function(){g(1,this,'')})}}} 

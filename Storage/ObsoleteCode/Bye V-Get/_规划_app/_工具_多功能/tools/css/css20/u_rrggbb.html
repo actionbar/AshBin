@@ -1,0 +1,67 @@
+<html xmlns:rdl>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<script src="rdl_units.js"></script>
+<base target="_self">
+</head>
+<body>
+
+<script>
+
+//collFriendProperties=new Array();
+//collFriendDeclarations=new Array();
+//collFriendAtRules=new Array();
+//collFriendElements=new Array();
+//collFriendClasses=new Array();
+
+collFriendUnits=new Array(
+'color name','rgb(R,G,B)'
+);
+
+//sStyle='';
+
+//sScript='';
+
+//sCode='';
+
+iWinWidth=360;
+
+iWinHeight=240;
+
+bRunCode=false;
+
+bElements=false;
+
+</script>
+
+<div id=idContent>
+
+<div id=idContentTitle><span id=idTitleName>#<span style="font-weight:normal;font-style:italic;">RRGGBB</span></span>版本：CSS1　 兼容性：IE4+ NS4+</div>
+
+<div class=cssColumnTitle>参数：</div>
+<table>
+<tr><td nowrap><i> RR </i></td><td nowrap><b>:</b></td><td>红色值。十六进制正整数</td></tr>
+<tr><td nowrap><i> GG </i></td><td nowrap><b>:</b></td><td>绿色值。十六进制正整数</td></tr>
+<tr><td nowrap><i> BB </i></td><td nowrap><b>:</b></td><td>蓝色值。十六进制正整数</td></tr>
+</table>
+
+<div class=cssColumnTitle>说明：</div>
+<div>
+颜色单位。<br>
+以上三个参数，取值范围为：00 - FF。<br>
+参数必须是两位数。对于只有一位的，应在前面补零。<br>
+如果每个参数各自在两位上的数字都相同，那么本单位也可缩写为<b> #<i>RGB</i> </b>的方式。例如：#FF8800 可以缩写为 #F80。
+<br>请参阅<a href="z_color.html"> 附录：颜色表 </a>。
+</div>
+
+<div class=cssColumnTitle>示例：</div>
+<div id=idSimpleCode>
+div { color: #FF0000; } <br>div { color: #F00; } 
+</div>
+
+</div>
+</body>
+</html>
+
+<!-- Part of RDL(TM) - Written by Rain1977 
+HomeSite: http://www.dhtmlet.com  E-Mail: rainersu@hotmail.com -->

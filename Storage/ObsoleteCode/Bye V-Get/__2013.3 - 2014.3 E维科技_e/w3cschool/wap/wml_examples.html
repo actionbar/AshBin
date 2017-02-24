@@ -1,0 +1,140 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="../c3.css" />
+<title>WML 实例</title>
+</head>
+<body class="xml">
+<div id="wrapper">
+<div id="header">
+<a href="http://e.v-get.com/w3cschool/" style="float:left;">W3CSchool 在线教程</a>
+<div class="q g"><script type="text/javascript">var cpro_id="u1163355"</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div>
+<div id="navfirst">
+<ul id="menu">
+<li id="h"><a href="../h.html">HTML教程</a></li>
+<li id="x"><a href="../x.html">XML教程</a></li>
+<li id="b"><a href="../b.html">浏览器脚本</a></li>
+<li id="s"><a href="../s.html">服务器脚本</a></li>
+<li id="d"><a href="../d.html">dot net教程</a></li>
+<li id="m"><a href="../m.html">多媒体教程</a></li>
+<li id="w"><a href="../w.html">建站手册</a></li>
+</ul>
+</div><div id="navsecond">
+<div id="course">
+<h2>WAP 教程</h2>
+<ul>
+<li><a href="http://e.v-get.com/w3cschool/">WAP 教程</a></li>
+<li><a href="wap_intro.html">WAP 简介</a></li>
+<li><a href="wap_basic.html">WAP 基础</a></li>
+<li><a href="wml_format.html">WML 格式化</a></li>
+<li><a href="wml_links.html">WML 连接</a></li>
+<li><a href="wml_input.html">WML 输入</a></li>
+<li><a href="wml_tasks.html">WML 任务</a></li>
+<li><a href="wml_timer.html">WML 定时器</a></li>
+<li><a href="wml_variables.html">WML 变量</a></li>
+<li><a href="wml_examples.html">WML 实例</a></li>
+<li><a href="wap_demo.html">WAP 演示</a></li>
+<li><a href="wap_pages.html">WAP W3CSchool</a></li>
+</ul>
+<h2>参考手册</h2>
+<ul>
+<li><a href="wml_reference.html">WML 参考手册</a></li>
+<li><a href="wml_entities.html">WML 实体</a></li>
+<li><a href="wml_dtd.html">WML DTD</a></li>
+</ul>
+<h2>资源</h2>
+<ul>
+<li><a href="wap_forum.html">WAP 论坛/OMA</a></li>
+<li><a href="wap_software.html">WAP 软件</a></li>
+</ul>
+</div>
+<div id="selected">
+<h2>建站手册</h2>
+<ul>
+<li><a href="../site/">网站构建</a></li>
+<li><a href="../w3c/">万维网联盟</a></li>
+<li><a href="http://e.v-get.com/w3c/">W3CSchool 教程</a></li>
+<li><a href="../quality/">网站品质</a></li>
+<li><a href="../semweb/">语义网</a></li>
+<li><a href="../hosting/">网站主机</a></li>
+</ul>
+<h2><a href="http://e.v-get.com/w3c/" class="f13">W3CSchool 教程</a></h2><div class="a120x90"><script type="text/javascript">var cpro_id="u1210867";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div></div>
+</div>
+<div id="maincontent">
+<h1>WML 实例</h1>
+<div id="tpn">
+<ul class="prenext">
+<li class="pre"><a href="wml_variables.html">上一页</a></li>
+<li class="next"><a href="wap_demo.html">下一页</a></li>
+</ul>
+</div>
+<div>
+<p>带有两个卡片的一个卡片组 - 一个供用户输入，一个供显示结果 - 正如本例中展示的：</p>
+<pre>&lt;?xml version=&#34;1.0&#34;?&gt;
+&lt;!DOCTYPE wml PUBLIC &#34;-//WAPFORUM//DTD WML 1.1//EN&#34;
+&#34;http://www.wapforum.org/DTD/wml_1.1.xml&#34;&gt;
+&lt;wml&gt;
+&lt;card id=&#34;card1&#34; title=&#34;Tutorial&#34;&gt;
+&lt;do type=&#34;accept&#34; label=&#34;Answer&#34;&gt;
+  &lt;go href=&#34;#card2&#34;/&gt;
+&lt;/do&gt;
+&lt;p&gt;
+&lt;select name=&#34;name&#34;&gt; 
+  &lt;option value=&#34;HTML&#34;&gt;HTML Tutorial&lt;/option&gt;
+  &lt;option value=&#34;XML&#34;&gt;XML Tutorial&lt;/option&gt;
+  &lt;option value=&#34;WAP&#34;&gt;WAP Tutorial&lt;/option&gt;
+&lt;/select&gt;
+&lt;/p&gt;
+&lt;/card&gt;
+&lt;card id=&#34;card2&#34; title=&#34;Answer&#34;&gt;
+&lt;p&gt;
+You selected: $(name)
+&lt;/p&gt;
+&lt;/card&gt;
+&lt;/wml&gt;</pre>
+<p>在您的移动电话显示屏上，结果看上去也许类似这样：</p>
+<img src="i/ct_wap_example_tutorial.gif" alt="" />
+<p>第二张卡片看上也许类似这样：</p>
+<img src="i/ct_wap_example_answer.gif" alt="" />
+</div>
+<div>
+<h2>例子解释</h2>
+<h3>Prolog</h3>
+<pre>&lt;?xml version=&#34;1.0&#34;?&gt;
+&lt;!DOCTYPE wml PUBLIC &#34;-//WAPFORUM//DTD WML 1.1//EN&#34;
+&#34;http://www.wapforum.org/DTD/wml_1.1.xml&#34;&gt;</pre>
+<p>WML 文档中的第一行称为 prolog。prolog 定义了文档是 XML 文档，然后它定义了 XML 的版本，以及要引用的 DTD。</p>
+<h3>Deck</h3>
+<pre>&lt;wml&gt; ..... &lt;/wml&gt;</pre>
+<p>deck 是 WML 文档本身。它被嵌套在 &gt;wml&gt; 标签中。</p>
+<h3>Cards</h3>
+<pre>&lt;card&gt; ..... &lt;/card&gt;</pre>
+<p>一次只显示一个卡片。这个 WML 卡片组包含两个卡片 - 一个供用户输入，一个供结果显示。</p>
+<h3>&lt;do&gt; 元素</h3>
+<pre>&lt;do&gt; ... &lt;/do&gt;</pre>
+<p>第一个卡片拥有 &lt;do&gt; 元素，该元素定义了被触发的事件。&lt;do&gt; 元素的 type=&#34;accept&#34; 属性使 label=&#34;Answer&#34; 显示在屏幕的左下角。</p>
+<h3>Event</h3>
+<p>当用户点击 &lt;do&gt; 标记时会触发 &lt;go&gt; 元素。&lt;go&gt; 元素的 href=&#34;#card2&#34; 属性使卡片二显示在屏幕上。</p>
+<h3>Variable</h3>
+<p>卡片二显示来自卡片一的 $(name) 变量，因为变量在卡片之间是有效的。</p>
+</div>
+<div id="bpn">
+<ul class="prenext">
+<li class="pre"><a href="wml_variables.html">上一页</a></li>
+<li class="next"><a href="wap_demo.html">下一页</a></li>
+</ul>
+</div>
+</div>
+<div id="sidebar">
+<div class="rs"></div>
+<div id="tools">
+<h5 id="tools_reference"><a href="wml_reference.html">WML 参考手册</a></h5>
+<h5 id="tools_example"><a href="wap_demo.html">WAP 演示</a></h5>
+</div>
+<div class="a120x600"><script type="text/javascript">var cpro_id="u1293136";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div><div class="b"></div>
+</div>
+</body>
+</html>

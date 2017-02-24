@@ -1,0 +1,310 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+
+
+   <title>&#38468;&#24405;C. &#21152;&#23494;</title>
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="" />
+   <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+   <meta http-equiv="Content-Style-Type" content="text/css" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+</head>
+<body style="margin: 0px 0px 0px 0px; background: #FFFFFF;">
+
+
+<table width="100%" border="0" cellspacing="0" cellpadding="5" bgcolor="#649CCC">
+  <tr valign="middle">
+    <td align="left">
+      <p class="p_Heading1"><span class="f_Heading1">&#38468;&#24405;C. &#21152;&#23494;</span></p>
+
+    </td>
+    <td align="right">
+     <span style="font-size: 9pt">
+     <a href="introduction.htm">Top</a>&nbsp;
+     <a href="new_item54.htm">Previous</a>&nbsp;
+     
+     </span>
+    </td>
+  </tr>
+</table>
+
+
+<!-- Placeholder for topic body. -->
+<table width="100%" border="0" cellspacing="0" cellpadding="5"><tr valign="top"><td align="left">
+<p style="line-height: 1.50;">&#38468;&#24405;C. &#21152;&#23494;</p>
+<p style="line-height: 1.50;">  &nbsp; &#20316;&#20026;&#19968;&#26412;&#30456;&#20851;&#23433;&#20840;&#26041;&#38754;&#30340;&#20070;&#65292;&#36890;&#24120;&#21152;&#23494;&#26159;&#38656;&#35201;&#25552;&#21450;&#30340;&#35805;&#39064;&#12290;&#25105;&#20043;&#25152;&#20197;&#22312;&#26412;&#20070;&#30340;&#20027;&#20307;&#37096;&#20998;&#24573;&#30053;&#20102;&#21152;&#23494;&#38382;&#39064;&#65292;&#26159;&#22240;&#20026;&#23427;&#30340;&#29992;&#36884;&#26159;&#29421;&#31364;&#30340;&#65292;&#32780;&#24320;&#21457;&#32773;&#24212;&#20174;&#22823;&#22788;&#30528;&#30524;&#26469;&#32771;&#34385;&#23433;&#20840;&#38382;&#39064;&#12290;&#36807;&#20998;&#20381;&#36182;&#20110;&#21152;&#23494;&#24120;&#24120;&#20250;&#28151;&#28102;&#38382;&#39064;&#30340;&#26681;&#28304;&#12290;&#23613;&#31649;&#21152;&#23494;&#26412;&#36523;&#26159;&#26377;&#25928;&#30340;&#65292;&#20294;&#26159;&#36827;&#34892;&#21152;&#23494;&#24182;&#19981;&#20250;&#31070;&#22855;&#22320;&#25552;&#39640;&#19968;&#20010;&#24212;&#29992;&#30340;&#23433;&#20840;&#24615;&#12290;</p>
+<p style="line-height: 1.50;">  &nbsp; &#19968;&#20010;PHP&#24320;&#21457;&#20154;&#21592;&#24212;&#20027;&#35201;&#29087;&#24713;&#20197;&#19979;&#30340;&#21152;&#23494;&#26041;&#24335;&#65306;</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">l &nbsp; &nbsp; &nbsp; &nbsp;&#23545;&#31216;&#21152;&#23494;</p>
+<p style="line-height: 1.50;">l &nbsp; &nbsp; &nbsp; &nbsp;&#38750;&#23545;&#31216;&#21152;&#23494;&#65288;&#20844;&#38053;&#65289;</p>
+<p style="line-height: 1.50;">l &nbsp; &nbsp; &nbsp; &nbsp;Hash&#20989;&#25968;&#65288;&#20449;&#24687;&#25688;&#35201;&#65289;</p>
+<p style="line-height: 1.50;">l &nbsp; &nbsp; &nbsp; &nbsp;&#20449;&#24687;&#39564;&#35777;&#30721;</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; &#26412;&#38468;&#24405;&#20027;&#35201;&#20851;&#27880;&#20110;&#20351;&#29992;mcrypt&#25193;&#23637;&#30340;&#23545;&#31216;&#21152;&#23494;&#31639;&#27861;&#12290;&#20320;&#38656;&#35201;&#21442;&#32771;&#30340;&#36164;&#26009;&#22914;&#19979;&#65306;</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; &#23454;&#29992;&#21152;&#23494;&#25216;&#26415;&#65288;Applied Cryptography&#65289;, by Bruce Schneier (Wiley)</p>
+<p style="line-height: 1.50;">http://www.schneier.com/blog/</p>
+<p style="line-height: 1.50;">http://wikipedia.org/wiki/Cryptography</p>
+<p style="line-height: 1.50;">http://phpsec.org/articles/2005/password-hashing.html</p>
+<p style="line-height: 1.50;">http://pear.php.net/package/Crypt_HMAC</p>
+<p style="line-height: 1.50;">http://pear.php.net/package/Crypt_RSA</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">C.1. &#23494;&#30721;&#30340;&#23384;&#20648;</p>
+<p style="line-height: 1.50;">  &nbsp; &#24403;&#20320;&#22312;&#25968;&#25454;&#24211;&#20869;&#23384;&#20648;&#30340;&#23494;&#30721;&#26102;&#65292;&#27704;&#36828;&#19981;&#35201;&#20197;&#26126;&#30721;&#26041;&#24335;&#23384;&#20837;&#65292;&#32780;&#26159;&#24212;&#35813;&#23384;&#20648;&#23494;&#30721;&#30340;hash&#20540;&#24182;&#21516;&#26102;&#20351;&#29992;&#38468;&#21152;&#23383;&#20018;&#65306;</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; &lt;?php</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; /* $password contains the password. */</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; $salt = 'SHIFLETT';</p>
+<p style="line-height: 1.50;">  &nbsp; $password_hash = md5($salt . md5($password . $salt));</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; /* Store password hash. */</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; ?&gt;</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; &#24403;&#20320;&#38656;&#35201;&#30830;&#35748;&#19968;&#20010;&#23494;&#30721;&#26159;&#21542;&#27491;&#30830;&#26102;&#65292;&#20197;&#21516;&#26679;&#30340;&#26041;&#24335;&#35745;&#31639;&#20986;hash&#20540;&#24182;&#27604;&#36739;&#24322;&#21516;&#65306;</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; &lt;?php</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; $salt = 'SHIFLETT';</p>
+<p style="line-height: 1.50;">  &nbsp; $password_hash = md5($salt . md5($_POST['password'] . $salt));</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; /* Compare password hashes. */</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; ?&gt;</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; &#22914;&#26524;hash&#20540;&#23436;&#20840;&#30456;&#21516;&#65292;&#20320;&#23601;&#26377;&#29702;&#30001;&#35748;&#20026;&#23494;&#30721;&#20063;&#26159;&#30456;&#21516;&#30340;&#12290;</p>
+<p style="line-height: 1.50;">  &nbsp; &#22914;&#26524;&#20351;&#29992;&#20102;&#36825;&#20010;&#25216;&#24039;&#65292;&#26159;&#19981;&#21487;&#33021;&#21578;&#35785;&#29992;&#25143;&#20182;&#20204;&#30340;&#23494;&#30721;&#26159;&#20160;&#20040;&#30340;&#12290;&#24403;&#29992;&#25143;&#24536;&#35760;&#23494;&#30721;&#26102;&#65292;&#20320;&#21482;&#33021;&#35753;&#20182;&#24405;&#20837;&#19968;&#20010;&#26032;&#23494;&#30721;&#24182;&#37325;&#26032;&#35745;&#31639;hash&#20540;&#23384;&#20837;&#25968;&#25454;&#24211;&#12290;&#24403;&#28982;&#65292;&#20320;&#38656;&#35201;&#38750;&#24120;&#23567;&#24515;&#22320;&#23545;&#29992;&#25143;&#36827;&#34892;&#36523;&#20221;&#30830;&#35748;&#8212;&#8212;&#23494;&#30721;&#25552;&#37266;&#26426;&#21046;&#26159;&#26131;&#21463;&#39057;&#32321;&#25915;&#20987;&#30340;&#30446;&#26631;&#65292;&#21516;&#26102;&#20063;&#26159;&#32463;&#24120;&#20986;&#29616;&#23433;&#20840;&#28431;&#27934;&#30340;&#28304;&#22836;&#12290;</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">C.2. &#20351;&#29992;mcrypt</p>
+<p style="line-height: 1.50;">  &nbsp; PHP&#30340;&#26631;&#20934;&#21152;&#23494;&#25193;&#23637;&#26159;mcrypt&#65292;&#23427;&#25903;&#25345;&#24456;&#22810;&#19981;&#21516;&#30340;&#21152;&#23494;&#31639;&#27861;&#12290;&#20320;&#21487;&#20197;&#36890;&#36807;mcrypt_list_algorithms( )&#20989;&#25968;&#26469;&#26597;&#30475;&#20320;&#30340;&#24179;&#21488;&#19978;&#25903;&#25345;&#30340;&#31639;&#27861;&#21015;&#34920;&#65306;</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; &lt;?php</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; echo '&lt;pre&gt;' . print_r(mcrypt_list_algorithms(), TRUE) . '&lt;/pre&gt;';</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; ?&gt;</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; &#21152;&#23494;&#21644;&#35299;&#23494;&#20998;&#21035;&#30001;mcrypt_encrypt( ) &#21450; mcrypt_decrypt( )&#20989;&#25968;&#26469;&#23454;&#29616;&#12290;&#36825;&#20004;&#20010;&#20989;&#25968;&#37117;&#26377;5&#20010;&#21442;&#25968;&#65292;&#31532;&#19968;&#20010;&#21442;&#25968;&#26159;&#29992;&#20110;&#25351;&#23450;&#20351;&#29992;&#30340;&#31639;&#27861;&#65306;</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; &lt;?php</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; mcrypt_encrypt($algorithm,</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;$key,</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;$cleartext,</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;$mode,</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;$iv);</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; mcrypt_decrypt($algorithm,</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;$key,</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;$ciphertext,</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;$mode,</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;$iv);</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; ?&gt;</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; &#20854;&#20013;&#30340;&#21152;&#23494;&#38190;&#65288;&#31532;&#20108;&#20010;&#21442;&#25968;&#65289;&#26159;&#38750;&#24120;&#25935;&#24863;&#30340;&#25968;&#25454;&#65292;&#22240;&#27492;&#20320;&#35201;&#30830;&#20445;&#25226;&#23427;&#23384;&#25918;&#22312;&#23433;&#20840;&#30340;&#22320;&#26041;&#12290;&#21487;&#20197;&#29992;&#31532;&#20843;&#31456;&#20013;&#20445;&#25252;&#25968;&#25454;&#24211;&#26435;&#38480;&#30340;&#26041;&#27861;&#26469;&#20445;&#25252;&#21152;&#23494;&#38190;&#12290;&#22914;&#26524;&#32463;&#27982;&#26465;&#20214;&#20801;&#35768;&#30340;&#35805;&#65292;&#30828;&#20214;&#21152;&#23494;&#38190;&#26159;&#26368;&#22909;&#30340;&#36873;&#25321;&#65292;&#23427;&#25552;&#20379;&#20102;&#36229;&#32423;&#24378;&#22823;&#30340;&#23433;&#20840;&#24615;&#12290;</p>
+<p style="line-height: 1.50;">  &nbsp; &#20989;&#25968;&#26377;&#22810;&#31181;&#27169;&#24335;&#21487;&#20379;&#36873;&#25321;&#65292;&#20320;&#21487;&#20197;&#20351;&#29992;mcrypt_list_modes( )&#26469;&#21015;&#20986;&#25152;&#26377;&#25903;&#25345;&#30340;&#27169;&#24335;&#65306;</p>
+<p style="line-height: 1.50;">  &nbsp; &lt;?php</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; echo '&lt;pre&gt;' . print_r(mcrypt_list_modes(), TRUE) . '&lt;/pre&gt;';</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; ?&gt;</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; &#31532;&#20116;&#20010;&#21442;&#25968;&#65288;$iv&#65289;&#20026;&#21021;&#22987;&#21270;&#21521;&#37327;&#65292;&#21487;&#20197;&#20351;&#29992;mcrypt_create_iv( )&#20989;&#25968;&#24314;&#31435;&#12290;</p>
+<p style="line-height: 1.50;">  &nbsp; &#19979;&#38754;&#30340;&#31034;&#20363;&#31867;&#25552;&#20379;&#20102;&#22522;&#26412;&#30340;&#21152;&#23494;&#35299;&#23494;&#26041;&#27861;&#65306;</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; class crypt</p>
+<p style="line-height: 1.50;">  &nbsp; {</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; private $algorithm;</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; private $mode;</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; private $random_source;</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; public $cleartext;</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; public $ciphertext;</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; public $iv;</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; public function __construct($algorithm = MCRYPT_BLOWFISH,</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; $mode = MCRYPT_MODE_CBC,</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; $random_source = MCRYPT_DEV_URANDOM)</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; {</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; &nbsp; $this-&gt;algorithm = $algorithm;</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; &nbsp; $this-&gt;mode = $mode;</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; &nbsp; $this-&gt;random_source = $random_source;</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; }</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; public function generate_iv()</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; {</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; &nbsp; $this-&gt;iv = mcrypt_create_iv(mcrypt_get_iv_size($this-&gt;algorithm,</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; &nbsp; &nbsp; $this-&gt;mode), $this-&gt;random_source);</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; }</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; public function encrypt()</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; {</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; &nbsp; $this-&gt;ciphertext = mcrypt_encrypt($this-&gt;algorithm,</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; &nbsp; &nbsp; $_SERVER['CRYPT_KEY'], $this-&gt;cleartext, $this-&gt;mode, $this-&gt;iv);</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; }</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; public function decrypt()</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; {</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; &nbsp; $this-&gt;cleartext = mcrypt_decrypt($this-&gt;algorithm,</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; &nbsp; &nbsp; $_SERVER['CRYPT_KEY'], $this-&gt;ciphertext, $this-&gt;mode, $this-&gt;iv);</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; }</p>
+<p style="line-height: 1.50;">  &nbsp; }</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; ?&gt;</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; &#19978;&#38754;&#30340;&#31867;&#20250;&#22312;&#20854;&#23427;&#31034;&#20363;&#20013;&#20351;&#29992;&#65292;&#19979;&#38754;&#26159;&#23427;&#30340;&#20351;&#29992;&#26041;&#27861;&#31034;&#20363;&#65306;</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; &lt;?php</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; $crypt = new crypt();</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; $crypt-&gt;cleartext = 'This is a string';</p>
+<p style="line-height: 1.50;">  &nbsp; $crypt-&gt;generate_iv();</p>
+<p style="line-height: 1.50;">  &nbsp; $crypt-&gt;encrypt();</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; $ciphertext = base64_encode($crypt-&gt;ciphertext);</p>
+<p style="line-height: 1.50;">  &nbsp; $iv = base64_encode($crypt-&gt;iv);</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; unset($crypt);</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; /* Store $ciphertext and $iv (initialization vector). */</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; $ciphertext = base64_decode($ciphertext);</p>
+<p style="line-height: 1.50;">  &nbsp; $iv = base64_decode($iv);</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; $crypt = new crypt();</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; $crypt-&gt;iv = $iv;</p>
+<p style="line-height: 1.50;">  &nbsp; $crypt-&gt;ciphertext = $ciphertext;</p>
+<p style="line-height: 1.50;">  &nbsp; $crypt-&gt;decrypt();</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; $cleartext = $crypt-&gt;cleartext;</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; ?&gt;</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">&#23567;&#25552;&#31034;</p>
+<p style="line-height: 1.50;">  &nbsp; &#26412;&#25193;&#23637;&#35201;&#27714;&#20320;&#22312;&#32534;&#35793;PHP&#26102;&#20351;&#29992;-mcrypt&#26631;&#35782;&#12290;&#23433;&#35013;&#25351;&#21335;&#21450;&#35201;&#27714;&#35814;&#35265;http://php.net/mcrypt&#12290;</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">C.3. &#20449;&#29992;&#21345;&#21495;&#30340;&#20445;&#23384;</p>
+<p style="line-height: 1.50;">  &nbsp; &#25105;&#24120;&#24120;&#34987;&#38382;&#21040;&#22914;&#20309;&#23433;&#20840;&#22320;&#20445;&#23384;&#20449;&#29992;&#21345;&#21495;&#12290;&#25105;&#30340;&#24635;&#26159;&#20250;&#39318;&#20808;&#35810;&#38382;&#20182;&#20204;&#26159;&#21542;&#30830;&#23454;&#26377;&#24517;&#35201;&#20445;&#23384;&#20449;&#29992;&#21345;&#21495;&#12290;&#27605;&#31455;&#19981;&#31649;&#20855;&#20307;&#26159;&#22914;&#20309;&#25805;&#20316;&#30340;&#65292;&#24341;&#20837;&#19981;&#24517;&#35201;&#30340;&#39118;&#38505;&#26159;&#19981;&#26126;&#26234;&#30340;&#12290;&#21516;&#26102;&#22269;&#23478;&#27861;&#24459;&#36824;&#26377;&#20851;&#20110;&#20449;&#29992;&#21345;&#20449;&#24687;&#22788;&#29702;&#26041;&#38754;&#30340;&#35268;&#23450;&#65292;&#25105;&#36824;&#26102;&#21051;&#23567;&#24515;&#22320;&#25552;&#37266;&#25105;&#24182;&#19981;&#26159;&#19968;&#20010;&#27861;&#24459;&#19987;&#23478;&#12290;</p>
+<p style="line-height: 1.50;">  &nbsp; &#26412;&#20070;&#20013;&#25105;&#24182;&#19981;&#20250;&#19987;&#38376;&#35752;&#35770;&#20449;&#29992;&#21345;&#22788;&#29702;&#30340;&#26041;&#27861;&#65292;&#32780;&#26159;&#20250;&#35828;&#26126;&#22914;&#20309;&#20445;&#23384;&#21152;&#23494;&#20449;&#24687;&#21040;&#25968;&#25454;&#24211;&#21450;&#22312;&#35835;&#21462;&#26102;&#35299;&#23494;&#12290;&#35813;&#27969;&#31243;&#20250;&#23548;&#33268;&#31995;&#32479;&#24615;&#33021;&#30340;&#19979;&#38477;&#65292;&#20294;&#26159;&#30830;&#23454;&#25552;&#20379;&#20102;&#19968;&#23618;&#20445;&#25252;&#25514;&#26045;&#12290;&#20854;&#20027;&#35201;&#20248;&#28857;&#26159;&#22914;&#26524;&#25968;&#25454;&#24211;&#20869;&#23481;&#27844;&#23494;&#26292;&#38706;&#20986;&#30340;&#21482;&#26159;&#21152;&#23494;&#20449;&#24687;&#65292;&#20294;&#26159;&#21069;&#25552;&#26159;&#21152;&#23494;&#38190;&#26159;&#23433;&#20840;&#30340;&#12290;&#22240;&#27492;&#65292;&#21152;&#23494;&#38190;&#19982;&#21152;&#23494;&#30340;&#23454;&#29616;&#26041;&#27861;&#26412;&#36523;&#21516;&#26679;&#37325;&#35201;&#12290;</p>
+<p style="line-height: 1.50;">  &nbsp; &#20445;&#23384;&#21152;&#23494;&#25968;&#25454;&#21040;&#25968;&#25454;&#30340;&#36807;&#31243;&#26159;&#65292;&#39318;&#20808;&#21152;&#23494;&#25968;&#25454;&#65292;&#28982;&#21518;&#36890;&#36807;&#21021;&#22987;&#21521;&#37327;&#19982;&#26126;&#25991;&#24314;&#31435;&#23494;&#25991;&#26469;&#20445;&#23384;&#21040;&#25968;&#25454;&#24211;&#12290;&#30001;&#20110;&#23494;&#25991;&#26159;&#20108;&#36827;&#21046;&#23383;&#31526;&#20018;&#65292;&#36824;&#38656;&#35201;&#36890;&#36807;base64_encode( )&#36716;&#25442;&#25104;&#26222;&#36890;&#25991;&#26412;&#23383;&#31526;&#20018;&#20197;&#20445;&#35777;&#20108;&#36827;&#21046;&#32534;&#30721;&#30340;&#23433;&#20840;&#23384;&#20648;&#12290;</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; &lt;?php</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; $crypt = new crypt();</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; $crypt-&gt;cleartext = '1234567890123456';</p>
+<p style="line-height: 1.50;">  &nbsp; $crypt-&gt;generate_iv();</p>
+<p style="line-height: 1.50;">  &nbsp; $crypt-&gt;encrypt();</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; $ciphertext = $crypt-&gt;ciphertext;</p>
+<p style="line-height: 1.50;">  &nbsp; $iv = $crypt-&gt;iv;</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; $string = base64_encode($iv . $ciphertext);</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; ?&gt;</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; &#20445;&#23384;&#35813;&#23383;&#20018;&#33267;&#25968;&#25454;&#24211;&#12290;&#22312;&#35835;&#21462;&#26102;&#65292;&#21017;&#26159;&#19978;&#38754;&#27969;&#31243;&#30340;&#36870;&#22788;&#29702;&#65306;</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; &lt;?php</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; $string = base64_decode($string);</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; $iv_size = mcrypt_get_iv_size($algorithm, $mode);</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; $ciphertext = substr($string, $iv_size);</p>
+<p style="line-height: 1.50;">  &nbsp; $iv = substr($string, 0, $iv_size);</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; $crypt = new crypt();</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; $crypt-&gt;iv = $iv;</p>
+<p style="line-height: 1.50;">  &nbsp; $crypt-&gt;ciphertext = $ciphertext;</p>
+<p style="line-height: 1.50;">  &nbsp; $crypt-&gt;decrypt();</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; $cleartext = &nbsp;$crypt-&gt;cleartext;</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; ?&gt;</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; &#26412;&#23454;&#29616;&#26041;&#27861;&#20551;&#23450;&#21152;&#23494;&#31639;&#27861;&#19982;&#27169;&#24335;&#19981;&#21464;&#12290;&#22914;&#26524;&#23427;&#20204;&#26159;&#19981;&#23450;&#30340;&#35805;&#65292;&#20320;&#36824;&#35201;&#20445;&#23384;&#23427;&#20204;&#20197;&#29992;&#20110;&#35299;&#23494;&#25968;&#25454;&#12290;&#21152;&#23494;&#38190;&#26159;&#21807;&#19968;&#38656;&#35201;&#20445;&#23494;&#30340;&#25968;&#25454;&#12290;</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">C.4. &#21152;&#23494;&#20250;&#35805;&#25968;&#25454;</p>
+<p style="line-height: 1.50;">  &nbsp; &#22914;&#26524;&#20320;&#30340;&#25968;&#25454;&#24211;&#23384;&#22312;&#23433;&#20840;&#38382;&#39064;&#65292;&#25110;&#32773;&#37096;&#20998;&#20445;&#23384;&#22312;&#20250;&#35805;&#20013;&#30340;&#25968;&#25454;&#26159;&#25935;&#24863;&#30340;&#65292;&#20320;&#21487;&#33021;&#24076;&#26395;&#21152;&#23494;&#20250;&#35805;&#25968;&#25454;&#12290;&#38500;&#38750;&#24456;&#26377;&#24517;&#35201;&#65292;&#19968;&#33324;&#25105;&#19981;&#25512;&#33616;&#36825;&#26679;&#20570;&#65292;&#20294;&#26159;&#22914;&#26524;&#20320;&#35273;&#24471;&#22312;&#20320;&#30340;&#24773;&#24418;&#19979;&#38656;&#35201;&#36825;&#26679;&#20570;&#30340;&#35805;&#65292;&#26412;&#33410;&#25552;&#20379;&#20102;&#19968;&#20010;&#23454;&#29616;&#26041;&#27861;&#30340;&#31034;&#20363;&#12290;</p>
+<p style="line-height: 1.50;">  &nbsp; &#36825;&#20010;&#26041;&#26696;&#21313;&#20998;&#31616;&#21333;&#12290;&#23454;&#38469;&#19978;&#65292;&#22312;&#31532;&#20843;&#31456;&#20013;&#65292;&#24050;&#32463;&#35828;&#26126;&#20102;&#22914;&#20309;&#36890;&#36807;&#35843;&#29992;session_set_save_handler( )&#26469;&#25191;&#34892;&#20320;&#33258;&#24049;&#30340;&#20250;&#35805;&#26426;&#21046;&#12290;&#36890;&#36807;&#23545;&#20445;&#23384;&#21644;&#35835;&#21462;&#25968;&#25454;&#30340;&#20989;&#25968;&#30340;&#23569;&#37327;&#35843;&#25972;&#65292;&#20320;&#23601;&#33021;&#21152;&#23494;&#23384;&#20837;&#25968;&#25454;&#24211;&#30340;&#25968;&#25454;&#21450;&#22312;&#35835;&#21462;&#26102;&#35299;&#23494;&#25968;&#25454;&#65306;</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; &lt;?php</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; function _read($id)</p>
+<p style="line-height: 1.50;">  &nbsp; {</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; global $_sess_db;</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; $algorithm = MCRYPT_BLOWFISH;</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; $mode = MCRYPT_MODE_CBC;</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; $id = mysql_real_escape_string($id);</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; $sql = "SELECT data</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; FROM &nbsp; sessions</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; WHERE &nbsp;id = '$id'";</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; if ($result = mysql_query($sql, $_sess_db))</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; {</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; &nbsp; &nbsp; $record = mysql_fetch_assoc($result);</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; &nbsp; &nbsp; $data = base64_decode($record['data']);</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; &nbsp; &nbsp; $iv_size = mcrypt_get_iv_size($algorithm, $mode);</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; &nbsp; &nbsp; $ciphertext = substr($data, $iv_size);</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; &nbsp; &nbsp; $iv = substr($data, 0, $iv_size);</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; &nbsp; &nbsp; $crypt = new crypt();</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; &nbsp; &nbsp; $crypt-&gt;iv = $iv;</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; &nbsp; &nbsp; $crypt-&gt;ciphertext = $ciphertext;</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; &nbsp; &nbsp; $crypt-&gt;decrypt();</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; &nbsp; &nbsp; return $crypt-&gt;cleartext;</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; }</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; return '';</p>
+<p style="line-height: 1.50;">  &nbsp; }</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; function _write($id, $data)</p>
+<p style="line-height: 1.50;">  &nbsp; {</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; global $_sess_db;</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; $access = time();</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; $crypt = new crypt();</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; $crypt-&gt;cleartext = $data;</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; $crypt-&gt;generate_iv();</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; $crypt-&gt;encrypt();</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; $ciphertext = $crypt-&gt;ciphertext;</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; $iv = $crypt-&gt;iv;</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; $data = base64_encode($iv . $ciphertext);</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; $id = mysql_real_escape_string($id);</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; $access = mysql_real_escape_string($access);</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; $data = mysql_real_escape_string($data);</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; $sql = "REPLACE</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; INTO &nbsp; &nbsp;sessions</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; VALUES &nbsp;('$id', '$access', '$data')";</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; return mysql_query($sql, $_sess_db);</p>
+<p style="line-height: 1.50;">  &nbsp; }</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<hr noshade size=1 ><p style="line-height: 1.50;">&nbsp;</p>
+
+</td></tr></table>
+
+</body>
+</html>

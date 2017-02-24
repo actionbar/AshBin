@@ -1,0 +1,153 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>会员系统“找回密码”的制作方法</title>
+<style type="text/css">
+<!--
+body {
+	font-size: 10.4pt;
+	line-height: 22px;
+}
+-->
+</style>
+</head>
+
+<body bgcolor="eeeeee" leftmargin="20" marginwidth="20">
+<p><strong>会员系统“找回密码”的制作方法</strong></p>
+<hr>
+<p>会员注册以后，有些会员可能会遇到忘记登录密码的问题，因而网站具备“找回密码”功能不仅是必须的，而且是服务贴心的具体表现之一。在此，levitian写了一个“找回密码”的小教程，供初学动态网站设计的朋友们借鉴，希望对大家有所帮助。<br>
+  <br>
+  ●相关说明：<br>
+  ·levitian假设您已经作好了会员系统，接下来准备作“找回密码”功能但还没有作，或者您不知道怎么作这个功能，那么刚好可以看看本教程。<br>
+  ·国内大多数服务器都支持Jmail邮件组件，因而levitian就使用该组件实现邮件发送功能；<br>
+  ·传统的“找回密码”功能要使用“密码取回问题”和“密码取回答案”等字段，但levitian认为大可不必这么繁琐，反正最终目的是将密码发进用户的邮箱里，而用户的邮箱只有自己可以收发邮件，那么以上这两个字段就可以省略了。实际上只要填上用户名和自己的邮箱，按“找回密码”，启动Jmail邮件组件把密码发至用户邮箱－－就这么简单！<br>
+  ·levitian用的是Dreamweaver MX，您用Dreamweaver UltraDev当然也没问题了。<br>
+  ·本系统主要用到了DW服务器行为中的“登录用户”和“插入”菜单中的“文件头标签”中的“刷新”子功能。用户不知道登录密码没关系，他可以用自己的用户名和邮箱找回密码，但如果该用户的邮箱是假的（胡填的），或根本没有在自己的注册资料中填邮箱，或者他输入了别人的邮箱，那么他也就无法进入找回密码的页面，当然也就无法找回自己的密码了~<br>
+  <br>
+  好了，说了一大堆废话：） 赶快GO →<br>
+  <br>
+  ●步骤一：制作相关的ASP页面<br>
+  我们需要增加三个页面，一个页面是“找回密码登录页面”，这里我命名为getbackpass.asp；另一个是“密码发送成功报告页面”，这里我命名为getbackpassok.asp；第三个页面为邮箱不存在或用户名不正确时显示错误信息的页面，这里我命名为getbackpassfail.asp。<br>
+  <br>
+  ●步骤二：在会员登录页面增加“找回密码”文本型链接或图片型链接<br>
+  在会员登录界面中输入文本“找回密码”或者插入一张图片，将其链接至找回密码登录页面getbackpass.asp；如果您想把“找回密码”链接放在其它页面，当然没问题了。<br>
+  <br>
+  ●步骤三：制作找回密码登录页面getbackpass.asp<br>
+  ·打开找回密码登录页面getbackpass.asp，建立表单域，插入两个文本域，第一个命名为MemberName，第二个命名为MemberEmail（您的会员信息数据表中的会员姓名字段和会员邮箱字段如不是MemberName和MemberEmail，请修改成相应的字段名），接下来插入一个“按钮”，命名为“取回密码”。<br>
+  ·打开服务器行为面板，点击“＋”，选择“用户身份验证”中的“登录用户”，在“登录用户”面板中，我主要说说以下项目的设置：<br>
+  使用连接验证：我们选择已经定义好的DSN连接<br>
+  表格：我们选择会员注册信息表单<br>
+  用户名列：我们选择MemberName<br>
+  密码列：我们选择MemberEmail<br>
+  如果登录成功转到：我们选择getbackpassok.asp<br>
+  如果登录失败转到：我们选择getbackpassfail.asp<br>
+  基于以下项限制访问：我们选择“用户名和密码”<br>
+  OK！可以按“确定”按钮了。<br>
+  ·加入表单验证代码<br>
+  为防止用户不填表单就登录，可加入以下代码，让用户必须填写内容：<br>
+  将DW切换到源代码视图，首先，将以下代码加入&lt;head&gt; &lt;/head&gt;之间：<br>
+  <br>
+  &lt;script language=&quot;JavaScript&quot;&gt;<br>
+  &lt;!--<br>
+  function checkdata() {<br>
+  if (document.form1.MemberName.value==&quot;&quot;) {<br>
+  window.alert (&quot;请输入用户名 ！&quot;)<br>
+  return false<br>
+  }<br>
+  if (document.form1.MemberEmail.value==&quot;&quot;) {<br>
+  window.alert (&quot;请输入您的邮箱 ！&quot;)<br>
+  return false<br>
+  }<br>
+  return true<br>
+  }<br>
+  //--&gt;<br>
+  &lt;/script&gt;<br>
+  <br>
+  接下来，在&lt;form&gt;标签里插入以下代码：onSubmit=&quot;return checkdata()&quot;<br>
+  这样，表单验证就作好了。<br>
+  <br>
+  ●步骤四：制作密码发送成功报告页面getbackpassok.asp<br>
+  ·打开密码发送成功报告页面getbackpassok.asp，输入文本“密码已发至您的邮箱中，请查询密码后登录本站！”<br>
+  ·建立数据集member，您当然可以用其它的数据集名称：<br>
+  连接：一栏选择您定义的DSN连接<br>
+  表格：一栏选择会员信息数据表member<br>
+  列：一栏选定会员ID、用户名、密码和邮箱这四个字段<br>
+  筛选：MemberName=阶段变量MM_Username<br>
+  排序：不用填<br>
+  至此，数据集就建立好了。在筛选里，我们之所以用阶段变量（Session Variable），是因为我们需要筛选出找回密码的用户。使用DW服务器行为的“登录用户”行为以后，登录者的名称（数据库中的MemberName字段）就自动保存在名为MM_Username的Session变量中。这们使用“MemberName=阶段变量MM_Username”作为筛选条件，自然可以筛选出想找回密码的用户了。<br>
+  ·接下来我们加入Jmail邮件发送代码。将Dreamweaver设计界面切换到显示代码视图，找见如下代码：<br>
+  &lt;%<br>
+  Dim member__MMColParam<br>
+  member__MMColParam = &quot;1&quot;<br>
+  If (Session(&quot;MM_Username&quot;) &lt;&gt; &quot;&quot;) Then <br>
+  member__MMColParam = Session(&quot;MM_Username&quot;)<br>
+  End If<br>
+  %&gt;<br>
+  &lt;%<br>
+  set member = Server.CreateObject(&quot;ADODB.Recordset&quot;)<br>
+  member.ActiveConnection = MM_spsguavaskirtdate_STRING<br>
+  member.Source = &quot;SELECT MemberID, MemberName, Password, MemberEmail FROM 
+  Member WHERE MemberName = '&quot; + Replace(member__MMColParam, &quot;'&quot;, 
+  &quot;''&quot;) + &quot;'&quot;<br>
+  member.CursorType = 0<br>
+  member.CursorLocation = 2<br>
+  member.LockType = 3<br>
+  member.Open()<br>
+  member_numRows = 0<br>
+  %&gt;<br>
+  这是数据集形成的代码，然后在倒数第二行，即%&gt;上一行，插入以下Jmail组件代码：<br>
+  Set JMail = Server.CreateObject(&quot;JMail.SMTPMail&quot;) <br>
+  JMail.ServerAddress = &quot;mail.emaichina.net:25&quot;<br>
+  JMail.Sender = &quot;emai@emaichina.net&quot; <br>
+  JMail.Subject = &quot;您的登录密码&quot;<br>
+  JMail.AddRecipient(member.Fields.Item(&quot;MemberEmail&quot;).Value)<br>
+  JMail.Body = &quot;尊敬的用户您好，首先感谢您使用我们的服务！.&quot; &amp; vbCrLf &amp; vbCrLf<br>
+  JMail.Body = JMail.Body &amp; &quot;您的用户名是：&quot; &amp;(member.Fields.Item(&quot;MemberName&quot;).Value) 
+  &amp; vbCrLf <br>
+  JMail.Body = JMail.Body &amp; &quot;您的注册邮箱是：&quot; &amp;(member.Fields.Item(&quot;MemberEmail&quot;).Value) 
+  &amp; vbCrLf <br>
+  JMail.Body = JMail.Body &amp; &quot;您的登录密码是：&quot; &amp;(member.Fields.Item(&quot;Password&quot;).Value) 
+  &amp; vbCrLf<br>
+  JMail.Body = JMail.Body &amp; &quot;请妥善保管您的密码，如再次遗忘密码，请登录至http://www.emaichina.net/member/memberpage/getbackpass.asp 
+  取回您的密码，谢谢您使用本系统。&quot; &amp; vbCrLf<br>
+  JMail.Body = JMail.Body &amp; &quot;顺祝商祺！&quot; &amp; vbCrLf<br>
+  JMail.Body = JMail.Body &amp; &quot;译媒艺术咨询有限公司&quot;<br>
+  JMail.Priority = 3<br>
+  JMail.AddHeader &quot;Originating-IP&quot;, Request.ServerVariables(&quot;REMOTE_ADDR&quot;)<br>
+  JMail.Execute<br>
+  <br>
+  以上代码简单说明如下：<br>
+  JMail.ServerAddress= 后面填上您的SMTP服务器，如&quot;mail.emaichina.net:25，千万别忘了填端口号:25；<br>
+  JMail.Sender= 后面填上您的邮箱，如emai@emaichina.net，请确保此邮箱可以正常收发邮件；<br>
+  JMail.Subject = 后面输入信件标题，如&quot;您的登录密码&quot;，切记，文本之间一定要加上“&quot;”；<br>
+  JMail.AddRecipient后面插入数据集member中的邮箱字段，如(member.Fields.Item(&quot;MemberEmail&quot;).Value)；<br>
+  JMail.Body =后面输入信件的称谓部分，如： &quot;尊敬的用户您好，首先感谢您使用我们的服务！.&quot; &amp; vbCrLf &amp; 
+  vbCrLf<br>
+  JMail.Body = 后面开始输入信件内容，如果是动态内容，那么插入数据集中的相应字段，如果是静态内容，则直接输入文本即可。每一段使用一个JMail.Body 
+  =，结尾都加上vbCrLf，有多少段就拷贝粘贴多少个JMail.Body =，这样就可以写出来一封完整的找回密码回复信。<br>
+  关于vbCrLf说明：vbCrLf的作用是换行，您想空一行就加一个 vbCrLf，想空两行就加两个vbCrLf…但在vbCrLf和vbCrLf之间一定要加“&amp;”符号将它们隔开，否则会出现错误提示。<br>
+  <br>
+  ●制作显示错误信息页面getbackpassfail.asp<br>
+  如果用户名、密码错误或用户名和密码根本不存在，那么系统会转到显示错误信息页面，并且在2秒后自动返回“找回密码登录页面”。下面是制作方法：<br>
+  打开getbackpassfail.asp，在页面中输入文本“您的邮箱不存在，请确认您在注册资料中填写了邮箱！ ”，然后，打开DW软件菜单中的→插入”→“文件头标签”→“刷新”，“延迟”填上2，就是2秒，如果您想让页面保持时间更长，也可以填3秒、5秒甚至10秒；“操作”选择“转到URL”，填上getbackpass.asp，这样这个页面2秒钟后就会自动回到“找回密码登录页面”了。<br>
+  OK！这个页面就做好了，很简单！<br>
+  <br>
+  ●测试这个找回密码系统<br>
+  以上系统作好后，您可以测试一下。如果您在本地测试，并且不是用的Win98操作系统，那么需要安装Jmail邮件组件（这个组件可去下载网站下载，是免费的）；如果您用的是Win98操作系统或您的计算机中没有安装Jmail邮件组件，那么，可把这个系统上传到支持Jmail邮件组件的服务器空间上，试着找回密码，如果没问题，说明您成功了。如果有问题，请仔细查看制作步骤或代码有没有错误，这里祝您好运！<br>
+  说明：学会“找回密码系统”的制作方法后，您可以举一反三作一个会员注册后的邮件自动回复系统，也相当简单，大家可以试一下。<br>
+  <br>
+  ●“找回密码”邮件样式<br>
+  以下是levitian测试本系统后，在Foxmail收到的邮件，样式基本上这样的：<br>
+  －－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－<br>
+  尊敬的用户您好，首先感谢您使用我们的服务！.<br>
+  <br>
+  您的用户名是：levi<br>
+  您的注册邮箱是：levitian@163.com<br>
+  您的登录密码是：741127<br>
+  请妥善保管您的密码，如再次遗忘密码，请登录至http://www.emaichina.net/member/memberpage/getbackpass.asp 
+  取回您的密码，谢谢您使用本系统。<br>
+  顺祝商祺！<br>
+</p>
+</body>
+</html>

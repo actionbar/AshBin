@@ -1,0 +1,20 @@
+<p>
+	<!--{if $logger_uid < 1}-->
+	<a href="{eval echo miniurl('login');}">登录</a>
+	<a href="{eval echo miniurl('register');}">注册</a>
+	<!--{else}-->
+	您好，<a href="{eval echo miniurl({$logger_uid});}">{$logger_user}</a>
+	<!--{/if}-->
+	<a href="{eval echo miniurl('help');}">帮助</a>
+	<a href="{eval echo miniurl('links');}">友链</a><br />
+	<!--{if $logger_uid > 0}-->
+	<anchor title="confirm"><prev/>返回</anchor>-<a href="{eval echo miniurl('');}" class="cBlue">我的首页</a>-<a href="{eval echo miniurl('logout');}" class="cBlue">退出</a><br />
+	<a href="{eval echo miniurl('home');}">网站首页</a>-<a href="{eval echo miniurl('travel');}" class="cBlue">随便看看</a>
+	<!--{else}-->
+	<anchor title="confirm"><prev/>返回</anchor>-<a href="{eval echo miniurl('home');}" class="cBlue">首页</a>-<a href="{eval echo miniurl('travel');}" class="cBlue">随便看看</a>
+	<!--{/if}-->
+	<br />
+	powered by <a href="http://3g.arevb.com" class="cBlue">arevb!</a> [{eval echo date($_DSESSION['dateformat'].' '.$_DSESSION['timeformat'], $timestamp);}]
+</p>
+</card>
+</wml>{eval updatesession();}

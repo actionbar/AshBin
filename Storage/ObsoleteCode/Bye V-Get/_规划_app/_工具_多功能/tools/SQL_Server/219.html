@@ -1,0 +1,101 @@
+<meta http-equiv="content-type" content="text/html; charset=gb2312">
+<TABLE class=tableborder1 style="TABLE-LAYOUT: fixed; WORD-BREAK: break-all" 
+cellSpacing=1 cellPadding=5 align=center>
+<TBODY>
+<TR>
+<TD class=tablebody1 vAlign=top width=*>
+<BLOCKQUOTE><FONT 
+style="FONT-SIZE: 9pt; LINE-HEIGHT: 15pt"><B>Kill&nbsp;only&nbsp;the&nbsp;top&nbsp;blocking&nbsp;spid</B><BR>Kill&nbsp;only&nbsp;the&nbsp;top&nbsp;blocking&nbsp;spid
+<P></P>
+<P></P>
+<P><BR>&gt;&gt;Script&nbsp;Language&nbsp;and&nbsp;Platform:&nbsp;Microsoft&nbsp;SQL&nbsp;Server<BR>This&nbsp;script&nbsp;identifies&nbsp;the&nbsp;blocking&nbsp;locks&nbsp;at&nbsp;the&nbsp;top&nbsp;of&nbsp;the&nbsp;blocking&nbsp;chain&nbsp;and&nbsp;kills&nbsp;them.&nbsp;Specifically,&nbsp;it&nbsp;reports&nbsp;what&nbsp;the&nbsp;top&nbsp;blocking&nbsp;spids&nbsp;are&nbsp;doing,&nbsp;kills&nbsp;them,&nbsp;waits&nbsp;three&nbsp;seconds&nbsp;and&nbsp;then&nbsp;reports&nbsp;on&nbsp;current&nbsp;blocking&nbsp;status.&nbsp;</P>
+<P>Author:&nbsp;Cameron&nbsp;Michelis&nbsp;<BR>/*<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;block-sniper.sql<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cjm@integer.org<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<IMG 
+src="http://www.pigtwo.com/forum/pic/url.gif" align=absMiddle border=0><A href="http://www.Integer.org" 
+target=_blank>http://www.Integer.org</A></P>
+<P>Function:&nbsp;This&nbsp;script&nbsp;identifies&nbsp;the&nbsp;blocking&nbsp;locks&nbsp;at&nbsp;the&nbsp;top&nbsp;of&nbsp;the&nbsp;blocking&nbsp;chain&nbsp;and&nbsp;kills&nbsp;them.<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Specifically,&nbsp;it&nbsp;reports&nbsp;what&nbsp;the&nbsp;top&nbsp;blocking&nbsp;spids&nbsp;are&nbsp;doing,&nbsp;kills&nbsp;them,&nbsp;waits&nbsp;three&nbsp;seconds&nbsp;and&nbsp;then&nbsp;reports&nbsp;on&nbsp;current&nbsp;blocking&nbsp;status.</P>
+<P>Questions:&nbsp;See&nbsp;header&nbsp;above.<BR>Updates:&nbsp;<IMG 
+src="http://www.pigtwo.com/forum/pic/url.gif" align=absMiddle border=0><A 
+href="http://www.integer.org/cjm/files/block-sniper.sql" 
+target=_blank>http://www.integer.org/cjm/files/block-sniper.sql</A></P>
+<P>copyright&nbsp;(C)&nbsp;2003&nbsp;Cameron&nbsp;Michelis&nbsp;copying&nbsp;and&nbsp;redistribution&nbsp;of&nbsp;this&nbsp;file&nbsp;is&nbsp;permitted&nbsp;provided&nbsp;this&nbsp;notice&nbsp;and&nbsp;the&nbsp;above&nbsp;comments&nbsp;are&nbsp;preserved.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<BR>&nbsp;&nbsp;<BR>*/</P>
+<P>use&nbsp;master<BR>go&nbsp;<BR>select&nbsp;getdate()<BR>go<BR>--&nbsp;Report&nbsp;on&nbsp;blocking&nbsp;spids&nbsp;to&nbsp;be&nbsp;terminated.<BR>select&nbsp;&nbsp;blocked&nbsp;as&nbsp;"Blocker"&nbsp;<BR>&nbsp;,count(*)&nbsp;as&nbsp;"Victim&nbsp;Count"&nbsp;<BR>from&nbsp;&nbsp;master..sysprocesses&nbsp;<BR>where&nbsp;blocked&nbsp;&gt;&nbsp;0&nbsp;<BR>group&nbsp;by&nbsp;blocked</P>
+<P>go&nbsp;<BR>DECLARE&nbsp;@blocker&nbsp;varchar(75)<BR>DECLARE&nbsp;blocker_cursor&nbsp;CURSOR&nbsp;FOR&nbsp;select&nbsp;distinct&nbsp;blocked&nbsp;from&nbsp;sysprocesses&nbsp;where&nbsp;blocked&nbsp;!=0</P>
+<P>OPEN&nbsp;blocker_cursor</P>
+<P>&nbsp;&nbsp;FETCH&nbsp;NEXT&nbsp;FROM&nbsp;blocker_cursor&nbsp;INTO&nbsp;@blocker</P>
+<P>&nbsp;&nbsp;WHILE&nbsp;(@@fetch_status&nbsp;&lt;&gt;&nbsp;-1)<BR>&nbsp;<BR>&nbsp;&nbsp;&nbsp;&nbsp;BEGIN<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IF&nbsp;(@@fetch_status&nbsp;=&nbsp;-2)<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BEGIN<BR>&nbsp;&nbsp;FETCH&nbsp;NEXT&nbsp;FROM&nbsp;blocker_cursor&nbsp;INTO&nbsp;@blocker<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CONTINUE<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;END<BR>&nbsp;<BR>&nbsp;--&nbsp;Only&nbsp;kill&nbsp;process&nbsp;if&nbsp;it&nbsp;is&nbsp;the&nbsp;leader&nbsp;and&nbsp;more&nbsp;than&nbsp;5&nbsp;seconds&nbsp;old.<BR>&nbsp;IF&nbsp;@blocker&nbsp;not&nbsp;in&nbsp;(select&nbsp;spid&nbsp;from&nbsp;sysprocesses&nbsp;where&nbsp;blocked&nbsp;!=&nbsp;0)<BR>&nbsp;&nbsp;AND&nbsp;(select&nbsp;datediff(ss,last_batch,getdate())&nbsp;FROM&nbsp;sysprocesses&nbsp;where&nbsp;blocked&nbsp;=&nbsp;@blocker)&nbsp;&gt;&nbsp;5&nbsp;<BR>&nbsp;&nbsp;<BR>&nbsp;&nbsp;BEGIN<BR>&nbsp;&nbsp;&nbsp;print&nbsp;'killing&nbsp;head&nbsp;blocker,&nbsp;spid&nbsp;#'&nbsp;+&nbsp;@blocker&nbsp;+&nbsp;'&nbsp;who&nbsp;is&nbsp;blocking&nbsp;connections&nbsp;with&nbsp;this&nbsp;command:&nbsp;'<BR>&nbsp;&nbsp;&nbsp;print&nbsp;''<BR>&nbsp;&nbsp;&nbsp;exec&nbsp;('dbcc&nbsp;inputbuffer&nbsp;('&nbsp;+&nbsp;@blocker&nbsp;+&nbsp;')')<BR>&nbsp;&nbsp;&nbsp;exec&nbsp;('kill&nbsp;'&nbsp;+&nbsp;@blocker&nbsp;)&nbsp;--&nbsp;kill<BR>&nbsp;&nbsp;&nbsp;FETCH&nbsp;NEXT&nbsp;FROM&nbsp;blocker_cursor&nbsp;INTO&nbsp;@blocker</P>
+<P>&nbsp;&nbsp;&nbsp;--&nbsp;Display&nbsp;Remaining&nbsp;Blocking&nbsp;Spids<BR>&nbsp;&nbsp;&nbsp;waitfor&nbsp;delay&nbsp;'00:00:03'&nbsp;--wait&nbsp;three&nbsp;seconds&nbsp;for&nbsp;the&nbsp;blocks&nbsp;to&nbsp;clear,&nbsp;then&nbsp;display&nbsp;status<BR>&nbsp;&nbsp;&nbsp;print&nbsp;''<BR>&nbsp;&nbsp;&nbsp;print&nbsp;'Remaining&nbsp;Blockers...'<BR>&nbsp;&nbsp;&nbsp;print&nbsp;''<BR>&nbsp;&nbsp;&nbsp;select&nbsp;&nbsp;blocked&nbsp;as&nbsp;"Blocker"&nbsp;<BR>&nbsp;&nbsp;&nbsp;&nbsp;,count(*)&nbsp;as&nbsp;"Victim&nbsp;Count"&nbsp;<BR>&nbsp;&nbsp;&nbsp;from&nbsp;&nbsp;master..sysprocesses&nbsp;<BR>&nbsp;&nbsp;&nbsp;where&nbsp;blocked&nbsp;&gt;&nbsp;0&nbsp;<BR>&nbsp;&nbsp;&nbsp;group&nbsp;by&nbsp;blocked</P>
+<P>&nbsp;&nbsp;END<BR>&nbsp;&nbsp;&nbsp;<BR>&nbsp;ELSE<BR>&nbsp;&nbsp;FETCH&nbsp;NEXT&nbsp;FROM&nbsp;blocker_cursor&nbsp;INTO&nbsp;@blocker<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;END<BR>DEALLOCATE&nbsp;blocker_cursor<BR>print&nbsp;'Process&nbsp;Complete...'&nbsp;</P>
+<P><BR></FONT></P></BLOCKQUOTE></TD></TR>
+<TR>
+<TD class=tablebody1 vAlign=center align=middle width=175><A 
+href="http://www.pigtwo.com/forum/look_ip.asp?boardid=14&amp;userid=42&amp;ip=61.48.16.211&amp;action=lookip" 
+target=_blank><IMG height=15 alt="点击查看用户来源及管理<br>发贴IP：61.48.16.211" 
+src="http://www.pigtwo.com/forum/pic/ip.gif" width=13 align=absMiddle border=0></A> 2003-5-31 10:13:28</TD>
+<TD class=tablebody1 vAlign=center width=*>
+<TABLE cellSpacing=0 cellPadding=0 width="100%">
+<TBODY>
+<TR>
+<TD vAlign=center align=left><A 
+href="http://www.pigtwo.com/forum/editannounce.asp?BoardID=14&amp;replyID=1000&amp;id=462&amp;star=1"><IMG 
+alt=编辑这个贴子 src="http://www.pigtwo.com/forum/pic/edit.gif" align=absMiddle border=0></A>&nbsp;&nbsp;<A 
+title=同意该帖观点，给他一朵鲜花，将消耗您5点金钱 
+href="http://www.pigtwo.com/forum/postagree.asp?boardid=14&amp;id=462&amp;isagree=1">鲜花</A>(<FONT 
+color=#ff0000>0</FONT>)&nbsp;&nbsp;<A title=不同意该帖观点，给他一个鸡蛋，将消耗您5点金钱 
+href="http://www.pigtwo.com/forum/postagree.asp?boardid=14&amp;id=462&amp;isagree=2">鸡蛋</A>(<FONT 
+color=#ff0000>0</FONT>)</TD>
+<TD vAlign=bottom align=right width=110 nowarp><A title=复制单个贴子到别的版面 
+href="http://www.pigtwo.com/forum/admin_postings.asp?action=复制&amp;BoardID=14&amp;ID=462&amp;replyID=1000"><IMG 
+src="http://www.pigtwo.com/forum/pic/copy.gif" border=0></A>&nbsp;<A title=精华 
+href="http://www.pigtwo.com/forum/admin_postings.asp?action=精华&amp;BoardID=14&amp;ID=462&amp;replyID=1000"><IMG 
+src="http://www.pigtwo.com/forum/pic/jing.gif" border=0></A></TD>
+<TD vAlign=bottom align=right 
+width=4></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE>
+<TABLE class=tableborder1 style="TABLE-LAYOUT: fixed; WORD-BREAK: break-all" 
+cellSpacing=1 cellPadding=5 align=center>
+<TBODY>
+<TR>
+<TD class=tablebody2 vAlign=top width=175>
+<TABLE cellSpacing=0 cellPadding=4 width="100%">
+<TBODY>
+<TR>
+<TD style="FILTER: glow(color=#9898BA,strength=2)" vAlign=center 
+width=*>&nbsp;<A name=1011><FONT color=#990000><B>ugvanxk</B></FONT></A> </TD>
+<TD vAlign=center width=25><IMG alt=帅哥哟，在线，有人找我吗？ src="http://www.pigtwo.com/forum/pic/Male.gif"></TD>
+<TD vAlign=center width=16></TD></TR></TBODY></TABLE>&nbsp;&nbsp;<IMG height=32 
+src="http://www.pigtwo.com/forum/pic/Image1.gif" width=32><BR>&nbsp;&nbsp;<IMG 
+src="http://www.pigtwo.com/forum/pic/level10.gif"><BR>&nbsp;&nbsp;等级：版主<BR>&nbsp;&nbsp;文章：189<BR>&nbsp;&nbsp;积分：494<BR>&nbsp;&nbsp;注册：2002-11-2<BR></TD>
+<TD class=tablebody2 vAlign=top width=*>
+<TABLE width="100%">
+<TBODY>
+<TR>
+<TD width=*><A 
+href=""><IMG 
+alt=给ugvanxk发送一个短消息 src="http://www.pigtwo.com/forum/pic/message.gif" border=0></A>&nbsp;<A 
+href="http://www.pigtwo.com/forum/friendlist.asp?action=addF&amp;myFriend=ugvanxk" target=_blank><IMG 
+alt=把ugvanxk加入好友 src="http://www.pigtwo.com/forum/pic/friend.gif" border=0></A>&nbsp;<A 
+href="http://www.pigtwo.com/forum/dispuser.asp?id=42" target=_blank><IMG alt=查看ugvanxk的个人资料 
+src="http://www.pigtwo.com/forum/pic/profile.gif" border=0></A>&nbsp;<A 
+href="http://www.pigtwo.com/forum/queryResult.asp?stype=1&amp;nSearch=3&amp;keyword=ugvanxk&amp;BoardID=14&amp;SearchDate=ALL" 
+target=_blank><IMG alt="搜索ugvanxk在『数 据 库』的所有贴子" src="http://www.pigtwo.com/forum/pic/find.gif" 
+border=0></A>&nbsp;<A href="http://www.pigtwo.com/forum/mailto:jsqmail@163.com"><IMG alt=点击这里发送电邮给ugvanxk 
+src="http://www.pigtwo.com/forum/pic/email.gif" border=0></A>&nbsp;<A 
+href="http://www.pigtwo.com/forum/reannounce.asp?BoardID=14&amp;replyID=1011&amp;id=462&amp;star=1&amp;reply=true"><IMG 
+alt=引用回复这个贴子 src="http://www.pigtwo.com/forum/pic/reply.gif" border=0></A>&nbsp;<A 
+href="http://www.pigtwo.com/forum/reannounce.asp?BoardID=14&amp;replyID=1011&amp;id=462&amp;star=1"><IMG 
+alt=回复这个贴子 src="http://www.pigtwo.com/forum/pic/reply_a.gif" border=0></A></TD>
+<TD width=50><B>第<FONT color=#ff0000>2</FONT>楼</B></TD></TR>
+<TR>
+<TD bgColor=#6595d6 colSpan=2 height=1></TD></TR></TBODY></TABLE>
+<BLOCKQUOTE><IMG alt=发贴心情 src="http://www.pigtwo.com/forum/face/face0.gif" border=0>&nbsp;<FONT 
+style="FONT-SIZE: 9pt; LINE-HEIGHT: 15pt"><B></B><BR>Kill&nbsp;all&nbsp;DB&nbsp;Connections/SPIDS
+<P></P>
+<P></P>
+<P><BR>&gt;&gt;Script&nbsp;Language&nbsp;and&nbsp;Platform:&nbsp;SQL&nbsp;Server&nbsp;2000<BR>--No&nbsp;cursor&nbsp;kill&nbsp;for&nbsp;SPID/Connections&nbsp;</P>
+<P>--Returns&nbsp;No.&nbsp;of&nbsp;connections&nbsp;killed&nbsp;</P>
+<P>--<BR>--Usage&nbsp;usp_killDBConnections&nbsp;@DBName=''NorthWind''&nbsp;<BR>------------------------------------------------------------------------<BR>--&nbsp;This&nbsp;procedure&nbsp;will&nbsp;help&nbsp;to&nbsp;kill&nbsp;all&nbsp;connections&nbsp;to&nbsp;a&nbsp;given&nbsp;databse<BR>/****CREATED&nbsp;BY&nbsp;AJITH&nbsp;DHARWAR****/<BR>/****QUESTIONS,&nbsp;PLEASE&nbsp;EMAIL&nbsp;akdharwar@yahoo.com****/<BR>/***&nbsp;&nbsp;This&nbsp;procedure&nbsp;will&nbsp;accept&nbsp;a&nbsp;DB&nbsp;name&nbsp;and&nbsp;drop&nbsp;<BR>&nbsp;all&nbsp;connections&nbsp;to&nbsp;the&nbsp;DB.&nbsp;&nbsp;&nbsp;&nbsp;***/<BR>-------------------------------------------------------------------------<BR>CREATE&nbsp;PROCEDURE&nbsp;usp_killDBConnections&nbsp;@DBName&nbsp;varchar(50),&nbsp;@withmsg&nbsp;bit=1<BR>AS<BR>SET&nbsp;NOCOUNT&nbsp;ON<BR>DECLARE&nbsp;@spidstr&nbsp;varchar(8000)<BR>DECLARE&nbsp;@ConnKilled&nbsp;smallint<BR>SET&nbsp;@ConnKilled=0<BR>SET&nbsp;@spidstr&nbsp;=&nbsp;''</P>
+<P>IF&nbsp;db_id(@DBName)&nbsp;&lt;&nbsp;4&nbsp;<BR>BEGIN<BR>&nbsp;PRINT&nbsp;'Connections&nbsp;to&nbsp;system&nbsp;databases&nbsp;cannot&nbsp;be&nbsp;killed'<BR>&nbsp;RETURN<BR>END</P>
+<P>SELECT&nbsp;@spidstr=coalesce(@spidstr,','&nbsp;)+'kill&nbsp;'+convert(varchar,&nbsp;spid)+&nbsp;';&nbsp;'<BR>FROM&nbsp;master..sysprocesses&nbsp;WHERE&nbsp;dbid=db_id(@DBName)</P>
+<P>IF&nbsp;LEN(@spidstr)&nbsp;&gt;&nbsp;0&nbsp;<BR>BEGIN<BR>&nbsp;EXEC(@spidstr)</P>
+<P>&nbsp;SELECT&nbsp;@ConnKilled&nbsp;=&nbsp;COUNT(1)<BR>&nbsp;FROM&nbsp;master..sysprocesses&nbsp;WHERE&nbsp;dbid=db_id(@DBName)&nbsp;</P>
+<P>END</P>
+<P>IF&nbsp;@withmsg&nbsp;=1<BR>&nbsp;PRINT&nbsp;&nbsp;CONVERT(VARCHAR(10),&nbsp;@ConnKilled)&nbsp;+&nbsp;'&nbsp;Connection(s)&nbsp;killed&nbsp;for&nbsp;DB&nbsp;'&nbsp;&nbsp;+&nbsp;@DBName<BR>GO<BR></P></FONT></BLOCKQUOTE></TD></TR></TBODY></TABLE>

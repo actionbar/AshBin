@@ -1,0 +1,23 @@
+<meta http-equiv="content-type" content="text/html; charset=gb2312">&nbsp;<FONT 
+style="FONT-SIZE: 9pt; LINE-HEIGHT: 15pt"><B>关于@@identity(_rambo)</B><BR>SCOPE_IDENTITY、IDENT_CURRENT&nbsp;和&nbsp;@@IDENTITY&nbsp;在功能上相似，因为它们都返回插入到&nbsp;IDENTITY&nbsp;列中的值。&nbsp;
+<P></P>
+<P>IDENT_CURRENT&nbsp;不受作用域和会话的限制，而受限于指定的表。IDENT_CURRENT&nbsp;返回为任何会话和作用域中的特定表所生成的值。有关更多信息，请参见&nbsp;IDENT_CURRENT。</P>
+<P>SCOPE_IDENTITY&nbsp;和&nbsp;@@IDENTITY&nbsp;返回在当前会话中的任何表内所生成的最后一个标识值。但是，SCOPE_IDENTITY&nbsp;只返回插入到当前作用域中的值；@@IDENTITY&nbsp;不受限于特定的作用域。</P>
+<P>例如，有两个表&nbsp;T1&nbsp;和&nbsp;T2，在&nbsp;T1&nbsp;上定义了一个&nbsp;INSERT&nbsp;触发器。当将某行插入&nbsp;T1&nbsp;时，触发器被激发，并在&nbsp;T2&nbsp;中插入一行。此例说明了两个作用域：一个是在&nbsp;T1&nbsp;上的插入，另一个是作为触发器的结果在&nbsp;T2&nbsp;上的插入。</P>
+<P>假设&nbsp;T1&nbsp;和&nbsp;T2&nbsp;都有&nbsp;IDENTITY&nbsp;列，@@IDENTITY&nbsp;和&nbsp;SCOPE_IDENTITY&nbsp;将在&nbsp;T1&nbsp;上的&nbsp;INSERT&nbsp;语句的最后返回不同的值。</P>
+<P>@@IDENTITY&nbsp;返回插入到当前会话中任何作用域内的最后一个&nbsp;IDENTITY&nbsp;列值，该值是插入&nbsp;T2&nbsp;中的值。</P>
+<P>SCOPE_IDENTITY()&nbsp;返回插入&nbsp;T1&nbsp;中的&nbsp;IDENTITY&nbsp;值，该值是发生在相同作用域中的最后一个&nbsp;INSERT。如果在作用域中发生插入语句到标识列之前唤醒调用&nbsp;SCOPE_IDENTITY()&nbsp;函数，则该函数将返回&nbsp;NULL&nbsp;值。</P>
+<P>有关说明，请参见示例。</P>
+<P>示例<BR>下列示例将创建两个表&nbsp;TZ&nbsp;和&nbsp;TY，并在&nbsp;TZ&nbsp;上创建一个&nbsp;INSERT&nbsp;触发器。当将某行插入表&nbsp;TZ&nbsp;中时，触发器&nbsp;(Ztrig)&nbsp;将激发并在&nbsp;TY&nbsp;中插入一行。</P>
+<P>USE&nbsp;tempdb<BR>GO<BR>CREATE&nbsp;TABLE&nbsp;TZ&nbsp;(<BR>&nbsp;&nbsp;&nbsp;Z_id&nbsp;&nbsp;int&nbsp;IDENTITY(1,1)PRIMARY&nbsp;KEY,<BR>&nbsp;&nbsp;&nbsp;Z_name&nbsp;varchar(20)&nbsp;NOT&nbsp;NULL)</P>
+<P>INSERT&nbsp;TZ<BR>&nbsp;&nbsp;&nbsp;valueS&nbsp;('Lisa')<BR>INSERT&nbsp;TZ<BR>&nbsp;&nbsp;&nbsp;valueS&nbsp;('Mike')<BR>INSERT&nbsp;TZ<BR>&nbsp;&nbsp;&nbsp;valueS&nbsp;('Carla')</P>
+<P>SELECT&nbsp;*&nbsp;FROM&nbsp;TZ</P>
+<P>--Result&nbsp;set:&nbsp;This&nbsp;is&nbsp;how&nbsp;table&nbsp;TZ&nbsp;looks<BR>Z_id&nbsp;&nbsp;&nbsp;Z_name<BR>-------------<BR>1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Lisa<BR>2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mike<BR>3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Carla</P>
+<P>CREATE&nbsp;TABLE&nbsp;TY&nbsp;(<BR>&nbsp;&nbsp;&nbsp;Y_id&nbsp;&nbsp;int&nbsp;IDENTITY(100,5)PRIMARY&nbsp;KEY,<BR>&nbsp;&nbsp;&nbsp;Y_name&nbsp;varchar(20)&nbsp;NULL)</P>
+<P>INSERT&nbsp;TY&nbsp;(Y_name)<BR>&nbsp;&nbsp;&nbsp;valueS&nbsp;('boathouse')<BR>INSERT&nbsp;TY&nbsp;(Y_name)<BR>&nbsp;&nbsp;&nbsp;valueS&nbsp;('rocks')<BR>INSERT&nbsp;TY&nbsp;(Y_name)<BR>&nbsp;&nbsp;&nbsp;valueS&nbsp;('elevator')</P>
+<P>SELECT&nbsp;*&nbsp;FROM&nbsp;TY<BR>--Result&nbsp;set:&nbsp;This&nbsp;is&nbsp;how&nbsp;TY&nbsp;looks:<BR>Y_id&nbsp;&nbsp;Y_name<BR>---------------<BR>100&nbsp;&nbsp;&nbsp;boathouse<BR>105&nbsp;&nbsp;&nbsp;rocks<BR>110&nbsp;&nbsp;&nbsp;elevator</P>
+<P>/*Create&nbsp;the&nbsp;trigger&nbsp;that&nbsp;inserts&nbsp;a&nbsp;row&nbsp;in&nbsp;table&nbsp;TY&nbsp;<BR>when&nbsp;a&nbsp;row&nbsp;is&nbsp;inserted&nbsp;in&nbsp;table&nbsp;TZ*/<BR>CREATE&nbsp;TRIGGER&nbsp;Ztrig<BR>ON&nbsp;TZ<BR>FOR&nbsp;INSERT&nbsp;AS&nbsp;<BR>&nbsp;&nbsp;&nbsp;BEGIN<BR>&nbsp;&nbsp;&nbsp;INSERT&nbsp;TY&nbsp;valueS&nbsp;('')<BR>&nbsp;&nbsp;&nbsp;END</P>
+<P>/*FIRE&nbsp;the&nbsp;trigger&nbsp;and&nbsp;find&nbsp;out&nbsp;what&nbsp;identity&nbsp;values&nbsp;you&nbsp;get&nbsp;<BR>with&nbsp;the&nbsp;@@IDENTITY&nbsp;and&nbsp;SCOPE_IDENTITY&nbsp;functions*/<BR>INSERT&nbsp;TZ&nbsp;valueS&nbsp;('Rosalie')</P>
+<P>SELECT&nbsp;SCOPE_IDENTITY()&nbsp;AS&nbsp;[SCOPE_IDENTITY]<BR>GO<BR>SELECT&nbsp;&nbsp;&nbsp;@@IDENTITY&nbsp;AS&nbsp;[@@IDENTITY]<BR>GO</P>
+<P>--Here&nbsp;is&nbsp;the&nbsp;result&nbsp;set.<BR>SCOPE_IDENTITY<BR>4<BR>/*SCOPE_IDENTITY&nbsp;returned&nbsp;the&nbsp;last&nbsp;identity&nbsp;value&nbsp;in&nbsp;the&nbsp;same&nbsp;scope,&nbsp;which&nbsp;was&nbsp;the&nbsp;insert&nbsp;on&nbsp;table&nbsp;TZ*/</P>
+<P>@@IDENTITY<BR>115<BR>/*@@IDENTITY&nbsp;returned&nbsp;the&nbsp;last&nbsp;identity&nbsp;value&nbsp;inserted&nbsp;to&nbsp;TY&nbsp;by&nbsp;the&nbsp;trigger,&nbsp;which&nbsp;fired&nbsp;due&nbsp;to&nbsp;an&nbsp;earlier&nbsp;insert&nbsp;on</P></FONT>

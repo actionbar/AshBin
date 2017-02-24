@@ -1,0 +1,23 @@
+<html>
+<head><link rel="stylesheet" type="text/css" href="showcode.css" /></head>
+<body>
+<pre>
+&lt;html&gt;
+&lt;body&gt;
+<code class="aspcode">&lt;%
+dim d,a,i,s
+set d=Server.CreateObject(&#34;Scripting.Dictionary&#34;)
+d.Add &#34;c&#34;, &#34;China&#34;
+d.Add &#34;i&#34;, &#34;Italy&#34;
+Response.Write(&#34;&lt;p&gt;¼üµÄÖµÊÇ£º&lt;/p&gt;&#34;)
+a=d.Keys
+for i = 0 To d.Count -1
+    s = s & a(i) & &#34;&lt;br&gt;&#34;
+next
+Response.Write(s)
+set d=nothing
+%&gt;</code>
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+</body>

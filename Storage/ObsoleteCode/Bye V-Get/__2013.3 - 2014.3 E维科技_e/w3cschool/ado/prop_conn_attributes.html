@@ -1,0 +1,348 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="../c3.css" />
+<title>ADO Attributes 属性</title>
+</head>
+<body class="serverscripting">
+<div id="wrapper">
+<div id="header">
+<a href="http://e.v-get.com/w3cschool/" style="float:left;">W3CSchool 在线教程</a>
+<div class="q g"><script type="text/javascript">var cpro_id="u1163355"</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div>
+<div id="navfirst">
+<ul id="menu">
+<li id="h"><a href="../h.html">HTML教程</a></li>
+<li id="x"><a href="../x.html">XML教程</a></li>
+<li id="b"><a href="../b.html">浏览器脚本</a></li>
+<li id="s"><a href="../s.html">服务器脚本</a></li>
+<li id="d"><a href="../d.html">dot net教程</a></li>
+<li id="m"><a href="../m.html">多媒体教程</a></li>
+<li id="w"><a href="../w.html">建站手册</a></li>
+</ul>
+</div><div id="navsecond">
+<div id="course">
+<h2>ADO 教程</h2>
+<ul>
+<li><a href="http://e.v-get.com/w3cschool/">ADO 首页</a></li>
+<li><a href="ado_intro.html">ADO 简介</a></li>
+<li><a href="ado_connect.html">ADO 连接</a></li>
+<li><a href="ado_recordset.html">ADO 记录集</a></li>
+<li><a href="ado_display.html">ADO 显示</a></li>
+<li><a href="ado_query.html">ADO 查询</a></li>
+<li><a href="ado_sort.html">ADO 排序</a></li>
+<li><a href="ado_add.html">ADO 添加</a></li>
+<li><a href="ado_update.html">ADO 更新</a></li>
+<li><a href="ado_delete.html">ADO 删除</a></li>
+<li><a href="ado_getstring.html">ADO 加速</a></li>
+</ul>
+<h2>ADO 对象</h2>
+<ul>
+<li><a href="ado_ref_command.html">ADO Command</a></li>
+<li><a href="ado_ref_connection.html">ADO Connection</a></li>
+<li><a href="ado_ref_error.html">ADO Error</a></li>
+<li><a href="ado_ref_field.html">ADO Field</a></li>
+<li><a href="ado_ref_parameter.html">ADO Parameter</a></li>
+<li><a href="ado_ref_property.html">ADO Property</a></li>
+<li><a href="ado_ref_record.html">ADO Record</a></li>
+<li><a href="ado_ref_recordset.html">ADO Recordset</a></li>
+<li><a href="ado_ref_stream.html">ADO Stream</a></li>
+<li><a href="ado_datatypes.html">ADO 数据类型</a></li>
+<li><a href="ado_summary.html">ADO 总结</a></li>
+</ul>
+<h2>实例</h2>
+<ul>
+<li><a href="../example/adoe_examples.html">ADO 实例</a></li>
+</ul>
+</div>
+<div id="selected">
+<h2>建站手册</h2>
+<ul>
+<li><a href="../site/">网站构建</a></li>
+<li><a href="../w3c/">万维网联盟</a></li>
+<li><a href="http://e.v-get.com/w3c/">W3CSchool 教程</a></li>
+<li><a href="../quality/">网站品质</a></li>
+<li><a href="../semweb/">语义网</a></li>
+<li><a href="../hosting/">网站主机</a></li>
+</ul>
+<h2><a href="http://e.v-get.com/w3c/" class="f13">W3CSchool 教程</a></h2><div class="a120x90"><script type="text/javascript">var cpro_id="u1210867";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div></div>
+</div>
+<div id="maincontent">
+<h1>ADO Attributes 属性</h1>
+<div class="backtoreference">
+<p><a href="ado_ref_connection.html">返回 ADO Connection 对象参考手册</a></p>
+</div>
+<div>
+<h2>定义和用法</h2>
+<p>Attributes 属性可设置或返回 Long 值，该值可指示对象的一项或多项特性。</p>
+<p class="note"><span>注释：</span>设置多个属性时，可以将适当的常量相加。如果将属性值设置为包括不兼容常量的和，将会发生错误。</p>
+<table class="dataintable"> 
+  <tr>
+    <th>对象</th>
+    <th>Attributes 属性的描述</th>
+  </tr>  
+  <tr>
+    <td>Connection</td>
+    <td>Attributes 属性对 Connection 对象拥有读写权限。并且其值可以是一个或多个 <a href="#XactAttributeEnum">XactAttributeEnum</a> 值的和。默认值为零 (0)。</td>
+  </tr>
+  <tr>
+    <td>Parameter</td>
+    <td>Attributes 属性对Parameter 对象拥有读写权限。并且其值可以是任意一个或多个 <a href="#ParameterAttributesEnum">ParameterAttributesEnum</a> 值的和。默认值为 adParamSigned。</td>
+  </tr>
+  <tr>
+    <td>Field</td>
+    <td>当 Attributes 属性被用于创建 Recordset 时，它拥有读写权限，但是当您打开一个已有的 Recordset 时，它是只读的。Attributes 属性可以是一个或多个 <a href="#FieldAttributeEnum">FieldAttributeEnum</a> 值的和。</td>
+  </tr>
+  <tr>
+    <td>Property</td>
+    <td>对于 Property 对象，Attributes 属性是只读的。并且其值可以是任意一个或多个 <a href="#PropertyAttributesEnum">PropertyAttributesEnum</a> 值的和。</td>
+  </tr>
+</table>
+<h3>语法</h3>
+<pre>object.Attributes</pre>
+</div>
+<div>
+<h2>实例</h2>
+<p>针对 Connection 对象：</p>
+<pre>&lt;%
+set conn=Server.CreateObject(&#34;ADODB.Connection&#34;)
+conn.Provider=&#34;Microsoft.Jet.OLEDB.4.0&#34;
+conn.Open &#34;c:/webdata/northwind.mdb&#34;
+response.write(conn.Attributes)
+conn.close
+%&gt;</pre>
+<p>针对 Field 对象：</p>
+<pre>&lt;%
+set conn=Server.CreateObject(&#34;ADODB.Connection&#34;)
+conn.Provider=&#34;Microsoft.Jet.OLEDB.4.0&#34;
+conn.Open &#34;c:/webdata/northwind.mdb&#34;
+set rs = Server.CreateObject(&#34;ADODB.Recordset&#34;)
+rs.open &#34;Select * from orders&#34;, conn
+set f=Server.CreateObject(&#34;ADODB.Field&#34;)
+'Display the field attributes of the Orders Table
+for each f in rs.Fields
+<code>  response.write(&#34;Attr:&#34; &amp; f.Attributes &amp; &#34;&lt;br /&gt;&#34;)
+  response.write(&#34;Name:&#34; &amp; f.Name &amp; &#34;&lt;br /&gt;&#34;)
+  response.write(&#34;Value:&#34; &amp; f.Value &amp; &#34;&lt;br /&gt;&#34;)
+</code>Next
+rs.Close
+conn.close
+set rs=nothing
+set conn=nothing
+%&gt;</pre>
+<p>针对 Property 对象：</p>
+<pre>&lt;%
+set conn=Server.CreateObject(&#34;ADODB.Connection&#34;)
+conn.Provider=&#34;Microsoft.Jet.OLEDB.4.0&#34;
+conn.Open &#34;c:/webdata/northwind.mdb&#34;
+set rs = Server.CreateObject(&#34;ADODB.Recordset&#34;)
+rs.open &#34;Select * from orders&#34;, conn
+set prop=Server.CreateObject(&#34;ADODB.Property&#34;)
+'Display the property attributes of the Orders Table
+<code>for each prop in rs.Properties
+  response.write(&#34;Attr:&#34; &amp; prop.Attributes &amp; &#34;&lt;br /&gt;&#34;)
+  response.write(&#34;Name:&#34; &amp; prop.Name &amp; &#34;&lt;br /&gt;&#34;)
+  response.write(&#34;Value:&#34; &amp; prop.Value &amp; &#34;&lt;br /&gt;&#34;)
+next</code>
+<code>rs.close
+</code>conn.close
+set rs=nothing
+set conn=nothing
+%&gt;</pre>
+</div>
+<div>
+<h2><a name="XactAttributeEnum">XactAttributeEnum 值</a></h2>
+<table class="dataintable">
+  <tr>
+    <th>常量</th>
+    <th>值</th>
+    <th>描述</th>
+  </tr>
+  <tr>
+    <td>adXactAbortRetaining</td>
+    <td>262144</td>
+    <td>当调用 RollbackTrans，自动启动一个新事务。</td>
+  </tr>
+  <tr>
+    <td>adXactCommitRetaining</td>
+    <td>131072</td>
+    <td>当调用 CommitTrans，自动启动新事务。</td>
+  </tr>
+</table>
+</div>
+<div>
+<h2><a name="ParameterAttributesEnum">ParameterAttributesEnum Values</a></h2>
+<table class="dataintable">
+  <tr>
+    <th>常量</th>
+    <th>值</th>
+    <th>描述</th>
+  </tr>
+  <tr>
+    <td>adParamSigned</td>
+    <td>16</td>
+    <td>该参数接受带符号的值。</td>
+  </tr>
+  <tr>
+    <td>adParamNullable</td>
+    <td>64</td>
+    <td>该参数接受 Null 值。</td>
+  </tr>
+  <tr>
+    <td>adParamLong</td>
+    <td>128</td>
+    <td>该参数接受长二进制数据。</td>
+  </tr>
+</table>
+</div>
+<div>
+<h2><a name="FieldAttributeEnum">FieldAttributeEnum Values</a></h2>
+<table class="dataintable">
+  <tr>
+    <th>常量</th>
+    <th>值</th>
+    <th>描述</th>
+  </tr>
+  <tr>
+    <td>adFldCacheDeferred</td>
+    <td>0x1000</td>
+    <td>指示提供者缓存字段值，并且指示对缓存的进行读取。</td>
+  </tr>
+  <tr>
+    <td>adFldFixed</td>
+    <td>0x10</td>
+    <td>指示该字段包含定长数据。</td>
+  </tr>
+  <tr>
+    <td>adFldIsChapter</td>
+    <td>0x2000</td>
+    <td>指示该字段包含一个子集值，指定与此父字段有关的特定子记录集。通常子集字段与数据构形或过滤器一起使用。</td>
+  </tr>
+  <tr>
+    <td>adFldIsCollection</td>
+    <td>0x40000</td>
+    <td>该字段指定由记录表示的资源是其他资源的集合 (如文件夹）而不仅是简单资源 (如文本文件）。</td>
+  </tr>
+  <tr>
+    <td>adFldIsDefaultStream</td>
+    <td>0x20000</td>
+    <td>该字段包含由记录表示的资源的默认流。例如，默认流可以是 Web 站点根文件夹的 HTML 内容，在指定根 URL 时自动提供。</td>
+  </tr>
+  <tr>
+    <td>adFldIsNullable</td>
+    <td>0x20</td>
+    <td>该字段接受 Null 值。</td>
+  </tr>
+  <tr>
+    <td>adFldIsRowURL</td>
+    <td>0x10000</td>
+    <td>该字段包含 URL，它命名了记录表示的数据存储中的资源。</td>
+  </tr>
+  <tr>
+    <td>adFldKeyColumn</td>
+    <td>0x8000</td>
+    <td>该字段是基本行集合的主键。还可指示该字段是复合主键的一部分。</td>
+  </tr>
+  <tr>
+    <td>adFldLong</td>
+    <td>0x80</td>
+    <td>该字段是长二进制字段。还指示能够使用 AppendChunk 和 GetChunk 方法。</td>
+  </tr>
+  <tr>
+    <td>adFldMayBeNull</td>
+    <td>0x40</td>
+    <td>可从该字段读取 Null 值。</td>
+  </tr>
+  <tr>
+    <td>adFldMayDefer</td>
+    <td>0x2</td>
+    <td>该字段被延期，即该字段值不是和整个记录一起从数据源检索，而是在显式访问它们时检索。</td>
+  </tr>
+  <tr>
+    <td>adFldNegativeScale</td>
+    <td>0x4000</td>
+    <td>该字段表示来自支持负范围值的列的数字值。该范围由 NumericScale 属性指定。</td>
+  </tr>
+  <tr>
+    <td>adFldRowID</td>
+    <td>0x100</td>
+    <td>该字段包含持久行标识符，该标识符无法被写入，并且除了标识行以外没有任何意义，例如记录编号、唯一标识符等。</td>
+  </tr>
+  <tr>
+    <td>adFldRowVersion</td>
+    <td>0x200</td>
+    <td>该字段包含用于跟踪更新的某种时间或日期戳。</td>
+  </tr>
+  <tr>
+    <td>adFldUnknownUpdatable</td>
+    <td>0x8</td>
+    <td>提供者无法确定用户是否可以写入字段。</td>
+  </tr>
+  <tr>
+    <td>adFldUnspecified</td>
+    <td>
+	<ul>
+	<li>-1</li>
+    <li>0xFFFFFFFF</li>
+	</ul>
+	</td>
+    <td>提供者没有指定字段属性。</td>
+  </tr>
+  <tr>
+    <td>adFldUpdatable</td>
+    <td>0x4</td>
+    <td>用户可以写入字段。</td>
+  </tr>
+</table>
+</div>
+<div>
+<h2><a name="PropertyAttributesEnum">PropertyAttributesEnum Values</a></h2>
+<table class="dataintable">
+  <tr>
+    <th>常量</th>
+    <th>值</th>
+    <th>描述</th>
+  </tr>
+  <tr>
+    <td>adPropNotSupported</td>
+    <td>0</td>
+    <td>提供者不支持该属性。</td>
+  </tr>
+  <tr>
+    <td>adPropRequired</td>
+    <td>1</td>
+    <td>在初始化数据源之前用户必须指定该属性的值。</td>
+  </tr>
+  <tr>
+    <td>adPropOptional</td>
+    <td>2</td>
+    <td>在初始化数据源之前用户不必指定该属性的值。</td>
+  </tr>
+  <tr>
+    <td>adPropRead</td>
+    <td>512</td>
+    <td>户可以读取该属性。</td>
+  </tr>
+  <tr>
+    <td>adPropWrite</td>
+    <td>1024</td>
+    <td>用户可以设置该属性。</td>
+  </tr>
+</table>
+</div>
+<div class="backtoreference">
+<p><a href="ado_ref_connection.html">返回 ADO Connection 对象参考手册</a></p>
+</div>
+</div>
+<div id="sidebar">
+<div class="rs"></div>
+<div id="tools">
+<h5 id="tools_reference"><a href="ado_reference.html">ADO 参考手册</a></h5>
+<h5 id="tools_example"><a href="../example/adoe_examples.html">ADO 实例</a></h5>
+</div>
+<div class="a120x600"><script type="text/javascript">var cpro_id="u1293136";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div><div class="b"></div>
+</div>
+</body>
+</html>

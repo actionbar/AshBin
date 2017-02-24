@@ -1,0 +1,102 @@
+<html xmlns:rdl>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<script src="rdl_method.js"></script>
+<base target="_self">
+</head>
+<body>
+
+<script>
+//collFriendObjects=new Array();
+//collFriendProperties=new Array();
+//collFriendMethods=new Array();
+//collFriendEvents=new Array();
+//collFriendCollections=new Array();
+
+collFriendMethods=new Array(
+'createAttribute','setAttribute','getAttribute','removeAttribute','mergeAttributes'
+);
+
+collFriendCollections=new Array(
+'attributes'
+);
+
+//collIE40=new Array();
+//collIE50=new Array();
+//collIE55=new Array();
+//collIE60=new Array();
+
+collIE50=new Array(
+'A','ACRONYM','ADDRESS','APPLET','AREA','B','BASE','BASEFONT','BDO','BGSOUND','BIG','BLOCKQUOTE','BODY','BR','BUTTON','CAPTION','CENTER','CITE','CODE','COL','COLGROUP','COMMENT','CUSTOM','DD','DEL','DFN','DIR','DIV','DL','DT','EM','EMBED','FIELDSET','FONT','FORM','FRAME','FRAMESET','HEAD','Hn','HR','HTML','I','IFRAME','IMG','INPUT type=button','INPUT type=checkbox','INPUT type=file','INPUT type=hidden','INPUT type=image','INPUT type=password','INPUT type=radio','INPUT type=reset','INPUT type=submit','INPUT type=text','INS','KBD','LABEL','LEGEND','LI','LINK','LISTING','MAP','MARQUEE','MENU','nextID','OBJECT','OL','OPTION','P','PLAINTEXT','PRE','Q','S','SAMP','SCRIPT','SELECT','SMALL','SPAN','STRIKE','STRONG','SUB','SUP','TABLE','TBODY','TD','TEXTAREA','TFOOT','TH','THEAD','TITLE','TR','TT','U','UL','VAR','XMP'
+);
+
+sStyle=
+'#idFont{text-decoration:underline;}\n'+
+'#idCodeDiv{width:100%;padding:4px;font-family:verdana,tahoma;margin:12px 0px 0px 0px;background-color:#EEEEEE;font-weight:bold;}\n';
+
+sScript=
+'<script>\n'+
+'var sCode="<font color=red name=rdl case=died id=idFont style=\\"font-weight:bold\\" onmouseover=\\"this.style.color=\'blue\';\\" onmouseout=\\"this.style.color=\'black\';\\" >这里有一些文字。<\/font>";\n'+
+'\n'+
+'var oCodeDiv;\n'+
+'var oFont;\n'+
+'\n'+
+'function window.onload(){\n'+
+'oCodeDiv=document.all("idCodeDiv");\n'+
+'oFont=document.all("idFont");\n'+
+'oCodeDiv.innerText=sCode;\n'+
+'}\n'+
+'\n'+
+'function doRemove(){\n'+
+'oFont.clearAttributes();\n'+
+'oCodeDiv.innerText=oFont.outerHTML;\n'+
+'}\n'+
+'\n'+
+'function doReset(){\n'+
+'window.location.reload();\n'+
+'}\n'+
+'\n'+
+'<\/script>\n';
+
+sCode=
+'<font color=red style="font-weight:bold" name=rdl case=died onmouseover="this.style.color=\'blue\';" onmouseout="this.style.color=\'black\';" id=idFont>这里有一些文字。</font>\n'+
+'<br><br><input type=button value="清除属性" onclick="doRemove();"><input type=button value="恢复属性" onclick="doReset();">\n'+
+'<br><br><div id=idCodeDiv></div>\n';
+
+iWinWidth=360;
+
+iWinHeight=300;
+
+</script>
+
+<div id=idContent>
+
+<div id=idContentTitle><span id=idTitleName>clearAttributes</span>版本：DHTML Object Model　返回值：无</div>
+
+<div class=cssColumnTitle>语法：</div>
+<div>
+<i>object</i><b> . clearAttributes () </b>
+</div>
+
+<div class=cssColumnTitle>参数：</div>
+<div>
+无
+</div>
+
+<div class=cssColumnTitle>返回值：</div>
+<div>
+无
+</div>
+
+<div class=cssColumnTitle>说明：</div>
+<div>
+清除<i> object </i>的所有属性和属性值。<br>
+此方法仅仅清除掉持久性的 HTML 属性。像<a href="../properties/id.html"> id </a>属性，样式(不包括用<a href="../properties/style.html"> style </a>属性内联定义的)，以及脚本专用的特性等不会受影响。
+</div>
+
+</div>
+</body>
+</html>
+
+<!-- Part of RDL(TM) - Written by Rain1977 
+HomeSite: http://www.dhtmlet.com  E-Mail: dhtmlet@hotmail.com -->

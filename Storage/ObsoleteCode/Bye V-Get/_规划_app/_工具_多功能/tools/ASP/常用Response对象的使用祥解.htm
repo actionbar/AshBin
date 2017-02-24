@@ -1,0 +1,81 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>常用Response对象的使用祥解</title>
+<style type="text/css">
+<!--
+body {
+	font-size: 10.4pt;
+	line-height: 22px;
+}
+-->
+</style>
+</head>
+
+<body bgcolor="eeeeee" leftmargin="20" marginwidth="20">
+<p><strong>常用Response对象的使用祥解</strong></p>
+<p></p>
+<hr>
+<p> 　　每一个程序语言或开发工具都有一定的函数与用户进行沟通，Asp同样如此。在Asp中负责将信息传递给用户的对象就是Response对象。Response对象用于动态响应客户端请求（Request），并将动态生成的响应结果返回到客户端浏览器中，使用Response对象可以直接发送信息给浏览器、重定向浏览器到另一个 
+  URL 或设置 cookie 的值等等。 Response对象在asp编程中非常广泛，也是一种非常好用的工具。下面我们来具体看看Response对象：</p>
+<p> 语法:<br>
+  Response.collection|property|method</p>
+<p><font color="#009999"><strong>一、集合</strong></font><br>
+  Response 对象只有一个集合 --Cookies，Cookies数据集合允许将数据设置在客户端的浏览器中。若指定的 cookie 不存在，则创建它。若存在，则自动更新数据。 
+</p>
+<p> 语法:Response.Cookies(Cookie)[Key.Attribute]</p>
+<p> 这里的 cookie 是指定 cookie 的名称。而如果指定了 key，则该 cookie 就是一个字典。attribute 指定 cookie 
+  自身的有关信息。attribute 参数可以是下列之一 : </p>
+<p>　　 Domain 只写。若被指定，则 cookie 将被发送到对该域的请求中去。 </p>
+<p>　　 Expires 只写。指定 cookie 的过期日期。为了在会话结束后将 cookie 存储在客户端磁盘上，必须设置该日期。若此项属性的设置未超过当前日期，则在任务结束后 
+  cookie 将到期。 </p>
+<p>　　 HasKeys 只读。指定 cookie 是否包含关键字。 </p>
+<p>　　 Path 只写。若被指定，则 cookie 将只发送到对该路径的请求中。如果未设置该属性，则使用应用程序的路径。<br>
+  <br>
+  Secure 只写。指定Cookie是否安全。</p>
+<p>示例：</p>
+<p>&lt;%<br>
+  Response.Cookies(&quot;wrclub&quot;)(&quot;weburl&quot;)=&quot;http://www.wrclub.net&quot;<br>
+  Response.Cookies(&quot;wrclub&quot;).path=&quot;/wrclub/&quot;<br>
+  Response.Cookies(&quot;wrclub&quot;).Expires=#2003-11-30#<br>
+  %&gt; </p>
+<p><font color="#009999"><strong>二、方法</strong></font></p>
+<p>Response.AddHeader Name,Value</p>
+<p>向应答中添加一个新的HTML标题。Name为新HTML标题的名称。Value为该头变量的值。你可以添加任何名称和任何值的HTML标题。它并不替代现有的同名标题。一旦标题被添加，将不能删除。</p>
+<p>Response.AppendToLog String</p>
+<p>向Web服务器的日志条目的末尾添加一字符串。String为要添加到日志文件中的字符串。</p>
+<p>Response.BinaryWrite Data</p>
+<p>该方法可以不经任何字符转换就将制定的信息写到HTTP输出，主要用于写非字符串信息（如客户端应用程序所需的二进制数据等）。Data是要发送的数据。</p>
+<p>Response.Clear</p>
+<p>删除缓冲区的所有HTML输出，但只删除响应正文而不删除响应标题。可以用该方法处理错误情况。需要注意的是，如果Response.Buffer设置为True，则该方法将导致运行是错误。</p>
+<p>Response.End</p>
+<p>强迫Web服务器停止执行更多的脚本，并发送当前结果，文件中剩余的内容将不被处理。如果Response.Buffer设置为True，则调用Response.end将缓冲输出。</p>
+<p>Response.Flush</p>
+<p>对于一个缓冲的回应，发送所有的缓冲信息。如果Response.Buffer设置为True，则该方法将导致运行是错误。</p>
+<p>Response.Redirect URL</p>
+<p>将客户端的浏览器重定向到一个新的Internet地址。Url为新网页的Internet地址。</p>
+<p>Response.Write Variant</p>
+<p>Response.Write是Response对象最常用的方法，该方法可以向浏览器发送字符串。Variant是一字符串或一个具有字符串值的变量。</p>
+<p><strong><font color="#009999">三、属性</font></strong></p>
+<p>Response.Buffer</p>
+<p>缓冲一Active Server Page。回应只到某一页结束或Response.Flush或Response.End方法调用时才发送出去。服务器将输出送给客户端后就不能再设置Buffer属性。</p>
+<p>Response.CacheControl</p>
+<p>指明是否Proxy服务器能缓存Active Server Page。缺省时，其值为FALSE 。当设置其属性为Public时，Proxy服务器可以缓冲由Asp产生的输出。</p>
+<p>Response.CharSet(Charsetname)</p>
+<p>将字符集名称（如GB）附加到Response对象中content-type标题的后面，用来设置web服务器响应给客户端的文件字符编码。一个可能的值为“ISO_LATIN_1”。</p>
+<p>Response.ContentType</p>
+<p>指明回应内容的类型。可能的值为text/plain和image/GIF，默认值text/HTML。</p>
+<p>Response.Expires</p>
+<p>浏览器可以缓存当前页的时间长度，以分钟为单位。</p>
+<p>Response.ExpiresAbsolute</p>
+<p>浏览器不能再缓存当前页的日期和时间。在未到期之前，可以返回。如果未指定时间，该主页在当天午夜到期；如果未指定日期，则到当天指定时间到期。</p>
+<p>True/False = Response.IsClientConnected</p>
+<p>属性为只读，指明自上次调用Response.Write之后，客户端是否仍然和服务器连接。该属性允许用户在客户端和服务器没有联接的情况下有更多的控制。例如，在从客户端提出请求起到服务器做出相应，其间要用去很长一段时间的情况下，这就可能有助于确保在继续处理脚本之前客户端仍是连通的。具有值TRUE或FALSE。</p>
+<p>Response.PICS (PICS 字符串)</p>
+<p>用于添加网页的PICS等级。PICS级别指明某一网页的内容级别，比如暴力或色情的程度等。</p>
+<p>Response.Status = &quot;状态描述字符串&quot;</p>
+<p>用来设置Web服务器要响应的状态行的值。</p>
+<p>&nbsp; </p>
+</body>
+</html>

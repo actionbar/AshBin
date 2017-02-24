@@ -1,0 +1,125 @@
+*{padding:0;margin:0}
+body {background:#fff;font-size:12px;color: #333;font-family:"Tahoma","SimSun"}
+ul{list-style-position:outside;list-style-type: none}
+/*ul是无序的，ol是有序的*/
+li{white-space:nowrap;text-overflow:ellipsis;-o-text-overflow:ellipsis;overflow: hidden;}/*li中内容超过长度后以省略号显示的方法*/
+a{cursor:pointer}
+li,p{line-height:22px}
+select,input,img{vertical-align:middle;}
+a, .b3{color: #333; text-decoration:none}/*发现所有大型"资讯类"网站，都默认链接全部下划线；物流不是资讯类，不需要下划线；资讯类一律用下划线，增加浏览量*/
+.w3 a,.b1{color:#00c;text-decoration:underline}
+.t a, .g a, .n a {color:#000}
+a:hover, .b2,.w3 .b2{color: #c00;text-decoration:underline}
+.br{color:#f00}
+img {border-width:0;}
+.p{float:left}
+.q{float:right}
+.o{clear:both}
+h2{line-height:28px;height:28px;font-weight:400;font-size:14px;}
+
+.f2{color:#c00}
+.f9{color:#f00}
+.fr{text-align:right}
+.fc{text-align:center}
+.fl{text-align:left}
+.f3{color:#888}
+
+.w,.tc{margin: 0px auto; overflow: hidden; width: 990px}
+.t,.th,.s span,.ss,.nr,.nl{background:url(i.png)}
+.lt h3{ background:url(bg_hotsale.gif)}
+.rii{ background:url(icon2011111801.png)}
+
+/*这个可以被很多利用*/
+/*H头部css*/
+.t{margin: 0px auto;LINE-HEIGHT: 26px;HEIGHT: 26px;border-bottom:#dadada 1px solid}
+.t a{padding:0 5px}
+.i{height:75px;width:200px}
+.s span{margin-top:12px;width:418px;height:30px;background-position:0 -357px;display:inline-block;background:url(http://localhost:8080/v-get.com/www/i-1_0_0.png) no-repeat -304px 0;border:2px solid #d00;border-color:#d90000 #c50000 #b90000 #cd0000;vertical-align:top}
+#k{width:350px;height:28px; background:none; border:none}
+.ss{height:30px;width:68px; border:none;background-position:0 -395px;font-family:"Tahoma","SimSun"; font-weight:800;color:#333; cursor:pointer}
+
+.nr{ background-position:0 -315px; width:753px}
+.nr a,.n .nl{display:inline-block; height:40px;line-height:40px;width:85px; text-align:center; font-weight:800;font-size:14px; color:#fff; text-decoration:none}
+
+.nr a:hover,.nr .no{background:url(i.png);background-position:0 -160px}
+.n .nl{background-position:0 -427px;width:237px;}
+.n .nl:hover{background-position:0 -315px}
+
+
+.l{width:233px}
+#d {position:absolute;background:#fcf4ea; border:#d00000 2px solid; border-top-width:0; padding:3px 0; display:none}
+#d h2{padding-right:6px;border-bottom:#fff 1px solid;border-top:#fcf4ea 1px solid;cursor:pointer}
+#d .oh{ background:#fefefe; border-top:#d00000 1px solid;border-bottom:#d00000 1px solid;position:relative;z-index:9;width:226px;padding:0px;}
+.or{position:absolute; top:3px;left:225px; background:#fefefe;padding:9px;width:500px; border:#d00000 1px solid;z-index:8; display:none;height:397px}
+#d a{margin:0 6px 0 9px}
+#d em{float:left; font-style:normal}
+#d h2 span{font-size:12px;float:right}
+#d h2 span a{color:#777}
+#d h2{ text-align:center;}
+#d ul{padding:9px 0}
+#d li{height:26px;line-height:26px;padding-left:15px}
+#d li a{color:#005EA7}
+
+.lt{background:#fffff5; border:#d00 1px solid;width:230px;padding:2px}
+.lt a{padding-left:7px}
+.lt h2{ background:#c00;padding-left:5px}
+.lt h3{ background-position:0 -655px;height:22px;line-height:22px; border:#EFEFEF 1px solid;padding-left:5px}
+.lt ul a{ display:inline-block;width:105px}
+.lt ul a:hover{ background:#ddd}
+
+
+
+h1{font-size:14px;line-height:28px; text-align:center}
+.r{width:743px}
+.ri{width:310px}
+#c,#ci li{border:#eee 1px solid;}
+#c,#c img{height:304px;width:304px}
+#ci li{height:50px; float:left;width:50px;margin:1px;padding:1px}
+#ci .rio{border:#f80 2px solid; padding:0}
+.rii{width:10px;height:50px;margin:2px;border:none}
+.ril{background-position:-142px -254px}
+.rir{background-position:-152px -254px}
+#ci img{height:50px;width:50px}
+
+.rg{ text-align:left;width:415px;padding:9px 9px 0; border-top:#eee 1px solid}
+.rgt li{line-height:35px;height:35px;margin:0 0 0 9px}
+.rgt li b{font-size:16px}
+.rg a{color:#005aa0;margin:0 5px}
+.rgi{ background:url(star.png) -65px 0 no-repeat;}
+.rgi span{padding-left:65px;background:url(star.png) no-repeat ;}
+.rgi a{padding-left:0px}
+
+.rgb,.rgb2{ background:#fffceb; border:#EED97C 1px solid;overflow:hidden;color:#b94708}
+
+
+.rgb p{height:46px;line-height:46px;border-bottom:#eed97c 1px solid;padding:0 9px}
+.rgbt a{padding:3px;border:#ccc 1px solid; text-align:center}
+.rgb .rgbb{padding:17px;border:none}
+
+.rga{ display:inline-block;height:14px;line-height:14px;width:14px;border:#ccc 1px solid; text-align:center}
+#rk{width:30px;height:18px;text-align:center;}
+.rd{display:inline-block;background:#fff;border:#ddd 1px solid;height:22px;line-height:22px;padding:0 3px;margin:0 9px; color:#999}
+#rd{width:93px; border:none;}
+.rs{height:35px;width:80px;margin-right:9px}
+
+.ct h2{ border-bottom:#be0000 2px solid;margin:9px 0}
+.ct h2 a{ display:inline-block;padding:0 9px; background:#F00;margin-right:3px; text-decoration:none;font-weight:800}
+.ct h2 a:hover,.cto{ color:#fff}
+.ct{ border-bottom:#dedede 1px solid;margin:9px 0;padding-bottom:3px}
+#c0{padding:35px}
+#c0 img{ max-width:670px; margin:9px 0}
+#c0 h3{text-align:center}
+#c0 h4{line-height:28px}
+.c0,.c1{ border:1px #ccc solid;margin-bottom:9px}
+.c0{ width:670px}
+.c0 a,.c1 a{color:#880}
+.c1{width:740px}
+.c th,.cr{ background:#F5FAFE;}
+.cr{width:120px; text-align:right}
+.c th,.c td{border:#ccc solid; border-width:0 1px 1px 0;padding:5px}
+.co td{ border:none}
+
+
+.b{ text-align:center;margin-bottom:29px}
+.b a{margin:0 5px}
+.bb img{ height:40px;width:112px;margin:9px 0}

@@ -1,0 +1,120 @@
+<html xmlns:rdl>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<script src="rdl_properties.js"></script>
+<base target="_self">
+</head>
+<body>
+
+<script>
+
+//collFriendProperties=new Array();
+//collFriendDeclarations=new Array();
+//collFriendAtRules=new Array();
+//collFriendElements=new Array();
+//collFriendClasses=new Array();
+
+collFriendProperties=new Array(
+'background','background-color','background-repeat','background-attachment','background-position','background-image','background-position-x','layer-background-color','layer-background-image'
+);
+
+//collIE40=new Array();
+//collIE50=new Array();
+//collIE55=new Array();
+//collIE60=new Array();
+
+collIE40=new Array(
+'A','ACRONYM','ADDRESS','APPLET','B','BASE','BASEFONT','BIG','BLOCKQUOTE','BODY','BUTTON','CAPTION','CENTER','CITE','CODE','COL','COLGROUP','COMMENT','DD','DEL','DFN','DIR','DIV','DL','DT','EM','EMBED','FIELDSET','FONT','FORM','FRAME','FRAMESET','HEAD','Hn','HR','I','IFRAME','IMG','INPUT type=button','INPUT type=checkbox','INPUT type=file','INPUT type=image','INPUT type=password','INPUT type=radio','INPUT type=reset','INPUT type=submit','INPUT type=text','INS','KBD','LABEL','LEGEND','LI','LINK','LISTING','MARQUEE','MENU','META','nextID','NOBR','OBJECT','OL','OPTION','P','PLAINTEXT','PRE','Q','S','SAMP','SCRIPT','SELECT','SMALL','SPAN','STRIKE','STRONG','style','SUB','SUP','TABLE','TBODY','TD','TEXTAREA','TFOOT','TH','THEAD','TITLE','TR','TT','U','UL','VAR','XMP'
+);
+
+collIE50=new Array(
+'currentStyle','CUSTOM','RT','RUBY','runtimeStyle'
+);
+
+collIE55=new Array(
+'defaults'
+);
+
+sStyle=
+'<style>\n'+
+'#idDiv{width:80%;height:120px;padding:6px;background-color:buttonshadow;background-image:url(images/rdl_can.jpg);background-repeat:no-repeat;color:#FFFFFF;}\n'+
+'#idCodeDiv{width:80%;padding:4px;font-family:verdana,tahoma;margin:12px 0px 0px 0px;background-color:#EEEEEE;font-weight:bold;}\n'+
+'<\/style>\n';
+
+sScript=
+'<script>\n'+
+'function rdl_change(e){\n'+
+'var oCodeDiv=document.all("idCodeDiv");\n'+
+'var oDiv=document.all("idDiv");\n'+
+'with (document.all("idSel")){\n'+
+'if (selectedIndex!=0){\n'+
+'var sValue=options[selectedIndex].value;\n'+
+'oDiv.style.backgroundPositionY=sValue;\n'+
+'oCodeDiv.innerText="background-position-y : "+sValue+";";\n'+
+'}\n'+
+'}\n'+
+'}\n'+
+'<\/script>\n';
+
+sCode=
+'<div id=idDiv>请从下方选择背景图的位置。<\/div>\n'+
+'<br>\n'+
+'<select id="idSel" onchange="rdl_change();">\n'+
+'<option value="null">---请选择---\n'+
+
+'<option value="center">center\n'+
+'<option value="top">top\n'+
+'<option value="bottom">bottom\n'+
+'<option value="20px">20px\n'+
+'<option value="90%">90%\n'+
+'<\/select>\n'+
+'<br>\n'+
+'<div id=idCodeDiv>background-position-y : %0 ;<\/div>\n';
+
+iWinWidth=360;
+
+iWinHeight=340;
+
+//bRunCode=false;
+
+//bElements=false;
+
+</script>
+
+<div id=idContent>
+
+<div id=idContentTitle><span id=idTitleName>background-position-y</span>版本：IE4+专有属性　继承性：无</div>
+
+<div class=cssColumnTitle>语法：</div>
+<div>
+<b>background-position-y : </b><i>length</i> | <b>top</b> | <b>center</b> | <b>bottom</b>
+</div>
+
+<div class=cssColumnTitle>取值：</div>
+<table>
+<tr><td nowrap><i> length </i></td><td nowrap><b>:</b></td><td>百分数 | 由浮点数字和单位标识符组成的长度值。请参阅<a href="d_length.html"> 长度单位 </a></td></tr>
+<tr><td nowrap><b> top </b></td><td nowrap><b>:</b></td><td>居顶</td></tr>
+<tr><td nowrap><b> center </b></td><td nowrap><b>:</b></td><td>居中</td></tr>
+<tr><td nowrap><b> bottom </b></td><td nowrap><b>:</b></td><td>居底</td></tr>
+</table>
+
+<div class=cssColumnTitle>说明：</div>
+<div>
+设置或检索对象的背景图像纵坐标位置。必须先指定<a href="c_backgroundimage.html"> background-image </a>属性。<br>
+该属性定位不受对象的补丁属性(<a href="c_padding.html"> padding </a>)设置影响。<br>
+默认值为：<span class=cssDefault> 0% </span>。<br>
+此属性对于<b> currentStyle </b>对象而言是只读的。对于其他对象而言是可读写的。<br>
+对应的脚本特性为<b> backgroundPositionY </b>。
+</div>
+
+<div class=cssColumnTitle>示例：</div>
+<div id=idSimpleCode>
+div { background-image: url("images/aardvark.gif");  background-position-y: 35%; background-repeat:no-repeat; } 
+</div>
+
+</div>
+</body>
+</html>
+
+<!-- Part of RDL(TM) - Written by Rain1977 
+HomeSite: http://www.dhtmlet.com  E-Mail: dhtmlet@hotmail.com -->

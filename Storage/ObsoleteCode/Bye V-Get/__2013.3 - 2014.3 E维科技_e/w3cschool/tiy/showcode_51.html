@@ -1,0 +1,19 @@
+<html>
+<head><link rel="stylesheet" type="text/css" href="showcode.css" /></head>
+<body>
+<pre>
+&lt;html&gt;
+&lt;body&gt;
+<code class="aspcode">&lt;%
+Set fs=Server.CreateObject(&#34;Scripting.FileSystemObject&#34;)
+If (fs.FileExists(&#34;c:\windows\cursors\xxx.cur&#34;))=true Then 
+Response.Write(&#34;文件 c:\windows\cursors\xxx.cur 存在。&#34;)
+Else
+      Response.Write(&#34;文件 c:\windows\cursors\xxx.cur 不存在。&#34;)
+End If
+set fs=nothing
+%&gt;</code>
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+</body>

@@ -1,0 +1,14 @@
+<h2>加关注 · · · · · ·</h2>
+<form action="{eval echo miniurl('follow/'.$who)}" method="post" style="border-top: 1px dashed #ccc; width: 260px; padding-top: 2em;" id="pop_win_form">
+<div class="refertxt"><!--{if $action == 'del'}-->取消对用户 {$whosname} 的关注<!--{else}-->点击确定添加用户 {$whosname} 为您的关注<!--{/if}--> <input type="button" value="确定" id="onbtnpost"><input type="hidden" id="postaction" value="{$action}" /></div>
+</form>
+<script>
+$(function(){
+	$("#onbtnpost").click(function(){
+		$(this).attr('disabled', 'disabled');
+		$.post($("#pop_win_form").attr('action'), {submit_post:1,action:$("#postaction").val()}, function(dat){
+			pop_win(dat);
+		});
+	});
+});
+</script>

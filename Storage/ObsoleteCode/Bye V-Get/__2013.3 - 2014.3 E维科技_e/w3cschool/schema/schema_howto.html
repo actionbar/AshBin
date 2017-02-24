@@ -1,0 +1,175 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="../c3.css" />
+<title>如何使用 XSD？</title>
+</head>
+<body class="xml">
+<div id="wrapper">
+<div id="header">
+<a href="http://e.v-get.com/w3cschool/" style="float:left;">W3CSchool 在线教程</a>
+<div class="q g"><script type="text/javascript">var cpro_id="u1163355"</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div>
+<div id="navfirst">
+<ul id="menu">
+<li id="h"><a href="../h.html">HTML教程</a></li>
+<li id="x"><a href="../x.html">XML教程</a></li>
+<li id="b"><a href="../b.html">浏览器脚本</a></li>
+<li id="s"><a href="../s.html">服务器脚本</a></li>
+<li id="d"><a href="../d.html">dot net教程</a></li>
+<li id="m"><a href="../m.html">多媒体教程</a></li>
+<li id="w"><a href="../w.html">建站手册</a></li>
+</ul>
+</div><div id="navsecond">
+<div id="course">
+<h2>Schema 教程</h2>
+<ul>
+<li><a href="http://e.v-get.com/w3cschool/">XSD 首页</a></li>
+<li><a href="schema_intro.html">XSD 简介</a></li>
+<li><a href="schema_why.html">XSD 为何使用</a></li>
+<li><a href="schema_howto.html">XSD 如何使用</a></li>
+<li><a href="schema_schema.html">XSD &lt;schema&gt;</a></li>
+</ul>
+<h2>简单的类型</h2>
+<ul>
+<li><a href="schema_simple.html">XSD 元素</a></li>
+<li><a href="schema_simple_attributes.html">XSD 属性</a></li>
+<li><a href="schema_facets.html">XSD 限定</a></li>
+</ul>
+<h2>复杂的类型</h2>
+<ul>
+<li><a href="schema_complex.html">XSD 元素</a></li>
+<li><a href="schema_complex_empty.html">XSD 空元素</a></li>
+<li><a href="schema_complex_elements.html">XSD 仅含元素</a></li>
+<li><a href="schema_complex_text.html">XSD 仅含文本</a></li>
+<li><a href="schema_complex_mixed.html">XSD 混合内容</a></li>
+<li><a href="schema_complex_indicators.html">XSD 指示器</a></li>
+<li><a href="schema_complex_any.html">XSD &lt;any&gt;</a></li>
+<li><a href="schema_complex_anyattribute.html" title="">XSD &lt;anyAttribute&gt;</a></li>
+<li><a href="schema_complex_subst.html">XSD 元素替换</a></li>
+<li><a href="schema_example.html">XSD 实例</a></li>
+</ul>
+<h2>数据类型</h2>
+<ul>
+<li><a href="schema_dtypes_string.html">XSD 字符串</a></li>
+<li><a href="schema_dtypes_date.html">XSD 日期</a></li>
+<li><a href="schema_dtypes_numeric.html">XSD 数值</a></li>
+<li><a href="schema_dtypes_misc.html">XSD 杂项</a></li>
+<li><a href="schema_summary.html">XSD 总结</a></li>
+</ul>
+<h2>参考手册</h2>
+<ul>
+<li><a href="schema_elements_ref.html">XSD 参考手册</a></li>
+<li><a href="http://www.w3.org/2001/03/webdata/xsv/">XSD 验证器</a></li>
+</ul>
+</div>
+<div id="selected">
+<h2>建站手册</h2>
+<ul>
+<li><a href="../site/">网站构建</a></li>
+<li><a href="../w3c/">万维网联盟</a></li>
+<li><a href="http://e.v-get.com/w3c/">W3CSchool 教程</a></li>
+<li><a href="../quality/">网站品质</a></li>
+<li><a href="../semweb/">语义网</a></li>
+<li><a href="../hosting/">网站主机</a></li>
+</ul>
+<h2><a href="http://e.v-get.com/w3c/" class="f13">W3CSchool 教程</a></h2><div class="a120x90"><script type="text/javascript">var cpro_id="u1210867";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div></div>
+</div>
+<div id="maincontent">
+<h1>如何使用 XSD？</h1>
+<div id="tpn">
+<ul class="prenext">
+<li class="pre"><a href="schema_why.html">上一页</a></li>
+<li class="next"><a href="schema_schema.html">下一页</a></li>
+</ul>
+</div>
+<div id="intro">
+<p><strong>XML 文档可对 DTD 或 XML Schema 进行引用。</strong></p>
+</div>
+<div>
+<h2>一个简单的 XML 文档：</h2>
+<p>请看这个名为 &#34;note.xml&#34; 的 XML 文档：</p>
+<pre>&lt;?xml version=&#34;1.0&#34;?&gt;
+&lt;note&gt;
+&lt;to&gt;George&lt;/to&gt;
+&lt;from&gt;John&lt;/from&gt;
+&lt;heading&gt;Reminder&lt;/heading&gt;
+&lt;body&gt;Don't forget the meeting!&lt;/body&gt;
+&lt;/note&gt;</pre>
+</div>
+<div>
+<h2>DTD 文件</h2>
+<p>下面这个例子是名为 &#34;note.dtd&#34; 的 DTD 文件，它对上面那个 XML 文档的元素进行了定义：</p>
+<pre>&lt;!ELEMENT note (to, from, heading, body)&gt;
+&lt;!ELEMENT to (#PCDATA)&gt;
+&lt;!ELEMENT from (#PCDATA)&gt;
+&lt;!ELEMENT heading (#PCDATA)&gt;
+&lt;!ELEMENT body (#PCDATA)&gt;</pre>
+<p>第 1 行定义 note 元素有四个子元素：&#34;to, from, heading, body&#34;。</p>
+<p>第 2-5 行定义了 to, from, heading, body 元素的类型是 &#34;#PCDATA&#34;。</p>
+</div>
+<div>
+<h2>XML Schema</h2>
+<p>下面这个例子是一个名为 &#34;note.xsd&#34; 的 XML Schema 文件，它定义了上面那个 XML 文档的元素：</p>
+<pre>&lt;?xml version=&#34;1.0&#34;?&gt;
+&lt;xs:schema xmlns:xs=&#34;http://www.w3.org/2001/XMLSchema&#34;
+targetNamespace=&#34;http://e.v-get.com&#34;
+xmlns=&#34;http://e.v-get.com&#34;
+elementFormDefault=&#34;qualified&#34;&gt;
+&lt;xs:element name=&#34;note&#34;&gt;
+    &lt;xs:complexType&gt;
+      &lt;xs:sequence&gt;
+	&lt;xs:element name=&#34;to&#34; type=&#34;xs:string&#34;/&gt;
+	&lt;xs:element name=&#34;from&#34; type=&#34;xs:string&#34;/&gt;
+	&lt;xs:element name=&#34;heading&#34; type=&#34;xs:string&#34;/&gt;
+	&lt;xs:element name=&#34;body&#34; type=&#34;xs:string&#34;/&gt;
+      &lt;/xs:sequence&gt;
+    &lt;/xs:complexType&gt;
+&lt;/xs:element&gt;
+&lt;/xs:schema&gt;</pre>
+<p>note 元素是一个复合类型，因为它包含其他的子元素。其他元素 (to, from, heading, body) 是简易类型，因为它们没有包含其他元素。您将在下面的章节学习更多有关复合类型和简易类型的知识。</p>
+</div>
+<div>
+<h2>对 DTD 的引用</h2>
+<p>此文件包含对 DTD 的引用：</p>
+<pre>&lt;?xml version=&#34;1.0&#34;?&gt;
+<code>&lt;!DOCTYPE note SYSTEM &#34;http://e.v-get.com/dtd/note.dtd&#34;&gt;</code>
+&lt;note&gt;
+&lt;to&gt;George&lt;/to&gt;
+&lt;from&gt;John&lt;/from&gt;
+&lt;heading&gt;Reminder&lt;/heading&gt;
+&lt;body&gt;Don't forget the meeting!&lt;/body&gt;
+&lt;/note&gt;</pre>
+</div>
+<div>
+<h2>对 XML Schema 的引用</h2>
+<p>此文件包含对 XML Schema 的引用：</p>
+<pre>&lt;?xml version=&#34;1.0&#34;?&gt;
+&lt;note
+xmlns=&#34;http://e.v-get.com&#34;
+xmlns:xsi=&#34;http://www.w3.org/2001/XMLSchema-instance&#34;
+<code>xsi:schemaLocation=&#34;http://e.v-get.com note.xsd&#34;</code>&gt;
+&lt;to&gt;George&lt;/to&gt;
+&lt;from&gt;John&lt;/from&gt;
+&lt;heading&gt;Reminder&lt;/heading&gt;
+&lt;body&gt;Don't forget the meeting!&lt;/body&gt;
+&lt;/note&gt;</pre>
+</div>
+<div  id="bpn">
+<ul class="prenext">
+<li class="pre"><a href="schema_why.html">上一页</a></li>
+<li class="next"><a href="schema_schema.html">下一页</a></li>
+</ul>
+</div>
+</div>
+<div id="sidebar">
+<div class="rs"></div>
+<div id="tools">
+<h5 id="tools_reference"><a href="schema_elements_ref.html">XML Schema 参考手册</a></h5>
+</div>
+<div class="a120x600"><script type="text/javascript">var cpro_id="u1293136";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div><div class="b"></div>
+</div>
+</body>
+</html>

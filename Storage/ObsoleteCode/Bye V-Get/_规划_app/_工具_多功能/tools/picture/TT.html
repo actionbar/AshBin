@@ -1,0 +1,377 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>材质文字效果产生器</title>
+<meta name="keywords" content="材质文字效果产生器">
+<meta content="材质文字效果产生器,文字效果,材质文字,效果产生" name="description" />
+<style type="text/css">
+<!--
+/*全局*/
+body {margin:0; padding:0;font-size:12px;color:#666;}
+table {font-size:12px;line-height:20px}
+/*链接样式*/
+a:link,a:visited {color: #666; text-decoration:none;}
+a:hover,a:active {color: #c00; text-decoration:underline;}
+-->
+</style>
+<!------------------------------------颜色代码生成器------------------------------------>
+<SCRIPT LANGUAGE=JavaScript>
+var SelRGB = '';
+var DrRGB = '';
+var SelGRAY = '120';
+var SelRGB2 = '';
+var DrRGB2 = '';
+var SelGRAY2 = '120';
+
+var hexch = new Array('0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F');
+
+function ToHex(n)
+{	var h, l;
+
+	n = Math.round(n);
+	l = n % 16;
+	h = Math.floor((n / 16)) % 16;
+	return (hexch[h] + hexch[l]);
+}
+
+function DoColor(c, l)
+{ var r, g, b;
+
+  r = '0x' + c.substring(1, 3);
+  g = '0x' + c.substring(3, 5);
+  b = '0x' + c.substring(5, 7);
+  
+  if(l > 120)
+  {
+    l = l - 120;
+
+    r = (r * (120 - l) + 255 * l) / 120;
+    g = (g * (120 - l) + 255 * l) / 120;
+    b = (b * (120 - l) + 255 * l) / 120;
+  }else
+  {
+    r = (r * l) / 120;
+    g = (g * l) / 120;
+    b = (b * l) / 120;
+  }
+
+  return '#' + ToHex(r) + ToHex(g) + ToHex(b);
+}
+
+function EndColor(x)
+{ var i;
+     
+  if(x==0){
+ 
+  if(DrRGB != SelRGB)
+  {
+    DrRGB = SelRGB;
+    for(i = 0; i <= 30; i ++)
+    //多个颜色选择器
+     
+      GrayTable.rows(i).bgColor = DoColor(SelRGB, 240 - i * 8);
+       
+   }
+
+   SelColor.value = DoColor(SelRGB,SelGRAY);
+  ShowColor.style.backgroundColor =  SelColor.value;
+  
+  
+  }
+  
+    if(x==1){
+ 
+  if(DrRGB2 != SelRGB2)
+  {
+    DrRGB2 = SelRGB2;
+    for(i = 0; i <= 30; i ++)
+    //多个颜色选择器
+     
+      GrayTable2.rows(i).bgColor = DoColor(SelRGB2, 240 - i * 8);
+       
+   }
+
+   SelColor2.value = DoColor(SelRGB2,SelGRAY2);
+  ShowColor2.style.backgroundColor =  SelColor2.value;
+  
+  
+  }
+
+  
+   okhtml();
+}
+</SCRIPT>
+
+<SCRIPT LANGUAGE=JavaScript FOR=ColorTable EVENT=onclick>
+  SelRGB = event.srcElement.bgColor;
+  EndColor(0);
+</SCRIPT>
+<SCRIPT LANGUAGE=JavaScript FOR=ColorTable2 EVENT=onclick>
+  SelRGB2 = event.srcElement.bgColor;
+  EndColor(1);
+</SCRIPT>
+<!--
+<SCRIPT LANGUAGE=JavaScript FOR=ColorTable EVENT=onmouseover>
+  RGB.innerText = event.srcElement.bgColor;
+  EndColor();
+</SCRIPT>
+
+<SCRIPT LANGUAGE=JavaScript FOR=ColorTable EVENT=onmouseout>
+  RGB.innerText = SelRGB;
+  EndColor();
+</SCRIPT>
+-->
+<SCRIPT LANGUAGE=JavaScript FOR=GrayTable EVENT=onclick>
+  SelGRAY = event.srcElement.title;
+  EndColor(0);
+</SCRIPT>
+<SCRIPT LANGUAGE=JavaScript FOR=GrayTable2 EVENT=onclick>
+  SelGRAY2 = event.srcElement.title;
+  EndColor(1);
+</SCRIPT>
+<!--
+<SCRIPT LANGUAGE=JavaScript FOR=GrayTable EVENT=onmouseover>
+  GRAY.innerText = event.srcElement.title;
+  EndColor();
+</SCRIPT>
+
+<SCRIPT LANGUAGE=JavaScript FOR=GrayTable EVENT=onmouseout>
+  GRAY.innerText = SelGRAY;
+  EndColor();
+</SCRIPT>
+-->
+<!--
+<SCRIPT LANGUAGE=JavaScript FOR=Ok EVENT=onclick>
+  window.returnValue = SelColor.value;
+  window.close();
+</SCRIPT>
+-->
+<!------------------------------------颜色代码生成器------------------------------------>	
+	
+<!-----------------------------------主程式------------------------------------>
+<SCRIPT LANGUAGE=JavaScript>
+function okhtml(){
+var t_size = document.all.Layer_num.value ;
+var t_height = document.all.theight.value ;
+var t_width = document.all.twidth.value ;
+var t_width2 ;
+var t_color = document.all.SelColor.value ;
+var t_texture = document.all.texturex.value ;
+var t_SelColor2 =  document.all.SelColor2.value;
+var t_curl =  document.all.curl.value;
+var t_curl2 =  document.all.curl2.value;
+var t_text =  document.all.entertext.value;
+var  t_bold_htm ='';
+var t_bold_htm2 ='';
+var under_htm = '';
+
+if(document.all.t_bold.checked==true){ 
+t_bold_htm ='<b>';
+t_bold_htm2 ='</b>';
+}
+
+var html ;
+
+if(document.all.tcheck.checked==true){
+  t_height=document.all.theight.value=parseInt(document.all.Layer_num.value)+6;
+  t_width=document.all.twidth.value=parseInt(document.all.entertext.value.length)*(parseInt(document.all.Layer_num.value));
+ }
+
+t_width2 = t_width * 0.97 ;
+
+var css_rad = document.all.take;
+
+if ( css_rad[0].checked ) {
+html = '<DIV id=texture style="WIDTH: '+t_width+'px; HEIGHT:'+t_height+'px"><IMG height=1 src="'+t_curl+'" width='+t_width+'px align=right><IMG height='+t_height+'px src="'+t_texture+'" width='+t_width2+'px align=right>';
+html = html +'<DIV style="FONT-SIZE: '+t_size+'px; FILTER: Chroma(color='+t_SelColor2+'); FLOAT: left; WIDTH: '+t_width+'px; HEIGHT:'+t_height+'px; BACKGROUND-COLOR:'+t_color+'" align=center><FONT color='+t_SelColor2+'>'+t_bold_htm+t_text+t_bold_htm2+'</FONT></DIV></DIV>';
+}else if(css_rad[1].checked ) {
+ if(document.all.checkunder.checked==true){ 
+under_htm='background-repeat:repeat-x;background-position:left bottom;';
+}
+html = '<table><tr><td><div style="FONT-SIZE: '+t_size+'px; BACKGROUND-COLOR:'+t_color+'">(前段內容)+</div></td><td  style="'+under_htm+'"  background='+t_curl2+'><div style="FONT-SIZE: '+t_size+'px; BACKGROUND-COLOR:'+t_color+'"><FONT color='+t_SelColor2+'>'+t_bold_htm+t_text+t_bold_htm2+'</FONT></div></td><td><div style="FONT-SIZE: '+t_size+'px; BACKGROUND-COLOR:'+t_color+'">+(后段內容)</div></td></tr></table>';
+
+}else if(css_rad[2].checked ) {
+     if(document.all.checkunder.checked==true){ 
+under_htm=';background-image:url('+t_curl2+');background-repeat:repeat-x;background-position:bottom;';
+}
+html = '<DIV id=texture2 style="WIDTH: '+t_width+'px; HEIGHT:'+t_height+'px;background-image:url('+t_texture+');">';
+html = html +'<DIV style="FONT-SIZE: '+t_size+'px; FILTER: Chroma(color='+t_SelColor2+'); WIDTH: '+t_width+'px; HEIGHT:'+t_height+'px; BACKGROUND-COLOR:'+t_color+under_htm+' " align=center><FONT color='+t_SelColor2+'>'+t_bold_htm+t_text+t_bold_htm2+'</FONT></DIV></DIV>';
+}else if(css_rad[3].checked ) {
+     if(document.all.checkunder.checked==true){ 
+under_htm=';background-image:url('+t_curl2+');background-repeat:repeat-x;background-position:bottom;';
+}
+html = '<div id=texture3 style="FONT-SIZE: '+t_size+'px; WIDTH: '+t_width+'px; HEIGHT:'+t_height+'px; BACKGROUND-COLOR:'+t_color+under_htm+' " align=center><FONT color='+t_SelColor2+'>'+t_bold_htm+t_text+t_bold_htm2+'</FONT></div>';
+}
+
+
+
+
+document.all.outhtml.value = html ;
+document.all.divResult.innerHTML = "复制起点→ ●"+html+"● ←复制终点";
+
+    
+
+
+}
+</script>
+<!-----------------------------------主程式------------------------------------>
+</HEAD>
+<BODY onLoad="okhtml()">
+   <div align="center"><div style="width:690px">
+	<div id="texture2" style="width: 449px; height: 42px; background-image: url('images/texture_01.gif')">
+		<div style="FONT-SIZE: 12px; FILTER: Chroma(color=#0C0B0A); WIDTH: 457px; HEIGHT: 42px; BACKGROUND-COLOR: #ffffff" align="center"><font color="#0c0b0a"><br>材质文字效果产生器<FONT face=Verdana>(Texture Text 
+Effects)</FONT></font></div>
+	</div><input type="radio" value="0" checked name="take" onClick="css2.style.display='block';css3.style.display='none';css6.style.display='block';document.all.check2.checked=false;table2.style.display='none';document.all.checkunder.checked=false;css7.style.display='inline';css8.style.display='none';okhtml();"><font color="#FF0000">MSN Spaces 适用语法</font>&nbsp;<input type="radio" value="1" name="take" onClick="css2.style.display='none';css3.style.display='block';css6.style.display='none';document.all.check2.checked=true;table2.style.display='inline';document.all.checkunder.checked=true;css7.style.display='none';css8.style.display='inline';document.all.SelColor2.value='#333333'; document.all.SelColor.value='TRANSPARENT'; okhtml();"><font color="#FF0000">MSN 
+Spaces 适用语法(只有自订文字底线)</font> &nbsp; 
+<input type="radio" value="2" name="take" onClick="css2.style.display='none';css3.style.display='block';css6.style.display='block';css7.style.display='inline';css8.style.display='none';okhtml();">标准CSS语法(附加自订文字底线)&nbsp;<input type="radio" value="3" name="take" onClick="css2.style.display='none';css3.style.display='block';css6.style.display='none';document.all.check2.checked=true;table2.style.display='inline';document.all.checkunder.checked=true;css7.style.display='none';css8.style.display='inline';document.all.SelColor2.value='#333333';document.all.SelColor.value='TRANSPARENT'; okhtml();">标准CSS语法(只有自订文字底线)&nbsp; 
+
+<fieldset style="border:1px solid #0046D5; padding:2px; ">
+<legend><b>基本设定</b></legend>
+文字大小：<INPUT id="Layer_num" type="text" value="12" name="Layer_num" size="6" onChange="okhtml();" onKeyUp="okhtml();">px<SELECT id="Select_layer" name="Select_layer" onChange="document.all.Layer_num.value = document.all.Select_layer.value;okhtml();">
+				<OPTION value="10">10</OPTION>
+				<OPTION value="11">11</OPTION>
+				<OPTION value="12" selected>12</OPTION>
+				<OPTION value="13">13</OPTION>
+				<OPTION value="14">14</OPTION>
+				<OPTION value="15">15</OPTION>
+				<OPTION value="16">16</OPTION>
+				<OPTION value="17">17</OPTION>
+				<OPTION value="18">18</OPTION>
+				<OPTION value="19">19</OPTION>
+				<OPTION value="20">20</OPTION>
+				<OPTION value="21">21</OPTION>
+				<OPTION value="22">22</OPTION>
+				<OPTION value="23">23</OPTION>
+				<OPTION value="24">24</OPTION>
+				<OPTION value="26">26</OPTION>
+				<OPTION value="27">27</OPTION>
+				<OPTION value="28">28</OPTION>
+				<OPTION value="29">29</OPTION>
+				<OPTION value="30">30</OPTION>
+				<OPTION value="31">31</OPTION>
+				<OPTION value="32">32</OPTION>
+				<OPTION value="33">33</OPTION>
+				<OPTION value="34">34</OPTION>
+				<OPTION value="35">35</OPTION>
+				</SELECT> <font color="#808080">←可设定成超大字体（如300px)</font><br>
+材质高度：<input type="text" name="theight" size="15" onChange="okhtml();" onKeyUp="okhtml();">px　宽度：<input type="text" name="twidth" size="15"  onchange="okhtml();" onKeyUp="okhtml();">px　<input type="checkbox" name="tcheck" value="ON" checked>开启自动材质高度与宽度设定<font color="#808080"> ←宽度难免不理想，可关闭后修改大小</font><br>
+<div style="width: 98%; height: 42px; border: 1px dotted #FF9966" name=css6 id=css6>
+材质样式：<input  type="radio" value="0" checked name="style" onClick="document.all.texturex.value='http://tools.kqiqi.com/picture/images/texture_01.gif'; okhtml();"><img src=images/texture_01.gif width="112" height=10>　<input type="radio" value="0" name="style" onClick="document.all.texturex.value='http://tools.kqiqi.com/picture/images/texture_02.gif'; okhtml();" ><img src=images/texture_02.gif width="112" height=10>
+<input type="radio" value="2" name="style" onClick="document.all.texturex.value='http://tools.kqiqi.com/picture/images/texture_03.gif'; okhtml();"><img src=images/texture_03.gif width="112" height=10>
+<input type="radio" value="3" name="style" onClick="document.all.texturex.value='http://tools.kqiqi.com/picture/images/texture_04.gif'; okhtml();"><img src=images/texture_04.gif width="112" height=10>
+<input type="radio" value="4" name="style" onClick="document.all.texturex.value='http://tools.kqiqi.com/picture/images/texture_05.gif'; okhtml();"><img src=images/texture_05.gif width="112" height=10> 
+<font color="#808080">←这里提供几个材质图片</font><br>
+材质网址：<input  onchange="okhtml();" type="text" name="texturex" size="98" id="texturex" value="http://tools.kqiqi.com/picture/images/texture_01.gif" onKeyUp="okhtml();"><font color="#808080">←可换成任意图片</font><br>
+</div>文字內容：<input onKeyUp="okhtml();" onChange="okhtml();" type="text" name="entertext" size="84" value=" 这里可以先输入预设內容，复制后修改亦可">
+<input type="checkbox" value="1" name="t_bold" onClick=" okhtml();" >粗体
+ 
+<font color="#808080">&nbsp;←如果有字跑位或消失，请在最前面多加一个半角空格</font><br>
+背景颜色：<input  onchange="okhtml();" type="text" name="SelColor" size="15" id=SelColor value=#FFFFFF onKeyUp="okhtml();"><div style="border-style:solid; border-width:1px; display:inline; width:35px; height:19px" ID=ShowColor  name=ShowColor></div>&nbsp;<input type="checkbox" name="colorbox" value="ON" onClick="if(document.all.colorbox.checked==true){colortable.style.display='inline';}else{colortable.style.display='none';}">开启选色器<div  name=colortable id=colortable style="display:none;">
+<table border="0" cellspacing="1" cellpadding="0"><tr><td>
+<TABLE ID=ColorTable BORDER=0 CELLSPACING=0 CELLPADDING=0 style='cursor:hand'>
+<SCRIPT LANGUAGE=JavaScript>
+function wc(r, g, b, n)
+{
+	r = ((r * 16 + r) * 3 * (15 - n) + 0x80 * n) / 15;
+	g = ((g * 16 + g) * 3 * (15 - n) + 0x80 * n) / 15;
+	b = ((b * 16 + b) * 3 * (15 - n) + 0x80 * n) / 15;
+
+	document.write('<TD BGCOLOR=#' + ToHex(r) + ToHex(g) + ToHex(b) + ' height=8 width=8></TD>');
+}
+
+var cnum = new Array(1, 0, 0, 1, 1, 0, 0, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 1, 1, 0, 0);
+
+  for(i = 0; i < 16; i ++)
+  {
+     document.write('<TR>');
+     for(j = 0; j < 30; j ++)
+     {
+     	n1 = j % 5;
+     	n2 = Math.floor(j / 5) * 3;
+     	n3 = n2 + 3;
+
+     	wc((cnum[n3] * n1 + cnum[n2] * (5 - n1)),
+     		(cnum[n3 + 1] * n1 + cnum[n2 + 1] * (5 - n1)),
+     		(cnum[n3 + 2] * n1 + cnum[n2 + 2] * (5 - n1)), i);
+     }
+
+     document.writeln('</TR>');
+  }
+</SCRIPT>
+</TABLE></td><td>
+<TABLE ID=GrayTable BORDER=0 CELLSPACING=0 CELLPADDING=0 style='cursor:hand'>
+<SCRIPT LANGUAGE=JavaScript>
+  for(i = 255; i >= 0; i -= 8.5)
+     document.write('<TR BGCOLOR=#' + ToHex(i) + ToHex(i) + ToHex(i) + '><TD TITLE=' + Math.floor(i * 16 / 17) + ' height=4 width=20></TD></TR>');
+</SCRIPT></TABLE></td></tr></table></div></fieldset>
+<button name="再产生" onClick="okhtml();" style="width: 53; height: 21" >产生</button>
+HTML:<input  type="text" name="outhtml" size="108" value="">
+<br><br>
+<font color="#0046D5">
+<b>显示结果:</b></font>
+
+<hr><div id="divResult"></div><hr>
+
+<br><br>
+<input type="checkbox" name="check2" value="ON" onClick="if(document.all.check2.checked==true){table2.style.display='inline';}else{table2.style.display='none';}">开启进阶设定
+<div  id=table2 name=table2 style="display:none"> 
+<fieldset style="border:1px solid #0046D5; padding:2px; ">
+<legend><b>进阶设定</b></legend>
+<div id=css7 name=css7 style="display:inline">蓝幕颜色：<font color="#808080">(建议接近背景颜色但不可与背景颜色相同色码,非IE的替代颜色)</font></div><div id=css8 name=css8 style="display:none"><font color="#FF00FF">字体颜色：</font><button  name="透明背景"  onclick="document.all.SelColor.value='TRANSPARENT';okhtml();">透明背景</button></div><br><input  onchange="okhtml();" type="text" name="SelColor2" size="15" value="#FCFBFA" onKeyUp="okhtml();"><div style="border-style:solid; border-width:1px; display:inline; width:35px; height:19px" ID=ShowColor2  name=ShowColor2></div>&nbsp;<input type="checkbox" name="colorbox2" value="ON" onClick="if(document.all.colorbox2.checked==true){colortable2.style.display='inline';}else{colortable2.style.display='none';}">开启选色器<div  name=colortable2 id=colortable2 style="display:none;">
+<table border="0" cellspacing="1" cellpadding="0"><tr><td>
+<TABLE ID=ColorTable2 BORDER=0 CELLSPACING=0 CELLPADDING=0 style='cursor:hand'>
+<SCRIPT LANGUAGE=JavaScript>
+function wc(r, g, b, n)
+{
+	r = ((r * 16 + r) * 3 * (15 - n) + 0x80 * n) / 15;
+	g = ((g * 16 + g) * 3 * (15 - n) + 0x80 * n) / 15;
+	b = ((b * 16 + b) * 3 * (15 - n) + 0x80 * n) / 15;
+
+	document.write('<TD BGCOLOR=#' + ToHex(r) + ToHex(g) + ToHex(b) + ' height=8 width=8></TD>');
+}
+
+var cnum = new Array(1, 0, 0, 1, 1, 0, 0, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 1, 1, 0, 0);
+
+  for(i = 0; i < 16; i ++)
+  {
+     document.write('<TR>');
+     for(j = 0; j < 30; j ++)
+     {
+     	n1 = j % 5;
+     	n2 = Math.floor(j / 5) * 3;
+     	n3 = n2 + 3;
+
+     	wc((cnum[n3] * n1 + cnum[n2] * (5 - n1)),
+     		(cnum[n3 + 1] * n1 + cnum[n2 + 1] * (5 - n1)),
+     		(cnum[n3 + 2] * n1 + cnum[n2 + 2] * (5 - n1)), i);
+     }
+
+     document.writeln('</TR>');
+  }
+</SCRIPT>
+</TABLE></td><td>
+<TABLE ID=GrayTable2 BORDER=0 CELLSPACING=0 CELLPADDING=0 style='cursor:hand'>
+<SCRIPT LANGUAGE=JavaScript>
+  for(i = 255; i >= 0; i -= 8.5)
+     document.write('<TR BGCOLOR=#' + ToHex(i) + ToHex(i) + ToHex(i) + '><TD TITLE=' + Math.floor(i * 16 / 17) + ' height=4 width=20></TD></TR>');
+</SCRIPT></TABLE></td></tr></table></div><br>
+<div id=css2 name=css2>透明图网址：<input onKeyUp="okhtml();" onChange="okhtml();" type="text" name="curl" size="96" value="http://tools.kqiqi.com/picture/images/toumingtu.gif">
+</div>
+<div id=css3 name=css3  style="border:3px double #FF5050;display:none">
+	<input type="checkbox" name="checkunder" value="ON" onClick="okhtml();">开启文字底线图片
+
+<font color="#FF00FF"><br>
+	</font>底线样式：<input  type="radio" value="0" checked name="styleA" onClick="document.all.curl2.value='http://tools.kqiqi.com/picture/images/line_01.gif'; okhtml();"><img src=images/line_01.gif width="112" height=10>　
+	<input type="radio" value="1" name="styleA" onClick="document.all.curl2.value='http://tools.kqiqi.com/picture/images/line_02.gif'; okhtml();"  ><img src=images/line_02.gif width="112" height=10>
+<input type="radio" value="2" name="styleA" onClick="document.all.curl2.value='http://tools.kqiqi.com/picture/images/line_03.gif'; okhtml();" ><img src=images/line_03.gif width="112" height=10>
+<input type="radio" value="3" name="styleA" onClick="document.all.curl2.value='http://tools.kqiqi.com/picture/images/line_04.gif'; okhtml();" ><img src=images/line_04.gif width="112" height=10>
+<input type="radio" value="4" name="styleA" onClick="document.all.curl2.value='http://tools.kqiqi.com/picture/images/line_05.gif'; okhtml();" ><img src=images/line_05.gif width="112" height=10> 
+<font color="#808080">←这里提供几个底线图片</font><font color="#FF00FF"><br>
+	文字底线图片网址：</font><input onKeyUp="okhtml();" onChange="okhtml();" type="text" name="curl2" size="106" value="http://tools.kqiqi.com/picture/images/line_01.gif"> <font color="#808080">←可换成任意图片</font></div>
+</fieldset></div>
+<br>
+</div></div>
+       
+</body>
+</html>

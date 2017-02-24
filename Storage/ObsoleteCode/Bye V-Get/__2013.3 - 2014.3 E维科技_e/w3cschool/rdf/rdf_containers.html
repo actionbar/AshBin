@@ -1,0 +1,153 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="../c3.css" />
+<title>RDF 容器元素</title>
+</head>
+<body class="xml">
+<div id="wrapper">
+<div id="header">
+<a href="http://e.v-get.com/w3cschool/" style="float:left;">W3CSchool 在线教程</a>
+<div class="q g"><script type="text/javascript">var cpro_id="u1163355"</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div>
+<div id="navfirst">
+<ul id="menu">
+<li id="h"><a href="../h.html">HTML教程</a></li>
+<li id="x"><a href="../x.html">XML教程</a></li>
+<li id="b"><a href="../b.html">浏览器脚本</a></li>
+<li id="s"><a href="../s.html">服务器脚本</a></li>
+<li id="d"><a href="../d.html">dot net教程</a></li>
+<li id="m"><a href="../m.html">多媒体教程</a></li>
+<li id="w"><a href="../w.html">建站手册</a></li>
+</ul>
+</div><div id="navsecond">
+<div id="course">
+<h2>RDF 教程</h2>
+<ul>
+<li><a href="http://e.v-get.com/w3cschool/">RDF 首页</a></li>
+<li><a href="rdf_intro.html">RDF 简介</a></li>
+<li><a href="rdf_rules.html" title="">RDF 规则</a></li>
+<li><a href="rdf_example.html" title="">RDF 实例</a></li>
+<li><a href="rdf_main.html" title="">RDF 元素</a></li>
+<li><a href="rdf_containers.html" title="">RDF 容器</a></li>
+<li><a href="rdf_collections.html" title="">RDF 集合</a></li>
+<li><a href="rdf_schema.html" title="">RDF Schema</a></li>
+<li><a href="rdf_dublin.html" title="">RDF 都柏林核心</a></li>
+<li><a href="rdf_owl.html" title="">RDF OWL</a></li>
+</ul>
+</div>
+<div id="selected">
+<h2>建站手册</h2>
+<ul>
+<li><a href="../site/">网站构建</a></li>
+<li><a href="../w3c/">万维网联盟</a></li>
+<li><a href="http://e.v-get.com/w3c/">W3CSchool 教程</a></li>
+<li><a href="../quality/">网站品质</a></li>
+<li><a href="../semweb/">语义网</a></li>
+<li><a href="../hosting/">网站主机</a></li>
+</ul>
+<h2><a href="http://e.v-get.com/w3c/" class="f13">W3CSchool 教程</a></h2><div class="a120x90"><script type="text/javascript">var cpro_id="u1210867";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div></div>
+</div>
+<div id="maincontent">
+<h1>RDF 容器元素</h1>
+<div id="tpn">
+<ul class="prenext">
+<li class="pre"><a href="rdf_main.html">上一页</a></li>
+<li class="next"><a href="rdf_collections.html">下一页</a></li>
+</ul>
+</div>
+<div id="intro">
+<p><strong>RDF 容器用于描述一组事物。举个例子，把某本书的作者列在一起。</strong></p>
+<p><strong>下面的 RDF 元素用于描述这些的组：&lt;Bag&gt;、&lt;Seq&gt; 以及 &lt;Alt&gt;。</strong></p>
+</div>
+<div>
+<h2>&lt;rdf:Bag&gt; 元素</h2>
+<p>&lt;rdf:Bag&gt; 元素用于描述一个规定为无序的值的列表。</p>
+<p>&lt;rdf:Bag&gt; 元素可包含重复的值。</p>
+<h3>实例</h3>
+<pre>&lt;?xml version=&#34;1.0&#34;?&gt;
+&lt;rdf:RDF
+xmlns:rdf=&#34;http://www.w3.org/1999/02/22-rdf-syntax-ns#&#34; 
+xmlns:cd=&#34;http://www.recshop.fake/cd#&#34;&gt;
+&lt;rdf:Description
+ rdf:about=&#34;http://www.recshop.fake/cd/Beatles&#34;&gt;
+ &lt;cd:artist&gt;
+   &lt;rdf:Bag&gt;
+     &lt;rdf:li&gt;John&lt;/rdf:li&gt;
+     &lt;rdf:li&gt;Paul&lt;/rdf:li&gt;
+     &lt;rdf:li&gt;George&lt;/rdf:li&gt;
+     &lt;rdf:li&gt;Ringo&lt;/rdf:li&gt;
+   &lt;/rdf:Bag&gt;
+  &lt;/cd:artist&gt;
+&lt;/rdf:Description&gt;
+&lt;/rdf:RDF&gt;</pre>
+</div>
+<div>
+<h2>&lt;rdf:Seq&gt; 元素</h2>
+<p>&lt;rdf:Seq&gt; 元素用于描述一个规定为有序的值的列表 (比如一个字母顺序的排序）。</p>
+<p>&lt;rdf:Bag&gt; 元素可包含重复的值。</p>
+<h3>实例</h3>
+<pre>&lt;?xml version=&#34;1.0&#34;?&gt;
+&lt;rdf:RDF
+xmlns:rdf=&#34;http://www.w3.org/1999/02/22-rdf-syntax-ns#&#34; 
+xmlns:cd=&#34;http://www.recshop.fake/cd#&#34;&gt;
+&lt;rdf:Description
+ rdf:about=&#34;http://www.recshop.fake/cd/Beatles&#34;&gt;
+ &lt;cd:artist&gt;	
+   &lt;rdf:Seq&gt;
+     &lt;rdf:li&gt;George&lt;/rdf:li&gt;
+     &lt;rdf:li&gt;John&lt;/rdf:li&gt;
+     &lt;rdf:li&gt;Paul&lt;/rdf:li&gt;
+     &lt;rdf:li&gt;Ringo&lt;/rdf:li&gt;
+   &lt;/rdf:Seq&gt;
+  &lt;/cd:artist&gt;
+&lt;/rdf:Description&gt;
+&lt;/rdf:RDF&gt;</pre>
+</div>
+<div>
+<h2>&lt;rdf:Alt&gt; 元素</h2>
+<p>&lt;rdf:Alt&gt; 元素用于一个可替换的值的列表 (用户仅可选择这些值的其中之一）。</p>
+<h3>实例</h3>
+<pre>&lt;?xml version=&#34;1.0&#34;?&gt;
+&lt;rdf:RDF
+xmlns:rdf=&#34;http://www.w3.org/1999/02/22-rdf-syntax-ns#&#34; 
+xmlns:cd=&#34;http://www.recshop.fake/cd#&#34;&gt;
+&lt;rdf:Description
+ rdf:about=&#34;http://www.recshop.fake/cd/Beatles&#34;&gt;
+ &lt;cd:format&gt;	
+   &lt;rdf:Alt&gt;
+     &lt;rdf:li&gt;CD&lt;/rdf:li&gt;
+     &lt;rdf:li&gt;Record&lt;/rdf:li&gt;
+     &lt;rdf:li&gt;Tape&lt;/rdf:li&gt;
+   &lt;/rdf:Alt&gt;
+  &lt;/cd:format&gt;
+&lt;/rdf:Description&gt;
+&lt;/rdf:RDF&gt;</pre>
+</div>
+<div>
+<h2>RDF 术语</h2>
+<p>在上面的例子中，我们在描述容器元素时已经讨论了“值的列表”。在 RDF 中，这些“值的列表”被称为成员 (members）。</p>
+<p>因此，我们可以这么说：</p>
+<ul>
+<li>一个容器是一个包含事物的资源</li>
+<li>被包含的事物被称为成员 (不能称为“值的列表”）。</li>
+</ul>
+</div>
+<div id="bpn">
+<ul class="prenext">
+<li class="pre"><a href="rdf_main.html">上一页</a></li>
+<li class="next"><a href="rdf_collections.html">下一页</a></li>
+</ul>
+</div>
+</div>
+<div id="sidebar">
+<div class="rs"></div>
+<div id="tools">
+<h5 id="tools_reference"><a href="rdf_reference.html">RDF 参考手册</a></h5>
+</div>
+<div class="a120x600"><script type="text/javascript">var cpro_id="u1293136";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div><div class="b"></div>
+</div>
+</body>
+</html>

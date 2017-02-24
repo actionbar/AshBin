@@ -1,0 +1,25 @@
+#fes p{line-height:32px;height:32px}input{height:20px}
+select{height:22px;line-height:22px}
+textarea{resize:vertical}
+.topss{color:#FFF;cursor:pointer;font-family:微软雅黑;font-size:14px;background:none;border:none}
+
+#fehtml{font-size:12px;height:666px;overflow:scroll}
+#fehtml h2{border-bottom:1px solid #DDD;font:700 14px "微软雅黑"}
+#fehtml h3{font:700 12px "Arial";}.fo{text-align:center}
+#fehtml img{max-width:500px}
+#fehtml p{line-height:22px}
+#feknote{color:#C00;font-weight:700}
+#fekwds{word-wrap:break-word;word-break:break-all;}
+#fekwds a{padding:0 13px 0 0;color:#00a}
+#fekwds a:visited{color:#bb0}
+#fekwds a:hover{color:#f00}
+h1{display:block;line-height:32px}
+#fefa a{border-radius:3px;width:45px;height:25px;line-height:25px;float:left;display:inline-block}
+#fefa a:hover{background:#AAA;color:#FFF}
+#fefatab{margin:0 9px}
+#fefatab a{display:inline-block;width:70px;border-radius:5px;height:28px;line-height:28px;text-align:center;background:#FFF;color:#000;text-decoration:none}
+#fefatab a.fefatabo{background:#999;color:#FFF;font-weight:700}
+.fecode{display:none;position:absolute;z-index:9999;border:1px dotted #CCC;background:#EEE;border-radius:5px;padding:9px;top:240px;left:315px;}
+.fecode textarea{width:300px;height:300px}
+.fecode p{position:relative}
+.fecode button{position:absolute;right:0;width:50px;height:22px}

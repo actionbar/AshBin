@@ -1,0 +1,128 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>在ASP网站设计中表单验证</title>
+<style type="text/css">
+<!--
+body {
+	font-size: 10.4pt;
+	line-height: 22px;
+}
+-->
+</style>
+</head>
+
+<body bgcolor="eeeeee" leftmargin="20" marginwidth="20">
+<p><strong>在ASP网站设计中表单验证 </strong></p>
+<hr>
+<p> 一般的动态网站需要通过表单来收集用户信息，或者实现与用户的交互，虽然我们相信绝大多数人士既然选择了填写表单就会认真的完成，但是亦不能避免无聊人士乱填表单，况且即使一个正常用户在填写过程中也会无意识的出现一些填写错误，或者他们忘记了填某些选项。通常为了避免这种情况，开发者会给表单加一个验证的过程，在表单数据提交到服务器之前或者服务器之后对用户填写的数据进行验证，若遇到错误的填写则返回要求用户进行更正。<br>
+  在ASP中程序员们一般是这样做的：<br>
+  1、用javascript在客户端进行验证。<br>
+  2、用vbscript在客户端进行验证。<br>
+  3、用vbscript在服务器端进行验证。<br>
+  上面提到了两个不同的环境，服务器端和客户端，客户端验证实际上就是包含在已下载的页面中，当用户提交表单时候，它直接在已下载到本地的页面中调用script来进行验证，这样可以减少服务器端的运算。而服务器端的验证则是将页面提交到服务器处理，服务器上的另一个ASP页面先执行对表单的验证,然后再返回结果到客户端。这样的缺点是每一次验证都要经过服务器，消耗时间较长。但是利用服务器端验证却可以达到较好的验证功能。<br>
+  本文就是主要讲述ASP中在服务器端的验证。<br>
+  在了解以下介绍方法之前，你需要想想在表单验证问题中会遇到哪些需要值得我们控制的地方。就像软件工程思想一样，先分析一下要在哪些方面进行验证。<br>
+  1、要求用户的输入必须是中文（英文或数字）。<br>
+  2、要求用户的输入必须是有效的邮件地址。<br>
+  3、对用户输入的数据进行各种不同的限制。<br>
+  4、限制用户输入的数据量。<br>
+  5、....<br>
+  实际上我们在网站设计中还会因情况不同而遇到其它很多不同的问题，需要我们自己去定义一些规定和限制。<br>
+  下面我们以实例来讲述验证方法。</p>
+<p><font color="#FF3300">1、验证输入的数字</font><br>
+  假设一个文本框<br>
+  <br>
+  &lt;form name=&quot;form1&quot; method=&quot;post&quot; action=&quot;&quot;&gt;<br>
+  &lt;input type=&quot;text&quot; name=&quot;textfield&quot;&gt;<br>
+  &lt;/form&gt;<br>
+  '要求用户必须输入数字<br>
+  if not isnumeric(Request.Form(&quot;textfield&quot;)) then<br>
+  response.write &quot;重新填写&quot;<br>
+  end if<br>
+  '要求限制数字长度，如你要用户输入oicq号码<br>
+  '此例限制了用户的输入只有为4到10位数字才有效<br>
+  if len(Request.Form(&quot;textfield&quot;))&gt;10 or len(Request.Form(&quot;textfield&quot;))&lt;4 
+  then<br>
+  response.write &quot;重新填写&quot;<br>
+  end if<br>
+  当然上面用Request.Form和Request是一样的，随便你怎幺写了。</p>
+<p><font color="#FF3300">2、验证用户输入的邮件地址</font><br>
+  '引用一段通用检测函数来说明<br>
+  '由于检验程序较长，将其定义为一函数来调用<br>
+  function IsValidEmail(email)<br>
+  dim names, name, i, c<br>
+  'Check for valid syntax in an email address.<br>
+  IsValidEmail = true<br>
+  names = Split(email, &quot;@&quot;)<br>
+  if UBound(names) &lt;&gt; 1 then<br>
+  IsValidEmail = false<br>
+  exit function<br>
+  end if<br>
+  for each name in names<br>
+  if Len(name) &lt;= 0 then<br>
+  IsValidEmail = false<br>
+  exit function<br>
+  end if<br>
+  for i = 1 to Len(name)<br>
+  c = Lcase(Mid(name, i, 1))<br>
+  if InStr(&quot;abcdefghijklmnopqrstuvwxyz_-.&quot;, c) &lt;= 0 and not IsNumeric(c) 
+  then<br>
+  IsValidEmail = false<br>
+  exit function<br>
+  end if<br>
+  next<br>
+  if Left(name, 1) = &quot;.&quot; or Right(name, 1) = &quot;.&quot; then<br>
+  IsValidEmail = false<br>
+  exit function<br>
+  end if<br>
+  next<br>
+  if InStr(names(1), &quot;.&quot;) &lt;= 0 then<br>
+  IsValidEmail = false<br>
+  exit function<br>
+  end if<br>
+  i = Len(names(1)) - InStrRev(names(1), &quot;.&quot;)<br>
+  if i &lt;&gt; 2 and i &lt;&gt; 3 then<br>
+  IsValidEmail = false<br>
+  exit function<br>
+  end if<br>
+  if InStr(email, &quot;..&quot;) &gt; 0 then<br>
+  IsValidEmail = false<br>
+  end if<br>
+  <br>
+  end function<br>
+  '上面的这段函数大家应该都看的懂，当然你可以修改这段代码，使得即使用户输入XXX@CCC.DDD是错误的邮件地址，因为DDD不是一个有效域名。<br>
+  '引用的时候可以这样写<br>
+  if IsValidEmail(trim(request(&quot;textfield&quot;)))=false then<br>
+  response.write &quot;重新填写&quot;<br>
+  end if</p>
+<p><font color="#FF3300">3、验证为空的表单单元</font><br>
+  有的信息是要求用户必须填写的，所以不允许为空，因此当用户输入为空的时候需要提示。<br>
+  '对为空单元的处理<br>
+  if Request.Form(&quot;textfield&quot;)=&quot;&quot; then<br>
+  Response.write &quot;填写为空&quot;<br>
+  end if</p>
+<p><font color="#FF3300">4、判断用户输入的是不是一个日期</font><br>
+  首先明白日期值格式2002-11-19<br>
+  '直接判断一个值是否是日期<br>
+  if not isdate(Request.Form(&quot;textfield&quot;)) then<br>
+  Response.write &quot;日期填写出错&quot;<br>
+  end if<br>
+  而我们在设计网站时候往往用三个下拉框来实现年、月、日三个不同选项，如何将这三个值联系起来，并且进行验证呢？<br>
+  首先当然要建立三个下拉框了，分别命名表单名为date,month,year，然后就是后台的处理了，因为先前我们在前台获取了date,month,year这三个传递过来的值，所以我们必须把他们连接起来合成一个变量才能验证和存入数据库。连接成标准日期格式表达式可以这幺写：<br>
+  birthday=trim(Request.Form(&quot;year&quot;))&amp;&quot;-&quot;&amp;trim(Request.Form(&quot;month&quot;))&amp;&quot;-&quot;&amp;trim(Request.Form(&quot;date&quot;))<br>
+  验证已经转换的输入是否为合法日期可以使用isdate函数：<br>
+  if not isdate(birthday) then<br>
+  response.write &quot;错误&quot;<br>
+  end if</p>
+<p><font color="#FF3300">5、不允许用户输入某些特殊字符</font><br>
+  在这里我们假设传递的值是content，我们不允许输入的值是=和%<br>
+  if Instr(request(&quot;content&quot;),&quot;=&quot;)&gt;0 or Instr(request(&quot;content&quot;),&quot;%&quot;)&gt;0<br>
+  then<br>
+  response.write &quot;不能输入=和%&quot;<br>
+  end if</p>
+<p>实际上我们还可以写出很多的验证函数，我这里只是列举一二，希望对大家有所帮助。<br>
+</p>
+</body>
+</html>

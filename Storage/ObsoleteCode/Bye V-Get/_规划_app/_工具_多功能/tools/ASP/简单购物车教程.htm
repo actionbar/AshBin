@@ -1,0 +1,403 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>简单购物车教程</title>
+<style type="text/css">
+<!--
+body {
+	font-size: 10.4pt;
+	line-height: 22px;
+}
+-->
+</style>
+</head>
+
+<body bgcolor="eeeeee" leftmargin="20" marginwidth="20">
+<p><strong>简单购物车教程 </strong></p>
+<hr>
+<p>数据库字段<br>
+表：pro_talbe：<br>
+id 产品编号<br>
+proname 产品名称<br>
+simages 产品小图 <br>
+表o_rder:<br>
+id 订单编号<br>
+p_roid 产品编号<br>
+m_um 产品数量<br>
+d_time 订购时间<br>
+表co_table:<br>
+id 客户编号<br>
+nn_ame 客户姓名<br>
+tt_el 联系电话<br>
+ee_m_ail 客户邮箱<br>
++++++++++++++++++++++++<br>
+index.asp源码<br>
++++++++++++++++++++++++<br>
+<br>
+&lt;%@LANGUAGE=&quot;VBSCRIPT&quot;%&gt;<br>
+&lt;!--#include file=&quot;Connections/conn.asp&quot; --&gt;<br>
+&lt;%<br>
+set Recordset1 = Server.CreateObject(&quot;ADODB.Recordset&quot;)<br>
+Recordset1.ActiveConnection = MM_conn_STRING<br>
+Recordset1.Source = &quot;SELECT * FROM pro_table&quot;<br>
+Recordset1.CursorType = 0<br>
+Recordset1.CursorLocation = 2<br>
+Recordset1.LockType = 3<br>
+Recordset1.Open()<br>
+Recordset1_numRows = 0<br>
+%&gt;<br>
+&lt;%<br>
+Dim Repeat1__numRows<br>
+Repeat1__numRows = -1<br>
+Dim Repeat1__index<br>
+Repeat1__index = 0<br>
+Recordset1_numRows = Recordset1_numRows + Repeat1__numRows<br>
+%&gt;<br>
+&lt;html&gt;<br>
+&lt;head&gt;<br>
+&lt;title&gt;Untitled Document&lt;/title&gt;<br>
+&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=gb2312&quot;&gt;<br>
+&lt;/head&gt;<br>
+&lt;body bgcolor=&quot;#FFFFFF&quot; text=&quot;#000000&quot;&gt;<br>
+&lt;table width=&quot;583&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; 
+cellpadding=&quot;0&quot;&gt;<br>
+&lt;% <br>
+While ((Repeat1__numRows &lt;&gt; 0) AND (NOT Recordset1.EOF)) <br>
+%&gt;<br>
+&lt;tr&gt; <br>
+&lt;td width=&quot;140&quot;&gt;&lt;%=(Recordset1.Fields.Item(&quot;id&quot;).Value)%&gt;&lt;/td&gt;<br>
+&lt;td width=&quot;171&quot;&gt;&lt;%=(Recordset1.Fields.Item(&quot;proname&quot;).Value)%&gt;&lt;/td&gt;<br>
+&lt;td width=&quot;272&quot;&gt;&lt;%=(Recordset1.Fields.Item(&quot;simages&quot;).Value)%&gt;&lt;/td&gt;<br>
+&lt;td width=&quot;272&quot;&gt;&lt;a href=&quot;cart.asp?ProductID=&lt;%=(Recordset1.Fields.Item(&quot;id&quot;).Value)%&gt;&amp;quantity=1&quot;&gt;购买&lt;/a&gt;&lt;/td&gt;<br>
+&lt;/tr&gt;<br>
+&lt;% <br>
+Repeat1__index=Repeat1__index+1<br>
+Repeat1__numRows=Repeat1__numRows-1<br>
+Recordset1.MoveNext()<br>
+Wend<br>
+%&gt;<br>
+&lt;/table&gt;<br>
+&lt;/body&gt;<br>
+&lt;/html&gt;<br>
+&lt;%<br>
+Recordset1.Close()<br>
+%&gt;<br>
+列出产品，这里有一个要点就是：&lt;a href=&quot;cart.asp?ProductID=&lt;%=(Recordset1.Fields.Item(&quot;id&quot;).Value)%&gt;&amp;quantity=1&quot;&gt;购买&lt;/a&gt;<br>
+这里传递了两个参数：产品ID“ProductID&quot; 数量：“quantity&quot;<br>
+<br>
++++++++++++++++++++++++++<br>
+下面是cart.asp的源码:<br>
++++++++++++++++++++++<br>
+<br>
+&lt;%@LANGUAGE=&quot;VBSCRIPT&quot;%&gt;<br>
+&lt;!--#include file=&quot;Connections/conn.asp&quot; --&gt;<br>
+&lt;%<br>
+if not IsObject(session(&quot;cart&quot;)) then<br>
+Set session(&quot;cart&quot;)=CreateObject(&quot;Scripting.Dictionary&quot;)<br>
+end if<br>
+Set cart=session(&quot;cart&quot;)<br>
+productID=Cstr(request(&quot;productID&quot;))<br>
+dim detail(1)<br>
+detail(0)=Int(request(&quot;quantity&quot;))<br>
+if request(&quot;productID&quot;)&lt;&gt;&quot;&quot; then<br>
+if cart.Exists(productID) then<br>
+cart.Remove(productID)<br>
+end if<br>
+cart.add productID,detail<br>
+end if<br>
+keys=cart.keys<br>
+items=cart.items<br>
+set session(&quot;cart&quot;)=cart<br>
+%&gt;<br>
+<br>
+&lt;HTML&gt;<br>
+&lt;HEAD&gt;<br>
+&lt;TITLE&gt;浙江广源印刷包装有限公司&lt;/TITLE&gt;<br>
+&lt;META http-equiv=Content-Type content=&quot;text/html; charset=gb2312&quot;&gt;<br>
+&lt;LINK <br>
+href=&quot;index/index.css&quot; type=text/css rel=stylesheet&gt;<br>
+&lt;META content=&quot;MSHTML 5.50.4807.2300&quot; name=GENERATOR&gt;<br>
+&lt;/HEAD&gt;<br>
+&lt;BODY text=#000000 bgColor=#ffffff leftMargin=0 topMargin=0 marginwidth=&quot;0&quot; 
+marginheight=&quot;0&quot;&gt;<br>
+&lt;table width=&quot;100%&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; 
+cellpadding=&quot;0&quot; bgcolor=&quot;#FFFFFF&quot;&gt;<br>
+&lt;tr&gt; <br>
+&lt;td width=&quot;100%&quot; valign=&quot;top&quot;&gt; &lt;br&gt;<br>
+&lt;table border=&quot;2&quot; width=&quot;100%&quot; cellspacing=&quot;0&quot; 
+cellpadding=&quot;0&quot; bordercolorlight=&quot;#FFFFFF&quot; bordercolordark=&quot;#FFFFFF&quot; 
+bgcolor=&quot;#D00000&quot; height=&quot;1&quot; align=&quot;center&quot;&gt;<br>
+&lt;tr bgcolor=&quot;#3399FF&quot;&gt; <br>
+&lt;td width=&quot;25%&quot; align=&quot;center&quot; height=&quot;19&quot;&gt;&lt;font 
+color=&quot;#FFFFFF&quot;&gt;商品名称&lt;/font&gt;&lt;/td&gt;<br>
+&lt;td width=&quot;25%&quot; align=&quot;center&quot; height=&quot;19&quot;&gt;&lt;font 
+color=&quot;#FFFFFF&quot;&gt;购买数量&lt;/font&gt;&lt;/td&gt;<br>
+&lt;td width=&quot;12%&quot; align=&quot;center&quot; height=&quot;19&quot;&gt;&lt;font 
+color=&quot;#FFFFFF&quot;&gt;更新&lt;/font&gt;&lt;/td&gt;<br>
+&lt;td width=&quot;13%&quot; align=&quot;center&quot; height=&quot;19&quot;&gt;&lt;font 
+color=&quot;#FFFFFF&quot;&gt;删除&lt;/font&gt;&lt;/td&gt;<br>
+&lt;/tr&gt;<br>
+&lt;% For i = 0 To cart.Count -1 %&gt;<br>
+&lt;% Dim list__MMColParam<br>
+list__MMColParam = keys(i) %&gt;<br>
+&lt;% set list = Server.CreateObject(&quot;ADODB.Recordset&quot;)<br>
+list.ActiveConnection = MM_conn_STRING<br>
+list.Source = &quot;SELECT * FROM pro_table WHERE id = &quot; + Replace(list__MMColParam, 
+&quot;'&quot;, &quot;''&quot;) + &quot;&quot;<br>
+list.CursorType = 0<br>
+list.CursorLocation = 2<br>
+list.LockType = 3<br>
+list.Open()<br>
+%&gt;<br>
+&lt;form method=&quot;post&quot; action=&quot;cart.asp&quot; onSubmit=&quot;return 
+checkform(this);&quot;&gt; '更新产品数量用<br>
+&lt;tr bgcolor=&quot;#ECECFF&quot;&gt; <br>
+&lt;td width=&quot;25%&quot; align=&quot;center&quot; height=&quot;1&quot;&gt;&lt;a 
+href=&quot;detail.asp?productID=&lt;%=keys(i)%&gt;&quot;&gt;&lt;font color=&quot;#000077&quot; 
+&gt;&lt;/font&gt;&lt;/a&gt;&lt;%=(list.Fields.Item(&quot;proname&quot;).Value)%&gt;&lt;/td&gt;<br>
+&lt;td width=&quot;25%&quot; align=&quot;center&quot; height=&quot;1&quot;&gt; 
+<br>
+&lt;input name=&quot;quantity&quot; size=4 class=&quot;edit&quot; value=&quot;&lt;%=items(i)(0)%&gt;&quot;&gt;<br>
+&lt;input type=&quot;hidden&quot; name=&quot;productID&quot; value=&quot;&lt;%=keys(i)%&gt;&quot;&gt;<br>
+&lt;/td&gt;<br>
+&lt;td width=&quot;12%&quot; align=&quot;center&quot; height=&quot;1&quot;&gt; 
+<br>
+&lt;input type=&quot;image&quot; border=&quot;0&quot; name=&quot;imageField&quot; 
+src=&quot;images/ref.gif&quot; width=&quot;17&quot; height=&quot;19&quot;&gt;<br>
+&lt;/td&gt;<br>
+&lt;td width=&quot;13%&quot; align=&quot;center&quot; height=&quot;1&quot;&gt;&lt;a 
+href=&quot;delcart.asp?productID=&lt;%=keys(i)%&gt;&quot;&gt;&lt;img src=&quot;images/del.gif&quot; 
+width=&quot;17&quot; height=&quot;19&quot; border=&quot;0&quot;&gt;&lt;/a&gt;&lt;/td&gt;<br>
+&lt;/tr&gt;<br>
+&lt;/form&gt;<br>
+&lt;%<br>
+list.Close()<br>
+%&gt;<br>
+&lt;% next %&gt;<br>
+&lt;tr &gt; <br>
+&lt;td width=&quot;75%&quot; bgcolor=&quot;#000000&quot; align=&quot;center&quot; 
+height=&quot;1&quot; colspan=&quot;2&quot;&gt; <br>
+&lt;p align=&quot;right&quot;&gt;&lt;font color=&quot;#FFFFFF&quot;&gt;总价合计：&lt;/font&gt; 
+<br>
+&lt;/td&gt;<br>
+&lt;td width=&quot;25%&quot; bgcolor=&quot;#000000&quot; align=&quot;center&quot; 
+height=&quot;1&quot; colspan=&quot;2&quot;&gt;&lt;font color=&quot;#FFFFFF&quot;&gt;￥&lt;%=price%&gt;&lt;/font&gt;&lt;/td&gt;<br>
+&lt;/tr&gt;<br>
+&lt;/table&gt;<br>
+&lt;p align=&quot;center&quot;&gt;&lt;b&gt;&lt;a href=&quot;index.asp&quot;&gt;继续选购&lt;/a&gt; 
+&lt;a href=&quot;order.asp&quot;&gt;付款&lt;/a&gt;&lt;/b&gt; <br>
+&lt;/td&gt;<br>
+&lt;/tr&gt;<br>
+&lt;/table&gt;<br>
+&lt;/BODY&gt;<br>
+&lt;/HTML&gt;<br>
+其中最前面代码,下面的理解是我自已想的有可能有错，不过程序绝对没有错：&lt;%<br>
+if not IsObject(session(&quot;cart&quot;)) then<br>
+Set session(&quot;cart&quot;)=CreateObject(&quot;Scripting.Dictionary&quot;)'建立二维数组<br>
+end if<br>
+Set cart=session(&quot;cart&quot;) <br>
+productID=Cstr(request(&quot;productID&quot;))'定义变量productid为产品页传递过来的值<br>
+dim detail(1)<br>
+detail(0)=Int(request(&quot;quantity&quot;))<br>
+if request(&quot;productID&quot;)&lt;&gt;&quot;&quot; then<br>
+if cart.Exists(productID) then<br>
+cart.Remove(productID)<br>
+end if<br>
+cart.add productID,detail '上面这一段我看不太懂，谁知道告诉我一下，不过和下面的有关<br>
+end if<br>
+keys=cart.keys '定义变量KEYS的值为数组里面的产品ID<br>
+items=cart.items '定义变量items的值为数组里面的产品数量<br>
+set session(&quot;cart&quot;)=cart <br>
+%&gt;<br>
+代码二：<br>
+&lt;% For i = 0 To cart.Count -1 %&gt; '设置多个产品的循环，cart.count是指购买几个产品,后面要以next结束<br>
+&lt;% Dim list__MMColParam<br>
+list__MMColParam = keys(i) %&gt; '定义ID为cart数组里面的产品ID号<br>
+&lt;% set list = Server.CreateObject(&quot;ADODB.Recordset&quot;)<br>
+list.ActiveConnection = MM_conn_STRING<br>
+list.Source = &quot;SELECT * FROM pro_table WHERE id = &quot; + Replace(list__MMColParam, 
+&quot;'&quot;, &quot;''&quot;) + &quot;&quot;<br>
+list.CursorType = 0<br>
+list.CursorLocation = 2<br>
+list.LockType = 3<br>
+list.Open()<br>
+%&gt; '上面的代码就不用我说了，其中要注意的：list__MMColParam = keys(i) <br>
+<br>
+………………………………………… &lt;%<br>
+list.Close()<br>
+%&gt;<br>
+&lt;% next %&gt;<br>
+<br>
+++++++++++++++++++++++<br>
+取消订购的产品：delcart.asp<br>
+++++++++++++++++++++++<br>
+<br>
+&lt;%<br>
+Set cart=session(&quot;cart&quot;)<br>
+if request(&quot;productID&quot;)&lt;&gt;&quot;&quot; then<br>
+productID=Cstr(request(&quot;productID&quot;))<br>
+cart.Remove(productID)<br>
+end if<br>
+set session(&quot;cart&quot;)=cart<br>
+response.redirect(&quot;cart.asp&quot;)<br>
+%&gt;<br>
+<br>
++++++++++++++++++++++++++<br>
+order.asp源码,这里很简单，看一下就明白了<br>
++++++++++++++++++++++++<br>
+<br>
+<br>
+&lt;HTML&gt;&lt;HEAD&gt;<br>
+&lt;TITLE&gt;浙江广源印刷包装有限公司&lt;/TITLE&gt;<br>
+&lt;META http-equiv=Content-Type content=&quot;text/html; charset=gb2312&quot;&gt;<br>
+&lt;LINK <br>
+href=&quot;index/index.css&quot; type=text/css rel=stylesheet&gt;<br>
+&lt;META content=&quot;MSHTML 5.50.4807.2300&quot; name=GENERATOR&gt;<br>
+&lt;/HEAD&gt;<br>
+&lt;BODY text=#000000 bgColor=#ffffff leftMargin=0 topMargin=0 marginwidth=&quot;0&quot; 
+marginheight=&quot;0&quot;&gt;<br>
+&lt;div align=&quot;center&quot;&gt; <br>
+&lt;form name=&quot;form2&quot; method=&quot;post&quot; action=&quot;sendorder.asp&quot; 
+onSubmit=&quot;return check1()&quot;&gt;<br>
+&lt;table width=&quot;514&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; 
+cellpadding=&quot;0&quot; height=&quot;15&quot; align=&quot;center&quot;&gt;<br>
+&lt;tr&gt; <br>
+&lt;td height=&quot;6&quot; bgcolor=&quot;#FF9900&quot;&gt; &lt;font color=&quot;#FFFFFF&quot; 
+size=&quot;2&quot;&gt;　购买者联系信息：&lt;/font&gt;&lt;/td&gt;<br>
+&lt;/tr&gt;<br>
+&lt;/table&gt;<br>
+&lt;table border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; 
+align=&quot;center&quot;&gt;<br>
+&lt;tr&gt; <br>
+&lt;td&gt; <br>
+&lt;div align=&quot;center&quot;&gt;&lt;font size=&quot;2&quot;&gt;联系人&lt;/font&gt;&lt;/div&gt;<br>
+&lt;/td&gt;<br>
+&lt;td&gt; <br>
+&lt;div align=&quot;left&quot;&gt;&lt;font size=&quot;2&quot;&gt; <br>
+&lt;input type=&quot;text&quot; name=&quot;n_ame&quot; size=&quot;20&quot;&gt;<br>
+&lt;/font&gt;&lt;/div&gt;<br>
+&lt;/td&gt;<br>
+&lt;/tr&gt;<br>
+&lt;tr&gt; <br>
+&lt;td&gt; <br>
+&lt;div align=&quot;center&quot;&gt;&lt;font size=&quot;2&quot;&gt;公司电话&lt;/font&gt;&lt;/div&gt;<br>
+&lt;/td&gt;<br>
+&lt;td&gt; <br>
+&lt;div align=&quot;left&quot;&gt;&lt;font size=&quot;2&quot;&gt; <br>
+&lt;input type=&quot;text&quot; name=&quot;t_el&quot; size=&quot;20&quot;&gt;<br>
+&lt;/font&gt;&lt;/div&gt;<br>
+&lt;/td&gt;<br>
+&lt;/tr&gt;<br>
+&lt;tr&gt; <br>
+&lt;td&gt; <br>
+&lt;div align=&quot;center&quot;&gt;&lt;font size=&quot;2&quot;&gt;电子邮箱&lt;/font&gt;&lt;/div&gt;<br>
+&lt;/td&gt;<br>
+&lt;td&gt; <br>
+&lt;div align=&quot;left&quot;&gt;&lt;font size=&quot;2&quot;&gt; <br>
+&lt;input type=&quot;text&quot; name=&quot;e_mail&quot; size=&quot;20&quot;&gt;<br>
+&lt;/font&gt;&lt;/div&gt;<br>
+&lt;/td&gt;<br>
+&lt;/tr&gt;<br>
+&lt;td&gt; <br>
+&lt;div align=&quot;center&quot;&gt;&lt;/div&gt;<br>
+&lt;/td&gt;<br>
+&lt;td&gt; &lt;/td&gt;<br>
+&lt;/tr&gt;<br>
+&lt;/table&gt;<br>
+&lt;p align=&quot;center&quot;&gt; <br>
+&lt;input name=&quot;submit&quot; type=&quot;submit&quot; value=&quot;提交&quot;&gt;<br>
+　　　 <br>
+&lt;input name=&quot;reset&quot; type=&quot;reset&quot; value=&quot;清除&quot;&gt;<br>
+&lt;/p&gt;<br>
+&lt;/form&gt;<br>
+&lt;/div&gt;<br>
+&lt;/BODY&gt;&lt;/HTML&gt;<br>
+++++++++++++++++++++++++++++++++<br>
+sendorder.asp,提交选购的产品到数据库，<br>
++++++++++++++++++++++++++++++<br>
+<br>
+&lt;%@LANGUAGE=&quot;VBSCRIPT&quot;%&gt; <br>
+&lt;!--#include file=&quot;Connections/conn.asp&quot; --&gt;<br>
+<br>
+&lt;%<br>
+if not IsObject(session(&quot;cart&quot;)) then<br>
+response.redirect(&quot;/&quot;)<br>
+end if<br>
+%&gt; '加一个判断，如果session(&quot;cart&quot;)为空，则重定位URL<br>
+&lt;%<br>
+Set rs1=server.createobject(&quot;ADODB.recordset&quot;)<br>
+Set cart=session(&quot;cart&quot;)<br>
+keys=cart.keys '取出数组里面的产品ID<br>
+items=cart.items '取出数组里面的产品数量<br>
+%&gt;<br>
+&lt;%<br>
+<br>
+set list = Server.CreateObject(&quot;ADODB.Command&quot;)<br>
+list.ActiveConnection = MM_conn_STRING<br>
+For i = 0 To cart.Count -1<br>
+list.CommandText = &quot;INSERT INTO o_rder (m_um, p_roid) VALUES (&quot; + Replace(items(i)(0), 
+&quot;'&quot;, &quot;''&quot;) + &quot;,&quot; + Replace(keys(i), &quot;'&quot;, 
+&quot;''&quot;) + &quot; ) &quot;<br>
+<br>
+list.CommandType = 1<br>
+list.CommandTimeout = 0<br>
+list.Prepared = true<br>
+list.Execute()<br>
+next<br>
+%&gt;<br>
+&lt;%<br>
+<br>
+set add = Server.CreateObject(&quot;ADODB.Command&quot;)<br>
+add.ActiveConnection = MM_conn_STRING<br>
+add.CommandText = &quot;INSERT INTO co_table (nn_ame, tt_el, ee_m_ail) VALUES 
+(&quot; + Replace(Request.form(&quot;n_ame&quot;), &quot;'&quot;, &quot;''&quot;) 
++ &quot;, &quot; + Replace(Request.form(&quot;t_el&quot;), &quot;'&quot;, &quot;''&quot;) 
++ &quot;, &quot; + Replace(Request.form(&quot;e_mail&quot;), &quot;'&quot;, &quot;''&quot;) 
++ &quot;) &quot;<br>
+add.CommandType = 1<br>
+add.CommandTimeout = 0<br>
+add.Prepared = true<br>
+add.Execute()<br>
+<br>
+%&gt;<br>
+&lt;html&gt;<br>
+&lt;head&gt;<br>
+&lt;title&gt;浙江广源印刷包装公司&lt;/title&gt;<br>
+&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=gb2312&quot;&gt;<br>
+&lt;link rel=&quot;stylesheet&quot; href=&quot;style.css&quot; type=&quot;text/css&quot;&gt;<br>
+&lt;/head&gt;<br>
+&lt;body text=&quot;#000000&quot; leftmargin=&quot;0&quot; topmargin=&quot;0&quot; 
+marginwidth=&quot;0&quot; marginheight=&quot;0&quot; &gt;<br>
+&lt;p&gt;&lt;%= Request.form(&quot;n_ame&quot;) %&gt;你好，以下是你的详单&lt;/p&gt;<br>
+&lt;p&gt;&lt;%= Request.form(&quot;n_ame&quot;) %&gt;&lt;/p&gt;<br>
+&lt;p&gt;&lt;%= Request.form(&quot;t_el&quot;) %&gt;&lt;/p&gt;<br>
+&lt;p&gt;&lt;%= Request.form(&quot;e_mail&quot;) %&gt;&lt;/p&gt;<br>
+&lt;p&gt;<br>
+&lt;%For i = 0 To cart.Count -1%&gt;<br>
+&lt;/p&gt;<br>
+&lt;p&gt; id：&lt;%=keys(i)%&gt;&lt;br&gt;<br>
+数量：&lt;%=items(i)(0)%&gt;&lt;br&gt;&lt;%next%&gt;<br>
+&lt;/p&gt;<br>
+&lt;p&gt; &lt;/p&gt;<br>
+&lt;p&gt; &lt;/p&gt;<br>
+&lt;p&gt; &lt;/p&gt;<br>
+&lt;/body&gt;<br>
+&lt;/html&gt;<br>
+&lt;% session(&quot;cart&quot;)=&quot;&quot;%&gt;<br>
+<br>
+上面用了两个命令预存过程：<br>
+第一个过程：list<br>
+存储产品到数据库<br>
+因为有可能选购多个产品，所以用了一个循环For i = 0 To cart.Count -1,并以next结束<br>
+<br>
+第二个过程：add<br>
+存储客户到数据库<br>
+就这样一个简单的购物车做好了。<br>
+<br>
+本教程中主要的是cart.asp中的定义一个二维数组，还有用循环For i = 0 To cart.Count -1 next 把所订购的产品显示出来<br>
+<br>
+不过这个购物车有一个BUG 就是当你选购了一个产品后，用继续选购同一个产品时，产品数量又重新变为1，不会增加，请高手指点，修改一下，谢谢！<br>
+<br>
+</p></body>
+</html>

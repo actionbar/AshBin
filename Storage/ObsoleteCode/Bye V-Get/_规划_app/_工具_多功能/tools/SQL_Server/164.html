@@ -1,0 +1,8 @@
+<meta http-equiv="content-type" content="text/html; charset=gb2312"><FONT 
+style="FONT-SIZE: 9pt; LINE-HEIGHT: 15pt"><B>生成测试数据－1－T－SQL系列</B><BR>Transact-SQL编程之谜系列（生成测试数据－1）
+<P></P>
+<P>在xyz表中创建100行</P>
+<P>--Method&nbsp;1.&nbsp;simple&nbsp;DEFAULT&nbsp;values&nbsp;on&nbsp;table</P>
+<P>CREATE&nbsp;TABLE&nbsp;xyz<BR>(<BR>col1&nbsp;int&nbsp;PRIMARY&nbsp;KEY&nbsp;IDENTITY(1,1)&nbsp;NOT&nbsp;NULL,<BR>col2&nbsp;int&nbsp;NOT&nbsp;NULL&nbsp;DEFAULT&nbsp;999,<BR>col3&nbsp;char(10)&nbsp;NOT&nbsp;NULL&nbsp;DEFAULT&nbsp;''ABCDEFGHIJK''<BR>)<BR>GO</P>
+<P>DECLARE&nbsp;@counter&nbsp;int<BR>SET&nbsp;@counter=1<BR>WHILE(@counter&lt;=100)<BR>&nbsp;&nbsp;BEGIN<BR>&nbsp;&nbsp;INSERT&nbsp;xyz&nbsp;DEFAULT&nbsp;valueS<BR>&nbsp;&nbsp;SET&nbsp;@counter=@counter+1<BR>&nbsp;&nbsp;END</P>
+<P><BR>SELECT&nbsp;*&nbsp;FROM&nbsp;<BR>xyz</P></FONT>

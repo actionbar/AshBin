@@ -1,0 +1,271 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>一些常用的辅助代码</title>
+<style type="text/css">
+<!--
+body {
+	font-size: 10.4pt;
+	line-height: 22px;
+}
+-->
+</style>
+</head>
+
+<body bgcolor="eeeeee" leftmargin="20" marginwidth="20">
+<p><strong>一些常用的辅助代码 </strong> </p>
+<hr>
+<p><font color="#CC3300">点击返回上页代码:</font><br>
+  &lt;form&gt;<br>
+  &lt;p&gt;&lt;input TYPE=&quot;button&quot; VALUE=&quot;返回上一步&quot; ONCLICK=&quot;history.back(-1)&quot;&gt;&lt;/p&gt;<br>
+  &lt;/form&gt;</p>
+<p> <font color="#CC3300">弹出警告框代码:</font><br>
+  &lt;form&gt;<br>
+  &lt;p&gt;&lt;input TYPE=&quot;button&quot; VALUE=&quot;弹出警告框&quot; ONCLICK=&quot;AlertButton()&quot;&gt;&lt;/p&gt;<br>
+  &lt;/form&gt;<br>
+  &lt;script language=&quot;JavaScript&quot;&gt;&lt;!--<br>
+  function AlertButton(){window.alert(&quot;要多多光临呀！&quot;);}<br>
+  // --&gt;&lt;/script&gt;</p>
+<p><font color="#CC3300">点击打开新窗口</font><br>
+  &lt;form&gt;<br>
+  &lt;p&gt;&lt;input TYPE=&quot;button&quot; VALUE=&quot;打开新窗口&quot; ONCLICK=&quot;NewWindow()&quot;&gt;&lt;/p&gt;<br>
+  &lt;/form&gt;<br>
+  &lt;script language=&quot;JavaScript&quot;&gt;&lt;!--<br>
+  function NewWindow(){window.open(&quot;http://www.mcmx.com&quot;,&quot;&quot;,&quot;height=240,width=340,status=no,location=no,toolbar=no,directories=no,menubar=no&quot;);}<br>
+  // --&gt;&lt;/script&gt;&lt;/body&gt;</p>
+<p><font color="#CC3300">删除记录时弹出确认框：<br>
+  </font>&lt;script LANGUAGE=&quot;VBSCRIPT&quot;&gt; <br>
+  a=msgbox(&quot;真的要删除该记录吗？&quot;,1,&quot;注意&quot;)<br>
+  if a=1 then<br>
+  location=&quot;Dodelete.asp?id=&lt;%=id%&gt;&quot; //指向执行删除的页面Dodelete.asp<br>
+  else <br>
+  history.go(-1)<br>
+  end if<br>
+  &lt;/script&gt;<br>
+</p>
+<p><font color="#CC3300">关闭打开的窗口 </font><br>
+  &lt; a href=&quot;/&quot; onclick=&quot;javascript:window.close(); return false;&quot;&gt;关闭窗口&lt;/a&gt; 
+</p>
+<p><font color="#CC3300">清空INPUT且选定</font><br>
+  onClick=&quot;Javascript:this.value=''&quot; onFocus=&quot;this.select()&quot; 
+  onMouseOver=&quot;this.focus()&quot;</p>
+<p><font color="#CC3300">右键屏蔽</font><br>
+  &lt;body oncontextmenu=self.event.returnValue=false&gt;</p>
+<p><font color="#CC3300">连串英文自动换行的解决方法 IE5.5<br>
+  </font> style=&quot;LEFT: 0px; WIDTH: 100%; WORD-WRAP: break-word&quot; 你可修改为指定的大小如 
+  200px </p>
+<p><font color="#CC3300">图片“重置”按钮</font><br>
+  &lt;script language=&quot;jscript&quot;&gt;<br>
+  function myreset()<br>
+  { document.login.reset();<br>
+  document.login.focus();}<br>
+  &lt;/script&gt;<br>
+  &lt;img src=&quot;image/reclear.gif&quot; width=&quot;69&quot; height=&quot;20&quot; 
+  style=&quot;cursor:hand&quot; onfocus=&quot;this.blur()&quot; onclick=&quot;myreset()&quot;</p>
+<p><font color="#CC3300">画细线表格<br>
+  </font>&lt;table style=&quot;border-collapse: collapse&quot;&gt; </p>
+<p><font color="#CC3300">状态栏信息</font><br>
+  &lt;form&gt;<br>
+  &lt;p&gt;&lt;input TYPE=&quot;button&quot; VALUE=&quot;状态栏信息&quot; ONCLICK=&quot;StatusButton()&quot;&gt;&lt;/p&gt;<br>
+  &lt;/form&gt;<br>
+  &lt;script language=&quot;JavaScript&quot;&gt;&lt;!--<br>
+  function StatusButton(){window.status=&quot;要多多光临呀！&quot;;}<br>
+  // --&gt;&lt;/script&gt;</p>
+<p><font color="#CC3300">最小化、最大化、关闭窗口<br>
+  </font>&lt;object id=hh1 classid=&quot;clsid:ADB880A6-D8FF-11CF-9377-00AA003B7A11&quot;&gt; 
+  <br>
+  &lt;param name=&quot;Command&quot; value=&quot;Minimize&quot;&gt;&lt;/object&gt;<br>
+  &lt;object id=hh2 classid=&quot;clsid:ADB880A6-D8FF-11CF-9377-00AA003B7A11&quot;&gt; 
+  <br>
+  &lt;param name=&quot;Command&quot; value=&quot;Maximize&quot;&gt;&lt;/object&gt;<br>
+  &lt;OBJECT id=hh3 classid=&quot;clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11&quot;&gt;<br>
+  &lt;PARAM NAME=&quot;Command&quot; VALUE=&quot;Close&quot;&gt;&lt;/OBJECT&gt;<br>
+  <br>
+  &lt;input type=button value=最小化 onclick=hh1.Click()&gt;<br>
+  &lt;input type=button value=最大化 onclick=hh2.Click()&gt;<br>
+  &lt;input type=button value=关闭 onclick=hh3.Click()&gt;<br>
+  本例适用于IE</p>
+<p> <font color="#CC3300">隐藏状态栏里出现的LINK信息 </font><br>
+  &lt;a href=&quot;http://&quot;; onMouseOver=&quot;window.status='none';return 
+  true&quot;&gt;梦想天空&lt;/a&gt; </p>
+<p><font color="#CC3300">文本框自动滚动条</font><br>
+  &lt;textarea name=words rows=18 cols=26 style=&quot;border:1 solid #000000;background-color:white; 
+  font-size:9pt; width:188; overflow:auto&quot; wrap=hard&gt;&lt;/textarea&gt;</p>
+<p><font color="#CC3300">全选并复制</font><br>
+  &lt;FORM name=test&gt;&lt;INPUT onclick=&quot;javascript:HighlightAll('test.select1')&quot; 
+  type=button value=全选并复制&gt;&lt;BR&gt;&lt;TEXTAREA name=select1 rows=3 cols=46&gt;你好，欢迎您的光临！&lt;/TEXTAREA&gt; 
+  <br>
+  &lt;/FORM&gt;<br>
+  &lt;SCRIPT language=Javascript&gt; <br>
+  &lt;!-- <br>
+  <br>
+  var copytoclip=1 <br>
+  <br>
+  function HighlightAll(theField) { <br>
+  var tempval=eval(&quot;document.&quot;+theField) <br>
+  tempval.focus() <br>
+  tempval.select() <br>
+  if (document.all&amp;&amp;copytoclip==1){ <br>
+  therange=tempval.createTextRange() <br>
+  therange.execCommand(&quot;Copy&quot;) <br>
+  window.status=&quot;Contents highlighted and copied to clipboard!&quot; <br>
+  setTimeout(&quot;window.status=''&quot;,1800) <br>
+  } <br>
+  } <br>
+  //--&gt; <br>
+  &lt;/SCRIPT&gt;</p>
+<p><font color="#CC3300">屏蔽JAVASCRIPT错误</font><br>
+  &lt;script language=&quot;JavaScript&quot;&gt;<br>
+  &lt;!--<br>
+  function killErrors(){<br>
+  return true;<br>
+  }<br>
+  window.onerror = killErrors;<br>
+  --&gt;<br>
+  &lt;/script&gt;<br>
+  <font color="#CC3300"><br>
+  关闭子窗口时刷新父窗口</font> <br>
+  &lt;script language=&quot;JavaScript&quot;&gt;<br>
+  &lt;!--<br>
+  self.opener.location.reload();<br>
+  window.close()<br>
+  --&gt;<br>
+  &lt;/script&gt;<br>
+</p>
+<p><font color="#CC3300">背景色变换</font><br>
+  &lt;form&gt;<br>
+  &lt;p&gt;&lt;input TYPE=&quot;button&quot; VALUE=&quot;背景色变换&quot; onClick=&quot;BgButton()&quot;&gt;&lt;/p&gt;<br>
+  &lt;/form&gt;<br>
+  &lt;script&gt;function BgButton(){<br>
+  if (document.bgColor=='#00ffff')<br>
+  {document.bgColor='#ffffff';}<br>
+  else{document.bgColor='#00ffff';}<br>
+  }<br>
+  &lt;/script&gt;</p>
+<p><font color="#CC3300">检查一段字符串是否全由数字组成 </font><br>
+  &lt;script language=&quot;Javascript&quot;&gt;&lt;!-- <br>
+  function checkNum(str){return str.match(//D/)==null} <br>
+  alert(checkNum(&quot;1232142141&quot;)) <br>
+  alert(checkNum(&quot;123214214a1&quot;)) <br>
+  // --&gt;&lt;/script&gt; </p>
+<p> <font color="#CC3300">判断是否是字符 </font><br>
+  if (/[^/x00-/xff]/g.test(s)) alert(&quot;含有汉字&quot;); </p>
+<p><font color="#CC3300">点击刷新代码:</font><br>
+  &lt;form&gt;<br>
+  &lt;p&gt;&lt;input TYPE=&quot;button&quot; VALUE=&quot;刷新按钮一&quot; ONCLICK=&quot;ReloadButton()&quot;&gt;&lt;/p&gt;<br>
+  &lt;/form&gt;<br>
+  &lt;script language=&quot;JavaScript&quot;&gt;&lt;!--<br>
+  function ReloadButton(){location.href=&quot;allbutton.htm&quot;;}<br>
+  // --&gt;&lt;/script&gt;</p>
+<p> <font color="#CC3300">让层不被控件复盖代码:</font><br>
+  &lt;div z-Index:2&gt;&lt;object xxx&gt;&lt;/object&gt;&lt;/div&gt; ＃ 前面 <br>
+  &lt;div z-Index:1&gt;&lt;object xxx&gt;&lt;/object&gt;&lt;/div&gt; ＃ 后面 <br>
+  &lt;div id=&quot;Layer2&quot; style=&quot;position:absolute; top:40;width:400px; 
+  height:95px;z-index:2&quot;&gt;&lt;table height=100% width=100% bgcolor=&quot;#ff0000&quot;&gt;&lt;tr&gt;&lt;td 
+  height=100% width=100%&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;iframe width=0 
+  height=0&gt;&lt;/iframe&gt;&lt;/div&gt;<br>
+  &lt;div id=&quot;Layer1&quot; style=&quot;position:absolute; top:50;width:200px; 
+  height:115px;z-index:1&quot;&gt;&lt;iframe height=100% width=100%&gt;&lt;/iframe&gt;&lt;/div&gt; 
+</p>
+<p><font color="#CC3300">让层的相对定位 </font><br>
+  &lt;div id=&quot;Layer1&quot; style=&quot;position:relative; left:0px; top:0px; 
+  width:0px; height:0px;z-index:1&quot;&gt; <br>
+  &lt;div id=&quot;Layer2&quot; style=&quot;position:absolute; left:500px; top:0px; 
+  width:220px; height:220px; z-index:1&quot;&gt; <br>
+  内容<br>
+  &lt;/div&gt;&lt;/div&gt;</p>
+<p><font color="#CC3300">Flash代码以及背景透明</font><br>
+  &lt;object classid=&quot;clsid:D27CDB6E-AE6D-11cf-96B8-444553540000&quot; codebase=&quot;http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,29,0&quot; 
+  width=&quot;200&quot; height=&quot;200&quot;&gt;<br>
+  &lt;param name=&quot;movie&quot; value=&quot;文件&quot;&gt;<br>
+  &lt;param name=&quot;quality&quot; value=&quot;high&quot;&gt;<br>
+  &lt;param name=&quot;wmode&quot; value=&quot;transparent&quot;&gt;<br>
+  &lt;embed src=&quot;images/fish.swf&quot; quality=&quot;high&quot; pluginspage=&quot;http://www.macromedia.com/go/getflashplayer&quot; 
+  type=&quot;application/x-shockwave-flash&quot; width=&quot;220&quot; height=&quot;220&quot;&gt;&lt;/embed&gt;&lt;/object&gt; 
+</p>
+<p><font color="#CC3300">Windows Media Player 播放器</font><br>
+  &lt;OBJECT id=MediaPlayer1 <br>
+  style=&quot;LEFT: 0px; VISIBILITY: visible; POSITION: absolute; TOP: 0px;z-index:2&quot; 
+  <br>
+  codeBase=http://activex.microsoft.com/activex/controls/mplayer/en/nsmp2inf.cab#Version=5,1,52,701standby=</p>
+<p>Loading <br>
+  type=application/x-oleobject height=300 width=320 <br>
+  classid=CLSID:6BF52A52-394A-11d3-B153-00C04F79FAA6 VIEWASTEXT&gt;<br>
+  &lt;PARAM NAME=&quot;URL&quot; VALUE=&quot;地址&quot;&gt;</p>
+<p> &lt;param name=&quot;AudioStream&quot; value=&quot;-1&quot;&gt;<br>
+  &lt;param name=&quot;AutoSize&quot; value=&quot;0&quot;&gt;<br>
+  &lt;param name=&quot;AutoStart&quot; value=&quot;-1&quot;&gt;<br>
+  &lt;param name=&quot;AnimationAtStart&quot; value=&quot;0&quot;&gt;<br>
+  &lt;param name=&quot;AllowScan&quot; value=&quot;-1&quot;&gt;<br>
+  &lt;param name=&quot;AllowChangeDisplaySize&quot; value=&quot;-1&quot;&gt;<br>
+  &lt;param name=&quot;AutoRewind&quot; value=&quot;0&quot;&gt;<br>
+  &lt;param name=&quot;Balance&quot; value=&quot;0&quot;&gt;<br>
+  &lt;param name=&quot;BaseURL&quot; value&gt;<br>
+  &lt;param name=&quot;BufferingTime&quot; value=&quot;5&quot;&gt;<br>
+  &lt;param name=&quot;CaptioningID&quot; value&gt;<br>
+  &lt;param name=&quot;ClickToPlay&quot; value=&quot;-1&quot;&gt;<br>
+  &lt;param name=&quot;CursorType&quot; value=&quot;0&quot;&gt;<br>
+  &lt;param name=&quot;CurrentPosition&quot; value=&quot;-1&quot;&gt;<br>
+  &lt;param name=&quot;CurrentMarker&quot; value=&quot;0&quot;&gt;<br>
+  &lt;param name=&quot;DefaultFrame&quot; value&gt;<br>
+  &lt;param name=&quot;DisplayBackColor&quot; value=&quot;0&quot;&gt;<br>
+  &lt;param name=&quot;DisplayForeColor&quot; value=&quot;16777215&quot;&gt;<br>
+  &lt;param name=&quot;DisplayMode&quot; value=&quot;0&quot;&gt;<br>
+  &lt;param name=&quot;DisplaySize&quot; value=&quot;4&quot;&gt;<br>
+  &lt;param name=&quot;Enabled&quot; value=&quot;-1&quot;&gt;<br>
+  &lt;param name=&quot;EnableContextMenu&quot; value=&quot;-1&quot;&gt;<br>
+  &lt;param name=&quot;EnablePositionControls&quot; value=&quot;0&quot;&gt;<br>
+  &lt;param name=&quot;EnableFullScreenControls&quot; value=&quot;0&quot;&gt;<br>
+  &lt;param name=&quot;EnableTracker&quot; value=&quot;-1&quot;&gt;<br>
+  &lt;param name=&quot;InvokeURLs&quot; value=&quot;-1&quot;&gt;<br>
+  &lt;param name=&quot;Language&quot; value=&quot;-1&quot;&gt;<br>
+  &lt;param name=&quot;Mute&quot; value=&quot;0&quot;&gt;<br>
+  &lt;param name=&quot;PlayCount&quot; value=&quot;1&quot;&gt;<br>
+  &lt;param name=&quot;PreviewMode&quot; value=&quot;0&quot;&gt;<br>
+  &lt;param name=&quot;Rate&quot; value=&quot;1&quot;&gt;<br>
+  &lt;param name=&quot;SAMILang&quot; value&gt;<br>
+  &lt;param name=&quot;SAMIStyle&quot; value&gt;<br>
+  &lt;param name=&quot;SAMIFileName&quot; value&gt;<br>
+  &lt;param name=&quot;SelectionStart&quot; value=&quot;-1&quot;&gt;<br>
+  &lt;param name=&quot;SelectionEnd&quot; value=&quot;-1&quot;&gt;<br>
+  &lt;param name=&quot;SendOpenStateChangeEvents&quot; value=&quot;-1&quot;&gt;<br>
+  &lt;param name=&quot;SendWarningEvents&quot; value=&quot;-1&quot;&gt;<br>
+  &lt;param name=&quot;SendErrorEvents&quot; value=&quot;-1&quot;&gt;<br>
+  &lt;param name=&quot;SendKeyboardEvents&quot; value=&quot;0&quot;&gt;<br>
+  &lt;param name=&quot;SendMouseClickEvents&quot; value=&quot;0&quot;&gt;<br>
+  &lt;param name=&quot;SendMouseMoveEvents&quot; value=&quot;0&quot;&gt;<br>
+  &lt;param name=&quot;SendPlayStateChangeEvents&quot; value=&quot;-1&quot;&gt;<br>
+  &lt;param name=&quot;ShowCaptioning&quot; value=&quot;0&quot;&gt;<br>
+  &lt;param name=&quot;ShowControls&quot; value=&quot;-1&quot;&gt;<br>
+  &lt;param name=&quot;ShowAudioControls&quot; value=&quot;-1&quot;&gt;<br>
+  &lt;param name=&quot;ShowDisplay&quot; value=&quot;0&quot;&gt;<br>
+  &lt;param name=&quot;ShowGotoBar&quot; value=&quot;0&quot;&gt;<br>
+  &lt;param name=&quot;ShowPositionControls&quot; value=&quot;-1&quot;&gt;<br>
+  &lt;param name=&quot;ShowStatusBar&quot; value=&quot;-1&quot;&gt;<br>
+  &lt;param name=&quot;ShowTracker&quot; value=&quot;-1&quot;&gt;<br>
+  &lt;param name=&quot;TransparentAtStart&quot; value=&quot;-1&quot;&gt;<br>
+  &lt;param name=&quot;VideoBorderWidth&quot; value=&quot;0&quot;&gt;<br>
+  &lt;param name=&quot;VideoBorderColor&quot; value=&quot;0&quot;&gt;<br>
+  &lt;param name=&quot;VideoBorder3D&quot; value=&quot;0&quot;&gt;<br>
+  &lt;param name=&quot;Volume&quot; value=&quot;70&quot;&gt;<br>
+  &lt;param name=&quot;WindowlessVideo&quot; value=&quot;0&quot;&gt;<br>
+  &lt;/OBJECT&gt;<br>
+</p>
+<p><font color="#CC3300">RealPlayer 播放器</font><br>
+  &lt;object id=video1 classid=&quot; clasid:CFCDAA03-8BE4-11CF-B84B-0020AFBBCCFA&quot; 
+  <br>
+  width=320 height=240 align=&quot;middle&quot;&gt;<br>
+  &lt;param name=&quot;controls&quot; value=&quot;inagewindow&quot;&gt;<br>
+  &lt;param name=&quot;console&quot; value=&quot;chicp1&quot;&gt;<br>
+  &lt;param name=&quot;autostar&quot; value=&quot;true&quot;&gt;<br>
+  &lt;param name=&quot;src&quot; value=&quot;地址&quot;&gt;<br>
+  &lt;embed <br>
+  src=&quot;地址&quot; <br>
+  type=&quot;audio/x-pn-realaudio-plugin&quot; console=&quot;chip1&quot; <br>
+  controls=&quot;imagewindow&quot; width=320 height=240 autostart=true align=&quot;middle&quot;&gt;<br>
+  &lt;/embed&gt; <br>
+  &lt;/object&gt;<br>
+</p>
+</body>
+</html>

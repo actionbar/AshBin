@@ -1,0 +1,13 @@
+<meta http-equiv="content-type" content="text/html; charset=gb2312"><FONT 
+style="FONT-SIZE: 9pt; LINE-HEIGHT: 15pt"><B>Print&nbsp;Table&nbsp;Hierarchy</B><BR>Script&nbsp;to&nbsp;Print&nbsp;Table&nbsp;Hierarchy
+<P></P>
+<P></P>
+<P><BR>This&nbsp;script&nbsp;will&nbsp;print&nbsp;tables&nbsp;according&nbsp;to&nbsp;their&nbsp;FK&nbsp;dependencies,&nbsp;making&nbsp;it&nbsp;helpful&nbsp;in&nbsp;determining&nbsp;the&nbsp;hierarchy&nbsp;of&nbsp;tables&nbsp;in&nbsp;a&nbsp;database.&nbsp;</P>
+<P>Author:&nbsp;Uri&nbsp;Margalit&nbsp;<BR>set&nbsp;nocount&nbsp;on</P>
+<P>declare&nbsp;@Rows&nbsp;int,<BR>&nbsp;&nbsp;@LevelID&nbsp;int<BR>declare&nbsp;@Tables&nbsp;TABLE&nbsp;(<BR>TableName&nbsp;varchar(200),<BR>LevelID&nbsp;int)</P>
+<P>insert&nbsp;into&nbsp;@Tables&nbsp;(TableName,&nbsp;LevelID)<BR>select&nbsp;name,&nbsp;1<BR>from&nbsp;sysobjects<BR>where&nbsp;xtype=&nbsp;'U'</P>
+<P>select&nbsp;@Rows&nbsp;=&nbsp;@@RowCount,&nbsp;@LevelID&nbsp;=&nbsp;1</P>
+<P>while&nbsp;@Rows&nbsp;&gt;&nbsp;1&nbsp;begin<BR>update&nbsp;@Tables&nbsp;<BR>set&nbsp;LevelID&nbsp;=&nbsp;LevelID&nbsp;+&nbsp;1<BR>where&nbsp;TableName&nbsp;in&nbsp;(select&nbsp;distinct&nbsp;master.name<BR>from<BR>sysobjects&nbsp;master,</P>
+<P>sysobjects&nbsp;ref,</P>
+<P>sysreferences&nbsp;refkey<BR>where<BR>refkey.fkeyid&nbsp;=&nbsp;ref.id<BR>&nbsp;&nbsp;and<BR>refkey.rkeyid&nbsp;=&nbsp;master.id<BR>&nbsp;&nbsp;and<BR>ref.Name&nbsp;in&nbsp;(select&nbsp;distinct&nbsp;TableName&nbsp;from&nbsp;@Tables&nbsp;where&nbsp;LevelID&nbsp;=<BR>@LevelID)<BR>)<BR>select&nbsp;@Rows&nbsp;=&nbsp;@@RowCount<BR>select&nbsp;@LevelID&nbsp;=&nbsp;@LevelID&nbsp;+&nbsp;1<BR>end</P>
+<P>select&nbsp;*&nbsp;<BR>from&nbsp;@Tables&nbsp;<BR>order&nbsp;by&nbsp;2&nbsp;desc,1</P></FONT>

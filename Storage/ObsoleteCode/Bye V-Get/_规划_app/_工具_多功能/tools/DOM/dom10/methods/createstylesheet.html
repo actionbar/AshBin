@@ -1,0 +1,94 @@
+<html xmlns:rdl>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<script src="rdl_method.js"></script>
+<base target="_self">
+</head>
+<body>
+
+<script>
+
+//collFriendObjects=new Array();
+//collFriendProperties=new Array();
+//collFriendMethods=new Array();
+//collFriendEvents=new Array();
+//collFriendCollections=new Array();
+
+collFriendMethods=new Array(
+'removeRule','addRule','addPageRule'
+);
+
+collFriendCollections=new Array(
+'styleSheets','rules'
+);
+
+collFriendObjects=new Array(
+'STYLE','rule','runtimeStyle','runtimeStyle','styleSheet'
+);
+
+//collIE40=new Array();
+//collIE50=new Array();
+//collIE55=new Array();
+//collIE60=new Array();
+
+collIE40=new Array(
+'document'
+);
+
+//sStyle='';
+
+//sScript='';
+
+sCode=
+'<table cellspacing=1><tr><td align=left>\n'+
+'<ul id = oList class="cssCommonTable">\n'+
+'<li>第1个列表项目\n'+
+'<li>第2个<a href="#" onclick="return false;">列表项目<\/a>\n'+
+'<li style="font-weight:bold;">第3个列表项目\n'+
+'<li>第4个列表项目\n'+
+'<\/ul>\n'+
+'<\/td><\/tr><\/table>\n'+
+'<input type=button value=" 应用 " onclick= "document.createStyleSheet(\'rdl_method.css\');">\n';
+
+iWinWidth=320;
+
+iWinHeight=280;
+
+</script>
+
+<div id=idContent>
+
+<div id=idContentTitle><span id=idTitleName>createStyleSheet</span>版本：DHTML Object Model　返回值：有</div>
+
+<div class=cssColumnTitle>语法：</div>
+<div>
+<i>oStylesheet</i><b> = </b><a href="../objects/document.html"><b>document</b></a><b> . createStyleSheet ( </b><i>sURL</i><b> , </b><i>iIndex</i><b> ) </b>
+</div>
+
+<div class=cssColumnTitle>参数：</div>
+<table>
+<tr><td nowrap><i> sURL </i></td><td nowrap><b>:</b></td>
+<td><b>可选项</b>。字符串(String)。指定怎样将样式规则加入文档。假如是一个文件名，样式信息将作为<a href="../objects/link.html"> link </a>对象加入。假如包含样式信息，则作为<a href="../objects/ style.html"> style </a>对象加入。</td></tr>
+<tr><td nowrap><i> iIndex </i></td><td nowrap><b>:</b></td>
+<td><b>可选项</b>。整数值(Integer)。指定加入的样式信息在<a href="../objects/styleSheets.html"> styleSheets </a>集合里的索引序号。默认值为加入到<a href="../objects/styleSheets.html"> styleSheets </a>集合的最后。</td></tr>
+</table>
+
+<div class=cssColumnTitle>返回值：</div>
+<table>
+<tr><td nowrap><i> oStylesheet </i></td><td nowrap><b>:</b></td>
+<td>对象(Element)。返回一个<a href="../objects/styleSheet.html"> styleSheet </a>对象。</td></tr>
+</table>
+
+<div class=cssColumnTitle>说明：</div>
+<div>
+为文档建立样式规则。
+</div>
+
+
+
+</div>
+</body>
+</html>
+
+<!-- Part of RDL(TM) - Written by Rain1977 
+HomeSite: http://www.dhtmlet.com  E-Mail: dhtmlet@hotmail.com -->

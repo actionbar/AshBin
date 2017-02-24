@@ -1,0 +1,135 @@
+<html>
+<head>
+<title>样式单与文档的链接</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+
+<link rel = stylesheet href = "image/style.css">
+</head>
+<body bgcolor="#ffffff">
+<table width="688" border="0" cellspacing="0" cellpadding="0" align="center">
+  <tr bgcolor="EEEEEE"> 
+    <td height="22"><a href="index.htm">主页</a></td>
+  </tr>
+</table><br>
+<table border="0" cellpadding="0" cellspacing="0" width="688" align="center" height="490">
+  <tr valign="top"> 
+    <td rowspan="4" width="91">&nbsp; </td>
+    <td height="68" width="131"> 
+      <p><img src="image/doc.gif"></p>
+    </td>
+    <td rowspan="4" width="18"><b></b> </td>
+    <td height="68" width="387"><img src="image/title_doc.gif"></td>
+    <td rowspan="4" width="61"> 
+      <h6>&nbsp;</h6>
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td rowspan="3" valign="top" class="pt10" align="center" width="131" bgcolor="EEEEEE"> 
+      <p>&nbsp;</p>
+      <p><font color="#FF0000">※ 12.2 样式单与文档的链接</font></p>
+       
+	</td>
+  </tr>
+  <tr valign="top"> 
+    <td width="387" height="308"> 
+      <table width="100%" border="0" cellpadding="0">
+        <tr> 
+          <td>
+
+           <h4><a name="_Toc467205067">12.2 样式单与文档的链接</a></h4>
+<p>要真正地使清单12-1中的样式单有意义，就得编写一个使用该样式单的XML文档。清单12-2是用XML标记的来自于Walt Whitman的诗集名著<i>Leaves 
+  of Grass</i>中的一首诗。第二行是&lt;?xml-stylesheet?&gt;处理指令，此指令通知Web浏览器加载本文档，以便将在文件poem.css中找到的样式单应用于本文档。图12-1显示了加载到Mozilla早期&#97; 
+  版本中的本文档。</p>
+<p>清单12-2：用XML作出标记的<i>Darest Thou Now O Soul</i>(Walt Whitman的诗)</p>
+<p>&lt;?xml version=1.0?&gt;</p>
+<p>&lt;?xml-stylesheet type=&#178; text/css&#178; href=&#178; poem.css&#178; ?&gt;</p>
+<p>&lt;POEM&gt;</p>
+<p></p>
+<p> &lt;TITLE&gt;Darest Thou Now O Soul&lt;/TITLE&gt;</p>
+<p> &lt;POET&gt;Walt Whitman&lt;/POET&gt;</p>
+<p></p>
+<p> &lt;STANZA&gt;</p>
+<p> &lt;VERSE&gt;Darest thou now O soul,&lt;/VERSE&gt;</p>
+<p> &lt;VERSE&gt;Walk out with me toward the unknown region,&lt;/VERSE&gt;</p>
+<p> &lt;VERSE&gt;Where neither ground is for the feet nor</p>
+<p> any path to follow?&lt;/VERSE&gt;</p>
+<p> &lt;/STANZA&gt;</p>
+<p> &lt;STANZA&gt;</p>
+<p> &lt;VERSE&gt;No map there, nor guide,&lt;/VERSE&gt;</p>
+<p> &lt;VERSE&gt;Nor voice sounding, nor touch of </p>
+<p> human hand,&lt;/VERSE&gt;</p>
+<p> &lt;VERSE&gt;Nor face with blooming flesh, nor lips, </p>
+<p> are in that land.&lt;/VERSE&gt;</p>
+<p> &lt;/STANZA&gt;</p>
+<p> &lt;STANZA&gt;</p>
+<p> &lt;VERSE&gt;I know it not O soul,&lt;/VERSE&gt;</p>
+<p> &lt;VERSE&gt;Nor dost thou, all is blank before us,&lt;/VERSE&gt;</p>
+<p> &lt;VERSE&gt;All waits undream’d of in that region, </p>
+<p> that inaccessible land.&lt;/VERSE&gt;</p>
+<p> &lt;/STANZA&gt;</p>
+<p> &lt;STANZA&gt;</p>
+<p> &lt;VERSE&gt;Till when the ties loosen,&lt;/VERSE&gt;</p>
+<p> &lt;VERSE&gt;All but the ties eternal, Time and Space,&lt;/VERSE&gt;</p>
+<p> &lt;VERSE&gt;Nor darkness, gravitation, sense, </p>
+<p> nor any bounds bounding us.&lt;/VERSE&gt;</p>
+<p> &lt;/STANZA&gt;</p>
+<p> &lt;STANZA&gt;</p>
+<p> &lt;VERSE&gt;Then we burst forth, we float,&lt;/VERSE&gt;</p>
+<p> &lt;VERSE&gt;In Time and Space O soul, </p>
+<p> prepared for them,&lt;/VERSE&gt;</p>
+<p> &lt;VERSE&gt;Equal, equipt at last, (O joy! O fruit of all!)</p>
+<p> them to fulfil O soul.&lt;/VERSE&gt;</p>
+<p> &lt;/STANZA&gt;</p>
+<p></p>
+<p>&lt;/POEM&gt;</p>
+<p>在&lt;?xml-stylesheet?&gt;处理指令中的type属性是正在使用的MIME类型的样式单。对CSS来说，其值是text/css，对XSL来说，则是text/xsl。</p>
+<p><img src="Image/BK000212-50.gif" width=54 height=39 align="left">CSS2将在第13章中讨论。而XSL将在第14和15章中讲述。</p>
+<p align="center"><img src="Image/BK000212-17.gif" width=354 height=311></p>
+<p align="center">图12-1 Mozilla显示的Darest Thou Now O Soul</p>
+<p>&lt;?xml-stylesheet?&gt;处理指令中的href属性值是一个URL，通常是相对值，指明在何处可找到样式单。如果样式单没有找到，Web浏览器很可能使用其缺省的样式单，不过有些浏览器可能会报告一条错误信息。</p>
+<p>也可以将同一个样式单用于许多文档，人们通常的确就是这么做的。于是，把样式单放在Web服务器上的某个主要位置成了人们的通用方法，所有的文档都会在此位置引用这些样式单；一个便利的位置就是Web服务器根目录上的样式目录。</p>
+<p>&lt;?xml-stylesheet type="text/css" href="/styles/poem.css"?&gt;</p>
+<p>甚至还可以使用指向另一个Web站点上的样式单的绝对URL值，虽然这样做不可避免地会使站点依赖于外部Web站点的状态。</p>
+<p>&lt;?xml-stylesheet type="text/css"</p>
+<p> href="http://metalab.unc.edu/xml/styles/poem.css"?&gt;</p>
+<p>甚至也可以使用多个&lt;?xml-stylesheet?&gt;处理指令，以便应用不同样式单中的规则。例如：</p>
+<p>&lt;?xml version="1.0"?&gt;</p>
+<p>&lt;?xml-stylesheet type="text/css" href="/styles/poem.css"?&gt;</p>
+<p>&lt;?xml-stylesheet type="text/css"</p>
+<p> href="http://metalab.unc.edu/xml/styles/poem.css"?&gt;</p>
+<p>&lt;POEM&gt;</p>
+<p>&#188; </p>
+<table cellspacing=0 border=0 cellpadding=7 width=560 bgcolor="#CCCCCC">
+  <tr bgcolor="#CCCCCC"> 
+    <td valign="TOP"> 
+      <p>HTML中使用的CSS与XML使用的CSS的对照
+    </td>
+  </tr>
+  <tr bgcolor="#CCCCCC"> 
+    <td valign="TOP" height=260> 
+      <p> 尽管本书的重点是介绍XML的，但CSS样式单也与HTML文档一起使用。HTML中的CSS与XML中的CSS之间的主要区别是：</p>
+      <p> 1．与规则相链接的元素只限于标准的HTML元素，如P、PRE、LI、DIV和SPAN。</p>
+      <p> 2．HTML浏览器不能识别处理指令，所以在HEAD元素中，使用LINK标志将样式单与HTML文档相链接。而且，每个文档样式规则包括在STYLE元素中的HEAD里面。例如：</p>
+      <p> &lt;LINK REL=STYLESHEET TYPE=&#178; text/css&#178; HREF=&#178; /styles/poem.css&#178; 
+        &gt;</p>
+      <p> &lt;STYLE TYPE=&#178; text/css&#178; </p>
+      <p> PRE { color: red }</p>
+      <p> &lt;/STYLE&gt;</p>
+      <p> 3．由于元素的传统格式化方法，HTML浏览器不能像XML浏览器一样准确无误地体现CSS属性，在此方面表格就是众所周知的问题之一。
+    </td>
+  </tr>
+</table>
+<p><img src="Image/BK000212-51.gif" width=45 height=53 align="left">样式单与DTD或多或少地成正交关系。带样式单的文档可能有也可能没有DTD，而带DTD的文档也可能有或没有样式单。但是，DTD常常充当便于使用的必须为其提供样式规则的元素列表。</p>
+<p>在本章以及下面几章中，大多数例子都要使用结构完整、但不合法的文档。不使用DTD会使所举的例子更短、相关的部分更加明显。但是实际上，大多数与样式单相链接的文档很可能是合法的带DTD的文档。</p>
+ 
+<a href='435.htm'>&lt;&lt;上一篇</a>&nbsp;&nbsp;<a href='436.htm'>下一篇&gt;&gt;</a></td>
+        </tr>
+      </table>
+      <p>&nbsp; </p>
+    </td>
+  </tr>
+</table>
+
+</body>
+
+</html>

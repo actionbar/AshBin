@@ -1,0 +1,112 @@
+<html xmlns:rdl>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<script src="rdl_properties.js"></script>
+<base target="_self">
+</head>
+<body>
+
+<script>
+
+//collFriendProperties=new Array();
+//collFriendDeclarations=new Array();
+//collFriendAtRules=new Array();
+//collFriendElements=new Array();
+//collFriendClasses=new Array();
+
+collFriendProperties=new Array(
+'font-variant','font-style','font-weight'
+);
+
+//collIE40=new Array();
+//collIE50=new Array();
+//collIE55=new Array();
+//collIE60=new Array();
+
+collIE40=new Array(
+'A','ADDRESS','B','BIG','BLOCKQUOTE','BODY','BUTTON','CAPTION','CENTER','CITE','CODE','COL','COLGROUP','DD','DFN','DIR','DIV','DL','DT','EM','FIELDSET','FORM','Hn','HTML','I','INPUT type=button','INPUT type=checkbox','INPUT type=file','INPUT type=image','INPUT type=password','INPUT type=radio','INPUT type=reset','INPUT type=submit','INPUT type=text','ISINDEX','KBD','LABEL','LEGEND','LI','LISTING','MARQUEE','MENU','OL','P','PLAINTEXT','PRE','S','SAMP','SELECT','SMALL','SPAN','STRIKE','STRONG','style','SUB','SUP','TABLE','TBODY','TD','TEXTAREA','TFOOT','TH','THEAD','TR','TT','U','UL','VAR','XMP'
+);
+
+collIE50=new Array(
+'currentStyle','CUSTOM','runtimeStyle'
+);
+
+collIE55=new Array(
+'defaults'
+);
+
+sStyle=
+'<style>\n'+
+'#idDIV{width:100%;height:80px;background-color:#FFD700;padding:4px;font-family:verdana,tahoma;font-weight:bold;}\n'+
+'#idCodeDiv{width:100%;padding:4px;font-family:verdana,tahoma;margin:12px 0px 0px 0px;background-color:#EEEEEE;font-weight:bold;}\n'+
+'<\/style>\n';
+
+sScript=
+'<script>\n'+
+'function rdl_change(e){\n'+
+'var oCodeDiv=document.all("idCodeDiv");\n'+
+'var oDiv=document.all("idDiv");\n'+
+'with (document.all("idSel")) var sValue=options[selectedIndex].value;\n'+
+'oDiv.style.textTransform=sValue;\n'+
+'oCodeDiv.innerText="text-transform : "+sValue+";";\n'+
+'}\n'+
+'<\/script>\n';
+
+sCode=
+'<div id=idDIV>Every man dies , Not every man really lives .<\/div>\n'+
+'<br>\n'+
+'<select id="idSel" onchange="rdl_change();">\n'+
+'<option value="none">---text-transform---\n'+
+'<option value="none">none\n'+
+'<option value="capitalize">capitalize\n'+
+'<option value="uppercase">uppercase\n'+
+'<option value="lowercase">lowercase\n'+
+'<\/select>\n'+
+'<br>\n'+
+'<div id=idCodeDiv>text-transform : none ;<\/div>\n';
+
+iWinWidth=360;
+
+iWinHeight=320;
+
+//bRunCode=false;
+
+//bElements=false;
+
+</script>
+
+<div id=idContent>
+
+<div id=idContentTitle><span id=idTitleName>text-transform</span>版本：CSS1　 兼容性：IE4+ NS4+　继承性：有</div>
+
+<div class=cssColumnTitle>语法：</div>
+<div>
+<b>text-transform : </b><span class=cssDefault><b>none</b></span> | <b>capitalize</b> | <b>uppercase</b> | <b>lowercase</b>
+</div>
+
+<div class=cssColumnTitle>取值：</div>
+<table>
+<tr><td nowrap><b> none </b></td><td nowrap><b>:</b></td><td><b>默认值</b>。无转换发生</td></tr>
+<tr><td nowrap><b> capitalize </b></td><td nowrap><b>:</b></td><td>将每个单词的第一个字母转换成大写，其余无转换发生</td></tr>
+<tr><td nowrap><b> uppercase </b></td><td nowrap><b>:</b></td><td>转换成大写</td></tr>
+<tr><td nowrap><b> lowercase </b></td><td nowrap><b>:</b></td><td>转换成小写</td></tr>
+</table>
+
+<div class=cssColumnTitle>说明：</div>
+<div>
+检索或设置对象中的文本的大小写。<br>
+此属性对于<b> currentStyle </b>对象而言是只读的。对于其他对象而言是可读写的。<br>
+对应的脚本特性为<b> textTransform </b>。
+</div>
+
+<div class=cssColumnTitle>示例：</div>
+<div id=idSimpleCode>
+div { text-transform : uppercase; } 
+</div>
+
+</div>
+</body>
+</html>
+
+<!-- Part of RDL(TM) - Written by Rain1977 
+HomeSite: http://www.dhtmlet.com  E-Mail: dhtmlet@hotmail.com -->

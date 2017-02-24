@@ -1,0 +1,6 @@
+<br />
+<b>Warning</b>:  readfile(http://localhost/tool/__uploadImgTemp/36968-b.jpg) [<a href='function.readfile'>function.readfile</a>]: failed to open stream: HTTP request failed! HTTP/1.1 404 Not Found
+ in <b>E:\Webpages\www.v-get.com\wuliu\_\_insert_imgLocalhost.php</b> on line <b>88</b><br />
+<br />
+<b>Warning</b>:  readfile(http://localhost/tool/__uploadImgTemp/36968-b.jpg) [<a href='function.readfile'>function.readfile</a>]: failed to open stream: HTTP request failed! HTTP/1.1 404 Not Found
+ in <b>E:\Webpages\www.v-get.com\wuliu\_\_insert_imgLocalhost.php</b> on line <b>88</b><br />

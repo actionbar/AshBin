@@ -1,0 +1,148 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>ASP进度条</title>
+<style type="text/css">
+<!--
+body {
+	font-size: 10.4pt;
+	line-height: 22px;
+}
+-->
+</style>
+</head>
+
+<body bgcolor="eeeeee" leftmargin="20" marginwidth="20">
+<p><strong>ASP进度条</strong></p>
+<hr>
+<p> 前段时间研究了一个进度条，大致的思想是<br>
+  在后台处理数据时，前台页面同时计数显示Proess Bar<br>
+  使用了layer来显示<br>
+  用法：<br>
+  1。引用<br>
+  &lt;script language=&quot;javascript&quot; src=&quot;ShowProcessBar.js&quot;&gt;&lt;/script&gt;<br>
+  2。在提交Button或&lt;A&gt;或&lt;span&gt; 加扩展属性<br>
+  IsShowProcessBar=&quot;True&quot;</p>
+<p><br>
+  文件ShowProcessBar.js如下</p>
+<p>AddProcessbar();<br>
+  var bwidth=0;<br>
+  var swidth = document.all.waiting.clientWidth;</p>
+<p>function CheckIsProcessBar(obj)<br>
+  {<br>
+  if (obj.IsShowProcessBar==&quot;True&quot;) <br>
+  {<br>
+  return false;<br>
+  } <br>
+  else<br>
+  {<br>
+  return true;<br>
+  }<br>
+  }</p>
+<p>function CheckClick(e)<br>
+  {<br>
+  if (e == 1)<br>
+  {<br>
+  if (bwidth&lt;swidth*0.98){<br>
+  bwidth += (swidth - bwidth) * 0.025;<br>
+  if (document.all)document.sbar.width = bwidth;<br>
+  else document.rating.clip.width = bwidth;<br>
+  setTimeout('CheckClick(1);',150);</p>
+<p>}<br>
+  }<br>
+  else<br>
+  {<br>
+  if(document.all)<br>
+  {<br>
+  if(document.all.waiting.style.visibility == 'visible')<br>
+  {document.all.waiting.style.visibility = 'hidden';<br>
+  bwidth = 1;}<br>
+  whichIt = event.srcElement;</p>
+<p>while (CheckIsProcessBar(whichIt))<br>
+  {<br>
+  whichIt = whichIt.parentElement;<br>
+  if (whichIt == null)return true;<br>
+  }</p>
+<p><br>
+  document.all.waiting.style.pixelTop = (document.body.offsetHeight - document.all.waiting.clientHeight) 
+  / 2 + document.body.scrollTop;<br>
+  document.all.waiting.style.pixelLeft = (document.body.offsetWidth - document.all.waiting.clientWidth) 
+  / 2 + document.body.scrollLeft;<br>
+  document.all.waiting.style.visibility = 'visible';<br>
+  if(!bwidth)CheckClick(1);<br>
+  bwidth = 1;</p>
+<p>}</p>
+<p>else<br>
+  {</p>
+<p>if(document.waiting.visibility == 'show')<br>
+  {document.waiting.visibility = 'hide';<br>
+  document.rating.visibility = 'hide';<br>
+  bwidth = 1;}<br>
+  if(e.target.href.toString() != '')<br>
+  {<br>
+  document.waiting.top = (window.innerHeight - document.waiting.clip.height) / 
+  2 + self.pageYOffset;<br>
+  document.waiting.left = (window.innerWidth - document.waiting.clip.width) / 
+  2 + self.pageXOffset;<br>
+  document.waiting.visibility = 'show';<br>
+  document.rating.top = (window.innerHeight - document.waiting.clip.height) / 
+  2 + self.pageYOffset+document.waiting.clip.height-10;<br>
+  document.rating.left = (window.innerWidth - document.waiting.clip.width) / 2 
+  + self.pageXOffset;<br>
+  document.rating.visibility = 'show';<br>
+  if(!bwidth)CheckClick(1);<br>
+  bwidth = 1;<br>
+  }<br>
+  }<br>
+  return true;<br>
+  }<br>
+  }</p>
+<p>function AddProcessbar()<br>
+  {</p>
+<p>var Str=&quot;&quot;<br>
+  Str+= &quot;&lt;div id=waiting style=position:absolute;top:50px;left:100px;z-index:1;visibility:hidden 
+  &gt;&quot;;<br>
+  Str+= &quot;&lt;layer name=waiting visibility=visible zIndex=2 &gt;&quot;<br>
+  Str+= &quot;&lt;table border=2 cellspacing=1 cellpadding=0 bordercolorlight=#FFFFFF 
+  bordercolordark=#C0C0C0 bgcolor=#E0E0E0&gt;&quot;<br>
+  Str+= &quot; &lt;tr&gt;&quot;<br>
+  Str+= &quot; &lt;td bgcolor=#E0E0E0 height=30px width=300px align=center&gt;&quot;<br>
+  Str+= &quot; &lt;font color=black&gt;系統正在處理中...&lt;/font&gt;&quot;<br>
+  Str+= &quot; &lt;/td&gt;&quot;<br>
+  Str+= &quot; &lt;/tr&gt;&quot;<br>
+  Str+= &quot; &lt;tr&gt;&quot;<br>
+  Str+= &quot; &lt;td bgcolor=#E0E0E0&gt;&quot;<br>
+  Str+= &quot; &lt;img width=1 height=10 name=sbar style=background-color:#6699cc&gt;&quot;<br>
+  Str+= &quot; &lt;/td&gt;&quot;<br>
+  Str+= &quot; &lt;/tr&gt;&quot;<br>
+  Str+= &quot;&lt;/table&gt; &quot;<br>
+  Str+= &quot;&lt;/layer&gt;&quot;<br>
+  Str+= &quot;&lt;/div&gt;&quot;<br>
+  document.write(Str)</p>
+<p>if(document.all)document.onclick = CheckClick; <br>
+  }</p>
+<p><br>
+  测试文件TestShowBar.HTML</p>
+<p>&lt;HTML&gt;<br>
+  &lt;HEAD&gt;<br>
+  &lt;script language=&quot;javascript&quot; src=&quot;ShowProcessBar.js&quot;&gt;&lt;/script&gt;<br>
+  &lt;/HEAD&gt;<br>
+  &lt;BODY&gt;<br>
+  &lt;A href=&quot;error.asp&quot; IsShowProcessBar=&quot;True&quot;&gt;A Href&lt;/a&gt;<br>
+  &lt;BR&gt;<br>
+  &lt;BR&gt;<br>
+  &lt;span onclick=&quot;location.href='error.asp'&quot; style=&quot;cursor:hand&quot; 
+  IsShowProcessBar=&quot;True&quot;&gt;&lt;font color=blue&gt;Span&lt;/font&gt;&lt;/span&gt;<br>
+  &lt;BR&gt;<br>
+  &lt;form action=&quot;error.asp&quot;&gt;<br>
+  &lt;input type=Submit value=&quot;Submit&quot;&gt;<br>
+  &lt;input type=button value=&quot;normal button&quot; IsShowProcessBar=&quot;True&quot;&gt;<br>
+  &lt;/form&gt;<br>
+  &lt;P IsShowProcessBar=&quot;True&quot;&gt;AAAAAAAAAAAAA&lt;/P&gt;<br>
+  &lt;/BODY&gt;<br>
+  &lt;/HTML&gt; </p>
+<p></p>
+<p>&nbsp; </p>
+</body>
+</html>

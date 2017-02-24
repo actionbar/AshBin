@@ -1,0 +1,11 @@
+<meta http-equiv="content-type" content="text/html; charset=gb2312"><FONT 
+style="FONT-SIZE: 9pt; LINE-HEIGHT: 15pt"><B>FAQ</B><BR>Q.How&nbsp;can&nbsp;I&nbsp;convert&nbsp;a&nbsp;SQL&nbsp;date/time&nbsp;to&nbsp;just&nbsp;date?<BR>&nbsp;&nbsp;<BR>A.&nbsp;The&nbsp;SQL&nbsp;date/time&nbsp;field&nbsp;stores&nbsp;a&nbsp;date&nbsp;and&nbsp;time&nbsp;but&nbsp;if&nbsp;you&nbsp;have&nbsp;a&nbsp;populated&nbsp;table&nbsp;and&nbsp;you&nbsp;want&nbsp;to&nbsp;convert&nbsp;a&nbsp;column&nbsp;so&nbsp;it&nbsp;
+<P></P>
+<P>lists&nbsp;data&nbsp;only&nbsp;run&nbsp;the&nbsp;following:</P>
+<P>update&nbsp;&lt;table&gt;<BR>where&nbsp;&lt;column&gt;=convert(datetime,convert(char(10),&lt;column&gt;,101))</P>
+<P>For&nbsp;example</P>
+<P>update&nbsp;faq<BR>where&nbsp;created=convert(datetime,convert(char(10),created,101))</P>
+<P><BR>Q:How&nbsp;can&nbsp;I&nbsp;find&nbsp;the&nbsp;Microsoft&nbsp;Data&nbsp;Access&nbsp;Component&nbsp;version&nbsp;install&nbsp;on&nbsp;my&nbsp;computer?<BR>You&nbsp;can&nbsp;use&nbsp;the&nbsp;xp_regread&nbsp;extended&nbsp;function&nbsp;to&nbsp;read&nbsp;the&nbsp;registry&nbsp;to&nbsp;accomplish&nbsp;this.&nbsp;This&nbsp;UDF&nbsp;returns&nbsp;the&nbsp;MDAC&nbsp;version:<BR>USAGE:&nbsp;print&nbsp;dbo.MDACversion()</P>
+<P><BR>CREATE&nbsp;FUNCTION&nbsp;MDACversion&nbsp;()<BR>RETURNS&nbsp;varchar(255)&nbsp;AS&nbsp;</P>
+<P><BR>BEGIN&nbsp;<BR>DECLARE&nbsp;@Ver&nbsp;varchar(&nbsp;255&nbsp;)<BR>EXEC&nbsp;master..xp_regread&nbsp;N''HKEY_LOCAL_MACHINE'',<BR>N''Software\Microsoft\DataAccess'',<BR>N''FullInstallVer''&nbsp;,&nbsp;@Ver&nbsp;OUT&nbsp;,&nbsp;N''no_output''<BR>RETURN&nbsp;(@Ver)<BR>END</P>
+<P>得到sqlserver的安装路径<BR>declare&nbsp;@path&nbsp;varchar(200)<BR>exec&nbsp;master.dbo.xp_regread<BR>&nbsp;&nbsp;&nbsp;''HKEY_LOCAL_MACHINE'',<BR>&nbsp;&nbsp;&nbsp;''SOFTWARE\MICROSOFT\MSSQLSERVER\SETUP''<BR>&nbsp;&nbsp;&nbsp;''SQLPATH'',@path&nbsp;output<BR>set&nbsp;@path=@path+''\data''<BR>print&nbsp;@path</P></FONT>

@@ -1,0 +1,326 @@
+<html>
+<head>
+<title>如何使用Unicode编写XML</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+
+<link rel = stylesheet href = "image/style.css">
+</head>
+<body bgcolor="#ffffff">
+<table width="688" border="0" cellspacing="0" cellpadding="0" align="center">
+  <tr bgcolor="EEEEEE"> 
+    <td height="22"><a href="index.htm">主页</a></td>
+  </tr>
+</table><br>
+<table border="0" cellpadding="0" cellspacing="0" width="688" align="center" height="490">
+  <tr valign="top"> 
+    <td rowspan="4" width="91">&nbsp; </td>
+    <td height="68" width="131"> 
+      <p><img src="image/doc.gif"></p>
+    </td>
+    <td rowspan="4" width="18"><b></b> </td>
+    <td height="68" width="387"><img src="image/title_doc.gif"></td>
+    <td rowspan="4" width="61"> 
+      <h6>&nbsp;</h6>
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td rowspan="3" valign="top" class="pt10" align="center" width="131" bgcolor="EEEEEE"> 
+      <p>&nbsp;</p>
+      <p><font color="#FF0000">※ 7.5 如何使用Unicode编写XML</font></p>
+       
+	</td>
+  </tr>
+  <tr valign="top"> 
+    <td width="387" height="308"> 
+      <table width="100%" border="0" cellpadding="0">
+        <tr> 
+          <td>
+
+           <h4><a name="_Toc467197064">7.5 如何使用Unicode编写XML</a></h4>
+<p>Unicode是XML自己的字符集，至少在能得到的字体范围内，XML浏览器会很好的显示它。但是支持全部Unicode的文本编辑程序不是很多。因此，不得不使用下面两种方法之一解决这个问题：</p>
+<ol>
+  <p>
+  <li>使用本地字符集如Latin-3编写，然后把文件转换成Unicode文件。</li>
+  <p></p>
+  <p>
+  <li>在文本中包含Unicode字符引用，它们在数值上等同于特定的字符。</li>
+  <p></p>
+</ol>
+<p>在主要使用一种文字或一种文字附加ASCII码输入大量文本的情况下，第一种方法更可取。文档需要掺少量的多种文字时，可使用第二种方法。</p>
+<h5><a name="_Toc467197065">7.5.1 利用字符引用在XML文件中插入字符</a></h5>
+<p>一个Unicode字符是介于0和65,535之间的一个数。如果没有使用Unicode书写的文本编辑程序，通常可以使用字符引用在XML文件中插入字符。</p>
+<p>Unicode字符引用由两个字符&amp;#组成，后面跟有要插入字符的编码和分号。例如，希腊字母π的Unicode字符值是960，因此需要在XML文件中插入&amp;#960;。古斯拉夫字母ч的Unicode值是1206，需要在XML文件中插入&amp;#1206;。</p>
+<p>Unicode字符引用也可以用十六进制数指定，尽管多数人习惯使用十进制数，Unicode规范中给出的字符值是双字节十六进制数。直接使用十六进制数更简单一些，不必把它们转换成十进制数。</p>
+<p>使用十六进制数需要在&amp;#之后添加一个x来指明。例如，π的十六进制数是3C0，因此插入XML文件中的是&amp;#x03C0;；古斯拉夫语字母ч的十六进制数是4B6，因此在XML文件中的应当是&amp;#x04B6;。两个字节表示4个十六进制位，通常在十六进制字符引用中包含一个起始的0来构成4位十六进制数。</p>
+<p>十六进制和十进制Unicode字符引用可用来嵌入那些会被解释为置标的字符。例如，与字符（&amp;）的编码是&amp;#38;或&amp;#x0026;，小于号（&lt;）的编码是&amp;#60;或&amp;#x003C;。</p>
+<h5><a name="_Toc467197066">7.5.2 其他字符集与Unicode字符集之间的转换</a></h5>
+<p>输出XML文件的应用软件如Adobe Framemaker，能够自动转换为Unicode或UTF-8文件。否则必须使用一种转换工具。Sun的免费工具包Java 
+  Development Kit (JDK)包含一个名为native2ascii的简单命令行实用工具，能够完成多种常见和不常见的本地字符集与Unicode之间的转换。</p>
+<p>例如，下面的命令把文件名是myfile.txt文本文件从操作平台默认的编码转换为Unicode。</p>
+<p>C:\&gt;native2ascii myfile.txt myfile.uni</p>
+<p>可使用-encoding选项指定其他编码。</p>
+<p>C:&gt;native2ascii -encoding Big5 chinese.txt chinese.uni</p>
+<p>还可使用-reverse选项，把Unicode转换为本地编码。</p>
+<p>C:&gt;native2ascii -encoding Big5 -reverse chinese.uni chinese.txt</p>
+<p>如果没有输出文件名，转换后的文件将打印输出。</p>
+<p>native2ascii程序同样能处理java类型的Unicode转义符，它们是以\u09E3的格式嵌入的。这与XML中的数值字符引用不同，尽管比较相似。使用native2ascii把文件转化为Unicode，仍然可以使用XML字符引用&#0;&#0;查看程序能够识别它们。</p>
+<h5><a name="_Toc467197067">7.5.3 如何使用其他字符集编写XML</a></h5>
+<p>在没有被预先告知的情况下，XML处理器默认文本实体字符使用UTF-8编码，因为ASCII码是包含在UTF-8中的一个子集，所以XML处理器同样可以分析ASCII码文本。</p>
+<p>除了UTF-8，XML处理器必须能读懂的唯一字符集是原始Unicode。当不能把文本转换成UTF-8或原始Unicode时，可以使文本保持原样并告诉XML处理器文本所使用的字符集。这是最后一种手段，因为这样做并不能保证一个尚未成熟的XML处理器能够处理其他编码。除此之外，Netscape 
+  Navigator和Internet Explorer都能很好地解释常见的字符集。</p>
+<p>在文件开始的XML声明中包含一个encoding属性，告诉XML处理器正在使用的是非Unicode编码。例如，说明整个文档使用默认的Latin-1（除非在嵌套的实体中有别的处理指令），可使用下面的XML声明：</p>
+<p>&lt;?xml version="1.0" encoding="ISO-8859-1" ??&gt;</p>
+<p>也可以在XML声明之后包含一个编码声明作为一个单独的处理指令，但是一定要在所有字符数据之前：</p>
+<p>&lt;?xml encoding="ISO-8859-1"?&gt;</p>
+<p>表7-7列出了目前大部分常用的字符集的正式名称，即出现在XML编码属性中的名称。清单中没有的编码请参考由Internet Assigned Numbers 
+  Authority（IANA）提供的正式清单，网址是：http://www.isi.edu/in-notes/iana/assignments/ character-sets。</p>
+<p align="center">表7-7 常用字符集名称</p>
+<p>
+<center>
+  <table BORDER cellspacing=0 cellpadding=0 width=390>
+    <tr>
+      <td width="43%" valign="TOP"> 
+        <p>字符集名称
+      </td>
+      <td width="57%" valign="TOP"> 
+        <p>语言/国家
+      </td>
+    </tr>
+    <tr>
+      <td width="43%" valign="TOP"> 
+        <p>US-ASCII 
+      </td>
+      <td width="57%" valign="TOP"> 
+        <p>英语
+      </td>
+    </tr>
+    <tr>
+      <td width="43%" valign="TOP"> 
+        <p>UTF-8 
+      </td>
+      <td width="57%" valign="TOP"> 
+        <p>压缩Unicode
+      </td>
+    </tr>
+    <tr>
+      <td width="43%" valign="TOP"> 
+        <p>UTF-16 
+      </td>
+      <td width="57%" valign="TOP"> 
+        <p>压缩UCS
+      </td>
+    </tr>
+    <tr>
+      <td width="43%" valign="TOP"> 
+        <p>ISO-10646-UCS-2 
+      </td>
+      <td width="57%" valign="TOP"> 
+        <p>原始Unicode
+      </td>
+    </tr>
+    <tr>
+      <td width="43%" valign="TOP"> 
+        <p>ISO-10646-UCS-4 
+      </td>
+      <td width="57%" valign="TOP"> 
+        <p>原始UCS
+      </td>
+    </tr>
+    <tr>
+      <td width="43%" valign="TOP"> 
+        <p>ISO-8859-1 
+      </td>
+      <td width="57%" valign="TOP"> 
+        <p>Latin-1，西欧
+      </td>
+    </tr>
+    <tr>
+      <td width="43%" valign="TOP"> 
+        <p>ISO-8859-2 
+      </td>
+      <td width="57%" valign="TOP"> 
+        <p>Latin-2，东欧
+      </td>
+    </tr>
+    <tr>
+      <td width="43%" valign="TOP"> 
+        <p>ISO-8859-3 
+      </td>
+      <td width="57%" valign="TOP"> 
+        <p>Latin-3，南欧
+      </td>
+    </tr>
+    <tr>
+      <td width="43%" valign="TOP"> 
+        <p>ISO-8859-4 
+      </td>
+      <td width="57%" valign="TOP"> 
+        <p>Latin-4，北欧
+      </td>
+    </tr>
+    <tr>
+      <td width="43%" valign="TOP"> 
+        <p>ISO-8859-5 
+      </td>
+      <td width="57%" valign="TOP"> 
+        <p>ASCII码加古斯拉夫语
+      </td>
+    </tr>
+    <tr>
+      <td width="43%" valign="TOP"> 
+        <p>ISO-8859-6 
+      </td>
+      <td width="57%" valign="TOP"> 
+        <p>ASCII码加阿拉伯语
+      </td>
+    </tr>
+    <tr>
+      <td width="43%" valign="TOP"> 
+        <p>ISO-8859-7 
+      </td>
+      <td width="57%" valign="TOP"> 
+        <p>ASCII码加希腊语
+      </td>
+    </tr>
+    <tr>
+      <td width="43%" valign="TOP"> 
+        <p>ISO-8859-8 
+      </td>
+      <td width="57%" valign="TOP"> 
+        <p>ASCII码加希伯来语
+      </td>
+    </tr>
+    <tr>
+      <td width="43%" valign="TOP"> 
+        <p>ISO-8859-9 
+      </td>
+      <td width="57%" valign="TOP"> 
+        <p>Latin-5，土耳其语
+      </td>
+    </tr>
+    <tr>
+      <td width="43%" valign="TOP"> 
+        <p>ISO-8859-10 
+      </td>
+      <td width="57%" valign="TOP"> 
+        <p>Latin-6，ASCII码加北欧语
+      </td>
+    </tr>
+    <tr>
+      <td width="43%" valign="TOP"> 
+        <p>ISO-8859-11 
+      </td>
+      <td width="57%" valign="TOP"> 
+        <p>ASCII码加泰国语
+      </td>
+    </tr>
+    <tr>
+      <td width="43%" valign="MIDDLE"> 
+        <p>ISO-8859-13 
+      </td>
+      <td width="57%" valign="TOP"> 
+        <p>Latin-7，ASCII码加波罗地海周边语言和独特的拉托维亚语
+      </td>
+    </tr>
+    <tr>
+      <td width="43%" valign="TOP"> 
+        <p>ISO-8859-14 
+      </td>
+      <td width="57%" valign="TOP"> 
+        <p>Latin-8，ASCII码加盖尔语和威尔式语
+      </td>
+    </tr>
+    <tr>
+      <td width="43%" valign="TOP"> 
+        <p>ISO-8859-15 
+      </td>
+      <td width="57%" valign="TOP"> 
+        <p>Latin-9，Latin-0，西欧
+      </td>
+    </tr>
+    <tr>
+      <td width="43%" valign="TOP"> 
+        <p>ISO-2022-JP 
+      </td>
+      <td width="57%" valign="TOP"> 
+        <p>日语
+      </td>
+    </tr>
+    <tr>
+      <td width="43%" valign="TOP"> 
+        <p>Shift_JIS 
+      </td>
+      <td width="57%" valign="TOP"> 
+        <p>日文版Windows
+      </td>
+    </tr>
+    <tr>
+      <td width="43%" valign="TOP"> 
+        <p>EUC-JP 
+      </td>
+      <td width="57%" valign="TOP"> 
+        <p>日文版Unix
+      </td>
+    </tr>
+    <tr>
+      <td width="43%" valign="TOP"> 
+        <p>Big5 
+      </td>
+      <td width="57%" valign="TOP"> 
+        <p>中国台湾地区，汉语
+      </td>
+    </tr>
+    <tr>
+      <td width="43%" valign="TOP"> 
+        <p>GB2312 
+      </td>
+      <td width="57%" valign="TOP"> 
+        <p>中国大陆，汉语
+      </td>
+    </tr>
+    <tr>
+      <td width="43%" valign="TOP"> 
+        <p>KOI6-R 
+      </td>
+      <td width="57%" valign="TOP"> 
+        <p>俄罗斯
+      </td>
+    </tr>
+    <tr>
+      <td width="43%" valign="TOP"> 
+        <p>ISO-2022-KR 
+      </td>
+      <td width="57%" valign="TOP"> 
+        <p>韩语
+      </td>
+    </tr>
+    <tr>
+      <td width="43%" valign="TOP"> 
+        <p>EUC-KR 
+      </td>
+      <td width="57%" valign="TOP"> 
+        <p>韩语版Unix
+      </td>
+    </tr>
+    <tr>
+      <td width="43%" valign="TOP"> 
+        <p>ISO-2022-CN 
+      </td>
+      <td width="57%" valign="TOP"> 
+        <p>汉语
+      </td>
+    </tr>
+  </table>
+</center>
+ 
+<a href='392.htm'>&lt;&lt;上一篇</a>&nbsp;&nbsp;<a href='394.htm'>下一篇&gt;&gt;</a></td>
+        </tr>
+      </table>
+      <p>&nbsp; </p>
+    </td>
+  </tr>
+</table>
+
+</body>
+
+</html>

@@ -1,0 +1,23 @@
+/*
+by ali727
+http://www.ali727.com
+2012年02月17日
+*/
+body { margin:0 auto; width:700px; font-size:14px;}
+
+a:link {text-decoration:none; color:gray;} 
+a:visited {text-decoration:none; color:gray;} 
+
+#all {}
+
+#logo { font-size:22px; font-weight:bold; text-align:center; margin-top:100px;}
+
+#form { text-align: center;margin-top:25px;}
+
+#trurl {text-align: center; margin:10px auto; line-height:25px;}
+
+#hr { width:500px; margin:5px 100px;}
+
+#surported { text-align:center; font-weight:bold;margin-top:15px}
+
+#powered { font-size:12px; text-align:center;}

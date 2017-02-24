@@ -1,0 +1,45 @@
+﻿因为需要查询，所以避免麻烦，先伪静态成shtml，因为同时存在html，所以伪静态成shtml更不会出错。采用 shtml ，以后稳定了就生成静态的
+index.html
+PHP.html
+PHP_var_server.shtml
+
+PHP_var.htm
+PHP.htm
+
+http://e.v-get.com/w3c/PHP.html
+  http://e.v-get.com/w3c/PHP_var_server.shtml
+    $_SERVER['httpd'];
+  函数直接写  
+  http://e.v-get.com/w3c/PHP_strstr.html
+http://e.v-get.com/w3c/HTML.html
+
+全部html（方便添加相关tech文章），数据库记录常用查询
+
+w3c
+//由于更新都在本地，所以数据库设计无所谓
+l char(35)主键   PHP_var_server   a.b.c 采用 char     Java_implCloseSelectableChannel.shtml
+a varchar(6) == 类别a    HTML=1  CSS=2 JS=3  PHP=4  这个类前端只需要输出不需要判断，判断在本地进行
+
+非函数用 拼音，如 HTML_zhushi   jQuery_xuanzeqi
+
+[/] b tinyint(1) ==   这个f页需要判断，因为 tag 不是中文，而a可以直接输出，这个不行
+     $ba=array(1=>array(\'_tag\',\'标签\'),4=>array(\'_sev\',\'系统值\'),6=>array(\'\',\'函数\'),9=>array(\'_open\',\'源码\'));
+	       1=_tag HTML标签、js var/int、PHP == != 保留关键字（不是值，不能= ，window 是参数，而 var int 是标签）
+                书籍的  HTML+JS+CSS+PS 等基础
+
+		   4=_sev 系统值 $_SERVER[]/HTML 属性  
+		        书籍的 服务器端， PHP+ASP+ASP.NET+JSP
+		    jq的 $()标签
+		   
+		   6='' 函数    
+		   
+		   
+		   9=_open 功能源码，比如301跳转 [/]
+		   
+x varchar(30) == 函数英文，用于赋值 l =a.b.c
+g varchar(30) = 函数短称   /  书短称，不含书名号
+h varchar(75) = 函数全称  / 书籍全称
+k varchar(60)= 查询关键词  （用可能查错，或者相关的关键词）
+d varchar(255)= 简介
+v tinyint   == 阅读顺序  / 推荐书的评分
+f text

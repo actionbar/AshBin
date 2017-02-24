@@ -1,0 +1,228 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>无组件的数据库的备份与还原</title>
+<style type="text/css">
+<!--
+body {
+	font-size: 10.4pt;
+	line-height: 22px;
+}
+-->
+</style>
+</head>
+
+<body bgcolor="eeeeee" leftmargin="20" marginwidth="20">
+<p><strong>无组件的数据库的备份与还原</strong></p>
+<hr>
+<p> 看过数据库的备份与还原。大多数都是用组件来完成的。其实可通过sql语句来完成。<br>
+  由于时间关系，未对参数进行验证和界面美化。代码仅供参考。<br>
+  共计4个文件：下载地址：http://ad.ceh.com.cn/sql.rar<br>
+  conn.asp<br>
+  &lt;%<br>
+  conn=&quot;Provider=SQLOLEDB.1;Persist Security Info=false;Server=127.0.0.1;UID=sa;pwd=www.zhi.net;database=master&quot;<br>
+  function rec(rs,sql)<br>
+  set rs = server.CreateObject(&quot;ADODB.Recordset&quot;)<br>
+  rs.Activeconnection = conn<br>
+  rs.Source = sql<br>
+  rs.CursorType = 0<br>
+  rs.Cursorlocation = 3<br>
+  rs.LockType = 1<br>
+  rs.Open<br>
+  if rs.eof and rs.bof then<br>
+  rec= false<br>
+  else<br>
+  rec= true<br>
+  end if<br>
+  end function<br>
+  function cmd(sql)<br>
+  dim cmd1<br>
+  set cmd1 = server.CreateObject(&quot;ADODB.Command&quot;)<br>
+  cmd1.ActiveConnection = conn<br>
+  cmd1.CommandText = sql<br>
+  cmd1.CommandType = 1<br>
+  cmd1.CommandTimeout = 0<br>
+  cmd1.Prepared = true<br>
+  cmd1.Execute()<br>
+  end function<br>
+  function cdb(rs)<br>
+  rs.close()<br>
+  set rs=nothing<br>
+  end function<br>
+  %&gt;<br>
+  dev.asp<br>
+  &lt;!--#include file=&quot;conn.asp&quot;--&gt;<br>
+  &lt;%<br>
+  if request(&quot;AddDev&quot;) &lt;&gt; &quot;&quot; then<br>
+  sql=&quot;select name,phyname from master..sysdevices where status=16 and name='&quot;&amp;request(&quot;devname&quot;)&amp;&quot;'&quot;<br>
+  rec chk,sql<br>
+  if chk.eof and chk.bof then<br>
+  sql = &quot;sp_addumpdevice 'disk','&quot;&amp;request(&quot;devname&quot;)&amp;&quot;','&quot;&amp;request(&quot;phyname&quot;)&amp;&quot;'&quot;<br>
+  cmd sql<br>
+  response.Write &quot;&lt;script language=javascript&gt;window.location=reload;&lt;/script&gt;&quot;<br>
+  else<br>
+  response.Write &quot;&lt;script language=javascript&gt;alert('数据库中已存在&quot;&amp;request(&quot;devname&quot;)&amp;&quot;设备！');window.location='cmd.asp';&lt;/script&gt;&quot;<br>
+  end if<br>
+  end if<br>
+  if request(&quot;deldev&quot;) &lt;&gt; &quot;&quot; then<br>
+  sql = &quot;sp_dropdevice '&quot;&amp;request(&quot;devname&quot;)&amp;&quot;'&quot;<br>
+  cmd sql<br>
+  response.Write &quot;&lt;script language=javascript&gt;window.location=reload;&lt;/script&gt;&quot;<br>
+  end if<br>
+  rec li,&quot;select name,phyname from master..sysdevices where status=16&quot;<br>
+  if li.eof and li.bof then<br>
+  response.Write &quot;&lt;font color=#ff0000&gt;请新建备份设备用来备份还原数据库&lt;/font&gt;&quot;<br>
+  else<br>
+  %&gt;&lt;style type=&quot;text/css&quot;&gt;<br>
+  &lt;!--<br>
+  body {<br>
+  margin-left: 0px;<br>
+  margin-top: 0px;<br>
+  }<br>
+  --&gt;<br>
+  &lt;/style&gt;<br>
+  &lt;table width=&quot;60%&quot; border=&quot;0&quot; cellspacing=&quot;0&quot;&gt;<br>
+  &lt;tr&gt;<br>
+  &lt;td width=&quot;29%&quot;&gt;名称：&lt;/td&gt;<br>
+  &lt;td width=&quot;71%&quot;&gt;位置：&lt;/td&gt;<br>
+  &lt;/tr&gt;<br>
+  &lt;%<br>
+  i=0<br>
+  while not li.eof <br>
+  i=i+1<br>
+  %&gt;<br>
+  &lt;tr&gt;<br>
+  &lt;td&gt;&lt;%=li(0)%&gt;&lt;/td&gt;<br>
+  &lt;td&gt;&lt;%=li(1)%&gt; &lt;a href='dev.asp?DelDev=1&amp;devname=&lt;%=li(0)%&gt;'&gt;删除此设备&lt;/a&gt;&lt;/td&gt;<br>
+  &lt;/tr&gt;<br>
+  &lt;%<br>
+  li.movenext<br>
+  wend<br>
+  response.Write &quot;&lt;script language=javascript&gt;top.document.all.dev.height='&quot;&amp;(i+1)*25&amp;&quot;';&lt;/script&gt;&quot;<br>
+  cdb li<br>
+  %&gt;<br>
+  &lt;/table&gt;<br>
+  &lt;%<br>
+  end if<br>
+  %&gt;<br>
+  default.asp<br>
+  &lt;%@LANGUAGE=&quot;VBSCRIPT&quot; CODEPAGE=&quot;936&quot;%&gt;<br>
+  &lt;!--#include file=&quot;conn.asp&quot;--&gt;<br>
+  &lt;%<br>
+  '*************************************************<br>
+  '数据库备份与还原<br>
+  '编 程：魔术师·杨(MagicYang.CN)<br>
+  '完成日期：2004-4-11<br>
+  '说明：由于时间关系，未对数据做安全性验证。<br>
+  '应用时请对数据进行验证，确保安全。<br>
+  'QQ：1168064 欢迎大家互相交流<br>
+  '*************************************************<br>
+  %&gt;<br>
+  &lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot; 
+  &quot;http://www.w3.org/TR/html4/loose.dtd&quot;&gt;<br>
+  &lt;html&gt;<br>
+  &lt;head&gt;<br>
+  &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=gb2312&quot;&gt;<br>
+  &lt;title&gt;数据库的备份与还原&lt;/title&gt;<br>
+  &lt;/head&gt;</p>
+<p><br>
+  &lt;body&gt;<br>
+  &lt;%</p>
+<p>%&gt;<br>
+  &lt;table width=&quot;80%&quot; border=&quot;0&quot; align=&quot;center&quot;&gt;<br>
+  &lt;tr&gt;<br>
+  &lt;td width=&quot;21%&quot; valign=&quot;top&quot;&gt;数据库设备：&lt;/td&gt;<br>
+  &lt;td width=&quot;79%&quot;&gt;<br>
+  &lt;iframe name=&quot;dev&quot; src=&quot;dev.asp&quot; width=&quot;100%&quot; 
+  height=&quot;200&quot; frameborder=&quot;0&quot; scrolling=&quot;no&quot;&gt;&lt;/iframe&gt;<br>
+  &lt;/td&gt;<br>
+  &lt;/tr&gt;<br>
+  &lt;tr&gt;<br>
+  &lt;td&gt;添加设备：&lt;/td&gt;<br>
+  &lt;td&gt;设备名称：<br>
+  &lt;input name=&quot;devname&quot; type=&quot;text&quot; id=&quot;devname&quot; 
+  size=&quot;10&quot; maxlength=&quot;10&quot;&gt;&lt;/td&gt;<br>
+  &lt;/tr&gt;<br>
+  &lt;tr&gt;<br>
+  &lt;td&gt;&amp;nbsp;&lt;/td&gt;<br>
+  &lt;td&gt;文件路径：<br>
+  &lt;input name=&quot;phyname&quot; type=&quot;text&quot; id=&quot;phyname&quot; 
+  size=&quot;20&quot; maxlength=&quot;50&quot;&gt;<br>
+  &lt;input type=&quot;button&quot; value=&quot;添加设备&quot; onClick=&quot;document.all.dev.src='dev.asp?AddDev=1&amp;devname='+document.all.devname.value+'&amp;phyname='+document.all. 
+  phyname.value;&quot;&gt;&lt;/td&gt;<br>
+  &lt;/tr&gt;<br>
+  &lt;tr&gt;<br>
+  &lt;td valign=&quot;top&quot;&gt;备份/还原：&lt;/td&gt;<br>
+  &lt;td&gt;<br>
+  数据库名称：<br>
+  &lt;%<br>
+  rec li,&quot;select name from master..sysdatabases where status=16&quot;<br>
+  <br>
+  %&gt;<br>
+  &lt;select name=&quot;b_data&quot;&gt;<br>
+  &lt;%<br>
+  while not li.eof <br>
+  response.Write &quot;&lt;option value=&quot;&amp;li(0)&amp;&quot;&gt;&quot;&amp;li(0)&amp;&quot;&lt;/option&gt;&quot;<br>
+  li.movenext<br>
+  wend<br>
+  cdb li<br>
+  %&gt;<br>
+  &lt;/select&gt;&lt;br&gt;<br>
+  备份到设备：&lt;%<br>
+  rec li,&quot;select name,phyname from master..sysdevices where status=16&quot;<br>
+  %&gt;<br>
+  &lt;select name=&quot;b_dev&quot;&gt;<br>
+  &lt;%<br>
+  while not li.eof<br>
+  response.Write &quot;&lt;option value=&quot;&amp;li(0)&amp;&quot;&gt;&quot;&amp;li(0)&amp;&quot;(文件：&quot;&amp;li(1)&amp;&quot;)&lt;/option&gt;&quot;<br>
+  li.movenext<br>
+  wend<br>
+  cdb li<br>
+  %&gt;<br>
+  &lt;/select&gt;&lt;br&gt;<br>
+  &lt;input name=&quot;按钮&quot; type=&quot;button&quot; value=&quot;备份数据库&quot; 
+  onClick=&quot;window.location='cmd.asp?action=backup&amp;database='+document.all.b_data.value+'&amp;dev='+document.all. 
+  b_dev.value;&quot;&gt;<br>
+  &amp;nbsp;<br>
+  &lt;input name=&quot;按钮&quot; type=&quot;button&quot; value=&quot;还原数据库&quot; 
+  onClick=&quot;window.location='cmd.asp?action=RESTORE&amp;database='+document.all.b_data.value+'&amp;dev='+document.all. 
+  b_dev.value;&quot;&gt; &lt;/td&gt;<br>
+  &lt;/tr&gt;<br>
+  &lt;tr&gt;<br>
+  &lt;td&gt;&amp;nbsp;&lt;/td&gt;<br>
+  &lt;td&gt;&amp;nbsp;&lt;/td&gt;<br>
+  &lt;/tr&gt;<br>
+  &lt;/table&gt;<br>
+  &lt;/body&gt;<br>
+  &lt;/html&gt;<br>
+  cmd.asp<br>
+  &lt;!--#include file=&quot;conn.asp&quot;--&gt;<br>
+  &lt;%<br>
+  on error resume next<br>
+  if request(&quot;action&quot;) &lt;&gt; &quot;&quot; then<br>
+  if request(&quot;action&quot;)=&quot;backup&quot; then<br>
+  sql =&quot;BACKUP DATABASE &quot;&amp;request(&quot;database&quot;)&amp;&quot; 
+  To &quot;&amp; request(&quot;dev&quot;)<br>
+  cmd sql<br>
+  if err.number &gt; 0 then<br>
+  response.Write &quot;&lt;script language=javascript&gt;alert('数据库&quot;&amp;request(&quot;database&quot;)&amp;&quot;备份失败！');window.location='default.asp';&lt;/script&gt;&quot;<br>
+  else<br>
+  response.Write &quot;&lt;script language=javascript&gt;alert('数据库&quot;&amp;request(&quot;database&quot;)&amp;&quot;备份成功！');window.location='default.asp';&lt;/script&gt;&quot;<br>
+  end if<br>
+  else<br>
+  sql =&quot;RESTORE DATABASE &quot;&amp;request(&quot;database&quot;)&amp;&quot; 
+  From &quot;&amp; request(&quot;dev&quot;)<br>
+  cmd sql<br>
+  if err.number &gt; 0 then<br>
+  response.Write &quot;&lt;script language=javascript&gt;alert('数据库&quot;&amp;request(&quot;database&quot;)&amp;&quot;还原失败！');window.location='default.asp';&lt;/script&gt;&quot;<br>
+  else<br>
+  response.Write &quot;&lt;script language=javascript&gt;alert('数据库&quot;&amp;request(&quot;database&quot;)&amp;&quot;还原成功！');window.location='default.asp';&lt;/script&gt;&quot;<br>
+  end if<br>
+  end if<br>
+  end if<br>
+  %&gt;</p>
+<p></p>
+<p></p>
+</body>
+</html>

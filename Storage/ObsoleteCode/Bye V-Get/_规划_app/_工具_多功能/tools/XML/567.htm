@@ -1,0 +1,108 @@
+<html>
+<head>
+<title>origin绝对位置项</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+
+<link rel = stylesheet href = "image/style.css">
+</head>
+<body bgcolor="#ffffff">
+<table width="688" border="0" cellspacing="0" cellpadding="0" align="center">
+  <tr bgcolor="EEEEEE"> 
+    <td height="22"><a href="index.htm">主页</a></td>
+  </tr>
+</table><br>
+<table border="0" cellpadding="0" cellspacing="0" width="688" align="center" height="490">
+  <tr valign="top"> 
+    <td rowspan="4" width="91">&nbsp; </td>
+    <td height="68" width="131"> 
+      <p><img src="image/doc.gif"></p>
+    </td>
+    <td rowspan="4" width="18"><b></b> </td>
+    <td height="68" width="387"><img src="image/title_doc.gif"></td>
+    <td rowspan="4" width="61"> 
+      <h6>&nbsp;</h6>
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td rowspan="3" valign="top" class="pt10" align="center" width="131" bgcolor="EEEEEE"> 
+      <p>&nbsp;</p>
+      <p><font color="#FF0000">※ 17.7 origin绝对位置项</font></p>
+       
+	</td>
+  </tr>
+  <tr valign="top"> 
+    <td width="387" height="308"> 
+      <table width="100%" border="0" cellpadding="0">
+        <tr> 
+          <td>
+
+           <h4><a name="_Toc467209000">17.7 origin绝对位置项</a></h4>
+<p>第四个绝对位置项为origin。但它在与一个或多个相对位置项结合起来时才有用。在文档内的链接（即文档中的一处与同一文档中的另一处链接）中，常常需要引用“此元素后的下一个元素”或“此元素的父元素”。origin绝对位置项引用当前元素，因此这类引用是可能的。</p>
+<p>清单17-2为一简单的幻灯片展示。在本例中，origin().following(1, SLIDE)引用展示中下一个幻灯片。origin().preceding(1, 
+  SLIDE)引用展示中前面的幻灯片。假设清单17-2是与一次显示一张幻灯片的样式单结合使用。</p>
+<p>清单17-2：幻灯片展示</p>
+<p>&lt;?xml version="1.0"?&gt;</p>
+<p>&lt;SLIDESHOW&gt;</p>
+<p> &lt;SLIDE&gt;</p>
+<p> &lt;H1&gt;Welcome to the slide show!&lt;/Hl&gt;</p>
+<p> &lt;BUTTON xml:link="simple"</p>
+<p> href="origin().following(1,SLIDE)"&gt;</p>
+<p> Next</p>
+<p> &lt;/BUTTON&gt;</p>
+<p> &lt;/SLIDE&gt;</p>
+<p> &lt;SLIDE&gt;</p>
+<p> &lt;Hl&gt;This is the second slide&lt;/H1&gt;</p>
+<p> &lt;BUTTON xml:link="simple"</p>
+<p> href="origin().preceding(l,SLIDE)"&gt;</p>
+<p> Previous</p>
+<p> &lt;/BUTTON&gt;</p>
+<p> &lt;BUTTON xml:link="simple"</p>
+<p> href="origin().following(l,SLIDE)"&gt;</p>
+<p> Next</p>
+<p> &lt;/BUTTON&gt;</p>
+<p> &lt;/SLIDE&gt;</p>
+<p> &lt;SLIDE&gt;</p>
+<p> &lt;Hl&gt;This is the second slide&lt;/Hl&gt;</p>
+<p> &lt;BUTTON xml:link="simple"</p>
+<p> href="origin().preceding(l,SLIDE)"&gt;</p>
+<p> Previous</p>
+<p> &lt;/BUTTON&gt;</p>
+<p> &lt;BUTTON xml:link="simple"</p>
+<p> href="origin().following(l,SLIDE)"&gt;</p>
+<p> Next</p>
+<p> &lt;/BUTTON&gt;</p>
+<p> &lt;/SLIDE&gt;</p>
+<p> &lt;SLIDE&gt;</p>
+<p> &lt;Hl&gt;This is the third slide&lt;/Hl&gt;</p>
+<p> &lt;BUTTON xml:link="simple"</p>
+<p> href="origin().preceding(l,SLIDE)"&gt;</p>
+<p> Previous</p>
+<p> &lt;/BUTTON&gt;</p>
+<p> &lt;BUTTON xml:link="simple"</p>
+<p> href="origin().following(l,SLIDE)"&gt;</p>
+<p> Next</p>
+<p> &lt;/BUTTON&gt;</p>
+<p> &lt;/SLIDE&gt;</p>
+<p> &#188; </p>
+<p> &lt;SLIDE&gt;</p>
+<p> &lt;Hl&gt;This is the last slide&lt;/Hl&gt;</p>
+<p> &lt;BUTTON xml:link="simple"</p>
+<p> href="origin().preceding(1,SLIDE)"&gt;</p>
+<p> Previous</p>
+<p> &lt;/BUTTON&gt;</p>
+<p> &lt;/SLIDE&gt;</p>
+<p></p>
+<p>&lt;/SLIDESHOW&gt;</p>
+<p>一般地，origin()位置项只用于XLink中全部相对的URI中。如果包括任何URI部分，那么此位置项必须与当前文档的URI相同。</p>
+ 
+<a href='566.htm'>&lt;&lt;上一篇</a>&nbsp;&nbsp;<a href='568.htm'>下一篇&gt;&gt;</a></td>
+        </tr>
+      </table>
+      <p>&nbsp; </p>
+    </td>
+  </tr>
+</table>
+
+</body>
+
+</html>

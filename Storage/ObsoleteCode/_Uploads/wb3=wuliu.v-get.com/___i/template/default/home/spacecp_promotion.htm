@@ -1,0 +1,15 @@
+<!--{template common/header}-->
+	<!--{subtemplate home/spacecp_header}-->
+			<!--{hook/spacecp_promotion_top}-->
+			<!--{if $_G['setting']['creditspolicy']['promotion_visit'] || $_G['setting']['creditspolicy']['promotion_register']}-->
+				<div class="bbda pbm mbm">
+					<!--{if $_G['setting']['creditspolicy']['promotion_visit']}--><p>
+						{lang post_promotion_url}
+					</p><!--{/if}-->
+					<!--{if $_G['setting']['creditspolicy']['promotion_register']}-->
+					<p>
+					<!--{if $_G['setting']['creditspolicy']['promotion_visit']}-->
+						{lang post_promotion_reg}
+					<!--{else}-->
+						{lang post_promotion}
+					<!--{/if}--></p><!--{/if}--></div><table cellspacing="0" cellpadding="0" class="tfm"><tr><th colspan="2" class="xs2 xw1">推荐访问奖励</th></tr><tr><th>推广链接</th><td class="pns"><input type="text" class="px vm" onclick="this.select();setCopy('{$copystr}'+'\n'+this.value, '{lang promotion_url_copied}');" value="$_G[siteurl]?fromuser={echo rawurlencode($_G[username])}" size="50" /><button type="submit" class="pn vm" onclick="setCopy('{$copystr}'+'\n'+'$_G[siteurl]?fromuser={echo rawurlencode($_G[username])}', '{lang promotion_url_copied}');"><em>复制</em></button></td></tr><tr><th colspan="2" class="xs2 xw1 ptw">推荐注册有礼</th></tr><tr><th colspan="2">通过点击帖子标题旁的“[推广奖励]”，推广成功后也可以获得积分奖励</th></tr></table><!--{/if}--><!--{hook/spacecp_promotion_bottom}--></div></div><div class="appl"><!--{subtemplate home/spacecp_footer}--></div></div><!--{template common/footer}-->

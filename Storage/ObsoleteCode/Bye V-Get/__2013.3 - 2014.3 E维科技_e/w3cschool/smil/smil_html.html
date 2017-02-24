@@ -1,0 +1,129 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="../c3.css" />
+<title>SMIL In HTML</title>
+</head>
+<body class="multimedia">
+<div id="wrapper">
+<div id="header">
+<a href="http://e.v-get.com/w3cschool/" style="float:left;">W3CSchool 在线教程</a>
+<div class="q g"><script type="text/javascript">var cpro_id="u1163355"</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div>
+<div id="navfirst">
+<ul id="menu">
+<li id="h"><a href="../h.html">HTML教程</a></li>
+<li id="x"><a href="../x.html">XML教程</a></li>
+<li id="b"><a href="../b.html">浏览器脚本</a></li>
+<li id="s"><a href="../s.html">服务器脚本</a></li>
+<li id="d"><a href="../d.html">dot net教程</a></li>
+<li id="m"><a href="../m.html">多媒体教程</a></li>
+<li id="w"><a href="../w.html">建站手册</a></li>
+</ul>
+</div><div id="navsecond">
+<div id="course">
+<h2>SMIL 教程</h2>
+<ul>
+<li><a href="http://e.v-get.com/w3cschool/">SMIL 首页</a></li>
+<li><a href="smil_intro.html">SMIL 简介</a></li>
+<li><a href="smil_files.html">SMIL 文件</a></li>
+<li><a href="smil_html.html">SMIL HTML</a></li>
+<li><a href="smil_xhtml.html">SMIL XHTML</a></li>
+<li><a href="smil_timing.html">SMIL Timing</a></li>
+<li><a href="smil_seq.html">SMIL Sequence</a></li>
+<li><a href="smil_parallel.html">SMIL Parallel</a></li>
+<li><a href="smil_transition.html">SMIL Transition</a></li>
+<li><a href="smil_media.html">SMIL Media</a></li>
+<li><a href="smil_reference.html">SMIL 参考</a></li>
+</ul>
+</div>
+<div id="selected">
+<h2>建站手册</h2>
+<ul>
+<li><a href="../site/">网站构建</a></li>
+<li><a href="../w3c/">万维网联盟</a></li>
+<li><a href="http://e.v-get.com/w3c/">W3CSchool 教程</a></li>
+<li><a href="../quality/">网站品质</a></li>
+<li><a href="../semweb/">语义网</a></li>
+<li><a href="../hosting/">网站主机</a></li>
+</ul>
+<h2><a href="http://e.v-get.com/w3c/" class="f13">W3CSchool 教程</a></h2><div class="a120x90"><script type="text/javascript">var cpro_id="u1210867";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div></div>
+</div>
+<div id="maincontent">
+<h1>SMIL In HTML</h1>
+<div id="tpn">
+<ul class="prenext">
+<li class="pre"><a href="smil_files.html">上一页</a></li>
+<li class="next"><a href="smil_xhtml.html">下一页</a></li>
+</ul>
+</div>
+<div id="intro">
+<p><strong>Internet Explorer 能够在 HTML 文件中运行 SMIL 呈现。</strong></p>
+</div>
+<div>
+<h2>在 IE 中运行 SMIL 呈现</h2>
+<p>通过 Internet Explorer 5.5 或更高的版本，能够将 SMIL 元素插入 HTML 文件中。</p>
+<p>通过这种方式，任何 SMIL 呈现都能作为标准的 HTML 文件运行在因特网上。</p>
+</div>
+<div>
+<h2>添加引用</h2>
+<p>如需在 HTML 中使用 SMIL 元素，您必须为 Internet Explorer 定义一个 &#34;time&#34; 命名空间，这样才能识别这些元素。请这样做：</p>
+<ul>
+<li>向 &lt;html&gt; 标签添加命名空间定义</li>
+<li>添加一个 &lt;?import&gt; 元素，以导入 &#34;time&#34; 命名空间</li>
+</ul>
+<p>如需向标准的 HTML 元素添加 SMIL 属性，您必须为 Internet Explorer 定义 &#34;time&#34; 类，这样才能识别这些属性。请这样做：</p>
+<ul>
+<li>添加一个定义 &#34;time&#34; 类的 &lt;style&gt; 元素</li>
+</ul>
+<pre>&lt;html xmlns:time=&#34;urn:schemas-microsoft-com:time&#34;&gt;
+&lt;head&gt;
+  &lt;?import namespace=&#34;time&#34; implementation=&#34;#default#time2&#34;&gt;
+  &lt;style&gt;.time {behavior: url(#default#time2)}&lt;/style&gt;
+&lt;/head&gt;</pre>
+<p>在下一段，您可以看到完整的运行实例。</p>
+</div>
+<div>
+<h2>添加 SMIL 元素</h2>
+<p>如需在 HTML 中运行 SMIL 呈现，只要为 SMIL 元素添加一个前缀以及一个 class 属性：</p>
+<pre>&lt;time:seq repeatCount=&#34;indefinite&#34;&gt;
+  &lt;img class=&#34;time&#34; src=&#34;image1.jpg&#34; dur=&#34;3s&#34; /&gt;
+  &lt;img class=&#34;time&#34; src=&#34;image2.jpg&#34; dur=&#34;3s&#34; /&gt;
+&lt;/time:seq&gt;</pre>
+<p>在上面的例子汇总，我们为 &lt;img&gt; 元素添加了 class=&#34;time&#34;，并为 SMIL 元素添加了 &#34;time&#34; 前缀。</p>
+<p class="tip"><span>提示：</span>类和命名空间不必一定称为 &#34;time&#34;。任何名称都可以。</p>
+</div>
+<div>
+<h2>一个 Internet Explorer 实例</h2>
+<pre>&lt;html xmlns:time=&#34;urn:schemas-microsoft-com:time&#34;&gt;
+&lt;head&gt;
+  &lt;?import namespace=&#34;time&#34; implementation=&#34;#default#time2&#34;&gt;
+  &lt;style&gt;.time {behavior: url(#default#time2)}&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;time:seq repeatCount=&#34;indefinite&#34;&gt;
+    &lt;img class=&#34;time&#34; src=&#34;image1.jpg&#34; dur=&#34;3s&#34; /&gt;
+    &lt;img class=&#34;time&#34; src=&#34;image2.jpg&#34; dur=&#34;3s&#34; /&gt;
+  &lt;/time:seq&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+<p><a href="../tiy/t_702.html">TIY</a></p>
+</div>
+<div id="bpn">
+<ul class="prenext">
+<li class="pre"><a href="smil_files.html">上一页</a></li>
+<li class="next"><a href="smil_xhtml.html">下一页</a></li>
+</ul>
+</div>
+</div>
+<div id="sidebar">
+<div class="rs"></div>
+<div id="tools">
+<h5 id="tools_reference"><a href="smil_reference.html">SMIL 参考手册</a></h5>
+</div>
+<div class="a120x600"><script type="text/javascript">var cpro_id="u1293136";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div><div class="b"></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<html>
+<head><link rel="stylesheet" type="text/css" href="showcode.css" /></head>
+<body>
+<pre>
+&lt;html&gt;
+&lt;body&gt;
+<code class="aspcode">&lt;%
+dim d
+set d=Server.CreateObject(&#34;Scripting.Dictionary&#34;)
+d.Add &#34;c&#34;, &#34;China&#34;
+d.Add &#34;i&#34;, &#34;Italy&#34;
+d.Key(&#34;i&#34;) = &#34;it&#34;
+Response.Write(&#34;键 i 已设置为 it，其值是：&#34; & d.Item(&#34;it&#34;))
+set d=nothing
+%&gt;</code>
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+</body>

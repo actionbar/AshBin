@@ -1,0 +1,388 @@
+<meta http-equiv="content-type" content="text/html; charset=gb2312">
+<CENTER>
+<DIV align=center>
+<TABLE cellSpacing=0 cellPadding=3 width=600 border=0>
+<TBODY>
+<TR>
+<TD class=PageTitle align=middle width="100%">Inside SQL Server Maintenance 
+Plans </TD></TR></TBODY></TABLE></DIV></CENTER><BR><BR>
+<CENTER>
+<DIV align=center>
+<TABLE cellSpacing=0 cellPadding=3 width=600 border=0>
+<TBODY>
+<TR>
+<TD align=left width="100%"><I><FONT face=Verdana size=2>by <SPAN 
+style="mso-bidi-font-size: 10.0pt; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA"><A 
+href="http://www.sql-server-performance.com/andrzej_kozlowski.asp">Andrzej Kozlowski</A></SPAN></FONT> </I>
+<P>&nbsp;</P>
+<P><FONT face=Verdana size=2>Like a lot of database administrators who manage 
+many SQL Server databases, I have problems with maintenance and administration 
+tasks. Some of these are massive jobs, which have to be created and maintained 
+to be sure that databases are robust and reliable. One of the tools I use often 
+to make my life a little easier is the Database Maintenance Wizard, which is 
+used to create SQL Server maintenance plans.</FONT></P>
+<P><FONT face=Verdana size=2>While the Database Maintenance Wizard, and the 
+plans it creates are generally good, they are not always perfect. In addition, 
+what is going on behind the scenes when a maintenance plan is running is not so 
+obvious. So what I recently did was to find out what was going on behind the 
+scene using the SQL Server Profiler.</FONT></P>
+<P><FONT face=Verdana size=2>To capture the Profiler trace (using SQL Server 
+2000), I used the predefined Profiler template called SQLProfilerStandard, with 
+two modifications, using:</FONT></P>
+<UL>
+<LI><FONT face=Verdana size=2>RPC: Starting</FONT> 
+<LI><FONT face=Verdana size=2>SQL: BatchStarting</FONT> </LI></UL>
+<P><FONT face=Verdana size=2>instead of:</FONT></P>
+<UL>
+<LI><FONT face=Verdana size=2>RPC: Completed</FONT> 
+<LI><FONT face=Verdana size=2>SQL: BatchCompleted</FONT> </LI></UL>
+<P><FONT face=Verdana size=2>All the other trace configuration items were left 
+the same. Those two changes to the SQLProfilerStandard template allow us easily 
+to capture the relevant trace data.</FONT></P>
+<P>&nbsp;</P>
+<P><FONT face=Verdana color=#000080 size=2><B>Profiling Integrity Maintenance 
+Plan Options</B></FONT></P>
+<P><FONT face=Verdana size=2>Next, I created a Maintenance Plan using the 
+following Integrity options (see figure as a reference point) in order to see 
+what SQL Server statements were used.</FONT></P>
+<P align=center><IMG src="http://www.sql-server-performance.com/images/ak_ins1.jpg" border=0></P>
+<P><FONT face=Verdana size=2>Then, I started the Profiler trace and ran the job 
+created by the Maintenance Plan to see what the results would be. I then went 
+back and changed some of the settings in the above screen to see what happened 
+as options were changed.</FONT></P>
+<P><FONT face=Verdana size=2>Below are the results, formatted into a table for 
+easy viewing.</FONT></P>
+<DIV align=center>
+<TABLE cellSpacing=0 cellPadding=3 width=592 border=1>
+<TBODY>
+<TR>
+<TD vAlign=top width=202><B><FONT face=Verdana size=2>Which Integrity Settings 
+Were Used</FONT></B></TD>
+<TD vAlign=top width=191><B><FONT face=Verdana size=2>Profiler Trace 
+Results</FONT></B></TD>
+<TD vAlign=top width=177><B><FONT face=Verdana size=2>Xp_Sqlmaint 
+Syntax</FONT></B></TD></TR>
+<TR>
+<TD vAlign=top width=202><FONT face=Verdana size=2>Check database integrity, 
+include indexes, attempt to repair any minor problems</FONT></TD>
+<TD vAlign=top width=191><FONT face=Verdana size=2>dbcc checkdb(Pubs, 
+REPAIR_FAST) WITH NO_INFOMSGS</FONT></TD>
+<TD vAlign=top width=177><FONT face=Verdana size=2>-CkDBRepair<BR>(not 
+documented)</FONT></TD></TR>
+<TR>
+<TD vAlign=top width=202><FONT face=Verdana size=2>Check database integrity, 
+include indexes</FONT></TD>
+<TD vAlign=top width=191><FONT face=Verdana size=2>Use pubs<BR><SPAN 
+style="mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">dbcc 
+checkdb WITH NO_INFOMSGS</SPAN></FONT></TD>
+<TD vAlign=top width=177><FONT face=Verdana size=2><BR></FONT></TD></TR>
+<TR>
+<TD vAlign=top width=202><FONT face=Verdana size=2>Check database integrity, 
+exclude indexes</FONT></TD>
+<TD vAlign=top width=191><FONT face=Verdana size=2>dbcc checkdb(Pubs, noindex) 
+WITH NO_INFOMSGS</FONT></TD>
+<TD vAlign=top width=177><FONT face=Verdana size=2>-CkDBNoIdx</FONT></TD></TR>
+<TR>
+<TD vAlign=top width=202><FONT face=Verdana size=2>Perform the above tests 
+before backing up the database or transaction log</FONT></TD>
+<TD vAlign=top width=191>&nbsp;</TD>
+<TD vAlign=top width=177><FONT face=Verdana size=2>-BkUpOnlyIfClean<BR>(One of 
+above CkDB depending on chosen settings)</FONT></TD></TR></TBODY></TABLE></DIV>
+<P><FONT face=Verdana size=2>Comments on this test run:</FONT></P>
+<OL>
+<LI><FONT face=Verdana size=2>Don抰 use the option "Attempt to repair any minor 
+problems" which causes DBCC Checkdb to be run with the option REPAIR_FAST. This 
+option performs minor repair actions without risk of data loss. However, the 
+given database must be in single-user mode to use this value, which presents 
+problems if this is a production database.<BR><BR></FONT>
+<LI><FONT face=Verdana size=2>If database is not in single-user mode, DBCC 
+Checkdb with REPAIR_FAST, will not be run, unfortunately the text or html report 
+files will still report a success.<BR><BR></FONT>
+<LI><FONT face=Verdana size=2>By checking the option "Perform these tests before 
+backing up the database or transaction log," SQL server modifies the backup jobs 
+(full and log backup) by adding two option to the respective maintenance 
+plans:<BR><BR>?BkUpOnlyIfClean<BR>?CkDB | CkDBNoIdx | CkDBRepair<BR><BR></FONT>
+<LI><FONT face=Verdana size=2>Don抰 use the above option if you are going to add 
+transaction log backups to the same maintenance plan, as this will cause DBCC 
+activity before each incremental backup, hurting performance<BR><BR></FONT>
+<LI><FONT face=Verdana size=2>"WITH NO_INFOMSGS" is used to suppress all 
+informational messages</FONT> </LI></OL>
+<P><FONT face=Verdana size=2><BR></FONT></P>
+<P><FONT face=Verdana color=#000080 size=2><B>Profiling Optimization Maintenance 
+Plan Options</B></FONT></P>
+<P><FONT face=Verdana size=2>In this step, I wanted to see happened under the 
+covers when various Optimization options (see illustration below) from the 
+Database Maintenance Wizard are traced with Profiler. As before, I will 
+experiments with several different Optimization options, and run the resulting 
+jobs manually in order to capture the traces.</FONT></P>
+<P align=center><IMG src="http://www.sql-server-performance.com/images/ak_ins2.jpg" border=0><FONT face=Verdana 
+size=2><BR></FONT></P>
+<CENTER></CENTER>
+<P align=left><FONT face=Verdana size=2>Below are the results, formatted into a 
+table for easy viewing.</FONT></P>
+<DIV align=center>
+<CENTER>
+<TABLE cellSpacing=0 cellPadding=2 width=592 border=1>
+<TBODY>
+<TR>
+<TD vAlign=top width=210><B><FONT face=Verdana size=2>Which Optimization 
+Settings Were Used</FONT></B></TD>
+<TD vAlign=top width=219><B><FONT face=Verdana size=2>Profiler Trace 
+Results</FONT></B></TD>
+<TD vAlign=top width=143><B><FONT face=Verdana size=2>Xp_Sqlmaint 
+Syntax</FONT></B></TD></TR>
+<TR>
+<TD vAlign=top width=210><FONT face=Verdana size=2>Reorganize data and index 
+pages, reorganize pages with the original amount of free space</FONT></TD>
+<TD vAlign=top width=219><FONT face=Verdana size=2>dbcc dbreindex(dbo.Table1,'', 
+0, sorted_data_reorg)&nbsp;<BR></FONT>(<FONT face=Verdana size=2>for each table 
+in database)</FONT></TD>
+<TD vAlign=top width=143><FONT face=Verdana size=2>-RebldIdx 
+100</FONT></TD></TR>
+<TR>
+<TD vAlign=top width=210><FONT face=Verdana size=2>Reorganize data and index 
+pages, change free space per page percentage to 30%</FONT></TD>
+<TD vAlign=top width=219><FONT face=Verdana size=2>dbcc dbreindex(dbo.Table1', 
+'', 70, sorted_data_reorg)&nbsp;<BR>(for each table in database)</FONT></TD>
+<TD vAlign=top width=143><FONT face=Verdana size=2>-RebldIdx 30</FONT></TD></TR>
+<TR>
+<TD vAlign=top width=210><FONT face=Verdana size=2>Update the statistics used by 
+the query optimizer, percentage of database to sample 30%</FONT></TD>
+<TD vAlign=top width=219><FONT face=Verdana size=2>UPDATE STATISTICS dbo.table1 
+WITH all, SAMPLE 30 PERCENT (for each table in database)</FONT></TD>
+<TD vAlign=top width=143><FONT face=Verdana size=2>-UpdOptiStats 
+30</FONT></TD></TR>
+<TR>
+<TD vAlign=top width=210><FONT face=Verdana size=2>Remove unused space from 
+database files</FONT></TD>
+<TD vAlign=top width=219><FONT face=Verdana size=2>DBCC shrinkdatabase(test, 10, 
+TRUNCATEONLY )</FONT></TD>
+<TD vAlign=top width=143><FONT face=Verdana size=2>-RmUnusedSpace 2048 
+10</FONT></TD></TR></TBODY></TABLE></CENTER></DIV>
+<P align=left><FONT face=Verdana size=2><BR>Comments on this test 
+run:</FONT></P>
+<OL>
+<LI>
+<P align=left><FONT face=Verdana size=2>DBCC DBREINDEX uses free space as the 
+inverse of the fill factor. So in the first row in the above table, free space = 
+0%, which is the same as a fill factor of 0. In second position we can see a 
+value of 30% for free space, which is the same as a 70% fill 
+factor.<BR><BR></FONT></P>
+<LI>
+<P align=left><FONT face=Verdana size=2>If you choose DBREINDEX for a database, 
+an UPDATE STATISTIC is done automatically<BR><BR></FONT></P>
+<LI>
+<P align=left><FONT face=Verdana size=2>Even though the UPDATE STATISTIC command 
+gives us the possibility to choose either a SAMPLE option of PERCENT or number 
+of ROWS, the maintenance plan allows you only to specify 
+PERCENT.<BR><BR></FONT></P></LI></OL>
+<P align=left><FONT face=Verdana color=#000080 size=2><B>Profiling Other 
+Maintenance Plan Options</B></FONT><FONT face=Verdana size=2><BR><BR>I will not 
+describe the database and log backup options of the Database Wizard because they 
+are very straight-forward, and work like you would expect them to. However, I 
+would like you to discuss some other maintenance plan options which are 
+accessible only from xp_sqlmaint utility and not from the Maintenance Plan 
+Wizard:</FONT></P>
+<UL>
+<LI>
+<P align=left><FONT face=Verdana size=2><B>HtmlRpt 
+"e:\mssql7\LOG\ak_test.html"</B>: Creates an HTML version of the database 
+maintenance report.<BR><BR></FONT></P>
+<LI>
+<P align=left><FONT face=Verdana size=2><B>DelHtmlRpt &lt;time period&gt;</B>: 
+Sets the retention cycle for HTML files, e.g. 3 WEEKS.<BR><BR></FONT></P>
+<LI>
+<P align=left><FONT face=Verdana size=2><B>CkCat</B>: Runs DBCC 
+CHECKCATALOG.<BR><BR></FONT></P>
+<LI>
+<P align=left><FONT face=Verdana size=2><B>CkAl, CkAlNoIdx</B>: Runs DBCC 
+NEWALLOC.<BR><BR></FONT></P>
+<LI>
+<P align=left><FONT face=Verdana size=2><B>CkTxtAl</B>: Runs DBCC 
+TEXTALL.</FONT> </P></LI></UL>
+<P align=left><FONT face=Verdana size=2><BR>Comments on These 
+Commands:</FONT></P>
+<OL>
+<LI>
+<P align=left><FONT face=Verdana size=2>Be careful with the syntax of the above 
+switches. They must be exactly as I listed above. For example if you type 
+Htmlrpt (instead of HtmlRpt) the job will fail.<BR><BR></FONT></P>
+<LI>
+<P align=left><FONT face=Verdana size=2>Don抰 use NEWALLOC and TEXTALL. They are 
+included for backward compatibility. CHECKALLOC replaced NEWALLOC and CHECKTABLE 
+TEXTALL. It抯 better to use CHECKDB, which performs CHECKTABLE for each table in 
+a database to check the integrity of the data, and CHECKALLOC to check 
+allocation of all pages.</FONT> </P></LI></OL>
+<P align=left>&nbsp;</P>
+<P align=left><FONT face=Verdana size=2><B><FONT color=#000080>Maintenance Plan 
+Tables</FONT></B><BR><BR>Now for some details on how maintenance plans are 
+stored inside SQL Server. The more you know about this, the easier it will be 
+for you to automate the gathering of useful information about your maintenance 
+plans, if you so desire.</FONT></P>
+<P align=left><FONT face=Verdana size=2>There are four tables in the msdb 
+database which are store maintenance plan information:</FONT></P>
+<UL>
+<LI>
+<P align=left><FONT face=Verdana size=2><B>sysdbmaintplan_databases</B>: 
+Contains one row for each database. Note that you can use special strings for 
+group of databases like in the Database Maintenance Plan Wizard.</FONT> 
+</P></LI></UL>
+<P align=left><FONT face=Verdana size=2><BR><I>Sample Data From 
+sysdbmaintplan_databases</I></FONT></P>
+<DIV align=center>
+<CENTER>
+<TABLE cellSpacing=0 cellPadding=2 width=592 border=1>
+<TBODY>
+<TR>
+<TD width=337><FONT face=Verdana size=2><B>plan_id&nbsp;</B></FONT></TD>
+<TD width=241><FONT face=Verdana size=2><B>database_name</B></FONT></TD></TR>
+<TR>
+<TD width=337><FONT face=Verdana 
+size=2>36D539DF-7DE3-11D6-9855-00508BB3C376</FONT></TD>
+<TD width=241><FONT face=Verdana size=2>WWW_ak</FONT></TD></TR>
+<TR>
+<TD width=337><FONT face=Verdana 
+size=2>36D539E1-7DE3-11D6-9855-00508BB3C376</FONT></TD>
+<TD width=241><FONT face=Verdana size=2>All Databases</FONT></TD></TR>
+<TR>
+<TD width=337><FONT face=Verdana 
+size=2>36D539E2-7DE3-11D6-9855-00508BB3C376</FONT></TD>
+<TD width=241><FONT face=Verdana size=2>All System Databases</FONT></TD></TR>
+<TR>
+<TD width=337><FONT face=Verdana 
+size=2>36D539E3-7DE3-11D6-9855-00508BB3C376</FONT></TD>
+<TD width=241><FONT face=Verdana size=2>All User 
+Databases</FONT></TD></TR></TBODY></TABLE></CENTER></DIV>
+<UL>
+<LI>
+<P align=left><FONT face=Verdana size=2><B>sysdbmaintplans</B>: Contains one row 
+for each maintenance plan.</FONT> </P></LI></UL>
+<P align=left><FONT face=Verdana size=2><I>Sample Data From 
+</I><I>sysdbmaintplans (partial table)</I><BR></FONT></P>
+<DIV align=center>
+<CENTER>
+<TABLE cellSpacing=0 cellPadding=2 width="100%" border=1>
+<TBODY>
+<TR>
+<TD><B><FONT face=Verdana size=1>Plan_id</FONT></B></TD>
+<TD><B><FONT face=Verdana size=1>Plan_name</FONT></B></TD>
+<TD><B><FONT face=Verdana size=1>date _created</FONT></B></TD>
+<TD><B><FONT face=Verdana size=1>owner</FONT></B></TD>
+<TD><B><FONT face=Verdana size=1>max _history _rows</FONT></B></TD></TR>
+<TR>
+<TD><FONT face=Verdana size=1>00000000-0000-0000-0000-000000000000</FONT></TD>
+<TD><FONT face=Verdana size=1>All ad-hoc plans</FONT></TD>
+<TD><FONT face=Verdana size=1>11/13/98 3:10</FONT></TD>
+<TD><FONT face=Verdana size=1>REDMOND\_sqlbld</FONT></TD>
+<TD><FONT face=Verdana size=1>0</FONT></TD></TR>
+<TR>
+<TD><FONT face=Verdana size=1>36D539DF-7DE3-11D6-9855-00508BB3C376</FONT></TD>
+<TD><FONT face=Verdana size=1>ak_test_www_ak</FONT></TD>
+<TD><FONT face=Verdana size=1>11/14/98 3:10</FONT></TD>
+<TD><FONT face=Verdana size=1>NT\TEST</FONT></TD>
+<TD><FONT face=Verdana size=1>1000</FONT></TD></TR>
+<TR>
+<TD><FONT face=Verdana size=1>36D539E1-7DE3-11D6-9855-00508BB3C376</FONT></TD>
+<TD><FONT face=Verdana size=1>ak_test_all_db</FONT></TD>
+<TD><FONT face=Verdana size=1>11/15/98 3:10</FONT></TD>
+<TD><FONT face=Verdana size=1>NT\TEST</FONT></TD>
+<TD><FONT face=Verdana size=1>1000</FONT></TD></TR>
+<TR>
+<TD><FONT face=Verdana size=1>36D539E2-7DE3-11D6-9855-00508BB3C376</FONT></TD>
+<TD><FONT face=Verdana size=1>ak_test_sys_db</FONT></TD>
+<TD><FONT face=Verdana size=1>11/16/98 3:10</FONT></TD>
+<TD><FONT face=Verdana size=1>NT\TEST</FONT></TD>
+<TD><FONT face=Verdana size=1>1000</FONT></TD></TR>
+<TR>
+<TD><FONT face=Verdana size=1>36D539E3-7DE3-11D6-9855-00508BB3C376</FONT></TD>
+<TD><FONT face=Verdana size=1>ak_test_user_db&nbsp;</FONT></TD>
+<TD><FONT face=Verdana size=1>11/17/98</FONT></TD>
+<TD><FONT face=Verdana size=1>3:10 NT\TEST</FONT></TD>
+<TD><FONT face=Verdana 
+size=1>1000</FONT></TD></TR></TBODY></TABLE></CENTER></DIV>
+<UL>
+<LI>
+<P align=left><FONT face=Verdana size=2><B>sysdbmaintplan_history</B>: Maintain 
+the history information for each maintenance plan.<BR><BR></FONT></P>
+<LI>
+<P align=left><FONT face=Verdana size=2><B>sysdbmaintplan_jobs</B>: Maintains 
+the relationship between the maintenance plan id and the job id.</FONT> 
+</P></LI></UL>
+<P align=left><FONT face=Verdana size=2><BR>Comments on These System 
+Tables:</FONT></P>
+<P align=left><FONT face=Verdana size=2>Notice than there is one predefined 
+maintenance plan named: "All ad-hoc plans" with a strange owner: 
+"REDMOND\_sqlbld". It is used for all ad-hoc jobs using the xp_sqlmaint utility. 
+The max_history_rows for this plan is set to 0, however there are history 
+entries in the sysdbmaintplan_history table for it.</FONT></P>
+<P align=left><FONT face=Verdana size=2>To demonstrate how this "special" 
+entries works, I created a custom job with following command:</FONT></P>
+<P align=left><FONT face="Courier New" size=2>EXECUTE master.dbo.xp_sqlmaint 
+N'-D WWW_ak -Rpt "e:\mssql7\LOG\www_ak.txt" -WriteHistory -CkDB '</FONT></P>
+<P align=left><FONT face=Verdana size=2>After running it twice, here's what the 
+history table looks like:</FONT></P>
+<DIV align=center>
+<CENTER>
+<TABLE cellSpacing=0 cellPadding=2 width="100%" border=1>
+<TBODY>
+<TR>
+<TD><B><FONT face=Verdana size=1>plan_id</FONT></B></TD>
+<TD><B><FONT face=Verdana size=1>plan<BR>_name</FONT></B></TD>
+<TD><B><FONT face=Verdana size=1>database<BR>_name</FONT></B></TD>
+<TD><B><FONT face=Verdana size=1>server<BR>_name</FONT></B></TD>
+<TD><B><FONT face=Verdana size=1>activity</FONT></B></TD>
+<TD><B><FONT face=Verdana size=1>duration</FONT></B></TD></TR>
+<TR>
+<TD><FONT face=Verdana size=1>00000000-0000-0000-0000-000000000000</FONT></TD>
+<TD><FONT face=Verdana size=1>All ad-hoc plans</FONT></TD>
+<TD><FONT face=Verdana size=1>WWW_ak</FONT></TD>
+<TD><FONT face=Verdana size=1>test</FONT></TD>
+<TD><FONT face=Verdana size=1>Check Data and Index Linkage</FONT></TD>
+<TD><FONT face=Verdana size=1>77</FONT></TD></TR>
+<TR>
+<TD><FONT face=Verdana size=1>00000000-0000-0000-0000-000000000000</FONT></TD>
+<TD><FONT face=Verdana size=1>All ad-hoc plans</FONT></TD>
+<TD><FONT face=Verdana size=1>WWW_ak</FONT></TD>
+<TD><FONT face=Verdana size=1>test</FONT></TD>
+<TD><FONT face=Verdana size=1>Check Data and Index Linkage</FONT></TD>
+<TD><FONT face=Verdana size=1>77</FONT></TD></TR></TBODY></TABLE></CENTER></DIV>
+<P align=left>&nbsp;</P>
+<P align=left><FONT face=Verdana size=2><B><FONT color=#000080>Creating a Custom 
+Maintenance Plan</FONT></B><BR><BR>As you can see, the SQL Server Database 
+Maintenance Plan Wizard doesn抰 allow us to include all the potentially useful 
+options (HTML report, some DBCC stuff). As workaround, I propose that you follow 
+one these two options when creating your own maintenance plan:</FONT></P>
+<OL>
+<LI>
+<P align=left><FONT face=Verdana size=2>Create each new maintenance plan using 
+the wizard, then modify each job manually for those options not available 
+directly from the wizard.<BR><BR></FONT></P>
+<LI>
+<P align=left><FONT face=Verdana size=2>Avoid the wizard completely, and create 
+all jobs manually using the xp_sqlmaint utility.</FONT> </P></LI></OL>
+<P align=left><FONT face=Verdana size=2>I recommend the following strategy for 
+SQL Server maintenance jobs:</FONT></P>
+<OL>
+<LI>
+<P align=left><FONT face=Verdana size=2>Create jobs (ad-hoc or using the wizard) 
+for full backups of your databases with DBCC CHECKDB and CHECKCATALOG, and set 
+up the option to perform the backup only if they didn抰 report any errors. Create 
+this job for all databases which don抰 demand transaction log 
+backups.<BR><BR></FONT></P>
+<LI>
+<P align=left><FONT face=Verdana size=2>Create separate jobs for only 
+transaction log backups for all databases which need it.<BR><BR></FONT></P>
+<LI>
+<P align=left><FONT face=Verdana size=2>Create separate job(s) for data 
+optimizations, depending on your demands.<BR><BR></FONT></P>
+<LI>
+<P align=left><FONT face=Verdana size=2>For all of your jobs, add the HTML 
+report option and direct it to a share point for easy access with a 
+browser.</FONT> </P></LI></OL>
+<P align=left><FONT face=Verdana size=2>All information in this article was 
+provided to help you simplify the management of our SQL Server environment. 
+Please send all comments and questions to: <A 
+href="http://www.sql-server-performance.com/mailto:akozlowski@amadeus.net">akozlowski@amadeus.net</A><BR></FONT><BR><BR><BR><FONT 
+face=Verdana size=2><I>Published with the express written permission of the 
+author. Copyright 2002.<BR></I></FONT></P>
+<P align=left>&nbsp;</P></TD></TR></TBODY></TABLE></DIV></CENTER>

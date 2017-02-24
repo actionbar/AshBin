@@ -1,0 +1,119 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="../c3.css" />
+<title>XSL-FO 列表</title>
+</head>
+<body class="xml">
+<div id="wrapper">
+<div id="header">
+<a href="http://e.v-get.com/w3cschool/" style="float:left;">W3CSchool 在线教程</a>
+<div class="q g"><script type="text/javascript">var cpro_id="u1163355"</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div>
+<div id="navfirst">
+<ul id="menu">
+<li id="h"><a href="../h.html">HTML教程</a></li>
+<li id="x"><a href="../x.html">XML教程</a></li>
+<li id="b"><a href="../b.html">浏览器脚本</a></li>
+<li id="s"><a href="../s.html">服务器脚本</a></li>
+<li id="d"><a href="../d.html">dot net教程</a></li>
+<li id="m"><a href="../m.html">多媒体教程</a></li>
+<li id="w"><a href="../w.html">建站手册</a></li>
+</ul>
+</div><div id="navsecond">
+<div id="course">
+<h2>XSLFO 教程</h2>
+<ul>
+<li><a href="http://e.v-get.com/w3cschool/">XSLFO 首页</a></li>
+<li><a href="xslfo_intro.html">XSLFO 简介</a></li>
+<li><a href="xslfo_documents.html">XSLFO 文档</a></li>
+<li><a href="xslfo_areas.html">XSLFO 区域</a></li>
+<li><a href="xslfo_output.html">XSLFO 输出</a></li>
+<li><a href="xslfo_flow.html">XSLFO 流</a></li>
+<li><a href="xslfo_pages.html">XSLFO 页面</a></li>
+<li><a href="xslfo_blocks.html">XSLFO 块</a></li>
+<li><a href="xslfo_lists.html">XSLFO 列表</a></li>
+<li><a href="xslfo_tables.html">XSLFO 表格</a></li>
+<li><a href="xslfo_xslt.html">XSLFO 与 XSLT</a></li>
+</ul>
+<h2>XSLFO 参考手册</h2>
+<ul>
+<li><a href="xslfo_reference.html">XSLFO 对象</a></li>
+</ul>
+</div>
+<div id="selected">
+<h2>建站手册</h2>
+<ul>
+<li><a href="../site/">网站构建</a></li>
+<li><a href="../w3c/">万维网联盟</a></li>
+<li><a href="http://e.v-get.com/w3c/">W3CSchool 教程</a></li>
+<li><a href="../quality/">网站品质</a></li>
+<li><a href="../semweb/">语义网</a></li>
+<li><a href="../hosting/">网站主机</a></li>
+</ul>
+<h2><a href="http://e.v-get.com/w3c/" class="f13">W3CSchool 教程</a></h2><div class="a120x90"><script type="text/javascript">var cpro_id="u1210867";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div></div>
+</div>
+<div id="maincontent">
+<h1>XSL-FO 列表</h1>
+<div id="tpn">
+<ul class="prenext">
+<li class="pre"><a href="xslfo_blocks.html">上一页</a></li>
+<li class="next"><a href="xslfo_tables.html">下一页</a></li>
+</ul>
+</div>
+<div id="intro">
+<p><strong>XSL-FO 使用列表块 (List Block）来定义列表。</strong></p>
+</div>
+<div>
+<h2>XSL-FO 列表块</h2>
+<p>有四种 XSL-FO 对象可用来创建列表：</p>
+<dl class="define">
+<dt>fo:list-block</dt>
+<dd>包含整个列表。</dd>
+<dt>fo:list-item</dt>
+<dd>包含列表中的每个项目。</dd>
+<dt>fo:list-item-label</dt>
+<dd>包含用于 list-item 的标记 - 典型地，包含一个数字或者字符的 &lt;fo:block&gt; 。</dd>
+<dt>fo:list-item-body</dt>
+<dd>包含 list-item 的主体或内容 - 典型地，一个或多个 &lt;fo:block&gt; 对象。</dd>
+</dl>
+<h3>一个 XSL-FO 列表实例:</h3>
+<pre>&lt;fo:list-block&gt;
+&lt;fo:list-item&gt;
+ &lt;fo:list-item-label&gt;
+   &lt;fo:block&gt;*&lt;/fo:block&gt;
+ &lt;/fo:list-item-label&gt;
+ &lt;fo:list-item-body&gt;
+   &lt;fo:block&gt;Volvo&lt;/fo:block&gt;
+ &lt;/fo:list-item-body&gt;
+&lt;/fo:list-item&gt;
+&lt;fo:list-item&gt;
+ &lt;fo:list-item-label&gt;
+   &lt;fo:block&gt;*&lt;/fo:block&gt;
+ &lt;/fo:list-item-label&gt;
+ &lt;fo:list-item-body&gt;
+   &lt;fo:block&gt;Saab&lt;/fo:block&gt;
+ &lt;/fo:list-item-body&gt;
+&lt;/fo:list-item&gt;
+&lt;/fo:list-block&gt;</pre>
+<h3>以上代码的输出：</h3>
+<img class="illustration" src="i/xslfo_lists_01.gif" />
+</div>
+<div id="bpn">
+<ul class="prenext">
+<li class="pre"><a href="xslfo_blocks.html">上一页</a></li>
+<li class="next"><a href="xslfo_tables.html">下一页</a></li>
+</ul>
+</div>
+</div>
+<div id="sidebar">
+<div class="rs"></div>
+<div id="tools">
+<h5 id="tools_reference"><a href="xslfo_reference.html">XSL-FO 参考手册</a></h5>
+</div>
+<div class="a120x600"><script type="text/javascript">var cpro_id="u1293136";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div><div class="b"></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,196 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="../c3.css" />
+<title>XML Schema attribute 元素</title>
+</head>
+<body class="xml">
+<div id="wrapper">
+<div id="header">
+<a href="http://e.v-get.com/w3cschool/" style="float:left;">W3CSchool 在线教程</a>
+<div class="q g"><script type="text/javascript">var cpro_id="u1163355"</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div>
+<div id="navfirst">
+<ul id="menu">
+<li id="h"><a href="../h.html">HTML教程</a></li>
+<li id="x"><a href="../x.html">XML教程</a></li>
+<li id="b"><a href="../b.html">浏览器脚本</a></li>
+<li id="s"><a href="../s.html">服务器脚本</a></li>
+<li id="d"><a href="../d.html">dot net教程</a></li>
+<li id="m"><a href="../m.html">多媒体教程</a></li>
+<li id="w"><a href="../w.html">建站手册</a></li>
+</ul>
+</div><div id="navsecond">
+<div id="course">
+<h2>Schema 教程</h2>
+<ul>
+<li><a href="http://e.v-get.com/w3cschool/">XSD 首页</a></li>
+<li><a href="schema_intro.html">XSD 简介</a></li>
+<li><a href="schema_why.html">XSD 为何使用</a></li>
+<li><a href="schema_howto.html">XSD 如何使用</a></li>
+<li><a href="schema_schema.html">XSD &lt;schema&gt;</a></li>
+</ul>
+<h2>简单的类型</h2>
+<ul>
+<li><a href="schema_simple.html">XSD 元素</a></li>
+<li><a href="schema_simple_attributes.html">XSD 属性</a></li>
+<li><a href="schema_facets.html">XSD 限定</a></li>
+</ul>
+<h2>复杂的类型</h2>
+<ul>
+<li><a href="schema_complex.html">XSD 元素</a></li>
+<li><a href="schema_complex_empty.html">XSD 空元素</a></li>
+<li><a href="schema_complex_elements.html">XSD 仅含元素</a></li>
+<li><a href="schema_complex_text.html">XSD 仅含文本</a></li>
+<li><a href="schema_complex_mixed.html">XSD 混合内容</a></li>
+<li><a href="schema_complex_indicators.html">XSD 指示器</a></li>
+<li><a href="schema_complex_any.html">XSD &lt;any&gt;</a></li>
+<li><a href="schema_complex_anyattribute.html" title="">XSD &lt;anyAttribute&gt;</a></li>
+<li><a href="schema_complex_subst.html">XSD 元素替换</a></li>
+<li><a href="schema_example.html">XSD 实例</a></li>
+</ul>
+<h2>数据类型</h2>
+<ul>
+<li><a href="schema_dtypes_string.html">XSD 字符串</a></li>
+<li><a href="schema_dtypes_date.html">XSD 日期</a></li>
+<li><a href="schema_dtypes_numeric.html">XSD 数值</a></li>
+<li><a href="schema_dtypes_misc.html">XSD 杂项</a></li>
+<li><a href="schema_summary.html">XSD 总结</a></li>
+</ul>
+<h2>参考手册</h2>
+<ul>
+<li><a href="schema_elements_ref.html">XSD 参考手册</a></li>
+<li><a href="http://www.w3.org/2001/03/webdata/xsv/">XSD 验证器</a></li>
+</ul>
+</div>
+<div id="selected">
+<h2>建站手册</h2>
+<ul>
+<li><a href="../site/">网站构建</a></li>
+<li><a href="../w3c/">万维网联盟</a></li>
+<li><a href="http://e.v-get.com/w3c/">W3CSchool 教程</a></li>
+<li><a href="../quality/">网站品质</a></li>
+<li><a href="../semweb/">语义网</a></li>
+<li><a href="../hosting/">网站主机</a></li>
+</ul>
+<h2><a href="http://e.v-get.com/w3c/" class="f13">W3CSchool 教程</a></h2><div class="a120x90"><script type="text/javascript">var cpro_id="u1210867";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div></div>
+</div>
+<div id="maincontent">
+<h1>XML Schema attribute 元素</h1>
+<div class="backtoreference">
+<p><a href="schema_elements_ref.html">返回 XML Schema 参考手册</a></p>
+</div>
+<div>
+<h2>定义和用法</h2>
+<p>attribute 元素定义一个属性。</p>
+<h3>元素信息</h3>
+<table class="dataintable">
+<tr>
+<td class="no_wrap">出现次数</td>
+<td>在 schema 元素中定义一次。 在复杂类型或属性组中引用多次。</td>
+</tr>
+<tr>
+<td>父元素</td>
+<td>attributeGroup、schema、complexType、restriction (simpleContent)、extension (simpleContent)、restriction (complexContent)、extension (complexContent)</td>
+</tr>
+<tr>
+<td>内容</td>
+<td>annotation、simpleType</td>
+</tr>
+</table>
+<h3>语法</h3>
+<pre>&lt;attribute
+default=string
+fixed=string
+form=qualified|unqualified
+id=ID
+name=NCName
+ref=QName
+type=QName
+use=optional|prohibited|required
+<i>any attributes</i>
+&gt;
+(annotation?,(simpleType?))
+&lt;/attribute&gt;</pre>
+<p> (? 符号声明该元素可在 attribute 元素中出现零次或一次。）</p>
+</div>
+<div>
+<h2>属性</h2>
+<h3>default</h3>
+<p>可选。规定属性的默认值。default 和 fixed 属性不能同时出现。</p>
+<h3>fixed</h3>
+<p>可选。规定属性的固定值。default 和 fixed 属性不能同时出现。</p>
+<h3>form</h3>
+<p>可选。规定属性的格式。默认值是包含该属性的 schema 元素的 attributeFormDefault 属性的值。可以设置为下列值：</p>
+<ul>
+<li>&#34;qualified&#34; - 指示必须通过命名空间前缀和该属性的无冒号名称 (NCName) 来限定此属性。</li>
+<li>&#34;unqualified&#34; - 指示此属性无须由命名空间前缀限定，且无须匹配此属性的无冒号名称 (NCName)，即本地名称。</li>
+</ul>
+<h3>id</h3>
+<p>可选。规定该元素的唯一的 ID。</p>
+<h3>name</h3>
+<p>可选。规定属性的名称。name 和 ref 属性不能同时出现。</p>
+<h3>ref</h3>
+<p>可选。规定对指定的属性的引用。name 和 ref 属性不能同时出现。如果 ref 出现，则 simpleType 元素、form 和 type 不能出现。</p>
+<h3>type</h3>
+<p>可选。规定内建的数据类型或简单类型。type 属性只能在内容不包含 simpleType 元素时出现。</p>
+<h3>use</h3>
+<p>可选。规定如何使用该属性。可设置下面的值：</p>
+<ul>
+<li>optional - 属性是可选的并且可以具有任何值 (默认）。</li>
+<li>prohibited - 不能使用属性。</li>
+<li>required - 属性的必需的。</li>
+</ul>
+ 
+<h3>any attributes</h3>
+<p>可选。规定带有 non-schema 命名空间的任何其他属性。</p>
+</div>
+<div>
+<h2>实例</h2>
+<h3>例子 1</h3>
+<pre>&lt;xs:attribute name=&#34;code&#34;&gt;
+&lt;xs:simpleType&gt;
+  &lt;xs:restriction base=&#34;xs:string&#34;&gt;
+    &lt;xs:pattern value=&#34;[A-Z][A-Z]&#34;/&gt;
+  &lt;/xs:restriction&gt;
+&lt;/xs:simpleType&gt;
+&lt;/xs:attribute&gt;</pre>
+<p>上面的例子指示 &#34;code&#34; 属性有一个限定。唯一可接受的值是大写字母 A 到 Z 中的两个字母。</p>
+<h3>例子 2</h3>
+<p>如需使用在复杂类型中一个已有的属性定义来声明一个属性，请使用 ref 属性：</p>
+<pre>&lt;xs:attribute name=&#34;code&#34;&gt;
+  &lt;xs:simpleType&gt;
+    &lt;xs:restriction base=&#34;xs:string&#34;&gt;
+      &lt;xs:pattern value=&#34;[A-Z][A-Z]&#34;/&gt;
+    &lt;/xs:restriction&gt;
+  &lt;/xs:simpleType&gt;
+&lt;/xs:attribute&gt;
+&lt;xs:complexType name=&#34;someComplexType&#34;&gt;
+  &lt;xs:attribute ref=&#34;code&#34;/&gt;
+&lt;/xs:complexType&gt;</pre>
+<h3>例子 3</h3>
+<p>属性既可以拥有默认值，也可以拥有指定的固定值。在没有其他的值被指定时，会自动向属性赋予默认值。在下面的例子中，默认值是 &#34;EN&#34;：</p>
+<pre>&lt;xs:attribute name=&#34;lang&#34; type=&#34;xs:string&#34; default=&#34;EN&#34;/&gt;</pre>
+<p>在没有其他的值被指定时，会自动向属性赋予固定值。但是与默认值不同，如果您为属性规定了固定值以外的其他值，文档会验证为无效。在下面的例子中，固定值是 &#34;EN&#34;：</p>
+<pre>&lt;xs:attribute name=&#34;lang&#34; type=&#34;xs:string&#34; fixed=&#34;EN&#34;/&gt;</pre>
+<h3>例子 4</h3>
+<p>所有属性默认都是可选的。如需明确地规定属性为可选，请使用 &#34;use&#34; 属性：</p>
+<pre>&lt;xs:attribute name=&#34;lang&#34; type=&#34;xs:string&#34; use=&#34;optional&#34;/&gt;</pre>
+<p>使属性成为必需的属性：</p>
+<pre>&lt;xs:attribute name=&#34;lang&#34; type=&#34;xs:string&#34; use=&#34;required&#34;/&gt;</pre>
+</div>
+<div class="backtoreference">
+<p><a href="schema_elements_ref.html">返回 XML Schema 参考手册</a></p>
+</div>
+</div>
+<div id="sidebar">
+<div class="rs"></div>
+<div id="tools">
+<h5 id="tools_reference"><a href="schema_elements_ref.html">XML Schema 参考手册</a></h5>
+</div>
+<div class="a120x600"><script type="text/javascript">var cpro_id="u1293136";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div><div class="b"></div>
+</div>
+</body>
+</html>

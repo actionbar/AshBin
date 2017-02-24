@@ -1,0 +1,80 @@
+<html>
+<head>
+<title>格式化页面</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+
+<link rel = stylesheet href = "image/style.css">
+</head>
+<body bgcolor="#ffffff">
+<table width="688" border="0" cellspacing="0" cellpadding="0" align="center">
+  <tr bgcolor="EEEEEE"> 
+    <td height="22"><a href="index.htm">主页</a></td>
+  </tr>
+</table><br>
+<table border="0" cellpadding="0" cellspacing="0" width="688" align="center" height="490">
+  <tr valign="top"> 
+    <td rowspan="4" width="91">&nbsp; </td>
+    <td height="68" width="131"> 
+      <p><img src="image/doc.gif"></p>
+    </td>
+    <td rowspan="4" width="18"><b></b> </td>
+    <td height="68" width="387"><img src="image/title_doc.gif"></td>
+    <td rowspan="4" width="61"> 
+      <h6>&nbsp;</h6>
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td rowspan="3" valign="top" class="pt10" align="center" width="131" bgcolor="EEEEEE"> 
+      <p>&nbsp;</p>
+      <p><font color="#FF0000">※ 13.3 格式化页面</font></p>
+       
+	</td>
+  </tr>
+  <tr valign="top"> 
+    <td width="387" height="308"> 
+      <table width="100%" border="0" cellpadding="0">
+        <tr> 
+          <td>
+
+           <h4><a name="_Toc467205937">13.3 格式化页面</a></h4>
+<p>@page选择符指的是页面。可用它来设置应用于页面而不是页面上的各个XML元素的属性。文档的每一页都有多种属性可供应用，包括页面的大小、取向、页边距和分页符。这些属性级联于页面上的任何元素。可选的伪类可为第一页、右页和左页指定不同的属性。</p>
+<p>CSS2合理地假定页面是矩形的。作出这种假定之后，页面可具有框的属性，这些属性以及包括页边距和大小在内，在CSS1中就已熟悉了。但是页面框没有边界或贴边，因为这些已经跑到物理页面之外了。</p>
+<h5><a name="_Toc467205938">13.3.1 大小属性</a></h5>
+<p>在@page规则中，size属性指定页面的高度和宽度。可将size设置为1或2个绝对长度，或下列四个关键字之一：auto、portrait、landscape或inherit。如果只给出一个长度，则此页面将是正方形的。当给出两个尺寸时，第一个是此页面的宽度；第二个是高度。例如，</p>
+<p>@page { size: 8.5in 11in }</p>
+<p>auto设置自动调整为目标屏幕或纸面的大小。landscape强制文档格式化为适应目标页面，但长边是水平的。portrait设置将文档格式化为适应缺省的目标页面的大小，但长边是垂直的。</p>
+<h5><a name="_Toc467205939">13.3.2 页边距属性</a></h5>
+<p>margin属性控制着此页的页边距，页边距为页面的四个侧边上的所有不能打印的矩形区域。此属性可作为分别设置margin-top、margin-bottom、margin-right和margin-left的简略方式。而这些属性与CSS1中的框的属性是相同的。例如，下面的规则描述这样的一个页面：长11英寸、宽为8.5英寸、所有的侧面上的页边距为1英寸。</p>
+<p>@page { size: 8.5in 11in; margin: l.0in }</p>
+<h5><a name="_Toc467205940">13.3.3 标记属性</a></h5>
+<p>CSS2提供了mark属性，以便将标记（用于描绘在何处切开纸张和如何对齐页面）放在页面上。这些标记（mark）显示在页面框之外。页面框只是文档的可视区域，它受@page规则的影响。如果有一张已打印的区域为8.5英寸×11英寸的打印纸，那么页面框就是此张纸上可打印区域内的内容，我们通常把它认为是打印机页边距内的空间。软件控制标记的显示，它只显示于绝对的页面框上。绝对的页面框不能移动，可为页面的一般页边距所控制。相对页面框可以根据目标页面对齐，在大多数情况下，强制标记离开页面的边缘。当将相对页面框进行对齐时，实际上是用内心的眼睛在看页面，并使用margin和padding属性将此页面的打印区域在实际的纸张上移动。</p>
+<p>mark属性有四个值：crop、cross、inherit和none，只能和@page元素一起使用。修剪（crop）标记标识纸张的剪切边缘。交叉（cross）也称为注册标记，它用于在打印的内容之后对齐页面。如果设置为none，文档中没有任何标记。下列的规则指定带有crop和cross标记的页面：</p>
+<p>@page { mark: crop cross }</p>
+<h5><a name="_Toc467205941">13.3.4 页面属性</a></h5>
+<p>除了使用@page选择符来指定页面属性之外，还可使用page属性来将页面属性与各个元素进行连接。为此，可编写指定页面属性的@page规则，给@page规则命名，然后使用这个名称作为正常元素规则的page属性。例如，下面两条规则说明打印SONNET的纸是横向放置的。</p>
+<p>@page rotated { size: landscape }</p>
+<p>SONNET { page: rotated }</p>
+<p>使用page属性时，使用不同的同属元素指定不同的页面属性是可能的。如果是这样，将在元素之间插入一分页符。如果子元素使用了不同于父元素的页面布局，那么此子元素的版式将处于优先地位。例如，在下例中，这两个表横向显示在页面中，如果空间允许，有可能在同一页上。由于文档中的元素层次的关系，赋给SONNET元素的旋转页面不再有效，且不被使用。</p>
+<p>@page narrow { size: 9cm 18cm }</p>
+<p>@page rotated { size: landscaper }</p>
+<p>STANZA { page: narrow }</p>
+<p>SONNET { page: rotated }</p>
+<h5><a name="_Toc467205942">13.3.5 分页符属性</a></h5>
+<p>page-break-after属性强制或阻止在当前对象后插入分页符。page-break-before属性强制或阻止在当前对象前插入分页符。page-break-inside属性允许或阻止在当前对象内部插入分页符。这些属性可用来将相关的正文段落、标题及其主体文本、影像及其说明放在一起，或在同一页中保持表格的完整。</p>
+<p>当将这些属性的任一个设置为auto时，在当前框中既不会强制，也不会禁止插入分页符。设置为always时，强制插入分页符。avoid设置将阻止分页符出现。设置为left和right时，根据需要强制插入一或两个分页符，以便强制下一页成为左页或右页。这用于书中一章的结尾是很有用的，因为书中的一章通常始于右页，即使保留下空页也没关系。</p>
+<p>下列的规则在文档中的每个SONNET元素前和后插入一个分页符但不在SONNET元素内插入分页符，以便十四行诗都出现在各自的页面上。</p>
+<p>SONNET { page-break-before: always;</p>
+<p> page-break-after: always;</p>
+<p> page break-inside: avoid }</p>
+ 
+<a href='466.htm'>&lt;&lt;上一篇</a>&nbsp;&nbsp;<a href='468.htm'>下一篇&gt;&gt;</a></td>
+        </tr>
+      </table>
+      <p>&nbsp; </p>
+    </td>
+  </tr>
+</table>
+
+</body>
+
+</html>

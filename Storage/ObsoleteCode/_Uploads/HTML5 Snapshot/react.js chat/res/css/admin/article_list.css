@@ -1,0 +1,12 @@
+.article-list-id{width:30px;text-aligin:center}
+.article-list-sort{width:50px;text-aligin:center}
+.article-list-title{width:220px;text-aligin:center}
+.article-list-readers{width:30px;text-aligin:center}
+.article-list-likers{width:30px;text-aligin:center}
+.article-list-comments{width:30px;text-aligin:center}
+.article-list-date{width:50px;text-aligin:center}
+
+.article-list-page-ctrl{cursor:pointer}
+.article-list-page-ctrl:hover{background:#999;}
+.article-list-page-ctrl-prev{margin:0 30px 0 0;}
+.article-list-page-ctrl-next{margin:0 0 0 30px}

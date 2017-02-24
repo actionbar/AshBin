@@ -1,0 +1,189 @@
+<html>
+<head>
+<title>选择元素</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+
+<link rel = stylesheet href = "image/style.css">
+</head>
+<body bgcolor="#ffffff">
+<table width="688" border="0" cellspacing="0" cellpadding="0" align="center">
+  <tr bgcolor="EEEEEE"> 
+    <td height="22"><a href="index.htm">主页</a></td>
+  </tr>
+</table><br>
+<table border="0" cellpadding="0" cellspacing="0" width="688" align="center" height="490">
+  <tr valign="top"> 
+    <td rowspan="4" width="91">&nbsp; </td>
+    <td height="68" width="131"> 
+      <p><img src="image/doc.gif"></p>
+    </td>
+    <td rowspan="4" width="18"><b></b> </td>
+    <td height="68" width="387"><img src="image/title_doc.gif"></td>
+    <td rowspan="4" width="61"> 
+      <h6>&nbsp;</h6>
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td rowspan="3" valign="top" class="pt10" align="center" width="131" bgcolor="EEEEEE"> 
+      <p>&nbsp;</p>
+      <p><font color="#FF0000">※ 12.3 选择元素</font></p>
+       
+	</td>
+  </tr>
+  <tr valign="top"> 
+    <td width="387" height="308"> 
+      <table width="100%" border="0" cellpadding="0">
+        <tr> 
+          <td>
+
+           <h4><a name="_Toc467205068">12.3 选择元素</a></h4>
+<p> </p>
+<p>在CSS规则中，有个部分是用来指定CSS规则适用于哪个元素的，此部分称为选择符(selector)。最普通的选择符就是元素的名称；例如，下面规则中的TITLE：</p>
+<p>TITLE ( display: block; font-size: 16pt; font-weight: bold )</p>
+<p>可是，选择符还可指定多个元素、带有特定的CLASS或ID特性的元素以及与其他元素相关的出现在特定上下文中的元素。 </p>
+<img src="Image/BK000212-51.gif" width=45 height=53 align="LEFT" hspace=11> 
+<p>在CSS1中，无法做到的一件事就是选择带有特定特性名的元素或除预定义的CLASS和ID特性之外的值，为此，就得使用CSS2或XSL。</p>
+<p>　</p>
+<h5><a name="_Toc467205069">12.3.1 成组选择符</a></h5>
+<p>如果想把一组属性应用于多个元素，可以用逗号将选择符中的所有元素分开。例如，在清单12-1中，POET和STANZA都是被设定为10个像素页边距的块显示。于是，可把这两个规则如下列方式组合起来：</p>
+<p>POET, STANZA { display: block; margin-bottom: 10px }</p>
+<p>此外，多个规则也可将样式作用于一个特定的元素。所以可以将一些标准的属性组合成带有许多选择符的一个规则中，然后使用更多的指定规则来把定制格式作用于所选元素。例如，在清单12-1中，所有的元素都是以块显示的方式列出来的。这样就可以组合成一个规则，而用于POET、STANZA和TITLE元素的其他格式化放在各自的规则中，于是：</p>
+<p>POEM, VERSE, TITLE, POET, STANZA { display: block }</p>
+<p>POET, STANZA { margin-bottom: 10px }</p>
+<p>TITLE { font-size: 16pt; font-weight: bold }</p>
+<h5><a name="_Toc467205070">12.3.2 伪元素</a></h5>
+<p>CSS1支持两种伪元素(pseudo-element)，它们指出文档中通常不能作为独立的元素来看待的部分，但常常需要独立样式。通常伪元素是元素的第一行和首字母。</p>
+<img src="Image/BK000212-52.gif" width=49 height=49 align="LEFT" hspace=12> 
+<p>Internet Explorer 5.0的早期测试版和Internet Explorer更早版本都不支持这些伪元素。Mozilla 5.0早期的测试版的确支持，但仅用于HTML。</p>
+<b>12.3.2.1 强调首字母</b> 
+<p></p>
+<p>要将一个元素的首字母与此元素中其他字母分别格式化的最通用手段就是插入一个下沉的大写字母，如图12-2所示。为此，需要编写一条以元素名标识的规则，紧接此元素名后写入:first-letter。例如：</p>
+<p>CHAPTER:first-letter { font-size: 300%; </p>
+<p> float: left; vertical-align: text-top }</p>
+<img src="Image/BK000212-52.gif" width=49 height=49 align="LEFT" hspace=12> 
+<p>正像在图12-2中看到的那样，尽管词首的大写字母的大小可以调整，但下沉大写字母(float:left; vertical-align:text-top)的“下沉”部分在Mozilla 
+  5.0的早期测试版和Internet Explorer 5.0中似乎仍行不通。</p>
+<p align="center"><img src="Image/BK000212-18.gif" width=372 height=327></p>
+<p align="center">图12-2 在首字母伪元素上的下沉大写字母以及在首行伪元素上使用的小型大写字母</p>
+<b>12.3.2.2 强调首行</b> 
+<p></p>
+<p>一个元素的第一行也常常被格式化为与此元素文本的其他部分不同。例如，可用小型的大写字母进行打印，而不是以通常的主体文本，如图12-2所示。可以将:first-line选择符加到元素的名称上，以创建只适用于此元素第一行的规则。例如：</p>
+<p>CHAPTER:first-line { font-variant: small-caps }</p>
+<p>伪元素到底选择了什么内容依赖于当前窗口的布局。如果窗口较大，因而在第一行中单词也较多，那么，以小型大写字母显示的单词也就越多。如果窗口变小，或字体变大，以致造成文本不同程度的折行，从而使第一行的单词变得较少，那么折行到下一行中的单词就不再以小型大写字母的形式显示了。因此，在文档实际显示出来之后，才能确定first-line伪元素包含哪些字母。</p>
+<h5><a name="_Toc467205071">12.3.3 伪类(pseudo-classe)</a></h5>
+<p>有时候，可能想对同一个类型的两个元素设计成不同的样式。例如，有一个段落可能是粗体的，而另一个段落则为正常粗细的字体。要达到此目的，可以把CLASS特性加到两个元素之一上，然后为给定的CLASS中的元素编写一个规则。</p>
+<p>例如，以含有许多CITATION元素的一个书目为例。在清单12-3中显示了一个示例。现假定要将Alan Turing文章中的所有引用着成蓝色，同时又不改变其他的引用。为此，必须将带有指定值(TURING也行)的CLASS属性加到要着色的元素中。</p>
+<p>清单12-3：有三个CITATION元素的XML书目</p>
+<p>&lt;?xml version="1.0" standalone="yes"?&gt;</p>
+<p>&lt;?xml-stylesheet type="text/css" href="biblio.css"?&gt;</p>
+<p>&lt;BIBLIOGRAPHY&gt;</p>
+<p> &lt;CITATION CLASS="HOFSTADTER" ID="Cl"&gt;</p>
+<p> &lt;AUTHOR&gt;Hofstadter, Douglas&lt;/AUTHOR&gt;.</p>
+<p> "&lt;TITLE&gt;How Might Analogy, the Core of Human Thinking,</p>
+<p> Be Understood By Computers?&lt;/TITLE&gt;"</p>
+<p> &lt;JOURNAL&gt;Scientific American&lt;/JOURNAL&gt;,</p>
+<p> &lt;MONTH&gt;September&lt;/MONTH&gt;</p>
+<p> &lt;YEAR&gt;1981&lt;/YEAR&gt;</p>
+<p> &lt;PAGES&gt;18-30&lt;/PAGES&gt;</p>
+<p> &lt;/CITATION&gt;</p>
+<p> &lt;CITATION CLASS="TURING" ID="C2"&gt;</p>
+<p> &lt;AUTHOR&gt;Turing, Alan M.&lt;/AUTHOR&gt;</p>
+<p> "&lt;TITLE&gt;On Computable Numbers,</p>
+<p> With an Application to the Entscheidungs-problem&lt;/TITLE&gt;"</p>
+<p> &lt;JOURNAL&gt;</p>
+<p> Proceedings of the London Mathematical Society&lt;/JOURNAL&gt;,</p>
+<p> &lt;SERIES&gt;Series 2&lt;/SERIES&gt;,</p>
+<p> &lt;VOLUME&gt;42&lt;/VOLUME&gt;</p>
+<p> (&lt;YEAR&gt;1936&lt;/YEAR&gt;):</p>
+<p> &lt;PAGES&gt;230-65&lt;/PAGES&gt;.</p>
+<p> &lt;/CITATION&gt;</p>
+<p> &lt;CITATION CLASS="TURING" ID="C3"&gt;</p>
+<p> &lt;AUTHOR&gt;Turing, Alan M.&lt;/AUTHOR&gt;</p>
+<p> "&lt;TITLE&gt;Computing Machinery &amp;amp; Intelligence&lt;/TITLE&gt;"</p>
+<p> &lt;JOURNAL&gt;Mind&lt;/JOURNAL&gt;</p>
+<p> &lt;VOLUME&gt;59&lt;/VOLUME&gt;</p>
+<p> (&lt;MONTH&gt;October&lt;/MONTH&gt;</p>
+<p> &lt;YEAR&gt;1950&lt;/YEAR&gt;):</p>
+<p> &lt;PAGES&gt;433-60&lt;/PAGES&gt;</p>
+<p> &lt;/CITATION&gt;</p>
+<p>&lt;/BIBLIOGRAPHY&gt;</p>
+<img src="Image/BK000212-53.gif" width=45 height=53 align="LEFT" hspace=11> 
+<p>CSS1中令人讨厌的地方之一是使得混合内容更为必要。清单12-3中有很多标点符号，但它们并非真正是内容中的一部分；例如，在YEAR元素两边的圆括号，以及TITLE元素两边的引号。这些都是表达元素，本应为样式单的一部分。CSS2允许使用其他文本，如插入到元素之前或之后的标点符号。</p>
+<p>清单12-4中的样式单使用一个CLASS选择符来将TURING类中的元素着成蓝色。</p>
+<img src="Image/BK000212-52.gif" width=49 height=49 align="LEFT" hspace=12> 
+<p>IE 5支持CLASS属性，但Mozilla的里程碑式的第三版之前的版本不支持此属性。直到Mozilla正式发行后，有可能支持CLASS属性。</p>
+<p>清单12-4：将TURING类中的元素着成蓝色的样式单</p>
+<p>BIBLIOGRAPHY { display: block }</p>
+<p>CITATION.TURING { color: blue }</p>
+<p>CITATION { display: block }</p>
+<p>JOURNAL { font-style: italic }</p>
+<img src="Image/BK000212-53.gif" width=45 height=53 align="LEFT" hspace=11> 
+<p>在一个有效的文档中，CLASS属性必须声明为已格式化的元素的可能特性。例如，下面是用于清单12-3书目的DTD：</p>
+<p>&nbsp; </p>
+<p>&lt;!ELEMENT&#9;BIBLIOGRAPHY (CITATION*)&gt;</p>
+<p> &lt;!ATTLIST&#9;CITATION CLASS CDATA #IMPLIED&gt;</p>
+<p> &lt;!ATTLIST&#9;CITATION ID ID #REOUIRED&gt;</p>
+<p></p>
+<p> &lt;!ELEMENT&#9;CITATION&#9;ANY&gt;</p>
+<p> &lt;!ELEMENT&#9;AUTHOR&#9;(#PCDATA)&gt;</p>
+<p> &lt;!ELEMENT&#9;TITLE&#9;(#PCDATA)&gt;</p>
+<p> &lt;!ELEMENT&#9;JOURNAL&#9;(#PCDATA)&gt;</p>
+<p> &lt;!ELEMENT&#9;MONTH&#9;(#PCDATA)&gt;</p>
+<p> &lt;!ELEMENT&#9;YEAR&#9;(#PCDATA)&gt;</p>
+<p> &lt;!ELEMENT&#9;SERIES&#9;(#PCDATA)&gt;</p>
+<p> &lt;!ELEMENT&#9;VOLUME&#9;(#PCDATA)&gt;</p>
+<p> &lt;!ELEMENT&#9;PAGES&#9;(#PCDATA)&gt;</p>
+<p>一般地说，我不推荐这种方法。如果可能，你应尝试把附加的元素标记(markup)加到文档中，而不依靠CLASS特性。但是，当所选择的信息不太方便地映射到特定的元素中时，CLASS属性可能是必要的。</p>
+<h5><a name="_Toc467205072">12.3.4 由ID来选择</a></h5>
+<p>有时候，特殊的元素需要特殊的样式。这时，就需要将规则准确地作用于该元素。例如，假定要将一张列表中的一个元素变成粗体，以与此同类进行对照，从而达到强调它的目的。在这种情况下，可编写作用于此元素ID特性的规则。以元素名为选择符，紧接在元素名后写上 
+  # 和ID特性值。</p>
+<p>例如，清单12-5是从清单12-3的书目中选择了ID C3的CITATION元素的样式单，此样式单使ID C3的元素(并且只有此元素)成为粗体。其他的CITATION元素取缺省粗细的字体。所有的CITATION元素都是以块的方式显示的，并且所有的JOURNAL元素都是斜体的。</p>
+<p>清单12-5：形成ID C3粗体的CITATION元素的样式单</p>
+<p>BIBLIOGRAPHY &#9;{ display: block }</p>
+<p>CITATION#C3 &#9;{ font weight: bold }</p>
+<p>CITATION &#9;&#9;{ display: block }</p>
+<p>JOURNAL &#9;&#9;{ font style: italic }</p>
+<img src="Image/BK000212-52.gif" width=49 height=49 align="LEFT" hspace=12> 
+<p>IE 5支持ID选择符，Mozilla则支持用于HTML元素的ID选择符，但Mozilla第三版则不支持XML元素的ID选择符。等到正式发行时，Mozilla可能会完全支持ID选择符。</p>
+<h5><a name="_Toc467205073">12.3.5 上下文的选择符</a></h5>
+<p>通常，元素的格式化依赖其父元素。可编写仅作用于在一个命名的父元素内找到的元素的规则。为此，可将父元素名称作为样式化的元素名的前缀。</p>
+<p>例如，可以把PRE元素内的CODE元素显示成12磅的Courier字体。可是，如果文档的主体文本是以10磅Times字体写成的，那么与其他主体文本进行内联的CODE元素就可能需要以10磅Courier字体显示。下面的这段规则就可以正确地完成这项任务：</p>
+<p>BODY { font family: Times, serif; font-size: 10pt }</p>
+<p>CODE { font-family: Courier, monospaced; font-size: 10pt }</p>
+<p>PRE { font size: 12pt }</p>
+<p>PRE CODE { font-size: 12pt }</p>
+<p>此段规则说明在BODY元素内，字体是10磅Times。但是，在CODE元素内，字体变成Courier，但仍然是10磅。而如果CODE元素是在PRE元素的内部，则字体就变成了12磅。</p>
+<p>可将此推广到父元素的父元素、父元素的祖元素等等。例如，下列的规则说明在DATE元素内的YEAR元素里的NUMBER元素应该以等宽字体的形式显示。</p>
+<p>DATE YEAR NUMBER { font-family: Courier, monospaced }</p>
+<p>实际上，这种特性级是很少需要的。在看来确实需要这样做的情况下，通常可以重写样式单，以便更多地依赖于继承、级联和相对单位，而很少依赖于对格式化的精确规格。</p>
+<h5><a name="_Toc467205074">12.3.6 STYLE特性</a></h5>
+<p>当手工编创文档时，人们常常想把特定的样式一次性地应用于一个特定的元素而无需为此文档编辑样式单。的确，对无法改变的文档，很可能想忽略某个标准的缺省的样式单。将STYLE特性加到元素中就可做到这一点。此特性值是用于此元素的一组以分号隔开的样式属性。例如，下面的CITATION使用STYLE特性来使自身变为粗体：</p>
+<p>&lt;CITATION CLASS="TURING" ID="C3" STYLE="font-weight: bold"&gt;</p>
+<p> &lt;AUTHOR&gt;Turing, Alan M.&lt;/AUTHOR&gt;</p>
+<p> "&lt;TITLE&gt;Computing Machinery &amp;amp; Intelligence&lt;/TITLE&gt;"</p>
+<p> &lt;JOURNAL&gt;Mind&lt;/JOURNAL&gt;</p>
+<p> &lt;VOLUME&gt;59&lt;/VOLUME&gt;</p>
+<p> (&lt;MONTH&gt;October&lt;/MONTH&gt;</p>
+<p> &lt;YEAR&gt;1950&lt;/YEAR&gt;):</p>
+<p> &lt;PAGES&gt;433-60&lt;/PAGES&gt;</p>
+<p>&lt;/CITATION&gt;</p>
+<p>如果在STYLE特性中定义的属性与样式单中定义的属性相冲突，那么特性中定义的属性将优先执行。</p>
+<p>应尽可能地避免使用STYLE特性。如果把样式信息放在独立的样式单中，那么文档将会整洁得多，并且更易于维护。但是，有时STYLE特性是如此简单与方便，以致难以将其忽略。</p>
+<p>其次，如果在有效的文档中使用这种方法，将需要在ATTLIST声明语句中为设计样式的元素声明STYLE特性。例如：</p>
+<p>&lt;!ELEMENT CITATION ANY&gt;</p>
+<p>&lt;!ATTLIST CITATION CLASS CDATA #IMPLIED&gt;</p>
+<p>&lt;!ATTLIST CITATION ID ID #REQUIRED&gt;</p>
+<p>&lt;!ATTLIST CITATION STYLE CDATA #IMPLIED&gt;</p>
+<img src="Image/BK000212-52.gif" width=49 height=49 align="LEFT" hspace=12> 
+<p>IE 5支持STYLE特性，Mozilla支持用于HTML元素的STYLE特性，但Mozilla第三版不支持XML元素的STYLE特性。等到Mozilla正式发行时，它很可能会完全支持STYLE特性。</p> 
+<a href='448.htm'>&lt;&lt;上一篇</a>&nbsp;&nbsp;<a href='437.htm'>下一篇&gt;&gt;</a></td>
+        </tr>
+      </table>
+      <p>&nbsp; </p>
+    </td>
+  </tr>
+</table>
+
+</body>
+
+</html>

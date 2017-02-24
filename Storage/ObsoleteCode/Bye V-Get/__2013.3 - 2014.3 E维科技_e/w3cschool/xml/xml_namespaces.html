@@ -1,0 +1,222 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="../c3.css" />
+<title>XML 命名空间 (XML Namespaces）</title>
+</head>
+<body class="xml">
+<div id="wrapper">
+<div id="header">
+<a href="http://e.v-get.com/w3cschool/" style="float:left;">W3CSchool 在线教程</a>
+<div class="q g"><script type="text/javascript">var cpro_id="u1163355"</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div>
+<div id="navfirst">
+<ul id="menu">
+<li id="h"><a href="../h.html">HTML教程</a></li>
+<li id="x"><a href="../x.html">XML教程</a></li>
+<li id="b"><a href="../b.html">浏览器脚本</a></li>
+<li id="s"><a href="../s.html">服务器脚本</a></li>
+<li id="d"><a href="../d.html">dot net教程</a></li>
+<li id="m"><a href="../m.html">多媒体教程</a></li>
+<li id="w"><a href="../w.html">建站手册</a></li>
+</ul>
+</div><div id="navsecond">
+<div id="course">
+<h2>XML 基础</h2>
+<ul>
+<li><a href="http://e.v-get.com/w3cschool/">XML 首页</a></li>
+<li><a href="xml_intro.html">XML 简介</a></li>
+<li><a href="xml_usedfor.html">XML 用途</a></li>
+<li><a href="xml_tree.html">XML 树结构</a></li>
+<li><a href="xml_syntax.html">XML 语法</a></li>
+<li><a href="xml_elements.html">XML 元素</a></li>
+<li><a href="xml_attributes.html">XML 属性</a></li>
+<li><a href="xml_dtd.html">XML 验证</a></li>
+<li><a href="xml_validator.html">XML 验证器</a></li>
+<li><a href="xml_browsers.html">XML 浏览器</a></li>
+<li><a href="xml_view.html">XML 查看</a></li>
+<li><a href="xml_display.html">XML CSS</a></li>
+<li><a href="xml_xsl.html">XML XSLT</a></li>
+</ul>
+<h2>XML JavaScript</h2>
+<ul>
+<li><a href="xml_parser.html">XML 解析器</a></li>
+<li><a href="xml_dom.html">XML DOM</a></li>
+<li><a href="xml_to_html.html">XML to HTML</a></li>
+<li><a href="xml_http.html">XML HTTP Request</a></li>
+<li><a href="xml_applications.html">XML 应用程序</a></li>
+</ul>
+</ul>
+<h2>XML 高级</h2>
+<ul>
+<li><a href="xml_namespaces.html">XML 命名空间</a></li>
+<li><a href="xml_cdata.html">XML CDATA</a></li>
+<li><a href="xml_encoding.html">XML 编码</a></li>
+<li><a href="xml_server.html">XML 服务器</a></li>
+<li><a href="xml_dom_advanced.html">XML DOM 高级</a></li>
+<li><a href="xml_dont.html">XML Don't</a></li>
+<li><a href="xml_savedata.html">XML 数据存储</a></li>
+<li><a href="xml_technologies.html">XML 技术</a></li>
+<li><a href="xml_real_life.html">XML 现实案例</a></li>
+<li><a href="xml_editors.html">XML 编辑器</a></li>
+<li><a href="xml_summary.html">XML 总结</a></li>
+</ul>
+<h2>实例/测验</h2>
+<ul>
+<li><a href="../example/xmle_examples.html">XML 实例</a></li>
+<li><a href="xml_quiz.html">XML 测验</a></li>
+</ul>
+</div>
+<div id="selected">
+<h2>建站手册</h2>
+<ul>
+<li><a href="../site/">网站构建</a></li>
+<li><a href="../w3c/">万维网联盟</a></li>
+<li><a href="http://e.v-get.com/w3c/">W3CSchool 教程</a></li>
+<li><a href="../quality/">网站品质</a></li>
+<li><a href="../semweb/">语义网</a></li>
+<li><a href="../hosting/">网站主机</a></li>
+</ul>
+<h2><a href="http://e.v-get.com/w3c/" class="f13">W3CSchool 教程</a></h2><div class="a120x90"><script type="text/javascript">var cpro_id="u1210867";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div></div>
+</div>
+<div id="maincontent">
+<h1>XML 命名空间 (XML Namespaces）</h1>
+<div  id="tpn">
+<ul class="prenext">
+<li class="pre"><a href="xml_applications.html">上一页</a></li>
+<li class="next"><a href="xml_cdata.html">下一页</a></li>
+</ul>
+</div>
+<div id="intro">
+<p><strong>XML 命名空间可提供避免元素命名冲突的方法。</strong></p>
+</div>
+<div>
+<h2>命名冲突</h2>
+<p>由于 XML 中的元素名是预定义的，当两个不同的文档使用相同的元素名时，就会发生命名冲突。</p>
+<p>这个 XML 文档携带着某个表格中的信息：</p>
+<pre>&lt;table&gt;
+   &lt;tr&gt;
+   &lt;td&gt;Apples&lt;/td&gt;
+   &lt;td&gt;Bananas&lt;/td&gt;
+   &lt;/tr&gt;
+&lt;/table&gt;</pre>
+<p>这个 XML 文档携带有关桌子的信息 (一件家具）：</p>
+<pre>&lt;table&gt;
+   &lt;name&gt;African Coffee Table&lt;/name&gt;
+   &lt;width&gt;80&lt;/width&gt;
+   &lt;length&gt;120&lt;/length&gt;
+&lt;/table&gt;</pre>
+<p>假如这两个 XML 文档被一起使用，由于两个文档都包含带有不同内容和定义的 &lt;table&gt; 元素，就会发生命名冲突。</table>
+</div>
+<div>
+<h2>使用前缀来避免命名冲突</h2>
+<p>此文档带有某个表格中的信息：</p>
+<pre>&lt;h:table&gt;
+   &lt;h:tr&gt;
+   &lt;h:td&gt;Apples&lt;/h:td&gt;
+   &lt;h:td&gt;Bananas&lt;/h:td&gt;
+   &lt;/h:tr&gt;
+&lt;/h:table&gt;</pre>
+<p>此 XML 文档携带着有关一件家具的信息：</p>
+<pre>&lt;f:table&gt;
+   &lt;f:name&gt;African Coffee Table&lt;/f:name&gt;
+   &lt;f:width&gt;80&lt;/f:width&gt;
+   &lt;f:length&gt;120&lt;/f:length&gt;
+&lt;/f:table&gt;</pre>
+<p>现在，命名冲突不存在了，这是由于两个文档都使用了不同的名称来命名它们的 &lt;table&gt; 元素 (&lt;h:table&gt; 和 &lt;f:table&gt;)。</p>
+<p>通过使用前缀，我们创建了两种不同类型的 &lt;table&gt; 元素。</p>
+</div>
+<div>
+<h2>使用命名空间 (Namespaces）</h2>
+<p>这个 XML 文档携带着某个表格中的信息：</p>
+<pre>&lt;h:table xmlns:h=&#34;http://www.w3.org/TR/html4/&#34;&gt;
+   &lt;h:tr&gt;
+   &lt;h:td&gt;Apples&lt;/h:td&gt;
+   &lt;h:td&gt;Bananas&lt;/h:td&gt;
+   &lt;/h:tr&gt;
+&lt;/h:table&gt;</pre>
+<p>此 XML 文档携带着有关一件家具的信息：</p>
+<pre>&lt;f:table xmlns:f=&#34;http://e.v-get.com/furniture&#34;&gt;
+   &lt;f:name&gt;African Coffee Table&lt;/f:name&gt;
+   &lt;f:width&gt;80&lt;/f:width&gt;
+   &lt;f:length&gt;120&lt;/f:length&gt;
+&lt;/f:table&gt;</pre>
+<p>与仅仅使用前缀不同，我们为 &lt;table&gt; 标签添加了一个 xmlns 属性，这样就为前缀赋予了一个与某个命名空间相关联的限定名称。
+</div>
+<div>
+<h2>XML Namespace (xmlns) 属性</h2>
+<p>XML 命名空间属性被放置于某个元素的开始标签之中，并使用以下的语法：</p>
+<pre>xmlns:namespace-prefix=&#34;namespaceURI&#34;</pre>
+<p>当一个命名空间被定义在某个元素的开始标签中时，所有带有相同前缀的子元素都会与同一个命名空间相关联。</p>
+<p class="note"><span>注释：</span>用于标示命名空间的地址不会被解析器用于查找信息。其惟一的作用是赋予命名空间一个惟一的名称。不过，很多公司常常会作为指针来使用命名空间指向某个实存的网页，这个网页包含着有关命名空间的信息。</p>
+<p>请访问 <a href="http://www.w3.org/TR/html4/">http://www.w3.org/TR/html4/</a>。</p>
+</div>
+<div>
+<h2>统一资源标示符 (Uniform Resource Identifier (URI)）</h2>
+<p><em>统一资源标示符</em>是一串可以标示因特网资源的字符。最常用的 URI 是用来标示因特网域名地址的<em>统一资源定位器(URL)</em>。另一个不那么常用的 URI 是<em>统一资源命名(URN)</em>。在我们的例子中，我们仅使用 URL。</p>
+</div>
+<div>
+<h2>默认的命名空间 (Default Namespaces）</h2>
+<p>为某个元素定义默认的命名空间可以让我们省去在所有的子元素中使用前缀的工作。</p>
+<p>请使用下面的语法：</p>
+<pre>xmlns=&#34;namespaceURI&#34;</pre>
+<p>这个 XML 文档携带着某个表格中的信息：</p>
+<pre>&lt;table xmlns=&#34;http://www.w3.org/TR/html4/&#34;&gt;
+   &lt;tr&gt;
+   &lt;td&gt;Apples&lt;/td&gt;
+   &lt;td&gt;Bananas&lt;/td&gt;
+   &lt;/tr&gt;
+&lt;/table&gt;</pre>
+<p>此 XML 文档携带着有关一件家具的信息：</p>
+<pre>&lt;table xmlns=&#34;http://e.v-get.com/furniture&#34;&gt;
+   &lt;name&gt;African Coffee Table&lt;/name&gt;
+   &lt;width&gt;80&lt;/width&gt;
+   &lt;length&gt;120&lt;/length&gt;
+&lt;/table&gt;</pre>
+</div>
+<div>
+<h2>命名空间的实际应用</h2>
+<p>当开始使用 XSL 时，您不久就会看到实际使用中的命名空间。XSL 样式表用于将XML文档转换为其他格式，比如 HTML。</p>
+<p>如果您仔细观察下面的这个 XSL 文档，就会看到大多数的标签是HTML标签。非 HTML 的标签都有前缀 xsl，并由此命名空间标示：&#34;http://www.w3.org/1999/XSL/Transform&#34;：</p>
+<pre>&lt;?xml version=&#34;1.0&#34; encoding=&#34;ISO-8859-1&#34;?&gt;
+&lt;xsl:stylesheet version=&#34;1.0&#34; <code>xmlns:xsl=&#34;http://www.w3.org/1999/XSL/Transform&#34;</code>&gt;
+&lt;xsl:template match=&#34;/&#34;&gt;
+&lt;html&gt;
+&lt;body&gt;
+  &lt;h2&gt;My CD Collection&lt;/h2&gt;
+  &lt;table border=&#34;1&#34;&gt;
+    &lt;tr&gt;
+      &lt;th align=&#34;left&#34;&gt;Title&lt;/th&gt;
+      &lt;th align=&#34;left&#34;&gt;Artist&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;xsl:for-each select=&#34;catalog/cd&#34;&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;xsl:value-of select=&#34;title&#34;/&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;xsl:value-of select=&#34;artist&#34;/&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;/xsl:for-each&gt;
+  &lt;/table&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+&lt;/xsl:template&gt;
+&lt;/xsl:stylesheet&gt;</pre>
+</div>
+<div  id="bpn">
+<ul class="prenext">
+<li class="pre"><a href="xml_applications.html">上一页</a></li>
+<li class="next"><a href="xml_cdata.html">下一页</a></li>
+</ul>
+</div>
+</div>
+<div id="sidebar">
+<div class="rs"></div>
+<div id="tools">
+<h5 id="tools_example"><a href="../example/xmle_examples.html">XML 实例</a></h5>
+<h5 id="tools_quiz"><a href="xml_quiz.html">XML 测验</a></h5>
+</div>
+<div class="a120x600"><script type="text/javascript">var cpro_id="u1293136";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div><div class="b"></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<html>
+<head>
+<title>XML文档的组成</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+
+<link rel = stylesheet href = "image/style.css">
+</head>
+<body bgcolor="#ffffff">
+<table width="688" border="0" cellspacing="0" cellpadding="0" align="center">
+  <tr bgcolor="EEEEEE"> 
+    <td height="22"><a href="index.htm">主页</a></td>
+  </tr>
+</table><br>
+<table border="0" cellpadding="0" cellspacing="0" width="688" align="center" height="490">
+  <tr valign="top"> 
+    <td rowspan="4" width="91">&nbsp; </td>
+    <td height="68" width="131"> 
+      <p><img src="image/doc.gif"></p>
+    </td>
+    <td rowspan="4" width="18"><b></b> </td>
+    <td height="68" width="387"><img src="image/title_doc.gif"></td>
+    <td rowspan="4" width="61"> 
+      <h6>&nbsp;</h6>
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td rowspan="3" valign="top" class="pt10" align="center" width="131" bgcolor="EEEEEE"> 
+      <p>&nbsp;</p>
+      <p><font color="#FF0000">※ 6.1 XML文档的组成</font></p>
+       
+	</td>
+  </tr>
+  <tr valign="top"> 
+    <td width="387" height="308"> 
+      <table width="100%" border="0" cellpadding="0">
+        <tr> 
+          <td>
+
+</ul>
+<h4><a name="_Toc467197038">6.1 XML文档的组成</a></h4>
+<p>XML文档包含由XML标记和字符数据组成的文本。它是一个有固定长度的有序字节的集合，并遵守特定的约束。它可能是或者不是一个文件。例如，XML文档可能：</p>
+<ul>
+  <p>
+  <li>存储在数据库中</li>
+  <p></p>
+  <p>
+  <li>由CGI程序在内存中瞬间创建的</li>
+  <p></p>
+  <p>
+  <li>由几个相互嵌套的不同文件组合而成</li>
+  <p></p>
+  <p>
+  <li>不存在于自身的文件中</li>
+  <p></p>
+</ul>
+<p>但是如果把一个XML文档看作一个文件也是可以的，只要记住它可能并不是存在于硬盘上的真实文件。</p>
+<p>XML由称为“实体”的存储单元组成，每个实体包含文本或者二进制数据，但不能同时存在。文本数据由字符组成，二进制数据用于图片和小程序等类内容。用一个具体的示例说明就是，一个含有&lt;IMG&gt;标记的原始HTML文件是一个实体而不是文档。一个HTML文件加上所有使用&lt;IMG&gt;标记嵌入的图片就组成一个文档。</p>
+<p>在本章和后续几章中我们只针对由一个实体构成的简单的XML文档，即文档本身。而且这些文档只包含文本数据，不包含诸如图片小程序一类的二进制数据。这些文档能够完全独立被理解而无需读取其他文件。换句话说，它们是独立存在的。这种文档通常在它的XML标头中含有一个值为yes的standalone属性，如下所示：</p>
+<p>&lt;?xml version="1.0" standalone="yes"?</p>
+<p>外部实体和实体引用用于组合多个文件和其他数据源以创建一个独立的XML文档。这样的文档如果不引用其他文件就不能进行句法分析。这些文档通常在XML声明中含有一个属性值为no的standalone属性：</p>
+<p>&lt;?xml version="1.0" standalone="no"?&gt;</p>
+<p><img src="image/BK000206-4.gif" width=50 height=36>外部实体及实体引用将在第9章“实体与外部DTD子集”中讨论。</p>
+ 
+<a href='367.htm'>&lt;&lt;上一篇</a>&nbsp;&nbsp;<a href='369.htm'>下一篇&gt;&gt;</a></td>
+        </tr>
+      </table>
+      <p>&nbsp; </p>
+    </td>
+  </tr>
+</table>
+
+</body>
+
+</html>

@@ -1,0 +1,13 @@
+<meta http-equiv="content-type" content="text/html; charset=gb2312">&nbsp;<FONT 
+style="FONT-SIZE: 9pt; LINE-HEIGHT: 15pt"><B>Rename&nbsp;SQL&nbsp;Agent</B><BR>(SQL&nbsp;Server&nbsp;2000&nbsp;only)
+<P></P>
+<P>use&nbsp;msdb<BR>go</P>
+<P>if&nbsp;exists&nbsp;(select&nbsp;*&nbsp;from&nbsp;sysobjects&nbsp;where&nbsp;name&nbsp;=&nbsp;N'sp_sqlagent_rename'&nbsp;and&nbsp;type&nbsp;='P')<BR>&nbsp;&nbsp;&nbsp;&nbsp;drop&nbsp;proc&nbsp;dbo.sp_sqlagent_rename<BR>go</P>
+<P>create&nbsp;proc&nbsp;dbo.sp_sqlagent_rename&nbsp;<BR>@old_server&nbsp;nvarchar(30)<BR>as</P>
+<P>set&nbsp;nocount&nbsp;on</P>
+<P>if&nbsp;(charindex(N'8.00',&nbsp;@@version,&nbsp;0)&nbsp;=&nbsp;0)<BR>begin<BR>&nbsp;&nbsp;&nbsp;&nbsp;raiserror('sp_sqlagent_rename&nbsp;is&nbsp;only&nbsp;required&nbsp;on&nbsp;SQL&nbsp;Server&nbsp;2000,&nbsp;procedure&nbsp;will&nbsp;abort',&nbsp;11,&nbsp;1)<BR>end</P>
+<P>if&nbsp;(ISNULL(IS_SRVROLEMEMBER(N'sysadmin'),&nbsp;0)&nbsp;=&nbsp;0)<BR>begin<BR>&nbsp;&nbsp;&nbsp;&nbsp;raiserror('sp_sqlagent_rename&nbsp;can&nbsp;only&nbsp;be&nbsp;used&nbsp;by&nbsp;sysadmin&nbsp;role&nbsp;members,&nbsp;procedure&nbsp;will&nbsp;abort',&nbsp;11,&nbsp;1)<BR>end</P>
+<P>declare&nbsp;@new_server&nbsp;nvarchar(30)<BR>select&nbsp;@new_server&nbsp;=&nbsp;convert(nvarchar(30),&nbsp;serverproperty(N'servername'))</P>
+<P>if&nbsp;exists(select&nbsp;*&nbsp;from&nbsp;msdb.dbo.sysjobs&nbsp;where&nbsp;upper(originating_server)&nbsp;=&nbsp;upper(@old_server))<BR>begin<BR>&nbsp;&nbsp;&nbsp;&nbsp;update&nbsp;msdb.dbo.sysjobs<BR>&nbsp;&nbsp;&nbsp;&nbsp;set&nbsp;originating_server&nbsp;=&nbsp;@new_server<BR>&nbsp;&nbsp;&nbsp;&nbsp;where&nbsp;originating_server&nbsp;=&nbsp;@old_server</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;raiserror('sp_sqlagent_rename,&nbsp;%d&nbsp;entries&nbsp;updated&nbsp;from&nbsp;%s&nbsp;to&nbsp;%s',&nbsp;10,&nbsp;1,&nbsp;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@@rowcount,&nbsp;&nbsp;@old_server,&nbsp;@new_server&nbsp;)<BR>end<BR>else<BR>begin<BR>&nbsp;&nbsp;&nbsp;&nbsp;raiserror('sp_sqlagent_rename,&nbsp;no&nbsp;entries&nbsp;found&nbsp;for&nbsp;@old_server&nbsp;=&nbsp;%s,&nbsp;0&nbsp;rows&nbsp;are&nbsp;updates',&nbsp;10,&nbsp;1,&nbsp;@old_server)<BR>end<BR>go</P>
+<P>--&nbsp;sample&nbsp;usage<BR>--&nbsp;exec&nbsp;msdb.dbo.sp_sqlagent_rename&nbsp;@old_server&nbsp;=&nbsp;'GERTD00\DEV'</P></FONT>

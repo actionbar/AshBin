@@ -1,0 +1,81 @@
+<html xmlns:rdl>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<script src="rdl_method.js"></script>
+<base target="_self">
+</head>
+<body>
+
+<script>
+
+//collFriendObjects=new Array();
+//collFriendProperties=new Array();
+//collFriendMethods=new Array();
+//collFriendEvents=new Array();
+//collFriendCollections=new Array();
+
+collFriendMethods=new Array(
+'start'
+);
+
+collFriendObjects=new Array(
+'MARQUEE'
+);
+
+//collIE40=new Array();
+//collIE50=new Array();
+//collIE55=new Array();
+//collIE60=new Array();
+
+collIE40=new Array(
+'MARQUEE'
+);
+
+sStyle='marquee{background-color:#FFD700;}';
+
+sCode=
+'<marquee direction=right behavior=scroll scrollamount=10 scrolldelay=200 id=idMarquee>这是一个滚动的marquee对象。<\/marquee>\n'+
+'<table><tr><td>\n'+
+'<input type=button value=" 停止 " onclick= "document.all(\'idMarquee\').stop();">\n'+
+'<\/td><td>\n'+
+'<input type=button value=" 开始 " onclick= "document.all(\'idMarquee\').start();">\n'+
+'<\/td><\/tr><\/table>\n';
+
+iWinWidth=360;
+
+iWinHeight=200;
+
+//bRunCode=false;
+
+</script>
+
+<div id=idContent>
+
+<div id=idContentTitle><span id=idTitleName>stop</span>版本：DHTML Object Model　返回值：无</div>
+
+<div class=cssColumnTitle>语法：</div>
+<div>
+<a href="../objects/marquee.html"><b>MARQUEE</b></a><b> . stop () </b>
+</div>
+
+<div class=cssColumnTitle>参数：</div>
+<div>
+无
+</div>
+
+<div class=cssColumnTitle>返回值：</div>
+<div>
+无
+</div>
+
+<div class=cssColumnTitle>说明：</div>
+<div>
+停止<a href="../objects/marquee.html"> marquee </a>对象的滚动。
+</div>
+
+</div>
+</body>
+</html>
+
+<!-- Part of RDL(TM) - Written by Rain1977 
+HomeSite: http://www.dhtmlet.com  E-Mail: dhtmlet@hotmail.com -->

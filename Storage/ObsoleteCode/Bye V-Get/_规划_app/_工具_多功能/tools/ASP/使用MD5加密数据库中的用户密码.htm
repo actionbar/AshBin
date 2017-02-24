@@ -1,0 +1,154 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>使用MD5加密数据库中的用户密码</title>
+<style type="text/css">
+<!--
+body {
+	font-size: 10.4pt;
+	line-height: 22px;
+}
+-->
+</style>
+</head>
+
+<body bgcolor="eeeeee" leftmargin="20" marginwidth="20">
+<p><strong>使用MD5加密数据库中的用户密码 </strong></p>
+<hr>
+<p> 　　我们知道，现在网络上一般的网站，稍微完善一点的，往往都需要用户先注册，提供诸如电子邮件、账号、密码等信息以后，成为网站栏目的注册用户，才可以享受网站一些特殊栏目提供的信息或者服务，比如免费电子邮件、论坛、聊天等，都需要用户注册。而对于电子商务网站，比如igo5等大型电子商务网站，用户需要购买商品，就一定需要详细而准确的注册，而这些信息，往往是用户很隐秘的信息，比如电话、电子邮件、地址等，所以，注册信息对于用户和网站都是很重要的资源，不能随意透露，更加不能存在安全上的隐患。<br>
+  　　如果我们也设计一个需要用户注册的网站，根据现在的常用技术实现方法，可以在数据库中建立一个用于存放用户信息的表，这个表中至少包括用户账号字段：UserAccount和用户密码字段：Password，当然，实际应用中一个用户信息表不可能就只有这些信息，往往根据网站服务要求，会适当增加一些其它的信息，以方便网站提供更加完善的服务。一般的，一个用户信息占用这个用户信息表的一行也就是一个数据记录，当用户登录或者提交资料的时候，程序将用户填写的信息与表中的信息对照，如果用户账号和密码都准确无误，那幺说明这个用户是合法用户，通过注册；反之，则是非法用户，不许通过。<br>
+  　　然而，是不是这样就安全了了？是不是这样就能满足网站的注册要求了呢？仔细想想，我们一般将用户资料直接保存在数据库中，并没有进行任何的保密措施，对于一些文件型数据库比如Access等，如果有人得到这个文件，岂不是所有的资料都泄露无疑？更加重要的是，如果一个不负责任的网管，不需要任何技术手段，就可以查看网站中的任何资料，如果我们的用户信息在数据库中没有加密，对于网管而言，查看这些信息是太简单了。所以，为了增加安全性，我们有必要对数据库中的资料进行加密，这样，即使有人得到了整个数据库，如果没有解密算法，也一样不能查看到数据库中的用户信息。但是，在考虑数据库是否安全之前，我们有必要对我们的数据是否真的那幺重要进行考虑，如果数据只是简单的一些文件资料，没有保密的必要，显然，没有必要对这些数据进行加密而浪费系统资源、加重程序负担，如果这些数据具有一定的隐私性，当然就有必要进行加密。所以，在考虑加密以前，我们可以对需要加密的数据做适当的选择，以免浪费系统资源。</p>
+<p>　　MD5加密算法简单介绍<br>
+  　　在现阶段，我们一般认为存在两种加密方式，单向加密和双向加密。双向加密是加密算法中最常用的，它将我们可以直接理解的明文数据加密为我们不可直接理解的密文数据，然后，在需要的时候，可以使用一定的算法将这些加密以后的密文解密为原来可以理解的明文。双向加密适合于隐秘通讯，比如，我们在网上购物的时候，需要向网站提交信用卡密码，我们当然不希望我们的数据直接在网上明文传送，因为这样很可能被别的用户“偷听”，我们希望我们的信用卡密码是通过加密以后，再在网络传送，这样，网站接受到我们的数据以后，通过解密算法就可以得到准确的信用卡账号。<br>
+  　　单向加密刚好相反，只能对数据进行加密，也就是说，没有办法对加密以后的数据进行解密。可能我们立即就会想，这样的加密有什幺用处？不能解密的加密算法有什幺作用呢？在实际中的一个应用就是数据库中的用户信息加密，当用户创建一个新的账号或者密码，他的信息不是直接保存到数据库，而是经过一次加密以后再保存，这样，即使这些信息被泄露，也不能立即理解这些信息的真正含义。<br>
+  　　MD5就是采用单向加密的加密算法，对于MD5而言，有两个特性是很重要的，第一是任意两段明文数据，加密以后的密文不能是相同的；第二是任意一段明文数据，经过加密以后，其结果必须永远是不变的。前者的意思是不可能有任意两段明文加密以后得到相同的密文，后者的意思是如果我们加密特定的数据，得到的密文一定是相同的。 
+  <br>
+  　　MD5CyptoServiceProvider类是.NET中System.Security.Cryptography名字空间的一个类，提供专门用于MD5单向数据加密的解决方法，也是本文中我们用来加密数据库中密码的类。在真正进行数据加密之前，我们首先来了解MD5CyptoServiceProvider类中的主要方法：ComputeHash，它将输入的明文数据数组使用MD5加密以后输出加密后的密文数据数组。现在，我们就来看一个具体的实例：</p>
+<p><br>
+  '要加密的明文字符串 <br>
+  Dim strPlainText as String = &quot;Encrypt me!&quot; <br>
+  '用于存放明文字符串的数组 <br>
+  Dim hashedDataBytes as Byte() <br>
+  Dim encoder as New UTF8Encoding() <br>
+  '建立MD5CryptoService实例 <br>
+  Dim md5Hasher as New MD5CryptoServiceProvider() <br>
+  '加密运算 <br>
+  hashedDataBytes = md5Hasher.ComputeHash(encoder.GetBytes(strPlainText)) <br>
+  看完以上的具体实例以后，我们知道，ComputeHash方法只能接受数组作为加密对象，输出的密文也是数组，因此，在对字符串加密之前，我们必须首先将这些字符串转化为数组，这就要用到UTF8Encoding类的GetBytes方法，将字符串转化为数组，而加密以后的结果也是使用数组输出。 
+  <br>
+  以上我们大致了解了MD5的具体加密实现方法，下面，我们结合数据库来看看MD5的实际使用。</p>
+<p>使用MD5存储密码<br>
+  在前面的介绍中，我们提到网站往往将用户的账号、密码等信息使用非加密的方式保存到数据库，比如账号使用类型为VarChar的UserCount字段，同样，密码也是采用类型为VarChar的Password字段。但是，如果我们打算采用MD5加密方式存储密码信息，就必须改变密码字段PassWord的类型为16为二进制方式，这个其实我们也不难理解，因为在前面的介绍中，我们知道加密以后的输出，是使用二进制数组的，所以，这里必须做相应的改变。<br>
+  当用户注册成功，正式建立一个账号的时候，数据库中就必须为这个用户增加一条记录。以下的程序代码实现了建立一个账号的功能，在页面中，程序要求用户输入账号、密码等信息，然后，将这些信息作为账号信息存入名为UserCount的数据表，在这个表中，用户密码是使用MD5加密保存的。下面就是实现以上页面的具体代码：<br>
+  &lt;%@ Import Namespace=&quot;System.Security.Cryptography&quot; %&gt; <br>
+  &lt;%@ Import Namespace=&quot;System.Text&quot; %&gt; <br>
+  &lt;%@ Import Namespace=&quot;System.Data&quot; %&gt; <br>
+  &lt;%@ Import Namespace=&quot;System.Data.SqlClient&quot; %&gt; <br>
+  &lt;Script runat=&quot;server&quot; language=&quot;VB&quot;&gt; <br>
+  Sub CreateAccount(sender as Object, e as EventArgs) <br>
+  '1. 建立数据库连接 <br>
+  Const strConnString as String = &quot;connection string&quot; <br>
+  Dim objConn as New SqlConnection(strConnString) <br>
+  '2. 建立Command对象 <br>
+  Dim strSQL as String = _ <br>
+  &quot;INSERT INTO UserAccount(Username,Password) &quot; &amp; _ <br>
+  &quot;VALUES(@Username, @Password)&quot; <br>
+  Dim objCmd as New SqlCommand(strSQL, objConn) <br>
+  '3. SQL参数 <br>
+  Dim paramUsername as SqlParameter <br>
+  paramUsername= New SqlParameter(&quot;@Username&quot;, SqlDbType.VarChar, 25) 
+  <br>
+  paramUsername.Value = txtUsername.Text <br>
+  objCmd.Parameters.Add(paramUsername) <br>
+  '加密用户密码 <br>
+  Dim md5Hasher as New MD5CryptoServiceProvider() <br>
+  Dim hashedBytes as Byte() <br>
+  Dim encoder as New UTF8Encoding() <br>
+  hashedBytes=md5Hasher.ComputeHash(encoder.GetBytes(txtPwd.Text)) <br>
+  Dim paramPwd as SqlParameter <br>
+  paramPwd = New SqlParameter(&quot;@Password&quot;, SqlDbType.Binary, 16) <br>
+  paramPwd.Value = hashedBytes <br>
+  objCmd.Parameters.Add(paramPwd) <br>
+  '加入数据库 <br>
+  objConn.Open() <br>
+  objCmd.ExecuteNonQuery() <br>
+  objConn.Close() <br>
+  End Sub <br>
+  &lt;/script&gt; <br>
+  &lt;Form runat=&quot;server&quot;&gt; <br>
+  &lt;h1&gt;建立一个账号&lt;/h1&gt; <br>
+  用户名：&lt;asp:TextBox runat=&quot;server&quot; id=&quot;txtUsername&quot; /&gt; 
+  <br>
+  &lt;br /&gt;密码： <br>
+  &lt;asp:TextBox runat=&quot;server&quot; id=&quot;txtPwd&quot; TextMode=&quot;Password&quot; 
+  /&gt; <br>
+  &lt;p&gt;&lt;asp:Button runat=&quot;server&quot; Text=&quot;建立用户账号&quot; onClick=&quot;CreateAccount&quot; 
+  /&gt;&lt;/p&gt; <br>
+  &lt;/form&gt;</p>
+<p> 　　在以上程序实现的页面中，“用户名”和“密码”输入框要求用户输入自己的账号和密码，用户输入自己的信息以后，按“建立用户账号”按钮，就可以建立一个账号并且存入数据库。我们同时需要特别注意，因为以上的程序使用到了MD5加密和数据库等功能，所以，在代码最开头，我们引入了几个稍微特别一点的名字空间，这是不可缺少的。 
+  <br>
+  　　我们可以看到，PassWord字段的信息是二进制方式保存的，即使数据库被人取得，也不可能知道密码具体是什幺意思。当然，密码也就不会泄露<br>
+</p>
+<p>使用MD5鉴别是否合法用户<br>
+  既然用户密码是按照MD5加密以后保存在数据库中的，我们知道，MD5是单次加密算法，所以，不可能将加密以后的信息转为明文，也就是说，已经没有办法知道。这就出现一个问题，如果用户使用账号、密码登录，怎么知道用户提供的密码是否准确呢？<br>
+  这就不得不提到我们前文说到的MD5的特征，我们知道，任意一段明文数据，经过加密以后，其结果必须永远是不变的，也就是说，如果需要验证用户密码是否正确，只需要将用户当前提供的密码使用MD5加密，然后和数据库中保存的密码字段比较就可以了。以下代码就可以实现这个功能： 
+  <br>
+  &lt;%@ Import Namespace=&quot;System.Security.Cryptography&quot; %&gt; <br>
+  &lt;%@ Import Namespace=&quot;System.Text&quot; %&gt; <br>
+  &lt;%@ Import Namespace=&quot;System.Data&quot; %&gt; <br>
+  &lt;%@ Import Namespace=&quot;System.Data.SqlClient&quot; %&gt; <br>
+  &lt;Script runat=&quot;server&quot; language=&quot;VB&quot;&gt; <br>
+  Sub Login(sender as Object, e as EventArgs) <br>
+  '1. 建立数据库连接 <br>
+  Const strConnString as String = &quot;connection string&quot; <br>
+  Dim objConn as New SqlConnection(strConnString) <br>
+  '2. 建立Command对象 <br>
+  Dim strSQL as String = &quot;SELECT COUNT(*) FROM UserAccount &quot; &amp; _ 
+  <br>
+  &quot;WHERE Username=@Username AND Password=@Password&quot; <br>
+  Dim objCmd as New SqlCommand(strSQL, objConn) <br>
+  '3. SQL参数 <br>
+  Dim paramUsername as SqlParameter <br>
+  paramUsername = New SqlParameter(&quot;@Username&quot;, SqlDbType.VarChar, 25) 
+  <br>
+  paramUsername.Value = txtUsername.Text <br>
+  objCmd.Parameters.Add(paramUsername) <br>
+  '加密密码信息 <br>
+  Dim md5Hasher as New MD5CryptoServiceProvider() <br>
+  Dim hashedDataBytes as Byte() <br>
+  Dim encoder as New UTF8Encoding() <br>
+  hashedDataBytes = md5Hasher.ComputeHash(encoder.GetBytes(txtPwd.Text)) <br>
+  Dim paramPwd as SqlParameter <br>
+  paramPwd = New SqlParameter(&quot;@Password&quot;, SqlDbType.Binary, 16) <br>
+  paramPwd.Value = hashedDataBytes <br>
+  objCmd.Parameters.Add(paramPwd) <br>
+  objConn.Open() <br>
+  Dim iResults as Integer = objCmd.ExecuteScalar() <br>
+  objConn.Close() <br>
+  If iResults = 1 then <br>
+  '正确 <br>
+  Else <br>
+  '错误 <br>
+  End If <br>
+  End Sub <br>
+  &lt;/script&gt; <br>
+  &lt;Form runat=&quot;server&quot;&gt; <br>
+  &lt;h1&gt;Login&lt;/h1&gt; <br>
+  用户账号: &lt;asp:TextBox runat=&quot;server&quot; id=&quot;txtUsername&quot; /&gt; 
+  <br>
+  &lt;br /&gt;密码: <br>
+  &lt;asp:TextBox runat=&quot;server&quot; id=&quot;txtPwd&quot; TextMode=&quot;Password&quot; 
+  /&gt; <br>
+  &lt;p&gt;&lt;asp:Button runat=&quot;server&quot; Text=&quot;Login&quot; OnClick=&quot;登录&quot; 
+  /&gt; <br>
+  &lt;/form&gt; </p>
+<p>使用加密方式保存密码到数据库的限制<br>
+  在决定是否使用加密方式保存密码以前，我们还需要考虑一些问题。因为MD5是单次加密算法，加密以后的信息不可以解密，所以，如果用户丢失密码，任何人都很难找到用户原来的密码，这时候，网站也就相应的失去一个很重要的功能，那就是用户提供其他信息来取得忘记的密码的功能，这不能不说是网站的一个大缺陷。另外，采用这样的加密方式，必须完全修改以前的用户资料，要求用户完全重新注册，这也是这种方法比较困难的一个地方。</p>
+<p>总 结 <br>
+  以上我们详细介绍了MD5加密用户密码的实现方法，同时，也介绍了采用加密密码方式以后，用户鉴别的实现。并讨论了使用这种加密方式的应用限制。在实际应用中，我们可以将次方法做适当的修改和补充，以更加适合我们的应用需要。<br>
+</p>
+<p>&nbsp; </p>
+<p>&nbsp; </p>
+</body>
+</html>

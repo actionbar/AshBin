@@ -1,0 +1,175 @@
+<html>
+<head>
+<title>相对位置项</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+
+<link rel = stylesheet href = "image/style.css">
+</head>
+<body bgcolor="#ffffff">
+<table width="688" border="0" cellspacing="0" cellpadding="0" align="center">
+  <tr bgcolor="EEEEEE"> 
+    <td height="22"><a href="index.htm">主页</a></td>
+  </tr>
+</table><br>
+<table border="0" cellpadding="0" cellspacing="0" width="688" align="center" height="490">
+  <tr valign="top"> 
+    <td rowspan="4" width="91">&nbsp; </td>
+    <td height="68" width="131"> 
+      <p><img src="image/doc.gif"></p>
+    </td>
+    <td rowspan="4" width="18"><b></b> </td>
+    <td height="68" width="387"><img src="image/title_doc.gif"></td>
+    <td rowspan="4" width="61"> 
+      <h6>&nbsp;</h6>
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td rowspan="3" valign="top" class="pt10" align="center" width="131" bgcolor="EEEEEE"> 
+      <p>&nbsp;</p>
+      <p><font color="#FF0000">※ 17.4 相对位置项</font></p>
+       
+	</td>
+  </tr>
+  <tr valign="top"> 
+    <td width="387" height="308"> 
+      <table width="100%" border="0" cellpadding="0">
+        <tr> 
+          <td>
+
+           <h4><a name="_Toc467208987">17.4 相对位置项</a></h4>
+<p>id、root和html是绝对位置项。绝对位置项可以找到文档中的特定元素，而不考虑文档中的其他元素。但是，更常见的情况是要找到给定类型的第一个元素、给定类型的最后一个元素、特定类型的第一个子元素、给定类型的下一个元素、给定类型的所有元素或其他类似情况。这些任务是通过将相对位置项与绝对位置项相关联从而形式组合定位符来实现的。</p>
+<p>最普通的XPointer就是单一的绝对位置项后跟有任意数目的相对位置项。列表中的每项都是相对于其前的项，只是第一个绝对位置项除外。列表中的项以句点分开。</p>
+<p>例如，请查看一下清单17-1中的家谱文档。下面的代码段选择根元素中第6个PERSON元素的第一个NAME元素：</p>
+<p><a href="http://www.theharolds.com/genealogy.xml">http://www.theharolds.com/genealogy.xml#root().child(6,PERSON)</a>.</p>
+<p>child(1,NAME)</p>
+<p>此例中，绝对位置项为&lt;NAME&gt;Maria Bellau&lt;/NAME&gt;。</p>
+<p>下面举另一个例子，假如要链接到Domeniquette Celeste Baudean的NAME元素。最容易的方法就是要由元素的ID（p1）识别她的PERSON元素，然后使用child()相对位置项来引用第一个（也只有一个）NAME子元素，如下面所示：</p>
+<p><a href="http://www.theharolds.com/genealogy.xml">http://www.theharolds.com/genealogy.xml</a>#id(p1).child(l, 
+  NAME)</p>
+<p>这个URI表示要查看文档<a href="http://www.theharolds.com/genealogy.xml">http://www.theharolds.com/genealogy.xml</a>，找到其根元素，然后再找到ID为p1的元素，最后选择此元素的第一个NAME子元素。</p>
+<p>尽管geneaology.xml包括大多数元素的ID特性，并且尽管使用这些特性也非常方便，但都不需要将它们链接到文档中。只需要从根元素开始往下递减计数，就可以挑选出文档中的任何元素。由于Maria 
+  Bellau是文档中的第一个人，所以可以从此根元素往下数一个PERSON，然后从此处往下再数一个NAME。下面的URI可实现此目的：</p>
+<p><a href="http://www.theharolds.com/genealogy.xml">http://www.theharolds.com/genealogy.xml</a>#root().child(l,</p>
+<p>PERSON).child(1,NAME)</p>
+<p>这个URI表示要查看文档<a href="http://www.theharolds.com/genealogy.xml">http://www.theharolds.com/genealogy.xml</a>，找到此文档的根元素，然后再找到属于根元素的直系子元素的第一个PERSON元素，最后找到此文档的第一个NAME子元素。</p>
+<p>如果XPointer中没有绝对位置项，那么就假定是root()。例如，前面的例子类似于下列方式来书写可能会更简洁：</p>
+<p><a href="http://www.theharolds.com/genealogy.xml">http://www.theharolds.com/genealogy.xml</a>#child(1,PERSON).child</p>
+<p>(1,NAME)</p>
+<p>还可以省略第二个子位置项（但不能省略其参数），从而进一步简化此句。例如：</p>
+<p>http://www.theharolds.com/genealogy.xml#child(1,PERSON).(1,NAME)</p>
+<p>当按此方法省略该项时，是假定它与前面项相同。因为在(1,NAME)的前面没有项，所以认为它是与前面一个（即child）相同。</p>
+<p>还有其他的功能强大的选择技术，这些将在下面讨论。事实上，包括child()在内，有七个相对位置项，分别列于表17-1中。每个位置项都可用来选择文档中的元素的特定子集。例如，following相对位置项从源元素后面的元素开始选择。preceding相对位置项从源元素之前的元素开始选择。</p>
+<p align="center">表17-1 相对位置项</p>
+<p>
+<center>
+  <table BORDER cellspacing=1 cellpadding=7 width=422>
+    <tr>
+      <td width="27%" valign="TOP"> 
+        <p>项
+      </td>
+      <td width="73%" valign="TOP"> 
+        <p>含 义
+      </td>
+    </tr>
+    <tr>
+      <td width="27%" valign="TOP"> 
+        <p>child
+      </td>
+      <td width="73%" valign="TOP"> 
+        <p>从源元素的直系子元素开始选择
+      </td>
+    </tr>
+    <tr>
+      <td width="27%" valign="TOP"> 
+        <p>descendant
+      </td>
+      <td width="73%" valign="TOP"> 
+        <p>从源元素的任何内容或子元素开始选择
+      </td>
+    </tr>
+    <tr>
+      <td width="27%" valign="TOP"> 
+        <p>ancestor
+      </td>
+      <td width="73%" valign="TOP"> 
+        <p>从包含源元素的元素开始选择
+      </td>
+    </tr>
+    <tr>
+      <td width="27%" valign="TOP"> 
+        <p>preceding
+      </td>
+      <td width="73%" valign="TOP"> 
+        <p>从跟在源元素前面的元素开始选择
+      </td>
+    </tr>
+    <tr>
+      <td width="27%" valign="TOP"> 
+        <p>following
+      </td>
+      <td width="73%" valign="TOP"> 
+        <p>从跟在源元素后面的元素开始选择
+      </td>
+    </tr>
+    <tr>
+      <td width="27%" valign="TOP"> 
+        <p>psibling
+      </td>
+      <td width="73%" valign="TOP"> 
+        <p>从跟在源元素前面的同属元素开始选择
+      </td>
+    </tr>
+    <tr>
+      <td width="27%" valign="TOP"> 
+        <p>fsibling
+      </td>
+      <td width="73%" valign="TOP"> 
+        <p>从跟在源元素后面的同属元素开始选择
+      </td>
+    </tr>
+  </table>
+</center>
+<p></p>
+<p>由于相对位置项本身通常不能足以唯一确定指向哪个元素，所以需要传递附加参数，以便根据实例号、节点类型和特性来进一步确定目标元素。所有的七个相对位置关键字的参数都是相同的，这将在下面的“相对位置项参数”中更详细地进行探讨。</p>
+<h5><a name="_Toc467208988">17.4.1 child</a></h5>
+<p>child相对位置项只从源元素的直系子元素处开始选择。例如，下面的URI：</p>
+<p><a href="http://www.theharolds.com/genealogy.xml">http://www.theharolds.com/genealogy.xml</a>#root().child(6,NAME)</p>
+<p>上面的URI不指向任何地方，因为文档中没有NAME元素是根元素的直系子元素。有十二个NAME元素是非直系子元素。如果想要引用这些子元素，就应使用descendant相对定位符元素来代替child。</p>
+<h5><a name="_Toc467208989">17.4.2 descendant</a></h5>
+<p>descendant相对位置项搜索源元素的所有子代元素，而不仅仅搜索直系子元素。例如，root().descendant(3,BORN)选择在文档树形结构的深度优先搜索法（depth-first 
+  search）中遇到的第三个BORN元素（深度优先搜索法是指从顶到底遍历XML文档的顺序），在清单17-1中，选择Louise Pauline Bellau的生日（即&lt;BORN&gt;29 
+  Oct 1868&lt;/BORN&gt;）。</p>
+<h5><a name="_Toc467208990">17.4.3 ancestor</a></h5>
+<p>ancestor相对位置项搜索源元素的所有前代元素，搜索开始于最靠近源元素的元素，直到找到所需的元素。例如，root().descendant(2,BORN).ancestor(1)选择包含第二个BORN元素的PERSON元素，在此例中，选择Elodie 
+  Bellau的PERSON元素。</p>
+<h5><a name="_Toc467208991">17.4.4 preceding</a></h5>
+<p>preceding相对位置项搜索出现在源元素之前的所有元素。preceding定位符元素不考虑层次问题。当它第一次遇到某个元素的开始标记、结束标记或空标记，就对此元素计数。例如，下面的规则：</p>
+<p>root().descendant(3,BORN).preceding(5)</p>
+<p>上面的规则表示到达Louise Pauline Bellau生日（即&lt;BORN&gt;29 Oct 1868&lt;/BORN&gt;），然后向后移动五个元素，停留在Maria 
+  Bellau的PERSON元素上。</p>
+<h5><a name="_Toc467208992">17.4.5 following</a></h5>
+<p>following相对位置项搜索出现在文档中源元素之后的所有元素。像preceding一样，following也不考虑层次问题。一旦它遇到某个元素的开始标记、结束标记或空标记，就对此元素进行计数。例如，下面的规则：</p>
+<p>root().descendant(2,BORN).following(5)</p>
+<p>该规则表示到达Elodie Bellau生日（即&lt;BORN&gt;11 Feb 1858&lt;/BORN&gt;），然后往前移五个元素，在依次经过Elodie 
+  Bellau的DIED元素、Elodie Bellau的SPOUSE元素、Elodie Bellau的PERSON元素以及John P. Muller的PERSON元素之后，停留在John 
+  P. Muller的NAME元素（&lt;NAME&gt;John P. Muller&lt;/NAME&gt;）上。</p>
+<h5><a name="_Toc467208993">17.4.6 psibling</a></h5>
+<p>psibling相对位置项选择同一个父元素中源元素之前的元素。例如，root(). descendant (2,BORN). psibling(1)选择Elodie 
+  Bellau的NAME元素。由于在Elodie Bellau的NAME之前只有一个该元素的同属，所以&lt;NAME&gt;Elodie Bellau 
+  &lt;/NAME&gt;. root(). descendant(2, BORN). psibling(2)不指向任何元素。</p>
+<h5><a name="_Toc467208994">17.4.7 fsibling</a></h5>
+<p>fsibling相对位置项选择同一个父元素中源元素之后的元素。例如，root(). descendant(2, born). fsibling(1)选择Elodie 
+  Bellau的DIED元素，由于在Elodie Bellau的NAME元素之后只有两个此元素的同属元素，所以&lt;DIED&gt;12<i> </i>Apr 
+  1898 &lt;/DIED&gt;. root().descendant(2, born).fsibling(3)不指向任何元素。</p>
+ 
+<a href='550.htm'>&lt;&lt;上一篇</a>&nbsp;&nbsp;<a href='565.htm'>下一篇&gt;&gt;</a></td>
+        </tr>
+      </table>
+      <p>&nbsp; </p>
+    </td>
+  </tr>
+</table>
+
+</body>
+
+</html>

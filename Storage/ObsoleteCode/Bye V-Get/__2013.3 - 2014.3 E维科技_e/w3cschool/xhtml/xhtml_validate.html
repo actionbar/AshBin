@@ -1,0 +1,136 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="../c3.css" />
+<title>XHTML 验证</title>
+</head>
+<body class="html">
+<div id="wrapper">
+<div id="header">
+<a href="http://e.v-get.com/w3cschool/" style="float:left;">W3CSchool 在线教程</a>
+<div class="q g"><script type="text/javascript">var cpro_id="u1163355"</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div>
+<div id="navfirst">
+<ul id="menu">
+<li id="h"><a href="../h.html">HTML教程</a></li>
+<li id="x"><a href="../x.html">XML教程</a></li>
+<li id="b"><a href="../b.html">浏览器脚本</a></li>
+<li id="s"><a href="../s.html">服务器脚本</a></li>
+<li id="d"><a href="../d.html">dot net教程</a></li>
+<li id="m"><a href="../m.html">多媒体教程</a></li>
+<li id="w"><a href="../w.html">建站手册</a></li>
+</ul>
+</div><div id="navsecond">
+<div id="course">
+<h2>XHTML 教程</h2>
+<ul>
+<li><a href="http://e.v-get.com/w3cschool/">XHTML 首页</a></li>
+<li><a href="xhtml_intro.html">XHTML 简介</a></li>
+<li><a href="xhtml_why.html">XHTML Why</a></li>
+<li><a href="xhtml_html.html">XHTML v HTML</a></li>
+<li><a href="xhtml_syntax.html">XHTML 语法</a></li>
+<li><a href="xhtml_dtd.html">XHTML DTD</a></li>
+<li><a href="xhtml_howto.html">XHTML HowTo</a></li>
+<li><a href="xhtml_validate.html">XHTML 验证</a></li>
+<li><a href="xhtml_modules.html">XHTML 模块</a></li>
+<li><a href="xhtml_standardattributes.html">XHTML 属性</a></li>
+<li><a href="xhtml_eventattributes.html">XHTML 事件</a></li>
+<li><a href="xhtml_summary.html">XHTML 总结</a></li>
+<li class="list_apart"><a href="xhtml_structural_01.html">XHTML 结构化 1</a></li>
+<li><a href="xhtml_structural_02.html">XHTML 结构化 2</a></li>
+</ul>
+<h2>测验</h2>
+<ul>
+<li><a href="xhtml_quiz.html">XHTML 测验</a></li>
+</ul>
+<h2>参考手册</h2>
+<ul>
+<li><a href="../tags/">XHTML 标签列表</a></li>
+<li><a href="../tags/html_ref_standardattributes.html">XHTML 属性</a></li>
+<li><a href="../tags/html_ref_eventattributes.html">XHTML 事件</a></li>
+<li><a href="../tags/html_ref_colornames.html">XHTML 颜色名</a></li>
+<li><a href="../tags/html_ref_ascii.html">XHTML ASCII</a></li>
+<li><a href="../tags/html_ref_httpmessages.html">HTTP 消息</a></li>
+</ul>
+</div>
+<div id="selected">
+<h2>建站手册</h2>
+<ul>
+<li><a href="../site/">网站构建</a></li>
+<li><a href="../w3c/">万维网联盟</a></li>
+<li><a href="http://e.v-get.com/w3c/">W3CSchool 教程</a></li>
+<li><a href="../quality/">网站品质</a></li>
+<li><a href="../semweb/">语义网</a></li>
+<li><a href="../hosting/">网站主机</a></li>
+</ul>
+<h2><a href="http://e.v-get.com/w3c/" class="f13">W3CSchool 教程</a></h2><div class="a120x90"><script type="text/javascript">var cpro_id="u1210867";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div></div>
+</div>
+<div id="maincontent">
+<h1>XHTML 验证</h1>
+<div id="tpn">
+<ul class="prenext">
+<li class="pre"><a href="xhtml_howto.html">上一页</a></li>
+<li class="next"><a href="xhtml_modules.html">下一页</a></li>
+</ul>
+</div>
+<div id="intro">
+<p><strong>XHTML 文档是根据文档类型声明进行验证的。</strong></p>
+</div>
+<div>
+<h2>通过 DTD 验证 XHTML</h2>
+<p>XHTML 文档是根据文档类型声明 (DTD）进行验证的。只有将正确的 DTD 添加到文件的首行，XHTML 文件才会被正确地验证。</p>
+<p>严格 DTD 包含没有被反对使用的或不出现在框架结构中的元素和属性：</p>
+<pre>!DOCTYPE html PUBLIC
+&#34;-//W3C//DTD XHTML 1.0 Strict//EN&#34;
+&#34;http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd&#34;
+</pre>
+<p>过渡 DTD 包含严格 DTD 中的一切，外加那些不赞成使用的元素和属性。</p>
+<pre>!DOCTYPE html PUBLIC
+&#34;-//W3C//DTD XHTML 1.0 Transitional//EN&#34;
+&#34;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&#34;
+</pre>
+<p>框架 DTD 包含过渡 DTD 中的一切，外加框架。</p>
+<pre>!DOCTYPE html PUBLIC
+&#34;-//W3C//DTD XHTML 1.0 Frameset//EN&#34;
+&#34;http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd&#34;</pre>
+<p>这个一个简单的 XHTML 文档：</p>
+<pre>&lt;!DOCTYPE html
+PUBLIC &#34;-//W3C//DTD XHTML 1.0 Strict//EN&#34;
+&#34;http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd&#34;&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;title&gt;simple document&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;p&gt;a simple paragraph&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+</div>
+<div>
+<h2>使用 W3C 验证器来测试你的 XHTML</h2>
+<form method="get" action="http://validator.w3.org/check" target="_blank">
+<p>在下面的文本框中输入你的网址：</p>
+<p><input name="uri" size="60" value="http://e.v-get.com/xhtml/index.asp"/></p>
+<p><input type="submit" value="验证网页" /></p>
+</form>
+</div>
+<div  id="bpn">
+<ul class="prenext">
+<li class="pre"><a href="xhtml_howto.html">上一页</a></li>
+<li class="next"><a href="xhtml_modules.html">下一页</a></li>
+</ul>
+</div>
+</div>
+<div id="sidebar">
+<div class="rs"></div>
+<div id="tools">
+<h5 id="tools_reference"><a href="../tags/">HTML 参考手册</a></h5>
+<h5 id="tools_example"><a href="../example/html_examples.html">HTML 实例</a></h5>
+<h5 id="tools_quiz"><a href="xhtml_quiz.html">HTML 测验</a></h5>
+</div>
+<div class="a120x600"><script type="text/javascript">var cpro_id="u1293136";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div><div class="b"></div>
+</div>
+</body>
+</html>

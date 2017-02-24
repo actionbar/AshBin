@@ -1,0 +1,37 @@
+
+var InquiryInstanceMsg = React.createClass({
+  render: function(){
+    return (
+      <div className="inquiry-form-box">
+        <form className="inquiry-form">
+
+        </form>
+      </div>
+    );
+  }
+});
+
+var InquiryForm = React.createClass({
+  render: function(){
+    return (
+      <div className="inquiry-instance-msg">
+        fasdfa
+      </div>
+    );
+  }
+});
+var InquiryFrame = React.createClass({
+  render: function(){
+    return (
+      <div className="inquiry-frame">3333
+        <InquiryInstanceMsg/>
+        <InquiryForm/>
+      </div>
+    );
+  }
+});
+
+React.render(
+  <InquiryFrame/>,
+  $('#content')
+);

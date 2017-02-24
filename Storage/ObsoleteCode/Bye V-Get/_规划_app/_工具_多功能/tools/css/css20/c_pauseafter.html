@@ -1,0 +1,72 @@
+<html xmlns:rdl>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<script src="rdl_properties.js"></script>
+<base target="_self">
+</head>
+<body>
+
+<script>
+
+//collFriendProperties=new Array();
+//collFriendDeclarations=new Array();
+//collFriendAtRules=new Array();
+//collFriendElements=new Array();
+//collFriendClasses=new Array();
+
+collFriendProperties=new Array(
+'voice-family','volume','stress','richness','elevation','speak','speak-punctuation','speak-numeral','pitch','pitch-range','speech-rate','play-during','pause','pause-before','cue-before','cue','cue-after','azimuth'
+);
+
+//collIE40=new Array();
+//collIE50=new Array();
+//collIE55=new Array();
+//collIE60=new Array();
+
+//sStyle='';
+
+//sScript='';
+
+//sCode='';
+
+//iWinWidth=360;
+
+//iWinHeight=200;
+
+bRunCode=false;
+
+bElements=false;
+
+</script>
+
+<div id=idContent>
+
+<div id=idContentTitle><span id=idTitleName>pause-after</span>版本：CSS2　 兼容性：无　继承性：无</div>
+
+<div class=cssColumnTitle>语法：</div>
+<div>
+<b>pause-after : </b><i>time</i>
+</div>
+
+<div class=cssColumnTitle>取值：</div>
+<table>
+<tr><td nowrap><i> time </i></td><td nowrap><b>:</b></td><td>由浮点数字与时间单位组成的时间值|百分数。百分数值是相对于<a href="c_speechrate.html"> speech-rate </a>属性的值。对于值为60字/分钟的<a href="c_speechrate.html"> speech-rate </a>属性来说，值为<b> 100% </b>的<b> pause-after </b>属性即相当于暂停1秒。请参阅<a href="d_time.html"> 时间单位 </a></td></tr>
+</table>
+
+<div class=cssColumnTitle>说明：</div>
+<div>
+定义对象内容被发音后的暂停。<br>
+对应的脚本特性为<b> pauseAfter </b>。
+</div>
+
+<div class=cssColumnTitle>示例：</div>
+<div id=idSimpleCode>
+div { pause-after: 2s; }
+</div>
+
+</div>
+</body>
+</html>
+
+<!-- Part of RDL(TM) - Written by Rain1977 
+HomeSite: http://www.dhtmlet.com  E-Mail: dhtmlet@hotmail.com -->

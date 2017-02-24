@@ -1,0 +1,1862 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="../c3.css" />
+<title>CSS2 参考手册</title>
+</head>
+<body class="html">
+<div id="wrapper">
+<div id="header_index"><a href="http://e.v-get.com/w3cschool/">W3CSchool 在线教程</a></div>
+<div id="navfirst">
+<ul id="menu">
+<li id="h"><a href="../h.html">HTML教程</a></li>
+<li id="x"><a href="../x.html">XML教程</a></li>
+<li id="b"><a href="../b.html">浏览器脚本</a></li>
+<li id="s"><a href="../s.html">服务器脚本</a></li>
+<li id="d"><a href="../d.html">dot net教程</a></li>
+<li id="m"><a href="../m.html">多媒体教程</a></li>
+<li id="w"><a href="../w.html">建站手册</a></li>
+</ul>
+</div><div id="navsecond">
+<div id="course">
+<h2>CSS 基础</h2>
+<ul>
+<li><a href="http://e.v-get.com/w3cschool/">CSS 教程</a></li>
+<li><a href="css_intro.html">CSS 简介</a></li>
+<li><a href="css_syntax_01.html">CSS 基础语法</a></li>
+<li><a href="css_syntax_02.html">CSS 高级语法</a></li>
+<li><a href="css_syntax_03.html">CSS 派生选择器</a></li>
+<li><a href="css_syntax_04.html">CSS id 选择器</a></li>
+<li><a href="css_syntax_05.html">CSS 类选择器</a></li>
+<li><a href="css_howto.html">CSS How To</a></li>
+<li><a href="css_background.html">CSS 背景</a></li>
+<li><a href="css_text.html">CSS 文本</a></li>
+<li><a href="css_font.html">CSS 字体</a></li>
+<li><a href="css_list.html">CSS 列表</a></li>
+<li><a href="css_table.html">CSS 表格</a></li>
+</ul>
+<h2>CSS 框模型</h2>
+<ul>
+<li><a href="css_boxmodel.html">CSS 框模型概述</a></li>
+<li><a href="css_padding.html">CSS 内边距</a></li>
+<li><a href="css_border.html">CSS 边框</a></li>
+<li><a href="css_margin.html">CSS 外边距</a></li>
+<li><a href="css_margin_collapsing.html">CSS 外边距合并</a></li>
+</ul>
+<h2>CSS 定位</h2>
+<ul>
+<li><a href="css_positioning.html">CSS 定位概述</a></li>
+<li><a href="css_positioning_relative.html">CSS 相对定位</a></li>
+<li><a href="css_positioning_absolute.html">CSS 绝对定位</a></li>
+<li><a href="css_positioning_floating.html">CSS 浮动</a></li>
+</ul>
+<h2>CSS 高级</h2>
+<ul>
+<li><a href="css_dimension.html">CSS 尺寸</a></li>
+<li><a href="css_classification.html">CSS 分类</a></li>
+<li><a href="css_pseudo_classes.html">CSS 伪类</a></li>
+<li><a href="css_pseudo_elements.html">CSS 伪元素</a></li>
+<li><a href="css_mediatypes.html">CSS 媒介类型</a></li>
+<li><a href="css_dont.html">CSS Don't</a></li>
+<li><a href="css_summary.html">CSS 总结</a></li>
+</ul>
+<h2>CSS 实例</h2>
+<ul>
+<li><a href="../example/csse_examples.html">CSS 实例</a></li>
+</ul>
+<h2>参考手册</h2>
+<ul>
+<li><a href="css_reference.html">CSS2 参考手册</a></li>
+<li><a href="css_ref_print.html">CSS2 打印</a></li>
+<li><a href="css_ref_aural.html">CSS2 听觉</a></li>
+<li><a href="css_units.html">CSS2 单位</a></li>
+</ul>
+<h2>CSS Quiz</h2>
+<ul>
+<li><a href="css_quiz.html">CSS 测验</a></li>
+</ul>
+</div>
+<div id="selected">
+<h2>建站手册</h2>
+<ul>
+<li><a href="../site/">网站构建</a></li>
+<li><a href="../w3c/">万维网联盟</a></li>
+<li><a href="http://e.v-get.com/w3c/">W3CSchool 教程</a></li>
+<li><a href="../quality/">网站品质</a></li>
+<li><a href="../semweb/">语义网</a></li>
+<li><a href="../hosting/">网站主机</a></li>
+</ul>
+<h2><a href="http://e.v-get.com/w3c/" class="f13">W3CSchool 教程</a></h2><div class="a120x90"><script type="text/javascript">var cpro_id="u1210867";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div></div>
+</div>
+<div id="maincontent">
+<h1>CSS2 参考手册</h1>
+<div id="tpn">
+<ul class="prenext">
+<li class="pre"><a href="../example/csse_examples.html">上一页</a></li>
+<li class="next"><a href="css_ref_print.html">下一页</a></li>
+</ul>
+</div>
+<div id="intro">
+<p><strong>点击表格中属性列的链接，可以查看相关属性的详细信息。</strong></p>
+</div>
+<div>
+<h2>快速导航：</h2>
+<ul>
+<li id="cssref_list_background"><a href="#cssref_background">背景</a></li>
+<li id="cssref_list_text"><a href="#cssref_text">文本</a></li>
+<li id="cssref_list_font"><a href="#cssref_font">字体</a></li>
+<li id="cssref_list_border"><a href="#cssref_border">边框</a></li>
+<li id="cssref_list_margin"><a href="#cssref_margin">外边距</a></li>
+<li id="cssref_list_padding"><a href="#cssref_padding">内边距</a></li>
+<li id="cssref_list_lm"><a href="#cssref_lm">列表和标记</a></li>
+<li id="cssref_list_gc"><a href="#cssref_gc">内容生成</a></li>
+<li id="cssref_list_outline"><a href="#cssref_outline">轮廓</a></li>
+<li id="cssref_list_dimension"><a href="#cssref_dimension">尺寸</a></li>
+<li id="cssref_list_classification"><a href="#cssref_classification">分类</a></li>
+<li id="cssref_list_positioning"><a href="#cssref_positioning">定位</a></li>
+<li id="cssref_list_positioning"><a href="#cssref_table">表格</a></li>
+<li id="cssref_list_pc"><a href="#cssref_pc">伪类</a></li>
+<li id="cssref_list_pe"><a href="#cssref_pe">伪元素</a></li>
+</ul>
+</div>
+<div>
+<h2>缩写：</h2>
+<p>浏览器支持：<em>IE</em>: Internet Explorer, <em>F</em>: Firefox, <em>N</em>: Netscape。</p>
+<p><em>W3C</em>：“W3C” 列的数字显示出属性由哪个 CSS 标准定义 (CSS1 还是 CSS2）。</p>
+</div>
+<div id="cssref_background">
+<h2>CSS 背景属性</h2>
+<table class="dataintable">
+  <tr>
+    <th style="width:30%">属性</th>
+    <th style="width:25%">描述</th>
+    <th style="width:25%">值</th>
+    <th style="width:5%">IE</th>
+    <th style="width:4%">F</th>
+    <th style="width:4%">N</th>
+    <th style="width:7%">W3C</th>
+  </tr>
+  <tr>
+    <td><a href="pr_background.html">background</a></td>
+    <td>简写属性，作用是将背景属性设置在一个声明中。</td>
+    <td>
+	<ul>
+	<li>background-color</li>
+	<li>background-image</li>
+	<li>background-repeat</li>
+	<li>background-attachment</li>
+	<li>background-position</li>
+	</ul>
+	</td>
+    <td>4</td>
+    <td>1</td>
+    <td>6</td>
+    <td>1</td>
+  </tr>
+  <tr>
+    <td><a href="pr_background-attachment.html">background-attachment</a></td>
+    <td>背景图像是否固定或者随着页面的其余部分滚动。</td>
+    <td>
+	<ul>
+	<li>scroll</li>
+    <li>fixed</li>
+	</ul>
+	</td>
+    <td>4</td>
+    <td>1</td>
+    <td>6</td>
+    <td>1</td>
+  </tr>
+  <tr>
+    <td><a href="pr_background-color.html">background-color</a></td>
+    <td>设置元素的背景颜色。</td>
+    <td>
+	<ul>
+	<li>color-rgb</li>
+    <li>color-hex</li>
+    <li>color-name</li>
+    <li>transparent</li>
+	</ul>
+	</td>
+    <td>4</td>
+    <td>1</td>
+    <td>4</td>
+    <td>1</td>
+  </tr>
+  <tr>
+    <td><a href="pr_background-image.html">background-image</a></td>
+    <td>把图像设置为背景。</td>
+    <td>
+	<ul>
+	<li>url</li>
+    <li>none</li>
+	</ul>
+	</td>
+    <td>4</td>
+    <td>1</td>
+    <td>4</td>
+    <td>1</td>
+  </tr>
+  <tr>
+    <td><a href="pr_background-position.html">background-position</a></td>
+    <td>设置背景图像的起始位置。</td>
+    <td>
+	<ul>
+	<li>top left</li>
+    <li>top center</li>
+    <li>top right</li>
+    <li>center left</li>
+    <li>center center</li>
+    <li>center right</li>
+    <li>bottom left</li>
+    <li>bottom center</li>
+    <li>bottom right</li>
+    <li>x-% y-%</li>
+    <li>x-pos y-pos</li>
+	</ul>
+	</td>
+    <td>4</td>
+    <td>1</td>
+    <td>6</td>
+    <td>1</td>
+  </tr>
+  <tr>
+    <td><a href="pr_background-repeat.html">background-repeat</a></td>
+    <td>设置背景图像是否及如何重复。</td>
+    <td>
+	<ul>
+	<li>repeat</li>
+    <li>repeat-x</li>
+    <li>repeat-y</li>
+    <li>no-repeat</li>
+	</ul>
+	</td>
+    <td>4</td>
+    <td>1</td>
+    <td>4</td>
+    <td>1</td>
+  </tr>
+</table>
+</div>
+<div id="cssref_border">
+<h2>CSS 边框属性 (border)</h2>
+<table class="dataintable">
+  <tr>
+    <th style="width:30%">属性</th>
+    <th style="width:25%">描述</th>
+    <th style="width:25%">值</th>
+    <th style="width:5%">IE</th>
+    <th style="width:4%">F</th>
+    <th style="width:4%">N</th>
+    <th style="width:7%">W3C</th>
+  </tr>
+  <tr>
+    <td><a href="pr_border.html">border</a></td>
+    <td>简写属性。作用是在一个声明中用来设置四个边框的所有属性。</td>
+    <td>
+	<ul>
+	<li>border-width</li>
+    <li>border-style</li>
+    <li>border-color</li>
+	</ul>
+	</td>
+    <td>4</td>
+    <td>1</td>
+    <td>4</td>
+    <td>1</td>
+  </tr>
+  <tr>
+    <td><a href="pr_border-bottom.html">border-bottom</a></td>
+    <td>简写属性。作用是在一个声明中用来设置下边框的所有属性。</td>
+    <td>
+	<ul>
+	<li>border-bottom-width</li>
+    <li>border-style</li>
+    <li>border-color</li>
+	</ul>
+	</td>
+    <td>4</td>
+    <td>1</td>
+    <td>6</td>
+    <td>1</td>
+  </tr>
+  <tr>
+    <td><a href="pr_border-bottom_color.html">border-bottom-color</a></td>
+    <td>设置下边框的颜色。</td>
+    <td>border-color</td>
+    <td>4</td>
+    <td>1</td>
+    <td>6</td>
+    <td>2</td>
+  </tr>
+  <tr>
+    <td><a href="pr_border-bottom_style.html">border-bottom-style</a></td>
+    <td>设置下边框的样式。</td>
+    <td>border-style</td>
+    <td>4</td>
+    <td>1</td>
+    <td>6</td>
+    <td>2</td>
+  </tr>
+  <tr>
+    <td><a href="pr_border-bottom_width.html">border-bottom-width</a></td>
+    <td>设置下边框的宽度。</td>
+    <td>
+	<ul>
+	<li>thin</li>
+    <li>medium</li>
+    <li>thick</li>
+    <li>length</li>
+	</ul>
+	</td>
+    <td>4</td>
+    <td>1</td>
+    <td>4</td>
+    <td>1</td>
+  </tr>
+  <tr>
+    <td><a href="pr_border-color.html">border-color</a></td>
+    <td>设置四个边框的颜色，可以设置一到四个颜色。</td>
+    <td>color</td>
+    <td>4</td>
+    <td>1</td>
+    <td>6</td>
+    <td>1</td>
+  </tr>
+  <tr>
+    <td><a href="pr_border-left.html">border-left</a></td>
+    <td>简写属性。用于在一个声明中设置左边框的所有属性。</td>
+    <td>
+	<ul>
+	<li>border-left-width</li>
+    <li>border-style</li>
+    <li>border-color</li>
+	</ul>
+	</td>
+    <td>4</td>
+    <td>1</td>
+    <td>6</td>
+    <td>1</td>
+  </tr>
+  <tr>
+    <td><a href="pr_border-left_color.html">border-left-color</a></td>
+    <td>设置左边框的颜色。</td>
+    <td>border-color</td>
+    <td>4</td>
+    <td>1</td>
+    <td>6</td>
+    <td>2</td>
+  </tr>
+  <tr>
+    <td><a href="pr_border-left_style.html">border-left-style</a></td>
+    <td>设置左边框的样式。</td>
+    <td>border-style</td>
+    <td>4</td>
+    <td>1</td>
+    <td>6</td>
+    <td>2</td>
+  </tr>
+  <tr>
+    <td><a href="pr_border-left_width.html">border-left-width</a></td>
+    <td>设置左边框的宽度。</td>
+    <td>
+	<ul>
+	<li>thin</li>
+    <li>medium</li>
+    <li>thick</li>
+    <li>length</li>
+	</ul>
+	</td>
+    <td>4</td>
+    <td>1</td>
+    <td>4</td>
+    <td>1</td>
+  </tr>
+  <tr>
+    <td><a href="pr_border-right.html">border-right</a></td>
+    <td>简写属性。将所有用于右边框的属性设置于一个声明中。</td>
+    <td>
+	<ul>
+	<li>border-right-width</li>
+    <li>border-style</li>
+    <li>border-color</li>
+	</ul>
+	</td>
+    <td>4</td>
+    <td>1</td>
+    <td>6</td>
+    <td>1</td>
+  </tr>
+  <tr>
+    <td><a href="pr_border-right_color.html">border-right-color</a></td>
+    <td>设置右边框的颜色</td>
+    <td>border-color</td>
+    <td>4</td>
+    <td>1</td>
+    <td>6</td>
+    <td>2</td>
+  </tr>
+  <tr>
+    <td><a href="pr_border-right_style.html">border-right-style</a></td>
+    <td>设置右边框的样式</td>
+    <td>border-style</td>
+    <td>4</td>
+    <td>1</td>
+    <td>6</td>
+    <td>2</td>
+  </tr>
+  <tr>
+    <td><a href="pr_border-right_width.html">border-right-width</a></td>
+    <td>设置右边框的宽度。</td>
+    <td>
+	<ul>
+	<li>thin</li>
+    <li>medium</li>
+    <li>thick</li>
+    <li>length</li>
+	</ul>
+	</td>
+    <td>4</td>
+    <td>1</td>
+    <td>4</td>
+    <td>1</td>
+  </tr>
+  <tr>
+    <td><a href="pr_border-style.html">border-style</a></td>
+    <td>设置四个边框的样式，可以设置一到四个样式。</td>
+    <td>
+	<ul>
+	<li>none</li>
+    <li>hidden</li>
+    <li>dotted</li>
+    <li>dashed</li>
+    <li>solid</li>
+    <li>double</li>
+    <li>groove</li>
+    <li>ridge</li>
+    <li>inset</li>
+    <li>outset</li>
+	</ul>
+	</td>
+    <td>4</td>
+    <td>1</td>
+    <td>6</td>
+    <td>1</td>
+  </tr>
+  <tr>
+    <td><a href="pr_border-top.html">border-top</a></td>
+    <td>简写属性。将所有用于上边框的属性设置于一个声明中。</td>
+    <td>
+	<ul>
+	<li>border-top-width</li>
+    <li>border-style</li>
+    <li>border-color</li>
+	</ul>
+	</td>
+    <td>4</td>
+    <td>1</td>
+    <td>6</td>
+    <td>1</td>
+  </tr>
+  <tr>
+    <td><a href="pr_border-top_color.html">border-top-color</a></td>
+    <td>设置上边框的颜色。</td>
+    <td>border-color</td>
+    <td>4</td>
+    <td>1</td>
+    <td>6</td>
+    <td>2</td>
+  </tr>
+  <tr>
+    <td><a href="pr_border-top_style.html">border-top-style</a></td>
+    <td>设置上边框的样式。</td>
+    <td>border-style</td>
+    <td>4</td>
+    <td>1</td>
+    <td>6</td>
+    <td>2</td>
+  </tr>
+  <tr>
+    <td><a href="pr_border-top_width.html">border-top-width</a></td>
+    <td>设置上边框的宽度。</td>
+    <td>
+	<ul>
+	<li>thin</li>
+    <li>medium</li>
+    <li>thick</li>
+    <li>length</li>
+	</ul>
+	</td>
+    <td>4</td>
+    <td>1</td>
+    <td>4</td>
+    <td>1</td>
+  </tr>
+  <tr>
+    <td><a href="pr_border-width.html">border-width</a></td>
+    <td>简写属性。在一个声明中设置四个边框的宽度，可以设置一到四个值。</td>
+    <td>
+	<ul>
+	<li>thin</li>
+    <li>medium</li>
+    <li>thick</li>
+    <li>length</li>
+	</ul>
+	</td>
+    <td>4</td>
+    <td>1</td>
+    <td>4</td>
+    <td>1</td>
+  </tr>
+</table>
+</div>
+<div id="cssref_text">
+<h2>CSS 文本属性</h2>
+<table class="dataintable">
+  <tr>
+    <th style="width:30%">属性</th>
+    <th style="width:25%">描述</th>
+    <th style="width:25%">值</th>
+    <th style="width:5%">IE</th>
+    <th style="width:4%">F</th>
+    <th style="width:4%">N</th>
+    <th style="width:7%">W3C</th>
+  </tr>
+  <tr>
+    <td><a href="pr_text_color.html">color</a></td>
+    <td>设置文本颜色。</td>
+    <td>color</td>
+    <td>3</td>
+    <td>1</td>
+    <td>4</td>
+    <td>1</td>
+  </tr>
+  <tr>
+    <td><a href="pr_text_direction.html">direction</a></td>
+    <td>设置文本方向。</td>
+    <td>
+	<ul>
+	<li>ltr</li>
+    <li>rtl</li>
+	</ul>
+	</td>
+    <td>6</td>
+    <td>1</td>
+    <td>6</td>
+    <td>2</td>
+  </tr>
+  <tr>
+    <td><a href="pr_text_letter-spacing.html">letter-spacing</a></td>
+    <td>设置字符间距。</td>
+    <td>
+	<ul>
+	<li>normal</li>
+	<li>length</li>
+	</ul>
+	</td>
+    <td>4</td>
+    <td>1</td>
+    <td>6</td>
+    <td>1</td>
+  </tr>
+  <tr>
+    <td><a href="pr_text_text-align.html">text-align</a></td>
+    <td>对齐元素中的文本。</td>
+    <td>
+	<ul>
+	<li>left</li>
+    <li>right</li>
+    <li>center</li>
+    <li>justify</li>
+	</ul>
+	</td>
+    <td>4</td>
+    <td>1</td>
+    <td>4</td>
+    <td>1</td>
+  </tr>
+  <tr>
+    <td><a href="pr_text_text-decoration.html">text-decoration</a></td>
+    <td>向文本添加修饰。</td>
+    <td>
+	<ul>
+	<li>none</li>
+    <li>underline</li>
+    <li>overline</li>
+    <li>line-through</li>
+    <li>blink</li>
+	</ul>
+	</td>
+    <td>4</td>
+    <td>1</td>
+    <td>4</td>
+    <td>1</td>
+  </tr>
+  <tr>
+    <td><a href="pr_text_text-indent.html">text-indent</a></td>
+    <td>缩进元素中文本的首行。</td>
+    <td>
+	<ul>
+	<li>length</li>
+    <li>%</li>
+	</ul>
+	</td>
+    <td>4</td>
+    <td>1</td>
+    <td>4</td>
+    <td>1</td>
+  </tr>
+  <tr>
+    <td>text-shadow</td>
+    <td>&nbsp;</td>
+    <td>
+	<ul>
+	<li>none</li>
+    <li>color</li>
+    <li>length</li>
+	</ul>
+	</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td><a href="pr_text_text-transform.html">text-transform</a></td>
+    <td>控制元素中的字母。</td>
+    <td>
+	<ul>
+	<li>none</li>
+    <li>capitalize</li>
+    <li>uppercase</li>
+    <li>lowercase</li>
+	</ul>
+	</td>
+    <td>4</td>
+    <td>1</td>
+    <td>4</td>
+    <td>1</td>
+  </tr>
+  <tr>
+    <td>unicode-bidi</td>
+    <td>设置文本方向。</td>
+    <td>
+	<ul>
+	<li>normal</li>
+    <li>embed</li>
+    <li>bidi-override</li>
+	</ul>
+	</td>
+    <td>5</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>2</td>
+  </tr>
+  <tr>
+    <td><a href="pr_text_white-space.html">white-space</a></td>
+    <td>设设置元素中空白的处理方式。</td>
+    <td>
+	<ul>
+	<li>normal</li>
+    <li>pre</li>
+    <li>nowrap</li>
+	</ul>
+	</td>
+    <td>5</td>
+    <td>1</td>
+    <td>4</td>
+    <td>1</td>
+  </tr>
+  <tr>
+    <td><a href="pr_text_word-spacing.html">word-spacing</a></td>
+    <td>设置字间距。</td>
+    <td>
+	<ul>
+	<li>normal</li>
+    <li>length</li>
+	</ul>
+	</td>
+    <td>6</td>
+    <td>1</td>
+    <td>6</td>
+    <td>1</td>
+  </tr>
+</table>
+</div>
+<div id="cssref_font">
+<h2>CSS 字体属性 (font)</h2>
+<table class="dataintable">
+  <tr>
+    <th style="width:30%">属性</th>
+    <th style="width:25%">描述</th>
+    <th style="width:25%">值</th>
+    <th style="width:5%">IE</th>
+    <th style="width:4%">F</th>
+    <th style="width:4%">N</th>
+    <th style="width:7%">W3C</th>
+  </tr>
+  <tr>
+    <td><a href="pr_font_font.html">font</a>
+    </td>
+    <td>简写属性。作用是将所有针对字体的属性设置在一个声明中。</td>
+    <td>
+	<ul>
+	<li>font-style</li>
+    <li>font-variant</li>
+    <li>font-weight</li>
+    <li>font-size/line-height</li>
+    <li>font-family</li>
+    <li>caption</li>
+    <li>icon</li>
+    <li>menu</li>
+    <li>message-box</li>
+    <li>small-caption</li>
+    <li>status-bar</li>
+	</ul>
+	</td>
+    <td>4</td>
+    <td>1</td>
+    <td>4</td>
+    <td>1</td>
+  </tr>
+  <tr>
+    <td><a href="pr_font_font-family.html">font-family</a>
+    </td>
+    <td>字体类型名称或者针对某元素的类属族名名称的优先列表。</td>
+    <td>
+	<ul>
+	<li>family-name</li>
+    <li>generic-family</li>
+	</ul>
+	</td>
+    <td>3</td>
+    <td>1</td>
+    <td>4</td>
+    <td>1</td>
+  </tr>
+  <tr>
+    <td><a href="pr_font_font-size.html">font-size</a>
+    </td>
+    <td>设置字体的尺寸。</td>
+    <td>
+	<ul>
+	<li>xx-small</li>
+    <li>x-small</li>
+    <li>small</li>
+    <li>medium</li>
+    <li>large</li>
+    <li>x-large</li>
+    <li>xx-large</li>
+    <li>smaller</li>
+    <li>larger</li>
+    <li>length</li>
+    <li>%</li>
+	</ul>
+	</td>
+    <td>3</td>
+    <td>1</td>
+    <td>4</td>
+    <td>1</td>
+  </tr>
+  <tr>
+    <td><a href="pr_font_font-size-adjust.html">font-size-adjust</a>
+    </td>
+    <td>为元素规定 aspect 值。</td>
+    <td>
+	none
+    number
+	</td>
+    <td>-</td>
+    <td>-</td>
+    <td>-</td>
+    <td>2</td>
+  </tr>
+  <tr>
+    <td><a href="pr_font_font-stretch.html">font-stretch</a>
+    </td>
+    <td>收缩或拉伸当前的字体族。</td>
+    <td>
+	<ul>
+	<li>normal</li>
+    <li>wider</li>
+    <li>narrower</li>
+    <li>ultra-condensed</li>
+    <li>extra-condensed</li>
+    <li>condensed</li>
+    <li>semi-condensed</li>
+    <li>semi-expanded</li>
+    <li>expanded</li>
+    <li>extra-expanded</li>
+    <li>ultra-expanded</li>
+	</ul>
+	</td>
+    <td>-</td>
+    <td>-</td>
+    <td>-</td>
+    <td>2</td>
+  </tr>
+  <tr>
+    <td><a href="pr_font_font-style.html">font-style</a>
+    </td>
+    <td>设置字体样式。</td>
+    <td>
+	<ul>
+	<li>normal</li>
+    <li>italic</li>
+    <li>oblique</li>
+	</ul>
+	</td>
+    <td>4</td>
+    <td>1</td>
+    <td>4</td>
+    <td>1</td>
+  </tr>
+  <tr>
+    <td><a href="pr_font_font-variant.html">font-variant</a>
+    </td>
+    <td>以小型小写字体或者正常字体显示文本</td>
+    <td>
+	<ul>
+	<li>normal</li>
+    <li>small-caps</li>
+	</ul>
+	</td>
+    <td>4</td>
+    <td>1</td>
+    <td>6</td>
+    <td>1</td>
+  </tr>
+  <tr>
+    <td><a href="pr_font_weight.html">font-weight</a>
+    </td>
+    <td>设置字体的粗细。</td>
+    <td>
+	<ul>
+	<li>normal</li>
+    <li>bold</li>
+    <li>bolder</li>
+    <li>lighter</li>
+    <li>100</li>
+    <li>200</li>
+    <li>300</li>
+    <li>400</li>
+    <li>500</li>
+    <li>600</li>
+    <li>700</li>
+    <li>800</li>
+    <li>900</li>
+	</ul>
+	</td>
+    <td>4</td>
+    <td>1</td>
+    <td>4</td>
+    <td>1</td>
+  </tr>
+</table>
+</div>
+<div id="cssref_margin">
+<h2>CSS 外边距属性 (margin)</h2>
+<table class="dataintable">
+  <tr>
+    <th style="width:30%">属性</th>
+    <th style="width:25%">描述</th>
+    <th style="width:25%">值</th>
+    <th style="width:5%">IE</th>
+    <th style="width:4%">F</th>
+    <th style="width:4%">N</th>
+    <th style="width:7%">W3C</th>
+  </tr>
+  <tr>
+    <td><a href="pr_margin.html">margin</a>
+    </td>
+    <td>简写属性。在一个声明中设置外边距属性。</td>
+    <td>
+	<ul>
+	<li>margin-top</li>
+    <li>margin-right</li>
+    <li>margin-bottom</li>
+    <li>margin-left</li>
+	</ul>
+	</td>
+    <td>4</td>
+    <td>1</td>
+    <td>4</td>
+    <td>1</td>
+  </tr>
+  <tr>
+    <td>
+      <p><a href="pr_margin-bottom.html">margin-bottom</a></p>
+    </td>
+    <td>设置元素的下外边距。</td>
+    <td>
+	<ul>
+	<li>auto</li>
+    <li>length</li>
+    <li>%</li>
+	</ul>
+	</td>
+    <td>4</td>
+    <td>1</td>
+    <td>4</td>
+    <td>1</td>
+  </tr>
+  <tr>
+    <td>
+      <p><a href="pr_margin-left.html">margin-left</a></p>
+    </td>
+    <td>设置元素的左外边距。</td>
+    <td>
+	<ul>
+	<li>auto</li>
+    <li>length</li>
+    <li>%</li>
+	</ul>
+	</td>
+    <td>3</td>
+    <td>1</td>
+    <td>4</td>
+    <td>1</td>
+  </tr>
+  <tr>
+    <td>
+      <p><a href="pr_margin-right.html">margin-right</a></p>
+    </td>
+    <td>设置元素的右外边距。</td>
+    <td>
+	<ul>
+	<li>auto</li>
+    <li>length</li>
+    <li>%</li>
+	</ul>
+	</td>
+    <td>3</td>
+    <td>1</td>
+    <td>4</td>
+    <td>1</td>
+  </tr>
+  <tr>
+    <td><a href="pr_margin-top.html">margin-top</a>
+    </td>
+    <td>设置元素的上外边距。</td>
+    <td>
+	<ul>
+	<li>auto</li>
+    <li>length</li>
+    <li>%</li>
+	</ul>
+	</td>
+    <td>3</td>
+    <td>1</td>
+    <td>4</td>
+    <td>1</td>
+  </tr>
+</table>
+</div>
+<div id="cssref_padding">
+<h2>CSS 内边距属性 (padding)</h2>
+<table class="dataintable">
+  <tr>
+    <th style="width:30%">属性</th>
+    <th style="width:25%">描述</th>
+    <th style="width:25%">值</th>
+    <th style="width:5%">IE</th>
+    <th style="width:4%">F</th>
+    <th style="width:4%">N</th>
+    <th style="width:7%">W3C</th>
+  </tr>
+  <tr>
+    <td><a href="pr_padding.html">padding</a></td>
+    <td>简写属性。作用是在一个声明中设置元素的内边距属性。</td>
+    <td>
+	<ul>
+	<li>padding-top</li>
+    <li>padding-right</li>
+    <li>padding-bottom</li>
+    <li>padding-left</li>
+	</ul>
+	</td>
+    <td>4</td>
+    <td>1</td>
+    <td>4</td>
+    <td>1</td>
+  </tr>
+  <tr>
+    <td>
+      <p><a href="pr_padding-bottom.html">padding-bottom</a></p>
+    </td>
+    <td>设置元素的下内边距。</td>
+    <td>
+	<ul>
+	<li>length</li>
+    <li>%</li>
+	</ul>
+	</td>
+    <td>4</td>
+    <td>1</td>
+    <td>4</td>
+    <td>1</td>
+  </tr>
+  <tr>
+    <td>
+      <p><a href="pr_padding-left.html">padding-left</a></p>
+    </td>
+    <td>设置元素的左内边距。</td>
+    <td>
+	<ul>
+	<li>length</li>
+    <li>%</li>
+	</ul>
+	</td>
+    <td>4</td>
+    <td>1</td>
+    <td>4</td>
+    <td>1</td>
+  </tr>
+  <tr>
+    <td>
+      <p><a href="pr_padding-right.html">padding-right</a></p>
+    </td>
+    <td>设置元素的右内边距。</td>
+    <td>
+	<ul>
+	<li>length</li>
+    <li>%</li>
+	</ul>
+	</td>
+    <td>4</td>
+    <td>1</td>
+    <td>4</td>
+    <td>1</td>
+  </tr>
+  <tr>
+    <td><a href="pr_padding-top.html">padding-top</a></td>
+    <td>设置元素的上内边距。</td>
+    <td>
+	<ul>
+	<li>length</li>
+    <li>%</li>
+	</ul>
+	</td>
+    <td>4</td>
+    <td>1</td>
+    <td>4</td>
+    <td>1</td>
+  </tr>
+</table>
+</div>
+<div id="cssref_lm">
+<h2>CSS 列表属性 (list)</h2>
+<table class="dataintable">
+  <tr>
+    <th style="width:30%">属性</th>
+    <th style="width:25%">描述</th>
+    <th style="width:25%">值</th>
+    <th style="width:5%">IE</th>
+    <th style="width:4%">F</th>
+    <th style="width:4%">N</th>
+    <th style="width:7%">W3C</th>
+  </tr>
+  <tr>
+    <td><a href="pr_list-style.html">list-style</a></td>
+    <td>简写属性。用于将所有用于列表的属性设置于一个声明之中。</td>
+    <td>
+	<ul>
+	<li>list-style-type</li>
+    <li>list-style-position</li>
+    <li>list-style-image</li>
+	</ul>
+	</td>
+    <td>4</td>
+    <td>1</td>
+    <td>6</td>
+    <td>1</td>
+  </tr>
+  <tr>
+    <td><a href="pr_list-style-image.html">list-style-image</a></td>
+    <td>将图象设置为列表项标记。</td>
+    <td>
+	<ul>
+	<li>none</li>
+    <li>url</li>
+	</ul>
+	</td>
+    <td>4</td>
+    <td>1</td>
+    <td>6</td>
+    <td>1</td>
+  </tr>
+  <tr>
+    <td><a href="pr_list-style-position.html">list-style-position</a></td>
+    <td>设置列表中列表项标记被放置的位置。</td>
+    <td>
+	<ul>
+	<li>inside</li>
+    <li>outside</li>
+	</ul>
+	</td>
+    <td>4</td>
+    <td>1</td>
+    <td>6</td>
+    <td>1</td>
+  </tr>
+  <tr>
+    <td><a href="pr_list-style-type.html">list-style-type</a></td>
+    <td>设置列表项标记的类型。</td>
+    <td>
+	<ul>
+	<li>none</li>
+    <li>disc</li>
+    <li>circle</li>
+    <li>square</li>
+    <li>decimal</li>
+    <li>decimal-leading-zero</li>
+    <li>lower-roman</li>
+    <li>upper-roman</li>
+    <li>lower-alpha</li>
+    <li>upper-alpha</li>
+    <li>lower-greek</li>
+    <li>lower-latin</li>
+    <li>upper-latin</li>
+    <li>hebrew</li>
+    <li>armenian</li>
+    <li>georgian</li>
+    <li>cjk-ideographic</li>
+    <li>hiragana</li>
+    <li>katakana</li>
+    <li>hiragana-iroha</li>
+    <li>katakana-iroha</li>
+	</ul>
+	</td>
+    <td>4</td>
+    <td>1</td>
+    <td>4</td>
+    <td>1</td>
+  </tr>
+  <tr>
+    <td>marker-offset</td>
+    <td>&nbsp;</td>
+    <td>
+	<ul>
+	<li>auto</li>
+    <li>length</li>
+	</ul>
+	</td>
+    <td>&nbsp;</td>
+    <td>1</td>
+    <td>7</td>
+    <td>2</td>
+  </tr>
+</table>
+</div>
+<div id="cssref_gc">
+<h2><a name="generatedcontent">内容生成</a></h2>
+<table class="dataintable">
+  <tr>
+    <th style="width:30%">属性</th>
+    <th style="width:25%">描述</th>
+    <th style="width:25%">值</th>
+    <th style="width:5%">IE</th>
+    <th style="width:4%">F</th>
+    <th style="width:4%">N</th>
+    <th style="width:7%">W3C</th>
+  </tr>
+  <tr>
+    <td><a href="pr_gen_content.html">content</a>
+    </td>
+    <td>生成文档中的内容。与 :before 以及 :after 伪元素配合使用。</td>
+    <td><i>string</i><br />
+      <i>url<br />
+      </i>counter(<i>name</i>)<br />
+      counter(<i>name, list-style-type</i>)<br />
+      counters(<i>name, string</i>)<br />
+      counters(<i>name, string, list-style-type</i>)<br />
+      attr(X)<br />
+      open-quote<br />
+      close-quote<br />
+      no-open-quote<br />
+      no-close-quote</td>
+    <td>&nbsp;</td>
+    <td>1</td>
+    <td>6</td>
+    <td>2</td>
+  </tr>
+  <tr>
+    <td><a href="pr_gen_counter-increment.html">counter-increment</a>
+    </td>
+    <td>设置某个选取器每次出现的计数器增量。</td>
+    <td>none<br />
+      <i>identifier number</i></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>2</td>
+  </tr>
+  <tr>
+    <td><a href="pr_gen_counter-reset.html">counter-reset</a>
+    </td>
+    <td>设置某个选择器出现次数的计数器的值。</td>
+    <td>none<br />
+      <i>identifier number</i></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>2</td>
+  </tr>
+  <tr>
+    <td><a href="pr_gen_quotes.html">quotes</a>
+    </td>
+    <td>设置引号的类型。</td>
+    <td>none<br />
+      <i>string string</i></td>
+    <td>-</td>
+    <td>1</td>
+    <td>6</td>
+    <td>2</td>
+  </tr>
+</table>
+</div>
+<div id="cssref_outline">
+<h2><a name="outlines">轮廓</a></h2>
+<table class="dataintable">
+  <tr>
+    <th style="width:30%">属性</th>
+    <th style="width:25%">描述</th>
+    <th style="width:25%">值</th>
+    <th style="width:5%">IE</th>
+    <th style="width:4%">F</th>
+    <th style="width:4%">N</th>
+    <th style="width:7%">W3C</th>
+  </tr>
+  <tr>
+    <td><a href="pr_outline.html">outline</a>
+    </td>
+    <td>简写属性。用来在一个声明中设置所有的 outline 属性。</td>
+    <td><i>outline-color<br />
+      outline-style<br />
+      outline-width</i></td>
+    <td>-</td>
+    <td>1.5</td>
+    <td>-</td>
+    <td>2</td>
+  </tr>
+  <tr>
+    <td>
+      <a href="pr_outline-color.html">
+      outline-color</a>
+    </td>
+    <td>设置围绕元素的轮廓的颜色。</td>
+    <td><i>color<br />
+      </i>invert</td>
+    <td>-</td>
+    <td>1.5</td>
+    <td>-</td>
+    <td>2</td>
+  </tr>
+  <tr>
+    <td>
+      <a href="pr_outline-style.html">
+      outline-style</a>
+    </td>
+    <td>设置围绕元素的轮廓的样式。</td>
+    <td>none<br />
+      dotted<br />
+      dashed<br />
+      solid<br />
+      double<br />
+      groove<br />
+      ridge<br />
+      inset<br />
+      outset</td>
+    <td>-</td>
+    <td>1.5</td>
+    <td>-</td>
+    <td>2</td>
+  </tr>
+  <tr>
+    <td>
+      <a href="pr_outline-width.html">
+      outline-width</a>
+    </td>
+    <td>设置围绕元素的轮廓的宽度。</td>
+    <td>thin<br />
+      medium<br />
+      thick<br />
+      <i>length</i></td>
+    <td>-</td>
+    <td>1.5</td>
+    <td>-</td>
+    <td>2</td>
+  </tr>
+</table>
+</div>
+<div id="cssref_dimension">
+<h2>CSS 尺寸属性 (Dimension)</h2>
+<table class="dataintable">
+  <tr>
+    <th style="width:30%">属性</th>
+    <th style="width:25%">描述</th>
+    <th style="width:25%">值</th>
+    <th style="width:5%">IE</th>
+    <th style="width:4%">F</th>
+    <th style="width:4%">N</th>
+    <th style="width:7%">W3C</th>
+  </tr>
+  <tr>
+    <td><a href="pr_dim_height.html">height</a></td>
+    <td>设置元素高度。</td>
+    <td>
+	<ul>
+	<li>auto</li>
+    <li>length</li>
+    <li>%</li>
+	</ul>
+	</td>
+    <td>4</td>
+    <td>1</td>
+    <td>6</td>
+    <td>1</td>
+  </tr>
+  <tr>
+    <td><a href="pr_dim_line-height.html">line-height</a></td>
+    <td>设置行间距。</td>
+    <td>
+	<ul>
+	<li>normal</li>
+    <li>number</li>
+    <li>length</li>
+    <li>%</li>
+	</ul>
+	</td>
+    <td>4</td>
+    <td>1</td>
+    <td>4</td>
+    <td>1</td>
+  </tr>
+  <tr>
+    <td><a href="pr_dim_max-height.html">max-height</a></td>
+    <td>设置元素的最大高度。</td>
+    <td>
+	<ul>
+	<li>none</li>
+    <li>length</li>
+    <li>%</li>
+	</ul>
+	</td>
+    <td>-</td>
+    <td>1</td>
+    <td>6</td>
+    <td>2</td>
+  </tr>
+  <tr>
+    <td><a href="pr_dim_max-width.html">max-width</a></td>
+    <td>设置元素的最大宽度。</td>
+    <td>
+	<ul>
+	<li>none</li>
+    <li>length</li>
+    <li>%</li>
+	</ul>
+	</td>
+    <td>-</td>
+    <td>1</td>
+    <td>6</td>
+    <td>2</td>
+  </tr>
+  <tr>
+    <td><a href="pr_dim_min-height.html">min-height</a></td>
+    <td>设置元素的最小高度。</td>
+    <td>
+	<ul>
+    <li>length</li>
+    <li>%</li>
+	</ul>
+	</td>
+    <td>-</td>
+    <td>1</td>
+    <td>6</td>
+    <td>2</td>
+  </tr>
+  <tr>
+    <td><a href="pr_dim_min-width.html">min-width</a></td>
+    <td>设置元素的最小宽度。</td>
+    <td>
+	<ul>
+	<li>length</li>
+    <li>%</li>
+	</ul>
+	</td>
+    <td>-</td>
+    <td>1</td>
+    <td>6</td>
+    <td>2</td>
+  </tr>
+  <tr>
+    <td><a href="pr_dim_width.html">width</a></td>
+    <td>设置元素的宽度。</td>
+    <td>
+	<ul>
+	<li>auto</li>
+    <li>%</li>
+    <li>length</li>
+	</ul>
+	</td>
+    <td>4</td>
+    <td>1</td>
+    <td>4</td>
+    <td>1</td>
+  </tr>
+</table>
+</div>
+<div id="cssref_classification">
+<h2>CSS 分类属性 (Classification)</h2>
+<table class="dataintable">
+  <tr>
+    <th style="width:30%">属性</th>
+    <th style="width:25%">描述</th>
+    <th style="width:25%">值</th>
+    <th style="width:5%">IE</th>
+    <th style="width:4%">F</th>
+    <th style="width:4%">N</th>
+    <th style="width:7%">W3C</th>
+  </tr>
+  <tr>
+    <td><a href="pr_class_clear.html">clear</a></td>
+    <td>设置不允许存在浮动对象的边</td>
+    <td>
+	<ul>
+	<li>left</li>
+    <li>right</li>
+    <li>both</li>
+    <li>none</li>
+	</ul>
+	</td>
+    <td>4</td>
+    <td>1</td>
+    <td>4</td>
+    <td>1</td>
+  </tr>
+  <tr>
+    <td><a href="pr_class_cursor.html">cursor</a></td>
+    <td>规定光标类型 (形状）</td>
+    <td>
+	<ul>
+	<li>url</li>
+	<li>auto</li>
+	<li>crosshair</li>
+    <li>default</li>
+    <li>pointer</li>
+    <li>move</li>
+    <li>e-resize</li>
+    <li>ne-resize</li>
+    <li>nw-resize</li>
+    <li>n-resize</li>
+    <li>se-resize</li>
+    <li>sw-resize</li>
+    <li>s-resize</li>
+    <li>w-resize</li>
+    <li>text</li>
+    <li>wait</li>
+    <li>help</li>
+	</ul>
+	</td>
+    <td>4</td>
+    <td>1</td>
+    <td>6</td>
+    <td>2</td>
+  </tr>
+  <tr>
+    <td><a href="pr_class_display.html">display</a></td>
+    <td>设置如何及是否显示某元素</td>
+    <td>
+	<ul>
+	<li>none</li>
+    <li>inline</li>
+    <li>block</li>
+    <li>list-item</li>
+    <li>run-in</li>
+    <li>compact</li>
+    <li>marker</li>
+    <li>table</li>
+    <li>inline-table</li>
+    <li>table-row-group</li>
+    <li>table-header-group</li>
+    <li>table-footer-group</li>
+    <li>table-row</li>
+    <li>table-column-group</li>
+    <li>table-column</li>
+    <li>table-cell</li>
+    <li>table-caption</li>
+	</ul>
+	</td>
+    <td>4</td>
+    <td>1</td>
+    <td>4</td>
+    <td>1</td>
+  </tr>
+  <tr>
+    <td><a href="pr_class_float.html">float</a></td>
+    <td>设置图像或文本出现于另一元素中的何处</td>
+    <td>
+	<ul>
+	<li>left</li>
+    <li>right</li>
+    <li>none</li>
+	</ul>
+	</td>
+    <td>4</td>
+    <td>1</td>
+    <td>4</td>
+    <td>1</td>
+  </tr>
+  <tr>
+    <td><a href="pr_class_position.html">position</a></td>
+    <td>元素的定位方式：静态、相对定位、绝对定位、固定定位</td>
+    <td>
+	<ul>
+	<li>static</li>
+    <li>relative</li>
+    <li>absolute</li>
+    <li>fixed</li>
+	</ul>
+	</td>
+    <td>4</td>
+    <td>1</td>
+    <td>4</td>
+    <td>2</td>
+  </tr>
+  <tr>
+    <td><a href="pr_class_visibility.html">visibility</a></td>
+    <td>设置元素可见或不可见</td>
+    <td>
+	<ul>
+	<li>visible</li>
+    <li>hidden</li>
+    <li>collapse</li>
+	</ul>
+	</td>
+    <td>4</td>
+    <td>1</td>
+    <td>6</td>
+    <td>2</td>
+  </tr>
+</table>
+</div>
+<div id="cssref_positioning">
+<h2>CSS 定位属性 (Positioning)</h2>
+<table class="dataintable">
+  <tr>
+    <th style="width:30%">属性</th>
+    <th style="width:25%">描述</th>
+    <th style="width:25%">值</th>
+    <th style="width:5%">IE</th>
+    <th style="width:4%">F</th>
+    <th style="width:4%">N</th>
+    <th style="width:7%">W3C</th>
+  </tr>
+  <tr>
+    <td><a href="pr_pos_bottom.html">bottom</a></td>
+    <td>设置定位元素下外边距边界与其包含块下边界之间的偏移。</td>
+    <td>
+	<ul>
+	<li>auto</li>
+    <li>%</li>
+    <li>length</li>
+	</ul>
+	</td>
+    <td>5</td>
+    <td>1</td>
+    <td>6</td>
+    <td>2</td>
+  </tr>
+  <tr>
+    <td><a href="pr_pos_clip.html">clip</a></td>
+    <td>设置元素的形状。</td>
+    <td>
+	<ul>
+	<li>shape</li>
+    <li>auto</li>
+	</ul>
+	</td>
+    <td>4</td>
+    <td>1</td>
+    <td>6</td>
+    <td>2</td>
+  </tr>
+  <tr>
+    <td><a href="pr_pos_left.html">left</a></td>
+    <td>设置定位元素左外边距边界与其包含块左边界之间的偏移。</td>
+    <td>
+	<ul>
+	<li>auto</li>
+    <li>%</li>
+    <li>length</li>
+	</ul>
+	</td>
+    <td>4</td>
+    <td>1</td>
+    <td>4</td>
+    <td>2</td>
+  </tr>
+  <tr>
+    <td><a href="pr_pos_overflow.html">overflow</a></td>
+    <td>设置当元素的内容溢出其区域时发生的事情。</td>
+    <td>
+	<ul>
+	<li>visible</li>
+    <li>hidden</li>
+    <li>scroll</li>
+    <li>auto</li>
+	</ul>
+	</td>
+    <td>4</td>
+    <td>1</td>
+    <td>6</td>
+    <td>2</td>
+  </tr>
+  <tr>
+    <td><a href="pr_class_position.html">position</a></td>
+    <td>把元素放置到一个静态的、相对的、绝对的、或固定的位置中。</td>
+    <td>
+	<ul>
+	<li>static</li>
+    <li>relative</li>
+    <li>absolute</li>
+    <li>fixed</li>
+	</ul>
+	</td>
+    <td>4</td>
+    <td>1</td>
+    <td>4</td>
+    <td>2</td>
+  </tr>
+  <tr>
+    <td><a href="pr_pos_right.html">right</a></td>
+    <td>设置定位元素右外边距边界与其包含块右边界之间的偏移。</td>
+    <td>
+	<ul>
+	<li>auto</li>
+    <li>%</li>
+    <li>length</li>
+	</ul>
+	</td>
+    <td>5</td>
+    <td>1</td>
+    <td>6</td>
+    <td>2</td>
+  </tr>
+  <tr>
+    <td><a href="pr_pos_top.html">top</a></td>
+    <td>设置定位元素的上外边距边界与其包含块上边界之间的偏移。</td>
+    <td>
+	<ul>
+	<li>auto</li>
+    <li>%</li>
+    <li>length</li>
+	</ul>
+	</td>
+    <td>4</td>
+    <td>1</td>
+    <td>4</td>
+    <td>2</td>
+  </tr>
+  <tr>
+    <td><a href="pr_pos_vertical-align.html">vertical-align</a></td>
+    <td>设置元素的垂直排列。</td>
+    <td>
+	<ul>
+	<li>baseline</li>
+    <li>sub</li>
+    <li>super</li>
+    <li>top</li>
+    <li>text-top</li>
+    <li>middle</li>
+    <li>bottom</li>
+    <li>text-bottom</li>
+    <li>length</li>
+    <li>%</li>
+	</ul>
+	</td>
+    <td>4</td>
+    <td>1</td>
+    <td>4</td>
+    <td>1</td>
+  </tr>
+  <tr>
+    <td><a href="pr_pos_z-">z-index</a></td>
+    <td>设置元素的堆叠顺序。</td>
+    <td>
+	<ul>
+	<li>auto</li>
+    <li>number</li>
+	</ul>
+	</td>
+    <td>4</td>
+    <td>1</td>
+    <td>6</td>
+    <td>2</td>
+  </tr>
+</table>
+</div>
+<div id="cssref_table">
+<h2>CSS 表格属性</h2>
+<table class="dataintable">
+  <tr>
+    <th style="width:30%">属性</th>
+    <th>描述</th>
+  </tr>
+<tr>
+<td><a href="pr_tab_border-collapse.html" title="">border-collapse</a></td>
+<td>设置是否把表格边框合并为单一的边框。</td>
+</tr>
+<tr>
+<td><a href="pr_tab_border-spacing.html" title="">border-spacing</a></td>
+<td>设置分隔单元格边框的距离。 (仅用于 &#34;separated borders&#34; 模型）</td>
+</tr>
+<tr>
+<td><a href="pr_tab_caption-side.html" title="">caption-side</a></td>
+<td>设置表格标题的位置。</td>
+</tr>
+<tr>
+<td><a href="pr_tab_empty-cells.html" title="">empty-cells</a></td>
+<td>设置是否显示表格中的空单元格。 (仅用于 &#34;separated borders&#34; 模型）</td>
+</tr>
+<tr>
+<td><a href="pr_tab_table-layout.html" title="">table-layout</a></td>
+<td>设置显示单元、行和列的算法。</td>
+</tr>
+</table>
+</div>
+<div id="cssref_pc">
+<h2>CSS 伪类</h2>
+<table class="dataintable">
+  <tr>
+    <th style="width:30%">伪类</th>
+    <th style="width:50%">作用</th>
+    <th style="width:5%">IE</th>
+    <th style="width:4%">F</th>
+    <th style="width:4%">N</th>
+    <th style="width:7%">W3C</th>
+  </tr>
+  <tr>
+    <td><a href="pr_pseudo_active.html">:active</a></td>
+    <td>将样式添加到被激活的元素。</td>
+    <td>4</td>
+    <td>1</td>
+    <td>8</td>
+    <td>1</td>
+  </tr>
+	<tr>
+    <td><a href="pr_pseudo_focus.html">:focus</a></td>
+    <td>将样式添加到被选中的元素。</td>
+    <td>-</td>
+    <td>-</td>
+    <td>-</td>
+    <td>2</td>
+  </tr>
+	<tr>
+    <td><a href="pr_pseudo_hover.html">:hover</a></td>
+    <td>当鼠标悬浮在元素上方时，向元素添加样式。</td>
+    <td>4</td>
+    <td>1</td>
+    <td>7</td>
+    <td>1</td>
+  </tr>
+  <tr>
+    <td><a href="pr_pseudo_link.html">:link</a></td>
+    <td>将特殊的样式添加到未被访问过的链接。</td>
+    <td>3</td>
+    <td>1</td>
+    <td>4</td>
+    <td>1</td>
+  </tr>
+  <tr>
+    <td><a href="pr_pseudo_visited.html">:visited</a></td>
+    <td>将特殊的样式添加到被访问过的链接。</td>
+    <td>3</td>
+    <td>1</td>
+    <td>4</td>
+    <td>1</td>
+  </tr>
+  <tr>
+    <td><a href="pr_pseudo_first-child.html">:first-child</a></td>
+    <td>将特殊的样式添加到元素的第一个子元素。</td>
+    <td>&nbsp;</td>
+    <td>1</td>
+    <td>7</td>
+    <td>2</td>
+  </tr>
+  <tr>
+    <td><a href="pr_pseudo_lang.html">:lang</a></td>
+    <td>允许创作者来定义指定的元素中使用的语言。</td>
+    <td>&nbsp;</td>
+    <td>1</td>
+    <td>8</td>
+    <td>2</td>
+  </tr>
+</table>
+</div>
+<div id="cssref_pe">
+<h2>CSS 伪元素</h2>
+<table class="dataintable">
+  <tr>
+    <th style="width:30%">伪元素</th>
+    <th style="width:50%">作用</th>
+    <th style="width:5%">IE</th>
+    <th style="width:4%">F</th>
+    <th style="width:4%">N</th>
+    <th style="width:7%">W3C</th>
+  </tr>
+  <tr>
+    <td><a href="pr_pseudo_first-letter.html">:first-letter</a></td>
+    <td>向文本的第一个字母添加特殊样式。</td>
+    <td>5</td>
+    <td>1</td>
+    <td>8</td>
+    <td>1</td>
+  </tr>
+  <tr>
+    <td><a href="pr_pseudo_first-line.html">:first-line</a></td>
+    <td>向文本的首行添加特殊样式。</td>
+    <td>5</td>
+    <td>1</td>
+    <td>8</td>
+    <td>1</td>
+  </tr>
+  <tr>
+    <td><a href="pr_pseudo_before.html">:before</a></td>
+    <td>在元素内容之前插入内容。</td>
+    <td>&nbsp;</td>
+    <td>1.5</td>
+    <td>8</td>
+    <td>2</td>
+  </tr>
+  <tr>
+    <td><a href="pr_pseudo_after.html">:after</a></td>
+    <td>在元素内容之后插入内容。</td>
+    <td>&nbsp;</td>
+    <td>1.5</td>
+    <td>8</td>
+    <td>2</td>
+  </tr>
+</table>
+</div>
+<div id="bpn">
+<ul class="prenext">
+<li class="pre"><a href="../example/csse_examples.html">上一页</a></li>
+<li class="next"><a href="css_ref_print.html">下一页</a></li>
+</ul>
+</div>
+</div>
+<div id="sidebar">
+<div class="rs"></div>
+<div id="tools">
+<h5 id="tools_reference"><a href="css_reference.html">CSS 参考手册</a></h5>
+<h5 id="tools_example"><a href="../example/csse_examples.html">CSS 实例</a></h5>
+<h5 id="tools_quiz"><a href="css_quiz.html">CSS 测验</a></h5>
+</div>
+<div class="a120x600"><script type="text/javascript">var cpro_id="u1293136";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div><div class="b"></div>
+</div>
+</body>
+</html>

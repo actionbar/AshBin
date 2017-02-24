@@ -1,0 +1,119 @@
+<html xmlns:rdl>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<script src="rdl_properties.js"></script>
+<base target="_self">
+</head>
+<body>
+
+<script>
+
+//collFriendProperties=new Array();
+//collFriendDeclarations=new Array();
+//collFriendAtRules=new Array();
+//collFriendElements=new Array();
+//collFriendClasses=new Array();
+
+collFriendProperties=new Array(
+'writing-mode','direction','vertical-align','unicode-bidi','layout-flow'
+);
+
+//collIE40=new Array();
+//collIE50=new Array();
+//collIE55=new Array();
+//collIE60=new Array();
+
+collIE40=new Array(
+'BLOCKQUOTE','BODY','CENTER','DD','DIR','DIV','DL','DT','FIELDSET','FORM','Hn','HR','LI','LISTING','MARQUEE','MENU','OL','P','PLAINTEXT','PRE','style','TABLE','TD','TH','TR','UL','XMP'
+);
+
+collIE50=new Array(
+'TEXTAREA','INPUT type=password','INPUT type=text','runtimeStyle','currentStyle'
+);
+
+sStyle=
+'<style>\n'+
+'#idDIV{width:100%;height:90px;background-color:#87CEEB;padding:8px;writing-mode:tb-rl; text-align:left;}\n'+
+'#idCodeDiv{width:100%;padding:4px;font-family:verdana,tahoma;margin:12px 0px 0px 0px;background-color:#EEEEEE;font-weight:bold;}\n'+
+'<\/style>\n';
+
+sScript=
+'<script>\n'+
+'function rdl_change(e){\n'+
+'var oCodeDiv=document.all("idCodeDiv");\n'+
+'var oDiv=document.all("idDiv");\n'+
+'with (document.all("idSel1")) var sValue1=options[selectedIndex].value;\n'+
+'with (document.all("idSel2")) var sValue2=options[selectedIndex].value;\n'+
+'with (oDiv.style) {\n'+
+'writingMode=sValue1;textAlign=sValue2;\n'+
+'}\n'+
+'oCodeDiv.innerText="writing-mode : "+sValue1+"\\r\\n"+"text-align : "+sValue2+" ;";\n'+
+'}\n'+
+'<\/script>\n';
+
+sCode=
+'<div id=idDIV>请您用下面的按钮选择这段文字的 writing-mode 和 text-align 属性的值。看一看会发生什么，然后您就会明白他们的意义。<\/div>\n'+
+'<br>\n'+
+'<table><tr><td>\n'+
+'<select id="idSel1" onchange="rdl_change();">\n'+
+'<option value="lr-tb">---writing-mode---\n'+
+'<option value="lr-tb">lr-tb\n'+
+'<option value="tb-rl" selected>tb-rl\n'+
+'<\/select>\n'+
+'<\/td><td>\n'+
+'<select id="idSel2" onchange="rdl_change();">\n'+
+'<option value="left">---text-align---\n'+
+'<option value="left">left\n'+
+'<option value="right">right\n'+
+'<option value="center">center\n'+
+'<option value="justify">justify\n'+
+'<\/select>\n'+
+'<\/td><\/tr><\/table>\n'+
+'<div id=idCodeDiv>writing-mode : tb-rl ;<br>text-align : left ;<\/div>\n';
+
+iWinWidth=360;
+
+iWinHeight=350;
+
+//bRunCode=false;
+
+//bElements=false;
+
+</script>
+
+<div id=idContent>
+
+<div id=idContentTitle><span id=idTitleName>text-align</span>版本：CSS1　 兼容性：IE4+　继承性：有</div>
+
+<div class=cssColumnTitle>语法：</div>
+<div>
+<b>text-align  : </b><span class=cssDefault><b>left</b></span> | <b>right</b> | <b>center</b> | <b>justify</b>
+</div>
+
+<div class=cssColumnTitle>取值：</div>
+<table>
+<tr><td nowrap><b> left </b></td><td nowrap><b>:</b></td><td><b>默认值</b>。左对齐</td></tr>
+<tr><td nowrap><b> right </b></td><td nowrap><b>:</b></td><td>右对齐</td></tr>
+<tr><td nowrap><b> center </b></td><td nowrap><b>:</b></td><td>居中对齐</td></tr>
+<tr><td nowrap><b> justify </b></td><td nowrap><b>:</b></td><td>两端对齐</td></tr>
+</table>
+
+<div class=cssColumnTitle>说明：</div>
+<div>
+设置或检索对象中文本的对齐方式。<br>
+此属性作用于所有块对象(block elements)。在一个<b> div </b>对象里的所有块对象的会继承此属性值。 假如属性没有设置，这个参数将获取<b> null </b>值。<br>
+此属性对于<b> currentStyle </b>对象而言是只读的。对于其他对象而言是可读写的。<br>
+对应的脚本特性为<b> textAlign </b>。
+</div>
+
+<div class=cssColumnTitle>示例：</div>
+<div id=idSimpleCode>
+div { text-align : center; } 
+</div>
+
+</div>
+</body>
+</html>
+
+<!-- Part of RDL(TM) - Written by Rain1977 
+HomeSite: http://www.dhtmlet.com  E-Mail: dhtmlet@hotmail.com -->

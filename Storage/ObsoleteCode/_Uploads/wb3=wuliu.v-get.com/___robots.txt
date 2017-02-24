@@ -1,0 +1,19 @@
+User-agent: *
+Disallow: /i/
+Disallow: /*.php
+#Allow: /i/misc.php
+Disallow: /a/
+Sitemap: http://yiwu.wuliu.v-get.com/z/yiwu.xml
+
+Disallow: /i/api/
+Disallow: /i/data/
+Disallow: /i/source/
+Disallow: /i/install/
+Disallow: /i/template/
+Disallow: /i/config/
+Disallow: /i/uc_client/
+Disallow: /i/uc_server/
+Disallow: /i/static/
+Disallow: /i/*?mod=misc*
+Disallow: /i/*?mod=attachment*
+Disallow: /i/*mobile=yes*

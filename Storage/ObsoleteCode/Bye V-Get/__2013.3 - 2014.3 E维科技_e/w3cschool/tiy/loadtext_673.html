@@ -1,0 +1,15 @@
+<html>
+<body>
+<script type="text/vbscript">
+set xmlDoc=CreateObject("Microsoft.XMLDOM")
+xmlDoc.async="false"
+xmlDoc.load("../example/xpth/books.xml")
+set nodes=xmlDoc.selectNodes("/bookstore/book")
+for each x in nodes
+  document.write("<xmp>")
+  document.write(x.xml)
+  document.write("</xmp>")
+next
+</script>
+</body>
+</html>

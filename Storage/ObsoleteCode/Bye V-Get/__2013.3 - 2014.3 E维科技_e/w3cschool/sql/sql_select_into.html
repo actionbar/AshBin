@@ -1,0 +1,203 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="../c3.css" />
+<title>SQL SELECT INTO 语句</title>
+</head>
+<body class="serverscripting">
+<div id="wrapper">
+<div id="header">
+<a href="http://e.v-get.com/w3cschool/" style="float:left;">W3CSchool 在线教程</a>
+<div class="q g"><script type="text/javascript">var cpro_id="u1163355"</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div>
+<div id="navfirst">
+<ul id="menu">
+<li id="h"><a href="../h.html">HTML教程</a></li>
+<li id="x"><a href="../x.html">XML教程</a></li>
+<li id="b"><a href="../b.html">浏览器脚本</a></li>
+<li id="s"><a href="../s.html">服务器脚本</a></li>
+<li id="d"><a href="../d.html">dot net教程</a></li>
+<li id="m"><a href="../m.html">多媒体教程</a></li>
+<li id="w"><a href="../w.html">建站手册</a></li>
+</ul>
+</div><div id="navsecond">
+<div id="course">
+<h2>SQL 基础</h2>
+<ul>
+<li><a href="http://e.v-get.com/w3cschool/">SQL 首页</a></li>
+<li><a href="sql_intro.html">SQL 简介</a></li>
+<li><a href="sql_syntax.html">SQL 语法</a></li>
+<li><a href="sql_select.html">SQL select</a></li>
+<li><a href="sql_distinct.html">SQL distinct</a></li>
+<li><a href="sql_where.html">SQL where</a></li>
+<li><a href="sql_and_or.html">SQL AND &amp; OR</a></li>
+<li><a href="sql_orderby.html">SQL Order By</a></li>
+<li><a href="sql_insert.html">SQL insert</a></li>
+<li><a href="sql_update.html">SQL update</a></li>
+<li><a href="sql_delete.html">SQL delete</a></li>
+</ul>
+<h2>SQL 高级</h2>
+<ul>
+<li><a href="sql_top.html">SQL Top</a></li>
+<li><a href="sql_like.html">SQL Like</a></li>
+<li><a href="sql_wildcards.html">SQL 通配符</a></li>
+<li><a href="sql_in.html">SQL In</a></li>
+<li><a href="sql_between.html">SQL Between</a></li>
+<li><a href="sql_alias.html">SQL Aliases</a></li>
+<li><a href="sql_join.html">SQL Join</a></li>
+<li><a href="sql_join_inner.html">SQL Inner Join</a></li>
+<li><a href="sql_join_left.html">SQL Left Join</a></li>
+<li><a href="sql_join_right.html">SQL Right Join</a></li>
+<li><a href="sql_join_full.html">SQL Full Join</a></li>
+<li><a href="sql_union.html">SQL Union</a></li>
+<li><a href="sql_select_into.html">SQL Select Into</a></li>
+<li><a href="sql_create_db.html">SQL Create DB</a></li>
+<li><a href="sql_create_table.html">SQL Create Table</a></li>
+<li><a href="sql_constraints.html">SQL Constraints</a></li>
+<li><a href="sql_notnull.html">SQL Not Null</a></li>
+<li><a href="sql_unique.html">SQL Unique</a></li>
+<li><a href="sql_primarykey.html">SQL Primary Key</a></li>
+<li><a href="sql_foreignkey.html">SQL Foreign Key</a></li>
+<li><a href="sql_check.html">SQL Check</a></li>
+<li><a href="sql_default.html">SQL Default</a></li>
+<li><a href="sql_create_">SQL Create Index</a></li>
+<li><a href="sql_drop.html">SQL Drop</a></li>
+<li><a href="sql_alter.html">SQL Alter</a></li>
+<li><a href="sql_autoincrement.html">SQL Increment</a></li>
+<li><a href="sql_view.html">SQL View</a></li>
+<li><a href="sql_dates.html">SQL Date</a></li>
+<li><a href="sql_null_values.html">SQL Nulls</a></li>
+<li><a href="sql_isnull.html">SQL isnull()</a></li>
+<li><a href="sql_datatypes.html">SQL 数据类型</a></li>
+<li><a href="sql_server.html">SQL 服务器</a></li>
+</ul>
+<h2>SQL 函数</h2>
+<ul>
+<li><a href="sql_functions.html">SQL functions</a></li>
+<li><a href="sql_func_avg.html">SQL avg()</a></li>
+<li><a href="sql_func_count.html">SQL count()</a></li>
+<li><a href="sql_func_first.html">SQL first()</a></li>
+<li><a href="sql_func_last.html">SQL last()</a></li>
+<li><a href="sql_func_max.html">SQL max()</a></li>
+<li><a href="sql_func_min.html">SQL min()</a></li>
+<li><a href="sql_func_sum.html">SQL sum()</a></li>
+<li><a href="sql_groupby.html">SQL Group By</a></li>
+<li><a href="sql_having.html">SQL Having</a></li>
+<li><a href="sql_func_ucase.html">SQL ucase()</a></li>
+<li><a href="sql_func_lcase.html">SQL lcase()</a></li>
+<li><a href="sql_func_mid.html">SQL mid()</a></li>
+<li><a href="sql_func_len.html">SQL len()</a></li>
+<li><a href="sql_func_round.html">SQL round()</a></li>
+<li><a href="sql_func_now.html">SQL now()</a></li>
+<li><a href="sql_func_format.html">SQL format()</a></li>
+<li class="list_apart"><a href="sql_quickref.html">SQL 快速索引</a></li>
+<li><a href="sql_summary.html">SQL 总结</a></li>
+</ul>
+<h2>实例/测验</h2>
+<ul>
+<li><a href="sql_quiz.html">SQL 测验</a></li>
+</ul>
+</div>
+<div id="selected">
+<h2>建站手册</h2>
+<ul>
+<li><a href="../site/">网站构建</a></li>
+<li><a href="../w3c/">万维网联盟</a></li>
+<li><a href="http://e.v-get.com/w3c/">W3CSchool 教程</a></li>
+<li><a href="../quality/">网站品质</a></li>
+<li><a href="../semweb/">语义网</a></li>
+<li><a href="../hosting/">网站主机</a></li>
+</ul>
+<h2><a href="http://e.v-get.com/w3c/" class="f13">W3CSchool 教程</a></h2><div class="a120x90"><script type="text/javascript">var cpro_id="u1210867";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div></div>
+</div>
+<div id="maincontent">
+<h1>SQL SELECT INTO 语句</h1>
+<div id="tpn">
+<ul class="prenext">
+<li class="pre"><a href="sql_union.html">上一页</a></li>
+<li class="next"><a href="sql_create_db.html">下一页</a></li>
+</ul>
+</div>
+<div>
+<p><strong>SQL SELECT INTO 语句可用于创建表的备份复件。</strong></p>
+</div>
+<div>
+<h2>SELECT INTO 语句</h2>
+<p>SELECT INTO 语句从一个表中选取数据，然后把数据插入另一个表中。</p>
+<p>SELECT INTO 语句常用于创建表的备份复件或者用于对记录进行存档。</p>
+<h3>SQL SELECT INTO 语法</h3>
+<p>您可以把所有的列插入新表：</p>
+<pre>
+SELECT *
+INTO new_table_name [IN externaldatabase] 
+FROM old_tablename
+</pre>
+<p>或者只把希望的列插入新表：</p>
+<pre>
+SELECT column_name(s)
+INTO new_table_name [IN externaldatabase] 
+FROM old_tablename
+</pre>
+</div>
+<div>
+<h2>SQL SELECT INTO 实例 - 制作备份复件</h2>
+<p>下面的例子会制作 &#34;Persons&#34; 表的备份复件：</p>
+<pre>
+<code>SELECT</code> *
+<code>INTO</code> Persons_backup
+FROM Persons
+</pre>
+<p>IN 子句可用于向另一个数据库中拷贝表：</p>
+<pre>
+<code>SELECT</code> *
+<code>INTO</code> Persons <code>IN</code> 'Backup.mdb'
+FROM Persons
+</pre>
+<p>如果我们希望拷贝某些域，可以在 SELECT 语句后列出这些域：</p>
+<pre>
+<code>SELECT</code> LastName,FirstName
+<code>INTO</code> Persons_backup
+FROM Persons
+</pre>
+</div>
+<div>
+<h2>SQL SELECT INTO 实例 - 带有 WHERE 子句</h2>
+<p>我们也可以添加 WHERE 子句。</p>
+<p>下面的例子通过从 &#34;Persons&#34; 表中提取居住在 &#34;Beijing&#34; 的人的信息，创建了一个带有两个列的名为 &#34;Persons_backup&#34; 的表：</p>
+<pre>
+<code>SELECT</code> LastName,Firstname
+<code>INTO</code> Persons_backup
+FROM Persons
+<code>WHERE</code> City='Beijing'
+</pre>
+</div>
+<div>
+<h2>SQL SELECT INTO 实例 - 被连接的表</h2>
+<p>从一个以上的表中选取数据也是可以做到的。</p>
+<p>下面的例子会创建一个名为 &#34;Persons_Order_Backup&#34; 的新表，其中包含了从 Persons 和 Orders 两个表中取得的信息：</p>
+<pre>
+<code>SELECT</code> Persons.LastName,Orders.OrderNo
+<code>INTO</code> Persons_Order_Backup
+<code>FROM</code> Persons
+<code>INNER JOIN</code> Orders
+<code>ON</code> Persons.Id_P=Orders.Id_P
+</pre>
+</div>
+<div  id="bpn">
+<ul class="prenext">
+<li class="pre"><a href="sql_union.html">上一页</a></li>
+<li class="next"><a href="sql_create_db.html">下一页</a></li>
+</ul>
+</div>
+</div>
+<div id="sidebar">
+<div class="rs"></div>
+<div id="tools">
+<h5 id="tools_quiz"><a href="sql_quiz.html">SQL 测验</a></h5>
+</div>
+<div class="a120x600"><script type="text/javascript">var cpro_id="u1293136";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div><div class="b"></div>
+</div>
+</body>
+</html>

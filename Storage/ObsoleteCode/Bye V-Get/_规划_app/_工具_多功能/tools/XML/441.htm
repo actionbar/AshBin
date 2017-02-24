@@ -1,0 +1,285 @@
+<html>
+<head>
+<title>块、内联或列表项元素</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+
+<link rel = stylesheet href = "image/style.css">
+</head>
+<body bgcolor="#ffffff">
+<table width="688" border="0" cellspacing="0" cellpadding="0" align="center">
+  <tr bgcolor="EEEEEE"> 
+    <td height="22"><a href="index.htm">主页</a></td>
+  </tr>
+</table><br>
+<table border="0" cellpadding="0" cellspacing="0" width="688" align="center" height="490">
+  <tr valign="top"> 
+    <td rowspan="4" width="91">&nbsp; </td>
+    <td height="68" width="131"> 
+      <p><img src="image/doc.gif"></p>
+    </td>
+    <td rowspan="4" width="18"><b></b> </td>
+    <td height="68" width="387"><img src="image/title_doc.gif"></td>
+    <td rowspan="4" width="61"> 
+      <h6>&nbsp;</h6>
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td rowspan="3" valign="top" class="pt10" align="center" width="131" bgcolor="EEEEEE"> 
+      <p>&nbsp;</p>
+      <p><font color="#FF0000">※ 12.8 块、内联或列表项元素</font></p>
+       
+	</td>
+  </tr>
+  <tr valign="top"> 
+    <td width="387" height="308"> 
+      <table width="100%" border="0" cellpadding="0">
+        <tr> 
+          <td>
+
+           <h4><a name="_Toc467205086">12.8 块、内联或列表项元素</a></h4>
+<p></p>
+<p>从CCS1来看，所有的元素要么是块级元素、要么是内联元素、列表项元素或不可见。(CSS2添加了更多的可能性。)某个给定元素的类型是由其display属性设置的。此属性根据所给的关键字有四个可能的值：</p>
+<p>block</p>
+<p>inline</p>
+<p>list-item</p>
+<p>none</p>
+<p><img src="Image/BK000212-56.gif" width=59 height=65 align="left">在CSS1中，display属性的缺省值是block，这意味着此项出现在它自己的方框中，并且以某种方式与其他元素分开。但在CSS2中，缺省值已变为inline，这意味着文本中元素的内容只是依次放在前一元素之后。大多数Web浏览器使用CSS2缺省值(inline)，而不是CSS1的缺省值(block)。</p>
+<p>在HTML中，EM、STRONG、B、I和A都是内联元素。例如，可以把本段中的EM、STRONG、B、I和A认为是内联码元素。它们没有与其他文本分开。</p>
+<p>块级元素通常使用换行与其他块级元素分隔开。在HTML中，P、BLOCKQUOTE、H1直至H6和HR，都是块级元素。在本页中看到的各段都是块级元素。块级元素可以包含内联元素或其他块级元素，但内联元素只能包含其他内联元素，而不能包含块级元素。</p>
+<p>列表项元素是在其前有列表项标记的块级元素。在HTML中，L1是列表项元素。列表项元素在将下面章节中进一步讨论。</p>
+<p>最后，当把元素的display属性设置为none时，就会使该元素不可见，即不在屏幕上加以显示。网页上的其他可见元素则不受影响。在HTML中，TITLE、META和HEAD可能有none值的display属性。在XML中，display:none对于元素中的元信息通常是有用的。</p>
+<p>考察清单12-7，它是莎世比亚的《第十二夜》(<i>Twelfth Night</i>)剧本的大纲。它包括下列元素：</p>
+<p> SYNOPSIS&#9;ACT_NUMBER</p>
+<p> TITLE&#9;SCENE_NUMBER</p>
+<p> ACT&#9;LOCATION</p>
+<p> SCENE&#9;CHARACTER</p>
+<p>只使用显示属性就可以使数据格式化。SYNOPSIS、TITLE、ACT和SCENE都是块级元素。ACT_NUMBER、SCENE_NUMBER、LOCATION和CHARACTER作为内联元素。清单12-8是一个非常简单的样式单，此样式单即可完成这一任务。</p>
+<p>清单12-7：在XML中莎世比亚的《第十二夜》的一个大纲</p>
+<p>&lt;?xml version="1.0"?&gt;</p>
+<p>&lt;?xml-stylesheet type="text/css" href="12-8.css"?&gt;</p>
+<p>&lt;SYNOPSIS&gt;</p>
+<p> &lt;TITLE&gt;Twelfth Night&lt;/TITLE&gt;</p>
+<p></p>
+<p> &lt;ACT&gt;</p>
+<p> &lt;ACT_NUMBER&gt;Act 1&lt;/ACT_NUMBER&gt;</p>
+<p> &lt;SCENE&gt;</p>
+<p> &lt;SCENE_NUMBER&gt;Scene 1&lt;/SCENE_NUMBER&gt;</p>
+<p> &lt;LOCATION&gt;&lt;CHARACTER&gt;Duke Orsino&lt;/CHARACTER&gt; s palace</p>
+<p> &lt;/LOCATION&gt;</p>
+<p> &lt;/SCENE&gt;</p>
+<p> &lt;SCENE&gt;</p>
+<p> &lt;SCENE_NUMBER&gt;Scene 2&lt;/SCENE_NUMBER&gt;</p>
+<p> &lt;LOCATION&gt;The sea coast&lt;/LOCATION&gt;</p>
+<p> &lt;/SCENE&gt;</p>
+<p> &lt;SCENE&gt;</p>
+<p> &lt;SCENE_NUMBER&gt;Scene 3&lt;/SCENE_NUMBER&gt;</p>
+<p> &lt;LOCATION&gt;&lt;CHARACTER&gt;Olivia&lt;/CHARACTER&gt; s house</p>
+<p> &lt;/LOCATION&gt;</p>
+<p> &lt;/SCENE&gt;</p>
+<p> &lt;SCENE&gt;</p>
+<p> &lt;SCENE_NUMBER&gt;Scene 4&lt;/SCENE_NUMBER&gt;</p>
+<p> &lt;LOCATION&gt;&lt;CHARACTER&gt;Duke Orsino&lt;/CHARACTER&gt; s palace.</p>
+<p> &lt;/LOCATION&gt;</p>
+<p> &lt;/SCENE&gt;</p>
+<p> &lt;SCENE&gt;</p>
+<p> &lt;SCENE_NUMBER&gt;Scene 5&lt;/SCENE_NUMBER&gt;</p>
+<p> &lt;LOCATION&gt;&lt;CHARACTER&gt;Olivia&lt;/CHARACTER&gt; s house</p>
+<p> &lt;/LOCATION&gt;</p>
+<p> &lt;/SCENE&gt;</p>
+<p> &lt;/ACT&gt;</p>
+<p></p>
+<p> &lt;ACT&gt;</p>
+<p> &lt;ACT_NUMBER&gt;Act 2&lt;/ACT_NUMBER&gt;</p>
+<p> &lt;SCENE&gt;</p>
+<p> &lt;SCENE_NUMBER&gt;Scene 1&lt;/SCENE_NUMBER&gt;</p>
+<p> &lt;LOCATION&gt;The sea-coast&lt;/LOCATION&gt;</p>
+<p> &lt;/SCENE&gt;</p>
+<p> &lt;SCENE&gt;</p>
+<p> &lt;SCENE_NUMBER&gt;Scene 2&lt;/SCENF_NUMBER&gt;</p>
+<p> &lt;LOCATION&gt;A street&lt;/LOCATION&gt;</p>
+<p> &lt;/SCENE&gt;</p>
+<p> &lt;SCENE&gt;</p>
+<p> &lt;SCENE NUMBER&gt;Scene 3&lt;/SCENE-NUMBER&gt;</p>
+<p> &lt;LOCATION&gt;&lt;CHARACTER&gt;Olivia&lt;/CHARACTER&gt; s house</p>
+<p> &lt;/LOCATION&gt;</p>
+<p> &lt;/SCENE&gt;</p>
+<p> &lt;SCENE&gt;</p>
+<p> &lt;SCENE_NUMBER&gt;Scene 4&lt;/SCENE_NUMBER&gt;</p>
+<p> &lt;LOCATION&gt;&lt;CHARACTER&gt;Duke Orsino&lt;/CHARACTER&gt; s palace.</p>
+<p> &lt;/LOCATION&gt;</p>
+<p> &lt;/SCENE&gt;</p>
+<p> &lt;SCENE&gt;</p>
+<p> &lt;SCENE_NUMBER&gt;Scene 5&lt;/SCENE_NUMBER&gt;</p>
+<p> &lt;LOCATION&gt;&lt;CHARACTER&gt;Olivia&lt;/CHARACTER&gt; s garden</p>
+<p> &lt;/LOCATION&gt;</p>
+<p> &lt;/SCENE&gt;</p>
+<p> &lt;/ACT&gt;</p>
+<p></p>
+<p> &lt;ACT&gt;</p>
+<p> &lt;ACT_NUMBER&gt;Act 3&lt;/ACT_NUMBER&gt;</p>
+<p> &lt;SCENE&gt;</p>
+<p> &lt;SCENE_NUMBER&gt;Scene 1&lt;/SCENE_NUMBER&gt;</p>
+<p> &lt;LOCATION&gt;&lt;CHARACTER&gt;Oljvia&lt;/CHARACTER&gt; s garden</p>
+<p> &lt;/LOCATION&gt;</p>
+<p> &lt;/SCENE&gt;</p>
+<p> &lt;SCENE&gt;</p>
+<p> &lt;SCENE_NUMBER&gt;Scene 2&lt;/SCENE_NUMBER&gt;</p>
+<p> &lt;LOCATION&gt;&lt;CHARACTER&gt;Olivia&lt;/CHARACTER&gt; s house</p>
+<p> &lt;/LOCATION&gt;</p>
+<p> &lt;/SCENE&gt;</p>
+<p> &lt;SCENE&gt;</p>
+<p> &lt;SCENE_NUMBER&gt;Scene 3&lt;/SCENE_NUMBER&gt;</p>
+<p> &lt;LOCATION&gt;A street&lt;/LOCATION&gt;</p>
+<p> &lt;/SCENE&gt;</p>
+<p> &lt;SCENE&gt;</p>
+<p> &lt;SCENE_NUMBER&gt;Scene 4&lt;/SCENE_NUMBER&gt;</p>
+<p> &lt;LOCATION&gt;&lt;CHARACTER&gt;Olivia&lt;/CHARACTER&gt; s garden</p>
+<p> &lt;/LOCATION&gt;</p>
+<p> &lt;/SCENE&gt;</p>
+<p> &lt;/ACT&gt;</p>
+<p></p>
+<p> &lt;ACT&gt;</p>
+<p> &lt;ACT_NUMBER&gt;Act 4&lt;/ACT_NUMBER&gt;</p>
+<p> &lt;SCENE&gt;</p>
+<p> &lt;SCENE_NUMBER&gt;Scene 1&lt;/SCENE_NUMBER&gt;</p>
+<p> &lt;LOCATION&gt;&lt;CHARACTER&gt;Olivia&lt;/CHARACTER&gt; s front yard</p>
+<p> &lt;/LOCATION&gt;</p>
+<p> &lt;/SCENE&gt;</p>
+<p> &lt;SCENE&gt;</p>
+<p> &lt;SCENE_NUMBER&gt;Scene 2&lt;/SCENE_NUMBER&gt;</p>
+<p> &lt;LOCATION&gt;&lt;CHARACTER&gt;Olivia&lt;/CHARACTER&gt; s house</p>
+<p> &lt;/LOCATION&gt;</p>
+<p> &lt;/SCENE&gt;</p>
+<p> &lt;SCENE&gt;</p>
+<p> &lt;SCENE_NUMBER&gt;Scene 3&lt;/SCENE_NUMBER&gt;</p>
+<p> &lt;LOCATION&gt;&lt;CHARACTER&gt;Olivia&lt;/CHARACTER&gt; s garden</p>
+<p> &lt;/LOCATION&gt;</p>
+<p> &lt;/SCENE&gt;</p>
+<p> &lt;/ACT&gt;</p>
+<p></p>
+<p> &lt;ACT&gt;</p>
+<p> &lt;ACT_NUMBER&gt;Act 5&lt;/ACT_NUMBER&gt;</p>
+<p> &lt;SCENE&gt;</p>
+<p> &lt;SCENE_NUMBER&gt;Scene 1&lt;/SCENE_NUMBER&gt;</p>
+<p> &lt;LOCATION&gt;&lt;CHARACTER&gt;Olivia&lt;/CHARACTER&gt; s front yard</p>
+<p> &lt;/LOCATION&gt;</p>
+<p> &lt;/SCENE&gt;</p>
+<p> &lt;/ACT&gt;</p>
+<p></p>
+<p>&lt;/SYNOPSIS&gt;</p>
+<p>清单12-8：用于剧本大纲的简单的样式单</p>
+<p>SYNOPSIS, TITLE, ACT, SCENE { display: block }</p>
+<p>图12-4显示的是使用清单12-8的样式单加载到Mozilla中的《第十二夜》大纲。注意，在清单12-8中，没有必要明确地指定ACT_NUMBER、SCENE_NUMBER、LOCATION和CHARACTER为内联元素。因为这是缺省值，除非有其他指定。display属性不能被子属性所继承。因而，仅因为SCENE是块级元素并不意味着其子元素SCENE_NUMBER和LOCATION也是块级元素。</p>
+<h5><a name="_Toc467205087">12.8.1 列表项</a></h5>
+<p>如果为display属性选择了list-item值，就有三种其他属性可供设置。这些属性影响列表项如何显示。下面列出了这三个附加属性：</p>
+<p>1．list_style_type</p>
+<p>2．list_style_image</p>
+<p>3．list_style_position</p>
+<p>还有一个简略的list-style属性，使用它就可以在一个规则中设置所有的三个属性。</p>
+<img src="Image/BK000212-52.gif" width=49 height=49 align="LEFT" hspace=12> 
+<p>Internet Explorer 5.0和Mozilla 5.0第三版仍不支持display:list-item属性。Mozilla把列表项作为简单的块级元素来处理，而Internet 
+  Explorer则更差，它把列表项作为内联元素来处理。</p>
+<p align="center"><img src="Image/BK000212-20.gif" width=372 height=347></p>
+<p align="center">图12-4 在Mozilla 5.0中显示的《第十二夜》大纲</p>
+<p>list-style-type属性确定每个列表项前面的项目符号字符的性质，其可能值为： 
+<p> disc</p>
+<p> circle</p>
+<p> square</p>
+<p> decimal</p>
+<p> lower-roman</p>
+<p> upper-roman</p>
+<p> lower-alpha</p>
+<p> upper-alpha</p>
+<p> none</p>
+<p>缺省值为disc。例如，把清单12-9中的样式单应用到清单12-7的大纲中，就定义了ACT和SCENE为列表项。可是，ACT没有项目符号，而SCENE赋以方形的项目符号。</p>
+<p>清单12-9：使用列表项的剧本大纲的样式单</p>
+<p>SYNOPSIS, TITLE { display: block }</p>
+<p>ACT { display: list-item; list-style-type: none }</p>
+<p>SCENE { display: list-item; list-style-type: square }</p>
+<b>12.8.1.2 list-style-image属性</b> 
+<p></p>
+<p>同样，也可使用从文件中加载的点位图影像作为项目符号。为此，应设置list-style-image属性为影像的URL。如果list-style-image和list-style-type都被设置，那么，列表项前面就既放置影像也放置项目符号。但这情况很少见。清单12-10在各个场景前使用保存在heart.gif文件中的&#169; 
+  作为项目符号(《第十二夜》毕竟是一部浪漫喜剧)。</p>
+<p>清单12-10：使用list-style-image属性的用于剧本大纲的样式单</p>
+<p>SYNOPSIS, TITLE { display: block }</p>
+<p>ACT { display: list-item; list-style-type: none }</p>
+<p>SCENE { display: list-item;</p>
+<p>list-style-image: url(heart.gif); list-style-type: none }</p>
+<b>12.8.1.3 list-style-position属性</b> 
+<p></p>
+<p>list-style-position属性指定项目符号是在列表项文本之内还是之外绘制。合法的值是inside和outside。缺省值为outside。当文本折成多行时，才会看出明显的差别。下列是list-style-position属性为inside时的显示结果：</p>
+<p> &#183; If music be the food of love, play on/Give me excess of it, that, surfeiting,/The 
+  appetite may sicken, and so die./That strain again! it had a dying fall:<sup> 
+  [注]</sup></p>
+<p>下列是list-style-position属性为outside时的显示结果：</p>
+<p> &#183; If music be the food of love, play on/Give me excess of it, that, surfeiting,/The 
+  appetite may sicken, and so die./That strain again! it had a dying fall:</p>
+<b>12.8.1.4 list-style简略语属性 </b> 
+<p>最后介绍一下list-style属性，此属性是一种简写，它允许一次性设置上面描述的所有三个属性。例如下面的规则说明SCENE显示在内部，带有红桃影像而没有任何项目符号。</p>
+<p>SCENE { display: list-item;</p>
+<p> list-style: none inside url(heart.gif) }</p>
+<h5><a name="_Toc467205088">12.8.2 whitespace属性</a></h5>
+<p>white-space属性确定元素内部空白(空格符、制表符和换行符)的重要性。允许值为：</p>
+<p>normal</p>
+<p>pre</p>
+<p>nowrap</p>
+<p>缺省值为normal，仅表示把一连串的空白压缩成一个空格，并且单词折行以与屏幕或页面相适应。这在HTML和XML中是处理空白的通用办法。</p>
+<p>pre值的作用就像HTML中的PRE(预格式化)元素。在输入的文档中，所有的空白都认为是有意义的，并在输出设备上按照原样再现出来，或许有一些稍稍地变化成等宽字体。这对许多计算机源码或一些诗来说，是很有用的。清单12-11就是一首诗，名叫<i>The 
+  Altar</i>，它是由George Herbert创作的，在这首诗中，间距是很重要的。在这首诗中，各行形成了本诗主题的轮廓。</p>
+<p>清单12-11： XML中的<i>The Altar</i></p>
+<p>&lt;?xml version="1.0"?&gt;</p>
+<p>&lt;?xml-stylesheet type="text/css" href="12-12.css"?&gt;</p>
+<p>&lt;POEM&gt;</p>
+<p></p>
+<p>&lt;TITLE&gt;The Altar&lt;/TITLE&gt;</p>
+<p>&lt;POET&gt;George Herbert&lt;/POET&gt;</p>
+<p></p>
+<p>&lt;VERSE&gt; A broken ALTAR, Lord, thy servant rears,&lt;/VERSE&gt;</p>
+<p>&lt;VERSE&gt; Made of a heart, and cemented with tears:&lt;/VERSE&gt;</p>
+<p>&lt;VERSE&gt; Whose parts are as thy hand did frame;&lt;/VERSE&gt;</p>
+<p>&lt;VERSE&gt; No workman s tool hath touched the same.&lt;/VERSE&gt;</p>
+<p>&lt;VERSE&gt; No workman s tool hath touched the same.&lt;/VERSE&gt;</p>
+<p>&lt;VERSE&gt; A HEART alone&lt;/VERSE&gt;</p>
+<p>&lt;VERSE&gt; Is such a stone,&lt;/VERSE&gt;</p>
+<p>&lt;VERSE&gt; As nothing but&lt;/VERSE&gt;</p>
+<p>&lt;VERSE&gt; Thy power doth cut.&lt;/VERSE&gt;</p>
+<p>&lt;VERSE&gt; Wherefore each part&lt;/VERSE&gt;</p>
+<p>&lt;VERSE&gt; Of my hard heart&lt;/VERSE&gt;</p>
+<p>&lt;VERSE&gt; Meets in this frame,&lt;/VERSE&gt;</p>
+<p>&lt;VERSE&gt; To praise thy name:&lt;/VERSE&gt;</p>
+<p>&lt;VERSE&gt; That if I chance to hold my peace,&lt;/VERSE&gt;</p>
+<p>&lt;VERSE&gt; These stones to praise thee may not cease.&lt;/VERSE&gt;</p>
+<p>&lt;VERSE&gt; 0 let thy blessed SACRIFICE be mine,&lt;/VERSE&gt;</p>
+<p>&lt;VERSE&gt; And sanctify this ALTAR to be thine.&lt;/VERSE&gt;</p>
+<p></p>
+<p>&lt;/POEM&gt;</p>
+<p>清单12-12是一个样式单，它使用white-space: pre来保留这一形式。图12-5为在Mozilla中显示的结果。</p>
+<p align="center"><img src="Image/BK000212-21.gif" width=346 height=276></p>
+<p align="center">图12-5 使用white-space:pre的George Herbert诗<i>The Altar</i></p>
+<i> </i> 
+<p><img src="Image/BK000212-52.gif" width=41 height=41 align="LEFT" hspace=12>Internet 
+  Explorer 5.0不支持white-space:pre。</p>
+<p>　</p>
+<p>清单12-12：对空白敏感的诗的样式单</p>
+<p>POEM { display: block }</p>
+<p>TITLE { display: block; font-size: 16pt; font-weight: bold }</p>
+<p>POET { display: block; margin-bottom: 10px }</p>
+<p>STANZA { display: block; margin-bottom: 10px }</p>
+<p>VERSE { display: block;</p>
+<p> white-space: pre; font-family: monospace }</p>
+<p>最后介绍一下nowrap值，它采取一种折衷方案：在源文本中，有明确换行符的位置，准确地折行，但把其他一连串空白压缩成一个单空白。在名著的手稿或其他一些诗中，换行符是非常重要的，而单词之间的间隔则不显得那么重要，此时如实地再现换行符可能是很有用的。</p>
+<img src="Image/BK000212-52.gif" width=49 height=49 align="LEFT" hspace=12> 
+<p>Internet Explorer 5.0及其早期版本不能正确地支持nowrap。</p>
+<p>&nbsp;</p>
+ 
+<a href='440.htm'>&lt;&lt;上一篇</a>&nbsp;&nbsp;<a href='442.htm'>下一篇&gt;&gt;</a></td>
+        </tr>
+      </table>
+      <p>&nbsp; </p>
+    </td>
+  </tr>
+</table>
+
+</body>
+
+</html>

@@ -1,0 +1,68 @@
+		</div>
+		<div style="clear:both"></div>
+		<div id="footer">
+			<div class="left">
+				小魏出品 必属精品
+			</div>
+			<div class="right">
+				<span><a href="#">联系我们</a></span> ·
+				<span><a href="{$siteurl}public/html/help.html" target="_blank">帮助中心</a></span> ·
+				<span><a href="http://arevb.com">powered by arevb!</a></span>
+			</div>
+		</div>
+	</div>
+</body>
+<script type="text/javascript" src="{$siteurl}public/js/popwin.js"></script>
+<script type="text/javascript">
+$(function(){
+	$("#search_select_menu").click(function(){
+		$("#search_select_menus").css("display", $("#search_select_menus").css("display") == 'none' ? 'block' : 'none');
+	});
+	$("#search_select_menus a").click(function(){
+		$("#search_filter").val($(this).attr('rel'));
+		$("#search_select_menu").text($(this).text());
+		$("#search_select_menus").css("display", 'none');
+	});
+	$(document).click(function(event){
+		var pageY = event.pageY;
+		if (pageY < $("#menu").offset().top || pageY > $("#menu").offset().top+80)
+		{
+			if ($("#search_select_menus").css("display") != 'none')
+			{
+				$("#search_select_menus").css("display", 'none');
+			}
+		}
+	});
+	<!--{if $logger_uid > 0}-->
+	$(".refer_a").click(function(){
+		var nid = $(this).attr('r');
+		pop_win.load("{$siteurl}note/"+nid+"/refer");
+	});
+	$(".delete_a").click(function(){
+		var nid = $(this).attr('r');
+		if (!confirm("您确定要删除此项吗？"))
+		{
+			return false;
+		}
+		$.post("{eval echo miniurl('note');}/"+nid+"/del", {submit_post:1}, function(data){
+			data = eval('('+data+')');
+			if (data.success)
+			{
+				$("#post_"+nid).fadeOut();
+			}
+			else
+			{
+				alert(data.message);
+			}
+		});
+	});
+	$(".pm_send_a").click(function(){
+		pop_win.load("{eval echo miniurl('pms/send?uid=');}"+$(this).attr('r'));
+	});
+	$(".to_follow_a").click(function(){
+		pop_win.load("{$boardurl}follow/"+$(this).attr('r')+"/"+$(this).attr('a'));
+	});
+	<!--{/if}-->
+});
+</script>
+</html>{eval updatesession();}

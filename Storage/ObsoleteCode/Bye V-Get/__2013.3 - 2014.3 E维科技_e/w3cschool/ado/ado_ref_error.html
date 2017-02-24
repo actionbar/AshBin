@@ -1,0 +1,161 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="../c3.css" />
+<title>ADO Error 对象</title>
+</head>
+<body class="serverscripting">
+<div id="wrapper">
+<div id="header">
+<a href="http://e.v-get.com/w3cschool/" style="float:left;">W3CSchool 在线教程</a>
+<div class="q g"><script type="text/javascript">var cpro_id="u1163355"</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div>
+<div id="navfirst">
+<ul id="menu">
+<li id="h"><a href="../h.html">HTML教程</a></li>
+<li id="x"><a href="../x.html">XML教程</a></li>
+<li id="b"><a href="../b.html">浏览器脚本</a></li>
+<li id="s"><a href="../s.html">服务器脚本</a></li>
+<li id="d"><a href="../d.html">dot net教程</a></li>
+<li id="m"><a href="../m.html">多媒体教程</a></li>
+<li id="w"><a href="../w.html">建站手册</a></li>
+</ul>
+</div><div id="navsecond">
+<div id="course">
+<h2>ADO 教程</h2>
+<ul>
+<li><a href="http://e.v-get.com/w3cschool/">ADO 首页</a></li>
+<li><a href="ado_intro.html">ADO 简介</a></li>
+<li><a href="ado_connect.html">ADO 连接</a></li>
+<li><a href="ado_recordset.html">ADO 记录集</a></li>
+<li><a href="ado_display.html">ADO 显示</a></li>
+<li><a href="ado_query.html">ADO 查询</a></li>
+<li><a href="ado_sort.html">ADO 排序</a></li>
+<li><a href="ado_add.html">ADO 添加</a></li>
+<li><a href="ado_update.html">ADO 更新</a></li>
+<li><a href="ado_delete.html">ADO 删除</a></li>
+<li><a href="ado_getstring.html">ADO 加速</a></li>
+</ul>
+<h2>ADO 对象</h2>
+<ul>
+<li><a href="ado_ref_command.html">ADO Command</a></li>
+<li><a href="ado_ref_connection.html">ADO Connection</a></li>
+<li><a href="ado_ref_error.html">ADO Error</a></li>
+<li><a href="ado_ref_field.html">ADO Field</a></li>
+<li><a href="ado_ref_parameter.html">ADO Parameter</a></li>
+<li><a href="ado_ref_property.html">ADO Property</a></li>
+<li><a href="ado_ref_record.html">ADO Record</a></li>
+<li><a href="ado_ref_recordset.html">ADO Recordset</a></li>
+<li><a href="ado_ref_stream.html">ADO Stream</a></li>
+<li><a href="ado_datatypes.html">ADO 数据类型</a></li>
+<li><a href="ado_summary.html">ADO 总结</a></li>
+</ul>
+<h2>实例</h2>
+<ul>
+<li><a href="../example/adoe_examples.html">ADO 实例</a></li>
+</ul>
+</div>
+<div id="selected">
+<h2>建站手册</h2>
+<ul>
+<li><a href="../site/">网站构建</a></li>
+<li><a href="../w3c/">万维网联盟</a></li>
+<li><a href="http://e.v-get.com/w3c/">W3CSchool 教程</a></li>
+<li><a href="../quality/">网站品质</a></li>
+<li><a href="../semweb/">语义网</a></li>
+<li><a href="../hosting/">网站主机</a></li>
+</ul>
+<h2><a href="http://e.v-get.com/w3c/" class="f13">W3CSchool 教程</a></h2><div class="a120x90"><script type="text/javascript">var cpro_id="u1210867";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div></div>
+</div>
+<div id="maincontent">
+<h1>ADO Error 对象</h1>
+<div id="tpn">
+<ul class="prenext">
+<li class="pre"><a href="ado_ref_connection.html">上一页</a></li>
+<li class="next"><a href="ado_ref_field.html">下一页</a></li>
+</ul>
+</div>
+<div>
+<h2>Error 对象</h2>
+<p>ADO Error 对象包含与单个操作 (涉及提供者）有关的数据访问错误的详细信息。</p>
+<p>ADO 会因每次错误产生一个 Error 对象。每个 Error 对象包含具体错误的详细信息，且 Error 对象被存储在 Errors 集合中。要访问这些错误，就必须引用某个具体的连接。</p>
+<p>循环遍历 Errors 集合：</p>
+<pre>&lt;%
+for each objErr in objConn.Errors
+  response.write(&#34;&lt;p&gt;&#34;)
+  response.write(&#34;Description: &#34;)
+  response.write(objErr.Description &amp; &#34;&lt;br /&gt;&#34;)
+  response.write(&#34;Help context: &#34;)
+  response.write(objErr.HelpContext &amp; &#34;&lt;br /&gt;&#34;)
+  response.write(&#34;Help file: &#34;)
+  response.write(objErr.HelpFile &amp; &#34;&lt;br /&gt;&#34;)
+  response.write(&#34;Native error: &#34;)
+  response.write(objErr.NativeError &amp; &#34;&lt;br /&gt;&#34;)
+  response.write(&#34;Error number: &#34;)
+  response.write(objErr.Number &amp; &#34;&lt;br /&gt;&#34;)
+  response.write(&#34;Error source: &#34;)
+  response.write(objErr.Source &amp; &#34;&lt;br /&gt;&#34;)
+  response.write(&#34;SQL state: &#34;)
+  response.write(objErr.SQLState &amp; &#34;&lt;br /&gt;&#34;)
+  response.write(&#34;&lt;/p&gt;&#34;)
+next
+%&gt;</pre>
+<h3>语法</h3>
+<pre>objErr.property</pre>
+</div>
+<div>
+<h2>属性</h2>
+<table class="dataintable">
+<tr>
+<th>属性</th>
+<th>描述</th>
+</tr>
+<tr>
+<td><a href="prop_err_description.html">Description</a></td>
+<td>返回一个错误描述。</td>
+</tr>
+<tr>
+<td><a href="prop_err_helpcontext.html">HelpContext</a></td>
+<td>返回 Microsoft Windows help system 中某个主题的内容 ID。</td>
+</tr>
+<tr>
+<td><a href="prop_err_helpfile.html">HelpFile</a></td>
+<td>返回 Microsoft Windows help system 中帮助文件的完整路径。</td>
+</tr>
+<tr>
+<td><a href="prop_err_nativeerror.html">NativeError</a></td>
+<td>返回来自 provider 或数据源的错误代码。</td>
+</tr>
+<tr>
+<td><a href="prop_err_number.html">Number</a></td>
+<td>返回可标识错误的一个唯一的数字。</td>
+</tr>
+<tr>
+<td><a href="prop_err_source.html">Source</a></td>
+<td>返回产生错误的对象或应用程序的名称。</td>
+</tr>
+<tr>
+<td><a href="prop_err_sqlstate.html">SQLState</a></td>
+<td>返回一个 5 字符的 SQL 错误码。</td>
+</tr>
+</table>
+</div>
+<div id="bpn">
+<ul class="prenext">
+<li class="pre"><a href="ado_ref_connection.html">上一页</a></li>
+<li class="next"><a href="ado_ref_field.html">下一页</a></li>
+</ul>
+</div>
+</div>
+<div id="sidebar">
+<div class="rs"></div>
+<div id="tools">
+<h5 id="tools_reference"><a href="ado_reference.html">ADO 参考手册</a></h5>
+<h5 id="tools_example"><a href="../example/adoe_examples.html">ADO 实例</a></h5>
+</div>
+<div class="a120x600"><script type="text/javascript">var cpro_id="u1293136";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div><div class="b"></div>
+</div>
+</body>
+</html>

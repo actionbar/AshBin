@@ -1,0 +1,177 @@
+<html>
+<head>
+<title>有声样式单</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+
+<link rel = stylesheet href = "image/style.css">
+</head>
+<body bgcolor="#ffffff">
+<table width="688" border="0" cellspacing="0" cellpadding="0" align="center">
+  <tr bgcolor="EEEEEE"> 
+    <td height="22"><a href="index.htm">主页</a></td>
+  </tr>
+</table><br>
+<table border="0" cellpadding="0" cellspacing="0" width="688" align="center" height="490">
+  <tr valign="top"> 
+    <td rowspan="4" width="91">&nbsp; </td>
+    <td height="68" width="131"> 
+      <p><img src="image/doc.gif"></p>
+    </td>
+    <td rowspan="4" width="18"><b></b> </td>
+    <td height="68" width="387"><img src="image/title_doc.gif"></td>
+    <td rowspan="4" width="61"> 
+      <h6>&nbsp;</h6>
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td rowspan="3" valign="top" class="pt10" align="center" width="131" bgcolor="EEEEEE"> 
+      <p>&nbsp;</p>
+      <p><font color="#FF0000">※ 13.7 有声样式单</font></p>
+       
+	</td>
+  </tr>
+  <tr valign="top"> 
+    <td width="387" height="308"> 
+      <table width="100%" border="0" cellpadding="0">
+        <tr> 
+          <td>
+
+           <h4><a name="_Toc467205958">13.7 有声样式单</a></h4>
+<p>视觉缺陷的用户已经使用特殊的软件来阅读Web网页。将来，使用这种方法可能会扩大到视觉完好的人，他们一边浏览Web，同时一边使用电话进行交谈、一边驾驶汽车、一边洗涮盘子以及进行其他活动，而在这些过程中，眼睛和手用于不同的目的。CSS2支持一些新的特性，以便描述如何大声地读出元素，以及如何打印或在屏幕上显示。这些新特性将在下面的章节中讨论。清单13-3为一有声样式单，它使用指定方法，来讲出在普通与剧本有关的XML元素中找到的信息。</p>
+<p>清单13-3：用于剧本或十四行诗的有声样式单</p>
+<p>TITLE, AUTHOR, ACT, SCENE {</p>
+<p> voice-family: narrator;</p>
+<p> stress: 20;</p>
+<p> richness: 90;</p>
+<p> cue-before: url("ping.au")</p>
+<p> }</p>
+<p> .narrator { pause: 20ms;</p>
+<p> cue-before: url("pop.au");</p>
+<p> cue-after: url("pop.au");</p>
+<p> azimuth: 30deg;</p>
+<p> elevation: above }</p>
+<p>ACT { pause: 30ms 40ms } /* pause-before: 30ms;</p>
+<p> pause-after: 40ms */</p>
+<p>SCENE { pause-after: l0ms } /* pause-after: l0ms */</p>
+<p>SCENE { cue-before: url("bell.aiff");</p>
+<p> cue-after: url("dong.wav") }</p>
+<p>MOOD.sad&#9;&#9;&#9;{ play-during: url("violins.aiff") }</p>
+<p>MOOD.funereal&#9;{ play-during: url("harp.wav") mix }</p>
+<p>MOOD.quiet&#9;&#9;{ play-during: none }</p>
+<p>LINE.narrator&#9;&#9;{ azimuth: behind } /* 180deg */</p>
+<p>LINE.part.romeo&#9;&#9;{ voice-family: romeo, male }</p>
+<p>LINE.part.juliet&#9;&#9;{ voice-family: juliet, female }</p>
+<p>LINE.part.hercules&#9;{ azimuth: center-left }</p>
+<p>LINE.part.richard&#9;{ azimuth: right }</p>
+<p>LINE.part.carmen&#9;&#9;{ volume: x-soft }</p>
+<p>LINE.part.musel&#9;&#9;{ elevation: 60deg }</p>
+<p>LINE.part.muse2&#9;&#9;{ elevation: 30deg }</p>
+<p>LINE.part.muse3&#9;&#9;{ elevation: level }</p>
+<h5><a name="_Toc467205959">13.7.1 说话属性</a></h5>
+<p>speak（说话）属性确定是否用声音说出文本。如果是，应如何说。如果speak为normal值，则使用最佳的语音合成来说出此段文本。如果speak值为spell-out，则一个字母一个字母地拼出文本，这对于不常用或语音合成器可能无法处理的外来语来说，或许是很有用的。缺省值是none（例如，只是视觉上显示内容，而不管语言合成）。</p>
+<h5><a name="_Toc467205960">13.7.2 音量属性</a></h5>
+<p>volume（音量）属性控制语音合成器讲话声音的平均音量。这是模拟语音声波中的中等值，但只是平均来说。音量为50的高反射的语音峰值可能达到75。音量最小值为0，最大音量为100。音量中，也可以使用百分比值，使用下面的六个关键字也可达到同样的目的：</p>
+<p>1．silent：无声音</p>
+<p>2．x-soft：0，最小的可听量</p>
+<p>3．soft：大约为25%</p>
+<p>4．medium：大约为50%</p>
+<p>5．loud：大约为75%</p>
+<p>6．x-loud：100%，最大舒适度的听力级别</p>
+<h5><a name="_Toc467205961">13.7.3 暂停属性</a></h5>
+<p>Pause（暂停）属性在听觉上等价于逗号，可用于提供戏剧色彩，或有助于将每位说话人的声音分开。在CSS2中，使用pause、pause-before和pause-after属性来设置暂停。</p>
+<p>pause-before属性指定语音合成器在说出一元素的内容之前应暂停的时间长度。pause-after属性指定语音合成器在说出一元素的内容之后应暂停的时间长度。这些都可以用绝对时间或语速属性的百分数来设置。pause属性是设置pause-before和pause-after属性的简略属性。当使用两个值时，第一个值用于pause-before，第二个值用于pause-after。当只给出一个值时，此值可应用于这两个属性。例如：</p>
+<p>SCENE { pause-after: 10ms }</p>
+<p>/* pause-before: 20ms: pause after: 20ms */</p>
+<p>.narrator { pause: 20ms }</p>
+<p>/* pause-before: 30ms; pause-after: 40ms */</p>
+<p>ACT { pause: 30ms 40ms }</p>
+<h5><a name="_Toc467205962">13.7.4 提示属性</a></h5>
+<p>cue（提示）属性是听得见的线索，是用来提醒听众将要发生或刚刚发生的特定事件。每个提示属性都指定某个元素说出之前或之后将要播放的一个声音文件的URL。cue-before属性在读出元素之前就播放声音。cue-after属性在读出元素之后才播放声音。</p>
+<p>cue属性是设置cue-before和cue-after属性的简略属性。当使用两个值时，第一个值用于cue-before，第二个值用于cue-after。当只给出一个值时，此值可应用于这两个属性。例如：</p>
+<p>ACT, SCENE { cue-before: url(“ping.au”) }</p>
+<p>.narrator { cue: url(“pop.au”) }</p>
+<p>SCFNF { cue before: url(“bell.aiff”);</p>
+<p> cue after: url(“dong.wav”) }</p>
+<h5><a name="_Toc467205963">13.7.5 同期播放属性</a></h5>
+<p>play-during（同期播放）属性指定一边说出元素内容一边播放背景声音。此属性的值为声音文件的URL。也可以把mix和repeat关键字之一或全部加入到此值中。mix告诉语音合成器将在父元素的play-during声音中形成混合音。repeat值告诉语音合成器连续不断地循环放音，直至整个元素说完为止。缺省值为none。</p>
+<h5><a name="_Toc467205964">13.7.6 空间属性</a></h5>
+<p>spatial（空间）属性指定声音好像出自于何处。例如，可以是在3英尺外的壕沟里，或在100英尺外的悬崖上读出文档的。当然，这受到语音合成器和音频功能的限制。由于无法预先确定文档读者所使用的喇叭的数量和位置，所以这些属性只确定所期望的最终结果。作为文档的作者，实际上无法强制声音来自某个特定的方向，这与保证读者确有显示器是不一样的。</p>
+<blockquote> 
+  <p><b>13.7.6.1 方位角属性 </b></p>
+  <p>azimuth（方位角）属性控制发自声音的水平角度。当使用好的立体声喇叭收听信号时，好像能听见横向声音。azimuth属性与这类立体系统一起使用，以形成让人听到的声音的角度。当使用双耳式耳机或五喇叭家庭影院设备以形成全环绕的声音系统时，azimuth属性就非常引人注目。</p>
+  <p>azimuth可被指定为-360&#176; 到360&#176; 之间的任一角度值。0deg值表示声音是从听众的前方直接传来的（-360deg和360deg具有同样的效果）。180deg值表示声音是从听众的后方直接传来的（在CSS术语中，deg代替了更普通的 
+    &#176; 度符号）。角度是以听众正面的顺时针方向计算的。还可以使用下列九个关键词中的一个，来指定方位角的角度。</p>
+  <p>1．center：0deg</p>
+  <p>2．center-right：20deg</p>
+  <p>3．right：40deg</p>
+  <p>4．far-right：60deg</p>
+  <p>5．right-side：90deg</p>
+  <p>6．left-side：270deg</p>
+  <p>7．far-left：300deg</p>
+  <p>8．left：320deg</p>
+  <p>9．center-left：340deg</p>
+  <p>可以将关键字behind加到这些值中的任何一个中，以设置180deg减正常值的位置。例如，left behind与l80deg – 320deg 
+    = -140deg或220deg的意义是一样的。</p>
+  <p>leftwards的值将声音相对于当前角度再向左移动20度。可理解为将声音反时针方向旋转。所以即使声音已经处在听众的后面，也将以反时针方向继续移动到“左边”。rightwards值将声音从当前角度向右（顺时针方向）再移动20度。</p>
+  <p><b>13.7.6.2 高度属性 </b></p>
+  <p>elevation（高度）属性控制喇叭距听众位置的表观高度。此高度可指定为-90&#176; 至90&#176; 的任一角度，也可为下列五个关键字之一：</p>
+  <p>1．below -90deg</p>
+  <p>2．level 0deg</p>
+  <p>3．above 90deg</p>
+  <p>4．higher 处于当前高度上方10deg（这对继承是很有用的）</p>
+  <p>5．lower 处于当前高度下方10deg（这对继承是很有用的）</p>
+</blockquote>
+<h5><a name="_Toc467205965">13.7.7 音质属性</a></h5>
+<p>通过调节语速、所使用的声系、语调（pitch）和声音的激昂程度，合成器声音的各个特性都可控制。</p>
+<blockquote> 
+  <p><b>13.7.7.1 语速属性 </b></p>
+  <p>speech-rate（语速）属性指定语音合成器的说话速率，以每分钟平均大小的单词的近似数值来表示。可提供某个整数或下列五个关键字之一：</p>
+  <p>1．x-slow：每分钟80个单词</p>
+  <p>2．slow：每分钟120个单词</p>
+  <p>3．medium：每分钟180至200个单词</p>
+  <p>4．fast：每分钟300个单词</p>
+  <p>5．x-fast：每分钟500个单词</p>
+  <p>还可以使用faster关键字，以使父元素的速率每分钟增加40个单词，或使用slower关键字，以使父元素的速率每分钟减少40个单词。</p>
+  <p><b>13.7.7.2 声系属性 </b></p>
+  <p>voice-family（声系）属性是以逗号分开的、区分优先顺序的声系名称的一组列表，而声系名称选择用于阅读文档文本的声音。它很像第12章讨论过的字族属性，但它关心的是声音而不是字样。</p>
+  <p>通常的声音值有male、female和child。与字体名一样，所指定的名称也是多种多样，包括Agnes、Bruce、Good News、Hysterical、Victoria、Whisper等等。如果这些名称不符合标识符的语法规则或是由多个单词组成的话，那么就必须用引号括起来。例如：</p>
+  <p>LINE.part.romeo { voice-family: Bruce, "Good News", male }</p>
+  <p><b>13.7.7.3 语调属性 </b></p>
+  <p>pitch（语调）属性指定语音合成器用于特殊类型对象的频率。在某种程序上，它控制所发的声音是男声还是女声。但是，更好的方法是使用适当的声系。此值以赫兹（hertz，每秒周期数）为单位。女声约为120Hz，而一般的男声差不多为200Hz。也可使用下面的关键字来调节语调：</p>
+  <p>1．x-low</p>
+  <p>2．low</p>
+  <p>3．medium</p>
+  <p>4．high</p>
+  <p>5．x-high</p>
+  <p>这些关键字的精确频率狄览涤谟没У幕肪澈脱≡竦纳簟？墒牵瑇-low总是比low低，而后者又总是比medium低，依次类推。</p>
+  <p><b>13.7.7.4 语调范围属性 </b></p>
+  <p>pitch-range（语调范围）属性指定以喇叭平均语调表示的可接受的变化范围，其数值为0至100之间。它控制语音合成使用的声音的变形和变调。值为0时，形成一平坦的单音，而值为50时，则为正常音，值在50以上时，异常兴奋的声音。</p>
+  <p><b>13.7.7.5 重音属性 </b></p>
+  <p>stress（重音）属性指定断言或强调的程度，常用于演讲，缺省值为50。这种特性的值和结果对正在说的各种语言具有不同的效果。当使用语言（如英语）来强调句子的作用时，可选择主、次和第三强调点来控制语音的变化，以将这种语音的变化应用于此句中的不同地方。</p>
+  <p><b>13.7.7.6 激昂程度属性 </b></p>
+  <p>richness（激昂程度）属性指定语音合成器使用的声音的“鲜明度”。声音越激昂，其传播能力就越好。语调平缓的声音不会传得很远，这是因为其声波不如激昂的声那样深沉。此值为1和100之间的一个数值，缺省值为50。此值越高，所产生的声音传播得就越好；而此值越低，就会获得更柔软的声音，更容易听到。</p>
+</blockquote>
+<h5><a name="_Toc467205966">13.7.8 话音属性</a></h5>
+<p>这些属性控制语音合成器如何解释标点符号和数字。有两个属性：speak-punctuation和speak-numeral。</p>
+<blockquote> 
+  <p><b>13.7.8.1 发标点符号音属性 </b></p>
+  <p>在缺省的情况下，标点符号是逐字说出的。对于诸如“The cat, Charm, ate all of his food.”这样的句子，读作“The 
+    cat comma Charm comma ate all of his food period”。但是，可设置speak-punctuation属性为none，从而不说出任何标点符号。可是将有暂停现象，就像是真实说话的声音一样。例如，“The 
+    cat &lt;pause&gt; Charm &lt;pause&gt; ate all of his food &lt;silence&gt;”。</p>
+  <p><b>13.7.8.2 发数字音属性</b></p>
+  <p>在缺省的情况下，数字以完整的字符说出来。例如，数字102将读成“one hundred and two”。可是，如果将speak-numeral属性设置为digits，那么，将分别说出每个数字原有格式，如one 
+    zero two。将speak-numeral属性设置为continuous，就会恢复到缺省状态。如果speak-numeral设置为none，那么将不会说出数字。</p>
+</blockquote>
+<h4></h4>
+ 
+<a href='470.htm'>&lt;&lt;上一篇</a>&nbsp;&nbsp;<a href='472.htm'>下一篇&gt;&gt;</a></td>
+        </tr>
+      </table>
+      <p>&nbsp; </p>
+    </td>
+  </tr>
+</table>
+
+</body>
+
+</html>

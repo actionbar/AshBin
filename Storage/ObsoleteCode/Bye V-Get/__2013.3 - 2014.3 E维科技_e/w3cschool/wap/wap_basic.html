@@ -1,0 +1,126 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="../c3.css" />
+<title>WAP 基础</title>
+</head>
+<body class="xml">
+<div id="wrapper">
+<div id="header">
+<a href="http://e.v-get.com/w3cschool/" style="float:left;">W3CSchool 在线教程</a>
+<div class="q g"><script type="text/javascript">var cpro_id="u1163355"</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div>
+<div id="navfirst">
+<ul id="menu">
+<li id="h"><a href="../h.html">HTML教程</a></li>
+<li id="x"><a href="../x.html">XML教程</a></li>
+<li id="b"><a href="../b.html">浏览器脚本</a></li>
+<li id="s"><a href="../s.html">服务器脚本</a></li>
+<li id="d"><a href="../d.html">dot net教程</a></li>
+<li id="m"><a href="../m.html">多媒体教程</a></li>
+<li id="w"><a href="../w.html">建站手册</a></li>
+</ul>
+</div><div id="navsecond">
+<div id="course">
+<h2>WAP 教程</h2>
+<ul>
+<li><a href="http://e.v-get.com/w3cschool/">WAP 教程</a></li>
+<li><a href="wap_intro.html">WAP 简介</a></li>
+<li><a href="wap_basic.html">WAP 基础</a></li>
+<li><a href="wml_format.html">WML 格式化</a></li>
+<li><a href="wml_links.html">WML 连接</a></li>
+<li><a href="wml_input.html">WML 输入</a></li>
+<li><a href="wml_tasks.html">WML 任务</a></li>
+<li><a href="wml_timer.html">WML 定时器</a></li>
+<li><a href="wml_variables.html">WML 变量</a></li>
+<li><a href="wml_examples.html">WML 实例</a></li>
+<li><a href="wap_demo.html">WAP 演示</a></li>
+<li><a href="wap_pages.html">WAP W3CSchool</a></li>
+</ul>
+<h2>参考手册</h2>
+<ul>
+<li><a href="wml_reference.html">WML 参考手册</a></li>
+<li><a href="wml_entities.html">WML 实体</a></li>
+<li><a href="wml_dtd.html">WML DTD</a></li>
+</ul>
+<h2>资源</h2>
+<ul>
+<li><a href="wap_forum.html">WAP 论坛/OMA</a></li>
+<li><a href="wap_software.html">WAP 软件</a></li>
+</ul>
+</div>
+<div id="selected">
+<h2>建站手册</h2>
+<ul>
+<li><a href="../site/">网站构建</a></li>
+<li><a href="../w3c/">万维网联盟</a></li>
+<li><a href="http://e.v-get.com/w3c/">W3CSchool 教程</a></li>
+<li><a href="../quality/">网站品质</a></li>
+<li><a href="../semweb/">语义网</a></li>
+<li><a href="../hosting/">网站主机</a></li>
+</ul>
+<h2><a href="http://e.v-get.com/w3c/" class="f13">W3CSchool 教程</a></h2><div class="a120x90"><script type="text/javascript">var cpro_id="u1210867";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div></div>
+</div>
+<div id="maincontent">
+<h1>WAP 基础</h1>
+<div id="tpn">
+<ul class="prenext">
+<li class="pre"><a href="wap_intro.html">上一页</a></li>
+<li class="next"><a href="wml_format.html">下一页</a></li>
+</ul>
+</div>
+<div>
+<h2>WAP 主页</h2>
+<p>WAP 的主页与 HTML 的主页非常不同。用于 WAP 的标记语言是 WML (Wireless Markup Language)。WML 使用标签 - 类似 HTML - 但是语法更严格且遵守 XML 1.0 标准。</p>
+<p>WML 页面的扩展名是 *.WML，就像 HTML 页面的扩展名是 *.HTML 一样。</p>
+</div>
+<div>
+<h2>WML 标签</h2>
+<p>WML 几乎都是关于文本的。会拖慢手持设备之间通信的标签不会成为 WML 标志的组成部分。表格和图像的使用被严格限制。</p>
+<p>由于 WML 是一种 XML 应用，因此其标签对大小写敏感 (&lt;wml&gt; 与 &lt;WML&gt; 不同），且标签必须正确关闭。</p>
+</div>
+<div>
+<h2>WML Deck 和 Card</h2>
+<p>WML 页面叫作 DECK (卡片组）。DECK 是由一系列 CARD  (卡片）构造的，卡片之间通过链接彼此联系。当从移动电话访问一张 WML 页面时，页面中的所有卡片都会从 WAP 服务器下载下来。卡片之间的导航是通过电话的计算机完成的 - 在电话内部 - 不需要对服务器的额外访问。</p>
+</div>
+<div>
+<h2>WML 文档实例：</h2>
+<pre>&lt;?xml version=&#34;1.0&#34;?&gt;
+&lt;!DOCTYPE wml PUBLIC &#34;-//WAPFORUM//DTD WML 1.1//EN&#34;
+&#34;http://www.wapforum.org/DTD/wml_1.1.xml&#34;&gt;
+&lt;wml&gt;
+&lt;card id=&#34;HTML&#34; title=&#34;HTML Tutorial&#34;&gt;
+&lt;p&gt;
+Our HTML Tutorial is an award winning 
+tutorial from W3CSchool.
+&lt;/p&gt;
+&lt;/card&gt;
+&lt;card id=&#34;XML&#34; title=&#34;XML Tutorial&#34;&gt;
+&lt;p&gt;
+Our XML Tutorial is an award winning 
+tutorial from W3CSchool.
+&lt;/p&gt;
+&lt;/card&gt;
+&lt;/wml&gt;</pre>
+<p>正如您从例子中看到的，WML 文档是一种 XML 文档。DOCTYPE 定义为 wml，并在 www.wapforum.org/DTD/wml_1.1.xml 访问 DTD。</p>
+<p>文档内容位于 &lt;wml&gt;...&lt;/wml&gt; 标签内。文档中的每个 card 位于 &lt;card&gt;...&lt;/card&gt; 标签内，实际的段落在 &lt;p&gt;...&lt;/p&gt; 标签中。每个 card 元素都有一个 id 以及一个 title。</p>
+</div>
+<div id="bpn">
+<ul class="prenext">
+<li class="pre"><a href="wap_intro.html">上一页</a></li>
+<li class="next"><a href="wml_format.html">下一页</a></li>
+</ul>
+</div>
+</div>
+<div id="sidebar">
+<div class="rs"></div>
+<div id="tools">
+<h5 id="tools_reference"><a href="wml_reference.html">WML 参考手册</a></h5>
+<h5 id="tools_example"><a href="wap_demo.html">WAP 演示</a></h5>
+</div>
+<div class="a120x600"><script type="text/javascript">var cpro_id="u1293136";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div><div class="b"></div>
+</div>
+</body>
+</html>

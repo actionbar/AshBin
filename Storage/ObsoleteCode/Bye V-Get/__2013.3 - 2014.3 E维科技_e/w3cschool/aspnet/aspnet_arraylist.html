@@ -1,0 +1,219 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="../c3.css" />
+<title>ASP NET - ArrayList 对象</title>
+</head>
+<body class="dotnet">
+<div id="wrapper">
+<div id="header">
+<a href="http://e.v-get.com/w3cschool/" style="float:left;">W3CSchool 在线教程</a>
+<div class="q g"><script type="text/javascript">var cpro_id="u1163355"</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div>
+<div id="navfirst">
+<ul id="menu">
+<li id="h"><a href="../h.html">HTML教程</a></li>
+<li id="x"><a href="../x.html">XML教程</a></li>
+<li id="b"><a href="../b.html">浏览器脚本</a></li>
+<li id="s"><a href="../s.html">服务器脚本</a></li>
+<li id="d"><a href="../d.html">dot net教程</a></li>
+<li id="m"><a href="../m.html">多媒体教程</a></li>
+<li id="w"><a href="../w.html">建站手册</a></li>
+</ul>
+</div><div id="navsecond">
+<div id="course">
+<h2>ASP.NET 教程</h2>
+<ul>
+<li><a href="http://e.v-get.com/w3cschool/">ASP.NET 首页</a></li>
+<li><a href="aspnet_intro.html">ASP.NET 简介</a></li>
+<li><a href="aspnet_vsasp.html">ASP.NET vs ASP</a></li>
+<li><a href="aspnet_pages.html">ASP.NET 页面</a></li>
+<li><a href="aspnet_controls.html">ASP.NET 控件</a></li>
+<li><a href="aspnet_events.html">ASP.NET 事件</a></li>
+</ul>
+<h2>ASP.NET 窗体</h2>
+<ul>
+<li><a href="aspnet_forms.html">ASP.NET 窗体</a></li>
+<li><a href="aspnet_viewstate.html">ASP.NET ViewState</a></li>
+<li><a href="aspnet_textbox.html">asp:TextBox</a></li>
+<li><a href="aspnet_button.html">asp:Button</a></li>
+</ul>
+<h2>ASP.NET 绑定</h2>
+<ul>
+<li><a href="aspnet_databinding.html">数据绑定</a></li>
+<li><a href="aspnet_arraylist.html">ArrayList</a></li>
+<li><a href="aspnet_hashtable.html">Hashtable</a></li>
+<li><a href="aspnet_sortedlist.html">SortedList</a></li>
+<li><a href="aspnet_xml.html">XML 文件</a></li>
+<li><a href="aspnet_repeater.html">asp:Repeater</a></li>
+<li><a href="aspnet_datalist.html">asp:DataList</a></li>
+</ul>
+<h2>ASP.NET 数据库</h2>
+<ul>
+<li><a href="aspnet_dbconnection.html">数据库连接</a></li>
+</ul>
+<h2>ASP.NET 2.0</h2>
+<ul>
+<li><a href="aspnet_newfeatures.html">2.0 新特性</a></li>
+<li><a href="aspnet_masterpages.html">2.0 母版页</a></li>
+<li><a href="aspnet_navigation.html">2.0 导航</a></li>
+</ul>
+<h2>参考手册</h2>
+<ul>
+<li><a href="aspnet_refhtmlcontrols.html">HTML 控件</a></li>
+<li><a href="aspnet_refwebcontrols.html">Web 控件</a></li>
+<li><a href="aspnet_refvalidationcontrols.html">Validation 控件</a></li>
+</ul>
+<h2>实例</h2>
+<ul>
+<li>ASP.NET 实例</li>
+</ul>
+</div>
+<div id="selected">
+<h2>建站手册</h2>
+<ul>
+<li><a href="../site/">网站构建</a></li>
+<li><a href="../w3c/">万维网联盟</a></li>
+<li><a href="http://e.v-get.com/w3c/">W3CSchool 教程</a></li>
+<li><a href="../quality/">网站品质</a></li>
+<li><a href="../semweb/">语义网</a></li>
+<li><a href="../hosting/">网站主机</a></li>
+</ul>
+<h2><a href="http://e.v-get.com/w3c/" class="f13">W3CSchool 教程</a></h2><div class="a120x90"><script type="text/javascript">var cpro_id="u1210867";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div></div>
+</div>
+<div id="maincontent">
+<h1>ASP NET - ArrayList 对象</h1>
+<div id="tpn">
+<ul class="prenext">
+<li class="pre"><a href="aspnet_databinding.html">上一页</a></li>
+<li class="next"><a href="aspnet_hashtable.html">下一页</a></li>
+</ul>
+</div>
+<div id="intro">
+<p><strong>ArrayList 对象是包含单一数据值的项目的集合。</strong></p>
+</div>
+<div>
+<h2>实例</h2>
+<p>例子 1 - ArrayList RadioButtonList</p>
+<p>例子 2 - ArrayList DropDownList</p>
+</div>
+<div>
+<h2>创建 ArrayList</h2>
+<p>ArrayList 对象是包含单一数据值的项目的集合。</p>
+<p>通过 Add() 方法向 ArrayList 添加项目。</p>
+<p>下面的代码创建了一个新的 ArrayList 对象，名为 mycountries，并添加了四个项目：</p>
+<pre>&lt;script runat=&#34;server&#34;&gt;
+Sub Page_Load
+if Not Page.IsPostBack then
+  dim mycountries=New ArrayList
+  mycountries.Add(&#34;China&#34;)
+  mycountries.Add(&#34;Sweden&#34;)
+  mycountries.Add(&#34;France&#34;)
+  mycountries.Add(&#34;Italy&#34;)
+end if
+end sub
+&lt;/script&gt;</pre>
+<p>默认地，一个 ArrayList 对象包含 16 个条目。可通过 TrimToSize() 方法把 ArrayList 调整为最终尺寸：</p>
+<pre>&lt;script runat=&#34;server&#34;&gt;
+Sub Page_Load
+if Not Page.IsPostBack then
+  dim mycountries=New ArrayList
+  mycountries.Add(&#34;China&#34;)
+  mycountries.Add(&#34;Sweden&#34;)
+  mycountries.Add(&#34;France&#34;)
+  mycountries.Add(&#34;Italy&#34;)
+  <code>mycountries.TrimToSize()</code>
+end if
+end sub
+&lt;/script&gt;</pre>
+<p>通过 Sort() 方法，ArrayList 也能够按照字母顺序或者数字顺序进行排序：</p>
+<pre>&lt;script runat=&#34;server&#34;&gt;
+Sub Page_Load
+if Not Page.IsPostBack then
+  dim mycountries=New ArrayList
+  mycountries.Add(&#34;China&#34;)
+  mycountries.Add(&#34;Sweden&#34;)
+  mycountries.Add(&#34;France&#34;)
+  mycountries.Add(&#34;Italy&#34;)
+  mycountries.TrimToSize()
+  <code>mycountries.Sort()</code>
+end if
+end sub
+&lt;/script&gt;</pre>
+<p>要实现颠倒的排序，请在 Sort() 方法后应用 Reverse() 方法：</p>
+<pre>&lt;script runat=&#34;server&#34;&gt;
+Sub Page_Load
+if Not Page.IsPostBack then
+  dim mycountries=New ArrayList
+  mycountries.Add(&#34;China&#34;)
+  mycountries.Add(&#34;Sweden&#34;)
+  mycountries.Add(&#34;France&#34;)
+  mycountries.Add(&#34;Italy&#34;)
+  mycountries.TrimToSize()
+  mycountries.Sort()
+  <code>mycountries.Reverse()</code>
+end if
+end sub
+&lt;/script&gt;</pre>
+</div>
+<div>
+<h2>把数据绑定到 ArrayList</h2>
+<p>ArrayList 对象可向下面这些控件自动地生成文本和值：</p>
+<ul>
+  <li>asp:RadioButtonList</li>
+  <li>asp:CheckBoxList</li>
+  <li>asp:DropDownList</li>
+  <li>asp:Listbox</li>
+</ul>
+<p>如需把数据绑定到一个 RadioButtonList 控件，首先请在一个 .aspx 页面中创建 RadioButtonList 控件 (请注意，没有任何 asp:ListItem 元素）：</p>
+<pre>&lt;html&gt;
+&lt;body&gt;
+&lt;form runat=&#34;server&#34;&gt;
+&lt;asp:RadioButtonList id=&#34;rb&#34; runat=&#34;server&#34; /&gt;
+&lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+<p>然后添加构建列表的脚本，并把列表中的值绑定到该 RadioButtonList 控件：</p>
+<pre>&lt;script runat=&#34;server&#34;&gt;
+Sub Page_Load
+if Not Page.IsPostBack then
+  dim mycountries=New ArrayList
+  mycountries.Add(&#34;China&#34;)
+  mycountries.Add(&#34;Sweden&#34;)
+  mycountries.Add(&#34;France&#34;)
+  mycountries.Add(&#34;Italy&#34;)
+  mycountries.TrimToSize()
+  mycountries.Sort()
+  <code>rb.DataSource=mycountries
+  rb.DataBind()</code>
+end if
+end sub
+&lt;/script&gt;
+&lt;html&gt;
+&lt;body&gt;
+&lt;form runat=&#34;server&#34;&gt;
+&lt;asp:RadioButtonList id=&#34;rb&#34; runat=&#34;server&#34; /&gt;
+&lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+<p>RadioButtonList 控件的 DataSource 属性被设置为该 ArrayList，它定义了这个 RadioButtonList 控件的数据源。RadioButtonList 控件的 DataBind() 方法把 RadioButtonList 控件与数据源绑定在一起。</p>
+<p class="note"><span>注释：</span>数据值作为控件的 Text 和 Value 属性来使用。如需添加不同于 Text 的 Value，既可以使用 Hashtable 对象，也可以使用 SortedList 对象。</p>
+</div>
+<div id="bpn">
+<ul class="prenext">
+<li class="pre"><a href="aspnet_databinding.html">上一页</a></li>
+<li class="next"><a href="aspnet_hashtable.html">下一页</a></li>
+</ul>
+</div>
+</div>
+<div id="sidebar">
+<div class="rs"></div>
+<div id="tools">
+<h5 id="tools_reference"><a href="aspnet_reference.html">ASP.NET 参考手册</a></h5>
+</div>
+<div class="a120x600"><script type="text/javascript">var cpro_id="u1293136";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div><div class="b"></div>
+</div>
+</body>
+</html>

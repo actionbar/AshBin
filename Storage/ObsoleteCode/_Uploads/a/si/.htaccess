@@ -1,0 +1,5 @@
+RewriteEngine on
+RewriteRule ^e/(\w+)$ /e/$1.php?%{QUERY_STRING} [L]
+RewriteRule ^j/(\w+)$ /j/$1.php?%{QUERY_STRING} [L]
+RewriteRule ^report/(\w+)$ /report/$1.php?%{QUERY_STRING} [L]
+ErrorDocument 404 /error.html

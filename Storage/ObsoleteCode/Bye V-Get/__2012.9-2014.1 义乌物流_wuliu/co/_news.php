@@ -1,0 +1,14 @@
+<?php
+$url = $_SERVER['PHP_SELF']; 
+$filename= substr( $url , strrpos($url , '/')+2,-4); 
+if(!isset($_GET['sure'])){
+echo '<a href="?sure=ok">确定更新'.$filename.'.php?</a>';
+exit;
+}
+require '../_/co.php';
+$file=constant('uploadFile').'/co/'.$filename.'.php';
+$fp=fopen($file,'w+');if(is_writable($file)==false) {die("文件没有找到");exit;}
+else{
+$text='<?php '.constant('CO_SQL').'$bl=false;$nH=\'\';if(isset($_GET[\'view\'])){$nI=$_GET[\'view\'];$Qqn=mysql_query(\'SELECT subject,dateline,message FROM dz_forum_post WHERE tid=\'.$nI.\' AND first=1 LIMIT 1\');$Qqr=mysql_num_rows($Qqn);if($Qqr==0){header(\'Location: http://'.constant('localhost').'\'.$E.\'.wuliu.v-get.com/logistics/news.html\');exit();}$Qan=mysql_fetch_array($Qqn);$bl=true;$nH=$Qan[\'subject\'];}$Qq=mysql_query(\'SELECT b,h,he,k,d,r,q,lt,x,y,z,zz,t,adt,tj FROM co WHERE e="\'.$E.\'" LIMIT 1\');$Qr=mysql_num_rows($Qq);if($Qr==0){header(\'Location: http://wuliu.v-get.com/\');exit();}$Qa=mysql_fetch_array($Qq);$B=$Qa[\'b\'];$H=$Qa[\'h\'];$K=$Qa[\'k\'];$Z=$Qa[\'z\'];$LT=$Qa[\'lt\'];$TA=$Qa[\'adt\'];$now=time();$ad=($TA>$now)?false:true;echo \'<!DOCTYPE html><html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>\',$nH,\' 新闻公告\',$ad?\'_商务物流网_V-Get!\':\'\',\'</title><meta name="keywords" content="\',$K,\'" /><meta name="description" content="\',$nH,$Qa[\'d\'],$Z,\'就选\',$H,\'"/>\';?>'.COTUN($filename).'<div class="q r"><div class="o mh"></div><div class="m cc"><div>您现在的位置：<?php echo \'<a href="http://\',$E,\'.wuliu.v-get.com/">\',$H,\'</a>\';?> &gt; 新闻公告</div></div><div class="mf"><?php if($bl){echo \'<h1>\',$nH,\'</h1><div class="ct"><a href="http://\',$E,\'.wuliu.v-get.com/">\',$E,\'.wuliu.v-get.com</a><span>\',date(\'Y-m-d H:i:s\',$Qan[\'dateline\']),\'</span><a href="'.constant('LK').constant('MENU_BBS').'/tip-\',$nI,\'-1.html">参与评论</a></div><div id="mf">\',$Qan[\'message\'],\'</div><div class="ds-thread"></div><script type="text/javascript">var duoshuoQuery={short_name:"cowuliu"};J("http://static.duoshuo.com/embed.js",function(s){s.async=I;s.charset="UTF-8"});</script>\';}else {$Qqn=mysql_query(\'SELECT tid,subject,dateline,views,replies FROM dz_forum_thread WHERE fid=37 AND author="\'.$E.\'" ORDER BY dateline DESC LIMIT 0,10\');echo \'<ul class="news">\';while($Qan=mysql_fetch_array($Qqn)){$nT=$Qan[\'dateline\'];$nT=date(\'Y-m-d\',$nT);echo \'<li><a href="http://'.constant('localhost').'\',$E,\'.wuliu.v-get.com/logistics/news.html?view=\',$Qan[\'tid\'],\'">\',$Qan[\'subject\'],\'</a><i class="pr">\',$nT,\'</i></li>\';}echo \'</ul>\';}?></div></div><div class="o mh"></div>'.constant('CO_VBB');
+file_put_contents($file,$text);}
+?>

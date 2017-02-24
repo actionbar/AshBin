@@ -1,0 +1,85 @@
+<html xmlns:rdl>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<script src="rdl_method.js"></script>
+<base target="_self">
+</head>
+<body>
+
+<script>
+
+//collFriendObjects=new Array();
+//collFriendProperties=new Array();
+//collFriendMethods=new Array();
+//collFriendEvents=new Array();
+//collFriendCollections=new Array();
+
+collFriendMethods=new Array(
+'removeRule','addRule','createStyleSheet'
+);
+
+collFriendCollections=new Array(
+'styleSheets','rules','imports'
+);
+
+collFriendObjects=new Array(
+'STYLE','rule','runtimeStyle','runtimeStyle','styleSheet'
+);
+
+//collIE40=new Array();
+//collIE50=new Array();
+//collIE55=new Array();
+//collIE60=new Array();
+
+collIE40=new Array(
+'styleSheet '
+);
+
+//sStyle='';
+
+//sScript='';
+
+//sCode='';
+
+iWinWidth=320;
+
+iWinHeight=280;
+
+</script>
+
+<div id=idContent>
+
+<div id=idContentTitle><span id=idTitleName>addImport</span>版本：DHTML Object Model　返回值：有</div>
+
+<div class=cssColumnTitle>语法：</div>
+<div>
+<i>iIndex</i><b> = </b><a href="../objects/stylesheet.html"><b>styleSheet</b></a><b> . addImport ( </b><i>sURL</i><b> , </b><i>iIndex</i><b> ) </b>
+</div>
+
+<div class=cssColumnTitle>参数：</div>
+<table>
+<tr><td nowrap><i> sURL </i></td><td nowrap><b>:</b></td>
+<td><b>必选项</b>。字符串(String)。指定样式表文件的<b> URL </b>地址。</td></tr>
+<tr><td nowrap><i> iIndex </i></td><td nowrap><b>:</b></td>
+<td><b>可选项</b>。整数值(Integer)。指定样式表被放入集合中的位置。忽略此参数将被添加到集合的最后。</td></tr>
+</table>
+
+<div class=cssColumnTitle>返回值：</div>
+<table>
+<tr><td nowrap><i> iIndexL </i></td><td nowrap><b>:</b></td>
+<td>整数值(Integer)。被导入的样式表在<a href="../objects/imports.html"> imports </a>集合中的位置。</td></tr>
+</table>
+
+<div class=cssColumnTitle>说明：</div>
+<div>
+添加样式表文件到指定样式表的<a href="../objects/imports.html"> imports </a>集合中。<br>
+</div>
+
+
+
+</div>
+</body>
+</html>
+
+<!-- Part of RDL(TM) - Written by Rain1977 
+HomeSite: http://www.dhtmlet.com  E-Mail: dhtmlet@hotmail.com -->

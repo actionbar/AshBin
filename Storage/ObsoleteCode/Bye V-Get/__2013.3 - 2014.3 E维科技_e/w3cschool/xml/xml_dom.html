@@ -1,0 +1,258 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="../c3.css" />
+<title>XML DOM</title>
+</head>
+<body class="xml">
+<div id="wrapper">
+<div id="header">
+<a href="http://e.v-get.com/w3cschool/" style="float:left;">W3CSchool 在线教程</a>
+<div class="q g"><script type="text/javascript">var cpro_id="u1163355"</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div>
+<div id="navfirst">
+<ul id="menu">
+<li id="h"><a href="../h.html">HTML教程</a></li>
+<li id="x"><a href="../x.html">XML教程</a></li>
+<li id="b"><a href="../b.html">浏览器脚本</a></li>
+<li id="s"><a href="../s.html">服务器脚本</a></li>
+<li id="d"><a href="../d.html">dot net教程</a></li>
+<li id="m"><a href="../m.html">多媒体教程</a></li>
+<li id="w"><a href="../w.html">建站手册</a></li>
+</ul>
+</div><div id="navsecond">
+<div id="course">
+<h2>XML 基础</h2>
+<ul>
+<li><a href="http://e.v-get.com/w3cschool/">XML 首页</a></li>
+<li><a href="xml_intro.html">XML 简介</a></li>
+<li><a href="xml_usedfor.html">XML 用途</a></li>
+<li><a href="xml_tree.html">XML 树结构</a></li>
+<li><a href="xml_syntax.html">XML 语法</a></li>
+<li><a href="xml_elements.html">XML 元素</a></li>
+<li><a href="xml_attributes.html">XML 属性</a></li>
+<li><a href="xml_dtd.html">XML 验证</a></li>
+<li><a href="xml_validator.html">XML 验证器</a></li>
+<li><a href="xml_browsers.html">XML 浏览器</a></li>
+<li><a href="xml_view.html">XML 查看</a></li>
+<li><a href="xml_display.html">XML CSS</a></li>
+<li><a href="xml_xsl.html">XML XSLT</a></li>
+</ul>
+<h2>XML JavaScript</h2>
+<ul>
+<li><a href="xml_parser.html">XML 解析器</a></li>
+<li><a href="xml_dom.html">XML DOM</a></li>
+<li><a href="xml_to_html.html">XML to HTML</a></li>
+<li><a href="xml_http.html">XML HTTP Request</a></li>
+<li><a href="xml_applications.html">XML 应用程序</a></li>
+</ul>
+</ul>
+<h2>XML 高级</h2>
+<ul>
+<li><a href="xml_namespaces.html">XML 命名空间</a></li>
+<li><a href="xml_cdata.html">XML CDATA</a></li>
+<li><a href="xml_encoding.html">XML 编码</a></li>
+<li><a href="xml_server.html">XML 服务器</a></li>
+<li><a href="xml_dom_advanced.html">XML DOM 高级</a></li>
+<li><a href="xml_dont.html">XML Don't</a></li>
+<li><a href="xml_savedata.html">XML 数据存储</a></li>
+<li><a href="xml_technologies.html">XML 技术</a></li>
+<li><a href="xml_real_life.html">XML 现实案例</a></li>
+<li><a href="xml_editors.html">XML 编辑器</a></li>
+<li><a href="xml_summary.html">XML 总结</a></li>
+</ul>
+<h2>实例/测验</h2>
+<ul>
+<li><a href="../example/xmle_examples.html">XML 实例</a></li>
+<li><a href="xml_quiz.html">XML 测验</a></li>
+</ul>
+</div>
+<div id="selected">
+<h2>建站手册</h2>
+<ul>
+<li><a href="../site/">网站构建</a></li>
+<li><a href="../w3c/">万维网联盟</a></li>
+<li><a href="http://e.v-get.com/w3c/">W3CSchool 教程</a></li>
+<li><a href="../quality/">网站品质</a></li>
+<li><a href="../semweb/">语义网</a></li>
+<li><a href="../hosting/">网站主机</a></li>
+</ul>
+<h2><a href="http://e.v-get.com/w3c/" class="f13">W3CSchool 教程</a></h2><div class="a120x90"><script type="text/javascript">var cpro_id="u1210867";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div></div>
+</div>
+<div id="maincontent">
+<h1>XML DOM</h1>
+<div id="tpn">
+<ul class="prenext">
+<li class="pre"><a href="xml_parser.html">上一页</a></li>
+<li class="next"><a href="xml_to_html.html">下一页</a></li>
+</ul>
+</div>
+<div id="intro">
+<p><strong>DOM  (Document Object Model，文档对象模型）定义访问和操作文档的一套标准方法。</strong></p>
+</div>
+<div>
+<h2>XML DOM</h2>
+<p>XML DOM (XML Document Object Model) 定义一套访问和操作 XML 文档的标准方法。</p>
+<p>DOM 把 XML 文档作为树结构来查看。能够通过 DOM 树来访问所有元素。可以修改或删除它们的内容，并创建新的元素。元素，它们的文本，以及它们的属性，都被认为是节点。</p>
+<p>在下面的例子中，我们使用 DOM 引用从 &lt;to&gt; 元素中获取文本：</p>
+<pre>xmlDoc.getElementsByTagName(&#34;to&#34;)[0].childNodes[0].nodeValue</pre>
+<ul>
+<li><em>xmlDoc</em> -由解析器创建的 XML 文档</li>
+<li><em>getElementsByTagName(&#34;to&#34;)[0]</em> - 第一个 &lt;to&gt; 元素</li>
+<li><em>childNodes[0]</em> - &lt;to&gt; 元素的第一个子元素 (文本节点）</li>
+<li><em>nodeValue</em> - 节点的值 (文本本身）</li>
+</ul>
+<p>您可以在 W3CSchool 的 <a href="../xmldom/">XML DOM 教程</a> 中学习更多相关知识。</p>
+</div>
+<div>
+<h2>HTML DOM</h2>
+<p>HTML DOM (HTML Document Object Model) 定义一套访问和操作 HTML 文档的标准方法。</p>
+<p>可以通过 HTML DOM 访问所有 HTML 元素。</p>
+<p>在下面的例子中，我们使用 DOM 引用来改变 id=&#34;to&#34; 的 HTML 元素的文本：</p>
+<pre>document.getElementById(&#34;to&#34;).innerHTML=</pre>
+<ul>
+<li><em>document</em> - HTML 文档</li>
+<li><em>getElementById(&#34;to&#34;)</em> - 其中的 id=&#34;to&#34; 的 HTML 元素</li>
+<li><em>innerHTML</em> - HTML 元素的内部文本</li>
+</ul>
+<p>您可以在 W3CSchool 的 <a href="../htmldom/">HTML DOM 教程</a> 中学习更多相关知识。</p>
+</div>
+<div>
+<h2>解析 XML 文件 - 跨浏览器实例</h2>
+<p>下列代码把一个 XML 文档 (&#34;note.xml&#34;) 载入 XML 解析器中：</p>
+<pre>&lt;html&gt;
+&lt;head&gt;
+&lt;script type=&#34;text/javascript&#34;&gt;
+function parseXML()
+{
+try //Internet Explorer
+  {
+  xmlDoc=new ActiveXObject(&#34;Microsoft.XMLDOM&#34;);
+  }
+catch(e)
+  {
+  try //Firefox, Mozilla, Opera, etc.
+    {
+    xmlDoc=document.implementation.createDocument(&#34;&#34;,&#34;&#34;,null);
+    }
+  catch(e)
+    {
+    alert(e.message);
+    return;
+    }
+  }
+xmlDoc.async=false;
+xmlDoc.load(&#34;note.xml&#34;);
+document.getElementById(&#34;to&#34;).innerHTML=
+xmlDoc.getElementsByTagName(&#34;to&#34;)[0].childNodes[0].nodeValue;
+document.getElementById(&#34;from&#34;).innerHTML=
+xmlDoc.getElementsByTagName(&#34;from&#34;)[0].childNodes[0].nodeValue;
+document.getElementById(&#34;message&#34;).innerHTML=
+xmlDoc.getElementsByTagName(&#34;body&#34;)[0].childNodes[0].nodeValue;
+}
+&lt;/script&gt;
+&lt;/head&gt;
+&lt;body onload=&#34;parseXML()&#34;&gt;
+&lt;h1&gt;W3CSchool.com.cn Internal Note&lt;/h1&gt;
+&lt;p&gt;&lt;b&gt;To:&lt;/b&gt; &lt;span id=&#34;to&#34;&gt;&lt;/span&gt;&lt;br /&gt;
+&lt;b&gt;From:&lt;/b&gt; &lt;span id=&#34;from&#34;&gt;&lt;/span&gt;&lt;br /&gt;
+&lt;b&gt;Message:&lt;/b&gt; &lt;span id=&#34;message&#34;&gt;&lt;/span&gt;
+&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+<p>输出：</p>
+<pre>
+<span style="font:bold 14px Verdana, Arial, Helvetica, sans-serif; color:#000000">W3CSchool.com.cn Internal Note</span>
+<span style="font:bold 12px Verdana, Arial, Helvetica, sans-serif; color:#000000">To:</span> George
+<span style="font:bold 12px Verdana, Arial, Helvetica, sans-serif; color:#000000">From:</span> John
+<span style="font:bold 12px Verdana, Arial, Helvetica, sans-serif; color:#000000">Message:</span> Don't forget the meeting! 
+</pre>
+<p><a href="../tiy/t_219.html">TIY</a></p>
+</div>
+<div>
+<h2>重要注释</h2>
+<p>如需从 XML 中提取文本 &#34;John&#34;，语法是：</p>
+<pre>getElementsByTagName(&#34;from&#34;)[0].childNodes[0].nodeValue</pre>
+<p>在这个 XML 例子中，只有一个 &lt;from&gt; 标签中，但是仍然需要规定数组的下标 [0]，这是因为 XML 解析器方法 getElementsByTagName() 返回所有 &lt;from&gt; 节点的一个数组。</p>
+</div>
+<div>
+<h2>解析 XML 字符串 - 跨浏览器实例</h2>
+<p>下面的代码加载并解析一个 XML 字符串：</p>
+<pre>&lt;html&gt;
+&lt;head&gt;
+&lt;script type=&#34;text/javascript&#34;&gt;
+function parseXML()
+{
+text=&#34;&lt;note&gt;&#34;;
+text=text+&#34;&lt;to&gt;George&lt;/to&gt;&#34;;
+text=text+&#34;&lt;from&gt;John&lt;/from&gt;&#34;;
+text=text+&#34;&lt;heading&gt;Reminder&lt;/heading&gt;&#34;;
+text=text+&#34;&lt;body&gt;Don't forget the meeting!&lt;/body&gt;&#34;;
+text=text+&#34;&lt;/note&gt;&#34;;
+try //Internet Explorer
+  {
+  xmlDoc=new ActiveXObject(&#34;Microsoft.XMLDOM&#34;);
+  xmlDoc.async=&#34;false&#34;;
+  xmlDoc.loadXML(text);
+  }  
+catch(e)
+  {
+  try // Firefox, Mozilla, Opera, etc.
+    {
+    parser=new DOMParser();
+    xmlDoc=parser.parseFromString(text,&#34;text/xml&#34;);
+    }
+  catch(e)
+    {
+    alert(e.message);
+    return;
+    }
+  }
+document.getElementById(&#34;to&#34;).innerHTML=
+xmlDoc.getElementsByTagName(&#34;to&#34;)[0].childNodes[0].nodeValue;
+document.getElementById(&#34;from&#34;).innerHTML=
+xmlDoc.getElementsByTagName(&#34;from&#34;)[0].childNodes[0].nodeValue;
+document.getElementById(&#34;message&#34;).innerHTML=
+xmlDoc.getElementsByTagName(&#34;body&#34;)[0].childNodes[0].nodeValue;
+}
+&lt;/script&gt;
+&lt;/head&gt;
+&lt;body onload=&#34;parseXML()&#34;&gt;
+&lt;h1&gt;W3CSchool.com.cn Internal Note&lt;/h1&gt;
+&lt;p&gt;&lt;b&gt;To:&lt;/b&gt; &lt;span id=&#34;to&#34;&gt;&lt;/span&gt;&lt;br /&gt;
+&lt;b&gt;From:&lt;/b&gt; &lt;span id=&#34;from&#34;&gt;&lt;/span&gt;&lt;br /&gt;
+&lt;b&gt;Message:&lt;/b&gt; &lt;span id=&#34;message&#34;&gt;&lt;/span&gt;
+&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+ 
+<p>输出：</p>
+<pre>
+<span style="font:bold 14px Verdana, Arial, Helvetica, sans-serif; color:#000000">W3CSchool.com.cn Internal Note</span>
+<span style="font:bold 12px Verdana, Arial, Helvetica, sans-serif; color:#000000">To:</span> George
+<span style="font:bold 12px Verdana, Arial, Helvetica, sans-serif; color:#000000">From:</span> John
+<span style="font:bold 12px Verdana, Arial, Helvetica, sans-serif; color:#000000">Message:</span> Don't forget the meeting! 
+</pre>
+<p><a href="../tiy/t_220.html">TIY</a></p>
+<p class="note"><span>注释：</span>Internet Explorer 使用 loadXML() 方法来解析 XML 字符串，而其他浏览器使用 DOMParser 对象。</p>
+</div>
+<div  id="bpn">
+<ul class="prenext">
+<li class="pre"><a href="xml_parser.html">上一页</a></li>
+<li class="next"><a href="xml_to_html.html">下一页</a></li>
+</ul>
+</div>
+</div>
+<div id="sidebar">
+<div class="rs"></div>
+<div id="tools">
+<h5 id="tools_example"><a href="../example/xmle_examples.html">XML 实例</a></h5>
+<h5 id="tools_quiz"><a href="xml_quiz.html">XML 测验</a></h5>
+</div>
+<div class="a120x600"><script type="text/javascript">var cpro_id="u1293136";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div><div class="b"></div>
+</div>
+</body>
+</html>

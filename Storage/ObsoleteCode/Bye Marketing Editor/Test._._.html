@@ -1,0 +1,76 @@
+<!DOCTYPE html><html><head><title>E维科技网络编辑</title><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><link href="http://tu.v-get.com/i.ico" type="image/ico" rel="shortcut icon" />
+<script type="text/javascript" src="http://tu.v-get.com/i.js"></script>
+<script type="text/javascript" src="http://tu.v-get.com/l.js"></script>
+<link href="http://tu.v-get.com/i.css" rel="stylesheet" type="text/css"  />
+<style>*{margin:0;padding:0}#s p{line-height:32px;height:32px}input{height:20px}
+select{height:22px;line-height:22px}textarea{resize:vertical}
+.topss{color:#FFF;cursor:pointer;font-family:微软雅黑;font-size:14px;background:none;border:none}
+.centerp{color:#000}.centerp a{color:#000;text-decoration:none}.centerp a:hover{color:#C00;text-decoration:underline}
+#rightext{font-size:12px}
+#rightext h2{border-bottom:1px solid #DDD;font:700 14px "微软雅黑"}
+#rightext h3{font:700 12px "Arial";}.fo{text-align:center}
+#rightext img{max-width:500px}
+#rightext p{line-height:22px}
+.fq{text-algin:right;}
+#fimg{margin:0 9px}
+#fimg a{display:inline-block;width:70px;border-radius:5px;height:28px;line-height:28px;text-align:center;background:#FFF;color:#000;text-decoration:none}
+#fimg a.fimgo{background:#999;color:#FFF;font-weight:700}
+#ec_editornote{color:#C00;font-weight:700}
+#ec_keywords{word-wrap:break-word;word-break:break-all;}
+#ec_keywords a{padding:0 13px 0 0;color:#00a}
+#ec_keywords a:visited{color:#bb0}
+#ec_keywords a:hover{color:#f00}
+h1{display:block;line-height:32px}
+#hstrong a{border-radius:3px;width:45px;height:25px;line-height:25px;float:left;display:inline-block}
+#hstrong a:hover{background:#AAA;color:#FFF}
+#showtime{margin-left:5px;width:120px}
+.pre_code{display:none;position:absolute;z-index:9999;border:1px dotted #CCC;background:#EEE;border-radius:5px;padding:9px;top:240px;left:315px;}
+.pre_code textarea{width:300px;height:300px}
+.pre_code p{position:relative}
+.pre_code button{position:absolute;right:0;width:50px;height:22px}
+</style>
+<!-- 帐号密码需要填写，密码是E维科技内部密码，和网站无关，user必须是网站注册帐号
+为了避免被盗用代码，这里通过tp.v-get.com  的 编辑帐号分配来分配 -->
+<!-- <script type="text/javascript" src="http://tp.v-get.com/e/editor_task.php?pri=vkefu"></script> -->
+</head>
+<body>
+
+<!-- 
+cusweb== 用户验证custom的 网址，二级域名    www.v-get.com  e.v-get.com  不带/ 和 http://
+user
+pass
+a
+b
+c
+tm ==数字型时间
+t  == 2013-02-03 12:03:03
+ -->
+<div style="height:28px;background:#333;color:#FFF;padding:0 3px;font-weight:700;line-height:28px" id="toptitle">！！！无法使用，请向<a href="http://e.v-get.com/tech/u/SEO_1.html" style="color:#FF0">E维科技</a>咨询使用，请确定用户名和密码正确！！！</div>
+<div style="float:left;width:46%">
+<form method="post" id="s"><input type="hidden" style="width:130px" name="t" value="2013-05-07 13:23:41" readonly="readonly"/><input type="hidden" name="tm" value="1367910225"/><input type="hidden" name="cid"><input type="hidden" name="comes" value="http://e.v-get.com/"><input type="hidden" name="user"><input type="hidden" name="pass"><input type="hidden" name="d" value=""/><input type="hidden" name="k" value=""/>
+<p><label>标题：</label><input type="hidden" name="h"/><input type="text" style="width:380px" name="localh"/>75&gt;<span style="color:#080"></span><span id="showtime"></span></p>
+<div id="hiddenforprimary" style="height:100px"><p><label>关词：</label><input type="text" style="width:300px" name="localk" value=""/>60&gt;<span style="color:#080"></span>(逗号隔开) <span id="gold"><select name="g"><option value="0">0评级g</option><option value="1">1推荐</option></select></span> <span id="mold"><select name="m"><option value="">作者m</option></select></span></p>
+<div style="height:60px"><label>简介：</label><textarea name="locald" value="" style="width:83%;height:60px"></textarea>255&gt;<span style="color:#080"></span></div></div>
+<div class="o"></div>
+<div id="classold"><label>一类a：</label><input type="text" value="0" style="width:20px" name="a" maxlength="1"/><label>城市b：</label><input type="text" value="330782" style="width:50px" size="6" maxlength="6" name="b"/><label>分类c：</label><input type="text" value="0" style="width:20px" name="c" maxlength="1"/></div>
+<div class="o"></div>
+<div style="line-height:32px;height:32px;"><label>来源：</label><input type="text" style="width:280px" name="n" readonly="readonly" value='<a href="http://www.v-get.com/">V-Get!</a>'/> &lt;255&gt; <span style="color:#080">64</span> <select name="editorclass"><option value="0">初级编辑</option><option value="1">原创指数10%-50%</option><option value="5">原创指数50%-90%</option><option value="9">原创作者</option></select><input type="button" style="margin:0 0 0 9px;width:50px;height:24px" value="发布" id="submitbotton"/></div>
+<div class="a" id="hstrong"><a href="javascript:void(0)" hstrong="strong" title="strong 加粗">加粗</a><a href="javascript:void(0)" hstrong="h3" title="h3 小标题">标题</a><a href="javascript:void(0)" hstrong="em" title="强调斜体">斜体</a><a href="javascript:void(0)" hstrong="a" title="链接">链接</a><a href="javascript:void(0)" hstrong="pre" title="程序代码">代码</a><a href="javascript:void(0)" hstrong="replace">替换</a></div><span id="fimg"><a href="#">上传图片</a><a href="#" class="fimgo">文章预览</a></span><span><a href="http://e.v-get.com/tech/2013-03-26/55.html">特殊符号</a></span><div class="o"></div>
+<textarea name="localf" rows="44" style="width:98%;resize:vertical"></textarea><input type="hidden" name="f"/><input type="hidden" name="fl" value="0"/><input type="hidden" name="funit" value="0"/> 
+</form>
+</div>
+<div style="float:left;width:13%;line-height:22px;font-size:12px;color:#00c" id="note">
+<a href="http://e.v-get.com/tech/2013-03-26/55.html" title="特殊符号">特殊符号</a>
+<p id="ec_editornote"></p><p id="ec_keywords"></p>
+<p>&nbsp;</p><p class="centerp"><strong><a href="http://e.v-get.com/tech/u/Editor_1.html" target="_blank">Chrome浏览器快捷键</a></strong></p><p class="centerp">&#39;单引号 ==> &amp;#39;</p><p class="centerp">&#34;双引号 ==> &amp;#34;</p><p class="centerp">&lt;小于 ==> &amp;lt;</p><p class="centerp">&gt;大于 ==> &amp;gt;</p><p class="centerp">&amp;  ==> &amp;amp;</p><p class="centerp">Ctrl+B  <strong>strong 重点加粗</strong></p><p class="centerp">Ctrl+I  <em>em 斜体</em></p><p class="centerp">Ctrl+Sft+X  <b>h3 小标题</b></p><p class="centerp">Ctrl+Sft+Z  <b>h2 大标题</b></p><p class="centerp">Ctrl+Sft+A  <span class="f2" style="text-decoration:underline">a链接</span></p><p class="centerp">Ctrl+Sft+B  <span style="text-decoration:underline">加暗链fa</span></p>
+</div>
+<div style="float:right;width:40%" id="rightinsert">
+<iframe frameborder="0"  marginheight="0"  marginwidth="0" id="imgftp" style="width:100%;height:700px;display:none"></iframe>
+</div>
+<div id="rightext" style="float:right;width:40%;display:none"></div>
+<div style="float:right;width:40%" id="rightnote"><iframe frameborder="0"  marginheight="0"  marginwidth="0" style="width:100%;height:700px"></iframe></div>
+<div class="pre_code"><p><span><select id="pre_code"><option></option><option value="all">全代码</option></select></span><button id="pre_add">确定</button></p><textarea id="pre_codes"></textarea></div>
+<script type="text/javascript" src="fe.js"></script>
+
+
+</body></html>

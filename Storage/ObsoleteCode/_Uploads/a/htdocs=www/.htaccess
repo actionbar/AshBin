@@ -1,0 +1,4 @@
+RewriteEngine on
+ErrorDocument 404 /error.html
+RewriteRule ^www\.v-getimg\.com/i8/(\d+x\d+)\.js$ /www.v-getimg.com/i8/i.php?a=$1 [L]
+RewriteRule ^/?$ http://yiwu.wuliu.v-get.com/ [L]

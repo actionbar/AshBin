@@ -1,0 +1,135 @@
+.wt{height:32px;width:100%;background:url(http://localhost/www.v-get.com/tu/f.png) 0 -550px repeat-x;border-bottom:#f80 2px solid;font-size:14px;position:fixed;*position:relative;z-index:98}
+.wt a{color:#fff;width:60px;height:32px;padding:0 5px;line-height:32px}
+.wt .wti,.wt a.wti:hover{width:65px;background:url(http://localhost/www.v-get.com/tu/i72x23.png) 0 5px no-repeat}
+#wt,a#wt:hover{font-size:12px;width:89px;color:#ccc;text-align:left;background:none}
+.wt .wto,.wt a:hover{background:#13161A}
+#ws{background:url(http://localhost/www.v-get.com/tu/s.png) 0 -78px no-repeat;float:left;width:238px;height:28px;line-height:23px;margin:2px 5px}
+#ws:hover{background-position:0 -106px}
+#ws input{background:none;border:none;}
+.wsk{width:200px;margin:0 3px;height:20px}
+.wss{width:20px;cursor:pointer}
+
+#wtz{position:fixed;*position:relative;top:10px;width:410px;height:100px;z-index:99;display:none}
+#wtz h4{background:#fff;width:170px;height:28px;line-height:28px;font-size:12px}
+#wtz table{background:#fff;margin:0;border-top:none;padding:0 0 9px 15px}
+
+#wtz th{text-align:left;background:#f4f9ff}
+.wtzo,.wtzv{background:#DFEDFE}
+#wtz td{margin:3px;cursor:pointer}
+
+
+.u {margin:9px auto;_margin:0 0 9px;height:90px;position:relative}
+.u a{color:#000}
+#au{width:728px;position:absolute}
+
+/*chrome 等 webkit浏览器对10px字体无效，只有添加禁止浏览器字体调整-webkit-text-size-adjust:none;就行了*/
+.i{height:90px;width:230px;_width:226px;background:#FDF4D5;font-size:10px;-webkit-text-size-adjust:none;font-family:Tahoma}
+
+.il{margin:26px 0;background:url(http://localhost/www.v-get.com/tu/i.gif);width:125px;height:38px;}
+/*主页“商务物流网”要用到font-size:14px*/
+.ir{margin:26px 4px;padding:7px;color:#888888;background:url(http://localhost/www.v-get.com/tu/f.png) 0 -372px no-repeat;}
+.ir p{height:12px;line-height:12px}
+
+
+.vs{color:#666}
+#acl{width:234px}
+#acl img{width:234px;height:60px}
+
+
+
+.vs{background:url(fb.png) bottom repeat-x;width:720px;height:191px;border:#2885C6 solid;border-width:1px 0 0 1px;border-radius:3px}
+.n,.n .no,.n a:hover,.n i{background:url(http://localhost/www.v-get.com/i0/f.gif) repeat-x}
+
+
+
+.n{height:28px;padding-top:4px;background-position:0 -152px;font-size:14px;font-weight:700}
+.n a{width:84px;text-decoration:none;color:#fff;height:27px;line-height:28px;*line-height:32px;line-height:32px\9;margin:0 5px}
+.n .no,.n a:hover{width:82px;border-top-left-radius:3px;border-top-right-radius:3px;}
+.n .no,.n a.no:hover{width:60px;line-height:28px;*line-height:30px;line-height:30px\9;background-position:0 -190px;color:#595656;font-weight:700;border:#0069ac solid;border-width:1px 1px 0}
+.n a:hover{background-position:0 -411px;border:#94c9ed solid;line-height:26px;*line-height:30px;line-height:30px\9;border-width:1px 1px 0}
+.n i{display:inline-block;float:left;width:7px;height:26px;background-position:50% -223px;background-repeat:no-repeat}
+
+.sn{height:28px}
+.sn a{padding:0 9px;height:22px;line-height:22px}
+.sn a.snl{color:#666;padding:0;width:59px;text-align:left}
+.sn a:hover{color:#f60}
+.sn a.sno,.sn a.sno:hover{background:#427FD8;font-weight:700;color:#fff;font-size:14px}
+.sn a.pr{padding:0;text-align:left;background:url(http://localhost/www.v-get.com/tu/g.gif) 30px -976px no-repeat;}
+
+
+.vsc{height:47px;}
+.s{border:#0068B3 2px solid;line-height:34px;font-size:14px}
+.s .sf{border-right:#0068B3 2px solid;}
+.s .p{height:34px;position:relative}
+.sp5{padding:0 5px;}
+.s input{border:none;color:#333;height:32px;font-size:14px}
+.s .a{position:relative}
+.s .a a{height:34px;line-height:34px;font-size:14px;color:#333;text-decoration:none}
+.s .a .pr{background:url(http://localhost/www.v-get.com/tu/g.gif) 0 -970px no-repeat;width:12px;height:34px}
+.sd{border:#0068B3 solid;border-width:0 2px 2px;border-top:#eee 1px dotted;border-top-left-radius:2px;border-top-right-radius:2px;position:absolute;z-index:9;left:-2px;top:34px;width:100%;background:#fff;display:none}
+.sd li{padding:0 5px;color:#333;cursor:pointer;height:25px;line-height:25px}
+.sd li:hover{background:#E5EEFF}
+
+.s1{width:105px}
+.s2c{width:23px;color:#0068B3;font-weight:700;font-family:"宋体"}
+.s2 input{width:160px;}
+.sc{display:none}
+.sk{width:480px}
+
+.s .q{background:#0068B3}
+.s .q  input{width:94px;background:none;text-align:center;color:#fff;font-weight:700;cursor:pointer}
+
+.vsb{width:230px}
+
+
+
+
+
+h2{height:34px;border-bottom:#ddd 1px solid;padding:0 9px;line-height:34px;background:url(http://localhost/www.v-get.com/tu/f.png) 0 -29px repeat-x;color:#1076C4}
+h2.f0{color:#AA3251}
+
+
+.g{height:43px}
+.gl{width:145px;background:#f00}
+.gl img{width:145px;height:43px}
+.gr{width:809px;height:31px;padding:5px 0;color:#666}
+.gr p{line-height:16px;height:16px}
+.gr a{padding:0 10px;}
+
+.vf img{border:#ddd 1px solid}
+.v1 .p{width:315px}
+.v1  img{width:313px;height:53px}
+.v1t img{height:115px}
+#c1 img{height:177px}
+.v1b img{margin:7px 0 0 0}
+.v1 .q{width:645px}
+.v1 .q a{margin:0 0 7px 7px}
+
+.c2{background:#EBEBEB;}
+.c2 h2{border-width:0 0 1px 0}
+.c2v{width:313px;background:#fff}
+.c2b{padding:15px 0}
+.c2b img{border:#ccc 3px solid;margin:0 9px}
+.c2 .q{margin:0 0 0 9px}
+
+.v2 img{width:152px;height:53px;margin:3px}
+.v3 img{margin:3px;width:112px;height:50px}
+.v4 h2{border-width:0 0 1px 0;margin:0 0 9px 0}
+.v4 img{margin:0 16px;width:188px;height:108px;border:#EDEDED 9px solid}
+.v5 img{width:112px;height:70px;margin:3px}
+
+#c5{}
+#c5 .p{width:318px;height:182px;overflow:hidden}
+.c5c{border:#fff 1px solid;border-width:0 2px}
+#c5 li{line-height:26px;height:26px;position:relative;padding:0 9px}
+#c5 li a{color:#AD3251}
+#c5 li a.pr{color:#555;right:9px}
+.c5b{background:#F1F1F1}
+
+
+
+
+.b{background:url(http://localhost/www.v-get.com/tu/b/b000abe.png) no-repeat;width:100%}
+.bg{color:#999;margin:15px 0;line-height:20px;text-align:left}
+.bg i{font-weight:700;color:#f60;font-style:normal;font-size:14px}
+.bg a{color:#315AAA;padding:0 9px}

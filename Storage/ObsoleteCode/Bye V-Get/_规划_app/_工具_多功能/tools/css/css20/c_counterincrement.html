@@ -1,0 +1,77 @@
+<html xmlns:rdl>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<script src="rdl_properties.js"></script>
+<base target="_self">
+</head>
+<body>
+
+<script>
+
+//collFriendProperties=new Array();
+//collFriendDeclarations=new Array();
+//collFriendAtRules=new Array();
+//collFriendElements=new Array();
+//collFriendClasses=new Array();
+
+collFriendProperties=new Array(
+'quotes','content','counter-reset','include-source'
+);
+
+collFriendElements=new Array(
+':after',':before'
+);
+
+//collIE40=new Array();
+//collIE50=new Array();
+//collIE55=new Array();
+//collIE60=new Array();
+
+sStyle='';
+
+sScript='';
+
+sCode='';
+
+iWinWidth=360;
+
+iWinHeight=240;
+
+bRunCode=false;
+
+bElements=false;
+
+</script>
+
+<div id=idContent>
+
+<div id=idContentTitle><span id=idTitleName>counter-increment</span>版版本：CSS2　 兼容性：无　继承性：无</div>
+
+<div class=cssColumnTitle>语法：</div>
+<div>
+<b>counter-increment : </b><span class=cssDefault><b>none</b></span> | <i>identifier number</i>
+</div>
+
+<div class=cssColumnTitle>取值：</div>
+<table>
+<tr><td nowrap><b> none </b></td><td nowrap><b>:</b></td><td><b>默认值</b>。阻止计数器增加</td></tr>
+<tr><td nowrap><i> identifier number </i></td><td nowrap><b>:</b></td><td><i> identifier </i>定义一个将被增加计数的选择符(selector)，id，或者class。<i> number </i>定义增加的数值。可以为负值。默认值是<span class=cssDefault> 1 </span></td></tr>
+</table>
+
+<div class=cssColumnTitle>说明：</div>
+<div>
+设定当一个选择符(selector)发生时计数器增加的值。<br>
+对应的脚本特性为<b> counterIncrement </b>。
+</div>
+
+<div class=cssColumnTitle>示例：</div>
+<div id=idSimpleCode>
+p:before { content: "paragraph" counter(paragraph);  counter-increment: paragraph; }
+</div>
+
+</div>
+</body>
+</html>
+
+<!-- Part of RDL(TM) - Written by Rain1977 
+HomeSite: http://www.dhtmlet.com  E-Mail: dhtmlet@hotmail.com -->

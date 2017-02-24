@@ -1,0 +1,1001 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>图片滤镜产生器</title>
+<meta name="keywords" content="图片滤镜产生器">
+<meta content="图片滤镜产生器,图片滤镜,图片滤镜效果,在线图形处理,在线图片工具,图片工具,滤镜" name="description" />
+<link href="../images/style.css" rel="stylesheet" type="text/css" />
+<style type="text/css">
+<!--
+body {margin:0; padding:0;background: #FFF url('../images/top3.gif') repeat-x top; font-size:12px;color:#666}
+.style1 {font-size: 14px}
+-->
+</style>
+<!--联系作者EMAIL:gene7299@gmail.com 保留相关权利 -->
+<!--可架设镜像站,但禁止未经原创作著同意改版-->
+<!------------------------------------图片读取处理------------------------------------>
+<script language="javascript">
+var filterstate = 0 ;//滤镜状态
+
+var oSize = 0 ;
+var src ='';
+var width='';
+var height='';
+var width2='';
+var height2='';
+//var ppstate=0;
+
+function imgOrg_onload(img) {
+	 src   = img.src;  //document.all.imgOrg.src; 
+	 width = img.width;//document.all.imgOrg.width;
+	 height = img.height;//document.all.imgOrg.height;
+	//var html = "";
+	
+	if(oSize == 0){
+	document.all.twidth.value = img.width;
+	document.all.theight.value = img.height;
+	}
+okhtml();
+}
+function btnFunc1_onclick() {
+
+	
+	var doc = document.frames[0].document;
+	
+	//var doc = document.ifImage.document;
+	doc.write("<img src="+document.all.img_src.value+" onload='window.parent.imgOrg_onload(this)'>");
+	
+}
+/*
+function btnReset1_onclick() {
+	document.all.txtOutput1.value = "";
+	oSize = 0;
+	document.all.txtWidth.value = "";
+	document.all.txtHeight.value = "";
+}
+*/
+</script>
+<!------------------------------------颜色代码生成器------------------------------------>
+<SCRIPT LANGUAGE=JavaScript>
+var SelRGB = '';
+var DrRGB = '';
+var SelGRAY = '120';
+var SelRGB2 = '';
+var DrRGB2 = '';
+var SelGRAY2 = '120';
+
+var hexch = new Array('0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F');
+
+function ToHex(n)
+{	var h, l;
+
+	n = Math.round(n);
+	l = n % 16;
+	h = Math.floor((n / 16)) % 16;
+	return (hexch[h] + hexch[l]);
+}
+
+function DoColor(c, l)
+{ var r, g, b;
+
+  r = '0x' + c.substring(1, 3);
+  g = '0x' + c.substring(3, 5);
+  b = '0x' + c.substring(5, 7);
+  
+  if(l > 120)
+  {
+    l = l - 120;
+
+    r = (r * (120 - l) + 255 * l) / 120;
+    g = (g * (120 - l) + 255 * l) / 120;
+    b = (b * (120 - l) + 255 * l) / 120;
+  }else
+  {
+    r = (r * l) / 120;
+    g = (g * l) / 120;
+    b = (b * l) / 120;
+  }
+
+  return '#' + ToHex(r) + ToHex(g) + ToHex(b);
+}
+
+function EndColor(x)
+{ var i;
+     
+  if(x==0){
+ 
+  if(DrRGB != SelRGB)
+  {
+    DrRGB = SelRGB;
+    for(i = 0; i <= 30; i ++)
+    //多个颜色选择器
+     
+      GrayTable.rows(i).bgColor = DoColor(SelRGB, 240 - i * 8);
+       
+   }
+
+   SelColor.value = DoColor(SelRGB,SelGRAY);
+  ShowColor.style.backgroundColor =  SelColor.value;
+  
+  
+  }
+  
+    if(x==1){
+ 
+  if(DrRGB2 != SelRGB2)
+  {
+    DrRGB2 = SelRGB2;
+    for(i = 0; i <= 30; i ++)
+    //多个颜色选择器
+     
+      GrayTable2.rows(i).bgColor = DoColor(SelRGB2, 240 - i * 8);
+       
+   }
+
+   SelColor2.value = DoColor(SelRGB2,SelGRAY2);
+  ShowColor2.style.backgroundColor =  SelColor2.value;
+  
+  
+  }
+
+  preview2();
+  // okhtml();
+}
+</SCRIPT>
+
+<SCRIPT LANGUAGE=JavaScript FOR=ColorTable EVENT=onclick>
+  SelRGB = event.srcElement.bgColor;
+  EndColor(0);
+</SCRIPT>
+<SCRIPT LANGUAGE=JavaScript FOR=ColorTable2 EVENT=onclick>
+  SelRGB2 = event.srcElement.bgColor;
+  EndColor(1);
+</SCRIPT>
+<!--
+<SCRIPT LANGUAGE=JavaScript FOR=ColorTable EVENT=onmouseover>
+  RGB.innerText = event.srcElement.bgColor;
+  EndColor();
+</SCRIPT>
+
+<SCRIPT LANGUAGE=JavaScript FOR=ColorTable EVENT=onmouseout>
+  RGB.innerText = SelRGB;
+  EndColor();
+</SCRIPT>
+-->
+<SCRIPT LANGUAGE=JavaScript FOR=GrayTable EVENT=onclick>
+  SelGRAY = event.srcElement.title;
+  EndColor(0);
+</SCRIPT>
+<SCRIPT LANGUAGE=JavaScript FOR=GrayTable2 EVENT=onclick>
+  SelGRAY2 = event.srcElement.title;
+  EndColor(1);
+</SCRIPT>
+<!--
+<SCRIPT LANGUAGE=JavaScript FOR=GrayTable EVENT=onmouseover>
+  GRAY.innerText = event.srcElement.title;
+  EndColor();
+</SCRIPT>
+
+<SCRIPT LANGUAGE=JavaScript FOR=GrayTable EVENT=onmouseout>
+  GRAY.innerText = SelGRAY;
+  EndColor();
+</SCRIPT>
+-->
+<!--
+<SCRIPT LANGUAGE=JavaScript FOR=Ok EVENT=onclick>
+  window.returnValue = SelColor.value;
+  window.close();
+</SCRIPT>
+-->
+<!------------------------------------颜色代码生成器------------------------------------>	
+	
+<!-----------------------------------主程式------------------------------------>
+<SCRIPT LANGUAGE=JavaScript>
+
+
+function changeStyle(){
+styleA.style.display='none';
+styleB.style.display='none';
+styleC.style.display='none';
+styleD.style.display='none';
+styleE.style.display='none';
+styleF.style.display='none';
+styleG.style.display='none';
+styleH.style.display='none';
+filtercolor.style.display='none';
+
+var filter_style_rads = document.all.filterstyle;
+
+if( filter_style_rads[0].checked ){
+styleA.style.display='block'; 
+document.all.add_filter.value='测试 半透明合成 效果';
+filterstate = 0 ;
+  }else if( filter_style_rads[1].checked ){
+styleB.style.display='block'; 
+document.all.add_filter.value='测试 灰度 X光 互补 效果';
+filterstate = 1 ;
+ }else if( filter_style_rads[2].checked ){
+styleC.style.display='block'; 
+document.all.add_filter.value='测试 翻转 效果';
+filterstate = 2 ;
+ }else if( filter_style_rads[3].checked ){
+styleD.style.display='block'; 
+filtercolor.style.display='block';
+filtercolor.style.backgroundColor='#E8F7FF';
+document.all.SelColor.value='#4A7AC9';
+ShowColor.style.backgroundColor='#4A7AC9';
+document.all.add_filter.value='测试 发光 效果';
+filterstate = 3 ;
+ }else if( filter_style_rads[4].checked ){
+styleE.style.display='block'; 
+filtercolor.style.display='block';
+filtercolor.style.backgroundColor='#ECFFEC';
+document.all.SelColor.value='#4A7AC9';
+ShowColor.style.backgroundColor='#4A7AC9';
+document.all.add_filter.value='测试 投射阴影 效果';
+filterstate = 4 ;
+ }else if( filter_style_rads[5].checked ){
+styleF.style.display='block'; 
+filtercolor.style.display='block';
+filtercolor.style.backgroundColor='#E8F7FF';
+document.all.SelColor.value='#333333';
+ShowColor.style.backgroundColor='#333333';
+document.all.add_filter.value='测试 附阴影 效果';
+filterstate = 5 ;
+ }else if( filter_style_rads[6].checked ){
+styleG.style.display='block'; 
+document.all.add_filter.value='测试 模糊 效果';
+filterstate = 6 ;
+ }else if( filter_style_rads[7].checked ){
+styleH.style.display='block'; 
+document.all.add_filter.value='测试 波形 效果';
+filterstate = 7 ;
+}
+
+preview2();	
+
+
+}
+
+var subhtm = new Array('0','1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19');//储存HTML限定20組
+var subhtm2 = new Array('0','1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19');//储存状态名称
+var subhtm3 = new Array(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);//储存状态代号
+var subhtmw = new Array(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);//储存滤镜外加宽
+var subhtmh = new Array(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);//储存滤镜外加高
+var htmnum = 0;//计算加入多少HTML
+var temphtm ='';
+var temphtm2 ='';
+var temphtm3 ='';
+var temphtmh = 0;
+var temphtmw = 0;
+var srcchtm ='';
+var outhtm ='';
+var tempbr = 0;
+var uubr =0;
+
+function preview1(){
+	
+		if(document.all.twidth.value != "" && document.all.theight.value != "")	{ 
+	//自定照片大小
+	width = document.all.twidth.value;
+	height = document.all.theight.value;
+	oSize = 1;
+	}
+
+        preview3();
+}
+
+function preview4(){
+
+if(htmnum==0){
+preview2();
+}
+else{
+    alert('你已经加入至少一种效果，最好不要再修改宽高哦！！');
+    //document.all.twidth.value=width;
+    //document.all.theight.value=height;
+    }
+}
+var addw =0;
+var addh =0;
+var brstate=0;
+
+
+
+
+function  preview3(){
+
+	  var p=0; 
+  //if(ppstate==0){
+  addw=0;addh=0;
+  for(p=0;p<htmnum;p++){
+  addw=addw+subhtmw[p];
+  addh=addh+subhtmh[p];
+  
+  }
+ // }
+    
+
+
+	//自动 滤镜高度与宽度设定
+	if(document.all.D_check.checked == true ){
+	document.all.D_o1h.value = parseInt(height,10)+document.all.D_o3x.value*2+10+addh;
+	document.all.D_o2w.value = parseInt(width,10)+document.all.D_o3x.value*2+addw;
+	}
+	if(document.all.E_check.checked == true ){
+	document.all.E_o1h.value = parseInt(height,10)+24+10+addh;
+	document.all.E_o2w.value = parseInt(width,10)+24+addw;
+	}
+	if(document.all.F_check.checked == true ){
+	document.all.F_o1h.value = parseInt(height,10)+document.all.F_o4x.value*2+10+10+addh;
+	document.all.F_o2w.value = parseInt(width,10)+document.all.F_o3x.value*2+10+addw;
+	}
+	if(document.all.G_check.checked == true ){
+	document.all.G_o1h.value = parseInt(height,10)+15+10+addh;
+	document.all.G_o2w.value = parseInt(width,10)+10+addw;
+	}
+	if(document.all.H_check.checked == true ){
+	document.all.H_o1h.value = parseInt(height,10)+document.all.H_o4x.value*2+10+addh;
+	document.all.H_o2w.value = parseInt(width,10)+document.all.H_o4x.value*2+addw;
+	}
+
+}
+
+function preview2(){
+//ppstate=0;
+  	brstate=0;
+if(htmnum==0){
+    preview1();
+    preview3();
+    srcchtm = '<img src="'+src+'"  height='+height+' width='+width+' border=0>';  
+    }
+    preview3();
+//大杂烩      
+  if(filterstate==0){
+  var temprad=document.all.filterstyle_A;
+  var radhtm='';
+  htmnum=htmnum+1;
+  var mozvalue=document.all.A_o1x.value/100;
+  if(temprad[0].checked){radhtm='0';temphtm3='半透明合成(均匀)';}else if(temprad[1].checked){radhtm='1';temphtm3='半透明合成(线性)';}else if(temprad[2].checked){radhtm='2';temphtm3='半透明合成(圆形)';}else if(temprad[3].checked){radhtm='3';temphtm3='半透明合成(长方形)';}
+  temphtm='<div id="第'+htmnum+'个滤镜" style="filter:Alpha(opacity='+document.all.A_o1x.value+',finishOpacity='+document.all.A_o2x.value+',style='+radhtm+') ;-moz-opacity:'+mozvalue+';width:'+width+';height:'+height+'">';
+  temphtm2='</div>';
+  htmnum=htmnum-1;
+  temphtmw=0;temphtmh=0;
+  tempbr=0;
+  }
+ 
+ if(filterstate==1){
+  var temprad=document.all.filterstyle_B;
+  var radhtm='';
+  htmnum=htmnum+1;
+  if(temprad[0].checked){radhtm='Gray';temphtm3='灰度';}else if(temprad[1].checked){radhtm='Xray';temphtm3='X光';}else if(temprad[2].checked){radhtm='Invert';temphtm3='互补';}
+  temphtm='<div id="第'+htmnum+'个滤镜" style="filter:'+radhtm+'() ;width:'+width+';height:'+height+'">';
+  temphtm2='</div>';
+  htmnum=htmnum-1;
+  temphtmw=0;temphtmh=0;
+  tempbr=1;
+ }
+  if(filterstate==2){
+   var temprad=document.all.filterstyle_C;
+  var radhtm='';
+  htmnum=htmnum+1;
+  if(temprad[0].checked){radhtm='FlipH';temphtm3='左右翻转';}else if(temprad[1].checked){radhtm='FlipV';temphtm3='水平翻转';}
+  temphtm='<div id="第'+htmnum+'个滤镜" style="filter:'+radhtm+'() ;width:'+width+';height:'+height+'">';
+  temphtm2='</div>';
+  htmnum=htmnum-1;
+ temphtmw=0;temphtmh=0;
+ tempbr=2;
+  }
+ 
+   if(filterstate==3){
+  htmnum=htmnum+1;
+  temphtm='<div id="第'+htmnum+'个滤镜" style="filter:Glow(strength='+document.all.D_o3x.value+',color='+document.all.SelColor.value+') ;width:'+document.all.D_o2w.value+';height:'+document.all.D_o1h.value+'"  align=center>';
+  temphtm2='</div>';
+  htmnum=htmnum-1;
+  temphtm3='发光效果';
+   temphtmw=document.all.D_o2w.value-width-addw;
+   temphtmh=document.all.D_o1h.value-height-addh;
+   tempbr=3;
+  }
+  
+   if(filterstate==4){
+  htmnum=htmnum+1;
+  temphtm='<div id="第'+htmnum+'个滤镜" style="filter:Shadow(direction='+document.all.E_o3x.value+',color='+document.all.SelColor.value+') ;width:'+document.all.E_o2w.value+';height:'+document.all.E_o1h.value+'" align=center>';
+  temphtm2='</div>';
+  htmnum=htmnum-1;
+  temphtm3='投射阴影效果';
+   temphtmw=document.all.E_o2w.value-width-addw;
+   temphtmh=document.all.E_o1h.value-height-addh;
+   tempbr=4;
+  }
+  
+    if(filterstate==5){
+  htmnum=htmnum+1;
+  temphtm='<div id="第'+htmnum+'个滤镜" style="filter:Dropshadow(offX='+document.all.F_o3x.value+',offY='+document.all.F_o4x.value+',color='+document.all.SelColor.value+') ;width:'+document.all.F_o2w.value+';height:'+document.all.F_o1h.value+'" align=center>';
+  temphtm2='</div>';
+  htmnum=htmnum-1;
+  temphtm3='附阴影效果';
+   temphtmw=document.all.F_o2w.value-width-addw;
+   temphtmh=document.all.F_o1h.value-height-addh;
+   tempbr=5;
+  }
+  
+     if(filterstate==6){
+  htmnum=htmnum+1;
+  temphtm='<div id="第'+htmnum+'个滤镜" style="filter:Blur(direction='+document.all.G_o3x.value+',color='+document.all.SelColor.value+') ;width:'+document.all.G_o2w.value+';height:'+document.all.G_o1h.value+'" align=center>';
+  temphtm2='</div>';
+  htmnum=htmnum-1;
+  temphtm3='模糊效果';
+   temphtmw=document.all.G_o2w.value-width-addw;
+   temphtmh=document.all.G_o1h.value-height-addh;
+   tempbr=6;
+  }
+  
+       if(filterstate==7){
+  htmnum=htmnum+1;
+  temphtm='<div id="第'+htmnum+'个滤镜" style="filter:Wave(freq='+document.all.H_o3x.value+',strength='+document.all.H_o4x.value+',lightstrength='+document.all.H_o5x.value+',phase='+document.all.H_o6x.value+') ;width:'+document.all.G_o2w.value+';height:'+document.all.G_o1h.value+'" align=center>';
+  temphtm2='</div>';
+  htmnum=htmnum-1;
+  temphtm3='波形效果';
+   temphtmw=document.all.H_o2w.value-width-addw;
+   temphtmh=document.all.H_o1h.value-height-addh;
+   tempbr=7;
+  }
+  
+   //srcchtm = '<img src="'+src+'"  height='+height+' width='+width+' border=0>';
+ 
+ var i=0;
+ outhtm='';
+ htmnum=htmnum-1;
+	  for(i=0;i<=htmnum;i++){
+  outhtm=subhtm[i]+outhtm;
+  }
+  outhtm=temphtm+outhtm;
+         for(i=0;i<=htmnum;i++){
+  temphtm2=temphtm2+'</div>';
+  }
+  htmnum=htmnum+1;
+  
+  var p=0;
+    for(p=0;p<=htmnum;p++){
+  if(subhtm3[p]>2 || tempbr>2){brstate=1;}
+   }
+
+ /* 自动加BR*/
+ var p=0;
+if(document.all.brcheck1.checked == false ){
+       for(p=0;p<=htmnum;p++){
+  if(subhtm3[p]==0 && tempbr==0){brstate=0;}
+   }}
+ /* 自动加BR*/ 
+  
+  if(brstate==1){
+  outhtm=outhtm+'<br>'+srcchtm+temphtm2;
+	}else{outhtm=outhtm+srcchtm+temphtm2;}
+	
+	document.all.outhtml.value = outhtm ;	
+	document.all.divResult.innerHTML = "*复制起点→ ●"+outhtm+"● ←复制终点*";
+
+
+}
+
+
+
+function add_cx(){
+     preview2();
+
+  subhtm[htmnum]=temphtm;
+  subhtm2[htmnum]=temphtm3;
+  subhtmw[htmnum]=temphtmw;
+  if(brstate==1){
+  subhtmh[htmnum]=temphtmh-10;}
+  else{subhtmh[htmnum]=temphtmh;}
+  subhtm3[htmnum]=tempbr;
+
+	document.all.op1.value = subhtmw[htmnum];
+	document.all.op2.value = subhtmh[htmnum];
+	document.all.nnum.value = htmnum+1;
+   
+   document.all.sechtm.innerHTML='';
+  
+  var sechtml='';
+  //var ttmp='';
+  var u=0; 
+  for(u=0;u<=htmnum;u++){
+  sechtml=sechtml+"<input type=radio  value="+u+"  name=delsec>"+(u+1)+"."+subhtm2[u]+""+"<input type=button value='删除' onclick='delfilter("+u+");'>" ;
+  //sechtml= sechtml+ttmp;
+  }
+
+     document.all.sechtm.innerHTML=sechtml;
+    
+    htmnum=htmnum+1;
+  okhtml();    
+}
+function delfilter(del_num){
+//var del_num=0;
+var del_rads=document.all.delsec;
+/*
+ var u=0; 
+  for(u=0;u<=htmnum;u++){
+  if(del_rads[u].checked){
+  del_num=u;  
+  }}
+*/
+    for(u=del_num;u<htmnum;u++){
+  subhtm[u]=subhtm[u+1];
+  subhtm2[u]=subhtm2[u+1];
+  subhtm3[u]=subhtm3[u+1];
+  subhtmh[u]=subhtmh[u+1];
+  subhtmw[u]=subhtmw[u+1];
+
+  }
+
+
+    htmnum=htmnum-1;
+  
+   document.all.sechtm.innerHTML='';
+   document.all.nnum.value = htmnum;
+  var sechtml='';
+  var u=0; 
+  for(u=0;u<htmnum;u++){
+  sechtml=sechtml+"<input type=radio  value='"+u+"'  name=delsec>"+(u+1)+"."+subhtm2[u]+""+"<input type=button value='删除' onclick='delfilter("+u+");'>" ;
+  }
+
+     document.all.sechtm.innerHTML=sechtml;
+
+    okhtml(); 
+}
+
+
+
+function okhtml(uubrx){
+ var i=0;
+/*
+	  for(i=htmnum;i>=0;i--){
+  outhtm=outhtm+subhtm[i];
+ }
+*/
+if(htmnum==0 || oSize==0){
+srcchtm = '<img src="'+src+'"  height='+height+' width='+width+' border=0>';
+}
+
+outhtm='';
+//temphtm='';
+temphtm2='';
+htmnum=htmnum-1;
+	  for(i=0;i<=htmnum;i++){
+  outhtm=subhtm[i]+outhtm;
+  }
+  	  for(i=0;i<=htmnum;i++){
+  temphtm2=temphtm2+'</div>';
+  }
+  var p=0;
+    for(p=0;p<=htmnum;p++){
+  if(subhtm3[p]>2){brstate=1;}
+   }
+/* 自动加BR*/
+if(document.all.brcheck1.checked == false ){
+       for(p=0;p<=htmnum;p++){
+  if(subhtm3[p]==0){brstate=0;}
+   }}
+ /* 自动加BR*/
+ if(uubrx<=0){uubr=0;}
+  if(uubrx==1){uubr=uubr-1;} 
+ if(uubrx==2){uubr=uubr+1;} 
+ var xo=0;
+ var ssahtm = srcchtm;
+ for(xo=0;xo<uubr;xo++){srcchtm='<br>'+srcchtm;}
+ 
+ 
+  if(brstate==1){
+   outhtm=outhtm+'<br>'+srcchtm+temphtm2;
+     }else{outhtm=outhtm+srcchtm+temphtm2;}
+         document.all.outhtml.value = outhtm ;
+	document.all.divResult.innerHTML = "复制起点→ ●"+outhtm+"● ←复制终点";
+htmnum=htmnum+1;	
+srcchtm=ssahtm;
+	//;
+	preview3();
+	brstate=0;
+
+}
+function reset(){
+var tt=0;
+for(tt=0;tt<=htmnum;tt++)
+{   subhtm[tt]=0;
+  subhtm2[tt]=0;
+  subhtm3[tt]=0;
+  subhtmh[tt]=0;
+  subhtmw[tt]=0;
+}
+htmnum=0;
+document.all.sechtm.innerHTML='';
+document.all.nnum.value = 0;
+uubr =0;
+okhtml();
+
+}
+
+
+</script>
+
+<!-----------------------------------主程式------------------------------------>
+</HEAD>
+<BODY>
+<table width="960" height="75" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td width="264" rowspan="2" align="center"><a href="../index.html">
+	<img src="../images/logo.gif" width="224" height="38" border="0" /></a></td>
+    <td height="24" valign="top">
+	<table width="321" height="24" border="0" align="right" cellpadding="0" cellspacing="0" background="../images/top2.gif">
+        <tr>
+          <td align="center" class="cwhite12"><a href="#" class="cwhite12">tools.kqiqi.com</a>　<a href="#" OnClick='this.style.behavior="url(#default#homepage)";this.setHomePage("http://tools.kqiqi.com");' class="cwhite12">设为首页</a> | <a href="#" onClick="window.external.AddFavorite('http://tools.kqiqi.com','客齐齐实用查询工具');" class="cwhite12">收藏本站</a></td>
+        </tr>
+    </table></td>
+  </tr>
+</table>
+<table width="960" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td><table height="38" border="0" cellpadding="0" cellspacing="0" style="margin-left:5px">
+      <tr align="center">
+          <td width="88" background="../images/nav1.gif" style="padding-top:5px"><a href="../index.html" class="navfh2">首　页</a></td>
+          <td width="88" background="../images/nav1.gif" style="padding-top:5px"><a href="../admin/index.html" class="navfh2">站长工具</a></td>
+          <td width="88" background="../images/nav1.gif" style="padding-top:5px"><a href="../query/index.html" class="navfh2">查询工具</a></td>
+          <td width="88" background="../images/nav1.gif" style="padding-top:5px"><a href="../calculation/index.html" class="navfh2">计算工具</a></td>
+          <td width="88" background="../images/nav1.gif" style="padding-top:5px"><a href="../password/index.html" class="navfh2">加密解密</a></td>
+          <td width="88" background="../images/nav1.gif" style="padding-top:5px"><a href="../conversion/index.html" class="navfh2">转换工具</a></td>
+          <td width="88" background="../images/nav1.gif" style="padding-top:5px"><a href="../color/index.html" class="navfh2">颜色工具</a></td>
+          <td width="88" background="../images/nav1.gif" style="padding-top:5px"><a href="../web/index.html" class="navfh2">网络辅助</a></td>
+          <td width="88" background="../images/nav2.gif" style="padding-top:5px"><a href="index.html" class="navfh1">图片工具</a></td>
+          <td width="88" background="../images/nav1.gif" style="padding-top:5px"><a href="../others/index.html" class="navfh2">其它工具</a></td>
+        </tr>
+    </table></td>
+  </tr>
+</table>
+<script language="javascript" src="../js/others_top.js"></script>
+<table width="960" border="0" align="center" cellpadding="0" cellspacing="0" class="mainbg1">
+  <tr valign="top">
+    <td width="20">　</td>
+    <td width="190">
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td colspan="2" height="10">
+
+</td>
+</tr>
+      <tr>
+        <td width="75%">
+		<img src="../images/t9.gif" width="32" height="32" align="absmiddle" />　<span class="navfh1">工具列表</span></td>
+        <td width="25%">　</td>
+      </tr>
+    </table>
+     <table width="100%"  border="0" cellpadding="0" cellspacing="0" background="../images/t12.gif" class="mar5">
+        <tr>
+          <td height="10"> </td>
+        </tr>
+      </table>
+<table width="100%"  border="0" cellpadding="0" cellspacing="0" class="mar5">
+      <tr>
+        <td>　
+ <div id="menu">
+ <div class="box">
+    <a href="PicFrame.html">图片边框产生器
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+
+  <div class="box">
+    <a href="TextureText.html">材质文字效果产生器
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+    <div class="box">
+    <a href="PicFilter.html">图片滤镜产生器
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+
+  <div class="box">
+    <a href="VMLPalette.html">VML在线画板
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+  
+ 
+</div>
+ </td>
+      </tr>
+    </table>
+
+      <table width="100%" height="17"  border="0" cellpadding="0" cellspacing="0" background="t2.gif" class="mar5">
+        <tr>
+          <td> </td>
+        </tr>
+      </table>
+      
+    </td>
+    <td width="27">　</td>
+    <td width="700">
+     
+            <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+          <tr>
+      <td height="10" colspan="2">
+      </td>
+      </tr>
+        <tr valign="top">
+         <td width="40"><img src="../images/bang.gif" width="32" height="31"> </td>
+          <td><span class="navfh1">图片滤镜产生器</span></td>
+          
+        </tr>
+      </table>
+      <hr size="1" style="color:#E3E8E9" />
+      <table width="100%"  border="0" cellpadding="3" cellspacing="1">
+              <tr>
+          <td>
+           <div align="center">
+<div style="width:690">
+		<div style="FONT-SIZE: 28px; FILTER: Chroma(color=#0C0B0A); WIDTH: 257px; HEIGHT: 32px; BACKGROUND-COLOR: #ffffff" align="center">
+<font size="3" color="#ff0000"><b>图片滤镜产生器</b></font></div>
+<div style="display:inline"><input type="radio" value="0" checked name="take" onClick="location.href='#'">单一图片加上滤镜&nbsp;&nbsp; 
+</div>
+<fieldset style="border:1px solid #d9d9d9; padding:2px; ">
+<legend><b>基本设定</b></legend>
+图片网址：<input  onKeyUp="oSize=0;btnFunc1_onclick();"  onchange="oSize=0;btnFunc1_onclick();" type="text" name="img_src" size="98" id="img_src" value="http://tools.kqiqi.com/picture/images/girl.jpg"><br>
+图片高度：<input type="text" name="theight" size="15" onChange="preview4();" onKeyUp="preview4();">px　宽度：<input type="text" name="twidth" size="15"  onchange="preview4(); " onKeyUp="preview4();">px　<font color="#808080">
+</font>
+				<input onClick="oSize=0;btnFunc1_onclick();" type="button" value="手动测试图片宽度与高度" name="btnFunc1"><font color="#808080"><br>
+</font>
+<div style="background-color: #FFFFCC">滤镜样式：<input  type="radio" value="0" checked name="filterstyle" onClick="changeStyle();"><b><font face="Verdana" color="#333333">A.半透明合成 
+</font></b>
+<input  type="radio" value="1" name="filterstyle" onClick="changeStyle();"><b><font face="Verdana" color="#333333">B.灰度、X光、互补&nbsp; 
+</font></b>
+<input  type="radio" value="2" name="filterstyle" onClick="changeStyle();"><b><font face="Verdana" color="#333333">C.翻转 
+</font></b>
+<input  type="radio" value="3" name="filterstyle" onClick="changeStyle();"><b><font face="Verdana" color="#333333">D.发光效果 
+</font></b>
+<input  type="radio" value="4" name="filterstyle" onClick="changeStyle();"><b><font face="Verdana" color="#333333">E.投射阴影效果 
+</font></b>
+<input  type="radio" value="5" name="filterstyle" onClick="changeStyle();"><b><font face="Verdana" color="#333333">F.附阴影效果 
+</font></b>
+<input  type="radio" value="6" name="filterstyle" onClick="changeStyle();"><b><font face="Verdana" color="#333333">G.模糊效果 
+</font></b>
+<input  type="radio" value="7" name="filterstyle" onClick="changeStyle();"><b><font face="Verdana" color="#333333">H.波形效果</font></b><br>
+</div>
+<div  name="styleA" id="styleA" style="background-color: #ECFFEC;display:block">
+<b>A.半透明合成 </b><br>
+起始处的透明度：<INPUT id="A_o1" type="text" value="100" name="A_o1x" size="6" onChange="preview2();" onKeyUp="preview2();">(0~100)<br>
+<font face="Verdana" color="#333333">结束处的透明度</font>：<INPUT id="A_o2" type="text" value="0" name="A_o2x" size="6" onChange="preview2();" onKeyUp="preview2();">(0~100)<font face="Verdana" color="#333333"><br>
+合成样式</font>：<input  type="radio" value="0" name="filterstyle_A" onClick="preview2();"><font face="Verdana" color="#333333">均匀 </font>
+<input  type="radio" value="1" name="filterstyle_A" onClick="preview2();">线性<font face="Verdana" color="#333333"> </font>
+<input  type="radio" value="2" checked name="filterstyle_A" onClick="preview2();"><font face="Verdana" color="#333333">圆形 </font>
+<input  type="radio" value="3" name="filterstyle_A" onClick="preview2();"><font face="Verdana" color="#333333">长方形<br>
+　</font></div>
+<div  name="styleB" id="styleB" style="background-color: #E8F7FF;display:none">
+<b><font face="Verdana" color="#333333">B.灰度、X光、互补<br>
+</font></b><font face="Verdana" color="#333333">合成样式</font>：<input  type="radio" value="0" name="filterstyle_B" onClick="preview2();" checked><font face="Verdana" color="#333333">灰度(Gray) 
+</font><input  type="radio" value="1" name="filterstyle_B" onClick="preview2();" ><font face="Verdana" color="#333333">X光效果(Xray) 
+</font><input  type="radio" value="2" name="filterstyle_B" onClick="preview2();"><font face="Verdana" color="#333333">互补(Invert)<br>
+　</font></div>
+<div  name="styleC" id="styleC" style="background-color: #ECFFEC;display:none">
+<b><font face="Verdana" color="#333333">C.翻转<br>
+</font></b>翻转<font face="Verdana" color="#333333">样式</font>：<input  type="radio" value="V1" name="filterstyle_C" onClick="preview2();" checked><font face="Verdana" color="#333333">左右 </font>
+<input  type="radio" value="V1" name="filterstyle_C" onClick="preview2();">上下<br>
+　</div>
+<div  name="styleD" id="styleD" style="background-color: #E8F7FF;display:none">
+<b><font face="Verdana" color="#333333">D.发光效果<br>
+</font></b>滤镜高：<INPUT id="D_o1h" type="text" value="1" name="D_o1h" size="6" onChange="preview2();" onKeyUp="preview2();">
+滤镜宽：<input type="text" value="1" name="D_o2w" id="D_o2w" size="6" onChange="preview2();" onKeyUp="preview2();">&nbsp; <input type="checkbox" name="D_check" value="ON" checked>开启自动
+滤镜高度与宽度设定<font color="#808080"> ←宽高难免不理想，可关闭后修改大小</font><br>
+<font face="Verdana" color="#333333">发光强度</font>：<INPUT id="D_o3x" type="text" value="12" name="D_o3x" size="6" onChange="preview2();" onKeyUp="preview2();"></div>
+<div  name="styleE" id="styleE" style="background-color: #ECFFEC;display:none">
+<b><font face="Verdana" color="#333333">E.投射阴影效果<br>
+</font></b>滤镜高：<INPUT id="E_o1h" type="text" value="1" name="E_o1h" size="6" onChange="preview2();" onKeyUp="preview2();">
+滤镜宽：<input type="text" value="1" name="E_o2w" id="E_o2w" size="6" onChange="preview2();" onKeyUp="preview2();">&nbsp; 
+<input type="checkbox" name="E_check" value="ON" checked>开启自动
+滤镜高度与宽度设定 <font color="#808080"> ←宽高难免不理想，可关闭后修改大小</font><br>
+方　向：<INPUT id="E_o3x" type="text" value="135" name="E_o3x" size="6" onChange="preview2();" onKeyUp="preview2();"><SELECT id="E_o3x_s" name="E_o3x_s" onChange="document.all.E_o3x.value = document.all.E_o3x_s.value;preview2();">
+				<OPTION value="0">0°</OPTION>
+				<OPTION value="45">45°</OPTION>
+				<OPTION value="90">90°</OPTION>
+				<OPTION value="135" selected>135°</OPTION>
+				<OPTION value="180">180°</OPTION>
+				<OPTION value="225">225°</OPTION>
+				<OPTION value="270">270°</OPTION>
+				<OPTION value="315">315°</OPTION>
+				</SELECT>
+</div>
+<div  name="styleF" id="styleF" style="background-color: #E8F7FF;display:none">
+<b><font face="Verdana" color="#333333">F.附阴影效果<br>
+</font></b>滤镜高：<INPUT id="F_o1h" type="text" value="1" name="F_o1h" size="6" onChange="preview2();" onKeyUp="preview2();">
+滤镜宽：<input type="text" value="1" name="F_o2w0" id="F_o2w" size="6" onChange="preview2();" onKeyUp="preview2();">&nbsp; 
+<input type="checkbox" name="F_check" value="ON" checked>开启自动
+滤镜高度与宽度设定 <font color="#808080"> ←宽高难免不理想，可关闭后修改大小</font><br>
+水平位移：<INPUT id="F_o3x" type="text" value="5" name="F_o3x" size="6" onChange="preview2();" onKeyUp="preview2();">(可正负)<br>
+垂直位移：<INPUT id="F_o4x" type="text" value="5" name="F_o4x" size="6" onChange="preview2();" onKeyUp="preview2();">(可正负)</div>
+<div  name="styleG" id="styleG" style="background-color: #ECFFEC;display:none">
+<b><font face="Verdana" color="#333333">G.模糊效果<br>
+</font></b>滤镜高：<INPUT id="G_o1h" type="text" value="1" name="G_o1h" size="6" onChange="preview2();" onKeyUp="preview2();">
+滤镜宽：<input type="text" value="1" name="G_o2w" id="G_o2w" size="6" onChange="preview2();" onKeyUp="preview2();">&nbsp; 
+<input type="checkbox" name="G_check" value="ON" checked>开启自动
+滤镜高度与宽度设定 <font color="#808080"> ←宽高难免不理想，可关闭后修改大小</font><br>
+方　向：<INPUT id="G_o3x" type="text" value="135" name="G_o3x" size="6" onChange="preview2();" onKeyUp="preview2();"><SELECT id="G_o3x_s" name="G_o3x_s" onChange="document.all.G_o3x.value = document.all.G_o3x_s.value;preview2();">
+				<OPTION value="0">0°</OPTION>
+				<OPTION value="45">45°</OPTION>
+				<OPTION value="90">90°</OPTION>
+				<OPTION value="135" selected>135°</OPTION>
+				<OPTION value="180">180°</OPTION>
+				<OPTION value="225">225°</OPTION>
+				<OPTION value="270">270°</OPTION>
+				<OPTION value="315">315°</OPTION>
+				</SELECT>
+<br>
+　</div>
+<div  name="styleH" id="styleH" style="background-color: #E8F7FF;display:none">
+<b><font face="Verdana" color="#333333">H.波形效果<br>
+</font></b>滤镜高：<INPUT id="H_o1h" type="text" value="1" name="H_o1h" size="6" onChange="preview2();" onKeyUp="preview2();">
+滤镜宽：<input type="text" value="1" name="H_o2w" id="H_o2w" size="6" onChange="preview2();" onKeyUp="preview2();">&nbsp; 
+<input type="checkbox" name="H_check" value="ON" checked>开启自动
+滤镜高度与宽度设定 <font color="#808080"> ←宽高难免不理想，可关闭后修改大小</font><br>
+頻　率：<INPUT id="H_o3x" type="text" value="7" name="H_o3x" size="6" onChange="preview2();" onKeyUp="preview2();">(0+)<br>
+振幅强度：<INPUT id="H_o4x" type="text" value="12" name="H_o4x" size="6" onChange="preview2();" onKeyUp="preview2();">(0+)<br>
+波峰强度：<INPUT id="H_o5x" type="text" value="5" name="H_o5x" size="6" onChange="preview2();" onKeyUp="preview2();">(0~100)<br>
+起始相位：<INPUT id="H_o6x" type="text" value="0" name="H_o6x" size="6" onChange="preview2();" onKeyUp="preview2();">(0~100)<br>
+　</div>
+<div name=filtercolor id=filtercolor style="display:none">
+滤镜颜色：<input  onchange="preview2();" onKeyUp="preview2();" type="text" name="SelColor" size="15" id=SelColor value=#FFFFFF><div style="border-style:solid; border-width:1px; display:inline; width:35px; height:19px" ID=ShowColor  name=ShowColor></div>&nbsp;<input type="checkbox" name="colorbox" value="ON" onClick="if(document.all.colorbox.checked==true){colortable.style.display='inline';}else{colortable.style.display='none';}">开启选色器<div  name=colortable id=colortable style="display:none;">
+<table border="0" cellspacing="1" cellpadding="0"><tr><td>
+<TABLE ID=ColorTable BORDER=0 CELLSPACING=0 CELLPADDING=0 style='cursor:hand'>
+<SCRIPT LANGUAGE=JavaScript>
+function wc(r, g, b, n)
+{
+	r = ((r * 16 + r) * 3 * (15 - n) + 0x80 * n) / 15;
+	g = ((g * 16 + g) * 3 * (15 - n) + 0x80 * n) / 15;
+	b = ((b * 16 + b) * 3 * (15 - n) + 0x80 * n) / 15;
+
+	document.write('<TD BGCOLOR=#' + ToHex(r) + ToHex(g) + ToHex(b) + ' height=8 width=8></TD>');
+}
+
+var cnum = new Array(1, 0, 0, 1, 1, 0, 0, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 1, 1, 0, 0);
+
+  for(i = 0; i < 16; i ++)
+  {
+     document.write('<TR>');
+     for(j = 0; j < 30; j ++)
+     {
+     	n1 = j % 5;
+     	n2 = Math.floor(j / 5) * 3;
+     	n3 = n2 + 3;
+
+     	wc((cnum[n3] * n1 + cnum[n2] * (5 - n1)),
+     		(cnum[n3 + 1] * n1 + cnum[n2 + 1] * (5 - n1)),
+     		(cnum[n3 + 2] * n1 + cnum[n2 + 2] * (5 - n1)), i);
+     }
+
+     document.writeln('</TR>');
+  }
+</SCRIPT>
+</TABLE></td><td>
+<TABLE ID=GrayTable BORDER=0 CELLSPACING=0 CELLPADDING=0 style='cursor:hand'>
+<SCRIPT LANGUAGE=JavaScript>
+  for(i = 255; i >= 0; i -= 8.5)
+     document.write('<TR BGCOLOR=#' + ToHex(i) + ToHex(i) + ToHex(i) + '><TD TITLE=' + Math.floor(i * 16 / 17) + ' height=4 width=20></TD></TR>');
+</SCRIPT></TABLE></td></tr></table></div></div>
+<div style="background-color:#FFE8FF">
+<input type="button" value="测试 半透明合成 效果" name="add_filter" onClick="preview2();" style="width: 170">
+<br>
+已加入<INPUT id="nnum" type="text" value="0" name="nnum" size="5" onChange="okhtml();">个滤镜
+<div id=sechtm  name=sechtm  style="display:inline">
+</div>
+</div>
+<input type="button" value="确定加入" name="add_cx();"  onclick="add_cx();"><input type="button"  value="取消测试并重新产生已加入滤镜" onClick="okhtml();"></button><input type="button" value="全部清除" name="add_cx();1"  onclick="reset();">
+<br>
+<input type="checkbox" name="outhtml_check" value="ON" onClick="if(document.all.outhtml_check.checked==true){outarea.style.display='block';}else{outarea.style.display='none';}">开启输出HTML码<br>
+<div id=outarea  name=outarea  style="display:none">
+	<textarea rows="6" name="outhtml" cols="92"></textarea></div>
+</fieldset>
+<font color="#0046D5">
+<b>显示结果:</b></font>
+
+<hr><div id="divResult"></div><hr>
+
+<br><br>
+<input type="checkbox" name="check2" value="ON" onClick="if(document.all.check2.checked==true){table2.style.display='inline';}else{table2.style.display='none';}">开启进阶设定
+<div  id=table2 name=table2 style="display:none"> 
+<fieldset style="border:1px solid #d9d9d9; padding:2px; ">
+<legend><b>进阶设定</b></legend>
+<input type="button" value="图片移上" name="add_cx();2"  onclick="okhtml(1);"><input type="button" value="图片移下" name="add_cx();0"  onclick="okhtml(2);">
+附加宽度=<input type="text" name="op1" size="9">; 附加高度=<input type="text" name="op2" size="9">+10 
+;&nbsp;
+<!--
+<div id=css7 name=css7 style="display:inline">蓝幕颜色：<font color="#808080">(建议接近背景颜色但不可与背景颜色相同色码,非IE的替代颜色)</font></div><div id=css8 name=css8 style="display:none"><font color="#FF00FF">字体颜色：</font><button  name="透明背景"  onclick="document.all.SelColor.value='TRANSPARENT';okhtml();">透明背景</button></div><br><input  onchange="okhtml();" type="text" name="SelColor2" size="15" value="#FCFBFA"><div style="border-style:solid; border-width:1px; display:inline; width:35px; height:19px" ID=ShowColor2  name=ShowColor2></div>&nbsp;<input type="checkbox" name="colorbox2" value="ON" onclick="if(document.all.colorbox2.checked==true){colortable2.style.display='inline';}else{colortable2.style.display='none';}">开启选色器<div  name=colortable2 id=colortable2 style="display:none;">
+<table border="0" cellspacing="1" cellpadding="0"><tr><td>
+<TABLE ID=ColorTable2 BORDER=0 CELLSPACING=0 CELLPADDING=0 style='cursor:hand'>
+<SCRIPT LANGUAGE=JavaScript>
+function wc(r, g, b, n)
+{
+	r = ((r * 16 + r) * 3 * (15 - n) + 0x80 * n) / 15;
+	g = ((g * 16 + g) * 3 * (15 - n) + 0x80 * n) / 15;
+	b = ((b * 16 + b) * 3 * (15 - n) + 0x80 * n) / 15;
+
+	document.write('<TD BGCOLOR=#' + ToHex(r) + ToHex(g) + ToHex(b) + ' height=8 width=8></TD>');
+}
+
+var cnum = new Array(1, 0, 0, 1, 1, 0, 0, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 1, 1, 0, 0);
+
+  for(i = 0; i < 16; i ++)
+  {
+     document.write('<TR>');
+     for(j = 0; j < 30; j ++)
+     {
+     	n1 = j % 5;
+     	n2 = Math.floor(j / 5) * 3;
+     	n3 = n2 + 3;
+
+     	wc((cnum[n3] * n1 + cnum[n2] * (5 - n1)),
+     		(cnum[n3 + 1] * n1 + cnum[n2 + 1] * (5 - n1)),
+     		(cnum[n3 + 2] * n1 + cnum[n2 + 2] * (5 - n1)), i);
+     }
+
+     document.writeln('</TR>');
+  }
+</SCRIPT>
+</TABLE></td><td>
+<TABLE ID=GrayTable2 BORDER=0 CELLSPACING=0 CELLPADDING=0 style='cursor:hand'>
+<SCRIPT LANGUAGE=JavaScript>
+  for(i = 255; i >= 0; i -= 8.5)
+     document.write('<TR BGCOLOR=#' + ToHex(i) + ToHex(i) + ToHex(i) + '><TD TITLE=' + Math.floor(i * 16 / 17) + ' height=4 width=20></TD></TR>');
+</SCRIPT></TABLE></td></tr></table></div><br>
+<div id=css2 name=css2>透明图网址：<input  onchange="okhtml();" type="text" name="curl" size="96" value="http://tools.kqiqi.com/picture/images/01.gif">
+</div>
+<div id=css3 name=css3  style="border:3px double #FF5050; display:none">
+	<input type="checkbox" name="checkunder" value="ON" onclick="okhtml();">开启文字底线图片
+
+<font color="#FF00FF"><br>
+	文字底线图片网址：</font><input  onchange="okhtml();" type="text" name="curl2" size="90" value="file:///C:/underline_hl.gif"> <font color="#808080">←MSN 
+	Spaces不适用</font></div>-->
+<input type="checkbox" name="brcheck1" value="ON" onClick="preview2();">半透明合成要自动加&lt;br&gt;吗?</fieldset></div>
+<br>
+		<iframe id="ifImage" style="width:0;height:0"></iframe>
+		<br clear="all">
+		<ximg id="imgOrg" src="http://tools.kqiqi.com/picture/images/04.jpg"
+			onload="imgOrg_onload();" name="imgOrg">
+<br>
+<font color="#333333">注意：此产生器所产生的效果只适用与IE5.0+<br>你也可以用QQ或其他抓图工具保存图片</font>
+</div></div>
+   
+          </td>
+        </tr>
+        </table>
+      <br />
+         <script type="text/javascript" src="../js/wz.js"></script>
+         <script type="text/javascript" src="../js/Copy.js"></script>
+           
+      <br />
+      </td>
+    <td width="20">　</td>
+  </tr>
+</table>
+<table width="960" border="0" align="center" cellpadding="0" cellspacing="0" class="mainbg2">
+  <tr>
+    <td height="25"></td>
+  </tr>
+</table>
+
+<table width="960" border="0" align="center" cellpadding="0" cellspacing="0" class="mainbg2">
+  <tr>
+    <td><table width="920"  border="0" align="center" cellpadding="0" cellspacing="20" class="bottombg">
+    <tr>
+        <td align="center">
+          Copyright &copy; <a href="http://tools.kqiqi.com/">客齐齐实用查询工具</a> All rights reserved - <a href="../map.html">网站地图</a> - <a href="../contact.html">联系我们</a> - <script language="javascript" src="../js/bottom.js"></script>
+          </td>
+      </tr>
+    </table></td>
+  </tr>
+</table>
+</body>
+</html>

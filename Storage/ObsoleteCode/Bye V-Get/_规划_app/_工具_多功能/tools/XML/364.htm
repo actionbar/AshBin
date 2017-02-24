@@ -1,0 +1,285 @@
+<html>
+<head>
+<title>XSL</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+
+<link rel = stylesheet href = "image/style.css">
+</head>
+<body bgcolor="#ffffff">
+<table width="688" border="0" cellspacing="0" cellpadding="0" align="center">
+  <tr bgcolor="EEEEEE"> 
+    <td height="22"><a href="index.htm">主页</a></td>
+  </tr>
+</table><br>
+<table border="0" cellpadding="0" cellspacing="0" width="688" align="center" height="490">
+  <tr valign="top"> 
+    <td rowspan="4" width="91">&nbsp; </td>
+    <td height="68" width="131"> 
+      <p><img src="image/doc.gif"></p>
+    </td>
+    <td rowspan="4" width="18"><b></b> </td>
+    <td height="68" width="387"><img src="image/title_doc.gif"></td>
+    <td rowspan="4" width="61"> 
+      <h6>&nbsp;</h6>
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td rowspan="3" valign="top" class="pt10" align="center" width="131" bgcolor="EEEEEE"> 
+      <p>&nbsp;</p>
+      <p><font color="#FF0000">※ 5.4 XSL</font></p>
+       
+            <p align="left">5.4 XSL</p>
+          
+            <p align="left"><a href='365.htm'>5.4 XSL(续)</a></p>
+          
+	</td>
+  </tr>
+  <tr valign="top"> 
+    <td width="387" height="308"> 
+      <table width="100%" border="0" cellpadding="0">
+        <tr> 
+          <td>
+
+           <h4><a name="_Toc467197028">5.4 XSL</a></h4>
+<p>如图5-1所示，属性在文档的XML源视图中是可见的。但是一旦把CSS样式单施加其上，属性就会消失。图5-3显示了清单5-1使用前面章节中棒球统计样式单后的样子。它看起来是一个空白文档，因为CSS样式单仅适用于元素内容，而不适用于属性。在使用CSS时，希望显示给读者的任何数据应当是元素内容的一部分，而不是它的属性。</p>
+<p><img src="image/BK000205-5.gif" width=456 height=309></p>
+<p>图5-3 当CSS施加于一个元素中不含任何字符数据的XML文档时显示的空白文档</p>
+<p>但是，仍然有一种可选择的样式单语言能够访问并显示属性数据。这就是Extensible Style Language (XSL)；Internet Explorer 
+  5.0至少部分支持它。XSL分为两部分：变换部分和格式化部分。</p>
+<p>XSL替换部分能够将一个标记替换为另一个标记。通过定义替换规则，使用标准的HTML标记代替XML标记或者使用HTML标记与CSS属性来替换XML标记。同时还可以在文档中重新安排元素和在XML文档中添加没有出现过的附加内容。</p>
+<p>XSL格式化部分把功能强大的文档视图定义为页面。XSL格式化功能能够指定页面的外观和编排，包括多个专栏、围绕主题的字数、行间距、相配的字体属性等等。它的功能非常强大，足可以为网络和打印自动处理来自于相同源文档的编排任务。例如，XSL格式化允许包含有show 
+  times（在线播放）和广告的XML文档生成本地报纸上电视节目单的打印及在线版本。但是IE 5.0和大多数其他工具还不支持XSL格式化。因此，本节重点介绍XSL变换。</p>
+<p><img src="image/BK000205-4.gif" width=50 height=36></p>
+<p>XSL格式化将在第15章XSL格式化对象中讨论。</p>
+<p>　</p>
+<h5><a name="_Toc467197029">5.4.1 XSL样式单模板</a></h5>
+<p>每个XSL样式单包括一些模板，XML文档中的数据会注入其中。例如，某一模板如下所示：</p>
+<p>&lt;HTML&gt;</p>
+<p> &lt;HEAD&gt;</p>
+<p> &lt;TITLE&gt;</p>
+<p> XSL Instructions to get the title</p>
+<p> &lt;/TITLE&gt;</p>
+<p> &lt;/HEAD&gt;</p>
+<p> &lt;H1&gt;XSL Instructions to get the title &lt;/H1&gt;</p>
+<p> &lt;BODY&gt;</p>
+<p> XSL Instructions to get the statistics</p>
+<p> &lt;/BODY&gt;</p>
+<p>&lt;/HTML&gt;</p>
+<p>斜体部分将由特定的XSL元素取代，这些元素把基本的XML文档中的数据复制到该模板中。该模板可用于许多不同的数据集。例如，模板设计用于处理棒球示例，那么相同的样式单能够显示不同赛季的统计。</p>
+<p>这令人想起了用于HTML的某种服务器端嵌入方案。事实上，这与服务器端嵌入方案极其类似。但是，XML源文档与XSL样式单的实际变换发生在客户端，而不是服务器端。而且输出的文档可以是任何一种结构完整的XML文档，不必是HTML文档。</p>
+<p>XSL指令能够提取存储于XML文档中的任何数据。包括元素内容、元素名称和对我们的示例很重要的元素属性。特定的元素由一种模式选定，该模式会考虑元素的名称和值、元素的属性名和值以及在XML文档树状结构中的绝对和相对位置等等。数据一经从一个元素中取出，就可以移动、复制和经过其他多种处理。在这个简要的介绍中描述了使用XML变换部分所能做的事情。读者将学到使用XSL编写一些能够立即在网上看到的令人吃惊的文档。</p>
+<p><img src="image/BK000205-4.gif" width=50 height=36>在第14章的“XSL变换”中对XSL的变换作了彻底的阐述。</p>
+<h5><a name="_Toc467197030">5.4.2 文档的主体</a></h5>
+<p> 请看下面的简单例子，并把它应用于清单5-1所示的棒球统计的XML文档中，清单5-2是一个XSL样式单。它提供XML数据将要注入的HTML“模子”。</p>
+<p>清单5-2：一个XSL样式单</p>
+<p>&lt;?xml version="1.0"?&gt;</p>
+<p>&lt;xsl:stylesheet xmlns:xsl="http://www.w3.org/TR/WD-xsl"&gt;</p>
+<p></p>
+<p> &lt;xsl:template match="/"&gt;</p>
+<p> &lt;HTML xmlns:xsl="http://www.w3.org/TR/WD-xsl"&gt;</p>
+<p> &lt;HEAD&gt;</p>
+<p> &lt;TITLE&gt;</p>
+<p> Major League Baseball Statistics</p>
+<p> &lt;/TITLE&gt;</p>
+<p> &lt;/HEAD&gt;</p>
+<p> &lt;BODY&gt;</p>
+<p> &lt;H1&gt;Major League Baseball Statistics&lt;/H1&gt;</p>
+<p> &lt;HR&gt;&lt;/HR&gt;</p>
+<p> Copyright 1999</p>
+<p> &lt;A HREF="http://www.macfaq.com/personal.html"&gt;</p>
+<p> Elliotte Rusty Harold</p>
+<p> &lt;/A&gt;</p>
+<p> &lt;BR /&gt;</p>
+<p> &lt;A HREF="mailto:elharo@metalab.unc.edu"&gt;</p>
+<p> elharo@metalab.unc.edu</p>
+<p> &lt;/A&gt;</p>
+<p> &lt;/BODY&gt;</p>
+<p> &lt;/HTML&gt;</p>
+<p> &lt;/xsl:template&gt;</p>
+<p>&lt;/xsl:stylesheet&gt;</p>
+<p>该清单像一个包含在XSL:template元素中的HTML文件，也就是说它的结构更像是这样：</p>
+<p>&lt;?xml version="1.0"?&gt;</p>
+<p>&lt;xsl:stylesheet xmlns:xsl="http://www.w3.org/TR/WD-xsl"&gt;</p>
+<p> &lt;xsl:template match="/"&gt;</p>
+<b> 
+<p> HTML file goes here</p>
+</b> 
+<p> &lt;/xsl:template&gt;</p>
+<p>&lt;/xsl:stylesheet&gt;</p>
+<p>清单5-2不仅是一个XSL样式单，同样是一个结构完整的HTML文档。它以一个XML名称开始，文档的根元素是xsl:stylesheet。该样式单包含唯一的模板，把XML数据编码为一个xsl:template元素。xsl:template元素有一个match属性，其值为/，内容是一个结构完整的HTML文档。输出的HTML结构完整不是一种巧合。因为HTML首先必须是一个XSL样式单的一部分，并且XSL样式单是结构完整的XML文档，因此在一个XSL样式单中的所有HTML一定结构完整。</p>
+<p>Web浏览器尽量使XML文档各部分与每个xsl：template元素相匹配。/模板与文档的根即整个文档本身相匹配。浏览器读取模板并将来自XML中的数据插入XSL指令指明的位置。但是该特定模板不包含XSL指令。因此它的内容只是被逐字逐句地复制到Web浏览器中，产生如图5-4所示的输出结果。请注意该图不显示XML文档的任何数据，只显示XSL模板中的数据。把清单5-2中的XSL样式单与清单5-1中的XML文档连接起来很方便，只需增加一个&lt;?XML-stylesheet?&gt;处理指令，该指令位于XML声明和根元素之间，含有一个值为text/xsl的type属性和一个指向样式单的href属性。例如：</p>
+<p>&lt;?xml version="1.0"?&gt;</p>
+<p>&lt;?xml-stylesheet type="text/xsl" href="5-2.xsl"?&gt;</p>
+<p>&lt;SEASON YEAR="1998"&gt;</p>
+<p>...</p>
+<p>这与在文档上连接CSS样式单的方法一样，唯一不同的是type属性的值为text/xsl而不是text/css。</p>
+<p><img src="image/BK000205-6.gif" width=495 height=343></p>
+<p>图5-4 采用清单5-2中XSL样式单后，XML文档中的数据而不是XSL模板中的数据消失了</p>
+<h5><a name="_Toc467197031">5.4.3 标题</a></h5>
+<p>图5-4很明显丢失了数据。尽管清单5-2中的样式单显示了一些内容（与图5-3所示的CSS样式单不同），但是它没有显示XML文档中的任何数据。要添加这些数据需要使用XSL指令元素把XML源文档中的数据复制到XSL模板中。清单5-3增加了必要的XSL指令，从SEASON元素中抽取YEAR属性并把它插入到结果文档的TITLE和H1标头之间。图5-5显示了处理后的文档。</p>
+<p>清单5-3：一个含有抽取SEASON元素和YEAR属性指令的XSL样式单</p>
+<p>&lt;?xml version="1.0"?&gt;</p>
+<p>&lt;xsl:stylesheet xmlns:xsl="http://www.w3.org/TR/WD-xsl"&gt;</p>
+<p> &lt;xsl:template match="/"&gt;</p>
+<p> &lt;HTML xmlns:xsl="http://www.w3.org/TR/WD-xsl"&gt;</p>
+<p> &lt;HEAD&gt;</p>
+<p> &lt;TITLE&gt;</p>
+<p> &lt;xsl:for-each select="SEASON"&gt;</p>
+<p> &lt;xsl:value-of select="@YEAR"/&gt;</p>
+<p> &lt;/xsl:for-each&gt;</p>
+<p> Major League Baseball Statistics</p>
+<p> &lt;/TITLE&gt;</p>
+<p> &lt;/HEAD&gt;</p>
+<p> &lt;BODY&gt;</p>
+<p> &lt;xsl:for-each select="SEASON"&gt;</p>
+<p> &lt;H1&gt;</p>
+<p> &lt;xsl:value-of select="@YEAR"/&gt;</p>
+<p> Major League Baseball Statistics</p>
+<p> &lt;/H1&gt;</p>
+<p> &lt;/xsl:for-each&gt;</p>
+<p> &lt;HR&gt;&lt;/HR&gt;</p>
+<p> Copyright 1999</p>
+<p> &lt;A HREF="http://www.macfaq.com/personal.html"&gt;</p>
+<p> Elliotte Rusty Harold</p>
+<p> &lt;/A&gt;</p>
+<p> &lt;BR /&gt;</p>
+<p> &lt;A HREF="mailto:elharo@metalab.unc.edu"&gt;</p>
+<p> elharo@metalab.unc.edu</p>
+<p> &lt;/A&gt;</p>
+<p> &lt;/BODY&gt;</p>
+<p> &lt;/HTML&gt;</p>
+<p> &lt;/xsl:template&gt;</p>
+<p>&lt;/xsl:stylesheet&gt;</p>
+<p>下面的新XSL指令能够从SEASON元素中抽取YEAR属性。</p>
+<p>&lt;xsl:for-each select="SEASON"&gt;</p>
+<p> &lt;xsl:value-of select="@YEAR"/&gt;</p>
+<p>&lt;/xsl:for-each&gt;</p>
+<p><img src="image/BK000205-7.gif" width=409 height=262></p>
+<p>图5-5 清单5-1采用清单5-3所示的XSL样式单后的显示结果</p>
+<p>这些指令出现两次是因为我们希望年份在输出结果中出现两次，一次在H1主题中，一次在TITLE中。这些指令每次出现都执行同样的功能。&lt;xsl:for-each 
+  select="SEASON"&gt;寻出全部SEASON元素。&lt;xsl:value-of select="@YEAR"/&gt;插入SEASON元素中的YEAR属性值——这就是由&lt;xsl:for-each 
+  select="SEASON"&gt;找到的字符串“1998”。</p>
+<p>这非常重要，重述如下：xsl:for-each选出源文档（例如清单5-1）中的某一特定的XML元素，数据就从此元素中读取。Xsl:value-of把所选取元素的某一特定部分复制到输出文档中。因此，必须使用两个XSL指令。使用任何一个都是无效的。</p>
+<p>XSL指令不同于输出的HTML和H1元素是因为这些指令都处于XSL的命名域内。也就是说所有的XSL元素名称都以xsl:开头。命名域由样式单根元素中的xmlns:xsl属性辨别。本书中的清单5-2，5-3和所有其他示例中xmlns:xsl属性的值都是http://www.w3.org/tr/wd-xsl。</p>
+<p><img src="image/BK000205-4.gif" width=50 height=36>命名域将在第18章中详细阐述。</p>
+<h5><a name="_Toc467197032">5.4.4 联赛、分部和球队</a></h5>
+<p> 下面通过添加一些XSL指令取出前面出现过的两个LEAGUE元素，并把这两个元素映射到H2标题中，如清单5-4所示。图5-6显示了使用该样式单后的文档。</p>
+<p>清单5-4：一个带有提取LEAGUE元素指令的XSL样式单</p>
+<p>&lt;?xml version="1.0"?&gt;</p>
+<p>&lt;xsl:stylesheet xmlns:xsl="http://www.w3.org/TR/WD-xsl"&gt;</p>
+<p> &lt;xsl:template match="/"&gt;</p>
+<p> &lt;HTML&gt;</p>
+<p> &lt;HEAD&gt;</p>
+<p> &lt;TITLE&gt;</p>
+<p> &lt;xsl:for-each select="SEASON"&gt;</p>
+<p> &lt;xsl:value-of select="@YEAR"/&gt;</p>
+<p> &lt;/xsl:for-each&gt;</p>
+<p> Major League Baseball Statistics</p>
+<p> &lt;/TITLE&gt;</p>
+<p> &lt;/HEAD&gt;</p>
+<p> &lt;BODY&gt;</p>
+<p> &lt;xsl:for-each select="SEASON"&gt;</p>
+<p> &lt;H1&gt;</p>
+<p> &lt;xsl:value-of select="@YEAR"/&gt;</p>
+<p> Major League Baseball Statistics</p>
+<p> &lt;/H1&gt;</p>
+<p> &lt;xsl:for-each select="LEAGUE"&gt;</p>
+<p> &lt;H2 ALIGN="CENTER"&gt;</p>
+<p> &lt;xsl:value-of select="@NAME"/&gt;</p>
+<p> &lt;/H2&gt;</p>
+<p> &lt;/xsl:for-each&gt;</p>
+<p> &lt;/xsl:for-each&gt;</p>
+<p> &lt;HR&gt;&lt;/HR&gt;</p>
+<p> Copyright 1999</p>
+<p> &lt;A HREF="http://www.macfaq.com/personal.html"&gt;</p>
+<p> Elliotte Rusty Harold</p>
+<p> &lt;/A&gt;</p>
+<p> &lt;BR /&gt;</p>
+<p> &lt;A HREF="mailto:elharo@metalab.unc.edu"&gt;</p>
+<p> elharo@metalab.unc.edu</p>
+<p> &lt;/A&gt;</p>
+<p> &lt;/BODY&gt;</p>
+<p> &lt;/HTML&gt;</p>
+<p> &lt;/xsl:template&gt;</p>
+<p>&lt;/xsl:stylesheet&gt;</p>
+<p><img src="image/BK000205-8.gif" width=414 height=288></p>
+<p>图5-6 当采用清单5-4中的样式单之后，联赛名称显示为H2标题样式</p>
+<p>关键的新要素是嵌套的xsl:for-each指令：</p>
+<p>&lt;xsl:for-each select="SEASON"&gt;</p>
+<p> &lt;H1&gt;</p>
+<p> &lt;xsl:value-of select="@YEAR"/&gt;</p>
+<p> Major League Baseball Statistics</p>
+<p> &lt;/H1&gt;</p>
+<p> &lt;xsl:for-each select="LEAGUE"&gt;</p>
+<p> &lt;H2 ALIGN="CENTER"&gt;</p>
+<p> &lt;xsl:value-of select="@NAME"/&gt;</p>
+<p> &lt;/H2&gt;</p>
+<p> &lt;/xsl:for-each&gt;</p>
+<p>&lt;/xsl:for-each&gt;</p>
+<p>最外层的指令用于选取SEASON元素，只有找到该元素才能找到它的YEAR属性，并把它的值与另外的文本Major League Baseball Statistics一起放到&lt;H1&gt;与&lt;/H1&gt;之间。下一步浏览器会循环选取SEASON元素的每一个LEAGUE子元素，并把它的NAME属性值放到&lt;H2 
+  ALIGN ="CENTER"&gt; 与&lt;/H2&gt;之间。尽管只有一个xsl:for-each与LEAGUE元素相配，但是它会对SEASON元素内所有直接的LEAGUE子元素进行循环。因此，该模板在没有联赛和联赛数目不定的情况下都能工作。</p>
+<p>同样的技巧可以用于设计表示小组的H3标题和表示各球队的H4标题。清单5-5演示了该程序，图5-7显示了使用这一样式单后的文档。各小组名称和各球队名称是从XML数据中读取的。</p>
+<p>清单5-5：一个带有提取DIVISION和TEAM元素指令的XSL样式单</p>
+<p>&lt;?xml version="1.0"?&gt;</p>
+<p>&lt;xsl:stylesheet xmlns:xsl="http://www.w3.org/TR/WD-xsl"&gt;</p>
+<p> &lt;xsl:template match="/"&gt;</p>
+<p> &lt;HTML xmlns:xsl="http://www.w3.org/TR/WD-xsl"&gt;</p>
+<p> &lt;HEAD&gt;</p>
+<p> &lt;TITLE&gt;</p>
+<p> &lt;xsl:for-each select="SEASON"&gt;</p>
+<p> &lt;xsl:value-of select="@YEAR"/&gt;</p>
+<p> &lt;/xsl:for-each&gt;</p>
+<p> Major League Baseball Statistics</p>
+<p> &lt;/TITLE&gt;</p>
+<p> &lt;/HEAD&gt;</p>
+<p> &lt;BODY&gt;</p>
+<p> &lt;xsl:for-each select="SEASON"&gt;</p>
+<p> &lt;H1&gt;</p>
+<p> &lt;xsl:value-of select="@YEAR"/&gt;</p>
+<p> Major League Baseball Statistics</p>
+<p> &lt;/H1&gt;</p>
+<p> &lt;xsl:for-each select="LEAGUE"&gt;</p>
+<p> &lt;H2 ALIGN="CENTER"&gt;</p>
+<p> &lt;xsl:value-of select="@NAME"/&gt;</p>
+<p> &lt;/H2&gt;</p>
+<p> &lt;xsl:for-each select="DIVISION"&gt;</p>
+<p> &lt;H3 ALIGN="CENTER"&gt;</p>
+<p> &lt;xsl:value-of select="@NAME"/&gt;</p>
+<p> &lt;/H3&gt;</p>
+<p> &lt;xsl:for-each select="TEAM"&gt;</p>
+<p> &lt;H4 ALIGN="CENTER"&gt;</p>
+<p> &lt;xsl:value-of select="@CITY"/&gt;</p>
+<p> &lt;xsl:value-of select="@NAME"/&gt;</p>
+<p> &lt;/H4&gt;</p>
+<p> &lt;/xsl:for-each&gt;</p>
+<p> &lt;/xsl:for-each&gt;</p>
+<p> &lt;/xsl:for-each&gt;</p>
+<p> &lt;/xsl:for-each&gt;</p>
+<p> &lt;HR&gt;&lt;/HR&gt;</p>
+<p> Copyright 1999</p>
+<p> &lt;A HREF="http://www.macfaq.com/personal.html"&gt;</p>
+<p> Elliotte Rusty Harold</p>
+<p> &lt;/A&gt;</p>
+<p> &lt;BR /&gt;</p>
+<p> &lt;A HREF="mailto:elharo@metalab.unc.edu"&gt;</p>
+<p> elharo@metalab.unc.edu</p>
+<p> &lt;/A&gt;</p>
+<p> &lt;/BODY&gt;</p>
+<p> &lt;/HTML&gt;</p>
+<p> &lt;/xsl:template&gt;</p>
+<p>&lt;/xsl:stylesheet&gt;</p>
+<p><img src="image/BK000205-9.gif" width=399 height=361></p>
+<p>图5-7 采用清单5-5所示的样式单后显示的小组名和队名</p>
+<p>对于TEAM元素，它的CITY和NAME属性值是H4标题的内容。同时，请注意嵌套的选取赛季、小组和各队的xsl:for-each元素，它反映了文档自身的分支结构。这并不是一种巧合。其他方案可能不要求与文档的体系相匹配，但这一方案是最简单的，尤其适用于像清单5-1所示的棒球统计这样的高度结构化的数据。</p>
+ 
+<a href='363.htm'>&lt;&lt;上一篇</a>&nbsp;&nbsp;<a href='365.htm'>下一篇&gt;&gt;</a></td>
+        </tr>
+      </table>
+      <p>&nbsp; </p>
+    </td>
+  </tr>
+</table>
+
+</body>
+
+</html>

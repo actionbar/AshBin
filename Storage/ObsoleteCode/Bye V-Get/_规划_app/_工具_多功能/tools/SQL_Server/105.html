@@ -1,0 +1,1 @@
+<meta http-equiv="content-type" content="text/html; charset=gb2312">从大洋网摘录的方法，未试过<BR>用&nbsp;bcp命令把数据库中的记录都导出来保存到另一台机器，然后用truncate&nbsp;table&nbsp;tablename<BR>的方式把所有记录都清空，然后执行dump&nbsp;transaction&nbsp;dbname&nbsp;with&nbsp;no_log,发现log文件已显著减少，再用bcp命令导入，导入后log文件又增大，但再用&nbsp;dump&nbsp;transaction&nbsp;dbname&nbsp;with&nbsp;no_log,效果不仅是使日志占的空间减少，日志文件的size也显著减少。

@@ -1,0 +1,597 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title> E维科技论坛_V-Get!</title><meta name="keywords" content="论坛" />
+<meta name="description" content="论坛 " /><meta name="MSSmartTagsPreventParsing" content="True" /><meta http-equiv="MSThemeCompatible" content="Yes" /><link rel="stylesheet" type="text/css" href="data/cache/style_1_common.css?zCp" /><link rel="stylesheet" type="text/css" href="data/cache/style_1_forum_index.css?zCp" /><script type="text/javascript">var STYLEID = '1', STATICURL = 'static/', IMGDIR = 'static/image/common', VERHASH = 'zCp', charset = 'utf-8', discuz_uid = '0', cookiepre = 'yl5c_2132_', cookiedomain = '', cookiepath = '/', showusercard = '1', attackevasive = '0', disallowfloat = 'newthread', creditnotice = '1|威望|,2|金钱|,3|贡献|', defaultstyle = '', REPORTURL = 'aHR0cDovL2Uudi1nZXQuY29tL2kvZm9ydW0ucGhw', SITEURL = 'http://e.v-get.com/i/', JSPATH = 'data/cache/', DYNAMICURL = '';</script>
+<script src="data/cache/common.js?zCp" type="text/javascript"></script>
+<meta name="application-name" content="E维科技论坛" /><meta name="msapplication-tooltip" content="E维科技论坛" />
+<meta name="msapplication-task" content="name=首页;action-uri=http://e.v-get.com/i/forum.php;icon-uri=http://e.v-get.com/i/static/image/common/bbs.ico" />
+<script src="data/cache/forum.js?zCp" type="text/javascript"></script>
+</head>
+
+<body id="nv_forum" class="pg_index" onkeydown="if(event.keyCode==27) return false;">
+<div id="append_parent"></div><div id="ajaxwaitid"></div>
+<div id="toptb" class="cl">
+<div class="wp"><div class="z"><a href="http://e.v-get.com/">E维科技</a></div><div class="y"><script src=" http://tjs.sjs.sinajs.cn/open/api/js/wb.js?appkey=2470887774" type="text/javascript" type="text/javascript" charset="utf-8"></script><wb:publish button_type="gray" button_size="small" button_text="发微博"></wb:publish></div></div>
+</div>
+<div id="qmenu_menu" class="p_pop blk" style="display: none;">
+<div class="ptm pbw hm">
+请 <a href="javascript:;" class="xi2" onclick="lsSubmit()"><strong>登录</strong></a> 后使用快捷导航<br />没有帐号？<a href="member.php?mod=register" class="xi2 xw1">立即注册</a>
+</div>
+<div id="fjump_menu" class="btda"></div></div><div id="hd">
+<div class="wp">
+<div class="hdc cl"><h2><a href="http://e.v-get.com/" title="E维科技，专注网络营销！"><img src="http://tu.v-get.com/8/i.gif" width="234" height="60" alt="E维科技，专注网络营销！" style="margin:6px 0 0 0"/></a></h2><script src="data/cache/logging.js?zCp" type="text/javascript"></script>
+<form method="post" autocomplete="off" id="lsform" action="member.php?mod=logging&amp;action=login&amp;loginsubmit=yes&amp;infloat=yes&amp;lssubmit=yes" onsubmit="return lsSubmit();">
+<div class="fastlg cl">
+<span id="return_ls" style="display:none"></span>
+<div class="y pns">
+<table cellspacing="0" cellpadding="0">
+<tr>
+<td>
+<span class="ftid">
+<select name="fastloginfield" id="ls_fastloginfield" width="40" tabindex="900">
+<option value="username">用户名</option>
+<option value="email">Email</option>
+</select>
+</span>
+<script type="text/javascript">simulateSelect('ls_fastloginfield')</script>
+</td>
+<td><input type="text" name="username" id="ls_username" autocomplete="off" class="px vm" tabindex="901" /></td>
+<td class="fastlg_l"><label for="ls_cookietime"><input type="checkbox" name="cookietime" id="ls_cookietime" class="pc" value="2592000" tabindex="903" />自动登录</label></td>
+<td>&nbsp;<a href="javascript:;" onclick="showWindow('login', 'member.php?mod=logging&action=login&viewlostpw=1')">找回密码</a></td>
+</tr>
+<tr>
+<td><label for="ls_password" class="z psw_w">密码</label></td>
+<td><input type="password" name="password" id="ls_password" class="px vm" autocomplete="off" tabindex="902" /></td>
+<td class="fastlg_l"><button type="submit" class="pn vm" tabindex="904" style="width: 75px;"><em>登录</em></button></td>
+<td>&nbsp;<a href="member.php?mod=register" class="xi2 xw1">立即注册</a></td>
+</tr>
+</table>
+<input type="hidden" name="quickforward" value="yes" />
+<input type="hidden" name="handlekey" value="ls" />
+</div>
+
+<div class="fastlg_fm y" style="margin-right: 10px; padding-right: 10px">
+<p><a href="http://e.v-get.com/i/connect.php?mod=login&op=init&referer=forum.php&statfrom=login_simple"><img src="static/image/common/qq_login.gif" class="vm" alt="QQ登录" /></a></p>
+<p class="hm xg1" style="padding-top: 2px;">只需一步，快速开始</p>
+</div>
+</div>
+</form>
+
+</div>
+
+<div id="nv">
+<a href="javascript:;" id="qmenu" onmouseover="delayShow(this, function () {showMenu({'ctrlid':'qmenu','pos':'34!','ctrlclass':'a','duration':2});showForummenu();})">快捷导航</a>
+<ul><li class="a" id="mn_forum" ><a href="forum.php" hidefocus="true" title="论坛首页"  >首页<span>论坛首页</span></a></li><li id="mn_N954b" ><a href="http://e.v-get.com/tech/" hidefocus="true" title="站长之家"  >站长<span>站长之家</span></a></li></ul>
+</div>
+<div class="p_pop h_pop" id="mn_userapp_menu" style="display: none"></div><div id="mu" class="cl">
+</div><div id="scbar" class="cl"><form id="scbar_form" method="get" action="http://www.baidu.com/baidu" target="_blank"><input name="tn" type="hidden" value="v-get"/><input name="cl" type="hidden" value="3"/><input name="ct" type="hidden" value="2097152"/><input name="si" type="hidden" value="e.v-get.com"/><table cellspacing="0" cellpadding="0"><tr><td class="scbar_icon_td"></td><td class="scbar_txt_td"><input type="text" name="word" id="scbar_txt"  size="30" maxlength="100" autocomplete="off" x-webkit-speech speech /></td><td class="scbar_btn_td"><button type="submit" id="scbar_btn" sc="1" class="pn pnc" value="true"><strong class="xi2">搜索</strong></button></td><td class="scbar_hot_td"><div id="scbar_hot"><strong class="xw1">推广: </strong><a href="http://e.v-get.com/tech/" target="_blank" class="xi2">技术</a><a href="http://e.v-get.com/open/" target="_blank" class="xi2">开源</a></div></td></tr></table></form></div><ul id="scbar_type_menu" class="p_pop" style="display: none;"><li><a href="javascript:;" rel="forum" class="curtype">帖子</a></li><li><a href="javascript:;" rel="user">用户</a></li></ul><script type="text/javascript">initSearchmenu('scbar', '');</script>
+</div>
+</div>
+
+
+<div id="wp" class="wp">
+<div id="pt" class="bm cl">
+<div class="z"><a href="http://e.v-get.com/" class="nvhm" title="E维科技首页">E维科技</a><em>&raquo;</em><a href="http://e.v-get.com/i/">首页</a></div><div class="z"></div>
+</div>
+<style id="diy_style" type="text/css"></style>
+<div class="wp"><!--[diy=diy1]--><div id="diy1" class="area"></div><!--[/diy]--></div>
+<div id="ct" class="wp cl">
+<div id="chart" class="bm bw0 cl">
+<p class="chart z">今日: <em>1</em><span class="pipe">|</span>昨日: <em>8</em><span class="pipe">|</span>帖子: <em>288</em><span class="pipe">|</span>会员: <em>8</em><span class="pipe">|</span>欢迎新会员: <em><a href="E%E7%BB%B4%E7%A7%91%E6%8A%80%E5%AE%A1%E6%9F%A5" target="_blank" class="xi2">E维科技审查</a></em></p>
+<div class="y">
+<a href="forum.php?mod=guide&amp;view=new" title="最新回复" class="xi2">最新回复</a></div>
+</div>
+<!--[diy=diy_chart]--><div id="diy_chart" class="area"></div><!--[/diy]-->
+<div class="mn">
+<!-- index four grid -->
+<div class="fl bm">
+<div class="bm bmw cl">
+<div id="category_grid" class="bm_c" >
+<table cellspacing="0" cellpadding="0"><tr>
+<td valign="top" class="category_l1">
+<div class="newimgbox">
+<h4><span class="tit_newimg"></span>最新图片</h4>
+<div class="module cl slidebox_grid" style="width:218px">
+<script type="text/javascript">
+var slideSpeed = 5000;
+var slideImgsize = [218,200];
+var slideBorderColor = '#C2D5E3';
+var slideBgColor = '#F2F2F2';
+var slideImgs = new Array();
+var slideImgLinks = new Array();
+var slideImgTexts = new Array();
+var slideSwitchColor = '#444';
+var slideSwitchbgColor = '#F2F2F2';
+var slideSwitchHiColor = '#C2D5E3';slideImgs[1] = 'http://tp.v-get.com/i/8discuz/forum/201306/19/145141sy57zeorete7etzp.png';
+slideImgLinks[1] = 'forum.php?mod=viewthread&tid=134';
+slideImgTexts[1] = '浏览器公司网络营销无下限猎豹 P ...';slideImgs[2] = 'http://tp.v-get.com/i/8discuz/forum/201306/19/234443tv6jxy6u5a53i3jy.jpg';
+slideImgLinks[2] = 'forum.php?mod=viewthread&tid=136';
+slideImgTexts[2] = '天热？遇到这样的女同学你还热吗 ...';slideImgs[3] = 'data/attachment/forum/201306/19/215824pmhu0ia0m0zjaahv.jpg';
+slideImgLinks[3] = 'forum.php?mod=viewthread&tid=137';
+slideImgTexts[3] = 'discuz! X3管理员后台登录不了或 ...';slideImgs[4] = 'data/attachment/forum/201306/20/125414jztzckpfn0l9z8n9.jpg';
+slideImgLinks[4] = 'forum.php?mod=viewthread&tid=141';
+slideImgTexts[4] = '如何扩大广告位营销效果 ...';slideImgs[5] = 'data/attachment/forum/201306/20/205719jj7jkrhjpwz65h22.jpg';
+slideImgLinks[5] = 'forum.php?mod=viewthread&tid=142';
+slideImgTexts[5] = '程序猿与禅师';slideImgs[6] = 'data/attachment/forum/201306/20/210215xnygiifnin7h5fmb.gif';
+slideImgLinks[6] = 'forum.php?mod=viewthread&tid=143';
+slideImgTexts[6] = '这是叫递归还是叫反脱壳呢？ ...';slideImgs[7] = 'data/attachment/forum/201306/21/000605tzyduy200c8auccb.jpg';
+slideImgLinks[7] = 'forum.php?mod=viewthread&tid=144';
+slideImgTexts[7] = '这位女兵，你考虑过敌人的感受么 ...';slideImgs[8] = 'http://tp.v-get.com/i/8discuz/forum/201306/21/142356rzquuyi2ev2937pv.jpg';
+slideImgLinks[8] = 'forum.php?mod=viewthread&tid=145';
+slideImgTexts[8] = '中国69岁农民3天破解“世界最难 ...';slideImgs[9] = 'http://tp.v-get.com/i/8discuz/forum/201306/21/064740gav5v9ngjkl95nag.jpg';
+slideImgLinks[9] = 'forum.php?mod=viewthread&tid=146';
+slideImgTexts[9] = '武昌理工学院学生会：360随身Wi- ...';slideImgs[10] = 'data/attachment/forum/201306/21/192228ycewkf816we88uwf.jpg';
+slideImgLinks[10] = 'forum.php?mod=viewthread&tid=149';
+slideImgTexts[10] = '为什么要选择国外域名服务商？ ...';</script>
+<script src="data/cache/forum_slide.js?zCp" type="text/javascript"></script>
+</div>
+</div>
+</div>
+<td valign="top" class="category_l2">
+<div class="subjectbox">
+<h4><span class="tit_subject"></span>最新主题</h4>
+        <ul class="category_newlist">
+                	<li><a href="tip-152-1-1.html" tip="标题: <strong>程序猿到底有多忙</strong><br/>作者: E维科技论坛 (<span title='2013-6-22'>1&nbsp;小时前</span>)<br/>查看/回复: 1/0" onmouseover="showTip(this)" target="_blank">程序猿到底有多忙</a></li>
+        	<li><a href="tip-151-1-1.html" tip="标题: <strong>Discuz! x3 修改论坛首页 去除forum.php 结尾的方法</strong><br/>作者: E维科技论坛 (<span title='2013-6-21'>昨天&nbsp;23:15</span>)<br/>查看/回复: 2/0" onmouseover="showTip(this)" target="_blank">Discuz! x3 修改论坛首页 去除fo ...</a></li>
+        	<li><a href="tip-150-1-1.html" tip="标题: <strong>程序猿学Google面试题：没用！</strong><br/>作者: E维科技论坛 (<span title='2013-6-21'>昨天&nbsp;19:56</span>)<br/>查看/回复: 1/0" onmouseover="showTip(this)" target="_blank">程序猿学Google面试题：没用！ ...</a></li>
+        	<li><a href="tip-149-1-1.html" tip="标题: <strong>为什么要选择国外域名服务商？</strong><br/>作者: E维科技论坛 (<span title='2013-6-21'>昨天&nbsp;19:22</span>)<br/>查看/回复: 2/0" onmouseover="showTip(this)" target="_blank">为什么要选择国外域名服务商？ ...</a></li>
+        	<li><a href="tip-148-1-1.html" tip="标题: <strong>小伙进网吧打游戏猝死 邻座：这事遇三次了</strong><br/>作者: 程序猿 (<span title='2013-6-21'>昨天&nbsp;18:07</span>)<br/>查看/回复: 2/0" onmouseover="showTip(this)" target="_blank">小伙进网吧打游戏猝死 邻座：这 ...</a></li>
+        	<li><a href="tip-147-1-1.html" tip="标题: <strong>怎么样才是好的程序员</strong><br/>作者: E维科技 (<span title='2013-6-21'>昨天&nbsp;16:41</span>)<br/>查看/回复: 2/0" onmouseover="showTip(this)" target="_blank">怎么样才是好的程序员</a></li>
+        	<li><a href="tip-146-1-1.html" tip="标题: <strong>武昌理工学院学生会：360随身Wi-Fi评测</strong><br/>作者: 程序猿 (<span title='2013-6-21'>昨天&nbsp;14:38</span>)<br/>查看/回复: 4/0" onmouseover="showTip(this)" target="_blank">武昌理工学院学生会：360随身Wi- ...</a></li>
+        	<li><a href="tip-145-1-1.html" tip="标题: <strong>中国69岁农民3天破解“世界最难数独”，程序猿仅24小时</strong><br/>作者: 程序猿 (<span title='2013-6-21'>昨天&nbsp;14:24</span>)<br/>查看/回复: 1/0" onmouseover="showTip(this)" target="_blank">中国69岁农民3天破解“世界最难 ...</a></li>
+        	<li><a href="tip-144-1-1.html" tip="标题: <strong>这位女兵，你考虑过敌人的感受么。</strong><br/>作者: 程序猿 (<span title='2013-6-21'>昨天&nbsp;00:06</span>)<br/>查看/回复: 5/0" onmouseover="showTip(this)" target="_blank">这位女兵，你考虑过敌人的感受么 ...</a></li>
+        	<li><a href="tip-143-1-1.html" tip="标题: <strong>这是叫递归还是叫反脱壳呢？</strong><br/>作者: 程序猿 (<span title='2013-6-20'>前天&nbsp;21:02</span>)<br/>查看/回复: 7/0" onmouseover="showTip(this)" target="_blank">这是叫递归还是叫反脱壳呢？ ...</a></li>
+         </ul>
+         </div>
+</div>
+<td valign="top" class="category_l3">
+<div class="replaybox">
+<h4><span class="tit_replay"></span>最新回复</h4>
+        <ul class="category_newlist">
+                	<li><a href="forum.php?mod=redirect&amp;tid=138&amp;goto=lastpost#lastpost"tip="标题: <strong>PHP是最好的语言</strong><br/>作者: E维科技 (<span title='2013-6-20'>前天&nbsp;16:00</span>)<br/>查看/回复: 13/2" onmouseover="showTip(this)" target="_blank">PHP是最好的语言</a></li>
+        	<li><a href="forum.php?mod=redirect&amp;tid=123&amp;goto=lastpost#lastpost"tip="标题: <strong>KMplayer最小化到任务栏问题</strong><br/>作者: E维科技论坛 (<span title='2013-6-19'>3&nbsp;天前</span>)<br/>查看/回复: 8/1" onmouseover="showTip(this)" target="_blank">KMplayer最小化到任务栏问题 ...</a></li>
+        	<li><a href="forum.php?mod=redirect&amp;tid=105&amp;goto=lastpost#lastpost"tip="标题: <strong>ECshop可以实现多用户商城吗？类似淘宝那种？</strong><br/>作者: 程序猿 (<span title='2013-6-18'>4&nbsp;天前</span>)<br/>查看/回复: 26/3" onmouseover="showTip(this)" target="_blank">ECshop可以实现多用户商城吗？类 ...</a></li>
+        	<li><a href="forum.php?mod=redirect&amp;tid=97&amp;goto=lastpost#lastpost"tip="标题: <strong>这技能。。。太凶残了。。。</strong><br/>作者: E维科技论坛 (<span title='2013-6-16'>6&nbsp;天前</span>)<br/>查看/回复: 40/2" onmouseover="showTip(this)" target="_blank">这技能。。。太凶残了。。。 ...</a></li>
+        	<li><a href="forum.php?mod=redirect&amp;tid=89&amp;goto=lastpost#lastpost"tip="标题: <strong>360搜索这是要闹哪样？</strong><br/>作者: E维科技 (<span title='2013-6-15'>7&nbsp;天前</span>)<br/>查看/回复: 33/3" onmouseover="showTip(this)" target="_blank">360搜索这是要闹哪样？</a></li>
+        	<li><a href="forum.php?mod=redirect&amp;tid=87&amp;goto=lastpost#lastpost"tip="标题: <strong>哥们你认错人了吧。。。我是狗啊。。。别介样对我啊</strong><br/>作者: E维科技论坛 (<span title='2013-6-15'>7&nbsp;天前</span>)<br/>查看/回复: 19/1" onmouseover="showTip(this)" target="_blank">哥们你认错人了吧。。。我是狗啊 ...</a></li>
+        	<li><a href="forum.php?mod=redirect&amp;tid=79&amp;goto=lastpost#lastpost"tip="标题: <strong>百度子公司iqiyi和PPTV内涵图</strong><br/>作者: 程序猿 (2013-6-13)<br/>查看/回复: 26/1" onmouseover="showTip(this)" target="_blank">百度子公司iqiyi和PPTV内涵图 ...</a></li>
+        	<li><a href="forum.php?mod=redirect&amp;tid=20&amp;goto=lastpost#lastpost"  style="color: #2897C5"tip="标题: <strong>韩顺平PHP视频教程</strong><br/>作者: E维科技 (2013-6-6)<br/>查看/回复: 292/115" onmouseover="showTip(this)" target="_blank">韩顺平PHP视频教程</a></li>
+        	<li><a href="forum.php?mod=redirect&amp;tid=37&amp;goto=lastpost#lastpost"tip="标题: <strong>程序员面试题：1×2×3×4×5×6×7×8×9×10为何等于10！</strong><br/>作者: 程序猿 (2013-6-9)<br/>查看/回复: 41/1" onmouseover="showTip(this)" target="_blank">程序员面试题：1×2×3×4×5×6 ...</a></li>
+        	<li><a href="forum.php?mod=redirect&amp;tid=40&amp;goto=lastpost#lastpost"tip="标题: <strong>iPad下Discuz 显示flash视频为预览图和官网(1000元)</strong><br/>作者: 程序猿 (2013-6-9)<br/>查看/回复: 160/1" onmouseover="showTip(this)" target="_blank">iPad下Discuz 显示flash视频为预 ...</a></li>
+         </ul>
+         </div>
+</div>
+<td valign="top" class="category_l3">
+<div class="hottiebox">
+<h4><span class="tit_hottie"></span>热帖</h4>
+        <ul class="category_newlist">
+                 </ul>
+         </div>
+</div>
+</table>
+</div>
+</div>
+</div>
+<!-- index four grid end -->
+
+<div class="fl bm">
+<div class="bm bmw  flg cl">
+<div class="bm_h cl">
+<span class="o">
+<img id="category_1_img" src="static/image/common/collapsed_no.gif" title="收起/展开" alt="收起/展开" onclick="toggle_collapse('category_1');" />
+</span>
+<h2><a href="forum.php?gid=1" style="">网络营销</a></h2>
+</div>
+<div id="category_1" class="bm_c" style="">
+<table cellspacing="0" cellpadding="0" class="fl_tb">
+<tr><td class="fl_g" width="24.9%">
+<div class="fl_icn_g">
+<a href="topic-2-1.html"><img src="static/image/common/forum.gif" alt="搜索广告PPC" /></a>
+</div>
+<dl>
+<dt><a href="topic-2-1.html">搜索广告PPC</a></dt>
+<dd><em>主题: 1</em>, <em>参与: 3</em></dd></dl>
+</td>
+<td class="fl_g" width="24.9%">
+<div class="fl_icn_g">
+<a href="topic-61-1.html"><img src="static/image/common/forum.gif" alt="精准广告投放" /></a>
+</div>
+<dl>
+<dt><a href="topic-61-1.html">精准广告投放</a></dt>
+<dd><em>主题: 1</em>, <em>参与: 1</em></dd></dl>
+</td>
+<td class="fl_g" width="24.9%">
+<div class="fl_icn_g">
+<a href="topic-62-1.html"><img src="static/image/common/forum.gif" alt="搜索引擎优化SEO" /></a>
+</div>
+<dl>
+<dt><a href="topic-62-1.html">搜索引擎优化SEO</a></dt>
+<dd><em>主题: 8</em>, <em>参与: 11</em></dd></dl>
+</td>
+<td class="fl_g" width="24.9%">
+<div class="fl_icn_g">
+<a href="topic-63-1.html"><img src="static/image/common/forum.gif" alt="网络营销案例" /></a>
+</div>
+<dl>
+<dt><a href="topic-63-1.html">网络营销案例</a></dt>
+<dd><em>主题: 9</em>, <em>参与: 9</em></dd></dl>
+</td>
+</tr>
+</table>
+</div>
+</div><div class="bm bmw  flg cl">
+<div class="bm_h cl">
+<span class="o">
+<img id="category_36_img" src="static/image/common/collapsed_no.gif" title="收起/展开" alt="收起/展开" onclick="toggle_collapse('category_36');" />
+</span>
+<h2><a href="forum.php?gid=36" style="">电子商务</a></h2>
+</div>
+<div id="category_36" class="bm_c" style="">
+<table cellspacing="0" cellpadding="0" class="fl_tb">
+<tr><td class="fl_g" width="24.9%">
+<div class="fl_icn_g">
+<a href="topic-50-1.html"><img src="static/image/common/forum.gif" alt="B2C 商城平台" /></a>
+</div>
+<dl>
+<dt><a href="topic-50-1.html">B2C 商城平台</a></dt>
+<dd><em>主题: 2</em>, <em>参与: 2</em></dd></dl>
+</td>
+<td class="fl_g" width="24.9%">
+<div class="fl_icn_g">
+<a href="topic-51-1.html"><img src="static/image/common/forum.gif" alt="独立电商网站" /></a>
+</div>
+<dl>
+<dt><a href="topic-51-1.html">独立电商网站</a></dt>
+<dd><em>主题: 1</em>, <em>参与: 1</em></dd></dl>
+</td>
+<td class="fl_g" width="24.9%">
+<div class="fl_icn_g">
+<a href="topic-52-1.html"><img src="static/image/common/forum.gif" alt="商务软件APP" /></a>
+</div>
+<dl>
+<dt><a href="topic-52-1.html">商务软件APP</a></dt>
+<dd><em>主题: 2</em>, <em>参与: 2</em></dd></dl>
+</td>
+<td class="fl_g" width="24.9%">
+<div class="fl_icn_g">
+<a href="topic-53-1.html"><img src="static/image/common/forum.gif" alt="B2C 外贸速卖通" /></a>
+</div>
+<dl>
+<dt><a href="topic-53-1.html">B2C 外贸速卖通</a></dt>
+<dd><em>主题: 2</em>, <em>参与: 2</em></dd></dl>
+</td>
+</tr>
+<tr class="fl_row">
+<td class="fl_g" width="24.9%">
+<div class="fl_icn_g">
+<a href="topic-54-1.html"><img src="static/image/common/forum.gif" alt="B2B 外贸平台" /></a>
+</div>
+<dl>
+<dt><a href="topic-54-1.html">B2B 外贸平台</a></dt>
+<dd><em>主题: 1</em>, <em>参与: 1</em></dd></dl>
+</td>
+<td width="24.9%">&nbsp;</td><td width="24.9%">&nbsp;</td><td width="24.9%">&nbsp;</td></tr></tr>
+</table>
+</div>
+</div><div class="bm bmw  flg cl">
+<div class="bm_h cl">
+<span class="o">
+<img id="category_37_img" src="static/image/common/collapsed_no.gif" title="收起/展开" alt="收起/展开" onclick="toggle_collapse('category_37');" />
+</span>
+<h2><a href="forum.php?gid=37" style="">在线交易</a></h2>
+</div>
+<div id="category_37" class="bm_c" style="">
+<table cellspacing="0" cellpadding="0" class="fl_tb">
+<tr><td class="fl_g" width="24.9%">
+<div class="fl_icn_g">
+<a href="topic-38-1.html"><img src="static/image/common/forum.gif" alt="程序猿私活(≦300元)" /></a>
+</div>
+<dl>
+<dt><a href="topic-38-1.html">程序猿私活(≦300元)</a></dt>
+<dd><em>主题: 1</em>, <em>参与: 1</em></dd></dl>
+</td>
+<td class="fl_g" width="24.9%">
+<div class="fl_icn_g">
+<a href="topic-39-1.html"><img src="static/image/common/forum.gif" alt="程序猿私活(>300元)" /></a>
+</div>
+<dl>
+<dt><a href="topic-39-1.html">程序猿私活(>300元)</a></dt>
+<dd><em>主题: 2</em>, <em>参与: 3</em></dd></dl>
+</td>
+<td class="fl_g" width="24.9%">
+<div class="fl_icn_g">
+<a href="topic-41-1.html"><img src="static/image/common/forum.gif" alt="站点/域名/帐号收购" /></a>
+</div>
+<dl>
+<dt><a href="topic-41-1.html">站点/域名/帐号收购</a></dt>
+<dd><em>主题: 0</em>, <em>参与: 0</em></dd></dl>
+</td>
+<td width="24.9%">&nbsp;</td></tr></tr>
+</table>
+</div>
+</div><div class="bm bmw  flg cl">
+<div class="bm_h cl">
+<span class="o">
+<img id="category_44_img" src="static/image/common/collapsed_no.gif" title="收起/展开" alt="收起/展开" onclick="toggle_collapse('category_44');" />
+</span>
+<h2><a href="forum.php?gid=44" style="">广告外链</a></h2>
+</div>
+<div id="category_44" class="bm_c" style="">
+<table cellspacing="0" cellpadding="0" class="fl_tb">
+<tr><td class="fl_g" width="24.9%">
+<div class="fl_icn_g">
+<a href="topic-45-1.html"><img src="static/image/common/forum.gif" alt="交换链接" /></a>
+</div>
+<dl>
+<dt><a href="topic-45-1.html">交换链接</a></dt>
+<dd><em>主题: 0</em>, <em>参与: 0</em></dd></dl>
+</td>
+<td class="fl_g" width="24.9%">
+<div class="fl_icn_g">
+<a href="topic-46-1.html"><img src="static/image/common/forum.gif" alt="广告位买卖" /></a>
+</div>
+<dl>
+<dt><a href="topic-46-1.html">广告位买卖</a></dt>
+<dd><em>主题: 1</em>, <em>参与: 1</em></dd></dl>
+</td>
+<td class="fl_g" width="24.9%">
+<div class="fl_icn_g">
+<a href="topic-47-1.html"><img src="static/image/common/forum.gif" alt="软文交易" /></a>
+</div>
+<dl>
+<dt><a href="topic-47-1.html">软文交易</a></dt>
+<dd><em>主题: 0</em>, <em>参与: 0</em></dd></dl>
+</td>
+<td class="fl_g" width="24.9%">
+<div class="fl_icn_g">
+<a href="topic-76-1.html"><img src="static/image/common/forum.gif" alt="联盟广告" /></a>
+</div>
+<dl>
+<dt><a href="topic-76-1.html">联盟广告</a></dt>
+<dd><em>主题: 1</em>, <em>参与: 1</em></dd></dl>
+</td>
+</tr>
+</table>
+</div>
+</div><div class="bm bmw  flg cl">
+<div class="bm_h cl">
+<span class="o">
+<img id="category_43_img" src="static/image/common/collapsed_no.gif" title="收起/展开" alt="收起/展开" onclick="toggle_collapse('category_43');" />
+</span>
+<h2><a href="forum.php?gid=43" style="">技术交流</a></h2>
+</div>
+<div id="category_43" class="bm_c" style="">
+<table cellspacing="0" cellpadding="0" class="fl_tb">
+<tr><td class="fl_g" width="24.9%">
+<div class="fl_icn_g">
+<a href="topic-83-1.html"><img src="static/image/common/forum.gif" alt="网站插件/代码" /></a>
+</div>
+<dl>
+<dt><a href="topic-83-1.html">网站插件/代码</a></dt>
+<dd><em>主题: 1</em>, <em>参与: 1</em></dd></dl>
+</td>
+<td class="fl_g" width="24.9%">
+<div class="fl_icn_g">
+<a href="topic-84-1.html"><img src="static/image/common/forum.gif" alt="网站运营" /></a>
+</div>
+<dl>
+<dt><a href="topic-84-1.html">网站运营</a></dt>
+<dd><em>主题: 1</em>, <em>参与: 1</em></dd></dl>
+</td>
+<td class="fl_g" width="24.9%">
+<div class="fl_icn_g">
+<a href="topic-64-1.html"><img src="static/image/common/forum.gif" alt="Web前端开发" /></a>
+</div>
+<dl>
+<dt><a href="topic-64-1.html">Web前端开发</a></dt>
+<dd><em>主题: 6</em>, <em>参与: 6</em></dd></dl>
+</td>
+<td class="fl_g" width="24.9%">
+<div class="fl_icn_g">
+<a href="topic-79-1.html"><img src="static/image/common/forum.gif" alt="网站美工Photoshop" /></a>
+</div>
+<dl>
+<dt><a href="topic-79-1.html">网站美工Photoshop</a></dt>
+<dd><em>主题: 3</em>, <em>参与: 3</em></dd></dl>
+</td>
+</tr>
+<tr class="fl_row">
+<td class="fl_g" width="24.9%">
+<div class="fl_icn_g">
+<a href="topic-65-1.html"><img src="static/image/common/forum.gif" alt="PHP" /></a>
+</div>
+<dl>
+<dt><a href="topic-65-1.html">PHP</a></dt>
+<dd><em>主题: 20</em>, <em>参与: 140</em></dd></dl>
+</td>
+<td class="fl_g" width="24.9%">
+<div class="fl_icn_g">
+<a href="topic-67-1.html"><img src="static/image/common/forum.gif" alt="ASP" /></a>
+</div>
+<dl>
+<dt><a href="topic-67-1.html">ASP</a></dt>
+<dd><em>主题: 0</em>, <em>参与: 0</em></dd></dl>
+</td>
+<td class="fl_g" width="24.9%">
+<div class="fl_icn_g">
+<a href="topic-68-1.html"><img src="static/image/common/forum.gif" alt="ASP.NET" /></a>
+</div>
+<dl>
+<dt><a href="topic-68-1.html">ASP.NET</a></dt>
+<dd><em>主题: 1</em>, <em>参与: 1</em></dd></dl>
+</td>
+<td class="fl_g" width="24.9%">
+<div class="fl_icn_g">
+<a href="topic-66-1.html"><img src="static/image/common/forum.gif" alt="JSP/Java" /></a>
+</div>
+<dl>
+<dt><a href="topic-66-1.html">JSP/Java</a></dt>
+<dd><em>主题: 5</em>, <em>参与: 5</em></dd></dl>
+</td>
+</tr>
+<tr class="fl_row">
+<td class="fl_g" width="24.9%">
+<div class="fl_icn_g">
+<a href="topic-69-1.html"><img src="static/image/common/forum.gif" alt="C语言" /></a>
+</div>
+<dl>
+<dt><a href="topic-69-1.html">C语言</a></dt>
+<dd><em>主题: 0</em>, <em>参与: 0</em></dd></dl>
+</td>
+<td class="fl_g" width="24.9%">
+<div class="fl_icn_g">
+<a href="topic-70-1.html"><img src="static/image/common/forum.gif" alt="Linux/Win 系统黑客" /></a>
+</div>
+<dl>
+<dt><a href="topic-70-1.html">Linux/Win 系统黑客</a></dt>
+<dd><em>主题: 4</em>, <em>参与: 4</em></dd></dl>
+</td>
+<td class="fl_g" width="24.9%">
+<div class="fl_icn_g">
+<a href="topic-77-1.html"><img src="static/image/common/forum.gif" alt="数据库" /></a>
+</div>
+<dl>
+<dt><a href="topic-77-1.html">数据库</a></dt>
+<dd><em>主题: 2</em>, <em>参与: 2</em></dd></dl>
+</td>
+<td class="fl_g" width="24.9%">
+<div class="fl_icn_g">
+<a href="topic-73-1.html"><img src="static/image/common/forum.gif" alt="域名主机商" /></a>
+</div>
+<dl>
+<dt><a href="topic-73-1.html">域名主机商</a></dt>
+<dd><em>主题: 2</em>, <em>参与: 2</em></dd></dl>
+</td>
+</tr>
+<tr class="fl_row">
+<td class="fl_g" width="24.9%">
+<div class="fl_icn_g">
+<a href="topic-48-1.html"><img src="static/image/common/forum.gif" alt="招聘求职" /></a>
+</div>
+<dl>
+<dt><a href="topic-48-1.html">招聘求职</a></dt>
+<dd><em>主题: 0</em>, <em>参与: 0</em></dd></dl>
+</td>
+<td width="24.9%">&nbsp;</td><td width="24.9%">&nbsp;</td><td width="24.9%">&nbsp;</td></tr></tr>
+</table>
+</div>
+</div><div class="bm bmw  flg cl">
+<div class="bm_h cl">
+<span class="o">
+<img id="category_74_img" src="static/image/common/collapsed_no.gif" title="收起/展开" alt="收起/展开" onclick="toggle_collapse('category_74');" />
+</span>
+<h2><a href="forum.php?gid=74" style="">应用软件</a></h2>
+</div>
+<div id="category_74" class="bm_c" style="">
+<table cellspacing="0" cellpadding="0" class="fl_tb">
+<tr><td class="fl_g" width="24.9%">
+<div class="fl_icn_g">
+<a href="topic-75-1.html"><img src="static/image/common/forum.gif" alt="注册码/注册机" /></a>
+</div>
+<dl>
+<dt><a href="topic-75-1.html">注册码/注册机</a></dt>
+<dd><em>主题: 1</em>, <em>参与: 1</em></dd></dl>
+</td>
+<td class="fl_g" width="24.9%">
+<div class="fl_icn_g">
+<a href="topic-80-1.html"><img src="static/image/common/forum.gif" alt="宽带问题吐槽" /></a>
+</div>
+<dl>
+<dt><a href="topic-80-1.html">宽带问题吐槽</a></dt>
+<dd><em>主题: 4</em>, <em>参与: 4</em></dd></dl>
+</td>
+<td class="fl_g" width="24.9%">
+<div class="fl_icn_g">
+<a href="topic-81-1.html"><img src="static/image/common/forum.gif" alt="电脑设置" /></a>
+</div>
+<dl>
+<dt><a href="topic-81-1.html">电脑设置</a></dt>
+<dd><em>主题: 4</em>, <em>参与: 5</em></dd></dl>
+</td>
+<td width="24.9%">&nbsp;</td></tr></tr>
+</table>
+</div>
+</div><div class="bm bmw  flg cl">
+<div class="bm_h cl">
+<span class="o">
+<img id="category_55_img" src="static/image/common/collapsed_no.gif" title="收起/展开" alt="收起/展开" onclick="toggle_collapse('category_55');" />
+</span>
+<h2><a href="forum.php?gid=55" style="">其他</a></h2>
+</div>
+<div id="category_55" class="bm_c" style="">
+<table cellspacing="0" cellpadding="0" class="fl_tb">
+<tr><td class="fl_g" width="24.9%">
+<div class="fl_icn_g">
+<a href="topic-56-1.html"><img src="static/image/common/forum.gif" alt="投诉建议" /></a>
+</div>
+<dl>
+<dt><a href="topic-56-1.html">投诉建议</a></dt>
+<dd><em>主题: 0</em>, <em>参与: 0</em></dd></dl>
+</td>
+<td class="fl_g" width="24.9%">
+<div class="fl_icn_g">
+<a href="topic-57-1.html"><img src="static/image/common/forum.gif" alt="技术峰会" /></a>
+</div>
+<dl>
+<dt><a href="topic-57-1.html">技术峰会</a></dt>
+<dd><em>主题: 0</em>, <em>参与: 0</em></dd></dl>
+</td>
+<td class="fl_g" width="24.9%">
+<div class="fl_icn_g">
+<a href="topic-58-1.html"><img src="static/image/common/forum.gif" alt="打击虚假信息" /></a>
+</div>
+<dl>
+<dt><a href="topic-58-1.html">打击虚假信息</a></dt>
+<dd><em>主题: 4</em>, <em>参与: 4</em></dd></dl>
+</td>
+<td class="fl_g" width="24.9%">
+<div class="fl_icn_g">
+<a href="topic-60-1.html"><img src="static/image/common/forum.gif" alt="灌水吐槽" /></a>
+</div>
+<dl>
+<dt><a href="topic-60-1.html">灌水吐槽</a></dt>
+<dd><em>主题: 0</em>, <em>参与: 0</em></dd></dl>
+</td>
+</tr>
+<tr class="fl_row">
+<td class="fl_g" width="24.9%">
+<div class="fl_icn_g">
+<a href="topic-82-1.html"><img src="static/image/common/forum.gif" alt="程序猿段子" /></a>
+</div>
+<dl>
+<dt><a href="topic-82-1.html">程序猿段子</a><em class="xw0 xi1" title="今日"> (1)</em></dt>
+<dd><em>主题: 61</em>, <em>参与: 71</em></dd></dl>
+</td>
+<td width="24.9%">&nbsp;</td><td width="24.9%">&nbsp;</td><td width="24.9%">&nbsp;</td></tr></tr>
+</table>
+</div>
+</div>
+</div>
+
+<div class="wp mtn">
+<!--[diy=diy3]--><div id="diy3" class="area"></div><!--[/diy]-->
+</div>
+
+
+</div>
+
+</div>
+<script>fixed_top_nv();</script>	</div>
+
+
+<div id="ft" class="wp cl">
+<div id="flk" class="y">
+<p>
+<a href="forum.php?mobile=yes" >手机版</a><span class="pipe">|</span><strong><a href="http://e.v-get.com/" target="_blank">E维科技</a></strong>
+</p>
+<p class="xs0">E维科技，专注网络营销</p></div>
+<div id="frt"><p>Powered by <strong><a href="http://e.v-get.com/i/" target="_blank">Discuz!</a></strong> <em>Tech</em></p><p class="xs0">&copy; 2012-2013 <a href="http://www.v-get.com/" target="_blank">V-Get.com</a></p></div></div>
+<script src="home.php?mod=misc&ac=sendmail&rand=1371847567" type="text/javascript"></script>
+<div id="scrolltop">
+<span hidefocus="true"><a title="返回顶部" onclick="window.scrollTo('0','0')" class="scrolltopa" ><b>返回顶部</b></a></span>
+</div>
+<script type="text/javascript">_attachEvent(window, 'scroll', function () { showTopLink(); });checkBlind();</script>
+			<div id="discuz_tips" style="display:none;"></div>
+			<script type="text/javascript">
+				var tipsinfo = '24974584|X3|0.6||0||0|7|1371847567|3b49d040c67d7e2848c34c52aa70d611|2';
+			</script>
+			<script src="http://discuz.gtimg.cn/cloud/scripts/discuz_tips.js?v=1" type="text/javascript" charset="UTF-8"></script>

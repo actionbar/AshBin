@@ -1,0 +1,222 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="ASP TextStream Object" />
+<meta name="description" content="TextStream对象的作用，用法，具体的应用实例，以及相关的属性和方法。" />
+<link rel="stylesheet" type="text/css" href="../c3.css" />
+<title>ASP TextStream 对象</title>
+</head>
+<body class="serverscripting">
+<div id="wrapper">
+<div id="header">
+<a href="http://e.v-get.com/w3cschool/" style="float:left;">W3CSchool 在线教程</a>
+<div class="q g"><script type="text/javascript">var cpro_id="u1163355"</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div>
+<div id="navfirst">
+<ul id="menu">
+<li id="h"><a href="../h.html">HTML教程</a></li>
+<li id="x"><a href="../x.html">XML教程</a></li>
+<li id="b"><a href="../b.html">浏览器脚本</a></li>
+<li id="s"><a href="../s.html">服务器脚本</a></li>
+<li id="d"><a href="../d.html">dot net教程</a></li>
+<li id="m"><a href="../m.html">多媒体教程</a></li>
+<li id="w"><a href="../w.html">建站手册</a></li>
+</ul>
+</div><div id="navsecond">
+<div id="course">
+<h2>ASP 教程</h2>
+<ul>
+<li><a href="http://e.v-get.com/w3cschool/">ASP 首页</a></li>
+<li><a href="asp_intro.html">ASP 简介</a></li>
+<li><a href="asp_install.html">ASP 安装</a></li>
+<li><a href="asp_syntax.html">ASP 语法</a></li>
+<li><a href="asp_variables.html">ASP 变量</a></li>
+<li><a href="asp_procedures.html">ASP 程序</a></li>
+<li><a href="asp_inputforms.html">ASP 表单</a></li>
+<li><a href="asp_cookies.html">ASP Cookies</a></li>
+<li><a href="asp_sessions.html">ASP Session</a></li>
+<li><a href="asp_applications.html">ASP Application</a></li>
+<li><a href="asp_incfiles.html">ASP #include</a></li>
+<li><a href="asp_globalasa.html">ASP Global.asa</a></li>
+<li><a href="asp_send_email.html">ASP e-mail</a></li>
+</ul>
+<h2>ASP 对象</h2>
+<ul class="small">
+<li><a href="asp_ref_response.html">ASP Response</a></li>
+<li><a href="asp_ref_request.html">ASP Request</a></li>
+<li><a href="asp_ref_application.html">ASP Application</a></li>
+<li><a href="asp_ref_session.html">ASP Session</a></li>
+<li><a href="asp_ref_server.html">ASP Server</a></li>
+<li><a href="asp_ref_error.html">ASP Error</a></li>
+<li class="list_apart"><a href="asp_ref_filesystem.html">ASP FileSystem</a></li>
+<li><a href="asp_ref_textstream.html">ASP TextStream</a></li>
+<li><a href="asp_ref_drive.html">ASP Drive</a></li>
+<li><a href="asp_ref_file.html">ASP File</a></li>
+<li><a href="asp_ref_folder.html">ASP Folder</a></li>
+<li><a href="asp_ref_dictionary.html">ASP Dictionary</a></li>
+<li><a href="asp_ado.html">ASP ADO</a></li>
+</ul>
+<h2>ASP 组件</h2>
+<ul class="small">
+<li><a href="asp_adrotator.html">ASP AdRotator</a></li>
+<li><a href="asp_browser.html">ASP BrowserCap</a></li>
+<li><a href="asp_contentlinking.html">ASP Content Linking</a></li>
+<li><a href="asp_contentrotator.html">ASP Content Rotator</a></li>
+</ul>
+<h2>ASP 教程总结</h2>
+<ul>
+<li><a href="asp_quickref.html">ASP 快速参考</a></li>
+<li><a href="asp_summary.html">ASP 总结</a></li>
+</ul>
+<h2>实例/测验</h2>
+<ul>
+<li><a href="../example/aspe_examples.html">ASP 实例</a></li>
+<li><a href="asp_quiz.html">ASP 测验</a></li>
+</ul>
+</div>
+<div id="selected">
+<h2>建站手册</h2>
+<ul>
+<li><a href="../site/">网站构建</a></li>
+<li><a href="../w3c/">万维网联盟</a></li>
+<li><a href="http://e.v-get.com/w3c/">W3CSchool 教程</a></li>
+<li><a href="../quality/">网站品质</a></li>
+<li><a href="../semweb/">语义网</a></li>
+<li><a href="../hosting/">网站主机</a></li>
+</ul>
+<h2><a href="http://e.v-get.com/w3c/" class="f13">W3CSchool 教程</a></h2><div class="a120x90"><script type="text/javascript">var cpro_id="u1210867";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div></div>
+</div>
+<div id="maincontent">
+<h1>ASP TextStream 对象</h1>
+<div  id="tpn">
+<ul class="prenext">
+<li class="pre"><a href="asp_ref_filesystem.html">上一页</a></li>
+<li class="next"><a href="asp_ref_drive.html">下一页</a></li>
+</ul>
+</div>
+<div id="intro">
+<p><strong>TextStream 对象用于访问文本文件的内容。</strong></p>
+</div>
+<div class="example">
+<h2>实例</h2>
+<dl>
+<dt><a href="../tiy/s_59.html">读文件</a></dt>
+<dd>本例演示如何使用 FileSystemObject 的 OpenTextFile 方法来创建一个 TextStream 对象。TextStream 对象的 ReadAll 方法会从已打开的文本文件中取得内容。</dd>
+<dt><a href="../tiy/s_60.html">读文本文件中的一个部分</a></dt>
+<dd>本例演示如何仅仅读取一个文本流文件的部分内容。</dd>
+<dt><a href="../tiy/s_61.html">读文本文件中的一行</a></dt>
+<dd>本例演示如何从一个文本流文件中读取一行内容。</dd>
+<dt><a href="../tiy/s_62.html">读取文本文件的所有行</a></dt>
+<dd>本例演示如何从文本流文件中读取所有的行。</dd>
+<dt><a href="../tiy/s_63.html">略过文本文件的一部分</a></dt>
+<dd>本例演示如何在读取文本流文件时跳过指定的字符数。</dd>
+<dt><a href="../tiy/s_64.html">略过文本文件的一行</a></dt>
+<dd>本例演示如何在读取文本流文件时跳过一行。</dd>
+<dt><a href="../tiy/s_65.html">返回行数</a></dt>
+<dd>本例演示如何返回在文本流文件中的当前行号。</dd>
+<dt><a href="../tiy/s_66.html">取得列数</a></dt>
+<dd>本例演示如何取得在文件中当前字符的列号。</dd>
+</dl>
+</div>
+<div>
+<h2>TextStream 对象</h2>
+<p>TextStream 对象用于访问文本文件的内容。</p>
+<p>下面的代码会创建一个文本文件 (c:\test.txt)，然后向此文件写一些文本 (变量 f 是 TextStream 对象的一个实例）：</p>
+<pre>&lt;%&nbsp;
+dim fs, f&nbsp;
+set fs=Server.CreateObject(&#34;Scripting.FileSystemObject&#34;)&nbsp;
+set f=fs.CreateTextFile(&#34;c:\test.txt&#34;,true)&nbsp;
+f.WriteLine(&#34;Hello World!&#34;)
+f.Close
+set f=nothing
+set fs=nothing
+%></pre>
+<p>如需创建TextStream对象的一个实例，我们可以使用 FileSystemObject 对象的 CreateTextFile 方法或者 OpenTextFile 方法，也可以使用 File 对象的 OpenAsTextStream 方法。</p>
+<p>TextStream 对象的属性和方法描述如下：</p>
+<h3>属性</h3>
+<table class="dataintable">
+<tr>
+<th style="width:25%">属性</th>
+<th>描述</th>
+</tr>
+<tr>
+<td><a href="prop_atendofline.html">AtEndOfLine</a></td>
+<td>在 TextStream 文件中，如果文件指针正好位于行尾标记的前面，那么该属性值返回 True；否则返回 False。</td>
+</tr>
+<tr>
+<td><a href="prop_atendofstream.html">AtEndOfStream</a></td>
+<td>如果文件指针在 TextStream 文件末尾，则该属性值返回 True；否则返回 False。</td>
+</tr>
+<tr>
+<td><a href="prop_column.html">Column</a></td>
+<td>返回 TextStream 文件中当前字符位置的列号。</td>
+</tr>
+<tr>
+<td><a href="prop_line.html">Line</a></td>
+<td>返回 TextStream 文件中的当前行号。</td>
+</tr>
+</table>
+<h3>方法</h3>
+<table class="dataintable">
+<tr>
+<th style="width:25%">方法</th>
+<th>描述</th>
+</tr>
+<tr>
+<td><a href="met_close.html">Close</a></td>
+<td>关闭一个打开的 TextStream 文件。</td>
+</tr>
+<tr>
+<td><a href="met_read.html">Read</a></td>
+<td>从一个 TextStream 文件中读取指定数量的字符并返回结果 (得到的字符串）。</td>
+</tr>
+<tr>
+<td><a href="met_readall.html">ReadAll</a></td>
+<td>读取整个 TextStream 文件并返回结果。</td>
+</tr>
+<tr>
+<td><a href="met_readline.html">ReadLine</a></td>
+<td>从一个 TextStream 文件读取一整行 (到换行符但不包括换行符）并返回结果。</td>
+</tr>
+<tr>
+<td><a href="met_skip.html">Skip</a></td>
+<td>当读一个 TextStream 文件时跳过指定数量的字符。</td>
+</tr>
+<tr>
+<td><a href="met_skipline.html">SkipLine</a></td>
+<td>当读一个 TextStream 文件时跳过下一行。</td>
+</tr>
+<tr>
+<td><a href="met_write.html">Write</a></td>
+<td>写一段指定的文本 (字符串）到一个 TextStream 文件。</td>
+</tr>
+<tr>
+<td><a href="met_writeline.html">WriteLine</a></td>
+<td>写入一段指定的文本 (字符串）和换行符到一个 TextStream 文件中。</td>
+</tr>
+<tr>
+<td><a href="met_writeblanklines.html">WriteBlankLines</a></td>
+<td>写入指定数量的换行符到一个 TextStream 文件中。</td>
+</tr>
+</table>
+</div>
+<div id="bpn">
+<ul class="prenext">
+<li class="pre"><a href="asp_ref_filesystem.html">上一页</a></li>
+<li class="next"><a href="asp_ref_drive.html">下一页</a></li>
+</ul>
+</div>
+</div>
+<div id="sidebar">
+<div class="rs"></div>
+<div id="tools">
+<h5 id="tools_reference"><a href="asp_ref.html">ASP 参考手册</a></h5>
+<h5 id="tools_example"><a href="../example/aspe_examples.html">ASP 实例</a></h5>
+<h5 id="tools_quiz"><a href="asp_quiz.html">ASP 测验</a></h5>
+</div>
+<div class="a120x600"><script type="text/javascript">var cpro_id="u1293136";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div><div class="b"></div>
+</div>
+</body>
+</html>

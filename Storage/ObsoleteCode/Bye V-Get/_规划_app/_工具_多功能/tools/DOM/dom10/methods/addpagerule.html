@@ -1,0 +1,88 @@
+<html xmlns:rdl>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<script src="rdl_method.js"></script>
+<base target="_self">
+</head>
+<body>
+
+<script>
+
+//collFriendObjects=new Array();
+//collFriendProperties=new Array();
+//collFriendMethods=new Array();
+//collFriendEvents=new Array();
+//collFriendCollections=new Array();
+
+collFriendMethods=new Array(
+'removeRule','addRule','createStyleSheet'
+);
+
+collFriendCollections=new Array(
+'styleSheets','rules'
+);
+
+collFriendObjects=new Array(
+'STYLE','rule','runtimeStyle','runtimeStyle','styleSheet'
+);
+
+//collIE40=new Array();
+//collIE50=new Array();
+//collIE55=new Array();
+//collIE60=new Array();
+
+collIE55=new Array(
+'styleSheet'
+);
+
+//sStyle='';
+
+//sScript='';
+
+//sCode='';
+
+iWinWidth=320;
+
+iWinHeight=280;
+
+</script>
+
+<div id=idContent>
+
+<div id=idContentTitle><span id=idTitleName>addPageRule</span>版本：DHTML Object Model　返回值：有</div>
+
+<div class=cssColumnTitle>语法：</div>
+<div>
+<i>plNewIndex</i><b> = </b><a href="../objects/stylesheet.html"><b>styleSheet</b></a><b> . addPageRule ( </b><i>sSelector</i><b> , </b><i>sStyle</i><b> , </b><i>iIndex</i><b> ) </b>
+</div>
+
+<div class=cssColumnTitle>参数：</div>
+<table>
+<tr><td nowrap><i> sSelector </i></td><td nowrap><b>:</b></td>
+<td><b>必选项</b>。字符串(String)。为新的<a href="../objects/page.html"> page </a>对象指定选择符(Selector)。</td></tr>
+<tr><td nowrap><i> sStyle </i></td><td nowrap><b>:</b></td>
+<td><b>必选项</b>。字符串(String)。为新的<a href="../objects/page.html"> page </a>对象指定样式信息。使用内联(Inline)样式定义的格式。如：<b> "color : blue" </b>。</td></tr>
+<tr><td nowrap><i> iIndex </i></td><td nowrap><b>:</b></td>
+<td><b>必选项</b>。整数值(Integer)。指定新的<a href="../objects/page.html"> page </a>对象在<a href="../objects/pages.html"> pages </a>集合里的位置。默认值为<span class=cssDefault><b> -1 </b></span>。即加入到<a href="../objects/pages.html"> pages </a>集合的最后。</td></tr>
+</table>
+
+<div class=cssColumnTitle>返回值：</div>
+<table>
+<tr><td nowrap><i> plNewIndex </i></td><td nowrap><b>:</b></td>
+<td>此返回值为保留专用值。请勿使用。</td></tr>
+</table>
+
+<div class=cssColumnTitle>说明：</div>
+<div>
+为一个样式表单建立一个新的<a href="../objects/page.html"> page </a>对象。<br>
+每个<a href="../objects/page.html"> page </a>对象的样式定义对应于文档中的一个<b> @page </b>规则。
+</div>
+
+
+
+</div>
+</body>
+</html>
+
+<!-- Part of RDL(TM) - Written by Rain1977 
+HomeSite: http://www.dhtmlet.com  E-Mail: dhtmlet@hotmail.com -->

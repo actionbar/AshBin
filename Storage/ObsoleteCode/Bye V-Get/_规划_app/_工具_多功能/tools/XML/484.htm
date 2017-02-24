@@ -1,0 +1,210 @@
+<html>
+<head>
+<title>使用xsl:number为节点计数</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+
+<link rel = stylesheet href = "image/style.css">
+</head>
+<body bgcolor="#ffffff">
+<table width="688" border="0" cellspacing="0" cellpadding="0" align="center">
+  <tr bgcolor="EEEEEE"> 
+    <td height="22"><a href="index.htm">主页</a></td>
+  </tr>
+</table><br>
+<table border="0" cellpadding="0" cellspacing="0" width="688" align="center" height="490">
+  <tr valign="top"> 
+    <td rowspan="4" width="91">&nbsp; </td>
+    <td height="68" width="131"> 
+      <p><img src="image/doc.gif"></p>
+    </td>
+    <td rowspan="4" width="18"><b></b> </td>
+    <td height="68" width="387"><img src="image/title_doc.gif"></td>
+    <td rowspan="4" width="61"> 
+      <h6>&nbsp;</h6>
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td rowspan="3" valign="top" class="pt10" align="center" width="131" bgcolor="EEEEEE"> 
+      <p>&nbsp;</p>
+      <p><font color="#FF0000">※ 14.11 使用xsl:number为节点计数</font></p>
+       
+	</td>
+  </tr>
+  <tr valign="top"> 
+    <td width="387" height="308"> 
+      <table width="100%" border="0" cellpadding="0">
+        <tr> 
+          <td>
+
+           <h4><a name="_Toc467207172">14.11 使用xsl:number为节点计数</a></h4>
+<p>xsl:number在输出文档中插入格式化整数。由expr特性计算出来的数值，通过四舍五入成最接近的整数，然后根据format特性值，对此整数进行格式化，从而获得整数值。为这两个特性提供了恰当的缺省值。例如，考查清单14-17中的ATOM元素的样式单。</p>
+<p>清单14-17：为原子计数的XSL样式单</p>
+<p>&lt;?xml version="1.0"?&gt;</p>
+<p>&lt;xsl:stylesheet</p>
+<p> xmlns:xsl="http://www.w3.org/XSL/Transform/1.0"&gt;</p>
+<p></p>
+<p> &lt;xsl:template match="PERIODIC_TABLE"&gt;</p>
+<p> &lt;html&gt;</p>
+<p> &lt;head&gt;&lt;title&gt;The Elements&lt;/title&gt;&lt;/head&gt;</p>
+<p> &lt;body&gt;</p>
+<p> &lt;table&gt;</p>
+<p> &lt;xsl:apply-templates select="ATOM"/&gt;</p>
+<p> &lt;/table&gt;</p>
+<p> &lt;/body&gt;</p>
+<p> &lt;/html&gt;</p>
+<p> &lt;/xsl:template&gt;</p>
+<p></p>
+<p> &lt;xsl:template match="ATOM"&gt;</p>
+<p> &lt;tr&gt;</p>
+<p> &lt;td&gt;&lt;xsl:number expr="position()"/&gt;&lt;/td&gt;</p>
+<p> &lt;td&gt;&lt;xsl:value-of select="NAME"/&gt;&lt;/td&gt;</p>
+<p> &lt;/tr&gt;</p>
+<p> &lt;/xsl:template&gt;</p>
+<p>&lt;/xsl:stylesheet&gt;</p>
+<p>当此样式单应用于清单14-1时，输出类似如下显示：</p>
+<p>&lt;html&gt;&lt;head&gt;&lt;title&gt;The</p>
+<p>Elements&lt;/title&gt;&lt;/head&gt;&lt;body&gt;&lt;table&gt;&lt;tr&gt;&lt;td&gt;l&lt;/td&gt;&lt;td&gt;Hydrogen&lt;</p>
+<p>/td&gt;&lt;/tr&gt;</p>
+<p>&lt;tr&gt;&lt;td&gt;2&lt;/td&gt;&lt;td&gt;Helium&lt;/td&gt;&lt;/tr&gt;</p>
+<p>&lt;/table&gt;&lt;/body&gt;&lt;/html&gt;</p>
+<p>由于氢是其父元素的第一个ATOM元素，所以其号码为1。由于氦是其父元素的第二个ATOM元素，所以其号码为2。（这些号码对应于氢和氦的原子序数，这种对应关系是清单14-1的副产品，而清单14-1正是以原子序数的顺序进行排列的。）</p>
+<h5><a name="_Toc467207173">14.11.1 缺省数值</a></h5>
+<p>如果使用expr特性来计算编号，那么这就是所需要的值。但是，如果省略expr特性，那么源树形结构中的当前节点位置就作为编号来使用。但是，可使用下面三个特性来调整此缺省值：</p>
+<ul>
+  <p>
+  <li>level</li>
+  <p></p>
+  <p>
+  <li>count</li>
+  <p></p>
+  <p>
+  <li>from</li>
+  <p></p>
+</ul>
+<p><img src="Image/BK000214-17.gif" width=47 height=52 align="left">这三个特性是从以前的不支持较为复杂的表达式XSL草案中延续下来的。如果它们完全使你混淆，那么我建议不要去考虑它们，使用expr来代替。</p>
+<p>&nbsp;</p>
+<p> 
+<p><b>14.11.1.1 level特性</b></p>
+<p></p>
+<p>按缺省行为，当不存在expr特性时，xsl:number可对源节点的同属节点加以计数。例如，如果对ATOMIC_NUMBER元素而不是ATOM元素加以编号，那么由于一个ATOM元素绝不会有多个ATOMIC_NUMBER子元素，所以任何一个编号都不会大于1。尽管文档包含多个ATOMIC_NUMBER元素，但它们不是同属的。</p>
+<p>将xsl:number的level特性设置成any，可对与文档中当前节点同类的所有元素加以计数。此情况不仅包括与当前规则相匹配的元素，还包括类型与要求相一致的所有元素。例如，即使只选择气体的原子序数，固体和液体也仍然计数在内（即便固体和液体没有输出也是如此）。看看下面的这些规则：</p>
+<p>&lt;xsl:template match="ATOM"&gt;</p>
+<p> &lt;xsl:apply-templates select="NAME"/&gt;</p>
+<p>&lt;/xsl:template&gt;</p>
+<p></p>
+<p>&lt;xsl:template match="NAME"&gt;</p>
+<p> &lt;td&gt;&lt;xsl:number level="any"/&gt;&lt;/td&gt;</p>
+<p> &lt;td&gt;&lt;xsl:value-of select="."/&gt;&lt;/td&gt;</p>
+<p>&lt;/xsl:template&gt;</p>
+<p>由于level设置成any，上面的规则对每个新的NAME元素产生的输出不是从1开始，其输出结果如下：</p>
+<p>&lt;td&gt;l&lt;/td&gt;&lt;td&gt;Hydrogen&lt;/td&gt;</p>
+<p>&lt;td&gt;2&lt;/td&gt;&lt;td&gt;Helium&lt;/td&gt;</p>
+<p>如果删除level特性或设置成缺省的single值，那么输出结果如下：</p>
+<p>&lt;td&gt;l&lt;/td&gt;&lt;td&gt;Hydrogen&lt;/td&gt;</p>
+<p>&lt;td&gt;l&lt;/td&gt;&lt;td&gt;Helium&lt;/td&gt;</p>
+<p>另一个不大有用的方法将xsl:number的level特性设置成multi，以便对当前节点的同属及其祖先（但不是当前节点同属的子节点）加以计数。</p>
+<p> 
+<p><b>14.11.1.2 count特性</b></p>
+<p></p>
+<p>按缺省行为，当没有expr特性时，只对与当前节点元素同类的元素加以计数。但可以将xsl-number的count特性设置成选择表达式，从而指定对什么元素加以计数。例如，下面的规则对ATOM的所有子元素进行编号：</p>
+<p>&lt;xsl:template match="ATOM/*"&gt;</p>
+<p> &lt;td&gt;&lt;xsl:number count="*"/&gt;&lt;/td&gt;</p>
+<p> &lt;td&gt;&lt;xsl:value-of select="."/&gt;&lt;/td&gt;</p>
+<p>&lt;/xsl:template&gt;</p>
+<p>应用此规则获得的输出结果如下：</p>
+<p> &lt;td&gt;l&lt;/td&gt;&lt;td&gt;Helium&lt;/td&gt;</p>
+<p> &lt;td&gt;2&lt;/td&gt;&lt;td&gt;He&lt;/td&gt;</p>
+<p> &lt;td&gt;3&lt;/td&gt;&lt;td&gt;2&lt;/td&gt;</p>
+<p> &lt;td&gt;4&lt;/td&gt;&lt;td&gt;4.0026&lt;/td&gt;</p>
+<p> &lt;td&gt;5&lt;/td&gt;&lt;td&gt;l&lt;/td&gt;</p>
+<p> &lt;td&gt;6&lt;/td&gt;&lt;td&gt;4.216&lt;/td&gt;</p>
+<p> &lt;td&gt;7&lt;/td&gt;&lt;td&gt;0.95&lt;/td&gt;</p>
+<p> &lt;td&gt;8&lt;/td&gt;&lt;td&gt;</p>
+<p> 0.1785</p>
+<p> &lt;/td&gt;</p>
+<p> 
+<p><b>14.11.1.3 from特性</b></p>
+<p></p>
+<p>from特性包含select表达式，它指定在输入树形结构中以哪个元素开始计数。但仍可以从1而不从2或10或某个其他数字开始计算。</p>
+<h5><a name="_Toc467207174">14.11.2 数字到字符串的变换</a></h5>
+<p>到目前为止，我已经含蓄地假定数值是以1、2、3等等表示的；也就是说，用的是以1开始的，并且间隔数为1的欧洲数字。但并非只有这种情况。例如，书的前言以及前面其他内容的页号通常是以小写罗马数字（如i、ii、iii、iv等等）表示的。并且，不同的国家将数字组合在一起、将实数的整数和小数分开以及使用符号来表示各种数字的习惯不同。所有的这一切都可以通过下面xsl:number的五个特性来调整：</p>
+<ul>
+  <p>
+  <li>format</li>
+  <p></p>
+  <p>
+  <li>letter-value</li>
+  <p></p>
+  <p>
+  <li>digit-group-sep</li>
+  <p></p>
+  <p>
+  <li>n-digits-per-group</li>
+  <p></p>
+  <p>
+  <li>sequence-src</li>
+  <p></p>
+</ul>
+<p> 
+<p><b>14.11.2.1 format特性</b></p>
+<p></p>
+<p>使用format特性，可调整xsl:number使用的编号样式。此特性通常可使用下列值之一：</p>
+<ul>
+  <p>
+  <li>i：生成小写的罗马数字i、ii、iii、iv、v、vi、&#188; 表示的序列</li>
+  <p></p>
+  <p>
+  <li>I：生成大写的罗马数字I、II、III、IV、V、VI、&#188; 表示的序列</li>
+  <p></p>
+  <p>
+  <li>a：生成小写的字母a、b、c、d、e、f、&#188; 表示的序列</li>
+  <p></p>
+  <p>
+  <li>A：生成大写字母A、B、C、D、E、F、&#188; 表示的序列</li>
+  <p></p>
+</ul>
+<p>例如，下面的规则使用大写罗马数字对原子进行编号：</p>
+<p>&lt;xsl:template match=”ATOM”&gt;</p>
+<p> &lt;P&gt;</p>
+<p> &lt;xsl:number expr=”position()” format=”I”/&gt;</p>
+<p> &lt;xsl:value-of select=”.”/&gt;</p>
+<p> &lt;/P&gt;</p>
+<p>&lt;/xsl:template&gt;</p>
+<p>改变format特性的值，可调整在哪个数字（或字母）处开始计数。例如，要在5处开始编号，可设置format=“5”。要以iii开始编写，可设置format=“iii”。</p>
+<p>使在format特性中数字的第一位数为0，即可指定以0开始的十位数编号方式。例如，设置format=“01”，可生成序列号为01、02、03、04、05、06、07、08、09、10、11、12、&#188; 
+  。这里将数字排成一列是很有用的。</p>
+<p> 
+<p><b>14.11.2.2 letter-value特性</b></p>
+<p></p>
+<p>letter-value特性区别是将字母翻译为数字还是翻译为字母。例如，如果要想使用format=”I”，获得一个I、J、K、L、M、N、...序列，而不是I、II、III、IV、V、VI、...序列，则应将letter-value特性设置为关键字alphabetic。关键字other指定数字序列。例如</p>
+<p>&lt;xsl:template match=”ATOM”&gt;</p>
+<p> &lt;P&gt;</p>
+<p> &lt;xsl:number expr=”position()”</p>
+<p> format=”I” letter-value=”alphabetic”/&gt;</p>
+<p> &lt;xsl:value-of select=”.”/&gt;</p>
+<p> &lt;/P&gt;</p>
+<p>&lt;/xsl:template&gt;</p>
+<p> 
+<p><b>14.11.2.3 Group Separator特性</b></p>
+<p></p>
+<p>在美国，我们倾向于使用逗号将每三个数字作为一组，来写出大数字，如4,567,302,000。但是，在许多语言和国家里，而是使用句号或空格来分隔各组；例如，4.567.302.000或4 
+  567 302 000。而且，在有些国家，习惯将大数字分成每四个一组，而不是三个一组；例如4,5673,0000。如果处理可能包括几千或更多项的很长序列时，就需要考虑这些问题。</p>
+<p>digit-group-sep特性指定用于数字组之间的分组分隔符。n-digits-per-group特性指定每组中使用的数字个数。一般来说，应将这些特性随语言一起指定。例如：</p>
+<p>&lt;xsl:number digit-group-sep=” “/&gt;</p>
+<p> 
+<p><b>14.11.2.4 sequence-src特性</b></p>
+<p></p>
+<p>最后一点，如果要使用非正常的序列（像1-1-1999、1-2-1999、1-3-1999、...日期字符串列表，或者像10、20、30、40、...间隔为10的列表），可以将此列表（以崭穹挚┍４嬖诙懒⒌奈牡抵小equence-src特性的值表示该文档的相对或绝对的URL。例如：</p>
+<p>&lt;xsl:number sequence-src=”1999.txt”/&gt;</p>
+ 
+<a href='483.htm'>&lt;&lt;上一篇</a>&nbsp;&nbsp;<a href='485.htm'>下一篇&gt;&gt;</a></td>
+        </tr>
+      </table>
+      <p>&nbsp; </p>
+    </td>
+  </tr>
+</table>
+
+</body>
+
+</html>

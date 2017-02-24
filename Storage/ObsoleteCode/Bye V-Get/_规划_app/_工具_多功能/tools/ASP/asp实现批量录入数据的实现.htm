@@ -1,0 +1,97 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>asp实现批量录入数据的实现</title>
+<style type="text/css">
+<!--
+body {
+	font-size: 10.4pt;
+	line-height: 22px;
+}
+-->
+</style>
+</head>
+
+<body bgcolor="eeeeee" leftmargin="20" marginwidth="20">
+<p><strong>asp实现批量录入数据的实现</strong></p>
+<hr>
+<p> 批量录入在数据库的应用中比较广泛的，关于批量录入的方法也有好多种。<br>
+  下面我就结合我实际中的应用，谈一下儿我是怎么实现的。<br>
+  主要用到的是form的集合的概念，通过循环取的所有的集合内数据。<br>
+  考虑到大家看着方便，我把它集成到了一个页面。<br>
+  下面是具体的代码： <br>
+  batchInput.asp<br>
+  &lt;%<br>
+  '#####################################<br>
+  'File Function:批量录入数据<br>
+  'Author:Myhon<br>
+  'Date:2003-8-19<br>
+  '#####################################</p>
+<p>'向数据库写入数据<br>
+  SUB writeData()<br>
+  dim recCnt,i<br>
+  dim fieldName1,fieldName2,fieldName3<br>
+  dim conn<br>
+  dim sqlStr,connStr<br>
+  connStr=&quot;Provider=SQLOLEDB.1;Initial Catalog=myDatabase;Data Source=myhon;User 
+  Id=sa;PASSWORD=&quot;<br>
+  set conn=Server.CreateObject(&quot;ADODB.Connection&quot;)<br>
+  conn.open connStr '建立数据库连接</p>
+<p> recCnt=request.form(&quot;stu_num&quot;).count '取得共有多少条记录<br>
+  '批量录入数据<br>
+  for i=1 to recCnt<br>
+  fieldName1=trim(request.form(&quot;fieldName1&quot;)(i))<br>
+  fieldName2=trim(request.form(&quot;fieldName2&quot;)(i))<br>
+  fieldName3=trim(request.form(&quot;fieldName3&quot;)(i))<br>
+  sqlStr=&quot;insert into myTable(fieldName1,fieldName2,fieldName3) values('&quot;<br>
+  sqlStr=sqlStr &amp; fieldName1 &amp; &quot;','&quot;<br>
+  sqlStr=sqlStr &amp; fieldName2 &amp; &quot;','&quot;<br>
+  sqlStr=sqlStr &amp; fieldName3 &amp; &quot;')&quot;<br>
+  'response.write sqlStr<br>
+  conn.execute(sqlStr)<br>
+  next<br>
+  END SUB</p>
+<p>'显示成批录入的界面<br>
+  SUB InputData()<br>
+  dim recCnt,i<br>
+  %&gt;<br>
+  &lt;form name=&quot;bathInputData&quot; action=&quot;&quot; method=&quot;post&quot;&gt;<br>
+  &lt;% <br>
+  recCnt=cint(request.form(&quot;recCnt&quot;))<br>
+  for i=1 to recCnt<br>
+  %&gt;<br>
+  &lt;input type=&quot;text&quot; name=&quot;fieldName1&quot;&gt;<br>
+  &lt;input type=&quot;text&quot; name=&quot;fieldName2&quot;&gt;<br>
+  &lt;input type=&quot;text&quot; name=&quot;fieldName3&quot;&gt;<br>
+  &lt;%<br>
+  next<br>
+  %&gt;<br>
+  &lt;br&gt;<br>
+  &lt;input type=&quot;submit&quot; name=&quot;action&quot; value=&quot;提交&quot;&gt;<br>
+  &lt;/form&gt;<br>
+  &lt;%<br>
+  END SUB</p>
+<p>'指定要批量录入多少条记录<br>
+  SUB assignHowMuch()<br>
+  %&gt;</p>
+<p>&lt;!------指定要录入多少条记录--------------&gt;<br>
+  &lt;form name=&quot;form1&quot; action=&quot;&quot; method=&quot;post&quot;&gt;<br>
+  您要录入的记录的条数：&lt;input type=&quot;text&quot; name=&quot;recCnt&quot;&gt;<br>
+  &lt;input type=&quot;submit&quot; name=&quot;action&quot; value=&quot;下一步&gt;&gt;&quot;&gt;<br>
+  &lt;/form&gt;<br>
+  &lt;%<br>
+  END SUB</p>
+<p>if request.form(&quot;action&quot;)=&quot;下一步&gt;&gt;&quot; then<br>
+  Call InputData() '显示成批录入界面<br>
+  elseif request.form(&quot;action&quot;)=&quot;提交&quot; then Call writeData() 
+  '向数据库批量写入数据<br>
+  else<br>
+  Call assignHowMuch() '显示指定录入多少条记录的界面<br>
+  end if<br>
+  <br>
+  %&gt;<br>
+</p>
+<p>&nbsp; </p>
+</body>
+</html>

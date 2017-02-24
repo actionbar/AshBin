@@ -1,0 +1,127 @@
+<html xmlns:rdl>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<script src="rdl_method.js"></script>
+<base target="_self">
+</head>
+<body>
+
+<script>
+//collFriendObjects=new Array();
+//collFriendProperties=new Array();
+//collFriendMethods=new Array();
+//collFriendEvents=new Array();
+//collFriendCollections=new Array();
+
+collFriendMethods=new Array(
+'createAttribute','setAttribute','getAttribute','removeAttribute','clearAttributes'
+);
+
+collFriendCollections=new Array(
+'attributes'
+);
+
+//collIE40=new Array();
+//collIE50=new Array();
+//collIE55=new Array();
+//collIE60=new Array();
+
+collIE50=new Array(
+'A','ACRONYM','ADDRESS','APPLET','AREA','B','BASE','BASEFONT','BDO','BGSOUND','BIG','BLOCKQUOTE','BODY','BR','BUTTON','CAPTION','CENTER','CITE','CODE','COL','COLGROUP','COMMENT','CUSTOM','DD','DEL','DFN','DIR','DIV','DL','document','DT','EM','EMBED','FIELDSET','FONT','FORM','FRAME','FRAMESET','HEAD','Hn','HR','HTML','I','IFRAME','IMG','INPUT type=button','INPUT type=checkbox','INPUT type=file','INPUT type=hidden','INPUT type=image','INPUT type=password','INPUT type=radio','INPUT type=reset','INPUT type=submit','INPUT type=text','INS','KBD','LABEL','LEGEND','LI','LINK','LISTING','MAP','MARQUEE','MENU','nextID','OBJECT','OL','OPTION','P','PLAINTEXT','PRE','Q','S','SAMP','SCRIPT','SELECT','SMALL','SPAN','STRIKE','STRONG','SUB','SUP','TABLE','TBODY','TD','TEXTAREA','TFOOT','TH','THEAD','TITLE','TR','TT','U','UL','VAR','XMP'
+);
+
+sStyle=
+'#idFont{text-decoration:underline;}\n'+
+'#idCodeDiv{width:100%;padding:4px;font-family:verdana,tahoma;margin:12px 0px 0px 0px;background-color:#EEEEEE;font-weight:bold;}\n';
+
+sScript=
+'<script>\n'+
+'var sCode="<font name=rdl2 id=idFont2>我是目标对象。</font>";\n'+
+'\n'+
+'var oCodeDiv;\n'+
+'var oFont;\n'+
+'\n'+
+'function window.onload(){\n'+
+'oCodeDiv=document.all("idCodeDiv");\n'+
+'oFont1=document.all("idFont1");\n'+
+'oFont2=document.all("idFont2");\n'+
+'with (oFont1) title=outerHTML;\n'+
+'oCodeDiv.innerText=sCode;\n'+
+'}\n'+
+'\n'+
+'function doMerge(){\n'+
+'var bPreserve;\n'+
+'with (document.all("idSel")) if(options[selectedIndex].value=="false") bPreserve=false;else bPreserve=true;\n'+
+'oFont1.removeAttribute("title");\n'+
+'oFont2.mergeAttributes(oFont1,bPreserve);\n'+
+'oCodeDiv.innerText=oFont2.outerHTML;\n'+
+'}\n'+
+'\n'+
+'function doReset(){\n'+
+'window.location.reload();\n'+
+'}\n'+
+'\n'+
+'<\/script>\n';
+
+sCode=
+'<font name=rdl1 id=idFont1 color=red style="font-weight:bold" case=died onmouseover="this.style.color=\'blue\';" onmouseout="this.style.color=\'black\';">我的所有属性将被复制到目标对象。</font>\n'+
+'<br><br>\n'+
+'<font name=rdl2 id=idFont2>我是目标对象。</font>\n'+
+'<br><br>\n'+
+'<select id="idSel">\n'+
+'<option value="" style="font-weight:bold;">---bPreserve---\n'+
+'<option value="true">true\n'+
+'<option value="false">false\n'+
+'<\/select>\n'+
+'<input type=button value="复制属性" onclick="doMerge();"><input type=button value="全部复位" onclick="doReset();">\n'+
+'<br><br><div id=idCodeDiv></div>\n';
+
+iWinWidth=360;
+
+iWinHeight=320;
+
+</script>
+
+<div id=idContent>
+
+<div id=idContentTitle><span id=idTitleName>mergeAttributes</span>版本：DHTML Object Model　返回值：无</div>
+
+<div class=cssColumnTitle>语法：</div>
+<div>
+<i>object</i><b> . mergeAttributes ( </b><i>oSource</i><b> , </b><i>bPreserve</i><b> ) </b>
+</div>
+
+<div class=cssColumnTitle>参数：</div>
+<table>
+<tr><td nowrap><i> oSource </i></td><td nowrap><b>:</b></td><td nowrap class=cssVersion> IE5.0 </td>
+<td><b>必选项</b>。对象(Element)。指定属性要被复制到<i> object </i>的对象。</td></tr>
+<tr><td nowrap><i> bPreserve </i></td><td nowrap><b>:</b></td><td nowrap class=cssVersion> IE5.5 </td>
+<td><b>可选项</b>。布尔值(Boolean)。<b>false</b> | <span class=cssDefault><b>true</b></span>
+<table>
+<tr><td nowrap><b> false </b></td><td nowrap><b>:</b></td>
+<td>不保护目标对象<i> object </i>的身份属性。</td></tr>
+<tr><td nowrap><b> true </b></td><td nowrap><b>:</b></td>
+<td><b>默认值</b>。保护目标对象<i> object </i>的身份属性。</td></tr>
+</table>
+</td></tr>
+
+</table>
+
+<div class=cssColumnTitle>返回值：</div>
+<div>
+无
+</div>
+
+<div class=cssColumnTitle>说明：</div>
+<div>
+复制<i> oSource </i>的所有可读写属性到<i> object </i>。包括持久的 HTML 属性，事件(<a href="../objects/event..html"> event </a>)，和样式。<br>
+在 IE5.0 及之前的版本中，只读属性不会被复制。如<a href="../properties/id.html"> id </a>属性。<br>
+在 IE5.5+ 中，通过设置<i> bPreserve </i>参数值为<b> false </b>，可以使<i> oSource </i>的所有属性被复制到<i> object </i>。包括<a href="../properties/id.html"> ID </a>属性和<a href="../properties/name.html"> NAME </a>属性。
+</div>
+
+</div>
+</body>
+</html>
+
+<!-- Part of RDL(TM) - Written by Rain1977 
+HomeSite: http://www.dhtmlet.com  E-Mail: dhtmlet@hotmail.com -->

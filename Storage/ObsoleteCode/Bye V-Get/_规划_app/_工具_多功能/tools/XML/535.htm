@@ -1,0 +1,73 @@
+<html>
+<head>
+<title>脚注</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+
+<link rel = stylesheet href = "image/style.css">
+</head>
+<body bgcolor="#ffffff">
+<table width="688" border="0" cellspacing="0" cellpadding="0" align="center">
+  <tr bgcolor="EEEEEE"> 
+    <td height="22"><a href="index.htm">主页</a></td>
+  </tr>
+</table><br>
+<table border="0" cellpadding="0" cellspacing="0" width="688" align="center" height="490">
+  <tr valign="top"> 
+    <td rowspan="4" width="91">&nbsp; </td>
+    <td height="68" width="131"> 
+      <p><img src="image/doc.gif"></p>
+    </td>
+    <td rowspan="4" width="18"><b></b> </td>
+    <td height="68" width="387"><img src="image/title_doc.gif"></td>
+    <td rowspan="4" width="61"> 
+      <h6>&nbsp;</h6>
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td rowspan="3" valign="top" class="pt10" align="center" width="131" bgcolor="EEEEEE"> 
+      <p>&nbsp;</p>
+      <p><font color="#FF0000">※ 15.12 脚注</font></p>
+       
+	</td>
+  </tr>
+  <tr valign="top"> 
+    <td width="387" height="308"> 
+      <table width="100%" border="0" cellpadding="0">
+        <tr> 
+          <td>
+
+           <h4><a name="_Toc467207765">15.12 脚注</a></h4>
+<p>fo:footnote元素表示脚注。作者将fo:footnote元素放在文本流中，脚注引用（<sup>1</sup>或*）出现的地方。fo:footnote元素由fo:footnote-reference和包含脚注文本的块级元素组成。但是，只有脚注引用才是内联式插入。格式化程序将注释文本放在此页的后区（通常为页脚）中。</p>
+<p>例如，下面的脚注使用星号作为脚注标记，并引用<i>JavaBeans, </i>Elliotte Rusty Harold IDG Books, Foster 
+  City, 1998), p. 147。使用标准的XSL属性（如font-size和vertical-align）按照习惯方式来格式化注释标记和文本。</p>
+<p>&lt;fo:footnote&gt;</p>
+<p> &lt;fo:footnote-reference</p>
+<p> font-size="smaller" vertical-align="super"&gt;</p>
+<p> *</p>
+<p> &lt;/fo:footnote reference&gt;</p>
+<p> &lt;fo:block font-size="smaller"&gt;</p>
+<p> &lt;fo:inline-sequence</p>
+<p> font-size="smaller" vertical-align="super"&gt;</p>
+<p> *</p>
+<p> &lt;/fo:inline-sequence&gt;</p>
+<p> &lt;fo:inline-sequence</p>
+<p> font-style="italic"&gt;JavaBeans&lt;/fo:inline-sequence&gt;,</p>
+<p> Elliotte Rusty Harold</p>
+<p> (IDG Books, Foster City, 1998), p. 147</p>
+<p> &lt;/fo:block&gt;</p>
+<p>&lt;/fo:footnote&gt;</p>
+<p><img src="Image/BK000215-30.gif" width=49 height=45 align="left">格式化对象符号集不提供自动编号和引用脚注的任何方法，但在变换样式单中巧妙地使用xsl:number即可做到这一点。XSL变换同样也可以很容易地实现尾注（end 
+  note）。</p>
+<h4><a name="_Toc467207766"></a></h4>
+ 
+<a href='534.htm'>&lt;&lt;上一篇</a>&nbsp;&nbsp;<a href='536.htm'>下一篇&gt;&gt;</a></td>
+        </tr>
+      </table>
+      <p>&nbsp; </p>
+    </td>
+  </tr>
+</table>
+
+</body>
+
+</html>

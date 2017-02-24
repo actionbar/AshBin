@@ -1,0 +1,112 @@
+<html>
+<head>
+<title>处理指令</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+
+<link rel = stylesheet href = "image/style.css">
+</head>
+<body bgcolor="#ffffff">
+<table width="688" border="0" cellspacing="0" cellpadding="0" align="center">
+  <tr bgcolor="EEEEEE"> 
+    <td height="22"><a href="index.htm">主页</a></td>
+  </tr>
+</table><br>
+<table border="0" cellpadding="0" cellspacing="0" width="688" align="center" height="490">
+  <tr valign="top"> 
+    <td rowspan="4" width="91">&nbsp; </td>
+    <td height="68" width="131"> 
+      <p><img src="image/doc.gif"></p>
+    </td>
+    <td rowspan="4" width="18"><b></b> </td>
+    <td height="68" width="387"><img src="image/title_doc.gif"></td>
+    <td rowspan="4" width="61"> 
+      <h6>&nbsp;</h6>
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td rowspan="3" valign="top" class="pt10" align="center" width="131" bgcolor="EEEEEE"> 
+      <p>&nbsp;</p>
+      <p><font color="#FF0000">※ 11.3 处理指令</font></p>
+       
+	</td>
+  </tr>
+  <tr valign="top"> 
+    <td width="387" height="308"> 
+      <table width="100%" border="0" cellpadding="0">
+        <tr> 
+          <td>
+
+           <h4>11.3 处理指令</h4>
+<p>指令经常过多地应用于支持HTML的私有范围，如服务端嵌入、浏览器定制脚本语言、数据库模板和其余许多超出HTML标准范围的项目。出于这些目的而使用注释的好处是：其余系统可以简单地忽略它们无法理解的外来数据。这种方法的不利之处在于：剥离了注释的文档可能不再是原来的文档了，并且仅仅作为文档的注释会被误解为这些私有范围的输入数据。为了避免滥用注释，XML提供了处理指令的方法，作为在文件中嵌入信息的明确机制，用于私有的应用程序而不是XML语法分析器或浏览器。其余用途包括，处理指令可以提供关于如何查看不可析外部实体的附加信息。</p>
+<p>处理指令就是位于&lt;? 和?&gt;标记之间的一行文本。处理指令中的文本只需要如下句法结构，以XML名开头，其后紧跟空格，空格后为数据。XML名可以是应用程序的实际名字（如latex），或者是在DTD中指向应用程序的记号名（例如LATEX），在DTD中的LATEX声明具有如下形式：</p>
+<p>&lt;!NOTATION LATEX SYSTEM "/usr/local/bin/latex"&gt;</p>
+<p>甚至这个名字可以是可被应用程序识别的其他名字。对于使用处理指令的应用程序来说，各个细节部分是非常明确的。确实，大部分依赖处理指令的应用程序在处理指令的内容上利用更多的结构。例如，研究如下在IBM的Bean 
+  Markup Language中使用的处理指令：</p>
+<p>&lt;?bmlpi register demos.calculator.EventSourceText2Int?&gt;</p>
+<p>使用处理指令的应用程序名字为bmlpi。赋予应用程序的数据为字符串register demos.calculator.EventSourceText2Int，这些数据将包含全部合格的Java类名。这就告诉名为bmlpi的应用程序使用Java类demos.calculator.EventSourceText2Int，将操作事件转换为整数。如果bmlpi在读取文档是遇到这个处理指令，将载入类demos.calculator.EventSourceText2Int，从此往后利用该类元素将事件转化为整数。</p>
+<p>如果这听起来很明确也很详细的话，那是因为它们原来就是如此。处理指令不是文档的通用结构部分，它们为特定的应用程序提供额外的明确的信息，而不是为所有读取该文档的应用程序提供信息。如果其余一些应用程序在读取文档时遇到这个说明，它们将简单地跳过这些说明。</p>
+<p>处理指令除了不能位于标记或者CDATA字段之内，可以放在XML文档中的任意部位。它们可以位于序进程、DTD、元素内容中，甚至可在文档结束标记之后。因为处理指令不是元素，所以不会影响文档的树型结构。没有必要打开或者关闭处理指令，也没有必要考虑它们在其他元素中的嵌套问题。处理指令不是标记，不会对元素进行限定。</p>
+<p>到此我们已经很熟悉了一个处理指令的例子：xml-stylesheet处理指令把样式单与文档相结合：</p>
+<p>&lt;?xml-stylesheet type="text/xsl" href="baseball.xsl"?&gt;</p>
+<p>虽然这些例子中的处理指令位于序进程中，但是处理指令可以在文档的任意位置出现。因为处理指令不是元素，所以没有必要声明为包含它们元素的子类元素。</p>
+<p>以字符串xml开头的处理指令在XML规范中留作特殊的用途。此外，在处理指令中，可以自由使用除文档结束标记符（?&gt;）外的任意名字和任意文本字符串。例如，下面的例子就是完全有效的处理指令：</p>
+<p>&lt;?gcc HelloWorld.c ?&gt;</p>
+<p>&lt;?acrobat document="passport.pdf"?&gt;</p>
+<p>&lt;?Dave remember to replace this one?&gt;</p>
+<p><img src="Image/BK000211-15.gif" width=39 height=46 align="left"> 请记住XML处理器不会对处理说明进行任何处理，仅仅是把他们传送给应用程序。应用程序决定如何处理这些说明。大部分应用程序简单地跳过他们无法理解的处理说明。</p>
+<p>有些时候了解不可析实体的类型还是不够的。还需要了解应用程序如何运行和查看实体，以及需要提供给应用程序的参数是什么。 这些信息都可以通过处理指令来提供。因为处理指令所包含的数据没有什么限制，所以在制定说明时就相对容易一些，这些说明是决定记号中列出的外部程序将采取什么行为。</p>
+<p>这样的处理指令可以是查看数据块的程序名，也可以是几千字节的配置信息。应用程序和文档的作者当然必须采用同样的方法来确定何种不可析外部实体采取何种处理指令。清单11-7显示一个方案，该方案使用一个处理指令和PDF记号来通知Acrobat 
+  Reader关于物理纸张的PDF格式，以便Acrobat Reader显示PDF的内容。</p>
+<p>清单11-7：在XML中嵌入PDF文档</p>
+<p>&lt;?xml version="1.0" standalone="yes"?&gt;</p>
+<p>&lt;!DOCTYPE PAPER [</p>
+<p></p>
+<p>&lt;!NOTATION PDF PUBLIC </p>
+<p>"-//IETF//NONSGML Media Type application/pdf//EN"</p>
+<p>"http://www.isi.edu/in-notes/iana/assignments/media-types/</p>
+<p>application/pdf"&gt; </p>
+<p></p>
+<p>&lt;!ELEMENT PAPER (TITLE, AUTHOR+, JOURNAL, DATE_RECEIVED,</p>
+<p>VOLUME, ISSUE, PAGES)&gt;</p>
+<p>&lt;!ATTLIST PAPER CONTENTS ENTITY #IMPLIED&gt;</p>
+<p>&lt;!ENTITY PRLTAO000081000024005270000001 SYSTEM </p>
+<p></p>
+<p>"http://ojps.aip.org/journal_cgi/getpdf?KEY=PRLTAO&amp;amp;cvips=PR</p>
+<p>LTA0000081000024005270000001"</p>
+<p>NDATA PDF&gt;</p>
+<p></p>
+<p>&lt;!ELEMENT AUTHOR (#PNDATA)&gt;</p>
+<p>&lt;!ELEMENT JOURNAL (#PNDATA)&gt;</p>
+<p>&lt;!ELEMENT YEAR (#PNDATA)&gt;</p>
+<p>&lt;!ELEMENT TITLE (#PNDATA)&gt;</p>
+<p>&lt;!ELEMENT DATE_RE EIVED (#PNDATA)&gt;</p>
+<p>&lt;!ELEMENT VOLUME (#PNDATA)&gt;</p>
+<p>&lt;!ELEMENT ISSUE (#PNDATA)&gt;</p>
+<p>&lt;!ELEMENT PAGES (#PNDATA)&gt;</p>
+<p>]&gt;</p>
+<p>&lt;?PDF acroread?&gt;</p>
+<p>&lt;PAPER CONTENTS="PRLTAO000081000024005270000001"&gt;</p>
+<p>&lt;TITLE&gt;Do Naked Singularities Generically Occur in</p>
+<p>Generalized Theories of Gravity?&lt;/TITLE&gt;</p>
+<p>&lt;AUTHOR&gt;Kengo Maeda&lt;/AUTHOR&gt;</p>
+<p>&lt;AUTHOR&gt;Takashi Torii&lt;/AUTHOR&gt;</p>
+<p>&lt;AUTHOR&gt;Makoto Narita&lt;/AUTHOR&gt;</p>
+<p>&lt;JOURNAL&gt;Physical Review Letters&lt;/JOURNAL&gt;</p>
+<p>&lt;DATE_RE EIVED&gt;19 August 1998&lt;/DATE_RE EIVED&gt; </p>
+<p>&lt;VOLUME&gt;81&lt;/VOLUME&gt;</p>
+<p>&lt;ISSUE&gt;24&lt;/ISSUE&gt; </p>
+<p>&lt;PAGES&gt;5270-5273&lt;/PAGES&gt;</p>
+<p>&lt;/PAPER&gt;</p>
+<p>任何时候都该记住不是所有的处理器程序都会以你希望的方式去对待这个例子。实际上，大部分处理器都不会。可是，从让一个应用程序支持PDF文件和其余非XML媒体类型的角度来说，这也是一个值得考虑的方法。</p>
+ 
+<a href='430.htm'>&lt;&lt;上一篇</a>&nbsp;&nbsp;<a href='432.htm'>下一篇&gt;&gt;</a></td>
+        </tr>
+      </table>
+      <p>&nbsp; </p>
+    </td>
+  </tr>
+</table>
+
+</body>
+
+</html>

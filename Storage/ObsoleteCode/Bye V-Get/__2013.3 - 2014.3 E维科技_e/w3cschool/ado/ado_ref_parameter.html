@@ -1,0 +1,166 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="../c3.css" />
+<title>ADO Parameter 对象</title>
+</head>
+<body class="serverscripting">
+<div id="wrapper">
+<div id="header">
+<a href="http://e.v-get.com/w3cschool/" style="float:left;">W3CSchool 在线教程</a>
+<div class="q g"><script type="text/javascript">var cpro_id="u1163355"</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div>
+<div id="navfirst">
+<ul id="menu">
+<li id="h"><a href="../h.html">HTML教程</a></li>
+<li id="x"><a href="../x.html">XML教程</a></li>
+<li id="b"><a href="../b.html">浏览器脚本</a></li>
+<li id="s"><a href="../s.html">服务器脚本</a></li>
+<li id="d"><a href="../d.html">dot net教程</a></li>
+<li id="m"><a href="../m.html">多媒体教程</a></li>
+<li id="w"><a href="../w.html">建站手册</a></li>
+</ul>
+</div><div id="navsecond">
+<div id="course">
+<h2>ADO 教程</h2>
+<ul>
+<li><a href="http://e.v-get.com/w3cschool/">ADO 首页</a></li>
+<li><a href="ado_intro.html">ADO 简介</a></li>
+<li><a href="ado_connect.html">ADO 连接</a></li>
+<li><a href="ado_recordset.html">ADO 记录集</a></li>
+<li><a href="ado_display.html">ADO 显示</a></li>
+<li><a href="ado_query.html">ADO 查询</a></li>
+<li><a href="ado_sort.html">ADO 排序</a></li>
+<li><a href="ado_add.html">ADO 添加</a></li>
+<li><a href="ado_update.html">ADO 更新</a></li>
+<li><a href="ado_delete.html">ADO 删除</a></li>
+<li><a href="ado_getstring.html">ADO 加速</a></li>
+</ul>
+<h2>ADO 对象</h2>
+<ul>
+<li><a href="ado_ref_command.html">ADO Command</a></li>
+<li><a href="ado_ref_connection.html">ADO Connection</a></li>
+<li><a href="ado_ref_error.html">ADO Error</a></li>
+<li><a href="ado_ref_field.html">ADO Field</a></li>
+<li><a href="ado_ref_parameter.html">ADO Parameter</a></li>
+<li><a href="ado_ref_property.html">ADO Property</a></li>
+<li><a href="ado_ref_record.html">ADO Record</a></li>
+<li><a href="ado_ref_recordset.html">ADO Recordset</a></li>
+<li><a href="ado_ref_stream.html">ADO Stream</a></li>
+<li><a href="ado_datatypes.html">ADO 数据类型</a></li>
+<li><a href="ado_summary.html">ADO 总结</a></li>
+</ul>
+<h2>实例</h2>
+<ul>
+<li><a href="../example/adoe_examples.html">ADO 实例</a></li>
+</ul>
+</div>
+<div id="selected">
+<h2>建站手册</h2>
+<ul>
+<li><a href="../site/">网站构建</a></li>
+<li><a href="../w3c/">万维网联盟</a></li>
+<li><a href="http://e.v-get.com/w3c/">W3CSchool 教程</a></li>
+<li><a href="../quality/">网站品质</a></li>
+<li><a href="../semweb/">语义网</a></li>
+<li><a href="../hosting/">网站主机</a></li>
+</ul>
+<h2><a href="http://e.v-get.com/w3c/" class="f13">W3CSchool 教程</a></h2><div class="a120x90"><script type="text/javascript">var cpro_id="u1210867";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div></div>
+</div>
+<div id="maincontent">
+<h1>ADO Parameter 对象</h1>
+<div id="tpn">
+<ul class="prenext">
+<li class="pre"><a href="ado_ref_field.html">上一页</a></li>
+<li class="next"><a href="ado_ref_property.html">下一页</a></li>
+</ul>
+</div>
+<div>
+<h2>Parameter 对象</h2>
+<p>ADO Parameter 对象可提供有关被用于存储过程或查询中的一个单个参数的信息。</p>
+<p>Parameter 对象在其被创建时被添加到 Parameters 集合。Parameters 集合与一个具体的 Command 对象相关联，Command 对象使用此集合在存储过程和查询内外传递参数。</p>
+<p>参数被用来创建参数化的命令。这些命令 (在它们已被定义和存储之后）使用参数在命令执行前来改变命令的某些细节。例如，SQL SELECT 语句可使用参数定义 WHERE 子句的匹配条件，而使用另一个参数来定义 SORT BY 子句的列的名称。</p>
+<p>有四种类型的参数：input 参数、output 参数、input/output 参数 以及 return 参数。</p>
+<h3>语法</h3>
+<pre>
+objectname.property
+objectname.method
+</pre>
+</div>
+<div>
+<h2>属性</h2>
+<table class="dataintable">
+<tr>
+<th>属性</th>
+<th>描述</th>
+</tr>
+<tr>
+<td><a href="prop_para_attributes.html">Attributes</a></td>
+<td>设置或返回一个 Parameter 对象的属性。</td>
+</tr>
+<tr>
+<td><a href="prop_para_direction.html">Direction</a></td>
+<td>设置或返回某个参数如何传递到存储过程或从存储过程传递回来。</td>
+</tr>
+<tr>
+<td><a href="prop_para_name.html">Name</a></td>
+<td>设置或返回一个 Parameter 对象的名称。</td>
+</tr>
+<tr>
+<td><a href="prop_para_numericscale.html">NumericScale</a></td>
+<td>设置或返回一个 Parameter 对象的数值的小数点右侧的数字数目。</td>
+</tr>
+<tr>
+<td><a href="prop_para_precision.html">Precision</a></td>
+<td>设置或返回当表示一个参数中数值时所允许数字的最大数目。</td>
+</tr>
+<tr>
+<td><a href="prop_para_size.html">Size</a></td>
+<td>设置或返回 Parameter 对象中的值的最大大小 (按字节或字符）。</td>
+</tr>
+<tr>
+<td><a href="prop_para_type.html">Type</a></td>
+<td>设置或返回一个 Parameter 对象的类型。</td>
+</tr>
+<tr>
+<td><a href="prop_para_value.html">Value</a></td>
+<td>设置或返回一个 Parameter 对象的值。</td>
+</tr>
+</table>
+</div>
+<div>
+<h2>方法</h2>
+<table class="dataintable">
+<tr>
+<th>方法</th>
+<th>描述</th>
+</tr>
+<tr>
+<td><a href="met_para_appendchunk.html">AppendChunk</a></td>
+<td>把长二进制或字符数据追加到一个 Parameter 对象。</td>
+</tr>
+<tr>
+<td><a href="met_para_delete.html">Delete</a></td>
+<td>从 Parameters 集合中删除一个对象。</td>
+</tr>
+</table>
+</div>
+<div id="bpn">
+<ul class="prenext">
+<li class="pre"><a href="ado_ref_field.html">上一页</a></li>
+<li class="next"><a href="ado_ref_property.html">下一页</a></li>
+</ul>
+</div>
+</div>
+<div id="sidebar">
+<div class="rs"></div>
+<div id="tools">
+<h5 id="tools_reference"><a href="ado_reference.html">ADO 参考手册</a></h5>
+<h5 id="tools_example"><a href="../example/adoe_examples.html">ADO 实例</a></h5>
+</div>
+<div class="a120x600"><script type="text/javascript">var cpro_id="u1293136";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div><div class="b"></div>
+</div>
+</body>
+</html>

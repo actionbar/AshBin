@@ -1,0 +1,271 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="../c3.css" />
+<title>XSD 日期及时间数据类型 (Date and Time Data Types）</title>
+</head>
+<body class="xml">
+<div id="wrapper">
+<div id="header">
+<a href="http://e.v-get.com/w3cschool/" style="float:left;">W3CSchool 在线教程</a>
+<div class="q g"><script type="text/javascript">var cpro_id="u1163355"</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div>
+<div id="navfirst">
+<ul id="menu">
+<li id="h"><a href="../h.html">HTML教程</a></li>
+<li id="x"><a href="../x.html">XML教程</a></li>
+<li id="b"><a href="../b.html">浏览器脚本</a></li>
+<li id="s"><a href="../s.html">服务器脚本</a></li>
+<li id="d"><a href="../d.html">dot net教程</a></li>
+<li id="m"><a href="../m.html">多媒体教程</a></li>
+<li id="w"><a href="../w.html">建站手册</a></li>
+</ul>
+</div><div id="navsecond">
+<div id="course">
+<h2>Schema 教程</h2>
+<ul>
+<li><a href="http://e.v-get.com/w3cschool/">XSD 首页</a></li>
+<li><a href="schema_intro.html">XSD 简介</a></li>
+<li><a href="schema_why.html">XSD 为何使用</a></li>
+<li><a href="schema_howto.html">XSD 如何使用</a></li>
+<li><a href="schema_schema.html">XSD &lt;schema&gt;</a></li>
+</ul>
+<h2>简单的类型</h2>
+<ul>
+<li><a href="schema_simple.html">XSD 元素</a></li>
+<li><a href="schema_simple_attributes.html">XSD 属性</a></li>
+<li><a href="schema_facets.html">XSD 限定</a></li>
+</ul>
+<h2>复杂的类型</h2>
+<ul>
+<li><a href="schema_complex.html">XSD 元素</a></li>
+<li><a href="schema_complex_empty.html">XSD 空元素</a></li>
+<li><a href="schema_complex_elements.html">XSD 仅含元素</a></li>
+<li><a href="schema_complex_text.html">XSD 仅含文本</a></li>
+<li><a href="schema_complex_mixed.html">XSD 混合内容</a></li>
+<li><a href="schema_complex_indicators.html">XSD 指示器</a></li>
+<li><a href="schema_complex_any.html">XSD &lt;any&gt;</a></li>
+<li><a href="schema_complex_anyattribute.html" title="">XSD &lt;anyAttribute&gt;</a></li>
+<li><a href="schema_complex_subst.html">XSD 元素替换</a></li>
+<li><a href="schema_example.html">XSD 实例</a></li>
+</ul>
+<h2>数据类型</h2>
+<ul>
+<li><a href="schema_dtypes_string.html">XSD 字符串</a></li>
+<li><a href="schema_dtypes_date.html">XSD 日期</a></li>
+<li><a href="schema_dtypes_numeric.html">XSD 数值</a></li>
+<li><a href="schema_dtypes_misc.html">XSD 杂项</a></li>
+<li><a href="schema_summary.html">XSD 总结</a></li>
+</ul>
+<h2>参考手册</h2>
+<ul>
+<li><a href="schema_elements_ref.html">XSD 参考手册</a></li>
+<li><a href="http://www.w3.org/2001/03/webdata/xsv/">XSD 验证器</a></li>
+</ul>
+</div>
+<div id="selected">
+<h2>建站手册</h2>
+<ul>
+<li><a href="../site/">网站构建</a></li>
+<li><a href="../w3c/">万维网联盟</a></li>
+<li><a href="http://e.v-get.com/w3c/">W3CSchool 教程</a></li>
+<li><a href="../quality/">网站品质</a></li>
+<li><a href="../semweb/">语义网</a></li>
+<li><a href="../hosting/">网站主机</a></li>
+</ul>
+<h2><a href="http://e.v-get.com/w3c/" class="f13">W3CSchool 教程</a></h2><div class="a120x90"><script type="text/javascript">var cpro_id="u1210867";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div></div>
+</div>
+<div id="maincontent">
+<h1>XSD 日期及时间数据类型 (Date and Time Data Types）</h1>
+<div id="tpn">
+<ul class="prenext">
+<li class="pre"><a href="schema_dtypes_string.html">上一页</a></li>
+<li class="next"><a href="schema_dtypes_numeric.html">下一页</a></li>
+</ul>
+</div>
+<div id="intro">
+<p><strong>日期及时间数据类型用于包含日期和时间的值。</strong></p>
+</div>
+<div>
+<h2>日期数据类型 (Date Data Type）</h2>
+<p>日期数据类型用于定义日期。</p>
+<p>日期使用此格式进行定义：&#34;YYYY-MM-DD&#34;，其中：</p>
+<ul>
+<li>YYYY 表示年份</li>
+<li>MM 表示月份</li>
+<li>DD 表示天数</li>
+</ul>
+<p class="note"><span>注释：</span>所有的成分都是必需的！</p>
+<p>下面是一个有关 schema 中日期声明的例子：</p>
+<pre>&lt;xs:element name=&#34;start&#34; type=&#34;xs:date&#34;/&gt;</pre>
+<p>文档中的元素看上去应该类似这样：</p>
+<pre>&lt;start&gt;2002-09-24&lt;/start&gt;</pre>
+<h3>时区</h3>
+<p>如需规定一个时区，您也可以通过在日期后加一个 &#34;Z&#34; 的方式，使用世界调整时间 (UTC time）来输入一个日期 - 比如这样：</p>
+<pre>&lt;start&gt;2002-09-24Z&lt;/start&gt;</pre>
+<p>或者也可以通过在日期后添加一个正的或负时间的方法，来规定以世界调整时间为准的偏移量 - 比如这样：</p>
+<pre>&lt;start&gt;2002-09-24-06:00&lt;/start&gt;</pre>
+<p>或者：</p>
+<pre>&lt;start&gt;2002-09-24+06:00&lt;/start&gt;</pre>
+</div>
+<div>
+<h2>时间数据类型 (Time Data Type）</h2>
+<p>时间数据类型用于定义时间。</p>
+<p>时间使用下面的格式来定义：&#34;hh:mm:ss&#34;，其中</p>
+<ul>
+<li>hh 表示小时</li>
+<li>mm 表示分钟</li>
+<li>ss 表示秒</li>
+</ul>
+<p class="note"><span>注释：</span>所有的成分都是必需的！</p>
+<p>下面是一个有关 schema 中时间声明的例子：</p>
+<pre>&lt;xs:element name=&#34;start&#34; type=&#34;xs:time&#34;/&gt;</pre>
+<p>文档中的元素看上去应该类似这样：</p>
+<pre>&lt;start&gt;09:00:00&lt;/start&gt;</pre>
+<p>或者类似这样：</p>
+<pre>&lt;start&gt;09:30:10.5&lt;/start&gt;</pre>
+<h3>时区</h3>
+<p>如需规定一个时区，您也可以通过在时间后加一个 &#34;Z&#34; 的方式，使用世界调整时间 (UTC time）来输入一个时间 - 比如这样：</p>
+<pre>&lt;start&gt;09:30:10Z&lt;/start&gt;</pre>
+<p>或者也可以通过在时间后添加一个正的或负时间的方法，来规定以世界调整时间为准的偏移量 - 比如这样：</p>
+<pre>&lt;start&gt;09:30:10-06:00&lt;/start&gt;</pre>
+<p>或者：</p>
+<pre>&lt;start&gt;09:30:10+06:00&lt;/start&gt;</pre>
+</div>
+<div>
+<h2>日期时间数据类型 (DateTime Data Type）</h2>
+<p>日期时间数据类型用于定义日期和时间。</p>
+<p>日期时间使用下面的格式进行定义：&#34;YYYY-MM-DDThh:mm:ss&#34;，其中：</p>
+<ul>
+<li>YYYY 表示年份</li>
+<li>MM 表示月份</li>
+<li>DD 表示日</li>
+<li>T 表示必需的时间部分的起始</li>
+<li>hh 表示小时</li>
+<li>mm 表示分钟</li>
+<li>ss 表示秒</li>
+</ul>
+<p class="note"><span>注释：</span>所有的成分都是必需的！</p>
+<p>下面是一个有关 schema 中日期时间声明的例子：</p>
+<pre>&lt;xs:element name=&#34;startdate&#34; type=&#34;xs:dateTime&#34;/&gt;</pre>
+<p>文档中的元素看上去应该类似这样：</p>
+<pre>&lt;startdate&gt;2002-05-30T09:00:00&lt;/startdate&gt;</pre>
+<p>或者类似这样：</p>
+<pre>&lt;startdate&gt;2002-05-30T09:30:10.5&lt;/startdate&gt;</pre>
+<h3>时区</h3>
+<p>如需规定一个时区，您也可以通过在日期时间后加一个 &#34;Z&#34; 的方式，使用世界调整时间 (UTC time）来输入一个日期时间 - 比如这样：</p>
+<pre>&lt;startdate&gt;2002-05-30T09:30:10Z&lt;/startdate&gt;</pre>
+<p>或者也可以通过在时间后添加一个正的或负时间的方法，来规定以世界调整时间为准的偏移量 - 比如这样：</p>
+<pre>&lt;startdate&gt;2002-05-30T09:30:10-06:00&lt;/startdate&gt;</pre>
+<p>或者：</p>
+<pre>&lt;startdate&gt;2002-05-30T09:30:10+06:00&lt;/startdate&gt;</pre>
+</div>
+<div>
+<h2>持续时间数据类型 (Duration Data Type）</h2>
+<p>持续时间数据类型用于规定时间间隔。</p>
+<p>时间间隔使用下面的格式来规定：&#34;PnYnMnDTnHnMnS&#34;，其中：</p>
+<ul>
+<li>P 表示周期(必需)</li>
+<li>nY 表示年数</li>
+<li>nM 表示月数</li>
+<li>nD 表示天数</li>
+<li>T 表示时间部分的起始  (如果您打算规定小时、分钟和秒，则此选项为必需）</li>
+<li>nH 表示小时数</li>
+<li>nM 表示分钟数</li>
+<li>nS 表示秒数</li>
+</ul>
+<p>下面是一个有关 schema 中持续时间声明的例子：</p>
+<pre>&lt;xs:element name=&#34;period&#34; type=&#34;xs:duration&#34;/&gt;</pre>
+<p>文档中的元素看上去应该类似这样：</p>
+<pre>&lt;period&gt;P5Y&lt;/period&gt;</pre>
+<p>上面的例子表示一个 5 年的周期。</p>
+<p>或者类似这样：</p>
+<pre>&lt;period&gt;P5Y2M10D&lt;/period&gt;</pre>
+<p>上面的例子表示一个 5 年、2 个月及 10 天的周期。</p>
+<p>或者类似这样：</p>
+<pre>&lt;period&gt;P5Y2M10DT15H&lt;/period&gt;</pre>
+<p>上面的例子表示一个 5 年、2 个月、10 天及 15 小时的周期。</p>
+<p>或者类似这样：</p>
+<pre>&lt;period&gt;PT15H&lt;/period&gt;</pre>
+<p>上面的例子表示一个 15 小时的周期。</p>
+<h3>负的持续时间</h3>
+<p>如需规定一个负的持续时间，请在 P 之前输入减号：</p>
+<pre>&lt;period&gt;-P10D&lt;/period&gt;</pre>
+<p>上面的例子表示一个负 10 天的周期。</p>
+</div>
+<div>
+<h2>日期和时间数据类型</h2>
+<table class="dataintable">
+<tr>
+<th>名称</th>
+<th>描述</th>
+</tr>
+<tr>
+<td>date</td>
+<td>定义一个日期值</td>
+</tr>
+<tr>
+<td>dateTime</td>
+<td>定义一个日期和时间值</td>
+</tr>
+<tr>
+<td>duration</td>
+<td>定义一个时间间隔</td>
+</tr>
+<tr>
+<td>gDay</td>
+<td>定义日期的一个部分 - 天 (DD)</td>
+</tr>
+<tr>
+<td>gMonth</td>
+<td>定义日期的一个部分 - 月 (MM)</td>
+</tr>
+<tr>
+<td>gMonthDay</td>
+<td>定义日期的一个部分 - 月和天 (MM-DD)</td>
+</tr>
+<tr>
+<td>gYear</td>
+<td>定义日期的一个部分 - 年 (YYYY)</td>
+</tr>
+<tr>
+<td>gYearMonth</td>
+<td>定义日期的一个部分 - 年和月 (YYYY-MM)</td>
+</tr>
+<tr>
+<td>time</td>
+<td>定义一个时间值</td>
+</tr>
+</table>
+</div>
+<div>
+<h2>对日期数据类型的限定 (Restriction）</h2>
+<p>可与日期数据类型一同使用的限定：</p>
+<ul>
+<li>enumeration</li>
+<li>maxExclusive</li>
+<li>maxInclusive</li>
+<li>minExclusive</li>
+<li>minInclusive</li>
+<li>pattern</li>
+<li>whiteSpace</li>
+</ul>
+</div>
+<div  id="bpn">
+<ul class="prenext">
+<li class="pre"><a href="schema_dtypes_string.html">上一页</a></li>
+<li class="next"><a href="schema_dtypes_numeric.html">下一页</a></li>
+</ul>
+</div>
+</div>
+<div id="sidebar">
+<div class="rs"></div>
+<div id="tools">
+<h5 id="tools_reference"><a href="schema_elements_ref.html">XML Schema 参考手册</a></h5>
+</div>
+<div class="a120x600"><script type="text/javascript">var cpro_id="u1293136";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div><div class="b"></div>
+</div>
+</body>
+</html>

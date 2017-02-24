@@ -1,0 +1,157 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="../c3.css" />
+<title>XForms 和 XPath</title>
+</head>
+<body class="xml">
+<div id="wrapper">
+<div id="header">
+<a href="http://e.v-get.com/w3cschool/" style="float:left;">W3CSchool 在线教程</a>
+<div class="q g"><script type="text/javascript">var cpro_id="u1163355"</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div>
+<div id="navfirst">
+<ul id="menu">
+<li id="h"><a href="../h.html">HTML教程</a></li>
+<li id="x"><a href="../x.html">XML教程</a></li>
+<li id="b"><a href="../b.html">浏览器脚本</a></li>
+<li id="s"><a href="../s.html">服务器脚本</a></li>
+<li id="d"><a href="../d.html">dot net教程</a></li>
+<li id="m"><a href="../m.html">多媒体教程</a></li>
+<li id="w"><a href="../w.html">建站手册</a></li>
+</ul>
+</div><div id="navsecond">
+<div id="course">
+<h2>XForms 教程</h2>
+<ul>
+<li><a href="http://e.v-get.com/w3cschool/">XForms 首页</a></li>
+<li><a href="xforms_intro.html">XForms 简介</a></li>
+<li><a href="xforms_model.html">XForms 模型</a></li>
+<li><a href="xforms_namespace.html">XForms 命名空间</a></li>
+<li><a href="xforms_example.html">XForms 实例</a></li>
+<li><a href="xforms_xpath.html">XForms XPath</a></li>
+<li><a href="xforms_input.html">XForms 输入</a></li>
+<li><a href="xforms_selections.html">XForms 选择</a></li>
+<li><a href="xforms_datatypes.html">XForms 数据类型</a></li>
+<li><a href="xforms_properties.html">XForms 属性</a></li>
+<li><a href="xforms_actions.html">XForms 行为</a></li>
+<li><a href="xforms_functions.html">XForms 函数</a></li>
+</ul>
+<h2>参考手册</h2>
+<ul>
+<li><a href="xforms_typeref.html">XForms 数据类型</a></li>
+</ul>
+</div>
+<div id="selected">
+<h2>建站手册</h2>
+<ul>
+<li><a href="../site/">网站构建</a></li>
+<li><a href="../w3c/">万维网联盟</a></li>
+<li><a href="http://e.v-get.com/w3c/">W3CSchool 教程</a></li>
+<li><a href="../quality/">网站品质</a></li>
+<li><a href="../semweb/">语义网</a></li>
+<li><a href="../hosting/">网站主机</a></li>
+</ul>
+<h2><a href="http://e.v-get.com/w3c/" class="f13">W3CSchool 教程</a></h2><div class="a120x90"><script type="text/javascript">var cpro_id="u1210867";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div></div>
+</div>
+<div id="maincontent">
+<h1>XForms 和 XPath</h1>
+<div id="tpn">
+<ul class="prenext">
+<li class="pre"><a href="xforms_example.html">上一页</a></li>
+<li class="next"><a href="xforms_input.html">下一页</a></li>
+</ul>
+</div>
+<div id="intro">
+<p><strong>XForms 使用 XPath 对数据急性寻址。这个过程被称为绑定。</strong></p>
+</div>
+<div>
+<h2>XForms 绑定</h2>
+<p>XForms 使用两个部分来定义数据：XForms 模型和 XForms 用户界面。
+<p>XForms 模型是针对数据的一个 XML 模板 (实例），而 XForms 用户界面是对数据输入和显示的描述。
+<p>XForms 使用 <em>XPath</em> 来定义这个两个部分的连接。这被称为<em>绑定 (binding）</em>。
+</div>
+<div>
+<h2>XPath</h2>
+<p>XPath 用于定义 XML 文档的各部分的 W3C 标准语法。</p>
+<p>XPath 使用路径表达式来标示 XML 文档中的节点。这些表达式与您在计算机系统中看到的文件路径表达式非常类似。</p>
+<p>XPath 表达式：</p>
+<pre>/person/fname</pre>
+<p>对 XML 文档中的 fname 节点进行寻址：</p>
+<pre>&lt;person&gt;
+   &lt;fname&gt;David&lt;/fname&gt;
+   &lt;lname&gt;Smith&lt;/lname&gt;
+&lt;/person&gt;</pre>
+<p>在我们的 <a href="../xpath/">XPath 教程</a> 中学习更多有关 XPath 的知识。</p>
+</div>
+<div>
+<h2>使用 Ref 进行绑定</h2>
+<p>XForms 模型是这样的：</p>
+<pre>&lt;instance&gt;
+  &lt;person&gt;
+    &lt;name&gt;
+      <code>&lt;fname/&gt;</code>
+      <code>&lt;lname/&gt;</code>
+    &lt;/name&gt;
+  &lt;/person&gt;
+&lt;/instance&gt;</pre>
+<p>XForms 用户界面可使用 <em>ref</em> 属性来<em>捆绑</em> &lt;input&gt; 元素：</p>
+<pre>&lt;input ref=<code>&#34;name/fname&#34;</code>&gt;
+&lt;label&gt;First Name&lt;/label&gt;
+&lt;/input&gt;
+&lt;input ref=<code>&#34;name/lname&#34;</code>&gt;
+&lt;label&gt;Last Name&lt;/label&gt;
+&lt;/input&gt;</pre>
+<p>上面例子中的 ref=&#34;name/fname&#34; 属性是一个指向实例模型中 &lt;fname&gt; 元素的 XPath 表达式。它可将输入域<em>捆绑</em>到正从表单收集数据的 XML 文档 (实例）中的 &lt;fname&gt; 元素。</p>
+<p>XForms 用户界面也可以使用引用：</p>
+<pre>&lt;input ref=<code>&#34;/person/name/fname&#34;</code>&gt;
+&lt;label&gt;First Name&lt;/label&gt;
+&lt;/input&gt;</pre>
+<pre>&lt;input ref=<code>&#34;/person/name/lname&#34;</code>&gt;
+&lt;label&gt;Last Name&lt;/label&gt;
+&lt;/input&gt;</pre>
+<p>在上面的例子中，XPath 表达式起始部位的正斜杠 (/) 指示 XML 文档的根。</p>
+</div>
+<div>
+<h2>使用 Bind 进行绑定</h2>
+<p>XForms 模型是这样的：</p>
+<pre>&lt;model&gt;
+&lt;instance&gt;
+  &lt;person&gt;
+    &lt;name&gt;
+      <code>&lt;fname/&gt;</code>
+      <code>&lt;lname/&gt;</code>
+    &lt;/name&gt;
+  &lt;/person&gt;
+&lt;/instance&gt;
+&lt;bind nodeset=&#34;/person/name/fname&#34; id=&#34;firstname&#34;/&gt;
+&lt;bind nodeset=&#34;/person/name/lname&#34; id=&#34;lastname&#34;/&gt;
+&lt;/model&gt;</pre>
+<p>XForms 用户界面可使用 <em>bind</em> 属性来<em>捆绑</em> &lt;input&gt; 元素：</p>
+<pre>&lt;input bind=<code>&#34;firstname&#34;</code>&gt;
+&lt;label&gt;First Name&lt;/label&gt;
+&lt;/input&gt;
+&lt;input bind=&#34;<code>lastname&#34;</code>&gt;
+&lt;label&gt;Last Name&lt;/label&gt;
+&lt;/input&gt;</pre>
+<p>为什么会有两种将输入控件元素捆绑到实例数据的方法呢？</p>
+<p>怎么说呢，当您在复杂的应用程序中开始使用 XForms 时，您会发现，使用 bind 进行绑定是一种更灵活的处理多重表单和多重实例模型的方法。</p>
+</div>
+<div id="bpn">
+<ul class="prenext">
+<li class="pre"><a href="xforms_example.html">上一页</a></li>
+<li class="next"><a href="xforms_input.html">下一页</a></li>
+</ul>
+</div>
+</div>
+<div id="sidebar">
+<div class="rs"></div>
+<div id="tools">
+<h5 id="tools_reference"><a href="xforms_typeref.html">XForms 参考手册</a></h5>
+</div>
+<div class="a120x600"><script type="text/javascript">var cpro_id="u1293136";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div><div class="b"></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>最简洁的多重查询的解决方案</title>
+<style type="text/css">
+<!--
+body {
+	font-size: 10.4pt;
+	line-height: 22px;
+}
+-->
+</style>
+</head>
+
+<body bgcolor="eeeeee" leftmargin="20" marginwidth="20">
+<p><strong>最简洁的多重查询的解决方案</strong></p>
+<hr>
+<p>[前言]<br>
+  我们经常会遇到多重查询问题，而长长的SQL语句往往让人丈二和尚摸不着头脑。特别是客户端部分填入查询条件时，如用普通方法将更是难上加难。<br>
+  以下巧妙地利用&quot;where 1=1&quot;的恒等式（事实上很多，让它值为TRUE即可）解决此问题。</p>
+<p>[正文概要]</p>
+<p>'subject 信息标题<br>
+  'company 发布信息的公司名称<br>
+  'content 发布信息的内容<br>
+  'address 公司地址<br>
+  'infomation 公司简介<br>
+  'note 相关说明<br>
+  以上值均由FORM提交，然后通过:subject=trim(Request.Form(&quot;subject&quot;))等得到相应的值。</p>
+<p>&lt;%<br>
+  '这个函数很关键！---------------------------<br>
+  Function sql(a,b,sqls)<br>
+  if b&lt;&gt;&quot;&quot; then '如果客户端没有提交此值，则不会产生相应的SQL语句。<br>
+  sqls=sqls &amp; &quot; and &quot; &amp; a &amp; &quot; like '%&quot; &amp; b 
+  &amp; &quot;%'&quot;<br>
+  end if<br>
+  sql=sqls<br>
+  End Function<br>
+  '-----------------调用数据库<br>
+  Set conn=Server.CreateObject(&quot;ADODB.Connection&quot;)<br>
+  DBpath=Server.MapPath(&quot;/database/mydb.mdb&quot;)<br>
+  Conn.Open &quot;driver={Microsoft Access Driver (*.mdb)};pwd=;dbq=&quot; &amp; 
+  DBpath<br>
+  Set rs=Server.CreateObject(&quot;ADODB.Recordset&quot;)<br>
+  sqls=&quot;select * from mytable where 1=1 &quot;<br>
+  '以下调用上面的函数即可,可以很多个调用（理论上是任意）<br>
+  sqls=sql(&quot;subject&quot;,subject,sqls)<br>
+  sqls=sql(&quot;company&quot;,company,sqls)<br>
+  sqls=sql(&quot;content&quot;,content,sqls)<br>
+  sqls=sql(&quot;address&quot;,address,sqls)<br>
+  sqls=sql(&quot;infomation&quot;,infomation,sqls)<br>
+  sqls=sql(&quot;note&quot;,note,sqls)<br>
+  sqls=sqls &amp; &quot; order by id desc&quot;<br>
+  rs.open sqls,conn,3,2<br>
+  %&gt;</p>
+<p>[结束语]<br>
+  如果没有关键的函数Function sql(a,b,sqls)，我们可以想象，需要多少判断的一个接一个的语句！</p>
+<p></p>
+</body>
+</html>

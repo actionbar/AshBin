@@ -1,0 +1,12 @@
+<meta http-equiv="content-type" content="text/html; charset=gb2312"><FONT 
+style="FONT-SIZE: 9pt; LINE-HEIGHT: 15pt"><B>数据转换</B><BR>CAST&nbsp;和&nbsp;CONVERT<BR>将某种数据类型的表达式显式转换为另一种数据类型。CAST&nbsp;和&nbsp;CONVERT&nbsp;提供相似的功能。
+<P></P>
+<P>语法<BR>使用&nbsp;CAST：</P>
+<P>CAST&nbsp;(&nbsp;expression&nbsp;AS&nbsp;data_type&nbsp;)&nbsp;</P>
+<P>使用&nbsp;CONVERT：</P>
+<P>CONVERT&nbsp;(data_type[(length)],&nbsp;expression&nbsp;[,&nbsp;style])<BR>1。2222222222转换为16位的84746B8E,取后面6位746B8E，然后再转换为<BR>&nbsp;&nbsp;&nbsp;&nbsp;7629710<BR>&nbsp;&nbsp;select&nbsp;22222222-convert(bigint,2222222222/convert(int,0x1000000)*<BR>&nbsp;&nbsp;convert(int,0x1000000)</P>
+<P>2。SELECT&nbsp;SUBSTRING(title,&nbsp;1,&nbsp;30)&nbsp;AS&nbsp;Title,&nbsp;ytd_sales<BR>FROM&nbsp;titles<BR>WHERE&nbsp;CAST(ytd_sales&nbsp;AS&nbsp;char(20))&nbsp;LIKE&nbsp;''''3%''''<BR>3.显示时加百分号<BR>&nbsp;select&nbsp;cast(field1/field2&nbsp;as&nbsp;varchar(20))+''''%''''</P>
+<P>4.SELECT&nbsp;CAST(ROUND(ytd_sales/price,&nbsp;0)&nbsp;AS&nbsp;int)&nbsp;AS&nbsp;''''Copies''''<BR>FROM&nbsp;titles</P>
+<P>5.select&nbsp;convert(type,case&nbsp;&nbsp;.......when....end)</P>
+<P>6&gt;密码有大小写的比较<BR>&nbsp;&nbsp;select&nbsp;*<BR>&nbsp;&nbsp;from&nbsp;tablename&nbsp;<BR>&nbsp;&nbsp;where&nbsp;cast(ma&nbsp;as&nbsp;varbinary)=cast(:para&nbsp;as&nbsp;varbinary)</P>
+<P>7.日期转换<BR>&nbsp;&nbsp;&nbsp;select&nbsp;convert(char(10),getdate(),101)&nbsp;//102,121<BR>&nbsp;&nbsp;101&nbsp;&nbsp;04/18/2003<BR>&nbsp;&nbsp;102&nbsp;&nbsp;2003.04.18<BR>&nbsp;&nbsp;121&nbsp;&nbsp;2003-04-18<BR></P></FONT>

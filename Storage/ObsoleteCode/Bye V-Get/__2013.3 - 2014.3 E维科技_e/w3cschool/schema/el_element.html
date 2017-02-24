@@ -1,0 +1,240 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="../c3.css" />
+<title>XML Schema element 元素</title>
+</head>
+<body class="xml">
+<div id="wrapper">
+<div id="header">
+<a href="http://e.v-get.com/w3cschool/" style="float:left;">W3CSchool 在线教程</a>
+<div class="q g"><script type="text/javascript">var cpro_id="u1163355"</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div>
+<div id="navfirst">
+<ul id="menu">
+<li id="h"><a href="../h.html">HTML教程</a></li>
+<li id="x"><a href="../x.html">XML教程</a></li>
+<li id="b"><a href="../b.html">浏览器脚本</a></li>
+<li id="s"><a href="../s.html">服务器脚本</a></li>
+<li id="d"><a href="../d.html">dot net教程</a></li>
+<li id="m"><a href="../m.html">多媒体教程</a></li>
+<li id="w"><a href="../w.html">建站手册</a></li>
+</ul>
+</div><div id="navsecond">
+<div id="course">
+<h2>Schema 教程</h2>
+<ul>
+<li><a href="http://e.v-get.com/w3cschool/">XSD 首页</a></li>
+<li><a href="schema_intro.html">XSD 简介</a></li>
+<li><a href="schema_why.html">XSD 为何使用</a></li>
+<li><a href="schema_howto.html">XSD 如何使用</a></li>
+<li><a href="schema_schema.html">XSD &lt;schema&gt;</a></li>
+</ul>
+<h2>简单的类型</h2>
+<ul>
+<li><a href="schema_simple.html">XSD 元素</a></li>
+<li><a href="schema_simple_attributes.html">XSD 属性</a></li>
+<li><a href="schema_facets.html">XSD 限定</a></li>
+</ul>
+<h2>复杂的类型</h2>
+<ul>
+<li><a href="schema_complex.html">XSD 元素</a></li>
+<li><a href="schema_complex_empty.html">XSD 空元素</a></li>
+<li><a href="schema_complex_elements.html">XSD 仅含元素</a></li>
+<li><a href="schema_complex_text.html">XSD 仅含文本</a></li>
+<li><a href="schema_complex_mixed.html">XSD 混合内容</a></li>
+<li><a href="schema_complex_indicators.html">XSD 指示器</a></li>
+<li><a href="schema_complex_any.html">XSD &lt;any&gt;</a></li>
+<li><a href="schema_complex_anyattribute.html" title="">XSD &lt;anyAttribute&gt;</a></li>
+<li><a href="schema_complex_subst.html">XSD 元素替换</a></li>
+<li><a href="schema_example.html">XSD 实例</a></li>
+</ul>
+<h2>数据类型</h2>
+<ul>
+<li><a href="schema_dtypes_string.html">XSD 字符串</a></li>
+<li><a href="schema_dtypes_date.html">XSD 日期</a></li>
+<li><a href="schema_dtypes_numeric.html">XSD 数值</a></li>
+<li><a href="schema_dtypes_misc.html">XSD 杂项</a></li>
+<li><a href="schema_summary.html">XSD 总结</a></li>
+</ul>
+<h2>参考手册</h2>
+<ul>
+<li><a href="schema_elements_ref.html">XSD 参考手册</a></li>
+<li><a href="http://www.w3.org/2001/03/webdata/xsv/">XSD 验证器</a></li>
+</ul>
+</div>
+<div id="selected">
+<h2>建站手册</h2>
+<ul>
+<li><a href="../site/">网站构建</a></li>
+<li><a href="../w3c/">万维网联盟</a></li>
+<li><a href="http://e.v-get.com/w3c/">W3CSchool 教程</a></li>
+<li><a href="../quality/">网站品质</a></li>
+<li><a href="../semweb/">语义网</a></li>
+<li><a href="../hosting/">网站主机</a></li>
+</ul>
+<h2><a href="http://e.v-get.com/w3c/" class="f13">W3CSchool 教程</a></h2><div class="a120x90"><script type="text/javascript">var cpro_id="u1210867";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div></div>
+</div>
+<div id="maincontent">
+<h1>XML Schema element 元素</h1>
+<div class="backtoreference">
+<p><a href="schema_elements_ref.html">返回 XML Schema 参考手册</a></p>
+</div>
+<div>
+<h2>定义和用法</h2>
+<p>element 元素定义一个元素。</p>
+<h3>元素信息</h3>
+<table class="dataintable">
+<tr>
+<td class="no_wrap">出现次数</td>
+<td>在架构中定义的元素的数目。</td>
+</tr>
+<tr>
+<td>父元素</td>
+<td>schema、choice、all、sequence</td>
+</tr>
+<tr>
+<td>内容</td>
+<td>simpleType、complexType、key、keyref、unique</td>
+</tr>
+</table>
+<h3>语法</h3>
+<pre>&lt;element
+id=ID 
+name=NCName
+ref=QName
+type=QName
+substitutionGroup=QName
+default=string
+fixed=string
+form=qualified|unqualified
+maxOccurs=nonNegativeInteger|unbounded
+minOccurs=nonNegativeInteger
+nillable=true|false
+abstract=true|false 
+block=(#all|list of (extension|restriction))
+final=(#all|list of (extension|restriction))
+<i>any attributes</i>
+&gt;
+annotation?,((simpleType|complexType)?,(unique|key|keyref)*))
+&lt;/element&gt;</pre>
+<p> (? 符号声明在 element 元素中，该元素可出现零次或一次，* 符号声明元素可出现零次或多次。）</p>
+</div>
+<div>
+<h2>属性</h2>
+<h3>id</h3>
+<p>可选。规定该元素的唯一的 ID。</p>
+<h3>name</h3>
+<p>可选。规定元素的名称。如果父元素是 schema 元素，则此属性是必需的。</p>
+<h3>ref</h3>
+<p>可选。对另一个元素的引用。ref 属性可包含一个命名空间前缀。如果父元素是 schema 元素，则不是使用该属性。</p>
+<h3>type</h3>
+<p>可选。规定内建数据类型的名称，或者规定 simpleType 或 complexType 元素的名称。</p>
+<h3>substitutionGroup</h3>
+<p>可选。规定可用来替代该元素的元素的名称。 该元素必须具有相同的类型或从指定元素类型派生的类型。</p>
+<p>如果父元素不是 schema 元素，则不可以使用该属性。</p>
+<h3>default</h3>
+<p>可选。为元素规定默认值 (仅当元素内容是简单类型或 textOnly 时使用）。</p>
+<h3>fixed</h3>
+<p>可选。为元素规定固定值 (仅当元素内容是简单类型或 textOnly 时使用）。</p>
+<h3>form</h3>
+<p>可选。该元素的形式。 默认值是包含该属性的 schema 元素的 elementFormDefault 属性的值。 该值必须是下列字符串之一： “qualified” 或 “unqualified”。</p>
+<p>如果父元素是 schema 元素，则不能使用该属性。</p>
+<ul>
+<li>如果该值是 “unqualified”，则无须通过命名空间前缀限定该元素。 </li>
+<li>如果该值是 “qualified”，则必须通过命名空间前缀限定该元素。 </li>
+</ul>
+<h3>maxOccurs</h3>
+<p>可选。规定 element 元素在父元素中可出现的最大次数。该值可以是大于或等于零的整数。若不想对最大次数设置任何限制，请使用字符串 &#34;unbounded&#34;。 默认值为 1。</p>
+<p>如果父元素是 schema 元素，则不能使用该属性。</p>
+<h3>minOccurs</h3>
+<p>可选。规定 element 元素在父元素中可出现的最小次数。该值可以是大于或等于零的整数。默认值为 1。</p>
+<p>如果父元素是 schema 元素，则不能使用该属性。</p>
+<h3>nillable</h3>
+<p>可选。指示是否可以将显式的零值分配给该元素。此项应用于元素内容并且不是该元素的属性。 默认值为 false。</p>
+<p>如果 nillable 为 true，将使该元素的实例可以将 nil 属性设置为 true。 nil 属性被定义为实例的 XML 架构命名空间的一部分。 </p>
+<p>例如，下段定义了单个元素，同时将 nillable 设置为 true。 </p>
+<pre>&lt;xs:element name=&#34;myDate&#34; type=&#34;xs:date&#34; nillable=&#34;true&#34;/&gt;</pre>
+<p>下段使用该元素并具有显式零值 (nil 属性设置为 true）。 </p>
+<pre>&lt;myDate xsi:nil=&#34;true&#34;&gt;&lt;/myDate&lt;</pre>
+<h3>abstract</h3>
+<p>可选。指示元素是否可以在实例文档中使用。如果该值为 true，则元素不能出现在实例文档中。 相反，substitutionGroup 属性包含该元素的限定名 (QName) 的其他元素必须出现在该元素的位置。多个元素可以在其 substitutionGroup 属性中引用该元素。默认值是 false。</p>
+<h3>block</h3>
+<p>可选。派生的类型。 block 属性防止具有指定派生类型的元素被用于替代该元素。该值可以包含 #all 或者一个列表，该列表是 extension、restriction 或 substitution 的子集：</p>
+<ul>
+<li>extension - 防止通过扩展派生的元素被用来替代该元素。</li>
+<li>restriction - 防止通过限制派生的元素被用来替代该元素。</li>
+<li>substitution - 防止通过替换派生的元素被用来替代该元素。</li>
+<li>#all - 防止所有派生的元素被用来替代该元素。</li>
+</ul>
+<h3>final</h3>
+<p>可选。设置 element 元素上 final 属性的默认值。如果父元素不是 schema 元素，则不能使用该属性。该值可以包含 #all 或者一个列表，该列表是 extension 或 restriction 的子集：</p>
+<ul>
+<li>extension - 防止通过扩展派生的元素被用来替代该元素</li>
+<li>restriction - 防止通过限制派生的元素被用来替代该元素</li>
+<li>#all - 防止所有派生的元素被用来替代该元素</li>
+</ul>
+<h3>any attributes</h3>
+<p>可选。规定带有 non-schema 命名空间的任何其他属性。</p>
+</div>
+<div>
+<h2>实例</h2>
+<h3>例子 1</h3>
+<p>下面的例子是一个schema，其中带有四个简单元素：&#34;fname&#34;, &#34;lname&#34;, &#34;age&#34; 以及 &#34;dateborn&#34;，类型是 string、nonNegativeInteger 以及 date：</p>
+<pre>&lt;?xml version=&#34;1.0&#34;?&gt;
+&lt;xs:schema xmlns:xs=&#34;http://www.w3.org/2001/XMLSchema&#34;&gt;
+&lt;xs:element name=&#34;fname&#34; type=&#34;xs:string&#34;/&gt;
+&lt;xs:element name=&#34;lname&#34; type=&#34;xs:string&#34;/&gt;
+&lt;xs:element name=&#34;age&#34; type=&#34;xs:nonNegativeInteger&#34;/&gt;
+&lt;xs:element name=&#34;dateborn&#34; type=&#34;xs:date&#34;/&gt;
+&lt;/xs:schema&gt;</pre>
+<h3>例子 2</h3>
+<p>下面的例子是一个带有复杂类型 &#34;note&#34; 元素的 schema。&#34;note&#34; 元素包含四个简单元素：&#34;to&#34;, &#34;from&#34;, &#34;heading&#34; 以及 &#34;body&#34;:</p>
+<pre>&lt;?xml version=&#34;1.0&#34;?&gt;
+&lt;xs:schema xmlns:xs=&#34;http://www.w3.org/2001/XMLSchema&#34;&gt;
+&lt;xs:element name=&#34;note&#34;&gt;
+    &lt;xs:complexType&gt;
+      &lt;xs:sequence&gt;
+	&lt;xs:element name=&#34;to&#34; type=&#34;xs:string&#34;/&gt;
+	&lt;xs:element name=&#34;from&#34; type=&#34;xs:string&#34;/&gt;
+	&lt;xs:element name=&#34;heading&#34; type=&#34;xs:string&#34;/&gt;
+	&lt;xs:element name=&#34;body&#34; type=&#34;xs:string&#34;/&gt;
+      &lt;/xs:sequence&gt;
+    &lt;/xs:complexType&gt;
+&lt;/xs:element&gt;
+&lt;/xs:schema&gt;</pre>
+<h3>例子 3</h3>
+<p>本例与例子 2 相同，但是在此例中，我们选择使用 ref 属性来引用元素名称：</p>
+<pre>&lt;?xml version=&#34;1.0&#34;?&gt;
+&lt;xs:schema xmlns:xs=&#34;http://www.w3.org/2001/XMLSchema&#34;&gt;
+&lt;xs:element name=&#34;note&#34;&gt;
+  &lt;xs:complexType&gt;
+    &lt;xs:sequence&gt;
+      &lt;xs:element ref=&#34;to&#34;/&gt;
+      &lt;xs:element ref=&#34;from&#34;/&gt;
+      &lt;xs:element ref=&#34;heading&#34;/&gt;
+      &lt;xs:element ref=&#34;body&#34;/&gt;
+    &lt;/xs:sequence&gt;
+  &lt;/xs:complexType&gt;
+&lt;/xs:element&gt;
+&lt;xs:element name=&#34;to&#34; type=&#34;xs:string&#34;/&gt;
+&lt;xs:element name=&#34;from&#34; type=&#34;xs:string&#34;/&gt;
+&lt;xs:element name=&#34;heading&#34; type=&#34;xs:string&#34;/&gt;
+&lt;xs:element name=&#34;body&#34; type=&#34;xs:string&#34;/&gt;
+&lt;/xs:schema&gt;</pre>
+</div>
+<div class="backtoreference">
+<p><a href="schema_elements_ref.html">返回 XML Schema 参考手册</a></p>
+</div>
+</div>
+<div id="sidebar">
+<div class="rs"></div>
+<div id="tools">
+<h5 id="tools_reference"><a href="schema_elements_ref.html">XML Schema 参考手册</a></h5>
+</div>
+<div class="a120x600"><script type="text/javascript">var cpro_id="u1293136";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div><div class="b"></div>
+</div>
+</body>
+</html>

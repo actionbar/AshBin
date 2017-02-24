@@ -1,0 +1,354 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>购房银行按揭利率计算器</title>
+<meta name="keywords" content="购房银行按揭利率计算器,房产工具，房产计算器，购房工具">
+<meta content="购房银行按揭利率计算器" name="description" />
+<link href="../images/style.css" rel="stylesheet" type="text/css" />
+<style type="text/css">
+<!--
+body {margin:0; padding:0;background: #FFF url('../images/top3.gif') repeat-x top; font-size:12px;color:#666}
+.style1 {font-size: 14px}
+-->
+</style>
+</HEAD>
+<BODY>
+<table width="960" height="75" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td width="264" rowspan="2" align="center"><a href="../index.html">
+	<img src="../images/logo.gif" width="224" height="38" border="0" /></a></td>
+    <td height="24" valign="top">
+	<table width="321" height="24" border="0" align="right" cellpadding="0" cellspacing="0" background="../images/top2.gif">
+        <tr>
+          <td align="center" class="cwhite12"><a href="#" class="cwhite12">tools.kqiqi.com</a>　<a href="#" OnClick='this.style.behavior="url(#default#homepage)";this.setHomePage("http://tools.kqiqi.com");' class="cwhite12">设为首页</a> | <a href="#" onClick="window.external.AddFavorite('http://tools.kqiqi.com','客齐齐实用查询工具');" class="cwhite12">收藏本站</a></td>
+        </tr>
+    </table></td>
+  </tr>
+</table>
+<table width="960" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td><table height="38" border="0" cellpadding="0" cellspacing="0" style="margin-left:5px">
+      <tr align="center">
+          <td width="88" background="../images/nav1.gif" style="padding-top:5px"><a href="../index.html" class="navfh2">首　页</a></td>
+          <td width="88" background="../images/nav1.gif" style="padding-top:5px"><a href="../admin/index.html" class="navfh2">站长工具</a></td>
+          <td width="88" background="../images/nav1.gif" style="padding-top:5px"><a href="../query/index.html" class="navfh2">查询工具</a></td>
+          <td width="88" background="../images/nav2.gif" style="padding-top:5px"><a href="index.html" class="navfh1">计算工具</a></td>
+          <td width="88" background="../images/nav1.gif" style="padding-top:5px"><a href="../password/index.html" class="navfh2">加密解密</a></td>
+          <td width="88" background="../images/nav1.gif" style="padding-top:5px"><a href="../conversion/index.html" class="navfh2">转换工具</a></td>
+          <td width="88" background="../images/nav1.gif" style="padding-top:5px"><a href="../color/index.html" class="navfh2">颜色工具</a></td>
+          <td width="88" background="../images/nav1.gif" style="padding-top:5px"><a href="../web/index.html" class="navfh2">网络辅助</a></td>
+          <td width="88" background="../images/nav1.gif" style="padding-top:5px"><a href="../picture/index.html" class="navfh2">图片工具</a></td>
+          <td width="88" background="../images/nav1.gif" style="padding-top:5px"><a href="../others/index.html" class="navfh2">其它工具</a></td>
+        </tr>
+    </table></td>
+  </tr>
+</table>
+<script language="javascript" src="../js/others_top.js"></script>
+<table width="960" border="0" align="center" cellpadding="0" cellspacing="0" class="mainbg1">
+  <tr valign="top">
+    <td width="20">　</td>
+    <td width="190">
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td colspan="2" height="10">
+
+</td>
+</tr>
+      <tr>
+        <td width="75%">
+		<img src="../images/t9.gif" width="32" height="32" align="absmiddle" />　<span class="navfh1">工具列表</span></td>
+        <td width="25%">　</td>
+      </tr>
+    </table>
+     <table width="100%"  border="0" cellpadding="0" cellspacing="0" background="../images/t12.gif" class="mar5">
+        <tr>
+          <td height="10"> </td>
+        </tr>
+      </table>
+<table width="100%"  border="0" cellpadding="0" cellspacing="0" class="mar5">
+      <tr>
+        <td>　
+ <div id="menu">
+ <div class="box">
+    <a href="Calculator.html">多功能计算器
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+
+  <div class="box">
+    <a href="Subarea.html">整数分区计算器
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+    <div class="box">
+    <a href="IncomeTax.html">个人所得税计算器
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+  <div class="box">
+    <a href="HouseEvaluation.html">二手房买卖评估计算
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+  <div class="box">
+    <a href="PublicLoan.html">公积金贷款计算器
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+  <div class="box">
+    <a href="MortgageLoan.html">按揭贷款计算器
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+  <div class="box">
+    <a href="BusinessHouse.html">商品房购房计算器
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+  <div class="box">
+    <a href="BusinessLoan.html">个房商业贷款计算器
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+<div class="box">
+    <a href="AccumulationFund.html">个房公积金贷款计算
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+<div class="box">
+    <a href="PrePayLoan.html">提前还贷计算器
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+<div class="box">
+    <a href="HouseLoan.html">住房贷款利率计算器
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+<div class="box">
+    <a href="CreditStandard.html">个人信用评级计算
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+<div class="box">
+    <a href="AnJieLiLv.html">购房按揭利率计算器
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+  
+</div>
+ </td>
+      </tr>
+    </table>
+
+      <table width="100%" height="17"  border="0" cellpadding="0" cellspacing="0" background="t2.gif" class="mar5">
+        <tr>
+          <td> </td>
+        </tr>
+      </table>
+      
+    </td>
+    <td width="27">　</td>
+    <td width="700">
+     
+            <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+          <tr>
+      <td height="10" colspan="2">
+      </td>
+      </tr>
+        <tr valign="top">
+         <td width="40"><img src="../images/bang.gif" width="32" height="31"> </td>
+          <td><span class="navfh1">购房银行按揭利率计算器</span></td>
+          
+        </tr>
+      </table>
+      <hr size="1" style="color:#E3E8E9" />
+      <table width="100%"  border="0" cellpadding="3" cellspacing="1">
+              <tr>
+          <td>
+            
+   <table width="690" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#D9D9D9" style="border-collapse: collapse">
+          <tr>
+            <td align="center" valign="top" bgcolor="#FFFFFF">
+              <table border="0" cellspacing="0" style="border-collapse: collapse" width="100%" cellpadding="0">
+                <tr>
+                  <td width="100%" valign="top">
+                    <SCRIPT language=javascript> 
+self.moveTo(0,0); 
+function runjs(obj) 
+{if(obj.T1.value!=""&&!(!(bj=parseFloat(obj.T1.value)))) 
+{if(obj.t10.value==""||!(qs=parseInt(obj.t10.value))) 
+qs=parseInt(obj.D2.options[obj.D2.selectedIndex].value)*12; 
+if(obj.t9.value==""||!(lx=parseFloat(obj.t9.value))) 
+{if(qs<72)lx=parseFloat(obj.t1.value); 
+if(qs>60)lx=parseFloat(obj.t4.value); 
+} 
+yg=(bj*lx/1200*Math.pow(1+lx/1200,qs))/(Math.pow(1+lx/1200,qs)-1); 
+ze=yg*qs; 
+lxze=ze-bj; 
+obj.j1.value=bj 
+obj.j2.value=lx 
+obj.j3.value=qs 
+obj.j4.value=Math.round(yg*100,5)/100 
+obj.j5.value=Math.round(lxze*100,5)/100 
+} 
+} 
+        </SCRIPT>
+                    <FORM>
+                      <TABLE cellSpacing=0 cellPadding=0 width=100% align=right border=0>
+                        <TBODY>
+                          <TR align=middle>
+                            <TD>
+                              <TABLE class=index_blue_border height=258 cellSpacing=0 cellPadding=0 width=100% align=center border=0>
+                                <TBODY>
+                                  <TR>
+                                    <TD width=50% height=234 align="center" bgcolor="#FFFFFF">
+                                      <P><SPAN style="FONT-SIZE: 12px"><BR>
+                                            <FONT color=#0066CC>▲</FONT>贷款总额：
+                                            <INPUT class=font id=T12 style="FONT-SIZE: 12px" size=15 value=10000 name=T1>
+                                （元）<BR>
+&nbsp;<BR>
+                                <FONT color=#0066CC>▲</FONT>贷款年数：
+                                <SELECT class=font id=select2 style="FONT-SIZE: 12px" size=1 name=D2>
+                                  <OPTION value=1 selected>1年（12期）</OPTION>
+                                  <OPTION value=2>2年（24期）</OPTION>
+                                  <OPTION value=3>3年（36期）</OPTION>
+                                  <OPTION value=4>4年（48期）</OPTION>
+                                  <OPTION value=5>5年（60期）</OPTION>
+                                  <OPTION value=6>6年（72期）</OPTION>
+                                  <OPTION value=7>7年（84期）</OPTION>
+                                  <OPTION value=8>8年（96期）</OPTION>
+                                  <OPTION value=9>9年（108期）</OPTION>
+                                  <OPTION value=10>10年（120期）</OPTION>
+                                  <OPTION value=11>11年（132期）</OPTION>
+                                  <OPTION value=12>12年（124期）</OPTION>
+                                  <OPTION value=13>13年（156期）</OPTION>
+                                  <OPTION value=14>14年（168期）</OPTION>
+                                  <OPTION value=15>15年（180期）</OPTION>
+                                  <OPTION value=16>16年（192期）</OPTION>
+                                  <OPTION value=17>17年（204期）</OPTION>
+                                  <OPTION value=18>18年（216期）</OPTION>
+                                  <OPTION value=19>19年（228期）</OPTION>
+                                  <OPTION value=20>20年（240期）</OPTION>
+                                  <OPTION value=21>21年（252期）</OPTION>
+                                  <OPTION value=22>22年（264期）</OPTION>
+                                  <OPTION value=23>23年（276期）</OPTION>
+                                  <OPTION value=24>24年（288期）</OPTION>
+                                  <OPTION value=25>25年（300期）</OPTION>
+                                  <OPTION value=26>26年（312期）</OPTION>
+                                  <OPTION value=27>27年（324期）</OPTION>
+                                  <OPTION value=28>28年（336期）</OPTION>
+                                  <OPTION value=29>29年（348期）</OPTION>
+                                  <OPTION value=30>30年（360期）</OPTION>
+                                </SELECT>
+&nbsp;</SPAN></P>
+                                      <P align=center><SPAN style="FONT-SIZE: 12px">
+                                        <INPUT name="button" type=button class=font style="FONT-SIZE: 12px" onclick=runjs(this.form) value="计  算">
+&nbsp;
+                                <INPUT name="reset" type=reset class=font style="FONT-SIZE: 12px" value="重  置">
+                                      </SPAN></P>
+                                      <P><SPAN style="FONT-SIZE: 12px"><FONT color=#0066CC>▲</FONT></SPAN><SPAN style="FONT-SIZE: 12px">1 - 5年利率：
+                                            <INPUT class=font size=10 value=4.77 name=t1>
+                                            <BR>
+&nbsp;<BR>
+                                <FONT color=#0066CC>▲</FONT></SPAN><SPAN style="FONT-SIZE: 12px">5年以上利率：
+                                <INPUT class=font size=10 value=5.04 name=t4>
+                              </SPAN></P>
+                                      <TABLE cellPadding=0 width="100%" border=0>
+                                        <TBODY>
+                                          <TR>
+                                            <TD width="100%">
+                                              <HR width="90%" color=#000000 SIZE=1>
+                                            </TD>
+                                          </TR>
+                                          <TR>
+                                            <TD width="100%" height=20 align="center"><SPAN style="FONT-SIZE: 12px">(</SPAN><SPAN style="FONT-SIZE: 12px; COLOR: rgb(0,0,128)">自定义计算)</SPAN></TD>
+                                          </TR>
+                                          <TR>
+                                            <TD width="100%" align="center"><SPAN style="FONT-SIZE: 12px"><FONT color=#0066CC>▲</FONT></SPAN><SPAN style="FONT-SIZE: 12px; COLOR: rgb(0,0,128)">利&nbsp;&nbsp; 率：
+                                                  <INPUT class=font size=10 name=t9>
+                                            </SPAN></TD>
+                                          </TR>
+                                          <TR>
+                                            <TD width="100%" align="center"><SPAN style="FONT-SIZE: 12px"><FONT color=#0066CC>▲</FONT></SPAN><SPAN style="FONT-SIZE: 12px; COLOR: rgb(0,0,128)">期&nbsp;&nbsp; 数：</SPAN><SPAN style="FONT-SIZE: 12px">
+                                              <INPUT class=font size=10 name=t10>
+                                            </SPAN></TD>
+                                          </TR>
+                                        </TBODY>
+                                    </TABLE></TD>
+                                    <TD width=50% height=234 vAlign=top bgcolor="#FFFFFF"><BR>
+                                        <P><SPAN style="FONT-SIZE: 12px"><FONT color=#0000ff>计算结果：</FONT></SPAN></P>
+                                        <P><SPAN style="FONT-SIZE: 12px"><span class="style1">▲</span>贷款总额：
+                                              <INPUT class=font size=13 name=j1>
+                                (元)<BR>
+                                <BR>
+                                <FONT color=#0066CC>▲</FONT></SPAN><SPAN style="FONT-SIZE: 12px">贷款利率：
+                                <INPUT class=font size=13 name=j2>
+                                (%)<BR>
+                                <BR>
+                                <FONT color=#0066CC>▲</FONT></SPAN><SPAN style="FONT-SIZE: 12px">贷款月数：
+                                <INPUT class=font size=13 name=j3>
+                                (月)<BR>
+                                <BR>
+                                <FONT color=#0066CC>▲</FONT></SPAN><SPAN style="FONT-SIZE: 12px">月还金额：
+                                <INPUT class=font size=13 name=j4>
+                                (元)<BR>
+                                <BR>
+                                <FONT color=#0066CC>▲</FONT></SPAN><SPAN style="FONT-SIZE: 12px">支付息款：
+                                <INPUT class=font size=13 name=j5>
+                                (元）</SPAN></P></TD>
+                                  </TR>
+                                </TBODY>
+                            </TABLE></TD>
+                          </TR>
+                      </TABLE>
+                  </FORM></td>
+                </tr>
+            </table></td>
+          </tr>
+</table>
+          </td>
+        </tr>
+        </table>
+      <br />
+         <script type="text/javascript" src="../js/wz.js"></script>
+         <script type="text/javascript" src="../js/Copy.js"></script>
+           
+      <br />
+      </td>
+    <td width="20">　</td>
+  </tr>
+</table>
+<table width="960" border="0" align="center" cellpadding="0" cellspacing="0" class="mainbg2">
+  <tr>
+    <td height="25"></td>
+  </tr>
+</table>
+
+<table width="960" border="0" align="center" cellpadding="0" cellspacing="0" class="mainbg2">
+  <tr>
+    <td><table width="920"  border="0" align="center" cellpadding="0" cellspacing="20" class="bottombg">
+    <tr>
+        <td align="center">
+          Copyright &copy; <a href="http://tools.kqiqi.com/">客齐齐实用查询工具</a> All rights reserved - <a href="../map.html">网站地图</a> - <a href="../contact.html">联系我们</a> - <script language="javascript" src="../js/bottom.js"></script>
+          </td>
+      </tr>
+    </table></td>
+  </tr>
+</table>
+</body>
+</html>

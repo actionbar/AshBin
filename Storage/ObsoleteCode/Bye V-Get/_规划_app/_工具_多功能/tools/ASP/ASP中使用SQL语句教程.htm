@@ -1,0 +1,199 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>ASP中使用SQL语句教程</title>
+<style type="text/css">
+<!--
+body {
+	font-size: 10.4pt;
+	line-height: 22px;
+}
+-->
+</style>
+</head>
+
+<body bgcolor="eeeeee" leftmargin="20" marginwidth="20">
+<p><strong>ASP中使用SQL语句教程 </strong></p>
+<hr>
+<p><br>
+  五花八门的SQL产品多得要命，或许你早顾不得其它甩开袖子就动手干了。但你要同时采用ASP和SQL的话就可能会头晕。MySQL、SQL Server和mSQL都是绝佳的SQL工具，可惜，在ASP的环境下你却用不着它们来创建实用的SQL语句。不过，你可以利用自己掌握的Access知识以及相应的Access技能，再加上我们的提示和技巧，相信一定能成功地在你的ASP网页中加入SQL。</p>
+<p><br>
+  1. <font color="#009999"><strong>SELECT 语句</strong></font></p>
+<p>在SQL的世界里，最最基础的操作就是SELECT 语句了。在数据库工具下直接采用SQL的时候很多人都会熟悉下面的操作：<br>
+  SELECT what<br>
+  FROM whichTable<br>
+  WHERE criteria</p>
+<p>执行以上语句就会创建一个存放其结果的查询。</p>
+<p>而在ASP页面文件上，你也可以采用以上的一般语法，不过情况稍微不同，ASP编程的时候，SELECT 语句的内容要作为字符串赋给一个变量： <br>
+  SQL = &quot;SELECT what FROM whichTable WHERE criteria&quot;</p>
+<p>好了，明白了ASP下SQL“说话”的方式，接下来如法炮制即可，只要满足你的需要，传统的SQL查询模式和条件查询都能派用场。</p>
+<p>举例说明，不妨假设你的数据库内有个数据表，名字是Products ，现在你想取出这个表里的全部记录。然后你就编写了下面的代码： <br>
+  SQL =&quot;SELECT * FROM Products&quot;</p>
+<p>以上代码——SQL语句的作用就是取出表内的全部数据——执行后将会选出数据表内的全部记录。不过，要是只想从表内取出某个特定列，比如p_name。那就不能用 
+  * 通配符了，这里得键入具体某列的名字，代码如下： <br>
+  SQL =&quot;SELECT p_name FROM Products&quot;</p>
+<p>执行以上查询之后Products 表内、p_name 列的内容就会全被选取出来。</p>
+<p><br>
+  2. <font color="#009999"><strong>用WHERE子句设置查询条件</strong></font></p>
+<p>有的时候取出全部数据库记录也许正好满足你的要求，不过，在大多数情况下我们通常只需得到部分记录。这样一来该如何设计查询呢？当然会更费点脑筋了，何况本文也存心不想让你去用那个什么劳什子的recordset。</p>
+<p>举个例子，假如你只打算取出p_name 记录，而且这些记录的名字必须以字母w打头，那么你就要用到下面的WHERE 子句了：<br>
+  SQL =&quot;SELECT p_name FROM Products WHERE p_name LIKE 'W%'&quot;</p>
+<p>WHERE 关键词的后面跟着用来过滤数据的条件，有了这些条件的帮助，只有满足一定标准的数据才会被查询出来。在以上的例子里，查询的结果只会得到名字以w 
+  打头的p_name 记录。</p>
+<p>以上例子中，百分比符号（%）的含义是指示查询返回所有w 字母打头而且后面是任何数据甚至没有数据的记录条目。所以，在执行以上查询的时候， west 和 
+  willow 就会从Products 表内被选取出来并存放在查询里。</p>
+<p>就像你看到的那样，只要仔细地设计SELECT 语句，你就可以限制recordset 中返回的信息量，多琢磨琢磨总能满足你的要求。</p>
+<p>这些啊还不过是掌握SQL用途刚起步。为了帮助你逐步掌握复杂的SELECT 语句用法，下面就让我们再来看一下关键的标准术语：比较运算符，这些玩意都是你在构筑自己的SELECT 
+  字符串来获得特定数据时要经常用到的。</p>
+<p>WHERE子句基础<br>
+  在开始创建WHERE 子句的时候，最简单的方式是采用标准的比较符号，它们是 &lt; 、 &lt;= 、 &gt; 、 &gt;= 、&lt;&gt; 
+  和 =。显然，你很快就能明白以下代码的含义和具体运行结果：<br>
+  SELECT * FROM Products WHERE p_price &gt;= 199.95<br>
+  SELECT * FROM Products WHERE p_price &lt;&gt; 19.95<br>
+  SELECT * FROM Products WHERE p_version = '4'</p>
+<p>注意： 这里你会注意到，最后一个例句中的数字4周围加了单引号。原因是这样的，在这个例子中的 '4' 是文本类型而非数字类型。因为你会把 SELECT 
+  语句放到引号中来把它作为一个值赋给变量，所以你也可以在语句中采用引号。</p>
+<p>比较运算符<br>
+  比较运算符指定从表内取出数据的内容范围。你可以用它们来创建过滤器以便缩小recordset的范围，促使其只保存给定任务下你关心的信息。</p>
+<p>3. <font color="#009999"><strong>LIKE 、 NOT LIKE和 BETWEEN</strong></font></p>
+<p><br>
+  你已经在上面取出w打头记录的例子中看到了LIKE的用法。LIKE判定词是一个非常有用的符号。不过，在很多情况下用了它可能会带给你太多的数据，所以在用到它之前最好先开动脑筋多想想自己到底想获得什么数据。假设你想取出5位数字的SKU号码，而且其开头是1结尾是5，那么你可以用下划符（_）代替%符号：<br>
+  SQL = &quot;SELECT * FROM Products WHERE p_sku LIKE '1___5'&quot;</p>
+<p>下划符表示任意一个字符。所以在输入“1 _ _ _ 5”的情况下，你的搜索就会限制在满足特定模式的5位数范围内了。</p>
+<p>假如你想反其道而行之，要找出所有不匹配“1_ _ _ 5”模式的SKU条目。那么你只需要在刚才语句例子中的LIKE前面加上NOT就可以了。</p>
+<p>BETWEEN<br>
+  假设你想取出一定范围内的数据，而且你事先知道范围的起点和终点，那么你不妨采用BETWEEN 判断词。现在就让我们假设你想选取给定表内范围在 1和 10之间的记录。你可以如下使用BETWEEN：<br>
+  …WHERE ID BETWEEN 1 AND 10</p>
+<p>或者你也可以采用已经熟悉的数学判断字句：<br>
+  …WHERE ID &gt;= 1 AND ID &gt;= 10</p>
+<p><br>
+  4. <font color="#009999"><strong>联合语句</strong></font></p>
+<p>我们到目前为止所谈到的SQL语句相对较为简单，如果再能通过标准的recordset循环查询，那么这些语句也能满足一些更复杂的要求。不过，何必非要拘泥在浅尝则止的基础水准之上呢？你完全可以再增加其他一些符号，比如AND、 
+  OR和NOT来完成更强大的功能。</p>
+<p>以下面的SQL语句为例：<br>
+  SQL =&quot;SELECT c_firstname, c_lastname, c_email FROM customers WHERE c_email 
+  IS<br>
+  NOT NULL AND c_purchase = '1' OR c_purchase = '2' AND c_lastname LIKE<br>
+  'A%'&quot;</p>
+<p>就你目前所掌握的SQL知识，以上的例子也不难解释，不过上面的语句并没有很明白地让你看清条件字句是如何胶合在单一SQL语句中的。</p>
+<p>多行语句<br>
+  在SQL语句不好懂的情况下，你不妨把整个语句分解为多行代码，然后在现有变量基础上逐步增加查询语句的各个组成部分并把它存在同一变量内： <br>
+  SQL = &quot;SELECT c_firstname, c_lastname, c_emailaddress, c_phone&quot;<br>
+  SQL = SQL &amp; &quot; FROM customers&quot;<br>
+  SQL = SQL &amp; &quot; WHERE c_firstname LIKE 'A%' and c_emailaddress NOT NULL&quot;<br>
+  SQL = SQL &amp; &quot; ORDER BY c_lastname, c_firstname&quot;<br>
+  到了最后一句，SQL变量就包含了以下的完整SELECT 语句：<br>
+  &quot;SELECT c_firstname, c_lastname, c_emailaddress, c_phone FROM customers<br>
+  WHERE c_firstname LIKE 'A%' and c_emailaddress NO NULL ORDER BY c_lastname,<br>
+  c_firstname&quot;</p>
+<p>整句照上面分解之后显然好读多了！在进行调试的时候，你或许更乐于多敲几个字符把程序改得更好读些。不过你可要记住了，在封闭引号之前或者在打开引号之后你需要增加空格，这样才能保证字符串连接起来的时候你没有把几个词凑到了一块。</p>
+<p><br>
+  5. <font color="#009999"><strong>开始执行</strong></font></p>
+<p>在学会了SELECT语句的构造和用途之后你就该学习如何使用它了。在你所掌握的数据库工具下，这可能意味着你得按下某个写着“执行”字样的按钮。在ASP网页上，可以立即执行SQL语句也可以当作存储过程调用。</p>
+<p>一旦创建了SQL 语句，你还得设法访问其查询结果。显然，这里的关键就是ASP recordset。在使用非SQL的recordset时，创建recordset的代码通常如下所示：<br>
+  Dim objRec<br>
+  Set objRec = Server.CreateObject (&quot;ADODB.Recordset&quot;)<br>
+  objRec.Open &quot;customers&quot;, objConn, 0, 1, 2</p>
+<p>如果你对ASP比较熟悉以上的代码对你可就不陌生了，你应该知道“customers”表示你打开数据库内一个数据表的名字。</p>
+<p>打开recordset<br>
+  为了充分利用你更为熟悉的SQL技能，你需要调整常规ASP网页上最常采用的recordset：<br>
+  Dim objRec<br>
+  Set objRec = Server.CreateObject (&quot;ADODB.Recordset&quot;)<br>
+  objRec.Open SQL, objConn, 0, 1, 2</p>
+<p>这里唯一的修改就是在objRec.Open,之后用包含SQL语句的变量代替了要查询的数据表的名称。</p>
+<p>这种方法的优点之一是你可以指定游标类型（如以上0, 1 ,2 所示）。</p>
+<p>执行SQL<br>
+  你可以用紧凑的一行代码执行SQL语句来创建recordset。以下是语法：<br>
+  Dim objRec<br>
+  set objRec = objConn.Execute(SQL)</p>
+<p>在上例中，你所看到的SQL是你存放自己SQL SELECT 语句的变量。该代码行“运行”SQL语句（或者说对数据库进行查询），选取数据并把数据存放在recordset 
+  内，在上例中就是变量objRec。这种方法的主要缺点是你不能选择自己想采用的游标类型。相反，recordset总是用前向游标打开。</p>
+<p>因为游标的缘故，你或许打算熟悉两种创建recordset的方法。直接执行查询节省了键入字符所消耗的时间，但那样的话你就得采用默认的游标了，这样有可能遭遇经常不能正常运行的毛病。不管你具体采用哪种办法，两者之间的最大的差别也不外乎代码精练与否。在不考虑你取得什么字段、你的标准是什么的前提下，也不管你如何存储数据，采用SQL式的recordset 
+  在体积上会比ASP上打开的标准recordset 要小得多，更别提操作起来的简易性了。毕竟，通过过滤数据，你消除了耗费时间的if-then 测试和可能用到的循环。</p>
+<p>编写测试用SQL<br>
+  这里有个技巧，许多专业ASP程序员习惯在测试网页的时候“编写”自己的SQL语句。这样做可以帮助你调试代码，因为你可以从中看到传递给服务器执行的字符串。而你要做的无非是增加Response.WriteyourVariable 
+  在屏幕上显示有关信息。在你把和SQL有关的问题提交给ASP讨论组的时候你就应该附上这些信息。</p>
+<p>6. <font color="#009999"><strong>存储查询</strong></font></p>
+<p><br>
+  当你的查询相对简单的时候，每次从头开始创建SQL语句也不费什么工夫，不过，复杂的查询就不同了，每次都从头来会产生很多开发错误。因此，一旦让SQL顺利地运行起来，你最好把它们存起来，在需要时再调用它们。这样，哪怕是一个简单查询你都能随时用上存储的查询语句了。</p>
+<p>假设你每周都要给团队做一次报告，指出目前存在的业务支持问题，这些数据需要从你的数据库中选取，而且要按照日期选择记录，同时根据你所在团队所采用的支持问题的类别排序。一旦你设计了这一查询，你何必以后每周都重新编写一次呢？不要在你的HTML页面上创建查询，你应该用你的数据库工具创建查询并且保存它。</p>
+<p>然后你可以采用ActiveCommand 属性把查询插入到你的ASP网页。头一两回你可能会觉得没啥意思，其实也就几行代码而已：<br>
+  Set objSQ = Server.CreateObject (&quot;ADODB.Command&quot;)<br>
+  objSQ.ActiveConnection = &quot;databaseName&quot;</p>
+<p>objSQ.CommandText = &quot;storedQueryName&quot;<br>
+  objSQ.CommandType = adCmdStoredProc</p>
+<p>set objRec = objSQ.Execute</p>
+<p>注意，采用adCmdStoredProc 表示你已经在页面上包含了adovbs.inc 文件。该文件定义了你可以按照名字而非数字进行访问的Access常数。只需要在页面上包含该文件即可（&lt;!--#INCLUDE 
+  --&gt;），然后你就可以用adCmdStoredProc 这类名字了。这样，将来你再看到的时候更容易理解以上被存储的查询到底是个什么意思。</p>
+<p>7.<font color="#009999"><strong> ORDER BY</strong></font></p>
+<p>从Access数据库中选取记录有件最令人丧气的事情，它们是以怎样的顺序输入到数据库内就按照怎样的顺序出来。就算你在Access环境内采用Sort By来改变记录视图，数据表内的记录顺序也并没有发生改变。</p>
+<p><br>
+  如果你正在使用ASPrecordset在网页上写出记录，那么你或许知道乱纷纷的顺序是多令人痛苦的事。但是你可能不得不经常得面对这一问题，因为并不存在什么简单方便的解决方案。好在ORDER 
+  BY 可以简化这一难题。</p>
+<p>为了对你的结果排序，只要在SELECT语句末尾加上ORDER BY，然后指定你需要排序的参照列即可。因此，如果你想要根据顾客的姓氏对Customers表排序，那么你可以编写如下的查询语句：<br>
+  SQL = &quot;SELECT c_lastname, c_firstname, c_email FROM Customers ORDER BY 
+  c_lastname&quot;</p>
+<p>这样，只要你建立了recordset而且开始把结果写到屏幕上，你就会看见数据按照字母顺序排列起来了。</p>
+<p>多级排序<br>
+  其实不仅仅可以在SQL语句中进行一级排序。实际上，在很多情况下，你可能会希望指定两到三级深度的数据排序。假设你有以下数据表，其内容如下所示：</p>
+<p><img src="images/2003101213373359565.gif" width="427" height="176"></p>
+<p></p>
+<p>先前采用的单级ORDER BY 排序是按下面的顺序取出数据的：<br>
+  Absurdly Assured<br>
+  absurd@assured.com</p>
+<p>Absolutely Assured<br>
+  absolutely@assured.com</p>
+<p>Crazed Coder<br>
+  crazy@coder.net</p>
+<p>Loosely Fringe<br>
+  loose@fringe.to</p>
+<p>Lunatic Fringe<br>
+  lune@fringe.to</p>
+<p>Hands On<br>
+  hands@yes.org</p>
+<p>显然ORDER BY 起了应有的作用。在实际的表结构下，Absurdly Assured 是最后的条目，但它排在检索结果的最顶端。Hands On记录排最后因为 
+  O 在以上列表中排在字母表最后。显然，Absolutely按照字母表最好排在Absurdly之前。为此，你需要采取第2级ORDER BY 排序标准，参照第2列进行排序：<br>
+  SQL = &quot;SELECT c_lastname, c_firstname, c_email FROM Customers ORDER BY<br>
+  c_lastname, c_firstname&quot;</p>
+<p>其结果将首先按照c_lastname 列排序然后按照c_firstname 列排序。假如你的数据表包含的记录比较多，仔细设计排序会令输出结果编排更为合理。</p>
+<p>投入使用<br>
+  如果你同大多数程序员一样喜欢自己动手编代码，沉湎于掌握新技术的狂热之中。何不从ASP的冗长编码中转过头来尝试一下SQL编码呢？下面我们将就ASP编程时常见的问题以及如何在ASP中高效地利用SQL语句做一番探讨。</p>
+<p>8. <font color="#009999"><strong>记录统计</strong></font></p>
+<p><br>
+  确定数据库内有多少记录，或者确定有多少记录达到了某些标准，这些用ASP完成并非难事。如果你采用了正确的游标类型，你可以用RecordCount 属性获得记录数当然也可以用recordset。但是，有个更简单的办法，这就是在自己的SELECT语句中采用count(*) 
+  ，代码如下所示：<br>
+  SQL = &quot;SELECT count(*) FROM Customers&quot;</p>
+<p>或者<br>
+  SQL = &quot;SELECT count(*) FROM Customers WHERE c_lastname LIKE 'A%'&quot;</p>
+<p>举例说明，以下代码将选出一些记录以及这些记录的总数：<br>
+  SQL = &quot;SELECT c_firstname, c_lastname, count(*) FROM Customers WHERE c_lastname 
+  LIKE 'A%'&quot;</p>
+<p>但是你不能实现自己的目的。这里采用的“count”函数其实是一种集合函数，意思是只返回单行信息：回答你提出的问题。对第1个SELECT 语句来说，问题是“在客户表内有多少条记录？”查询返回单一的值作为响应，因此它不能同你常规的查询相组合。假如你希望得到其他数据，你需要采用RecordCount。</p>
+<p>集合函数除了“count”之外还包括AVG、MIN、MAX和SUM等。</p>
+<p><br>
+  9. <font color="#009999"><strong>连接</strong></font></p>
+<p>任何熟悉SQL和关系数据库的人都遇见过大量的连接类型。最简单的说，连接（join）会把两个表的内容组合到一个虚拟表或者recordset内。假如数据表有效地规一化，或许你会经常从某一个表中选出特定的信息再从另一个表中选出关联信息。这样做就需要简单的“同等连接（equijoin）”。</p>
+<p>为了了解实际的连接操作，现在让我们假设在一个数据库内存放了某类软件的相关记录。某个表（Software）包含了软件产品的名称、软件的版本以及其他有关细节：</p>
+<p><img src="images/200310121338147907.gif" width="413" height="157"></p>
+<p></p>
+<p>另一个表（Releases）则存储了软件发布历史的信息，其中包括发布日期和发布状态等（比如测试版、当前版、过时等）：</p>
+<p><img src="images/2003101213382533944.gif" width="312" height="177"></p>
+<p></p>
+<p>上表中还包含了一个列，内容指向软件表中采用的ID号。所以，通过这种索引软件表的方式，你就知道发布表中software_ID 等于 2的软件是Rome。</p>
+<p>你采用连接组合信息，这样就不需要在两个表之间来回折腾了。不过，除了组合信息之外还可以通过连接把有关信息合并。这样，只要发布表内的software_ID 
+  匹配软件表内的ID，你就把匹配信息一起放到一个记录内。</p>
+<p>代码如下：<br>
+  SQL = &quot;SELECT * FROM Software, Releases WHERE software.ID = releases.softwareID&quot;</p>
+<p>仔细分析以上的语句，首先注意到两个表名列在了FROM的后面。再根据所采用的连接，今后你可能还会发现语法会有所变化（或者连接类型有变），但是以上的语法是最基本的，显示了数据的联合选择方式。这里的WHERE 
+  子句用来比较特定的ID值。在Software 表内，存在ID 列。同样的，Releases 表内则有个software_ID 列。为了明确你在WHERE 
+  子句里要比较的值，你用表名作为前缀，后面还加上了一个点号（.）。</p>
+<p>以下是连接选取数据之后的结果： </p>
+<p><img src="images/2003101213385325535.gif" width="433" height="134"></p>
+<p></p>
+<p>注意：在创建连接的时候要仔细考虑选出数据的列。以上代码采用 * 通配符是为了让读者关注于SELECT 代码行的其他部分。但是，正如你从上图看到的那样，你无法选出softwareID 
+  列，因为这一列没有作为recordset部分的增加值。它的作用就是为WHERE 子句所用。</p>
+<p></p>
+<p>&nbsp; </p>
+</body>
+</html>

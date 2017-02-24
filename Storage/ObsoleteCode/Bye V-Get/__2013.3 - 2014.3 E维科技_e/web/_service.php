@@ -1,0 +1,27 @@
+<?php
+$url = $_SERVER['PHP_SELF']; 
+$filename= substr( $url , strrpos($url , '/')+2,-4); 
+if(!isset($_GET['sure'])){
+echo '<a href="?sure=ok">确定更新e.v-get.com/host/'.$filename.'.html ？</a>';
+exit;
+}
+
+require '../_/global.php';$QC=mysql_connect('localhost',constant('db_user'),constant('db_pass'));mysql_select_db(constant('database'),$QC);mysql_query('set names utf8');
+
+$file=constant('uploadFile').'web/'.$filename.'.html';
+$fp=fopen($file,'w+');if(is_writable($file)==false) {die("文件没有找到");exit;}
+else{
+$id_out='';
+
+$text=constant('CSSJS').'<link rel="stylesheet" type="text/css" href="'.constant('LTU_8').'ir.css" /><title>网站建设产品_网站建设_网站制作_网站设计_网页设计_E维科技_V-Get!</title><meta name="keywords" content="网站建设,网站制作,企业建站,网站设计,网页设计"/><meta name="description" content="企业建站专家，E维科技网站建设产品包括：免费建站、速成美站、公司建站、企业超值套餐、企业标准套餐、企业专业建站、高级企业建站等。不同的建站服务，给您不同的需求体验。E维科技，专注网络营销！"/>';
+
+$text.=TUN('web');
+$text.='<div class="m mb">当前位置：<a href="'.constant('LK').'">E维科技</a> &gt;&gt; 网站建设产品</div><div class="v"><div class="p f l"><div class="lv" id="d"><h4 class="lh">产品服务</h4><ul><li><a href="'.constant('LK').'web/service_a1.html">A1 免费建站<img width="28" height="20" src="'.constant('LTU').'g/hot1.gif"/></a></li><li><a href="'.constant('LK').'web/service_a2.html">A2 速成美站</a></li><li><a href="'.constant('LK').'web/service_a3.html">A3 公司建站</a></li><li><a href="'.constant('LK').'web/service_b1.html">B1 企业超值型<img width="28" height="20" src="'.constant('LTU').'g/hot2.gif"/></a></li><li><a href="'.constant('LK').'web/service_b2.html">B2 企业标准型</a></li><li><a href="'.constant('LK').'web/service_b3.html">B3 企业专业型<img width="28" height="20" src="'.constant('LTU').'g/hot3.gif"/></a></li><li><a href="'.constant('LK').'web/service_b5.html">B5 高级企业型</a></li></ul></div><div class="lc"><h4>服务流程</h4><ul><li><a href="'.constant('LK').'web/service.html">a. 客户选择建站产品</a></li><li class="lc2"></li><li><a href="'.constant('LK').'host/domain.html">b. 注册域名</a></li><li class="lc2"></li><li><a href="'.constant('LK').'host/">c. 选购主机空间</a></li><li class="lc2"></li><li><a href="'.constant('LK').'web/service_b2.html">d. 网站维护</a></li><li class="lc2"></li><li><a href="'.constant('LK').'sem/">e. 搜索引擎SEO优化</a></li><li class="lc2"></li><li><a href="'.constant('LK').'web/service_b5.html">f. 广告营销</a></li><li class="lc2"></li><li><a href="'.constant('LK').'soho/">g. 网站全托管</a></li></ul></div><div class="lv mb"><h4>建站教程</h4><ul>';
+$Qq=mysql_query('SELECT i,h,t FROM f2013 WHERE (a=2 OR c=5 OR c=9) '.$id_out.' ORDER BY t DESC LIMIT 10');
+while($Qa=mysql_fetch_array($Qq)){
+$I=$Qa['i'];$id_out.=' AND i!='.$I;$T=$Qa['t'];$t=strtotime($T);$t=date('Ymd/His',$t);
+$text.='<li><a href="'.constant('LK').'tech/'.$t.$I.'.html">'.SUB($Qa['h'],13).'</a></li>';}
+
+$text.='</ul></div><div><h4>帮助中心</h4><div id="lii"><p><a href="http://e.v-get.com/open/php-frame.html">框架大全</a><a href="http://e.v-get.com/i/topic-91-1.html">源码下载</a></p><p class="lic"><a href="http://e.v-get.com/open/php-social.html">论坛源码</a><a href="http://e.v-get.com/i/topic-62-1.html">SEO教程</a></p><p><a href="http://e.v-get.com/open/php-shop.html">PHP商城</a><a href="http://e.v-get.com/open/php-soft.html">开发软件</a></p><p class="lic"><a href="http://e.v-get.com/i/topic-82-1.html">码农笑话</a><a href="http://e.v-get.com/i/topic-94-1.html">Discuz !</a></p></div></div></div><div class="q r f"><h4>网站建设服务 <span>Website Service</span></h4><div class="ru"><ul><li><a href="'.constant('LK').'web/service_b1.html"><img width="225" height="225" src="'.constant('LTP_8').'225/b1.jpg" alt="企业网站建设超值版"/></a><br><a href="'.constant('LK').'web/service_b1.html">E维科技超值网站建设</a> <img width="28" height="20" src="'.constant('LTU').'g/hot2.gif"/><br><del>原价：2880元</del>现价：<span>1680</span>元</li><li><a href="'.constant('LK').'web/service_b2.html"><img width="225" height="225" src="'.constant('LTP_8').'225/b2.jpg" alt="企业网站建设标准版"/></a><br><a href="'.constant('LK').'web/service_b2.html">企业标准网站建设</a><br><del>原价：3980元</del>现价：<span>2280</span>元</li><li><a href="'.constant('LK').'web/service_b3.html"><img width="225" height="225" src="'.constant('LTP_8').'225/b3.jpg" alt="企业网站建设专业版"/></a><br><a href="'.constant('LK').'web/service_b3.html">企业建站专业版</a> <img width="28" height="20" src="'.constant('LTU').'g/hot3.gif"/><br><del>原价：5980元</del>现价：<span>3280</span>元</li><li><a href="'.constant('LK').'web/service_b5.html"><img width="225" height="225" src="'.constant('LTP_8').'225/b5.jpg" alt="企业网站建设高级版"/></a><br><a href="'.constant('LK').'web/service_b5.html">企业网站建设高级版</a><br><del>原价：9980元</del>现价：<span>4980</span>元</li><li><a href="'.constant('LK').'web/service_a1.html"><img width="225" height="225" src="'.constant('LTP_8').'225/a1.jpg" alt="免费建站"/></a><br><a href="'.constant('LK').'web/service_a1.html">免费建站</a> <img width="28" height="20" src="'.constant('LTU').'g/hot1.gif"/><br>价格：<span>0</span>元</li><li><a href="'.constant('LK').'web/service_a2.html"><img width="225" height="225" src="'.constant('LTP_8').'225/a2.jpg" alt="速成美站"/></a><br><a href="'.constant('LK').'web/service_a2.html">速成美站</a><br>价格：<span>800</span>元</li><li><a href="'.constant('LK').'web/service_a3.html"><img width="225" height="225" src="'.constant('LTP_8').'225/a3.jpg" alt="公司网站建设"/></a><br><a href="'.constant('LK').'web/service_a3.html">公司网站建设</a><br>价格：<span>1200</span>元</li></ul></div></div>'.constant('BOTTOM').'<div class="pn"><script type="text/javascript">'.JI0('A("d","_")').constant('TONGJI').'</script></div></body></html>';
+file_put_contents($file,$text);}
+?>

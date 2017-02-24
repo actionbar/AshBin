@@ -1,0 +1,93 @@
+<html xmlns:rdl>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<script src="rdl_method.js"></script>
+<base target="_self">
+</head>
+<body>
+
+<script>
+
+//collFriendObjects=new Array();
+//collFriendProperties=new Array();
+//collFriendMethods=new Array();
+//collFriendEvents=new Array();
+//collFriendCollections=new Array();
+
+collFriendMethods=new Array(
+'cloneNode','removeNode','replaceNode'
+);
+
+//collIE40=new Array();
+//collIE50=new Array();
+//collIE55=new Array();
+//collIE60=new Array();
+
+collIE50=new Array(
+'A','ACRONYM','ADDRESS','APPLET','AREA','B','BASE','BASEFONT','BDO','BGSOUND','BIG','BLOCKQUOTE','BODY','BR','BUTTON','CAPTION','CENTER','CITE','CODE','COL','COLGROUP','COMMENT','DD','DEL','DFN','DIR','DIV','DL','DT','EM','EMBED','FIELDSET','FONT','FORM','FRAME','FRAMESET','HEAD','Hn','HR','HTML','I','IFRAME','IMG','INPUT type=button','INPUT type=checkbox','INPUT type=file','INPUT type=hidden','INPUT type=image','INPUT type=password','INPUT type=radio','INPUT type=reset','INPUT type=submit','INPUT type=text','INS','KBD','LABEL','LEGEND','LI','LINK','LISTING','MAP','MARQUEE','MENU','nextID','OBJECT','OL','OPTION','P','PLAINTEXT','PRE','Q','S','SAMP','SCRIPT','SELECT','SMALL','SPAN','STRIKE','STRONG','SUB','SUP','TABLE','TBODY','TD','TEXTAREA','TFOOT','TH','THEAD','TITLE','TR','TT','U','UL','VAR','XMP'
+);
+
+//sStyle='';
+
+sScript=
+'<script>\n'+
+'function rdl_fnSwap(){\n'+
+'oList.children(2).swapNode(oList.children(1));\n'+
+'}\n'+
+'<\/script>\n';
+
+sCode=
+'<ul id = oList>\n'+
+'<li>第1个列表项目\n'+
+'<li>第2个<a href="#" onclick="return false;">列表项目<\/a>\n'+
+'<li style="font-weight:bold;">第3个列表项目\n'+
+'<li>第4个列表项目\n'+
+'<\/ul>\n'+
+'<input type=button value=" 交换 " onclick= "rdl_fnSwap();">\n';
+
+iWinWidth=320;
+
+iWinHeight=240;
+
+//bRunCode=false;
+
+</script>
+
+<div id=idContent>
+
+<div id=idContentTitle><span id=idTitleName>swapNode</span>版本：DHTML Object Model　返回值：有</div>
+
+<div class=cssColumnTitle>语法：</div>
+<div>
+<i>oElement</i><b> = </b><i>object</i><b> . swapNode ( </b><i>oNode</i><b> ) </b>
+</div>
+
+<div class=cssColumnTitle>参数：</div>
+<table>
+<tr><td nowrap><i> oNode </i></td><td nowrap><b>:</b></td><td><b>必选项</b>。对象(Element)。用于与<i> object </i>交换的对象。</td></tr>
+</table>
+
+<div class=cssColumnTitle>返回值：</div>
+<table>
+<tr><td nowrap><i> oElement </i></td><td nowrap><b>:</b></td><td>对象(Element)。返回调用本方法的对象的引用。</td></tr>
+</table>
+
+<div class=cssColumnTitle>说明：</div>
+<div>
+交换在文档结构中<i> object </i>与<i> oNode </i>的位置。
+<br>当交换发生时，所有与之相关的属性内容都将被交换。
+<br><i> oNode </i>与<i> object </i>必须已经存在。
+<br>在运行时使用此方法是可以的。在对象的关闭标签被解析前，文档空间可能不能被呈递。
+</div>
+
+<div class=cssColumnTitle>示例：</div>
+<div id=idSimpleCode>
+document.body.children(2).swapNode(document.body.children(1));
+</div>
+
+</div>
+</body>
+</html>
+
+<!-- Part of RDL(TM) - Written by Rain1977 
+HomeSite: http://www.dhtmlet.com  E-Mail: dhtmlet@hotmail.com -->

@@ -1,0 +1,165 @@
+<html>
+<head>
+<title>在DTD中声明属性</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+
+<link rel = stylesheet href = "image/style.css">
+</head>
+<body bgcolor="#ffffff">
+<table width="688" border="0" cellspacing="0" cellpadding="0" align="center">
+  <tr bgcolor="EEEEEE"> 
+    <td height="22"><a href="index.htm">主页</a></td>
+  </tr>
+</table><br>
+<table border="0" cellpadding="0" cellspacing="0" width="688" align="center" height="490">
+  <tr valign="top"> 
+    <td rowspan="4" width="91">&nbsp; </td>
+    <td height="68" width="131"> 
+      <p><img src="image/doc.gif"></p>
+    </td>
+    <td rowspan="4" width="18"><b></b> </td>
+    <td height="68" width="387"><img src="image/title_doc.gif"></td>
+    <td rowspan="4" width="61"> 
+      <h6>&nbsp;</h6>
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td rowspan="3" valign="top" class="pt10" align="center" width="131" bgcolor="EEEEEE"> 
+      <p>&nbsp;</p>
+      <p><font color="#FF0000">※ 10.2 在DTD中声明属性</font></p>
+       
+	</td>
+  </tr>
+  <tr valign="top"> 
+    <td width="387" height="308"> 
+      <table width="100%" border="0" cellpadding="0">
+        <tr> 
+          <td>
+
+           <h4><a name="_Toc467197318">10.2 在DTD中声明属性</a></h4>
+<p>与元素和实体相似，为保持文档的合法性，需要在文档的DTD中声明属性。&lt;!ATTLIST&gt;标记用于声明属性，其形式如下：</p>
+<p>&lt;!ATTLIST Element_name Attribute_name Type Default_value&gt;</p>
+<p>Element_name为拥有该属性的元素名。Attribute_name为属性名，<i>Type</i>为表10-1列出的10种有效属性类型的一种。最常用的属性类型为CDATA。最后，若未规定属性值，则属性值为Default_value。</p>
+<p>例如，研究下列元素：</p>
+<p>&lt;GREETING LANGUAGE= "Spanish"&gt;</p>
+<p> Hola!</p>
+<p>&lt;/GREETING&gt;</p>
+<p>在DTD中，可按如下格式声明该元素：</p>
+<p>&lt;!ELEMENT GREETING (#PCDATA)&gt;</p>
+<p>&lt;!ATTLIST GREETING LANGUAGE CDATA "English"&gt;</p>
+<p>&lt;!ELEMENT&gt;标记简单地说明greeting元素包含可析字符数据，这里没什么新内容。&lt;!ATTLIST&gt;标记表明GREETING元素拥有LANGUAGE属性，其值为CDATA类型，本质上与元素内容的#PCDATA相同。若所看见的GREETING标记中没有LANGUAGE属性，则LANGUAGE属性值为缺省指定的English。</p>
+<p>
+<center>
+  <table BORDER cellspacing=1 cellpadding=7 width=442>
+    <tr>
+      <td valign="MIDDLE" colspan=2 height=18> 
+        <p>表10-1 属性类型
+      </td>
+    </tr>
+    <tr>
+      <td width="24%" valign="MIDDLE" height=21> 
+        <p>类 型
+      </td>
+      <td width="76%" valign="MIDDLE" height=21> 
+        <p>含 义
+      </td>
+    </tr>
+    <tr>
+      <td width="24%" valign="MIDDLE"> 
+        <p>CDATA
+      </td>
+      <td width="76%" valign="MIDDLE"> 
+        <p>字符数据不是标记的文本
+      </td>
+    </tr>
+    <tr>
+      <td width="24%" valign="MIDDLE"> 
+        <p>Enumerated
+      </td>
+      <td width="76%" valign="MIDDLE"> 
+        <p>可能取值的列表，可从中选出正确的值
+      </td>
+    </tr>
+    <tr>
+      <td width="24%" valign="MIDDLE"> 
+        <p>ID
+      </td>
+      <td width="76%" valign="MIDDLE"> 
+        <p>不能被文档中其他任何ID类型属性共享的数字，具有唯一性
+      </td>
+    </tr>
+    <tr>
+      <td width="24%" valign="MIDDLE"> 
+        <p>IDREF
+      </td>
+      <td width="76%" valign="MIDDLE"> 
+        <p>文档中元素的ID类型属性的值
+      </td>
+    </tr>
+    <tr>
+      <td width="24%" valign="MIDDLE"> 
+        <p>IDREFS
+      </td>
+      <td width="76%" valign="MIDDLE"> 
+        <p>由空格分开的若干个ID
+      </td>
+    </tr>
+    <tr>
+      <td width="24%" valign="MIDDLE"> 
+        <p>ENTITY
+      </td>
+      <td width="76%" valign="MIDDLE"> 
+        <p>在DTD中声明的实体名
+      </td>
+    </tr>
+    <tr>
+      <td width="24%" valign="MIDDLE"> 
+        <p>ENTITIES
+      </td>
+      <td width="76%" valign="MIDDLE"> 
+        <p>在DTD中声明的若干个实体的名字，彼此间由空格分开
+      </td>
+    </tr>
+    <tr>
+      <td width="24%" valign="MIDDLE"> 
+        <p>NMTOKEN
+      </td>
+      <td width="76%" valign="MIDDLE"> 
+        <p>XML名称
+      </td>
+    </tr>
+    <tr>
+      <td width="24%" valign="MIDDLE"> 
+        <p>NOTATION
+      </td>
+      <td width="76%" valign="MIDDLE"> 
+        <p>在DTD中声明的注释名
+      </td>
+    </tr>
+    <tr>
+      <td width="24%" valign="MIDDLE"> 
+        <p>NMTOKENS
+      </td>
+      <td width="76%" valign="MIDDLE"> 
+        <p>由空格分开的多个XML名称
+      </td>
+    </tr>
+  </table>
+</center>
+<p></p>
+<p>在各自的标记中分别声明各自的属性列表。属性所属元素的名字包含在&lt;!ATTLIST&gt;标记中，如上例中的属性声明仅用于GREETING元素。如果其余元素也具有LANGUAGE属性，就需要各自独立的&lt;!ATTLIST&gt; 
+  声明。</p>
+<p>对大部分声明而言，属性声明在文档中出现的顺序并无严格要求，可位于与其相连的元素声明之前或之后。实际上，甚至可以对同一属性进行多次声明。这时，第一个声明首先执行。</p>
+<p>尽管非同寻常，甚至可以为并不存在的标记声明属性。在最初编辑DTD时，可以声明一些并不存在的属性，计划在以后再返回这里继续这些工作，为这些属性声明元素。</p>
+ 
+<a href='417.htm'>&lt;&lt;上一篇</a>&nbsp;&nbsp;<a href='419.htm'>下一篇&gt;&gt;</a></td>
+        </tr>
+      </table>
+      <p>&nbsp; </p>
+    </td>
+  </tr>
+</table>
+
+</body>
+
+</html>

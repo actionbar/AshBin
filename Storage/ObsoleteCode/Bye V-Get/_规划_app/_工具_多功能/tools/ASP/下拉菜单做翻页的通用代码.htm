@@ -1,0 +1,281 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>下拉菜单做翻页的通用代码</title>
+<style type="text/css">
+<!--
+body {
+	font-size: 10.4pt;
+	line-height: 22px;
+}
+-->
+</style>
+</head>
+
+<body bgcolor="eeeeee" leftmargin="20" marginwidth="20">
+<p><strong>下拉菜单做翻页的通用代码</strong></p>
+<hr>
+<p>这是一个用下拉菜单来做翻页的通用代码，我觉得这样做比较省空间，蛮好的 <br>
+其实这个代码就是老外的那个翻页插件，后来是哪位好朋友（不好意思，忘了）修改后放在论坛上的，我还做成过插件，其实光是拷贝也挺方便的。<br>
+还有最后一段是前后翻页的按钮，呵呵，这个还是ccjat提醒后加上的，用不用都随便咯。<br>
+<br>
+&lt;%<br>
+记录集名字_total = 记录集名字.RecordCount<br>
+<br>
+If (记录集名字_numRows &lt; 0) Then<br>
+记录集名字_numRows = 记录集名字_total<br>
+Elseif (记录集名字_numRows = 0) Then<br>
+记录集名字_numRows = 1<br>
+End If<br>
+<br>
+记录集名字_first = 1<br>
+记录集名字_last = 记录集名字_first + 记录集名字_numRows - 1<br>
+<br>
+If (记录集名字_total &lt;&gt; -1) Then<br>
+If (记录集名字_first &gt; 记录集名字_total) Then 记录集名字_first = 记录集名字_total<br>
+If (记录集名字_last &gt; 记录集名字_total) Then 记录集名字_last = 记录集名字_total<br>
+If (记录集名字_numRows &gt; 记录集名字_total) Then 记录集名字_numRows = 记录集名字_total<br>
+End If<br>
+%&gt;<br>
+&lt;%<br>
+<br>
+<br>
+If (记录集名字_total = -1) Then<br>
+<br>
+<br>
+记录集名字_total=0<br>
+While (Not 记录集名字.EOF)<br>
+记录集名字_total = 记录集名字_total + 1<br>
+记录集名字.MoveNext<br>
+Wend<br>
+<br>
+If (记录集名字.CursorType &gt; 0) Then<br>
+记录集名字.MoveFirst<br>
+Else<br>
+记录集名字.Requery<br>
+End If<br>
+<br>
+If (记录集名字_numRows &lt; 0 Or 记录集名字_numRows &gt; 记录集名字_total) Then<br>
+记录集名字_numRows = 记录集名字_total<br>
+End If<br>
+<br>
+记录集名字_first = 1<br>
+记录集名字_last = 记录集名字_first + 记录集名字_numRows - 1<br>
+If (记录集名字_first &gt; 记录集名字_total) Then 记录集名字_first = 记录集名字_total<br>
+If (记录集名字_last &gt; 记录集名字_total) Then 记录集名字_last = 记录集名字_total<br>
+<br>
+End If<br>
+%&gt;<br>
+&lt;%<br>
+<br>
+Set MM_rs = 记录集名字<br>
+MM_rsCount = 记录集名字_total<br>
+MM_size = 记录集名字_numRows<br>
+MM_uniqueCol = &quot;&quot;<br>
+MM_paramName = &quot;&quot;<br>
+MM_offset = 0<br>
+MM_atTotal = false<br>
+MM_paramIsDefined = false<br>
+If (MM_paramName &lt;&gt; &quot;&quot;) Then<br>
+MM_paramIsDefined = (Request.QueryString(MM_paramName) &lt;&gt; &quot;&quot;)<br>
+End If<br>
+%&gt;<br>
+&lt;%<br>
+<br>
+if (Not MM_paramIsDefined And MM_rsCount &lt;&gt; 0) then<br>
+<br>
+<br>
+r = Request.QueryString(&quot;index&quot;)<br>
+If r = &quot;&quot; Then r = Request.QueryString(&quot;offset&quot;)<br>
+If r &lt;&gt; &quot;&quot; Then MM_offset = Int(r)<br>
+<br>
+<br>
+If (MM_rsCount &lt;&gt; -1) Then<br>
+If (MM_offset &gt;= MM_rsCount Or MM_offset = -1) Then ' past end or move last<br>
+If ((MM_rsCount Mod MM_size) &gt; 0) Then ' last page not a full repeat region<br>
+MM_offset = MM_rsCount - (MM_rsCount Mod MM_size)<br>
+Else<br>
+MM_offset = MM_rsCount - MM_size<br>
+End If<br>
+End If<br>
+End If<br>
+<br>
+i = 0<br>
+While ((Not MM_rs.EOF) And (i &lt; MM_offset Or MM_offset = -1))<br>
+MM_rs.MoveNext<br>
+i = i + 1<br>
+Wend<br>
+If (MM_rs.EOF) Then MM_offset = i ' set MM_offset to the last possible record<br>
+<br>
+End If<br>
+%&gt;<br>
+&lt;%<br>
+<br>
+<br>
+If (MM_rsCount = -1) Then<br>
+<br>
+<br>
+i = MM_offset<br>
+While (Not MM_rs.EOF And (MM_size &lt; 0 Or i &lt; MM_offset + MM_size))<br>
+MM_rs.MoveNext<br>
+i = i + 1<br>
+Wend<br>
+<br>
+<br>
+If (MM_rs.EOF) Then<br>
+MM_rsCount = i<br>
+If (MM_size &lt; 0 Or MM_size &gt; MM_rsCount) Then MM_size = MM_rsCount<br>
+End If<br>
+<br>
+If (MM_rs.EOF And Not MM_paramIsDefined) Then<br>
+If (MM_offset &gt; MM_rsCount - MM_size Or MM_offset = -1) Then<br>
+If ((MM_rsCount Mod MM_size) &gt; 0) Then<br>
+MM_offset = MM_rsCount - (MM_rsCount Mod MM_size)<br>
+Else<br>
+MM_offset = MM_rsCount - MM_size<br>
+End If<br>
+End If<br>
+End If<br>
+<br>
+If (MM_rs.CursorType &gt; 0) Then<br>
+MM_rs.MoveFirst<br>
+Else<br>
+MM_rs.Requery<br>
+End If<br>
+<br>
+i = 0<br>
+While (Not MM_rs.EOF And i &lt; MM_offset)<br>
+MM_rs.MoveNext<br>
+i = i + 1<br>
+Wend<br>
+End If<br>
+%&gt;<br>
+&lt;%<br>
+<br>
+记录集名字_first = MM_offset + 1<br>
+记录集名字_last = MM_offset + MM_size<br>
+If (MM_rsCount &lt;&gt; -1) Then<br>
+If (记录集名字_first &gt; MM_rsCount) Then 记录集名字_first = MM_rsCount<br>
+If (记录集名字_last &gt; MM_rsCount) Then 记录集名字_last = MM_rsCount<br>
+End If<br>
+<br>
+MM_atTotal = (MM_rsCount &lt;&gt; -1 And MM_offset + MM_size &gt;= MM_rsCount)<br>
+%&gt;<br>
+&lt;%<br>
+<br>
+<br>
+MM_removeList = &quot;&amp;index=&quot;<br>
+If (MM_paramName &lt;&gt; &quot;&quot;) Then MM_removeList = MM_removeList &amp; 
+&quot;&amp;&quot; &amp; MM_paramName &amp; &quot;=&quot;<br>
+MM_keepURL=&quot;&quot;:MM_keepForm=&quot;&quot;:MM_keepBoth=&quot;&quot;:MM_keepNone=&quot;&quot;<br>
+<br>
+For Each Item In Request.QueryString<br>
+NextItem = &quot;&amp;&quot; &amp; Item &amp; &quot;=&quot;<br>
+If (InStr(1,MM_removeList,NextItem,1) = 0) Then<br>
+MM_keepURL = MM_keepURL &amp; NextItem &amp; Server.URLencode(Request.QueryString(Item))<br>
+End If<br>
+Next<br>
+<br>
+For Each Item In Request.Form<br>
+NextItem = &quot;&amp;&quot; &amp; Item &amp; &quot;=&quot;<br>
+If (InStr(1,MM_removeList,NextItem,1) = 0) Then<br>
+MM_keepForm = MM_keepForm &amp; NextItem &amp; Server.URLencode(Request.Form(Item))<br>
+End If<br>
+Next<br>
+<br>
+<br>
+MM_keepBoth = MM_keepURL &amp; MM_keepForm<br>
+if (MM_keepBoth &lt;&gt; &quot;&quot;) Then MM_keepBoth = Right(MM_keepBoth, Len(MM_keepBoth) 
+- 1)<br>
+if (MM_keepURL &lt;&gt; &quot;&quot;) Then MM_keepURL = Right(MM_keepURL, Len(MM_keepURL) 
+- 1)<br>
+if (MM_keepForm &lt;&gt; &quot;&quot;) Then MM_keepForm = Right(MM_keepForm, Len(MM_keepForm) 
+- 1)<br>
+<br>
+<br>
+Function MM_joinChar(firstItem)<br>
+If (firstItem &lt;&gt; &quot;&quot;) Then<br>
+MM_joinChar = &quot;&amp;&quot;<br>
+Else<br>
+MM_joinChar = &quot;&quot;<br>
+End If<br>
+End Function<br>
+%&gt;<br>
+&lt;%<br>
+<br>
+MM_keepMove = MM_keepBoth<br>
+MM_moveParam = &quot;index&quot;<br>
+<br>
+If (MM_size &gt; 0) Then<br>
+MM_moveParam = &quot;offset&quot;<br>
+If (MM_keepMove &lt;&gt; &quot;&quot;) Then<br>
+params = Split(MM_keepMove, &quot;&amp;&quot;)<br>
+MM_keepMove = &quot;&quot;<br>
+For i = 0 To UBound(params)<br>
+nextItem = Left(params(i), InStr(params(i),&quot;=&quot;) - 1)<br>
+If (StrComp(nextItem,MM_moveParam,1) &lt;&gt; 0) Then<br>
+MM_keepMove = MM_keepMove &amp; &quot;&amp;&quot; &amp; params(i)<br>
+End If<br>
+Next<br>
+If (MM_keepMove &lt;&gt; &quot;&quot;) Then<br>
+MM_keepMove = Right(MM_keepMove, Len(MM_keepMove) - 1)<br>
+End If<br>
+End If<br>
+End If<br>
+<br>
+<br>
+If (MM_keepMove &lt;&gt; &quot;&quot;) Then MM_keepMove = MM_keepMove &amp; &quot;&amp;&quot;<br>
+urlStr = Request.ServerVariables(&quot;URL&quot;) &amp; &quot;?&quot; &amp; MM_keepMove 
+&amp; MM_moveParam &amp; &quot;=&quot;<br>
+MM_moveFirst = urlStr &amp; &quot;0&quot;<br>
+MM_moveLast = urlStr &amp; &quot;-1&quot;<br>
+MM_moveNext = urlStr &amp; Cstr(MM_offset + MM_size)<br>
+prev = MM_offset - MM_size<br>
+If (prev &lt; 0) Then prev = 0<br>
+MM_movePrev = urlStr &amp; Cstr(prev)<br>
+%&gt;<br>
+<br>
+&lt;script language=&quot;JavaScript&quot;&gt;<br>
+function jumpage(selObj,restore){<br>
+eval(&quot;location='&quot;+selObj.options[selObj.selectedIndex].value+&quot;'&quot;);<br>
+if (restore) selObj.selectedIndex=0;}<br>
+&lt;/script&gt;<br>
+<br>
+<br>
+&lt;select name=&quot;pages&quot; size=1 onChange=&quot;jumpage(this,0)&quot; 
+class=&quot;txtfld&quot;&gt;<br>
+&lt;%<br>
+TM_counter = 0<br>
+For i = 1 to 记录集名字_total Step MM_size<br>
+TM_counter = TM_counter + 1<br>
+TM_PageEndCount = i + MM_size - 1<br>
+if TM_PageEndCount &gt; 记录集名字_total Then TM_PageEndCount = 记录集名字_total<br>
+if i &lt;&gt; MM_offset + 1 then<br>
+%&gt;<br>
+&lt;option value=&quot;&lt;%=Request.ServerVariables(&quot;URL&quot;) &amp; &quot;?&quot; 
+&amp; MM_keepMove &amp; &quot;offset=&quot; &amp; i-1 %&gt;&quot;&gt; <br>
+第 &lt;%= TM_counter %&gt; 页&lt;/option&gt;<br>
+&lt;% else %&gt;<br>
+&lt;option selected&gt;第 &lt;%=TM_counter%&gt; 页&lt;/option&gt;<br>
+&lt;% End if %&gt;<br>
+&lt;% next %&gt;<br>
+&lt;/select&gt;<br>
+&lt;input type=&quot;button&quot; class=&quot;INPUT&quot; onclick=&quot;location.href='&lt;%=MM_movePrev%&gt;'&quot; 
+value=&quot;|&quot; style=&quot;FONT-FAMILY: 'Wingdings 3'&quot; &lt;% If MM_offset 
+&lt;&gt; 0 Then <br>
+response.write &quot;&quot;<br>
+else <br>
+response.write &quot;disabled&quot;<br>
+end if %&gt;&gt;<br>
+&lt;input type=&quot;button&quot; class=&quot;INPUT&quot; onclick=&quot;location.href='&lt;%=MM_moveNext%&gt;'&quot; 
+value=&quot;}&quot; style=&quot;FONT-FAMILY: 'Wingdings 3'&quot; &lt;% If Not 
+MM_atTotal Then<br>
+response.write &quot;&quot;<br>
+else <br>
+response.write &quot;disabled&quot;<br>
+end if %&gt;&gt;
+</p><p> </p>
+<p></p>
+</body>
+</html>

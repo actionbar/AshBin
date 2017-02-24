@@ -1,0 +1,117 @@
+<html xmlns:rdl>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<script src="rdl_properties.js"></script>
+<base target="_self">
+</head>
+<body>
+
+<script>
+
+//collFriendProperties=new Array();
+//collFriendDeclarations=new Array();
+//collFriendAtRules=new Array();
+//collFriendElements=new Array();
+//collFriendClasses=new Array();
+
+collFriendProperties=new Array(
+'position','z-index','top','right','bottom'
+);
+
+//collIE40=new Array();
+//collIE50=new Array();
+//collIE55=new Array();
+//collIE60=new Array();
+
+collIE40=new Array(
+'A','ADDRESS','APPLET','B','BIG','BLOCKQUOTE','BUTTON','CENTER','CITE','CODE','CUSTOM','DD','DFN','DIR','DIV','DL','DT','EM','EMBED','FIELDSET','FONT','FORM','Hn','HR','I','IFRAME','IMG','INPUT type=button','INPUT type=checkbox','INPUT type=file','INPUT type=image','INPUT type=password','INPUT type=radio','INPUT type=reset','INPUT type=submit','INPUT type=text','ISINDEX','KBD','LABEL','LEGEND','LI','LISTING','MARQUEE','MENU','OBJECT','OL','P','PRE','S','SAMP','SELECT','SMALL','SPAN','STRIKE','STRONG','style','SUB','SUP','TABLE','TEXTAREA','TT','U','UL','VAR','XMP'
+);
+
+collIE50=new Array(
+'currentStyle','CUSTOM','runtimeStyle'
+);
+
+collIE55=new Array(
+'defaults'
+);
+
+sStyle=
+'<style>\n'+
+'#idParentDIV{width:100%;height:80px;padding:6px;background-color:buttonshadow;position:relative;}\n'+
+'#idDIV{width:80%;height:40px;background-color:#FF6633;color:#FFFFFF;padding:4px;position:absolute;top:9px;}\n'+
+'#idCodeDiv{width:80%;padding:4px;font-family:verdana,tahoma;margin:12px 0px 0px 0px;background-color:#EEEEEE;font-weight:bold;}\n'+
+'<\/style>\n';
+
+sScript=
+'<script>\n'+
+'var sAdditional="position : absolute ; top : 9px ; ";\n'+
+'function rdl_change(e){\n'+
+'var oCodeDiv=document.all("idCodeDiv");\n'+
+'var oDiv=document.all("idDiv");\n'+
+'with (document.all("idSel")){\n'+
+'if (selectedIndex!=0) var sValue=options[selectedIndex].value;\n'+
+'else var sValue="auto"\n'+
+'}\n'+
+'oDiv.style.left=sValue;\n'+
+'oCodeDiv.innerText=sAdditional+"\\r\\n"+"left : "+sValue+";";\n'+
+'}\n'+
+'<\/script>\n';
+
+sCode=
+'<div id=idParentDIV><div id=idDIV>请从下方选择我的<b> left <\/b>值。<\/div><\/div>\n'+
+'<br>\n'+
+'<select id="idSel" onchange="rdl_change();">\n'+
+'<option value="null">---请选择---\n'+
+'<option value="auto">auto\n'+
+'<option value="5px">5px\n'+
+'<option value="-5px">-5px\n'+
+'<option value="5%">5%\n'+
+'<option value="0cm">0cm\n'+
+'<\/select>\n'+
+'<br>\n'+
+'<div id=idCodeDiv>position : absolute ; top : 9px ; <br>left : auto ;<\/div>\n';
+
+iWinWidth=360;
+
+iWinHeight=320;
+
+//bRunCode=false;
+
+//bElements=false;
+
+</script>
+
+<div id=idContent>
+
+<div id=idContentTitle><span id=idTitleName>left</span>版本：CSS2　 兼容性：IE4+ NS4+　继承性：无</div>
+
+<div class=cssColumnTitle>语法：</div>
+<div>
+<b>left : </b><span class=cssDefault><b>auto</b></span> | <i>length</i>
+</div>
+
+<div class=cssColumnTitle>取值：</div>
+<table>
+<tr><td nowrap><b> auto </b></td><td nowrap><b>:</b></td><td><b>默认值</b>。无特殊定位，根据HTML定位规则在文档流中分配</td></tr>
+<tr><td nowrap><i> length </i></td><td nowrap><b>:</b></td><td>由浮点数字和单位标识符组成的长度值 | 百分数。必须定义<a href="c_position.html"> position </a>属性值为<b> absolute </b>或者<b> relative </b>此取值方可生效。请参阅<a href="d_length.html"> 长度单位 </a></td></tr>
+</table>
+
+<div class=cssColumnTitle>说明：</div>
+<div>
+检索或设置对象与其最近一个具有定位设置的父对象左边相关的位置。<br>
+此属性仅仅在对象的定位(<a href="c_position.html"> position </a>)属性被设置时可用。否则，此属性设置会被忽略。<br>
+此属性对于<b> currentStyle </b>对象而言是只读的。对于其他对象而言是可读写的。<br>
+对应的脚本特性为<b> left </b>。其值为一字符串，所以不可用于脚本(Scripts)中的计算。请使用<b> style </b>对象的<b> posLeft </b>，<b> pixelLeft </b>等运行时特性，以及对象的<b >offsetLeft </b>等特性。
+</div>
+
+<div class=cssColumnTitle>示例：</div>
+<div id=idSimpleCode>
+div { position: absolute; left: 1in; }<br>div { position:relative; top:-3px; left:6px; } 
+</div>
+
+</div>
+</body>
+</html>
+
+<!-- Part of RDL(TM) - Written by Rain1977 
+HomeSite: http://www.dhtmlet.com  E-Mail: dhtmlet@hotmail.com -->

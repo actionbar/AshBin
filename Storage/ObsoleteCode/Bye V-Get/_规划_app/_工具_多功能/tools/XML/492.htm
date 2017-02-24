@@ -1,0 +1,109 @@
+<html>
+<head>
+<title>合并多个样式单</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+
+<link rel = stylesheet href = "image/style.css">
+</head>
+<body bgcolor="#ffffff">
+<table width="688" border="0" cellspacing="0" cellpadding="0" align="center">
+  <tr bgcolor="EEEEEE"> 
+    <td height="22"><a href="index.htm">主页</a></td>
+  </tr>
+</table><br>
+<table border="0" cellpadding="0" cellspacing="0" width="688" align="center" height="490">
+  <tr valign="top"> 
+    <td rowspan="4" width="91">&nbsp; </td>
+    <td height="68" width="131"> 
+      <p><img src="image/doc.gif"></p>
+    </td>
+    <td rowspan="4" width="18"><b></b> </td>
+    <td height="68" width="387"><img src="image/title_doc.gif"></td>
+    <td rowspan="4" width="61"> 
+      <h6>&nbsp;</h6>
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td rowspan="3" valign="top" class="pt10" align="center" width="131" bgcolor="EEEEEE"> 
+      <p>&nbsp;</p>
+      <p><font color="#FF0000">※ 14.19 合并多个样式单</font></p>
+       
+	</td>
+  </tr>
+  <tr valign="top"> 
+    <td width="387" height="308"> 
+      <table width="100%" border="0" cellpadding="0">
+        <tr> 
+          <td>
+
+           <h4><a name="_Toc467207185">14.19 合并多个样式单</a></h4>
+<p>单一XML文档可以使用在许多不同的DTD中描述的许多不同的标记符号集。有时希望将不同的标准样式单用于那些不同的符号集。但是，也可能还要将样式规则用于特定的文档。xsl:import和xsl:include元素可用来合并多个样式单，以便组织和重新将样式单用于不同的符号集和目的。</p>
+<h5><a name="_Toc467207186">14.19.1 使用xsl:import进行录入</a></h5>
+<p>xsl:import元素为顶级元素，其href特性提供导入的样式单的URI。所有的xsl:import元素都必须放在xsl:stylesheet根元素中的顶级元素中。例如，下面的这些xsl:import元素导入genealogy.xsl和standards.xsl样式单。</p>
+<p>&lt;xsl:stylesheet</p>
+<p>xmlns:xsl=”http://www.w3.org/XSL/Transform/1.0”&gt;</p>
+<p> &lt;xsl:import href=”genealogy.xsl”/&gt;</p>
+<p> &lt;xsl:import href=”standards.xsl”/&gt;</p>
+<p> &lt;!- other child elements follow -&gt;</p>
+<p>&lt;/xsl:stylesheet&gt;</p>
+<p>导入的样式单中的规则可能与执行导入的样式单中的规则发生冲突。如果真是这样，那么执行导入的样式单中的规则优先。如果不同的被导入样式单中的两个规则发生冲突，那么最后那个被导入的（如上面例子中的standards.xsl）优先。</p>
+<p>xsl:apply-imports元素与xsl:apply-templates有点差别，后者只使用被导入的规则。xsl:apply-imports元素不使用执行导入的样式单中的任何规则。这样就可以访问被导入的规则，否则被导入的规则就会被执行导入的样式单中的规则所覆盖。除了名称不同外，xsl:apply-imports与xsl:apply-templates有一样的句法，唯一的作用方式差别是它只与被导入样式单中的模板规则匹配。</p>
+<h5><a name="_Toc467207187">14.19.2 使用xsl:include进行包括</a></h5>
+<p>xsl:include元素也是顶级元素，它将另一个样式单复制到当前样式单中它所出现的位置处（更确切是说，它将远程文档中xsl-stylesheet元素的内容复制到当前文档中）。它的href特性提供要包括的样式单的URI。xsl:include元素可放在顶级处于最后那个xsl:import元素之后的任何地方。</p>
+<p>不像xsl: imporlt元素所包括的规则那样，xsl:include元素所包括的规则与执行包括的样式单中的规则具有同样的优先级，利用这种优先级关系来决定是否从一个样式单到另一个样式单的复制和粘贴。对于格式化引擎来说，被包括的规则与实际存在的规则之间没有任何区别。</p>
+<h5><a name="_Toc467207188">14.19.3 使用xsl:stylesheet在文档中嵌入样式单</a></h5>
+<p>可直接将XSL样式单包括在使用它的XML文档中。实际上，我不推荐这种方法，而且浏览器和格式化引擎也不一定支持这一作法。但是，有几个浏览器和格式化引擎却支持这一作法。为达此目的，xsl:stylesheet元素必须以文档元素的子元素而不是根元素本身的形式出现。它可能有一个id特性，用来为其取唯一的名称，此id特性是作为xsl:stylesheet处理指令中的href特性值的形式出现的，紧跟在的anchor（锚）标识符（#）之后。清单14-20演示此过程：</p>
+<p>清单14-20：在XML文档中嵌入的XSL样式单</p>
+<p>&lt;?xml version="1.0"?&gt;</p>
+<p>&lt;?xml-stylesheet type="text/xsl" href="#id(mystyle)"?&gt;</p>
+<p>&lt;PERIODIC_TABLE&gt;</p>
+<p></p>
+<p> &lt;xsl:stylesheet</p>
+<p> xmlns:xsl="http://www.w3.org/XSL/Transform/1.0"</p>
+<p> id= "mystyle "&gt;</p>
+<p></p>
+<p> &lt;xsl:template match="/"&gt;</p>
+<p> &lt;html&gt;</p>
+<p> &lt;xsl:apply-templates/&gt;</p>
+<p> &lt;/html&gt;</p>
+<p> &lt;/xsl:template&gt;</p>
+<p></p>
+<p> &lt;xsl:template match="PERIODIC_TABLE"&gt;</p>
+<p> &lt;xsl:apply-templates/&gt;</p>
+<p> &lt;/xsl:template&gt;</p>
+<p></p>
+<p> &lt;xsl:template match="ATOM"&gt;</p>
+<p> &lt;P&gt;</p>
+<p> &lt;xsl:value-of select="."/&gt;</p>
+<p> &lt;/P&gt;</p>
+<p> &lt;/xsl:template&gt;</p>
+<p> &lt;/xsl:stylesheet&gt;</p>
+<p></p>
+<p> &lt;ATOM&gt;</p>
+<p> &lt;NAME&gt;Actinium&lt;/NAME&gt;</p>
+<p> &lt;ATOMIC_WEIGHT&gt;227&lt;/ATOMIC_WEIGHT&gt;</p>
+<p> &lt;ATOMIC_NUMBER&gt;89&lt;/ATOMIC_NUMBER&gt;</p>
+<p> &lt;OXIDATION_STATES&gt;3&lt;/OXIDATION_STATES&gt;</p>
+<p> &lt;BOILING_POINT UNITS="Kelvin"&gt;3470&lt;/BOILING_POINT&gt;</p>
+<p> &lt;MELTING_POINT UNITS="Kelvin"&gt;1324&lt;/MELTING_POINT&gt;</p>
+<p> &lt;SYMBOL&gt;Ac&lt;/SYMBOL&gt;</p>
+<p> &lt;DENSITY_UNITS="grams/cubic centimeter"&gt;&lt;!- At 300K -&gt;</p>
+<p> 10.07</p>
+<p> &lt;/DENSITY&gt;</p>
+<p> &lt;ELECTRONEGATIVITY&gt;1.1&lt;/ELECTRONEGATIVITY&gt;</p>
+<p> &lt;ATOMIC_RADIUS UNITS="Angstroms"&gt;1.88&lt;/ATOMIC_RADIUS&gt;</p>
+<p> &lt;/ATOM&gt;</p>
+<p></p>
+<p>&lt;/PERIODIC_TABLE&gt;</p>
+ 
+<a href='491.htm'>&lt;&lt;上一篇</a>&nbsp;&nbsp;<a href='493.htm'>下一篇&gt;&gt;</a></td>
+        </tr>
+      </table>
+      <p>&nbsp; </p>
+    </td>
+  </tr>
+</table>
+
+</body>
+
+</html>

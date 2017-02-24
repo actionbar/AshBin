@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>快递查询——国内/国际快递查询</title>
+</head>
+<link rel="stylesheet" type="text/css" href="../index.css" />
+<link rel="stylesheet" type="text/css" href="http://localhost:8080/v-get.com/tool/index.css" />
+
+
+
+<script type="text/javascript" src="http://localhost:8080/v-get.com/i/i.js"></script>
+
+
+</head>
+<body>
+<div class="w">
+<div class="t"><div class="q"><a href="">V-Get!首页</a>|<a href="">设为主页</a>|<a href="">收藏本站</a></div></div>
+<div class="u">
+<img src="http://localhost:8080/v-get.com/tool/index.png" />
+</div>
+<div class="n"><a href="http://localhost:8080/tool.v-get.com/">首页</a><a href="http://localhost:8080/v-get.com/tool/biz/">商务办公</a><a href="http://localhost:8080/v-get.com/tool/finance/">金融计算</a><a href="http://localhost:8080/v-get.com/tool/life/" class="no">生活助手</a><a href="http://localhost:8080/v-get.com/tool/images/">图片美工</a><a href="http://localhost:8080/v-get.com/tool/editor/">文字设计</a><a href="http://localhost:8080/v-get.com/tool/edu/">教育考试</a><a href="http://localhost:8080/v-get.com/tool/games/">娱乐游戏</a><a href="http://localhost:8080/v-get.com/tool/pc/">电脑优化</a></div>
+<div class="w4"><a href="#"><img src="http://localhost:8080/v-get.com/i/wuliu/a/zzidc980.gif" /></a></div>
+<!--这里不用include，因为基本这个部分是固定的；广告以后采用js替换，或者固定图片名称-->
+<!--因为都在life文件夹下，而且涉及.no，所以这样更好-->
+<div class="v">
+<div class="p l">
+<!--#include file="l.htm"-->
+
+</div>
+<div class="p r">
+<h1>快递查询</h1>
+<div class="c">
+<iframe width="366" height="105" scrolling="auto" src="http://localhost:8080/v-get.com/i/wuliu/e.php" marginheight="0" marginwidth="0" frameborder="0"></iframe>
+</div>
+<h2>推荐工具</h2>
+<div>
+<ul><li><a href="">快递</a></li></ul>
+</div>
+<h2>热门工具</h2>
+<div>
+采用require 
+</div>
+
+
+
+</div>
+
+</div>
+
+
+</div>
+<!--<ul>
+<li><a href="http://localhost:8080/v-get.com/tool/fanyi.html">数字大小写及翻译</a></li>
+<li><a href="http://localhost:8080/v-get.com/tool/yanpitiao.php">眼皮跳吉凶查询</a></li>
+<li><a href="http://localhost:8080/v-get.com/tool/erweima/">QR二维码</a></li>
+</ul>-->
+ 
+  
+</body>
+</html>

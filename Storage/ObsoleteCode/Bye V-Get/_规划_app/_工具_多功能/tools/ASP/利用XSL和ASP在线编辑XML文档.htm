@@ -1,0 +1,103 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>利用XSL和ASP在线编辑XML文档</title>
+<style type="text/css">
+<!--
+body {
+	font-size: 10.4pt;
+	line-height: 22px;
+}
+-->
+</style>
+</head>
+
+<body bgcolor="eeeeee" leftmargin="20" marginwidth="20">
+<p><strong>利用XSL和ASP在线编辑XML文档</strong></p>
+<p></p>
+<hr>
+<p> 是因工作需要做的一个批量修改代码的小东西，拿出来与大家分享<br>
+  目前可以处理的文件类型：.asp .inc .htm .html 具体类型可自行修改添加</p>
+<p>程序实现的功能：将源目录下的文件批量修改后存到目的目录下<br>
+  用它稍做修改可以实现很多东西噢！</p>
+<p>别的不说了，代码里面都写的很清楚了<br>
+  &lt;%<br>
+  '// +---------------------------------------------------------------------------+<br>
+  '// | 程序名称： 他山之石代码批量修改器 v1.01 |<br>
+  '// | 他山之石版权所有，侵权必究！转载请注明版权：） |<br>
+  '// | ------------------------------------------------------------------------- 
+  |<br>
+  '// | 系统:win2000; 编辑器:EditPlus; 缩进工具:Tab; 缩进长度:8; 字体:宋体(10pt); |<br>
+  '// | ------------------------------------------------------------------------- 
+  |<br>
+  '// | 创建者: WYC; 创建时间: 2004-03-08; |<br>
+  '// | 编写者: WYC; 编写时间: 2004-03-08; |<br>
+  '// +---------------------------------------------------------------------------+</p>
+<p>Server.ScriptTimeOut = 500 '脚本超时时间</p>
+<p>'// +---------------------------------------------------------------------------+<br>
+  '// | 批量修改函数 |<br>
+  '// | ------------------------------------------------------------------------- 
+  |<br>
+  '// | 属性：path_from 源文件目录 path_to 目标文件工作目录 |<br>
+  '// | ------------------------------------------------------------------------- 
+  |<br>
+  '// | 返回值：无 |<br>
+  '// | ------------------------------------------------------------------------- 
+  |<br>
+  '// | 程序流程：...... |<br>
+  '// | ------------------------------------------------------------------------- 
+  |<br>
+  '// | 编写者:WYC; 编写时间: 2004-03-08; |<br>
+  '// +---------------------------------------------------------------------------+<br>
+  Sub midfile(path_from, path_to)<br>
+  list_from = path_from '储存当前源工作目录<br>
+  list_to = path_to '储存当前目标工作目录<br>
+  Set fso = CreateObject(&quot;Scripting.FileSystemObject&quot;)<br>
+  Set Fold = fso.GetFolder(list_from) '获取Folder对象<br>
+  Set fc = Fold.Files '获取文件记录集<br>
+  Set mm = Fold.SubFolders '获取目录记录集<br>
+  For Each f2 in mm<br>
+  set objfile = server.createobject(&quot;scripting.filesystemobject&quot;)<br>
+  objfile.CreateFolder(path_to &amp; &quot;\&quot; &amp; f2.name) '创建目录<br>
+  midfile path_from &amp; &quot;\&quot; &amp; f2.name, path_to &amp; &quot;\&quot; 
+  &amp; f2.name '递归调用<br>
+  response.write path_to &amp; &quot;\&quot; &amp; f2.name &amp; &quot; 完毕！&lt;br&gt;&quot;<br>
+  Next<br>
+  For Each f1 in fc<br>
+  file_from = list_from &amp; &quot;\&quot; &amp; f1.name '生成文件地址(源)<br>
+  file_to = list_to &amp; &quot;\&quot; &amp; f1.name '生成文件地址(到)<br>
+  fileExt = lcase(right(f1.name,4)) '获取文件类型<br>
+  If fileExt=&quot;.asp&quot; or fileExt=&quot;.inc&quot; or fileExt=&quot;.htm&quot; 
+  or fileExt=&quot;html&quot; Then '具体类型可自行修改添加<br>
+  set objfile = server.createobject(&quot;scripting.filesystemobject&quot;) '定义一个服务器组件（读取源文件）<br>
+  set out = objfile.opentextfile(file_from, 1, false, false)<br>
+  content = out.readall '读取数据<br>
+  out.close</p>
+<p> '// +---------------------------------------------------+<br>
+  '// | 文件内容处理模块（主要，其他都是文件操作） |<br>
+  Set regEx = New RegExp<br>
+  regEx.Pattern = &quot;(\&gt;\s*\n)&quot;<br>
+  regEx.Global = true '设置全部匹配模式<br>
+  content = regEx.Replace(content, &quot;&gt;&quot;) '替换掉回车符<br>
+  content = Replace(content, &quot; &quot;, &quot;&quot;) '作tab替换<br>
+  '// +---------------------------------------------------+</p>
+<p> set objfile = server.createobject(&quot;scripting.filesystemobject&quot;) 
+  '定义一个服务器组件（写入目标文件）<br>
+  set outt = objfile.createtextfile(file_to,TRUE,FALSE)<br>
+  outt.write(content) '写入数据<br>
+  outt.close<br>
+  else '否则直接复制文件<br>
+  Set fso = CreateObject(&quot;Scripting.FileSystemObject&quot;)<br>
+  fso.CopyFile file_from, file_to<br>
+  End If<br>
+  Next<br>
+  End Sub</p>
+<p>midfile Server.mappath(&quot;temp/aaa&quot;), Server.mappath(&quot;temp/bbb&quot;) 
+  '调用示例 源目录temp/aaa 处理后存到temp/bbb<br>
+  '源目录 目的目录（必须是已经存在的目录）<br>
+  %&gt;<br>
+  manyou(他山之石) 敬上</p>
+<p></p>
+</body>
+</html>

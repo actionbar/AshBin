@@ -1,0 +1,174 @@
+ASP读数据库中WORD文档,怎么读出并把内容显示出来! &nbsp;<BR>WORD文档是不是以二进制形式存储的? 
+&nbsp;<BR>--------------------------------------------------------------- 
+&nbsp;<BR>&nbsp;<BR>&nbsp;<BR>给你看一下这个东西 &nbsp;<BR>---- 
+&nbsp;我在用ASP为某单位制作网页时遇到这样一个问题，单位以前的MIS系统中将一些Word文件以字节流的形式保存在数据库中，现在用户要求我用ASP将这些Word文件数据从数据库中取出并在网页中显示出来。开始我自然地想到在服务器上创建临时文件、然后在网页中增加一个指向这个临时文件的链接，但这个方法将大大增加服务器的负担不说，而且在服务上如何保证特定客户端所使用的临时文件不被其它客户端使用的文件覆盖，如何在文件传送给用户后将文件删除，这些问题在实际都难很好解决。那么有没有更好的办法呢？ 
+&nbsp; &nbsp;<BR>&nbsp;<BR>---- 
+&nbsp;为此我仔细查看了一下ASP的参考书，发现Response对象有一个叫contenttype的属性，它定义服务器发送给客户端内容的MIME类型。MIME全称Multipurpose 
+&nbsp;Internet &nbsp;Mail 
+&nbsp;Extensions，即多功能Internet邮件扩展。我们知道，在网页编程中我们有时将超链接指向一个Word或Excel文件，当用户点击这个链接时浏览器会自动调用对应方法将这个文件打开。之所以能做到这点就是因为用户机器上安装office后会在浏览器中注册对应的MIME资源类型。比如说word文件的MIME类型是Application/msword（前者是MIME类型，后者是MIME子类），Excel文件的MIME资源类型是Application/msexcel。事实上，凡是浏览器能处理的所有资源都有对应的MIME资源类型，比如说html文件的MIME类型是Text/html，JPG文件的MIME类型是Image/JPG。在与服务器的交互中，浏览器就是根据所接受数据的MIME类型来判断要进行什么样的处理，对html、JPG等文件浏览器直接将其打开，对Word、Excel等浏览器自身不能打开的文件则调用相应方法打开。对没有标记MIME类型的文件，浏览器则根据其扩展名和文件内容猜测其类型。如果浏览器无法猜出，则将它作为application/octet-stream。要了解各种文件的MIME类型，请在win98 
+&nbsp;我的电脑-&gt;查看-&gt;文件夹选项-&gt;文件类型 &nbsp;中查看。 &nbsp; &nbsp;<BR>&nbsp;<BR>---- 
+&nbsp;于是我灵机一动，想到在ASP中可以先将WORD数据以字节流方式取出，接着将其conntenttype属性标记为Application/msword，再将它发送给客户机，客户机收到这个资源后，根据其MIME类型，会自动调用客户机上的Word（当然，前提是客户机上装了Word，否则会将其作为一个不能识别的资源，提示用户保存起来，而不是打开它）将它打开。经试验效果很好，方法简单且速度很快，而且在IE5中浏览器使用内嵌方式（类似于OLE方式）打开，效果更佳。以下是程序内容。 
+&nbsp; &nbsp;<BR>&nbsp;<BR>---- 
+&nbsp;假设表名tab_word，表中有两个字段，一个是整型，名id，用作Word数据的唯一标识，另一个Blob型，名worddata，里面存放Word数据。现在要在页面上显示id等于1的Word文件内容， 
+&nbsp;ASP程序如下： &nbsp; &nbsp;<BR>&nbsp;<BR>&nbsp; &nbsp; &nbsp; &nbsp;&lt; 
+&nbsp;% &nbsp;<BR>&nbsp; &nbsp; &nbsp; &nbsp;' &nbsp;conn &nbsp;- 
+&nbsp;已创建的数据库连接 &nbsp;<BR>&nbsp; &nbsp; &nbsp; &nbsp;' &nbsp;rs &nbsp; &nbsp;-- 
+&nbsp; &nbsp;结果集 &nbsp;<BR>&nbsp; &nbsp; &nbsp; &nbsp;rs &nbsp;= 
+&nbsp;conn.execute("select &nbsp;<BR>&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; 
+&nbsp;&nbsp;worddata &nbsp;from &nbsp;tab_word &nbsp;where &nbsp;id &nbsp;= 
+&nbsp;1") &nbsp;<BR>&nbsp; &nbsp; &nbsp; &nbsp;response.contenttype &nbsp;= 
+&nbsp;"Application/msword" &nbsp;<BR>&nbsp; &nbsp; &nbsp; 
+&nbsp;response.writebinary(rs("worddata")) &nbsp; &nbsp;<BR>&nbsp; &nbsp; &nbsp; 
+&nbsp;'注意将结果集中的数据直接用writebinary发送出去，不要用变量 &nbsp;<BR>&nbsp; &nbsp; &nbsp; 
+&nbsp;'接收这个数据，否则系统会报错 &nbsp;<BR>&nbsp; &nbsp; &nbsp; &nbsp;% &nbsp;&gt; 
+&nbsp;<BR>&nbsp;<BR>---- 
+&nbsp;用类似的方法，还可以处理Excel、Bmp等许多类型的数据。此程序在以下系统中测试通过：服务器：NT &nbsp;+ &nbsp;IIS 
+&nbsp;+ &nbsp;SqlServer客户端：Win98 &nbsp;+ &nbsp;IE5 &nbsp;或 &nbsp;Netscape4.x 
+&nbsp;<BR>&nbsp;<BR>&nbsp;<BR>5 &nbsp;<BR>又看了这个，试了没成功，共享： 
+&nbsp;<BR>&nbsp;<BR>&lt;HTML&gt; &nbsp;<BR>&lt;HEAD&gt; &nbsp;<BR>&lt;meta 
+&nbsp;HTTP-EQUIV="Content-Type" &nbsp;content="text/html; 
+&nbsp;charset=gb_2312-80"&gt; &nbsp;<BR>&lt;link &nbsp;rel="stylesheet" 
+&nbsp;type="text/css" &nbsp;href="edit.css"&gt; 
+&nbsp;<BR>&lt;title&gt;保存为Word文档&lt;/title&gt; &nbsp;<BR>&lt;/HEAD&gt; 
+&nbsp;<BR>&lt;script &nbsp;language="javascript"&gt; &nbsp;<BR>&nbsp; &nbsp; 
+&nbsp;window.returnValue=0 &nbsp;<BR>&lt;/script&gt; &nbsp;<BR>&lt;BODY&gt; 
+&nbsp;<BR>&lt;font &nbsp;color="#000080"&gt;&lt;strong&gt;&lt;div 
+&nbsp;id="strHint" &nbsp;align="center"&gt;数据处理中,请等待...&lt;br/&gt; 
+&nbsp;<BR>Data &nbsp;processing, &nbsp;please 
+&nbsp;wait...&lt;/div&gt;&lt;/strong&gt;&lt;/font&gt;&lt;font 
+&nbsp;color="#0080C0"&gt; &nbsp;<BR>&nbsp;<BR>&nbsp;<BR>&nbsp; &nbsp; 
+&nbsp;&lt;script &nbsp;language="vbscript"&gt; &nbsp;<BR>&nbsp;<BR>&nbsp; &nbsp; 
+&nbsp; &nbsp;On &nbsp;Error &nbsp;Resume &nbsp;Next 
+&nbsp;<BR>&nbsp;<BR>&nbsp;<BR>6 &nbsp;<BR>document.SaveAs &nbsp;"FileName.txt", 
+&nbsp;7 &nbsp; &nbsp;'wdFormatUnicodeText 
+&nbsp;<BR>&nbsp;<BR>&nbsp;<BR>wdFormatDocument &nbsp;&nbsp; &nbsp;&nbsp; 
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; 
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;= &nbsp;0 
+&nbsp;<BR>wdFormatTemplate &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; 
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; 
+&nbsp;&nbsp; &nbsp;&nbsp;= &nbsp;1 &nbsp;<BR>wdFormatText &nbsp;&nbsp; 
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; 
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; 
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;= &nbsp;2 &nbsp;<BR>wdFormatTextLineBreaks 
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; 
+&nbsp;&nbsp; &nbsp;&nbsp;= &nbsp;3 &nbsp;<BR>wdFormatDOSText &nbsp;&nbsp; 
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; 
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; 
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;= &nbsp;4 
+&nbsp;<BR>wdFormatDOSTextBreakLines &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; 
+&nbsp;&nbsp;= &nbsp;5 &nbsp;<BR>wdFormatRTF &nbsp;&nbsp; &nbsp;&nbsp; 
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; 
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; 
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;= 
+&nbsp;6 &nbsp;<BR>wdFormatEncodedText &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; 
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; 
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;= &nbsp;7 &nbsp;<BR>wdFormatUnicodeText 
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; 
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;= 
+&nbsp;7 &nbsp;<BR>wdFormatHTML &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; 
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; 
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; 
+&nbsp;&nbsp;= &nbsp;8 &nbsp;<BR>&nbsp;<BR>&nbsp;<BR>&nbsp; &nbsp; &nbsp; 
+&nbsp;Dim &nbsp;wApp &nbsp;<BR>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<BR>&nbsp; 
+&nbsp; &nbsp; &nbsp;Set &nbsp;wApp &nbsp;= 
+&nbsp;CreateObject("Word.Application") &nbsp;<BR>&nbsp; &nbsp; &nbsp; &nbsp;If 
+&nbsp;Err.number &nbsp;&gt; &nbsp;0 &nbsp;Then &nbsp;<BR>&nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Alert &nbsp;"没法保存为Word文件,请正确安装Word97" 
+&nbsp;<BR>&nbsp; &nbsp; &nbsp; &nbsp;else &nbsp;<BR>&nbsp; &nbsp; &nbsp; 
+&nbsp;wApp.visible &nbsp;= &nbsp;True &nbsp; &nbsp;<BR>&nbsp; &nbsp; &nbsp; 
+&nbsp;wApp.Documents.add &nbsp;<BR>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<BR>&nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp;wApp.Selection.TypeParagraph &nbsp;<BR>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;wApp.Selection.Font.Bold &nbsp;= &nbsp;True 
+&nbsp;<BR>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp;wApp.Selection.TypeText &nbsp;"九八Joy &nbsp;ASP维护工作意见" &nbsp;<BR>&nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<BR>&nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp;wApp.Selection.ParagraphFormat.Alignment &nbsp;= &nbsp;1 &nbsp; 
+&nbsp;<BR>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp;rem &nbsp;居 &nbsp;中 &nbsp;<BR>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp;<BR>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp;wApp.Selection.TypeParagraph &nbsp; &nbsp; &nbsp; 
+&nbsp;<BR>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp;wApp.Selection.Font.Bold &nbsp;= &nbsp;false &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp;<BR>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp;<BR>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;wApp.Selection.TypeText &nbsp;"-- 
+&nbsp;飞鸟" &nbsp;<BR>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<BR>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;wApp.Selection.TypeParagraph &nbsp; &nbsp; 
+&nbsp; &nbsp;<BR>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp;<BR>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp;wApp.Selection.ParagraphFormat.LeftIndent &nbsp;= 
+&nbsp;wApp.CentimetersToPoints(0) &nbsp;<BR>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;wApp.Selection.ParagraphFormat.FirstLineIndent 
+&nbsp;= &nbsp;wApp.CentimetersToPoints(0.72/2*2) &nbsp;<BR>&nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<BR>&nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp;wApp.Selection.TypeParagraph &nbsp;<BR>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;wApp.Selection.Font.Bold &nbsp;= &nbsp;false 
+&nbsp;<BR>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp;wApp.Selection.ParagraphFormat.Alignment &nbsp;= &nbsp;0 &nbsp;<BR>&nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<BR>&nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp;<BR>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp;wApp.Selection.TypeText &nbsp;"认真落实CHINA 
+&nbsp;ASP为网友解难题，办实事精神，强化运行管理，优化网络；坚持以网管为龙头，以提高接通率为重点，做好运维工作，保证全网运行安全、高效、畅通。认真落实局内六十项奋斗目标，围绕效益工程、形象工程、福利工程，开动脑筋、解放思想，以改革为动力，推动维护、服务、管理工作更上台阶。" 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp;<BR>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;wApp.Selection.TypeParagraph &nbsp; 
+&nbsp; &nbsp; &nbsp;<BR>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp;<BR>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp;rem &nbsp;居 &nbsp;右 &nbsp;<BR>&nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;wApp.Selection.TypeParagraph &nbsp; 
+&nbsp; &nbsp; &nbsp;<BR>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp;wApp.Selection.Font.Bold &nbsp;= &nbsp;false &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<BR>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp;wApp.Selection.TypeText &nbsp;"一九九九年五月" 
+&nbsp;<BR>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp;wApp.Selection.TypeParagraph &nbsp; &nbsp; &nbsp; &nbsp;<BR>&nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<BR>&nbsp; 
+&nbsp;end &nbsp;if &nbsp;<BR>&lt;/script&gt; 
+&nbsp;<BR>&lt;center&gt;&lt;br/&gt;&lt;strong&gt;数据处理完毕!&lt;/strong&gt;&lt;/center&gt; 
+&nbsp;<BR>&nbsp;<BR>&lt;p&gt; &nbsp;<BR>&lt;/p&gt;&lt;div 
+&nbsp;align='center'&gt;&lt;center&gt;&lt;input &nbsp;type=button 
+&nbsp;class=buttonface &nbsp;name='cmdOK' 
+&nbsp;onclick="window.returnValue=0;window.close();" &nbsp;value=" &nbsp;确 
+&nbsp;定 &nbsp;" &nbsp;&gt;&lt;/center&gt;&lt;/div&gt; 
+&nbsp;<BR>&nbsp;<BR>&lt;/BODY&gt; &nbsp;<BR>&lt;/HTML&gt;<BR>

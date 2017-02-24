@@ -1,0 +1,17 @@
+{template header}
+
+<p>
+	您好，{$logger_user}<br />
+	<a href="{eval echo miniurl($logger_uid.'/notes');}">微博[{$datas['notes']}]</a>
+	<a href="{eval echo miniurl($logger_uid.'/fans');}">粉丝[{$datas['fans']}]</a>
+	<a href="{eval echo miniurl($logger_uid.'/follows');}">关注[{$datas['follows']}]</a>
+	<a href="{eval echo miniurl($logger_uid.'/atme');}">@我的[{$datas['atmes']}]</a>
+	<a href="{eval echo miniurl($logger_uid.'/comments');}">管理评论</a>
+</p>
+<p>
+	身边发生了新鲜事:<br />
+	<input type="text" name="content" size="20" />
+	<anchor><go method="post" href="{eval echo miniurl('note/post');}"><postfield name="content" value="$(content)" /><postfield name="submit_post" value="1" /></go>发布</anchor>
+</p>
+
+{template footer}

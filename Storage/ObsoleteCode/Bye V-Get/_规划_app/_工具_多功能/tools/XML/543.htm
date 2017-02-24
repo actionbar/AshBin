@@ -1,0 +1,75 @@
+<html>
+<head>
+<title>外联链接</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+
+<link rel = stylesheet href = "image/style.css">
+</head>
+<body bgcolor="#ffffff">
+<table width="688" border="0" cellspacing="0" cellpadding="0" align="center">
+  <tr bgcolor="EEEEEE"> 
+    <td height="22"><a href="index.htm">主页</a></td>
+  </tr>
+</table><br>
+<table border="0" cellpadding="0" cellspacing="0" width="688" align="center" height="490">
+  <tr valign="top"> 
+    <td rowspan="4" width="91">&nbsp; </td>
+    <td height="68" width="131"> 
+      <p><img src="image/doc.gif"></p>
+    </td>
+    <td rowspan="4" width="18"><b></b> </td>
+    <td height="68" width="387"><img src="image/title_doc.gif"></td>
+    <td rowspan="4" width="61"> 
+      <h6>&nbsp;</h6>
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td rowspan="3" valign="top" class="pt10" align="center" width="131" bgcolor="EEEEEE"> 
+      <p>&nbsp;</p>
+      <p><font color="#FF0000">※ 16.4 外联链接</font></p>
+       
+	</td>
+  </tr>
+  <tr valign="top"> 
+    <td width="387" height="308"> 
+      <table width="100%" border="0" cellpadding="0">
+        <tr> 
+          <td>
+
+           <h4><a name="_Toc467208496">16.4 外联链接</a></h4>
+<p>迄今为止所考虑的链接（简单和扩展）都是内联链接。内联链接（如在HTML中熟悉的A元素）使用内联元素的内容作为包含链接的文档部分。通过这种方式展示给读者。</p>
+<p>XLink也可以是外联方式。外联链接可能不存在于它所连接的任何文档中，而是将链接保存在各个独立的链接文档中。例如，使用这种方法来维护幻灯片放映是很有用的，因为在幻灯片放映过程中，各幻灯片都需要前后链接。改变链接文档中的幻灯片顺序，即可以改变每页上的前后链接的目标，而无需编辑幻灯片本身。</p>
+<p>要将链接标记为外联，可将inline特性设置成false值。例如，下面的简单的外联链接使用空元素来描述Web站点。空元素没有任何内容；在链接的情况下，它没有本地资源。所以，它没有描述本地资源的content-role和content-title特性。但像下面的这个例子那样，可以有描述远程资源的role和title特性。</p>
+<p>&lt;WEBSITE xlink:form="simple" inline="false"</p>
+<p> href="http://metalab.unc.edu/xml/"</p>
+<p> title = "Cafe con Leche" role="XML News"/&gt;</p>
+<p><img src="Image/BK000216-17.gif" width=47 height=52 align="left">由于到目前为止所看到的所有链接都是内联链接，所以链接隐式地具有值为true（缺省值）的inline属性。</p>
+<p>简单的外联链接（如上面的例子）都是相当少见的。极其常用并且非常有用的是外联扩展链接，如下面所示：</p>
+<p>&lt;WEBSITE xlink:form="extended" inline="false"&gt;</p>
+<p> &lt;locator href="http://metalab.unc.edu/javafaq/" role=".us"/&gt;</p>
+<p> &lt;locator</p>
+<p> href="http://sunsite.univie.ac.at/jcca/mirrors/javafaq/"</p>
+<p> role=".at"/&gt;</p>
+<p> &lt;locator href "http://sunsite.icm.edu.pl/java-corner/faq/"</p>
+<p> role=".pl"/&gt;</p>
+<p> &lt;locator href="http://sunsite.uakom.sk/javafaq/" role=".sk"/&gt;</p>
+<p> &lt;locator href="http://sunsite.cnlab-switch.ch/javafaq/"</p>
+<p> role=".ch"/&gt;</p>
+<p>&lt;/WEBSITE&gt;</p>
+<p>有些链接（如上面的链接）可能保存在已知位置的Web服务器上的独立文件中，在此位置浏览器可以找到并且询问此链接，以便确定对浏览器正在寻找最近的页面镜像。但是，外联性就是该元素不出现在激活链接的文档中。</p>
+<p>这样就将样式单的提取扩大到链接域。样式单完全与其描述的文档分离，并且提供的规则可以用来修改文档向读者显示的方式。包含外联链接的链接文档与它所连接的文档分离，但仍给读者提供必要的链接。这种方法有几个优点，其中包括可以使更多面向展示的标记保持与文档分离，以及允许只读文档的链接。</p>
+<p><img src="Image/BK000216-34.gif" width=53 height=50 align="left">样式单链接的范围比外联链接要广得多。目前还没有如何将“链接单（link 
+  sheet）”加到XML文档中的一般性的建议，更不用说如何确定文档中的哪个元素与哪个链接相关联。</p>
+<p>显而易见，可以将&lt;?xml-linksheet?&gt;处理指令加到文档的前言中，以指定在何处找到链接。链接单本身可以使用类似于XSL的内容来选择模式，以便将链接映射到各XML元素中。甚至选择符也会成为locator元素的role特性的值。</p>
+ 
+<a href='542.htm'>&lt;&lt;上一篇</a>&nbsp;&nbsp;<a href='544.htm'>下一篇&gt;&gt;</a></td>
+        </tr>
+      </table>
+      <p>&nbsp; </p>
+    </td>
+  </tr>
+</table>
+
+</body>
+
+</html>

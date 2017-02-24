@@ -1,0 +1,161 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="../c3.css" />
+<title>CSS 框模型概述</title>
+</head>
+<body class="html">
+<div id="wrapper">
+<div id="header">
+<a href="http://e.v-get.com/w3cschool/" style="float:left;">W3CSchool 在线教程</a>
+<div class="q g"><script type="text/javascript">var cpro_id="u1163355"</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div>
+<div id="navfirst">
+<ul id="menu">
+<li id="h"><a href="../h.html">HTML教程</a></li>
+<li id="x"><a href="../x.html">XML教程</a></li>
+<li id="b"><a href="../b.html">浏览器脚本</a></li>
+<li id="s"><a href="../s.html">服务器脚本</a></li>
+<li id="d"><a href="../d.html">dot net教程</a></li>
+<li id="m"><a href="../m.html">多媒体教程</a></li>
+<li id="w"><a href="../w.html">建站手册</a></li>
+</ul>
+</div><div id="navsecond">
+<div id="course">
+<h2>CSS 基础</h2>
+<ul>
+<li><a href="http://e.v-get.com/w3cschool/">CSS 教程</a></li>
+<li><a href="css_intro.html">CSS 简介</a></li>
+<li><a href="css_syntax_01.html">CSS 基础语法</a></li>
+<li><a href="css_syntax_02.html">CSS 高级语法</a></li>
+<li><a href="css_syntax_03.html">CSS 派生选择器</a></li>
+<li><a href="css_syntax_04.html">CSS id 选择器</a></li>
+<li><a href="css_syntax_05.html">CSS 类选择器</a></li>
+<li><a href="css_howto.html">CSS How To</a></li>
+<li><a href="css_background.html">CSS 背景</a></li>
+<li><a href="css_text.html">CSS 文本</a></li>
+<li><a href="css_font.html">CSS 字体</a></li>
+<li><a href="css_list.html">CSS 列表</a></li>
+<li><a href="css_table.html">CSS 表格</a></li>
+</ul>
+<h2>CSS 框模型</h2>
+<ul>
+<li><a href="css_boxmodel.html">CSS 框模型概述</a></li>
+<li><a href="css_padding.html">CSS 内边距</a></li>
+<li><a href="css_border.html">CSS 边框</a></li>
+<li><a href="css_margin.html">CSS 外边距</a></li>
+<li><a href="css_margin_collapsing.html">CSS 外边距合并</a></li>
+</ul>
+<h2>CSS 定位</h2>
+<ul>
+<li><a href="css_positioning.html">CSS 定位概述</a></li>
+<li><a href="css_positioning_relative.html">CSS 相对定位</a></li>
+<li><a href="css_positioning_absolute.html">CSS 绝对定位</a></li>
+<li><a href="css_positioning_floating.html">CSS 浮动</a></li>
+</ul>
+<h2>CSS 高级</h2>
+<ul>
+<li><a href="css_dimension.html">CSS 尺寸</a></li>
+<li><a href="css_classification.html">CSS 分类</a></li>
+<li><a href="css_pseudo_classes.html">CSS 伪类</a></li>
+<li><a href="css_pseudo_elements.html">CSS 伪元素</a></li>
+<li><a href="css_mediatypes.html">CSS 媒介类型</a></li>
+<li><a href="css_dont.html">CSS Don't</a></li>
+<li><a href="css_summary.html">CSS 总结</a></li>
+</ul>
+<h2>CSS 实例</h2>
+<ul>
+<li><a href="../example/csse_examples.html">CSS 实例</a></li>
+</ul>
+<h2>参考手册</h2>
+<ul>
+<li><a href="css_reference.html">CSS2 参考手册</a></li>
+<li><a href="css_ref_print.html">CSS2 打印</a></li>
+<li><a href="css_ref_aural.html">CSS2 听觉</a></li>
+<li><a href="css_units.html">CSS2 单位</a></li>
+</ul>
+<h2>CSS Quiz</h2>
+<ul>
+<li><a href="css_quiz.html">CSS 测验</a></li>
+</ul>
+</div>
+<div id="selected">
+<h2>建站手册</h2>
+<ul>
+<li><a href="../site/">网站构建</a></li>
+<li><a href="../w3c/">万维网联盟</a></li>
+<li><a href="http://e.v-get.com/w3c/">W3CSchool 教程</a></li>
+<li><a href="../quality/">网站品质</a></li>
+<li><a href="../semweb/">语义网</a></li>
+<li><a href="../hosting/">网站主机</a></li>
+</ul>
+<h2><a href="http://e.v-get.com/w3c/" class="f13">W3CSchool 教程</a></h2><div class="a120x90"><script type="text/javascript">var cpro_id="u1210867";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div></div>
+</div>
+<div id="maincontent">
+<h1>CSS 框模型概述</h1>
+<div id="tpn">
+<ul class="prenext">
+<li class="pre"><a href="css_table.html">上一页</a></li>
+<li class="next"><a href="css_padding.html">下一页</a></li>
+</ul>
+</div>
+<div id="intro">
+<p><strong>CSS 框模型 (Box Model) 规定了元素框处理元素内容、<a href="css_padding.html">内边距</a>、<a href="css_border.html">边框</a> 和 <a href="css_margin.html">外边距</a> 的方式。</strong></p>
+</div>
+<div class="example">
+<h2>CSS 框模型概述</h2>
+<img src="../i/ct_boxmodel.gif" alt="" />
+<p>元素框的最内部分是实际的内容，直接包围内容的是内边距。内边距呈现了元素的背景。内边距的边缘是边框。边框以外是外边距，外边距默认是透明的，因此不会遮挡其后的任何元素。</p>
+<p>内边距、边框和外边距都是可选的，默认值是零。但是，许多元素将由用户代理样式表设置外边距和内边距。可以通过将元素的 margin 和 padding 设置为零来覆盖这些浏览器样式。这可以分别进行，也可以使用通用选择器对所有元素进行设置：</p>
+<pre>
+* {
+  margin: 0;
+  padding: 0;
+}
+</pre>
+<p>在 CSS 中，width 和 height 指的是内容区域的宽度和高度。增加内边距、边框和外边距不会影响内容区域的尺寸，但是会增加元素框的尺寸。</p>
+<p>假设框的每个边上有 10 个像素的外边距和 5 个像素的内边距。如果希望这个元素框达到 100 个像素，就需要将内容的宽度设置为 70 像素，请看下图：</p>
+<img src="../i/ct_css_boxmodel_example.gif" alt="" />
+<pre>
+#box {
+  width: 70px;
+  margin: 10px;
+  padding: 5px;
+}
+</pre>
+<p class="tip"><span>提示：</span>内边距、边框和外边距可以应用于一个元素的所有边，也可以应用于单独的边。</p>
+<p class="tip"><span>提示：</span>外边距可以是负值，而且在很多情况下都要使用负值的外边距。</p>
+</div>
+<div>
+<h2>浏览器兼容性</h2>
+<p>一旦为页面设置了恰当的 DTD，大多数浏览器都会按照上面的图示来呈现内容。然而 IE 5 和 6 的呈现却是不正确的。根据 W3C 的规范，元素内容占据的空间是由 width 属性设置的，而内容周围的 padding 和 border 值是另外计算的。不幸的是，IE5.X 和 6 在怪异模式中使用自己的非标准模型。这些浏览器的 width 属性不是内容的宽度，而是内容、内边距和边框的宽度的总和。</p>
+<p>虽然有方法解决这个问题。但是目前最好的解决方案是回避这个问题。也就是，不要给元素添加具有指定宽度的内边距，而是尝试将内边距或外边距添加到元素的父元素和子元素。</p>
+<h3>术语翻译</h3>
+<ul>
+<li>element : 元素。</li>
+<li>padding : 内边距，也有资料将其翻译为填充。</li>
+<li>border : 边框。</li>
+<li>margin : 外边距，也有资料将其翻译为空白或空白边。</li>
+</ul>
+<p>在 W3CSchool，我们把 padding 和 margin 统一地称为内边距和外边距。边框内的空白是内边距，边框外的空白是外边距，很容易记吧：）</p>
+</div>
+<div  id="bpn">
+<ul class="prenext">
+<li class="pre"><a href="css_table.html">上一页</a></li>
+<li class="next"><a href="css_padding.html">下一页</a></li>
+</ul>
+</div>
+</div>
+<div id="sidebar">
+<div class="rs"></div>
+<div id="tools">
+<h5 id="tools_reference"><a href="css_reference.html">CSS 参考手册</a></h5>
+<h5 id="tools_example"><a href="../example/csse_examples.html">CSS 实例</a></h5>
+<h5 id="tools_quiz"><a href="css_quiz.html">CSS 测验</a></h5>
+</div>
+<div class="a120x600"><script type="text/javascript">var cpro_id="u1293136";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div><div class="b"></div>
+</div>
+</body>
+</html>

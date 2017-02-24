@@ -1,0 +1,92 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>彩色校验码的制作</title>
+<style type="text/css">
+<!--
+body {
+	font-size: 10.4pt;
+	line-height: 22px;
+}
+-->
+</style>
+</head>
+
+<body bgcolor="eeeeee" leftmargin="20" marginwidth="20">
+<p><strong>彩色校验码的制作</strong></p>
+<hr>
+<p> 要读懂这些代码主要是要了解ASP中操作二进制数据的对象ADODB.Stream！本程序主要用的就是Adodb.Stream，如果你有这个基础，就可以进一步添加更多的功能如加入杂点，渐变底色，数字行列错位，笔画短点，提高被ocr识别的不可能。目前还没有好的识别引擎,昨天下载了个号称能识别图像验证码90%的！把4321识别成 
+  89910,所以图像码还是比较安全的。</p>
+<p> 在网上看到有暴力破解的方法，如果我用图像附加码+禁止外部提交+10次密码错误封帐号 +50次密码错误琐死IP+10秒的防刷新间隔注册页，登陆页均要加上+禁止外部提交，这样,暴力破解应该就没戏了。</p>
+<p>Asp文件：Code.Asp<br>
+  数据文件：body.Fix , Head.Fix<br>
+  用法：&lt;img src=&quot;code.asp&quot;&gt;</p>
+<p>Response.buffer = true<br>
+  NumCode</p>
+<p>Function NumCode()<br>
+  Response.Expires = -1<br>
+  Response.AddHeader &quot;Pragma&quot;,&quot;no-cache&quot;<br>
+  Response.AddHeader &quot;cache-ctrol&quot;,&quot;no-cache&quot;<br>
+  dim zNum,i,j<br>
+  dim Ados,Ados1<br>
+  Randomize timer<br>
+  生成随机四位数字：<br>
+  zNum = cint(8999*Rnd+1000)<br>
+  传递给session<br>
+  Session(&quot;GetCode&quot;) = zNum<br>
+  该for循环是将随机数字放入一个下标3的数组，便于提供给后面的阵列变换<br>
+  dim zimg(3),NStr<br>
+  NStr=cstr(zNum)<br>
+  For i=0 to 3<br>
+  zimg(i)=cint(mid(NStr,i+1,1))<br>
+  Next<br>
+  dim Pos</p>
+<p>'定义二个 ADODB.Stream binary对象,作图像数据操作之用:</p>
+<p>set Ados=Server.CreateObject(&quot;Adodb.Stream&quot;)<br>
+  Ados.Mode=3<br>
+  Ados.Type=1<br>
+  Ados.Open<br>
+  set Ados1=Server.CreateObject(&quot;Adodb.Stream&quot;)<br>
+  Ados1.Mode=3<br>
+  Ados1.Type=1<br>
+  Ados1.Open<br>
+  '载入0~9的数字数据10x100的，Gbr的阵列数据,每个320字节,10个数字3200byte<br>
+  'BGR一个点,10x10个点一个数字，一个点三个字节(二进制8位，16进制 00~FF)<br>
+  '一行10个点 30字节 + 行结束标记 00 00 二字节 32字节，所以一个10x100宽小于长的图像每个数字10x10是320字节<br>
+  '长大于宽的则无行结束标记 0000,直接是300字节<br>
+  这些就是BMP 24bit的数据详细信息了<br>
+  ‘至于头部，也很简单，包含长宽，图像开始标记等等~~才54字节，远没jpg什么的复杂</p>
+<p>Ados.LoadFromFile(Server.mappath(&quot;body.Fix&quot;))<br>
+  Ados1.write Ados.read(1280)<br>
+  '第一个for循环,按生成的随机数字顺序从 10X100的数字阵列中提取出相应的四个数字<br>
+  但是竖排的数字阵列<br>
+  for i=0 to 3<br>
+  Ados.Position=(9-zimg(i))*320<br>
+  Ados1.Position=i*320<br>
+  Ados1.write ados.read(320)<br>
+  next<br>
+  '清空已经用完的ADOS的数据，调入替换新的图像头54字节的头文件 <br>
+  Ados.LoadFromFile(Server.mappath(&quot;head.fix&quot;))<br>
+  Pos=lenb(Ados.read())<br>
+  Ados.Position=Pos '指定Pos位置,即可再偏移54字节的位置添加图形数据<br>
+  第二个for循环，进行数字的阵列变换，由竖排的块转换为横排的数字块<br>
+  方法是隔320字节抽取4次30字节写入ados对象，再抽取偏移第二行的图像数据<br>
+  30字节是因为bmp 宽大于长时无00 00的行结束标记<br>
+  for i=0 to 9 step 1<br>
+  for j=0 to 3<br>
+  Ados1.Position=i*32+j*320<br>
+  Ados.Position=Pos+30*j+i*120<br>
+  Ados.write ados1.read(30)<br>
+  next<br>
+  next<br>
+  Ados.Position=0<br>
+  response.BinaryWrite直接向客户端发送图像数据<br>
+  Response.ContentType = &quot;image/BMP&quot;<br>
+  Response.BinaryWrite Ados.read()<br>
+  Ados.Close:set Ados=nothing<br>
+  Ados1.Close:set Ados1=nothing<br>
+  End Function</p>
+<p></p>
+</body>
+</html>

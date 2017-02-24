@@ -1,0 +1,146 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="../c3.css" />
+<title>HTML 页面中的 SVG</title>
+</head>
+<body class="multimedia">
+<div id="wrapper">
+<div id="header">
+<a href="http://e.v-get.com/w3cschool/" style="float:left;">W3CSchool 在线教程</a>
+<div class="q g"><script type="text/javascript">var cpro_id="u1163355"</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div>
+<div id="navfirst">
+<ul id="menu">
+<li id="h"><a href="../h.html">HTML教程</a></li>
+<li id="x"><a href="../x.html">XML教程</a></li>
+<li id="b"><a href="../b.html">浏览器脚本</a></li>
+<li id="s"><a href="../s.html">服务器脚本</a></li>
+<li id="d"><a href="../d.html">dot net教程</a></li>
+<li id="m"><a href="../m.html">多媒体教程</a></li>
+<li id="w"><a href="../w.html">建站手册</a></li>
+</ul>
+</div><div id="navsecond">
+<div id="course">
+<h2>SVG 基础</h2>
+<ul>
+<li><a href="http://e.v-get.com/w3cschool/">SVG 首页</a></li>
+<li><a href="svg_intro.html">SVG 简介</a></li>
+<li><a href="svg_example.html">SVG 实例</a></li>
+<li><a href="svg_inhtml.html">SVG in HTML</a></li>
+</ul>
+<h2>SVG 形状</h2>
+<ul>
+<li><a href="svg_rect.html">SVG 矩形</a></li>
+<li><a href="svg_circle.html">SVG 圆形</a></li>
+<li><a href="svg_ellipse.html">SVG 椭圆</a></li>
+<li><a href="svg_line.html">SVG 线条</a></li>
+<li><a href="svg_polygon.html">SVG 多边形</a></li>
+<li><a href="svg_polyline.html">SVG 折线</a></li>
+<li><a href="svg_path.html">SVG 路径</a></li>
+</ul>
+<h2>SVG 滤镜</h2>
+<ul>
+<li><a href="svg_filters_intro.html">SVG 滤镜简介</a></li>
+<li><a href="svg_filters_gaussian.html">SVG 高斯滤镜</a></li>
+</ul>
+<h2>SVG 渐变</h2>
+<ul>
+<li><a href="svg_grad_linear.html">SVG 线形渐变</a></li>
+<li><a href="svg_grad_radial.html">SVG 放射渐变</a></li>
+</ul>
+<h2>SVG 实例</h2>
+<ul>
+<li><a href="svg_examples.html">SVG 实例</a></li>
+</ul>
+<h2>SVG 参考</h2>
+<ul>
+<li><a href="svg_reference.html">SVG 元素</a></li>
+</ul>
+</div>
+<div id="selected">
+<h2>建站手册</h2>
+<ul>
+<li><a href="../site/">网站构建</a></li>
+<li><a href="../w3c/">万维网联盟</a></li>
+<li><a href="http://e.v-get.com/w3c/">W3CSchool 教程</a></li>
+<li><a href="../quality/">网站品质</a></li>
+<li><a href="../semweb/">语义网</a></li>
+<li><a href="../hosting/">网站主机</a></li>
+</ul>
+<h2><a href="http://e.v-get.com/w3c/" class="f13">W3CSchool 教程</a></h2><div class="a120x90"><script type="text/javascript">var cpro_id="u1210867";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div></div>
+</div>
+<div id="maincontent">
+<h1>HTML 页面中的 SVG</h1>
+<div id="tpn">
+<ul class="prenext">
+<li class="pre"><a href="svg_example.html">上一页</a></li>
+<li class="next"><a href="svg_rect.html">下一页</a></li>
+</ul>
+</div>
+<div class="intro">
+<p><strong>SVG 文件可通过以下标签嵌入 HTML 文档：&lt;embed&gt;、&lt;object&gt; 或者 &lt;iframe&gt;。</strong></p>
+</div>
+<div>
+<h2>HTML 页面中的 SVG</h2>
+<p>下面，你会看到三种把 SVG 文件嵌入 HTML 页面的不同方法。</p>
+</div>
+<div>
+<h2>使用 &lt;embed&gt; 标签</h2>
+<p>&lt;embed&gt; 标签被所有主流的浏览器支持，并允许使用脚本。</p>
+<p class="note"><span>注释：</span>当在 HTML 页面中嵌入 SVG 时使用 &lt;embed&gt; 标签是 Adobe SVG Viewer 推荐的方法！然而，如果需要创建合法的 XHTML，就不能使用 &lt;embed&gt;。任何 HTML 规范中都没有 &lt;embed&gt; 标签。</p>
+<h3>语法：</h3>
+<pre>&lt;embed src=&#34;rect.svg&#34; width=&#34;300&#34; height=&#34;100&#34; 
+type=&#34;image/svg+xml&#34;
+pluginspage=&#34;http://www.adobe.com/svg/viewer/install/&#34; /&gt;</pre>
+<p class="note"><span>注释：</span>pluginspage 属性指向下载插件的 URL。</p>
+</div>
+<div>
+<h2>使用 &lt;object&gt; 标签</h2>
+<p>&lt;object&gt; 标签是 HTML 4 的标准标签，被所有较新的浏览器支持。它的缺点是不允许使用脚本。</p>
+<p class="note"><span>注释：</span>假如您安装了最新版本的 Adobe SVG Viewer，那么当使用 &lt;object&gt; 标签时 SVG 文件无法工作 (至少不能在 IE 中工作）！</p>
+<h3>语法：</h3>
+<pre>&lt;object data=&#34;rect.svg&#34; width=&#34;300&#34; height=&#34;100&#34; 
+type=&#34;image/svg+xml&#34;
+codebase=&#34;http://www.adobe.com/svg/viewer/install/&#34; /&gt;</pre>
+<p class="note"><span>注释：</span>codebase 属性指向下载插件的 URL。</p>
+</div>
+<div>
+<h2>使用 &lt;iframe&gt; 标签</h2>
+<p>&lt;iframe&gt; 标签可工作在大部分的浏览器中。</p>
+<h3>语法：</h3>
+<pre>&lt;iframe src=&#34;rect.svg&#34; width=&#34;300&#34; height=&#34;100&#34;&gt;
+&lt;/iframe&gt;</pre>
+</div>
+<div>
+<h2>我期望....</h2>
+<p>如果仅仅通过引用 SVG 的命名空间，就能够把 SVG 元素之间添加到 HTML 代码中，那就太棒了，这像这样：</p>
+<pre>&lt;html xmlns:svg=&#34;http://www.w3.org/2000/svg&#34;&gt;
+&lt;body&gt;
+&lt;p&gt;This is an HTML paragraph&lt;/p&gt;
+&lt;svg:svg width=&#34;300&#34; height=&#34;100&#34; version=&#34;1.1&#34; &gt;
+&lt;svg:circle cx=&#34;100&#34; cy=&#34;50&#34; r=&#34;40&#34; stroke=&#34;black&#34;
+stroke-width=&#34;2&#34; fill=&#34;red&#34; /&gt;
+&lt;/svg:svg&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+</div>
+<div id="bpn">
+<ul class="prenext">
+<li class="pre"><a href="svg_example.html">上一页</a></li>
+<li class="next"><a href="svg_rect.html">下一页</a></li>
+</ul>
+</div>
+</div>
+<div id="sidebar">
+<div class="rs"></div>
+<div id="tools">
+<h5 id="tools_reference"><a href="svg_reference.html">SVG 参考手册</a></h5>
+<h5 id="tools_example"><a href="svg_examples.html">SVG 实例</a></h5>
+</div>
+<div class="a120x600"><script type="text/javascript">var cpro_id="u1293136";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div><div class="b"></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,931 @@
+<html>
+<head>
+<title>选择节点的表达式</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+
+<link rel = stylesheet href = "image/style.css">
+</head>
+<body bgcolor="#ffffff">
+<table width="688" border="0" cellspacing="0" cellpadding="0" align="center">
+  <tr bgcolor="EEEEEE"> 
+    <td height="22"><a href="index.htm">主页</a></td>
+  </tr>
+</table><br>
+<table border="0" cellpadding="0" cellspacing="0" width="688" align="center" height="490">
+  <tr valign="top"> 
+    <td rowspan="4" width="91">&nbsp; </td>
+    <td height="68" width="131"> 
+      <p><img src="image/doc.gif"></p>
+    </td>
+    <td rowspan="4" width="18"><b></b> </td>
+    <td height="68" width="387"><img src="image/title_doc.gif"></td>
+    <td rowspan="4" width="61"> 
+      <h6>&nbsp;</h6>
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td rowspan="3" valign="top" class="pt10" align="center" width="131" bgcolor="EEEEEE"> 
+      <p>&nbsp;</p>
+      <p><font color="#FF0000">※ 14.7 选择节点的表达式</font></p>
+       
+	</td>
+  </tr>
+  <tr valign="top"> 
+    <td width="387" height="308"> 
+      <table width="100%" border="0" cellpadding="0">
+        <tr> 
+          <td>
+
+           <p></p>
+<h4><a name="_Toc467207156">14.7 选择节点的表达式</a></h4>
+<p>在xsl:apply-templates、xsl: value-of、xsl:for-each、xsl:copy-of和xsl:sort中，可使用select特性来精确指定对哪个节点进行操作。此特性值即为表达式（expression）。表达式是前节讨论的匹配模式的超集。也就是说，所有的匹配模式都是选择表达式，但并非所有的选择表达式都是匹配模式。让我们来回顾一下，匹配模式能够使用元素名、子元素、后代以及特性来匹配节点，除此之外，还可以对这些项目进行简单的测试。选择表达式可以使用所有的这些条件来选择节点，而且还可以通过参考父元素、同属元素来选择节点，以及通过更加复杂的测试来选择节点。此外，表达式并不局限于只生成一组节点列表，而且还产生布尔值、数值和字符串。</p>
+<h5><a name="_Toc467207157">14.7.1 节点轴</a></h5>
+<p>表达式并不局限于指定当前节点的子节点和后代节点。XSL提供许多轴（axe），使用这些轴可以从相对于当前节点（通常为模板匹配的节点）的树形结构的不同部分进行选择。表14-2概述了这些轴及其含义。</p>
+<p></p>
+<p>　</p>
+<p align="center">表14-2 表达式的轴</p>
+<p>
+<center>
+  <table BORDER cellspacing=1 cellpadding=7 width=511>
+    <tr>
+      <td width="44%" valign="TOP"> 
+        <p>轴
+      </td>
+      <td width="56%" valign="TOP"> 
+        <p>选自于
+      </td>
+    </tr>
+    <tr>
+      <td width="44%" valign="TOP"> 
+        <p>from-ancestors()
+      </td>
+      <td width="56%" valign="TOP"> 
+        <p>当前节点的父节点、当前节点的父节点的父节点、当前节点的父节点的父节点的父节点，依次类推至根节点
+      </td>
+    </tr>
+    <tr>
+      <td width="44%" valign="TOP"> 
+        <p>from-ancestors-or-self()
+      </td>
+      <td width="56%" valign="TOP"> 
+        <p>当前节点的后代以及当前节点本身
+      </td>
+    </tr>
+    <tr>
+      <td width="44%" valign="TOP"> 
+        <p>from-attributes()
+      </td>
+      <td width="56%" valign="TOP"> 
+        <p>当前节点的特性
+      </td>
+    </tr>
+    <tr>
+      <td width="44%" valign="TOP"> 
+        <p>from-children()
+      </td>
+      <td width="56%" valign="TOP"> 
+        <p>当前节点的直系子节点
+      </td>
+    </tr>
+    <tr>
+      <td width="44%" valign="TOP"> 
+        <p>from-descendants()
+      </td>
+      <td width="56%" valign="TOP"> 
+        <p>当前节点的子节点、当前节点的子节点的子节点，依次类推
+      </td>
+    </tr>
+    <tr>
+      <td width="44%" valign="TOP"> 
+        <p>from-descendants-or-self()
+      </td>
+      <td width="56%" valign="TOP"> 
+        <p>当前节点本身及其后代节点
+      </td>
+    </tr>
+    <tr>
+      <td width="44%" valign="TOP"> 
+        <p>from-following()
+      </td>
+      <td width="56%" valign="TOP"> 
+        <p>起始于当前节点末尾之后的所有节点
+      </td>
+    </tr>
+    <tr>
+      <td width="44%" valign="TOP"> 
+        <p>from-following-siblings()
+      </td>
+      <td width="56%" valign="TOP"> 
+        <p>起始于当前节点末尾之后并且与当前节点具有同一个父节点的所有节点
+      </td>
+    </tr>
+    <tr>
+      <td width="44%" valign="TOP"> 
+        <p>from-parent()
+      </td>
+      <td width="56%" valign="TOP"> 
+        <p>当前节点的单一父节点
+      </td>
+    </tr>
+    <tr>
+      <td width="44%" valign="TOP"> 
+        <p>from-preceding()
+      </td>
+      <td width="56%" valign="TOP"> 
+        <p>当前节点开始之前开始的所有节点
+      </td>
+    </tr>
+    <tr>
+      <td width="44%" valign="TOP"> 
+        <p>from-preceding- siblings()
+      </td>
+      <td width="56%" valign="TOP"> 
+        <p>当前节点开始之前开始的所有节点并且与当前节点具有同一个父节点的所有节点
+      </td>
+    </tr>
+    <tr>
+      <td width="44%" valign="TOP"> 
+        <p>from-self()
+      </td>
+      <td width="56%" valign="TOP"> 
+        <p>当前节点
+      </td>
+    </tr>
+  </table>
+</center>
+<p></p>
+<p><img src="Image/BK000214-17.gif" width=47 height=52 align="left"> from-following和from-preceding轴不可靠，可能不会包括在XSL的最终发布版中。如果包括在XSL的最终发布版中，其准确的含义可能会改变。</p>
+<p>&nbsp; </p>
+<p>这些轴的功能是选择表14-2第二列中列出的节点。圆括号中包括要进一步对此节点列表筛选的选择表达式。例如，可能包括由下列模板规则选择的元素名称：</p>
+<p>&lt;xsl:template match="ATOM"&gt;</p>
+<p> &lt;tr&gt;</p>
+<p> &lt;td&gt;</p>
+<p> &lt;xsl:value-of select="from-children(NAME)"/)</p>
+<p> &lt;/td&gt;</p>
+<p> &lt;td&gt;</p>
+<p> &lt;xsl:value-of select="from-children(ATOMIC_NUMBER)"/&gt;</p>
+<p> &lt;/td&gt;</p>
+<p> &lt;td&gt;</p>
+<p> &lt;xsl:value-of select="from-children(ATOMIC_WEIGHT)"/&gt;</p>
+<p> &lt;/td&gt;</p>
+<p> &lt;/tr&gt;</p>
+<p>&lt;/xsl:template&gt;</p>
+<p>此模板规则匹配ATOM元素。当ATOM元素匹配时，NAME元素、ATOMIC_NUMBER元素和ATOMIC_WEIGHT都从此匹配的ATOM元素的子元素中选择，并作为表的单元格输出。（如果有多个期待的元素&#0;&#0;例如，三个NAME元素&#0;&#0;那么，只选择第一个。）</p>
+<p>from-children()轴不允许做单独使用元素名不能做的任何事情。实际上，select="ATOMIC_WEIGHT"只是select = "from-children 
+  (ATOMIC_WEIGHT)”的缩写形式。但是，其他轴更令人感兴趣。</p>
+<p>在匹配模式时引用父元素是不合法的，但在选择表达式中引用则是合法。要引用父元素，可使用from-parent()轴。例如，下面的规则输出具有BOILING_POINT子元素的ATOM元素的值：</p>
+<p>&lt;xsl:template match="ATOM/BOILING_POINT"&gt;</p>
+<p> &lt;P&gt;&lt;xsl:value-of select="from-parent(ATOM)"/&gt;&lt;/P&gt;</p>
+<p>&lt;/xsl:template&gt;</p>
+<p>这里匹配的是BOILING_POINT子元素，但输出的是ATOM父元素。</p>
+<p>有些放射性原子（如钋）其半衰期是如此之短，以致无法测量重要的性质（如沸点和熔点）。所以并非所有的ATOM元素都必须有BOILING_POINT子元素。上面的规则可用来只输出实际上有沸点的元素。清单14-10是此例的扩展，它匹配BOILING_POINT元素，但实际上使用from-parent(ATOM)输出ATOM父元素。</p>
+<p>清单14-10：只输出有已知熔点的元素的样式单</p>
+<p>&lt;?xml version="1.0"?&gt;</p>
+<p>&lt;xsl:stylesheet</p>
+<p>xmlns:xsl="http://www.w3.org/XSL/Transform/1.0"&gt;</p>
+<p></p>
+<p> &lt;xsl:template match="/"&gt;</p>
+<p> &lt;html&gt;</p>
+<p> &lt;body&gt;</p>
+<p> &lt;xsl:apply-templates select="PERIODIC_TABLE"/&gt;</p>
+<p> &lt;/body&gt;</p>
+<p> &lt;/html&gt;</p>
+<p> &lt;/xsl:template&gt;</p>
+<p></p>
+<p> &lt;xsl:template match="PERIODIC_TABLE"&gt;</p>
+<p> &lt;hl&gt;Elements with known Melting Points&lt;/hl&gt;</p>
+<p> &lt;xsl:apply-templates select="//MELTING_POINT"/&gt;</p>
+<p> &lt;/xsl:template&gt;</p>
+<p></p>
+<p> &lt;xsl:template match="MELTING_POINT"&gt;</p>
+<p> &lt;P&gt;</p>
+<p> &lt;xsl:value-of select="from-parent(ATOM)"/&gt;</p>
+<p> &lt;/P&gt;</p>
+<p> &lt;/xsl:template&gt;</p>
+<p>&lt;/xsl:stylesheet&gt;</p>
+<p>偶尔，可能需要选择给定类型元素的最近的祖先。使用from-ancestors()就可以做到这一点。例如，下面的规则插入最近的PERIODIC_TABLE元素（包含匹配的SYMBOL元素）的值。</p>
+<p>&lt;xsl:template match="SYMBOL"&gt;</p>
+<p> &lt;xsl:value-of select="from-ancestors(PERIODIC_TABLE)"/&gt;</p>
+<p>&lt;/xsl:template&gt;</p>
+<p>from-ancestors-or-self()函数的作用与from-ancestors()函数相似，所不同的是，如果当前节点与参数类型匹配，那么它的返回值为其本身，而不是真正的祖先。例如，下面的规则匹配所有元素。如果匹配的元素是PERIODIC_TABLE，那么在xsl:value-of中选择的正是PERIODIC_TABLE。</p>
+<p>&lt;xsl:template match="*"&gt;</p>
+<p>&lt;xsl:value-of select="from-ancestors-or-self(PERIODIC_TABLE)"/&gt;</p>
+<p>&lt;/xsl:template&gt;</p>
+<p><b>14.7.1.1 节点类型</b></p>
+<p></p>
+<p>from-axis()函数的参数，除了可以使用节点名称和通配符之外，还可以是下列四个节点类型函数之一：</p>
+<ul>
+  <p>
+  <li>comment()</li>
+  <p></p>
+  <p>
+  <li>text()</li>
+  <p></p>
+  <p>
+  <li>pi()</li>
+  <p></p>
+  <p>
+  <li>node()</li>
+  <p></p>
+</ul>
+<p>comment()节点类型选择注释节点。text()节点类型选择文本节点。pi()节点类型选择处理指令节点，而node()节点类型选择任何类型的节点（*通配符只选择元素节点）。pi()节点类型还有一个可选的参数，用来指定要选择的处理指令的名称。</p>
+<p>例如，下面的规则同时使用带有node()节点类型的from-self()，将匹配的ATOM元素封装在P元素中：</p>
+<p>&lt;xsl:template match="ATOM"&gt;</p>
+<p> &lt;P&gt;&lt;xsl:value-of select="from-self(node())"/&gt;&lt;/P&gt;</p>
+<p>&lt;/xsl:template&gt;</p>
+<p>这里，选择from-self(node())与选择ATOM是不同的。下面的这个规则获取ATOM元素的ATOM子元素的值。此值不是匹配的ATOM元素的值，而是匹配ATOM元素的一个子元素的另一个ATOM元素值：</p>
+<p>&lt;xsl:template match="ATOM"&gt;</p>
+<p> &lt;P&gt;&lt;xsl:value of select="ATOM"/&gt;&lt;/P&gt;</p>
+<p>&lt;/xsl:template&gt;</p>
+<p> 
+<p><b>14.7.1.2 层次操作符</b></p>
+<p></p>
+<p>可以使用/和//操作符来将选择表达式串联在一起。例如，清单14-11只将有熔点的那些元素的元素名、原子序数和熔点打印成表。要实现此目的，选择MELTING_POINT元素的父元素，然后使用select="from-parent(*)/from-children(NAME)"来查找父元素的NAME和ATOMIC_NUMBER子元素。</p>
+<p>清单14-11：熔点与原子序数表</p>
+<p>&lt;?xml version="1.0"?&gt;</p>
+<p>&lt;xsl:stylesheet</p>
+<p> xmlns:xsl="http://www.w3.org/XSL/Transform/1.0"&gt;</p>
+<p></p>
+<p> &lt;xsl:template match="/PERIODIC_TABLE"&gt;</p>
+<p> &lt;html&gt;</p>
+<p> &lt;body&gt;</p>
+<p> &lt;hl&gt;Atomic Number vs. Melting Point&lt;/hl&gt;</p>
+<p> &lt;table&gt;</p>
+<p> &lt;th&gt;Element&lt;/th&gt;</p>
+<p> &lt;th&gt;Atomic Number&lt;/th&gt;</p>
+<p> &lt;th&gt;Melting Point&lt;/th&gt;</p>
+<p> &lt;xsl:apply-templates select "from-children(ATOM)"/&gt;</p>
+<p> &lt;/table&gt;</p>
+<p> &lt;/body&gt;</p>
+<p> &lt;/html&gt;</p>
+<p> &lt;/xsl:template&gt;</p>
+<p></p>
+<p> &lt;xsl:template match="ATOM"&gt;</p>
+<p> &lt;xsl:apply-templates</p>
+<p> select="from-children(MELTING_POINT)"/&gt;</p>
+<p> &lt;/xsl:template&gt;</p>
+<p></p>
+<p> &lt;xsl:template match="MELTING_POINT"&gt;</p>
+<p> &lt;tr&gt;</p>
+<p> &lt;td&gt;</p>
+<p> &lt;xsl:value-of</p>
+<p> select="from-parent(*)/from-children(NAME)"/&gt;</p>
+<p> &lt;/td&gt;</p>
+<p> &lt;td&gt;</p>
+<p> &lt;xsl:value-of</p>
+<p> select="from-parent(*)/from-children(ATOMIC_NUMBER)"/&gt;</p>
+<p> &lt;/td&gt;</p>
+<p> &lt;td&gt;</p>
+<p> &lt;xsl:value-of select="from-self(*)"/&gt;</p>
+<p> &lt;xsl:value-of select="from-attributes(UNITS)"/&gt;</p>
+<p> &lt;/td&gt;</p>
+<p> &lt;/tr&gt;</p>
+<p> &lt;/xsl:template&gt;</p>
+<p></p>
+<p>&lt;/xsl:stylesheet&gt;</p>
+<p>这并不是解决这一问题的唯一方法。另外一种可能的方法是使用from-preceding-siblings()和from-following-siblings()轴或相对位置（前面或后面）不确定时同时使用两者。用于MELTING_POINT元素的必要模板规则如下所示：</p>
+<p>&lt;xsl:template match="MELTING_POINT"&gt;</p>
+<p> &lt;tr&gt;</p>
+<p> &lt;td&gt;</p>
+<p> &lt;xsl:value-of</p>
+<p> select="from-preceding-siblings(NAME)</p>
+<p> | from-following-siblings(NAME)"/&gt;</p>
+<p> &lt;/td&gt;</p>
+<p> &lt;td&gt;</p>
+<p> &lt;xsl:value-of</p>
+<p> select="from-preceding-siblings(ATOMIC_NUMBER)</p>
+<p> | from-following-siblings(ATOMIC_NUMBER)"/&gt;</p>
+<p> &lt;/td&gt;</p>
+<p> &lt;td&gt;</p>
+<p> &lt;xsl:value-of select="from-self(*)"/&gt;</p>
+<p> &lt;xsl:value-of select="from-attributes(UNITS)"/&gt;</p>
+<p> &lt;/td&gt;</p>
+<p> &lt;/tr&gt;</p>
+<p>&lt;/xsl:template&gt;</p>
+<p> 
+<p><b>14.7.1.3 缩写句法</b></p>
+<p></p>
+<p>表14-2中的各种from-axis()函数对于轻松的打字工作来说过于冗长。XSL还定义了缩写句法，以便代替最常用的轴，在实际过程中使用更广。表14-3显示的是完整句法形式与缩写词的对等关系。</p>
+<p>表14-3 选择表达式的缩写句法</p>
+<p>
+<center>
+  <table BORDER cellspacing=1 cellpadding=7 width=441>
+    <tr>
+      <td width="30%" valign="TOP"> 
+        <p>缩写词
+      </td>
+      <td width="70%" valign="TOP"> 
+        <p>完整句法形式
+      </td>
+    </tr>
+    <tr>
+      <td width="30%" valign="TOP"> 
+        <p>.
+      </td>
+      <td width="70%" valign="TOP"> 
+        <p>from-self(node())
+      </td>
+    </tr>
+    <tr>
+      <td width="30%" valign="TOP"> 
+        <p>..
+      </td>
+      <td width="70%" valign="TOP"> 
+        <p>from-parent(node())
+      </td>
+    </tr>
+    <tr>
+      <td width="30%" valign="TOP"> <i>
+        <p>Name
+        </i></td>
+      <td width="70%" valign="TOP"> 
+        <p>from-children(<i>name</i>)
+      </td>
+    </tr>
+    <tr>
+      <td width="30%" valign="TOP"> 
+        <p>@<i>name</i>
+      </td>
+      <td width="70%" valign="TOP"> 
+        <p>from-attributes(<i>name</i>) 
+      </td>
+    </tr>
+    <tr>
+      <td width="30%" valign="TOP"> 
+        <p>//
+      </td>
+      <td width="70%" valign="TOP"> 
+        <p>/from-descendants-or-self(node())/
+      </td>
+    </tr>
+  </table>
+</center>
+<p></p>
+<p>使用缩写句法重写清单14-11，得到清单14-12。但这两个样式单所获得的输出结果是完全一样的。</p>
+<p>清单14-12：使用缩写句法获得的熔点和原子序数对照表</p>
+<p>&lt;?xml version="1.0"?&gt;</p>
+<p>&lt;xsl:stylesheet</p>
+<p> xmlns:xsl="http://www.w3.org/XSL/Transform/I.O"&gt;</p>
+<p></p>
+<p> &lt;xsl:template match="/PERIODIC_TABLE"&gt;</p>
+<p> &lt;html&gt;</p>
+<p> &lt;body&gt;</p>
+<p> &lt;hl&gt;Atomic Number vs. Melting Point&lt;/hl&gt;</p>
+<p> &lt;table&gt;</p>
+<p> &lt;th&gt;Element&lt;/th&gt;</p>
+<p> &lt;th&gt;Atomic Number&lt;/th&gt;</p>
+<p> &lt;th&gt;Melting Point&lt;/th&gt;</p>
+<p> &lt;xsl:apply-templates select="ATOM"/&gt;</p>
+<p> &lt;/table&gt;</p>
+<p> &lt;/body&gt;</p>
+<p> &lt;/html&gt;</p>
+<p> &lt;/xsl:template&gt;</p>
+<p></p>
+<p> &lt;xsl:template match="ATOM"&gt;</p>
+<p> &lt;xsl:apply-templates</p>
+<p> select="MELTING_POINT"/&gt;</p>
+<p> &lt;/xsl:template&gt;</p>
+<p></p>
+<p> &lt;xsl:template match="MELTING_POINT"&gt;</p>
+<p> &lt;tr&gt;</p>
+<p> &lt;td&gt;</p>
+<p> &lt;xsl:value-of</p>
+<p> select="../NAME"/&gt;</p>
+<p> &lt;/td&gt;</p>
+<p> &lt;td&gt;</p>
+<p> &lt;xsl:value-of</p>
+<p> select="../ATOMIC_NUMBER"/&gt;</p>
+<p> &lt;/td&gt;</p>
+<p> &lt;td&gt;</p>
+<p> &lt;xsl:value-of select="."/&gt;</p>
+<p> &lt;xsl:value-of select="@UNITS"/&gt;</p>
+<p> &lt;/td&gt;</p>
+<p> &lt;/tr&gt;</p>
+<p> &lt;/xsl:template&gt;</p>
+<p></p>
+<p>&lt;/xsl:stylesheet&gt;</p>
+<p>匹配模式可以只使用缩写句法（并非使用所有的缩写句法）。对于选择表达式，只能使用表14-2中的from-<i>axis</i>()函数的完整句法形式。</p>
+<h5><a name="_Toc467207158">14.7.2 表达式类型</a></h5>
+<p>每个表达式都计算出唯一的值。例如，表达式3+2运算值为5。上面所使用的表达式求出的都是节点集合。但是，在XSL中，有如下五种类型的表达式：</p>
+<ul>
+  <p>
+  <li>节点集合类型</li>
+  <p></p>
+  <p>
+  <li>布尔类型</li>
+  <p></p>
+  <p>
+  <li>数值类型</li>
+  <p></p>
+  <p>
+  <li>字符串类型</li>
+  <p></p>
+  <p>
+  <li>结果树形片段</li>
+  <p></p>
+</ul>
+<p> 
+<p><b>14.7.2.1 节点集合</b></p>
+<p></p>
+<p>节点集合（node set）是输入文档的一组节点的列表。表14-2中的from-<i>axis</i>()函数返回包含匹配节点的节点集合。哪些节点处于某一函数返回的节点集合中，这要根据当前节点（也可以认为是上下文节点）、函数的参数而定，当然也依赖于它是哪个函数。</p>
+<p><img src="Image/BK000214-17.gif" width=47 height=52 align="left">习惯于面向对象语言（如Java和C++）的程序员可能将当前节点看作为调用函数的对象；也就是说，在a.doSomething(b, 
+  c)中，当前节点为a。但是，在XSL中，当前节点总是明确的；也就是说，按照定义a类的文件所规定的形式，更可能写成doSomething(b, c)形式。</p>
+<p>例如当当前节点为例14-1中的PERIODIC_TABLE元素时，表达式select="from-children(ATOM)"返回的节点集合含有两个ATOM元素。当上下文节点为例14-1中的PERIODIC_TABLE元素时，表达式select="from-children(ATOM)/from-children(NAME)" 
+  返回的节点集合含有&lt;NAME&gt; Hydrogen &lt;/NAME&gt;和&lt;NAME&gt; Helium &lt;/NAME&gt;两个元素节点。</p>
+<p>上下文节点（context node）是上下文节点列表（context node list）的一个成员。上下文节点列表是同时都与同一个规则相匹配的元素集合，通常是xsl:apply-templates或xsl:for-each调用的结果。例如，当清单14-12应用于清单14-1时，ATOM模板调用两次，第一次用于氢原子，第二次用于氦原子。第一次调用时，上下文节点就是氢的ATOM元素。第二次调用时，上下文节点就是氦的ATOM元素。但是，在这两次调用中，上下文节点列表则是包含氢和氦的ATOM元素的集合。</p>
+<p>表14-4列举了许多既可以作为参数，也可以作为上下文节点对节点集合进行操作的函数。</p>
+<p align="center">表14-4 对节点集合进行操作的函数</p>
+<p>
+<center>
+  <table BORDER cellspacing=1 cellpadding=7 width=525>
+    <tr>
+      <td width="24%" valign="TOP"> 
+        <p>函数
+      </td>
+      <td width="16%" valign="TOP"> 
+        <p>返回值类型
+      </td>
+      <td width="60%" valign="TOP"> 
+        <p>返回值
+      </td>
+    </tr>
+    <tr>
+      <td width="24%" valign="TOP"> 
+        <p>position()
+      </td>
+      <td width="16%" valign="TOP"> 
+        <p>数值
+      </td>
+      <td width="60%" valign="TOP"> 
+        <p>上下文节点列表中上下文节点的位置。列表中的第一个节点其位置为1
+      </td>
+    </tr>
+    <tr>
+      <td width="24%" valign="TOP"> 
+        <p>last()
+      </td>
+      <td width="16%" valign="TOP"> 
+        <p>数值
+      </td>
+      <td width="60%" valign="TOP"> 
+        <p>上下文节点集合中的节点数
+      </td>
+    </tr>
+    <tr>
+      <td width="24%" valign="TOP"> 
+        <p>count(<i>node-set</i>)
+      </td>
+      <td width="16%" valign="TOP"> 
+        <p>数值
+      </td>
+      <td width="60%" valign="TOP"> 
+        <p>在<i>node-set</i>参数指明的节点集合中的节点数
+      </td>
+    </tr>
+    <tr>
+      <td width="24%" valign="TOP"> 
+        <p>id(<i>string</i>)
+      </td>
+      <td width="16%" valign="TOP"> 
+        <p>节点集合
+      </td>
+      <td width="60%" valign="TOP"> 
+        <p>节点集合，其中只有一个元素（在同一个文档的任何位置）其ID为<i>string</i>；或者空集合（如果任何元素都没有指定的ID）
+      </td>
+    </tr>
+    <tr>
+      <td width="24%" valign="TOP"> 
+        <p>idref(<i>node-set</i>)
+      </td>
+      <td width="16%" valign="TOP"> 
+        <p>节点集合
+      </td>
+      <td width="60%" valign="TOP"> 
+        <p>节点集合，包括文档中的某些元素，其ID属性为在参数<i>node-set</i>中指明节点值中的（以空格分开）记号之一
+      </td>
+    </tr>
+    <tr>
+      <td width="24%" valign="TOP"> 
+        <p>key(<i>string name</i>, <i>string value</i>)
+      </td>
+      <td width="16%" valign="TOP"> 
+        <p>节点集合
+      </td>
+      <td width="60%" valign="TOP"> 
+        <p>节点集合，包括文档中所有具有指定值的关键字的节点。关键字是使用顶层xsl:key元素来设置的
+      </td>
+    </tr>
+    <tr>
+      <td width="24%" valign="TOP"> 
+        <p>keyref(<i>string name</i>, <i>node set values</i>)
+      </td>
+      <td width="16%" valign="TOP"> 
+        <p>节点集合
+      </td>
+      <td width="60%" valign="TOP"> 
+        <p>节点集合，包括文档中所有具有某种关键字节点，此关键字的值与第二个参数中的节点值相同
+      </td>
+    </tr>
+    <tr>
+      <td width="24%" valign="TOP"> 
+        <p>doc(<i>string</i> <i>URI</i>)
+      </td>
+      <td width="16%" valign="TOP"> 
+        <p>节点集合
+      </td>
+      <td width="60%" valign="TOP"> 
+        <p>文档或由URI引用的文档部分中的节点集合；这些节点从URI使用的命名的anchor标记或XPointer中选择。如果没有命名的anchor标记或Xpointer，那么所指文档的根元素就存在于节点集合中。相对URI是相对于输入文档中的当前节点的
+      </td>
+    </tr>
+    <tr>
+      <td width="24%" valign="TOP"> 
+        <p>docref(<i>node set</i>)
+      </td>
+      <td width="16%" valign="TOP"> 
+        <p>节点集合
+      </td>
+      <td width="60%" valign="TOP"> 
+        <p>节点集合，包括由URI引用的，其值为<i>node set</i>参数的所有节点
+      </td>
+    </tr>
+    <tr>
+      <td width="24%" valign="TOP"> 
+        <p>local-part(<i>node set</i>)
+      </td>
+      <td width="16%" valign="TOP"> 
+        <p>字符串
+      </td>
+      <td width="60%" valign="TOP"> 
+        <p><i>node set</i>参数中第一个节点的本地部分（命名域前缀后面的所有内容）；当不使用任何参数时可用于获取上下文节点的本地部分
+      </td>
+    </tr>
+    <tr>
+      <td width="24%" valign="TOP"> 
+        <p>namespace(<i>node set</i>)
+      </td>
+      <td width="16%" valign="TOP"> 
+        <p>字符串
+      </td>
+      <td width="60%" valign="TOP"> 
+        <p>节点集合中第一个节点命名域的URI；当不使用任何参数时，可用于获得上下文节点的命名域URI；如果节点处于缺省命名域内，则返回空字符
+      </td>
+    </tr>
+    <tr>
+      <td width="24%" valign="TOP"> 
+        <p>qname(<i>node set</i>)
+      </td>
+      <td width="16%" valign="TOP"> 
+        <p>字符串
+      </td>
+      <td width="60%" valign="TOP"> 
+        <p><i>node set</i>参数中第一个节点的合法名称（可以为前缀和本地部分）；要获得上下文节点的合法名称，可不使用任何参数
+      </td>
+    </tr>
+    <tr>
+      <td width="24%" valign="TOP"> 
+        <p>generate-id(<i>node set</i>)
+      </td>
+      <td width="16%" valign="TOP"> 
+        <p>字符串
+      </td>
+      <td width="60%" valign="TOP"> 
+        <p>参数<i>node set</i>中第一个节点的唯一标识符；不带参数使用时，可生成上下文节点的ID
+      </td>
+    </tr>
+  </table>
+</center>
+<p></p>
+<p><img src="Image/BK000214-19.gif" width=56 height=42 align="left">第18章“命名域”将讨论命名域URI、前缀和本地部分。</p>
+<p>　</p>
+<p><img src="Image/BK000214-17.gif" width=47 height=52 align="left">doc()和docref()函数有点模糊，特别是如果URI只引用非结构完整的XML节点或数据片段，就更是如此。细节还要留待XSL规范的未来版本加以澄清。</p>
+<p>&nbsp;</p>
+<p>如果向这些函数传递了一个错误类型的参数，那么XSL试图将此参数转变成正确的类型；例如，将数字12转变成字符串“12”。但是，任何参数都不能转变成节点集合。</p>
+<p>position()函数可用来对元素进行计数。清单14-13是一个样式单，它使用&lt;xsl:value-of select = "position"/&gt;，将元素在文档中的位置作为原子名的名称的前缀。</p>
+<p>清单14-13：按照文档中的顺序对原子进行编号的样式单</p>
+<p>&lt;?xml version="1.0"?&gt;</p>
+<p>&lt;xsl:stylesheet</p>
+<p>xmlns:xsl="http://www.w3.org/XSL/Transform/1.0"&gt;</p>
+<p></p>
+<p> &lt;xsl:template match="/PFRIODIC_TABLE"&gt;</p>
+<p> &lt;HTML&gt;</p>
+<p> &lt;HEAD&gt;&lt;TITLE&gt;The Elements&lt;/TITLE&gt;&lt;/HEAD&gt;</p>
+<p> &lt;BODY&gt;</p>
+<p> &lt;xsl:apply-templates select="ATOM"/&gt;</p>
+<p> &lt;/BODY&gt;</p>
+<p> &lt;/HTML&gt;</p>
+<p> &lt;/xsl:template&gt;</p>
+<p></p>
+<p> &lt;xsl:template match="ATOM"&gt;</p>
+<p> &lt;P&gt;</p>
+<p> &lt;xsl:value-of select="position()"/&gt;.</p>
+<p> &lt;xsl:value-of select="NAME"/&gt;</p>
+<p> &lt;/P&gt;</p>
+<p> &lt;/xsl:template&gt;</p>
+<p></p>
+<p>&lt;/xsl:stylesheet&gt;</p>
+<p>将此样式单应用于清单14-1时，其输出结果如下：</p>
+<p>&lt;HTML&gt;&lt;HEAD&gt;&lt;TITLE&gt;The Elements&lt;/TITLE&gt;&lt;/HEAD&gt;&lt;BODY&gt;&lt;P&gt;1.</p>
+<p> Hydrogen&lt;/P&gt;&lt;P&gt;2.</p>
+<p> Helium&lt;/P&gt;&lt;/BODY&gt;&lt;/HTML&gt;</p>
+<p> 
+<p><b>14.7.2.2 布尔类型</b></p>
+<p> </p>
+<p>布尔值为两个值之一：true（真）或false（假）。XSL允许将任何类型的数据转变成布尔值。当在可望为布尔值的地方使用了字符串或数值或节点集合时，通常就暗示需要这样做，xsl:if元素的test特性中正是这样情况。根据下列这些规则，也可以使用boolean()函数来完成这种变换过程，此函数将任何类型（或如果不提供参数即为上下文节点）的参数转变成布尔值：</p>
+<ul>
+  <p>
+  <li>如果数值为零或NaN（一种特定的符号，意为Not a Number，即不是数字，用于表示被零除所获得的结果以及类似的非法操作），则此值为false，否则为true</li>
+  <p></p>
+  <p>
+  <li>空节点集合为false；所有的其他节点集合为true</li>
+  <p></p>
+  <p>
+  <li>空结果片段为false；所有其他结果片段都为true</li>
+  <p></p>
+  <p>
+  <li>零长度字符串为false；所有其他字符串为true</li>
+  <p></p>
+</ul>
+<p>使用下列操作符所获得的表达式的结果也可以得到布尔值：</p>
+<p> = 等于号</p>
+<p> &lt; 小于号（实际使用&amp;lt;)</p>
+<p> &gt; 大于号</p>
+<p> &lt; = 小于等于（实际使用&amp;lt;=）</p>
+<p> &gt; = 大于等于</p>
+<p><img src="Image/BK000214-17.gif" width=47 height=52 align="left">在特性值中&lt;符号是非法的。因此，必须用&amp;lt;来代替，甚至作为小于运算符时也是如此。</p>
+<p>&nbsp;</p>
+<p>这些运算符最常用于判断是否调用某个规则。选择表达式不仅含有选择某些节点的模式，而且还可以含有判断条件，从而使用此判断条件对所选的节点列表进一步筛选。例如，from-children(ATOM)选择当前节点的所有ATOM子节点。但是，from-children(ATOME[position()=1])只选择当前节点的第一个ATOM子节点。[position()=1]为一判断语句，它在节点上测试ATOM，返回一个布尔结果值，如果当前节点的位置等于1，则返回的结果为true，否则为false。对每个节点的测试都可能有任何判断值。但是，大于1的值则是不常见到的。</p>
+<p>例如，下面的模板规则通过测试元素的位置是否等于1，来决定将此规则应用于周期表中第一个ATOM元素，而不是后续元素。</p>
+<p>&lt;xsl:template match="PERIODIC_TABLE/ATOM[position()=l]"&gt;</p>
+<p> &lt;xsl:value-of select="."/&gt;</p>
+<p>&lt;/xsl:template&gt;</p>
+<p>下面的模板规则通过测试元素的恢檬欠翊笥?，来将此规则应用于非PERIODIC_TABLE第一个子元素的所有ATOM元素：</p>
+<p>&lt;xsl:template match="PERIODIC_TABLE/ATOM[position()&gt;1]"&gt;</p>
+<p> &lt;xsl:value-of select="."/&gt;</p>
+<p>&lt;/xsl:template&gt;</p>
+<p>关键字and和or根据正常的逻辑规则，将两个布尔表达式进行逻辑组合。例如，假设要将模板应用于ATOMIC_NUMBER元素，它既不是其父元素的第一个子元素，也不是其父元素的最后一个子元素；也就是说，它就是父元素本身。下面的模板规则使用and来完成此项工作：</p>
+<p>&lt;xsl:template</p>
+<p> match="ATOMIC_NUMBER[position()=l and position()=last()]"&gt;</p>
+<p> &lt;xsl:value of select="."/&gt;</p>
+<p>&lt;/xsl:template&gt;</p>
+<p>下面的模板规则通过匹配位置是1还是最后一个，应用于其父元素中的第一个和最后一个ATOM元素：</p>
+<p>&lt;xsl:template match="ATOM[position()=l or positiono=last()]"&gt;</p>
+<p> &lt;xsl:value-of select="."/&gt;</p>
+<p>&lt;/xsl:template&gt;</p>
+<p>这是逻辑上的“或”，所以如果两个条件都为真，它也将匹配。也就是说，它将既与其父元素的第一个子元素ATOM元素进行匹配，也与其父元素的最后一个子元素ATOM元素进行匹配。</p>
+<p>在XSL中没有not关键字，但有not()函数。将操作放在not()括号中，可实现对操作的取反。例如，下面的模板规则选择除其父元素的第一个子元素外的所有ATOM元素：</p>
+<p>&lt;xsl:template match="ATOM[not(position()=l)]"&gt;</p>
+<p> &lt;xsl:value-of select="."/&gt;</p>
+<p>&lt;/xsl:template&gt;</p>
+<p>下面的模板规则选择除其父元素的第一个和最后一个ATOM子元素外的所有ATOM元素：</p>
+<p>&lt;xsl:template match =</p>
+<p> "ATOM[not(position()=l or position()=last())]"&gt;</p>
+<p> &lt;xsl:value of select="."/&gt;</p>
+<p>&lt;/xsl:template&gt;</p>
+<p>不存在“异或”操作符。但巧妙地使用not()、and和or可以形成“异或”效果。例如，下面的规则要么选择第一个子元素的ATOM元素，要么选择最后一个子元素的ATOM元素，但不会同时选择第一个和最后一个子元素的ATOM元素。</p>
+<p>&lt;xsl:template</p>
+<p> match="ATOM[(position()=l or position()=last())</p>
+<p> and not(position()=l and position()=last())]"&gt;</p>
+<p> &lt;xsl:value-of select="."/&gt;</p>
+<p>&lt;/xsl:template&gt;</p>
+<p>下列还有三个函数返回布尔值：</p>
+<ul>
+  <p>
+  <li>true()总是返回true</li>
+  <p></p>
+  <p>
+  <li>false()总是返回false</li>
+  <p></p>
+  <p>
+  <li>lang(<i>code</i>)如果当前节点的语言（由xml:lang特性给出）与<i>code</i>参数相同，则返回true</li>
+  <p></p>
+</ul>
+<p> 
+<p><b>14.7.2.3 数值</b></p>
+<p></p>
+<p>XSL的数值为64位IEEE双精度浮点数。看起来像整数数值（如42或-7000）也是以双精度保存的。非数字值（如字符串和布尔值）根据结果可转化为数字，或使用下面的规则由数值函数将非数字值转化为数字：</p>
+<ul>
+  <p>
+  <li>如果为true，布尔值为1；如果为false，则为0。</li>
+  <p></p>
+  <p>
+  <li>字符串去首尾空白；然后按要求转化成数字；例如，字符串“12”转化为数字12。如果字符串无法作为数字表示，那么就转换为0。</li>
+  <p></p>
+  <p>
+  <li>节点集合和结果片段转换成字符串，然后将此字符串转换成数字。</li>
+  <p></p>
+</ul>
+<p>例如，下面的规则只输出自然界不存在的反铀（trans-uranium）元素以及原子序数大于92（铀原子序数）的元素。于是，ATOMIC_NUMBER产生的节点集合被隐式地转变成当前ATOMIC_NUMBER节点的字符串值。</p>
+<p>&lt;xsl:template match="/PERIODIC_TABLE"&gt;</p>
+<p> &lt;HTML&gt;</p>
+<p> &lt;HEAD&gt;&lt;TITLE&gt;The TransUranium Elements&lt;/TITLE&gt;&lt;/HEAD&gt;</p>
+<p> &lt;BODY&gt;</p>
+<p> &lt;xsl:apply-templates select="ATOM[ATOMIC_NUMBER&gt;92]"/&gt;</p>
+<p> &lt;/BODY&gt;</p>
+<p> &lt;/HTML&gt;</p>
+<p>&lt;/xsl:template&gt;</p>
+<p>XSL提供了四个标准的算术运算符：</p>
+<ul>
+  <p>
+  <li>+ 加法</li>
+  <p></p>
+  <p>
+  <li>- 减法</li>
+  <p></p>
+  <p>
+  <li>* 乘法</li>
+  <p></p>
+  <p>
+  <li>div除法（最通用的 / 在XSL中已用于其他目的）</li>
+  <p></p>
+</ul>
+<p>例如，&lt;xsl:value-of select="2+2"/&gt;将字符串“4”插入到输出文档中。这些运算更常用作测试。例如，下面的规则选择原子量大于原子序数两倍的元素：</p>
+<p>&lt;xsl:template match="/PERIODIC_TABLE"&gt;</p>
+<p> &lt;HTML&gt;</p>
+<p> &lt;BODY&gt;</p>
+<p> &lt;Hl&gt;High Atomic Weight to Atomic Number Ratios&lt;/Hl&gt;</p>
+<p> &lt;xsl:apply-templates</p>
+<p> select="ATOM[ATOMIC_WEIGHT <i>&gt;</i> 2<i> </i>* ATOMIC_NUMBER]"/&gt;</p>
+<p> &lt;/BODY&gt;</p>
+<p> &lt;/HTML&gt;</p>
+<p>&lt;/xsl:template&gt;</p>
+<p>下面的模板实际上打印原子量与原子序数的比值：</p>
+<p>&lt;xsl:template match="ATOM"&gt;</p>
+<p> &lt;P&gt;</p>
+<p> &lt;xsl:value-of select="NAME"/&gt;</p>
+<p> &lt;xsl:value-of select="ATOMIC_WEIGHT div ATOMIC_NUMBER"/&gt;</p>
+<p> &lt;/P&gt;</p>
+<p>&lt;/xsl:template&gt;</p>
+<p>XSL还提供两个不常用的二进制运算符：</p>
+<ul>
+  <p>
+  <li>mod：用于对两个数求余</li>
+  <p></p>
+  <p>
+  <li>quo：用于两个数相除，然后截去小数部分，形成一个整数</li>
+  <p></p>
+</ul>
+<p>XSL还有对数字进行操作的四个函数：</p>
+<p> floor()返回比此值小的最大整数</p>
+<p> ceiling()返回比此值大的最小整数</p>
+<p> round()将数值四舍五入成最接近的整数</p>
+<p> sum()返回其参数的和</p>
+<p>例如下面的模板规则将原子量（各同位素在自然界分布的中子数与质子数之和的加权平均数）减去原子序数（质子数），计算出原子中的中子数，并四舍五入成最接近的整数：</p>
+<p>&lt;xsl:template match="ATOM"&gt;</p>
+<p> &lt;P&gt;</p>
+<p> &lt;xsl:value-of select="NAME"/&gt;</p>
+<p> &lt;xsl:value-of</p>
+<p> select="round(ATOMIC_WEIGHT – ATOMIC_NUMBER)"/&gt;</p>
+<p> &lt;/P&gt;</p>
+<p>&lt;/xsl:template&gt;</p>
+<p>下面的规则将所有的原子量相加，然后除以原子的个数，从而计算出表中所有原子的平均原子量：</p>
+<p>&lt;xsl:template match="/PERIODIC_TABLE"&gt;</p>
+<p> &lt;HTML&gt;</p>
+<p> &lt;BODY&gt;</p>
+<p> &lt;H1&gt;Average Atomic Weight&lt;/H1&gt;</p>
+<p> &lt;xsl:value-of</p>
+<p> select="sum(from-descendants(ATOMIC_WEIGHT))</p>
+<p> div count(from-descendants(ATOMIC_WEIGHT))"/&gt;</p>
+<p> &lt;/BODY&gt;</p>
+<p> &lt;/HTML&gt;</p>
+<p>&lt;/xsl:template&gt;</p>
+<p> 
+<p><b>14.7.2.4 字符串</b></p>
+<p></p>
+<p>字符串是Unicode字符序列。按照下面的准则，使用string()函数，就可以将其他数据类型转换成字符串类型：</p>
+<ul>
+  <p>
+  <li>节点集合转换的结果是将集合中的节点值连接在一起。根据表14-1所给出的规则，由xsl:value-of元素计算出集合中的节点值。</li>
+  <p></p>
+  <p>
+  <li>结果树形片段（result tree fragment）在转换时，很像是一个元素，并取此假想的元素值。而此假想的元素值是根据表14-1所给出的规则，由xsl:value-of元素计算出的。</li>
+  <p></p>
+  <p>
+  <li>数字转换成欧洲风格的数字字符串，如“-12”或“3.1415292”。</li>
+  <p></p>
+  <p>
+  <li>布尔值的false转换成英语单词的“false”；布尔值的true转换成英语单词的“ true”。</li>
+  <p></p>
+</ul>
+<p>除了string( )之外，XSL还有七个对字符进行操作的函数。现总结于表14-5中。</p>
+<p align="center">表14-5 对字符串进行操作的函数</p>
+<div align="center"> 
+  <table BORDER cellspacing=1 cellpadding=7 width=675>
+    <tr> 
+      <td width="41%" valign="MIDDLE"> 
+        <p>函数 
+      </td>
+      <td width="16%" valign="MIDDLE"> 
+        <p>返回值类型 
+      </td>
+      <td width="43%" valign="MIDDLE"> 
+        <p>返回值 
+      </td>
+    </tr>
+    <tr> 
+      <td width="41%" valign="MIDDLE"> 
+        <p>starts-with(<i>main_string</i>,<i> prefix_string</i>) 
+      </td>
+      <td width="16%" valign="MIDDLE"> 
+        <p>布尔 
+      </td>
+      <td width="43%" valign="MIDDLE"> 
+        <p>如果<i>main_string</i>以<i>prefix_string</i>开始，则为true；否则为false 
+      </td>
+    </tr>
+    <tr> 
+      <td width="41%" valign="MIDDLE"> 
+        <p>Contains(<i>containing_string</i>,<i> contained_string</i>) 
+      </td>
+      <td width="16%" valign="MIDDLE"> 
+        <p>布尔 
+      </td>
+      <td width="43%" valign="MIDDLE"> 
+        <p>如果<i>contained_string</i>参数是<i>containing_string</i>参数的一部分，则为true；否则为false 
+      </td>
+    </tr>
+    <tr> 
+      <td width="41%" valign="MIDDLE"> 
+        <p>Substring-before(<i>string</i>, <i>marker-string</i>) 
+      </td>
+      <td width="16%" valign="MIDDLE"> 
+        <p>字符串 
+      </td>
+      <td width="43%" valign="MIDDLE"> 
+        <p>从<i>string</i>的第一个字符直到第一次出现<i>marker-string</i>止（但不包括）的部分 
+      </td>
+    </tr>
+    <tr> 
+      <td width="41%" valign="MIDDLE"> 
+        <p>Substring-after(<i>string</i>,<i> marker-string</i>) 
+      </td>
+      <td width="16%" valign="MIDDLE"> 
+        <p>字符串 
+      </td>
+      <td width="43%" valign="MIDDLE"> 
+        <p>从第一次出现<i>marker-string</i>之后到<i>string</i>最后一个字符为止的部分 
+      </td>
+    </tr>
+    <tr> 
+      <td width="41%" valign="MIDDLE"> 
+        <p>Normalize(<i>string</i>) 
+      </td>
+      <td width="16%" valign="MIDDLE"> 
+        <p>字符串 
+      </td>
+      <td width="43%" valign="MIDDLE"> 
+        <p>截去<i>string</i>首尾空白后的部分，并且一连串的空白以一个空格代替；如果忽略<i>string</i>参数，则将上下文节点的字符串值变成为正常字符串 
+      </td>
+    </tr>
+    <tr> 
+      <td width="41%" valign="MIDDLE"> 
+        <p>Translate(<i>string</i>, <i>replaced</i>_<i>text</i>, <i>replacement_text</i>) 
+      </td>
+      <td width="16%" valign="MIDDLE"> 
+        <p>字符串 
+      </td>
+      <td width="43%" valign="MIDDLE"> 
+        <p>返回<i>string</i>中由<i>replacement_text</i>中的相应字符来代替<i>replaced_text</i>中的字符后的结果 
+      </td>
+    </tr>
+    <tr> 
+      <td width="41%" valign="MIDDLE"> 
+        <p>concat(<i>string1, string2, </i>) 
+      </td>
+      <td width="16%" valign="MIDDLE"> 
+        <p>字符串 
+      </td>
+      <td width="43%" valign="MIDDLE"> 
+        <p>将以参数形式传递的所有字符串连接起来，并返回这种连接后的字符串，其顺序为传递时的顺序 
+      </td>
+    </tr>
+    <tr> 
+      <td width="41%" valign="MIDDLE"> 
+        <p>format-number(<i>number</i>,<i> format-string</i>,<i> locale-string</i>) 
+      </td>
+      <td width="16%" valign="MIDDLE"> 
+        <p>字符串 
+      </td>
+      <td width="43%" valign="MIDDLE"> 
+        <p>返回<i>number</i>参数格式化后的字符串形式。格式化是按照由<i>locale-string</i>参数指定的位置中的<i>format-string</i>参数所指定的格式进行的。其工作方式就好像由Java 
+          1.1中的java.text.DecimalFormat类所进行的格式化一样（请参考http://java.sun.com/ products/jdk/1.1/docs/api/java.text. 
+          DecimalFormat.html） 
+      </td>
+    </tr>
+  </table>
+</div>
+<p> 
+<p><b>14.7.2.5 结果树形片段</b></p>
+<p>结果树形片段是XML文档的一部分，而不是一个完整的节点或节点集合。例如，使用带有指向元素中间的URI的doc()函数，其结果可能产生一结果树形片段。有些扩展函数（专门用于特定的XSL实现或安装的函数）也可以返回结果树形片段。</p>
+<p>由于结果树形片段不是结构整洁的XML，所以不能用它们来做什么事。实际上，唯一允许的操作是分别使用string()和boolean()函数，来将它们转换成字符串值或布尔值。</p>
+ 
+<a href='479.htm'>&lt;&lt;上一篇</a>&nbsp;&nbsp;<a href='481.htm'>下一篇&gt;&gt;</a></td>
+        </tr>
+      </table>
+      <p>&nbsp; </p>
+    </td>
+  </tr>
+</table>
+
+</body>
+
+</html>

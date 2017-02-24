@@ -1,0 +1,79 @@
+<html>
+<head>
+<title>缺省的模板规则</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+
+<link rel = stylesheet href = "image/style.css">
+</head>
+<body bgcolor="#ffffff">
+<table width="688" border="0" cellspacing="0" cellpadding="0" align="center">
+  <tr bgcolor="EEEEEE"> 
+    <td height="22"><a href="index.htm">主页</a></td>
+  </tr>
+</table><br>
+<table border="0" cellpadding="0" cellspacing="0" width="688" align="center" height="490">
+  <tr valign="top"> 
+    <td rowspan="4" width="91">&nbsp; </td>
+    <td height="68" width="131"> 
+      <p><img src="image/doc.gif"></p>
+    </td>
+    <td rowspan="4" width="18"><b></b> </td>
+    <td height="68" width="387"><img src="image/title_doc.gif"></td>
+    <td rowspan="4" width="61"> 
+      <h6>&nbsp;</h6>
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td rowspan="3" valign="top" class="pt10" align="center" width="131" bgcolor="EEEEEE"> 
+      <p>&nbsp;</p>
+      <p><font color="#FF0000">※ 14.8 缺省的模板规则</font></p>
+       
+	</td>
+  </tr>
+  <tr valign="top"> 
+    <td width="387" height="308"> 
+      <table width="100%" border="0" cellpadding="0">
+        <tr> 
+          <td>
+
+           <p></p>
+<h4><a name="_Toc467207159">14.8 缺省的模板规则</a></h4>
+<p>在XSL样式单中，十分小心地映射XML文档的层次，是很困难的。如果文档不按照固定的、可预料的顺序（如周期表）排列，而是正像许多Web网页那样随意地将元素放在一起，这种情况就很难映射XML文档的层次。在这些情况下，应有通用的规则，来查找元素并将模板应用于此元素，而不必考虑此元素究竟出现在源文档的何处。</p>
+<p>为了使此过程更容易，XSL定义两个缺省的模板规则，在所有的样式单中都隐性地包括这两个规则。第一个缺省规则将模板应用于所有元素的子元素，以递归的形式，降序排列元素的结构树。这种方式可确保应用于元素的所有模板规则都能够被说明。第二个缺省规则应用于下一个节点，将这些节点的值复制到输出流中。这两个规则共同使用，表示即使是没有任何元素的空XSL样式单，仍将产生把输入的XML文档的原始字符数据作为输出内容的结果。</p>
+<h5><a name="_Toc467207160">14.8.1 元素的缺省规则</a></h5>
+<p>第一个缺省规则应用于任何类型的元素节点或根节点：</p>
+<p>&lt;xsl:template match="*|/"&gt;</p>
+<p> &lt;xsl:apply-templates/&gt;</p>
+<p>&lt;/xsl:template&gt;</p>
+<p>*|/ 是“任何元素的节点或根节点”的缩写形式。本规则的目的，就是要确保所有的元素即使没有受到隐性规则的影响，也都按递归的方式处理。也就是说，除非其他的规则覆盖了本规则（特别是对根元素就是如此），否则所有的元素节点都要处理。</p>
+<p>但是，一旦存在任何父元素的隐性规则，那么对于子元素，除非父元素的模板规则有xsl:apply-templates子元素，否则本规则将无效。例如，按照如下方式，通过匹配根元素，并且既不应用模板，也不使用xsl:for-each来处理子元素，就可以阻止所有的处理过程：</p>
+<p>&lt;xsl:template match="/"&gt;</p>
+<p>&lt;/xsl:template&gt;</p>
+<h5><a name="_Toc467207161">14.8.2 文本节点的缺省规则</a></h5>
+<p>细心的读者或许已经注意到，有几个例子似乎已输出了有些元素的内容，但实际上没有获得输出的元素值！这些内容是由XSL用于以元素内容出现的文本节点的缺省规则提供的。此规则如下：</p>
+<p>&lt;xsl:template match="text()"&gt;</p>
+<p> &lt;xsl:value-of select="."/&gt;</p>
+<p>&lt;/xsl:template&gt;</p>
+<p>这一规则匹配所有的文本节点（match="text()"），并输出文本节点（&lt;xsl:value-of select="."/&gt;）的值。换言之，此规则将文本从输入复制到输出。</p>
+<p>本规则确保最少输出一个元素的文本，即使没有任何规则明确地与此文本匹配。对于特定的元素（从中可或多或少获得元素的文本内容），另一个规则可以覆盖此规则。</p>
+<h5><a name="_Toc467207162">14.8.3 两个缺省规则的含义</a></h5>
+<p>这两个缺省的规则结合在一起，意味着把只有xsl:stylesheet元素而不包括任何子元素的空样式单（如清单14-14）应用于XML文档时，将把输入元素中所有的#PCDATA复制到输出。但是，这种方法不产生任何标记。可是这些规则的优先级很低。因此，任何其他匹配都优先于这两个规则。</p>
+<p>清单14-14：空的XML样式单</p>
+<p>&lt;?xml version=“1.0”?&gt;</p>
+<p>&lt;xsl:stylesheet</p>
+<p> xmlns:xsl=“http://www.w3.org/XSL/Transform/1.0”&gt;</p>
+<p>&lt;/xsl:stylesheet&gt;</p>
+<p><img src="Image/BK000214-17.gif" width=47 height=52 align="left">在Internet 
+  Explorer 5.0中，对XSL产生混淆的最常见的根源之一是，没有提供任何缺省规则。要确保明确地匹配准备输出其内容（包括其后代）的任何节点。</p>
+ 
+<a href='480.htm'>&lt;&lt;上一篇</a>&nbsp;&nbsp;<a href='482.htm'>下一篇&gt;&gt;</a></td>
+        </tr>
+      </table>
+      <p>&nbsp; </p>
+    </td>
+  </tr>
+</table>
+
+</body>
+
+</html>

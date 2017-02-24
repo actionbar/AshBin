@@ -1,0 +1,160 @@
+<html>
+<head>
+<title>什么是XML应用程序</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+
+<link rel = stylesheet href = "image/style.css">
+</head>
+<body bgcolor="#ffffff">
+<table width="688" border="0" cellspacing="0" cellpadding="0" align="center">
+  <tr bgcolor="EEEEEE"> 
+    <td height="22"><a href="index.htm">主页</a></td>
+  </tr>
+</table><br>
+<table border="0" cellpadding="0" cellspacing="0" width="688" align="center" height="490">
+  <tr valign="top"> 
+    <td rowspan="4" width="91">&nbsp; </td>
+    <td height="68" width="131"> 
+      <p><img src="image/doc.gif"></p>
+    </td>
+    <td rowspan="4" width="18"><b></b> </td>
+    <td height="68" width="387"><img src="image/title_doc.gif"></td>
+    <td rowspan="4" width="61"> 
+      <h6>&nbsp;</h6>
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td rowspan="3" valign="top" class="pt10" align="center" width="131" bgcolor="EEEEEE"> 
+      <p>&nbsp;</p>
+      <p><font color="#FF0000">※ 2.1 什么是XML应用程序</font></p>
+       
+            <p align="left">2.1 什么是XML应用程序</p>
+          
+            <p align="left"><a href='311.htm'>2.1 什么是XML应用程序(续1)</a></p>
+          
+            <p align="left"><a href='312.htm'>2.1 什么是XML应用程序(续2)</a></p>
+          
+	</td>
+  </tr>
+  <tr valign="top"> 
+    <td width="387" height="308"> 
+      <table width="100%" border="0" cellpadding="0">
+        <tr> 
+          <td>
+<h4 ALIGN="CENTER"><A NAME="_Toc467196728">2.1 什么是XML应用程序</A></h4>
+<P>XML是一种元标记语言，可用来设计与特定专业领域有关的标记语言。每种基于XML的标记语言都叫做XML应用程序。这种应用不是像Mozilla Web浏览器、Gnumeric电子表格或 XML Pro那样的编辑器一样地使用XML，而是在特定的领域中应用XML，如化学上用的化学标记语言（Chemical Markup Language，简写为CML）或是家谱上用的GedML。每种XML应用程序有它自已的句法和词汇表。这种句法和词汇表遵守XML的基本规则。</P>
+<P>这有点像人类语言，每种语言都有它们自己的词汇表和语法，但同时遵循人体解剖学和大脑结构所要求的基本规则。</P>
+<P>XML是以文本数据为基础的非常灵活的格式。在本章中讨论的广泛的应用都选择了XML作为基础的原因是（排除大肆宣传的因素），XML提供了切合实际的并清楚地描述了的易于读写的格式。应用程序将这种格式用于它的数据，就能够将大量的处理细节让几个标准工具和库函数去解决。更进一步说，对于这样的程序也容易将附加的句法和语义加到XML提供的基本结构之上。</P>
+<h5><A NAME="_Toc467196729">2.1.1 化学标记语言（Chemical Markup Language）</A></h5>
+<P>Peter Murray-Rust的化学标记语言（Chemical Markup Language，简写为CML）可能是第一个XML应用。CML原来是要发展成SGML应用的，但随着XML标准的发展，逐步演化成了XML。在CML的最简单的形式下，CML是“HTML加分子”，但是它的用处却超出了Web的范围。</P>
+<P>分子文档常常包括成千上万个不同的详细的对象。例如，单个中等大小的有机分子可能含有几百个原子，每个原子有几个化学键。CML寻求以一种直接方式组织这种复杂的化学对象，以便能够让计算机理解，并显示和能够加以检索。CML可以用于分子结构和序列、光谱分析、结晶学、出版、化学数据库和其他方面。它的词汇表包括分子、原子、化学键、晶体、分子式、序列、对称、反应和其他化学术语。例如，清单2-1是描述水（H<SUB>2</SUB>O）的基本CML文档：</P>
+<P>清单2-1：水分子H<SUB>2</SUB>O</P>
+<P><font face="Courier New, Courier, mono"><i>&lt;?xml version="1.0"?&gt;</i></font></P>
+<P><i><font face="Courier New, Courier, mono">&lt;CML&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;MOL TITLE="Water"&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;ATOMS&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;ARRAY BUILTIN="ELSYM"&gt;H O 
+  H&lt;/ARRAY&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;/ATOMS&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;BONDS&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;ARRAY BUILTIN=”ATID1”&gt;1 2&lt;/ARRAY&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;ARRAY BUILTIN=”ATID2”&gt;2 3&lt;/ARRAY&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;ARRAY BUILTIN=”O DE ”&gt;1 1&lt;/ARRAY&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;/BONDS&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;/MOL&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;/CML&gt;</font></i></P>
+<P>CML提供的对传统的管理化学数据的方法的最大改善在于数据的检索。CML还使得复杂的分子数据可在Web上发送。由于XML的底层是与平台无关的，所以可以避免由于使用不同的平台而引起的二进制格式不兼容的问题，这种问题在使用传统的化学软件和文档（如Protein Data Bank (PDB)格式或者MDL Molfiles）时常常可以遇到。</P>
+<P>Murray-Rust还创建了第一个通用目的的XML浏览器JUMBO。图2-1是JUMBO正在显示的一个CML文件。Jumbo将每个XML元素赋给能够显示这些元素的Java类。为了使Jumbo支持新的元素，只要编写用于该元素的Java类即可。Jumbo是与显示基本的一套CML元素（其中包括分子、原子和化学键）的类一起发布的。Jumbo可从http://www.xml-cml.org/ 站点处得到。</P>
+<h5><A NAME="_Toc467196730">2.1.2 数学标记语言（Mathematical Markup Language）</A></h5>
+<P>传说CERN的Tim Berners-Lee发明了World Wide Web和HTML，这样一来，高能物理学家们就可以交换论文和印前出版物了。从我个人角度来说，我从不相信这个传说。我是学物理学的，而且我曾在物理、应用数学、天文学和计算机科学等几个学科之间徜徉多年。这几个学科的论文有一点是共同的，就是论文中充满了大量的方程。直到目前为止，Web已经出现了有九年时间了，还没有找到一种在Web页面上包括方程的好办法。</P>
+<P>现在有几种办法如Java小程序，可以分析自定义的句法，还有一种转换程序，可将用LaTeX软件编辑的方程转化为GIF图像，另一种是自定义的浏览器，可以读取TeX文件，但所有这些办法都不能产生高质量的结果，而且这些都不能满足Web作者（即使是科学领域的作者）的需求。最终，只有XML才能开始改变这种状况。</P>
+<P ALIGN="CENTER"><IMG SRC="image/Image8.gif" WIDTH=461 HEIGHT=367></P>
+<P ALIGN="CENTER">图2-1 显示CML文件的JUMBO浏览器</P>
+<P>数学标记语言（Mathematical Markup Language，MathML）是一种用于数学方程的XML应用。MathML具有足够的能力来处理大多数形式的数学问题从初中的算术到微积分和微分方程。它也可以处理许多更为高级的课题，但还存在一些空白，如在某些数学的分支中使用的更为高级也更为晦涩的记号。虽然对于MathML来说，在纯数学和理论物理的高端还有局限性，但是却足以处理几乎所有的教育、科学、工程、商业、经济和统计学上的要求。而且将来MathML必然要加以扩展，因而可以认为，即使是最纯粹的数学和纯理论的理论物理都能够在Web上出版和进行研究工作。MathML完成了Web向着科学研究和通信方面的有用工具方向的发展 （尽管说它也适用于作为新媒体来制作广告小册子有点离题太远）。</P>
+<P>Netscape Navigator和Internet Explorer还不支持MathML。但是许多数学家都抱着热烈的希望，希望这些浏览器在不久的将来能够对此加以支持。W3C已经将某些对MathML的支持集成到他们的浏览器测试平台Amaya中了。图2-2是Amaya显示的用MathML编写的Maxwell方程的协变形式。</P><DIR>
+
+<P><IMG SRC="image/Image9.gif" WIDTH=44 HEIGHT=42>Amaya软件可以在本书所附CD-ROM的browsers/amaya目录中找到。</P></DIR>
+
+<P ALIGN="CENTER"><IMG SRC="image/Image10.gif" WIDTH=293 HEIGHT=140></P>
+<P ALIGN="CENTER">图2-2 Amaya浏览器显示的用MathML编写的协变形式的Maxwell方程</P>
+<P>清单2-2列出了Amaya浏览器正在显示的XML文件：</P>
+<P>清单2-2：MathML中的麦克斯韦（Maxwell）方程</P>
+<P><font face="Courier New, Courier, mono"><i>&lt;?xml version="1.0"?&gt;</i></font></P>
+<P><i><font face="Courier New, Courier, mono">&lt;html xmlns="http://www.w3.org/TR/REC-html40"</font></i></P>
+<P><i><font face="Courier New, Courier, mono">xmlns:m="http://www.w3.org/T / EC-MathML/"</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;head&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;title&gt;Fiat Lux&lt;/title&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;meta name="GENERATOR" content="amaya 
+  V1.3b" /&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;/head&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;body&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;P&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">And God said,</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;/P&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;math&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;m:mrow&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;m:msub&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;m:mi&gt;&amp;delta;&lt;/m:mi&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;m:mi&gt;&amp;alpha;&lt;/m:mi&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;/m:msub&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;m:msup&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;m:mi&gt;F&lt;/m:mi&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;m:mi&gt;&amp;alpha;&amp;beta;&lt;/m:mi&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;/m:msup&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;m:mi&gt;&lt;/m:mi&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;m:mo&gt;=&lt;/m:mo&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;m:mi&gt;&lt;/m:mi&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;m:mfrac&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;m:mrow&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;m:m &gt;4&lt;/m:m &gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;m:mi&gt;&amp;pi;&lt;/m:mi&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;/m:mrow&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;m:mi&gt;c&lt;/m:mi&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;/m:mfrac&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;m:mi&gt;&lt;/m:mi&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;m:msup&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;m:mi&gt;J&lt;/m:mi&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;m:mrow&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;m:mi&gt;&amp;beta;&lt;/m:mi&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;m:mo&gt;&lt;/m:mo&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;/m:mrow&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;/m:msup&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;/m:mrow&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;/math&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;P&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">and there was light</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;/P&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;/body&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;/html&gt;</font></i></P>
+<P>清单2-2是混合使用HTML/XML的页面的例子。其中文本（“Fiat Lux”、“Maxwell’s Equations”、“And God said”、“and there was light”）的标题和段落是用经典的HTML编写的。实际的方程是用MathML编写的，这是一个XML应用。</P>
+<P>一般来说，这种混合页面需要浏览器的特殊支持，这里也正是这种情况，否则就得有插件、ActiveX控件或是JavaScript程序来分析和显示内嵌的XML数据。当然最终用户需要像Mozilla 5.0或是Internet Explorer 5.0这样的浏览器，这两种浏览器可以分析和显示纯XML文件，而不需要HTML作为中介。</P>
+<h5><A NAME="_Toc467196731">2.1.3 频道定义格式</A></h5>
+<P>Microsoft的频道定义格式（Channel Definition Format，简写为CDF）是用于定义频道的XML应用。Web站点使用频道向预订站点的用户传送信息，一改过去那种坐等用户前来浏览并获取信息的状况。这也叫做Web广播或是“推”。CDF首先是在Internet Explorer 4.0中引入的。</P>
+<P>CDF文档是一个XML文件，与被推的站点的HTML文件分别存放，但是却链接到此HTML文件上。CDF文档中的频道定义决定了要发送哪个页面。页面可以通过发送通知向预订者加以推送，但也可以发送整个站点，或是由阅读者在方便的时候自己来“拉”信息。</P>
+<P>用户可向自己的站点添加CDF，而不用改变现存的所有内容。只要在页面上添加与CDF文件的一个不可见的链接即可。当浏览者访问这个页面时，浏览器显示一个对话框，询问浏览者是否要预订频道。如果浏览者选择了预订，则浏览器就下载描述频道的CDF文档。然后浏览器将CDF文档用指定的参数与用户自己的优选项结合起来，以便决定什么时候检查服务器上的新内容。这实际上不是真正的“推”，因为客户必须初始化连接，但是这确实是在没有浏览请求的情况下发生的。图2-3是IDG的Active Channel（活动频道）显示在Internet Explorer 4.0中的情况。</P>
+<P ALIGN="CENTER"><IMG SRC="image/Image11.gif" WIDTH=472 HEIGHT=352></P>
+<P ALIGN="CENTER">图2-3 在Internet Explorer 4.0中显示的IDG的Active Channel（活动频道）</P><DIR>
+
+<P><IMG SRC="image/Image4.gif" WIDTH=45 HEIGHT=33>在第21章“用CDF推送Web站点”中将详细地讨论CDF。</P><IMG SRC="image/Image12.gif" ALIGN="LEFT" WIDTH=33 HEIGHT=32>
+<P>Internet Explorer 4.0可在本书所附CD-ROM上的browsers/ie4目录中找到。</P></DIR>
+
+<h5><A NAME="_Toc467196732">2.1.4 经典文学</A></h5>
+<P>Jon Bosak曾经将Shakespeare（莎世比亚）的全部话剧翻译成了XML。这些剧本的全文都包括其中了，用XML标记来区分剧名、每幕标题、舞台指导、对白、台词、旁白等。</P><IMG SRC="image/Image12.gif" ALIGN="LEFT" HSPACE=12 WIDTH=38 HEIGHT=38>
+<P>莎世比亚的全套话剧可以本书所附CD-ROM上的examples/shakespeare目录中找到。</P>
+<P>读者可能要问，对于一本书或是一个普通的文本文件来说，这样做有什么好处呢？对于人类读者来说，这没有什么不同，但对分析文字的计算机来说，这样做就使得容易区分组成话剧的不同元素。例如，要让计算机在全文中找出Romeo（罗密欧）的台词就变得简单了。</P>
+<P>进一步说，借助于改变格式化文档的样式单，某个演员就很容易地打印出该剧的一个副本，其中他（她）的所有台词都格式化为粗体，而他（她）前面和后面的台词都用斜体来表示。另外还可以想像出来的事是，将剧本分成不同人的道白时，利用XML格式化的版本也比原来的文本要容易得多。</P>
+<P>Bosak曾经将新旧约全书、古兰经和摩门教教义的英文译本用XML加以标记。这些书中的标记有些不同。例如，它并不对讲话人加以区分。因而（比如说）也就不能利用这种特殊的XML文档来创建带红色字母的圣经，虽然使用不同的一套标记可以达到这一目的。（带红色字母的圣经将耶稣说的话用红色印刷。）而且由于这些文件是用英语写成的，而不是原来的语言，这对于学术上的文本分析来说，就不是那么有用了。如果时间和资源允许的话，只要愿意，用XML来书写原文也是可以办得到的。这时只要设计一套与Bosak使用的不同，但却是描述同样的数据的词汇表和句法即可。</P>
+<P><IMG SRC="image/Image12.gif" WIDTH=39 HEIGHT=38>经XML标记了的圣经、古兰经和摩门教教义都可在本书所附的CD-ROM上的examples/religion目录中找到。</P>
+ 
+<a href='309b.htm'>&lt;&lt;上一篇</a>&nbsp;&nbsp;<a href='311.htm'>下一篇&gt;&gt;</a></td>
+        </tr>
+      </table>
+      <p>&nbsp; </p>
+    </td>
+  </tr>
+</table>
+
+</body>
+
+</html>

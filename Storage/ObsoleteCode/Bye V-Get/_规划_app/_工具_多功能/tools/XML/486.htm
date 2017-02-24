@@ -1,0 +1,80 @@
+<html>
+<head>
+<title>CDATA和&lt;符</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+
+<link rel = stylesheet href = "image/style.css">
+</head>
+<body bgcolor="#ffffff">
+<table width="688" border="0" cellspacing="0" cellpadding="0" align="center">
+  <tr bgcolor="EEEEEE"> 
+    <td height="22"><a href="index.htm">主页</a></td>
+  </tr>
+</table><br>
+<table border="0" cellpadding="0" cellspacing="0" width="688" align="center" height="490">
+  <tr valign="top"> 
+    <td rowspan="4" width="91">&nbsp; </td>
+    <td height="68" width="131"> 
+      <p><img src="image/doc.gif"></p>
+    </td>
+    <td rowspan="4" width="18"><b></b> </td>
+    <td height="68" width="387"><img src="image/title_doc.gif"></td>
+    <td rowspan="4" width="61"> 
+      <h6>&nbsp;</h6>
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td rowspan="3" valign="top" class="pt10" align="center" width="131" bgcolor="EEEEEE"> 
+      <p>&nbsp;</p>
+      <p><font color="#FF0000">※ 14.13 CDATA和&lt;符</font></p>
+       
+	</td>
+  </tr>
+  <tr valign="top"> 
+    <td width="387" height="308"> 
+      <table width="100%" border="0" cellpadding="0">
+        <tr> 
+          <td>
+
+           <h4><a name="_Toc467207176">14.13 CDATA和&lt;符</a></h4>
+<p>标准的XSL无法在输出文档中插入原始的、未转义的不是标记一部分的 &lt; 符号。原始的小于号使输出文档结构混乱，这是XSL不允许的。作为一种替代方法，如果使用如&amp;#60;的字符引用或实体引用&amp;lt;来插入&lt;符号，格式化程序将插入&amp;lt;或可能为&amp;#60;。</p>
+<p>当将JavaScript嵌入到页面中时，由于JavaScript使用 &lt; 符号表示数字的小于，而不是表示标记的开始处，这时，这种问题就变得重要。</p>
+<p>但是，还是可在输出文档中插入原始的、未转义的 &gt; 和 &gt;= 符号的。因此，如果输出文档需要包含数字比较关系的JavaScript，那么可颠倒操作数的顺序，将小于比较关系重写成大于等于比较关系。同样，可将小于等于比较关系重写成大于比较关系。例如，下面为几行JavaScript代码，在我的很多Web网页中使用了这些代码：</p>
+<p>if (location.host.tolowercase().indexof("sunsite") &lt; 0) {</p>
+<p> location.href="http://metalab.unc.edu/xml/";</p>
+<p>}</p>
+<p>由于在前两行中使用了小于号，致使这些行结构混乱。但这些语句与下面的这些语句是完全等效的：</p>
+<p>if (0 &gt; location.host.tolowercase().indexof("sunsite")) {</p>
+<p> location.href="http://metalab.unc.edu/xml/";</p>
+<p>}</p>
+<p>如果将布尔操作符组合起来进行多重测试，那么可能需要将逻辑“和”改为逻辑“或”。例如，下面两行JavaScript非常有效地用来测试页面的位置既不在metalab处，也不在sunsite处：</p>
+<p>if (location.host.toLowerCase().indexOf("metalab") &lt; 0</p>
+<p> &amp;&amp; location.host.tolowercase().indexof("sunsite") &lt; 0) {</p>
+<p> location.href="http://metalab.unc.edu/xml/";</p>
+<p>}</p>
+<p>由于在前两行中使用了小于号，致使这些语句结构混乱。但下面的这些行也是用来测试页面是在metalab上还是在sunsite上，与上面的代码行是完全等效的：</p>
+<p>if (0 &gt; location.host.toLowerCase().indexOf("metalab")</p>
+<p> || 0 &gt; location.host.tolowercase().indexof("sunsite")) {</p>
+<p> location.href="http://metalab.unc.edu/xml/";</p>
+<p>}</p>
+<p><img src="Image/BK000214-17.gif" width=47 height=52 align="left">也可以将这种令人不快的JavaScript放在独立的文档中，并从SCRIPT元素的SRC特性中与之进行链接。但是，这在Internet 
+  Explorer 4和Netscape Navigator 3之前的版本中是不可靠的。</p>
+<p>&nbsp;</p>
+<p>出于简化的目的，在输出文档中CDATA部分是不允许的。CDATA部分总是可以用带有Unicode转义（escape）的等价字符集合来代替出问题的 &lt; 
+  号和 &amp; 号。CDATA完全是为人类手工编写XML文件提供的便利。计算机程序，如XSL格式化程序并不需要CDATA部分。</p>
+<p><img src="Image/BK000214-17.gif" width=47 height=52 align="left">为向输出文档中插入CDATA部分，包括在Internet 
+  Explorer 5.0中的XSL格式化程序的确支持非标准的xsl:cdata元素。但是，这一特点未必会加入到标准的XSL中，甚至会从将来的Internet 
+  Explorer版本中将此功能删除。</p>
+
+ 
+<a href='485.htm'>&lt;&lt;上一篇</a>&nbsp;&nbsp;<a href='487.htm'>下一篇&gt;&gt;</a></td>
+        </tr>
+      </table>
+      <p>&nbsp; </p>
+    </td>
+  </tr>
+</table>
+
+</body>
+
+</html>

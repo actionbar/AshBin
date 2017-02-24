@@ -1,0 +1,125 @@
+<html>
+<head>
+<title>命名模板</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+
+<link rel = stylesheet href = "image/style.css">
+</head>
+<body bgcolor="#ffffff">
+<table width="688" border="0" cellspacing="0" cellpadding="0" align="center">
+  <tr bgcolor="EEEEEE"> 
+    <td height="22"><a href="index.htm">主页</a></td>
+  </tr>
+</table><br>
+<table border="0" cellpadding="0" cellspacing="0" width="688" align="center" height="490">
+  <tr valign="top"> 
+    <td rowspan="4" width="91">&nbsp; </td>
+    <td height="68" width="131"> 
+      <p><img src="image/doc.gif"></p>
+    </td>
+    <td rowspan="4" width="18"><b></b> </td>
+    <td height="68" width="387"><img src="image/title_doc.gif"></td>
+    <td rowspan="4" width="61"> 
+      <h6>&nbsp;</h6>
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td rowspan="3" valign="top" class="pt10" align="center" width="131" bgcolor="EEEEEE"> 
+      <p>&nbsp;</p>
+      <p><font color="#FF0000">※ 14.16 命名模板</font></p>
+       
+	</td>
+  </tr>
+  <tr valign="top"> 
+    <td width="387" height="308"> 
+      <table width="100%" border="0" cellpadding="0">
+        <tr> 
+          <td>
+
+           <h4><a name="_Toc467207179">14.16 命名模板</a></h4>
+<p>变量只限于基本的文本和标记。XSL提供了功能更强大的宏工具，可以封装标准的标记和改变数据的文本。例如，假定要将原子的原子序数、原子量和其他关键值分别作为表的单元格，以小型的、粗体的蓝色Times字体来格式化。换句话说，要获得类似于下面的输入结果：</p>
+<p>&lt;td&gt;</p>
+<p> &lt;font face="Times, serif" color="blue" size="2"&gt;</p>
+<p> &lt;b&gt;52&lt;/b&gt;</p>
+<p> &lt;/font&gt;</p>
+<p>&lt;/td&gt;</p>
+<p>当然，还可以在模板规则中包含类似于下面的所有内容：</p>
+<p>&lt;xsl:template match="ATOMIC_NUMBER"&gt;</p>
+<p> &lt;td&gt;</p>
+<p> &lt;font face="Times, serif" color="blue" size="2"&gt;</p>
+<p> &lt;b&gt;</p>
+<p> &lt;xsl:value-of select="."/&gt;</p>
+<p> &lt;/b&gt;</p>
+<p> &lt;/font&gt;</p>
+<p> &lt;/td&gt;</p>
+<p>&lt;/xsl:template&gt;</p>
+<p>这些标记可作为其他模板，或作为其他规则中使用的模板的一部分而重复使用。当详细的标记变得更为复杂时，当标记出现于样式单中的几个不同地方时，可将它转换成命名的模板。命名的模板与变量类似，但能够包括从应用模板的位置获得的数据，而不是仅仅插入固定的文本。</p>
+<p>xsl:template元素有name特性，使用此特性，可隐性地调用该元素，甚至在非间接地应用此元素时也是如此。例如，下面显示的是用于给上面模式命名的模板：</p>
+<p>&lt;xsl:template name="ATOM_CELL"&gt;</p>
+<p> &lt;td&gt;</p>
+<p></p>
+<p> &lt;font face="Times, serif" color="blue" size="2"&gt;</p>
+<p> &lt;b&gt;</p>
+<p> &lt;xsl:value-of select="."/&gt;</p>
+<p> &lt;/b&gt;</p>
+<p> &lt;/font&gt;</p>
+<p> &lt;/td&gt;</p>
+<p>&lt;/xsl:template&gt;</p>
+<p>宏中间的&lt;xsl:value-of select="."/&gt;元素被替换为调用此模板的当前节点的内容。</p>
+<p>xsl:call-template元素出现在模板规则的内容中，必须有name参数，用来对此元素要调用的模板进行命名。处理后，xsl:call-template元素被它命名的xsl:call-template元素的内容所代替。例如，现在我们使用xsl:cal-template元素来调用给模板命名的ATOM_CELL，那么可按下列方法重写ATOMIC_NUMBER规则：</p>
+<p>&lt;xsl:template match="ATOMIC_NUMBER"&gt;</p>
+<p> &lt;xsl:call-template name="ATOM_CELL"/&gt;</p>
+<p>&lt;/xsl:template&gt;</p>
+<p>这种相当简单的例子仅省掉了几行代码，但模板越复杂，并且重复使用的次数越多，样式单的复杂程度降低得就越大。命名的模板正如变量一样，还有提取样式单中的通用模式的优点，所以可作为一个模板来编辑。例如，如果要将原子序数、原子量和其他关键值的颜色由蓝色改变为红色，那么只需要在命名模板中对此改变一次即可。不必在每个分立的模板规则中单独改变此颜色。这有助于在较长的开发过程中，使样式保持更大的一致性。</p>
+<h5><a name="_Toc467207180">14.16.1 参数</a></h5>
+<p>对命名模板的每一次分开调用，都可将参数传递给模板，以便定制其输出内容。在xsl:template元素中，参数是由xsl:param<i>-</i>variable子元素来表示的。在xsl:call-template元素中，参数是由xsl:param子元素来表示的。</p>
+<p>例如，假定要将每个原子单元格链接到一特定的文件中。其输出类似于下列情景：</p>
+<p>&lt;td&gt;</p>
+<p> &lt;font face=”Times, serif” color=”blue” size=”2”&gt;</p>
+<p> &lt;b&gt;</p>
+<p> &lt;a href=”atomic_number.html”&gt;52&lt;/a&gt;</p>
+<p> &lt;/b&gt;</p>
+<p> &lt;/font&gt;</p>
+<p>&lt;/td&gt;</p>
+<p>其诀窍是，由于对模板的每次分开调用都会引起href特性的值发生变化，所以必须从调用模板的位置将href特性的值传递过去。</p>
+<p>&lt;td&gt;</p>
+<p> &lt;font face=”Times, serif” color=”blue” size=”2”&gt;</p>
+<p> &lt;b&gt;</p>
+<p> &lt;a href=”atomic_weight.html”&gt;4.0026&lt;/a&gt;</p>
+<p> &lt;/b&gt;</p>
+<p> &lt;/font&gt;</p>
+<p>&lt;/td&gt;</p>
+<p>支持此种情况的模板与下列代码类似：</p>
+<p>&lt;xsl:template name=”ATOM_CELL”&gt;</p>
+<p> &lt;xsl:param-variable name=”file”&gt;</p>
+<p> index.html</p>
+<p> &lt;/xsl:param-variable&gt;</p>
+<p> &lt;td&gt;</p>
+<p> &lt;font face=”Times, serif” color=”blue” size=”2”&gt;</p>
+<p> &lt;b&gt;</p>
+<p> &lt;a href=”{$file}”&gt;&lt;xsl:value-of select=”.”/&gt;&lt;/a&gt;</p>
+<p> &lt;/b&gt;</p>
+<p> &lt;/font&gt;</p>
+<p> &lt;/td&gt;</p>
+<p>&lt;/xsl:template&gt;</p>
+<p>xsl:param-variable元素的name特性给参数起个名称（如果有多个参数则更为重要），如果调用过程不提供值的话，那么xsl:param-variable元素的内容就为要使用的这个参数提供一个缺省值。（这个缺省值还可以使用expr特性，以字符串表达式的形式给出，与xsl:variable完全一样。）</p>
+<p>当调用此模板时，xsl:call-template元素的xsl:param子元素使用其name特性来识别参数、使用其内容来给参数提供一个值的方法，从而提供该参数的值。例如：</p>
+<p>&lt;xsl:template match=”ATOMIC_NUMBER”&gt;</p>
+<p> &lt;xsl:call template macro=”ATOM_CELL”&gt;</p>
+<p> &lt;xsl:param name=”file”&gt;atomic_number.html&lt;/xsl:param&gt;</p>
+<p> &lt;xsl:value-of select=”.”/&gt;</p>
+<p> &lt;/xsl:call-template&gt;</p>
+<p>&lt;/xsl:template&gt;</p>
+<p>这是一个相当简单的例子，但复杂得多的命名模板是存在的。例如，为了用于许多不同样式单（每种样式单一定要单独改变网页作者名字、网页标题和版权日期几个参数）的输入，很可能需要定义Web站点上网页的页眉和页脚宏。</p>
+ 
+<a href='488.htm'>&lt;&lt;上一篇</a>&nbsp;&nbsp;<a href='490.htm'>下一篇&gt;&gt;</a></td>
+        </tr>
+      </table>
+      <p>&nbsp; </p>
+    </td>
+  </tr>
+</table>
+
+</body>
+
+</html>

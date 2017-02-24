@@ -1,0 +1,1293 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>ems特快专递查询,快递价格,物流快件跟踪,收递网点</title>
+<meta name="keywords" content="ms,特快专递,物流,查询,快递,价格,快递网点">
+<meta content="ems特快专递查询,快递价格,物流快件跟踪,收递网点查询" name="description" />
+<link href="../images/style.css" rel="stylesheet" type="text/css" />
+<style type="text/css">
+<!--
+body {margin:0; padding:0;background: #FFF url('../images/top3.gif') repeat-x top; font-size:12px;color:#666}
+.style1 {font-size: 14px}
+ 
+-->
+</style>
+<script language="javascript">
+<!--
+
+function Click()
+{
+if (document.form1.wen.value=="")
+	{
+	  alert("对不起，请输入单号！")
+	  document.form1.wen.focus()
+	  return false
+	 }
+}
+
+
+function login()
+ {
+   if(document.form11.sheet_no.value=="")
+    {
+      alert("运单号不能为空，请重新输入！") ;
+      document.form11.sheet_no.focus() ;
+      return false ;
+    }
+   else{
+      var Letters = "bBkKxX0123456789()+-";
+      for (i=0; i< document.form11.sheet_no.value.length; i++){
+      var CheckChar = document.form11.sheet_no.value.charAt(i);
+      if (Letters.indexOf(CheckChar) == -1){
+       alert("您输入的号码不正确，请重新输入！");
+       document.form11.sheet_no.focus();
+       return false;
+      }
+    }
+  }
+  
+    if(document.form11.sheet_no.value.length==12){
+		var a=document.form11.sheet_no.value;//"k01011234567";
+		var b="";
+		b=a.substring(0,3)+"0"+a.substring(3,5)+"0"+a.substring(5,13);
+		//alert("12位自动转换14位后的编号:"+b); 
+		document.form11.sheet_no.value=b;
+	}
+    return true
+ }
+//-->
+</script>
+
+</HEAD>
+<BODY>
+<table width="960" height="75" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td width="264" rowspan="2" align="center"><a href="../index.html">
+	<img src="../images/logo.gif" width="224" height="38" border="0" /></a></td>
+    <td height="24" valign="top">
+	<table width="321" height="24" border="0" align="right" cellpadding="0" cellspacing="0" background="../images/top2.gif">
+        <tr>
+          <td align="center" class="cwhite12"><a href="#" class="cwhite12">tools.kqiqi.com</a>　<a href="#" OnClick='this.style.behavior="url(#default#homepage)";this.setHomePage("http://tools.kqiqi.com");' class="cwhite12">设为首页</a> | <a href="#" onClick="window.external.AddFavorite('http://tools.kqiqi.com','客齐齐实用查询工具');" class="cwhite12">收藏本站</a></td>
+        </tr>
+    </table></td>
+  </tr>
+</table>
+<table width="960" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td><table height="38" border="0" cellpadding="0" cellspacing="0" style="margin-left:5px">
+      <tr align="center">
+          <td width="88" background="../images/nav1.gif" style="padding-top:5px"><a href="../index.html" class="navfh2">首　页</a></td>
+          <td width="88" background="../images/nav1.gif" style="padding-top:5px"><a href="../admin/index.html" class="navfh2">站长工具</a></td>
+          <td width="88" background="../images/nav2.gif" style="padding-top:5px"><a href="index.html" class="navfh1">查询工具</a></td>
+          <td width="88" background="../images/nav1.gif" style="padding-top:5px"><a href="../calculation/index.html" class="navfh2">计算工具</a></td>
+          <td width="88" background="../images/nav1.gif" style="padding-top:5px"><a href="../password/index.html" class="navfh2">加密解密</a></td>
+          <td width="88" background="../images/nav1.gif" style="padding-top:5px"><a href="../conversion/index.html" class="navfh2">转换工具</a></td>
+          <td width="88" background="../images/nav1.gif" style="padding-top:5px"><a href="../color/index.html" class="navfh2">颜色工具</a></td>
+          <td width="88" background="../images/nav1.gif" style="padding-top:5px"><a href="../web/index.html" class="navfh2">网络辅助</a></td>
+          <td width="88" background="../images/nav1.gif" style="padding-top:5px"><a href="../picture/index.html" class="navfh2">图片工具</a></td>
+          <td width="88" background="../images/nav1.gif" style="padding-top:5px"><a href="../others/index.html" class="navfh2">其它工具</a></td>
+        </tr>
+    </table></td>
+  </tr>
+</table>
+<script language="javascript" src="../js/others_top.js"></script>
+<table width="960" border="0" align="center" cellpadding="0" cellspacing="0" class="mainbg1">
+  <tr valign="top">
+    <td width="20">　</td>
+    <td width="190">
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td colspan="2" height="10">
+
+</td>
+</tr>
+      <tr>
+        <td width="75%">
+		<img src="../images/t9.gif" width="32" height="32" align="absmiddle" />　<span class="navfh1">工具列表</span></td>
+        <td width="25%">　</td>
+      </tr>
+    </table>
+     <table width="100%"  border="0" cellpadding="0" cellspacing="0" background="../images/t12.gif" class="mar5">
+        <tr>
+          <td height="10"> </td>
+        </tr>
+      </table>
+<table width="100%"  border="0" cellpadding="0" cellspacing="0" class="mar5">
+      <tr>
+        <td>　
+ <div id="menu">
+ <div class="box">
+    <a href="http://cy.kqiqi.com" target="_blank">成语查询
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+
+  <div class="box">
+    <a href="Wnl.html">万年历
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+    <div class="box">
+    <a href="../ip">IP查询
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+  <div class="box">
+    <a href="shengxiao.html">生肖查询
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+  <div class="box">
+    <a href="bazi.html">生辰八字查询
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+  <div class="box">
+    <a href="mark.html">标志大全
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+  <div class="box">
+    <a href="xingzuo.html">星座对照表
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+  <div class="box">
+    <a href="ems.html">各类快递查询
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+<div class="box">
+    <a href="nannv.html">生男生女查询
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+<div class="box">
+    <a href="dianhua.html">常用电话号码
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+<div class="box">
+    <a href="chepai.html">车牌号码查询
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+<div class="box">
+    <a href="weizhang.html">全国车辆交通违章查询表
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+<div class="box">
+    <a href="worldtime.html">世界时间查询
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+  <div class="box">
+    <a href="funv.html">妇女安全期查询
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+  <div class="box">
+    <a href="yuansu.html">元素周期表
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+  <div class="box">
+    <a href="health.html">健康查询
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+  <div class="box">
+    <a href="zipcode.html">邮编和电话区号
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+  <div class="box">
+    <a href="id.html">身份证号所在地
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+    <div class="box">
+    <a href="../tel" target="_blank">(手机/电话)归属地
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+    <div class="box">
+    <a href="train.html">列车时刻查询
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+    <div class="box">
+    <a href="sudu.html">上网连接速度测试
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+   <div class="box">
+    <a href="keywords.html">关键字密度查询
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+
+</div>
+ </td>
+      </tr>
+    </table>
+
+      <table width="100%" height="17"  border="0" cellpadding="0" cellspacing="0" background="t2.gif" class="mar5">
+        <tr>
+          <td> </td>
+        </tr>
+      </table>
+      
+    </td>
+    <td width="27">　</td>
+    <td width="700">
+     
+            <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+          <tr>
+      <td height="10" colspan="2">
+      </td>
+      </tr>
+        <tr valign="top">
+         <td width="40"><img src="../images/bang.gif" width="32" height="31"> </td>
+          <td><span class="navfh1">各类快递查询</span></td>
+          
+        </tr>
+      </table>
+      <hr size="1" style="color:#E3E8E9" />
+      <table width="100%"  border="0" cellpadding="3" cellspacing="1">
+              <tr>
+          <td>
+             <div align=center>
+  <div  style="margin: 8px 0;"><font color=red><b>快速定位</b></font>→ <a href="#A">[A B C]</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#D">[D E F G]</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#H">[H I J]</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#K">[K L M N]</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#O">[O P Q S T]</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#U">[U V W X]</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#Y">[Y]</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#Z">[Z]</a></div>
+<table class="tb" style="border:#d4d4d4 1px solid;" cellspacing=8 cellpadding=0 width=690 border=0>
+  <tr>
+    <td valign="top" align="left" width=350>
+      <table class="tb" cellspacing=0 cellpadding=6 width=100% bgcolor=#333333 border=0>
+        <form method=POST action=http://www.ems.com.cn/qcgzOutQueryAction.do target=_blank><input type="hidden" name="reqCode" value="browseBASE"><input type="hidden" name="myEmsbarCode" value=""/>
+        <tr height=36><td bgcolor=#eeeeee>E[<b>EMS邮政快递查询</b>]</td></tr>
+        <tr height="1"><td bgcolor=#6699cc> </td></tr>
+        <tr><td bgcolor=#eeeeee>
+          <table class="tb">
+            <tr>
+              <td width=120>请输入邮件号码<td width=140><input name="mailNum" type="text" value="" maxlength="14"></td><td width=*><input name="optijiaot" type="submit" value="查询"></td>
+            </tr>
+          </table>
+        </td></tr>
+        </form>
+      </table>
+    </td>
+    <td width=*>
+      <table class="tb" cellspacing=0 cellpadding=6 width=100% bgcolor=#333333 border=0>
+        <form method=POST action=http://embed.sf-express.com/sfwebc2_ch/result_c2_index.jsp target=_blank>
+        <tr><td bgcolor=#eeeeee>S[<b>顺丰速运查询</b>]<img src='http://embed.sf-express.com/sfwebc2_ch/getCheckImg' border="0" /> 验证码: <input type="text" class="input23" name="checkimg" size=4 /></td></tr>
+        <tr height="1"><td bgcolor=#6699cc> </td></tr>
+        <tr><td bgcolor=#eeeeee>
+          <table class="tb">
+            <tr>
+              <td width=120>请输入快件运单号<td width=140><input name="tracklist" type="text" value="" maxlength="14"></td><td width=*><input name="imageField" type="submit" value="查询"></td>
+            </tr>
+        
+          </table>
+        </td></tr>
+        </form>
+      </table>
+    </td>
+  </tr>
+</table>
+<a name="A"></a>
+<table class="tb"cellspacing=0 cellpadding=6 width=690 border=0>
+  <tr><td><strong style="color:red;">A～C</strong> [A B C]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#">[回到Top]</a></td><td align=right></td></tr>
+</table>
+
+<table class="tb" style="border:#d4d4d4 1px solid;" cellspacing=8 cellpadding=0 width=690 border=0>
+  <tr>
+    <td valign="top" align="lef" width=350>
+      <table class="tb" cellspacing=0 cellpadding=6 width=100% bgcolor=#333333 border=0>
+        <form method=post action=http://cn.aaeweb.com/queryresult.aspx target=_blank name="form1" >
+        <tr><td bgcolor=#eeeeee>A[<b>AAE全球快运专递查询</b>]</td></tr>
+        <tr height="1"><td bgcolor=#6699cc> </td></tr><INPUT TYPE=HIDDEN NAME=agree VALUE=1>
+        <tr><td bgcolor=#eeeeee>
+          <table class="tb">
+            <tr>
+              <td width=120>请输入运单号<td width=140><input name="wen" id="trackno" type="text" value="" maxlength="14"></td><td width=*><a href="javascript:form1.submit();" ><img src="go.gif" width="26" height="15" border="0" onClick="return Click();" /></a></td>
+            </tr>
+          </table>
+        </td></tr>
+        </form>
+      </table>
+    </td>
+    <td width=*>
+      <table class="tb" cellspacing=0 cellpadding=6 width=100% bgcolor=#333333 border=0>
+        <form method=POST action=http://www.anxinda.com/kjcx.asp target=_blank>
+        <tr><td bgcolor=#eeeeee>A[<b>安信达快递快递查询</b>]</td></tr>
+        <tr height="1"><td bgcolor=#6699cc> </td></tr><INPUT TYPE=HIDDEN NAME=serverip VALUE=http://218.81.178.16/anxinda/search.asp>
+        <tr><td bgcolor=#eeeeee>
+          <table class="tb">
+            <tr>
+              <td width=120>请输入运单号<td width=140><input name="id" type="text" value="" maxlength="14"></td><td width=*><input type="submit" value="查询"></td>
+            </tr>
+          </table>
+        </td></tr>
+        </form>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" align="lef" width=350>
+      <table class="tb" cellspacing=0 cellpadding=6 width=100% bgcolor=#333333 border=0>
+        <form method=POST action=http://www.ees.com.cn/showbill.asp target=_blank>
+        <tr><td bgcolor=#eeeeee>B[<b>百福东方国际物流查询</b>]</td></tr>
+        <tr height="1"><td bgcolor=#6699cc> </td></tr>
+        <tr><td bgcolor=#eeeeee>
+          <table class="tb">
+            <tr>
+              <td width=120>百福东方运单号<td width=140><input name="sbillnos" type="text" value="" maxlength="14"></td><td width=*><input type="submit" value="查询"></td>
+            </tr>
+          </table>
+        </td></tr>
+        </form>
+      </table>
+    </td>
+    <td width=*>
+      <table class="tb" cellspacing=0 cellpadding=6 width=100% bgcolor=#333333 border=0>
+        <form method=POST action=http://61.145.121.47/custSearch.jsp target=_blank>
+        <tr><td bgcolor=#eeeeee>C[<b>长宇物流快递查询</b>]</td></tr>
+        <tr height="1"><td bgcolor=#6699cc> </td></tr>
+        <tr><td bgcolor=#eeeeee>
+          <table class="tb">
+            <tr>
+              <td width=120>长宇物流提单号<td width=140><input name="bnos" type="text" value="" maxlength="14"></td><td width=*><input type="submit" value="查询"></td>
+            </tr>
+          </table>
+        </td></tr>
+        </form>
+      </table>
+    </td>  
+    </tr>
+  <tr>
+    <td valign="top" align="lef" width=350>
+      <table class="tb" cellspacing=0 cellpadding=6 width=100% bgcolor=#333333 border=0>
+        <form method=POST action=http://www.ping-chi.com/cgi-bin/result.asp target=_blank>
+        <tr><td bgcolor=#eeeeee>B[<b>炳记国际物流/飞达急便速递查询</b>]</td></tr>
+        <tr height="1"><td bgcolor=#6699cc> </td></tr>
+        <tr><td bgcolor=#eeeeee>
+          <table class="tb">
+            <tr>
+              <td width=120>请输入长发提单号<td width=140><input name="ID" type="text" value="" maxlength="14"></td><td width=*><input type="submit" value="查询"></td>
+            </tr>
+          </table>
+        </td></tr>
+        </form>
+      </table>
+    </td>
+    <td width=*>
+      <table class="tb" cellspacing=0 cellpadding=6 width=100% bgcolor=#333333 border=0>
+        <form method=POST action=http://www.yud.com.cn/yudlogistics/search/yudExpressTraceResult.jsp target=_blank>
+        <tr><td bgcolor=#eeeeee>C[<b>长发物流快递查询</b>]</td></tr>
+        <tr height="1"><td bgcolor=#6699cc> </td></tr>
+        <tr><td bgcolor=#eeeeee>
+          <table class="tb">
+            <tr>
+              <td width=120>请输入长发提单号<td width=140><input name="orderNo" type="text" value="" maxlength="14"></td><td width=*><input name="I1" type="submit" value="查询"></td>
+            </tr>
+          </table>
+        </td></tr>
+        </form>
+      </table>
+    </td>
+  </tr>
+
+</table>
+
+<a name="D"></a>
+<table class="tb"cellspacing=0 cellpadding=6 width=690 border=0>
+  <tr><td><strong style="color:red;">D～G</strong> [D E F G]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#">[回到Top]</a></td><td align=right></td></tr>
+</table>
+
+<table class="tb" style="border:#d4d4d4 1px solid;" cellspacing=8 cellpadding=0 width=690 border=0>
+  <tr>
+    <td valign="top" align="lef" width=350>
+      <table class="tb" cellspacing=0 cellpadding=6 width=100% bgcolor=#333333 border=0>
+        <form method=GET action=http://lms2.dtw.com.cn/dtwlmsweb/client_result.jsp target=_blank>
+        <tr><td bgcolor=#eeeeee>D[<b>大田快递查询</b>]</td></tr>
+        <tr height="1"><td bgcolor=#6699cc> </td></tr>
+        <tr><td bgcolor=#eeeeee>
+          <table class="tb">
+            <tr>
+              <td width=120>请输入快递运单号<td width=140><input name="yd_hao" type="text" value="" maxlength="14"></td><td width=*><input name="Submit" type="submit" value="查询"></td>
+            </tr>
+          </table>
+        </td></tr>
+        </form>
+      </table>
+    </td>
+    <td width=*>
+       <table class="tb" cellspacing=0 cellpadding=6 width=100% bgcolor=#333333 border=0>
+        <form method=POST action=http://219.133.59.61/Query.asp target=_blank>
+        <tr><td bgcolor=#eeeeee>D[<b>东道物流(DDS)快递查询</b>]</td></tr>
+        <tr height="1"><td bgcolor=#6699cc> </td></tr>
+        <tr><td bgcolor=#eeeeee>
+          <table class="tb">
+            <tr>
+              <td width=120>东道物流提单号<td width=140><input name="wen" type="text" value="" maxlength="14"></td><td width=*><input type="submit" value="查询"></td>
+            </tr>
+          </table>
+        </td></tr>
+        </form>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" align="lef" width=350>
+      <table class="tb" cellspacing=0 cellpadding=6 width=100% bgcolor=#333333 border=0>
+        <form method=POST action=http://www.coe.com.hk/coe_web/cs.asp target=_blank>
+        <tr><td bgcolor=#eeeeee>D[<b>东方快递查询</b>]</td></tr>
+        <tr height="1"><td bgcolor=#6699cc> </td></tr>
+        <tr><td bgcolor=#eeeeee>
+          <table class="tb">
+            <tr>
+              <td width=120>输入查询单号<td width=140><input name="MENU" type="text" value="" maxlength="14"></td><td width=*><input type="submit" value="查询"></td>
+            </tr>
+          </table>
+        </td></tr>
+        </form>
+      </table>
+    </td>
+    <td width=*>
+      <table class="tb" cellspacing=0 cellpadding=6 width=100% bgcolor=#333333 border=0>
+        <form method=POST action=http://www.phoenixexp.com/expressage/SYS/SEARCH.ASP target=_blank>
+        <tr><td bgcolor=#eeeeee>F[<b>凤凰快递查询</b>]</td></tr><input type="hidden" name="tiaojian" value="1">
+        <tr height="1"><td bgcolor=#6699cc> </td></tr>
+        <tr><td bgcolor=#eeeeee>
+          <table class="tb">
+            <tr>
+              <td width=120>输入查询运单编号<td width=140><input name="keyword" type="text" value="" maxlength="14"></td><td width=*><input type="submit" value="查询"></td>
+            </tr>
+          </table>
+        </td></tr>
+        </form>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" align="lef" width=350>
+      <table class="tb" cellspacing=0 cellpadding=6 width=100% bgcolor=#333333 border=0>
+        <form method=get action=http://www.fedex.com/Tracking target=_blank>
+        <input type='hidden' name='ascend_header' value='1' />
+<input type='hidden' name='clienttype' value='dotcomreg' />
+<input type='hidden' name='cntry_code' value='cn' />
+<input type='hidden' name='language' value='sim' />
+        <tr><td bgcolor=#eeeeee>F[<b>FedEx(联邦快递)</b>]</td></tr>
+        <tr height="1"><td bgcolor=#6699cc> </td></tr>
+        <tr><td bgcolor=#eeeeee>
+          <table class="tb">
+            <tr>
+              <td width=120>输入运单号<td width=140><input name="tracknumbers" type="text" value=""></td><td width=*><input type="submit" value="查询"></td>
+            </tr>
+          </table>
+        </td></tr>
+        </form>
+      </table>
+    </td>
+    <td width=*>
+      
+    </td>
+  </tr>
+
+   
+</table>
+
+<a name="H"></a>
+<table class="tb"cellspacing=0 cellpadding=6 width=690 border=0>
+  <tr><td><strong style="color:red;">H～J</strong> [H I J]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#">[回到Top]</a></td><td align=right></td></tr>
+</table>
+
+<table class="tb" style="border:#d4d4d4 1px solid;" cellspacing=8 cellpadding=0 width=690 border=0>
+  <tr>
+    <td valign="top" align="lef" width=350>
+          <table class="tb" cellspacing=0 cellpadding=6 width=100% bgcolor=#333333 border=0>
+        <form method=POST action=http://www.kke.com.hk/kkeSearch.asp target=_blank>
+        <tr><td bgcolor=#eeeeee>J[<b>京广速递查询</b>]</td></tr>
+        <tr height="1"><td bgcolor=#6699cc></td></tr>
+        <tr><td bgcolor=#eeeeee>
+          <table class="tb">
+            <tr>
+              <td width=120>请输入运单号<td width=140><input name="ID" type="text" value="" maxlength="14"></td><td width=*><input type="submit" value="查询"></td>
+            </tr>
+          </table>
+        </td></tr>
+        </form>
+      </table>
+    </td>
+    <td width=*>
+      <table class="tb" cellspacing=0 cellpadding=6 width=100% bgcolor=#333333 border=0>
+        <form method=POST action=http://www.ctnexpress.net/search_s.asp target=_blank>
+        <tr><td bgcolor=#eeeeee>H[<b>华国速递查询</b>]</td></tr>
+        <tr height="1"><td bgcolor=#6699cc> </td></tr><input TYPE=hidden name="awb">
+        <tr><td bgcolor=#eeeeee>
+          <table class="tb">
+            <tr>
+              <td width=120>请输入运单号<td width=140><input name="airbill" type="text" value="" maxlength="14"></td><td width=*><input type="submit" value="查询"></td>
+            </tr>
+          </table>
+        </td></tr>
+        </form>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" align="lef" width=350>
+      <table class="tb" cellspacing=0 cellpadding=6 width=100% bgcolor=#333333 border=0>
+        <form method=POST action=http://www.htky365.com/track.do target=_blank>
+        <tr><td bgcolor=#eeeeee>H[<b>汇通快运查询</b>]</td></tr>
+        <tr height="1"><td bgcolor=#6699cc> </td></tr>
+        <tr><td bgcolor=#eeeeee>
+          <table class="tb">
+            <tr>
+              <td width=120>请输入运单号<td width=140><input name="inputNumber" type="text" value="" maxlength="14"></td><td width=*><input type="submit" value="查询"></td>
+            </tr>
+          </table>
+        </td></tr>
+        </form>
+      </table>
+    </td>
+    <td width=*>
+      <table class="tb" cellspacing=0 cellpadding=6 width=100% bgcolor=#333333 border=0>
+        <form method=POST action=http://www.kind-nice.com/kjcx.asp target=_blank>
+        <tr><td bgcolor=#eeeeee>J[<b>金驰启良物流查询</b>]</td></tr>
+        <tr height="1"><td bgcolor=#6699cc></td></tr>
+        <tr><td bgcolor=#eeeeee>
+          <table class="tb">
+            <tr>
+              <td width=120>请输入快件单号<td width=140><input name="id" type="text" value="" maxlength="14"></td><td width=*><input type="submit" value="查询"></td>
+            </tr>
+          </table>
+        </td></tr>
+        </form>
+      </table>
+    </td>
+  </tr>
+ 
+</table>
+
+<a name="K"></a>
+<table class="tb"cellspacing=0 cellpadding=6 width=690 border=0>
+  <tr><td><strong style="color:red;">K～N</strong> [K L M N]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#">[回到Top]</a></td><td align=right></td></tr>
+</table>
+
+<table class="tb" style="border:#d4d4d4 1px solid;" cellspacing=8 cellpadding=0 width=690 border=0>
+  <tr>
+    <td valign="top" align="lef" width=350>
+      <table class="tb" cellspacing=0 cellpadding=6 width=100% bgcolor=#333333 border=0>
+        <form method=POST action=http://www.fastexpress.com.cn/search/search.asp target=_blank>
+        <tr><td bgcolor=#eeeeee>K[<b>香港快捷速递查询</b>]</td></tr>
+        <tr height="1"><td bgcolor=#6699cc></td></tr>
+        <tr><td bgcolor=#eeeeee>
+          <table class="tb">
+            <tr>
+              <td width=120>请输入查询运单号<td width=140><input name="id" type="text" value="" maxlength="14"></td><td width=*><input name="img" type="submit" value="查询"></td>
+            </tr>
+          </table>
+        </td></tr>
+        </form>
+      </table>
+   </td>
+    <td width=*>
+      <table class="tb" cellspacing=0 cellpadding=6 width=100% bgcolor=#333333 border=0>
+        <form method=POST action=http://www.cnkjs.com/kjs/track_query.jsp target=_blank>
+        <tr><td bgcolor=#eeeeee>K[<b>快捷顺快递查询</b>]</td></tr>
+        <tr height="1"><td bgcolor=#6699cc></td></tr>
+        <tr><td bgcolor=#eeeeee>
+          <table class="tb">
+            <tr>
+              <td width=120>请输入查询运单号<td width=140><input name="id" type="text" value="" maxlength="14"></td><td width=*><input name="img" type="submit" value="查询"></td>
+            </tr>
+          </table>
+        </td></tr>
+        </form>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" align="lef" width=350>
+      <table class="tb" cellspacing=0 cellpadding=6 width=100% bgcolor=#333333 border=0>
+        <form method=POST action=http://www.fast111.com/search/asp/cx2.asp target=_blank>
+        <tr><td bgcolor=#eeeeee>K[<b>快马运输货物查询</b>]</td></tr>
+        <tr height="1"><td bgcolor=#6699cc></td></tr>
+        <tr><td bgcolor=#eeeeee>
+          <table class="tb">
+            <tr>
+              <td width=120>请输入提单号码<td width=140><input name="cx" type="text" value="" maxlength="14"></td><td width=*><input type="submit" value="查询"></td>
+            </tr>
+          </table>
+        </td></tr>
+        </form>
+       </table>
+    </td>
+    <td width=*>
+      <table class="tb" cellspacing=0 cellpadding=6 width=100% bgcolor=#333333 border=0>
+        <form method=POST action=http://www.ldsd.cn/Query4.asp target=_blank>
+        <tr><td bgcolor=#eeeeee>L[<b>蓝盾速递查询</b>]</td></tr>
+        <tr height="1"><td bgcolor=#6699cc></td></tr>
+        <tr><td bgcolor=#eeeeee>
+          <table class="tb">
+            <tr>
+              <td width=120>请输入您的运单号<td width=140><input name="wen" type="text" value="" maxlength="14"></td><td width=*><input type="submit" value="查询"></td>
+            </tr>
+          </table>
+        </td></tr>
+        </form>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" align="lef" width=350>
+      <table class="tb" cellspacing=0 cellpadding=6 width=100% bgcolor=#333333 border=0>
+        <form method=POST action=http://www.lts.com.cn/query/result.asp target=_blank>
+        <tr><td bgcolor=#eeeeee>L[<b>联昊通速递查询</b>]</td></tr>
+        <tr height="1"><td bgcolor=#6699cc></td></tr>
+        <tr><td bgcolor=#eeeeee>
+          <table class="tb">
+            <tr>
+              <td width=120>请输入运单号<td width=140><input name="billcode" type="text" value="" maxlength="14"></td><td width=*><input type="submit" value="查询"></td>
+            </tr>
+          </table>
+        </td></tr>
+        </form>
+      </table>
+    </td>
+    <td width=*>
+      <table class="tb" cellspacing=0 cellpadding=6 width=100% bgcolor=#333333 border=0>
+        <form method=POST action=http://www.lbex.com.cn/searchbill.asp target=_blank>
+        <tr><td bgcolor=#eeeeee>L[<b>龙邦物流查询</b>]</td></tr>
+        <tr height="1"><td bgcolor=#6699cc> </td></tr>
+        <tr><td bgcolor=#eeeeee>
+          <table class="tb">
+            <tr>
+              <td width=120>请输入龙邦运单号<td width=140><input name="BillCode" type="text" value="" maxlength="14"></td><td width=*><input name="Submit" type="submit" value="查询"></td>
+            </tr>
+        </form>
+          </table>
+        </td></tr>
+       </table>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" align="lef" width=350>
+       <table class="tb" cellspacing=0 cellpadding=6 width=100% bgcolor=#333333 border=0>
+        <form method=POST action=http://data.cae.com.cn/tracking.asp target=_blank>
+        <tr><td bgcolor=#eeeeee>M[<b>民航快递查询</b>]</td></tr>
+        <tr height="1"><td bgcolor=#6699cc></td></tr>
+        <tr><td bgcolor=#eeeeee>
+          <table class="tb">
+            <tr>
+              <td width=120>货件跟踪查询<td width=140><input name="subnum" type="text" value="" maxlength="14"></td><td width=*><input type="submit" value="查询"></td>
+            </tr>
+          </table>
+        </td></tr>
+        </form>
+      </table>
+    </td>
+    <td width=*>
+       <table class="tb" cellspacing=0 cellpadding=6 width=100% bgcolor=#333333 border=0>
+        <form method=POST action=http://www.gnd56.com/Query.asp target=_blank>
+        <tr><td bgcolor=#eeeeee>N[<b>能达快递物流查询</b>]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="SubBill" value="1" checked="checked" />查询子单</td></tr>
+        <tr height="1"><td bgcolor=#6699cc></td></tr>
+        <tr><td bgcolor=#eeeeee>
+          <table class="tb">
+            <tr>
+              <td width=120>请输入物流单查询<td width=140><input name="BillCode" type="text" value="" maxlength="14"></td><td width=*><input type="submit" value="查询"></td>
+            </tr>
+          </table>
+        </td></tr>
+        </form>
+      </table>
+    </td>
+  </tr>
+</table>
+
+<a name="O"></a><table class="tb"cellspacing=0 cellpadding=6 width=690 border=0>
+  <tr><td><strong style="color:red;">O～T</strong> [O P Q R S T]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#">[回到Top]</a></td><td align=right></td></tr>
+</table>
+
+<table class="tb" style="border:#d4d4d4 1px solid;" cellspacing=8 cellpadding=0 width=690 border=0>
+  <tr>
+    <td valign="top" align="lef" width=350>
+      <table class="tb" cellspacing=0 cellpadding=6 width=100% bgcolor=#333333 border=0>
+        <form method=POST action=http://www.peisi.cn/www/chaxun.asp target=_blank>
+        <tr><td bgcolor=#eeeeee>P[<b>配思货运查询</b>]</td></tr>
+        <tr height="1"><td bgcolor=#6699cc> </td></tr>
+        <tr><td bgcolor=#eeeeee>
+          <table class="tb">
+            <tr>
+              <td width=120>请您输入快件单号<td width=140><input name="postId" type="text" value="" maxlength="14"></td><td width=*><input type="submit" value="查询"></td>
+            </tr>
+          </table>
+        </td></tr>
+        </form>
+      </table>
+    </td>
+    <td width=*>
+      <table class="tb" cellspacing=0 cellpadding=6 width=100% bgcolor=#333333 border=0>
+        <form method=POST action=http://221.130.189.246:7001/webkirin/custSearch.jsp target=_blank>
+        <tr><td bgcolor=#eeeeee>Q[<b>上海麒麟物流查询</b>]</td></tr>
+        <tr height="1"><td bgcolor=#6699cc></td></tr>
+        <tr><td bgcolor=#eeeeee>
+          <table class="tb">
+            <tr>
+              <td width=120>请输入运单编号<td width=140><input name="bnos" type="text" value="" maxlength="14"></td><td width=*><input type="submit" value="查询"></td>
+            </tr>
+          </table>
+        </td></tr>
+        </form>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" align="lef" width=350>
+      <table class="tb" cellspacing=0 cellpadding=6 width=100% bgcolor=#333333 border=0>
+        <form method=POST action=http://www.seispeedy.com/linkquery.asp target=_blank>
+        <tr><td bgcolor=#eeeeee>Q[<b>奇速快运查询</b>]</td></tr>
+        <tr height="1"><td bgcolor=#6699cc></td></tr>
+        <tr><td bgcolor=#eeeeee>
+          <table class="tb">
+            <tr>
+              <td width=120>奇速快运单跟踪<td width=140><input name="textarea" type="text" value="" maxlength="14"></td><td width=*><input type="submit" value="查询"></td>
+            </tr>
+          </table>
+        </td></tr>
+        </form>
+      </table>
+    </td>
+    <td width=*>
+      <table class="tb" cellspacing=0 cellpadding=6 width=100% bgcolor=#333333 border=0>
+        <form method=POST action=http://www.atexpress.cn/result.asp target=_blank>
+        <tr><td bgcolor=#eeeeee>Q[<b>全日通快递查询</b>]</td></tr>
+        <tr height="1"><td bgcolor=#6699cc> </td></tr>
+        <tr><td bgcolor=#eeeeee>
+          <table class="tb">
+            <tr>
+              <td width=120>请您输入查询单号<td width=140><input name="S1" type="text" value="" maxlength="14"></td><td width=*><input type="submit" value="查询"></td>
+            </tr>
+          </table>
+        </td></tr>
+        </form>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" align="lef" width=350>
+      <table class="tb" cellspacing=0 cellpadding=6 width=100% bgcolor=#333333 border=0>
+        <form method=GET action=http://www.apex100.com/Index.aspx target=_blank>
+        <tr><td bgcolor=#eeeeee>Q[<b>全一快递查询</b>]</td></tr>
+        <tr height="1"><td bgcolor=#6699cc> </td></tr>
+        <tr><td bgcolor=#eeeeee>
+          <table class="tb">
+            <tr>
+              <td width=120>请输入提单号码<td width=140><input name="barcode_txt" type="text" value="" maxlength="14"></td><td width=*><input name="submit" type="submit" value="查询"></td>
+            </tr>
+          </table>
+        </td></tr>
+        </form>
+      </table>
+    </td>
+    <td width=*>
+      <table class="tb" cellspacing=0 cellpadding=6 width=100% bgcolor=#333333 border=0>
+        <form method=GET action=http://61.152.237.204:8080/sto/index.jsp target=_blank>
+        <tr><td bgcolor=#eeeeee>S[<b>申通快递查询</b>]</td></tr>
+        <tr height="1"><td bgcolor=#6699cc> </td></tr>
+        <tr><td bgcolor=#eeeeee>
+          <table class="tb">
+            <tr>
+              <td width=120>请输入快件号<td width=140><input name="wen" type="text" value="" maxlength="14"></td><td width=*><input name="Submit2" type="submit" value="查询"></td>
+            </tr>
+          </table>
+        </td></tr>
+        </form>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" align="lef" width=350>
+      <table class="tb" cellspacing=0 cellpadding=6 width=100% bgcolor=#333333 border=0>
+        <form method=POST action=http://www.stl56.com/Query.asp target=_blank>
+        <tr><td bgcolor=#eeeeee>S[<b>晟通速递查询</b>]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="SubBill" value="1" /> 查询子单 </td></tr>
+        <tr height="1"><td bgcolor=#6699cc> </td></tr>
+        <tr><td bgcolor=#eeeeee>
+          <table class="tb">
+            <tr>
+              <td width=120>请您输入查询单号<td width=140><input name="BillCode" type="text" value="" maxlength="14"></td><td width=*><input name="Submit3" type="submit" value="查询"></td>
+            </tr>
+          </table>
+        </td></tr>
+        </form>
+      </table>
+    </td>
+    <td width=*>
+      
+        
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" align="lef" width=350>
+      <table class="tb" cellspacing=0 cellpadding=6 width=100% bgcolor=#333333 border=0>
+        <form method=POST action=http://61.172.202.134/webquery/index_web.asp target=_blank>
+        <tr><td bgcolor=#eeeeee>T[<b>天天快递查询</b>]</td></tr>
+        <tr height="1"><td bgcolor=#6699cc> </td></tr>
+        <tr><td bgcolor=#eeeeee>
+          <table class="tb">
+            <tr>
+              <td width=120>输入14位运单条形码<td width=140><input name="wen" type="text" value="" maxlength="14"></td><td width=*><input type="submit" value="查询"></td>
+            </tr>
+        </form>
+          </table>
+        </td></tr>
+      </table>
+    </td>
+    <td width=*>
+       <table class="tb" cellspacing=0 cellpadding=6 width=100% bgcolor=#333333 border=0>
+        <form method=POST action=http://www.tnt.com/webtracker/tracking.do?respLang=zh&respCountry=CN&genericSiteIdent= target=_blank>
+        <tr><td bgcolor=#eeeeee>T[<b>TNT国际快递查询</b>]&nbsp;&nbsp;&nbsp;&nbsp;运单号码 <input type="radio" name="searchType" id="consignment" value="CON" checked="checked" /> 参考号码 <input type="radio" name="searchType" id="reference" value="REF" /></td></tr>
+        <tr height="1"><td bgcolor=#6699cc> </td></tr><input value="zh" name="respLang" type="hidden" /><input value="CN" name="respCountry" type="hidden" /><input value="1" name="page" type="hidden" /><input value="1" name="sourceID" type="hidden" /><input value="ww" name="sourceCountry" type="hidden" /><input value="" name="plazakey" type="hidden" /><input value="" name="refs" type="hidden" /><input value="GEN" name="requesttype" type="hidden" /><input value="1" name="navigation" type="hidden" />
+        <tr><td bgcolor=#eeeeee>
+          <table class="tb">
+            <tr>
+              <td width=120>请输入运单或参考号<td width=140><input name="cons" type="text" value="" maxlength="14"></td><td width=*><input name="tracksubmit" type="submit" value="查询"></td>
+            </tr>
+          </table>
+        </td></tr>
+        </form>
+      </table>
+   </td>
+  </tr>
+</table>
+<a name="U"></a><table class="tb"cellspacing=0 cellpadding=6 width=690 border=0>
+  <tr><td><strong style="color:red;">U～X</strong> [U V W X]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#">[回到Top]</a></td><td align=right></td></tr>
+</table>
+
+<table class="tb" style="border:#d4d4d4 1px solid;" cellspacing=8 cellpadding=0 width=690 border=0>
+  <tr>
+    <td valign="top" align="lef" width=350>
+      <table class="tb" cellspacing=0 cellpadding=6 width=100% bgcolor=#333333 border=0>
+        <form method=GET action=http://wwwapps.ups.com/WebTracking/processInputRequest target=_blank><input type="hidden" name="HTMLVersion" value="5.0"><input type="hidden" name="loc" value="zh_CN"><input type="hidden" name="Requester" value="UPSHome">
+        <tr><td bgcolor=#eeeeee>U[<b>UPS中国包裹追踪</b>]</td></tr>
+        <tr height="1"><td bgcolor=#6699cc> </td></tr>
+        <tr><td bgcolor=#eeeeee>
+          <table class="tb">
+            <tr>
+              <td width=120>请输入追踪编号<td width=140><input name="tracknum" type="text" value="" maxlength="14"></td><td width=*><input name="track" type="submit" value="查询"></td>
+            </tr>
+          </table>
+        </td></tr>
+        </form>
+      </table>
+    </td>
+    <td width=*>
+      <table class="tb" cellspacing=0 cellpadding=6 width=100% bgcolor=#333333 border=0>
+        <form method=POST action=http://chx.ponyex.com.cn/result.asp target=_blank>
+        <tr><td bgcolor=#eeeeee>X[<b>小红马物流快递查询</b>]</td></tr>
+        <tr height="1"><td bgcolor=#6699cc> </td></tr>
+        <tr><td bgcolor=#eeeeee>
+          <table class="tb">
+            <tr>
+              <td width=120>小红马快递运单号<td width=140><input name="ID" type="text" value="" maxlength="14"></td><td width=*><input type="submit" value="查询"></td>
+            </tr>
+        </form>
+          </table>
+        </td></tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" align="lef" width=350>
+      <table class="tb" cellspacing=0 cellpadding=6 width=100% bgcolor=#333333 border=0>
+        <form method=POST action=http://www.xbwl.cn/WSFW/Search.asp target=_blank>
+        <tr><td bgcolor=#eeeeee>X[<b>新邦物流快递查询</b>]</td></tr>
+        <tr height="1"><td bgcolor=#6699cc> </td></tr>
+        <tr><td bgcolor=#eeeeee>
+          <table class="tb">
+            <tr>
+              <td width=120>新邦物流运单号码<td width=140><input name="Search" type="text" value="" maxlength="14"></td><td width=*><input type="submit" value="查询"></td>
+            </tr>
+          </table>
+        </td></tr>
+        </form>
+      </table>
+    </td>
+    <td width=*>
+      <table class="tb" cellspacing=0 cellpadding=6 width=100% bgcolor=#333333 border=0>
+        <form method=POST action=http://www.u-link.org/ser\customer.asp target=_blank>
+        <tr><td bgcolor=#eeeeee>X[<b>鑫飞鸿速递查询</b>]</td></tr>
+        <tr height="1"><td bgcolor=#6699cc> </td></tr>
+        <tr><td bgcolor=#eeeeee>
+          <table class="tb">
+            <tr>
+              <td width=120>输入详情单号<td width=140><input name="numtext" type="text" value="" maxlength="14"></td><td width=*><input type="submit" value="查询"></td>
+            </tr>
+        </form>
+          </table>
+        </td></tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" align="lef" width=350>
+      
+        </td></tr>
+      </table>
+    </td>
+    <td width=*>
+    </td>
+  </tr>
+</table>
+
+<a name="Y"></a><table class="tb"cellspacing=0 cellpadding=6 width=690 border=0>
+  <tr><td><strong style="color:red;">Y</strong> [Y]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#">[回到Top]</a></td><td align=right></td></tr>
+</table>
+
+<table class="tb" style="border:#d4d4d4 1px solid;" cellspacing=8 cellpadding=0 width=690 border=0>
+  <tr>
+    <td valign="top" align="lef" width=350>
+      <table class="tb" cellspacing=0 cellpadding=6 width=100% bgcolor=#333333 border=0>
+        <form method=POST action=http://www.acsnets.com/search.asp target=_blank>
+        <tr><td bgcolor=#eeeeee>Y[<b>雅仕国际ACS速递查询</b>]</td></tr>
+        <tr height="1"><td bgcolor=#6699cc> </td></tr>
+        <tr><td bgcolor=#eeeeee>
+          <table class="tb">
+            <tr>
+              <td width=120>请输入货件单号<td width=140><input name="AWBNo" type="text" value="" maxlength="14"></td><td width=*><input  type="submit" value="查询"></td>
+            </tr>
+        </form>
+          </table>
+        </td></tr>
+      </table>
+    </td>
+    <td width=*>
+      <table class="tb" cellspacing=0 cellpadding=6 width=100% bgcolor=#333333 border=0>
+        <form method=POST action=http://e3.airfex.net/query.asp target=_blank>
+        <tr><td bgcolor=#eeeeee>Y[<b>亚风速递查询</b>]</td></tr>
+        <tr height="1"><td bgcolor=#6699cc> </td></tr>
+        <tr><td bgcolor=#eeeeee>
+          <table class="tb">
+            <tr>
+              <td width=120>请输入要查询的单号<td width=140><input name="ID" type="text" value="" maxlength="14"></td><td width=*><input name="imageField" type="submit" value="查询"></td>
+            </tr>
+        </form>
+          </table>
+        </td></tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" align="lef" width=350>
+      <table class="tb" cellspacing=0 cellpadding=6 width=100% bgcolor=#333333 border=0>
+        <form method=POST action=http://211.154.133.134:8083/cha.asp target=_blank>
+        <tr><td bgcolor=#eeeeee>Y[<b>伊艾斯快递查询</b>]</td></tr>
+        <tr height="1"><td bgcolor=#6699cc> </td></tr>
+        <tr><td bgcolor=#eeeeee>
+          <table class="tb">
+            <tr>
+              <td width=120>输入需要查询的单号<td width=140><input name="JobNo" type="text" value="" maxlength="14"></td><td width=*><input type="submit" value="查询"></td>
+            </tr>
+          </table>
+        </td></tr>
+        </form>
+      </table>
+    </td>
+    <td width=*>
+      <table class="tb" cellspacing=0 cellpadding=6 width=100% bgcolor=#333333 border=0>
+        <form method=POST action=http://www.edkd.com/blue/select.asp?action=Search target=_blank>
+        <tr><td bgcolor=#eeeeee>Y[<b>易达快递查询(上海)</b>]</td></tr>
+        <tr height="1"><td bgcolor=#6699cc> </td></tr>
+        <tr><td bgcolor=#eeeeee>
+          <table class="tb">
+            <tr>
+              <td width=120>输入易达快件单号<td width=140><input name="Search" type="text" value="" maxlength="14"></td><td width=*><input name="chaxun" type="submit" value="查询"></td>
+            </tr>
+        </form>
+          </table>
+        </td></tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" align="lef" width=350>
+      <table class="tb" cellspacing=0 cellpadding=6 width=100% bgcolor=#333333 border=0>
+        <form method=POST action=http://www.etsstar.com/ytmis/track.asp target=_blank>
+        <tr><td bgcolor=#eeeeee>Y[<b>一通快递查询</b>]</td></tr>
+        <tr height="1"><td bgcolor=#6699cc> </td></tr>
+        <tr><td bgcolor=#eeeeee>
+          <table class="tb">
+            <tr>
+              <td width=120>输入追踪运单号码<td width=140><input name="billNo" type="text" value="" maxlength="14"></td><td width=*><input name="Submit" type="submit" value="查询"></td>
+            </tr>
+        </form>
+          </table>
+        </td></tr>
+      </table>
+    </td>
+    <td width=*>
+      <table class="tb" cellspacing=0 cellpadding=6 width=100% bgcolor=#333333 border=0>
+        <form method=POST action=http://www.itsd.cn/khcd/result.asp target=_blank>
+        <tr><td bgcolor=#eeeeee>Y[<b>一统速递查询</b>]</td></tr>
+        <tr height="1"><td bgcolor=#6699cc> </td></tr>
+        <tr><td bgcolor=#eeeeee>
+          <table class="tb">
+            <tr>
+              <td width=120>请输入速递运单编号<td width=140><input name="id" type="text" value="" maxlength="14"></td><td width=*><input name="submit3" type="submit" value="查询"></td>
+            </tr>
+        </form>
+          </table>
+        </td></tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" align="lef" width=350>
+      <table class="tb" cellspacing=0 cellpadding=6 width=100% bgcolor=#333333 border=0>
+        <form method=POST action=http://www.yf600.com/query.asp target=_blank>
+        <tr><td bgcolor=#eeeeee>Y[<b>盈飞国际航空快递查询</b>]</td></tr>
+        <tr height="1"><td bgcolor=#6699cc> </td></tr>
+        <tr><td bgcolor=#eeeeee>
+          <table class="tb">
+            <tr>
+              <td width=120>请输入快件单号<td width=140><input name="BillCode" type="text" value="" maxlength="14"></td><td width=*><input type="submit" value="查询"></td>
+            </tr>
+          </table>
+        </td></tr>
+        </form>
+      </table>
+    </td>
+    <td width=*>
+      <table class="tb" cellspacing=0 cellpadding=6 width=100% bgcolor=#333333 border=0>
+        <form method=POST action=http://www.yfhex.com/billcodequery/BillQueryList.asp target=_blank>
+        <tr><td bgcolor=#eeeeee>Y[<b>深圳市原飞航物流查询</b>]</td></tr>
+        <tr height="1"><td bgcolor=#6699cc> </td></tr>
+        <tr><td bgcolor=#eeeeee>
+          <table class="tb">
+            <tr>
+              <td width=120>请输快速查件单号<td width=140><input name="billcodelist" type="text" value="" maxlength="14"></td><td width=*><input type="submit" value="查询"></td>
+            </tr>
+          </table>
+        </td></tr>
+        </form>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" align="lef" width=350>
+      <table class="tb" cellspacing=0 cellpadding=6 width=100% bgcolor=#333333 border=0>
+        <form method=GET action=http://www.yto.net.cn/html/sql.asp target=_blank>
+        <tr><td bgcolor=#eeeeee>Y[<b>圆通速递查询</b>]</td></tr>
+        <tr height="1"><td bgcolor=#6699cc> </td></tr>
+        <tr><td bgcolor=#eeeeee>
+          <table class="tb">
+            <tr>
+              <td width=120>请输10位运单号<td width=140><input name="NumberText" type="text" value="" maxlength="14"></td><td width=*><input type="submit" value="查询"></td>
+            </tr>
+          </table>
+        </td></tr>
+        </form>
+      </table>
+    </td>
+    <td width=*>
+      <table class="tb" cellspacing=0 cellpadding=6 width=100% bgcolor=#333333 border=0>
+        <form method=POST action=http://www.yesexp.net/cn/trackingResult.php target=_blank>
+        <tr><td bgcolor=#eeeeee>Y[<b>上海远通快递查询</b>]</td></tr>
+        <tr height="1"><td bgcolor=#6699cc> </td></tr>
+        <tr><td bgcolor=#eeeeee>
+          <table class="tb">
+            <tr>
+              <td width=120>请输入远通运单号<td width=140><input name="keyword" type="text" value="" maxlength="14"></td><td width=*><input type="submit" value="查询"></td>
+            </tr>
+          </table>
+        </td></tr>
+        </form>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" align="lef" width=350>
+      <table class="tb" cellspacing=0 cellpadding=6 width=100% bgcolor=#333333 border=0>
+        <form method=POST action=http://www.yfexpress.com.hk/welcome/track_result.asp target=_blank>
+        <tr><td bgcolor=#eeeeee>Y[<b>越丰速递查询</b>]</td></tr>
+        <tr height="1"><td bgcolor=#6699cc> </td></tr>
+        <tr><td bgcolor=#eeeeee>
+          <table class="tb">
+            <tr>
+              <td width=120>请输入越丰运单号<td width=140><input name="ID" type="text" value="" maxlength="14"></td><td width=*><input name="track" type="submit" value="查询"></td>
+            </tr>
+          </table>
+        </td></tr>
+        </form>
+      </table>
+    </td>
+    <td width=*>
+      <table class="tb" cellspacing=0 cellpadding=6 width=100% bgcolor=#333333 border=0>
+        <form method=POST action=http://222.73.107.98/ykjcx/cxend.php target=_blank>
+        <tr><td bgcolor=#eeeeee>Y[<b>韵达快运查询</b>]</td></tr>
+        <tr height="1"><td bgcolor=#6699cc> </td></tr>
+        <tr><td bgcolor=#eeeeee>
+          <table class="tb">
+            <tr>
+              <td width=120>输入快件单号<td width=140><input name="wen" type="text" value="" maxlength="14"></td><td width=*><input name="Submit22" type="submit" value="查询"></td>
+            </tr>
+          </table>
+        </td></tr>
+        </form>
+      </table>
+    </td>
+  </tr>
+</table>
+
+<a name="Z"></a><table class="tb"cellspacing=0 cellpadding=6 width=690 border=0>
+  <tr><td><strong style="color:red;">Z</strong> [Z]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#">[回到Top]</a></td><td align=right></td></tr>
+</table>
+
+<table class="tb" style="border:#d4d4d4 1px solid;" cellspacing=8 cellpadding=0 width=690 border=0>
+  <tr>
+    <td valign="top" align="lef" width=350>
+      <table class="tb" cellspacing=0 cellpadding=6 width=100% bgcolor=#333333 border=0>
+        <form name=aspnetForm action=http://www.zjs.com.cn/WS_Internal/WS_Internal_GoodsTrack.aspx method=post target=_blank target=_blank><INPUT id=__VIEWSTATE type=hidden 
+        value=/wEPDwULLTE5MjI5MzQwNzUPZBYCZg9kFgICAQ9kFgICBQ9kFgJmDzwrAAkCAA8WBB4IRGF0YUtleXMWAB4LXyFJdGVtQ291bnQCBGQIFgQeCENzc0NsYXNzBQhnbl9zdGF0ZR4EXyFTQgICFghmD2QWBAIBDw8WAh4ISW1hZ2VVcmwFFS4uL2ltYWdlcy9nbi92M18xLmdpZmRkAgIPFQGAATxhIGhyZWY9Ii9uNTEwLmFzcHgiIHRhcmdldD0iX2JsYW5rIiB0aXRsZT0iMDflubQ35pyIMeaXpeW8gOmAmuays+WMl+iXgeWfjuW4guetiee9keeCueWPlua0vuacjeWKoSI+MDflubQ35pyIMeaXpeW8gOmAmi4uLi48L2E+ZAIBD2QWBAIBDw8WAh8EBRUuLi9pbWFnZXMvZ24vdjNfMS5naWZkZAICDxUBhwE8YSBocmVmPSIvbjUxNS5hc3B4IiB0YXJnZXQ9Il9ibGFuayIgdGl0bGU9IjA35bm0OOaciOWxseS4nOWIhuWFrOWPuOaWsOaIkOeri+S6huaeo+W6hOWSjOa7leW3nuiQpeS4muaJgCI+MDflubQ45pyI5bGx5Lic5YiG5YWsLi4uLjwvYT5kAgIPZBYEAgEPDxYCHwQFFS4uL2ltYWdlcy9nbi92M18xLmdpZmRkAgIPFQGAATxhIGhyZWY9Ii9uNTE0LmFzcHgiIHRhcmdldD0iX2JsYW5rIiB0aXRsZT0iMDflubQ35pyIMeaXpeW8gOmAmuays+WMl+iXgeWfjuW4guetiee9keeCueWPlua0vuacjeWKoSI+MDflubQ35pyIMeaXpeW8gOmAmi4uLi48L2E+ZAIDD2QWBAIBDw8WAh8EBRUuLi9pbWFnZXMvZ24vdjNfMS5naWZkZAICDxUBgAE8YSBocmVmPSIvbjUxMi5hc3B4IiB0YXJnZXQ9Il9ibGFuayIgdGl0bGU9IjA35bm0N+aciDHml6XlvIDpgJrmsrPljJflkLTmoaXljr/nrYnnvZHngrnlj5bmtL7mnI3liqEiPjA35bm0N+aciDHml6XlvIDpgJouLi4uPC9hPmRkJWlo/HQhGySDeVDE+2qb+m6thek= 
+        name=__VIEWSTATE> <input type=hidden value=/wEWBALeq/LzBwKJ8LnPAQK1lr22CwKs6LuvC6RmLPuvvD0rdP5JCMlBEDumoKii name=__EVENTVALIDATION>
+        <tr><td bgcolor=#eeeeee>Z[<b>宅急送快递查询</b>]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img height=20 alt=验证码 src="http://www.zjs.com.cn/WS_News/UIBase/VerifyImg.aspx" width=55><input style="width: 46px" maxLength=4 size=4 name=ctl00$Content1$ValidateTxt></td></tr>
+        <tr height="1"><td bgcolor=#6699cc> </td></tr>
+        <tr><td bgcolor=#eeeeee>
+          <table class="tb">
+            <tr>
+              <td width=120>请输入工作单号<td width=140><input name=ctl00$Content1$TextBox1></td><td width=*><input type=submit value=查询 name=ctl00$Content1$Button1></td>
+            </tr>
+          </table>
+        </td></tr>
+        </form>
+      </table>
+    </td>
+    <td width=*>
+      <table class="tb" cellspacing=0 cellpadding=6 width=100% bgcolor=#333333 border=0>
+        <form method=POST action=http://222.73.237.73/Express_WEBSite/cha.asp target=_blank>
+        <tr height=36><td bgcolor=#eeeeee>Z[<b>中诚(希伊艾斯)快递查询</b>]</td></tr>
+        <tr height="1"><td bgcolor=#6699cc> </td></tr>
+        <tr><td bgcolor=#eeeeee>
+          <table class="tb">
+            <tr>
+              <td width=120>输入跟踪快件单号<td width=140><input name="JobNo" type="text" value="" maxlength="14"></td><td width=*><input name="submit1" type="submit" value="查询"></td>
+            </tr>
+        </form>
+          </table>
+        </td></tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" align="lef" width=350>
+      <table class="tb" cellspacing=0 cellpadding=6 width=100% bgcolor=#333333 border=0>
+        <form method=POST action=http://www.ses.com.cn/zh_cn/track/status.jsp target=_blank>
+        <tr><td bgcolor=#eeeeee>Z[<b>中国外运速递查询</b>]</td></tr>
+        <tr height="1"><td bgcolor=#6699cc> </td></tr><input type="hidden" name="submit" value="Y">
+        <tr><td bgcolor=#eeeeee>
+          <table class="tb">
+            <tr>
+              <td width=120>请输入中外运运单号<td width=140><input name="hawbno" type="text" value="" maxlength="14"></td><td width=*><input name="submit1" type="submit" value="查询"></td>
+            </tr>
+        </form>
+          </table>
+        </td></tr>
+      </table>
+    </td>
+    <td width=*>
+      <table class="tb" cellspacing=0 cellpadding=6 width=100% bgcolor=#333333 border=0>
+        <form method=POST action=http://www.cre.cn/creweb/Fhwcxselect.jsp target=_blank onSubmit="return login()" name="form11">
+        <tr><td bgcolor=#eeeeee>Z[<b>中铁快运查询</b>]</td></tr>
+        <tr height="1"><td bgcolor=#6699cc> </td></tr>
+        <tr><td bgcolor=#eeeeee>
+          <table class="tb">
+            <tr>
+              <td width=120>请输14位查询号<td width=140><input name="sheet_no" type="text" value=""></td><td width=*><input type="submit" value="查询"></td>
+            </tr>
+          </table>
+        </td></tr>
+        </form>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" align="lef" width=350>
+      <table class="tb" cellspacing=0 cellpadding=6 width=100% bgcolor=#333333 border=0>
+        <form method=GET action=http://www.cn.dhl.com/publish/cn/zh/eshipping/track.high.html target=_blank>
+        <tr><td bgcolor=#eeeeee>Z[<b>中外运敦豪快递(DHL)查询</b>]</td></tr><input type="hidden" name="pageToInclude" value="RESULTS"><input type="hidden" name="type" value="fasttrack">
+        <tr height="1"><td bgcolor=#6699cc> </td></tr>
+        <tr><td bgcolor=#eeeeee>
+          <table class="tb">
+            <tr>
+              <td width=120>请输入DHL运单号码<td width=140><input name="AWB" type="text" value="" maxlength="14"></td><td width=*><input type="submit" value="查询"></td>
+            </tr>
+          </table>
+        </td></tr>
+        </form>
+      </table>    </td>
+    <td width=*>
+      
+    </td>
+  </tr>
+</table>
+
+<br /><br />
+
+</DIV>
+      <br />
+         <script type="text/javascript" src="../js/wz.js"></script>
+         <script type="text/javascript" src="../js/Copy.js"></script>
+           
+      <br />
+          </td>
+        </tr>
+        </table>
+
+      </td>
+    <td width="20">　</td>
+  </tr>
+</table>
+<table width="960" border="0" align="center" cellpadding="0" cellspacing="0" class="mainbg2">
+  <tr>
+    <td height="25"></td>
+  </tr>
+</table>
+
+<table width="960" border="0" align="center" cellpadding="0" cellspacing="0" class="mainbg2">
+  <tr>
+    <td><table width="920"  border="0" align="center" cellpadding="0" cellspacing="20" class="bottombg">
+    <tr>
+        <td align="center">
+          Copyright &copy; <a href="http://tools.kqiqi.com/">客齐齐实用查询工具</a> All rights reserved - <a href="../map.html">网站地图</a> - <a href="../contact.html">联系我们</a> - <script language="javascript" src="../js/bottom.js"></script>
+          </td>
+      </tr>
+    </table></td>
+  </tr>
+</table>
+</body>
+</html>

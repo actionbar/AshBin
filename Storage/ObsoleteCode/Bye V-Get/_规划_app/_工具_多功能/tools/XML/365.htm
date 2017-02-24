@@ -1,0 +1,444 @@
+<html>
+<head>
+<title>XSL(续)</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+
+<link rel = stylesheet href = "image/style.css">
+</head>
+<body bgcolor="#ffffff">
+<table width="688" border="0" cellspacing="0" cellpadding="0" align="center">
+  <tr bgcolor="EEEEEE"> 
+    <td height="22"><a href="index.htm">主页</a></td>
+  </tr>
+</table><br>
+<table border="0" cellpadding="0" cellspacing="0" width="688" align="center" height="490">
+  <tr valign="top"> 
+    <td rowspan="4" width="91">&nbsp; </td>
+    <td height="68" width="131"> 
+      <p><img src="image/doc.gif"></p>
+    </td>
+    <td rowspan="4" width="18"><b></b> </td>
+    <td height="68" width="387"><img src="image/title_doc.gif"></td>
+    <td rowspan="4" width="61"> 
+      <h6>&nbsp;</h6>
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td rowspan="3" valign="top" class="pt10" align="center" width="131" bgcolor="EEEEEE"> 
+      <p>&nbsp;</p>
+      <p><font color="#FF0000">※ 5.4 XSL(续)</font></p>
+       
+            <p align="left"><a href='364.htm'>5.4 XSL</a></p>
+          
+            <p align="left">5.4 XSL(续)</p>
+          
+	</td>
+  </tr>
+  <tr valign="top"> 
+    <td width="387" height="308"> 
+      <table width="100%" border="0" cellpadding="0">
+        <tr> 
+          <td>
+
+           <h4><a name="_Toc467197033">5.4.5 球员</a></h4>
+<p>下一个步骤是为各队的每一个队员添加统计数字，最基本的方法是用一个表格表示。清单5-6展示的XSL样式单把队员以及他们的统计数据安排在一个表格中。其中没有引入新的XSL元素。相同的xsl:for-each和xsl:value-of元素被用于PLAYER元素和它的属性中。输出的是标准的HTML表格标记。图5-8显示了结果。</p>
+<p>清单5-6：一个将球员及其统计数据放入表格的XSL样式单</p>
+<p>&lt;?xml version="1.0"?&gt;</p>
+<p>&lt;xsl:stylesheet xmlns:xsl="http://www.w3.org/TR/WD-xsl"&gt;</p>
+<p> &lt;xsl:template match="/"&gt;</p>
+<p> &lt;HTML&gt;</p>
+<p> &lt;HEAD&gt;</p>
+<p> &lt;TITLE&gt;</p>
+<p> &lt;xsl:for-each select="SEASON"&gt;</p>
+<p> &lt;xsl:value-of select="@YEAR"/&gt;</p>
+<p> &lt;/xsl:for-each&gt;</p>
+<p> Major League Baseball Statistics</p>
+<p> &lt;/TITLE&gt;</p>
+<p> &lt;/HEAD&gt;</p>
+<p> &lt;BODY&gt;</p>
+<p> &lt;xsl:for-each select="SEASON"&gt;</p>
+<p> &lt;H1&gt;</p>
+<p> &lt;xsl:value-of select="@YEAR"/&gt;</p>
+<p> Major League Baseball Statistics</p>
+<p> &lt;/H1&gt;</p>
+<p> &lt;xsl:for-each select="LEAGUE"&gt;</p>
+<p> &lt;H2 ALIGN="CENTER"&gt;</p>
+<p> &lt;xsl:value-of select="@NAME"/&gt;</p>
+<p> &lt;/H2&gt;</p>
+<p> &lt;xsl:for-each select="DIVISION"&gt;</p>
+<p> &lt;H3 ALIGN="CENTER"&gt;</p>
+<p> &lt;xsl:value-of select="@NAME"/&gt;</p>
+<p> &lt;/H3&gt;</p>
+<p> &lt;xsl:for-each select="TEAM"&gt;</p>
+<p> &lt;H4 ALIGN="CENTER"&gt;</p>
+<p> &lt;xsl:value-of select="@CITY"/&gt;</p>
+<p> &lt;xsl:value-of select="@NAME"/&gt;</p>
+<p> &lt;/H4&gt;</p>
+<p> &lt;TABLE&gt;</p>
+<p> &lt;THEAD&gt;</p>
+<p> &lt;TR&gt;</p>
+<p> &lt;TH&gt;Player&lt;/TH&gt;&lt;TH&gt;P&lt;/TH&gt;&lt;TH&gt;G&lt;/TH&gt;</p>
+<p> &lt;TH&gt;GS&lt;/TH&gt;&lt;TH&gt;AB&lt;/TH&gt;&lt;TH&gt;R&lt;/TH&gt;&lt;TH&gt;H&lt;/TH&gt;</p>
+<p> &lt;TH&gt;D&lt;/TH&gt;&lt;TH&gt;T&lt;/TH&gt;&lt;TH&gt;HR&lt;/TH&gt;&lt;TH&gt;RBI&lt;/TH&gt;</p>
+<p> &lt;TH&gt;S&lt;/TH&gt;&lt;TH&gt;CS&lt;/TH&gt;&lt;TH&gt;SH&lt;/TH&gt;&lt;TH&gt;SF&lt;/TH&gt;</p>
+<p> &lt;TH&gt;E&lt;/TH&gt;&lt;TH&gt;BB&lt;/TH&gt;&lt;TH&gt;SO&lt;/TH&gt;&lt;TH&gt;HBP&lt;/TH&gt;</p>
+<p> &lt;/TR&gt;</p>
+<p> &lt;/THEAD&gt;</p>
+<p> &lt;TBODY&gt;</p>
+<p> &lt;xsl:for-each select="PLAYER"&gt;</p>
+<p> &lt;TR&gt;</p>
+<p> &lt;TD&gt;</p>
+<p> &lt;xsl:value-of select="@GIVEN_NAME"/&gt;</p>
+<p> &lt;xsl:value-of select="@SURNAME"/&gt;</p>
+<p> &lt;/TD&gt;</p>
+<p> &lt;TD&gt;&lt;xsl:value-of select="@POSITION"/&gt;&lt;/TD&gt;</p>
+<p> &lt;TD&gt;&lt;xsl:value-of select="@GAMES"/&gt;&lt;/TD&gt;</p>
+<p> &lt;TD&gt;</p>
+<p> &lt;xsl:value-of select="@GAMES_STARTED"/&gt;</p>
+<p> &lt;/TD&gt;</p>
+<p> &lt;TD&gt;&lt;xsl:value-of select="@AT_BATS"/&gt;&lt;/TD&gt;</p>
+<p> &lt;TD&gt;&lt;xsl:value-of select="@RUNS"/&gt;&lt;/TD&gt;</p>
+<p> &lt;TD&gt;&lt;xsl:value-of select="@HITS"/&gt;&lt;/TD&gt;</p>
+<p> &lt;TD&gt;&lt;xsl:value-of select="@DOUBLES"/&gt;&lt;/TD&gt;</p>
+<p> &lt;TD&gt;&lt;xsl:value-of select="@TRIPLES"/&gt;&lt;/TD&gt;</p>
+<p> &lt;TD&gt;&lt;xsl:value-of select="@HOME_RUNS"/&gt;&lt;/TD&gt;</p>
+<p> &lt;TD&gt;&lt;xsl:value-of select="@RBI"/&gt;&lt;/TD&gt;</p>
+<p> &lt;TD&gt;&lt;xsl:value-of select="@STEALS"/&gt;&lt;/TD&gt;</p>
+<p> &lt;TD&gt;</p>
+<p> &lt;xsl:value-of select="@CAUGHT_STEALING"/&gt;</p>
+<p> &lt;/TD&gt;</p>
+<p> &lt;TD&gt;</p>
+<p> &lt;xsl:value-of select="@SACRIFICE_HITS"/&gt;</p>
+<p> &lt;/TD&gt;</p>
+<p> &lt;TD&gt;</p>
+<p> &lt;xsl:value-of select="@SACRIFICE_FLIES"/&gt;</p>
+<p> &lt;/TD&gt;</p>
+<dir> 
+  <dir> 
+    <p> &lt;TD&gt;&lt;xsl:value-of select="@ERRORS"/&gt;&lt;/TD&gt;</p>
+  </dir>
+</dir>
+<p> &lt;TD&gt;&lt;xsl:value-of select="@WALKS"/&gt;&lt;/TD&gt;</p>
+<p> &lt;TD&gt;</p>
+<p> &lt;xsl:value-of select="@STRUCK_OUT"/&gt;</p>
+<p> &lt;/TD&gt;</p>
+<p> &lt;TD&gt;</p>
+<p> &lt;xsl:value-of select="@HIT_BY_PITCH"/&gt;</p>
+<p> &lt;/TD&gt;</p>
+<p> &lt;/TR&gt;</p>
+<p> &lt;/xsl:for-each&gt;</p>
+<p> &lt;/TBODY&gt;</p>
+<p> &lt;/TABLE&gt;</p>
+<p> &lt;/xsl:for-each&gt;</p>
+<p> &lt;/xsl:for-each&gt;</p>
+<p> &lt;/xsl:for-each&gt;</p>
+<p> &lt;/xsl:for-each&gt;</p>
+<p> &lt;HR&gt;&lt;/HR&gt;</p>
+<p> Copyright 1999</p>
+<p> &lt;A HREF="http://www.macfaq.com/personal.html"&gt;</p>
+<p> Elliotte Rusty Harold</p>
+<p> &lt;/A&gt;</p>
+<p> &lt;BR /&gt;</p>
+<p> &lt;A HREF="mailto:elharo@metalab.unc.edu"&gt;</p>
+<p> elharo@metalab.unc.edu</p>
+<p> &lt;/A&gt;</p>
+<p> &lt;/BODY&gt;</p>
+<p> &lt;/HTML&gt;</p>
+<p> &lt;/xsl:template&gt;</p>
+<p>&lt;/xsl:stylesheet&gt;</p>
+<h5><a name="_Toc467197034">5.4.6 区分投手与击球手</a></h5>
+<p>可以注意到图5-8中的一个缺点是没有正确处理投手。贯穿本章和第4章，投手是用完全不同的统计数字集表示的，无论他们的统计数据是存储在元素内容中还是属性中。因此，投手确实需要一个表格以区别于其他队员。在把队员放入表格之前必须查看他是不是投手。如果队员的POSITION属性包含“pitcher”就忽略他。然后在只包含投手队员元素的第二个表格中反转上面的过程，投手的PLAYER元素中POSITION属性值是字符串“pitcher”。</p>
+<p>要完成这些还必须给xsl:for-each增加另外的选择队员的代码。我们不需要选择所有队员，相反只需要选择那些POSITION属性不是投手的队员，句法如下：</p>
+<p>&lt;xsl:for-each select="PLAYER [(@POSITION != Pitcher )"&gt;</p>
+<p>因为XML文档对首发投手和替补投手做了区分，正确的答案应该检查这两种情况：</p>
+<p>&lt;xsl:for-each select="PLAYER [(@POSITION != StartingPitcher )<br>
+  $and$(@POSITION != Relief Pitcher )]"&gt;</p>
+<p><img src="image/BK000205-10.gif" width=353 height=289></p>
+<p>图5-8 采用清单5-6的XSL样式单后队员统计的显示情况</p>
+<p>关于投手的清单，只需要把Staring Pitcher或者Relief Pitcher前的不等号变为等号。（仅仅把不等号改为等号是不能满足的，同时必须把and改为or。）句法如下：</p>
+<p><img src="image/BK000205-1.gif" width=57 height=48>&lt;xsl:for-each select="PLAYER[(@POSITION= Starting 
+  Pitcher )<br>
+  $or$(@POSITION= Relief Pitcher )]"&gt;</p>
+<p>与C或JAVA语言不同，这里比较相等只用一个等号而不是双等号，因为XSL中没有赋值操作。</p>
+<p>清单5-7显示的XSL样式单把投手和击球手区分在两个不同的表格中，投手表格为所有投手添加了常规统计项目。清单5-1将这些项目编码在以下属性中：wins（投中）、losses（失球）、saves（救球）、shutouts（被封杀）等等。相应省略了一些列标签以保持表格预定的宽度。图5-9显示了最后的结果。</p>
+<p><img src="image/BK000205-11.gif" width=364 height=297></p>
+<p>图5-9 采用清单5-7的XSL样式单能够区分投手和击球手</p>
+<p>清单5-7：区分投手和击球手的样式单</p>
+<p>&lt;?xml version="1.0"?&gt;</p>
+<p>&lt;xsl:stylesheet xmlns:xsl="http://www.w3.org/TR/WD-xsl"&gt;</p>
+<p> &lt;xsl:template match="/"&gt;</p>
+<p> &lt;HTML&gt;</p>
+<p> &lt;HEAD&gt;</p>
+<p> &lt;TITLE&gt;</p>
+<p> &lt;xsl:for-each select="SEASON"&gt;</p>
+<p> &lt;xsl:value-of select="@YEAR"/&gt;</p>
+<p> &lt;/xsl:for-each&gt;</p>
+<p> Major League Baseball Statistics</p>
+<p> &lt;/TITLE&gt;</p>
+<p> &lt;/HEAD&gt;</p>
+<p> &lt;BODY&gt;</p>
+<p> &lt;xsl:for-each select="SEASON"&gt;</p>
+<p> &lt;H1&gt;</p>
+<p> &lt;xsl:value-of select="@YEAR"/&gt;</p>
+<p> Major League Baseball Statistics</p>
+<p> &lt;/H1&gt;</p>
+<p> &lt;xsl:for-each select="LEAGUE"&gt;</p>
+<p> &lt;H2 ALIGN="CENTER"&gt;</p>
+<p> &lt;xsl:value-of select="@NAME"/&gt;</p>
+<p> &lt;/H2&gt;</p>
+<p> &lt;xsl:for-each select="DIVISION"&gt;</p>
+<p> &lt;H3 ALIGN="CENTER"&gt;</p>
+<p> &lt;xsl:value-of select="@NAME"/&gt;</p>
+<p> &lt;/H3&gt;</p>
+<p> &lt;xsl:for-each select="TEAM"&gt;</p>
+<p> &lt;H4 ALIGN="CENTER"&gt;</p>
+<p> &lt;xsl:value-of select="@CITY"/&gt;</p>
+<p> &lt;xsl:value-of select="@NAME"/&gt;</p>
+<p> &lt;/H4&gt;</p>
+<p> &lt;TABLE&gt;</p>
+<p> &lt;CAPTION&gt;&lt;B&gt;Batters&lt;/B&gt;&lt;/CAPTION&gt;</p>
+<p> &lt;THEAD&gt;</p>
+<p> &lt;TR&gt;</p>
+<p> &lt;TH&gt;Player&lt;/TH&gt;&lt;TH&gt;P&lt;/TH&gt;&lt;TH&gt;G&lt;/TH&gt;</p>
+<p> &lt;TH&gt;GS&lt;/TH&gt;&lt;TH&gt;AB&lt;/TH&gt;&lt;TH&gt;R&lt;/TH&gt;&lt;TH&gt;H&lt;/TH&gt;</p>
+<p> &lt;TH&gt;D&lt;/TH&gt;&lt;TH&gt;T&lt;/TH&gt;&lt;TH&gt;HR&lt;/TH&gt;&lt;TH&gt;RBI&lt;/TH&gt;</p>
+<p> &lt;TH&gt;S&lt;/TH&gt;&lt;TH&gt;CS&lt;/TH&gt;&lt;TH&gt;SH&lt;/TH&gt;&lt;TH&gt;SF&lt;/TH&gt;</p>
+<p> &lt;TH&gt;E&lt;/TH&gt;&lt;TH&gt;BB&lt;/TH&gt;&lt;TH&gt;SO&lt;/TH&gt;</p>
+<p> &lt;TH&gt;HBP&lt;/TH&gt;</p>
+<p> &lt;/TR&gt;</p>
+<p> &lt;/THEAD&gt;</p>
+<p> &lt;TBODY&gt;</p>
+<p> &lt;xsl:for-each select="PLAYER [(@POSITION<br>
+  != Starting Pitcher )</p>
+<dir> 
+  <dir> 
+    <p> $and$(@POSITION != Relief Pitcher )]"&gt;</p>
+  </dir>
+</dir>
+<p> &lt;TR&gt;</p>
+<p> &lt;TD&gt;</p>
+<p> &lt;xsl:value-of select="@GIVEN_NAME"/&gt;</p>
+<p> &lt;xsl:value-of select="@SURNAME"/&gt;</p>
+<p> &lt;/TD&gt;</p>
+<p> &lt;TD&gt;&lt;xsl:value-of select="@POSITION"/&gt;&lt;/TD&gt;</p>
+<p> &lt;TD&gt;&lt;xsl:value-of select="@GAMES"/&gt;&lt;/TD&gt;</p>
+<p> &lt;TD&gt;</p>
+<p> &lt;xsl:value-of select="@GAMES_STARTED"/&gt;</p>
+<p> &lt;/TD&gt;</p>
+<p> &lt;TD&gt;&lt;xsl:value-of select="@AT_BATS"/&gt;&lt;/TD&gt;</p>
+<p> &lt;TD&gt;&lt;xsl:value-of select="@RUNS"/&gt;&lt;/TD&gt;</p>
+<p> &lt;TD&gt;&lt;xsl:value-of select="@HITS"/&gt;&lt;/TD&gt;</p>
+<p> &lt;TD&gt;&lt;xsl:value-of select="@DOUBLES"/&gt;&lt;/TD&gt;</p>
+<p> &lt;TD&gt;&lt;xsl:value-of select="@TRIPLES"/&gt;&lt;/TD&gt;</p>
+<p> &lt;TD&gt;</p>
+<p> &lt;xsl:value-of select="@HOME_RUNS"/&gt;</p>
+<p> &lt;/TD&gt;</p>
+<p> &lt;TD&gt;&lt;xsl:value-of select="@RBI"/&gt;&lt;/TD&gt;</p>
+<p> &lt;TD&gt;&lt;xsl:value-of select="@STEALS"/&gt;&lt;/TD&gt;</p>
+<p> &lt;TD&gt;</p>
+<p> &lt;xsl:value-of select="@CAUGHT_STEALING"/&gt;</p>
+<p> &lt;/TD&gt;</p>
+<p> &lt;TD&gt;</p>
+<p> &lt;xsl:value-of select="@SACRIFICE_HITS"/&gt;</p>
+<p> &lt;/TD&gt;</p>
+<p> &lt;TD&gt;</p>
+<p> &lt;xsl:value-of select="@SACRIFICE_FLIES"/&gt;</p>
+<p> &lt;/TD&gt;</p>
+<p> &lt;TD&gt;&lt;xsl:value-of select="@ERRORS"/&gt;&lt;/TD&gt;</p>
+<p> &lt;TD&gt;&lt;xsl:value-of select="@WALKS"/&gt;&lt;/TD&gt;</p>
+<p> &lt;TD&gt;</p>
+<p> &lt;xsl:value-of select="@STRUCK_OUT"/&gt;</p>
+<p> &lt;/TD&gt;</p>
+<p> &lt;TD&gt;</p>
+<p> &lt;xsl:value-of select="@HIT_BY_PITCH"/&gt;</p>
+<p> &lt;/TD&gt;</p>
+<p> &lt;/TR&gt;</p>
+<p> &lt;/xsl:for-each&gt;&lt;!— PLAYER —&gt;</p>
+<p> &lt;/TBODY&gt;</p>
+<p> &lt;/TABLE&gt;</p>
+<p> &lt;TABLE&gt;</p>
+<p> &lt;CAPTION&gt;&lt;B&gt;Pitchers&lt;/B&gt;&lt;/CAPTION&gt;</p>
+<p> &lt;THEAD&gt;</p>
+<p> &lt;TR&gt;</p>
+<p> &lt;TH&gt;Player&lt;/TH&gt;&lt;TH&gt;P&lt;/TH&gt;&lt;TH&gt;G&lt;/TH&gt;</p>
+<p> &lt;TH&gt;GS&lt;/TH&gt;&lt;TH&gt;W&lt;/TH&gt;&lt;TH&gt;L&lt;/TH&gt;&lt;TH&gt;S&lt;/TH&gt;</p>
+<p> &lt;TH&gt;CG&lt;/TH&gt;&lt;TH&gt;SO&lt;/TH&gt;&lt;TH&gt;ERA&lt;/TH&gt;</p>
+<p> &lt;TH&gt;IP&lt;/TH&gt;&lt;TH&gt;HR&lt;/TH&gt;&lt;TH&gt;R&lt;/TH&gt;&lt;TH&gt;ER&lt;/TH&gt;</p>
+<p> &lt;TH&gt;HB&lt;/TH&gt;&lt;TH&gt;WP&lt;/TH&gt;&lt;TH&gt;B&lt;/TH&gt;&lt;TH&gt;BB&lt;/TH&gt;</p>
+<p> &lt;TH&gt;K&lt;/TH&gt;</p>
+<p> &lt;/TR&gt;</p>
+<p> &lt;/THEAD&gt;</p>
+<p> &lt;TBODY&gt;</p>
+<p> &lt;xsl:for-each select="PLAYER[(@POSITION= Starting Pitcher )</p>
+<p> $or$(@POSITION= Relief Pitcher )]"&gt;</p>
+<p> &lt;TR&gt;</p>
+<p> &lt;TD&gt;</p>
+<p> &lt;xsl:value-of select="@GIVEN_NAME"/&gt;</p>
+<p> &lt;xsl:value-of select="@SURNAME"/&gt;</p>
+<p> &lt;/TD&gt;</p>
+<p> &lt;TD&gt;&lt;xsl:value-of select="@POSITION"/&gt;&lt;/TD&gt;</p>
+<p> &lt;TD&gt;&lt;xsl:value-of select="@GAMES"/&gt;&lt;/TD&gt;</p>
+<p> &lt;TD&gt;</p>
+<p> &lt;xsl:value-of select="@GAMES_STARTED"/&gt;</p>
+<p> &lt;/TD&gt;</p>
+<p> &lt;TD&gt;&lt;xsl:value-of select="@WINS"/&gt;&lt;/TD&gt;</p>
+<p> &lt;TD&gt;&lt;xsl:value-of select="@LOSSES"/&gt;&lt;/TD&gt;</p>
+<p> &lt;TD&gt;&lt;xsl:value-of select="@SAVES"/&gt;&lt;/TD&gt;</p>
+<p> &lt;TD&gt;</p>
+<p> &lt;xsl:value-of select="@COMPLETE_GAMES"/&gt;</p>
+<p> &lt;/TD&gt;</p>
+<p> &lt;TD&gt;</p>
+<p> &lt;xsl:value-of select="@SHUT_OUTS"/&gt;</p>
+<p> &lt;/TD&gt;</p>
+<p> &lt;TD&gt;&lt;xsl:value-of select="@ERA"/&gt;&lt;/TD&gt;</p>
+<p> &lt;TD&gt;&lt;xsl:value-of select="@INNINGS"/&gt;&lt;/TD&gt;</p>
+<p> &lt;TD&gt;</p>
+<p> &lt;xsl:value-of select="@HOME_RUNS_AGAINST"/&gt;</p>
+<p> &lt;/TD&gt;</p>
+<p> &lt;TD&gt;</p>
+<p> &lt;xsl:value-of select="@RUNS_AGAINST"/&gt;</p>
+<p> &lt;/TD&gt;</p>
+<p> &lt;TD&gt;</p>
+<p> &lt;xsl:value-of select="@EARNED_RUNS"/&gt;</p>
+<p> &lt;/TD&gt;</p>
+<p> &lt;TD&gt;</p>
+<p> &lt;xsl:value-of select="@HIT_BATTER"/&gt;</p>
+<p> &lt;/TD&gt;</p>
+<p> &lt;TD&gt;</p>
+<p> &lt;xsl:value-of select="@WILD_PITCH"/&gt;</p>
+<p> &lt;/TD&gt;</p>
+<p> &lt;TD&gt;&lt;xsl:value-of select="@BALK"/&gt;&lt;/TD&gt;</p>
+<p> &lt;TD&gt;</p>
+<p> &lt;xsl:value-of select="@WALKED_BATTER"/&gt;</p>
+<p> &lt;/TD&gt;</p>
+<p> &lt;TD&gt;</p>
+<p> &lt;xsl:value-of select="@STRUCK_OUT_BATTER"/&gt;</p>
+<p> &lt;/TD&gt;</p>
+<p> &lt;/TR&gt;</p>
+<p> &lt;/xsl:for-each&gt;&lt;!— PLAYER —&gt;</p>
+<p> &lt;/TBODY&gt;</p>
+<p> &lt;/TABLE&gt;</p>
+<p> &lt;/xsl:for-each&gt;&lt;!— TEAM —&gt;</p>
+<p> &lt;/xsl:for-each&gt;&lt;!— DIVISION —&gt;</p>
+<p> &lt;/xsl:for-each&gt;&lt;!— LEAGUE —&gt;</p>
+<p> &lt;/xsl:for-each&gt;&lt;!— SEASON —&gt;</p>
+<p> &lt;HR&gt;&lt;/HR&gt;</p>
+<p> Copyright 1999</p>
+<p> &lt;A HREF="http://www.macfaq.com/personal.html"&gt;</p>
+<p> Elliotte Rusty Harold</p>
+<p> &lt;/A&gt;</p>
+<p> &lt;BR /&gt;</p>
+<p> &lt;A HREF="mailto:elharo@metalab.unc.edu"&gt;</p>
+<p> elharo@metalab.unc.edu</p>
+<p> &lt;/A&gt;</p>
+<p> &lt;/BODY&gt;</p>
+<p> &lt;/HTML&gt;</p>
+<p> &lt;/xsl:template&gt;</p>
+<p>&lt;/xsl:stylesheet&gt;</p>
+<h5><a name="_Toc467197035">5.4.7 元素内容与select属性</a></h5>
+<p>本章集中讨论了使用XSL样式单格式化存储在一个元素属性中的数据，因为使用CSS无法访问属性。如果想要包含一个元素的字符数据而不是属性，XSL同样做得很好。只要简单地把元素名称当作xsl:value-of元素的select属性值就能表明一个元素的文本将被复制到输出文档中。请看清单5-8：</p>
+<p>清单5-8：greeting.xml</p>
+<p>&lt;?xml version="1.0" standalone="yes"?&gt;</p>
+<p>&lt;?xml-stylesheet type="text/xsl" href="greeting.xsl"?&gt;</p>
+<p>&lt;GREETING&gt;</p>
+<p>Hello XML!</p>
+<p>&lt;/GREETING&gt;</p>
+<p>假如要向标题H1中复制致词“Hello XML!”首先，使用xsl:for-each选择GREETING元素：</p>
+<p>&lt;xsl:for-each select="GREETING"&gt;</p>
+<p> &lt;H1&gt;</p>
+<p> &lt;/H1&gt;</p>
+<p>&lt;/xsl:for-each&gt;</p>
+<p>只用这一段语句足以把两个H1标记复制到输出中。使用没有select属性的xsl:value-of在两个H1标记之间放置GREETING元素的文本，当前元素（GREETING）的内容就会被默认选中。清单5-9显示了完整的样式单。</p>
+<p>清单5-9：greeting.xsl</p>
+<p>&lt;?xml version="1.0" ?&gt;</p>
+<p>&lt;xsl:stylesheet xmlns:xsl="http://www.w3.org/TR/WD-xsl"&gt;</p>
+<p> &lt;xsl:template match="/"&gt;</p>
+<p> &lt;HTML&gt;</p>
+<p> &lt;BODY&gt;</p>
+<p> &lt;xsl:for-each select="GREETING"&gt;</p>
+<p> &lt;H1&gt;</p>
+<p> &lt;xsl:value-of/&gt;</p>
+<p> &lt;/H1&gt;</p>
+<p> &lt;/xsl:for-each&gt;</p>
+<p> &lt;/BODY&gt;</p>
+<p> &lt;/HTML&gt;</p>
+<p> &lt;/xsl:template&gt;</p>
+<p>&lt;/xsl:stylesheet&gt;</p>
+<p>使用select同样可以选择一个子元素中的内容，只需把该子元素的名称当作xsl:value-of的select属性值。例如，在上一章的棒球示例中，队员统计被存储在子元素而不是属性中。假定文档的结构是这样（事实上这种结构比本章中的基于属性的结构更常见），表示击球员表格的XSL如下所示：</p>
+<p>&lt;TABLE&gt;</p>
+<p> &lt;CAPTION&gt;&lt;B&gt;Batters&lt;/B&gt;&lt;/CAPTION&gt;</p>
+<p> &lt;THEAD&gt;</p>
+<p> &lt;TR&gt;</p>
+<p> &lt;TH&gt;Player&lt;/TH&gt;&lt;TH&gt;P&lt;/TH&gt;&lt;TH&gt;G&lt;/TH&gt;</p>
+<p> &lt;TH&gt;GS&lt;/TH&gt;&lt;TH&gt;AB&lt;/TH&gt;&lt;TH&gt;R&lt;/TH&gt;&lt;TH&gt;H&lt;/TH&gt;</p>
+<p> &lt;TH&gt;D&lt;/TH&gt;&lt;TH&gt;T&lt;/TH&gt;&lt;TH&gt;HR&lt;/TH&gt;&lt;TH&gt;RBI&lt;/TH&gt;</p>
+<p> &lt;TH&gt;S&lt;/TH&gt;&lt;TH&gt;CS&lt;/TH&gt;&lt;TH&gt;SH&lt;/TH&gt;&lt;TH&gt;SF&lt;/TH&gt;</p>
+<p> &lt;TH&gt;E&lt;/TH&gt;&lt;TH&gt;BB&lt;/TH&gt;&lt;TH&gt;SO&lt;/TH&gt;&lt;TH&gt;HBP&lt;/TH&gt;</p>
+<p> &lt;/TR&gt;</p>
+<p> &lt;/THEAD&gt;</p>
+<p>&lt;TBODY&gt;</p>
+<p> &lt;xsl:for-each select="PLAYER [(POSITION</p>
+<p>!= Starting Pitcher ) $and$(POSITION != Relief Pitcher )]"&gt;</p>
+<p> &lt;TR&gt;</p>
+<p> &lt;TD&gt;</p>
+<p> &lt;xsl:value-of select="GIVEN_NAME"/&gt;</p>
+<p> &lt;xsl:value-of select="SURNAME"/&gt;</p>
+<p> &lt;/TD&gt;</p>
+<p> &lt;TD&gt;&lt;xsl:value-of select="POSITION"/&gt;&lt;/TD&gt;</p>
+<p> &lt;TD&gt;&lt;xsl:value-of select="GAMES"/&gt;&lt;/TD&gt;</p>
+<p> &lt;TD&gt;</p>
+<p> &lt;xsl:value-of select="GAMES_STARTED"/&gt;</p>
+<p> &lt;/TD&gt;</p>
+<p> &lt;TD&gt;&lt;xsl:value-of select="AT_BATS"/&gt;&lt;/TD&gt;</p>
+<p> &lt;TD&gt;&lt;xsl:value-of select="RUNS"/&gt;&lt;/TD&gt;</p>
+<p> &lt;TD&gt;&lt;xsl:value-of select="HITS"/&gt;&lt;/TD&gt;</p>
+<p> &lt;TD&gt;&lt;xsl:value-of select="DOUBLES"/&gt;&lt;/TD&gt;</p>
+<p> &lt;TD&gt;&lt;xsl:value-of select="TRIPLES"/&gt;&lt;/TD&gt;</p>
+<p> &lt;TD&gt;&lt;xsl:value-of select="HOME_RUNS"/&gt;&lt;/TD&gt;</p>
+<p> &lt;TD&gt;&lt;xsl:value-of select="RBI"/&gt;&lt;/TD&gt;</p>
+<p> &lt;TD&gt;&lt;xsl:value-of select="STEALS"/&gt;&lt;/TD&gt;</p>
+<p> &lt;TD&gt;</p>
+<p> &lt;xsl:value-of select="CAUGHT_STEALING"/&gt;</p>
+<p> &lt;/TD&gt;</p>
+<p> &lt;TD&gt;</p>
+<p> &lt;xsl:value-of select="SACRIFICE_HITS"/&gt;</p>
+<p> &lt;/TD&gt;</p>
+<p> &lt;TD&gt;</p>
+<p> &lt;xsl:value-of select="SACRIFICE_FLIES"/&gt;</p>
+<p> &lt;/TD&gt;</p>
+<p> &lt;TD&gt;&lt;xsl:value-of select="ERRORS"/&gt;&lt;/TD&gt;</p>
+<p> &lt;TD&gt;&lt;xsl:value-of select="WALKS"/&gt;&lt;/TD&gt;</p>
+<p> &lt;TD&gt;</p>
+<p> &lt;xsl:value-of select="STRUCK_OUT"/&gt;</p>
+<p> &lt;/TD&gt;</p>
+<p> &lt;TD&gt;</p>
+<p> &lt;xsl:value-of select="HIT_BY_PITCH"/&gt;</p>
+<p> &lt;/TD&gt;</p>
+<p> &lt;/TR&gt;</p>
+<p> &lt;/xsl:for-each&gt;&lt;!— PLAYER —&gt;</p>
+<p> &lt;/TBODY&gt;</p>
+<p>&lt;/TABLE&gt;</p>
+<p>在这种情况下，在每个PLAYER元素的子元素中，该元素的GIVEN_NAME、SURNAME、POSITION、GAMES、GAMES_STARTED、 
+  AT_BATS、RUNS、HITS、DOUBLES、TRIPLES、HOME_RUNS、RBI、STEALS、CAUGHT_STEALING、SACRIFICE_HITS、SACRIFICE_FLIES、ERRORS、WALKS、STRUCK_OUT和HIT_BY_PITCH子元素的内容被抽取出来并被复制到输出文档中。因为本章使用了与上一章PLAYER子元素名称相同的属性名，该示例与清单5-7几乎是一致的。主要差别是@符号没有了。它表明这是一个属性而不是一个元素。</p>
+<p>select属性的功能很多。可选择元素：按元素位置（例如第一、第二、最后、第十七个元素等等）；按特定的内容；按特殊的属性值；或者按照元素的父或子元素含有一定的内容或属性值进行选择。甚至可以使用全部布尔逻辑运算符来组合各种不同的选择条件。在14章的XSL中将要探讨使用select属性的更多可能。</p>
+<h5><a name="_Toc467197036">5.4.8 CSS还是XSL</a></h5>
+<p>CSS与XSL在某种程度上是重复的。XSL的功能确实比CSS更强大，但是XSL的功能与其复杂性是分不开的。这一章仅仅涉及了XSL最基本的用途。实际上XSL更复杂，而且比CSS更难学习和使用，同时也带来了一个问题：“什么时候应该使用CSS，什么时候应该使用XSL？”</p>
+<p>CSS比XSL得到更广泛的支持。部分CSS Level 1被Netscape 4和Internet Exploer 4支持作为HTML元素（尽管存在一些令人头疼的区别）；此外，Internet 
+  Exploer 5.0和Mozilla 5.0能很好支持可以同时用于XML和HTML的大部分CSS Level 1的内容和一些CSS Level 2的内容。因此，选择CSS会与更广泛的浏览器相互兼容。</p>
+<p>另外，CSS更成熟一些，CSS Level 1（包含目前为止我们已经看到的大部分CSS内容）和CSS Level 2是W3C的推荐规范。XSL仍然是一个早期的工作草案，而且直到本书出版后也不会最终定型。早期的XSL采纳者曾经接受过考验，而且将在形式统一的标准之前接受再一次的考验。选择CSS意味着无须为了追随软件和标准的发展不停地重写自己的样式单。但是，XSL将最终形成一个可用的标准。</p>
+<p>因为XSL是一种新事物，不同的软件实现方式不同，实现的是草案标准的不同的子集。在写作本书的1999年春天至少有三种主要不同形式的XSL在广泛应用，到本书出版前将会有更多。如果当前浏览器中不完善的CSS操作已经让人头疼的话，那么众多的XSL变种就会使人发疯。</p>
+<p>但是，XSL的功能很明显比CSS强大。CSS仅允许格式化元素内容，不允许改变或重新安排这些内容，必须根据元素的内容或属性为元素选择不同的格式化方式或者增添诸如署名之类简单、额外的文本。XSL非常适用于XML文档仅包含最少的数据，并且数据周围没有HTML装饰的情况。</p>
+<p>使用XSL能够从页面上分离出关键数据，如刊头、向导栏和署名等。使用CSS不得不在数据文档中包含全部这些项目。XML+XSL允许数据文档与Web页面文档分离单独存在，从而使得XML+XSL文档更容易维护和处理。</p>
+<p>XSL终将成为现实世界和大量数据应用的最佳选择，CSS更适合于简单的页面，如祖母用于向她们孙子寄送图片的页面。但对于这些用途，HTML已经足够。如果使用HTML行不通，XML+CSS不会有多大的帮助。相较而言，XML+XSL能够解决更多HTML不能解决的困难。对于传统的浏览器来说，仍然需要CSS，但长远看来使用XSL才是发展方向。</p>
+ 
+<a href='364.htm'>&lt;&lt;上一篇</a>&nbsp;&nbsp;<a href='366.htm'>下一篇&gt;&gt;</a></td>
+        </tr>
+      </table>
+      <p>&nbsp; </p>
+    </td>
+  </tr>
+</table>
+
+</body>
+
+</html>

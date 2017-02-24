@@ -1,0 +1,92 @@
+﻿@charset "UTF-8";
+
+
+body {
+	font: 100% 微软雅黑, Arial, Helvetica, sans-serif;
+	background: #F0F0F0;
+	margin: 0; 
+	padding: 0;
+	text-align: center; 
+	color: #333333;
+}
+img
+{
+    border:0px;
+}
+.oneColElsCtrHdr #container {
+	width: 980px;	
+	background: #FFFFFF;
+	margin: 0 auto;
+	border: 1px solid #b6b6b6;
+	text-align: left;
+	
+}
+.oneColElsCtrHdr #header { 
+	padding: 0 10px 0 20px;
+
+} 
+.oneColElsCtrHdr #header h1 {
+	margin: 0;
+	padding: 10px 0;
+	color:#01538f;
+}
+.oneColElsCtrHdr #mainContent {
+	padding: 0 70px;
+	background: #FFFFFF;	
+	font-size:14px;
+	text-align:left;
+	margin-bottom:20px;
+}
+.oneColElsCtrHdr #footer { 
+	padding: 0 10px;
+	padding-bottom:10px;
+	color:#4465a2;
+	text-align:center;	
+	background-image:url(/images/art.gif); 
+
+	background-repeat:no-repeat;
+	background-position: 100% 80%;
+} 
+.oneColElsCtrHdr #footer p {
+	margin: 0;
+	padding: 10px 0;
+}
+p.tips
+{
+    font-size:12px;  
+    margin:0px;
+    color:#01538f;
+    padding-left:10px;  
+}
+input.inputTxt
+{
+    border:#bdc7d8 1px solid;
+    color:#333;
+    height:18px;
+    font-size:15px;
+    line-height:18px;
+    margin:0px;
+    padding:5px 4px 5px 4px;
+    vertical-align:middle;
+    width:212px;    
+}
+div.divGrayBorder
+{
+    border: solid 1px #b6b6b6;
+     background-color:#F6F6F6;
+    padding:5px;
+    margin:5px;    
+}
+.divSettings
+{
+    width:550px;
+    border:solid 2px #cbdced;
+    margin-top:10px;
+    margin-bottom:10px;
+    padding:10px;
+    text-align:left;
+}
+.btnSubmit
+{    
+    padding-bottom: 4px; margin: 6px 0pt; padding-left: 10px; padding-right: 10px; font-size: 130%; font-weight: bold; padding-top: 4px; color:Green;
+}

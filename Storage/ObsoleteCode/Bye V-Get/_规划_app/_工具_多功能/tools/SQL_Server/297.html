@@ -1,0 +1,12 @@
+<meta http-equiv="content-type" content="text/html; charset=gb2312"><FONT 
+style="FONT-SIZE: 9pt; LINE-HEIGHT: 15pt"><B>GetAlltblRowsSize</B><BR>Version:&nbsp;SQL&nbsp;Server&nbsp;7.0/2000<BR>Created&nbsp;by:&nbsp;Alexander&nbsp;Chigrik
+<P></P>
+<P>This&nbsp;stored&nbsp;procedure&nbsp;can&nbsp;be&nbsp;used&nbsp;to&nbsp;get&nbsp;the&nbsp;size&nbsp;of&nbsp;all&nbsp;users&nbsp;tables<BR>in&nbsp;the&nbsp;particular&nbsp;database&nbsp;with&nbsp;the&nbsp;number&nbsp;of&nbsp;their&nbsp;rows.<BR>You&nbsp;should&nbsp;simply&nbsp;pass&nbsp;the&nbsp;database&nbsp;name,&nbsp;as&nbsp;in&nbsp;the&nbsp;example&nbsp;below<BR>(if&nbsp;the&nbsp;database&nbsp;name&nbsp;was&nbsp;not&nbsp;specified,&nbsp;the&nbsp;current&nbsp;database&nbsp;will<BR>be&nbsp;used):</P>
+<P>EXEC&nbsp;GetAlltblRowsSize&nbsp;'pubs'</P>
+<P>*<BR>Version:&nbsp;SQL&nbsp;Server&nbsp;7.0/2000<BR>Created&nbsp;by:&nbsp;Alexander&nbsp;Chigrik<BR><IMG 
+src="http://www.pigtwo.com/forum/pic/url.gif" align=absMiddle border=0><A href="http://www.MSSQLCity.com/" 
+target=_blank>http://www.MSSQLCity.com/</A>&nbsp;-&nbsp;all&nbsp;about&nbsp;MS&nbsp;SQL<BR>(SQL&nbsp;Server&nbsp;Articles,&nbsp;FAQ,&nbsp;Scripts,&nbsp;Tips&nbsp;and&nbsp;Test&nbsp;Exams).</P>
+<P>This&nbsp;stored&nbsp;procedure&nbsp;can&nbsp;be&nbsp;used&nbsp;to&nbsp;get&nbsp;the&nbsp;size&nbsp;of&nbsp;all&nbsp;users&nbsp;tables<BR>in&nbsp;the&nbsp;particular&nbsp;database&nbsp;with&nbsp;the&nbsp;number&nbsp;of&nbsp;their&nbsp;rows.<BR>You&nbsp;should&nbsp;simply&nbsp;pass&nbsp;the&nbsp;database&nbsp;name,&nbsp;as&nbsp;in&nbsp;the&nbsp;example&nbsp;below<BR>(if&nbsp;the&nbsp;database&nbsp;name&nbsp;was&nbsp;not&nbsp;specified,&nbsp;the&nbsp;current&nbsp;database&nbsp;will&nbsp;be&nbsp;used):</P>
+<P>EXEC&nbsp;GetAlltblRowsSize&nbsp;'pubs'<BR>*/</P>
+<P>IF&nbsp;OBJECT_ID('GetAlltblRowsSize')&nbsp;IS&nbsp;NOT&nbsp;NULL&nbsp;DROP&nbsp;PROC&nbsp;GetAlltblRowsSize<BR>GO</P>
+<P>CREATE&nbsp;PROCEDURE&nbsp;GetAlltblRowsSize&nbsp;(<BR>&nbsp;&nbsp;@dbname&nbsp;sysname&nbsp;=&nbsp;null<BR>)<BR>AS<BR>&nbsp;&nbsp;DECLARE&nbsp;@execstr&nbsp;nvarchar(255)<BR>&nbsp;&nbsp;SET&nbsp;NOCOUNT&nbsp;ON<BR>&nbsp;&nbsp;IF&nbsp;@dbname&nbsp;IS&nbsp;NULL&nbsp;SELECT&nbsp;@dbname&nbsp;=&nbsp;DB_NAME()<BR>&nbsp;&nbsp;SELECT&nbsp;@execstr&nbsp;=&nbsp;'EXEC&nbsp;'&nbsp;+&nbsp;@dbname&nbsp;+&nbsp;'..sp_MSforeachtable&nbsp;@command1="sp_spaceused&nbsp;''?''"'<BR>&nbsp;&nbsp;EXEC(@execstr)<BR>GO<BR></P></FONT>

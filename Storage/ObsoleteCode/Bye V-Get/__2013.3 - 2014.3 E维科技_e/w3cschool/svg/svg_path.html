@@ -1,0 +1,153 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="../c3.css" />
+<title>SVG &lt;path&gt;</title>
+</head>
+<body class="multimedia">
+<div id="wrapper">
+<div id="header">
+<a href="http://e.v-get.com/w3cschool/" style="float:left;">W3CSchool 在线教程</a>
+<div class="q g"><script type="text/javascript">var cpro_id="u1163355"</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div>
+<div id="navfirst">
+<ul id="menu">
+<li id="h"><a href="../h.html">HTML教程</a></li>
+<li id="x"><a href="../x.html">XML教程</a></li>
+<li id="b"><a href="../b.html">浏览器脚本</a></li>
+<li id="s"><a href="../s.html">服务器脚本</a></li>
+<li id="d"><a href="../d.html">dot net教程</a></li>
+<li id="m"><a href="../m.html">多媒体教程</a></li>
+<li id="w"><a href="../w.html">建站手册</a></li>
+</ul>
+</div><div id="navsecond">
+<div id="course">
+<h2>SVG 基础</h2>
+<ul>
+<li><a href="http://e.v-get.com/w3cschool/">SVG 首页</a></li>
+<li><a href="svg_intro.html">SVG 简介</a></li>
+<li><a href="svg_example.html">SVG 实例</a></li>
+<li><a href="svg_inhtml.html">SVG in HTML</a></li>
+</ul>
+<h2>SVG 形状</h2>
+<ul>
+<li><a href="svg_rect.html">SVG 矩形</a></li>
+<li><a href="svg_circle.html">SVG 圆形</a></li>
+<li><a href="svg_ellipse.html">SVG 椭圆</a></li>
+<li><a href="svg_line.html">SVG 线条</a></li>
+<li><a href="svg_polygon.html">SVG 多边形</a></li>
+<li><a href="svg_polyline.html">SVG 折线</a></li>
+<li><a href="svg_path.html">SVG 路径</a></li>
+</ul>
+<h2>SVG 滤镜</h2>
+<ul>
+<li><a href="svg_filters_intro.html">SVG 滤镜简介</a></li>
+<li><a href="svg_filters_gaussian.html">SVG 高斯滤镜</a></li>
+</ul>
+<h2>SVG 渐变</h2>
+<ul>
+<li><a href="svg_grad_linear.html">SVG 线形渐变</a></li>
+<li><a href="svg_grad_radial.html">SVG 放射渐变</a></li>
+</ul>
+<h2>SVG 实例</h2>
+<ul>
+<li><a href="svg_examples.html">SVG 实例</a></li>
+</ul>
+<h2>SVG 参考</h2>
+<ul>
+<li><a href="svg_reference.html">SVG 元素</a></li>
+</ul>
+</div>
+<div id="selected">
+<h2>建站手册</h2>
+<ul>
+<li><a href="../site/">网站构建</a></li>
+<li><a href="../w3c/">万维网联盟</a></li>
+<li><a href="http://e.v-get.com/w3c/">W3CSchool 教程</a></li>
+<li><a href="../quality/">网站品质</a></li>
+<li><a href="../semweb/">语义网</a></li>
+<li><a href="../hosting/">网站主机</a></li>
+</ul>
+<h2><a href="http://e.v-get.com/w3c/" class="f13">W3CSchool 教程</a></h2><div class="a120x90"><script type="text/javascript">var cpro_id="u1210867";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div></div>
+</div>
+<div id="maincontent">
+<h1>SVG &lt;path&gt;</h1>
+<div id="tpn">
+<ul class="prenext">
+<li class="pre"><a href="svg_polyline.html">上一页</a></li>
+<li class="next"><a href="svg_filters_intro.html">下一页</a></li>
+</ul>
+</div>
+<div class="intro">
+<p><strong>&lt;path&gt; 标签用来定义路径。</strong></p>
+</div>
+<div>
+<h2>&lt;path&gt; 标签</h2>
+<p>&lt;path&gt; 标签用来定义路径。</p>
+<p>下面的命令可用于路径数据：</p>
+<ul>
+<li>M = moveto</li>
+<li>L = lineto</li>
+<li>H = horizontal lineto</li>
+<li>V = vertical lineto</li>
+<li>C = curveto</li>
+<li>S = smooth curveto</li>
+<li>Q = quadratic Belzier curve</li>
+<li>T = smooth quadratic Belzier curveto</li>
+<li>A = elliptical Arc</li>
+<li>Z = closepath</li>
+</ul>
+<p class="note"><span>注释：</span>以上所有命令均允许小写字母。大写表示绝对定位，小写表示相对定位。</p>
+<p>请把下面的代码拷贝到记事本，然后把文件保存为 &#34;path1.svg&#34;。把此文件放入您的 web 目录：</p>
+<pre>&lt;?xml version=&#34;1.0&#34; standalone=&#34;no&#34;?&gt;
+&lt;!DOCTYPE svg PUBLIC &#34;-//W3C//DTD SVG 1.1//EN&#34; 
+&#34;http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd&#34;&gt;
+&lt;svg width=&#34;100%&#34; height=&#34;100%&#34; version=&#34;1.1&#34;
+xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+&lt;path d=&#34;M250 150 L150 350 L350 350 Z&#34; /&gt;
+&lt;/svg&gt;</pre>
+<p>上面的例子定义了一条路径，它开始于位置 250 150，到达位置 150 350，然后从那里开始到 350 350，最后在 250 150 关闭路径。</p>
+<p><a href="path1.svg">查看例子</a></p>
+<p>下面的例子创建了一个螺旋：</p>
+<pre>&lt;?xml version=&#34;1.0&#34; standalone=&#34;no&#34;?&gt;
+&lt;!DOCTYPE svg PUBLIC &#34;-//W3C//DTD SVG 1.1//EN&#34; 
+&#34;http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd&#34;&gt;
+&lt;svg width=&#34;100%&#34; height=&#34;100%&#34; version=&#34;1.1&#34;
+xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;
+&lt;path d=&#34;M153 334
+C153 334 151 334 151 334
+C151 339 153 344 156 344
+C164 344 171 339 171 334
+C171 322 164 314 156 314
+C142 314 131 322 131 334
+C131 350 142 364 156 364
+C175 364 191 350 191 334
+C191 311 175 294 156 294
+C131 294 111 311 111 334
+C111 361 131 384 156 384
+C186 384 211 361 211 334
+C211 300 186 274 156 274&#34;
+style=&#34;fill:white;stroke:red;stroke-width:2&#34;/&gt;
+&lt;/svg&gt;</pre>
+<p><a href="path1.svg">查看例子</a></p>
+<p>很复杂吧？是的！！！由于绘制路径的复杂性，因此强烈建议您使用 SVG 编辑器来创建复杂的图形。</p>
+</div>
+<div  id="bpn">
+<ul class="prenext">
+<li class="pre"><a href="svg_polyline.html">上一页</a></li>
+<li class="next"><a href="svg_filters_intro.html">下一页</a></li>
+</ul>
+</div>
+</div>
+<div id="sidebar">
+<div class="rs"></div>
+<div id="tools">
+<h5 id="tools_reference"><a href="svg_reference.html">SVG 参考手册</a></h5>
+<h5 id="tools_example"><a href="svg_examples.html">SVG 实例</a></h5>
+</div>
+<div class="a120x600"><script type="text/javascript">var cpro_id="u1293136";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div><div class="b"></div>
+</div>
+</body>
+</html>

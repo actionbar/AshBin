@@ -1,0 +1,7 @@
+{template header}
+
+<p>
+	请点击<anchor title="确认">确认<go method="post" href="{eval echo miniurl('follow/'.$who)}"><postfield name="submit_post" value="1" /><!--{if $action == 'del'}--><postfield name="action" value="del" /><!--{/if}--></go></anchor>，<!--{if $action == 'del'}-->取消对用户"{$whosname}"的关注<!--{else}-->关注用户"{$whosname}"<!--{/if}-->
+</p>
+
+{template footer}

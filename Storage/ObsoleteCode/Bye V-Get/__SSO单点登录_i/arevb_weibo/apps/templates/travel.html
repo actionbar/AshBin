@@ -1,0 +1,195 @@
+{template header}
+
+<div class="left">
+	<div class="post">
+		<!--{if $filter == 'comments'}-->
+		<a href="{eval echo miniurl('travel');}">随看微博</a> - 热评微博 - <a href="{eval echo miniurl('travel?filter=refers');}">热门转发</a>
+		<!--{elseif $filter == 'refers'}-->
+		<a href="{eval echo miniurl('travel');}">随看微博</a> - <a href="{eval echo miniurl('travel?filter=comments');}">热评微博</a> - 热门转发
+		<!--{else}-->
+		随看微博 - <a href="{eval echo miniurl('travel?filter=comments');}">热评微博</a> - <a href="{eval echo miniurl('travel?filter=refers');}">热门转发</a>
+		<!--{/if}-->
+	</div>
+	<!--{if $travel_notes}-->
+	<!--{loop $travel_notes $travel_note}-->
+	<div class="post" id="post_{$travel_note['nid']}">
+		<a href="{eval echo miniurl($travel_note['uid']);}"><img src="{$siteurl}avatar.php?uid={$travel_note['uid']}&size=middle" /></a>
+		<div class="detail">
+			<p>
+				<a href="{eval echo miniurl($travel_note['uid']);}">{$travel_note['username']}</a>: {$travel_note['note']['message']}
+				<!--{if $travel_note['note']['link']}-->
+				<p>分享链接：<a href="{$travel_note['note']['link']['url']}">{$travel_note['note']['link']['title']}</a></p>
+				<!--{/if}-->
+				<!--{if $travel_note['note']['file']}-->
+				<p>分享文件：<a href="{$travel_note['note']['file']['url']}">{$travel_note['note']['file']['title']}</a></p>
+				<!--{/if}-->
+				<!--{if $travel_note['note']['img']}-->
+				<p><img src="{eval echo imgurl($travel_note['note']['img']['url']);}" rel="{$travel_note['note']['img']['title']}" /></p>
+				<!--{/if}-->
+				<!--{if !empty($travel_note['note']['refer'])}-->
+				{eval $travel_note_refer = $travel_note['note']['refer'];}
+				<div class="upax"></div>
+				<div class="ugb">
+					<div class="ugb2">
+						<div class="ugb3">
+							<div class="ugb4">
+								转发自 {$travel_note_refer['message']}
+								<!--{if !empty($travel_note_refer['link'])}-->
+								<p>分享链接：<a href="{$travel_note_refer['link']['url']}">$travel_note_refer['link']['title']</a></p>
+								<!--{/if}-->
+								<!--{if !empty($travel_note_refer['file'])}-->
+								<p>分享文件：<a href="{$travel_note_refer['file']['url']}">$travel_note_refer['file']['title']</a>
+								<!--{/if}-->
+								<!--{if !empty($travel_note_refer['img'])}-->
+								<p><img style="float:none" src="{eval echo imgurl($travel_note_refer['img']['url']);}" rel="{$travel_note_refer['img']['title']}" /></p>
+								<!--{/if}-->
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--{/if}-->
+			</p>
+			<div class="attrs">
+				<div class="lf">
+					<cite>{eval echo sgmdate($travel_note['dateline']);}</cite> 来自{$sourcefrom[$travel_note['from']]}
+				</div>
+				<div class="rt">
+					<!--{if $logger_uid == $travel_note['uid']}-->转发[{$travel_note['refers']}]<!--{else}--><a href="<!--{if $logger_uid < 1}-->{eval echo miniurl('login');}<!--{else}-->javascript:;<!--{/if}-->" class="refer_a" r="{$travel_note['nid']}">转发[{$travel_note['refers']}]</a><!--{/if}--><span>|</span><a href="{eval echo miniurl('note/'.$travel_note['nid'].'/comment');}">评论[{$travel_note['comments']}]</a><!--{if $logger_uid == $travel_note['uid']}--><span>|</span><a href="javascript:;" class="delete_a" r="{$travel_note['nid']}">删除</a><!--{/if}-->
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--{/loop}-->
+	<!--{if $pagehtml}-->
+	{$pagehtml}
+	<!--{/if}-->
+	<!--{else}-->
+	<div class="post">
+		<div class="detail">
+			<p>暂无微博</p>
+		</div>
+	</div>
+	<!--{/if}-->
+</div>
+<div class="right">
+	<!--{if $logger_uid > 0}-->
+	<div class="ugb">
+		<div class="ugb2">
+			<div class="ugb3">
+				<div class="ugb4">
+					<div class="userinfo">
+						<div class="user_head">
+							<img src="{$siteurl}avatar.php?uid={$logger_uid}&size=middle" style="float:left" /><div style="float:left; margin:0 0 0 15px;"><p style="font-size:14px;line-height:33px;">{$logger_user}</p><p style="color:#999">上次登录:{eval echo sgmdate($_DSESSION['lastvisit']);}</p></div>
+						</div>
+						<div class="user_atten">
+							<ul>
+								<li>
+									<div class="num">
+										<a href="{eval echo miniurl($logger_uid.'/follows');}">{$_DSESSION['follows']}</a>
+									</div>
+									<a href="{eval echo miniurl($logger_uid.'/follows');}">关注</a>
+								</li>
+								<li>
+									<div class="num">
+										<a href="{eval echo miniurl($logger_uid.'/fans');}">{$_DSESSION['fans']}</a>
+									</div>
+									<a href="{eval echo miniurl($logger_uid.'/fans');}">粉丝</a>
+								</li>
+								<li style="border:none">
+									<div class="num">
+										<a href="{eval echo miniurl($logger_uid.'/notes');}">{$_DSESSION['notes']}</a>
+									</div>
+									<a href="{eval echo miniurl($logger_uid.'/notes');}">微博</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--{else}-->
+	<h3>还没有用户名？</h3>
+	<div class="ugb">
+		<div class="ugb2">
+			<div class="ugb3">
+				<div class="ugb4">
+					<form method="post" action="{eval echo miniurl('login');}">
+					<table class="formtable" cellpadding="3" cellspacing="3">
+						<tr>
+							<td colspan="2">赶紧去注册一个！</td>
+						</tr>
+						<tr>
+							<td width="50"></td>
+							<td><input type="button" value="注 册" class="btn" onclick="location.href='{eval echo miniurl('register');}';" /></td>
+						</tr>
+					</table>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	<h3 style="margin:15px 0 0">我有用户名</h3>
+	<div class="ugb">
+		<div class="ugb2">
+			<div class="ugb3">
+				<div class="ugb4">
+					<form method="post" action="{eval echo miniurl('login');}">
+					<table class="formtable" cellpadding="3" cellspacing="3">
+						<tr>
+							<td colspan="2">现在就登录！</td>
+						</tr>
+						<tr>
+							<td width="50">登录名:</td>
+							<td><input type="text" value="" name="username" class="inp" size="21" /></td>
+						</tr>
+						<tr>
+							<td width="50">密码:</td>
+							<td><input type="password" value="" name="password" class="inp" size="21" /></td>
+						</tr>
+						<tr>
+							<td width="50"></td>
+							<td><input type="submit" class="btn" value="登录" /><input type="hidden" name="submit_post" value="1" /></td>
+						</tr>
+					</table>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--{/if}-->
+	<!--{if !empty($hot_peos)}-->
+	<h3 style="margin:15px 0 0">看看谁最活跃？</h3>
+	<div class="actives">
+	<!--{loop $hot_peos $hot_peo}-->
+		<dl class="ob">	
+			<dt>
+				<a href="{eval echo miniurl($hot_peo['uid']);}"><img src="{$siteurl}avatar.php?uid={$hot_peo['uid']}&size=middle" /></a>
+			</dt>
+			<dd>
+				<a href="{eval echo miniurl($hot_peo['uid']);}">{$hot_peo['username']}</a>
+			</dd>
+		</dl>
+	<!--{/loop}-->
+	</div>
+	<div style="clear:both"></div>
+	<div class="more">
+		<a href="{eval echo miniurl('search/peoples')}">更多>></a>
+	</div>
+	<!--{/if}-->
+	<!--{if !empty($hot_tags)}-->
+	<h3 style="margin:15px 0 0">什么话题最热门？</h3>
+	<ul class="hottags">
+		<!--{loop $hot_tags $hot_tag}-->
+		<li>
+			<a href="{eval echo miniurl('search/tag?keyword='.$hot_tag['tagname']);}">{$hot_tag['tagname']}</a> ({$hot_tag['total']})
+		</li>
+		<!--{/loop}-->
+	</ul>
+	<div class="more">
+		<a href="{eval echo miniurl('search/tags')}">更多>></a>
+	</div>
+	<!--{/if}-->
+</div>
+
+{template footer}

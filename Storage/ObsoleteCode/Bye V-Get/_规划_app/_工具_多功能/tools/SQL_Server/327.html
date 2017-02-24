@@ -1,0 +1,6 @@
+<meta http-equiv="content-type" content="text/html; charset=gb2312">Sqlserver7&nbsp;编程技术内幕提供的方法.
+<P></P>
+<P>drop&nbsp;proc&nbsp;pr_updateindex<BR>create&nbsp;proc&nbsp;pr_updateindex<BR>as<BR>&nbsp;set&nbsp;nocount&nbsp;on&nbsp;<BR>&nbsp;declare&nbsp;get_index_curs&nbsp;cursor&nbsp;<BR>&nbsp;&nbsp;for&nbsp;select&nbsp;name--tablename<BR>&nbsp;&nbsp;from&nbsp;sysobjects&nbsp;--systemtable<BR>&nbsp;where&nbsp;type=''u''&nbsp;-usertable</P>
+<P>&nbsp;declare&nbsp;@holdtable&nbsp;varchar(30)<BR>&nbsp;declare&nbsp;@message&nbsp;varchar(40)<BR>&nbsp;declare&nbsp;@dynamic&nbsp;varchar(51)</P>
+<P>&nbsp;open&nbsp;getindex_curs<BR>&nbsp;fetch&nbsp;next&nbsp;from&nbsp;getindex_curs&nbsp;into&nbsp;@holdtable<BR>&nbsp;while&nbsp;@@fetch_status=0<BR>&nbsp;begin<BR>&nbsp;&nbsp;&nbsp;select&nbsp;@dynamic=''update&nbsp;statistics&nbsp;''+@holdtable<BR>&nbsp;&nbsp;&nbsp;select&nbsp;@message=''updating''+@holdtable<BR>&nbsp;&nbsp;&nbsp;exec(@dynamic)<BR>&nbsp;&nbsp;print&nbsp;@message<BR>&nbsp;&nbsp;fetch&nbsp;next&nbsp;from&nbsp;getindex_curs&nbsp;into&nbsp;@holdtable<BR>end<BR>&nbsp;&nbsp;close&nbsp;getindex_curs</P>
+<P><B>我觉得用上面的sp_updatestats就可以,具体这个没用过</B><BR></P>

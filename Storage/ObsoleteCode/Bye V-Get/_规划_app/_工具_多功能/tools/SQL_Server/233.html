@@ -1,0 +1,14 @@
+<meta http-equiv="content-type" content="text/html; charset=gb2312"><FONT 
+style="FONT-SIZE: 9pt; LINE-HEIGHT: 15pt"><B>Three&nbsp;General&nbsp;Purpose&nbsp;Database</B><BR>Three&nbsp;General&nbsp;Purpose&nbsp;Database&nbsp;Scripts
+<P></P>
+<P></P>
+<P><BR>Here&nbsp;are&nbsp;three&nbsp;general&nbsp;purpose&nbsp;scripts&nbsp;for&nbsp;degragmenting&nbsp;and&nbsp;speeding&nbsp;up&nbsp;large&nbsp;databases.&nbsp;You&nbsp;can&nbsp;schedule&nbsp;the&nbsp;SPs&nbsp;for&nbsp;periodic&nbsp;execution,&nbsp;but&nbsp;they&nbsp;should&nbsp;be&nbsp;run&nbsp;in&nbsp;absence&nbsp;of&nbsp;user&nbsp;activity&nbsp;on&nbsp;the&nbsp;database&nbsp;(might&nbsp;slow&nbsp;down&nbsp;users&nbsp;otherwise).&nbsp;The&nbsp;SPs&nbsp;were&nbsp;tested&nbsp;against&nbsp;SQL&nbsp;Server&nbsp;7.0&nbsp;but&nbsp;should&nbsp;also&nbsp;work&nbsp;on&nbsp;SQL&nbsp;Server&nbsp;6.5&nbsp;and&nbsp;2000.&nbsp;</P>
+<P>The&nbsp;scripts&nbsp;are&nbsp;as&nbsp;follows:&nbsp;</P>
+<P>exec&nbsp;sp_CheckIdent&nbsp;--&nbsp;checks&nbsp;identity&nbsp;colulmns&nbsp;for&nbsp;all&nbsp;user&nbsp;tables&nbsp;</P>
+<P>go&nbsp;</P>
+<P>exec&nbsp;sp_AdminReindexTables&nbsp;--&nbsp;reindexes&nbsp;all&nbsp;user&nbsp;tables&nbsp;</P>
+<P>go&nbsp;</P>
+<P>exec&nbsp;sp_AdminRecompileStoredProc&nbsp;--&nbsp;recompiles&nbsp;all&nbsp;SPs&nbsp;</P>
+<P>go&nbsp;</P>
+<P>The&nbsp;script&nbsp;has&nbsp;been&nbsp;updated&nbsp;as&nbsp;of&nbsp;1/7/02&nbsp;with&nbsp;corrections&nbsp;and&nbsp;user&nbsp;input&nbsp;added&nbsp;to&nbsp;the&nbsp;comments&nbsp;text.&nbsp;The&nbsp;corrections&nbsp;address&nbsp;scenarios&nbsp;when&nbsp;table&nbsp;names&nbsp;might&nbsp;have&nbsp;spaces&nbsp;or&nbsp;weird&nbsp;symbols&nbsp;in&nbsp;them.&nbsp;</P>
+<P>Author:&nbsp;Alexei&nbsp;Akimov&nbsp;</P></FONT>

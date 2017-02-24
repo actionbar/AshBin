@@ -1,0 +1,327 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="../c3.css" />
+<title>XSD 限定 / Facets</title>
+</head>
+<body class="xml">
+<div id="wrapper">
+<div id="header">
+<a href="http://e.v-get.com/w3cschool/" style="float:left;">W3CSchool 在线教程</a>
+<div class="q g"><script type="text/javascript">var cpro_id="u1163355"</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div>
+<div id="navfirst">
+<ul id="menu">
+<li id="h"><a href="../h.html">HTML教程</a></li>
+<li id="x"><a href="../x.html">XML教程</a></li>
+<li id="b"><a href="../b.html">浏览器脚本</a></li>
+<li id="s"><a href="../s.html">服务器脚本</a></li>
+<li id="d"><a href="../d.html">dot net教程</a></li>
+<li id="m"><a href="../m.html">多媒体教程</a></li>
+<li id="w"><a href="../w.html">建站手册</a></li>
+</ul>
+</div><div id="navsecond">
+<div id="course">
+<h2>Schema 教程</h2>
+<ul>
+<li><a href="http://e.v-get.com/w3cschool/">XSD 首页</a></li>
+<li><a href="schema_intro.html">XSD 简介</a></li>
+<li><a href="schema_why.html">XSD 为何使用</a></li>
+<li><a href="schema_howto.html">XSD 如何使用</a></li>
+<li><a href="schema_schema.html">XSD &lt;schema&gt;</a></li>
+</ul>
+<h2>简单的类型</h2>
+<ul>
+<li><a href="schema_simple.html">XSD 元素</a></li>
+<li><a href="schema_simple_attributes.html">XSD 属性</a></li>
+<li><a href="schema_facets.html">XSD 限定</a></li>
+</ul>
+<h2>复杂的类型</h2>
+<ul>
+<li><a href="schema_complex.html">XSD 元素</a></li>
+<li><a href="schema_complex_empty.html">XSD 空元素</a></li>
+<li><a href="schema_complex_elements.html">XSD 仅含元素</a></li>
+<li><a href="schema_complex_text.html">XSD 仅含文本</a></li>
+<li><a href="schema_complex_mixed.html">XSD 混合内容</a></li>
+<li><a href="schema_complex_indicators.html">XSD 指示器</a></li>
+<li><a href="schema_complex_any.html">XSD &lt;any&gt;</a></li>
+<li><a href="schema_complex_anyattribute.html" title="">XSD &lt;anyAttribute&gt;</a></li>
+<li><a href="schema_complex_subst.html">XSD 元素替换</a></li>
+<li><a href="schema_example.html">XSD 实例</a></li>
+</ul>
+<h2>数据类型</h2>
+<ul>
+<li><a href="schema_dtypes_string.html">XSD 字符串</a></li>
+<li><a href="schema_dtypes_date.html">XSD 日期</a></li>
+<li><a href="schema_dtypes_numeric.html">XSD 数值</a></li>
+<li><a href="schema_dtypes_misc.html">XSD 杂项</a></li>
+<li><a href="schema_summary.html">XSD 总结</a></li>
+</ul>
+<h2>参考手册</h2>
+<ul>
+<li><a href="schema_elements_ref.html">XSD 参考手册</a></li>
+<li><a href="http://www.w3.org/2001/03/webdata/xsv/">XSD 验证器</a></li>
+</ul>
+</div>
+<div id="selected">
+<h2>建站手册</h2>
+<ul>
+<li><a href="../site/">网站构建</a></li>
+<li><a href="../w3c/">万维网联盟</a></li>
+<li><a href="http://e.v-get.com/w3c/">W3CSchool 教程</a></li>
+<li><a href="../quality/">网站品质</a></li>
+<li><a href="../semweb/">语义网</a></li>
+<li><a href="../hosting/">网站主机</a></li>
+</ul>
+<h2><a href="http://e.v-get.com/w3c/" class="f13">W3CSchool 教程</a></h2><div class="a120x90"><script type="text/javascript">var cpro_id="u1210867";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div></div>
+</div>
+<div id="maincontent">
+<h1>XSD 限定 / Facets</h1>
+<div  id="tpn">
+<ul class="prenext">
+<li class="pre"><a href="schema_simple_attributes.html">上一页</a></li>
+<li class="next"><a href="schema_complex.html">下一页</a></li>
+</ul>
+</div>
+<div id="intro">
+<p><strong>限定 (restriction）用于为 XML 元素或者属性定义可接受的值。对 XML 元素的限定被称为 facet。</strong></p>
+</div>
+<div>
+<h2>对值的限定</h2>
+<p>下面的例子定义了带有一个限定且名为 &#34;age&#34; 的元素。age 的值不能低于 0 或者高于 120：</p>
+<pre>&lt;xs:element name=&#34;age&#34;&gt;
+&lt;xs:simpleType&gt;
+  &lt;xs:restriction base=&#34;xs:integer&#34;&gt;
+    &lt;xs:minInclusive value=&#34;0&#34;/&gt;
+    &lt;xs:maxInclusive value=&#34;120&#34;/&gt;
+  &lt;/xs:restriction&gt;
+&lt;/xs:simpleType&gt;
+&lt;/xs:element&gt; </pre>
+</div>
+<div>
+<h2>对一组值的限定</h2>
+<p>如需把 XML 元素的内容限制为一组可接受的值，我们要使用枚举约束 (enumeration constraint）。</p>
+<p>下面的例子定义了带有一个限定的名为 &#34;car&#34; 的元素。可接受的值只有：Audi, Golf, BMW：</p>
+<pre>&lt;xs:element name=&#34;car&#34;&gt;
+&lt;xs:simpleType&gt;
+  &lt;xs:restriction base=&#34;xs:string&#34;&gt;
+    &lt;xs:enumeration value=&#34;Audi&#34;/&gt;
+    &lt;xs:enumeration value=&#34;Golf&#34;/&gt;
+    &lt;xs:enumeration value=&#34;BMW&#34;/&gt;
+  &lt;/xs:restriction&gt;
+&lt;/xs:simpleType&gt;
+&lt;/xs:element&gt; </pre>
+<p>上面的例子也可以被写为：</p>
+<pre>&lt;xs:element name=&#34;car&#34; <code>type=&#34;carType&#34;</code>/&gt;
+&lt;xs:simpleType <code>name=&#34;carType&#34;</code>&gt;
+  &lt;xs:restriction base=&#34;xs:string&#34;&gt;
+    &lt;xs:enumeration value=&#34;Audi&#34;/&gt;
+    &lt;xs:enumeration value=&#34;Golf&#34;/&gt;
+    &lt;xs:enumeration value=&#34;BMW&#34;/&gt;
+  &lt;/xs:restriction&gt;
+&lt;/xs:simpleType&gt;</pre>
+<p class="note"><span>注释：</span>在这种情况下，类型 &#34;carType&#34; 可被其他元素使用，因为它不是 &#34;car&#34; 元素的组成部分。</p>
+</div>
+<div>
+<h2>对一系列值的限定</h2>
+<p>如需把 XML 元素的内容限制定义为一系列可使用的数字或字母，我们要使用模式约束 (pattern constraint）。</p>
+<p>下面的例子定义了带有一个限定的名为 &#34;letter&#34; 的元素。可接受的值只有小写字母 a - z 其中的一个：</p>
+<pre>&lt;xs:element name=&#34;letter&#34;&gt;
+&lt;xs:simpleType&gt;
+  &lt;xs:restriction base=&#34;xs:string&#34;&gt;
+    &lt;xs:pattern value=&#34;[a-z]&#34;/&gt;
+  &lt;/xs:restriction&gt;
+&lt;/xs:simpleType&gt;
+&lt;/xs:element&gt; </pre>
+<p>下一个例子定义了带有一个限定的名为 &#34;initials&#34; 的元素。可接受的值是大写字母 A - Z 其中的三个：</p>
+<pre>&lt;xs:element name=&#34;initials&#34;&gt;
+&lt;xs:simpleType&gt;
+  &lt;xs:restriction base=&#34;xs:string&#34;&gt;
+    &lt;xs:pattern value=&#34;[A-Z][A-Z][A-Z]&#34;/&gt;
+  &lt;/xs:restriction&gt;
+&lt;/xs:simpleType&gt;
+&lt;/xs:element&gt; </pre>
+<p>下一个例子也定义了带有一个限定的名为 &#34;initials&#34; 的元素。可接受的值是大写或小写字母 a - z 其中的三个：</p>
+<pre>&lt;xs:element name=&#34;initials&#34;&gt;
+&lt;xs:simpleType&gt;
+  &lt;xs:restriction base=&#34;xs:string&#34;&gt;
+    &lt;xs:pattern value=&#34;[a-zA-Z][a-zA-Z][a-zA-Z]&#34;/&gt;
+  &lt;/xs:restriction&gt;
+&lt;/xs:simpleType&gt;
+&lt;/xs:element&gt; </pre>
+<p>下一个例子定义了带有一个限定的名为 &#34;choice 的元素。可接受的值是字母 x, y 或 z 中的一个：</p>
+<pre>&lt;xs:element name=&#34;choice&#34;&gt;
+&lt;xs:simpleType&gt;
+  &lt;xs:restriction base=&#34;xs:string&#34;&gt;
+    &lt;xs:pattern value=&#34;[xyz]&#34;/&gt;
+  &lt;/xs:restriction&gt;
+&lt;/xs:simpleType&gt;
+&lt;/xs:element&gt; </pre>
+<p>下一个例子定义了带有一个限定的名为 &#34;prodid&#34; 的元素。可接受的值是五个阿拉伯数字的一个序列，且每个数字的范围是 0-9：</p>
+<pre>&lt;xs:element name=&#34;prodid&#34;&gt;
+&lt;xs:simpleType&gt;
+  &lt;xs:restriction base=&#34;xs:integer&#34;&gt;
+    &lt;xs:pattern value=&#34;[0-9][0-9][0-9][0-9][0-9]&#34;/&gt;
+  &lt;/xs:restriction&gt;
+&lt;/xs:simpleType&gt;
+&lt;/xs:element&gt; </pre>
+</div>
+<div>
+<h2>对一系列值的其他限定</h2>
+<p>下面的例子定义了带有一个限定的名为 &#34;letter&#34; 的元素。可接受的值是 a - z 中零个或多个字母：</p>
+<pre>&lt;xs:element name=&#34;letter&#34;&gt;
+&lt;xs:simpleType&gt;
+  &lt;xs:restriction base=&#34;xs:string&#34;&gt;
+    &lt;xs:pattern value=&#34;([a-z])*&#34;/&gt;
+  &lt;/xs:restriction&gt;
+&lt;/xs:simpleType&gt;
+&lt;/xs:element&gt; </pre>
+<p>下面的例子定义了带有一个限定的名为 &#34;letter&#34; 的元素。可接受的值是一对或多对字母，每对字母由一个小写字母后跟一个大写字母组成。举个例子，&#34;sToP&#34;将会通过这种模式的验证，但是 &#34;Stop&#34;、&#34;STOP&#34; 或者 &#34;stop&#34; 无法通过验证：</p>
+<pre>&lt;xs:element name=&#34;letter&#34;&gt;
+&lt;xs:simpleType&gt;
+  &lt;xs:restriction base=&#34;xs:string&#34;&gt;
+    &lt;xs:pattern value=&#34;([a-z][A-Z])+&#34;/&gt;
+  &lt;/xs:restriction&gt;
+&lt;/xs:simpleType&gt;
+&lt;/xs:element&gt; </pre>  
+<p>下面的例子定义了带有一个限定的名为 &#34;gender&#34; 的元素。可接受的值是 male 或者 female：</p>
+<pre>&lt;xs:element name=&#34;gender&#34;&gt;
+&lt;xs:simpleType&gt;
+  &lt;xs:restriction base=&#34;xs:string&#34;&gt;
+    &lt;xs:pattern value=&#34;male|female&#34;/&gt;
+  &lt;/xs:restriction&gt;
+&lt;/xs:simpleType&gt;
+&lt;/xs:element&gt; </pre>
+<p>下面的例子定义了带有一个限定的名为 &#34;password&#34; 的元素。可接受的值是由 8 个字符组成的一行字符，这些字符必须是大写或小写字母 a - z 亦或数字 0 - 9：</p>
+<pre>&lt;xs:element name=&#34;password&#34;&gt;
+&lt;xs:simpleType&gt;
+  &lt;xs:restriction base=&#34;xs:string&#34;&gt;
+    &lt;xs:pattern value=&#34;[a-zA-Z0-9]{8}&#34;/&gt;
+  &lt;/xs:restriction&gt;
+&lt;/xs:simpleType&gt;
+&lt;/xs:element&gt; </pre>
+</div>
+<div>
+<h2>对空白字符的限定</h2>
+<p>如需规定对空白字符 (whitespace characters）的处理方式，我们需要使用 whiteSpace 限定。</p>
+<p>下面的例子定义了带有一个限定的名为 &#34;address&#34; 的元素。这个 whiteSpace 限定被设置为 &#34;preserve&#34;，这意味着 XML 处理器不会移除任何空白字符：</p>
+<pre>&lt;xs:element name=&#34;address&#34;&gt;
+&lt;xs:simpleType&gt;
+  &lt;xs:restriction base=&#34;xs:string&#34;&gt;
+    &lt;xs:whiteSpace value=&#34;preserve&#34;/&gt;
+  &lt;/xs:restriction&gt;
+&lt;/xs:simpleType&gt;
+&lt;/xs:element&gt; </pre>
+<p>这个例子也定义了带有一个限定的名为 &#34;address&#34; 的元素。这个 whiteSpace 限定被设置为 &#34;replace&#34;，这意味着 XML 处理器将移除所有空白字符 (换行、回车、空格以及制表符）：</p>
+<pre>&lt;xs:element name=&#34;address&#34;&gt;
+&lt;xs:simpleType&gt;
+  &lt;xs:restriction base=&#34;xs:string&#34;&gt;
+    &lt;xs:whiteSpace value=&#34;replace&#34;/&gt;
+  &lt;/xs:restriction&gt;
+&lt;/xs:simpleType&gt;
+&lt;/xs:element&gt; </pre> 
+<p>这个例子也定义了带有一个限定的名为 &#34;address&#34; 的元素。这个 whiteSpace 限定被设置为 &#34;collapse&#34;，这意味着 XML 处理器将移除所有空白字符 (换行、回车、空格以及制表符会被替换为空格，开头和结尾的空格会被移除，而多个连续的空格会被缩减为一个单一的空格）：</p>
+<pre>&lt;xs:element name=&#34;address&#34;&gt;
+&lt;xs:simpleType&gt;
+  &lt;xs:restriction base=&#34;xs:string&#34;&gt;
+    &lt;xs:whiteSpace value=&#34;collapse&#34;/&gt;
+  &lt;/xs:restriction&gt;
+&lt;/xs:simpleType&gt;
+&lt;/xs:element&gt; </pre>
+</div>
+<div>
+<h2>对长度的限定</h2>
+<p>如需限制元素中值的长度，我们需要使用 length、maxLength 以及 minLength 限定。</p>
+<p>本例定义了带有一个限定且名为 &#34;password&#34; 的元素。其值必须精确到 8 个字符：</p>
+<pre>&lt;xs:element name=&#34;password&#34;&gt;
+&lt;xs:simpleType&gt;
+  &lt;xs:restriction base=&#34;xs:string&#34;&gt;
+    &lt;xs:length value=&#34;8&#34;/&gt;
+  &lt;/xs:restriction&gt;
+&lt;/xs:simpleType&gt;
+&lt;/xs:element&gt; </pre>
+<p>这个例子也定义了带有一个限定的名为 &#34;password&#34; 的元素。其值最小为 5 个字符，最大为 8 个字符：</p>
+<pre>&lt;xs:element name=&#34;password&#34;&gt;
+&lt;xs:simpleType&gt;
+  &lt;xs:restriction base=&#34;xs:string&#34;&gt;
+    &lt;xs:minLength value=&#34;5&#34;/&gt;
+    &lt;xs:maxLength value=&#34;8&#34;/&gt;
+  &lt;/xs:restriction&gt;
+&lt;/xs:simpleType&gt;
+&lt;/xs:element&gt; </pre>
+</div>
+<div>
+<h2>数据类型的限定</h2>
+<table class="dataintable">
+<tr>
+<th>限定</th>
+<th>描述</th>
+</tr>
+<tr>
+<td>enumeration</td>
+<td>定义可接受值的一个列表</td>
+</tr>
+<tr>
+<td>fractionDigits</td>
+<td>定义所允许的最大的小数位数。必须大于等于0。</td>
+</tr>
+<tr>
+<td>length</td>
+<td>定义所允许的字符或者列表项目的精确数目。必须大于或等于0。</td>
+</tr>
+<tr>
+<td>maxExclusive</td>
+<td>定义数值的上限。所允许的值必须小于此值。</td>
+</tr>
+<tr>
+<td>maxInclusive</td>
+<td>定义数值的上限。所允许的值必须小于或等于此值。</td>
+</tr>
+<tr>
+<td>maxLength</td>
+<td>定义所允许的字符或者列表项目的最大数目。必须大于或等于0。</td>
+</tr>
+<tr>
+<td>minExclusive</td>
+<td>定义数值的下限。所允许的值必需大于此值。</td>
+</tr>
+<tr>
+<td>minInclusive</td>
+<td>定义数值的下限。所允许的值必需大于或等于此值。</td>
+</tr>
+<tr>
+<td>minLength</td>
+<td>定义所允许的字符或者列表项目的最小数目。必须大于或等于0。</td>
+</tr>
+<tr>
+<td>pattern</td>
+<td>定义可接受的字符的精确序列。</td>
+</tr>
+<tr>
+<td>totalDigits</td>
+<td>定义所允许的阿拉伯数字的精确位数。必须大于0。</td>
+</tr>
+<tr>
+<td>whiteSpace</td>
+<td>定义空白字符 (换行、回车、空格以及制表符）的处理方式。</td>
+</tr>
+</table>
+</div>
+<div  id="bpn">
+<ul class="prenext">
+<li class="pre"><a href="schema_simple_attributes.html">上一页</a></li>
+<li class="next"><a href="schema_complex.html">下一页</a></li>
+</ul>
+</div>
+</div>
+<div id="sidebar">
+<div class="rs"></div>
+<div id="tools">
+<h5 id="tools_reference"><a href="schema_elements_ref.html">XML Schema 参考手册</a></h5>
+</div>
+<div class="a120x600"><script type="text/javascript">var cpro_id="u1293136";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div><div class="b"></div>
+</div>
+</body>
+</html>

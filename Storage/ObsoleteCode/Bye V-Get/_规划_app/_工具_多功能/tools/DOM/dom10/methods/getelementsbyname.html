@@ -1,0 +1,96 @@
+<html xmlns:rdl>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<script src="rdl_method.js"></script>
+<base target="_self">
+</head>
+<body>
+
+<script>
+
+//collFriendObjects=new Array();
+//collFriendProperties=new Array();
+//collFriendMethods=new Array();
+//collFriendEvents=new Array();
+//collFriendCollections=new Array();
+
+collFriendMethods=new Array(
+'namedItem'
+);
+
+collFriendProperties=new Array(
+'name','id','expando'
+);
+
+//collIE40=new Array();
+//collIE50=new Array();
+//collIE55=new Array();
+//collIE60=new Array();
+
+collIE50=new Array(
+'document'
+);
+
+//sStyle='';
+
+sScript=
+'<script>\n'+
+'function rdl_doClick(e){\n'+
+'var oRDLs=document.getElementsByName("RDL");\n'+
+'for (n=oRDLs.length-1;n>-1;n--) oRDLs[n].removeNode(true);\n'+
+'window.resizeTo(436,320);\n'+
+'}\n'+
+'<\/script>\n';
+
+sCode=
+'<input name=RDL type=text value="tagName=INPUT type=TEXT name=RDL" style="width:360px;margin:2px;"><br>\n'+
+'<textarea id=RDL style="width:360px;margin:2px;">tagName=TEXTAREA id=RDL<\/textarea><br>\n'+
+'<input id=RDL type=button value="tagName=INPUT type=BUTTON id=RDL" style="width:360px;margin:2px;"><br>\n'+
+'<span id=RDL style="width:360px;margin:2px;">tagName=SPAN id=RDL<\/span><br>\n'+
+'<span name=RDL style="width:360px;margin:2px;">tagName=SPAN name=RDL<\/span><br>\n'+
+'<a name=RDL href="#" onclick="return false;" style="width:360px;margin:2px;">tagName=A  name=RDL<\/a><br>\n'+
+'<br>\n'+
+'<input type=button value=" 删除 " onclick="rdl_doClick();" style="margin:4px;"><br>\n'+
+'点击上方按钮将删除所有由<font color="#FF3300">document.getElementsByName("RDL")<\/font>获取到的对象。<br>\n';
+
+iWinWidth=436;
+
+iWinHeight=380;
+
+</script>
+
+<div id=idContent>
+
+<div id=idContentTitle><span id=idTitleName>getElementsByName</span>版本：DOM1　返回值：有</div>
+
+<div class=cssColumnTitle>语法：</div>
+<div>
+<i>oElements</i><b> = </b><i>document</i><b> . getElementsByName ( </b><i>sName</i><b> ) </b>
+</div>
+
+<div class=cssColumnTitle>参数：</div>
+<table>
+<tr><td nowrap><i> sName </i></td><td nowrap><b>:</b></td>
+<td><b>必选项</b>。字符串(String)。</td></tr>
+</table>
+
+<div class=cssColumnTitle>返回值：</div>
+<table>
+<tr><td nowrap><i> oElements </i></td><td nowrap><b>:</b></td>
+<td>数组(Array)。如果无符合条件的对象，则返回空数组。</td></tr>
+</table>
+
+<div class=cssColumnTitle>说明：</div>
+<div>
+返回<a href="../properties/name.html"> name </a>属性值或<a href="../properties/id.html"> id </a>属性值等于<i> sName </i>的一组对象的引用。
+<br>该数组中只包含本身拥有<a href="../properties/name.html"> name </a>属性和<a href="../properties/id.html"> id </a>属性的对象。使用自定义(<a href="../properties/id.html"> expando </a>)的<b> name </b>属性的对象不会被获取。
+</div>
+
+
+
+</div>
+</body>
+</html>
+
+<!-- Part of RDL(TM) - Written by Rain1977 
+HomeSite: http://www.dhtmlet.com  E-Mail: dhtmlet@hotmail.com -->

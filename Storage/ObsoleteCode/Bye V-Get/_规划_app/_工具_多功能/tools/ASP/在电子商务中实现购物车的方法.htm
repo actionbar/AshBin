@@ -1,0 +1,313 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>在电子商务中实现购物车的方法</title>
+<style type="text/css">
+<!--
+body {
+	font-size: 10.4pt;
+	line-height: 22px;
+}
+-->
+</style>
+</head>
+
+<body bgcolor="eeeeee" leftmargin="20" marginwidth="20">
+<p><strong>在电子商务中实现购物车的方法</strong></p>
+<hr>
+<p> 手推车”功能的实现<br>
+  <br>
+  　　“手推车”是在线购物网站（零售）中一项重要的功能。本文将要探讨用ASP程序实现“手推车”功能的技巧。要想在网站上实现“手推车”功能，有好几种方法，比如用Cookie、Session或者隐藏帧等。这几种方法各有优缺点，这里着重讨论用Cookie来实现“手推车”功能。<br>
+  <br>
+  　　用Cookie实现 “手推车”功能的优缺点<br>
+  <br>
+  　　Cookie是通过服务器端CGI、脚本或者客户端脚本把信息保存在客户机上的，以便为服务器或客户机再次使用这些信息提供方便。在JavaScript中有一些专门用来对Cookie进行操作的函数，如设置Cookie值的Setcookie(name,value),删除Cookie的Deletecookie(name)等（详细见源码）。使用Cookie来保存“手推车”信息的优点是，即使当用户不小心关闭了浏览器窗口，“手推车”中的信息也不会丢失，并且它占用很少的服务器端资源，缺点是必须要求用户端浏览器支持Cookie并且打开它。<br>
+  <br>
+  　　“手推车”包含的功能子项<br>
+  <br>
+  　　1.把商品添加到“手推车”，就是订购。<br>
+  <br>
+  　　2.从“手推车”中删掉已订购的商品。<br>
+  <br>
+  　　3.修改“手推车”中某一商品的数量。<br>
+  <br>
+  　　4.清空“手推车”。<br>
+  <br>
+  　　5.显示，统计“手推车”中的商品。<br>
+  <br>
+  　　往“手推车”中 添加商品<br>
+  <br>
+  　　非常简单，就是把某一商品的信息（名称、价格、数量、折扣等）写入Cookie即可。这里不必把商品的所有信息都写入Cookie，只要记下商品在数据库中编号或ID（这里用catid表示）与商品的数量就行。在显示“手推车”信息时，根据catid可以从商品数据库中查询出这种商品的所有具体信息。往“手推车”中添加商品的实现方法如下：<br>
+  <br>
+  　　function Addcat(catid,number){ //把商品添加到“手推车”函数<br>
+  <br>
+  　　if (number&lt;=0)DeleteCookie(″mycat″＋catid); //如果商品的数量少于或等于0，则删除该商品<br>
+  <br>
+  　　else 　　SetCookie(″mycat″＋catid,catid＋″,″＋number); //把商品ID与数量写入Cookie<br>
+  <br>
+  　　var cat=window.open(″showcat.asp″，″cat″,″toolbar=no,menubar=no,location=no,status=no,width=420,height=280″); 
+  //打开一个新窗口来显示统计的商品信息，即显示“手推车”}<br>
+  <br>
+  　　从“手推车”中 删掉商品<br>
+  <br>
+  　　也就是把Cookie中的该商品信息删除掉，调用Deletecat(catid)即可。<br>
+  <br>
+  　　function Deletecat(catid){<br>
+  <br>
+  　　DeleteCookie(″mycat″＋catid); //从Cookie中删除<br>
+  <br>
+  　　var cat=window.open(″showcat.asp″，″cat″,″toolbar=no,menubar=no,location=no,status=no,width=420,height=280″); 
+  //在CAT窗口显示统计的商品信息，即刷新显示“手推车” 　　}<br>
+  <br>
+  　　修改“手推车”中 商品的数量<br>
+  <br>
+  　　原理跟往“手推车”中添加商品是一样的，只不过把商品的数量修改成现在所要的数量。<br>
+  <br>
+  　　显示与统计 “手推车”中的商品信息<br>
+  <br>
+  　　显示的效果由Showcat.asp实现。这里使用了ASP中Request.Cookies集合。Request.Cookies用来检索客户中Cookie值。我们通过遍历 
+  Cookies 集合中的所有 Cookie 值取出我们的“手推车”的信息，然后从中分离出商品ID与商品数量。这里使用了VBscript中的SPLIT函数，SPLIT函数返回基于 
+  0 的一维数组，其中包含指定数目的子字符串。<br>
+  <br>
+  　　取出商品ID与商品数量后再根据商品ID从商品数据库中查询出该商品的具体信息，最后输出商品的名称、单价、折扣、数量和小计等，并累计商品总件数与商品总金额。 
+  　<br>
+  <br>
+  源代码如下：<br>
+  <br>
+  Showcat.asp<br>
+  <br>
+  &lt;html&gt;&lt;head&gt;&lt;title&gt;Cat&lt;/title&gt;&lt;/head&gt;<br>
+  <br>
+  &lt;body&gt;<br>
+  <br>
+  &lt;form name=cat&gt;<br>
+  <br>
+  &lt;table border=&quot;1&quot; width=&quot;360&quot; cellspacing=&quot;0&quot; 
+  cellpadding=&quot;3&quot; bordercolorlight=&quot;#FFFFFF&quot; bordercolor=&quot;#008000&quot;&gt;<br>
+  <br>
+  &lt;tr&gt;<br>
+  <br>
+  &lt;td width=&quot;100%&quot; colspan=&quot;5&quot; align=&quot;center&quot;&gt;&lt;b&gt;您的手推车信息&lt;/b&gt;&lt;/td&gt;<br>
+  <br>
+  &lt;/tr&gt;<br>
+  <br>
+  &lt;tr&gt;<br>
+  <br>
+  &lt;td width=&quot;45&quot;&gt;名称&lt;/td&gt;<br>
+  <br>
+  &lt;td width=&quot;45&quot;&gt;单价&lt;/td&gt;<br>
+  <br>
+  &lt;td width=&quot;45&quot;&gt;折扣&lt;/td&gt;<br>
+  <br>
+  &lt;td width=&quot;45&quot;&gt;数量&lt;/td&gt;<br>
+  <br>
+  &lt;td width=&quot;45&quot;&gt;小计&lt;/td&gt;<br>
+  <br>
+  &lt;td width=&quot;135&quot;&gt;　&lt;/td&gt;<br>
+  <br>
+  &lt;/tr&gt;<br>
+  <br>
+  &lt;% dim conn,rs,sqlstr,cook,catid,number,sum,allnum,i<br>
+  <br>
+  i=0<br>
+  <br>
+  set conn=server.createobject(&quot;ADODB.CONNECTION&quot;) '建立数据库ADO连接实例<br>
+  <br>
+  conn.open &quot;DSN&quot;,&quot;USERID&quot;,&quot;PWD&quot; '打开数据库连接<br>
+  <br>
+  set rs=Server.CreateObject(&quot;ADODB.Recordset&quot;) '建立数据库ADO记录集连接实例<br>
+  <br>
+  for each cook in request.cookies '遍历 Cookies 集合<br>
+  <br>
+  if instr(cook,&quot;mycat&quot;) then '判断是否“手推车”信息<br>
+  <br>
+  catid=split(request.cookies(cook),&quot;,&quot;)[0] '分离出商品ID<br>
+  <br>
+  number=split(request.cookies(cook),&quot;,&quot;)[1] '分离出商品数量<br>
+  <br>
+  sqlstr=&quot;select * from cat where id=&quot;&amp;catid&amp;&quot;&quot; 'SQL查询语句<br>
+  <br>
+  rs.open conn,sql,1,3 '执行查询,产生记录集<br>
+  <br>
+  xiaoji=rs(&quot;单价&quot;)*rs(&quot;折扣&quot;)*number '计算小计<br>
+  <br>
+  response.write &quot;&lt;tr&gt;&lt;td width=45 &gt;&lt;font size=2 color=#800080&gt;&quot;&amp;rs(&quot;名称&quot;)&amp;&quot;&lt;/font&gt;&lt;/td&gt;&quot;<br>
+  <br>
+  response.write &quot;&lt;td width=45 &gt;&lt;font size=2 color=#800080&gt;&quot;&amp;rs(&quot;单价&quot;)&amp;&quot;&lt;/font&gt;&lt;/td&gt;&quot;<br>
+  <br>
+  response.write &quot;&lt;td width=45 &gt;&lt;font size=2 color=#800080&gt;&quot;&amp;rs(&quot;折扣&quot;)&amp;&quot;&lt;/font&gt;&lt;/td&gt;&quot;<br>
+  <br>
+  response.write &quot;&lt;td width=45 &gt;&lt;input type=text name=number&quot;&amp;i&amp;&quot; 
+  value=&quot;&amp;number&amp;&quot; size=4&gt;&lt;/td&gt;&quot;<br>
+  <br>
+  response.write &quot;&lt;td width=45 &gt;&lt;font size=2 color=#800080&gt;&quot;&amp;xiaoji&amp;&quot;&lt;/font&gt;&lt;/td&gt;&quot;<br>
+  <br>
+  response.write &quot;&lt;td width=135&gt;&lt;input type=button value=更新 onclick=Addcat(&quot;&amp;rs(&quot;ID&quot;)&amp;&quot;,document.cat.number&quot;&amp;i&amp;&quot;.value)&gt; 
+  &lt;input type=button value=删除 onclick=Deletecat(&quot;&amp;rs(&quot;ID&quot;)&amp;&quot;)&gt;&lt;/td&gt;&lt;/tr&gt;<br>
+  <br>
+  allnum=allnum+number '累计商品总件数<br>
+  <br>
+  sum=sum+xiaoji '累计总金额<br>
+  <br>
+  rs.close<br>
+  <br>
+  i=i+1<br>
+  <br>
+  end if<br>
+  <br>
+  next<br>
+  <br>
+  set rs=nothing<br>
+  <br>
+  set conn=nothing<br>
+  <br>
+  %&gt;<br>
+  <br>
+  &lt;tr&gt;<br>
+  <br>
+  &lt;td width=&quot;45&quot;&gt;合计&lt;/td&gt;<br>
+  <br>
+  &lt;td width=&quot;45&quot;&gt;　&lt;/td&gt;<br>
+  <br>
+  &lt;td width=&quot;45&quot;&gt;　&lt;/td&gt;<br>
+  <br>
+  &lt;td width=&quot;45&quot;&gt;&lt;%=allnum%&gt;&lt;/td&gt;<br>
+  <br>
+  &lt;td width=&quot;45&quot;&gt;&lt;%=sum%&gt;&lt;/td&gt;<br>
+  <br>
+  &lt;td width=&quot;135&quot;&gt;&lt;%=sum%&gt;&lt;/td&gt;<br>
+  <br>
+  &lt;/tr&gt;<br>
+  <br>
+  &lt;tr&gt;<br>
+  <br>
+  &lt;td width=&quot;360&quot; colspan=&quot;6&quot;&gt; &lt;font size=&quot;2&quot;&gt;&lt;a 
+  href=&quot;checkout.asp&quot;&gt;&lt;font color=&quot;#FF0000&quot;&gt;结帐&lt;/font&gt;&lt;/a&gt;<br>
+  <br>
+  &lt;a href=javascript:window.close()&gt;&lt;font color=&quot;#008000&quot;&gt;继续购物&lt;/font&gt;&lt;/a&gt;&lt;/font&gt; 
+  &lt;a href=javascript:Clearcookie()&gt;&lt;font size=&quot;2&quot; color=&quot;#0000FF&quot;&gt;清空“手推车”&lt;/font&gt;&lt;/a&gt;&lt;/td&gt;<br>
+  <br>
+  &lt;/tr&gt;<br>
+  <br>
+  &lt;/table&gt;<br>
+  <br>
+  &lt;/form&gt;<br>
+  <br>
+  &lt;/body&gt;<br>
+  <br>
+  &lt;/html&gt;<br>
+  <br>
+  　<br>
+  <br>
+  javascript中操作COOKIE的函数源码如下:<br>
+  <br>
+  function Setcookie (name, value) { //设置名称为name,值为value的Cookie<br>
+  <br>
+  var argc = SetCookie.arguments.length;<br>
+  <br>
+  var argv = SetCookie.arguments;<br>
+  <br>
+  var path = (argc &gt; 3) ? argv[3] : null;<br>
+  <br>
+  var domain = (argc &gt; 4) ? argv[4] : null;<br>
+  <br>
+  var secure = (argc &gt; 5) ? argv[5] : false;<br>
+  <br>
+  　<br>
+  <br>
+  　<br>
+  <br>
+  document.cookie = name + &quot;=&quot; + value +<br>
+  <br>
+  ((path == null) ? &quot;&quot; : (&quot;; path=&quot; + path)) +<br>
+  <br>
+  ((domain == null) ? &quot;&quot; : (&quot;; domain=&quot; + domain)) +<br>
+  <br>
+  ((secure == true) ? &quot;; secure&quot; : &quot;&quot;);<br>
+  <br>
+  }<br>
+  <br>
+  function Deletecookie (name) { //删除名称为name的Cookie<br>
+  <br>
+  var exp = new Date();<br>
+  <br>
+  exp.setTime (exp.getTime() - 1);<br>
+  <br>
+  var cval = GetCookie (name);<br>
+  <br>
+  document.cookie = name + &quot;=&quot; + cval + &quot;; expires=&quot; + exp.toGMTString();<br>
+  <br>
+  }<br>
+  <br>
+  function Clearcookie() //清除COOKIE<br>
+  <br>
+  {<br>
+  <br>
+  var temp=document.cookie.split(&quot;;&quot;);<br>
+  <br>
+  var loop3;<br>
+  <br>
+  var ts;<br>
+  <br>
+  for (loop3=0;loop3&lt;temp.length;loop3++)<br>
+  <br>
+  {<br>
+  <br>
+  ts=temp[loop3].split(&quot;=&quot;)[0];<br>
+  <br>
+  if (ts.indexOf('mycat')!=-1)<br>
+  <br>
+  DeleteCookie(ts); //如果ts含“mycat”则执行清除<br>
+  <br>
+  }<br>
+  <br>
+  }<br>
+  <br>
+  function getCookieVal (offset) { //取得项名称为offset的cookie值<br>
+  <br>
+  var endstr = document.cookie.indexOf (&quot;;&quot;, offset);<br>
+  <br>
+  if (endstr == -1)<br>
+  <br>
+  endstr = document.cookie.length;<br>
+  <br>
+  return unescape(document.cookie.substring(offset, endstr));<br>
+  <br>
+  }<br>
+  <br>
+  function GetCookie (name) { //取得名称为name的cookie值<br>
+  <br>
+  var arg = name + &quot;=&quot;;<br>
+  <br>
+  var alen = arg.length;<br>
+  <br>
+  var clen = document.cookie.length;<br>
+  <br>
+  var i = 0;<br>
+  <br>
+  while (i &lt; clen) {<br>
+  <br>
+  var j = i + alen;<br>
+  <br>
+  if (document.cookie.substring(i, j) == arg)<br>
+  <br>
+  return getCookieVal (j);<br>
+  <br>
+  i = document.cookie.indexOf(&quot; &quot;, i) + 1;<br>
+  <br>
+  if (i == 0) break;<br>
+  <br>
+  }<br>
+  <br>
+  return null;<br>
+  <br>
+  }</p>
+<p> <br>
+  <br>
+  <br>
+</p>
+<p><br>
+</p>
+</body>
+</html>

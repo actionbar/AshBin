@@ -1,0 +1,156 @@
+<html>
+<head>
+<title>不可析外部实体</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+
+<link rel = stylesheet href = "image/style.css">
+</head>
+<body bgcolor="#ffffff">
+<table width="688" border="0" cellspacing="0" cellpadding="0" align="center">
+  <tr bgcolor="EEEEEE"> 
+    <td height="22"><a href="index.htm">主页</a></td>
+  </tr>
+</table><br>
+<table border="0" cellpadding="0" cellspacing="0" width="688" align="center" height="490">
+  <tr valign="top"> 
+    <td rowspan="4" width="91">&nbsp; </td>
+    <td height="68" width="131"> 
+      <p><img src="image/doc.gif"></p>
+    </td>
+    <td rowspan="4" width="18"><b></b> </td>
+    <td height="68" width="387"><img src="image/title_doc.gif"></td>
+    <td rowspan="4" width="61"> 
+      <h6>&nbsp;</h6>
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td rowspan="3" valign="top" class="pt10" align="center" width="131" bgcolor="EEEEEE"> 
+      <p>&nbsp;</p>
+      <p><font color="#FF0000">※ 11.2 不可析外部实体</font></p>
+       
+	</td>
+  </tr>
+  <tr valign="top"> 
+    <td width="387" height="308"> 
+      <table width="100%" border="0" cellpadding="0">
+        <tr> 
+          <td>
+
+           <h4>11.2 不可析外部实体</h4>
+<p>对所有的数据，特别是非文本数据，XML格式都不是理想的格式。例如，可以按下面所示的方式，把位图图像的每一个像素存为一个XML元素：</p>
+<p>&lt;PIXEL X="32"Y="28" COLOR="FF5E32"/&gt;</p>
+<p>可是，这肯定不是一个好主意。任何微小的错误都会导致气球图像文件的比例严重失衡。XML现在和将来都永远不可能让XML文档具有访问数据的能力，因此无法把所有数据按XML编码。</p>
+<p>一个典型的Web页面可以引用GIF和JPEG图像、JAVA小程序、ActiveX控件、各种类型的声音等等。在XML中，因为XML处理器不会去尝试理解非XML格式的数据块，所以把这些数据块称为不可析实体。至多XML处理器通知应用程序存在这样的实体，并且为应用程序提供实体名和实体可能包含的内容（可是这并不是必须执行的动作）。</p>
+<p>HTML页面通过各种定制的标记嵌入非HTML实体。图片由具有SRC属性的&lt;IMG&gt;标记引用，SRC属性提供图像文件的URL；JAVA程序由具有CLASS和CODEBASE属性的&lt;APPLET&gt;标记包括，CLASS和CODEBASE属性指向JAVA程序保存的文件和目录；&lt;OBJECT&gt;标记来嵌入CODEBASE属性引用，可从中找到目标数据的URI。每一种情况下，特定的预定义标记表示一种特定的内容。预定义属性包含其内容的URL。</p>
+<p>XML应用程序可以但不是必须这样运作，实际上，除了特意为保持与落后的HTML之间的兼容性之外，大部分XML应用程序都不这样做。相反，XML应用程序使用不可析外部实体引用这些内容。不可析外部实体提供与非XML数据的实际位置的链接。接着文档中特定的元素利用其ENTITY属性与实体相连。</p>
+<h5>11.2.1 声明不可析实体</h5>
+<p>回忆第9章的内容，外部实体的声明看起来如下面的形式：</p>
+<p>&lt;!ENTITY SIG SYSTEM "http://metalab.unc.edu/xml/signature.xml"&gt;</p>
+<p>可是，仅在URL指明的外部实体恰好为完整的XML文档的时候，才能接受这种格式。如果外部实体不是XML，则不得不使用NDATA关键字指定实体类型。例如，为了用LOGO名字连接GIF格式文件logo.gif，就需在DTD中放置如下的ENTITY声明：</p>
+<p>&lt;!ENTITY LOGO SYSTEM "logo.gif" NDATA GIF&gt;</p>
+<p>声明中的最终名字必须是DTD中声明的记号名，如本例中的GIF。记号将GIF类的名称与某种类型的外部标识符联系起来，外部标识符标识某种格式。如MIME类型、ISO标准式或者是格式规格的URL。例如，GIF的记号类似下面的形式：</p>
+<p>&lt;!NOTATION GIF SYSTEM "image/gif"&gt;</p>
+<p>通常，作为习惯的表示方法，可以使用绝对或相对的URL指向外部实体。例如：</p>
+<p>&lt;!ENTITY LOGO SYSTEM "http://metalab.unc.edu/xml/logo.gif"</p>
+<p> NDATA GIF&gt;</p>
+<p>&lt;!ENTITY LOGO SYSTEM "/xml/logo.gif" NDATA GIF&gt;</p>
+<p>&lt;!ENTITY LOGO SYSTEM "../logo.gif" NDATA GIF&gt;</p>
+<h5>11.2.2 嵌入不可析实体</h5>
+<p>不能与用通用实体引用嵌入可析实体一样，在文档中的任意位置简单地嵌入不可析实体。例如，清单11-2就是一个不合法的是XML文档，因为LOGO是不可析实体。如果这里的LOGO是可析实体，本例就为有效的XML文档。</p>
+<p>清单11-2：试图用通用实体引用嵌入不可析实体的无效XML文档</p>
+<p>&lt;?xml version="1.0" standalone="no"?&gt;</p>
+<p>&lt;!DOCTYPE DOCUMENT [</p>
+<p>&lt;!ELEMENT DOCUMENT ANY&gt;</p>
+<p>&lt;!ENTITY LOGO SYSTEM "http://metalab.unc.edu/xml/logo.gif"</p>
+<p> NDATA GIF&gt;</p>
+<p>&lt;!NOTATION GIF SYSTEM "image/gif"</p>
+<p>]&gt;</p>
+<p>&lt;DOCUMENT&gt;</p>
+<p>&amp;LOGO;</p>
+<p>&lt;/DOCUMENT&gt;</p>
+<p>为了嵌入不可析实体，不采用如&amp;LOGO；通用实体引用的方法；而是声明一个元素，把该元素作为不可析实体的占位符（例如IMAGE）。然后声明IMAGE元素属性SOURCE为ENTITY类型，SOURCE属性仅提供不可析实体名。如清单11-3所示。</p>
+<p>清单11-3：正确嵌入不可析实体的合法的XML文档</p>
+<p>&lt;?xml version="1.0" standalone="no"?&gt;</p>
+<p>&lt;!DOCTYPE DOCUMENT [</p>
+<p>&lt;!ELEMENT DOCUMENT ANY&gt;</p>
+<p>&lt;!ENTITY LOGO SYSTEM "http://metalab.unc.edu/xml/logo.gif"</p>
+<p> NDATA GIF&gt;</p>
+<p>&lt;!NOTATION GIF SYSTEM "image/gif"</p>
+<p>&lt;!ELEMENT IMAGE EMPTY&gt;</p>
+<p>&lt;!ATTLIST IMAGE SOURNE ENTITY #REQUIRED&gt;</p>
+<p></p>
+<p>]&gt;</p>
+<p>&lt;DOCUMENT&gt;</p>
+<p>&lt;IMAGE SOURNE="LOGO"/&gt;</p>
+<p>&lt;/DOCUMENT&gt;</p>
+<p>等到应用程序读取XML文档时，就可认出这个不可析实体且显示出来。应用程序也可能不显示不可析实体（当用户使图像载入失效时，Web浏览器将选择不显示图像）。</p>
+<p>这些例子表明：空元素就像是为不可析实体准备的容器，可是这不是必须采用的方法。例如，假设有一个基于XML的公司ID系统，就是保安人员使用的查寻进入建筑物的人的系统；PERSON元素拥有NAME、PHONE、OFFICE、EMPLOYEE_ID子类和PHOTO 
+  ENTITY属性，如清单11-4所示。</p>
+<p>清单11-4：具有PHOTO ENTITY属性的非空PERSON元素</p>
+<p>&lt;?xml version="1.0" standalone="no"?&gt;</p>
+<p>&lt;!DOCTYPE PERSON [</p>
+<p>&lt;!ELEMENT PERSON (NAME, EMPLOYEE_ID, PHONE, OFFICE)&gt;</p>
+<p>&lt;!ELEMENT NAME (#PCDATA)&gt;</p>
+<p>&lt;!ELEMENT EMPLOYEE_ID (#PCDATA)&gt;</p>
+<p>&lt;!ELEMENT PHONE (#PCDATA)&gt;</p>
+<p>&lt;!ELEMENT OFFICE (#PCDATA)&gt;</p>
+<p>&lt;!NOTATION JPEG SYSTEM "image/jpg" </p>
+<p>&lt;!ENTITY ROGER SYSTEM "rogers.jpg" NDATA JPEG&gt;</p>
+<p>&lt;!ATTLIST PERSON PHOTO ENTITY #REQUIRED&gt;</p>
+<p></p>
+<p>]&gt;</p>
+<p>&lt;PERSON PHOTO="ROGER"&gt;</p>
+<p>&lt;NAME&gt;Jim Rogers&lt;/ NAME&gt;</p>
+<p>&lt;EMPLOYEE_ID&gt;4534&lt;/EMPLOYEE_ID&gt;</p>
+<p>&lt;PHONE&gt;X396&lt;/PHONE&gt;</p>
+<p>&lt;OFFICE&gt;RH 415A&lt;/OFFICE&gt; </p>
+<p>&lt;/PERSON&gt;</p>
+<p>这个例子看起来有点做作。实际上，使一个带有SOURCE属性的空DHOTO元素的成为PERSON元素的子元素，而不是PERSON元素的属性。再者，或许可以把这个DTD分割为内部和外部的子集。如清单11-5所示，外部子集声明元素、记号和属性。这些都是可以被不同的文档共享的部分。但是，实体从一个文档到另一个文档会发生改变，因此最好把实体放在如清单11-6显示的文档的内部DTD子集中。</p>
+<p>清单11-5：外部DTD子集person.dtd</p>
+<p>&lt;!ELEMENT PERSON ( NAME, EMPLOYEE_ID, PHONE, OFFICE, PHOTO)&gt;</p>
+<p>&lt;!ELEMENT NAME (#PCDATA)&gt;</p>
+<p>&lt;!ELEMENT EMPLOYEE_ID (#PCDATA)&gt;</p>
+<p>&lt;!ELEMENT PHONE (#PCDATA)&gt;</p>
+<p>&lt;!ELEMENT OFFICE (#PCDATA)&gt;</p>
+<p>&lt;!ELEMENT PHOTO EMPTY&gt;</p>
+<p>&lt;!NOTATION JPEG SYSTEM "image/jpeg"&gt; </p>
+<p>&lt;!ATTLIST PHOTO SOURCE ENTITY #REQUIRED&gt;</p>
+<p>清单11-6：内含非空PERSON元素和一个内部DTD子集的文档</p>
+<p>&lt;?xml version="1.0" standalone="no"?&gt;</p>
+<p>&lt;!DOCTYPE PERSON [</p>
+<p></p>
+<p>&lt;!ENTITY % PERSON _DTD SYSTEM "person.dtd"&gt;</p>
+<p>%PERSON_DTD;</p>
+<p>&lt;!ENTITY ROGER SYSTEM "rogers.jpg" NDATA JPEG&gt;</p>
+<p>]&gt;</p>
+<p>&lt;PERSON&gt;</p>
+<p>&lt;NAME&gt;Jim Rogers&lt;/NAME&gt;</p>
+<p>&lt;EMPLOYEE_ID&gt;4534&lt;/EMPLOYEE_ID&gt;</p>
+<p>&lt;PHONE&gt;X396&lt;/PHONE&gt;</p>
+<p>&lt;OFFICE&gt;RH 415A&lt;/OFFICE&gt; </p>
+<p>&lt;PHOTO SOURCE="ROGER"/&gt; </p>
+<p>&lt;/PERSON&gt; </p>
+<h5>11.2.3 嵌入多个不可析实体</h5>
+<p>在某些特殊场合下，一个单一的属性甚至一个标识号，可能需要引用不止一个的不可析实体。就可以声明占位符元素的属性为ENTITIES类型。ENTITIES属性值由空格分隔的多个不可析实体名组成，每个实体名都指向一个外部非XML格式数据资源，并且必须在DTD中声明所有实体。例如，可以用这种方法编写一个以幻灯放映元素来切换不同的图片，DTD需要如下形式的声明：</p>
+<p>&lt;!ELEMENT SLIDESHOW EMPTY&gt;</p>
+<p>&lt;!ATTLIST SLIDESHOW SOURCES ENTITIES #REQUIRED&gt;</p>
+<p>&lt;!NOTATION JPEG SYSTEM "image/jpeg" </p>
+<p>&lt;!ENTITY HARM SYSTEM "charm.jpg" NDATA JPEG&gt;</p>
+<p>&lt;!ENTITY MARJORIE SYSTEM "marjorie.jpg" NDATA JPEG&gt;</p>
+<p>&lt;!ENTITY POSSUM SYSTEM "possum.jpg" NDATA JPEG&gt;</p>
+<p>&lt;!ENTITY BLUE SYSTEM "blue.jpg" NDATA JPEG&gt;</p>
+<p>然后，在文档中需要幻灯放映出现的位置上，就可插入如下标记：</p>
+<p>&lt;SLIDESHOW SOUR ES="CHARM MARJORIE POSSUM BLUE"&gt;</p>
+<p>必须再次强调，这不是一个XML处理器（甚至任意处理器）可自动理解的具有魔力的方案，这仅仅是一种技巧，在嵌入文档中的非XML数据时，浏览器和其余应用程序可能采用也可能不采用的技术。</p>
+ 
+<a href='429.htm'>&lt;&lt;上一篇</a>&nbsp;&nbsp;<a href='431.htm'>下一篇&gt;&gt;</a></td>
+        </tr>
+      </table>
+      <p>&nbsp; </p>
+    </td>
+  </tr>
+</table>
+
+</body>
+
+</html>

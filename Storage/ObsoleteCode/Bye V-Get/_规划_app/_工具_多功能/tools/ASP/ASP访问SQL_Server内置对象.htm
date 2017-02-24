@@ -1,0 +1,95 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>aASP访问SQL Server内置对象</title>
+<style type="text/css">
+<!--
+body {
+	font-size: 10.4pt;
+	line-height: 22px;
+}
+-->
+</style>
+</head>
+
+<body bgcolor="eeeeee" leftmargin="20" marginwidth="20">
+<p><strong>ASP访问SQL Server内置对象</strong></p>
+<p></p>
+<hr>
+<p> 平常我们只听说过ADO等一类ASP对象，但在ASP中还有个鲜为人知的专门SQL Server的ASP访问对象,它就是SQLOLE.SQLServer对象。SQLOLE.SQLServer可以直接访问SQL 
+  Server的系统属性。以Set oSQLServer = CreateObject (&quot;SQLOLE.SQLServer&quot;)语句将产生一个SQL 
+  Server服务器对象。 </p>
+<p>---- 若要查看此服务器中数据库的集合，可用语句： </p>
+<p></p>
+<p>For Each SQLDB In oSQLServer.Databases<br>
+  Response.Write SQLDB.Name ‘将列出所有的数据库，如Pubs等<br>
+  Next</p>
+<p>---- 若要查看某数据库中(如PUBS数据库)数据表的集合，可用语句： </p>
+<p></p>
+<p>pubDatabase=oSQLServer.Databases(“pubs”)<br>
+  ’oSQLServer是前面创建的SQL Server服务器对象<br>
+  For Each DBTable In pubDatabase.Tables<br>
+  Response.Write DBTable.Name<br>
+  Next</p>
+<p>---- 下面的语句将列出数据库中(PUBS数据库)数据视图 </p>
+<p></p>
+<p>pubDatabase =oSQLServer.Databases(“pubs”)<br>
+  ’oSQLServer是前面创建的SQL Server服务器对象<br>
+  For Each DBView In pubDatabase.Views<br>
+  Response.Write DBView.Text<br>
+  Next</p>
+<p>---- 以下语句将列出数据库中(PUBS数据库)存贮过程 </p>
+<p></p>
+<p>pubDatabase =oSQLServer.Databases(“pubs”)<br>
+  ’oSQLServer是前面创建的SQL Server服务器对象<br>
+  For Each DBSP In pubDatabase.StoredProcedures<br>
+  Response.Write DBSP.Text<br>
+  Next</p>
+<p>---- 程序运行的结果（取数据表名）： </p>
+<p>---- 取存贮过程的结果： </p>
+<p>---- 一个完整的小例子源码附后（其它功能读者可加入）。 </p>
+<p></p>
+<p>&lt; %@ LANGUAGE = VBScript % &gt;</p>
+<p>&lt; HTML &gt;<br>
+  &lt; HEAD &gt;<br>
+  &lt; META NAME=&quot;GENERATOR&quot; Content=<br>
+  &quot;Microsoft Developer Studio&quot; &gt;<br>
+  &lt; META HTTP-EQUIV=&quot;Content-Type&quot;<br>
+  content=&quot;text/html; charset=gb2312&quot; &gt;</p>
+<p>&lt; TITLE &gt;&lt; /TITLE &gt;<br>
+  &lt; /HEAD &gt;</p>
+<p>&lt; %<br>
+  On Error Resume Next<br>
+  Dim oSQLServer<br>
+  Set oSQLServer = CreateObject (&quot;SQLOLE.SQLServer&quot;)</p>
+<p><br>
+  strServer = &quot;dep&quot;<br>
+  strLogin = &quot;sa&quot;<br>
+  strPwd = &quot;&quot;</p>
+<p><br>
+  oSQLServer.Connect strServer,strLogin,strPwd</p>
+<p></p>
+<p>% &gt;</p>
+<p><br>
+  &lt; BODY BGCOLOR=#ffffff &gt;<br>
+  数据库列表<br>
+  &lt; SELECT NAME=&quot;Database&quot; &gt;<br>
+  &lt; %<br>
+  For Each SQLDB In oSQLServer.Databases<br>
+  If Not SQLDB.SystemObject Then<br>
+  Response.Write &quot;&lt; OPTION VALUE=<br>
+  &quot;&quot;&quot; &amp; SQLDB.Name &amp; &quot;&quot;&quot; &gt;&quot; &amp; 
+  SQLDB.Name</p>
+<p>&amp; &quot; &quot;<br>
+  End If<br>
+  Next<br>
+  Set oSQLServer = Nothing<br>
+  % &gt;<br>
+  &lt; /SELECT &gt;<br>
+  &lt; /BODY &gt;<br>
+  &lt; /HTML &gt;</p>
+<p></p>
+<p>&nbsp; </p>
+</body>
+</html>

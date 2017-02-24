@@ -1,0 +1,108 @@
+<html>
+<head>
+<title>使用xsl:copy复制当前节点</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+
+<link rel = stylesheet href = "image/style.css">
+</head>
+<body bgcolor="#ffffff">
+<table width="688" border="0" cellspacing="0" cellpadding="0" align="center">
+  <tr bgcolor="EEEEEE"> 
+    <td height="22"><a href="index.htm">主页</a></td>
+  </tr>
+</table><br>
+<table border="0" cellpadding="0" cellspacing="0" width="688" align="center" height="490">
+  <tr valign="top"> 
+    <td rowspan="4" width="91">&nbsp; </td>
+    <td height="68" width="131"> 
+      <p><img src="image/doc.gif"></p>
+    </td>
+    <td rowspan="4" width="18"><b></b> </td>
+    <td height="68" width="387"><img src="image/title_doc.gif"></td>
+    <td rowspan="4" width="61"> 
+      <h6>&nbsp;</h6>
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td rowspan="3" valign="top" class="pt10" align="center" width="131" bgcolor="EEEEEE"> 
+      <p>&nbsp;</p>
+      <p><font color="#FF0000">※ 14.10 使用xsl:copy复制当前节点</font></p>
+       
+	</td>
+  </tr>
+  <tr valign="top"> 
+    <td width="387" height="308"> 
+      <table width="100%" border="0" cellpadding="0">
+        <tr> 
+          <td>
+
+           <h5><a name="_Toc467207171">14.10 使用xsl:copy复制当前节点</a></h5>
+<p>xsl:copy元素将源代码复制到输出文档中。子元素、特性和其他内容不会自动复制。但是，xsl:copy元素的内容也是选择要复制这些内容的xsl:template元素。当将文档从某个标记符号集转换成相同的或相近的相关标记符号集时，这种方法通常是有用的。例如，下面的模板规则删除原子的特性和子元素，并用其内容值来代替：</p>
+<p>&lt;xsl:template match=”ATOM”&gt;</p>
+<p> &lt; xsl:copy&gt;</p>
+<p> &lt;xsl:apply-templates/&gt;</p>
+<p> &lt;/xsl:copy&gt;</p>
+<p>&lt;/xsl:template&gt;</p>
+<p>xsl:copy使模板具有的用途之一就是恒等转换；也就是说，可将一文档转换成本身。这种转换与下面类似：</p>
+<p>&lt;xsl:templdte match=”*|@*|comment()|pi()|text()”&gt;</p>
+<p> &lt; xsl:copy&gt;</p>
+<p> &lt;xsl:apply-templates select=”*|@*|comment()|pi()|text()”/&gt;</p>
+<p> &lt;/xsl:copy&gt;</p>
+<p>&lt;/xsl:template&gt;</p>
+<p>可对恒等转换进行稍微调节，以产生相似的文档。例如，清单14-15是一样式单，它可去掉文档中的注释而文档的其他部分不受影响。在恒等转换中，去掉comment()节点的match和select特性值，而保留此节点的其他部分就可以产生这种结果。</p>
+<p>清单14-15：从文档中删除注释的XSL样式单</p>
+<p>&lt;?xml version=”1.0”?&gt;</p>
+<p>&lt;xsl:stylesheet</p>
+<p>xmlns:xsl=”http://www.w3.org/XSL/Transform/1.0”&gt;</p>
+<p></p>
+<p> &lt;xsl:template match=”* | @* | pi() | text()”&gt;</p>
+<p> &lt; xsl:copy&gt;</p>
+<p></p>
+<p> &lt;xsl:apply-templates select=”* | @* | pi() | text()”/&gt;</p>
+<p> &lt;/xsl:copy&gt;</p>
+<p> &lt;/xsl:template&gt;</p>
+<p></p>
+<p>&lt;/xsl:stylesheet&gt;</p>
+<p>xsl:copy只复制源节点。使用xsl:copy-of，可以复制其他节点，可能不止一个。xsl:copy-of的select特性选择要复制的节点。例如，清单14-16是一样式单，它使用xsl:copy-of，只复制有MELTING_POINT子元素的ATOM元素，从而将没有熔点的元素从周期表中去掉。</p>
+<p>清单14-16：只复制有MELTING_POINT子元素的ATOM元素的样式单</p>
+<p>&lt;?xml version=”1.0”?&gt;</p>
+<p>&lt;xsl:stylesheet</p>
+<p> xmlns:xsl=”http://www.w3.org/XSL/Transform/1.0”&gt;</p>
+<p></p>
+<p> &lt;xsl:template match=”/PERIODIC_TABLE”&gt;</p>
+<p> &lt;PERIODIC_TABLE&gt;</p>
+<p> &lt;xsl:apply-templates select=”ATOM”/&gt;</p>
+<p> &lt;/PERIODIC_TABLE&gt;</p>
+<p> &lt;/xsl:template&gt;</p>
+<p></p>
+<p> &lt;xsl:template match=”ATOM”&gt;</p>
+<p> &lt;xsl:apply-templates</p>
+<p> select=”MELTING_POINT”/&gt;</p>
+<p> &lt;/xsl:template&gt;</p>
+<p></p>
+<p> &lt;xsl:template match=”MELTING_POINT”&gt;</p>
+<p> &lt;xsl:copy-of select=”..”&gt;</p>
+<p> &lt;xsl:apply-templates select=”*|@*|pi()|text()”/&gt;</p>
+<p> &lt;/xsl:copy-of&gt;</p>
+<p> &lt;/xsl:template&gt;</p>
+<p></p>
+<p> &lt;xsl:template match=”* | @* | pi() | text()”&gt;</p>
+<p> &lt;xsl:copy&gt;</p>
+<p> &lt;xsl:apply-templates select=”* | @* | pi() | text()”/&gt;</p>
+<p> &lt;/xsl:copy&gt;</p>
+<p> &lt;/xsl:template&gt;</p>
+<p></p>
+<p>&lt;/xsl:stylesheet&gt;</p>
+<p>这是一个从源符号集到同一个符号集的XSL转换的例子。不像本章中的大多数例子那样，此例不转换成结构整洁的HTML。</p>
+ 
+<a href='482.htm'>&lt;&lt;上一篇</a>&nbsp;&nbsp;<a href='484.htm'>下一篇&gt;&gt;</a></td>
+        </tr>
+      </table>
+      <p>&nbsp; </p>
+    </td>
+  </tr>
+</table>
+
+</body>
+
+</html>

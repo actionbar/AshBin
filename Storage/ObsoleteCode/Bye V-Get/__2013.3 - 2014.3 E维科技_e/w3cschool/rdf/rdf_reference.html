@@ -1,0 +1,418 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="../c3.css" />
+<title>RDF 参考手册</title>
+</head>
+<body class="xml">
+<div id="wrapper">
+<div id="header">
+<a href="http://e.v-get.com/w3cschool/" style="float:left;">W3CSchool 在线教程</a>
+<div class="q g"><script type="text/javascript">var cpro_id="u1163355"</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div>
+<div id="navfirst">
+<ul id="menu">
+<li id="h"><a href="../h.html">HTML教程</a></li>
+<li id="x"><a href="../x.html">XML教程</a></li>
+<li id="b"><a href="../b.html">浏览器脚本</a></li>
+<li id="s"><a href="../s.html">服务器脚本</a></li>
+<li id="d"><a href="../d.html">dot net教程</a></li>
+<li id="m"><a href="../m.html">多媒体教程</a></li>
+<li id="w"><a href="../w.html">建站手册</a></li>
+</ul>
+</div><div id="navsecond">
+<div id="course">
+<h2>RDF 教程</h2>
+<ul>
+<li><a href="http://e.v-get.com/w3cschool/">RDF 首页</a></li>
+<li><a href="rdf_intro.html">RDF 简介</a></li>
+<li><a href="rdf_rules.html" title="">RDF 规则</a></li>
+<li><a href="rdf_example.html" title="">RDF 实例</a></li>
+<li><a href="rdf_main.html" title="">RDF 元素</a></li>
+<li><a href="rdf_containers.html" title="">RDF 容器</a></li>
+<li><a href="rdf_collections.html" title="">RDF 集合</a></li>
+<li><a href="rdf_schema.html" title="">RDF Schema</a></li>
+<li><a href="rdf_dublin.html" title="">RDF 都柏林核心</a></li>
+<li><a href="rdf_owl.html" title="">RDF OWL</a></li>
+</ul>
+</div>
+<div id="selected">
+<h2>建站手册</h2>
+<ul>
+<li><a href="../site/">网站构建</a></li>
+<li><a href="../w3c/">万维网联盟</a></li>
+<li><a href="http://e.v-get.com/w3c/">W3CSchool 教程</a></li>
+<li><a href="../quality/">网站品质</a></li>
+<li><a href="../semweb/">语义网</a></li>
+<li><a href="../hosting/">网站主机</a></li>
+</ul>
+<h2><a href="http://e.v-get.com/w3c/" class="f13">W3CSchool 教程</a></h2><div class="a120x90"><script type="text/javascript">var cpro_id="u1210867";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div></div>
+</div>
+<div id="maincontent">
+<h1>RDF 简介</h1>
+<div id="tpn">
+<ul class="prenext">
+<li class="next"><a href="rdf_owl.html">下一页</a></li>
+</ul>
+</div>
+<div>
+<h2>RDF 命名空间</h2>
+<h3>RDF 命名空间 (xmlns:rdf)：</h3>
+<p><a href="rdf-syntax-ns.xml">http://www.w3.org/1999/02/22-rdf-syntax-ns#</a></p>
+<h3>RDFS 命名空间 (xmlns:rdfs )：</h3>
+<p><a href="rdf-schema.xml">http://www.w3.org/2000/01/rdf-schema#</a></p>
+</div>
+<div>
+<h2>RDF 扩展名和 Mime 类型</h2>
+<p>RDF 文件的推荐扩展名是 *<em>.rdf</em>。不过，*<em>.xml</em> 常用于提供对老式 XML 解析器的兼容性。</p>
+<p>已注册的 MIME 类型是 &#34;<em>application/rdf+xml</em>&#34;。</p>
+</div>
+<div>
+<h2>RDFS / RDF 类</h2>
+<table class="dataintable">
+  <tr>
+    <th>Element</th>
+    <th>Class of</th>
+    <th>Subclass of</th>
+  </tr>
+  <tr>
+    <td>rdfs:Class</td>
+    <td>All classes</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>rdfs:Datatype</td>
+    <td>Data types</td>
+    <td>Class</td>
+    </tr>
+  <tr>
+    <td>rdfs:Resource</td>
+    <td>All resources</td>
+    <td>Class</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>rdfs:Container</td>
+    <td>Containers</td>
+    <td>Resource</td>
+    </tr>
+  <tr>
+    <td>rdfs:Literal</td>
+    <td>Literal values (text and numbers)</td>
+    <td>Resource</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    </tr>
+  <tr>
+    <td>rdf:List</td>
+    <td>Lists</td>
+    <td>Resource</td>
+    </tr>
+  <tr>
+    <td>rdf:Property</td>
+    <td>Properties</td>
+    <td>Resource</td>
+  </tr>
+  <tr>
+    <td>rdf:Statement</td>
+    <td>Statements</td>
+    <td>Resource</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>rdf:Alt</td>
+    <td>Containers of alternatives</td>
+    <td>Container</td>
+    </tr>
+  <tr>
+    <td>rdf:Bag</td>
+    <td>Unordered containers</td>
+    <td>Container</td>
+  </tr>
+  <tr>
+    <td>rdf:Seq</td>
+    <td>Ordered containers</td>
+    <td>Container</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    </tr>
+  <tr>
+    <td>rdfs:ContainerMembershipProperty</td>
+    <td>Container membership properties</td>
+    <td>Property</td>
+    </tr>
+  <tr>
+    <td>rdf:XMLLiteral</td>
+    <td>XML literal values</td>
+    <td>Literal</td>
+  </tr>
+</table>
+</div>
+<div>
+<h2>RDFS / RDF 属性</h2>
+<table class="dataintable">
+  <tr>
+    <th>Element</th>
+    <th>Domain</th>
+    <th>Range</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td>rdfs:domain</td>
+    <td>Property</td>
+    <td>Class</td>
+    <td>The domain of the resource</td>
+  </tr>
+  <tr>
+    <td>rdfs:range</td>
+    <td>Property</td>
+    <td>Class</td>
+    <td>The range of the resource</td>
+  </tr>
+  <tr>
+    <td>rdfs:subPropertyOf</td>
+    <td>Property</td>
+    <td>Property</td>
+    <td>The property is a sub property of a property</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>rdfs:subClassOf</td>
+    <td>Class</td>
+    <td>Class</td>
+    <td>The resource is a subclass of a class</td>
+  </tr>
+  <tr>
+    <td>rdfs:comment</td>
+    <td>Resource</td>
+    <td>Literal</td>
+    <td>The human readable description of the resource</td>
+  </tr>
+  <tr>
+    <td>rdfs:label</td>
+    <td>Resource</td>
+    <td>Literal</td>
+    <td>The human readable label (name)&nbsp; of the resource</td>
+  </tr>
+  <tr>
+    <td>rdfs:isDefinedBy</td>
+    <td>Resource</td>
+    <td>Resource</td>
+    <td>The definition of the resource</td>
+  </tr>
+  <tr>
+    <td>rdfs:seeAlso</td>
+    <td>Resource</td>
+    <td>Resource</td>
+    <td>The additional information about the resource</td>
+  </tr>
+  <tr>
+    <td>rdfs:member</td>
+    <td>Resource</td>
+    <td>Resource</td>
+    <td>The member of the resource</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>rdf:first</td>
+    <td>List</td>
+    <td>Resource</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>rdf:rest</td>
+    <td>List</td>
+    <td>List</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>rdf:subject</td>
+    <td>Statement</td>
+    <td>Resource</td>
+    <td>The subject of the resource in an RDF Statement</td>
+  </tr>
+  <tr>
+    <td>rdf:predicate</td>
+    <td>Statement</td>
+    <td>Resource</td>
+    <td>The predicate of the resource in an RDF Statement</td>
+  </tr>
+  <tr>
+    <td>rdf:object</td>
+    <td>Statement </td>
+    <td>Resource</td>
+    <td>The object of the resource in an RDF Statement</td>
+  </tr>
+  <tr>
+    <td>rdf:value</td>
+    <td>Resource</td>
+    <td>Resource</td>
+    <td>The property used for values</td>
+  </tr>
+  <tr>
+    <td>rdf:type</td>
+    <td>Resource</td>
+    <td>Class</td>
+    <td>The resource is an instance of a class</td>
+  </tr>
+</table>
+</div>
+<div>
+<h2>RDF 属性</h2>
+<table class="dataintable">
+  <tr>
+    <th>Element</th>
+    <th>Domain</th>
+    <th>Range</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>rdf:about</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>Defines the resource being described</td>
+  </tr>
+  <tr>
+    <td>rdf:Description</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>Container for the description of a resource</td>
+  </tr>
+  <tr>
+    <td>rdf:resource</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>Defines a resource to identify a property</td>
+  </tr>
+  <tr>
+    <td>rdf:datatype</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>Defines the data type of an element</td>
+  </tr>
+  <tr>
+    <td>rdf:ID</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>Defines the ID of an element</td>
+  </tr>
+  <tr>
+    <td>rdf:li</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>Defines a list</td>
+  </tr>
+  <tr>
+    <td>rdf:_<i>n</i></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>Defines a node</td>
+  </tr>
+  <tr>
+    <td>rdf:nodeID</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>Defines the ID of an element node</td>
+  </tr>
+  <tr>
+    <td>rdf:parseType</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>Defines how an element should be parsed</td>
+  </tr>
+  <tr>
+    <td>rdf:RDF</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>The root of an RDF document</td>
+  </tr>
+  <tr>
+    <td>xml:base</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>Defines the XML base</td>
+  </tr>
+  <tr>
+    <td>xml:lang</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>Defines the language of the element content</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>rdf:aboutEach</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>(removed)</td>
+  </tr>
+  <tr>
+    <td>rdf:aboutEachPrefix</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>(removed)</td>
+  </tr>
+  <tr>
+    <td>rdf:bagID</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>(removed)</td>
+  </tr>
+</table>
+</div>
+<div id="bpn">
+<ul class="prenext">
+<li class="next"><a href="rdf_owl.html">下一页</a></li>
+</ul>
+</div>
+</div>
+<div id="sidebar">
+<div class="rs"></div>
+<div id="tools">
+<h5 id="tools_reference"><a href="rdf_reference.html">RDF 参考手册</a></h5>
+</div>
+<div class="a120x600"><script type="text/javascript">var cpro_id="u1293136";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div><div class="b"></div>
+</div>
+</body>
+</html>

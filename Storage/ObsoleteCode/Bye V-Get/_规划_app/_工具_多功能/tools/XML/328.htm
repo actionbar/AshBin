@@ -1,0 +1,905 @@
+<html>
+<head>
+<title>检查数据</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+
+<link rel = stylesheet href = "image/style.css">
+</head>
+<body bgcolor="#ffffff">
+<table width="688" border="0" cellspacing="0" cellpadding="0" align="center">
+  <tr bgcolor="EEEEEE"> 
+    <td height="22"><a href="index.htm">主页</a></td>
+  </tr>
+</table><br>
+<table border="0" cellpadding="0" cellspacing="0" width="688" align="center" height="490">
+  <tr valign="top"> 
+    <td rowspan="4" width="91">&nbsp; </td>
+    <td height="68" width="131"> 
+      <p><img src="image/doc.gif"></p>
+    </td>
+    <td rowspan="4" width="18"><b></b> </td>
+    <td height="68" width="387"><img src="image/title_doc.gif"></td>
+    <td rowspan="4" width="61"> 
+      <h6>&nbsp;</h6>
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td rowspan="3" valign="top" class="pt10" align="center" width="131" bgcolor="EEEEEE"> 
+      <p>&nbsp;</p>
+      <p><font color="#FF0000">※ 4.1 检查数据</font></p>
+       
+            <p align="left">4.1 检查数据</p>
+          
+            <p align="left"><a href='329.htm'>4.1 检查数据(续)</a></p>
+          
+	</td>
+  </tr>
+  <tr valign="top"> 
+    <td width="387" height="308"> 
+      <table width="100%" border="0" cellpadding="0">
+        <tr> 
+          <td>
+
+<h3 align="CENTER">4.1 检查数据</h3>
+<p>当我写作这本书时（1998年10月），纽约的Yankees队在四场比赛中击败圣·迭格的Padres队，取得了24届世界系列赛的冠军。Yankees队在American 
+  League的普通赛季结束时，取得了114场胜利。总体来说，1998是一个令人赞叹的赛季。圣·路易斯Cardinals队的 Mark McGwire和芝加哥Cubs队的Sammy 
+  Sosa为了创造新的单一赛季的本垒打纪录在整个9月份展开了争夺，原来的纪录是由Roger Maris保持的。</p>
+<p>是什么使1998赛季这样激动人心呢？玩世不恭的人会告诉你，1998是一扩展年，有三个新队加盟，因而总体上来说投手能力减弱了。这就使得著名的击球手如Sosa和McGwire以及著名的球队，如Yankees得到了出风头的机会，因为，虽然他们仍然像他们在1997年一样实力强大，但面对的对手的平均能力弱了许多。当然真正的棒球爱好者了解真正的原因，这是由于统计上的原因造成的。</p>
+<p>这实在有点滑稽。在大多数体育项目中，我们都说过心脏、勇气、能力、技巧、决心和其他名词。但是，只有棒球爱好者需要面对这么多原始数字，如平均击球率、平均得分、平均跑垒数、平均进垒数、对左手投手的平均击球率、对右手投手的平均击球率等。</p>
+<p>棒球爱好者都被这些数字所迷住了，数字越多越好。在每个赛季中，因特网成了成千上万的棒球爱好者的大本营，狂热的网民们在其中“管理”球队并交换球员，计算他们喜爱的球队在现实中表现的各种数字。STATS, 
+  Inc.公司跟踪了每个球员在主要联赛的赛事上的表现，因而可以计算出一个击球手是否表现得比他的平均成绩要好。在以下两节中，为了照顾对棒球不太感兴趣的读者，我们检查一下描述单个球员的击球和投球率的常用统计数字。现场统计数字也可以找到，但是我将把这些数字略去，以便将示例局限于好管理的大小。我使用的这个特殊的例子是纽约的Yankees队，对于任何队的击球手，同样的统计数字也可以得到。</p>
+<h5>4.1.1 击球手</h5>
+<p>几年前，Bruce Bukiet、Jose Palacios和我写过一篇名为A Markov Chain Approach to Baseball （用于棒球的马尔可夫链式方法）的文章（刊登在Operations 
+  Research（运筹学研究杂志），45卷第1期，1997年1-2月号，pp. 14-23， 还可在以下网址上看到这篇文章http://www.math.njit.edu/~bukiet/Papers 
+  /ball.pdf）。在这篇文章中，我们分析了1989年全国棒球联赛中的所有球队的所有可能的比赛顺序。那篇文章的结果还是比较有意思的。球队中的最坏的击球手（通常是投球手）应该是第8位出场击球的人，而不应该是第9位，至少在全国棒球联赛上是如此。但是这里我所关心的是产生那篇文章的工作。作为一个低年级的研究生，用手工算出每个球员在全国棒球联赛上的全部击球历史记录正是我的工作。如果我能够使那些数据变得像XML一样的方便，那个夏季我会过得更愉快一些的。现在，让我们将精力集中于每个球员的数据上。典型的，这种数据是以一行行的数字表示的，如表4-1所示的是1998年Yankees队的进攻队员的数据。在美国棒球联赛的比赛上，由于投球手很少击球，只有实际上击球的队员才列在表中。</p>
+<p>每一列有效地定义了一个元素。因而就需要为球员、位置、进行的比赛、击球、跑垒 、击球数、两垒、三垒、本垒打、跑入和步行等建立元素。单垒通常都不单独报告。这个数据是从总击打数中减去双垒、三垒和本垒打的总和后得到的。</p>
+<p align="CENTER">表4-1 The 1998年Yankees队的进攻队员数据</p>
+<p align="CENTER"> 
+<center>
+  <table BORDER cellspacing=0 cellpadding=0 width=727>
+    <tr bgcolor="#999999"> 
+      <td width="77" valign="MIDDLE"> 
+        <p align="CENTER"><b><font size="2">Name </font></b> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p align="CENTER"><b><font size="2">Postion </font></b> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p align="CENTER"><b><font size="2">Game Played </font></b> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p align="CENTER"><b><font size="2">At</font></b></p>
+        <p align="CENTER"><b><font size="2">Bats </font></b> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p align="CENTER"><b><font size="2">Runs </font></b> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p align="CENTER"><b><font size="2">Hits </font></b> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p align="CENTER"><b><font size="2">Doubles </font></b> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p align="CENTER"><b><font size="2">Triples </font></b> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p align="CENTER"><b><font size="2">Home</font></b></p>
+        <p align="CENTER"><b><font size="2">Runs </font></b> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p align="CENTER"><b><font size="2">Runs<br>
+          </font></b><b><font size="2">Batted <br>
+          In </font></b></p>
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p align="CENTER"><b><font size="2">Strike<br>
+          </font></b><b><font size="2">Walks </font></b></p>
+      </td>
+      <td valign="MIDDLE" colspan=3> 
+        <p align="CENTER"><b><font size="2">Outs </font></b> 
+      </td>
+      <td valign="MIDDLE" colspan=2 width="48"> 
+        <p align="CENTER"><b><font size="2">Hit<br>
+          </font></b><b><font size="2">by Pitch </font></b></p>
+      </td>
+    </tr>
+    <tr> 
+      <td width="77" valign="MIDDLE"> 
+        <p><font size="2">Scott Brosius </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">Third </font></p>
+        <p><font size="2">Base </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">152 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">530 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">86 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">159 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">34 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">0 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">19 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">98 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">52 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=3> 
+        <p><font size="2">97 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2 width="48"> 
+        <p><font size="2">10 </font> 
+      </td>
+    </tr>
+    <tr> 
+      <td width="77" valign="MIDDLE"> 
+        <p><font size="2">Homer Bush </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">Second BBase </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">45 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">71 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">17 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">27 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">3 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">0 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">1 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">5 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">5 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=3> 
+        <p><font size="2">19 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2 width="48"> 
+        <p><font size="2">0 </font> 
+      </td>
+    </tr>
+    <tr> 
+      <td width="77" valign="MIDDLE"> 
+        <p><font size="2">Chad Curtis </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">Outfield </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">151 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">456 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">79 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">111 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">21 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">1 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">10 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">56 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">75 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=3> 
+        <p><font size="2">80 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2 width="48"> 
+        <p><font size="2">7 </font> 
+      </td>
+    </tr>
+    <tr> 
+      <td width="77" valign="MIDDLE"> 
+        <p><font size="2">Chili Davis </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">Designated</font></p>
+        <p><font size="2">Hitter </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">35 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">103 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">11 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">30 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">7 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">0 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">3 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">9 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">14 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=3> 
+        <p><font size="2">18 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2 width="48"> 
+        <p><font size="2">0 </font> 
+      </td>
+    </tr>
+    <tr> 
+      <td width="77" valign="MIDDLE"> 
+        <p><font size="2">Mike Figga </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">catcher </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">1 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">4 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">1 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">1 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">0 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">0 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">0 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">0 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">0 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=3> 
+        <p><font size="2">1 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2 width="48"> 
+        <p><font size="2">0 </font> 
+      </td>
+    </tr>
+    <tr> 
+      <td valign="MIDDLE" width="77"> 
+        <p><font size="2">Joe Girardi </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">catcher </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">78 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">254 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">31 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">70 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">11 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">4 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">3 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">31 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">14 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=3> 
+        <p><font size="2">38 </font> 
+      </td>
+      <td width="48" valign="MIDDLE" colspan=2> 
+        <p><font size="2">2 </font> 
+      </td>
+    </tr>
+    <tr> 
+      <td valign="MIDDLE" height="10" width="77"> 
+        <p><font size="2">Derek Jeter </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2 height="10"> 
+        <p><font size="2">Shortsho </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2 height="10"> 
+        <p><font size="2">149 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2 height="10"> 
+        <p><font size="2">626 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2 height="10"> 
+        <p><font size="2">127 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2 height="10"> 
+        <p><font size="2">203 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2 height="10"> 
+        <p><font size="2">25 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2 height="10"> 
+        <p><font size="2">8 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2 height="10"> 
+        <p><font size="2">19 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2 height="10"> 
+        <p><font size="2">84 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2 height="10"> 
+        <p><font size="2">57 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=3 height="10"> 
+        <p><font size="2">119 </font> 
+      </td>
+      <td width="48" valign="MIDDLE" height="10"> 
+        <p><font size="2">5 </font> 
+      </td>
+    </tr>
+    <tr> 
+      <td valign="MIDDLE" width="77"> 
+        <p><font size="2">Chuck<br>
+          Knoblauch </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">Second Base </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">150 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">603 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">117 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">160 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">25 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">4 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">17 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">64 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">76 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=3> 
+        <p><font size="2">70 </font> 
+      </td>
+      <td width="48" valign="MIDDLE"><font size="2">　</font></td>
+    </tr>
+    <tr> 
+      <td valign="MIDDLE" width="77"> 
+        <p><font size="2">Ricky Ledee </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">Outfield </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">42 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">79 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">13 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">19 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">5 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">2 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">1 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">12 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">7 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=3> 
+        <p><font size="2">29 </font> 
+      </td>
+      <td width="48" valign="MIDDLE"> 
+        <p><font size="2">0 </font> 
+      </td>
+    </tr>
+    <tr> 
+      <td valign="MIDDLE" width="77"> 
+        <p><font size="2">Mike Lowell </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">Third Base </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">8 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">15 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">1 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">4 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">0 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">0 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">0 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">0 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">0 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=3> 
+        <p><font size="2">1 </font> 
+      </td>
+      <td width="48" valign="MIDDLE"> 
+        <p><font size="2">0 </font> 
+      </td>
+    </tr>
+    <tr> 
+      <td valign="MIDDLE" height="10" width="77"> 
+        <p><font size="2">Tino Martinez </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2 height="10"> 
+        <p><font size="2">First Base </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2 height="10"> 
+        <p><font size="2">142 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2 height="10"> 
+        <p><font size="2">531 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2 height="10"> 
+        <p><font size="2">92 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2 height="10"> 
+        <p><font size="2">149 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2 height="10"> 
+        <p><font size="2">33 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2 height="10"> 
+        <p><font size="2">1 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2 height="10"> 
+        <p><font size="2">28 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2 height="10"> 
+        <p><font size="2">123 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2 height="10"> 
+        <p><font size="2">61 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=3 height="10"> 
+        <p><font size="2">83 </font> 
+      </td>
+      <td width="48" valign="MIDDLE" height="10"> 
+        <p><font size="2">6 </font> 
+      </td>
+    </tr>
+    <tr> 
+      <td valign="MIDDLE" width="77" > 
+        <p><font size="2">Paul O’Neill </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">Outfield </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">152 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">602 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">95 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">191 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">40 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">2 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">24 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">116 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">57 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=3> 
+        <p><font size="2">103 </font> 
+      </td>
+      <td width="48" valign="MIDDLE"> 
+        <p><font size="2">2 </font> 
+      </td>
+    </tr>
+    <tr> 
+      <td valign="MIDDLE" width="77"> 
+        <p><font size="2">Jorge Posada </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">catcher </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">111 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">358 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">56 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">96 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">23 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">0 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">17 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">63 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">47 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=3> 
+        <p><font size="2">92 </font> 
+      </td>
+      <td width="48" valign="MIDDLE"> 
+        <p><font size="2">0 </font> 
+      </td>
+    </tr>
+    <tr> 
+      <td valign="MIDDLE" width="77"> 
+        <p><font size="2">Tim Raines </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">Outfield </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">109 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">321 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">53 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">93 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">13 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">1 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">5 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">47 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">55 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=3> 
+        <p><font size="2">49 </font> 
+      </td>
+      <td width="48" valign="MIDDLE"> 
+        <p><font size="2">3 </font> 
+      </td>
+    </tr>
+    <tr> 
+      <td valign="MIDDLE" height="10" width="77"> 
+        <p><font size="2">Luis Sojo </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2 height="10"> 
+        <p><font size="2">Shortshop </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2 height="10"> 
+        <p><font size="2">54 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2 height="10"> 
+        <p><font size="2">147 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2 height="10"> 
+        <p><font size="2">16 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2 height="10"> 
+        <p><font size="2">34 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2 height="10"> 
+        <p><font size="2">3 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2 height="10"> 
+        <p><font size="2">1 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2 height="10"> 
+        <p><font size="2">0 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2 height="10"> 
+        <p><font size="2">14 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2 height="10"> 
+        <p><font size="2">4 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=3 height="10"> 
+        <p><font size="2">15 </font> 
+      </td>
+      <td width="48" valign="MIDDLE" height="10"> 
+        <p><font size="2">0 </font> 
+      </td>
+    </tr>
+    <tr> 
+      <td valign="MIDDLE" width="77"> 
+        <p><font size="2">Shane Spencer </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">Outfield </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">27 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">67 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">18 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">25 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">6 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">0 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">10 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">27 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">5 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=3> 
+        <p><font size="2">12 </font> 
+      </td>
+      <td width="48" valign="MIDDLE"> 
+        <p><font size="2">0 </font> 
+      </td>
+    </tr>
+    <tr> 
+      <td valign="MIDDLE" width="77"> 
+        <p><font size="2">Darryl <br>
+          Strawberry </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">Designated<br>
+          Hitter </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">101 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">295 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">44 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">73 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">11 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">2 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">24 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">57 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">46 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=3> 
+        <p><font size="2">90 </font> 
+      </td>
+      <td width="48" valign="MIDDLE"> 
+        <p><font size="2">3 </font> 
+      </td>
+    </tr>
+    <tr> 
+      <td valign="MIDDLE" width="77"> 
+        <p><font size="2">Dale Sveum </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">First Base </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">30 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">58 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">6 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">9 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">0 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">0 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">0 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">3 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">4 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=3> 
+        <p><font size="2">16 </font> 
+      </td>
+      <td width="48" valign="MIDDLE"> 
+        <p><font size="2">0 </font> 
+      </td>
+    </tr>
+    <tr> 
+      <td valign="MIDDLE" width="77"> 
+        <p><font size="2">Bernie Williams </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">Outfield </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">128 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">499 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">101 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">169 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">30 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">5 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">26 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">97 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=2> 
+        <p><font size="2">74 </font> 
+      </td>
+      <td valign="MIDDLE" colspan=3> 
+        <p><font size="2">81 </font> 
+      </td>
+      <td width="48" valign="MIDDLE"> 
+        <p><font size="2">1 </font> 
+      </td>
+    </tr>
+  </table>
+</center>
+<p></p>
+<p>译者注：棒球数据不过是一种演示。在棒球统计数据的XML文档中，由于使用的是英文专用名词，故这里未翻译成中文。如果翻译过来反而无法相互对照。表4-2也同样处理。</p>
+<p><img src="image/Image25.gif" width=41 height=47 align="left">前面表中的数据和下一节中的投球手数据都是加以限制后的列表，只是用来表明在一个典型的棒球赛中收集的数据。除了列出的以外，还有许多其他数据没有在这里列出。我打算使用这些基本信息，以便使示例容易管理。</p>
+ 
+<a href='327.htm'>&lt;&lt;上一篇</a>&nbsp;&nbsp;<a href='329.htm'>下一篇&gt;&gt;</a></td>
+        </tr>
+      </table>
+      <p>&nbsp; </p>
+    </td>
+  </tr>
+</table>
+
+</body>
+
+</html>

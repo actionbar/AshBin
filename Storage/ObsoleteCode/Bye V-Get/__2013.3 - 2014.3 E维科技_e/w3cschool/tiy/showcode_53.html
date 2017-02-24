@@ -1,0 +1,25 @@
+<html>
+<head><link rel="stylesheet" type="text/css" href="showcode.css" /></head>
+<body>
+<pre>
+&lt;html&gt;
+&lt;body&gt;
+<code class="aspcode">&lt;%
+Set fs=Server.CreateObject(&#34;Scripting.FileSystemObject&#34;)
+if fs.driveexists(&#34;c:&#34;) = true then
+      Response.Write(&#34;驱动器 c: 存在。&#34;)
+Else
+      Response.Write(&#34;驱动器 c: 不存在。&#34;)
+End If
+Response.write(&#34;&lt;br&gt;&#34;)
+if fs.driveexists(&#34;g:&#34;) = true then
+      Response.Write(&#34;驱动器 g: 存在。&#34;)
+Else
+      Response.Write(&#34;驱动器 g: 不存在。&#34;)
+End If
+set fs=nothing
+%&gt;</code>
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+</body>

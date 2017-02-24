@@ -1,0 +1,16 @@
+<meta http-equiv="content-type" content="text/html; charset=gb2312"><FONT 
+style="FONT-SIZE: 9pt; LINE-HEIGHT: 15pt"><B>孤立用户问题</B><BR>把数据库备份还原到另一个服务器时，可能会遇到孤立用户的问题。下面的方案显示并解决了这个问题：&nbsp;
+<P></P>
+<P>通过执行&nbsp;sp_addlogin，把登录&nbsp;janetl&nbsp;改名为&nbsp;dbo。&nbsp;<BR>sp_addlogin&nbsp;'janetl',&nbsp;'dbo'</P>
+<P>备份数据库。在本例中，备份&nbsp;Northwind。&nbsp;<BR>BACKUP&nbsp;DATABASE&nbsp;Northwind<BR>TO&nbsp;DISK&nbsp;=&nbsp;'c:\mssql\backup\northwnd'</P>
+<P>除去刚刚备份的数据库。&nbsp;<BR>DROP&nbsp;DATABASE&nbsp;Northwind</P>
+<P>除去登录。&nbsp;<BR>sp_droplogin&nbsp;'janetl'</P>
+<P>还原备份的数据库。&nbsp;<BR>RESTORE&nbsp;DATABASE&nbsp;Northwind<BR>FROM&nbsp;DISK&nbsp;=&nbsp;'c:\mssql\backup\northwnd'</P>
+<P>select&nbsp;*&nbsp;from&nbsp;sysusers</P>
+<P>janetl&nbsp;登录不能访问&nbsp;Northwind&nbsp;数据库，除非允许&nbsp;guest&nbsp;登录。尽管&nbsp;janetl&nbsp;登录已经删除，它仍然（作为一个孤立行）显示在&nbsp;sysusers&nbsp;表中：</P>
+<P>USE&nbsp;Northwind<BR>SELECT&nbsp;*<BR>FROM&nbsp;sysusers<BR>WHERE&nbsp;name&nbsp;=&nbsp;'janetl'</P>
+<P>解决孤立用户问题&nbsp;</P>
+<P>用&nbsp;sp_addlogin&nbsp;添加一个临时登录。为孤立用户指定安全标识符&nbsp;(SID)（从&nbsp;sysusers）。&nbsp;<BR>sp_addlogin&nbsp;@loginame&nbsp;=&nbsp;'nancyd',<BR>&nbsp;&nbsp;&nbsp;&nbsp;@sid&nbsp;=&nbsp;0x32C864A70427D211B4DD00104B9E8A00</P>
+<P>用&nbsp;sp_dropalias&nbsp;除去属于别名&nbsp;SID&nbsp;的临时别名。&nbsp;<BR>sp_dropalias&nbsp;'nancyd'</P>
+<P>用&nbsp;sp_dropuser&nbsp;除去原始用户（即现在的孤立用户）。&nbsp;<BR>sp_dropuser&nbsp;'janetl'</P>
+<P>用&nbsp;sp_dropuser&nbsp;除去原始登录。&nbsp;<BR>sp_droplogin&nbsp;'nancyd'</P></FONT>

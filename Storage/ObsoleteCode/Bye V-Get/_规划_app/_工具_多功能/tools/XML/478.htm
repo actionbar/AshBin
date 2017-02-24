@@ -1,0 +1,77 @@
+<html>
+<head>
+<title>使用xsl:for-each处理多个元素</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+
+<link rel = stylesheet href = "image/style.css">
+</head>
+<body bgcolor="#ffffff">
+<table width="688" border="0" cellspacing="0" cellpadding="0" align="center">
+  <tr bgcolor="EEEEEE"> 
+    <td height="22"><a href="index.htm">主页</a></td>
+  </tr>
+</table><br>
+<table border="0" cellpadding="0" cellspacing="0" width="688" align="center" height="490">
+  <tr valign="top"> 
+    <td rowspan="4" width="91">&nbsp; </td>
+    <td height="68" width="131"> 
+      <p><img src="image/doc.gif"></p>
+    </td>
+    <td rowspan="4" width="18"><b></b> </td>
+    <td height="68" width="387"><img src="image/title_doc.gif"></td>
+    <td rowspan="4" width="61"> 
+      <h6>&nbsp;</h6>
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td rowspan="3" valign="top" class="pt10" align="center" width="131" bgcolor="EEEEEE"> 
+      <p>&nbsp;</p>
+      <p><font color="#FF0000">※ 14.5 使用xsl:for-each处理多个元素</font></p>
+       
+	</td>
+  </tr>
+  <tr valign="top"> 
+    <td width="387" height="308"> 
+      <table width="100%" border="0" cellpadding="0">
+        <tr> 
+          <td>
+
+           <p></p>
+<h4><a name="_Toc467207143">14.5 使用xsl:for-each处理多个元素</a></h4>
+<p>xsl:value-of元素只用于能够不含糊地确定要获取哪个节点值的上下文中。如果有多个可能项可供选择，那么只选择第一项。例如，由于普通的PERIODIC_TABLE元素包含一个以上的ATOM，所以下列的规则较差：</p>
+<p>&lt;xsl:template match="PERIODIC_TABLE"&gt;</p>
+<p> &lt;xsl:value-of select="ATOM"/&gt;</p>
+<p>&lt;/xsl:template&gt;</p>
+<p>有两种方法可依次处理多个元素。第一种方法已经看到了。只需要按下列方式与select特性（它选择想要包括的特定元素）一起使用xsl:apply-templates：</p>
+<p>&lt;xsl:template match="PERIODIC_TABLE"&gt;</p>
+<p> &lt;xsl:apply-templates select="ATOM"/&gt;</p>
+<p>&lt;/xsl:template&gt;</p>
+<p></p>
+<p>&lt;xsl:template match="ATOM"&gt;</p>
+<p> &lt;xsl:value-of select="."/&gt;</p>
+<p>&lt;/xsl:template&gt;</p>
+<p>第二个模板中的select="."告诉格式化程序取匹配的元素（本例中的ATOM）的值。</p>
+<p>第二种方法是使用xsl:for-each。xsl:for-each元素依次处理由其select特性选择的每个元素。不过，无需任何附加的模板。例如：</p>
+<p>&lt;xsl:template match="PERIODIC_TABLE"&gt;</p>
+<p> &lt;xsl:for-each select="ATOM"&gt;</p>
+<p> &lt;xsl:value-of select="."/&gt;</p>
+<p> &lt;/xsl:for-each&gt;</p>
+<p>&lt;/xsl:template&gt;</p>
+<p>如果省略select特性，那么处理源节点（本例中的PERIODIC_TABLE）的所有子节点。</p>
+<p>&lt;xsl:template match="PERIODIC_TABLE"&gt;</p>
+<p> &lt;xsl:for-each&gt;</p>
+<p> &lt;xsl:value-of select="ATOM"/&gt;</p>
+<p> &lt;/xsl:for-each&gt;</p>
+<p>&lt;/xsl:template&gt;</p>
+ 
+<a href='477.htm'>&lt;&lt;上一篇</a>&nbsp;&nbsp;<a href='479.htm'>下一篇&gt;&gt;</a></td>
+        </tr>
+      </table>
+      <p>&nbsp; </p>
+    </td>
+  </tr>
+</table>
+
+</body>
+
+</html>

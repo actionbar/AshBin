@@ -1,0 +1,109 @@
+<html>
+<head>
+<title>扩展链接组</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+
+<link rel = stylesheet href = "image/style.css">
+</head>
+<body bgcolor="#ffffff">
+<table width="688" border="0" cellspacing="0" cellpadding="0" align="center">
+  <tr bgcolor="EEEEEE"> 
+    <td height="22"><a href="index.htm">主页</a></td>
+  </tr>
+</table><br>
+<table border="0" cellpadding="0" cellspacing="0" width="688" align="center" height="490">
+  <tr valign="top"> 
+    <td rowspan="4" width="91">&nbsp; </td>
+    <td height="68" width="131"> 
+      <p><img src="image/doc.gif"></p>
+    </td>
+    <td rowspan="4" width="18"><b></b> </td>
+    <td height="68" width="387"><img src="image/title_doc.gif"></td>
+    <td rowspan="4" width="61"> 
+      <h6>&nbsp;</h6>
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td rowspan="3" valign="top" class="pt10" align="center" width="131" bgcolor="EEEEEE"> 
+      <p>&nbsp;</p>
+      <p><font color="#FF0000">※ 16.5 扩展链接组</font></p>
+       
+	</td>
+  </tr>
+  <tr valign="top"> 
+    <td width="387" height="308"> 
+      <table width="100%" border="0" cellpadding="0">
+        <tr> 
+          <td>
+
+           <h4><a name="_Toc467208497">16.5 扩展链接组</a></h4>
+<p>扩展链接组（extended link group）元素包含连接一组特定文档的链接。依靠扩展链接文档元素，组中的每个文档都作为目标来定位。应用程序负责推定如何激活组成员中的连接、并怎么理解这种连接。</p>
+<p><img src="Image/BK000216-34.gif" width=53 height=50 align="left">我不得不提醒读者，在撰写这本书时，应用程序支持链接组最多只是一种假定。尽管我可以显示如何书写这样的链接，但真正执行并支持可能还需要一段时间。有些细节无法确定，很可能以销售商指定的方式执行，至少开始就是如此。还有，这些链接能够获得比HTML更为复杂的链接。</p>
+<h5><a name="_Toc467208498">16.5.1 一个实例</a></h5>
+<p>例如，我已经将我讲授的Java课程的注解放在我的Web站点上。图16-1显示前言页。这个特别的课程由13个课时组成，每个课时含有30~60页的注解。然后为各个课时提供一张目录。这几百页组成整个站点，其中的每一页都与前面文档、下个文档以及每周目录（顶端链接）相链接，如图16-2所示。把这些页放在一起，这样总计多达几千页，这些页可以在文档内相互连接。</p>
+<p align="center"><img src="Image/BK000216-35.gif" width=368 height=339></p>
+<p align="center">图16-1 用于类Web站点的前言页显示13个星期的讲稿注解</p>
+<p>可能相互连接数随着文档数量呈指数增长。每当一个文档移动、改名或分成更小的块时，就需要在页面上、在这组文档的前和其后的页面上以及每周目录上调整链接。坦率地说，这项工作比原先的更加艰苦，所以这妨碍了对课程注解的必要的修改和更新。</p>
+<p align="center"><img src="Image/BK000216-36.gif" width=368 height=347></p>
+<p align="center">图16-2 显示Previous、Next和Top链接的一页讲稿注解</p>
+<p>如果HTML支持的话，要做的更有意义的事就是将连接保存在独立的文档中。然后编辑此文档，就可以重新组织页。HTML链接不支持这种方式，但XLink却支持。不是以内联的方式将链接保存在HTML文件中，而是将它们通过外联的方式保存在组元素中。例如：</p>
+<p>&lt;COURSE xlink:form="group"&gt;</p>
+<p> &lt;CLASS xlink:form="document" href="weekl/index.xml"/&gt;</p>
+<p> &lt;CLASS xlink:form="document" href="week2/index.xml"/&gt;</p>
+<p> &lt;CLASS xlink:form="document" href="week3/index.xml"/&gt;</p>
+<p> &lt;CLASS xlink:form="document" href="week4/index.xml"/&gt;</p>
+<p> &lt;CLASS xlink:form="document" href="week5/index.xml"/&gt;</p>
+<p> &lt;CLASS xlink:form="document" href="week6/index.xml"/&gt;</p>
+<p> &lt;CLASS xlink:form="document" href="week7/index.xml"/&gt;</p>
+<p> &lt;CLASS xlink:form="document" href="week8/index.xml"/&gt;</p>
+<p> &lt;CLASS xlink:form="document" href="week9/index.xml"/&gt;</p>
+<p> &lt;CLASS xlink:form="document" href="week10/index.xml"/&gt;</p>
+<p> &lt;CLASS xlink:form="document" href="weekll/index.xml"/&gt;</p>
+<p> &lt;CLASS xlink:form="document" href="weekl2/index.xml"/&gt;</p>
+<p> &lt;CLASS xlink:form="document" href="weekl3/index.xml"/&gt;</p>
+<p>&lt;/COURSE&gt;</p>
+<p>这样就将COURSE元素定义成扩展链接组，此组由13个扩展链接文档元素（即CLASS元素）组成。</p>
+<h5><a name="_Toc467208499">16.5.2 steps特性</a></h5>
+<p>应用程序使用链接组可以做的事情之一是，预加载链接组中的所有文档。这些文档可以包含它们各自的链接组。例如，上面的每个CLASS元素都引用一个特定星期的站点目录，如图16-3所示。然后这些文档就可以加载。例如，文件week6/index.xml就包含这种链接组：</p>
+<p>&lt;CLASS xlink:form=”group”&gt;</p>
+<p> &lt;SLIDE xlink:form=”document” href=”O1.xml”/&gt;</p>
+<p> &lt;SLIDE xlink:form=”document” href=”02.html”/&gt;</p>
+<p> &lt;SLIDE xlink:form=”document” href=”06.html”/&gt;</p>
+<p> &lt;SLIDE xlink:form=”document” href=”12.html”/&gt;</p>
+<p> &lt;SLIDE xlink:form=”document” href=”13.html”/&gt;</p>
+<p> &lt;SLIDE xlink:form=”document” href=”16.html”/&gt;</p>
+<p> &lt;SLIDE xlink:form=”document” href=”17.html”/&gt;</p>
+<p> &lt;SLIDE xlink:form=”document” href=”19.html”/&gt;</p>
+<p> &lt;SLIDE xlink:form=”document” href=”21.html”/&gt;</p>
+<p> &lt;SLIDE xlink:form=”document” href=”22.html”/&gt;</p>
+<p> &lt;SLIDE xlink:form=”document” href=”24.html”/&gt;</p>
+<p>&lt;/CLASS &gt;</p>
+<p align="center"><img src="Image/BK000216-37.gif" width=294 height=277></p>
+<p align="center">图16-3 显示周讲稿注解的目录页面</p>
+<p>现在假定有一个文档反过来引用原文档。这有可能触发无限的回归，即重复加载同一个文档，直到应用程序将内存耗尽为止。为了防止这种情况的发生，组元素可以包含steps特性，用它来指定递归跟随链接组的层数。例如，要指定预加载不能达到当前文档三层以上，可以这样来编写：</p>
+<p>&lt;group xlink:form=”group” steps=”3”&gt;</p>
+<p><img src="Image/BK000216-17.gif" width=47 height=52 align="left">坦率地说，我不敢确定steps特性有多重要。要使应用程序注意何时它已经到达某个文档，但根本不再次处理此文档并非困难。我认为，更好的方法是，由XML处理器而不是网页作者来防止递归。</p>
+<p>steps特性可以用来限制预发生加载的数量。例如，在课时注解实例中，尽管有可能他或她想打印或复制所有的课程注解，不可能任何人一次要阅读整个内容。在任何情况下，将steps特性设置为1，就可以将横穿的深度限制为指定的页面而不是课程中的几百页。</p>
+<p>就像常常要做的那样，这些元素及其特性必须在它们的任何合法文档的DTD中声明。实际上，xlink:form是固定的，所以不需要包括在元素的实例中。例如：</p>
+<p>&lt;!ELEMENT CLASS (document*)&gt;</p>
+<p>&lt;!ATTLIST CLASS</p>
+<p> xlink:form CDATA #FIXED “group”</p>
+<p> steps CDATA #IMPLIED</p>
+<p>&gt;</p>
+<p>&lt;!ELEMENT SLIDE EMPTY&gt;</p>
+<p>&lt;!ATTLIST SLIDE</p>
+<p> xlink:form CDATA #FIXED “document”</p>
+<p> href CDATA #REQUIRED</p>
+<p>&gt;</p>
+ 
+<a href='543.htm'>&lt;&lt;上一篇</a>&nbsp;&nbsp;<a href='545.htm'>下一篇&gt;&gt;</a></td>
+        </tr>
+      </table>
+      <p>&nbsp; </p>
+    </td>
+  </tr>
+</table>
+
+</body>
+
+</html>

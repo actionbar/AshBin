@@ -1,0 +1,674 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML xmlns:v><HEAD><TITLE>VML图像画板</TITLE>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<meta name="description" content="Vml图像画板" />
+<meta content="Vml图像画板,在线画板,VML,VML画板,图片工具,在线工具" name="keywords" />
+
+<STYLE>
+v\:*{behavior:url(#default#VML);}   /*声明V为VML变量*/
+a{text-Decoration:none;color:#ff0000}
+a:hover{text-Decoration:underline;color:#c0c0c0;}
+td{font-size:12px;color:#000000}
+.bon1{border-bottom:1 solid black;border-right:1 solid black;border-left:1 solid black;border-top:1 solid black;background-color:#c0c0c0;color:black; font-size:12px; width:54}
+.bon2{border-bottom:1 solid black ;border-right:1 solid black;border-left:1 solid black;border-top:1 solid black;background-color:#c0c0c0;color:black;font-size:12px; width:54}
+</STYLE>
+<base target="_self">
+</HEAD>
+<BODY oncontextmenu='if(event.srcElement.tagName!="TEXTAREA")return false' 
+onhelp='if(help.style.display=="none"){bangzhu.click()}else{guanbibangzhu.click()};return false' 
+onselectstart='if(event.srcElement.tagName!="TEXTAREA"&amp;&amp;event.srcElement.tagName!="INPUT")return false' 
+style="CURSOR: default; MARGIN: 1px">
+                <style type="text/css">
+<!--
+    body {
+	margin:0;
+	padding:0;
+	font-family: "宋体";
+	font-size: 12px;
+	line-height: 1.5em;
+}
+
+
+img {
+border: none;
+}
+
+/*- Menu Tabs 8--------------------------- */
+
+    #title_tabs {
+	width:758px;
+	font-size:12;
+	font-weight: bold;
+	line-height:normal;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #A7A5B2;
+      }
+    #title_tabs ul {
+          margin:0;
+          padding:10px 10px 0 35px;
+          list-style:none;
+      }
+    #title_tabs li {
+      display:inline;
+      margin:0;
+      padding:0;
+      }
+    #title_tabs a {
+      float:left;
+      background:url("images/tableft8.gif") no-repeat left top;
+      margin:0;
+      padding:0 0 0 4px;
+      text-decoration:none;
+      }
+    #title_tabs a span {
+      float:left;
+      display:block;
+      background:url("images/tabright8.gif") no-repeat right top;
+      padding:5px 15px 4px 6px;
+      color:#000000;
+      }
+    /* Commented Backslash Hack hides rule from IE5-Mac \*/
+    #title_tabs a span {float:none;}
+    /* End IE5-Mac hack */
+    #title_tabs a:hover span {
+      color:#333;
+      }
+    #title_tabs a:hover {
+      background-position:0% -42px;
+      }
+    #title_tabs a:hover span {
+      background-position:100% -42px;
+	  color:#000000;
+      }
+
+      #title_tabs #current a {
+              background-position:0% -42px;
+      }
+      #title_tabs #current a span {
+              background-position:100% -42px;
+      }
+body,td,th {
+	font-size: 12px;
+}
+h1,h2,h3,h4,h5,h6 {
+	font-family: 宋体;
+}
+.title_div {
+	font-size: 12px;
+	line-height: 150%;
+	background-color: #f9f9f9;
+	width: 758px;
+	border-top-width: 3px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	border-top-style: solid;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	border-top-color: #A7A5B2;
+	border-right-color: #A7A5B2;
+	border-bottom-color: #A7A5B2;
+	border-left-color: #A7A5B2;
+}
+a:link {
+	text-decoration: none;
+	color: #333333;
+}
+a:visited {
+	text-decoration: none;
+	color: #333333;
+}
+a:hover {
+	text-decoration: underline;
+	color: #FF0000;
+}
+a:active {
+	text-decoration: none;
+	color: #333333;
+}
+-->
+                </style>
+
+<P align=center><font style="color:#FF0000; font-size:14px; font-weight:bolder">VML图像画板   
+</font></P>
+<SCRIPT>
+function window.onerror(){ //防止未下载完毕时发生异步错误
+return true
+}
+</SCRIPT>
+<v:Line id=line1 style="DISPLAY: none; POSITION: absolute; Z-INDEX: 2000" from = 
+"0,0" to = "0,0"><!--钢笔可视化--><v:Stroke dashstyle = 
+"shortDash"></v:Stroke></v:Line><v:arc id=arc1 
+style="DISPLAY: none; POSITION: absolute; Z-INDEX: 2000" startangle = "-200" 
+endangle = "30" coordsize = "21600,21600" adj = ",,5400"><!--弧形可视化--><v:Stroke 
+joinstyle = "miter" dashstyle = "shortDash"></v:Stroke></v:arc><v:Oval id=oval1 
+style="DISPLAY: none; POSITION: absolute; Z-INDEX: 2000" coordsize = 
+"21600,21600"><!--圆形可视化--><v:Stroke dashstyle = 
+"shortDash"></v:Stroke></v:Oval><v:rect id=rect1 
+style="DISPLAY: none; POSITION: absolute; Z-INDEX: 2000" coordsize = 
+"21600,21600"><!--长方形可视化--><v:Stroke dashstyle = 
+"shortDash"></v:Stroke></v:rect><v:roundrect id=roundrect1 
+style="DISPLAY: none; POSITION: absolute; Z-INDEX: 2000" arcsize = "4321f" 
+coordsize = "21600,21600"><!--圆锯形可视化--><v:Stroke dashstyle = 
+"shortDash"></v:Stroke></v:roundrect><SPAN id=wenzi1 
+style="DISPLAY: none; POSITION: absolute; Z-INDEX: 2000">
+<p><!--插入文字可视化--><TEXTAREA id=txt1 style="BORDER-BOTTOM: black 1px solid; BORDER-LEFT: black 1px solid; BORDER-RIGHT: black 1px solid; BORDER-TOP: black 1px solid; HEIGHT: 100px; WIDTH: 300px"></TEXTAREA><BR>
+</p>
+<CENTER>字体:<SELECT id=wenziziti onchange=gengxinwenzi.click() 
+style="WIDTH: 100px"><OPTION 
+  selected>宋体<OPTION>黑体<OPTION>隶书<OPTION>幼圆<OPTION>楷体_GB2312<OPTION>仿宋_GB2312<OPTION>华文中宋<OPTION>华文行楷<OPTION>华文新魏<OPTION>华文细黑<OPTION>华文彩云<OPTION>方正姚体<OPTION>方正舒体<OPTION>Wingdings<OPTION>Wingdings 
+  2<OPTION>Wingdings 
+  3<OPTION>Webdings<OPTION>System<OPTION>@宋体<OPTION>@黑体<OPTION>@隶书<OPTION>@幼圆<OPTION>@楷体_GB2312<OPTION>@仿宋_GB2312<OPTION>@华文中宋<OPTION>@华文行楷<OPTION>@华文新魏<OPTION>@华文细黑<OPTION>@华文彩云<OPTION>@方正姚体<OPTION>@方正舒体<OPTION>@System</OPTION></SELECT>有无边框<INPUT 
+id=wenzibiankuang type=checkbox><BR>颜色:<INPUT id=wenziyanse 
+onmousedown=colortab.style.left=event.x-50;colortab.style.top=event.y+this.offsetHeight;rndcolor(this.id) 
+onmousemove=gengxinwenzi.click() 
+style="BORDER-BOTTOM: black 1px solid; BORDER-LEFT: black 1px solid; BORDER-RIGHT: black 1px solid; BORDER-TOP: black 1px solid; HEIGHT: 17px; WIDTH: 50px" 
+value=#000000>背景:<INPUT id=wenzibeijing 
+onmousedown=colortab.style.left=event.x-50;colortab.style.top=event.y+this.offsetHeight;rndcolor(this.id) 
+onmousemove=gengxinwenzi.click() 
+style="BORDER-BOTTOM: black 1px solid; BORDER-LEFT: black 1px solid; BORDER-RIGHT: black 1px solid; BORDER-TOP: black 1px solid; HEIGHT: 17px; WIDTH: 50px" 
+value=#FFFFFF>大小:<SELECT id=wenzidaxiao onchange=gengxinwenzi.click() 
+style="WIDTH: 50px"><OPTION selected>12 
+  <SCRIPT>for(i=1;i<101;i++)document.write("<option>"+i)</SCRIPT>
+  </OPTION></SELECT><BR><INPUT class=bon2 id=gengxinwenzi onclick=txt1.style.color=wenziyanse.value;txt1.style.backgroundColor=wenzibeijing.value;txt1.style.fontSize=wenzidaxiao.options[wenzidaxiao.selectedIndex].text;txt1.style.fontFamily=wenziziti.options[wenziziti.selectedIndex].text; type=button value=浏览更新><INPUT class=bon2 onclick=charuwenzi() type=button value=插入><INPUT class=bon2 onClick="wenzi1.style.display='none'" type=button value=取消>
+</SPAN><SPAN id=tupian1 
+style="DISPLAY: none; POSITION: absolute; Z-INDEX: 2000">
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p><!--插入图片可视化--><INPUT 
+id=file1 style="WIDTH: 400px" type=file><BR>
+</p>
+<CENTER><SELECT id=duibi><OPTION selected>默认对比度 
+  <SCRIPT>for(i=0;i<101;i++)document.write("<option>"+i)</SCRIPT>
+  </OPTION></SELECT><SELECT id=secai><OPTION selected>默认色彩度 
+  <SCRIPT>for(i=0;i<9.9;i+=0.1)document.write("<option>"+new Number(i).toFixed(1))</SCRIPT>
+  <OPTION>10</OPTION></SELECT><SELECT id=liangdu><OPTION selected>默认亮度 
+  <SCRIPT>for(i=-0.5;i<0.6;i+=0.1)document.write("<option>"+new Number(i).toFixed(1))</SCRIPT>
+  </OPTION></SELECT><INPUT id=heibai 
+onclick=duibi.disabled=this.checked;secai.disabled=this.checked;liangdu.disabled=this.checked 
+type=checkbox><LABEL for=heibai>黑白效果</LABEL><BR><INPUT class=bon2 onclick=charutupian() type=button value=插入><INPUT class=bon2 onClick="tupian1.style.display='none'" type=button value=取消>
+</SPAN><SPAN id=gaoji1 style="DISPLAY: none; POSITION: absolute; Z-INDEX: 2000">
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p><!--高级改可视化--><TEXTAREA id=txt2 style="BORDER-BOTTOM: black 1px solid; BORDER-LEFT: black 1px solid; BORDER-RIGHT: black 1px solid; BORDER-TOP: black 1px solid; HEIGHT: 150px; WIDTH: 400px"></TEXTAREA><BR>
+</p>
+<CENTER><INPUT class=bon2 onClick="gaojiobj.outerHTML=txt2.value;gaojiobj=null;gaoji1.style.display='none'" type=button value=修改><INPUT class=bon2 onclick='gaoji1.style.display="none"' type=button value=取消>
+</SPAN><SPAN id=yuandaima 
+style="DISPLAY: none; POSITION: absolute; Z-INDEX: 2000">
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p><!--所有原代码--><TEXTAREA id=txt3 style="BORDER-BOTTOM: black 1px solid; BORDER-LEFT: black 1px solid; BORDER-RIGHT: black 1px solid; BORDER-TOP: black 1px solid; HEIGHT: 400px; WIDTH: 600px"></TEXTAREA><BR>
+</p>
+<CENTER><INPUT class=bon2 onClick="window.clipboardData.setData('text',txt3.value);alert('已将数据复制到系统剪切板')" type=button value=复制> 
+<INPUT class=bon2 onClick="div1.innerHTML=txt3.value.replace('<!--欢迎访问本站 http://tools.kqiqi.com/-->\n','');yuandaima.style.display='none'" type=button value=更新修改> 
+<INPUT class=bon2 onClick="yuandaima.style.display='none'" type=button value=取消>
+</SPAN><SPAN id=menu1 style="DISPLAY: none; POSITION: absolute; Z-INDEX: 2000">
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p><!--弹出菜单--><INPUT class=bon2 onclick='zz+=1;thisobj.style.zIndex=zz;menu1.style.display="none"' type=button value=置前><BR><INPUT class=bon2 onclick='zz2-=1;thisobj.style.zIndex=zz2;menu1.style.display="none"' type=button value=置后><BR><INPUT class=bon2 id=fuzhi onclick='div1.innerHTML+=thisobj.outerHTML;alert("复制完成，请使用选移功能拖动");menu1.style.display="none"' type=button value=复制><BR><INPUT class=bon2 id=shanchu onclick='thisobj.outerHTML="";menu1.style.display="none"' type=button value=删除><BR>
+</p>
+<HR color=blue SIZE=0 style="WIDTH: 50px">
+<INPUT class=bon2 onclick='try{thisobj.style.left=parseInt(thisobj.style.left)-5;thisobj.style.top=parseInt(thisobj.style.top)-5;thisobj.style.width=parseInt(thisobj.style.width)+10;thisobj.style.height=parseInt(thisobj.style.height)+10;}catch(e){};menu1.style.display="none"' onmousemove='showhelp("放大单个图形对象,对钢笔和记忆点2无效")' type=button value=放大><BR><INPUT class=bon2 onclick='try{thisobj.style.left=parseInt(thisobj.style.left)+5;thisobj.style.top=parseInt(thisobj.style.top)+5;thisobj.style.width=parseInt(thisobj.style.width)-10;thisobj.style.height=parseInt(thisobj.style.height)-10;}catch(e){};menu1.style.display="none"' onmousemove='showhelp("缩小单个图形对象,对钢笔和记忆点2无效")' type=button value=缩小><BR><INPUT class=bon2 onclick='thisobj.style.filter+="fliph ";menu1.style.display="none"' onmousemove='showhelp("增加Css滤镜的fliph的左右反转效果")' type=button value=反转><BR><INPUT class=bon2 onclick='thisobj.style.filter+="flipv ";menu1.style.display="none"' onmousemove='showhelp("增加Css滤镜的flipy的上下颠倒效果")' type=button value=颠倒><BR>
+<HR color=blue SIZE=0 style="WIDTH: 50px">
+<INPUT class=bon2 onclick='menu1.style.display="none"' type=button value=取消>
+</SPAN>
+<p><IFRAME id=web src="about:blank" style="DISPLAY: none"></IFRAME><!--实现保存-->
+</p>
+<SPAN id=help 
+style="DISPLAY: none; POSITION: absolute; Z-INDEX: 2000">
+<p><!--帮助信息--><TEXTAREA readOnly style="BORDER-BOTTOM: black 1px solid; BORDER-LEFT: black 1px solid; BORDER-RIGHT: black 1px solid; BORDER-TOP: black 1px solid; HEIGHT: 400px; WIDTH: 700px">图像画板说明
+
+目前最强的网页矢量图形标记语言编辑工具之一，VML学习者的最佳学习工具。
+能够完成基本的三维网页的设计.
+基本的画笔、图形处理、全局工具在右方，点选后在画板内使用鼠标左键应用。
+可将画板内代码图形保存为文件，也可通过“修改源代码”实现“打开文件”等功能。
+</TEXTAREA><BR>
+</p>
+<CENTER><INPUT class=bon2 id=guanbibangzhu onClick="help.style.display='none'" type=button value=关闭说明>
+</SPAN>
+<TABLE align=center background="" bgColor=#c0c0c0 border=1 cellPadding=3 
+cellSpacing=0 id=allform1 
+style="BORDER-BOTTOM: whitesmoke; BORDER-LEFT: #4735b0 3px dashed; BORDER-RIGHT: whitesmoke 3px dashed; BORDER-TOP: whitesmoke 1px solid" 
+width=770>
+  <TBODY>
+  <TR align=middle 
+  onmouseout='if(event.srcElement.tagName=="TD")event.srcElement.bgColor=""' 
+  onmouseover='if(event.srcElement.tagName=="TD"&amp;&amp;event.srcElement.width==70)event.srcElement.bgColor="aaaaaa"' 
+  style="CURSOR: hand">
+    <TD id=toptd1 
+    onclick="yuandaima.x=event.x;yuandaima.y=event.y;txt3.value='<!--欢迎访问本站 http://tools.kqiqi.com/-->\n'+div1.innerHTML.replace(/>/g,'>\n').replace(/ = /g,'=').replace(/\: /g,':').replace(/\; /g,';');yuandaima.style.display=''" 
+    onmousemove='showhelp("把已保存的VML代码粘贴修改实现打开,或者手写修改当前编辑器内的所有VML代码")' 
+      width=70>修改原代码</TD>
+    <TD 
+    onclick="web.document.write('<HTML xmlns:v>\n<HEAD>\n<META http-equiv=Content-Type content=text/html;charset=gb2312>\n<TITLE>文件名</TITLE>\n<META name=Gemeratpr content=VML图像画板>\n<META name=GemeratprHomePage content=http://tools.kqiqi.com/>\n<STYLE>\nv\\:*{behavior:url(#default#VML);}\n</STYLE>\n</HEAD>\n<BODY>\n'+div1.innerHTML+'\n</BODY>\n</HTML>');web.document.execCommand('SaveAs',false,'文件名')" 
+    onmousemove='showhelp("将编辑器图形保存为后缀为htm的文件,注意保存时请使用Unicode保存")' 
+      width=70>保存为文件</TD>
+    <TD 
+    onclick="if(this.innerText=='最大化视图'){div1.style.width=document.body.offsetWidth-150;div1.style.height=document.body.offsetHeight-35;this.innerText='恢复视图'}else{div1.style.width=650;div1.style.height='100%';this.innerText='最大化视图'}" 
+    width=70>最大化视图</TD>
+    <TD id=bangzhu onClick="help.x=event.x;help.y=event.y;help.style.display=''" 
+    onmousemove='showhelp("显示VML图像画板的相关操作帮助快捷键F1")' width=70>操作帮助</TD>
+    <TD width=60>　</TD>
+    <TD width=60>　</TD>
+    <TD align=right onmousemove='showhelp("欢迎访问本站")'><A 
+      href="javascript:if(confirm('http://tools.kqiqi.com/'))window.location='http://tools.kqiqi.com/'" tppabs="http://tools.kqiqi.com/" 
+      target=_blank>http://tools.kqiqi.com</A> </TD></TR>
+  <TR>
+    <TD colSpan=10 height=500 width="100%">
+      <TABLE cellPadding=0 cellSpacing=0 height="100%">
+        <TBODY>
+        <TR>
+          <TD width=660>
+            <DIV id=div1 
+            onmouseover='try{showdiv.style.display="none"}catch(e){}' 
+            style="BACKGROUND-COLOR: white; BORDER-BOTTOM: whitesmoke 1px solid; BORDER-LEFT: whitesmoke 1px solid; BORDER-RIGHT: whitesmoke 1px solid; BORDER-TOP: whitesmoke 1px solid; COLOR: whitesmoke; HEIGHT: 100%; WIDTH: 650px"></DIV></TD>
+          <TD>
+            <DIV style="HEIGHT: 100%; WIDTH: 110px">
+            <CENTER><B>画笔选择</B><BR><BUTTON class=bon2 id=huabi>选移<BUTTON 
+            class=bon2 id=huabi>调大小<BUTTON class=bon2 
+            id=huabi>弧形</BUTTON><BUTTON class=bon1 id=huabi>钢笔</BUTTON><BUTTON 
+            class=bon2 id=huabi 
+            onmousemove='showhelp("画笔:绘制Polyline线段,点选后按住鼠标左键在画布内移动")'>记忆点1</BUTTON><BUTTON 
+            class=bon2 id=huabi>圆型</BUTTON><BUTTON class=bon2 
+            id=huabi>长方型</BUTTON><BUTTON class=bon2 id=huabi>圆矩型</BUTTON><BUTTON 
+            class=bon2 id=huabi>文字</BUTTON><BUTTON class=bon2 
+            id=huabi>图片</BUTTON><BUTTON class=bon2 id=huabi 
+            onmousemove='showhelp("修改工具:点选后,单击画布内的任意非钢笔或记忆点2或文字所画的图形即可")'>填充</BUTTON><BUTTON 
+            class=bon2 id=huabi 
+            onmousemove='showhelp("修改工具:点选后,单击画布内的任意非使用文字工具所画的图形即可")'>立体</BUTTON><BUTTON 
+            class=bon2 id=huabi 
+            onmousemove='showhelp("修改工具:点选后,单击画布内的任意非使用文字工具所画的图形即可")'>边框</BUTTON><BUTTON 
+            class=bon2 id=huabi 
+            onmousemove='showhelp("修改工具:点选后,单击画布内的任意图形,即可显示其原代码")'>高级</BUTTON><BUTTON 
+            class=bon2 id=huabi 
+            onmousemove='showhelp("画笔:用本功能可以在任意方向画线段,不过所画出的图形不是一个整体而是一条条线")'>记忆点2</BUTTON><BUTTON 
+            class=bon2 id=huabi 
+            onmousemove='showhelp("修改工具:点选后,单击画布内的任意非文字或图片的图形,可以已文字填充它的轮廓")'>文字化</BUTTON><BUTTON 
+            class=bon2 id=huabi>阴影</BUTTON><BUTTON class=bon2 id=huabi 
+            onmousemove='showhelp("修改工具:点选后,单击画布内的任意图形,可调整其Css的alpha透明属性")'>透明度</BUTTON><BR><B>画笔基本参数</B><BR>笔边粗度 
+            <SELECT id=bibiancudu style="WIDTH: 54px"><OPTION selected>1 
+              <SCRIPT>for(i=2;i<101;i++)document.write("<option>"+i)</SCRIPT>
+              </OPTION></SELECT><BR>画笔颜色 <INPUT id=huabiyanse 
+            onmousedown=colortab.style.left=event.x-50;colortab.style.top=event.y+this.offsetHeight;rndcolor(this.id) 
+            style="BORDER-BOTTOM: black 1px solid; BORDER-LEFT: black 1px solid; BORDER-RIGHT: black 1px solid; BORDER-TOP: black 1px solid; HEIGHT: 17px; WIDTH: 54px" 
+            value=#000000><BR>画笔背景 <INPUT id=huabibeijing 
+            onmousedown=colortab.style.left=event.x-50;colortab.style.top=event.y+this.offsetHeight;rndcolor(this.id) 
+            style="BORDER-BOTTOM: black 1px solid; BORDER-LEFT: black 1px solid; BORDER-RIGHT: black 1px solid; BORDER-TOP: black 1px solid; HEIGHT: 17px; WIDTH: 54px" 
+            value=#FFFFFF><BR>X Y 坐标 <INPUT disabled id=zuobiao 
+            style="BORDER-BOTTOM: black 1px solid; BORDER-LEFT: black 1px solid; BORDER-RIGHT: black 1px solid; BORDER-TOP: black 1px solid; HEIGHT: 17px; WIDTH: 54px" 
+            value=0,0><BR><SPAN id=tianchong1 
+            style="DISPLAY: none"><B>&nbsp;<BR>填充基本参数</B><BR>普通背景 <INPUT 
+            id=tianchongbeijing 
+            onmousedown=colortab.style.left=event.x-50;colortab.style.top=event.y+this.offsetHeight;rndcolor(this.id) 
+            style="BORDER-BOTTOM: black 1px solid; BORDER-LEFT: black 1px solid; BORDER-RIGHT: black 1px solid; BORDER-TOP: black 1px solid; HEIGHT: 17px; WIDTH: 54px"><BR>使用渐变背景<INPUT 
+            id=usejianbian type=checkbox><BR>渐变色一 <INPUT id=jianbianse1 
+            onmousedown=colortab.style.left=event.x-50;colortab.style.top=event.y+this.offsetHeight;rndcolor(this.id) 
+            style="BORDER-BOTTOM: black 1px solid; BORDER-LEFT: black 1px solid; BORDER-RIGHT: black 1px solid; BORDER-TOP: black 1px solid; COLOR: red; HEIGHT: 17px; WIDTH: 50px" 
+            value=#FF0000> <BR>渐变色二 <INPUT id=jianbianse2 
+            onmousedown=colortab.style.left=event.x-50;colortab.style.top=event.y+this.offsetHeight;rndcolor(this.id) 
+            style="BORDER-BOTTOM: black 1px solid; BORDER-LEFT: black 1px solid; BORDER-RIGHT: black 1px solid; BORDER-TOP: black 1px solid; HEIGHT: 17px; WIDTH: 50px" 
+            value=#FFFFFF><BR>上下渐变 <INPUT CHECKED name=jianbianyangshi 
+            type=radio><BR>斜向渐变 <INPUT name=jianbianyangshi type=radio> 
+            </SPAN><SPAN id=liti1 
+            style="DISPLAY: none"><B>&nbsp;<BR>立体基本参数</B><BR>后向伸展 <SELECT 
+            id=houxiangshenzhan style="WIDTH: 54px"><OPTION selected>20 
+              <SCRIPT>for(i=0;i<101;i++)document.write("<option>"+i)</SCRIPT>
+              </OPTION></SELECT><BR><BR>前向伸展 <SELECT id=qianxiangshenzhan 
+            style="WIDTH: 54px"><OPTION selected>0 
+              <SCRIPT>for(i=1;i<101;i++)document.write("<option>"+i)</SCRIPT>
+              </OPTION></SELECT><BR>偏移左边 <SELECT id=pianyizuobian 
+            style="WIDTH: 54px"><OPTION selected>0 
+              <SCRIPT>for(i=1;i<101;i++)document.write("<option>"+i)</SCRIPT>
+              </OPTION></SELECT><BR>偏移上边 <SELECT id=pianyishangbian 
+            style="WIDTH: 54px"><OPTION selected>0 
+              <SCRIPT>for(i=1;i<101;i++)document.write("<option>"+i)</SCRIPT>
+              </OPTION></SELECT><BR>立体颜色 <INPUT id=litiyanse 
+            onmousedown=colortab.style.left=event.x-50;colortab.style.top=event.y+this.offsetHeight;rndcolor(this.id) 
+            style="BORDER-BOTTOM: black 1px solid; BORDER-LEFT: black 1px solid; BORDER-RIGHT: black 1px solid; BORDER-TOP: black 1px solid; HEIGHT: 17px; WIDTH: 54px"><BR></SPAN><SPAN 
+            id=biankuang1 style="DISPLAY: none"><B>&nbsp;<BR>边框基本参数</B><BR>边框粗度 
+            <SELECT id=biankuangcudu style="WIDTH: 54px"><OPTION selected>1 
+              <SCRIPT>for(i=0;i<101;i++)document.write("<option>"+i)</SCRIPT>
+              </OPTION></SELECT><BR><BR>边框样式 <SELECT id=biankuangyangshi 
+            style="WIDTH: 54px"><OPTION 
+              selected>none<OPTION>dash<OPTION>dashdot<OPTION>dot<OPTION>longdash<OPTION>longdashdot<OPTION>shortdash<OPTION>shortdashdot<OPTION>shortdashdotdot<OPTION>longdashdotdot<OPTION>shortdot</OPTION></SELECT><BR>起点尖头 
+            <SELECT id=qidianjiantou style="WIDTH: 54px"><OPTION 
+              selected>none<OPTION>block<OPTION>classic<OPTION>diamond<OPTION>open<OPTION>oval</OPTION></SELECT><BR>终点尖头 
+            <SELECT id=zhongdianjiantou style="WIDTH: 54px"><OPTION 
+              selected>none<OPTION>block<OPTION>classic<OPTION>diamond<OPTION>open<OPTION>oval</OPTION></SELECT><BR>边框颜色 
+            <INPUT id=biankuangyanse 
+            onmousedown=colortab.style.left=event.x-50;colortab.style.top=event.y+this.offsetHeight;rndcolor(this.id) 
+            style="BORDER-BOTTOM: black 1px solid; BORDER-LEFT: black 1px solid; BORDER-RIGHT: black 1px solid; BORDER-TOP: black 1px solid; HEIGHT: 17px; WIDTH: 54px"><BR></SPAN><SPAN 
+            id=yinying1 style="DISPLAY: none"><B>&nbsp;<BR>阴影基本参数</B><BR>左右偏移 
+            <SELECT id=zuoyoupianyi style="WIDTH: 54px"> 
+              <SCRIPT>for(i=-50;i<51;i++)if(i!=5)document.write("<option>"+i);else document.write("<option selected>"+i)</SCRIPT>
+            </SELECT><BR>上下偏移 <SELECT id=shangxiapianyi style="WIDTH: 54px"> 
+              <SCRIPT>for(i=-50;i<51;i++)if(i!=5)document.write("<option>"+i);else document.write("<option selected>"+i)</SCRIPT>
+            </SELECT><BR>阴影颜色 <INPUT id=yinyingyanse 
+            onmousedown=colortab.style.left=event.x-50;colortab.style.top=event.y+this.offsetHeight;rndcolor(this.id) 
+            style="BORDER-BOTTOM: black 1px solid; BORDER-LEFT: black 1px solid; BORDER-RIGHT: black 1px solid; BORDER-TOP: black 1px solid; HEIGHT: 17px; WIDTH: 54px"><BR></SPAN><SPAN 
+            id=touming1 style="DISPLAY: none"><B>&nbsp;<BR>透明度设置</B><BR>透明系数 
+            <SELECT id=toumingxishu style="WIDTH: 54px"> 
+              <SCRIPT>for(i=0;i<101;i++)if(i!=50)document.write("<option>"+i);else document.write("<option selected>"+i)</SCRIPT>
+            </SELECT><BR>透明样式 <SELECT id=toumingyangshi 
+              style="WIDTH: 54px"><OPTION selected value=0>淡化所有<OPTION 
+              value=1>左右渐淡<OPTION value=2>圆形渐淡<OPTION 
+            value=3>矩形渐淡</OPTION></SELECT><BR></SPAN>
+            <CENTER><B>全局工具</B><BR><INPUT class=bon2 id=chexiaock onClick="if(youbiao>0){div1.innerHTML=chexiao[youbiao];youbiao-=1;fanchexiao1=2}" onmousemove='showhelp("快捷键Ctrl+Z")' type=button value=撤消><INPUT class=bon2 id=fanchexiaock onClick="if(youbiao<chexiao.length-fanchexiao1){youbiao+=fanchexiao1;fanchexiao1=1;div1.innerHTML=chexiao[youbiao];}" onmousemove='showhelp("快捷键Ctrl+Y")' type=button value=反撤消><BR><INPUT class=bon2 id=fangda onClick="for(i=0;i<div1.all.length;i++){try{div1.all[i].style.left=parseInt(div1.all[i].style.left)-5;div1.all[i].style.top=parseInt(div1.all[i].style.top)-5;div1.all[i].style.width=parseInt(div1.all[i].style.width)+10;div1.all[i].style.height=parseInt(div1.all[i].style.height)+10;}catch(e){}}" onmousemove='showhelp("快捷键Ctrl+↑")' type=button value=放大><INPUT class=bon2 id=suoxiao onClick="for(i=0;i<div1.all.length;i++){try{div1.all[i].style.left=parseInt(div1.all[i].style.left)+5;div1.all[i].style.top=parseInt(div1.all[i].style.top)+5;div1.all[i].style.width=parseInt(div1.all[i].style.width)-10;div1.all[i].style.height=parseInt(div1.all[i].style.height)-10;}catch(e){}}" onmousemove='showhelp("快捷键Ctrl+↓")' type=button value=缩小><BR><INPUT class=bon2 id=zuoyi onClick="for(i=0;i<div1.all.length;i++){try{div1.all[i].style.left=parseInt(div1.all[i].style.left)-10;}catch(e){}}" onmousemove='showhelp("快捷键←")' type=button value=左移><INPUT class=bon2 id=youyi onClick="for(i=0;i<div1.all.length;i++){try{div1.all[i].style.left=parseInt(div1.all[i].style.left)+10;}catch(e){}}" onmousemove='showhelp("快捷键→")' type=button value=右移><BR><INPUT class=bon2 id=shangyi onClick="for(i=0;i<div1.all.length;i++){try{div1.all[i].style.top=parseInt(div1.all[i].style.top)-10;}catch(e){}}" onmousemove='showhelp("快捷键↑")' type=button value=上移><INPUT class=bon2 id=xiayi onClick="for(i=0;i<div1.all.length;i++){try{div1.all[i].style.top=parseInt(div1.all[i].style.top)+10;}catch(e){}}" onmousemove='showhelp("快捷键↓")' type=button value=下移><BR><INPUT class=bon2 id=shiyunxing onclick='win1=window.open("","fanguoping1");win1.document.open();win1.document.write("<HTML xmlns:v>\n<HEAD>\n<META http-equiv=Content-Type content=text/html;charset=gb2312>\n<TITLE>文件名</TITLE>\n<META name=Gemeratpr content=VML图像画板>\n<META name=GemeratprHomePage content=http://tools.kqiqi.com/>\n<STYLE>\nv\\:*{behavior:url(#default#VML);}\n</STYLE>\n</HEAD>\n<BODY>\n"+div1.innerHTML+"\n</BODY>\n</HTML>");win1.document.close();win1.moveTo(0,0);win1.resizeTo(screen.availWidth,screen.availHeight)' onmousemove='showhelp("快捷键回车键")' type=button value=预览><INPUT class=bon2 id=esc onclick='savechexiao();div1.innerHTML="";poly1=null;thisobj=null;' onmousemove='showhelp("快捷键ESC")' type=button value=全部清除> 
+            </DIV></CENTER></CENTER></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE>
+<TABLE cellPadding=0 cellSpacing=0 id=colortab 
+style="BACKGROUND-COLOR: red; DISPLAY: none; HEIGHT: 100px; POSITION: absolute; WIDTH: 100px; Z-INDEX: 3000">
+  <TBODY>
+  <TR>
+    <TD id=colorid></TD></TR></TBODY></TABLE>
+<SCRIPT language=jscript>
+var bi=4    //定义当前使用的画笔工具，3为铅笔
+var color1='#000000',color2='#000000',size1=0  //定义缺剩的画笔颜色及画笔填充颜色和笔边粗度
+var xx=0,yy=0,zz=1000  //定义缺剩的X及Y坐标
+var isok=false  //区分画笔起点是否在DIV内，超出范围则无效
+var moveobj=null,ckleft=0,cktop=0,ckwid=0,ckhei=0,ckto=""  //被移动物件、调整大小物件的引用
+var poly1=null,oldvalue="",oldx=0,oldy=0  //为了完成记忆点，创建一个可折式线段
+var gaojiobj=null  //为了完成“高级”功能，绑定被修改对象
+var thisobj=null   //为了完成各种基本编辑功能，如“置前”“复制”“删除”等
+var zz2=1000          //为完成“置后”功能，zz2为负数
+var huxingtixing=false  //如果为false则ALERT（）提醒弧形使用高级修改，否则不提醒
+var chexiao=new Array(),youbiao=0,fanchexiao1=2  //定义一个存储撤消内容的数组以及位移游标,fanchexiao1为0时+2，否则+1
+function div1.onmousedown(){
+div1.setCapture();color1=huabiyanse.value;color2=huabibeijing.value;isok=true;size1=bibiancudu.options[bibiancudu.selectedIndex].text
+xx=event.x;yy=event.y;zz+=1
+for(i=0;i<huabi.length;i++){if(huabi[i].className=="bon1"){bi=i+1;break}}
+line1.strokecolor=color1;line1.strokeweight=size1;oval1.strokeweight=size1;oval1.strokecolor=color1
+oval1.fillcolor=color2;rect1.strokeweight=size1;rect1.strokecolor=color1
+rect1.fillcolor=color2;roundrect1.strokeweight=size1;roundrect1.strokecolor=color1
+roundrect1.fillcolor=color2;arc1.strokeweight=size1;arc1.strokecolor=color1
+arc1.fillcolor=color2;
+if(event.button==1){
+switch(bi){
+case 1:  //选移
+if(event.srcElement.parentElement.id=="div1"){moveobj=event.srcElement;ckleft=xx-parseInt(moveobj.style.left);cktop=yy-parseInt(moveobj.style.top)}
+break;
+case 2:  //调大小
+if(event.srcElement.parentElement.id=="div1"){moveobj=event.srcElement;
+ckleft=parseInt(moveobj.style.left);cktop=parseInt(moveobj.style.top);ckwid=moveobj.offsetWidth;ckhei=moveobj.offsetHeight}
+break;
+case 3:  //弧形
+arc1.style.left=event.x;arc1.style.top=event.y;arc1.style.width=0;arc1.style.height=0;arc1.style.display="";
+break;
+case 4:  //钢笔
+line1.style.left=event.x;line1.style.top=event.y;line1.to="0,0";line1.style.display=""
+break;
+case 5:  //记忆点
+if(poly1==null){
+oldx=xx;oldy=yy
+poly1=div1.appendChild(document.createElement("<v:polyline points='0 0 0 0' style='position:absolute;z-index:"+zz+";left:"+xx+";top:"+yy+";' strokecolor='"+color1+"' strokeweight='"+size1+"' fillcolor='"+color2+"'/>"))
+}
+if(oldx-tempx<1&&oldy-tempy<1)oldvalue=poly1.points.value.replace(/,/g,' ')
+break;
+case 6:  //圆形
+oval1.style.left=event.x;oval1.style.top=event.y;oval1.style.width=0;oval1.style.height=0;oval1.style.display=""
+break;
+case 7:  //长方形
+rect1.style.left=event.x;rect1.style.top=event.y;rect1.style.width=0;rect1.style.height=0;rect1.style.display=""
+break;
+case 8:  //圆矩形
+roundrect1.style.left=event.x;roundrect1.style.top=event.y;roundrect1.style.width=0;roundrect1.style.height=0;roundrect1.style.display=""
+break;
+case 9:  //文字
+wenzi1.style.left=event.x;wenzi1.style.top=event.y;wenzi1.style.display=""
+break;
+case 10:  //图片
+tupian1.style.left=event.x;tupian1.style.top=event.y;tupian1.style.display=""
+break;
+case 15:  //记忆点2
+oldx=xx;oldy=yy
+poly1=div1.appendChild(document.createElement("<v:line to='0,0' style='position:absolute;z-index:"+zz+";left:"+xx+";top:"+yy+";' strokecolor='"+color1+"' strokeweight='"+size1+"'/>"))
+}
+}}
+function div1.onmousemove(){
+tempx=event.x;tempy=event.y;temp1=0;temp2=0
+zuobiao.value=tempx-allform1.offsetLeft-8+","+parseInt(tempy-toptd1.offsetHeight-7)
+if(bi==5&&poly1!=null){   //记忆点
+if(oldx-tempx<0&&oldy-tempy<0)poly1.points.value=oldvalue+" "+(tempx-oldx)+" "+(tempy-oldy)
+}else if(bi==15&&poly1!=null){   //记忆点2
+poly1.to=(tempx-xx)+","+(tempy-yy)
+}
+if(event.button==1){
+switch(bi){
+case 1:  //选移
+if(moveobj!=null){moveobj.style.left=tempx-ckleft;moveobj.style.top=tempy-cktop}
+break;
+case 2:  //调大小
+if(moveobj!=null){
+if(moveobj.tagName!="line"){
+if(tempx>ckleft){moveobj.style.width=tempx-ckleft}else{moveobj.style.left=tempx;moveobj.style.width=ckleft-tempx}
+if(tempy>cktop){moveobj.style.height=tempy-cktop}else{moveobj.style.top=tempy;moveobj.style.height=cktop-tempy}
+}else{moveobj.to=parseInt(tempx-ckleft)+","+parseInt(tempy-cktop);if(ckto=="")ckto=parseInt(tempx-ckleft)+","+parseInt(tempy-cktop);}
+}
+break;
+case 3:  //弧形
+if(tempx-xx<0){arc1.style.left=tempx;arc1.style.width=(xx-tempx)}else{arc1.style.width=(tempx-xx)}
+if(tempy-yy<0){arc1.style.top=tempy;arc1.style.height=(yy-tempy)}else{arc1.style.height=(tempy-yy)}
+break;
+case 4:  //钢笔
+line1.to=(tempx-xx)+","+(tempy-yy)
+break;
+case 6:  //圆形
+if(tempx-xx<0){oval1.style.left=tempx;oval1.style.width=(xx-tempx)}else{oval1.style.width=(tempx-xx)}
+if(tempy-yy<0){oval1.style.top=tempy;oval1.style.height=(yy-tempy)}else{oval1.style.height=(tempy-yy)}
+break;
+case 7:  //长方形
+if(tempx-xx<0){rect1.style.left=tempx;rect1.style.width=(xx-tempx)}else{rect1.style.width=(tempx-xx)}
+if(tempy-yy<0){rect1.style.top=tempy;rect1.style.height=(yy-tempy)}else{rect1.style.height=(tempy-yy)}
+break;
+case 8:  //圆矩形
+if(tempx-xx<0){roundrect1.style.left=tempx;roundrect1.style.width=(xx-tempx)}else{roundrect1.style.width=(tempx-xx)}
+if(tempy-yy<0){roundrect1.style.top=tempy;roundrect1.style.height=(yy-tempy)}else{roundrect1.style.height=(tempy-yy)}
+break;
+}}}
+function div1.onmouseup(){
+savechexiao()
+document.releaseCapture();if(isok==false){forerr();return false};isok=false;menu1.style.display='none'
+tempx=event.x;tempy=event.y;divwid=div1.offsetWidth;divhei=div1.offsetHeight
+if(tempx>allform1.offsetLeft+divwid+5||tempx<allform1.offsetLeft+5){forerr();return alert("X坐标越界")}
+if(tempy>allform1.offsetTop+toptd1.offsetHeight+divhei+5||tempy<allform1.offsetTop+toptd1.offsetHeight+5){forerr();return alert("Y坐标越界")}
+if(event.button==2&&bi==5&&poly1!=null){
+poly1.points.value=oldvalue;oldvalue="";poly1=null;
+}else if(event.srcElement.parentElement.id=="div1"&&event.button==2){menu1.style.left=tempx;menu1.style.top=tempy;menu1.style.display='';thisobj=event.srcElement}
+else if(event.button==2&&bi==15&&poly1!=null){
+poly1.outerHTML="";poly1=null
+}
+if(event.button==1){
+switch(bi){
+case 1:  //选移
+if(moveobj!=null&&parseInt(moveobj.style.left)<allform1.offsetLeft+5){forerr();return alert("被移动物体X1超出界限")}
+if(moveobj!=null&&parseInt(moveobj.style.left)+moveobj.offsetWidth-2>allform1.offsetLeft+divwid+5){forerr();return alert("被移动物体X2超出界限")}
+if(moveobj!=null&&parseInt(moveobj.style.top)<allform1.offsetTop+toptd1.offsetHeight+5){forerr();return alert("被移动物体Y1超出界限")}
+if(moveobj!=null&&parseInt(moveobj.style.top)+moveobj.offsetHeight-2>allform1.offsetTop+toptd1.offsetHeight+divhei+3){forerr();return alert("被移动物体Y2超出界限")}
+moveobj=null
+break;
+case 2:  //调大小
+moveobj=null;ckto=""
+break;
+case 3:  //弧形
+arc1.style.display='none';
+if (Math.abs(tempx-xx)<=1||Math.abs(tempy-yy)<=1)return false
+div1.appendChild(document.createElement("<v:arc startangle='-200' endangle='30' style='position:absolute;z-index:"+zz+";left:"+arc1.style.left+";top:"+arc1.style.top+";width:"+arc1.style.width+";height:"+arc1.style.height+";' strokecolor='"+color1+"' strokeweight='"+size1+"' fillcolor='"+color2+"'/>"))
+if(huxingtixing==false){huxingtixing=true;alert("弧形已绘出,调整弧度 startangle='-200' endangle='30' 请使用“高级”")}
+break;
+case 4:  //钢笔
+line1.style.display="none"
+if (Math.abs(tempx-xx)<=2&&Math.abs(tempy-yy)<=2)return false
+div1.appendChild(document.createElement("<v:line style='position:absolute;z-index:"+zz+";left:"+xx+";top:"+yy+";' to='"+(event.x-xx)+","+(event.y-yy)+"' strokecolor='"+color1+"' strokeweight='"+size1+"'/>"))
+break;
+case 6:  //圆形
+oval1.style.display="none"
+if (Math.abs(tempx-xx)<=1||Math.abs(tempy-yy)<=1)return false
+div1.appendChild(document.createElement("<v:oval style='position:absolute;z-index:"+zz+";left:"+oval1.style.left+";top:"+oval1.style.top+";width:"+oval1.style.width+";height:"+oval1.style.height+";' strokecolor='"+color1+"' strokeweight='"+size1+"' fillcolor='"+color2+"'/>"))
+break;
+case 7:  //长方形
+rect1.style.display="none"
+if (Math.abs(tempx-xx)<=1||Math.abs(tempy-yy)<=1)return false
+div1.appendChild(document.createElement("<v:rect style='position:absolute;z-index:"+zz+";left:"+rect1.style.left+";top:"+rect1.style.top+";width:"+rect1.style.width+";height:"+rect1.style.height+";' strokecolor='"+color1+"' strokeweight='"+size1+"' fillcolor='"+color2+"'/>"))
+break;
+case 8:  //圆矩形
+roundrect1.style.display="none"
+if (Math.abs(tempx-xx)<=1||Math.abs(tempy-yy)<=1)return false
+div1.appendChild(document.createElement("<v:roundrect style='position:absolute;z-index:"+zz+";left:"+roundrect1.style.left+";top:"+roundrect1.style.top+";width:"+roundrect1.style.width+";height:"+roundrect1.style.height+";' strokecolor='"+color1+"' strokeweight='"+size1+"' fillcolor='"+color2+"'/>"))
+break;
+case 11:  //渐变
+if(event.srcElement.parentElement.id=="div1"){
+if(!usejianbian.checked){event.srcElement.fillcolor=tianchongbeijing.value}else{
+temp1=jianbianyangshi[0].checked?'gradient':'gradientradial'
+temp2=event.srcElement.innerHTML.replace(/<v\:fill .*<\/v:fill>/gi,'')
+event.srcElement.innerHTML=temp2+"<v:fill color='"+jianbianse2.value+"' color2='"+jianbianse1.value+"' type='"+temp1+"'/>"
+}}
+break;
+case 12:  //立体
+if(event.srcElement.parentElement.id=="div1"){
+temp2=event.srcElement.innerHTML.replace(/<v\:extrusion .*<\/v:extrusion>/gi,'')
+event.srcElement.innerHTML=temp2+"<v:Extrusion on='t' color='"+litiyanse.value+"' backdepth='"+houxiangshenzhan.options[houxiangshenzhan.selectedIndex].text+"' foredepth='"+qianxiangshenzhan.options[qianxiangshenzhan.selectedIndex].text+"' rotationangle='"+pianyishangbian.options[pianyishangbian.selectedIndex].text+","+pianyizuobian.options[pianyizuobian.selectedIndex].text+"'/>"
+}
+break;
+case 13:  //边框
+if(event.srcElement.parentElement.id=="div1"){
+temp2=event.srcElement.innerHTML.replace(/<v\:stroke .*<\/v:stroke>/gi,'')
+event.srcElement.innerHTML=temp2+"<v:Stroke dashstyle='"+biankuangyangshi.options[biankuangyangshi.selectedIndex].text+"' startarrow='"+qidianjiantou.options[qidianjiantou.selectedIndex].text+"' endarrow='"+zhongdianjiantou.options[zhongdianjiantou.selectedIndex].text+"'/>"
+event.srcElement.strokecolor=biankuangyanse.value
+biankuangcudu.options[biankuangcudu.selectedIndex].text=='0'?event.srcElement.stroked=false:event.srcElement.strokeweight=biankuangcudu.options[biankuangcudu.selectedIndex].text
+}
+break;
+case 14:  //高级
+if(event.srcElement.parentElement.id=="div1"){
+gaojiobj=event.srcElement
+txt2.value=event.srcElement.outerHTML.replace(/>/g,">\n").replace(/ = /g,"=").replace(/\: /g,":").replace(/\; /g,";");gaoji1.style.left=event.x;gaoji1.style.top=event.y;gaoji1.style.display=''
+}
+break;
+case 16:  //文字化
+if(event.srcElement.parentElement.id=="div1"){
+str1=prompt("请输入一段用于图形轨迹填充的文字(推荐使用英文),字大小依据笔边粗度,字颜色请使用高级直接添加<v:fill></v:fill>修改","")
+if(!str1)return false;if(str1=='')return false
+if(str1.indexOf("'")!=-1)return alert("输入的文字中不可含有 ' 单引号")
+temp2=event.srcElement.innerHTML.replace(/<v\:path .*<\/v:path>/gi,'').replace(/<v\:textpath .*<\/v:textpath>/gi,'')
+parseInt(bibiancudu.options[bibiancudu.selectedIndex].text)<10?str11=10:str11=bibiancudu.options[bibiancudu.selectedIndex].text
+event.srcElement.innerHTML=temp2+"<v:path textpathok='True'/>\n<v:textpath on='True' style='font-size:"+str11+";' string='"+str1+"'/>"
+}
+break;
+case 17:  //阴影
+if(event.srcElement.parentElement.id=="div1"){
+temp2=event.srcElement.innerHTML.replace(/<v\:shadow .*<\/v:shadow>/gi,'')
+event.srcElement.innerHTML=temp2+"<v:shadow offset='"+zuoyoupianyi.options[zuoyoupianyi.selectedIndex].text+"px,"+shangxiapianyi.options[shangxiapianyi.selectedIndex].text+"px' color='"+yinyingyanse.value+"' on='true'/>"
+}
+break;
+case 18:  //透明
+if(event.srcElement.parentElement.id=="div1"){
+event.srcElement.style.filter="alpha(opacity="+toumingxishu.options[toumingxishu.selectedIndex].text+",style="+toumingyangshi.options[toumingyangshi.selectedIndex].value+")"
+}
+}}}
+function savechexiao(){
+youbiao+=1;chexiao[youbiao]=div1.innerHTML
+}
+function rndcolor(theobjis){
+colortab.style.display="";colorid.innerHTML="";str1="<table cellspacing=0 cellpadding=0>";
+for(r=0;r<10;r++){str1+="<tr>"
+for(i=0;i<10;i++){
+tempcolor1=Math.round(Math.random()*255).toString(16)+Math.round(Math.random()*255).toString(16)+Math.round(Math.random()*255).toString(16);while(tempcolor1.length<6){tempcolor1+=Math.round(Math.random()*9)}
+str1+="<td style='width:10;height:10;background-color:#"+tempcolor1+";' onclick="+theobjis+".value='#"+tempcolor1+"';"+theobjis+".style.color='#"+tempcolor1+"';colortab.style.display='none'></td>"
+}str1+="</tr>"}
+colorid.innerHTML=str1+"<tr><td colspan=20 align=center bgcolor='white'><input type='button' class=bon2 value='取消' onclick=colortab.style.display='none'></td></tr></table>"
+}
+function document.onmouseup(){
+if(event.srcElement.tagName=="BUTTON"){
+event.srcElement.blur();div1.focus();if(event.srcElement.className=="bon1"||event.button!=1)return true;
+for(i=0;i<huabi.length;i++)huabi[i].className="bon2"
+event.srcElement.className="bon1";
+if(huabi[10].className=="bon1"){tianchong1.style.display='';tianchongbeijing.value=tianchongbeijing.value==''?huabibeijing.value:tianchongbeijing.value}else{tianchong1.style.display='none';}
+if(huabi[11].className=="bon1"){liti1.style.display='';litiyanse.value=litiyanse.value==''?huabibeijing.value:litiyanse.value}else{liti1.style.display='none';}
+if(huabi[12].className=="bon1"){biankuang1.style.display='';biankuangyanse.value=biankuangyanse.value==''?huabiyanse.value:biankuangyanse.value}else{biankuang1.style.display='none';}
+if(huabi[16].className=="bon1"){yinying1.style.display='';yinyingyanse.value=yinyingyanse.value==''?huabiyanse.value:yinyingyanse.value}else{yinying1.style.display='none';}
+if(huabi[17].className=="bon1"){touming1.style.display='';}else{touming1.style.display='none';}
+if(poly1!=null){   //清除记忆点
+if(poly1.tagName=="polyline"){poly1.points.value=oldvalue;oldvalue="";poly1=null;}else{poly1.outerHTML="";oldvalue="";poly1=null;}
+}
+wenzi1.style.display='none';tupian1.style.display='none';gaoji1.style.display='none';menu1.style.display='none'
+}}
+function forerr(){
+if(moveobj!=null&&bi==1){moveobj.style.left=xx-ckleft;moveobj.style.top=yy-cktop;ckleft=0;cktop=0;moveobj=null}
+if(moveobj!=null&&bi==2){
+if(moveobj.tagName!="line"){moveobj.style.left=ckleft;moveobj.style.top=cktop;moveobj.style.width=ckwid;moveobj.style.height=ckhei;}else{moveobj.to=ckto;}
+ckleft=0;cktop=0;ckwid=0;ckhei=0;ckto="";moveobj=null
+}
+line1.style.display='none';oval1.style.display='none';rect1.style.display='none';roundrect1.style.display='none';arc1.style.display='none'
+}
+function charuwenzi(){   //插入文字
+if(txt1.value=="")return alert('请先输入文字，在点击插入')
+wenzibiankuang.checked==true?thebiankuang="border:1 solid black;":thebiankuang=""
+var newtxt=document.createElement("<span style='position:absolute;z-index:"+zz+";left:"+xx+";top:"+yy+";color:"+wenziyanse.value+";background-color:"+wenzibeijing.value+";font-size:"+wenzidaxiao.options[wenzidaxiao.selectedIndex].text+";font-family:"+wenziziti.options[wenziziti.selectedIndex].text+";"+thebiankuang+"'></span>");newtxt.innerText=txt1.value
+div1.appendChild(newtxt);wenzi1.style.display='none'
+}
+function charutupian(){   //插入图片
+if(file1.value=="")return alert('请先输入图片路径(HTTP://或FILE:///)格式，在点击插入')
+if(file1.value.indexOf("'")>-1)return alert("图片地址不可以含有 ' 单引号")
+str1=""
+if(heibai.checked==true){str1=" grayscale='true'"}else{
+if(duibi.options[duibi.selectedIndex].text!='默认对比度')str1=" gain='"+duibi.options[duibi.selectedIndex].text+"'"
+if(secai.options[secai.selectedIndex].text!='默认色彩度')str1=" gamma='"+secai.options[secai.selectedIndex].text+"'"
+if(liangdu.options[liangdu.selectedIndex].text!='默认亮度')str1=" blacklevel='"+liangdu.options[liangdu.selectedIndex].text+"'"
+}
+var newtxt=document.createElement("<v:Image style='position:absolute;z-index:"+zz+";left:"+xx+";top:"+yy+";width:100;height:100' src='"+file1.value+"'"+str1+"/>");
+div1.appendChild(newtxt);tupian1.style.display='none'
+}
+function document.onkeydown(){   //实现各种快捷键
+if(event.srcElement.tagName!='TEXTAREA'){
+event.ctrlKey&&event.keyCode==90?chexiaock.click():
+event.ctrlKey&&event.keyCode==89?fanchexiaock.click():
+event.ctrlKey&&event.keyCode==38?fangda.click():
+event.ctrlKey&&event.keyCode==40?suoxiao.click():
+!event.ctrlKey&&event.keyCode==37?zuoyi.click():
+!event.ctrlKey&&event.keyCode==38?shangyi.click():
+!event.ctrlKey&&event.keyCode==39?youyi.click():
+!event.ctrlKey&&event.keyCode==40?xiayi.click():
+!event.ctrlKey&&event.keyCode==27?esc.click():
+!event.ctrlKey&&event.keyCode==13?shiyunxing.click():str1=1
+}}
+</SCRIPT>
+
+<DIV id=showdiv onmousemove='this.style.display="none"' 
+style="BACKGROUND-COLOR: #fff7ff; BORDER-BOTTOM: green 1px solid; BORDER-LEFT: #cccccc 1px solid; BORDER-RIGHT: green 1px solid; BORDER-TOP: #cccccc 1px solid; DISPLAY: none; FONT-SIZE: 12px; LEFT: 0px; PADDING-BOTTOM: 2px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px; PADDING-TOP: 2px; POSITION: absolute; TABLE-LAYOUT: fixed; TOP: 0px; white-SPACE: nowrap; Z-INDEX: 5000"></DIV>
+<SCRIPT>
+var oldtext="abc",colors1=new Array("#FFECD5","#FFF7FF","#FFFFEB","white","#F5FFEB","#EEFAFF","#FFFFEE","#EDFFFC"),dingshi=null
+function showhelp(thetext){
+try{
+if(thetext!=oldtext){oldtext=thetext;showdiv.innerHTML=thetext;showdiv.style.backgroundColor=colors1[Math.round(Math.random()*colors1.length)]};
+if(event.x>document.body.offsetWidth/2){
+showdiv.style.left=event.x-(oldtext.length*10);showdiv.style.top=event.y+document.body.scrollTop+18;
+}else{showdiv.style.left=event.x-3;showdiv.style.top=event.y+document.body.scrollTop+18;}
+showdiv.style.display=''}catch(e){}
+}
+</SCRIPT>
+</CENTER></CENTER></CENTER></CENTER></CENTER>
+</BODY></HTML>

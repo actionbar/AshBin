@@ -1,0 +1,121 @@
+<html xmlns:rdl>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<script src="rdl_properties.js"></script>
+<base target="_self">
+</head>
+<body>
+
+<script>
+
+//collFriendProperties=new Array();
+//collFriendDeclarations=new Array();
+//collFriendAtRules=new Array();
+//collFriendElements=new Array();
+//collFriendClasses=new Array();
+
+collFriendProperties=new Array(
+'filter','zoom','cursor'
+);
+
+//collIE40=new Array();
+//collIE50=new Array();
+//collIE55=new Array();
+//collIE60=new Array();
+
+collIE50=new Array(
+'A','ACRONYM','ADDRESS','APPLET','AREA','B','BASE','BASEFONT','BGSOUND','BIG','BLOCKQUOTE','BODY','BUTTON','CAPTION','CENTER','CITE','CODE','COL','COLGROUP','COMMENT','currentStyle','CUSTOM','DD','DEL','DFN','DIR','DIV','DL','DT','EM','EMBED','FIELDSET','FONT','FORM','FRAME','FRAMESET','HEAD','Hn','HR','HTML','I','IFRAME','IMG','INPUT type=button','INPUT type=checkbox','INPUT type=file','INPUT type=hidden','INPUT type=image','INPUT type=password','INPUT type=radio','INPUT type=reset','INPUT type=submit','INPUT type=text','INS','ISINDEX','KBD','LABEL','LEGEND','LI','LINK','LISTING','MAP','MARQUEE','MENU','nextID','NOBR','NOFRAMES','NOSCRIPT','OBJECT','OL','OPTION','P','PLAINTEXT','PRE','Q','RT','RUBY','runtimeStyle','S','SAMP','SCRIPT','SELECT','SMALL','SPAN','STRIKE','STRONG','style','SUB','SUP','TABLE','TBODY','TD','TEXTAREA','TFOOT','TH','THEAD','TITLE','TR','TT','U','UL','VAR','WBR','XML','XMP'
+);
+
+collIE55=new Array(
+'defaults'
+);
+
+sStyle=
+'<style>\n'+
+'#idDiv{width:80%;height:120px;padding:6px;background-color:buttonshadow;background-image:url(images/rdl_can.jpg);background-repeat:no-repeat;color:#FFFFFF;}\n'+
+'#idCodeDiv{width:80%;padding:4px;font-family:verdana,tahoma;margin:12px 0px 0px 0px;background-color:#EEEEEE;font-weight:bold;}\n'+
+'input{padding:1px 4px 0px 4px;letter-spacing:1px;}\n'+
+'<\/style>\n';
+
+sScript=
+'<script>\n'+
+'var collBehaviorID = new Array();\n'+
+'var collLI = new Array ();\n'+
+'var countLI = 0;\n'+
+'function rdl_attachBehavior() {\n'+
+'collLI = document.all.tags ("LI");\n'+
+'countLI = collLI.length;\n'+
+'for (i=0; i < countLI; i++) {\n'+
+'var iID = collLI[i].addBehavior ("rdl_behavior_demo.htc");\n'+
+'if (iID)	collBehaviorID[i] = iID;\n'+
+'}\n'+
+'document.all("idCodeDiv").innerText="behavior : url(rdl_behavior_demo.htc) ;"\n'+
+'}\n'+
+'\n'+
+'function rdl_detachBehavior() {\n'+
+'for (i=0; i < countLI; i++) collLI[i].removeBehavior (collBehaviorID [i]);\n'+
+'document.all("idCodeDiv").innerText="";\n'+
+'}\n'+
+'<\/script>\n';
+
+sCode=
+'<ul>\n'+
+'<li>我的寂寞比这座城市的罪恶还深<\/li>\n'+
+'<li>我爱长发飘飘<\/li>\n'+
+'<li>菊花茶<\/li>\n'+
+'<li>那时花开<\/li>\n'+
+'<\/ul><br>\n'+
+'&nbsp;<input type=button value=" 绑定行为 " onclick="rdl_attachBehavior();">\n'+
+'&nbsp;<input type=button value=" 撤销绑定 " onclick="rdl_detachBehavior();">\n'+
+'<br>\n'+
+'<div id=idCodeDiv><\/div>\n';
+
+iWinWidth=380;
+
+iWinHeight=280;
+
+//bRunCode=false;
+
+//bElements=false;
+
+</script>
+
+<div id=idContent>
+
+<div id=idContentTitle><span id=idTitleName>behavior</span>版本：IE5+专有属性　继承性：无</div>
+
+<div class=cssColumnTitle>语法：</div>
+<div>
+<b>behavior : </b><b>url ( </b><i>url</i><b> ) </b> | <b>url ( </b><i>#objID</i> <b> ) </b> | <b> url ( </b><i>#default#behaviorName</i><b> ) </b>
+</div>
+
+<div class=cssColumnTitle>取值：</div>
+<table>
+<tr><td nowrap><b> url ( </b><i>url</i><b> ) </b></td><td nowrap><b>:</b></td><td>使用绝对或相对<i> url </i>地址指定DHTML行为组件（.htc）</td></tr>
+<tr><td nowrap><b> url ( </b><i>#objID</i> <b> ) </b></td><td nowrap><b>:</b></td><td>使用二进制实现(作为<b> ActiveX&reg; </b>控件)的行为。此处的<i> #objID </i>为<b> object </b>对象的<b> id </b>属性值</td></tr>
+<tr><td nowrap><b> url ( </b><i>#default#behaviorName</i><b> ) </b></td><td nowrap><b>:</b></td><td>IE的默认行为。由行为的名称标识(<i> #behaviorName </i>)指定</td></tr>
+</table>
+
+<div class=cssColumnTitle>说明：</div>
+<div>
+设置或检索对象的DHTML行为。多个行为之间用空格隔开。<br>
+当多个附加到同一要素的行为发生冲突时，其结果确决于行为应用于要素的顺序。后一个行为的优先权高于前一个行为。例如，假如多个行为用于设置对象颜色，其结果将会由最后一个应用到要素的行为决定。同样的规则适用于不同行为提供的属性、事件、方法所发生的名称冲突。<br>
+可以使用<b> addBehavior </b>方法动态的将行为附着到对象。<br>
+此属性对于<b> currentStyle </b>对象而言是只读的。对于其他对象而言是可读写的。<br>
+务必注意使用样式表(CSS)的<b> behavior </b>属性内联定义或使用<b> addBehavior </b>方法附着的行为不会在对象从文档树中移除时被自动分离。而在文档中的样式表规则定义的行为会在对象从文档树中移除时被自动分离。<br>
+
+对应的脚本特性为<b> behavior </b>。
+</div>
+
+<div class=cssColumnTitle>示例：</div>
+<div id=idSimpleCode>
+p { behavior: url(#default#download); }<br>div { behavior: url(fly.htc) url(shy.htc); }<br>div { behavior: url(#myObject); }
+</div>
+
+</div>
+</body>
+</html>
+
+<!-- Part of RDL(TM) - Written by Rain1977 
+HomeSite: http://www.dhtmlet.com  E-Mail: dhtmlet@hotmail.com -->

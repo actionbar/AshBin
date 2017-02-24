@@ -1,0 +1,47 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>动网论坛代码分析之——嵌套查询的使用</title>
+<style type="text/css">
+<!--
+body {
+	font-size: 10.4pt;
+	line-height: 22px;
+}
+-->
+</style>
+</head>
+
+<body bgcolor="eeeeee" leftmargin="20" marginwidth="20">
+<p><strong>动网论坛代码分析之——嵌套查询的使用</strong></p>
+<hr>
+<p> 在动网论坛中，用户登录以后，论坛菜单下方会多出两条链接，即：“我发布的主题”和“我参与的主题”。前者的查询简单一些，只需要查询登录用户发布的主题就行，可以写成“Select 
+  主题 贴子表 where 作者=登录用户名”就行了，但后一条就麻烦一些了。这里假使主题贴和回复贴都是在一个数据表中，每条记录只用一个字段区分开来是主题贴和回复贴，我就是这样做的。我们知道，通常情况下，发布回复的时候，是可以省略标题的，假使我们如前一条一样搜索的话，得出的搜索结果中是没有标题这一项的，这样就无法显示出来，所以必须显示该回复对对应的贴子的主题。这个查询又是怎么来做的呢？<br>
+  我们先来看一看动网的代码：<br>
+  <br>
+  &quot;select top 200 * from topic where topicid in (select top 200 rootid from 
+  &quot;&amp;NowUseBBS&amp;&quot; where postuserid=&quot;&amp;userid&amp;&quot; 
+  order by announceid desc) order by topicid desc&quot;<br>
+  <br>
+  这个查询中为什么有小括号呢？是什么意思？且听在下继续分解。<br>
+  <br>
+  我们一般用到的查询都是单层查询，而上面这段查询却是两层，它要求服务器在处理最终查询工作之前先生成一个结果，然后根据当前的查询结查再进一步继续下面的查询工作，也就是说，先执行小括号内的查询（我们称之为子查询），然后服务器才开始执行外面的查询，返回正确的结果，这种查询称为嵌套查询。上面的这个查询，第一层查询是查登录用户在本版发布过的所有贴子（含回复），然后再查这些贴子的主题。<br>
+  <br>
+  除了上面这个功用之外，嵌套查询还有什么好处呢？如果要求在搜索的匹配条件中使用统计函数（这在分析统计数据中经常用到），可以使用嵌套查询。比如说，现在要求查询所有销售量大于平均销售量的书的代号，如果写成下面的查询方式：<br>
+  <br>
+  SELECT title_id,qty //title_id为书号，qty为销售量<br>
+  From sales<br>
+  Where qty&gt;avg(qty) //avg为平均数函数，avg(qty)即为平均销售量<br>
+  <br>
+  服务器将会提示错误，因为，在where子句中不许直接对本SELECT列表的数据使用统计函数。通过在where子句中使用嵌套查询可以解决这个问题，语法如下：<br>
+  <br>
+  SELECT title_id,qty<br>
+  FROM sales<br>
+  WHERE qty&gt;<br>
+  　　　　(SELECT avg(qty) FROM sales)<br>
+  <br>
+  嵌套查询还有很多好处，这里就不细讲了 <br>
+</p>
+</body>
+</html>

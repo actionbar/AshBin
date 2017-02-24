@@ -1,0 +1,181 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>Asp编码优化技巧8则 </title>
+<style type="text/css">
+<!--
+body {
+	font-size: 10.4pt;
+	line-height: 22px;
+}
+-->
+</style>
+</head>
+
+<body bgcolor="eeeeee" leftmargin="20" marginwidth="20">
+<p><strong>Asp编码优化技巧8则 </strong><br>
+  <br>
+  <br>
+  ASP(Active Server Page)是Microsoft公司推出的基于PWS(Personal Web Server)&amp;IIS(Internet 
+  Information Server)平台的、基于ISAPI(InternetServiceAPI)原理的动态网页开发技术，目前日趋成熟完善。在这里仅就代码优化进行一些简单讨论。 
+</p>
+<hr>
+<p> 1、<strong>声明VBScript变量 </strong><br>
+  在ASP中，对vbscript提供了强劲的支持，能够无缝集成vbscript的函数、方法，这样给扩展ASP的现有功能提供了很大便利。由于ASP中已经模糊了变量类型的概念，所以，在进行ASP与vbscript交互的过程中，很多程序员也惯于不声明vbscript的变量，这样加重了服务器的解析负担，进而影响服务器的响应请求速度。 
+  <br>
+  鉴于此，我们可以象在VB中强制用户进行变量声明一样在vbscript中强制用户进行变量声明。实现方法是在ASP程序行首放置&lt;% option explicit%&gt;。 
+</p>
+<p>2、<strong>对URL地址进行编码 </strong><br>
+  在我们使用asp动态生成一个带参数URL地址并进行跳转时，在IE中解析很正常，但在NetScrape浏览时却有错误如下： <br>
+  HTTP Error 400 <br>
+  400 Bad Request <br>
+  Due to malformed syntax, the request could not be understood by the server. 
+  <br>
+  The client should not repeat the request without modifications. <br>
+  解决方法是对生成的URL参数使用ASP内置server对象的URLencode方法进行URL编码，例子如下： <br>
+  &lt;% <br>
+  URL=&quot;xur.asp&quot; <br>
+  var1=&quot;username=&quot; &amp; server.URLencode(&quot;xur&quot;) <br>
+  var2=&quot;&amp;company=&quot; &amp; server.URLencode(&quot;xurstudio&quot;) 
+  <br>
+  var3=&quot;&amp;phone=&quot; &amp; server.URLencode(&quot;021-53854336-186&quot;) 
+  <br>
+  response.redirect URL &amp; &quot;?&quot; &amp; var1 &amp; var2 &amp; var3 <br>
+  %&gt; </p>
+<p>3、<strong>清空对象 </strong><br>
+  当使用完对象后，首先使用Close方法来释放对象所占用的系统资源；然后设置对象值为“nothing”释放对象占用内存。当年，我就是在一张页面上创建了百余个没有清空对象的记录集而崩溃了我的IIS 
+  。下面的代码使用数据库内容建立一个下拉列表。代码示例如下： <br>
+  <br>
+  &lt;% myDSN=&quot;DSN=xur;uid=xur;pwd=xur&quot; <br>
+  mySQL=&quot;select * from authors where AU_ID&lt;100&quot; <br>
+  set conntemp=server.createobject(&quot;adodb.connection&quot;) <br>
+  conntemp.open myDSN <br>
+  set rstemp=conntemp.execute(mySQL) <br>
+  if rstemp.eof then <br>
+  response.write &quot;数据库为空&quot; <br>
+  response.write mySQL <br>
+  conntemp.close <br>
+  set conntemp=nothing <br>
+  response.end <br>
+  　end if%&gt; <br>
+  &lt;%do until rstemp.eof %&gt; <br>
+  &lt;% <br>
+  rstemp.movenext <br>
+  loop <br>
+  rstemp.close <br>
+  set rstemp=nothing <br>
+  conntemp.close <br>
+  set conntemp=nothing <br>
+  %&gt; <br>
+</p>
+<p>4、<strong>使用字符串建立SQL查询 </strong><br>
+  使用字符串来建立查询并不能加快服务器的解析速度，相反，它还会增加服务器的解析时间。但在这里仍然推荐使用字符串代替简单的查询语句来进行查询。这样做的好处是，可以迅速发现程序问题所在，从而便利高效地生成程序。示例如下： 
+  <br>
+  <br>
+  &lt;%mySQL= &quot;&quot;select * &quot; <br>
+  mySQL= mySQL &amp; &quot;from publishers&quot; <br>
+  mySQL= mySQL &amp; &quot;where state='NY'&quot; <br>
+  response.write mySQL <br>
+  set rstemp=conntemp.execute(mySQL) <br>
+  rstemp.close <br>
+  set rstemp=nothing <br>
+  %&gt; <br>
+</p>
+<p>5、<strong>使用case进行条件选择 </strong><br>
+  在进行条件选择的时候，尽量使用case语句，避免使用if语句。使用case语句，可以使程序流程化，执行起来也比if语句来的快。示例如下： <br>
+  <br>
+  &lt;% <br>
+  　　FOR i = 1 TO 1000 <br>
+  　　 n = i <br>
+  Response.Write AddSuffix(n) &amp; &quot;<br>
+  &quot;<br>
+  　　NEXT <br>
+  　　%&gt; <br>
+  　　&lt;% <br>
+  　　Function AddSuffix(num) <br>
+  numpart = RIGHT(num,1) <br>
+  SELECT CASE numpart <br>
+  CASE &quot;1&quot; <br>
+  IF InStr(num,&quot;11&quot;) THEN <br>
+  num = num &amp; &quot;th&quot; <br>
+  ELSE <br>
+  num = num &amp; &quot;st&quot; <br>
+  END IF <br>
+  CASE &quot;2&quot; <br>
+  IF InStr(num,&quot;12&quot;) THEN <br>
+  num = num &amp; &quot;th&quot; <br>
+  ELSE <br>
+  num = num &amp; &quot;nd&quot; <br>
+  END IF <br>
+  CASE &quot;3&quot; <br>
+  IF InStr(num,&quot;13&quot;) THEN <br>
+  num = num &amp; &quot;th&quot; <br>
+  ELSE <br>
+  num = num &amp; &quot;rd&quot; <br>
+  END IF <br>
+  CASE &quot;4&quot; <br>
+  num = num &amp; &quot;th&quot; <br>
+  CASE ELSE <br>
+  num = num &amp; &quot;th&quot; <br>
+  END SELECT <br>
+  AddSuffix = num <br>
+  　　END FUNCTION <br>
+  %&gt; </p>
+<p> <br>
+  6、<strong>使用adovbs.inc文件中定义的常量打开记录集 </strong><br>
+  打开记录集时，可以定义记录集打开的游标类型和锁定类型。在adovbs.inc文件中定义了一些常量来定义这些类型。adovbs.inc文件保存在\inetpub\iissamples\IISamples目录下面。下面列举几个常用的游标类型和锁定类型。 
+  <br>
+  游标类型：adOpenFowardOnly游标只能向前；adOpenKeyset游标可向前或者向后，如一用户添加记录，新记录不会出现在记录集中；adOpenDynamic游标动态随意；adOpenStatic记录集不对其它用户造成的记录修改有所反映。 
+  <br>
+  锁定类型：adLockReadOney不能修改记录集中的记录；adLockPessimistic在编辑一条记录时锁定它；adLockOptimstic调用记录集Update方法时才锁定记录；adLockBatchOpeimstic记录只能成批更新。 
+  <br>
+  &lt;!--#INCLUDE VIRTUAL=&quot;/ADOVBS.INC&quot; --&gt; <br>
+  &lt;% <br>
+  connectme=&quot;DSN=xur;uid=xur;pwd=xur&quot; <br>
+  sqltemp=&quot;select * from publishers where name='xur'&quot; <br>
+  set rstemp=Server.CreateObject(&quot;adodb.Recordset&quot;) <br>
+  rstemp.open sqltemp, connectme, adOpenStatic，adLockOptimstic <br>
+  response.write rstemp.recordcount &amp; &quot; records in<br>
+  &quot; &amp; sqltemp <br>
+  rstemp.close <br>
+  set rstemp=nothing <br>
+  %&gt; </p>
+<p>7、<strong>避免在使用global.asa文件中进行对象定义 </strong><br>
+  由于global.asa文件中的内容可以为站点内所有文件引用，无疑，在global.asa文件中进行对象定义可以省去很多重复工作。比如在global.asa中的application_onstart函数中进行如下定义： 
+  <br>
+  &lt;%SUB application_onstart <br>
+  set application(&quot;theCONN&quot;)=server.createobject(&quot;adodb.connection&quot;) 
+  <br>
+  END SUB %&gt;; <br>
+  这样就可以在站点任何代码中做类似引用： <br>
+  &lt;% <br>
+  mySQL=&quot;select * from publishers where state='xur' <br>
+  set rstemp=application(&quot;theconn&quot;).execute(mySQL) <br>
+  %&gt; <br>
+  同样地，可以在session_onstart函数中创建记录集对象 <br>
+  &lt;%SUB session_onstart <br>
+  set session(&quot;rstemp&quot;)=server.createobject(&quot;adodb.recordset&quot;) 
+  <br>
+  END SUB %&gt; <br>
+  然后在站点也面中进行如下引用： <br>
+  &lt;% <br>
+  mySQL=&quot;select * from publishers where state='xur' <br>
+  set session(&quot;rstemp&quot;)=conntemp.execute(mySQL) <br>
+  %&gt; <br>
+  但这样做的同时也有很大的负面影响，由于Application和session变量都只有在关闭网站的时候才释放占用的资源，所以session参数会浪费大量不必要内存，而且此时application变量成为服务器性能的瓶颈。 
+  <br>
+  解决方法：建立定义对象asp页面，在需要进行调用这些对象的页面上，引入这张asp页面。假设定义对象的asp页面名称为define.asp，则只要在对应asp页面中加入以下语句就能引入该页面。 
+  <br>
+  &lt;!--#INCLUDE VIRTUAL=&quot;/define.asp&quot; --&gt; <br>
+  在进行页面引进时，最好在待引进的asp文件中不要包含&lt;%@LANGUAGE=&quot;VBSCRIPT&quot;%&gt;语句。因为在asp文件中，只能有一句由@来定义的脚本解析语言。</p>
+<p> <strong>8、安全防护 </strong><br>
+  asp提供了很好的代码保护机制，所有的asp代码都在服务器端执行而只返回给客户端代码执行结果。即便这样，在老版本的IIS中还可以在文件名后面家::$DATA来查看asp的源代码，这已经属于Web 
+  Server安全范畴不在本文讨论范围内。下面提出两点简单的安全注意事项。 <br>
+  　　虽然在asp中建议引入文件以inc作为扩展名，在这里仍建议以asp作为引文件的扩展名。当这些代码在安全机制不好的Web Server上运行时，只需在地址栏上输入引入文件的地址(inc为扩展名)，就可以浏览该引入文件的内容，这是由于在Web 
+  Server上，如果没有定义好解析某类型（比如inc）的动态连接库时，该文件以源码方式显示。 <br>
+  不要把数据库文件放在网站结构内部，这样，当恶意人士获取数据库路径后，就可以轻易获取该数据库，进而肆意更改数据库内容。比较好的做法是，为数据库建立DSN（Date 
+  Source Name），而在进行数据库访问时直接访问该DSN。 </p>
+<p></p>
+</body>
+</html>

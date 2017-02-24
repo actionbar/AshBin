@@ -1,0 +1,44 @@
+<html xmlns:rdl>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<script src="rdl_selectors.js"></script>
+<base target="_self">
+</head>
+<body>
+
+<script>
+
+collFriendSelectors=new Array(
+'Pseudo Selectors','Type Selectors','Universal Selector','Descendant Selectors','Child Selectors','Attribute Selectors','ID Selectors','Adjacent Sibling Selectors','Grouping'
+);
+
+</script>
+
+<div id=idContent>
+
+<div id=idContentTitle><span id=idTitleName>Class Selectors</span>　版本：CSS1　 兼容性：IE4+ NS4+</div>
+
+<div class=cssColumnTitle>语法：</div>
+<div>
+<b>E.</b><i>className</i><b> { </b><i>sRules</i><b> } </b> 
+</div>
+
+<div class=cssColumnTitle>说明：</div>
+<div>
+类选择符。在HTML中可以使用此种选择符。其效果等同于<b>E [ class ~= </b><i>className</i><b> ] </b>。请参阅属性选择符(<a href="s_attributeselectors.html"> Attribute Selectors </a>)。<br>
+在IE5+，可以为对象的<i> class </i>属性(特性)指定多于一个值(<i> className </i>)，其方法是指定用空格隔开的一组样式表的类名。例如：&lt;div class="class1 class2"&gt;。
+</div>
+
+<div class=cssColumnTitle>示例：</div>
+<div id=idSimpleCode>
+div.note { font-size:14px; } <br>/* 所有class属性值等于（包含）"note"的div对象字体尺寸为14px */
+<br>&nbsp;<br>
+.dream { font-size:14px; } <br>/* 所有class属性值等于（包含）"note"的对象字体尺寸为14px */
+</div>
+
+</div>
+</body>
+</html>
+
+<!-- Part of RDL(TM) - Written by Rain1977 
+HomeSite: http://www.dhtmlet.com  E-Mail: rainersu@hotmail.com -->

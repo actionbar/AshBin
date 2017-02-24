@@ -1,0 +1,151 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="../c3.css" />
+<title>XSD 属性</title>
+</head>
+<body class="xml">
+<div id="wrapper">
+<div id="header">
+<a href="http://e.v-get.com/w3cschool/" style="float:left;">W3CSchool 在线教程</a>
+<div class="q g"><script type="text/javascript">var cpro_id="u1163355"</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div>
+<div id="navfirst">
+<ul id="menu">
+<li id="h"><a href="../h.html">HTML教程</a></li>
+<li id="x"><a href="../x.html">XML教程</a></li>
+<li id="b"><a href="../b.html">浏览器脚本</a></li>
+<li id="s"><a href="../s.html">服务器脚本</a></li>
+<li id="d"><a href="../d.html">dot net教程</a></li>
+<li id="m"><a href="../m.html">多媒体教程</a></li>
+<li id="w"><a href="../w.html">建站手册</a></li>
+</ul>
+</div><div id="navsecond">
+<div id="course">
+<h2>Schema 教程</h2>
+<ul>
+<li><a href="http://e.v-get.com/w3cschool/">XSD 首页</a></li>
+<li><a href="schema_intro.html">XSD 简介</a></li>
+<li><a href="schema_why.html">XSD 为何使用</a></li>
+<li><a href="schema_howto.html">XSD 如何使用</a></li>
+<li><a href="schema_schema.html">XSD &lt;schema&gt;</a></li>
+</ul>
+<h2>简单的类型</h2>
+<ul>
+<li><a href="schema_simple.html">XSD 元素</a></li>
+<li><a href="schema_simple_attributes.html">XSD 属性</a></li>
+<li><a href="schema_facets.html">XSD 限定</a></li>
+</ul>
+<h2>复杂的类型</h2>
+<ul>
+<li><a href="schema_complex.html">XSD 元素</a></li>
+<li><a href="schema_complex_empty.html">XSD 空元素</a></li>
+<li><a href="schema_complex_elements.html">XSD 仅含元素</a></li>
+<li><a href="schema_complex_text.html">XSD 仅含文本</a></li>
+<li><a href="schema_complex_mixed.html">XSD 混合内容</a></li>
+<li><a href="schema_complex_indicators.html">XSD 指示器</a></li>
+<li><a href="schema_complex_any.html">XSD &lt;any&gt;</a></li>
+<li><a href="schema_complex_anyattribute.html" title="">XSD &lt;anyAttribute&gt;</a></li>
+<li><a href="schema_complex_subst.html">XSD 元素替换</a></li>
+<li><a href="schema_example.html">XSD 实例</a></li>
+</ul>
+<h2>数据类型</h2>
+<ul>
+<li><a href="schema_dtypes_string.html">XSD 字符串</a></li>
+<li><a href="schema_dtypes_date.html">XSD 日期</a></li>
+<li><a href="schema_dtypes_numeric.html">XSD 数值</a></li>
+<li><a href="schema_dtypes_misc.html">XSD 杂项</a></li>
+<li><a href="schema_summary.html">XSD 总结</a></li>
+</ul>
+<h2>参考手册</h2>
+<ul>
+<li><a href="schema_elements_ref.html">XSD 参考手册</a></li>
+<li><a href="http://www.w3.org/2001/03/webdata/xsv/">XSD 验证器</a></li>
+</ul>
+</div>
+<div id="selected">
+<h2>建站手册</h2>
+<ul>
+<li><a href="../site/">网站构建</a></li>
+<li><a href="../w3c/">万维网联盟</a></li>
+<li><a href="http://e.v-get.com/w3c/">W3CSchool 教程</a></li>
+<li><a href="../quality/">网站品质</a></li>
+<li><a href="../semweb/">语义网</a></li>
+<li><a href="../hosting/">网站主机</a></li>
+</ul>
+<h2><a href="http://e.v-get.com/w3c/" class="f13">W3CSchool 教程</a></h2><div class="a120x90"><script type="text/javascript">var cpro_id="u1210867";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div></div>
+</div>
+<div id="maincontent">
+<h1>XSD 属性</h1>
+<div id="tpn">
+<ul class="prenext">
+<li class="pre"><a href="schema_simple.html">上一页</a></li>
+<li class="next"><a href="schema_facets.html">下一页</a></li>
+</ul>
+</div>
+<div id="intro">
+<p><strong>所有的属性均作为简易类型来声明。</strong></p>
+</div>
+<div>
+<h2>什么是属性？</h2>
+<p>简易元素无法拥有属性。假如某个元素拥有属性，它就会被当作某种复合类型。但是属性本身总是作为简易类型被声明的。</p>
+</div>
+<div>
+<h2>如何声明属性？</h2>
+<h3>定义属性的语法是：</h3>
+<pre>&lt;xs:attribute name=&#34;xxx&#34; type=&#34;yyy&#34;/&gt;</pre>
+<p>在此处，xxx 指属性名称，yyy 则规定属性的数据类型。XML Schema 拥有很多内建的数据类型。</p>
+<h3>最常用的类型是：</h3>
+<ul>
+	<li>xs:string</li>
+	<li>xs:decimal</li>
+	<li>xs:integer</li>
+	<li>xs:boolean</li>
+	<li>xs:date</li>
+	<li>xs:time</li>
+</ul>
+<h3>实例</h3>
+<p>这是带有属性的 XML 元素：</p>
+<pre>&lt;lastname lang=&#34;EN&#34;&gt;Smith&lt;/lastname&gt;</pre>
+<p>这是对应的属性定义：</p>
+<pre>&lt;xs:attribute name=&#34;lang&#34; type=&#34;xs:string&#34;/&gt;</pre>
+</div>
+<div>
+<h2>属性的默认值和固定值</h2>
+<p>属性可拥有指定的默认值或固定值。</p>
+<p>当没有其他的值被规定时，默认值就会自动分配给元素。</p>
+<p>在下面的例子中，缺省值是 &#34;EN&#34;：</p>
+<pre>&lt;xs:attribute name=&#34;lang&#34; type=&#34;xs:string&#34; default=&#34;EN&#34;/&gt;</pre>
+<p>固定值同样会自动分配给元素，并且您无法规定另外的值。</p>
+<p>在下面的例子中，固定值是 &#34;EN&#34;：</p>
+<pre>&lt;xs:attribute name=&#34;lang&#34; type=&#34;xs:string&#34; fixed=&#34;EN&#34;/&gt;</pre>
+</div>
+<div>
+<h2>可选的和必需的属性</h2>
+<p>在缺省的情况下，属性是可选的。如需规定属性为必选，请使用 &#34;use&#34; 属性：</p>
+<pre>&lt;xs:attribute name=&#34;lang&#34; type=&#34;xs:string&#34; use=&#34;required&#34;/&gt;</pre>
+</div>
+<div>
+<h2>对内容的限定</h2>
+<p>当 XML 元素或属性拥有被定义的数据类型时，就会向元素或属性的内容添加限定。</p>
+<p>假如 XML 元素的类型是 &#34;xs:date&#34;，而其包含的内容是类似 &#34;Hello World&#34; 的字符串，元素将不会 (通过）验证。</p>
+<p>通过 XML schema，您也可向您的 XML 元素及属性添加自己的限定。这些限定被称为 facet (编者注：意为(多面体的)面，可译为限定面）。您会在下一节了解到更多有关 facet 的知识。</p>
+</div>
+<div  id="bpn">
+<ul class="prenext">
+<li class="pre"><a href="schema_simple.html">上一页</a></li>
+<li class="next"><a href="schema_facets.html">下一页</a></li>
+</ul>
+</div>
+</div>
+<div id="sidebar">
+<div class="rs"></div>
+<div id="tools">
+<h5 id="tools_reference"><a href="schema_elements_ref.html">XML Schema 参考手册</a></h5>
+</div>
+<div class="a120x600"><script type="text/javascript">var cpro_id="u1293136";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div><div class="b"></div>
+</div>
+</body>
+</html>

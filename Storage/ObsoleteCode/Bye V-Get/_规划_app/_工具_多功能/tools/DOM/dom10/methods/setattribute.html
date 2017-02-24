@@ -1,0 +1,127 @@
+<html xmlns:rdl>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<script src="rdl_method.js"></script>
+<base target="_self">
+</head>
+<body>
+
+<script>
+//collFriendObjects=new Array();
+//collFriendProperties=new Array();
+//collFriendMethods=new Array();
+//collFriendEvents=new Array();
+//collFriendCollections=new Array();
+
+collFriendMethods=new Array(
+'createAttribute','getAttribute','mergeAttributes','removeAttribute','clearAttributes'
+);
+
+collFriendCollections=new Array(
+'attributes'
+);
+
+//collIE40=new Array();
+//collIE50=new Array();
+//collIE55=new Array();
+//collIE60=new Array();
+
+collIE50=new Array(
+'runtimeStyle','CUSTOM','currentStyle'
+);
+
+collIE40=new Array(
+'A','ADDRESS','APPLET','AREA','B','BASE','BASEFONT','BGSOUND','BIG','BLOCKQUOTE','BODY','BR','BUTTON','CAPTION','CENTER','CITE','CODE','COL','COLGROUP','COMMENT','DD','DFN','DIR','DIV','DL','DT','EM','EMBED','FIELDSET','FONT','FORM','FRAME','FRAMESET','HEAD','Hn','HR','HTML','I','IFRAME','IMG','INPUT type=button','INPUT type=checkbox','INPUT type=file','INPUT type=hidden','INPUT type=image','INPUT type=password','INPUT type=radio','INPUT type=reset','INPUT type=submit','INPUT type=text','KBD','LABEL','LEGEND','LI','LINK','LISTING','MAP','MARQUEE','MENU','META','nextID','NOBR','OBJECT','OL','OPTION','P','PLAINTEXT','PRE','S','SAMP','SCRIPT','SELECT','SMALL','SPAN','STRIKE','STRONG','style','SUB','SUP','TABLE','TBODY','TD','TEXTAREA','TFOOT','TH','THEAD','TITLE','TR','TT','U','UL','userProfile','VAR','WBR','XMP'
+);
+
+sStyle=
+'#idFont{text-decoration:underline;}\n'+
+'#idCodeDiv{width:100%;padding:4px;font-family:verdana,tahoma;margin:12px 0px 0px 0px;background-color:#EEEEEE;font-weight:bold;}\n';
+
+sScript=
+'<script>\n'+
+'var oCodeDiv;\n'+
+'var oFont;\n'+
+'var oSel;\n'+
+'\n'+
+'function window.onload(){\n'+
+'oCodeDiv=document.all("idCodeDiv");\n'+
+'oFont=document.all("idFont");\n'+
+'oSel=document.all("idSel");\n'+
+'oCodeDiv.innerText=oFont.outerHTML;\n'+
+'}\n'+
+'\n'+
+'function doSetAttribute(){\n'+
+'with (oSel) {if (options[selectedIndex].value=="") return;\n'+
+'oFont.setAttribute(options[selectedIndex].innerText,options[selectedIndex].value);};\n'+
+'oCodeDiv.innerText=oFont.outerHTML;\n'+
+'}\n'+
+'\n'+
+'<\/script>\n';
+
+sCode=
+'<input type=button id=idFont onmouseout="this.style.color=\'black\';" value="这里有一些文字">\n'+
+'<br><br><br>\n'+
+'<select id="idSel" onchange="doSetAttribute();">\n'+
+'<option value="" style="font-weight:bold;">---请选择属性---\n'+
+'<option value="font-weight:bold">style\n'+
+'<option value="this.style.color=\'blue\'">onmouseover\n'+
+'<option value="rdl">name\n'+
+'<option value="text">type\n'+
+'<\/select>\n'+
+'<br><br><div id=idCodeDiv></div>\n';
+
+iWinWidth=420;
+
+iWinHeight=300;
+
+</script>
+
+<div id=idContent>
+
+<div id=idContentTitle><span id=idTitleName>setAttribute</span>版本：DOM1　返回值：无</div>
+
+<div class=cssColumnTitle>语法：</div>
+<div>
+<i>object</i><b> . setAttribute ( </b><i>sName</i><b> , </b><i>vValue</i><b> , </b><i>iFlags</i><b> ) </b>
+</div>
+
+<div class=cssColumnTitle>参数：</div>
+<table>
+<tr><td nowrap><i> sName </i></td><td nowrap><b>:</b></td>
+<td><b>必选项</b>。字符串(String)。指定属性的名称。</td></tr>
+<tr><td nowrap><i> vValue </i></td><td nowrap><b>:</b></td>
+<td><b>必选项</b>。要赋给属性的值。可以是任何需要的变量类型。</td></tr>
+<tr><td nowrap><i> iFlags </i></td><td nowrap><b>:</b></td>
+<td><b>可选项</b>。整数值(Integer)。<b>0</b> | <span class=cssDefault><b>1</b></span>
+<table>
+<tr><td nowrap><b> 0 </b></td><td nowrap><b>:</b></td>
+<td>当属性被设置的时候，对象任何已有的同名属性设置都会被覆盖，而不会考虑它们的大小写。</td></tr>
+<tr><td nowrap><b> 1 </b></td><td nowrap><b>:</b></td>
+<td><b>默认值</b>。执行严格考虑字母大小写的属性设置。假如此方法的<i> iFlags </i>参数设置为<b> 1 </b>，则执行<i> iFlags </i>参数设置为<b> 0 </b>的<a href="getattribute.html"> getAttribute </a>方法时，满足<i> sAttrName </i>指定的特性名称不一定能被找到。</td></tr>
+</table>
+</td></tr>
+</table>
+
+<div class=cssColumnTitle>返回值：</div>
+<table>
+<tr><td nowrap>
+无
+</td></tr>
+</table>
+
+<div class=cssColumnTitle>说明：</div>
+<div>
+设置指定的属性值。<br>
+假如指定的属性尚不存在，则此方法会为对象添加属性并赋值。<br>
+请务必小心拼写属性名称。假如你设置<i> iFlags </i>参数为<b> 1 </b>，但是<i> sName </i>参数的字母大小写不符合您所期望赋值的属性名称，则此方法的执行结果会是新的属性被建立并赋值。<br>
+假如对象有多个名字一样但字母大小写不同的属性，并且<i> iFlags </i>参数被设为<b> 0 </b>，那么只有其中第一个被建立的那一个会被此方法获取。而其他的则会被忽略。<br>
+当使用此方法获取<a href="../properties/class.html"> CLASS </a>属性的值时，需要将<i> sName </i>参数指定为<a href="../properties/classname.html"> className </a>。这是<a href="../properties/class.html"> CLASS </a>属性所对应的 DHTML 特性。
+</div>
+
+</div>
+</body>
+</html>
+
+<!-- Part of RDL(TM) - Written by Rain1977 
+HomeSite: http://www.dhtmlet.com  E-Mail: dhtmlet@hotmail.com -->

@@ -1,0 +1,246 @@
+<HEAD><TITLE>周周共享论坛--『数 据 库』浏览：怎样将Varbinary数据类型的数据转换成varchar型？</TITLE>
+<META charset=gb2312 http-equiv=Content-Type content=text/html;>
+<META content=动网先锋,动网论坛,dvbbs name=keywords>
+<STYLE type=text/css>
+A:link,A:active,A:visited{TEXT-DECORATION:none ;Color:#000000}
+A:hover{TEXT-DECORATION: underline;Color:#4455aa}
+
+BODY{
+FONT-SIZE: 12px;
+COLOR: #000000;
+FONT-FAMILY:  宋体;
+background-color: #FFFFFF; 
+scrollbar-face-color: #DEE3E7;
+scrollbar-highlight-color: #FFFFFF;
+scrollbar-shadow-color: #DEE3E7;
+scrollbar-3dlight-color: #D1D7DC;
+scrollbar-arrow-color:  #006699;
+scrollbar-track-color: #EFEFEF;
+scrollbar-darkshadow-color: #98AAB1;
+}
+TD{
+font-family: 宋体;
+font-size: 12px;
+line-height: 15px;
+}
+th
+{
+background-image: url(skin/default/bg1.gif);
+background-color: #4455aa;
+color: white;
+font-size: 12px;
+font-weight:bold;
+}
+td.TableTitle2
+{
+background-color: #E4E8EF;
+}
+td.TableBody1
+{
+background-color: #FFFFFF;
+}
+td.TableBody2
+{
+background-color: #E4E8EF;
+}
+td.TopDarkNav
+{
+background-image: url(skin/default/topbg.gif);
+}
+td.TopLighNav
+{
+background-image: url(skin/default/bottombg.gif);
+}
+td.TopLighNav1
+{
+background-image: url(skin/default/tabs_m_tile.gif);
+}
+td.TopLighNav2
+{
+background-color:#FFFFFF
+}
+.tableBorder1
+{
+width:97%;
+border: 1px; 
+background-color: #6595D6;
+}
+.tableBorder2
+{
+width:97%;
+border: 1px #DEDEDE solid; 
+background-color: #EFEFEF;
+}
+
+#TableTitleLink A:link, #TableTitleLink A:visited, #TableTitleLink A:active {
+	COLOR: #FFFFFF;
+	TEXT-DECORATION: none;
+}
+#TableTitleLink A:hover {
+	COLOR: #FFFFFF;
+	TEXT-DECORATION: underline;}
+
+input,select,Textarea{
+font-family:Tahoma,Verdana,宋体; font-size: 12px; line-height: 15px;}
+}
+.normalTextSmall 
+{ 
+    font-size : 11px;
+    color : #000000; 
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+</STYLE>
+
+
+
+
+
+<STYLE id=defaultPopStyle type=text/css>.cPopText {  background-color: #F8F8F5;color:#000000; border: 1px #000000 solid;font-color: font-size: 12px; padding-right: 4px; padding-left: 4px; height: 20px; padding-top: 2px; padding-bottom: 2px; filter: Alpha(Opacity=0)}</STYLE>
+</head>
+<BODY leftMargin=0 topMargin=0>
+<DIV class=cPopText id=dypopLayer style="Z-INDEX: 1000; FILTER: Alpha(); LEFT: 159px; POSITION: absolute; TOP: 231px"></DIV>
+<TABLE style="BORDER-RIGHT: #6595d6 1px solid; BORDER-TOP: #6595d6 0px solid; BORDER-LEFT: #6595d6 1px solid; WIDTH: 97%; BORDER-BOTTOM: #6595d6 0px solid" cellSpacing=0 cellPadding=0 align=center>
+<TBODY>
+<TR>
+<TD width="100%">
+<TABLE cellSpacing=0 cellPadding=0 width="100%" align=center border=0>
+<TBODY>
+<TR>
+<TD class=TopDarkNav height=9></TD></TR>
+<TR>
+<TD class=TopLighNav2 height=70>
+<TABLE width="100%" align=center border=0>
+<TBODY>
+<TR>
+<TD align=left width="25%"><A href="http://www.pigtwo.com/"><IMG src="143_files/LOGO[1].gif" border=0></A></TD>
+<TD align=middle width="65%">
+
+
+
+
+
+
+<TABLE height=31 cellSpacing=0 cellPadding=0 width=88 background="143_files/stat_counter[1].gif" border=0>
+<TBODY>
+<TR>
+<TD width=24 height=5></TD>
+<TD width=57 height=5></TD>
+<TD width=7 height=5></TD></TR>
+<TR>
+<TD height=16></TD>
+<TD vAlign=top align=middle height=16>
+<MARQUEE style="FONT-SIZE: 12px; LINE-HEIGHT: 15px" scrollAmount=3 scrollDelay=100 behavior=loop><A style="COLOR: #ffffff; TEXT-DECORATION: none" href="http://www.pigtwo.com/count/index.asp" target=_blank><FONT face="Arial, Verdana, san-serif" color=#407526>总访问量: 41378 &nbsp;今日访问: 407 &nbsp;昨日访问: 507 &nbsp;您的访量: </FONT></A></MARQUEE></TD>
+<TD height=16></TD></TR>
+<TR>
+<TD height=10></TD>
+<TD height=10></TD>
+<TD height=10></TD></TR></TBODY></TABLE></TD>
+<TD style="LINE-HEIGHT: 15pt" align=right width="10%"><A href="#"><SPAN style="CURSOR: hand" onclick="">加入收藏</SPAN></A> <BR><A href="http://www.pigtwo.com/forum/mailto:v_lucky@163.com">联系我们</A> <BR><A href="http://www.pigtwo.com/forum/boardhelp.asp">新手上路</A> </TD></TD></TR></TBODY></TABLE></TD></TR>
+<TR>
+<TD class=TopLighNav height=9></TD></TR>
+<TR>
+<TD class=TopLighNav1 vAlign=center height=22>&nbsp;&nbsp; <A href="http://www.pigtwo.com/forum/cookies.asp?action=online&amp;userid=42">上线</A> <IMG src="143_files/navspacer[1].gif" align=absMiddle> <A href="http://www.pigtwo.com/forum/login.asp">重登陆</A> <IMG src="143_files/navspacer[1].gif" align=absMiddle> <A href="http://www.pigtwo.com/forum/usermanager.asp">用户控制面板</A> <IMG src="143_files/navspacer[1].gif" align=absMiddle> <A href="http://www.pigtwo.com/forum/query.asp?boardid=14">搜索</A> <IMG src="143_files/navspacer[1].gif" align=absMiddle> <A href="http://www.pigtwo.com/forum/boardstat.asp?boardid=14">论坛状态</A> <IMG src="143_files/navspacer[1].gif" align=absMiddle> <A href="http://www.pigtwo.com/forum/boardhelp.asp?boardid=14">帮助</A> <IMG src="143_files/navspacer[1].gif" align=absMiddle> <A href="http://www.pigtwo.com/forum/logout.asp">退出</A> </TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE><BR>
+<TABLE cellSpacing=1 cellPadding=3 width="97%" align=center border=0>
+<TBODY>
+<TR>
+<TD width="65%">&gt;&gt; 欢迎 <B>ugvanxk</B> [ <A href="">发短信</A> :: <A href="http://www.pigtwo.com/forum/topicwithme.asp?s=2">发表的主题</A> :: <A href="http://www.pigtwo.com/forum/topicwithme.asp?s=1">参与的主题</A> :: <A href="http://www.pigtwo.com/forum/dispuser.asp?id=42&amp;boardid=14&amp;action=permission">我能做什么</A> ] </TD>
+<TD align=right width="35%"><IMG src="143_files/msg_no_new_bar[1].gif"> <A href="http://www.pigtwo.com/forum/usersms.asp?action=inbox">我的收件箱</A> (<FONT color=gray>0 新</FONT>) </TD></TR></TBODY></TABLE>
+<TABLE class=tableBorder2 cellSpacing=1 cellPadding=3 align=center>
+<TBODY>
+<TR>
+<TD vAlign=center height=25><IMG src="143_files/Forum_nav[1].gif" align=absMiddle> <A href="http://www.pigtwo.com/forum/index.asp">周周共享论坛</A> → <A href="http://www.pigtwo.com/forum/list.asp?boardid=14">『数 据 库』</A> → 浏览：怎样将Varbinary数据类型的数据转换成varchar型？ <A name=top></A></TD></TD></TR></TBODY></TABLE><BR>
+<TABLE cellSpacing=0 cellPadding=0 width="97%" align=center border=0>
+<TBODY>
+<TR>
+<TD vAlign=center align=left width="30%">&nbsp; <A href="http://www.pigtwo.com/forum/announce.asp?BoardID=14"><IMG alt=发表一个新主题 src="http://www.pigtwo.com/forum/pic/post.gif" border=0></A>&nbsp; <A href="http://www.pigtwo.com/forum/vote.asp?BoardID=14"><IMG alt="" src="http://www.pigtwo.com/forum/pic/newpoll.gif" border=0 dypop="发表一个新投票"></A>&nbsp; <A href="http://www.pigtwo.com/forum/reannounce.asp?BoardID=14&amp;id=391&amp;star=1"><IMG alt=回复主题 src="http://www.pigtwo.com/forum/pic/newreply1.gif" border=0></A> </TD>
+<TD vAlign=center align=right width="70%">您是本帖的第 <B>8</B> 个阅读者<A href="http://www.pigtwo.com/forum/go.asp?BoardID=14&amp;sid=391"><IMG height=12 alt=浏览上一篇主题 src="http://www.pigtwo.com/forum/pic/prethread.gif" width=52 border=0></A>&nbsp; <A href=""><IMG height=12 alt=刷新本主题 src="http://www.pigtwo.com/forum/pic/refresh.gif" width=40 border=0></A> &nbsp; <A href="http://www.pigtwo.com/forum/?BoardID=14&amp;replyID=391&amp;id=391&amp;star=1&amp;skin=1"><IMG height=12 alt=树形显示贴子 src="http://www.pigtwo.com/forum/pic/treeview.gif" width=40 border=0></A>　<A href="http://www.pigtwo.com/forum/go.asp?BoardID=14&amp;sid=391&amp;action=next"><IMG height=12 alt=浏览下一篇主题 src="http://www.pigtwo.com/forum/pic/nextthread.gif" width=52 border=0></A> </TD></TR></TBODY></TABLE>
+<TABLE class=tableborder1 cellSpacing=1 cellPadding=0 align=center>
+<TBODY>
+<TR align=middle>
+<TD vAlign=center align=left width="100%" height=25>
+<TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+<TBODY>
+<TR>
+<TH vAlign=center align=left width="73%" height=25>&nbsp;* 贴子主题</B>： 怎样将Varbinary数据类型的数据转换成varchar型？</TH>
+<TH align=right width="37%"><A onclick="" href="#"><IMG height=16 alt=保存该页为文件 src="http://www.pigtwo.com/forum/pic/saveas.gif" width=16 align=absMiddle border=0></A>&nbsp;
+</OBJECT><A href="http://www.pigtwo.com/forum/report.asp?BoardID=14&amp;id=391"><IMG alt=报告本帖给版主 src="http://www.pigtwo.com/forum/pic/report.gif" border=0></A>&nbsp; <A href="http://www.pigtwo.com/forum/printpage.asp?BoardID=14&amp;id=391"><IMG alt=显示可打印的版本 src="http://www.pigtwo.com/forum/pic/printpage.gif" border=0></A>&nbsp; <A href="http://www.pigtwo.com/forum/pag.asp?BoardID=14&amp;id=391"><IMG alt=把本贴打包邮递 src="http://www.pigtwo.com/forum/pic/pag.gif" border=0></A>&nbsp; <A href="http://www.pigtwo.com/forum/favadd.asp?BoardID=14&amp;id=391"><IMG alt=把本贴加入论坛收藏夹 src="http://www.pigtwo.com/forum/pic/fav_add.gif" border=0></A>&nbsp; <A href="http://www.pigtwo.com/forum/sendpage.asp?BoardID=14&amp;id=391"><IMG alt=发送本页面给朋友 src="http://www.pigtwo.com/forum/pic/emailtofriend.gif" border=0></A>&nbsp; <A href="#"><SPAN style="CURSOR: hand" onclick=""><IMG height=15 alt=把本贴加入IE收藏夹 src="http://www.pigtwo.com/forum/pic/fav_add1.gif" width=15 border=0></A>&nbsp; </SPAN></TH></TR></TBODY></TABLE></TD></TR></TBODY></TABLE>
+<TABLE class=tableborder1 style="TABLE-LAYOUT: fixed; WORD-BREAK: break-all" cellSpacing=1 cellPadding=5 align=center>
+<TBODY>
+<TR>
+<TD class=tablebody1 vAlign=top width=175>
+<TABLE cellSpacing=0 cellPadding=4 width="100%">
+<TBODY>
+<TR>
+<TD style="FILTER: glow(color=#9898BA,strength=2)" vAlign=center width=*>&nbsp;<A name=862><FONT color=#990000><B>ugvanxk</B></FONT></A> </TD>
+<TD vAlign=center width=25><IMG alt=帅哥哟，离线，有人找我吗？ src="http://www.pigtwo.com/forum/pic/ofMale.gif"></TD>
+<TD vAlign=center width=16></TD></TR></TBODY></TABLE>&nbsp;&nbsp;<IMG height=32 src="http://www.pigtwo.com/forum/pic/Image1.gif" width=32><BR>&nbsp;&nbsp;<IMG src="http://www.pigtwo.com/forum/pic/level10.gif"><BR>&nbsp;&nbsp;等级：版主<BR>&nbsp;&nbsp;文章：168<BR>&nbsp;&nbsp;积分：441<BR>&nbsp;&nbsp;注册：2002-11-2<BR></TD>
+<TD class=tablebody1 vAlign=top width=*>
+<TABLE width="100%">
+<TBODY>
+<TR>
+<TD width=*><A href=""><IMG alt=给ugvanxk发送一个短消息 src="http://www.pigtwo.com/forum/pic/message.gif" border=0></A>&nbsp;<A href="http://www.pigtwo.com/forum/friendlist.asp?action=addF&amp;myFriend=ugvanxk" target=_blank><IMG alt=把ugvanxk加入好友 src="http://www.pigtwo.com/forum/pic/friend.gif" border=0></A>&nbsp;<A href="http://www.pigtwo.com/forum/dispuser.asp?id=42" target=_blank><IMG alt=查看ugvanxk的个人资料 src="http://www.pigtwo.com/forum/pic/profile.gif" border=0></A>&nbsp;<A href="http://www.pigtwo.com/forum/queryResult.asp?stype=1&amp;nSearch=3&amp;keyword=ugvanxk&amp;BoardID=14&amp;SearchDate=ALL" target=_blank><IMG alt="" src="http://www.pigtwo.com/forum/pic/find.gif" border=0 dypop="搜索ugvanxk在『数 据 库』的所有贴子"></A>&nbsp;<A href="http://www.pigtwo.com/forum/mailto:jsqmail@163.com"><IMG alt=点击这里发送电邮给ugvanxk src="http://www.pigtwo.com/forum/pic/email.gif" border=0></A>&nbsp;<A href="http://www.pigtwo.com/forum/reannounce.asp?BoardID=14&amp;replyID=862&amp;id=391&amp;star=1&amp;reply=true"><IMG alt=引用回复这个贴子 src="http://www.pigtwo.com/forum/pic/reply.gif" border=0></A>&nbsp;<A href="http://www.pigtwo.com/forum/reannounce.asp?BoardID=14&amp;replyID=862&amp;id=391&amp;star=1"><IMG alt=回复这个贴子 src="http://www.pigtwo.com/forum/pic/reply_a.gif" border=0></A></TD>
+<TD width=50><B>楼顶</B></TD></TR>
+<TR>
+<TD bgColor=#6595d6 colSpan=2 height=1></TD></TR></TBODY></TABLE>
+<BLOCKQUOTE><IMG alt=发贴心情 src="http://www.pigtwo.com/forum/face/face1.gif" border=0>&nbsp;<FONT style="FONT-SIZE: 9pt; LINE-HEIGHT: 15pt"><B>怎样将Varbinary数据类型的数据转换成varchar型？</B><BR><BR>有一个段是varbinary型，有一条记录存放的内容为0x06555755565A5A5B595F5C5C5C41434142464647454B4848484D4F4D4EB2B2B3
+<P></P>
+<P>请问怎样将此内容转换成字符串“0x06555755565A5A5B595F5C5C5C41434142464647454B4848484D4F4D4EB2B2B3<BR>”</P>
+<P>Select&nbsp;Convert(Varchar,&nbsp;columnname)&nbsp;From&nbsp;tablename<BR>WUVZZ[Y_\\\ACABFFGEKHHHMOMN</P>
+<P><BR>不符合我的要求</P>
+<P>Select&nbsp;Convert(Varchar(8000),&nbsp;columnname)&nbsp;From&nbsp;tablename<BR>不行，执行结果如下：</P>
+<P>&nbsp;UWUVZZ[Y_\\\ACABFFGEKHHHMOMN<BR>SELECT&nbsp;CAST(CAST(0x06555755565A5A5B595F5C5C5C41434142464647454B4848484D4F4D4EB2B2B3&nbsp;AS&nbsp;varchar(8000))&nbsp;AS&nbsp;varbinary)</P>
+<P>RESULT<BR>0x06555755565A5A5B595F5C5C5C41434142464647454B4848484D4F4D4EB2<BR>SQL&nbsp;自动截断了数据长度。<BR>请高手指教，为何CAST(0x06555755565A5A5B595F5C5C5C41434142464647454B4848484D4F4D4EB2B2B3&nbsp;AS&nbsp;varchar(8000)不可执行？？</P>
+<P><B>declare&nbsp;@b&nbsp;varbinary(300),&nbsp;@str&nbsp;varchar(300)</P>
+<P>select&nbsp;@b&nbsp;=&nbsp;0x06555755565A5A5B595F5C5C5C41434142464647454B4848484D<BR>exec&nbsp;master..xp_varbintohexstr&nbsp;@b,&nbsp;@str&nbsp;out<BR>print&nbsp;@str</P>
+<P>--給分吧~~~~，這玩意整整花了我一天半的時間</B><BR><B>又是个没有公布的存储过程，微软怎么老藏着些功能！！</B></FONT></P></BLOCKQUOTE></TD></TR>
+<TR>
+<TD class=tablebody1 vAlign=center align=middle width=175><A href="http://www.pigtwo.com/forum/look_ip.asp?boardid=14&amp;userid=42&amp;ip=61.48.16.158&amp;action=lookip" target=_blank><IMG height=15 alt="点击查看用户来源及管理<br>发贴IP：61.48.16.158" src="http://www.pigtwo.com/forum/pic/ip.gif" width=13 align=absMiddle border=0></A> 2003-5-10 11:29:14</TD>
+<TD class=tablebody1 vAlign=center width=*>
+<TABLE cellSpacing=0 cellPadding=0 width="100%">
+<TBODY>
+<TR>
+<TD vAlign=center align=left><A href="http://www.pigtwo.com/forum/editannounce.asp?BoardID=14&amp;replyID=862&amp;id=391&amp;star=1"><IMG alt=编辑这个贴子 src="http://www.pigtwo.com/forum/pic/edit.gif" align=absMiddle border=0></A>&nbsp;&nbsp;<A title=同意该帖观点，给他一朵鲜花，将消耗您5点金钱 href="http://www.pigtwo.com/forum/postagree.asp?boardid=14&amp;id=391&amp;isagree=1">鲜花</A>(<FONT color=#ff0000>0</FONT>)&nbsp;&nbsp;<A title=不同意该帖观点，给他一个鸡蛋，将消耗您5点金钱 href="http://www.pigtwo.com/forum/postagree.asp?boardid=14&amp;id=391&amp;isagree=2">鸡蛋</A>(<FONT color=#ff0000>0</FONT>)</TD>
+<TD vAlign=bottom align=right width=110 nowarp><A title=复制单个贴子到别的版面 href="http://www.pigtwo.com/forum/admin_postings.asp?action=复制&amp;BoardID=14&amp;ID=391&amp;replyID=862"><IMG src="http://www.pigtwo.com/forum/pic/copy.gif" border=0></A>&nbsp;<A title=精华 href="http://www.pigtwo.com/forum/admin_postings.asp?action=精华&amp;BoardID=14&amp;ID=391&amp;replyID=862"><IMG src="http://www.pigtwo.com/forum/pic/jing.gif" border=0></A></TD>
+<TD vAlign=bottom align=right width=4></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE><BR>
+<TABLE cellSpacing=3 cellPadding=0 width="97%" align=center border=0>
+<TBODY>
+<TR>
+<TD vAlign=center noWrap>本主题贴数<B>1</B>，分页： <FONT color=#ff0000>[1]</FONT></TD>
+<TD vAlign=center noWrap align=right><SELECT onchange="if(this.options[this.selectedIndex].value!=''){location=this.options[this.selectedIndex].value;}"><OPTION selected>跳转论坛至...</OPTION><OPTION>╋ 技术论坛</OPTION><OPTION value=list.asp?boardid=11>　├『 JAVA 专区』</OPTION><OPTION value=list.asp?boardid=12>　├『 C / C ++ 』</OPTION><OPTION value=list.asp?boardid=13>　├『Delphi编程』</OPTION><OPTION value=list.asp?boardid=14>　├『数 据 库』</OPTION><OPTION value=list.asp?boardid=15>　├『综合技术』</OPTION><OPTION>╋ 休闲娱乐</OPTION><OPTION value=list.asp?boardid=21>　├『天天澡堂』</OPTION><OPTION value=list.asp?boardid=22>　├『随意贴图』</OPTION><OPTION value=list.asp?boardid=24>　├『关注社会』</OPTION><OPTION>╋ 站务处理</OPTION><OPTION value=list.asp?boardid=23>　├『站务处理』</OPTION></SELECT></TD></TR></TBODY></TABLE>
+<TABLE class=tableborder1 cellSpacing=1 cellPadding=1 align=center>
+<TBODY>
+<TR>
+<TH vAlign=center align=left width="100%" colSpan=2 height=25>&nbsp;*快速回复：怎样将Varbinary数据类型的数据转换成varchar型？</TH></TR>
+<FORM name=frmAnnounce onsubmit=submitonce(this) action=SaveReAnnounce.asp?method=fastreply&amp;BoardID=14 method=post><INPUT type=hidden value=862 name=followup> <INPUT type=hidden value=391 name=RootID> <INPUT type=hidden value=1 name=star> <INPUT type=hidden value=bbs1 name=TotalUseTable> 
+<TR>
+<TD class=tablebody2 noWrap width=175><B>你的用户名:</B></TD>
+<TD class=tablebody2 height=30><INPUT maxLength=25 size=23 value=ugvanxk name=UserName> &nbsp;&nbsp; <A href="http://www.pigtwo.com/forum/reg.asp">还没注册?</A> &nbsp;&nbsp; <B>密码:</B> <INPUT type=password maxLength=20 size=23 value="" name=passwd> &nbsp;&nbsp; <A href="http://www.pigtwo.com/forum/lostpass.asp">忘记密码?</A></TD></TR>
+<TR>
+<TD class=tablebody1 vAlign=top noWrap><B>内容</B><BR>
+<LI>HTML标签： 不可用 
+<LI>UBB标签： 可用 
+<LI>贴图标签： 可用 
+<LI>Flash标签：可用 
+<LI>表情字符转换：可用 
+<LI>上传图片：可用 
+<LI>最多16KB </LI></TD>
+<TD class=tablebody1><TEXTAREA onkeydown="" title=可以使用Ctrl+Enter直接提交贴子 name=Content rows=7 wrap=VIRTUAL cols=100></TEXTAREA> </TD></TR>
+<TR bgColor=#ba0000 #FFFFFF;>
+<TD class=tablebody2 noWrap height=30><INPUT type=checkbox value=yes name=Forum_Setting(2)> 邮件回复 <INPUT type=checkbox CHECKED value=yes name=signflag> 显示签名 </TD>
+<TD class=tablebody2 width="100%"><INPUT type=submit value=OK!发表我的回应帖子 name=Submit> &nbsp;<INPUT onclick="" type=button value="预 览" name=Button>&nbsp;<INPUT type=reset value=清空内容！ name=Clear>[Ctrl+Enter直接提交贴子] </TD></TR></FORM></TBODY></TABLE><BR>
+<TABLE cellSpacing=0 cellPadding=0 width="97%" align=center border=0>
+<TBODY>
+<TR vAlign=center>
+<TD align=right width="100%"><A title=锁定本主题 href="http://www.pigtwo.com/forum/admin_postings.asp?action=锁定&amp;BoardID=14&amp;ID=391">锁定</A> | <A title=将本主题解开锁定 href="http://www.pigtwo.com/forum/admin_postings.asp?action=解锁&amp;BoardID=14&amp;ID=391">解锁</A> | <A title=注意：本操作将删除本主题所有贴子，不能恢复 href="http://www.pigtwo.com/forum/admin_postings.asp?action=删除主题&amp;BoardID=14&amp;ID=391">删除</A> | <A title=移动主题 href="http://www.pigtwo.com/forum/admin_postings.asp?action=移动&amp;BoardID=14&amp;ID=391&amp;replyID=862">移动</A> | <A title=将本主题固顶 href="http://www.pigtwo.com/forum/admin_postings.asp?action=固顶&amp;BoardID=14&amp;ID=391">固顶</A> | <A title=对发起主题用户奖励 href="http://www.pigtwo.com/forum/admin_postings.asp?action=奖励&amp;BoardID=14&amp;ID=391">奖励</A> | <A title=对发起主题用户惩罚 href="http://www.pigtwo.com/forum/admin_postings.asp?action=惩罚&amp;BoardID=14&amp;ID=391">惩罚</A> | <A href="http://www.pigtwo.com/forum/announcements.asp?BoardID=14&amp;action=AddAnn">发布公告</A> </TD></TR></TBODY></TABLE>
+<FORM name=preview action=preview.asp method=post target=preview_page><INPUT type=hidden name=title><INPUT type=hidden name=body> </FORM>
+
+
+
+
+<P>
+<TABLE cellSpacing=0 cellPadding=0 width="97%" align=center border=0>
+<TBODY>
+<TR>
+<TD align=middle><A href="http://www.pigtwo.com/index.htm" target=_blank><IMG src="143_files/logo_2[1].gif"></IMG></A> </TD></TR>
+<TR>
+<TD align=middle>Powered by：<A href="http://www.dvbbs.net/download.asp">DVBBS Ver5.0 Final</A><BR>Copyright ?2002 - 2003 <A href="http://www.pigtwo.com"><FONT face=Verdana, size=1 sans-serif Helvetica, Arial,><B>pigtwo<FONT color=#cc0000>.com</FONT></B></FONT></A> , 页面执行时间：140.625毫秒 </TD></TR></TBODY></TABLE></P></BODY>

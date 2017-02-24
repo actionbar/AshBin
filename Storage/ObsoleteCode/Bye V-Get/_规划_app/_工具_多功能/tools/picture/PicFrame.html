@@ -1,0 +1,364 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>图片边框产生器</title>
+<meta name="keywords" content="图片边框产生器,在线图片边框,图片边框,图片相框,边框生成,相框,边框">
+<meta content="图片边框产生器,在线图片边框,图片边框,图片相框,边框生成,相框,边框" name="description" />
+<link href="../images/style.css" rel="stylesheet" type="text/css" />
+<style type="text/css">
+<!--
+body {margin:0; padding:0;background: #FFF url('../images/top3.gif') repeat-x top; font-size:12px;color:#666}
+.style1 {font-size: 14px}
+-->
+</style>
+<SCRIPT language=javascript>
+<!--
+var oSize = 0 ;
+
+
+function imgOrg_onload(img) {
+	var src   = img.src;  //document.all.imgOrg.src; 
+	var width = img.width;//document.all.imgOrg.width;
+	var height = img.height;//document.all.imgOrg.height;
+	var html = "";
+	var html_pre = "";
+
+	
+	if(oSize == 0){
+	document.all.txtWidth.value = img.width;
+	document.all.txtHeight.value = img.height;
+	}
+	
+	if(document.all.txtWidth.value != "" && document.all.txtHeight.value != "")	{ 
+	//自定照片大小
+	width = document.all.txtWidth.value;
+	height = document.all.txtHeight.value;
+	oSize = 1;
+	}
+	
+	var rads = document.all.radType;
+	if ( rads[0].checked ) {
+		// 拍立得
+		var width_20 = parseInt(width,10)+20;
+		html = "<div style='width:"+width_20+"px; border-width:1px 2px 2px 1px; border-style:solid; border-color:black; background:white;'><div style='border-width:10px 10px 20px 10px; border-style:solid; border-color:white; overflow:visible;'><div style='border:1px solid #999999;overflow:visible;'>";
+		html += "<img src='"+src+"' width='"+width+"px'>";
+		html += "</div><div style='height:4px;overflow:hidden'></div><div style='font:8pt/180% verdana;letter-spacing:1px;color:#999999;text-align:right'>"+document.all.txtDescription.value+"<br><b>"+document.all.txtDate.value+"<br>"+document.all.txtAuthor.value+"</b></div></div></div></div>";
+	} // if
+	else if ( rads[1].checked ) {
+		// 相框
+		var width_oo4 = parseInt(width,10)+10;var height_oo4 = parseInt(height,10)+10;
+		var width_oo5 = parseInt(width,10)+8;var height_oo5 = parseInt(height,10)+8;
+		html = "<div style='width:"+width_oo4 +"px;height:"+height_oo4 +"px ;border:1px solid #999;background-color:white;'><div style='width="+width_oo5+"px;height:"+height_oo5+"px;border:4px solid #FFFFFF;'><img src='"+src+"' width='"+width+"px' height='"+height+"px'></div></div>";
+	} // else if
+	else if ( rads[2].checked ) {
+		// 相框（PNG阴影）
+		var width_16 = parseInt(width,10)+16;
+		var width_9 = parseInt(width,10)+9;
+		var height_4 = parseInt(height,10)+4;
+		var height_10 = parseInt(height,10)+10;
+		html = "<div style='width:"+width_16+"px;height:"+height_10+"px ;'><div style='border:1px solid #999; float:left;LETTER-SPACING: 2px;LINE-HEIGHT: 20px;overflow:visible;;background:white;'><div style='border:4px solid #FFFFFF;LETTER-SPACING: 2px;LINE-HEIGHT: 20px;overflow:visible; background:white;'><img src='"+src+"' width='"+width+"px' height='"+height+"px'></div></div><div style='float:left;overflow:hidden;width=6px;'><img border='0' src='http://tools.kqiqi.com/picture/images/img_3_8_3-1114600520.png' width='6' height='6'><br><img border='0' src='http://tools.kqiqi.com/picture/images/img_3_8_1-1114600520.png' width='6px' height='"+height_4+"px'></div></div><div style='width:"+width_16+"px;height:6px ;'><img border='0' src='http://tools.kqiqi.com/picture/images/img_3_8_2-1114600520.png' width='6' height='6'><img border='0' src='http://tools.kqiqi.com/picture/images/img_3_8_0-1114600520.png' width='"+width_9+"px' height='6'></div></div>";
+	} // else if
+	else if ( rads[3].checked ) {
+		// 相框（滤镜阴影）
+		var width_15 = parseInt(width,10)+15;
+		var height_15 = parseInt(height,10)+15;
+		html = "<div style='overflow:visible;FILTER:Dropshadow(color=#cccccc,offX=4,offY=4);width="+width_15+"px;height:"+height_15+"px;'><div style='border:1px solid #999; float:left;LETTER-SPACING: 4px;LINE-HEIGHT: 4px;overflow:visible;width=10px;height:10px ;background:white;'><div style='border:4px solid #FFFFFF;LETTER-SPACING: 4px;LINE-HEIGHT: 4px;overflow:visible;width=10px;height:10px; background:white;'><img src='"+src+"' width='"+width+"px' height='"+height+"px'></div></div></div>";
+	} // else if
+
+	else if ( rads[4].checked ) {
+		// 相框（阴影照片框）
+		html = "<div style='width:"+width+"px;height:"+height+"px;'><img src='http://tools.kqiqi.com/picture/images/img_3_10_0-1114691307.gif' width='2%' align=right><img src='"+src+"' width=100% height=98% align=right><div style='float:left;overflow:visible;width=100%;height:100%;'><img src='http://tools.kqiqi.com/picture/images/img_3_10_1-1114691307.gif' width='100%' height='100%'></div></div></div>";
+	} // else if
+	else if ( rads[5].checked ) {
+		// 相框（立体阴影）
+		var width_27 = parseInt(width,10)+27;
+		var height_28 = parseInt(height,10)+28;
+		html = "<div style='width:"+width_27+";height:"+height_28+";'><div style='width:"+width_27+";height:13 ;overflow:visible;'><img border='0' src='http://tools.kqiqi.com/picture/images/img_3_11_2-1114739383.gif' width='12' height='13'><img border='0' src='http://tools.kqiqi.com/picture/images/img_3_11_6-1114739383.gif' width='"+width+"' height='13'><img border='0' src='http://tools.kqiqi.com/picture/images/img_3_11_7-1114739383.gif' width='15' height='13'></div> <div style='width:"+width_27+";height:"+height+" ;overflow:visible;'><img border='0' src='http://tools.kqiqi.com/picture/images/img_3_11_5-1114739383.gif' width='12' height='"+height+"'><img src='"+src+"' width='"+width+"' height='"+height+"'><img border='0' src='http://tools.kqiqi.com/picture/images/img_3_11_0-1114739383.gif' width='15' height='"+height+"'></div><div style='width:"+width_27+";height:15 ;overflow:visible;'><img border='0' src='http://tools.kqiqi.com/picture/images/img_3_11_3-1114739383.gif' width='12' height='15'><img border='0' src='http://tools.kqiqi.com/picture/images/img_3_11_1-1114739383.gif' width='"+width+"' height='15'><img border='0' src='http://tools.kqiqi.com/picture/images/img_3_11_4-1114739383.gif' width='15' height='15'></div></div>";
+	} // else if
+	else if ( rads[6].checked ) {
+		// 邮票边框
+		var width_id7 = parseInt(width,10)+42;
+		var height_id7 = parseInt(height,10)+42;
+		html_pre = "<table border='0' width='"+width_id7+"' height='"+height_id7+"' cellspacing='0'><tr><td background='http://tools.kqiqi.com/picture/images/img_3_73_3-1136336300.gif' style='background-repeat: no-repeat' height=21 width=21></td><td background='http://tools.kqiqi.com/picture/images/img_3_73_6-1136336300.gif' height=21 ></td><td background='http://tools.kqiqi.com/picture/images/img_3_73_0-1136336300.gif' style='background-repeat: no-repeat' height=21 width=21></td></tr><tr><td background='http://tools.kqiqi.com/picture/images/img_3_73_1-1136336300.gif' width=21></td><td><img src='"+src+"' width="+width+" height="+height+"></td><td background='http://tools.kqiqi.com/picture/images/img_3_73_4-1136336300.gif' width=21></td></tr>";
+                   html= html_pre+ "<tr><td background='http://tools.kqiqi.com/picture/images/img_3_73_5-1136336300.gif' style='background-repeat: no-repeat' height=21 width=21></td><td background='http://tools.kqiqi.com/picture/images/img_3_73_7-1136336300.gif' height=21 ></td><td background='http://tools.kqiqi.com/picture/images/img_3_73_2-1136336300.gif' style='background-repeat: no-repeat' height=21 width=21></td></tr></table>";
+	} // else if
+		else if ( rads[7].checked ) {
+		// 翻頁折角边框
+		var width_id8 = parseInt(width,10)+18;
+		var height_id8 = parseInt(height,10)+58;
+		var width_id8a = parseInt(width,10)-4;
+		var height_id8a = parseInt(height,10)-4;
+		var width_id8b = parseInt(width,10)-32;
+		var height_id8b = parseInt(height,10)-21;
+		html="<table border='0' width='"+width_id8+"' height='"+height_id8+"' cellspacing='0' cellpadding='0'><tr><td  height=9 width=9 bgcolor='#F7F7F7'></td><td  height=9 colspan='2' bgcolor='#F7F7F7'></td><td  height=9 width=9 bgcolor='#F7F7F7'></td></tr><tr><td width=9 rowspan='2' bgcolor='#F7F7F7'></td><td rowspan='2' colspan='2'>";
+		html+= "<img src='"+src+"' width='"+width_id8a+"' height='"+height_id8a+"' style='border: 2px solid #D6D6D6'></td><td bgcolor='#F7F7F7' width=9 height='"+height_id8b+"'></td></tr><tr><td background='http://tools.kqiqi.com/picture/images/img_3_74_2-1136339210.gif' width=9 height=21></td></tr><tr><td height=49 width=9 bgcolor='#F7F7F7'></td>";
+		html+="<td width='"+width_id8b+"' bgcolor='#F7F7F7' height=49><div style='font:8pt/180% verdana;letter-spacing:1px;color:#999999'>"+document.all.txtDescription.value+"<br><b>"+document.all.txtAuthor.value+"</b></div></td><td background='http://tools.kqiqi.com/picture/images/img_3_74_1-1136339210.gif' height=49 width=32 style='background-repeat: no-repeat'></td><td background='http://tools.kqiqi.com/picture/images/img_3_75_0-1136339268.gif' style='background-repeat: no-repeat' height=49 width=9></td></tr></table>";
+	} // else if
+			else if ( rads[8].checked ) {
+		// 翻页折角边框（阴影）
+		var width_idm = parseInt(width,10)+32;
+		var height_idm = parseInt(height,10)+72;
+		var width_idma = parseInt(width,10)-4;
+		var height_idma = parseInt(height,10)-4;
+		var width_idmb = parseInt(width,10)-33;
+		var height_idmb = parseInt(height,10)-21;
+		html="<table height='"+height_idm+"' cellSpacing='0' cellPadding='0' width='"+width_idm+"' border='0'><tr><td width='16' background='http://tools.kqiqi.com/picture/images/img_3_79_9-1136365162.gif' height='16'></td><td background='http://tools.kqiqi.com/picture/images/img_3_79_1-1136365162.gif' height='16'  colspan='2'></td><td width='16' background='http://tools.kqiqi.com/picture/images/img_3_79_4-1136365162.gif' height='16'></td></tr><tr><td width='16' background='http://tools.kqiqi.com/picture/images/img_3_79_3-1136365162.gif' rowspan='2'></td><td rowspan='2' colspan='2'>";
+		html+= "<img height='"+height_idma+"' src='"+src+"' width='"+width_idma+"' style='border: 2px solid #D6D6D6'></td><td vAlign='bottom' width='16' height='"+height_idmb+"' background='http://tools.kqiqi.com/picture/images/img_3_79_10-1136365162.gif'></td></tr><tr><td vAlign='bottom' width='16'><img src='http://tools.kqiqi.com/picture/images/img_3_79_6-1136365162.gif'></td></tr><tr><td width='16' background='http://tools.kqiqi.com/picture/images/img_3_79_0-1136365162.gif' height='56'></td><td background='http://tools.kqiqi.com/picture/images/img_3_79_8-1136365162.gif' width='"+width_idmb+"' align=left>";
+		html+="<div style='font:8pt/180% verdana;letter-spacing:1px;color:#999999'>"+document.all.txtDescription.value+"<br><b>"+document.all.txtAuthor.value+"</b></div></td><td align='right' width='33'><img height='56' src='http://tools.kqiqi.com/picture/images/img_3_79_2-1136365162.gif'></td><td background='http://tools.kqiqi.com/picture/images/img_3_79_7-1136365162.gif' width='16' height='56'></td></tr></table>";
+	} // else if
+		else if ( rads[9].checked ) {
+		// 切页边框
+		var width_id9 = parseInt(width,10)+65;
+		var height_id9 = parseInt(height,10)+66;
+		html="<table border='0' cellpadding='0' cellspacing='0' width='"+width_id9+"' height='"+height_id9+"'><tr><td  background='http://tools.kqiqi.com/picture/images/img_3_76_7-1136345011.jpg' width='33' height='33'></td><td  background='http://tools.kqiqi.com/picture/images/img_3_76_8-1136345011.jpg' height='33' align='left'><img src='http://tools.kqiqi.com/picture/images/img_3_76_1-1136345011.jpg'></td><td  background='http://tools.kqiqi.com/picture/images/img_3_76_2-1136345011.jpg' width='32' height='33'></td></tr><tr><td  background='http://tools.kqiqi.com/picture/images/img_3_76_3-1136345011.jpg'  width='33'  valign='top'><img src='http://tools.kqiqi.com/picture/images/img_3_76_11-1136345011.jpg'></td>";
+		html+= "<td><img src='"+src+"' width='"+width+"' height='"+height+"' border='0'></td><td background='http://tools.kqiqi.com/picture/images/img_3_76_6-1136345011.jpg ' width='32' valign='bottom' ><img src='http://tools.kqiqi.com/picture/images/img_3_76_9-1136345011.jpg'></td></tr><tr><td background='http://tools.kqiqi.com/picture/images/img_3_76_10-1136345011.jpg'  width='33' height='33'></td><td  background='http://tools.kqiqi.com/picture/images/img_3_76_0-1136345011.jpg' align='right'><img src='http://tools.kqiqi.com/picture/images/img_3_76_5-1136345011.jpg' width='20' height='33' border='0'></td><td background='http://tools.kqiqi.com/picture/images/img_3_76_4-1136345011.jpg'></td></tr></table>";
+	}
+		else if ( rads[10].checked ) {
+		// 胶带边框一
+		var width_id10 = parseInt(width,10)+95;
+		var height_id10 = parseInt(height,10)+96;
+		html="<table border='0' cellpadding='0' cellspacing='0' width='"+width_id10+"'  height='"+height_id10+"'><tr><td  background='http://tools.kqiqi.com/picture/images/img_3_77_10-1136347734.jpg'  width='41' height='46'></td><td  background='http://tools.kqiqi.com/picture/images/img_3_77_13-1136347734.jpg' height='46' align='left' width='400' colspan='2'><img src='http://tools.kqiqi.com/picture/images/img_3_77_4-1136347734.jpg'></td><td  background='http://tools.kqiqi.com/picture/images/img_3_77_5-1136347734.jpg' width='54' height='46'></td></tr><tr><td  background='http://tools.kqiqi.com/picture/images/img_3_77_2-1136347734.jpg'  width='41'  valign='bottom' rowspan='2'><img src='http://tools.kqiqi.com/picture/images/img_3_77_11-1136347734.jpg'></td><td rowspan='2' colspan='2'>";
+		html+= "<img src='"+src+"' width='"+width+"' height='"+height+"' border='0'></td><td background='http://tools.kqiqi.com/picture/images/img_3_77_12-1136347734.jpg' width='54' valign='top' ><img src='http://tools.kqiqi.com/picture/images/img_3_77_14-1136347734.jpg'></td></tr><tr><td background='http://tools.kqiqi.com/picture/images/img_3_77_12-1136347734.jpg' width='54' valign='bottom' ><img src='http://tools.kqiqi.com/picture/images/img_3_77_9-1136347734.jpg'></td></tr><tr><td background='http://tools.kqiqi.com/picture/images/img_3_77_1-1136347734.jpg'  width='41' height='50'></td><td  background='http://tools.kqiqi.com/picture/images/img_3_77_0-1136347734.jpg' align='left'  height='50' width='287'><img src='http://tools.kqiqi.com/picture/images/img_3_77_7-1136347734.jpg'></td>";
+		html+= "<td  background='http://tools.kqiqi.com/picture/images/img_3_77_0-1136347734.jpg' align='right'  height='50' ><img src='http://tools.kqiqi.com/picture/images/img_3_77_8-1136347734.jpg'></td><td background='http://tools.kqiqi.com/picture/images/img_3_77_3-1136347734.jpg' width='54' height='50'></td></tr></table>";
+	}
+			else if ( rads[11].checked ) {
+		// 胶带边框二
+		var width_idj = parseInt(width,10)+96;
+		var height_idj = parseInt(height,10)+90;
+		html="<table height='"+height_idj+"' cellSpacing='0' cellPadding='0' width='"+width_idj+"' border='0' ><tr><td width='40' background='http://tools.kqiqi.com/picture/images/img_3_80_12-1136367939.gif' height='45'></td><td align='left' background='http://tools.kqiqi.com/picture/images/img_3_80_7-1136367939.gif' colSpan='2' height='45'><img src='http://tools.kqiqi.com/picture/images/img_3_80_13-1136367939.gif'></td><td width='56' background='http://tools.kqiqi.com/picture/images/img_3_80_15-1136367939.gif' height='45'></td></tr><tr>";
+		html+= "<td width='40' background='http://tools.kqiqi.com/picture/images/img_3_80_1-1136367939.gif' rowSpan='2'></td><td colSpan='2' rowSpan='2'><img height='"+height+"' src='"+src+"' width='"+width+"' border='0'></td><td vAlign='top' width='56' background='http://tools.kqiqi.com/picture/images/img_3_80_10-1136367939.gif'><img src='http://tools.kqiqi.com/picture/images/img_3_80_5-1136367939.gif'></td></tr><tr><td vAlign='bottom' width='56' background='http://tools.kqiqi.com/picture/images/img_3_80_10-1136367939.gif'><img src='http://tools.kqiqi.com/picture/images/img_3_80_11-1136367939.gif'></td></tr><tr><td width='40' background='http://tools.kqiqi.com/picture/images/img_3_80_3-1136367939.gif' height='45'></td>	<td align='left' background='http://tools.kqiqi.com/picture/images/img_3_80_9-1136367939.gif' height='45'>";
+		html+= "<img src='http://tools.kqiqi.com/picture/images/img_3_80_4-1136367939.gif'></td><td align='right' background='http://tools.kqiqi.com/picture/images/img_3_80_9-1136367939.gif' height='45'><img src='http://tools.kqiqi.com/picture/images/img_3_80_14-1136367939.gif'></td><td width='56' background='http://tools.kqiqi.com/picture/images/img_3_80_6-1136367939.gif' height='45'></td></tr></table>";
+	}
+			else if ( rads[13].checked ) {
+		// 日历边框
+		var width_id11 = parseInt(width,10)+56;
+		var height_id11 = parseInt(height,10)+135;
+		html="<table height='"+height_id11+"' cellSpacing='0' width='"+width_id11+"' border='0' id='table1'><tr><td style='BACKGROUND-REPEAT: no-repeat' width='28' background='http://tools.kqiqi.com/picture/images/img_3_78_1-1136349333.gif' height='47'></td><td background='http://tools.kqiqi.com/picture/images/img_3_78_8-1136349333.gif' height='47'></td><td style='BACKGROUND-REPEAT: no-repeat' width='28' background='http://tools.kqiqi.com/picture/images/img_3_78_5-1136349333.gif' height='47'></td></tr><tr><td width='28' background='http://tools.kqiqi.com/picture/images/img_3_78_4-1136349333.gif'></td><td>";
+		html+= "<img height='"+height+"' src='"+src+"' width='"+width+"'></td><td width='28' background='http://tools.kqiqi.com/picture/images/img_3_78_7-1136349333.gif'></td></tr><tr><td style='BACKGROUND-REPEAT: no-repeat' width='28' background='http://tools.kqiqi.com/picture/images/img_3_78_2-1136349333.gif' height='88'></td><td background='http://tools.kqiqi.com/picture/images/img_3_78_3-1136349333.gif' height='88' align=center style='FONT: 8pt/180% verdana; COLOR: #999999; LETTER-SPACING: 1px'>";
+		html+= ""+document.all.txtDescription.value+"</td><td style='BACKGROUND-REPEAT: no-repeat' width='28' background='http://tools.kqiqi.com/picture/images/img_3_78_6-1136349333.gif' height='88'></td></tr></table>";
+	}
+
+	
+	document.all.divResult_klcintw.innerHTML = "复制起点→ ●"+"<p>"+html+"<p>"+"● ←复制终点";
+	//document.all.divResult_klcintw.innerHTML = html;
+	document.all.txtOutput1.value = html;
+	 document.all.preimg.innerHTML="";
+}
+
+// 拍立得样式的精致照片框
+function btnFunc1_onclick() {
+	//document.all.imgOrg.src = document.all.txtUrl.value;
+	//var doc = document.frames[0].document;
+	//doc.write("<img src="+document.all.txtUrl.value+" onload='window.parent.imgOrg_onload(this)'>");
+    document.all.preimg.innerHTML="<div style='width:1px;height:1px;display:none !important;display:inline;' ><img id='kimg' name='kimg' src="+document.all.txtUrl.value+" onload='imgOrg_onload(document.all.kimg)'></div>";
+    
+}
+function btnReset1_onclick() {
+	document.all.txtOutput1.value = "";
+	oSize = 0;
+	document.all.txtWidth.value = "";
+	document.all.txtHeight.value = "";
+}
+//-->
+</SCRIPT>
+
+</HEAD>
+<BODY>
+<table width="960" height="75" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td width="264" rowspan="2" align="center"><a href="../index.html">
+	<img src="../images/logo.gif" width="224" height="38" border="0" /></a></td>
+    <td height="24" valign="top">
+	<table width="321" height="24" border="0" align="right" cellpadding="0" cellspacing="0" background="../images/top2.gif">
+        <tr>
+          <td align="center" class="cwhite12"><a href="#" class="cwhite12">tools.kqiqi.com</a>　<a href="#" OnClick='this.style.behavior="url(#default#homepage)";this.setHomePage("http://tools.kqiqi.com");' class="cwhite12">设为首页</a> | <a href="#" onClick="window.external.AddFavorite('http://tools.kqiqi.com','客齐齐实用查询工具');" class="cwhite12">收藏本站</a></td>
+        </tr>
+    </table></td>
+  </tr>
+</table>
+<table width="960" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td><table height="38" border="0" cellpadding="0" cellspacing="0" style="margin-left:5px">
+      <tr align="center">
+          <td width="88" background="../images/nav1.gif" style="padding-top:5px"><a href="../index.html" class="navfh2">首　页</a></td>
+          <td width="88" background="../images/nav1.gif" style="padding-top:5px"><a href="../admin/index.html" class="navfh2">站长工具</a></td>
+          <td width="88" background="../images/nav1.gif" style="padding-top:5px"><a href="../query/index.html" class="navfh2">查询工具</a></td>
+          <td width="88" background="../images/nav1.gif" style="padding-top:5px"><a href="../calculation/index.html" class="navfh2">计算工具</a></td>
+          <td width="88" background="../images/nav1.gif" style="padding-top:5px"><a href="../password/index.html" class="navfh2">加密解密</a></td>
+          <td width="88" background="../images/nav1.gif" style="padding-top:5px"><a href="../conversion/index.html" class="navfh2">转换工具</a></td>
+          <td width="88" background="../images/nav1.gif" style="padding-top:5px"><a href="../color/index.html" class="navfh2">颜色工具</a></td>
+          <td width="88" background="../images/nav1.gif" style="padding-top:5px"><a href="../web/index.html" class="navfh2">网络辅助</a></td>
+          <td width="88" background="../images/nav2.gif" style="padding-top:5px"><a href="index.html" class="navfh1">图片工具</a></td>
+          <td width="88" background="../images/nav1.gif" style="padding-top:5px"><a href="../others/index.html" class="navfh2">其它工具</a></td>
+        </tr>
+    </table></td>
+  </tr>
+</table>
+<script language="javascript" src="../js/others_top.js"></script>
+<table width="960" border="0" align="center" cellpadding="0" cellspacing="0" class="mainbg1">
+  <tr valign="top">
+    <td width="20">　</td>
+    <td width="190">
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td colspan="2" height="10">
+
+</td>
+</tr>
+      <tr>
+        <td width="75%">
+		<img src="../images/t9.gif" width="32" height="32" align="absmiddle" />　<span class="navfh1">工具列表</span></td>
+        <td width="25%">　</td>
+      </tr>
+    </table>
+     <table width="100%"  border="0" cellpadding="0" cellspacing="0" background="../images/t12.gif" class="mar5">
+        <tr>
+          <td height="10"> </td>
+        </tr>
+      </table>
+<table width="100%"  border="0" cellpadding="0" cellspacing="0" class="mar5">
+      <tr>
+        <td>　
+ <div id="menu">
+ <div class="box">
+    <a href="PicFrame.html">图片边框产生器
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+
+  <div class="box">
+    <a href="TextureText.html">材质文字效果产生器
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+    <div class="box">
+    <a href="PicFilter.html">图片滤镜产生器
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+
+  <div class="box">
+    <a href="VMLPalette.html">VML在线画板
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+  
+ 
+</div>
+ </td>
+      </tr>
+    </table>
+
+      <table width="100%" height="17"  border="0" cellpadding="0" cellspacing="0" background="t2.gif" class="mar5">
+        <tr>
+          <td> </td>
+        </tr>
+      </table>
+      
+    </td>
+    <td width="27">　</td>
+    <td width="700">
+     
+            <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+          <tr>
+      <td height="10" colspan="2">
+      </td>
+      </tr>
+        <tr valign="top">
+         <td width="40"><img src="../images/bang.gif" width="32" height="31"> </td>
+          <td><span class="navfh1">图片边框产生器</span></td>
+          
+        </tr>
+      </table>
+      <hr size="1" style="color:#E3E8E9" />
+      <table width="100%"  border="0" cellpadding="3" cellspacing="1">
+              <tr>
+          <td>
+            <!-- START Fastpages HEADER CODE --><!-- END Fastpages HEADER CODE -->
+          <div align="center">
+<div style="width:690px">
+<FORM>
+<P>样式：<B><SPAN></FONT><INPUT onclick=btnFunc1_onclick(); type=radio CHECKED 
+value=1 name=radType>拍立得 | <INPUT onclick=btnFunc1_onclick(); type=radio value=2 
+name=radType>相框 | <INPUT onclick=btnFunc1_onclick(); type=radio value=3 
+name=radType>相框（PNG阴影） | <INPUT onclick=btnFunc1_onclick(); type=radio value=4 
+name=radType>相框（滤镜阴影） <FONT color=#808080 size=1>IE only </FONT>| <INPUT 
+onclick=btnFunc1_onclick(); type=radio value=5 name=radType>相框（阴影照片框） <FONT 
+color=#808080 size=1>IE only </FONT>|<INPUT id=Radio2 
+onclick=btnFunc1_onclick(); type=radio value=6 name=radType>相框立体（阴影） <BR><INPUT 
+onclick=btnFunc1_onclick(); type=radio value=7 name=radType><FONT 
+color=#1a60a8>邮票边框</FONT> | <INPUT onclick=btnFunc1_onclick(); type=radio 
+value=8 name=radType><FONT color=#1a60a8>翻页边框</FONT> | <INPUT 
+onclick=btnFunc1_onclick(); type=radio value=9 name=radType><FONT 
+color=#1a60a8>翻页边框（阴影）</FONT> | <INPUT onclick=btnFunc1_onclick(); type=radio 
+value=10 name=radType><FONT color=#1a60a8>切页边框</FONT> | <INPUT 
+onclick=btnFunc1_onclick(); type=radio value=11 name=radType><FONT 
+color=#1a60a8>胶带边框一 </FONT>| <INPUT onclick=btnFunc1_onclick(); type=radio 
+value=12 name=radType><FONT color=#1a60a8>胶带边框二 </FONT>| <INPUT 
+onclick=btnFunc1_onclick(); type=radio value=13 name=radType>
+<FONT 
+color=#1a60a8>日历边框 </FONT>| <INPUT 
+onclick=btnFunc1_onclick(); type=radio value=15 name=radType>
+<FONT 
+color=#1a60a8>日历边框二 </FONT></SPAN><BR></B>照片地址： <INPUT id=txtUrl 
+onmouseover=this.focus();this.select(); style="FONT-FAMILY: Tahoma" 
+onchange=oSize=0;btnFunc1_onclick(); size=75 
+value=http://tools.kqiqi.com/Picture/images/girl.jpg name=txtUrl>
+<BR>照片大小：宽: <INPUT 
+style="FONT-FAMILY: Tahoma" size=7 name=txtWidth> px 高: <INPUT 
+style="FONT-FAMILY: Tahoma" size=8 name=txtHeight>px <BR>照片描述： <INPUT 
+style="FONT-FAMILY: Tahoma" size=80 value=客齐齐图片边框产生器 
+name=txtDescription>
+<BR>照片日期： <INPUT style="FONT-FAMILY: Tahoma" size=80 
+value="2008/12/18   " name=txtDate>
+<BR>照片作者： <INPUT style="FONT-FAMILY: Tahoma" 
+size=80 value="tools.kqiqi.com" name=txtAuthor>
+<BR><INPUT onclick=btnFunc1_onclick(); type=button value=产生 name=btnFunc1>
+<INPUT onclick=btnReset1_onclick(); type=button value=清除 name=btnReset1> 
+<INPUT style="FONT-FAMILY: Tahoma" onclick=this.focus();this.select(); size=80 
+name=txtOutput1></P></FORM>
+<DIV id=divResult_klcintw></DIV><!--<iframe id="ifImage" style="width:0;height:0"></iframe>-->
+<DIV id=preimg name="preimg"></DIV><!--<ximg id="imgOrg" src="http://tools.kqiqi.com/Picture/images/girl.jpg"
+			onload="imgOrg_onload();" name="imgOrg">-->
+<HR color=#1a60a8 noShade SIZE=1>
+
+<DIV style="DISPLAY: none">
+<DIV 
+style="DISPLAY: none"><!-- START Fastpages FOOTER CODE --></TABLE></TABLE></NOSCRIPT></STYLE><BR 
+clear=all>
+<P><!-- END Fastpages FOOTER CODE --></P></DIV></DIV></DIV></DIV>
+   
+          </td>
+        </tr>
+        </table>
+      <br />
+           
+      <br />
+      </td>
+    <td width="20">　</td>
+  </tr>
+</table>
+<table width="960" border="0" align="center" cellpadding="0" cellspacing="0" class="mainbg2">
+  <tr>
+    <td height="25"></td>
+  </tr>
+</table>
+
+<table width="960" border="0" align="center" cellpadding="0" cellspacing="0" class="mainbg2">
+  <tr>
+    <td><table width="920"  border="0" align="center" cellpadding="0" cellspacing="20" class="bottombg">
+    <tr>
+        <td align="center">
+          Copyright &copy; <a href="http://tools.kqiqi.com/">客齐齐实用查询工具</a> All rights reserved - <a href="../map.html">网站地图</a> - <a href="../contact.html">联系我们</a> - <script language="javascript" src="../js/bottom.js"></script>
+          </td>
+      </tr>
+    </table></td>
+  </tr>
+</table>
+</body>
+</html>

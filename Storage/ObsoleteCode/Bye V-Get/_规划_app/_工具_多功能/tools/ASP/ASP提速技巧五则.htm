@@ -1,0 +1,82 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>ASP提速技巧五则</title>
+<style type="text/css">
+<!--
+body {
+	font-size: 10.4pt;
+	line-height: 22px;
+}
+-->
+</style>
+</head>
+
+<body bgcolor="eeeeee" leftmargin="20" marginwidth="20">
+<p><strong>ASP提速技巧五则</strong></p>
+<p></p>
+<hr>
+<p> 　　<font color="#006699">技巧之一：提高使用Request集合的效率 </font><br>
+  <br>
+  访问一个ASP集合来提取一个值是费时的、占用计算资源的过程。因为这个操作包含了一系列对相关集合的搜索，这比访问一个局部变量要慢得多。因此，如果打算在页面中多次使用Request集合中的一个值，应该考虑将其存贮为一个局部变量。例如将代码写成下面的形式以加快脚本引擎处理速度： 
+</p>
+<p>strTitle=Request.Form(&quot;Title&quot;) <br>
+  strFirstName=Request.Form(&quot;FirstName&quot;)　 <br>
+  strLastName=Request.Form(&quot;LastName&quot;)　 <br>
+  If Len(strTitle) Then strTitle=strTitle &amp; &quot; &quot;　 <br>
+  If strFirstName=&quot;&quot; Then strFullName=strTitle &amp; &quot; &quot; &amp; 
+  strLastName　 <br>
+  Elseif Len(strFirstName)=1 Then <br>
+  strFullName=strTitle &amp; strFirstName &amp; &quot;. &quot; &amp; strLastName 
+  <br>
+  Else <br>
+  strFullName=strTitle &amp; strFirstName &amp; &quot; &quot; &amp; strLastName　 
+  <br>
+  End If </p>
+<p><br>
+  <font color="#006699">技巧之二：直接访问适当的集合 </font></p>
+<p>如果不是别无选择，否则不要使用strPage=Request(&quot;page&quot;)的这样的形式来获取参数，因为这将按顺序搜索全部的集合—QueryString、Form、Cookies、ClientCertificate、ServerVarible直到发现第一个匹配值的名称。这样做比直接访问适当的集合效率低，并且是不安全的，除非能绝对保证这个值不会出现在另外一个集合中。 
+  <br>
+  例如，可能希望搜索满足客户请求的WEB服务器名称，这通过出现在每个查询中的Request.ServerVarables集合中寻找“SERVER_NAME”来实现。然而，假如其他的集合也包含名为“SERVER_NAME”的值（键名不区分大小写），当使用Request(&quot;server_Name&quot;)时，就会得到错误的结果。总而言之，应尽可能直接访问适当的集合。 
+</p>
+<p><br>
+  <font color="#006699">技巧之三：在费时操作前使用Response.IsClientConnected属性 </font></p>
+<p>使用Response.IsClientConnected是观察用户是否仍连到服务器并正在载入ASP创建的网页的有用方式。如果用户断开连接或停止下载，我们就不用再浪费服务器的资源创建网页，因为缓冲区内容将被IIS丢弃。所以，对那些需要大量时间计算或资源使用较多的网页来说，值得在每一阶段都检查游览者是否已离线： 
+</p>
+<p>…… Code to create first part of the page <br>
+  If Response.IsClientConnected Then <br>
+  Response.Flush <br>
+  Else <br>
+  Response.End <br>
+  End If <br>
+  …… Code to create next part of page </p>
+<p><br>
+  <font color="#006699">技巧之四：优化ASP中的ADO操作 </font></p>
+<p>通常面言，数据构成了WEB站点的实际内容。所以，优化ADO操作以加速ASP代码执行，十分有用： <br>
+  a. 仅选择所需的列：当打开ADO记录集时，除非需要获得所有的列，否则不应自动地使用表名（即SELECT *）。使用单独的列意味着将减少发送到服务器或从服务器取出的数据量。即使需要使用全部列，单独地命名每个列也会获得最佳的性能，因为服务器不必再解释这些列的名字。 
+</p>
+<p>b. 尽可能的使用存储过程。存储过程是预先编译的程序，含有一个已经准备好的执行计划，所以比SQL语句执行更快。 </p>
+<p>c. 使用适当的光标和锁定模式。如果所做的全部工作只是从记录集中读取数据，并将其显示在屏幕上，那么就使用缺省的只能前移、只读的记录集。ADO用来维护记录和锁定的细节的工作越少，执行的性能就越高。 
+</p>
+<p>d. 使用对象变量。当遍历记录集时一个肯定能提高性能的方法是使用对象变量指向集合中的成员。例如： </p>
+<p>While Not RsGc.EOF <br>
+  Response.Write &quot;工程名称：&quot; &amp; RsGc(&quot;GcMC&quot;) &amp; &quot;(工程代码：&quot; 
+  &amp; RsGc(&quot;GcCode&quot;) &amp; &quot;) <br>
+  &quot;　 <br>
+  RsGc.MoveNext <br>
+  Wend </p>
+<p>可以用改写为下面的代码以加快执行： </p>
+<p>set GcMc=RsGc(&quot;GcMc&quot;) <br>
+  set GcCode=RsGc(&quot;GcCode&quot;)　 <br>
+  While Not rsGc.EOF Response.Write &quot;工程名称：&quot; &amp; GcMc &amp; &quot;(工程代码：&quot; 
+  &amp; GcCode &amp; &quot;) <br>
+  &quot; RsGc.MoveNext　 <br>
+  Wend </p>
+<p>新的代码建立了对象变量的引用，所以可以使用对象变量而不是实际的变量，这意味着脚本引擎的工作减少了，因为在集合中进行索引的次数变少了。 </p>
+<p><br>
+  <font color="#006699">技巧五：不要混用脚本引擎 </font></p>
+<p>我们知道，ASP页面中既可以使用VBScript，也可以使用JScript。但是在同一个页面上同时使用JScript和VBScript则是不可取的。因为服务器必须实例化并尝试缓存两个（而不是一个）脚本引擎，这在一定程度上增加了系统负担。因此，从性能上考虑，不应在同一页面中混用多种脚本引擎。</p>
+<p>&nbsp;</p>
+</body>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="../c3.css" />
+<title>XForms 数据类型</title>
+</head>
+<body class="xml">
+<div id="wrapper">
+<div id="header">
+<a href="http://e.v-get.com/w3cschool/" style="float:left;">W3CSchool 在线教程</a>
+<div class="q g"><script type="text/javascript">var cpro_id="u1163355"</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div>
+<div id="navfirst">
+<ul id="menu">
+<li id="h"><a href="../h.html">HTML教程</a></li>
+<li id="x"><a href="../x.html">XML教程</a></li>
+<li id="b"><a href="../b.html">浏览器脚本</a></li>
+<li id="s"><a href="../s.html">服务器脚本</a></li>
+<li id="d"><a href="../d.html">dot net教程</a></li>
+<li id="m"><a href="../m.html">多媒体教程</a></li>
+<li id="w"><a href="../w.html">建站手册</a></li>
+</ul>
+</div><div id="navsecond">
+<div id="course">
+<h2>XForms 教程</h2>
+<ul>
+<li><a href="http://e.v-get.com/w3cschool/">XForms 首页</a></li>
+<li><a href="xforms_intro.html">XForms 简介</a></li>
+<li><a href="xforms_model.html">XForms 模型</a></li>
+<li><a href="xforms_namespace.html">XForms 命名空间</a></li>
+<li><a href="xforms_example.html">XForms 实例</a></li>
+<li><a href="xforms_xpath.html">XForms XPath</a></li>
+<li><a href="xforms_input.html">XForms 输入</a></li>
+<li><a href="xforms_selections.html">XForms 选择</a></li>
+<li><a href="xforms_datatypes.html">XForms 数据类型</a></li>
+<li><a href="xforms_properties.html">XForms 属性</a></li>
+<li><a href="xforms_actions.html">XForms 行为</a></li>
+<li><a href="xforms_functions.html">XForms 函数</a></li>
+</ul>
+<h2>参考手册</h2>
+<ul>
+<li><a href="xforms_typeref.html">XForms 数据类型</a></li>
+</ul>
+</div>
+<div id="selected">
+<h2>建站手册</h2>
+<ul>
+<li><a href="../site/">网站构建</a></li>
+<li><a href="../w3c/">万维网联盟</a></li>
+<li><a href="http://e.v-get.com/w3c/">W3CSchool 教程</a></li>
+<li><a href="../quality/">网站品质</a></li>
+<li><a href="../semweb/">语义网</a></li>
+<li><a href="../hosting/">网站主机</a></li>
+</ul>
+<h2><a href="http://e.v-get.com/w3c/" class="f13">W3CSchool 教程</a></h2><div class="a120x90"><script type="text/javascript">var cpro_id="u1210867";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div></div>
+</div>
+<div id="maincontent">
+<h1>XForms 数据类型</h1>
+<div id="tpn">
+<ul class="prenext">
+<li class="pre"><a href="xforms_selections.html">上一页</a></li>
+<li class="next"><a href="xforms_properties.html">下一页</a></li>
+</ul>
+</div>
+<div id="intro">
+<p><strong>XForms 模型支持 XML Schema 数据类型。</strong></p>
+</div>
+<div>
+<h2>XML Schema 数据类型</h2>
+<p>XForms 模型支持 XML Schema 数据类型。此特性使 XForms 处理器有能力为了确保输入值的正确性对数据进行检查。</p>
+<p>您可以在我们的 <a href="../schema/">XML Schema 教程</a> 中学习更多有关 XML Schema 的指示。</p>
+<p>如需使用 XML Schema 数据类型，您必须向命名空间声明添加 XML Schema 命名空间，就像这样：</p>
+<pre>&lt;html
+xmlns:xf=&#34;http://www.w3.org/2002/xforms&#34;
+xmlns:xsd=&#34;http://www.w3.org/2001/XMLSchema&#34;
+xmlns:xsi=&#34;http://www.w3.org/2001/XMLSchema-instance&#34;&gt;</pre>
+<p>在添加 XML Schema 命名空间之后，您可以向 XForms 的 instance 元素添加 type 属性，就像这样：</p>
+<pre>&lt;xf:instance&gt;
+&lt;person xmlns=&#34;&#34;&gt;
+  &lt;fname xsi:type=&#34;xsd:string&#34;/&gt;
+  &lt;lname xsi:type=&#34;xsd:string&#34;/&gt;
+  &lt;born  xsi:type=&#34;xsd:date&gt;&#34;/&gt;
+  &lt;size  xsi:type=&#34;xsd:integer&#34;/&gt;
+&lt;/person&gt;
+&lt;/xf:instance&gt;</pre>
+<p>XForms 支持除下列类型以外的所有 XML Schema 数据类型：</p>
+<ul>
+  <li>duration</li>
+  <li>ENTITY</li>
+  <li>ENTITIES</li>
+  <li>NOTATION</li>
+</ul>
+<p>如需完整的 XForms 数据类型参考，请访问：</p>
+<p>完整的 XForms 数据类型参考手册</p>
+<p>Try it yourself </p>
+</div>
+<div>
+<h2>数据类型绑定</h2>
+<p>在 XForms 中，您也可以使用 &lt;bind&gt; 元素来对实例数据与数据类型进行关联：</p>
+<pre>&lt;xf:bind nodeset=&#34;/person/size&#34; type=&#34;xsd:integer&#34;/&gt;</pre>
+</div>
+<div id="bpn">
+<ul class="prenext">
+<li class="pre"><a href="xforms_selections.html">上一页</a></li>
+<li class="next"><a href="xforms_properties.html">下一页</a></li>
+</ul>
+</div>
+</div>
+<div id="sidebar">
+<div class="rs"></div>
+<div id="tools">
+<h5 id="tools_reference"><a href="xforms_typeref.html">XForms 参考手册</a></h5>
+</div>
+<div class="a120x600"><script type="text/javascript">var cpro_id="u1293136";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div><div class="b"></div>
+</div>
+</body>
+</html>

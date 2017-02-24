@@ -1,0 +1,231 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="../c3.css" />
+<title>PHP Database ODBC</title>
+</head>
+<body class="serverscripting">
+<div id="wrapper">
+<div id="header">
+<a href="http://e.v-get.com/w3cschool/" style="float:left;">W3CSchool 在线教程</a>
+<div class="q g"><script type="text/javascript">var cpro_id="u1163355"</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div>
+<div id="navfirst">
+<ul id="menu">
+<li id="h"><a href="../h.html">HTML教程</a></li>
+<li id="x"><a href="../x.html">XML教程</a></li>
+<li id="b"><a href="../b.html">浏览器脚本</a></li>
+<li id="s"><a href="../s.html">服务器脚本</a></li>
+<li id="d"><a href="../d.html">dot net教程</a></li>
+<li id="m"><a href="../m.html">多媒体教程</a></li>
+<li id="w"><a href="../w.html">建站手册</a></li>
+</ul>
+</div><div id="navsecond">
+<div id="course">
+<h2>PHP 基础</h2>
+<ul>
+<li><a href="http://e.v-get.com/w3cschool/">PHP 教程</a></li>
+<li><a href="php_intro.html">PHP 简介</a></li>
+<li><a href="php_install.html">PHP 安装</a></li>
+<li><a href="php_syntax.html">PHP 语法</a></li>
+<li><a href="php_variables.html">PHP 变量</a></li>
+<li><a href="php_string.html">PHP 字符串</a></li>
+<li><a href="php_operators.html">PHP 运算符</a></li>
+<li><a href="php_if_else.html">PHP If...Else</a></li>
+<li><a href="php_switch.html">PHP Switch</a></li>
+<li><a href="php_arrays.html">PHP 数组</a></li>
+<li><a href="php_looping.html">PHP 循环</a></li>
+<li><a href="php_functions.html">PHP 函数</a></li>
+<li><a href="php_forms.html">PHP 表单</a></li>
+<li><a href="php_get.html">PHP $_GET</a></li>
+<li><a href="php_post.html">PHP $_POST</a></li>
+</ul>
+<h2>PHP 高级</h2>
+<ul>
+<li><a href="php_date.html" title="">PHP 日期</a></li>
+<li><a href="php_includes.html" title="">PHP 引用</a></li>
+<li><a href="php_file.html" title="">PHP 文件</a></li>
+<li><a href="php_file_upload.html" title="">PHP 文件上传</a></li>
+<li><a href="php_cookies.html" title="">PHP Cookies</a></li>
+<li><a href="php_sessions.html" title="">PHP Sessions</a></li>
+<li><a href="php_mail.html" title="">PHP E-mail</a></li>
+<li><a href="php_secure_mail.html" title="">PHP 安全 E-mail</a></li>
+<li><a href="php_error.html" title="">PHP Error</a></li>
+<li><a href="php_exception.html" title="">PHP Exception</a></li>
+<li><a href="php_filter.html" title="">PHP Filter</a></li>
+</ul>
+<h2>PHP 数据库</h2>
+<ul class="small">
+<li><a href="php_mysql_intro.html" title="">MySQL 简介</a></li>
+<li><a href="php_mysql_connect.html" title="">MySQL Connect</a></li>
+<li><a href="php_mysql_create.html" title="">MySQL Create</a></li>
+<li><a href="php_mysql_insert.html" title="">MySQL Insert</a></li>
+<li><a href="php_mysql_select.html" title="">MySQL Select</a></li>
+<li><a href="php_mysql_where.html" title="">MySQL Where</a></li>
+<li><a href="php_mysql_order_by.html" title="">MySQL Order By</a></li>
+<li><a href="php_mysql_update.html" title="">MySQL Update</a></li>
+<li><a href="php_mysql_delete.html" title="">MySQL Delete</a></li>
+<li><a href="php_db_odbc.html" title="">PHP ODBC</a></li>
+</ul>
+<h2>PHP XML</h2>
+<ul class="small">
+<li><a href="php_xml_parser_expat.html" title="">XML Expat Parser</a></li>
+<li><a href="php_xml_dom.html" title="">XML DOM</a></li>
+<li><a href="php_xml_simplexml.html" title="">XML SimpleXML</a></li>
+</ul>
+<h2>PHP 和 AJAX</h2>
+<ul class="small">
+<li><a href="php_ajax_intro.html">AJAX 简介</a></li>
+<li><a href="php_ajax_xmlhttprequest.html">XMLHttpRequest</a></li>
+<li><a href="php_ajax_suggest.html">AJAX Suggest</a></li>
+<li><a href="php_ajax_xml.html">AJAX XML</a></li>
+<li><a href="php_ajax_database.html">AJAX Database</a></li>
+<li><a href="php_ajax_responsexml.html">AJAX responseXML</a></li>
+<li><a href="php_ajax_livesearch.html">AJAX Live Search</a></li>
+<li><a href="php_ajax_rss_reader.html">AJAX RSS Reader</a></li>
+<li><a href="php_ajax_poll.html">AJAX Poll</a></li>
+</ul>
+<h2>PHP 参考手册</h2>
+<ul class="small">
+<li><a href="php_ref_array.html">PHP Array</a></li>
+<li><a href="php_ref_calendar.html">PHP Calendar</a></li>
+<li><a href="php_ref_date.html">PHP Date</a></li>
+<li><a href="php_ref_directory.html">PHP Directory</a></li>
+<li><a href="php_ref_error.html">PHP Error</a></li>
+<li><a href="php_ref_filesystem.html">PHP Filesystem</a></li>
+<li><a href="php_ref_filter.html">PHP Filter</a></li>
+<li><a href="php_ref_ftp.html">PHP FTP</a></li>
+<li><a href="php_ref_http.html">PHP HTTP</a></li>
+<li><a href="php_ref_libxml.html">PHP LibXML</a></li>
+<li><a href="php_ref_mail.html">PHP Mail</a></li>
+<li><a href="php_ref_math.html">PHP Math</a></li>
+<li><a href="php_ref_mysql.html">PHP MySQL</a></li>
+<li><a href="php_ref_simplexml.html">PHP SimpleXML</a></li>
+<li><a href="php_ref_string.html">PHP String</a></li>
+<li><a href="php_ref_xml.html">PHP XML</a></li>
+<li><a href="php_ref_zip.html">PHP Zip</a></li>
+<li><a href="php_ref_misc.html">PHP 杂项</a></li>
+</ul>
+<h2>PHP 测验</h2>
+<ul>
+<li>PHP Quiz</li>
+</ul>
+</div>
+<div id="selected">
+<h2>建站手册</h2>
+<ul>
+<li><a href="../site/">网站构建</a></li>
+<li><a href="../w3c/">万维网联盟</a></li>
+<li><a href="http://e.v-get.com/w3c/">W3CSchool 教程</a></li>
+<li><a href="../quality/">网站品质</a></li>
+<li><a href="../semweb/">语义网</a></li>
+<li><a href="../hosting/">网站主机</a></li>
+</ul>
+<h2><a href="http://e.v-get.com/w3c/" class="f13">W3CSchool 教程</a></h2><div class="a120x90"><script type="text/javascript">var cpro_id="u1210867";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div></div>
+</div>
+<div id="maincontent">
+<h1>PHP Database ODBC</h1>
+<div  id="tpn">
+<ul class="prenext">
+<li class="pre"><a href="php_mysql_delete.html">上一页</a></li>
+<li class="next"><a href="php_xml_parser_expat.html">下一页</a></li>
+</ul>
+</div>
+<div id="intro">
+<p><strong>ODBC 指的是 (Application Programming Interface，API），使我们有能力连接到某个数据源 (比如一个 MS Access 数据库）。</strong></p>
+</div>
+<div>
+<h2>创建 ODBC 连接</h2>
+<p>通过一个 ODBC 连接，您可以连接到您的网络中的任何计算机上的任何数据库，只要 ODBC 连接是可用的。</p>
+<p>这是创建到达 MS Access 数据的 ODBC 连接的方法：</p>
+<ol>
+<li>在控制面板中打开<em>管理工具</em></li>
+<li>双击其中的<em>数据源 (ODBC)</em> 图标</li>
+<li>选择系统 <em>DSN 选项卡</em></li>
+<li>点击系统 DSN 选项卡中的“<em>添加</em>”按钮</li>
+<li>选择 <em>Microsoft Access Driver</em>。点击<em>完成</em>。</li>
+<li>在下一个界面，点击“<em>选择</em>”来定位数据库。</li>
+<li>为这个数据库取一个<em>数据源名 (DSN)</em>。</li>
+<li>点击<em>确定</em>。</li>
+</ol>
+<p>请注意，必须在您的网站所在的计算机上完成这个配置。如果您的计算机上正在运行 Internet 信息服务器 (IIS)，上面的指令会生效，但是假如您的网站位于远程服务器，您必须拥有对该服务器的物理访问权限，或者请您的主机提供商为您建立 DSN。</p>
+</div>
+<div>
+<h2>连接到 ODBC</h2>
+<p>odbc_connect() 函数用于连接到 ODBC 数据源。该函数有四个参数：数据源名、用户名、密码以及可选的指针类型参数。</p>
+<p>odbc_exec() 函数用于执行 SQL 语句。</p>
+<h3>例子</h3>
+<p>下面的例子创建了到达名为 northwind 的 DSN 的连接，不没有用户名和密码。然后创建并执行一条 SQL 语句：</p>
+<pre>
+$conn=odbc_connect('northwind','','');
+$sql=&#34;SELECT * FROM customers&#34;; 
+$rs=odbc_exec($conn,$sql);
+</pre>
+</div>
+<div>
+<h2>取回记录</h2>
+<p>odbc_fetch_row() 函数用于从结果集中返回记录。如果能够返回行，则返回 true，否则返回 false。</p>
+<p>该函数有两个参数：ODBC 结果标识符和可选的行号：</p>
+<pre>odbc_fetch_row($rs)</pre>
+</div>
+<div>
+<h2>从记录中取回字段</h2>
+<p>odbc_result() 函数用于从记录中读取字段。该函数有两个参数：ODBC 结果标识符和字段编号或名称。</p>
+<p>下面的代码行从记录中返回第一个字段的值：</p>
+<pre>$compname=odbc_result($rs,1); </pre>
+<p>The code line below returns the value of a field called &#34;CompanyName&#34;: </p>
+<pre>$compname=odbc_result($rs,&#34;CompanyName&#34;);</pre>
+</div>
+<div>
+<h2>关闭 ODBC 连接</h2>
+<p>odbc_close()函数用于关闭 ODBC 连接。</p>
+<pre>odbc_close($conn);</pre>
+</div>
+<div>
+<h2>ODBC 实例</h2>
+<p>下面的例子展示了如何首先创建一个数据库连接，然后是结果集，然后在 HTML 表格中显示数据。</p>
+<pre>&lt;html&gt;
+&lt;body&gt;
+&lt;?php
+$conn=odbc_connect('northwind','','');
+if (!$conn)
+  {exit(&#34;Connection Failed: &#34; . $conn);}
+$sql=&#34;SELECT * FROM customers&#34;;
+$rs=odbc_exec($conn,$sql);
+if (!$rs)
+  {exit(&#34;Error in SQL&#34;);}
+echo &#34;&lt;table&gt;&lt;tr&gt;&#34;;
+echo &#34;&lt;th&gt;Companyname&lt;/th&gt;&#34;;
+echo &#34;&lt;th&gt;Contactname&lt;/th&gt;&lt;/tr&gt;&#34;;
+while (odbc_fetch_row($rs))
+{
+  $compname=odbc_result($rs,&#34;CompanyName&#34;);
+  $conname=odbc_result($rs,&#34;ContactName&#34;);
+  echo &#34;&lt;tr&gt;&lt;td&gt;$compname&lt;/td&gt;&#34;;
+  echo &#34;&lt;td&gt;$conname&lt;/td&gt;&lt;/tr&gt;&#34;;
+}
+odbc_close($conn);
+echo &#34;&lt;/table&gt;&#34;;
+?&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+</div>
+<div id="bpn">
+<ul class="prenext">
+<li class="pre"><a href="php_mysql_delete.html">上一页</a></li>
+<li class="next"><a href="php_xml_parser_expat.html">下一页</a></li>
+</ul>
+</div>
+</div>
+<div id="sidebar">
+<div class="rs"></div>
+<div id="tools">
+<h5 id="tools_reference"><a href="php_ref.html">PHP 参考手册</a></h5>
+<h5 id="tools_quiz"><a href="php_quiz.html">PHP 测验</a></h5>
+</div>
+<div class="a120x600"><script type="text/javascript">var cpro_id="u1293136";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div><div class="b"></div>
+</div>
+</body>
+</html>

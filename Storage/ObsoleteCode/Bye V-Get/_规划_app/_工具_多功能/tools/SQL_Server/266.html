@@ -1,0 +1,7 @@
+<meta http-equiv="content-type" content="text/html; charset=gb2312"><FONT 
+style="FONT-SIZE: 9pt; LINE-HEIGHT: 15pt"><B>用MSCS以及CA的SurviveIT实现过SQL的双机热备</B><BR>(作者&nbsp;&nbsp;_rambo)<BR>Microsoft?&nbsp;SQL&nbsp;Server?&nbsp;2000&nbsp;故障转移群集允许系统自动故障服务器中的&nbsp;SQL&nbsp;Server&nbsp;实例处理转换到工作服务器，从而提高了服务器的可用性。例如，SQL&nbsp;Server&nbsp;实例可以快速地将数据库服务还原到&nbsp;Web&nbsp;站点或企业网络，即使运行该实例的服务器发生故障。SQL&nbsp;Server&nbsp;2000&nbsp;基于&nbsp;Windows&nbsp;NT?&nbsp;4.0&nbsp;和&nbsp;Windows?&nbsp;2000&nbsp;中的&nbsp;Microsoft&nbsp;群集服务&nbsp;(MSCS)&nbsp;的故障转移群集功能实现故障转移群集。
+<P></P>
+<P>SQL&nbsp;Server&nbsp;2000&nbsp;使用的&nbsp;MSCS&nbsp;故障转移群集类型由多台服务器计算机组成（在&nbsp;Windows&nbsp;NT&nbsp;4.0&nbsp;上为两个，在&nbsp;Windows&nbsp;2000&nbsp;Datacenter&nbsp;Server&nbsp;上最多可以为四个），它们共享一套公用群集资源，如磁盘驱动器。群集中的每台服务器都称为一个节点。每台服务器（或节点）与网络连接，并且各节点间可以相互通讯。每一节点都运行同一版本的&nbsp;MSCS。</P>
+<P>在故障转移群集中，共享资源被收集到群集组内。例如，如果故障转移群集有四个共享磁盘驱动器，其中的两个驱动器可以收集到一个群集组内，而另两个驱动器可以收集到另一个群集组内。每一群集组都由故障转移群集中的某个节点拥有，不过这种所有权可以在节点间转让。</P>
+<P>应用程序可以安装在故障转移群集中的节点上。这些应用程序通常是服务器应用程序或用户通过网络连接访问的分布式&nbsp;COM&nbsp;对象。应用程序的可执行文件和其它资源通常存储在节点所拥有的一个或多个群集组内。每一节点都可以在其上安装多个应用程序。</P>
+<P>故障转移群集节点定期相互发送称为心跳信号消息的网络消息。如果&nbsp;MSCS&nbsp;软件检测到群集中某个节点丢失了心跳信号，则将该服务器视为故障服务器。MSCS&nbsp;然后自动将该节点的群集组和应用程序资源转移给网络中的其它节点。当任何特定的节点发生故障时，群集管理员指定将群集组转移到的替换节点。于是，其它节点继续处理对故障服务器转移来的应用程序的用户网络请求。</P></FONT>

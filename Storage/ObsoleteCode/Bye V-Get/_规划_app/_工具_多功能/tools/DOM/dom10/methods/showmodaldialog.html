@@ -1,0 +1,131 @@
+<html xmlns:rdl>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<script src="rdl_method.js"></script>
+<base target="_self">
+</head>
+<body>
+
+<script>
+
+//collFriendObjects=new Array();
+//collFriendProperties=new Array();
+//collFriendMethods=new Array();
+//collFriendEvents=new Array();
+//collFriendCollections=new Array();
+
+collFriendMethods=new Array(
+'alert','confirm','showModelessDialog','ShowBrowserUI','prompt'
+);
+
+collFriendProperties=new Array(
+'dialogHeight','dialogLeft','dialogTop','dialogWidth','dialogArguments','returnValue'
+);
+
+//collIE40=new Array();
+//collIE50=new Array();
+//collIE55=new Array();
+//collIE60=new Array();
+
+collIE40=new Array(
+'window'
+);
+
+//sStyle='';
+
+sScript=
+'<script>\n'+
+'var vDialog=null;\n'+
+'function rdl_doDialog(){\n'+
+'vDialog=showModalDialog("rdl_showmodelessdialog_demo.html",window,"status:no;resizable:yes;dialogHeight:210px;dialogWidth:360px;unadorne:yes");\n'+
+'if (vDialog != null) vDialog.idDialogInput.value=idOpenerInput.value;\n'+
+'}\n'+
+'<\/script>\n';
+
+sCode=
+'<input type=text id=idOpenerInput value="传递的文字"><br><br>\n'+
+'<input type=button onclick="rdl_doDialog();" value="建立对话框">\n'+
+'\n\n';
+
+sPlusCode=
+'\---- 对话框页面的代码 ----\n'+
+'\n'+
+'\<script\>\n'+
+'function window.onunload() {\n'+
+'dialogArguments.vDialog=null;\n'+
+'}\n'+
+'\<\/script\>\n'+
+'\n'+
+'\<input type=text id=idDialogInput\>\<br\>\<br\>\n'+
+'\<input type=button onclick=\"dialogArguments.idOpenerInput.value=idDialogInput.value;\" value=\"传递文字\"\>\n'+
+'\<input type=button onclick=\"window.close();\" value=\"关闭\"\>\n'+
+'\n\n';
+
+iWinWidth=360;
+
+iWinHeight=210;
+
+</script>
+
+<div id=idContent>
+
+<div id=idContentTitle><span id=idTitleName>showModalDialog</span>版本：DHTML Object Model　返回值：有</div>
+
+<div class=cssColumnTitle>语法：</div>
+<div>
+<i>vReturnValue</i><b> = </b><i>window</i><b> . showModalDialog ( </b><i>sURL</i><b> , </b><i>vArguments</i><b> , </b><i>sFeatures</i><b> ) </b>
+</div>
+
+<div class=cssColumnTitle>参数：</div>
+<table>
+<tr><td nowrap><i> sURL </i></td><td nowrap><b></b></td><td><b>必选项</b>。字符串(String)。指定要载入和显示的<b> URL </b>。</td></tr>
+<tr><td nowrap><i> vArguments </i></td><td nowrap><b></b></td>
+<td><b>可选项</b>。指定供显示文档时使用的变量。利用这个参数可以传递任何类型的值，包括包含多个值得的数组。对话框可以通过调用程序从<a href="../objects/window.html"> window </a>对象的<a href="../properties/dialogarguments.html"> dialogArguments </a>属性提取这些值。
+<tr><td nowrap><i> sFeatures </i></td><td nowrap><b></b></td>
+<td><b>可选项</b>。字符串(String)。指定对话框的窗口装饰。使用下面的值。多个之间用分号隔开。
+<table>
+<tr><td nowrap><b> dialogHeight : </b><i>sHeight </i></td><td nowrap><b></b></td><td>设置对话框的高度。</td></tr>
+<tr><td nowrap><b> dialogLeft : </b><i>sXPos </i></td><td nowrap><b></b></td><td>设置对话框左上角相对于桌面的横坐标。</td>
+<tr><td nowrap><b> dialogTop : </b><i>sYPos </i><td nowrap><b></b></td><td>设置对话框左上角相对于桌面的纵坐标。 </td>
+<tr><td nowrap><b> dialogWidth : </b><i>sWidth </i><td nowrap><b></b></td><td>设置对话框的宽度。</td>
+<tr><td nowrap><b> center : <span class=cssDefault>yes</span> | no | 1 | 0 | on | off </b><td nowrap><b></b></td><td>指定对话框是否显示于桌面正中。默认值为<b> yes </b>。</td>
+<tr><td nowrap><b> dialogHide : yes | <span class=cssDefault>no</span>| 1 | 0 | on | off </b><td nowrap><b></b></td><td>指定当打印或打印预览时对话框是否隐藏。仅仅当对话框是由被信任的程式打开的时候此参数才可用。默认值为<b> no </b>。</td>
+<tr><td nowrap><b> edge : sunken | <span class=cssDefault>raised</span> </b><td nowrap><b></b></td><td>指定对话框窗口边框样式为凹下还是凸起的。默认值为<b> raised </b>。</td>
+<tr><td nowrap><b> help : <span class=cssDefault>yes</span> | no | 1 | 0 | on | off </b><td nowrap><b></b></td><td>指定对话框是否显示上下文相关的帮助图标。默认值为<b> yes </b>。</td>
+<tr><td nowrap><b> resizable : yes | <span class=cssDefault>no</span> | 1 | 0 | on | off </b><td nowrap><b></b></td><td>指定对话框是否可以被用户改变尺寸。默认值为<b> no </b>。</td>
+<tr><td nowrap><b> scroll : <span class=cssDefault>yes</span> | no | 1 | 0 | on | off </b><td nowrap><b></b></td><td>指定对话框是否显示滚动条。默认值为<b> yes </b>。</td>
+<tr><td nowrap><b> status : yes | no | 1 | 0 | on | off </b><td nowrap><b></b></td><td>指定对话框是否显示状态条。对于不被信任的对话框默认值为<span class=cssDefault><b> yes </b></span>。对于被信任的对话框默认值为<span class=cssDefault><b> no </b></span>。</td>
+<tr><td nowrap><b> unadorned : yes | <span class=cssDefault>no</span> | 1 | 0 | on | off </b><td nowrap><b></b></td><td>指定对话框是否显示 chrome 样式边框。仅仅当对话框是由被信任的程式打开的时候此参数才可用。默认值为<b> no </b>。</td></tr>
+</table>
+</td></tr>
+</table>
+
+<div class=cssColumnTitle>返回值：</div>
+<div>
+<i>vReturnValue</i><b>:</b>返回等同于打开的对话框窗口(<a href="../objects/window.html"> window </a>)的<a href="../properties/dialogarguments.html"> returnValue </a>属性值的值。
+
+
+</div>
+
+<div class=cssColumnTitle>说明：</div>
+<div>
+建立模式对话框显示指定的文档。<br>
+模式对话框被打开后就会始终保持输入焦点。除非对话框被关闭，否则用户无法切换窗口。<br>
+因为无模式对话框能够包含链接指向不同域名下的资源，请不要使用<i> vArguments </i>参数传递用户可能认为私有的信息。在模式对话框内部<i> vArguments </i>参数可以被模式对话框使用<a href="../objects/window.html"> window </a>对象的<a href="../properties/dialogarguments.html"> dialogArguments </a>属性提取和使用。假如<i> vArguments </i>参数被定义为字符串(String)，其可以被传递到无模式对话框的最大长度为 4096 个字符。超出的会被截去。<br>
+在 IE4+ 中，你可以禁止对话框窗口的滚动条。要关闭滚动条，可以设置对话框窗口内文档的<a href="../objects/body.html"> body </a>对象的<a href="../properties/scroll.html"> SCROLL </a>属性值为<b> false </b>，或是从可信任的程式里调用对话框。<br>
+在 IE5+ 中，你可以通过使用<i> sFeatures </i>参数中的<b> status </b>和<b> resizable </b>值控制模式对话框。
+你可以用和使用样式表同样的方法设置默认的字体设置。例如：<b> "font:3; font-size:4" </b>。<br>
+使用多种字体属性，你可以定义多种字体值。<br>
+在 Internet Explorer 4.0 中，<i> dialogHeight </i> 和 <i> dialogWidth </i>的缺省单位为<b> em </b>，而在 Internet Explorer 5.0 及以上版本中默认单位为<b> px </b>。其值可以是整数(Integer)或浮点数(Floating-point number)。因为绝对长度单位(cm, mm, in, pt, pc, px)和相对长度单位(em , ex)的差别， 要想保证预期的显示结果，在设计时应使用<b> px </b>单位。<br>
+倘若对话框是可以被改变尺寸的，虽然用户的手动改变可以达到更小的值，但是设计时你可以指定的<i> dialogHeight </i>的最小值为<b> 100px </b>。
+你可以通过指定<i> dialogLeft</i> 或 <i> dialogTop </i>的值来取消对话框显示的居中。即使<i> center </i>默认值为<b> yes </b>。<br>
+</div>
+
+
+
+</div>
+</body>
+</html>
+
+<!-- Part of RDL(TM) - Written by Rain1977 
+HomeSite: http://www.dhtmlet.com  E-Mail: dhtmlet@hotmail.com -->

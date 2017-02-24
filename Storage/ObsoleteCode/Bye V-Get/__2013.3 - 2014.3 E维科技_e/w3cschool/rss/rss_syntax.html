@@ -1,0 +1,144 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="../c3.css" />
+<title>RSS 语法</title>
+</head>
+<body class="xml">
+<div id="wrapper">
+<div id="header">
+<a href="http://e.v-get.com/w3cschool/" style="float:left;">W3CSchool 在线教程</a>
+<div class="q g"><script type="text/javascript">var cpro_id="u1163355"</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div>
+<div id="navfirst">
+<ul id="menu">
+<li id="h"><a href="../h.html">HTML教程</a></li>
+<li id="x"><a href="../x.html">XML教程</a></li>
+<li id="b"><a href="../b.html">浏览器脚本</a></li>
+<li id="s"><a href="../s.html">服务器脚本</a></li>
+<li id="d"><a href="../d.html">dot net教程</a></li>
+<li id="m"><a href="../m.html">多媒体教程</a></li>
+<li id="w"><a href="../w.html">建站手册</a></li>
+</ul>
+</div><div id="navsecond">
+<div id="course">
+<h2>RSS 基础</h2>
+<ul>
+<li><a href="http://e.v-get.com/w3cschool/">RSS 首页</a></li>
+<li><a href="rss_intro.html">RSS 简介</a></li>
+<li><a href="rss_history.html">RSS 历史</a></li>
+<li><a href="rss_syntax.html">RSS 语法</a></li>
+<li><a href="rss_channel.html">RSS &lt;channel&gt;</a></li>
+<li><a href="rss_item.html">RSS &lt;item&gt;</a></li>
+<li><a href="rss_publishing.html">RSS 发布 Feed</a></li>
+<li><a href="rss_readers.html">RSS 读取 Feed</a></li>
+</ul>
+<h2>参考手册</h2>
+<ul>
+<li><a href="rss_reference.html">RSS 参考手册</a></li>
+</ul>
+</div>
+<div id="selected">
+<h2>建站手册</h2>
+<ul>
+<li><a href="../site/">网站构建</a></li>
+<li><a href="../w3c/">万维网联盟</a></li>
+<li><a href="http://e.v-get.com/w3c/">W3CSchool 教程</a></li>
+<li><a href="../quality/">网站品质</a></li>
+<li><a href="../semweb/">语义网</a></li>
+<li><a href="../hosting/">网站主机</a></li>
+</ul>
+<h2><a href="http://e.v-get.com/w3c/" class="f13">W3CSchool 教程</a></h2><div class="a120x90"><script type="text/javascript">var cpro_id="u1210867";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div></div>
+</div>
+<div id="maincontent">
+<h1>RSS 语法</h1>
+<div id="tpn">
+<ul class="prenext">
+<li class="pre"><a href="rss_history.html">上一页</a></li>
+<li class="next"><a href="rss_channel.html">下一页</a></li>
+</ul>
+</div>
+<div id="intro">
+<p><strong>RSS 2.0 的语法很简单，也很严格。这些规则很容易学习，也很容易使用。</strong></p>
+</div>
+<div>
+<h2>RSS 如何工作</h2>
+<p>RSS 用于在网站间分享信息。</p>
+<p>使用 RSS，您在名为聚合器的公司注册您的内容。</p>
+<p>作为他的一部分，创建一个 RSS 文档，然后使用 .xml 后缀来保存它。然后把此文件上传导您的网站。接下来，通过一个 RSS 聚合器来注册。每天，聚合器都会到被注册的网站搜索 RSS 文档，校验其链接，并显示有关 feed 的信息，这样客户就能够链接到使他们产生兴趣的文档。</p>
+<p class="tip"><span>提示：</span>请在 RSS 发布 这一节浏览免费的 RSS 聚合器服务。</p>
+</div>
+<div>
+<h2>一个 RSS 实例文档</h2>
+<p>RSS 文档使用一种简单的自我描述的语法：</p>
+<p>让我们看一个简单的 RSS 文档：</p>
+<pre>&lt;?xml version=&#34;1.0&#34; encoding=&#34;ISO-8859-1&#34; ?&gt;
+&lt;rss version=&#34;2.0&#34;&gt;
+&lt;channel&gt;
+  &lt;title&gt;W3CSchool Home Page&lt;/title&gt;
+  &lt;link&gt;http://e.v-get.com&lt;/link&gt;
+  &lt;description&gt;Free web building tutorials&lt;/description&gt;
+  &lt;item&gt;
+    &lt;title&gt;RSS Tutorial&lt;/title&gt;
+    &lt;link&gt;http://e.v-get.com/rss&lt;/link&gt;
+    &lt;description&gt;New RSS tutorial on W3CSchool&lt;/description&gt;
+  &lt;/item&gt;
+  &lt;item&gt;
+    &lt;title&gt;XML Tutorial&lt;/title&gt;
+    &lt;link&gt;http://e.v-get.com/xml&lt;/link&gt;
+    &lt;description&gt;New XML tutorial on W3CSchool&lt;/description&gt;
+  &lt;/item&gt;
+&lt;/channel&gt;
+&lt;/rss&gt;</pre>
+<p>文档中的第一行：XML 声明 - 定义了文档中使用的 XML 版本和字符编码。此例子遵守 1.0 规范，并使用 ISO-8859-1 (Latin-1/West European) 字符集。</p>
+<p>下一行是标识此文档是一个 RSS 文档的 RSS 声明 (此例是 RSS version 2.0）。</p>
+<p>下一行含有 &lt;channel&gt; 元素。此元素用于描述 RSS feed。</p>
+<p>&lt;channel&gt; 元素有三个必需的子元素：</p>
+<ul>
+<li>&lt;title&gt; - 定义频道的标题。 (比如 W3CSchool 首页）</li>
+<li>&lt;link&gt; - 定义到达频道的超链接。 (比如 e.v-get.com）</li>
+<li>&lt;description&gt; - 描述此频道 (比如免费的网站建设教程）</li>
+</ul>
+<p>每个 &lt;channel&gt; 元素可拥有一个或多个 &lt;item&gt; 元素。</p>
+<p>每个 &lt;item&gt; 元素可定义 RSS feed 中的一篇文章或 &#34;story&#34;。</p>
+<p>&lt;item&gt; 元素拥有三个必需的子元素：</p>
+<ul>
+<li>&lt;title&gt; - 定义项目的标题。 (比如 RSS 教程）</li>
+<li>&lt;link&gt; - 定义到达项目的超链接。 (比如 http://e.v-get.com/rss）</li>
+<li>&lt;description&gt; - 描述此项目 (比如 W3CSchool 的 RSS 教程）</li>
+</ul>
+<p>最后，后面的两行关闭 &lt;channel&gt; 和 &lt;rss&gt; 元素。</p>
+</div>
+<div>
+<h2>RSS 中的注释</h2>
+<p>在 RSS 中书写注释的语法与 HTML 的语法类似：</p>
+<pre>&lt;!-- This is an RSS comment --&gt;</pre>
+</div>
+<div>
+<h2>RSS 使用 XML 来编写</h2>
+<p>因为 RSS 也是 XML，请记住：</p>
+<ul>
+<li>所有的元素必许拥有关闭标签</li>
+<li>元素对大小写敏感</li>
+<li>元素必需被正确地嵌套</li>
+<li>属性值必须带引号</li>
+</ul>
+</div>
+<div id="bpn">
+<ul class="prenext">
+<li class="pre"><a href="rss_history.html">上一页</a></li>
+<li class="next"><a href="rss_channel.html">下一页</a></li>
+</ul>
+</div>
+</div>
+<div id="sidebar">
+<div class="rs"></div>
+<div id="tools">
+<h5  id="tools_reference"><a href="rss_reference.html">RSS 参考手册</a></h5>
+</div>
+<div class="a120x600"><script type="text/javascript">var cpro_id="u1293136";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div><div class="b"></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<html>
+<head>
+<title>本章小结</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+
+<link rel = stylesheet href = "image/style.css">
+</head>
+<body bgcolor="#ffffff">
+<table width="688" border="0" cellspacing="0" cellpadding="0" align="center">
+  <tr bgcolor="EEEEEE"> 
+    <td height="22"><a href="index.htm">主页</a></td>
+  </tr>
+</table><br>
+<table border="0" cellpadding="0" cellspacing="0" width="688" align="center" height="490">
+  <tr valign="top"> 
+    <td rowspan="4" width="91">&nbsp; </td>
+    <td height="68" width="131"> 
+      <p><img src="image/doc.gif"></p>
+    </td>
+    <td rowspan="4" width="18"><b></b> </td>
+    <td height="68" width="387"><img src="image/title_doc.gif"></td>
+    <td rowspan="4" width="61"> 
+      <h6>&nbsp;</h6>
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td rowspan="3" valign="top" class="pt10" align="center" width="131" bgcolor="EEEEEE"> 
+      <p>&nbsp;</p>
+      <p><font color="#FF0000">※ 14.20 本章小结</font></p>
+       
+	</td>
+  </tr>
+  <tr valign="top"> 
+    <td width="387" height="308"> 
+      <table width="100%" border="0" cellpadding="0">
+        <tr> 
+          <td>
+
+           <h4><A NAME="_Toc467207189">14.20 本章小结</A></h4>
+<P>在本章，学习了有关XSL变换的内容。包括如下一些内容：</P>
+
+<UL>
+<P><LI>可扩展的样式语言（Extensible Style Language，XSL）是由两个独立的XML应用程序（分别用于转换和格式化XML文档）组成。</LI><p></P>
+<P><LI>XSL转换将规则应用于从XML文档中读入的一个树形结构中，以便将它转换成一个以XML文档编写的输出树形结构中。</LI><p></P>
+<P><LI>XSL模板规则是一个带有match特性的xsl:template元素。输入树形结构中的节点与不同模板元素match特性的模式进行比较。当找到匹配时，即输出模板的内容。</LI><p></P>
+<P><LI>节点的值是含有节点内容的纯文本（不是标记），可由xsl:value-of元素获得。</LI><p></P>
+<P><LI>可以由两种方法处理多个元素：xsl:apply-templates元素和xsl:for-each元素。</LI><p></P>
+<P><LI>xsl:template元素的match特性值是匹配模式，用以指定模板与哪个节点匹配。</LI><p></P>
+<P><LI>选择表达式为match特性的超集，由xsl:apply-templates、xsl:value-of、xsl:for-each、xsl:copy-of、xsl:sort以及其他各种元素的select特性所使用。</LI><p></P>
+<P><LI>两个缺省的规则将模板应用于元素节点，并取文本节点的值。</LI><p></P>
+<P><LI>xsl:element、xsl:attribute、xsl:pi、xsl:comment和xsl:text元素可输出元素、特性、处理指令、注释以及文本，这些输出结果都可以从输入文档中的数据进行运算获得。</LI><p></P>
+<P><LI>xsl:attribute-set元素定义常用的一组特性，从而使用xsl:use元素，将这组特性用于不同模板中的多个元素。</LI><p></P>
+<P><LI>xsl:copy元素将当前输入节点复制到输出文档中。</LI><p></P>
+<P><LI>xsl:number元素使用format特性所给出的指定数字格式，将expr特性中指定的数字插入到输出文档中。</LI><p></P>
+<P><LI>xsl:sort元素在将输入节点复制到输出文档中之前，可对输入节点重新进行排序。</LI><p></P>
+<P><LI>XSL不能输出CDATA部分，也不能输出未转义的&lt;符。</LI><p></P>
+<P><LI>模式可从样式单中的不同位置，将不同模板应用于相同的元素。</LI><p></P>
+<P><LI>xsl:variable元素定义命名的常数，以使代码清晰简练。</LI><p></P>
+<P><LI>命名的模板有助于重新使用通用的模板代码。</LI><p></P>
+<P><LI>在缺省的条件下，保留空白，除非用xsl:strip-space元素或xml:space特性说明为不保留。</LI><p></P>
+<P><LI>xsl:if元素在当且仅当其test特性为真时，才产生输出。</LI><p></P>
+<P><LI>当xsl:when子元素的test特性为真时，xsl:choose元素输出其第一个xsl:when子元素的模板；或者，如果xsl:when元素都没有true的测试特性时，xsl:choose元素输出其xsl:default元素的模板。</LI><p></P>
+<P><LI>xsl:import和xsl:include元素合并不同样式单中的规则。</LI><p></P></UL>
+
+<P>在下一章中，我们将继续XSL的另一半内容：格式化对象（formatting object）符号集。格式化对象是用来指定页面精确布局的极其强有力的手段。XSL变换用于将XML文档转换成XSL格式化对象文档。</P>
+<P></P> 
+<a href='492.htm'>&lt;&lt;上一篇</a>&nbsp;&nbsp;<a href='524.htm'>下一篇&gt;&gt;</a></td>
+        </tr>
+      </table>
+      <p>&nbsp; </p>
+    </td>
+  </tr>
+</table>
+
+</body>
+
+</html>

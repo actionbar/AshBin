@@ -1,0 +1,87 @@
+<html xmlns:rdl>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<script src="rdl_method.js"></script>
+<base target="_self">
+</head>
+<body>
+
+<script>
+
+//collFriendObjects=new Array();
+//collFriendProperties=new Array();
+//collFriendMethods=new Array();
+//collFriendEvents=new Array();
+//collFriendCollections=new Array();
+
+collFriendMethods=new Array(
+'AddFavorite','AddDesktopComponent'
+);
+
+collFriendObjects=new Array(
+'external'
+);
+
+//collIE40=new Array();
+//collIE50=new Array();
+//collIE55=new Array();
+//collIE60=new Array();
+
+collIE40=new Array(
+'external'
+);
+
+//sStyle='';
+
+//sScript='';
+
+sCode=
+'window.external.AddChannel("http://www.dhtmlet.com/rdl_dom.cdf");\n\n';
+
+iWinWidth=380;
+
+iWinHeight=220;
+
+bRunCode=false;
+
+</script>
+
+<div id=idContent>
+
+<div id=idContentTitle><span id=idTitleName>AddChannel</span>版本：DHTML Object Model　返回值：无</div>
+
+<div class=cssColumnTitle>语法：</div>
+<div>
+<a href="../objects/window.html"><b>window</b></a><b> . </b><a href="../objects/external.html"><b>external</b></a><b> . AddChanne ( </b><i>sURL</i><b> ) </b>
+</div>
+
+<div class=cssColumnTitle>参数：</div>
+<table>
+<tr><td nowrap><i> sURL </i></td><td nowrap><b>:</b></td>
+<td><b>必选项</b>。字符串(String)。指定要安装的<b> CDF </b>文件的<b> URL </b>地址。<b> CDF </b>文件是频道定义格式( Channel Definition Format )文件。</td></tr>
+</table>
+
+<div class=cssColumnTitle>返回值：</div>
+<div>
+无
+</div>
+
+<div class=cssColumnTitle>说明：</div>
+<div>
+显示一个对话框允许用户决定是否安装指定的频道(<b> CDF </b>)。<br>
+假如出错，会有错误对话框出现。你可以通过使用<a href="../events/onerror.html"> onerror </a>事件禁止该对话框可能的出现。<Br>
+此方法是用于 Microsoft&reg; Active Channel&reg; 内容发布预定的。Microsoft&reg; Internet Explorer 4. 0及更高版本支持<b> Active Channel </b>技术。<Br>
+此方法不支持HTML应用程式(<b> HTA </b>)。
+</div>
+
+<div class=cssColumnTitle>示例：</div>
+<div id=idSimpleCode>
+window.external.AddChannel("http://www.dhtmlet.com/rdl_dom.cdf");
+</div>
+
+</div>
+</body>
+</html>
+
+<!-- Part of RDL(TM) - Written by Rain1977 
+HomeSite: http://www.dhtmlet.com  E-Mail: dhtmlet@hotmail.com -->

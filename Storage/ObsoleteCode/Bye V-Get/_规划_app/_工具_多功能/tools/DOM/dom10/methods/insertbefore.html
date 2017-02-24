@@ -1,0 +1,118 @@
+<html xmlns:rdl>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<script src="rdl_method.js"></script>
+<base target="_self">
+</head>
+<body>
+
+<script>
+
+//collFriendObjects=new Array();
+//collFriendProperties=new Array();
+//collFriendMethods=new Array();
+//collFriendEvents=new Array();
+//collFriendCollections=new Array();
+
+collFriendMethods=new Array(
+'appendChild','applyElement','insertAdjacentElement'
+);
+
+collFriendCollections=new Array(
+'childNodes'
+);
+
+//collIE40=new Array();
+//collIE50=new Array();
+//collIE55=new Array();
+//collIE60=new Array();
+
+collIE50=new Array(
+'A','ACRONYM','ADDRESS','B','BDO','BIG','BLOCKQUOTE','BODY','BUTTON','CAPTION','CENTER','CITE','CODE','COL','COLGROUP','COMMENT','DD','DEL','DFN','DIR','DIV','DL','DT','EM','FIELDSET','FONT','FORM','FRAMESET','HEAD','Hn','HTML','I','IFRAME','INPUT type=button','INPUT type=checkbox','INPUT type=file','INPUT type=image','INPUT type=password','INPUT type=radio','INPUT type=reset','INPUT type=submit','INPUT type=text','INS','KBD','LABEL','LEGEND','LI','LISTING','MAP','MARQUEE','MENU','nextID','OBJECT','OL','OPTION','P','PLAINTEXT','PRE','Q','S','SAMP','SELECT','SMALL','SPAN','STRIKE','STRONG','SUB','SUP','TABLE','TBODY','TD','TEXTAREA','TFOOT','TH','THEAD','TR','TT','U','UL','VAR','XMP'
+);
+
+collIE60=new Array(
+'attribute'
+);
+
+//sStyle='';
+
+sScript=
+'<script>\n'+
+'var iNow=3;var i_nowheight=240;\n'+
+'function rdl_insert(){\n'+
+'if (oSel.options[oSel.selectedIndex].value=="null") return;\n'+
+'var oNew=document.createElement("li");\n'+
+'eval("oList.insertBefore(oNew,"+oSel.options[oSel.selectedIndex].value+");");\n'+
+'iNow++;i_nowheight+=15;\n'+
+'oNew.innerText="第"+iNow.toString()+"个列表项目";\n'+
+'oNew.style.color="#FF3300";\n'+
+'window.resizeTo(320,i_nowheight);\n'+
+'}\n'+
+'<\/script>\n';
+
+sCode=
+'<ul id=oList>\n'+
+'<li id=oLI1>第1个列表项目\n'+
+'<li id=oLI2>第2个<a href="#" onclick="return false;">列表项目<\/a>\n'+
+'<li id=oLI3>第3个列表项目\n'+
+'<\/ul>\n'+
+'<table><tr><td>\n'+
+'插入到\n'+
+'<\/td><td>\n'+
+'<select id="oSel" onchange="rdl_insert();">\n'+
+'<option value="null">---请选择---\n'+
+'<option value="oLI1">第1个列表项目\n'+
+'<option value="oLI2">第2个列表项目\n'+
+'<option value="oLI3">第3个列表项目\n'+
+'<\/select>\n'+
+'<\/td><td>\n'+
+'之前\n'+
+'<\/td><\/tr><\/table>\n';
+
+iWinWidth=320;
+
+iWinHeight=240;
+
+</script>
+
+<div id=idContent>
+
+<div id=idContentTitle><span id=idTitleName>insertBefore</span>版本：DOM1　返回值：有</div>
+
+<div class=cssColumnTitle>语法：</div>
+<div>
+<i>oElement</i><b> = </b><i>object</i><b> . insertBefore ( </b><i>oNewNode</i><b> , </b><i>oChildNode</i><b> ) </b>
+</div>
+
+<div class=cssColumnTitle>参数：</div>
+<table>
+<tr><td nowrap><i> oNewNode </i></td><td nowrap><b>:</b></td>
+<td><b>必选项</b>。对象(Element)。要被插入文档结构的对象。</td></tr>
+<tr><td nowrap><i> oChildNode </i></td><td nowrap><b>:</b></td>
+<td><b>可选项</b>。对象(Element)。定位插入点。<i> oNewNode </i>被插入到紧贴这个子对象的前面。</td></tr>
+</table>
+
+<div class=cssColumnTitle>返回值：</div>
+<table>
+<tr><td nowrap><i> oElement </i></td><td nowrap><b>:</b></td>
+<td>对象(Element)。返回插入的对象的引用。</td></tr>
+</table>
+
+<div class=cssColumnTitle>说明：</div>
+<div>
+将<i> oNewNode </i>插入文档结构作为<i> object </i>的子对象。即对象的<a href="../objects/childnodes.html"> childNodes </a>集合的最后一项。
+<br><i> oNewNode </i>被添加前，必须先被建立。
+<br><i> object </i>没有子对象时使用此方法插入<i> oNewNode </i>不要使用<i> oChildNode </i>参数。
+<br>对于已有子对象的<i> object </i>而言，如果忽略<i> oChildNode </i>参数，<i> oNewNode </i>将被插入为<i> object </i>的最后一个子对象。即<i> object </i>的<a href="../objects/childnodes.html"> childNodes </a>集合的最后一项。
+<br>在运行时使用此方法是可以的。在对象的关闭标签被解析之前移除对象，则文档空间可能未被呈递。
+</div>
+
+
+
+</div>
+</body>
+</html>
+
+<!-- Part of RDL(TM) - Written by Rain1977 
+HomeSite: http://www.dhtmlet.com  E-Mail: dhtmlet@hotmail.com -->

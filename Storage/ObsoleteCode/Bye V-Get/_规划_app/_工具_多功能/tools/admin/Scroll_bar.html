@@ -1,0 +1,521 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>滚动条颜色生成器-站长工具-客齐齐实用查询工具</title>
+<meta name="keywords" content="滚动条颜色生成器,在线滚动条颜色生成,滚动条,滚动条颜色生成,网页滚动条代码">
+<meta content="滚动条颜色生成器!" name="description" />
+<link href="../images/style.css" rel="stylesheet" type="text/css" />
+<style type="text/css">
+<!--
+body {
+margin:0; padding:0;background: #FFF url('../images/top3.gif') repeat-x top; font-size:12px;color:#666
+   MARGIN: 25px;
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+}
+.style1 {font-size: 14px}
+.hi {
+	BORDER-RIGHT: medium none; BORDER-TOP: medium none; BORDER-LEFT: medium none; CURSOR: hand; BORDER-BOTTOM: medium none
+}
+#all TD {
+	FONT-SIZE: 12px; LINE-HEIGHT: 15px; FONT-FAMILY: "Verdana", "Arial","新宋体", "宋体"
+}
+INPUT {
+	FONT-SIZE: 12px; LINE-HEIGHT: 15px; FONT-FAMILY: "Verdana", "Arial","新宋体", "宋体"
+}
+SELECT {
+	FONT-SIZE: 12px; LINE-HEIGHT: 15px; FONT-FAMILY: "Verdana", "Arial","新宋体", "宋体"
+}
+P {
+	FONT-SIZE: 12px; LINE-HEIGHT: 15px; FONT-FAMILY: "Verdana", "Arial","新宋体", "宋体"
+}
+TEXTAREA {
+	FONT-SIZE: 12px; OVERFLOW: hidden; LINE-HEIGHT: 15px; FONT-FAMILY: "Verdana", "Arial", "新宋体", "宋体"
+}
+.high {
+	CURSOR: default; COLOR: #ffffff; BACKGROUND-COLOR: #006699
+}
+.target {
+	BORDER-RIGHT: #cccccc 2px solid; BORDER-TOP: #cccccc 2px solid; BORDER-LEFT: #cccccc 2px solid; COLOR: #ffffff; BORDER-BOTTOM: #cccccc 2px solid; BACKGROUND-COLOR: #006699
+}
+FONT {
+	CURSOR: default
+}
+-->
+</style>
+<SCRIPT LANGUAGE="JavaScript"> 
+<!-- Hide 
+function killErrors() { 
+return true; 
+} 
+window.onerror = killErrors; 
+// --> 
+</SCRIPT>
+<SCRIPT language=JavaScript>
+<!--
+
+function MM_goToURL() { //v3.0
+  var i, args=MM_goToURL.arguments; document.MM_returnValue = false;
+  for (i=0; i<(args.length-1); i+=2) eval(args[i]+".location='"+args[i+1]+"'");
+}
+function JM_cc(ob){
+var obj=MM_findObj(ob); if (obj) { 
+obj.select();js=obj.createTextRange();js.execCommand("Copy");}
+}
+
+function MM_findObj(n, d) { //v4.0
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && document.getElementById) x=document.getElementById(n); return x;
+}
+//-->
+</SCRIPT>
+
+<META content="MSHTML 6.00.2900.2769" name=GENERATOR>
+<SCRIPT language=JavaScript>
+function UpdateScroll(el) { //reCreated By 51JS.COM -Jimmy & Tantom
+var sB='<STYLE>\nBODY {\n';sE='\n}\n</STYLE>';sR=/;/g
+	if (document.body) {
+		document.body.style[el.name] = el.value
+var obj=MM_findObj('js_1'); if (obj) { 
+nCssText=document.body.style.cssText.replace(sR,";\n");
+obj.value=sB+nCssText+sE}
+}
+	
+}
+function setColorPanel(colorStep){ //Created By Jimmy
+var colorPanelHTML="";colorCount=Math.round(255/colorStep);
+for (k=colorStep;k>=0;k--){
+for (j=0;j<=colorStep;j++){
+for (i=0;i<=colorStep;i++){
+colorPanelHTML+='<font size=3 color=RGB('+k*colorCount+','+i*colorCount+','+j*colorCount+')>■</font>';
+}
+}
+}
+//alert(colorPanelHTML);
+return colorPanelHTML;
+}
+
+function makeColorPanel(){
+var cValueObj=MM_findObj('colorStepValue');
+if(cValueObj){colorPanel.innerHTML=setColorPanel(cValueObj.value)}
+
+}
+
+function makeRandomPanel(colorPa){
+var colorPanelHTML="";
+var cObj=MM_findObj('colorPa');
+colorPa=cObj.value;
+//alert(cValueObj.value);
+for (i=0;i<=517;i++){
+colorPanelHTML+='<font size=3 color=RGB('+Math.round(Math.random()*colorPa)+','+Math.round(Math.random()*colorPa)+','+Math.round(Math.random()*colorPa)+')>■</font>';
+}
+//alert(colorPanelHTML);
+colorPanel.innerHTML=colorPanelHTML
+}
+
+function showHideSet(ob){
+ob.style.display=(ob.style.display)?'':'none';
+}
+
+function high(ob){
+ob.className=(ob.className=='target')?'target':'high';
+}
+function low(ob){
+ob.className=(ob.className=='target')?'target':'';
+}
+function setTarget(tob){
+for (i=1;i<9;i++){
+eval('e'+i).className='';
+}
+
+event.srcElement.className='target'
+obcurrentSet=MM_findObj('currentSet')
+obcurrentSet.value=tob
+//alert(obcurrentSet.value);
+
+}
+function setScroll(el) { //reCreated By 51JS.COM -Jimmy & Tantom
+var sB='<STYLE>\nBODY {\n';sE='\n}\n</STYLE>';sR=/;/g
+	if (document.body) {
+		document.body.style[el.value] = el.value
+var obj=MM_findObj('js_1'); if (obj) { 
+nCssText=document.body.style.cssText.replace(sR,";\n");
+obj.value=sB+nCssText+sE}
+}
+	
+}
+function choiceColor(){
+obt=MM_findObj('currentSet')
+ob=MM_findObj(obt.value)
+ob.value=event.srcElement.color
+if (document.body) {
+document.body.style[obt.value] = ob.value
+var sB='<STYLE>\nBODY {\n';sE='\n}\n</STYLE>';sR=/;/g
+var obj=MM_findObj('js_1'); if (obj) { 
+nCssText=document.body.style.cssText.replace(sR,";\n");
+obj.value=sB+nCssText+sE}
+}
+}
+function hi(){
+event.srcElement.className='hi';
+}
+function lo(){
+event.srcElement.className='';
+}
+</SCRIPT>
+</HEAD>
+<BODY>
+<table width="960" height="75" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td width="264" rowspan="2" align="center"><a href="../index.html">
+	<img src="../images/logo.gif" width="224" height="38" border="0" /></a></td>
+    <td height="24" valign="top">
+	<table width="321" height="24" border="0" align="right" cellpadding="0" cellspacing="0" background="../images/top2.gif">
+       <tr>
+          <td align="center" class="cwhite12"><a href="#" class="cwhite12">tools.kqiqi.com</a>　<a href="#" OnClick='this.style.behavior="url(#default#homepage)";this.setHomePage("http://tools.kqiqi.com");' class="cwhite12">设为首页</a> | <a href="#" onClick="window.external.AddFavorite('http://tools.kqiqi.com','客齐齐实用查询工具');" class="cwhite12">收藏本站</a></td>
+        </tr>
+    </table></td>
+  </tr>
+</table>
+<table width="960" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td><table height="38" border="0" cellpadding="0" cellspacing="0" style="margin-left:5px">
+      <tr align="center">
+          <td width="88" background="../images/nav1.gif" style="padding-top:5px"><a href="../index.html" class="navfh2">首　页</a></td>
+          <td width="88" background="../images/nav2.gif" style="padding-top:5px"><a href="index.html" class="navfh1">站长工具</a></td>
+          <td width="88" background="../images/nav1.gif" style="padding-top:5px"><a href="../query/index.html" class="navfh2">查询工具</a></td>
+          <td width="88" background="../images/nav1.gif" style="padding-top:5px"><a href="../calculation/index.html" class="navfh2">计算工具</a></td>
+          <td width="88" background="../images/nav1.gif" style="padding-top:5px"><a href="../password/index.html" class="navfh2">加密解密</a></td>
+          <td width="88" background="../images/nav1.gif" style="padding-top:5px"><a href="../conversion/index.html" class="navfh2">转换工具</a></td>
+          <td width="88" background="../images/nav1.gif" style="padding-top:5px"><a href="../color/index.html" class="navfh2">颜色工具</a></td>
+          <td width="88" background="../images/nav1.gif" style="padding-top:5px"><a href="../web/index.html" class="navfh2">网络辅助</a></td>
+          <td width="88" background="../images/nav1.gif" style="padding-top:5px"><a href="../picture/index.html" class="navfh2">图片工具</a></td>
+          <td width="88" background="../images/nav1.gif" style="padding-top:5px"><a href="../others/index.html" class="navfh2">其它工具</a></td>
+        </tr>
+    </table></td>
+  </tr>
+</table>
+<script language="javascript" src="../js/others_top.js"></script>
+<table width="960" border="0" align="center" cellpadding="0" cellspacing="0" class="mainbg1">
+  <tr valign="top">
+    <td width="20">　</td>
+    <td width="190">
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td colspan="2" height="10">
+
+</td>
+</tr>
+      <tr>
+        <td width="75%">
+		<img src="../images/t9.gif" width="32" height="32" align="absmiddle" />　<span class="navfh1">工具列表</span></td>
+        <td width="25%">　</td>
+      </tr>
+    </table>
+     <table width="100%"  border="0" cellpadding="0" cellspacing="0" background="../images/t12.gif" class="mar5">
+        <tr>
+          <td height="10"> </td>
+        </tr>
+      </table>
+<table width="100%"  border="0" cellpadding="0" cellspacing="0" class="mar5">
+      <tr>
+        <td>　
+ <div id="menu">
+  <div class="box">
+    <a href="Window_bomb.html">弹出式窗口代码产生器
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+  <div class="box">
+    <a href="Password.html">密码登录生成器
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+  <div class="box">
+    <a href="Mouse.html">鼠标经过按钮生成器
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+  <div class="box">
+    <a href="Frame.html">框架网页代码生成器
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+  <div class="box">
+    <a href="Meta.html">Meta 标签生成器
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+  <div class="box">
+    <a href="Scroll_bar.html">滚动条颜色生成器
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+<div class="box">
+    <a href="Open.html">OPEN参数生成器
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+<div class="box">
+    <a href="Color.html">多色彩特效字代码生成器
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+<div class="box">
+    <a href="Web.html">网页代码调试器
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+<div class="box">
+    <a href="DIV_CSS.html">在线DIV+CSS编辑器
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+<div class="box">
+    <a href="Page.html">页面转换效果生成器
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+  <div class="box">
+    <a href="Javascript.html">常用javascript特效
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+  <div class="box">
+    <a href="CSS.html">CSS在线编辑器
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+  <div class="box">
+    <a href="CSS1.html">CSS生成器
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+  <div class="box">
+    <a href="Character.html">字符替换器
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+  <div class="box">
+    <a href="FTP.html">在线FTP登陆
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+    <div class="box">
+    <a href="Editor.html">所见即所得编辑器
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+    <div class="box">
+    <a href="Html_Editor.html">在线HTML编辑器
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+    <div class="box">
+    <a href="Web_Editor.html">网页在线编辑器
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+   <div class="box">
+    <a href="Learn_Html.html">在线HTML语法教学
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+
+</div>
+ </td>
+      </tr>
+    </table>
+
+      <table width="100%" height="17"  border="0" cellpadding="0" cellspacing="0" background="t2.gif" class="mar5">
+        <tr>
+          <td> </td>
+        </tr>
+      </table>
+      
+    </td>
+    <td width="27">　</td>
+    <td width="700">
+     
+            <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+          <tr>
+      <td height="10" colspan="2">
+      </td>
+      </tr>
+        <tr valign="top">
+         <td width="40"><img src="../images/bang.gif" width="32" height="31"> </td>
+          <td><span class="navfh1">滚动条颜色生成器</span></td>
+          
+        </tr>
+      </table>
+      <hr size="1" style="color:#E3E8E9" />
+      <table width="100%"  border="0" cellpadding="3" cellspacing="1">
+              <tr>
+          <td>
+         <TABLE cellSpacing=0 cellPadding=0 width=690 border=0>
+  <TBODY>
+  <TR bgColor=#ffffff>
+    <TD width="100%">
+      <TABLE cellPadding=8 width="100%" border=0>
+        <TBODY>
+        <TR>
+          <TD>使用方法:<BR>1. 
+            先选择一种属性然后点击该属性，你会看见属性被选择了.<BR>2. 现在你可以在颜色输入内输入颜色代码[如Red,#ff0000]或者在调色板中选择一种色彩，<FONT 
+            color=#990000>此时请留意滚动条颜色的变化</FONT>! <BR>3. 将代码显示框内的代码复制到页面内.ok. 
+            <TABLE id=props style="TABLE-LAYOUT: fixed">
+              <COLGROUP>
+              <COL width=130>
+              <COL width=250>
+              <TBODY>
+              <TR>
+                <TH width=200 bgColor=lightgrey><INPUT type=hidden 
+                  value=scrollbarBaseColor name=currentSet> 颜色</TH>
+                <TH bgColor=lightgrey>属性</TH>
+                <TH noWrap>&nbsp; </TH></TR>
+              <TR>
+                <TD>
+				<INPUT onchange=UpdateScroll(this) 
+                  name=scrollbar3dLightColor size="18"> </TD>
+                <TD id=e1 onmouseover=high(this) 
+                onclick="setTarget('scrollbar3dLightColor')" 
+                onmouseout=low(this)>滚动条亮边的颜色 </TD>
+                <TD rowSpan=8>
+                  <TABLE cellSpacing=0 cellPadding=0 width="100%" align=center 
+                  border=0>
+                    <TBODY>
+                    <TR>
+                      <TD id=colorPanel onmouseover=hi() onclick=choiceColor() 
+                      onmouseout=lo()>
+                        <OBJECT id=colorPicker1 type=text/x-scriptlet 
+                        data=images/colorpicker1.html></OBJECT>
+                        <SCRIPT language=JScript 
+                        event="onscriptletevent(name, eventData)" 
+                        for=colorPicker1>
+<!--
+
+if (name == "oncolorchange") {
+	colorstr = "rgb(" + Math.round(256*eventData.r) + ", " + Math.round(256*eventData.g) +", " + Math.round(256*eventData.b) + ")";
+newSetColor(colorstr)
+}
+
+//-->
+</SCRIPT>
+                        <BR>
+                        <SCRIPT language=JavaScript>
+function newSetColor(color_value){
+obt=MM_findObj('currentSet')
+ob=MM_findObj(obt.value)
+ob.value=color_value
+if (document.body) {
+document.body.style[obt.value] = ob.value
+var sB='<STYLE>\nBODY {\n';sE='\n}\n</STYLE>';sR=/;/g
+var obj=MM_findObj('js_1'); if (obj) { 
+nCssText=document.body.style.cssText.replace(sR,";\n");
+obj.value=sB+nCssText+sE}
+}
+}
+</SCRIPT>
+                      </TD></TR></TBODY></TABLE></TD></TR>
+              <TR>
+                <TD><INPUT onchange=UpdateScroll(this) 
+                  name=scrollbarArrowColor size="18"> </TD>
+                <TD id=e2 onmouseover=high(this) 
+                onclick="setTarget('scrollbarArrowColor')" 
+                  onmouseout=low(this)>上下按钮上三角箭头的颜色 </TD></TR>
+              <TR>
+                <TD><INPUT onchange=UpdateScroll(this) 
+                  name=scrollbarBaseColor size="18"> </TD>
+                <TD class=target id=e3 onmouseover=high(this) 
+                onclick="setTarget('scrollbarBaseColor')" 
+                  onmouseout=low(this)>滚动条的基本颜色 </TD></TR>
+              <TR>
+                <TD><INPUT onchange=UpdateScroll(this) 
+                  name=scrollbarDarkShadowColor size="18"> </TD>
+                <TD id=e4 onmouseover=high(this) 
+                onclick="setTarget('scrollbarDarkShadowColor')" 
+                onmouseout=low(this)>滚动条强阴影的颜色 </TD></TR>
+              <TR>
+                <TD><INPUT onchange=UpdateScroll(this) 
+                  name=scrollbarFaceColor size="18"> </TD>
+                <TD id=e5 onmouseover=high(this) 
+                onclick="setTarget('scrollbarFaceColor')" 
+                  onmouseout=low(this)>滚动条凸出部分的颜色 </TD></TR>
+              <TR>
+                <TD><INPUT onchange=UpdateScroll(this) 
+                  name=scrollbarHighlightColor size="18"> </TD>
+                <TD id=e6 onmouseover=high(this) 
+                onclick="setTarget('scrollbarHighlightColor')" 
+                onmouseout=low(this)>滚动条空白部分的颜色 </TD></TR>
+              <TR>
+                <TD><INPUT onchange=UpdateScroll(this) 
+                  name=scrollbarShadowColor size="18"> </TD>
+                <TD id=e7 onmouseover=high(this) 
+                onclick="setTarget('scrollbarShadowColor')" 
+                  onmouseout=low(this)>立体滚动条阴影的颜色 </TD></TR>
+              <TR>
+                <TD><INPUT onchange=UpdateScroll(this) 
+                  name=scrollbarTrackColor size="18"> </TD>
+                <TD id=e8 onmouseover=high(this) 
+                onclick="setTarget('scrollbarTrackColor')" 
+                  onmouseout=low(this)>滚动条的背景颜色</TD></TR></TBODY></TABLE></TD></TR>
+        <TR>
+          <TD>1.将下面的代码复制到&lt;head&gt; 内 <INPUT onClick="JM_cc('js_1')" type=button value=复制到我的剪贴板 name=Button class=button2> 
+            <BR>
+            <FORM name=form1 action="" method=post>
+				<TEXTAREA name=js_1 rows=14 wrap=VIRTUAL cols=80></TEXTAREA> 
+            </FORM></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE>
+          </td>
+        </tr>
+        </table>
+      <br />
+          <script type="text/javascript" src="../js/wz.js"></script>
+         <script type="text/javascript" src="../js/Copy.js"></script>          
+      <br />
+      </td>
+    <td width="20">　</td>
+  </tr>
+</table>
+<table width="960" border="0" align="center" cellpadding="0" cellspacing="0" class="mainbg2">
+  <tr>
+    <td height="25"></td>
+  </tr>
+</table>
+
+<table width="960" border="0" align="center" cellpadding="0" cellspacing="0" class="mainbg2">
+  <tr>
+    <td><table width="920"  border="0" align="center" cellpadding="0" cellspacing="20" class="bottombg">
+     <tr>
+        <td align="center">
+          Copyright &copy; <a href="http://tools.kqiqi.com/">客齐齐实用查询工具</a> All rights reserved - <a href="../map.html">网站地图</a> - <a href="../contact.html">联系我们</a> - <script language="javascript" src="../js/bottom.js"></script>
+          </td>
+      </tr>
+    </table></td>
+  </tr>
+</table>
+</body>
+</html>

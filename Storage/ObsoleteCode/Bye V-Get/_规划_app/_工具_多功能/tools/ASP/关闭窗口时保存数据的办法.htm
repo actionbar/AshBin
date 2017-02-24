@@ -1,0 +1,52 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>关闭窗口时保存数据的办法</title>
+<style type="text/css">
+<!--
+body {
+	font-size: 10.4pt;
+	line-height: 22px;
+}
+-->
+</style>
+</head>
+
+<body bgcolor="eeeeee" leftmargin="20" marginwidth="20">
+<p><strong>关闭窗口时保存数据的办法</strong></p>
+<hr>
+<p>&lt;SCRIPT language=&quot;javascript&quot;&gt; <br>
+  　　function IfWindowClosed() <br>
+  　　{　　 <br>
+  　　　　var win = null; <br>
+  　　　　try <br>
+  　　　　{ <br>
+  　　　　　　window.opener.name = &quot;ss&quot;; <br>
+  　　　　　　if ( window.opener.name != &quot;ss&quot; ) <br>
+  　　　　　　{ <br>
+  　　　　　　　　win = window.open(&quot;quit.asp&quot;,&quot;&quot;,&quot;width=100,height=100,left=10000,top=10000&quot;); 
+  <br>
+  　　　　　　　　window.setTimeout(&quot;window.close();&quot;,0); <br>
+  　　　　　　} <br>
+  　　　　　　window.opener.name = &quot;&quot;; <br>
+  　　　　} <br>
+  　　　　catch(e) <br>
+  　　　　{ <br>
+  　　　　　　win = window.open(&quot;quit.asp&quot;,&quot;&quot;,&quot;width=100,height=100,left=10000,top=10000&quot;); 
+  <br>
+  　　　　　　window.setTimeout(&quot;window.close();&quot;,0); <br>
+  　　　　} <br>
+  　　} <br>
+  　　 <br>
+  　　window.setInterval(&quot;IfWindowClosed()&quot;,100); <br>
+  　　window.setTimeout(&quot;window.close();&quot;,510); <br>
+  &lt;/SCRIPT&gt; <br>
+  --------------- </p>
+<p>用onunload事件打开上面的文件 </p>
+<p>quit.asp为保存数据的文件，上面的文件用来检测窗口是关闭还是刷新 </p>
+<p>ie5兼容，以前使用 window.opener.closed来判断，ie5不支持closed 属性。 <br>
+  上面的代码经过多次测试，暂时没有发现问题</p>
+<p></p>
+</body>
+</html>

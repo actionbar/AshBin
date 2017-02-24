@@ -1,0 +1,115 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="../c3.css" />
+<title>XQuery FLWOR 表达式</title>
+</head>
+<body class="xml">
+<div id="wrapper">
+<div id="header">
+<a href="http://e.v-get.com/w3cschool/" style="float:left;">W3CSchool 在线教程</a>
+<div class="q g"><script type="text/javascript">var cpro_id="u1163355"</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div>
+<div id="navfirst">
+<ul id="menu">
+<li id="h"><a href="../h.html">HTML教程</a></li>
+<li id="x"><a href="../x.html">XML教程</a></li>
+<li id="b"><a href="../b.html">浏览器脚本</a></li>
+<li id="s"><a href="../s.html">服务器脚本</a></li>
+<li id="d"><a href="../d.html">dot net教程</a></li>
+<li id="m"><a href="../m.html">多媒体教程</a></li>
+<li id="w"><a href="../w.html">建站手册</a></li>
+</ul>
+</div><div id="navsecond">
+<div id="course">
+<h2>XQuery 基础</h2>
+<ul>
+<li><a href="http://e.v-get.com/w3cschool/">XQuery 首页</a></li>
+<li><a href="xquery_intro.html">XQuery 简介</a></li>
+<li><a href="xquery_example.html">XQuery 实例</a></li>
+<li><a href="xquery_flwor.html">XQuery FLWOR</a></li>
+<li><a href="xquery_flwor_html.html">XQuery HTML</a></li>
+<li><a href="xquery_terms.html">XQuery 术语</a></li>
+<li><a href="xquery_syntax.html">XQuery 语法</a></li>
+</ul>
+<h2>XQuery 高级</h2>
+<ul>
+<li><a href="xquery_add.html">XQuery 添加</a></li>
+<li><a href="xquery_select.html">XQuery 选取</a></li>
+<li><a href="xquery_functions.html">XQuery 函数</a></li>
+<li><a href="xquery_summary.html">XQuery 总结</a></li>
+</ul>
+<h2>XQuery 参考手册</h2>
+<ul>
+<li><a href="xquery_reference.html">XQuery 参考手册</a></li>
+</ul>
+</div>
+<div id="selected">
+<h2>建站手册</h2>
+<ul>
+<li><a href="../site/">网站构建</a></li>
+<li><a href="../w3c/">万维网联盟</a></li>
+<li><a href="http://e.v-get.com/w3c/">W3CSchool 教程</a></li>
+<li><a href="../quality/">网站品质</a></li>
+<li><a href="../semweb/">语义网</a></li>
+<li><a href="../hosting/">网站主机</a></li>
+</ul>
+<h2><a href="http://e.v-get.com/w3c/" class="f13">W3CSchool 教程</a></h2><div class="a120x90"><script type="text/javascript">var cpro_id="u1210867";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div></div>
+</div>
+<div id="maincontent">
+<h1>XQuery FLWOR 表达式</h1>
+<div id="tpn">
+<ul class="prenext">
+<li class="pre"><a href="xquery_example.html">上一页</a></li>
+<li class="next"><a href="xquery_flwor_html.html">下一页</a></li>
+</ul>
+</div>
+<div>
+<h2>XML 实例文档</h2>
+<p>我们将在下面的例子中使用这个 &#34;books.xml&#34; 文档 (与上一节中的 XML 文件相同）。</p>
+<p><a href="books.xml">在您的浏览器中查看 &#34;books.xml&#34; 文件</a>。</p>
+</div>
+<div>
+<h2>如果使用 FLWOR 从 &#34;books.xml&#34; 选取节点</h2>
+<p>请看下面这个路径表达式：</p>
+<pre>doc(&#34;books.xml&#34;)/bookstore/book[price&gt;30]/title</pre>
+<p>上面这个表达式可选取 bookstore 元素下的 book 元素下所有的 title 元素，并且其中的 price 元素的值必须大于 30。</p>
+<p>下面这个 FLWOR 表达式所选取的数据和上面的路径表达式是相同的：</p>
+<pre>for $x in doc(&#34;books.xml&#34;)/bookstore/book
+where $x/price&gt;30
+return $x/title</pre>
+<p>结果是：</p>
+<pre>&lt;title lang=&#34;en&#34;&gt;XQuery Kick Start&lt;/title&gt;
+&lt;title lang=&#34;en&#34;&gt;Learning XML&lt;/title&gt;</pre>
+<p>通过 FLWOR，您可以对结果进行排序：</p>
+<pre>for $x in doc(&#34;books.xml&#34;)/bookstore/book
+where $x/price&gt;30
+order by $x/title
+return $x/title</pre>
+<p><strong>FLWOR 是 &#34;For, Let, Where, Order by, Return&#34; 的只取首字母缩写。</strong></p>
+<p><em>for</em> 语句把 bookstore 元素下的所有 book 元素提取到名为 $x 的变量中。</p>
+<p><em>where</em> 语句选取了 price 元素值大于 30 的 book 元素。</p>
+<p><em>order by</em> 语句定义了排序次序。将根据 title 元素进行排序。</p>
+<p><em>return</em> 语句规定返回什么内容。在此返回的是 title 元素。</p>
+<p>上面的 XQuery 表达式的结果：</p>
+<pre>&lt;title lang=&#34;en&#34;&gt;Learning XML&lt;/title&gt;
+&lt;title lang=&#34;en&#34;&gt;XQuery Kick Start&lt;/title&gt;</pre>
+</div>
+<div id="bpn">
+<ul class="prenext">
+<li class="pre"><a href="xquery_example.html">上一页</a></li>
+<li class="next"><a href="xquery_flwor_html.html">下一页</a></li>
+</ul>
+</div>
+</div>
+<div id="sidebar">
+<div class="rs"></div>
+<div id="tools">
+<h5 id="tools_reference"><a href="xquery_reference.html">XQuery 参考手册</a></h5>
+</div>
+<div class="a120x600"><script type="text/javascript">var cpro_id="u1293136";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div><div class="b"></div>
+</div>
+</body>
+</html>

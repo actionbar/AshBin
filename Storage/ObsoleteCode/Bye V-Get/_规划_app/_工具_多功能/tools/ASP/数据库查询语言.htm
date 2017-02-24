@@ -1,0 +1,341 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>数据库查询语言</title>
+<style type="text/css">
+<!--
+body {
+	font-size: 10.4pt;
+	line-height: 22px;
+}
+-->
+</style>
+</head>
+
+<body bgcolor="#eeeeee" leftmargin="20" marginwidth="20">
+<p><strong>数据库查询语言</strong></p>
+<hr>
+<p>　　原定计划从本篇开始就要给大家介绍 ASP 内建的 ActiveX 组件，但是考虑到我们在往后的学习中将会接触到大量的数据库查询，因此作者临时决定花一到两篇的篇幅向大家简要介绍一些数据库查询语言的基本知识，这其实也是学习 
+  ASP 所必须掌握的一门知识。是否能够灵活地运用数据库查询语言，将直接关系到 ASP 程序的执行效率等一系列问题，所以请各位务必重视。<br>
+  <br>
+  　　 相信很多朋友都听说过 SQL 这个名字，如果你是计算机方面的行家，SQL 的大名一定是如雷贯耳。那么 SQL 究竟是什么呢？SQL 一词实际上是 
+  "Structured Query Language" 结构式查询语言的缩写，是用于对存放在计算机数据库中的数据进行组织、管理和检索的一种工具；是一种特定类型的数据库 
+  -- 关系数据库。而控制这种数据库的计算机程序就是我们常说的 DBMS-- 数据库管理系统。譬如：SQL Server、Oracle、Sybase、DB2 
+  等等。当用户想要检索数据库中的数据时，就通过 SQL 语言发出请求，接着 DBMS 对该 SQL 请求进行处理并检索所要求的数据，最后将其返回给用户，此过程被称作为数据库查询，这也就是数据库查询语言这一名称的由来。<br>
+  <br>
+  　　 SQL 并不是象 C、COBOL 和 Fortran 语言那样的完整的计算机语言。SQL 没有用于条件测试的 IF 语句，也没有用于程序分支的 Goto 
+  语句以及循环语句 For 或 Do。确切的讲，SQL 是一种数据库子语言，SQL 语句可以被嵌入到另一种语言中，从而使其具有数据库存取功能。SQL 也非严格的结构式语言，它的句法更接近英语语句，因此易于理解，大多数 
+  SQL 语句都是直述其意，读起来就象自然语言一样明了。SQL 还是一种交互式查询语言，允许用户直接查询存储数据，利用这一交互特性，用户可以在很短的时间内回答相当复杂的问题，而同样问题若让程序员编写相应的报表程序则可能要用几个星期甚至更长时间。<br>
+  <br>
+  　　 在大部分 ASP 应用程序中我们都会接触到数据库，而我们在编写 ASP 应用程序时用来进行数据库操作的标准语法正是 SQL，因此 SQL 语法的重要性是不言而喻的。下面，我们就从最常用的 
+  SQL 语句 SELECT 着手，一步一步地来学习 SQL。<br>
+  <br>
+  　　 查询是 SQL 语言的核心，而用于表达 SQL 查询的 SELECT 语句则是功能最强也是最为复杂的 SQL 语句，它从数据库中检索数据，并将查询结果提供给用户。在本文中我们将建立一个名为 
+  tianjiao 的简单数据库，该库中存放了一个叫 sales 的销售记录表，如下所示 : <br>
+  <br>
+  姓名 性别 工资 销售目标 销售额 地区 <br>
+  书生 男 2500 8000 9000 上海 <br>
+  吴冠军 男 3000 10000 9999 北京 <br>
+  雷鸣 男 2000 8000 10000 四川 <br>
+  雪儿 女 2500 5000 6000 广州 <br>
+  顾一 男 2600 9000 9800 大连 <br>
+  阿卓 女 2000 4000 4000 天津 <br>
+  熠天 男 4000 20000 20000 全国 <br>
+  <br>
+  　　 在该表中有六列即六个字段 : 姓名、性别、工资、销售目标、销售额、地区，首先我们用 Select 语句列出姓名、销售目标和销售额 : <br>
+  <br>
+  　　 Select 姓名，销售目标，销售额 From sales <br>
+  <br>
+  　　 结果如下 : <br>
+  <br>
+  姓名 销售目标 销售额 <br>
+  书生 8000 9000 <br>
+  吴冠军 10000 9999 <br>
+  雷鸣 8000 10000 <br>
+  雪儿 5000 6000 <br>
+  顾一 9000 9800 <br>
+  阿卓 4000 4000 <br>
+  熠天 20000 20000 <br>
+  <br>
+  　　 然后，我们再列出所有男性的姓名、销售目标和销售额 : <br>
+  <br>
+  　　 Select 姓名，销售目标，销售额 From sales Where 性别 =" 男 " <br>
+  <br>
+  　　 结果如下 : <br>
+  <br>
+  姓名 销售目标 销售额 <br>
+  书生 8000 9000 <br>
+  吴冠军 10000 9999 <br>
+  雷鸣 8000 10000 <br>
+  顾一 9000 9800 <br>
+  熠天 20000 20000 <br>
+  <br>
+  　　 接下来，我们做一个相对复杂的查询，列出销售额大于销售目标的所有男性的姓名、销售目标和销售额，并且按销售目标排序。 <br>
+  　　Select 姓名，销售目标，销售额 <br>
+  　　Form sales<br>
+  　　Where 销售额 &gt; 销售目标 <br>
+  　　And 性别 =" 男 "<br>
+  　　Order By 销售目标 <br>
+  <br>
+  　　 结果如下 : <br>
+  <br>
+  姓名 销售目标 销售额 <br>
+  书生 8000 9000 <br>
+  雷鸣 8000 10000 <br>
+  顾一 9000 9800 <br>
+  熠天 20000 20000 <br>
+  <br>
+  　　 大家可以看到，对于简单查询，SQL Select 语句和英文语法很相象，我们来分析一下 SELECT 语句的完整格式，它包括六个子句，其中 SELECT 
+  和 FROM 子句是必须的，其它子句可以任选，每个子句的功能如下 :<br>
+  <br>
+  　　 1、Select 子句列出所有要求 SELECT 语句检索的数据项。它放在 SELECT 语句开始处，指定此查询要检索的数据项。这些数据项通常用选择表表示，即一组用“，”隔开的选择项。按照从左到右的顺序，每个选择项产生的一个列的查询结果，一个选择项可能是以下项目：<br>
+  <br>
+  　　 (1)、列名：标识 FROM 子句指定表中的列。如果列名作为选择项，则 SQL 直接从数据库表中每行取出该列的值，再将其放在查询结果的相应行中。 
+  <br>
+  　　 (2)、常数：指定在查询结果的每行中都放上该值。 <br>
+  <br>
+  　　 (3)、SQL 表达式：说明必须将要放入查询结果中的值按表达式的规定进行计算。 <br>
+  <br>
+  　　 2、From 子句列出包含所要查询数据的表，它由关键字 FROM 后跟一组用逗号分开的表名组成。每个表明都代表一个包括该查询要检索数据的表。这些表称为此 
+  SQL 语句的表源，因为查询结果都源于它们。 <br>
+  　　 3、Where 子句告诉 SQL 只查询某些行中的数据，这些行用搜索条件描述。 <br>
+  <br>
+  　　 4、Group By 子句指定汇总查询，即不是对每行产生一个查询结果，而是将相似的行进行分组，再对每组产生一个汇总结果。 <br>
+  <br>
+  　　 5、Having 子句告诉 SQL 只产生有 Group By 得到的某些组的结果，和 Where 子句一样，所需要的组也用一个搜索条件指定。 <br>
+  <br>
+  　　 6、Order By 子句将查询结果按一列或多列中的数据排序。如果省略此子句，则查询结果将是无序的。 <br>
+  <br>
+  　　 下面作者将提供一个简单但实用的运用 SQL 语句查询的 ASP 程序供大家参考。 <br>
+  <br>
+  　　 为了使大家更清楚更直接地了解 SQL 语法在 ASP 中的应用，我们先将查询的所有核心过程写成一个名为 query2table 的 SUB，然后利用 
+  ASP 的服务器端包容功能调用该 SUB。请将以下语句剪贴到记事簿，保存为 subdbtable.inc 文件，并置于虚拟目录 asptest 下 : 
+  <br>
+  　　&lt; %<br>
+  　　sub query2table(inputquery)<br>
+  　　set conntemp=server.createobject("adodb.connection")<br>
+   　　conntemp.open"DSN=Student;uid=student;pwd=aspmagic"<br>
+  　　set rstemp=conntemp.execute(inputquery)<br>
+  　　howmanyfields=rstemp.fields.count -1<br>
+  　　' 统计数据库中的列数 <br>
+  　　%&gt;<br>
+  　　&lt; table border=1&gt;&lt; tr&gt;<br>
+  　　&lt; %<br>
+  　　for i=0 to howmanyfields<br>
+  　　%&gt;<br>
+  　　&lt; td&gt;&lt; b&gt;&lt; %=rstemp(i).name%&gt;&lt; /B&gt;&lt; /TD&gt;<br>
+  　　&lt; % next %&gt;<br>
+  　　&lt; /tr&gt;<br>
+  　　&lt; %<br>
+  　　do while not rstemp.eof<br>
+  　　%&gt;<br>
+  　　&lt; tr&gt;<br>
+  　　&lt; % for i = 0 to howmanyfields<br>
+  　　thisvalue=rstemp(i)<br>
+  　　If isnull(thisvalue) then<br>
+  　　thisvalue="?<br>
+  　　' 如果字段为空，则将变量 thisvalue 的值定义为一个空格 <br>
+  　　end if%&gt;<br>
+  　　&lt; td valign=top&gt;&lt; %=thisvalue%&gt;&lt; /td&gt;<br>
+  　　&lt; % next %&gt;<br>
+  　　&lt; /tr&gt;<br>
+  　　&lt; %rstemp.movenext<br>
+  　　loop%&gt;<br>
+  　　&lt; /table&gt;<br>
+  　　&lt; %<br>
+  　　rstemp.close<br>
+  　　set rstemp=nothing<br>
+  　　conntemp.close<br>
+  　　set conntemp=nothingend sub%&gt;<br>
+  <br>
+  　　 完成了 SUB 的定义过程，在下面几个 ASP 程序中我们只要加入想要使用的 SQL 查询语句，并调用该过程就可以非常方便的得到查询结果。将以下四段代码分别保存为 
+  asp11a.asp、asp11b.asp、asp11c.asp、asp11d.asp 四个 .asp 文件。 <br>
+  <br>
+  　　&lt; HEAD&gt;&lt; TITLE&gt;asp11a.asp&lt; /TITLE&gt;&lt; /HEAD&gt;<br>
+  　　&lt; HTML&gt;&lt; body bgcolor="#FFFFFF"&gt;<br>
+  　　&lt; %<br>
+  　　call query2table("select * from publishers where name like 'A%%'")<br>
+  ' 将表 publishers 中所有姓名中有字母 A 的记录查询出来 <br>
+  　　%&gt;<br>
+  　　&lt; !--#include virtual="/asptest/subdbtable.inc"--&gt;&lt; /BODY&gt;&lt; 
+  /HTML&gt;<br>
+  <br>
+  <br>
+  　　&lt; HEAD&gt;&lt; TITLE&gt;asp11b.asp&lt; /TITLE&gt;&lt; /HEAD&gt;&lt; HTML&gt;&lt; 
+  body bgcolor="#FFFFFF"&gt;<br>
+  　　&lt; %<br>
+  　　call query2table("select * from titles where Year_Published &gt; = 1998")<br>
+  ' 将表 titles 中所有发表年份大于或等于 1998 年的记录查询出来 <br>
+  　　%&gt;<br>
+  　　&lt; !--#include virtual="/asptest/subdbtable.inc"--&gt;&lt; /BODY&gt;&lt; 
+  /HTML&gt;<br>
+  <br>
+  <br>
+  　　&lt; HEAD&gt;&lt; TITLE&gt;asp11c.asp&lt; /TITLE&gt;&lt; /HEAD&gt;&lt; HTML&gt;&lt; 
+  body bgcolor="#FFFFFF"&gt;<br>
+  　　&lt; %<br>
+  　　call query2table("select * from publishers where amount&gt;10000 and 
+  sex='male'")<br>
+  ' 将表 publishers 中所有数量大于 10000 且性别为男的记录查询出来 <br>
+  　　%&gt;<br>
+  　　&lt; !--#include virtual="/asptest/subdbtable.inc"--&gt;&lt; /BODY&gt;&lt; 
+  /HTML&gt;<br>
+  <br>
+  <br>
+  　　&lt; HEAD&gt;&lt; TITLE&gt;asp11d.asp&lt; /TITLE&gt;&lt; /HEAD&gt;&lt; HTML&gt;&lt; 
+  body bgcolor="#FFFFFF"&gt;<br>
+  　　&lt; %<br>
+  　　call query2table("select * from publishers where state&lt; &gt; 'NY'")<br>
+  '将表 publishers 中所有所在城市不为纽约的记录查询出来。<br>
+  　　%&gt;<br>
+  　　&lt; !--#include virtual="/asptest/subdbtable.inc"--&gt;&lt; /BODY&gt;&lt; 
+  /HTML&gt;<br>
+  <br>
+    　　 利用 subdbtable.inc 
+  文件中的所定义的过程query2table，你就可以非常迅速地对数据库进行查询，你所要做的只是将“conntemp.open"DSN=Student;uid=student;pwd=aspmagic"”中的数据库名称、用户身份和密码稍加改动，并在调用 query2table 
+  时输入想要使用的 SQL 查询语句即可。是不是很简单 ? 这就是 ASP 和 SQL 的魅力所在 !!! <br>
+  <br>
+  　　 今天，我们虽然用了一整篇的篇幅只学习了一个 SQL 指令，但请你相信你所获得远不同于一个 DOS 指令，SELECT 指令使得你可以非常容易地对数据库进行查询，或许在这之前你对数据库查询还一无所知，但是通过本篇的学习，你其实已经会使用 
+  ASP 进行常用的数据库查询了，是不是很激动 ? 在下一篇中，作者将继续给大家介绍 SQL 的其它几个基本指令。在结束本文之前，作者在这里要向很多来信的朋友致歉，由于最近作者工作繁忙，实在无暇一一回答各位的问题，请见谅，我会尽量将一些常见的、发生频率较高的问题在文章中写出来，至于一些不常见的问题，我建议大家到下面这个站点提问，你将会得到及时的答复。www.onlinechina.net/friend/flybird/bbs/wwwboard.asp?id=1, 
+  这是作者至今为止所见的最棒的中文 ASP 学习站点，由上海的飞鸟主持，大家务必去看看。</p>
+<hr>
+<p> 在本篇的开头，我要感谢一些朋友来信给我指出了前几篇文章中的错误。不知大家是否记得在第八篇中我举了一个简单的利用 Application 制作的页面访问计数器？有位朋友来信问我，为何当他改变计数器起始变量 
+  NumVisits 的值后对最后的记数结果没有任何作用？起初我也大惑不解，让我们来回忆一下这段源程序，如下： <br>
+  &lt; %<br>
+  Dim NumVisits<br>
+  NumVisits=0<br>
+  Application.Lock<br>
+  Application("NumVisits") = Application("NumVisits") + 1 
+  <br>
+  Application.Unlock<br>
+  %&gt;<br>
+  欢迎光临本网页，你是本页的第 &lt; %= Application("NumVisits") %&gt; 位访客 !<br>
+  <br>
+  　　 在这段程序中，如果你试图通过改变变量 NumVisits 的值来改变记数器结果，是绝对办不到的。因为用变量的值去改变 Application 的值是不可以的，这两者是不相关的。所以这里对变量的定义和赋值都是多余的。那么我们究竟应该如何来给 
+  Application("NumVisits") 定义一个初始值呢？请看以下修正后程序： <br>
+  &lt; %<br>
+  If Application("NumVisits")&lt; 999 then<br>
+  Application("NumVisits")=999<br>
+  End If<br>
+  Application.Lock<br>
+  Application("NumVisits")=Application("NumVisits")+1<br>
+  Application.Unlock<br>
+  %&gt;<br>
+  欢迎光临本网页，你是本页的第 &lt; %= Application("NumVisits") %&gt; 位访客 !<br>
+  <br>
+  　　 这里的 999 就是你要设定的计数器初始值，如此一来问题就迎刃而解了。我非常感谢这位姓康的朋友给我指出了这个错误，虽然这只是一个很小的漏洞，但我们在共同学程序写程序的过程中非常需要这种严谨细致的作风，希望今后朋友们们一旦发现文中的错误即刻来信告知，我也能及时纠正，谢谢。<br>
+  <br>
+  　　 SQL 语言可以分为两大部分：数据定义语言和数据操纵语言，继上一篇我们学习了数据操纵语言中的 Select 语句后，今天作者要继续给大家简要介绍其余的 
+  SQL 语句。<br>
+  <br>
+  　　 SQL 是一种完备的数据处理语言，不仅用于数据库查询，而且用于数据库中的数据修改和更新，与支持 SQL 查询的 Select 语句的复杂性相比较，更改数据库内容的 
+  SQL 语句就格外简单。然而对于一个 DBMS 来说，数据更新所造成的风险大大超出了数据查询。数据库管理系统必须在更改期内保护所存储的数据的一致性，确保有效的数据进入数据库，数据库必须保持一致性， 
+  DBMS 还必须协调多用户的并行更新，以确保用户和他们的更改不至于影响其他用户的作业。 <br>
+  　　 用于修改数据库内容的 SQL 语句主要有以下三个： <br>
+  <br>
+  　　 1、 Insert，向一个表中加入新的数据行 <br>
+  <br>
+  　　 2、 Delete，从一个表中删除数据行 <br>
+  <br>
+  　　 3、 Update，更改数据库中已经存在的数据 <br>
+  <br>
+  　　 首先我们来看看 Insert 的用法： <br>
+  <br>
+  　　 标准语法： <br>
+  　　 INSERT INTO table_name<br>
+  　　 (col1, col2...)<br>
+  　　 VALUES(value1, value2...)<br>
+  <br>
+  　　 下例要将书生作为一个新的销售员加入表 Salesreps 中 <br>
+  　　 Insert Into<br>
+  　　 Salesreps (name,num,sales,hire_date,income) <br>
+  　　 values ('shusheng',9,10000,'23-Feb-99',2000)<br>
+  <br>
+  　　 在此语句中，列的名称列在括号中以逗号隔开，接下去是 Value 短语和括号中同样以逗号隔开的每列数据，应该注意的是数据和列名称的顺序是相同的，而且若是字符串型则以单引号隔开。从概念上来讲， 
+  Insert 语句建立的一个与表列结构相一致的数据行，用取自 Values 子句的数据来填充它，然后将该新行加入表中，表中的行是不排序的，因此不存在将该行插入到表的头或尾或两行之间的这个概念。 
+  Insert 语句结束后，新行就是表的一部分了。<br>
+  <br>
+  　　 Insert 语句还可以将多行数据添加到目标表中去，在这种形式的 Insert 语句中，新行的数据值不是在语句正文中明确地指定的，而是语句中指定的一个数据库查询。添加的值来自数据库自身的行，这乍看起来似乎有些奇怪，但是在某些特定的状态下，这是非常有用的。比如，你想把 
+  1998 年 12 月 30 日之前产生的订单编号、日期和数目从 order 表中拷贝到另一个名为 oldorder 的表中去，多行 Insert 语句为拷贝数据提供了一种紧凑而高效的方法，如下： 
+  <br>
+  　　 Insert into oldorder (Num,Date,Amount)<br>
+  　　 Select Num,Date,Amount<br>
+  　　 From order<br>
+  　　 Where Date&lt;'30-12-98'<br>
+  <br>
+  　　 这条语句看起来有些复杂，其实很简单，语句标识了接收新行的表 oldorder 和接收数据的列，完全类似于单行 Insert 语句。语句的剩余部分是一个查询，它检索 
+  order 表中的数据。 SQL 先执行对 order 表的查询，然后将查询结果逐行插入到 oldorder 表中去。<br>
+  <br>
+  　　 下面我们来看看 Update 的用法， Update 语句用于更新单表中选定行的一列或多列的值。要更新的目标表在语句中定义， Set 子句则指定要更新哪些列并计算他们的值。 
+  Update 语句总是包含 Where 语句，而且 Update 语句比较危险，所以您必须明确地认识到 Where 语句的重要性， Where 语句被用来指定需要更新的行。 
+  <br>
+  　　 标准语法： <br>
+  　　 UPDATE table_name<br>
+  　　 SET columnname1 = value1<br>
+  　　 [, columname2 = value2]...<br>
+  　　 WHERE search_condition<br>
+  <br>
+  <br>
+  　　 以下是一个简单的 Update 语句的例子 : <br>
+  　　 Update customers<br>
+   　　 Setcredit=100000.00,id=99<br>
+  　　 Where name='asp'<br>
+  <br>
+  <br>
+  　　 在此例中我们将表 customers 中客户名为 asp 的客户的信贷值更新为 10 万并将他的 ID 变更为 99。再看下例： <br>
+  　　 Update customers<br>
+   　　 Setcredit=200000.00,state=021<br>
+  　　 Where ID in (80,90,100,120)<br>
+  <br>
+  <br>
+  　　 我们可以发现，其实 SQL 处理 Update 语句的过程就是逐行遍历所指定的表，更新其搜索条件结果为“真”的行，跳过其搜索条件结果为“假”或“空”的行。 
+  <br>
+  <br>
+  　　 最后，来看看 Delete 语句。 <br>
+  <br>
+  　　 标准语法： <br>
+  　　 DELETE FROM tablename<br>
+  　　 WHERE condition<br>
+  <br>
+  <br>
+  　　 由于它过于简单，所以所造成的后果也是严重的，虽然其中的 Where 子句是任选的，但它几乎总是存在的，若将 Where 子句从 Delete 语句中省略掉，则目标表的所有行都将被删除。看下例： 
+  <br>
+  　　 Delete from order Where ID=99 <br>
+  <br>
+  　　 在文章的末尾，作者在给大家简要介绍一下数据定义语言。它是用来创建和修改数据库结构的一种语句，包括 Create 和 Drop 语句。 <br>
+  <br>
+  　　 1、 Create 语句 <br>
+  <br>
+  　　 标准语法： <br>
+  　　 CREATE TABLE table_name<br>
+  　　 ( field1 datatype [ NOT NULL ],<br>
+  　　 field2 datatype [ NOT NULL ],<br>
+  　　 field3 datatype [ NOT NULL ]...)<br>
+  <br>
+  　　 如： <br>
+  　　 CREATE TABLE BILLS <br>
+  　　 ( NAME CHAR(30),<br>
+  　　 AMOUNT NUMBER,<br>
+  　　 ACCOUNT_ID NUMBER)<br>
+  <br>
+  　　 尽管 Create Table 比前面介绍的语句难理解一些，但仍然很直观。它将 bills 赋予一个新表，并指定表中三列的名称和数据类型。表被建立后我们就可以添入数据了。如： 
+  <br>
+  <br>
+  　　 Insert into bills(name,amout,account_id) values('gates',100,1) <br>
+  <br>
+  　　 如果，你觉得不再需要保存产品信息，则可用 Drop table 语句将该表及其所包含的所有数据从数据库中删除掉。 <br>
+  <br>
+  　　 标准语法： <br>
+  <br>
+  　　 DROP TABLE table_name <br>
+  <br>
+  　　 至此，我们已经了解了所有常用的 SQL 语句，可别小看这些貌似英文的简单语句，它们的功能十分强大，当我们编写 asp 程序时必须使用他们对数据库进行操作。从下一篇开始，作者将给大家介绍 
+  ASP 的内建 ActiveX 组件，敬请关注。 <br>
+  <br>
+</p>
+<p><br>
+</p>
+<p> </p>
+</body>
+</html>

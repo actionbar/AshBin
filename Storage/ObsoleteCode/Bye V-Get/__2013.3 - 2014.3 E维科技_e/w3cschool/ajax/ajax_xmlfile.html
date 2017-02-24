@@ -1,0 +1,214 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="../c3.css" />
+<title>AJAX XML 实例</title>
+<script src="selectcd.js" type="text/javascript"></script>
+</head>
+<body class="browserscripting">
+<div id="wrapper">
+<div id="header">
+<a href="http://e.v-get.com/w3cschool/" style="float:left;">W3CSchool 在线教程</a>
+<div class="q g"><script type="text/javascript">var cpro_id="u1163355"</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div>
+<div id="navfirst">
+<ul id="menu">
+<li id="h"><a href="../h.html">HTML教程</a></li>
+<li id="x"><a href="../x.html">XML教程</a></li>
+<li id="b"><a href="../b.html">浏览器脚本</a></li>
+<li id="s"><a href="../s.html">服务器脚本</a></li>
+<li id="d"><a href="../d.html">dot net教程</a></li>
+<li id="m"><a href="../m.html">多媒体教程</a></li>
+<li id="w"><a href="../w.html">建站手册</a></li>
+</ul>
+</div><div id="navsecond">
+<div id="course">
+<h2>AJAX 基础</h2>
+<ul>
+<li><a href="http://e.v-get.com/w3cschool/">AJAX 首页</a></li>
+<li><a href="ajax_intro.html">AJAX 简介</a></li>
+<li><a href="ajax_httprequest.html">AJAX HTTP 请求</a></li>
+<li><a href="ajax_example.html">AJAX 实例</a></li>
+<li><a href="ajax_browsers.html">AJAX 浏览器支持</a></li>
+<li style="font-size:11px;"><a href="ajax_xmlhttprequest.html">AJAX XMLHttpRequest</a></li>
+<li><a href="ajax_server.html">AJAX 请求服务器</a></li>
+<li><a href="ajax_serverscript.html">AJAX 服务器脚本</a></li>
+</ul>
+<h2>AJAX 高级</h2>
+<ul>
+<li><a href="ajax_example_suggest.html">AJAX 请求实例</a></li>
+<li><a href="ajax_source.html">AJAX 请求源代码</a></li>
+<li><a href="ajax_database.html">AJAX 数据库实例</a></li>
+<li><a href="ajax_xmlfile.html">AJAX XML 实例</a></li>
+<li><a href="ajax_responsexml.html">AJAX ResponseXML</a></li>
+</ul>
+<h2>AJAX 实例</h2>
+<ul>
+<li><a href="../example/ajax_examples.html">AJAX 实例</a></li>
+</ul>
+</div>
+<div id="selected">
+<h2>建站手册</h2>
+<ul>
+<li><a href="../site/">网站构建</a></li>
+<li><a href="../w3c/">万维网联盟</a></li>
+<li><a href="http://e.v-get.com/w3c/">W3CSchool 教程</a></li>
+<li><a href="../quality/">网站品质</a></li>
+<li><a href="../semweb/">语义网</a></li>
+<li><a href="../hosting/">网站主机</a></li>
+</ul>
+<h2><a href="http://e.v-get.com/w3c/" class="f13">W3CSchool 教程</a></h2><div class="a120x90"><script type="text/javascript">var cpro_id="u1210867";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div></div>
+</div>
+<div id="maincontent">
+<h1>AJAX XML 实例</h1>
+<div id="tpn">
+<ul class="prenext">
+<li class="pre"><a href="ajax_database.html">上一页</a></li>
+<li class="next"><a href="ajax_responsexml.html">下一页</a></li>
+</ul>
+</div>
+<div id="intro">
+<p><strong>AJAX 可用来与 XML 文件进行交互式通信。</strong></p>
+</div>
+<div>
+<h2>AJAX XML 实例</h2>
+<p>在下面的 AJAX 实例中，我们将演示如何通过使用 AJAX 技术，从 XML 文件中读取信息。</p>
+</div>
+<div>
+<h2>在下面的下列列表中选择一个 CD</h2>
+<form action=""> 
+<label>选择 CD：
+<select name="cds" onchange="showCD(this.value)">
+<option value="Bob Dylan">Bob Dylan</option>
+<option value="Bonnie Tyler">Bonnie Tyler</option>
+<option value="Dolly Parton">Dolly Parton</option>
+</select></label>
+</form>
+<div id="txtHint" style="margin:0;padding:0;border:0;"><em>在此列出 CD 信息。</em></div>
+</div>
+<div>
+<h2>AJAX 实例解释</h2>
+<p>上面的例子包含了一个简单的 HTML 表单，以及指向一段 JavaScript 的链接：</p>
+<pre>&lt;html&gt;
+&lt;head&gt;
+<code>&lt;script src=&#34;selectcd.js&#34;&gt;&lt;/script&gt;</code>
+&lt;/head&gt;
+&lt;body&gt;
+&lt;form&gt; 
+选择 CD：
+&lt;select <code>name=&#34;cds&#34; onchange=&#34;showCD(this.value)&#34;</code>&gt;
+&lt;option value=&#34;Bob Dylan&#34;&gt;Bob Dylan&lt;/option&gt;
+&lt;option value=&#34;Bonnie Tyler&#34;&gt;Bonnie Tyler&lt;/option&gt;
+&lt;option value=&#34;Dolly Parton&#34;&gt;Dolly Parton&lt;/option&gt; 
+&lt;/select&gt;
+&lt;/form&gt;
+&lt;p&gt;
+&lt;div <code>id=&#34;txtHint&#34;</code>&gt;&lt;em&gt;在此列出 CD 信息。&lt;/em&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+<p>正如您所看到的，它只是一个带有名为 &#34;cds&#34; 的下拉列表的简单 HTML 表单。</p>
+<p>表单下面的段落包含一个名为 &#34;txtHint&#34; 的 div。该 div 用作从 web 服务器接受的数据的位置占位符。</p>
+<p>当用户选择列表时，名为 &#34;showCD&#34; 的函数就会被执行。该函数的执行是 &#34;onchange&#34; 事件触发的。换句话说，每当用户改变了下拉列表的值，这个 showCD 函数就会被调用。</p>
+<p>下面列出了 JavaScript 代码。</p>
+</div>
+<div>
+<h2>AJAX JavaScript</h2>
+<p>这是存储在文件 &#34;selectcd.js&#34; 中的 JavaScript 代码：</p>
+<pre>var xmlHttp
+<code>function showCD(str)</code>
+{ 
+xmlHttp=GetXmlHttpObject();
+if (xmlHttp==null)
+  {
+  alert (&#34;Your browser does not support AJAX!&#34;);
+  return;
+  } 
+var url=&#34;getcd.asp&#34;;
+url=url+&#34;?q=&#34;+str;
+url=url+&#34;&amp;sid=&#34;+Math.random();
+xmlHttp.onreadystatechange=stateChanged;
+xmlHttp.open(&#34;GET&#34;,url,true);
+xmlHttp.send(null);
+}
+<code>function stateChanged()</code>
+{ 
+if (xmlHttp.readyState==4)
+{ 
+document.getElementById(&#34;txtHint&#34;).innerHTML=xmlHttp.responseText;
+}
+}
+<code>function GetXmlHttpObject()</code>
+{
+var xmlHttp=null;
+try
+  {
+  // Firefox, Opera 8.0+, Safari
+  xmlHttp=new XMLHttpRequest();
+  }
+catch (e)
+  {
+  // Internet Explorer
+  try
+    {
+    xmlHttp=new ActiveXObject(&#34;Msxml2.XMLHTTP&#34;);
+    }
+  catch (e)
+    {
+    xmlHttp=new ActiveXObject(&#34;Microsoft.XMLHTTP&#34;);
+    }
+  }
+return xmlHttp;
+}
+</pre>
+</div>
+<div>
+<h2>AJAX 服务器页面</h2>
+<p>被 JavaScript 调用的服务器页面，是名为 &#34;getcd.asp&#34; 的简单 ASP 文件。</p>
+<p>该页面使用 VBScript 编写，针对 Internet 信息服务器 (IIS)。可以用 PHP 或其他服务器语言，简单地重写该页面。</p>
+<p>请看在 PHP 中对应的例子 (测试：缺具体页面）。</p>
+<p>该代码执行针对 XML 文件的查询，并以 HTML 返回结果：</p>
+<pre>
+&lt;%
+response.expires=-1
+q=request.querystring(&#34;q&#34;)
+set xmlDoc=Server.CreateObject(&#34;Microsoft.XMLDOM&#34;)
+xmlDoc.async=&#34;false&#34;
+xmlDoc.load(Server.MapPath(&#34;cd_catalog.xml&#34;))
+set nodes=xmlDoc.selectNodes(&#34;CATALOG/CD[ARTIST='&#34; &amp; q &amp; &#34;']&#34;)
+for each x in nodes
+  for each y in x.childnodes
+    response.write(&#34;&lt;b&gt;&#34; &amp; y.nodename &amp; &#34;:&lt;/b&gt; &#34;)
+    response.write(y.text)
+    response.write(&#34;&lt;br /&gt;&#34;)
+  next
+next
+%&gt;
+</pre>
+</div>
+<div id="bpn">
+<ul class="prenext">
+<li class="pre"><a href="ajax_database.html">上一页</a></li>
+<li class="next"><a href="ajax_responsexml.html">下一页</a></li>
+</ul>
+</div>
+</div>
+<div id="sidebar">
+<div class="rs"></div><div id="ad">
+<script type="text/javascript"><!--
+google_ad_client = "pub-3381531532877742";
+/* 120x600, sidebar_pic_1 */
+google_ad_slot = "0951690603";
+google_ad_width = 120;
+google_ad_height = 600;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div>
+</div><div class="b"></div>
+</div>
+</body>
+</html>

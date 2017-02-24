@@ -1,0 +1,87 @@
+<meta http-equiv="content-type" content="text/html; charset=gb2312"><PRE>SET QUOTED_IDENTIFIER OFF
+
+/* Start with master DB */
+USE master
+
+/* Create Variables */
+DECLARE 	@DBName 	CHAR(64)
+DECLARE 	@TableName 	CHAR(64)
+DECLARE		@FQTableName	CHAR(64)
+DECLARE		@TempVar	CHAR(256)
+
+/* Create DB List */
+DECLARE 	DBCursor 	CURSOR FOR
+	SELECT		name
+		FROM	master..sysdatabases
+
+OPEN		DBCursor
+
+FETCH NEXT
+	FROM	DBCursor
+	INTO	@DBName
+
+/* Create Database Loop */
+WHILE @@FETCH_STATUS = 0
+	BEGIN
+		/* Retrieve Table List */
+		PRINT 'Retrieving Table List for DB ' + @DBName
+		
+		EXEC ('SELECT name AS TableName INTO ##TableNames FROM [' + @DBName + ']..sysobjects WHERE type = ''U''')		
+
+		/* Open Table List */
+		DECLARE		TableCursor 	CURSOR FOR
+			SELECT		TableName
+				FROM	##TableNames
+
+		OPEN TableCursor
+		
+		FETCH NEXT
+			FROM	TableCursor
+			INTO	@TableName
+		
+		/* Create Table Loop */
+		WHILE @@FETCH_STATUS = 0
+			BEGIN
+				/* Add DB Name to Table Name */
+				SELECT @FQTableName = QUOTENAME(RTRIM(@DBName)) + '..' + QUOTENAME(RTRIM(@TableName))
+				SELECT @TableName = RTRIM(@DBName) + '..' + RTRIM(@TableName)
+				
+				/* ReIndex Table */
+				PRINT 'ReIndexing Table ' + @TableName
+				DBCC DBREINDEX(@TableName)
+				
+				/* Update Statics on Table */
+				PRINT 'Updating Statistics on Table ' + @TableName
+				EXEC ('UPDATE STATISTICS ' + @FQTableName)
+				
+				/* Get Next Table Name */
+				FETCH NEXT
+					FROM TableCursor
+					INTO @TableName
+			END
+		
+		/* Close Table Cursor */
+		CLOSE		TableCursor
+		DEALLOCATE	TableCursor
+
+		/* Remove Tempory Table */
+		DROP TABLE ##TableNames
+		
+		/* Preform DB Checks */
+		PRINT 'Preforming DB Checks on ' + @DBName
+		DBCC CHECKDB (@DBName)
+
+		/* Get Next Table Name */
+		FETCH NEXT
+			FROM DBCursor
+			INTO @DBName
+	END
+
+/* Close DB Curosor */
+CLOSE		DBCursor
+DEALLOCATE	DBCursor
+
+/* Finished */
+					
+
+</PRE>

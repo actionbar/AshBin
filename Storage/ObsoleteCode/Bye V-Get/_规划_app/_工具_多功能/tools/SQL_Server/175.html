@@ -1,0 +1,13 @@
+<meta http-equiv="content-type" content="text/html; charset=gb2312"><FONT 
+style="FONT-SIZE: 9pt; LINE-HEIGHT: 15pt"><B>查找不同时间段间的差异－2－T－SQL系列</B><BR><BR>方法2：先具体化等级，然后自联结<BR>&nbsp;标准的SQL方法进行了84次的逻辑读；而临时表方法在创建表时只进行了40次逻辑读，然后用52个逻辑读来访问它。由于涉及到的数据如此少，所以这两种方法都只发生一次物理读。
+<P></P>
+<P>CREATE&nbsp;TABLE&nbsp;#rankdates(<BR>when_taken&nbsp;datetime,<BR>temperature&nbsp;numeric(4,1),<BR>daterank&nbsp;int&nbsp;IDENTITY&nbsp;PRIMARY&nbsp;KEY)<BR>GO</P>
+<P>INSERT&nbsp;#rankdates(when_taken,temperature)<BR>&nbsp;&nbsp;SELECT&nbsp;when_taken,temperature<BR>&nbsp;&nbsp;FROM&nbsp;measurements<BR>&nbsp;&nbsp;ORDER&nbsp;BY&nbsp;when_taken&nbsp;ASC<BR>GO</P>
+<P>SELECT<BR>P1_WHEN=V1.when_taken,P2_WHEN=V2.when_taken,<BR>&nbsp;&nbsp;P1=V1.temperature,P2=v2.temperature,<BR>&nbsp;&nbsp;DIFF=(v2.temperature-v1.temperature)<BR>FROM&nbsp;#rankdates&nbsp;AS&nbsp;V1&nbsp;LEFT&nbsp;JOIN&nbsp;#rankdates&nbsp;AS&nbsp;V2<BR>ON(V2.daterank=V1.daterank+1)<BR>GO</P>
+<P>DROP&nbsp;TABLE&nbsp;#rankdates</P>
+<P>结果同上。</P>
+<P></P>
+<P><BR>
+<DIV align=right><FONT 
+color=#000066>[此贴子已经被作者于2003-4-18&nbsp;13:27:53编辑过]</FONT></DIV></FONT>
+<P>----------------------------------------------</P>

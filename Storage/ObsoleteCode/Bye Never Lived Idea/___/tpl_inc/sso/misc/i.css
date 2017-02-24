@@ -1,0 +1,30 @@
+.l{width:770px;height:390px}
+.c a{color:#3b5998}
+
+.s-err-tip{line-height:42px}
+
+
+
+
+
+#sso-sign-up-tab{margin:0 0 18px 0;border:1px solid #fff;height:42px;}
+#sso-sign-up-tab a{width:50%;font:600 20px/42px "微软雅黑";}
+#sso-sign-up-tab .sso-sign-up-tab-ao{background:#fff;color:#333;}
+
+
+#sign-up-email{display: none}
+
+/* 采用 16:10  如果用 16:9 会很长*/
+.s-nation-flag{background:url({<Url_s::WWW_SSO_REG_NATION_FLAG}) no-repeat scroll 6px 10px #fff; width:32px; height:20px;padding:11px 6px;}
+.s-nation-code{width:38px;height:42px;font:400 16px/42px "微软雅黑";color:#666;background:#fff;}
+.s-mobile{width:206px}
+.send-msg{width:120px;height:42px;font:400 16px/42px "微软雅黑";background:0;border:0;cursor:pointer;background:#aaa;color:#fff}
+.send-msg-pause{cursor:text;}
+
+.r{width:300px}
+
+
+.reg-tab{margin:0 0 18px 0;border:1px solid #fff;height:42px;}
+.reg-tab a{width:50%;font:600 20px/42px "微软雅黑";}
+.reg-tab .reg-tab-ao{background:#fff;color:#333;}
+

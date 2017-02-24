@@ -1,0 +1,121 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="../c3.css" />
+<title>SMIL 文件</title>
+</head>
+<body class="multimedia">
+<div id="wrapper">
+<div id="header">
+<a href="http://e.v-get.com/w3cschool/" style="float:left;">W3CSchool 在线教程</a>
+<div class="q g"><script type="text/javascript">var cpro_id="u1163355"</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div>
+<div id="navfirst">
+<ul id="menu">
+<li id="h"><a href="../h.html">HTML教程</a></li>
+<li id="x"><a href="../x.html">XML教程</a></li>
+<li id="b"><a href="../b.html">浏览器脚本</a></li>
+<li id="s"><a href="../s.html">服务器脚本</a></li>
+<li id="d"><a href="../d.html">dot net教程</a></li>
+<li id="m"><a href="../m.html">多媒体教程</a></li>
+<li id="w"><a href="../w.html">建站手册</a></li>
+</ul>
+</div><div id="navsecond">
+<div id="course">
+<h2>SMIL 教程</h2>
+<ul>
+<li><a href="http://e.v-get.com/w3cschool/">SMIL 首页</a></li>
+<li><a href="smil_intro.html">SMIL 简介</a></li>
+<li><a href="smil_files.html">SMIL 文件</a></li>
+<li><a href="smil_html.html">SMIL HTML</a></li>
+<li><a href="smil_xhtml.html">SMIL XHTML</a></li>
+<li><a href="smil_timing.html">SMIL Timing</a></li>
+<li><a href="smil_seq.html">SMIL Sequence</a></li>
+<li><a href="smil_parallel.html">SMIL Parallel</a></li>
+<li><a href="smil_transition.html">SMIL Transition</a></li>
+<li><a href="smil_media.html">SMIL Media</a></li>
+<li><a href="smil_reference.html">SMIL 参考</a></li>
+</ul>
+</div>
+<div id="selected">
+<h2>建站手册</h2>
+<ul>
+<li><a href="../site/">网站构建</a></li>
+<li><a href="../w3c/">万维网联盟</a></li>
+<li><a href="http://e.v-get.com/w3c/">W3CSchool 教程</a></li>
+<li><a href="../quality/">网站品质</a></li>
+<li><a href="../semweb/">语义网</a></li>
+<li><a href="../hosting/">网站主机</a></li>
+</ul>
+<h2><a href="http://e.v-get.com/w3c/" class="f13">W3CSchool 教程</a></h2><div class="a120x90"><script type="text/javascript">var cpro_id="u1210867";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div></div>
+</div>
+<div id="maincontent">
+<h1>SMIL 文件</h1>
+<div id="tpn">
+<ul class="prenext">
+<li class="pre"><a href="smil_intro.html">上一页</a></li>
+<li class="next"><a href="smil_html.html">下一页</a></li>
+</ul>
+</div>
+<div id="intro">
+<p><strong>SMIL 文件可描述多媒体呈现 (multimedia presentation)。</strong></p>
+</div>
+<div>
+<h2>SMIL 文件</h2>
+<p>SMIL 文件包含了描述多媒体程序所需的所有信息。</p>
+<p>存储 SMIL 文件的扩展名是 *.smil。</p>
+<p>SMIL 文件包含：</p>
+<ul>
+<li>呈现的布局 (the layout of the presentation )</li>
+<li>呈现的时间线 (The timeline of the presentation)</li>
+<li>多媒体元素的源 (The source of the multimedia elements )</li>
+</ul>
+</div>
+<div>
+<h2>SMIL 标记</h2>
+<p>由于 SMIL 基于 XML，因此其标签对大小写敏感。所有的 SMIL 标记都必须是小写字母。</p>
+<p>SMIL 文档必须以 &lt;smil&gt; 标签开始，并以 &lt;/smil&gt; 标签结束。它可包含一个 &lt;head&gt; 元素，且必须包含一个 &lt;body&gt; 元素。</p>
+<p>&lt;head&gt; 元素用于存储有关呈现布局的信息，以及其他的元信息。</p>
+<p>&lt;body&gt; 包含媒介元素。</p>
+<pre>&lt;smil&gt;
+&lt;body&gt;
+  &lt;seq repeatCount=&#34;indefinite&#34;&gt;
+    &lt;img src=&#34;image1.jpg&#34; dur=&#34;3s&#34; /&gt;
+    &lt;img src=&#34;image2.jpg&#34; dur=&#34;3s&#34; /&gt;
+  &lt;/seq&gt;
+&lt;/body&gt;
+&lt;/smil&gt;</pre>
+</div>
+<div>
+<h2>如何播放 SMIL 文件？</h2>
+<p>如需播放 SMIL 呈现，你需要一个 SMIL 播放器。可以在因特网上找到不同的 SMIL 播放器：</p>
+<ul>
+<li><a href="http://www.realnetworks.com/">RealNetworks</a> 的 <em>RealOne 平台</em>提供了对 SMIL 2.0 的充分支持</li>
+<li><a href="http://www.oratrix.com/">Oratrix</a> 的 <em>GRiNS for SMIL-2.0</em> 提供了一款 SMIL 2.0 播放器</li>
+<li><a href="http://www.inobject.com/">InterObject</a> 的 <em>SMIL 播放器</em>支持 SMIL 2.0 的基础框架</li>
+</ul>
+</div>
+<div>
+<h2>在 Internet Explorer 中播放 SMIL 呈现</h2>
+<p>通过 Internet Explorer 5.5 或更新的版本，能够把 SMIL 元素插入 HTML 文件中。</p>
+<p>通过这种方式，任何 SMIL 呈现都能作为标准的 HTML 文件运行在因特网上。</p>
+<p><strong>本教程的其余部分将使用 Internet Explorer 5.5 或更高的版本来演示不同 SMIL 元素的使用。</strong></p>
+</div>
+<div id="bpn">
+<ul class="prenext">
+<li class="pre"><a href="smil_intro.html">上一页</a></li>
+<li class="next"><a href="smil_html.html">下一页</a></li>
+</ul>
+</div>
+</div>
+<div id="sidebar">
+<div class="rs"></div>
+<div id="tools">
+<h5 id="tools_reference"><a href="smil_reference.html">SMIL 参考手册</a></h5>
+</div>
+<div class="a120x600"><script type="text/javascript">var cpro_id="u1293136";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div><div class="b"></div>
+</div>
+</body>
+</html>

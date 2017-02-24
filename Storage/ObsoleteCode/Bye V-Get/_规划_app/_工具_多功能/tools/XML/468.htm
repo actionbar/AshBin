@@ -1,0 +1,363 @@
+<html>
+<head>
+<title>可视格式化</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+
+<link rel = stylesheet href = "image/style.css">
+</head>
+<body bgcolor="#ffffff">
+<table width="688" border="0" cellspacing="0" cellpadding="0" align="center">
+  <tr bgcolor="EEEEEE"> 
+    <td height="22"><a href="index.htm">主页</a></td>
+  </tr>
+</table><br>
+<table border="0" cellpadding="0" cellspacing="0" width="688" align="center" height="490">
+  <tr valign="top"> 
+    <td rowspan="4" width="91">&nbsp; </td>
+    <td height="68" width="131"> 
+      <p><img src="image/doc.gif"></p>
+    </td>
+    <td rowspan="4" width="18"><b></b> </td>
+    <td height="68" width="387"><img src="image/title_doc.gif"></td>
+    <td rowspan="4" width="61"> 
+      <h6>&nbsp;</h6>
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td rowspan="3" valign="top" class="pt10" align="center" width="131" bgcolor="EEEEEE"> 
+      <p>&nbsp;</p>
+      <p><font color="#FF0000">※ 13.4 可视格式化</font></p>
+       
+	</td>
+  </tr>
+  <tr valign="top"> 
+    <td width="387" height="308"> 
+      <table width="100%" border="0" cellpadding="0">
+        <tr> 
+          <td>
+
+           <h4><a name="_Toc467205943">13.4 可视格式化</a></h4>
+<p>CSS2添加了许多新的格式化功能，这些功能提供了对XML文档版面的更多控制。display属性有许多新值，这些值扩充了CSS1基本块和内联类型。cursor属性能够标识在对象上方显示何种光标。可控制所有对象框的高度和宽度。CSS2还能修改文档对象的可视性、剪切大小、颜色、字体、正文阴影、对齐方式，并且如果内容超出页面，还能控制如何处理这种情况。</p>
+<h5><a name="_Toc467205944">13.4.1 显示属性</a></h5>
+<p>CSS2中扩充的display属性提供了更完整的版面选项，其中最显著的就是表格。在CSS2中，有17个显示属性值：</p>
+<ol>
+  <ol>
+    <div align="center"> 
+      <table cellspacing=0 border=0 cellpadding=7 width=360>
+        <tr> 
+          <td width="47%" valign="TOP"> 
+            <p>Inline 
+          </td>
+          <td width="53%" valign="TOP"> 
+            <p>table-header-group 
+          </td>
+        </tr>
+        <tr> 
+          <td width="47%" valign="TOP"> 
+            <p>Block 
+          </td>
+          <td width="53%" valign="TOP"> 
+            <p>table-footer-group 
+          </td>
+        </tr>
+        <tr> 
+          <td width="47%" valign="TOP"> 
+            <p>list-item 
+          </td>
+          <td width="53%" valign="TOP"> 
+            <p>table-row 
+          </td>
+        </tr>
+        <tr> 
+          <td width="47%" valign="TOP"> 
+            <p>run-in 
+          </td>
+          <td width="53%" valign="TOP"> 
+            <p>table-column-group 
+          </td>
+        </tr>
+        <tr> 
+          <td width="47%" valign="TOP"> 
+            <p>Compact 
+          </td>
+          <td width="53%" valign="TOP"> 
+            <p>table-column 
+          </td>
+        </tr>
+        <tr> 
+          <td width="47%" valign="TOP"> 
+            <p>Marker 
+          </td>
+          <td width="53%" valign="TOP"> 
+            <p>table-cell 
+          </td>
+        </tr>
+        <tr> 
+          <td width="47%" valign="TOP"> 
+            <p>Table 
+          </td>
+          <td width="53%" valign="TOP"> 
+            <p>table-caption 
+          </td>
+        </tr>
+        <tr> 
+          <td width="47%" valign="TOP"> 
+            <p>inline-table 
+          </td>
+          <td width="53%" valign="TOP"> 
+            <p>none 
+          </td>
+        </tr>
+        <tr> 
+          <td width="47%" valign="TOP"> 
+            <p>table-row-group 
+          </td>
+          <td width="53%" valign="TOP">　</td>
+        </tr>
+      </table>
+    </div>
+  </ol>
+</ol>
+<p>块（block）元素通过在对象周围添加间距来在其内容的周围放置一个缓冲地带。内联（inline）元素不用放置边缘上的间距。表格（table）元素是各种网格。内联元素就像句子中的单词一样，其位置随着文本的增加或删除而自由移动。块对象更加固定，当在其前和后添加内容时，顶多只能上下移动，但不能左右移动。大多数显示类型只修改主块或内联类型。</p>
+<p><b>13.4.1.1 内联对象 </b></p>
+<p>内联对象（inline object）框水平放置在起始于包含它周围页面或块元素的顶端一行。在水平页边距这些框之间，可实现边界和贴边间隔。也可将这些框以各种方式（包括字符基线、框底或框顶）垂直对齐。</p>
+<p><img src="Image/BK000213-17.gif" width=47 height=52 align="left">在CSS1中，block值是所有对象的缺省显示类型，但在CSS2中发生了变化。现在元素自动地以inline显示，除非指定了其他类型。</p>
+<p><b>13.4.1.2 块对象 </b></p>
+<p>块对象（block object）一个挨一个地往下垂直分布。第一个块对象处于包含块的左上角，然后第二个块置于它之下，并齐排列在包含块的左边。各块之间的垂直距离由各块的页边距和贴边属性来定义。例如，下面的这段规则把VERSE、STANZA和REFRAIN元素当作各块来看待。图13-1显示的是清单13-1应用了此规则（并只有此规则）之后的结果。注意，AUTHOR和TITLE都处于同一行，因为缺省情况下它们是内联的。但是，当块元素跟在一个内联元素之后时，就需要在块元素后面使用分行符。</p>
+<p>VERSE, STANZA, REFRAIN { display: block }</p>
+<p align="center"><img src="Image/BK000213-20.gif" width=432 height=328></p>
+<p align="center">图13-1 当作为块元素显示时，Shakespeare的十四行诗呈现的外观更正常</p>
+<p><b>13.4.1.3 none值 </b></p>
+<p>none值强制此元素不产生任何类型的显示框来格式化元素的内容。另一方面，元素对文档的版面没有任何影响。子元素和其他后代元素也不产生框，即使它们设置了display属性也是如此。当display为none时，那么此框不仅仅是不可见，而是它确实不存在。</p>
+<p><b>13.4.1.4 compact和run-in值 </b></p>
+<p>display属性的compact和run-in值根据上下文的前后关系，把一元素既可以标识为块，也可以标识为内联框。根据属性的最终显示状态，用于声明为这种类型的项目上的属性，将是很有效的。如果合适，compact框将放在紧随其后的块框的页边距之内。如果跟在compact框之后的框不是块框，或者compact框在页面距内放不下，那么它将只作为另一块框显示。</p>
+<p>run-in值能够将正常的块元素格式化为代码中下一块元素的第一个内联块。如果下一个元素不是块元素，那么run-in元素就能作为块元素被格式化。</p>
+<p><b>13.4.1.5 标记值 </b></p>
+<p>将display属性设置为marker值时，可标识由样式单中生成的内容所形成的块，而不是从XML文档复制来的内容所形成的块。此值只能与已和块级元素相联系的:before和:after伪元素一起使用。</p>
+<p><b>13.4.1.6 表格显示值 </b></p>
+<p>在CSS2中，尤其对于那些经常使用标记（这种标记与HTML的表格标记完全不同）创建表格结构的XML开发人员来说，最重要的新功能之一就是支持元素的表格版面。使用下列10个display属性值，就可以使CSS2增加将元素格式化为表格的支持。</p>
+<ol>
+  <ol>
+    <center>
+      <table cellspacing=0 border=0 cellpadding=7 width=445>
+        <tr> 
+          <td width="49%" valign="TOP"> 
+            <p>1．table 
+          </td>
+          <td width="51%" valign="TOP"> 
+            <p> 6．table-row 
+          </td>
+        </tr>
+        <tr> 
+          <td width="49%" valign="TOP"> 
+            <p>2．inline-table 
+          </td>
+          <td width="51%" valign="TOP"> 
+            <p> 7．table-column-group 
+          </td>
+        </tr>
+        <tr> 
+          <td width="49%" valign="TOP"> 
+            <p>3．table-row-group 
+          </td>
+          <td width="51%" valign="TOP"> 
+            <p> 8．table-column 
+          </td>
+        </tr>
+        <tr> 
+          <td width="49%" valign="TOP"> 
+            <p>4．table-header-group 
+          </td>
+          <td width="51%" valign="TOP"> 
+            <p> 9．table-cell 
+          </td>
+        </tr>
+        <tr> 
+          <td width="49%" valign="TOP"> 
+            <p>5．table-footer-group 
+          </td>
+          <td width="51%" valign="TOP"> 
+            <p>10．table-caption 
+          </td>
+        </tr>
+      </table>
+    </center>
+  </ol>
+</ol>
+<p>例如，将display属性设置为table，表示所选择的元素是块级容器，用于将较小的子元素放置在表格的单元格中。inline-table值强制表格具有内联对象的功能，使正文能够沿着其侧边浮动，对于多个表格，并排放置。table-caption值将元素格式化为表的标题。table-row-group、table-header-group和table-footer-group值创建只起一行作用的数据单元组，就像使用table-row值定义的一样。table-column-group创建充当一列的一组数据单元，可使用table-column值来定义。出现在表格单元中的XML元素应该有带有table-cell值的display属性，这已足够。</p>
+<p>例如，如果要将十四行诗形成类似于表的结构，可将每个STANZA和REFRAIN设置为一张表，每个VERSE设置为表的一行。创建这种效果的样式单可能包括如下三条规则：</p>
+<p>STANZA { display: table }</p>
+<p>REFRAIN { display: table }</p>
+<p>VERSE { display: table-row }</p>
+<h5><a name="_Toc467205945">13.4.2 宽度和高度属性</a></h5>
+<p>用于显示每个元素的框的缺省高度可从元素内容的整体高度算出。每个元素框的缺省宽度可从元素内容的整体宽度算出，或从页面或屏幕的可视区域的宽度算出。内联元素和包含正文的表格元素总是具有这类自动地计算出的尺寸。但是，样式单设计者可以改变块级元素的这些缺省值，并通过指定下列的六个属性值来代替内联元素：</p>
+<p>1．min-width</p>
+<p>2．max-width</p>
+<p>3．min-height</p>
+<p>4．max-height</p>
+<p>5．height</p>
+<p>6．width</p>
+<p>min-height和min-width属性指定可用来显示对象的最小尺寸。最大属性是框的最大尺寸，而不管其内容的总尺寸。Web浏览器在这些限制内可自由调节框的大小。但是，如果设置了height和width，那么就可精确地确定框的大小。</p>
+<p>STANZA { width: 100px;</p>
+<p> Height: 100px }</p>
+<h5><a name="_Toc467205946">13.4.3 overflow属性</a></h5>
+<p>当使用width和height精确地指定一个框的大小时，淠谌菟伎占渫耆锌赡鼙却丝蚴导士占浯蟆verflow属性控制如何处理超过的内容。此属性可设置为下列四个值之一：</p>
+<p>1．auto</p>
+<p>2．hidden</p>
+<p>3．scroll</p>
+<p>4．visible</p>
+<p>如果overflow设置为auto，必要时将会添加滚动条，以便用户能够看见超过的内容。如果将overflow设置为hidden，超过的内容被裁去。如果将overflow设置为scroll，那么无论内容是否超出显示范围，都会增加滚动条。最后，如果将overflow设置为visible，将显示整个内容，如有必要，则推翻框的大小约束。</p>
+<p>图13-2显示的是当使用下列规则，将STANZA的overflow属性设置为scroll时的十四行诗：</p>
+<p>STANZA { overflow: scroll }</p>
+<p align="center"><img src="Image/BK000213-21.gif" width=392 height=299></p>
+<p align="center">图13-2 具有滚动条的Shakespeare的十四行诗的节</p>
+<h5><a name="_Toc467205947">13.4.4 clip属性</a></h5>
+<p>当由用户软件显示对象内容时，clip（剪辑）属性标识可见的对象内容部分。一般地，剪辑区与元素框的外边界一致，但此区是可以改变的。此属性只适用于具有overflow特性（设置为非visible的任一值）的元素。</p>
+<p>在CSS2中，只能剪辑成矩形区域。将clip属性设置为rect(top, bottom, left, right)，这里的top、bottom、left和right为各侧面的偏移量。如果剪辑过的对象仍超过浏览器窗口的可视区域，那么内容将会被进一步剪辑以适应于窗口的大小。下列规则将clip属性用于STANZA块元素：</p>
+<p>STANZA { clip: rect(5px, 5px, 5px, 5px);</p>
+<p> overflow: auto }</p>
+<h5><a name="_Toc467205948">13.4.5 visibility属性</a></h5>
+<p>visibility属性控制元素的内容是否看得见。此属性的四个值为：</p>
+<p>1．visible</p>
+<p>2．hidden</p>
+<p>3．collapse</p>
+<p>4．inherit</p>
+<p>如果将visibility设置为visible的话，框的内容（包括所有的边界）都会显示。如果将visibility设置为hidden，那么框的内容和边界都看不见。不可见框仍占据空间，影响文档的布局。将visibility设置为hidden与将display属性设置为none，是不一样的。</p>
+<p>如果将visibility设置为collapse，除表格的行或列外，对于任何对象来说，与使用hidden是一样的。但是，对于表格的行和列来说，这种设置完全隐藏（同display:none一样）行或列。</p>
+<h5><a name="_Toc467205949">13.4.6 cursor属性</a></h5>
+<p>光标是箭头指针/手形/插入条/其他图标，这些图标表示鼠标箭头在屏幕上的位置。光标是显示于计算机显示器可视区上的鼠标逻辑位置的可见图像。当读者将鼠标移到特定的对象之上时，cursor属性指定用户软件应该显示的光标。CSS2有16个光标值：</p>
+<p>1．auto：浏览器基于当前上下文关系来选择光标。此为缺省值</p>
+<p>2．crosshair：一种简单的十字形光标</p>
+<p>3．default：由操作系统平台决定的缺省光标，通常为箭头</p>
+<p>4．hand：手形</p>
+<p>5．move：交叉的箭头，表示要移动某物</p>
+<p>6．e-resize：指向东方（右边）的箭头（上方是北边）</p>
+<p>7．ne-resize：指向东北（右上）角的箭头</p>
+<p>8．nw-resize：指向西北（左上）角的箭头</p>
+<p>9．n-resize：指向北（上）方的箭头</p>
+<p>10．se-resize：指向东南（右下）角的箭头</p>
+<p>11．sw-resize：指向西南（左下）角的箭头</p>
+<p>12．s-resize：指向南（下）方的箭头</p>
+<p>13．w-resize：指向西（左）方的箭头</p>
+<p>14．text：I-字型</p>
+<p>15．wait：秒表、砣螺、沙漏或其他图标，表示要经历一段时间</p>
+<p>16．help：问号</p>
+<p>下面的规则使用cursor属性说明当光标指针移到VERSE元素上时，应使用手形光标。</p>
+<p>VERSE { cursor: hand }</p>
+<p>也可以使用自定义的光标，该光标从给定影像的URL影像文件中加载。一般地，可以提供几种格式的光标，格式之间以逗号分开，最后一个应是通用光标名称。例如：</p>
+<p>VERSE { cursor: url(“poetry.cur”), url(“poetry.gif”), text }</p>
+<h5><a name="_Toc467205950">13.4.7 相关的颜色属性</a></h5>
+<p>CSS2根据Internet普遍使用的标准缺省颜色空间（sRGB）中的RGB的值来标识颜色。表示颜色的方式随浏览器而变，但是这种规范提供了一种明确的、客观上可度量的颜色外观的定义。符合此标准的Web浏览器根据CSS2规范所确定的颜色，来执行Gamma修正（Gamma 
+  Correction）。在大多数条件下，sRGB可以标识显示器的Gamma值为2.2。这意味着，对于大多数计算机硬件来讲，CSS2属性给定的颜色不得不调整，以有效地显示Gamma值为2.2。</p>
+<p><img src="Image/BK000213-17.gif" width=47 height=52 align="left">只在CSS2规则中确定的颜色才受到影响。使用于影像中的颜色可传递它们自己的颜色修正信息。</p>
+<p>&nbsp;</p>
+<p><b>13.4.7.1 颜色属性 </b></p>
+<p>color属性指定元素文本内容的前景色。可以使用文字描述的颜色名（如red）或RGB值（如#CC0000）。颜色名（或值）包括aqua（浅绿）、black（黑色）、blue（蓝色）、fuchsia（紫红）、gray（灰色）、green（绿色）、lime（酸橙）、maroon（栗色）、navy（海蓝）、olive（橄榄）、purple（紫色）、red（红色）、silver（银白）、teal（深青）、white（白色）和yellow（黄色）。</p>
+<p>下列的样式规则使用标识颜色的所有三种方法，将颜色应用于三个元素。将AUTHOR元素的RGB指定为十六进制值#FF0000，所有的TITLE元素均显示为红色，所有的VERSE元素以rgb( 
+  255, 0, 0)颜色显示。这些值都是红色：</p>
+<p>AUTHOR { color: #FF0000 }</p>
+<p>TITLE { color: red }</p>
+<p>VERSE { color: rgb(255,0,0) }</p>
+<ol>
+  <ol>
+    <table cellspacing=0 border=0 cellpadding=7 width=562>
+      <tr bgcolor="#CCCCCC"> 
+        <td valign="TOP"> <b> 
+          <p>Gamma修正 
+          </b></td>
+      </tr>
+      <tr bgcolor="#CCCCCC"> 
+        <td valign="TOP"> 
+          <p>从本质上来讲，Gamma修正控制影像的明亮度，所以影像能精确地显示在计算机屏幕上。还没有经过修正的影像显得褪了色或太暗。为了使Gamma修正易于理解，让我们来看看计算机屏幕上显示的影像。 
+        </td>
+      </tr>
+      <tr bgcolor="#CCCCCC"> 
+        <td valign="TOP"> 
+          <p>实际上，每个计算机显示器都具有Gamma值为2.5。这意味着，光强与电压的关系是2.5次幂函数。如果向显示器发送指定像素的信号，获得强度为x，那么，此像素将自动地使强度为x<sup>2.5</sup>加在显示器上。由于电压的范围是在0到1之间，这意味着，像素强度比所期望的低。为了修正这个像素强度，那么显示的电压就不得不进行“Gamma修正”。 
+        </td>
+      </tr>
+      <tr bgcolor="#CCCCCC"> 
+        <td valign="TOP"> 
+          <p>修正这个问题的最简单的方法就是在把电压送到显示器之前提高电压。由于电压和明亮度的关系是已知的，所以可调整信号来去除显示器的Gamma影响。当正确地做好这一切之后，计算机显示器就能精确地反映影像导入。当然，当对影像进行Gamma修正时，计算机室内的光线、显示器的明亮度和对比度，以及个人的偏爱也起一定的作用。 
+        </td>
+      </tr>
+      <tr bgcolor="#CCCCCC"> 
+        <td valign="TOP"> 
+          <p>当试图对Web进行Gamma修正时，系统平台的特质也会开始起作用。有些UNIX工作站会自动地修正显示卡上的Gamma变化，正如Macintosh机一样，但大多数PC机则不行。这意味着，在PC机上看得挺好的影像，在Mac机上就会太浅；反过来，某些影像在Mac机上能很好地显示，而在PC机上就显示太暗。如果把彩色影像或文本放在Internet上，那么就不可能使所有的人都感到满意。目前，在Web上使用的任何图像格式都没有Gamma修正的编码信息。 
+        </td>
+      </tr>
+    </table>
+  </ol>
+</ol>
+<p><b>13.4.7.2 系统颜色</b></p>
+<p>CSS2使用户通过从本地的GUI（图形用户界面）复制颜色来指定颜色。这些系统颜色可以和相关的颜色属性一起使用。基于系统颜色的样式规则考虑了用户的偏爱，所以具备如下的一些优点：</p>
+<p>1．页面适合于用户喜爱的观感。</p>
+<p>2．用户更容易访问的页面，加入了与残疾人有关的设置项。</p>
+<p>表13-2列出了CSS2系统颜色的关键字及其含义。任何颜色属性都可取这些值。</p>
+<p>例如，下列的样式单设置VERSE的前景色和背景色为浏览器窗口所使用的前景色和背景色。</p>
+<p>VERSE { color: WindowText; background-color: Window }</p>
+<p align="center">表13-2 与所有颜色有关的属性一起使用的其他系统颜色</p>
+<p>
+<center>
+  <table BORDER cellspacing=1 cellpadding=7 width=469>
+    <tr>
+      <td width="37%" valign="TOP"> 
+        <p>系统颜色关键字
+      </td>
+      <td width="63%" valign="TOP"> 
+        <p>含义
+      </td>
+    </tr>
+    <tr>
+      <td width="37%" valign="TOP"> 
+        <p>ActiveBorder
+      </td>
+      <td width="63%" valign="TOP"> 
+        <p>活动窗口边框
+      </td>
+    </tr>
+    <tr>
+      <td width="37%" valign="TOP"> 
+        <p>ActiveCaption
+      </td>
+      <td width="63%" valign="TOP"> 
+        <p>活动窗口标题
+      </td>
+    </tr>
+    <tr>
+      <td width="37%" valign="TOP"> 
+        <p>Appworkspace
+      </td>
+      <td width="63%" valign="TOP"> 
+        <p>多文档界面的背景色
+      </td>
+    </tr>
+    <tr>
+      <td width="37%" valign="TOP"> 
+        <p>Background
+      </td>
+      <td width="63%" valign="TOP"> 
+        <p>桌面背景色
+      </td>
+    </tr>
+    <tr>
+      <td width="37%" valign="TOP"> 
+        <p>BottonFace
+      </td>
+      <td width="63%" valign="TOP"> 
+        <p>三维显示元素的外观颜色
+      </td>
+    </tr>
+</table>
+              
+</center><a href='467.htm'>&lt;&lt;上一篇</a>&nbsp;&nbsp;<a href='469.htm'>下一篇&gt;&gt;</a></td>
+        </tr>
+      </table>
+      <p>&nbsp; </p>
+    </td>
+  </tr>
+</table>
+
+</body>
+
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>不用Golobal和session实现在线人数统计 </title>
+<style type="text/css">
+<!--
+body {
+	font-size: 10.4pt;
+	line-height: 22px;
+}
+-->
+</style>
+</head>
+
+<body bgcolor="eeeeee" leftmargin="20" marginwidth="20">
+<p><strong>不用Golobal和session实现在线人数统计 </strong></p>
+<hr>
+<p> 实现在线人数统计最常用的方法就是golobal.asa结合session做,但这种方法有两个不利:<br>
+  1、每个session要占用12k的服务器内存空间，为了人数+1就要付出12k内存的代价。<br>
+  2、golobal.asa要放在网站的根目录下才会起作用，而且根目录只能有一个golobal，矛盾突出。<br>
+  为此，有一种使用cookie和application在asp文件中实现在线统计的方法，欢迎批评指正，共同探讨：<br>
+  第一步:做一个框架,包含隐藏框架(count.asp)<br>
+  第二步:编写count.asp<br>
+  &lt;%<br>
+  user=request.cookies(&quot;21bbsusername&quot;)<br>
+  totaluser=application(&quot;user&quot;)<br>
+  if instr(totaluser,user)=0 then<br>
+  application.lock<br>
+  application(&quot;user&quot;)=totaluser&amp;&quot;;&quot;&amp;user<br>
+  application.unlock<br>
+  end if<br>
+  %&gt;<br>
+  &lt;html&gt;<br>
+  &lt;head&gt;<br>
+  &lt;meta http-equiv=&quot;refresh&quot; content=&quot;2&quot;&gt;<br>
+  &lt;/head&gt;<br>
+  &lt;body&gt;<br>
+  &lt;/body&gt;<br>
+  &lt;/html&gt;<br>
+  第三步:显示<br>
+  user=split(application(&quot;user&quot;),&quot;;&quot;)<br>
+  num=ubound(user)<br>
+  response.write num </p>
+<p></p>
+</body>
+</html>

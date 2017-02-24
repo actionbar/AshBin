@@ -1,0 +1,21 @@
+<html>
+<head><link rel="stylesheet" type="text/css" href="showcode.css" /></head>
+<body>
+<pre>
+&lt;html&gt;
+&lt;body&gt;
+<code class="aspcode">&lt;%
+Set FS = Server.CreateObject(&#34;Scripting.FileSystemObject&#34;)
+Set RS = FS.OpenTextFile(Server.MapPath(&#34;/example/aspe&#34;) & &#34;\textfile.txt&#34;,1)
+While not rs.AtEndOfStream
+      Response.Write RS.ReadLine
+      Response.Write(&#34;&lt;br /&gt;&#34;)
+Wend 
+%&gt;</code>
+&lt;p&gt;
+&lt;a href=&#34;/example/aspe/textfile.txt&#34;&gt;查看此文本文件&lt;/a&gt;
+&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+</body>

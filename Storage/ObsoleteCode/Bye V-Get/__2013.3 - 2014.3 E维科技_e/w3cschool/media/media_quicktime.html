@@ -1,0 +1,125 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="../c3.css" />
+<title>播放 QuickTime 影片</title>
+</head>
+<body class="multimedia">
+<div id="wrapper">
+<div id="header">
+<a href="http://e.v-get.com/w3cschool/" style="float:left;">W3CSchool 在线教程</a>
+<div class="q g"><script type="text/javascript">var cpro_id="u1163355"</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div>
+<div id="navfirst">
+<ul id="menu">
+<li id="h"><a href="../h.html">HTML教程</a></li>
+<li id="x"><a href="../x.html">XML教程</a></li>
+<li id="b"><a href="../b.html">浏览器脚本</a></li>
+<li id="s"><a href="../s.html">服务器脚本</a></li>
+<li id="d"><a href="../d.html">dot net教程</a></li>
+<li id="m"><a href="../m.html">多媒体教程</a></li>
+<li id="w"><a href="../w.html">建站手册</a></li>
+</ul>
+</div><div id="navsecond">
+<div id="course">
+<h2>媒介 基础</h2>
+<ul>
+<li><a href="http://e.v-get.com/w3cschool/" title="">媒介首页</a></li>
+<li><a href="media_intro.html">媒介简介</a></li>
+<li><a href="media_soundformats.html">音频格式</a></li>
+<li><a href="media_videoformats.html">视频格式</a></li>
+<li><a href="media_browsersounds.html">音频播放</a></li>
+<li><a href="media_browservideos.html">视频播放</a></li>
+<li><a href="media_windowsformats.html">视窗格式</a></li>
+</ul>
+<h2>Object元素</h2>
+<ul>
+<li><a href="media_object.html">Object 简介</a></li>
+<li><a href="media_quicktime.html">Object QuickTime</a></li>
+<li><a href="media_realvideo.html">Object RealVideo</a></li>
+</ul>
+<h2>参考手册</h2>
+<ul>
+<li><a href="media_tagref.html">标签参考</a></li>
+<li><a href="media_playerref.html">播放器参考</a></li>
+<li><a href="media_mimeref.html">MIME 参考</a></li>
+</ul>
+</div>
+<div id="selected">
+<h2>建站手册</h2>
+<ul>
+<li><a href="../site/">网站构建</a></li>
+<li><a href="../w3c/">万维网联盟</a></li>
+<li><a href="http://e.v-get.com/w3c/">W3CSchool 教程</a></li>
+<li><a href="../quality/">网站品质</a></li>
+<li><a href="../semweb/">语义网</a></li>
+<li><a href="../hosting/">网站主机</a></li>
+</ul>
+<h2><a href="http://e.v-get.com/w3c/" class="f13">W3CSchool 教程</a></h2><div class="a120x90"><script type="text/javascript">var cpro_id="u1210867";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div></div>
+</div>
+<div id="maincontent">
+<h1>播放 QuickTime 影片</h1>
+<div id="tpn">
+<ul class="prenext">
+<li class="pre"><a href="media_object.html">上一页</a></li>
+<li class="next"><a href="media_realvideo.html">下一页</a></li>
+</ul>
+</div>
+<div id="intro">
+<p><strong>&lt;object&gt; 元素可播放 QuickTime 电影。</strong></p>
+</div>
+<div>
+<h2>QuickTime 格式</h2>
+<p>QuickTime 格式由 Apple 开发。以 QuickTime 格式存储的视频的扩展名是 .mov。</p>
+<p>在因特网上，QuickTime 是一种普遍的格式，但是如果没有额外的组件 (免费），QuickTime 电影无法在非 Windows 的计算机上播放。</p>
+<p>通过 object 元素，可轻松将播放 QuickTime 影片的代码添加到网页中。如果用户计算机中未安装 QuickTime 播放器，则可将 object 设置为自动安装 QuickTime 播放器。</p>
+</div>
+<div>
+<h2>解决方案</h2>
+<p>这些播放 QuickTime 影片的代码：</p>
+<pre>&lt;object width=&#34;160&#34; height=&#34;144&#34;
+classid=&#34;clsid:02BF25D5-8C17-4B23-BC80-D3488ABDDC6B&#34;
+codebase=&#34;http://www.apple.com/qtactivex/qtplugin.cab&#34;&gt;
+&lt;param name=&#34;src&#34; value=&#34;sample.mov&#34;&gt;
+&lt;param name=&#34;autoplay&#34; value=&#34;true&#34;&gt;
+&lt;param name=&#34;controller&#34; value=&#34;false&#34;&gt;
+&lt;embed src=&#34;sample.mov&#34; width=&#34;160&#34; height=&#34;144&#34;
+autoplay=&#34;true&#34; controller=&#34;false&#34;
+pluginspage=&#34;http://www.apple.com/quicktime/download/&#34;&gt;
+&lt;/embed&gt;
+&lt;/object&gt;</pre>
+</div>
+<div>
+<h2>&lt;object&gt; 元素</h2>
+<p>object 元素的 width 和 height 属性应当匹配影片的尺寸 (以像素计）。</p>
+<p>classid 可唯一地标识要使用的播放器软件。它必须设置为 &#34;clsid:02BF25D5-8C17-4B23-BC80-D3488ABDDC6B&#34;。该唯一编码标识了在电影播放之前必须安装在用户 PC 上的 ActiveX 控件。如果用户未安装该 ActiveX 控件，则浏览器将自动下载并安装它。</p>
+<p>codebase 属性规定了基准路径，该路径用于解析由 classid、data 和 archive 属性规定的相对 URL。如果未规定，则其默认值是当前文档的基准 URL。注释：Internet Explorer 使用该属性来规定播放器的下载位置。该属性必须被设置为 &#34;http://www.apple.com/qtactivex/qtplugin.cab&#34;。此位置包含 QuickTime 播放器的最新版本。</p>
+<p>src 参数指向电影文件。</p>
+<p>如果您希望电影自动播放的话，请将 autoplay 参数设置为 &#34;true&#34;。</p>
+<p>如果您不希望显示控制按钮，请将 controller 参数设置为 &#34;false&#34;。</p>
+</div>
+<div>
+<h2>&lt;embed&gt; 元素</h2>
+<p>可以添加 embed 元素，来支持那些不支持 object 元素的浏览器。可理解 object 元素的浏览器将忽略 embed 元素。那些支持 ActiveX 控件的新浏览器 (Internet Explorer 5、6、7）将使用 object 元素，而其他较老的浏览器 (Netscape 4 and 5) 将使用 embed 元素。</p>
+<p>embed 元素的 width 和 height 属性应当匹配影片的尺寸 (以像素计）。</p>
+<p>embed 元素的 autoplay 和 controller 属性应设置为与 object 元素的相关属性相同的值。</p>
+<p>pluginspage 属性定义了播放器的下载路径，必须被设置为 &#34;http://www.apple.com/quicktime/download/&#34;。</p>
+</div>
+<div id="bpn">
+<ul class="prenext">
+<li class="pre"><a href="media_object.html">上一页</a></li>
+<li class="next"><a href="media_realvideo.html">下一页</a></li>
+</ul>
+</div>
+</div>
+<div id="sidebar">
+<div class="rs"></div>
+<div id="tools">
+<h5 id="tools_reference"><a href="media_tagref.html">Web 多媒体元素参考手册</a></h5>
+</div>
+<div class="a120x600"><script type="text/javascript">var cpro_id="u1293136";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div><div class="b"></div>
+</div>
+</body>
+</html>

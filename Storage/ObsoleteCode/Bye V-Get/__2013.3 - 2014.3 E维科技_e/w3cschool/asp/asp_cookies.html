@@ -1,0 +1,236 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="ASP Cookie" />
+<meta name="description" content="本节向您讲解cookie概念，以及如何创建并读取cookie。" />
+<link rel="stylesheet" type="text/css" href="../c3.css" />
+<title>ASP Cookie</title>
+</head>
+<body class="serverscripting">
+<div id="wrapper">
+<div id="header">
+<a href="http://e.v-get.com/w3cschool/" style="float:left;">W3CSchool 在线教程</a>
+<div class="q g"><script type="text/javascript">var cpro_id="u1163355"</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div>
+<div id="navfirst">
+<ul id="menu">
+<li id="h"><a href="../h.html">HTML教程</a></li>
+<li id="x"><a href="../x.html">XML教程</a></li>
+<li id="b"><a href="../b.html">浏览器脚本</a></li>
+<li id="s"><a href="../s.html">服务器脚本</a></li>
+<li id="d"><a href="../d.html">dot net教程</a></li>
+<li id="m"><a href="../m.html">多媒体教程</a></li>
+<li id="w"><a href="../w.html">建站手册</a></li>
+</ul>
+</div><div id="navsecond">
+<div id="course">
+<h2>ASP 教程</h2>
+<ul>
+<li><a href="http://e.v-get.com/w3cschool/">ASP 首页</a></li>
+<li><a href="asp_intro.html">ASP 简介</a></li>
+<li><a href="asp_install.html">ASP 安装</a></li>
+<li><a href="asp_syntax.html">ASP 语法</a></li>
+<li><a href="asp_variables.html">ASP 变量</a></li>
+<li><a href="asp_procedures.html">ASP 程序</a></li>
+<li><a href="asp_inputforms.html">ASP 表单</a></li>
+<li><a href="asp_cookies.html">ASP Cookies</a></li>
+<li><a href="asp_sessions.html">ASP Session</a></li>
+<li><a href="asp_applications.html">ASP Application</a></li>
+<li><a href="asp_incfiles.html">ASP #include</a></li>
+<li><a href="asp_globalasa.html">ASP Global.asa</a></li>
+<li><a href="asp_send_email.html">ASP e-mail</a></li>
+</ul>
+<h2>ASP 对象</h2>
+<ul class="small">
+<li><a href="asp_ref_response.html">ASP Response</a></li>
+<li><a href="asp_ref_request.html">ASP Request</a></li>
+<li><a href="asp_ref_application.html">ASP Application</a></li>
+<li><a href="asp_ref_session.html">ASP Session</a></li>
+<li><a href="asp_ref_server.html">ASP Server</a></li>
+<li><a href="asp_ref_error.html">ASP Error</a></li>
+<li class="list_apart"><a href="asp_ref_filesystem.html">ASP FileSystem</a></li>
+<li><a href="asp_ref_textstream.html">ASP TextStream</a></li>
+<li><a href="asp_ref_drive.html">ASP Drive</a></li>
+<li><a href="asp_ref_file.html">ASP File</a></li>
+<li><a href="asp_ref_folder.html">ASP Folder</a></li>
+<li><a href="asp_ref_dictionary.html">ASP Dictionary</a></li>
+<li><a href="asp_ado.html">ASP ADO</a></li>
+</ul>
+<h2>ASP 组件</h2>
+<ul class="small">
+<li><a href="asp_adrotator.html">ASP AdRotator</a></li>
+<li><a href="asp_browser.html">ASP BrowserCap</a></li>
+<li><a href="asp_contentlinking.html">ASP Content Linking</a></li>
+<li><a href="asp_contentrotator.html">ASP Content Rotator</a></li>
+</ul>
+<h2>ASP 教程总结</h2>
+<ul>
+<li><a href="asp_quickref.html">ASP 快速参考</a></li>
+<li><a href="asp_summary.html">ASP 总结</a></li>
+</ul>
+<h2>实例/测验</h2>
+<ul>
+<li><a href="../example/aspe_examples.html">ASP 实例</a></li>
+<li><a href="asp_quiz.html">ASP 测验</a></li>
+</ul>
+</div>
+<div id="selected">
+<h2>建站手册</h2>
+<ul>
+<li><a href="../site/">网站构建</a></li>
+<li><a href="../w3c/">万维网联盟</a></li>
+<li><a href="http://e.v-get.com/w3c/">W3CSchool 教程</a></li>
+<li><a href="../quality/">网站品质</a></li>
+<li><a href="../semweb/">语义网</a></li>
+<li><a href="../hosting/">网站主机</a></li>
+</ul>
+<h2><a href="http://e.v-get.com/w3c/" class="f13">W3CSchool 教程</a></h2><div class="a120x90"><script type="text/javascript">var cpro_id="u1210867";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div></div>
+</div>
+<div id="maincontent">
+<h1>ASP Cookie</h1>
+<div  id="tpn">
+<ul class="prenext">
+<li class="pre"><a href="asp_inputforms.html">上一页</a></li>
+<li class="next"><a href="asp_sessions.html">下一页</a></li>
+</ul>
+</div>
+<div id="intro">
+<p><strong>cookie 常用来对用户进行识别。</strong></p>
+</div>
+<div class="example">
+<h2>实例：</h2>
+<dl>
+<dt><a href="../tiy/s_26.html">Welcome cookie</a></dt>
+<dd>如何创建欢迎 cookie。</dd>
+</dl>
+</div>
+<div>
+<h2>什么是 Cookie? </h2>
+<p>cookie 常用来对用户进行识别。cookie 是一种服务器留在用户电脑中的小文件。每当同一台电脑通过浏览器请求页面时，这台电脑就会发送 cookie。通过 ASP，您能够创建并取回 cookie 的值。</p>
+</div>
+<div>
+<h2>如何创建 cookie?</h2>
+<p>&#34;Response.Cookies&#34; 命令用于创建 cookie。</p>
+<p class="important"><span>注意：</span>Response.Cookies 命令必须位于 &lt;html&gt; 标签之前。</p>
+<p>在下面的例子中，我们会创建一个名为 &#34;firstname&#34; 的 cookie，并向其赋值 &#34;Alex&#34;：</p>
+<pre>&lt;%
+Response.Cookies(&#34;firstname&#34;)=&#34;Alex&#34;
+%&gt;</pre>
+<p>向 cookie 分配属性也是可以的，比如设置 cookie 的失效时间：</p>
+<pre>&lt;%
+Response.Cookies(&#34;firstname&#34;)=&#34;Alex&#34;&nbsp;
+Response.Cookies(&#34;firstname&#34;).Expires=#May 10,2002#
+%&gt;</pre>
+</div>
+<div>
+<h2>如何取回 cookie 的值？</h2>
+<p>&#34;Request.Cookies&#34; 命令用于取回 cookie 的值。</p>
+<p>在下面的例子中，我们取回了名为 &#34;firstname&#34; 的 cookie 的值，并把值显示到了页面上：</p>
+<pre>&lt;%
+fname=Request.Cookies(&#34;firstname&#34;)
+response.write(&#34;Firstname=&#34; &amp; fname)
+%&gt;</pre>
+<p>输出：</p>
+<pre>Firstname=Alex</pre>
+</div>
+<div>
+<h2>带有键的 cookie</h2>
+<p>如果一个 cookie 包含多个值的一个集合，我们就可以说 cookie 拥有键 (Keys）。</p>
+<p>在下面的例子中，我们会创建一个名为 &#34;user&#34; 的 cookie 集。&#34;user&#34; cookie 拥有包含用户信息的键：</p>
+<pre>&lt;%
+Response.Cookies(&#34;user&#34;)(&#34;firstname&#34;)=&#34;John&#34;
+Response.Cookies(&#34;user&#34;)(&#34;lastname&#34;)=&#34;Adams&#34;
+Response.Cookies(&#34;user&#34;)(&#34;country&#34;)=&#34;UK&#34;
+Response.Cookies(&#34;user&#34;)(&#34;age&#34;)=&#34;25&#34;
+%&gt;</pre>
+</div>
+<div>
+<h2>读取所有的 cookie</h2>
+<p>请阅读下面的代码：</p>
+<pre>&lt;%
+Response.Cookies(&#34;firstname&#34;)=&#34;Alex&#34;
+Response.Cookies(&#34;user&#34;)(&#34;firstname&#34;)=&#34;John&#34;
+Response.Cookies(&#34;user&#34;)(&#34;lastname&#34;)=&#34;Adams&#34;
+Response.Cookies(&#34;user&#34;)(&#34;country&#34;)=&#34;UK&#34;
+Response.Cookies(&#34;user&#34;)(&#34;age&#34;)=&#34;25&#34;
+%&gt;</pre>
+<p>假设您的服务器将所有的这些 cookie 传给了某个用户。</p>
+<p>现在，我们需要读取这些 cookie。下面的例子向您展示如何做到这一点 (请注意，下面的代码会使用 HasKeys 检查 cookie 是否拥有键）：</p>
+<pre>&lt;html&gt;
+&lt;body&gt;
+&lt;%
+dim x,y
+ for each x in Request.Cookies
+  response.write(&#34;&lt;p&gt;&#34;)
+  if Request.Cookies(x).<code>HasKeys</code> then
+    for each y in Request.Cookies(x)
+      response.write(x &amp; &#34;:&#34; &amp; y &amp; &#34;=&#34;&nbsp;&amp; Request.Cookies(x)(y))
+      response.write(&#34;&lt;br /&gt;&#34;)
+    next
+  else
+    Response.Write(x &amp; &#34;=&#34; &amp; Request.Cookies(x) &amp; &#34;&lt;br /&gt;&#34;)
+  end if
+  response.write &#34;&lt;/p&gt;&#34;
+next
+%&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+<p>输出：</p>
+<pre>
+firstname=Alex
+user:firstname=John
+user:lastname=Adams
+user:country=UK
+user:age=25
+</pre>
+</div>
+<div>
+<h2>如何应对不支持 cookie 的浏览器？</h2>
+<p>如果您的应用程序需要和不支持 cookie 的浏览器打交道，那么您不得不使用其他的办法在您的应用程序中的页面之间传递信息。这里有两种办法：</p>
+<h3>1. 向 URL 添加参数</h3>
+<p>您可以向 URL 添加参数：</p>
+<pre>&lt;a href=&#34;welcome.asp?fname=John&amp;lname=Adams&#34;&gt;
+Go to Welcome Page
+&lt;/a&gt;</pre>
+<p>然后在类似于下面这个 &#34;welcome.asp&#34; 文件中取回这些值：</p>
+<pre>&lt;%
+fname=Request.querystring(&#34;fname&#34;)
+lname=Request.querystring(&#34;lname&#34;)
+response.write(&#34;&lt;p&gt;Hello &#34; &amp; fname &amp; &#34; &#34; &amp; lname &amp; &#34;!&lt;/p&gt;&#34;)
+response.write(&#34;&lt;p&gt;Welcome to my Web site!&lt;/p&gt;&#34;)
+%&gt;</pre>
+<h3>2. 使用表单</h3>
+<p>您还可以使用表单。当用户点击提交按钮时，表单会把用户输入的数据提交给 &#34;welcome.asp&#34; ：</p>
+<pre>&lt;form method=&#34;post&#34; action=&#34;welcome.asp&#34;&gt;
+First Name:  &lt;input type=&#34;text&#34; name=&#34;fname&#34; value=&#34;&#34;&gt;
+Last Name: &lt;input type=&#34;text&#34; name=&#34;lname&#34; value=&#34;&#34;&gt;
+&lt;input type=&#34;submit&#34; value=&#34;Submit&#34;&gt;
+&lt;/form&gt;</pre>
+<p>然后在 &#34;welcome.asp&#34; 文件中取回这些值，就像这样：</p>
+<pre>&lt;%
+fname=Request.form(&#34;fname&#34;)
+lname=Request.form(&#34;lname&#34;)
+response.write(&#34;&lt;p&gt;Hello &#34; &amp; fname &amp; &#34; &#34; &amp; lname &amp; &#34;!&lt;/p&gt;&#34;)
+response.write(&#34;&lt;p&gt;Welcome to my Web site!&lt;/p&gt;&#34;)
+%&gt;</pre>
+</div>
+<div id="bpn">
+<ul class="prenext">
+<li class="pre"><a href="asp_inputforms.html">上一页</a></li>
+<li class="next"><a href="asp_sessions.html">下一页</a></li>
+</ul>
+</div>
+</div>
+<div id="sidebar">
+<div class="rs"></div>
+<div id="tools">
+<h5 id="tools_reference"><a href="asp_ref.html">ASP 参考手册</a></h5>
+<h5 id="tools_example"><a href="../example/aspe_examples.html">ASP 实例</a></h5>
+<h5 id="tools_quiz"><a href="asp_quiz.html">ASP 测验</a></h5>
+</div>
+<div class="a120x600"><script type="text/javascript">var cpro_id="u1293136";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div><div class="b"></div>
+</div>
+</body>
+</html>

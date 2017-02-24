@@ -1,0 +1,14 @@
+
+body{margin:0px;padding:16px;background:#FFFFFF;overflow:auto;}
+body,table,input,select,textarea,a{font-family:verdana,tahoma,arial;font-size:11px;color:#000000;word-break:break-all;}
+table,img{border:0px;}
+
+
+a{text-decoration:none;color:#003399;}
+a:hover{color:#000000;text-decoration:underline;}
+
+#id_div3{padding-top:8px;border-top:1px solid #000000;line-height:15px;}
+#id_span3{font-size:10px;font-family:tahoma;}
+
+/* Part of RDL(TM) - Written by Rain1977 */
+/* HomeSite: http://www.dhtmlet.com  E-Mail: dhtmlet@hotmail.com */

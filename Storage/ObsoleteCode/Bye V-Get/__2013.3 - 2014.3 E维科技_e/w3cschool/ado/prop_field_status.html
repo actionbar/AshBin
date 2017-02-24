@@ -1,0 +1,271 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="../c3.css" />
+<title>ADO Status 属性</title>
+</head>
+<body class="serverscripting">
+<div id="wrapper">
+<div id="header">
+<a href="http://e.v-get.com/w3cschool/" style="float:left;">W3CSchool 在线教程</a>
+<div class="q g"><script type="text/javascript">var cpro_id="u1163355"</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div>
+<div id="navfirst">
+<ul id="menu">
+<li id="h"><a href="../h.html">HTML教程</a></li>
+<li id="x"><a href="../x.html">XML教程</a></li>
+<li id="b"><a href="../b.html">浏览器脚本</a></li>
+<li id="s"><a href="../s.html">服务器脚本</a></li>
+<li id="d"><a href="../d.html">dot net教程</a></li>
+<li id="m"><a href="../m.html">多媒体教程</a></li>
+<li id="w"><a href="../w.html">建站手册</a></li>
+</ul>
+</div><div id="navsecond">
+<div id="course">
+<h2>ADO 教程</h2>
+<ul>
+<li><a href="http://e.v-get.com/w3cschool/">ADO 首页</a></li>
+<li><a href="ado_intro.html">ADO 简介</a></li>
+<li><a href="ado_connect.html">ADO 连接</a></li>
+<li><a href="ado_recordset.html">ADO 记录集</a></li>
+<li><a href="ado_display.html">ADO 显示</a></li>
+<li><a href="ado_query.html">ADO 查询</a></li>
+<li><a href="ado_sort.html">ADO 排序</a></li>
+<li><a href="ado_add.html">ADO 添加</a></li>
+<li><a href="ado_update.html">ADO 更新</a></li>
+<li><a href="ado_delete.html">ADO 删除</a></li>
+<li><a href="ado_getstring.html">ADO 加速</a></li>
+</ul>
+<h2>ADO 对象</h2>
+<ul>
+<li><a href="ado_ref_command.html">ADO Command</a></li>
+<li><a href="ado_ref_connection.html">ADO Connection</a></li>
+<li><a href="ado_ref_error.html">ADO Error</a></li>
+<li><a href="ado_ref_field.html">ADO Field</a></li>
+<li><a href="ado_ref_parameter.html">ADO Parameter</a></li>
+<li><a href="ado_ref_property.html">ADO Property</a></li>
+<li><a href="ado_ref_record.html">ADO Record</a></li>
+<li><a href="ado_ref_recordset.html">ADO Recordset</a></li>
+<li><a href="ado_ref_stream.html">ADO Stream</a></li>
+<li><a href="ado_datatypes.html">ADO 数据类型</a></li>
+<li><a href="ado_summary.html">ADO 总结</a></li>
+</ul>
+<h2>实例</h2>
+<ul>
+<li><a href="../example/adoe_examples.html">ADO 实例</a></li>
+</ul>
+</div>
+<div id="selected">
+<h2>建站手册</h2>
+<ul>
+<li><a href="../site/">网站构建</a></li>
+<li><a href="../w3c/">万维网联盟</a></li>
+<li><a href="http://e.v-get.com/w3c/">W3CSchool 教程</a></li>
+<li><a href="../quality/">网站品质</a></li>
+<li><a href="../semweb/">语义网</a></li>
+<li><a href="../hosting/">网站主机</a></li>
+</ul>
+<h2><a href="http://e.v-get.com/w3c/" class="f13">W3CSchool 教程</a></h2><div class="a120x90"><script type="text/javascript">var cpro_id="u1210867";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div></div>
+</div>
+<div id="maincontent">
+<h1>ADO Status 属性</h1>
+<div class="backtoreference">
+<p><a href="ado_ref_field.html">返回 ADO Field 对象参考手册</a></p>
+</div>
+<div>
+<h2>定义和用法</h2>
+<p>Status 属性可返回一个 <a href="#fieldstatusenum">FieldStatusEnum</a> 值，该值指示 Field 对象的状态。默认值是 adFieldOK。</p>
+<p>如果更新失败，将返回错误，并且 Status 属性会指示该操作的组合值和错误状态代码。每个 Field 的 Status 属性均可用于确定该 Field 未被添加、修改或删除的原因。</p>
+<p>添加、修改或删除某个 Field 的问题会通过此属性进行报告。举例，如果用户删除一个字段，它将在 Fields 集合中被标记为删除。如果由于用户试图删除其没有权限删除的 Field，使得 Update 调用返回错误，那么该字段的 Status 将是 adFieldPermissionDenied 或 adFieldPendingDelete。</p>
+<h3>语法</h3>
+<pre>objfield.Status</pre>
+</div>
+<div>
+<h2>实例</h2>
+<pre>&lt;%
+set conn=Server.CreateObject(&#34;ADODB.Connection&#34;)
+conn.Provider=&#34;Microsoft.Jet.OLEDB.4.0&#34;
+conn.Open &#34;c:/webdata/northwind.mdb&#34;
+set rs = Server.CreateObject(&#34;ADODB.Recordset&#34;)
+rs.open &#34;Select * from orders&#34;, conn
+response.write(rs.Fields(0).Status)
+rs.Close
+conn.close
+%&gt;</pre>
+</div>
+<div>
+<h2><a id="fieldstatusenum">FieldStatusEnum 值</a></h2>
+<table class="dataintable">
+      <tr>
+        <th>常量</th>
+        <th>值</th>
+        <th>描述</th>
+      </tr>
+      <tr>
+        <td>adFieldOK</td>
+        <td>0</td>
+        <td>默认。指示已成功添加或删除该字段。</td>
+      </tr>
+      <tr>
+        <td>adFieldCantConvertValue</td>
+        <td>2</td>
+        <td>指示无法在不损失数据的情况下检索或存储该字段。</td>
+      </tr>
+      <tr>
+        <td>adFieldIsNull</td>
+        <td>3</td>
+        <td>指示提供者返回了 Null 值。</td>
+      </tr>
+      <tr>
+        <td>adFieldTruncated</td>
+        <td>4</td>
+        <td>指示从数据源读取时，变长数据被截断。</td>
+      </tr>
+      <tr>
+        <td>adFieldSignMismatch</td>
+        <td>5</td>
+        <td>指示由提供者返回的数据值带符号，而 ADO 字段值的数据类型不带符号。</td>
+      </tr>
+      <tr>
+        <td>adFieldDataOverflow</td>
+        <td>6</td>
+        <td>指示从提供者返回的数据超出了字段的数据类型。</td>
+      </tr>
+      <tr>
+        <td>adFieldCantCreate</td>
+        <td>7</td>
+        <td>指示因为提供者超过了限制 (如所允许的字段数量），所以不能添加该字段。</td>
+      </tr>
+      <tr>
+        <td>adFieldUnavailable</td>
+        <td>8</td>
+        <td>指示从数据源读取时，提供者不能确定值。例如，行刚被创建，列的默认值无法使用，并且还没有指定新值。</td>
+      </tr>
+      <tr>
+        <td>adFieldPermissionDenied</td>
+        <td>9</td>
+        <td>指示由于该字段被定义为只读，因此无法对其进行修改。</td>
+      </tr>
+      <tr>
+        <td>adFieldIntegrityViolation</td>
+        <td>10</td>
+        <td>指示由于该字段是计算或派生的项目，因此无法对其进行修改。</td>
+      </tr>
+      <tr>
+        <td>adFieldSchemaViolation</td>
+        <td>11</td>
+        <td>指示值违反了字段的数据源模式限制。</td>
+      </tr>
+      <tr>
+        <td>adFieldBadStatus</td>
+        <td>12</td>
+        <td>指示从 ADO 向 OLE DB 提供者发送了无效状态值。原因可能是 OLE DB 1.0 或 1.1 提供者，或者是 Value 与 Status 的组合不恰当。</td>
+      </tr>
+      <tr>
+        <td>adFieldDefault</td>
+        <td>13</td>
+        <td>指示在设置数据时使用了字段的默认值。</td>
+      </tr>
+      <tr>
+        <td>adFieldIgnore</td>
+        <td>15</td>
+        <td>指示在设置源中的数据值时，此字段被跳过。提供者未设置任何值。</td>
+      </tr>
+      <tr>
+        <td>adFieldDoesNotExist</td>
+        <td>16</td>
+        <td>指示指定的字段不存在。</td>
+      </tr>
+      <tr>
+        <td>adFieldInvalidURL</td>
+        <td>17</td>
+        <td>指示数据源 URL 包含无效的字符。</td>
+      </tr>
+      <tr>
+        <td>adFieldResourceLocked</td>
+        <td>18</td>
+        <td>指示因为数据源被一个或多个其他应用程序或进程锁定，所以提供者不能执行操作。</td>
+      </tr>
+      <tr>
+        <td>adFieldResourceExists</td>
+        <td>19</td>
+        <td>指示因为对象已在目标 URL 中存在，而且不能被覆盖，所以提供者不能执行操作。</td>
+      </tr>
+      <tr>
+        <td>adFieldCannotComplete</td>
+        <td>20</td>
+        <td>指示由 Source 指定 URL 的服务器不能完成操作。</td>
+      </tr>
+      <tr>
+        <td>adFieldVolumeNotFound</td>
+        <td>21</td>
+        <td>指示提供者不能定位 URL 指示的存储量。</td>
+      </tr>
+      <tr>
+        <td>adFieldOutOfSpace</td>
+        <td>22</td>
+        <td>指示提供者无法获取足够的存储空间来完成移动或复制操作。</td>
+      </tr>
+      <tr>
+        <td>adFieldCannotDeleteSource</td>
+        <td>23</td>
+        <td>指示在移动操作中，树或子树被移动到新的位置，但是源不能被删除。</td>
+      </tr>
+      <tr>
+        <td>adFieldReadOnly</td>
+        <td>24</td>
+        <td>指示数据源中的字段被定义为只读。</td>
+      </tr>
+      <tr>
+        <td>adFieldResourceOutOfScope</td>
+        <td>25</td>
+        <td>指示源或目标 URL 超出了当前记录的范围。</td>
+      </tr>
+      <tr>
+        <td>adFieldAlreadyExists</td>
+        <td>26</td>
+        <td>指示指定的字段已存在。</td>
+      </tr>
+      <tr>
+        <td>adFieldPendingInsert</td>
+        <td>0x10000</td>
+        <td>指示 Append 操作导致需要设置状态。Field 被标记为在调用 Update 方法后添加到 Fields 集合。</td>
+      </tr>
+      <tr>
+        <td>adFieldPendingDelete</td>
+        <td>0x20000</td>
+        <td>指示 Delete 操作导致需要设置状态。该字段被标记为在调用 Update 方法后从 Fields 集合删除。</td>
+      </tr>
+      <tr>
+        <td>adFieldPendingChange</td>
+        <td>0x40000</td>
+        <td>指示该字段被删除后又被重新添加 (可能数据类型不同），或者指示以前具有 adFieldOK 状态的字段的值已经被更改。字段的最终格式将在调用 Update 方法之后修改 Fields 集合。</td>
+      </tr>
+      <tr>
+        <td>adFieldPendingUnknown</td>
+        <td>0x80000</td>
+        <td>指示提供者无法确定哪个操作导致需要设置状态。</td>
+      </tr>
+      <tr>
+        <td>adFieldPendingUnknownDelete</td>
+        <td>0x100000</td>
+        <td>指示提供者无法确定哪个操作导致需要设置字段状态，以及在调用 Update 方法后，该字段将被从 Fields 集合中删除。</td>
+      </tr>
+  </table>
+</div>
+<div class="backtoreference">
+<p><a href="ado_ref_field.html">返回 ADO Field 对象参考手册</a></p>
+</div>
+</div>
+<div id="sidebar">
+<div class="rs"></div>
+<div id="tools">
+<h5 id="tools_reference"><a href="ado_reference.html">ADO 参考手册</a></h5>
+<h5 id="tools_example"><a href="../example/adoe_examples.html">ADO 实例</a></h5>
+</div>
+<div class="a120x600"><script type="text/javascript">var cpro_id="u1293136";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div><div class="b"></div>
+</div>
+</body>
+</html>

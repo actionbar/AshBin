@@ -1,0 +1,92 @@
+<meta http-equiv="content-type" content="text/html; charset=gb2312">
+<TABLE class=tableborder1 style="TABLE-LAYOUT: fixed; WORD-BREAK: break-all" 
+cellSpacing=1 cellPadding=5 align=center>
+<TBODY>
+<TR>
+<TD class=tablebody1 vAlign=top width=*>
+<BLOCKQUOTE>&nbsp;<FONT 
+style="FONT-SIZE: 9pt; LINE-HEIGHT: 15pt"><B>Easily&nbsp;BCP&nbsp;In&nbsp;and&nbsp;Out&nbsp;Data</B><BR>Easily&nbsp;BCP&nbsp;In&nbsp;and&nbsp;Out&nbsp;Data
+<P></P>
+<P></P>
+<P><BR>sp_DBABCPOut.sql&nbsp;Exports&nbsp;user&nbsp;data&nbsp;from&nbsp;a&nbsp;database,&nbsp;and&nbsp;sp_DBABCPIn.sql&nbsp;Imports&nbsp;data&nbsp;into&nbsp;a&nbsp;database.&nbsp;They&nbsp;use&nbsp;the&nbsp;-&nbsp;T&nbsp;(&nbsp;Trusted&nbsp;connection&nbsp;)&nbsp;to&nbsp;run&nbsp;the&nbsp;BCP&nbsp;as&nbsp;the&nbsp;work&nbsp;is&nbsp;being&nbsp;done&nbsp;with&nbsp;xp_cmdshell&nbsp;which&nbsp;we&nbsp;limit&nbsp;execute&nbsp;permission&nbsp;to.&nbsp;</P>
+<P>With&nbsp;the&nbsp;export&nbsp;script,&nbsp;sp_DBABCPOut.sql,&nbsp;pass&nbsp;in&nbsp;the&nbsp;Database&nbsp;name,&nbsp;the&nbsp;server&nbsp;name&nbsp;and&nbsp;it&nbsp;will&nbsp;BCP&nbsp;out&nbsp;all&nbsp;the&nbsp;user&nbsp;tables,&nbsp;to&nbsp;either&nbsp;a&nbsp;default&nbsp;location&nbsp;or&nbsp;a&nbsp;user&nbsp;specific&nbsp;location.&nbsp;The&nbsp;import&nbsp;Script&nbsp;sp_DBABCPIn.sql&nbsp;,&nbsp;works&nbsp;pretty&nbsp;much&nbsp;the&nbsp;same&nbsp;way.&nbsp;Specify&nbsp;the&nbsp;Database,&nbsp;the&nbsp;Server&nbsp;name&nbsp;and&nbsp;it&nbsp;will&nbsp;Import&nbsp;the&nbsp;all&nbsp;the&nbsp;user&nbsp;data&nbsp;from&nbsp;either&nbsp;a&nbsp;default&nbsp;location&nbsp;or&nbsp;a&nbsp;directory&nbsp;you&nbsp;define.&nbsp;The&nbsp;Data&nbsp;files&nbsp;are&nbsp;in&nbsp;the&nbsp;format&nbsp;of&nbsp;Database&nbsp;name_Tablename.dat.&nbsp;The&nbsp;other&nbsp;files&nbsp;produced&nbsp;are&nbsp;an&nbsp;Error&nbsp;File&nbsp;(&nbsp;*.err&nbsp;)&nbsp;and&nbsp;some&nbsp;BCP&nbsp;Transfer&nbsp;Statistics&nbsp;(&nbsp;*.out&nbsp;)&nbsp;</P>
+<P>Author:&nbsp;Eddie&nbsp;Deeney&nbsp;</P>
+<P>Create&nbsp;Procedure&nbsp;sp_DBABCPIn&nbsp;&nbsp;&nbsp;@db&nbsp;varchar(10),&nbsp;&nbsp;--&nbsp;Database&nbsp;Name<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@srv&nbsp;varchar(10),&nbsp;&nbsp;--&nbsp;Server&nbsp;Name<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@path&nbsp;varchar(10)&nbsp;=&nbsp;'C:\BCP\'&nbsp;--&nbsp;Import&nbsp;Directory<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<BR>AS&nbsp;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<BR>/**********************************************************************************************************<BR>&nbsp;&nbsp;*&nbsp;Procedure:&nbsp;&nbsp;sp_DBABCPIn<BR>&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;<BR>&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;Purpose:&nbsp;&nbsp;BCP's&nbsp;data&nbsp;from&nbsp;a&nbsp;specified&nbsp;location&nbsp;into&nbsp;a&nbsp;specified&nbsp;database&nbsp;on&nbsp;&nbsp;<BR>&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a&nbsp;given&nbsp;server&nbsp;<BR>&nbsp;&nbsp;*<BR>&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;Inputs:&nbsp;&nbsp;&nbsp;Database&nbsp;Name,&nbsp;Server&nbsp;Name,&nbsp;Output&nbsp;Path&nbsp;(Optional)<BR>&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;Assumes:&nbsp;&nbsp;There&nbsp;exists&nbsp;a&nbsp;directory&nbsp;called&nbsp;&nbsp;C:\BCP,&nbsp;if&nbsp;no&nbsp;output&nbsp;directory&nbsp;is&nbsp;given<BR>&nbsp;&nbsp;*<BR>&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;Output:&nbsp;&nbsp;&nbsp;3&nbsp;files&nbsp;per&nbsp;table&nbsp;:-&nbsp;&lt;database&gt;_&lt;table&gt;.dat&nbsp;&nbsp;(&nbsp;BCP'ed&nbsp;output&nbsp;Data&nbsp;file&nbsp;)<BR>&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;database&gt;_&lt;table&gt;.out&nbsp;&nbsp;(&nbsp;BCP&nbsp;Statical&nbsp;info&nbsp;)<BR>&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;database&gt;_&lt;table&gt;.err&nbsp;&nbsp;(&nbsp;Error&nbsp;File&nbsp;)<BR>&nbsp;&nbsp;*&nbsp;--------------------------------------------------------------------------------------------<BR>&nbsp;&nbsp;*/</P>
+<P>declare&nbsp;@tbl&nbsp;varchar(255),&nbsp;<BR>&nbsp;@next_tbl&nbsp;varchar(255),<BR>&nbsp;@cmd&nbsp;Varchar(1000)</P>
+<P></P>
+<P><BR>exec&nbsp;('declare&nbsp;d&nbsp;cursor&nbsp;for&nbsp;SELECT&nbsp;name&nbsp;FROM&nbsp;'&nbsp;+&nbsp;@db&nbsp;+&nbsp;'..sysobjects&nbsp;WHERE&nbsp;type&nbsp;=&nbsp;'&nbsp;+&nbsp;'''u''')</P>
+<P>open&nbsp;d<BR>fetch&nbsp;next&nbsp;from&nbsp;d&nbsp;into&nbsp;@tbl<BR>SET&nbsp;NOCOUNT&nbsp;&nbsp;ON</P>
+<P><BR>while&nbsp;(@@FETCH_STATUS&lt;&gt;-1)&nbsp;begin<BR>&nbsp;<BR>&nbsp;select&nbsp;@cmd&nbsp;=&nbsp;&nbsp;'bcp&nbsp;&nbsp;'+&nbsp;@db+&nbsp;'..'&nbsp;+&nbsp;@tbl&nbsp;+&nbsp;'&nbsp;in&nbsp;'&nbsp;&nbsp;+&nbsp;&nbsp;@path&nbsp;+&nbsp;@db&nbsp;+'_'+&nbsp;@tbl&nbsp;+'.dat'&nbsp;&nbsp;+<BR>&nbsp;&nbsp;&nbsp;'&nbsp;/e&nbsp;'&nbsp;+&nbsp;@path&nbsp;+&nbsp;@db&nbsp;+'_'+&nbsp;@tbl&nbsp;+'.err'&nbsp;&nbsp;+&nbsp;'&nbsp;/n&nbsp;/E&nbsp;/o&nbsp;'&nbsp;+&nbsp;@path&nbsp;+&nbsp;@db&nbsp;+'_'+&nbsp;@tbl&nbsp;+'.out'&nbsp;&nbsp;+<BR>&nbsp;&nbsp;&nbsp;'&nbsp;/T&nbsp;&nbsp;/S&nbsp;'&nbsp;+&nbsp;@srv</P>
+<P>&nbsp;execute&nbsp;master..xp_cmdshell&nbsp;@cmd&nbsp;<BR>&nbsp;Print&nbsp;'BCP&nbsp;the&nbsp;'&nbsp;+&nbsp;@tbl&nbsp;+&nbsp;'&nbsp;Table'</P>
+<P>&nbsp;fetch&nbsp;next&nbsp;from&nbsp;d&nbsp;into&nbsp;@tbl<BR>&nbsp;<BR>End<BR>close&nbsp;d<BR>deallocate&nbsp;d</P>
+<P><BR></FONT></P></BLOCKQUOTE></TD></TR>
+<TR>
+<TD class=tablebody1 vAlign=center align=middle width=175><A 
+href="http://www.pigtwo.com/forum/look_ip.asp?boardid=14&amp;userid=42&amp;ip=61.48.16.68&amp;action=lookip" 
+target=_blank><IMG height=15 alt="点击查看用户来源及管理<br>发贴IP：61.48.16.68" 
+src="http://www.pigtwo.com/forum/pic/ip.gif" width=13 align=absMiddle border=0></A> 2003-6-12 8:36:21</TD>
+<TD class=tablebody1 vAlign=center width=*>
+<TABLE cellSpacing=0 cellPadding=0 width="100%">
+<TBODY>
+<TR>
+<TD vAlign=center align=left><A 
+href="http://www.pigtwo.com/forum/editannounce.asp?BoardID=14&amp;replyID=1081&amp;id=521&amp;star=1"><IMG 
+alt=编辑这个贴子 src="http://www.pigtwo.com/forum/pic/edit.gif" align=absMiddle border=0></A>&nbsp;&nbsp;<A 
+title=同意该帖观点，给他一朵鲜花，将消耗您5点金钱 
+href="http://www.pigtwo.com/forum/postagree.asp?boardid=14&amp;id=521&amp;isagree=1">鲜花</A>(<FONT 
+color=#ff0000>0</FONT>)&nbsp;&nbsp;<A title=不同意该帖观点，给他一个鸡蛋，将消耗您5点金钱 
+href="http://www.pigtwo.com/forum/postagree.asp?boardid=14&amp;id=521&amp;isagree=2">鸡蛋</A>(<FONT 
+color=#ff0000>0</FONT>)</TD>
+<TD vAlign=bottom align=right width=110 nowarp><A title=复制单个贴子到别的版面 
+href="http://www.pigtwo.com/forum/admin_postings.asp?action=复制&amp;BoardID=14&amp;ID=521&amp;replyID=1081"><IMG 
+src="http://www.pigtwo.com/forum/pic/copy.gif" border=0></A>&nbsp;<A title=精华 
+href="http://www.pigtwo.com/forum/admin_postings.asp?action=精华&amp;BoardID=14&amp;ID=521&amp;replyID=1081"><IMG 
+src="http://www.pigtwo.com/forum/pic/jing.gif" border=0></A></TD>
+<TD vAlign=bottom align=right 
+width=4></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE>
+<TABLE class=tableborder1 style="TABLE-LAYOUT: fixed; WORD-BREAK: break-all" 
+cellSpacing=1 cellPadding=5 align=center>
+<TBODY>
+<TR>
+<TD class=tablebody2 vAlign=top width=175>
+<TABLE cellSpacing=0 cellPadding=4 width="100%">
+<TBODY>
+<TR>
+<TD style="FILTER: glow(color=#9898BA,strength=2)" vAlign=center 
+width=*>&nbsp;<A name=1082><FONT color=#990000><B>ugvanxk</B></FONT></A> </TD>
+<TD vAlign=center width=25><IMG alt=帅哥哟，在线，有人找我吗？ src="http://www.pigtwo.com/forum/pic/Male.gif"></TD>
+<TD vAlign=center width=16></TD></TR></TBODY></TABLE>&nbsp;&nbsp;<IMG height=32 
+src="http://www.pigtwo.com/forum/pic/Image1.gif" width=32><BR>&nbsp;&nbsp;<IMG 
+src="http://www.pigtwo.com/forum/pic/level10.gif"><BR>&nbsp;&nbsp;等级：版主<BR>&nbsp;&nbsp;文章：251<BR>&nbsp;&nbsp;积分：653<BR>&nbsp;&nbsp;注册：2002-11-2<BR></TD>
+<TD class=tablebody2 vAlign=top width=*>
+<TABLE width="100%">
+<TBODY>
+<TR>
+<TD width=*><A 
+href=""><IMG 
+alt=给ugvanxk发送一个短消息 src="http://www.pigtwo.com/forum/pic/message.gif" border=0></A>&nbsp;<A 
+href="http://www.pigtwo.com/forum/friendlist.asp?action=addF&amp;myFriend=ugvanxk" target=_blank><IMG 
+alt=把ugvanxk加入好友 src="http://www.pigtwo.com/forum/pic/friend.gif" border=0></A>&nbsp;<A 
+href="http://www.pigtwo.com/forum/dispuser.asp?id=42" target=_blank><IMG alt=查看ugvanxk的个人资料 
+src="http://www.pigtwo.com/forum/pic/profile.gif" border=0></A>&nbsp;<A 
+href="http://www.pigtwo.com/forum/queryResult.asp?stype=1&amp;nSearch=3&amp;keyword=ugvanxk&amp;BoardID=14&amp;SearchDate=ALL" 
+target=_blank><IMG alt="搜索ugvanxk在『数 据 库』的所有贴子" src="http://www.pigtwo.com/forum/pic/find.gif" 
+border=0></A>&nbsp;<A href="http://www.pigtwo.com/forum/mailto:jsqmail@163.com"><IMG alt=点击这里发送电邮给ugvanxk 
+src="http://www.pigtwo.com/forum/pic/email.gif" border=0></A>&nbsp;<A 
+href="http://www.pigtwo.com/forum/reannounce.asp?BoardID=14&amp;replyID=1082&amp;id=521&amp;star=1&amp;reply=true"><IMG 
+alt=引用回复这个贴子 src="http://www.pigtwo.com/forum/pic/reply.gif" border=0></A>&nbsp;<A 
+href="http://www.pigtwo.com/forum/reannounce.asp?BoardID=14&amp;replyID=1082&amp;id=521&amp;star=1"><IMG 
+alt=回复这个贴子 src="http://www.pigtwo.com/forum/pic/reply_a.gif" border=0></A></TD>
+<TD width=50><B>第<FONT color=#ff0000>2</FONT>楼</B></TD></TR>
+<TR>
+<TD bgColor=#6595d6 colSpan=2 height=1></TD></TR></TBODY></TABLE>
+<BLOCKQUOTE><IMG alt=发贴心情 src="http://www.pigtwo.com/forum/face/face0.gif" border=0>&nbsp;<FONT 
+style="FONT-SIZE: 9pt; LINE-HEIGHT: 15pt"><B></B><BR>Create&nbsp;Procedure&nbsp;sp_DBABCPOut&nbsp;&nbsp;&nbsp;@db&nbsp;varchar(10),&nbsp;&nbsp;--&nbsp;&nbsp;Table&nbsp;Name<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@srv&nbsp;varchar(10),&nbsp;&nbsp;--&nbsp;&nbsp;Server&nbsp;Name<BR>&nbsp;&nbsp;&nbsp;&nbsp;@path&nbsp;varchar(10)&nbsp;=&nbsp;'C:\BCP\'&nbsp;--&nbsp;&nbsp;Output&nbsp;Directory<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<BR>AS&nbsp;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<BR>/*******************************************************************************************<BR>&nbsp;&nbsp;*&nbsp;Procedure:&nbsp;&nbsp;sp_DBABCPOut<BR>&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;<BR>&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;Purpose:&nbsp;&nbsp;BCP&nbsp;ALL&nbsp;user&nbsp;data&nbsp;from&nbsp;a&nbsp;specified&nbsp;database&nbsp;and&nbsp;<BR>&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;specified&nbsp;server&nbsp;to&nbsp;given&nbsp;location<BR>&nbsp;&nbsp;*<BR>&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;Inputs:&nbsp;&nbsp;&nbsp;Database&nbsp;Name,&nbsp;Server&nbsp;Name,&nbsp;Output&nbsp;Path&nbsp;(Optional)<BR>&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;Assumes:&nbsp;&nbsp;There&nbsp;exists&nbsp;a&nbsp;directory&nbsp;called&nbsp;&nbsp;C:\BCP,&nbsp;if&nbsp;no&nbsp;output&nbsp;directory&nbsp;is&nbsp;given<BR>&nbsp;&nbsp;*<BR>&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;Output:&nbsp;&nbsp;&nbsp;3&nbsp;files&nbsp;per&nbsp;table&nbsp;:-&nbsp;&lt;database&gt;_&lt;table&gt;.dat&nbsp;&nbsp;(&nbsp;Data&nbsp;file&nbsp;)<BR>&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;database&gt;_&lt;table&gt;.out&nbsp;&nbsp;(&nbsp;BCP&nbsp;Statical&nbsp;info&nbsp;)<BR>&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;database&gt;_&lt;table&gt;.err&nbsp;&nbsp;(&nbsp;Error&nbsp;File&nbsp;)<BR>&nbsp;&nbsp;*<BR>&nbsp;&nbsp;*&nbsp;--------------------------------------------------------------------------------------------<BR>&nbsp;&nbsp;*/
+<P></P>
+<P>declare&nbsp;@tbl&nbsp;varchar(255),&nbsp;&nbsp;&nbsp;&nbsp;<BR>&nbsp;@next_tbl&nbsp;varchar(255),&nbsp;&nbsp;&nbsp;<BR>&nbsp;@cmd&nbsp;Varchar(1000)</P>
+<P></P>
+<P><BR>exec&nbsp;('declare&nbsp;d&nbsp;cursor&nbsp;for&nbsp;SELECT&nbsp;name&nbsp;FROM&nbsp;'&nbsp;+&nbsp;@db&nbsp;+&nbsp;'..sysobjects&nbsp;WHERE&nbsp;type&nbsp;=&nbsp;'&nbsp;+&nbsp;'''u''')</P>
+<P>open&nbsp;d<BR>fetch&nbsp;next&nbsp;from&nbsp;d&nbsp;into&nbsp;@tbl<BR>SET&nbsp;NOCOUNT&nbsp;&nbsp;ON</P>
+<P><BR>while&nbsp;(@@FETCH_STATUS&lt;&gt;-1)&nbsp;begin<BR>&nbsp;<BR>&nbsp;select&nbsp;@cmd&nbsp;=&nbsp;&nbsp;'bcp&nbsp;&nbsp;'+&nbsp;@db+&nbsp;'..'&nbsp;+&nbsp;@tbl&nbsp;+&nbsp;'&nbsp;out&nbsp;'&nbsp;&nbsp;+&nbsp;&nbsp;@path&nbsp;+&nbsp;@db&nbsp;+'_'+&nbsp;@tbl&nbsp;+'.dat'&nbsp;&nbsp;+<BR>&nbsp;&nbsp;&nbsp;'&nbsp;/e&nbsp;'&nbsp;+&nbsp;@path&nbsp;+&nbsp;@db&nbsp;+'_'+&nbsp;@tbl&nbsp;+&nbsp;'.err'&nbsp;&nbsp;+&nbsp;'&nbsp;/n&nbsp;/E&nbsp;/o&nbsp;'&nbsp;+&nbsp;@path&nbsp;+&nbsp;@db&nbsp;+'_'+&nbsp;@tbl&nbsp;+'.out'&nbsp;&nbsp;+<BR>&nbsp;&nbsp;&nbsp;'&nbsp;/T&nbsp;&nbsp;/S&nbsp;'&nbsp;+&nbsp;@srv</P>
+<P>&nbsp;execute&nbsp;master..xp_cmdshell&nbsp;@cmd&nbsp;<BR>&nbsp;Print&nbsp;'BCP&nbsp;the&nbsp;'&nbsp;+&nbsp;@tbl&nbsp;+&nbsp;'&nbsp;Table'</P>
+<P>&nbsp;fetch&nbsp;next&nbsp;from&nbsp;d&nbsp;into&nbsp;@tbl<BR>&nbsp;<BR>End<BR>close&nbsp;d<BR>deallocate&nbsp;d<BR></P></FONT></BLOCKQUOTE></TD></TR></TBODY></TABLE>

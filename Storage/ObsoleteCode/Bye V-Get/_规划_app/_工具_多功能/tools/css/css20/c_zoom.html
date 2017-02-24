@@ -1,0 +1,116 @@
+<html xmlns:rdl>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<script src="rdl_properties.js"></script>
+<base target="_self">
+</head>
+<body>
+
+<script>
+
+//collFriendProperties=new Array();
+//collFriendDeclarations=new Array();
+//collFriendAtRules=new Array();
+//collFriendElements=new Array();
+//collFriendClasses=new Array();
+
+collFriendProperties=new Array(
+'filter','behavior','cursor'
+);
+
+//collIE40=new Array();
+//collIE50=new Array();
+//collIE55=new Array();
+//collIE60=new Array();
+
+collIE55=new Array(
+'A','ACRONYM','ADDRESS','APPLET','B','BDO','BIG','BLOCKQUOTE','BODY','BUTTON','CAPTION','CENTER','CITE','CODE','COL','COLGROUP','currentStyle','CUSTOM','DD','DEL','DFN','DIR','DIV','DL','DT','EM','EMBED','FIELDSET','FONT','FORM','FRAME','FRAMESET','HEAD','Hn','HR','I','IFRAME','IMG','INPUT','INPUT type=button','INPUT type=checkbox','INPUT type=file','INPUT type=hidden','INPUT type=image','INPUT type=password','INPUT type=radio','INPUT type=reset','INPUT type=submit','INPUT type=text','INS','ISINDEX','KBD','LABEL','LAYOUTRECT','LEGEND','LI','LISTING','MARQUEE','MENU','NOBR','NOFRAMES','NOSCRIPT','OBJECT','OL','OPTION','P','PLAINTEXT','PRE','Q','RT','RUBY','runtimeStyle','S','SAMP','SELECT','SMALL','SPAN','STRIKE','STRONG','style','SUB','SUP','TABLE','TBODY','TD','TEXTAREA','TFOOT','TH','THEAD','TR','TT','U','UL','VAR','WBR','XMP'
+);
+
+sStyle=
+'<style>\n'+
+'#idParentDiv{width:100%;height:120px;padding:6px;background-color:buttonshadow;position:relative;}\n'+
+'#idDiv{width:80%;height:80px;background-color:#FFD700;padding:6px;position:absolute;z-index:3;left:9px;top:9px;zoom:1.00;}\n'+
+'#idCodeDiv{width:100%;padding:4px;font-family:verdana,tahoma;margin:12px 0px 0px 0px;background-color:#EEEEEE;font-weight:bold;}\n'+
+'<\/style>\n';
+
+sScript=
+'<script>\n'+
+'function rdl_doAdd(e){\n'+
+'var oCodeDiv=document.all("idCodeDiv");\n'+
+'var oDiv=document.all("idDiv");\n'+
+'var oNum=document.all("idNum");\n'+
+'var iValue=parseInt(oNum.value*1000+10) \/ 1000;\n'+
+'oNum.value=oDiv.style.zoom=iValue.toString();\n'+
+'oCodeDiv.innerText="zoom : "+iValue.toString()+" ; ";\n'+
+'}\n'+
+'function rdl_doDvv(e){\n'+
+'var oCodeDiv=document.all("idCodeDiv");\n'+
+'var oDiv=document.all("idDiv");\n'+
+'var oNum=document.all("idNum");\n'+
+'var iValue=parseInt(oNum.value*1000-10) \/ 1000;\n'+
+'if (iValue<0) iValue=0.00;\n'+
+'oNum.value=oDiv.style.zoom=iValue.toString();\n'+
+'oCodeDiv.innerText="zoom : "+iValue.toString()+" ; ";\n'+
+'}\n'+
+'<\/script>\n';
+
+sCode=
+'<div id=idParentDiv>\n'+
+'<div id=idDiv><img src="images/rdl_body0.jpg" style="float:left;border:1px solid #000000;">请从下方选择<b> zoom </b>属性的值。<\/div>\n'+
+'<\/div>\n'+
+'<br>\n'+
+'<table><tr><td>\n'+
+'<input id=idNum type=text value="1" size=19 readonly>\n'+
+'<\/td><td>\n'+
+'<input type=button onclick="rdl_doAdd();" value=" + " id=idBtn1>\n'+
+'<\/td><td>\n'+
+'<input type=button onclick="rdl_doDvv();" value=" - " id=idBtn2>\n'+
+'<\/td><\/tr><\/table>\n'+
+'<div id=idCodeDiv>zoom : 1.00 ; <\/div>\n';
+
+iWinWidth=540;
+
+iWinHeight=340;
+
+//bRunCode=false;
+
+//bElements=false;
+
+</script>
+
+<div id=idContent>
+
+<div id=idContentTitle><span id=idTitleName>zoom</span>版本：IE5.5+专有属性　继承性：无</div>
+
+<div class=cssColumnTitle>语法：</div>
+<div>
+<b>zoom  : </b><span class=cssDefault><b>normal</b></span> | <i>number</i>
+</div>
+
+<div class=cssColumnTitle>取值：</div>
+<table>
+<tr><td nowrap><b> normal </b></td><td nowrap><b>:</b></td><td><b>默认值</b>。使用对象的实际尺寸</td></tr>
+<tr><td nowrap><i> number </i></td><td nowrap><b>:</b></td><td>百分数 | 无符号浮点实数。浮点实数值为1.0或百分数为100%时相当于此属性的<b> normal </b>值</td></tr>
+</table>
+
+<div class=cssColumnTitle>说明：</div>
+<div>
+设置或检索对象的缩放比例。<br>
+设置或更改一个已被呈递的对象的此属性值将导致环绕对象的内容重新流动。<br>
+虽然此属性不可继承，但是它会影响对象的所有子对象(<b> children </b>)。这种影响很像<a href="c_background.html"> background </a>和<a href="c_filter.html">  filter </a>属性导致的变化。<br>
+此属性对于<b> currentStyle </b>对象而言是只读的。对于其他对象而言是可读写的。<br>
+对应的脚本特性为<b> zoom </b>。
+</div>
+
+<div class=cssColumnTitle>示例：</div>
+<div id=idSimpleCode>
+div {zoom : 0.75; } <br>.clsTeenyWeeny  { zoom: 0.10 }
+</div>
+
+</div>
+</body>
+</html>
+
+<!-- Part of RDL(TM) - Written by Rain1977 
+HomeSite: http://www.dhtmlet.com  E-Mail: dhtmlet@hotmail.com -->

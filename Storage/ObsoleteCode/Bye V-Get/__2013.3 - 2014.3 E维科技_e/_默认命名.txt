@@ -1,0 +1,51 @@
+
+
+
+  grant all privileges on v8.* to SELTe0W03n@localhost identified by 'F032Yd043lp0';
+  管理员：
+  E维科技（E_V-Get110） e@v-get.com
+  程序猿（qwdw_114） 951173723@qq.com
+  E维科技论坛（EVGET1314）2858294710@qq.com
+  E维科技审查（EVGET1314）597875757@qq.com
+dc_
+
+_  用于生成静态文件
+
+w = web 网站建设f2   b
+h = host 
+  1 域名注册
+  2 免费虚拟主机
+  3 ftp
+  4 vps 
+  5 传统云翔
+  6 服务器托管
+  7 工信部
+o = office云端办公f3长期的，最少为一个月
+  1 网络客服在线  ==网店客服 kefu
+    无底薪网店客服  kefu_sales
+    在线客服7x15网店   kefu_online     
+    钟点计时客服   kefu_partime
+   电话呼入客服   kefu_call
+    电话销售     kefu_telesales      
+
+    呼叫中心解决方案   kefu_callcenter
+  娱乐代练升级 ==游戏、挂QQ
+  网络危机公关  水军炒作刷贴、造势
+  云端办公室  == 帮忙打印、发送邮件
+  
+  
+s = smo 网络营销
+  SEO
+  
+  
+
+
+v = vi视觉设计  f5
+t = tool 站长工具f6   ==f
+a = sales 销售加盟合作 f8  =h
+r = soft  软件开发  f9  == e
+i = help  帮助中心  f10  ==i
+b = e.baike.v-get.com  百科
+e = 编程
+
+is issue  整站模式，独立一个网页，图片整张图片

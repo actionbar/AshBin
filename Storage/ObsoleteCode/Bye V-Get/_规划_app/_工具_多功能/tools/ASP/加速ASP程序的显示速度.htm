@@ -1,0 +1,99 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>加速ASP程序的显示速度</title>
+<style type="text/css">
+<!--
+body {
+	font-size: 10.4pt;
+	line-height: 22px;
+}
+-->
+</style>
+</head>
+
+<body bgcolor="eeeeee" leftmargin="20" marginwidth="20">
+<p><strong>加速ASP程序的显示速度</strong> </p>
+<p></p>
+<hr>
+<p> 　　作为一个ASP程序员，你不会怀疑提高Web应用程序性能的重要性。为了让程序运行的更快一些，你可能一直忙于优化数据库或COM组件。如果这些你都做过了，你想到过靠加快最终生成HTML代码在浏览器中的显示速度来提高性能吗？对于最终用户来说，如果页面能显示的更快，你就能赢得更多的赞誉。</p>
+<p>　　提高HTML在浏览器中显示的速度可以通过一些鲜为人知的技术来实现。 </p>
+<p>　　1.使用表格嵌套？ </p>
+<p>　　在页面中建立复杂的结构，一般通过在页面中放置HTML表格来实现。如果要建立一个这样的页面：这个页面有一个顶部导航栏一个左边导航栏，一个右边的内容区。可以用一个两行两列的大表格来建立它。第一行中，合并两个列，然后插入一个顶部导航栏。第二行左边的列中，插入一个表格来显示导航按钮。右边的栏中，放置一个表格来实际内容。(见图一)这样嵌套的表格生成的代码是这样的： 
+</p>
+<p>　&lt;TABLE BORDER=&quot;0&quot;&gt; <br>
+  　　&lt;TR&gt; <br>
+  　　　&lt;TD COLSPAN=&quot;2&quot;&gt;&lt;!-- content for top nav bar --&gt;&lt;/TD&gt; 
+  <br>
+  　　&lt;/TR&gt; <br>
+  　　&lt;TR&gt; <br>
+  　　　&lt;TD ALIGN=&quot;LEFT&quot; VALIGN=&quot;TOP&quot;&gt;&lt;!-- content for 
+  left nav bar --&gt;&lt;/TD&gt; <br>
+  　　　&lt;TD ALIGN=&quot;LEFT&quot; VALIGN=&quot;TOP&quot;&gt;&lt;!-- content for 
+  body of page --&gt;&lt;/TD&gt; <br>
+  　　&lt;/TR&gt; <br>
+  　&lt;/TABLE&gt; </p>
+<p>　　但是，实际上，浏览器找到&lt;TABLE&gt;标签的时候并不是立刻把页面显示到屏幕上，除非它找到相应的结束标签&lt;/TABLE&gt;。所以，如果你的整个页面在一个表格里的话，在收到最后一个&lt;/TABLE&gt;之前，什么也不会显示出来，这样，这个页面将在整个文件全部下载以后才能被用户所看到。在页面数据量比较大的时候（比如搜索引擎的搜索结果），这个特性会导致暂时的停顿。为了防止出现这种情况，可以在制作的时候把页面分成许多小的表格。在每一个&lt;TABLE&gt;到相应的&lt;/TABLE&gt;这一部分HTML代码下载完的时候，浏览器就会把它显示出来。在访问者看来页面是渐渐的，一部分一部分，越来越多的出现在屏幕上的。感觉上，这样的页面显示速度比下载完整个文件再一次显示出来更快。 
+</p>
+<p>　　按照这个原则来研究前面的例子，应该把页面中整个的大表分成三个单独的表。用第一个表显示顶部的导航栏，调节它的宽度，使它足够容纳所有的内容，在一个&lt;TABLE&gt;&lt;/TABLE&gt;代码段中完成它。页面下半部分，左边第二个表排成一列。使用第三个表容纳实际内容。(见图二)因为每一个部分都是一个完整的表格，所以，每一部分代码下载后都会立刻被显示出来。这样，顶部和左边的导航栏将比页面的其它部分更显显示出来。用户会在这个时候想象页面开始下载，很快就能显示在屏幕上。这样比起让用户在较长时间内一直面对一个空白屏幕要好得多。 
+</p>
+<p>　　修改过的代码是这样的： </p>
+<p>　&lt;TABLE BORDER=&quot;0&quot; WIDTH=&quot;100%&quot;&gt; <br>
+  　　&lt;TR&gt; <br>
+  　　　&lt;TD ALIGN=&quot;CENTER&quot; VALIGN=&quot;TOP&quot;&gt;&lt;!-- content 
+  for top nav bar --&gt;&lt;/TD&gt; <br>
+  　　&lt;/TR&gt; <br>
+  　&lt;/TABLE&gt; <br>
+  　&lt;TABLE BORDER=&quot;0&quot; ALIGN=&quot;LEFT&quot;&gt; <br>
+  　　&lt;TR&gt; <br>
+  　　　&lt;TD ALIGN=&quot;LEFT&quot; VALIGN=&quot;TOP&quot;&gt;&lt;!-- content for 
+  left nav bar --&gt;&lt;/TD&gt; <br>
+  　　&lt;/TR&gt; <br>
+  　&lt;/TABLE&gt; <br>
+  　&lt;TABLE BORDER=&quot;0&quot;&gt; <br>
+  　　&lt;TR&gt; <br>
+  　　　&lt;TD ALIGN=&quot;LEFT&quot; VALIGN=&quot;TOP&quot;&gt;&lt;!-- content for 
+  page body --&gt;&lt;/TD&gt; <br>
+  　　&lt;/TR&gt; <br>
+  　&lt;/TABLE&gt; </p>
+<p>　　2.也要记住关闭其他的标记 </p>
+<p>　　在上面的例子中，我们仅仅早一些关闭&lt;TABLE&gt;标记，就能让页面在浏览器显示的更快些。以此类推，还有一些类似的标记也有同样的特性。 </p>
+<p>　　比如产生列表框和组合框&lt;OPTION&gt;标记和产生列表项的&lt;LI&gt;标记。通常，ASP程序员存取数据库，并把数据送入通过&lt;OPTION&gt;建立的列表框或组合框中，这时候在代码中写上一个关闭&lt;OPTION&gt;标记，这样简单的改变也能使页面在浏览器中显示的更快。 
+</p>
+<p>　　不要使用这样的代码： </p>
+<p>　Do while not objRS.EOF <br>
+  　　strOptionList = strOptionList &amp; &quot;&lt;OPTION VALUE=&quot;&quot;&quot; 
+  &amp; objRS(&quot;ID&quot;) &amp;_&quot;&quot;&quot;&gt;&quot;&amp; _objRS(&quot;ProductName&quot;) 
+  <br>
+  　　objRS.MoveNext <br>
+  　Loop </p>
+<p>　Response.Write &quot;&lt;SELECT SIZE=&quot;&quot;1&quot;&quot;&gt;&quot; &amp; 
+  strOptionList &amp; &quot;&lt;/SELECT&gt;&quot; </p>
+<p>　　要使用这样的代码： </p>
+<p>　　Do while not objRS.EOF <br>
+  　　　strOptionList = strOptionList &amp; &quot;&lt;OPTION VALUE=&quot;&quot;&quot; 
+  &amp; objRS(&quot;ID&quot;) &amp; _ &quot;&quot;&quot;&gt;&quot; &amp; objRS(&quot;ProductName&quot;) 
+  &amp; &quot;&lt;/OPTION&gt;&quot; <br>
+  　　　objRS.MoveNext <br>
+  　　Loop </p>
+<p>　　Response.Write &quot;&lt;SELECT SIZE=&quot;&quot;1&quot;&quot;&gt;&quot; 
+  &amp; strOptionList &amp; &quot;&lt;/SELECT&gt;&quot; </p>
+<p>　　不要使用这样的代码： </p>
+<p>　　&lt;UL&gt; <br>
+  　　&lt;LI&gt;Apples <br>
+  　　&lt;LI&gt;Oranges <br>
+  　　&lt;LI&gt;Bananas <br>
+  　　&lt;/UL&gt; </p>
+<p>　　使用这样的代码: </p>
+<p>　　&lt;UL&gt; <br>
+  　　　&lt;LI&gt;Apples&lt;/LI&gt; <br>
+  　　　&lt;LI&gt;Oranges&lt;/LI&gt; <br>
+  　　　&lt;LI&gt;Bananas&lt;/LI&gt; <br>
+  　　&lt;/UL&gt; </p>
+<p>　　现在看看，你的页面在浏览器中是不是显示的快了？ </p>
+<p>　　请不要轻视这些改变对提高ASP程序性能的重要性。也许，在你能找到的“技巧与提示”一类的书或在线资料中，很少提到过通过优化HTML代码来使你的程序运行的更快。但是，在实际中应用这些技术，确实能使程序性能得到很大的提高。<br>
+</p>
+<p>&nbsp; </p>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<?php
+//TeraWit! cache file, DO NOT modify me!
+//Created: Jul 28, 2011, 16:14
+//Identify: b26858ed931cbe2cff5913d3e068d199
+
+$expInfo=array (
+  'id' => '9',
+  'api' => '0',
+  'code' => 'zjs',
+  'outlets' => '0',
+  'spellname' => 'zhaijisong',
+  'textname' => 'Õ¬¼±ËÍ',
+  'ord' => '991',
+  'url' => 'http://www.zjs.com.cn/',
+  'tel' => '4006-789-000',
+  'nodesc' => NULL,
+  'keywords' => 'Õ¬¼±ËÍ,Õ¬¼±ËÍµ¥ºÅ',
+  'title' => 'Õ¬¼±ËÍ²éÑ¯_Õ¬¼±ËÍµ¥ºÅ²éÑ¯',
+  'description' => '°®²é¿ìµÝ¡ºiCKD.cn¡»Ìá¹©Õ¬¼±ËÍµ¥ºÅ¡¢ÍøµãºÍµç»°²éÑ¯£¬Õ¬¼±ËÍµç»°£º4006-789-000',
+  'note' => '',
+  'commentnum' => '0',
+  'searchnum' => '33',
+)?>

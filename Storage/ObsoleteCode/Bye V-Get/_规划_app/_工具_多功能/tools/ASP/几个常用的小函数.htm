@@ -1,0 +1,254 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>几个常用的小函数</title>
+<style type="text/css">
+<!--
+body {
+	font-size: 10.4pt;
+	line-height: 22px;
+}
+-->
+</style>
+</head>
+
+<body bgcolor="eeeeee" leftmargin="20" marginwidth="20">
+<p><strong>几个常用的小函数</strong></p>
+<hr>
+<p>//函数名：chkemail<br>
+  //功能介绍：检查是否为Email Address<br>
+  //参数说明：要检查的字符串<br>
+  //返回值：0：不是 1：是<br>
+  function chkemail(a)<br>
+  { var i=a.length;<br>
+  var temp = a.indexOf('@');<br>
+  var tempd = a.indexOf('.');<br>
+  if (temp &gt; 1) {<br>
+  if ((i-temp) &gt; 3){</p>
+<p>if ((i-tempd)&gt;0){<br>
+  return 1;<br>
+  }</p>
+<p>}<br>
+  }<br>
+  return 0;<br>
+  }<br>
+  //函数名：fucCheckNUM<br>
+  //功能介绍：检查是否为数字<br>
+  //参数说明：要检查的数字<br>
+  //返回值：1为是数字，0为不是数字<br>
+  function fucCheckNUM(NUM)<br>
+  {<br>
+  var i,j,strTemp;<br>
+  strTemp=&quot;0123456789&quot;;<br>
+  if ( NUM.length== 0)<br>
+  return 0<br>
+  for (i=0;i&lt;NUM.length;i++)<br>
+  {<br>
+  j=strTemp.indexOf(NUM.charAt(i)); <br>
+  if (j==-1)<br>
+  {<br>
+  //说明有字符不是数字<br>
+  return 0;<br>
+  }<br>
+  }<br>
+  //说明是数字<br>
+  return 1;<br>
+  }<br>
+  //函数名：fucCheckTEL<br>
+  //功能介绍：检查是否为电话号码<br>
+  //参数说明：要检查的字符串<br>
+  //返回值：1为是合法，0为不合法<br>
+  function fucCheckTEL(TEL)<br>
+  {<br>
+  var i,j,strTemp;<br>
+  strTemp=&quot;0123456789-()# &quot;;<br>
+  for (i=0;i&lt;TEL.length;i++)<br>
+  {<br>
+  j=strTemp.indexOf(TEL.charAt(i)); <br>
+  if (j==-1)<br>
+  {<br>
+  //说明有字符不合法<br>
+  return 0;<br>
+  }<br>
+  }<br>
+  //说明合法<br>
+  return 1;<br>
+  }</p>
+<p></p>
+<p>//opt1 小数 opt2 负数<br>
+  //当opt2为1时检查num是否是负数<br>
+  //当opt1为1时检查num是否是小数<br>
+  //返回1是正确的，0是错误的<br>
+  function chknbr(num,opt1,opt2)<br>
+  {<br>
+  var i=num.length;<br>
+  var staus;<br>
+  //staus用于记录.的个数<br>
+  status=0;<br>
+  if ((opt2!=1) &amp;&amp; (num.charAt(0)=='-'))<br>
+  {<br>
+  //alert(&quot;You have enter a invalid number.&quot;);<br>
+  return 0;</p>
+<p>}<br>
+  //当最后一位为.时出错<br>
+  if (num.charAt(i-1)=='.')<br>
+  {<br>
+  //alert(&quot;You have enter a invalid number.&quot;);<br>
+  return 0;<br>
+  }</p>
+<p>for (j=0;j&lt;i;j++)<br>
+  {<br>
+  if (num.charAt(j)=='.')<br>
+  {<br>
+  status++;<br>
+  }<br>
+  if (status&gt;1) <br>
+  {<br>
+  //alert(&quot;You have enter a invalid number.&quot;);<br>
+  return 0; <br>
+  }<br>
+  if (num.charAt(j)&lt;'0' || num.charAt(j)&gt;'9' )<br>
+  {<br>
+  if (((opt1==0) || (num.charAt(j)!='.')) &amp;&amp; (j!=0)) <br>
+  {<br>
+  //alert(&quot;You have enter a invalid number.&quot;);<br>
+  return 0;<br>
+  }<br>
+  }<br>
+  }<br>
+  return 1;<br>
+  }</p>
+<p>//函数名：chkdate<br>
+  //功能介绍：检查是否为日期<br>
+  //参数说明：要检查的字符串<br>
+  //返回值：0：不是日期 1：是日期<br>
+  function chkdate(datestr)<br>
+  {<br>
+  var lthdatestr<br>
+  if (datestr != &quot;&quot;)<br>
+  lthdatestr= datestr.length ;<br>
+  else<br>
+  lthdatestr=0;</p>
+<p>var tmpy=&quot;&quot;;<br>
+  var tmpm=&quot;&quot;;<br>
+  var tmpd=&quot;&quot;;<br>
+  //var datestr;<br>
+  var status;<br>
+  status=0;<br>
+  if ( lthdatestr== 0)<br>
+  return 0</p>
+<p><br>
+  for (i=0;i&lt;lthdatestr;i++)<br>
+  { if (datestr.charAt(i)== '-')<br>
+  {<br>
+  status++;<br>
+  }<br>
+  if (status&gt;2)<br>
+  {<br>
+  //alert(&quot;Invalid format of date!&quot;);<br>
+  return 0;<br>
+  }<br>
+  if ((status==0) &amp;&amp; (datestr.charAt(i)!='-'))<br>
+  {<br>
+  tmpy=tmpy+datestr.charAt(i)<br>
+  }<br>
+  if ((status==1) &amp;&amp; (datestr.charAt(i)!='-'))<br>
+  {<br>
+  tmpm=tmpm+datestr.charAt(i)<br>
+  }<br>
+  if ((status==2) &amp;&amp; (datestr.charAt(i)!='-'))<br>
+  {<br>
+  tmpd=tmpd+datestr.charAt(i)<br>
+  }</p>
+<p>}<br>
+  year=new String (tmpy);<br>
+  month=new String (tmpm);<br>
+  day=new String (tmpd)<br>
+  //tempdate= new String (year+month+day);<br>
+  //alert(tempdate);<br>
+  if ((tmpy.length!=4) || (tmpm.length&gt;2) || (tmpd.length&gt;2))<br>
+  {<br>
+  //alert(&quot;Invalid format of date!&quot;);<br>
+  return 0;<br>
+  }<br>
+  if (!((1&lt;=month) &amp;&amp; (12&gt;=month) &amp;&amp; (31&gt;=day) &amp;&amp; 
+  (1&lt;=day)) )<br>
+  {<br>
+  //alert (&quot;Invalid month or day!&quot;);<br>
+  return 0;<br>
+  }<br>
+  if (!((year % 4)==0) &amp;&amp; (month==2) &amp;&amp; (day==29))<br>
+  {<br>
+  //alert (&quot;This is not a leap year!&quot;);<br>
+  return 0;<br>
+  }<br>
+  if ((month&lt;=7) &amp;&amp; ((month % 2)==0) &amp;&amp; (day&gt;=31))<br>
+  {<br>
+  //alert (&quot;This month is a small month!&quot;);<br>
+  return 0;</p>
+<p>}<br>
+  if ((month&gt;=8) &amp;&amp; ((month % 2)==1) &amp;&amp; (day&gt;=31))<br>
+  {<br>
+  //alert (&quot;This month is a small month!&quot;);<br>
+  return 0;<br>
+  }<br>
+  if ((month==2) &amp;&amp; (day==30))<br>
+  {<br>
+  //alert(&quot;The Febryary never has this day!&quot;);<br>
+  return 0;<br>
+  }</p>
+<p>return 1;<br>
+  }<br>
+  //函数名：chksafe<br>
+  //功能介绍：检查是否含有&quot;'&quot;,'\\',&quot;/&quot;<br>
+  //参数说明：要检查的字符串<br>
+  //返回值：0：是 1：不是<br>
+  function chksafe(a)<br>
+  { <br>
+  return 1;<br>
+  /* fibdn = new Array (&quot;'&quot; ,&quot;\\&quot;, &quot;、&quot;, &quot;,&quot;, 
+  &quot;;&quot;, &quot;/&quot;);<br>
+  i=fibdn.length;<br>
+  j=a.length;<br>
+  for (ii=0;ii&lt;i;ii++)<br>
+  { for (jj=0;jj&lt;j;jj++)<br>
+  { temp1=a.charAt(jj);<br>
+  temp2=fibdn[ii];<br>
+  if (tem';p1==temp2)<br>
+  { return 0; }<br>
+  }<br>
+  }<br>
+  return 1;<br>
+  */ <br>
+  }</p>
+<p>//函数名：chkspc<br>
+  //功能介绍：检查是否含有空格<br>
+  //参数说明：要检查的字符串<br>
+  //返回值：0：是 1：不是<br>
+  function chkspc(a)<br>
+  {<br>
+  var i=a.length;<br>
+  var j = 0;<br>
+  var k = 0;<br>
+  while (k&lt;i)<br>
+  {<br>
+  if (a.charAt(k) != &quot; &quot;)<br>
+  j = j+1;<br>
+  k = k+1;<br>
+  }<br>
+  if (j==0)<br>
+  {<br>
+  return 0;<br>
+  }</p>
+<p>if (i!=j)<br>
+  { return 2; }<br>
+  else<br>
+  {<br>
+  return 1;<br>
+  }<br>
+  }</p>
+<p></p>
+<p></p>
+</body>
+</html>

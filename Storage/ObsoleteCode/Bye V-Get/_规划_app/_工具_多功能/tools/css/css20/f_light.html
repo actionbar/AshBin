@@ -1,0 +1,186 @@
+<html xmlns:rdl>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<script src="rdl_filters.js"></script>
+<base target="_self">
+</head>
+<body>
+
+<script>
+
+collFriendProperties=new Array(
+'filter'
+);
+
+//collIE40=new Array();
+//collIE50=new Array();
+//collIE55=new Array();
+//collIE60=new Array();
+
+collIE55=new Array(
+'A','ACRONYM','ADDRESS','B','BDO','BIG','BLOCKQUOTE','CAPTION','CENTER','CITE','CODE','CUSTOM','DD','DEL','DFN','DIR','DL','DT','EM','FIELDSET','FONT','FORM','FRAME','Hn','I','IFRAME','INS','KBD','LABEL','LEGEND','LI','MENU','NOBR','OBJECT','OL','P','PLAINTEXT','PRE','Q','RT','RUBY','S','SAMP','SMALL','STRIKE','STRONG','SUB','SUP','TT','U','UL','VAR','XMP'
+);
+
+collIE40=new Array(
+'TABLE','TD','TEXTAREA','TH','SPAN','style','IMG','INPUT type=button','INPUT type=checkbox','INPUT type=file','INPUT type=image','INPUT type=password','INPUT type=radio','INPUT type=reset','INPUT type=submit','INPUT type=text','MARQUEE','DIV','BUTTON'
+);
+
+collIE50=new Array(
+'runtimeStyle'
+);
+
+sStyle=
+'<style>\n'+
+'#idParentDiv{width:100%;height:120px;padding:6px;background-color:buttonshadow;position:relative;}\n'+
+'#idDiv{width:80%;height:80px;background-color:#FFD700;padding:6px;position:absolute;z-index:3;left:9px;top:9px;filter:progid:DXImageTransform.Microsoft.Light();}\n'+
+'<\/style>\n';
+
+sScript=
+'<script>\n'+
+'function rdl_change(m){\n'+
+'var oDiv=document.all("idDiv");\n'+
+'with (oDiv.filters[0]) switch(m) {\n'+
+'case 1 : addCone(0,0,1,80,80,255,0,0,20,180);break;\n'+
+'case 0 : addAmbient(90,140,210,60);break;\n'+
+'case 2 : addPoint (200,60,20,240,80,0,40);break;\n'+
+'case 3 : clear();break;\n'+
+'default: break;\n'+
+'}\n'+
+'}\n'+
+'<\/script>\n';
+
+sCode=
+'<div id=idParentDiv>\n'+
+'<div id=idDiv><img src="images/rdl_body0.jpg" style="float:left;border:1px solid #000000;">请点击下面的按钮。<\/div>\n'+
+'<\/div>\n'+
+'<br>\n'+
+'<input type=button value="增加环境光" onclick="rdl_change(0)"><input type=button value="添加锥形光" onclick="rdl_change(1)"><input type=button value="添加点光" onclick="rdl_change(2)"><input type=button value="全部清除" onclick="rdl_change(3)">\n';
+
+
+iWinWidth=450;
+
+iWinHeight=320;
+
+//bRunCode=false;
+
+//bElements=false;
+
+</script>
+
+<div id=idContent>
+
+<div id=idContentTitle><span id=idTitleName>Light</span>兼容性：IE4.0+</div>
+
+<div class=cssColumnTitle>语法：</div>
+<div>
+<b>filter : progid:DXImageTransform.Microsoft.Light ( enabled=</b><i>bEnabled</i><b> ) </b> 
+</div>
+
+<div class=cssColumnTitle>属性：</div>
+<table>
+
+<tr><td nowrap><b> enabled </b></td><td nowrap><b>:</b></td><td>
+可选项。布尔值(Boolean)。设置或检索滤镜是否激活。<span class=cssDefault><b>true</b></span> | <b>false</b>
+<table>
+<tr><td nowrap><b> true </b></td><td nowrap><b>:</b></td><td><b>默认值</b>。滤镜激活。</td></tr>
+<tr><td nowrap><b> false </b></td><td nowrap><b>:</b></td><td>滤镜被禁止。</td></tr>
+</table>
+</td></tr>
+</table>
+
+<div class=cssColumnTitle>特性：</div>
+<table>
+<tr><td nowrap><b> Enabled </b></td><td nowrap><b>:</b></td><td>可读写。布尔值(Boolean)。参阅<b> enabled </b>属性。</td></tr>
+</table>
+
+<div class=cssColumnTitle>方法：</div>
+<table>
+<tr><td><b> addAmbient (</b><i>iRed</i>,<i>iGreen</i>,<i>iBlue</i>,<i>iStrength</i><b>)</b></td><td nowrap><b>:</b></td><td>
+为滤镜添加环境光。环境光是无方向的，并且均匀的洒在页面的表面。环境光有颜色和强度值，可以为对象田家更多的颜色。它通常和其他光一起使用。无返回值。参数见下表。<br>
+<table>
+<tr><td nowrap><i> iRed </i></td><td nowrap><b>:</b></td><td>必选项。整数值(Integer)。 指定红色值。取值范围为<b> 0 - 255 </b>。</td></tr>
+<tr><td nowrap><i> iGreen </i></td><td nowrap><b>:</b></td><td>必选项。整数值(Integer)。 指定绿色值。取值范围为<b> 0 - 255 </b>。</td></tr>
+<tr><td nowrap><i> iBlue </i></td><td nowrap><b>:</b></td><td>必选项。整数值(Integer)。 指定蓝色值。取值范围为<b> 0 - 255 </b>。</td></tr>
+<tr><td nowrap><i> iStrength </i></td><td nowrap><b>:</b></td><td>必选项。整数值(Integer)。 指定光强度。取值范围为<b> 0 - 100 </b>。</td></tr>
+</table>
+</td></tr>
+<tr><td><b> addCone (</b><i>iX1</i>,<i>iY1</i>,<i>iZ1</i>,<i>iX2</i>,<i>iY</i>,<i>iRed</i>,<i>iGreen</i>,<i>iBlue</i>,<i>iStrength</i>,<i>iSpread</i><b>) </b></td><td nowrap><b>:</b></td><td>
+为滤镜添加锥形光以向对象的表面投射有方向的光束。光束会随延伸的距离而逐渐减弱。无返回值。参数见下表。<br>
+<table>
+<tr><td nowrap><i> iX1 </i></td><td nowrap><b>:</b></td><td>必选项。整数值(Integer)。指定光源的左坐标值。</td></tr>
+<tr><td nowrap><i> iY1 </i></td><td nowrap><b>:</b></td><td>必选项。整数值(Integer)。指定光源的上坐标值。</td></tr>
+<tr><td nowrap><i> iZ1 </i></td><td nowrap><b>:</b></td><td>必选项。整数值(Integer)。指定光源的Z坐标值。</td></tr>
+<tr><td nowrap><i> iX2 </i></td><td nowrap><b>:</b></td><td>必选项。整数值(Integer)。指定光焦点的左坐标值。</td></tr>
+<tr><td nowrap><i> iY2 </i></td><td nowrap><b>:</b></td><td>必选项。整数值(Integer)。指定光焦点的上坐标值。</td></tr>
+<tr><td nowrap><i> iRed </i></td><td nowrap><b>:</b></td><td>必选项。整数值(Integer)。指定红色值。取值范围为<b> 0 - 255 </b>。</td></tr>
+<tr><td nowrap><i> iGreen </i></td><td nowrap><b>:</b></td><td>必选项。整数值(Integer)。指定绿色值。取值范围为<b> 0 - 255 </b>。</td></tr>
+<tr><td nowrap><i> iBlue </i></td><td nowrap><b>:</b></td><td>必选项。整数值(Integer)。指定蓝色值。取值范围为<b> 0 - 255 </b>。</td></tr>
+<tr><td nowrap><i> iStrength </i></td><td nowrap><b>:</b></td><td>必选项。整数值(Integer)。指定光强度。取值范围为<b> 0 - 100 </b>。</td></tr>
+<tr><td nowrap><i> iSpread </i></td><td nowrap><b>:</b></td><td>必选项。整数值(Integer)。指定光源的虚拟位置与对象的表面之间的角度或张度。取值范围为<b> 0 -  90 </b>。</td></tr>
+</table>
+</td></tr>
+<tr><td><b> addPoint (</b><i>iX</i>,<i>iY</i>,<i>iZ</i>,<i>iRed</i>,<i>iGreen</i>,<i>iBlue</i>,<i>iStrength</i><b>) </b></td><td nowrap><b>:</b></td><td>
+为滤镜添加点光。无返回值。参数见下表。<br>
+<table>
+<tr><td nowrap><i> iX </i></td><td nowrap><b>:</b></td><td>必选项。整数值(Integer)。指定光源的左坐标值。</td></tr>
+<tr><td nowrap><i> iY </i></td><td nowrap><b>:</b></td><td>必选项。整数值(Integer)。指定光源的上坐标值。</td></tr>
+<tr><td nowrap><i> iZ </i></td><td nowrap><b>:</b></td><td>必选项。整数值(Integer)。指定光源的Z坐标值。</td></tr>
+<tr><td nowrap><i> iRed </i></td><td nowrap><b>:</b></td><td>必选项。整数值(Integer)。指定红色值。取值范围为<b> 0 - 255 </b>。</td></tr>
+<tr><td nowrap><i> iGreen </i></td><td nowrap><b>:</b></td><td>必选项。整数值(Integer)。指定绿色值。取值范围为<b> 0 - 255 </b>。</td></tr>
+<tr><td nowrap><i> iBlue </i></td><td nowrap><b>:</b></td><td>必选项。整数值(Integer)。指定蓝色值。取值范围为<b> 0 - 255 </b>。</td></tr>
+<tr><td nowrap><i> iStrength </i></td><td nowrap><b>:</b></td><td>必选项。整数值(Integer)。指定光强度。取值范围为<b> 0 - 100 </b>。</td></tr>
+</table>
+</td></tr>
+<tr><td><b> changeColor (</b><i>iLightNumber</i>,<i>iRed</i>,<i>iGreen</i>,<i>iBlue</i>,<i>fAbsolute</i><b>) </b></td><td nowrap><b>:</b></td><td>
+改变光的颜色。无返回值。参数见下表。<br>
+<table>
+<tr><td nowrap><i> iLightNumber </i></td><td nowrap><b>:</b></td><td>必选项。整数值(Integer)。 指定光的标识符。</td></tr>
+<tr><td nowrap><i> iRed </i></td><td nowrap><b>:</b></td><td>必选项。整数值(Integer)。指定红色值。取值范围为<b> 0 - 255 </b>。</td></tr>
+<tr><td nowrap><i> iGreen </i></td><td nowrap><b>:</b></td><td>必选项。整数值(Integer)。指定绿色值。取值范围为<b> 0 - 255 </b>。</td></tr>
+<tr><td nowrap><i> iBlue </i></td><td nowrap><b>:</b></td><td>必选项。整数值(Integer)。指定蓝色值。取值范围为<b> 0 - 255 </b>。</td></tr>
+<tr><td nowrap><i> fAbsolute </i></td><td nowrap><b>:</b></td><td>必选项。布尔值(Boolean)。指定改变是替换当前设置的绝对值，还是加到当前设置的相对值。此参数不等于零表示采用绝对值。否则表示采用相对值。</td></tr>
+</table>
+</td></tr>
+<tr><td><b> changeStrength (</b><i>iLightNumber</i>,<i>iStrength</i>,<i>fAbsolute</i><b>) </b></td><td nowrap><b>:</b></td><td>
+改变光的强度。无返回值。参数见下表。<br>
+<table>
+<tr><td nowrap><i> iLightNumber </i></td><td nowrap><b>:</b></td><td>必选项。整数值(Integer)。 指定光的标识符。</td></tr>
+<tr><td nowrap><i> iStrength </i></td><td nowrap><b>:</b></td><td>必选项。整数值(Integer)。指定光强度。取值范围为<b> 0 - 100 </b>。</td></tr>
+<tr><td nowrap><i> fAbsolute </i></td><td nowrap><b>:</b></td><td>必选项。布尔值(Boolean)。指定改变是替换当前设置的绝对值，还是加到当前设置的相对值。此参数不等于零表示采用绝对值。否则表示采用相对值。</td></tr>
+</table>
+</td></tr>
+<tr><td><b> clear () </b></td><td nowrap><b>:</b></td><td>
+清除所有与当前滤镜关联的光。无返回值。
+</td></tr>
+<tr><td><b> moveLight (</b><i>iLightNumber</i>,<i>iX</i>,<i>iY</i>,<i>iZ</i>,<i>fAbsolute</i><b>) </b></td><td nowrap><b>:</b></td><td>
+移动锥形光的焦点或点光的原点。对于锥形光来说，此方法改变<b> x,y </b>目标坐标值；对于点光来说，此方法改变<b> x,y,z </b>源坐标值。 此方法不作用于环境光。<br>
+无返回值。参数见下表。<br>
+<table>
+<tr><td nowrap><i> iLightNumber </i></td><td nowrap><b>:</b></td><td>必选项。整数值(Integer)。 指定光的标识符。</td></tr>
+<tr><td nowrap><i> iX </i></td><td nowrap><b>:</b></td><td>必选项。整数值(Integer)。指定光源的左坐标值。</td></tr>
+<tr><td nowrap><i> iY </i></td><td nowrap><b>:</b></td><td>必选项。整数值(Integer)。指定光源的上坐标值。</td></tr>
+<tr><td nowrap><i> iZ </i></td><td nowrap><b>:</b></td><td>必选项。整数值(Integer)。指定光源的Z坐标值。</td></tr>
+<tr><td nowrap><i> fAbsolute </i></td><td nowrap><b>:</b></td><td>必选项。布尔值(Boolean)。指定改变是替换当前设置的绝对值，还是加到当前设置的相对值。此参数等于<b> true </b>表示采用绝对值。等于<b> false </b>表示采用相对值。</td></tr>
+</table>
+</td></tr>
+</table>
+
+<div class=cssColumnTitle>说明：</div>
+<div>
+为对象的内容建立光照效果。<br>
+你可以控制光源的虚拟位置，还可以控制光焦点的横纵坐标值。以及光的类型和强度。每个滤镜最多可以添加<b> 10 </b>束光。要想在页面上添加更多的光，你必须使用多个滤镜。<br>
+当每束光被建立后，都有默认的环境光与之关联。你添加到对象的第一束光会替换掉它的默认的环境光。
+</div>
+
+<div class=cssColumnTitle>示例：</div>
+<div id=idSimpleCode>
+.aFilter { background-color: #FFFFFF; filter:light();color: cyan;width: 150;}
+<br>
+</div>
+
+</div>
+</body>
+</html>
+
+<!-- Part of RDL(TM) - Written by Rain1977 
+HomeSite: http://www.dhtmlet.com  E-Mail: dhtmlet@hotmail.com -->

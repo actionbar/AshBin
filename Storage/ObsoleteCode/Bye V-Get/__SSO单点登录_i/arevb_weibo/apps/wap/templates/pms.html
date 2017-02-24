@@ -1,0 +1,46 @@
+{template header}
+
+<p>
+	>> <!--{if $_DSESSION['newpm'] > 0}--><a href="{eval echo miniurl('pms');}">新消息</a> <!--{/if}--><a href="{eval echo miniurl('pms?filter=inbox');}">收件箱</a> <a href="{eval echo miniurl('pms?filter=outbox');}">发件箱</a><br />
+<!--{if $action == 'send'}-->
+	收件人: <input type="text" name="msgto" value="{$msgto}" maxlength="15" format="M*m" /><br />
+	短消息: <input type="text" name="message" format="M*m" /><br />
+	<anchor title="提交">提交<go method="post" href="{eval echo miniurl('pms/send');}">
+		<postfield name="submit_post" value="1" />
+		<postfield name="msgto" value="$(msgto)" />
+		<postfield name="message" value="$(message)" />
+		</go>
+	</anchor>
+</p>
+<!--{elseif $action == 'del'}-->
+	<!--{if $error_status}-->
+	成功啦:<br />
+	<!--{else}-->
+	出错啦:<br />
+	<!--{/if}-->
+	{$error_message}
+</p>
+<!--{else}-->
+{eval $pms_index = $pms['perpage']*($pms['current']-1);}
+<!--{loop $pms['data'] $pms_item}-->
+{eval $pms_index++;}
+{$pms_index}.
+<!--{if $filter != 'outbox'}-->
+来自 <a href="{eval echo miniurl($pms_item['msgfromid']);}">{$pms_item['msgfrom']}</a> [{eval echo sgmdate($pms_item['dateline']);}]<br />
+{$pms_item['message']}<br />
+<a href="{eval echo miniurl('pms/send?uid='.$pms_item['msgfromid']);}">回复</a>
+<!--{else}-->
+[{eval echo sgmdate($pms_item['dateline']);}] 我发给 <a href="{eval echo miniurl($pms_item['msgto']);}">{$pms_item['msgto']}</a><br />
+{$pms_item['message']}<br />
+<a href="{eval echo miniurl('pms/send?uid='.$pms_item['msgtoid']);}">重发</a>
+<!--{/if}-->
+<a href="{eval echo miniurl('pms/del?pmid='.$pms_item['pmid']);}">删除</a><br />
+<!--{/loop}-->
+<!--{if $pms['pages'] > 1}-->
+共{$pms['pages']}页<br />
+{eval echo wappages($pms['pages'], $pms['current'], $pageurl);}
+<!--{/if}-->
+</p>
+<!--{/if}-->
+
+{template footer}

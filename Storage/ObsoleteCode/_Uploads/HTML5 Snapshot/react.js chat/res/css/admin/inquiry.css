@@ -1,0 +1,27 @@
+.inquiry-instance-msg{border:1px dashed #ddd;width:500px;height:500px;overflow-y:scroll}
+
+.inquiry-instance-msg-inquiry-title{margin-left:16px;font:400 12px/18px Arial;height:18px;color:#ccc;}
+.inquiry-instance-msg-avatar{width:50px;height:50px;border-radius:50%;margin:0 9px;}
+
+
+.inquiry-instance-msg-content-box{position:relative}
+
+.inquiry-instance-msg-content-arrow{position:absolute;top:10px;left:0;
+      width:0;height:0;border:solid 8px;
+      border-color:#fff #00bbee #fff #fff;}
+.inquiry-instance-msg-content{margin-left:16px;
+  padding:5px 15px;background:#00bbee;border-radius:5px;}
+
+
+.inquiry-msg{width:500px;height:60px}
+
+.inquiry-submit{width:120px;height:60px; padding:9px; cursor:pointer}
+.inquiry-instance-msg-inquiry{}
+.inquiry-instance-msg-inquiry-title{}
+
+.inquiry-instance-msg-reply-content-box{position:relative}
+.inquiry-instance-msg-reply-content-arrow{position:absolute;top:10px;right:0;
+  width:0;height:0;border:solid 8px;
+  border-color:#fff #fff #fff #f26d7e;}
+.inquiry-instance-msg-reply-content{margin-right:16px;
+  padding:5px 15px;border-radius:5px;background:#f26d7e;text-align: right;border-radius:5px}

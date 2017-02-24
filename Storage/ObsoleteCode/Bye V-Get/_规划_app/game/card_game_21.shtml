@@ -1,0 +1,130 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>21点纸牌游戏</title>
+<style type="text/css">
+body,td,th {
+	font-family: Tahoma, SimSun;
+}
+</style>
+</head>
+<link rel="stylesheet" type="text/css" href="../index.css" />
+<link rel="stylesheet" type="text/css" href="http://localhost:8080/v-get.com/tool/index.css" />
+<style type="text/css">
+<!--
+.c{margin:25px 50px}
+.c p{line-height:22px}
+.c select{margin:9px 0 3px}
+-->
+</style>
+
+
+<script type="text/javascript" src="http://localhost:8080/v-get.com/i/i.js"></script>
+
+
+</head>
+<body>
+<div class="w">
+<div class="t"><div class="q"><div class="p tl"></div><div class="p tc"><a href="">V-Get!首页</a>|<a href="">设为主页</a>|<a href="">收藏本站</a></div><div class="p tr"></div></div></div>
+<div class="u">
+<img src="http://localhost:8080/v-get.com/tool/index.png" />
+</div>
+<div class="n"><a href="http://localhost:8080/tool.v-get.com/">首页</a><a href="http://localhost:8080/v-get.com/tool/biz/">商务办公</a><a href="http://localhost:8080/v-get.com/tool/finance/">金融计算</a><a href="http://localhost:8080/v-get.com/tool/life/">生活助手</a><a href="http://localhost:8080/v-get.com/tool/images/">图片美工</a><a href="http://localhost:8080/v-get.com/tool/editor/">文字设计</a><a href="http://localhost:8080/v-get.com/tool/edu/">教育考试</a><a href="http://localhost:8080/v-get.com/tool/game/" class="no">娱乐游戏</a><a href="http://localhost:8080/v-get.com/tool/pc/">电脑优化</a></div>
+<div class="w4"><a href="#"><img src="http://localhost:8080/v-get.com/i/wuliu/a/zzidc980.gif" /></a></div>
+<!--这里不用include，因为基本这个部分是固定的；广告以后采用js替换，或者固定图片名称-->
+<!--因为都在life文件夹下，而且涉及.no，所以这样更好-->
+<div class="v">
+<div class="p l">
+<h2>生活助手</h2>
+<!--#include file="l.htm"-->
+
+</div>
+<div class="p r">
+<h1>21点纸牌游戏</h1>
+<div class="c">
+
+<SCRIPT LANGUAGE="JavaScript">
+
+<!-- Hide from non-JavaScript browsers
+
+function random(x){var d= new Date();return (((d.getHours()+ 1)*(d.getMinutes()+1)*d.getSeconds())%x) + 1}
+
+
+function pickSuit(){suit = random(4);if(suit == 1)return "Spades";if(suit == 2)return "Clubs";if(suit == 3)return "Diamonds";return "Hearts";}
+
+
+
+function cardName(card)
+{if(card == 1)return "Ace";if(card == 11)return "Jack";if(card == 12)return "Queen";if(card == 13)return "King";return "" + card;}
+
+
+
+function cardValue(card){if(card == 1)return 11;if(card > 10)return 10;return card;}
+
+
+
+function PickACard(strWho){card = random(13);suit = pickSuit();
+//alert(strWho + " picked the " + cardName(card) + " of " + suit);
+
+
+
+   return cardValue(card);
+
+}
+
+
+
+function NewHand(f)
+{f.dealer.value=0;f.you.value=0;f.dealer.value= eval(f.dealer.value)+PickACard("Dealer");f.you.value =eval(f.you.value) + PickACard("You");}
+
+
+
+function Dealer(form)
+{while(form.dealer.value < 17){form.dealer.value = eval(form.dealer.value) + PickACard("Dealer");}}
+
+
+
+function User(form){form.you.value = eval(form.you.value) + PickACard("You");if(form.you.value > 21){alert("不好意思，你爆了!");}}
+
+
+
+function LookAtHands(form)
+{if(form.dealer.value > 21){alert("庄家爆了，你赢!") }
+
+   else if(form.you.value > form.dealer.value){alert("你赢了!")}
+
+   else if(form.dealer.value == form.you.value){alert("平局!");}
+
+   else{alert("庄家赢了!");}}
+
+//-->
+
+</SCRIPT>
+<form>
+<table border=3>
+<tr><td>庄家有</td><td><input type=text name="dealer" readonly="readonly">点</td></tr>
+<tr><td>你有</td><td><input type=text name="you" readonly="readonly">点</td></tr>
+</table>
+<input type=button value="再要一张" onclick=user(this.form)>
+<INPUT TYPE=BUTTON VALUE="亮牌" onClick="Dealer(this.form);LookAtHands(this.form);">
+<input type=button value="重新发牌" onclick=NewHand(this.form)>
+
+</form>
+</div>
+
+<!--#include file="c.htm"-->
+
+
+</div>
+
+</div>
+
+<div class="o b">
+ddd
+</div>
+</div>
+
+  
+</body>
+</html>

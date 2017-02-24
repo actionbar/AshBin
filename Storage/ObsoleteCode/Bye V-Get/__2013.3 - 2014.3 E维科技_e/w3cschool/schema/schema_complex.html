@@ -1,0 +1,190 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="../c3.css" />
+<title>XSD 复合元素</title>
+</head>
+<body class="xml">
+<div id="wrapper">
+<div id="header">
+<a href="http://e.v-get.com/w3cschool/" style="float:left;">W3CSchool 在线教程</a>
+<div class="q g"><script type="text/javascript">var cpro_id="u1163355"</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div>
+<div id="navfirst">
+<ul id="menu">
+<li id="h"><a href="../h.html">HTML教程</a></li>
+<li id="x"><a href="../x.html">XML教程</a></li>
+<li id="b"><a href="../b.html">浏览器脚本</a></li>
+<li id="s"><a href="../s.html">服务器脚本</a></li>
+<li id="d"><a href="../d.html">dot net教程</a></li>
+<li id="m"><a href="../m.html">多媒体教程</a></li>
+<li id="w"><a href="../w.html">建站手册</a></li>
+</ul>
+</div><div id="navsecond">
+<div id="course">
+<h2>Schema 教程</h2>
+<ul>
+<li><a href="http://e.v-get.com/w3cschool/">XSD 首页</a></li>
+<li><a href="schema_intro.html">XSD 简介</a></li>
+<li><a href="schema_why.html">XSD 为何使用</a></li>
+<li><a href="schema_howto.html">XSD 如何使用</a></li>
+<li><a href="schema_schema.html">XSD &lt;schema&gt;</a></li>
+</ul>
+<h2>简单的类型</h2>
+<ul>
+<li><a href="schema_simple.html">XSD 元素</a></li>
+<li><a href="schema_simple_attributes.html">XSD 属性</a></li>
+<li><a href="schema_facets.html">XSD 限定</a></li>
+</ul>
+<h2>复杂的类型</h2>
+<ul>
+<li><a href="schema_complex.html">XSD 元素</a></li>
+<li><a href="schema_complex_empty.html">XSD 空元素</a></li>
+<li><a href="schema_complex_elements.html">XSD 仅含元素</a></li>
+<li><a href="schema_complex_text.html">XSD 仅含文本</a></li>
+<li><a href="schema_complex_mixed.html">XSD 混合内容</a></li>
+<li><a href="schema_complex_indicators.html">XSD 指示器</a></li>
+<li><a href="schema_complex_any.html">XSD &lt;any&gt;</a></li>
+<li><a href="schema_complex_anyattribute.html" title="">XSD &lt;anyAttribute&gt;</a></li>
+<li><a href="schema_complex_subst.html">XSD 元素替换</a></li>
+<li><a href="schema_example.html">XSD 实例</a></li>
+</ul>
+<h2>数据类型</h2>
+<ul>
+<li><a href="schema_dtypes_string.html">XSD 字符串</a></li>
+<li><a href="schema_dtypes_date.html">XSD 日期</a></li>
+<li><a href="schema_dtypes_numeric.html">XSD 数值</a></li>
+<li><a href="schema_dtypes_misc.html">XSD 杂项</a></li>
+<li><a href="schema_summary.html">XSD 总结</a></li>
+</ul>
+<h2>参考手册</h2>
+<ul>
+<li><a href="schema_elements_ref.html">XSD 参考手册</a></li>
+<li><a href="http://www.w3.org/2001/03/webdata/xsv/">XSD 验证器</a></li>
+</ul>
+</div>
+<div id="selected">
+<h2>建站手册</h2>
+<ul>
+<li><a href="../site/">网站构建</a></li>
+<li><a href="../w3c/">万维网联盟</a></li>
+<li><a href="http://e.v-get.com/w3c/">W3CSchool 教程</a></li>
+<li><a href="../quality/">网站品质</a></li>
+<li><a href="../semweb/">语义网</a></li>
+<li><a href="../hosting/">网站主机</a></li>
+</ul>
+<h2><a href="http://e.v-get.com/w3c/" class="f13">W3CSchool 教程</a></h2><div class="a120x90"><script type="text/javascript">var cpro_id="u1210867";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div></div>
+</div>
+<div id="maincontent">
+<h1>XSD 复合元素</h1>
+<div  id="tpn">
+<ul class="prenext">
+<li class="pre"><a href="schema_facets.html">上一页</a></li>
+<li class="next"><a href="schema_complex_empty.html">下一页</a></li>
+</ul>
+</div>
+<div id="intro">
+<p><strong>复合元素包含了其他的元素及/或属性。</strong></p>
+</div>
+<div>
+<h2>什么是复合元素？</h2>
+<p>复合元素指包含其他元素及/或属性的 XML 元素。</p>
+<h3>有四种类型的复合元素：</h3>
+<ul>
+<li>空元素</li>
+<li>包含其他元素的元素</li>
+<li>仅包含文本的元素</li>
+<li>包含元素和文本的元素</li>
+</ul>
+<p class="note"><span>注释：</span>上述元素均可包含属性！</p>
+</div>
+<div>
+<h2>复合元素的例子</h2>
+<p>复合元素，&#34;product&#34;，是空的：</p>
+<pre>&lt;product pid=&#34;1345&#34;/&gt;</pre> 
+<p>复合元素，&#34;employee&#34;，仅包含其他元素：</p>
+<pre>&lt;employee&gt;
+&lt;firstname&gt;John&lt;/firstname&gt;
+&lt;lastname&gt;Smith&lt;/lastname&gt;
+&lt;/employee&gt;</pre>
+<p>复合元素，&#34;food&#34;，仅包含文本：</p>
+<pre>&lt;food type=&#34;dessert&#34;&gt;Ice cream&lt;/food&gt;</pre>
+<p>复合元素，&#34;description&#34;，包含元素和文本：</p>
+<pre>&lt;description&gt;
+It happened on &lt;date lang=&#34;norwegian&#34;&gt;03.03.99&lt;/date&gt; ....
+&lt;/description&gt;</pre>
+</div>
+<div>
+<h2>如何定义复合元素？</h2>
+<p>请看这个复合 XML 元素，&#34;employee&#34;，仅包含其他元素：</p>
+<pre>&lt;employee&gt;
+&lt;firstname&gt;John&lt;/firstname&gt;
+&lt;lastname&gt;Smith&lt;/lastname&gt;
+&lt;/employee&gt;</pre>
+<h3>在 XML Schema 中，我们有两种方式来定义复合元素：</h3>
+<p>1. 通过命名此元素，可直接对&#34;employee&#34;元素进行声明，就像这样：</p>
+<pre>&lt;xs:element name=&#34;employee&#34;&gt;
+  &lt;xs:complexType&gt;
+    &lt;xs:sequence&gt;
+      &lt;xs:element name=&#34;firstname&#34; type=&#34;xs:string&#34;/&gt;
+      &lt;xs:element name=&#34;lastname&#34; type=&#34;xs:string&#34;/&gt;
+    &lt;/xs:sequence&gt;
+  &lt;/xs:complexType&gt;
+&lt;/xs:element&gt;</pre>
+<p>假如您使用上面所描述的方法，那么仅有 &#34;employee&#34; 可使用所规定的复合类型。请注意其子元素，&#34;firstname&#34; 以及 &#34;lastname&#34;，被包围在指示器 &lt;sequence&gt;中。这意味着子元素必须以它们被声明的次序出现。您会在 <a href="schema_complex_indicators.html">XSD 指示器</a> 这一节学习更多有关指示器的知识。</p>
+<p>2. &#34;employee&#34; 元素可以使用 type 属性，这个属性的作用是引用要使用的复合类型的名称：</p>
+<pre>&lt;xs:element name=&#34;employee&#34; <code>type=&#34;personinfo&#34;</code>/&gt;
+&lt;xs:complexType <code>name=&#34;personinfo&#34;</code>&gt;
+  &lt;xs:sequence&gt;
+    &lt;xs:element name=&#34;firstname&#34; type=&#34;xs:string&#34;/&gt;
+    &lt;xs:element name=&#34;lastname&#34; type=&#34;xs:string&#34;/&gt;
+  &lt;/xs:sequence&gt;
+&lt;/xs:complexType&gt;</pre>
+<p>如果您使用了上面所描述的方法，那么若干元素均可以使用相同的复合类型，比如这样：</p>
+<pre>&lt;xs:element name=&#34;employee&#34; type=&#34;personinfo&#34;/&gt;
+&lt;xs:element name=&#34;student&#34; type=&#34;personinfo&#34;/&gt;
+&lt;xs:element name=&#34;member&#34; type=&#34;personinfo&#34;/&gt;
+&lt;xs:complexType name=&#34;personinfo&#34;&gt;
+  &lt;xs:sequence&gt;
+    &lt;xs:element name=&#34;firstname&#34; type=&#34;xs:string&#34;/&gt;
+    &lt;xs:element name=&#34;lastname&#34; type=&#34;xs:string&#34;/&gt;
+  &lt;/xs:sequence&gt;
+&lt;/xs:complexType&gt;</pre>
+<p>您也可以在已有的复合元素之上以某个复合元素为基础，然后添加一些元素，就像这样：</p>
+<pre>&lt;xs:element name=&#34;employee&#34; type=&#34;fullpersoninfo&#34;/&gt;
+&lt;xs:complexType name=&#34;personinfo&#34;&gt;
+  &lt;xs:sequence&gt;
+    &lt;xs:element name=&#34;firstname&#34; type=&#34;xs:string&#34;/&gt;
+    &lt;xs:element name=&#34;lastname&#34; type=&#34;xs:string&#34;/&gt;
+  &lt;/xs:sequence&gt;
+&lt;/xs:complexType&gt;
+&lt;xs:complexType name=&#34;fullpersoninfo&#34;&gt;
+  &lt;xs:complexContent&gt;
+    <code>&lt;xs:extension base=&#34;personinfo&#34;&gt;</code>
+      &lt;xs:sequence&gt;
+        &lt;xs:element name=&#34;address&#34; type=&#34;xs:string&#34;/&gt;
+        &lt;xs:element name=&#34;city&#34; type=&#34;xs:string&#34;/&gt;
+        &lt;xs:element name=&#34;country&#34; type=&#34;xs:string&#34;/&gt;
+      &lt;/xs:sequence&gt;
+    &lt;/xs:extension&gt;
+  &lt;/xs:complexContent&gt;
+&lt;/xs:complexType&gt;</pre>
+</div>
+<div id="bpn">
+<ul class="prenext">
+<li class="pre"><a href="schema_facets.html">上一页</a></li>
+<li class="next"><a href="schema_complex_empty.html">下一页</a></li>
+</ul>
+</div>
+</div>
+<div id="sidebar">
+<div class="rs"></div>
+<div id="tools">
+<h5 id="tools_reference"><a href="schema_elements_ref.html">XML Schema 参考手册</a></h5>
+</div>
+<div class="a120x600"><script type="text/javascript">var cpro_id="u1293136";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div><div class="b"></div>
+</div>
+</body>
+</html>

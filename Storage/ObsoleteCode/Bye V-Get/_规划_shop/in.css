@@ -1,0 +1,129 @@
+*{padding:0;margin:0}
+/*为了自适应屏幕，大尺寸一律用百分比，字体一律用em，不用绝对尺寸px；字体默认大小normal为16px 100%就是16px, normal 75%=0.75em=12px;
+em是相对字体，所以body必须设置绝对字体，或者绝对字体的百分比；如font-size:normal 62.5%； 那么后面1em=16px*62.5%=10px; 1.2em=12px; 如果是font-size:normal 100%；那么就是1em=16px
+不过正常情况下，还是用px，不然字体会变大也不好，字体绝对看起来方便
+不过最好用js的方式来自适应，毕竟ie6 7 8都不符合这个，所以还是绝对尺寸，然后用js*/
+body{background:#fff;font:12px "Tahoma","SimSun";color: #333;}
+ul{list-style-position:outside;list-style-type: none}
+/*ul是无序的，ol是有序的*/
+li{overflow: hidden;}/*white-space:nowrap;text-overflow:ellipsis;-o-text-overflow:ellipsis;li中内容超过长度后以省略号显示的方法*/
+li,a{cursor:pointer}
+li,p{height:22px;line-height:22px}
+select,input,img{vertical-align:middle;}
+a, .b3{color: #333; text-decoration:none}/*发现所有大型"资讯类"网站，都默认链接全部下划线；物流不是资讯类，不需要下划线；资讯类一律用下划线，增加浏览量*/
+.w3 a,.b1{color:#00c;text-decoration:underline}
+.t a, .g a, .n a {color:#000}
+a:hover, .b2,.w3 .b2{color: #c00;text-decoration:underline}
+.br{color:#f00}
+img {border-width:0;}
+.p{float:left}
+.q{float:right}
+.o{clear:both}
+h2{line-height:28px;height:28px;font-weight:400;font-size:14px;}
+.f2{color:#f00;font-weight:800}
+.fr{ text-align:right}
+
+.w,.tc{margin: 0px auto; overflow: hidden; width:990px}
+/*为了自适应，大尺寸一律用百分比*/
+.t,.th,.s span,.ss,.n,.n .nl,.l2 h2,.l4l h2,.lr h3{background:url(i.png)}
+/*这个可以被很多利用*/
+/*H头部css*/
+.t{LINE-HEIGHT: 28px;HEIGHT: 28px}
+.t a{padding:0 3px}
+.i{height:75px;width:200px}
+.s span{margin-top:12px;width:418px;height:30px;background-position:0 -357px;display:inline-block;background:url(http://localhost:8080/v-get.com/www/i-1_0_0.png) no-repeat -304px 0;border:2px solid #d00;border-color:#d90000 #c50000 #b90000 #cd0000;vertical-align:top}
+#k{width:350px;height:28px; background:none; border:none}
+.ss{height:30px;width:68px; border:none;background-position:0 -395px;font-family:"Tahoma","SimSun"; font-weight:800;color:#333; cursor:pointer}
+
+.n{ background-position:0 -315px}
+.n a{display:inline-block; height:40px;line-height:40px;width:85px; text-align:center; font-weight:800;font-size:14px; color:#fff; text-decoration:none}
+
+.n a:hover,.n .no{background:url(i.png);background-position:0 -160px}
+.n .nl{width:237px; background-position:0 -427px}
+.n .nl:hover{background:none}
+
+
+.l{width:750px}
+.ll,.lr{margin-bottom:9px}
+.ll{width:233px;}
+.lr{width:513px;text-align:center}
+h1{height:32px;line-height:32px;font-size:14px;  text-align:left;margin:0 9px; color:#eb2c00}
+.ltb li{ border-bottom:#ddd 1px solid}
+.m0 img{width:505px;height:183px;margin:9px 0 0 9px}
+.lt {position:relative;background:#fcf4ea; border:#d00000 2px solid; border-top-width:0; padding:3px 0}
+.lt h2{padding-right:6px;border-bottom:#fff 1px solid;border-top:#fcf4ea 1px solid;cursor:pointer}
+.lt .oh{ background:#fefefe; border-top:#d00000 1px solid;border-bottom:#d00000 1px solid;position:relative;z-index:9;width:226px;padding:0px;}
+.or{position:absolute; top:3px;left:225px; background:#fefefe;border:#d00000 1px solid;z-index:8; display:none;height:397px;width:700px}
+.or .p{padding:3px 9px}
+.or dl{clear:both;padding-top:3px;border-top:#fde6d2 1px dotted;}
+.or .ort{border-top:#fff 1px solid}
+dt,dd{ padding:3px 0;line-height:22px}
+.or dt{width:55px;margin:0 9px;font-weight:800; overflow:hidden}
+.or dt a{color:#c00; text-decoration:underline}
+.or dd{width:399px; position:relative;float:left}
+.or dd a{padding:0 9px; color:#333; border-left:#999 1px solid}
+.or .q{ background:#fcf4ea;height:100%;width:170px; border-left:#fde6d2 1px solid}
+.or h4{height:28px;line-height:40px}
+.lt h2 a{margin:0 6px 0 9px}
+.lt em{float:left; font-style:normal}
+.lt h2 span{font-size:12px;float:right}
+.lt h2 span a{color:#777}
+
+
+.l2{ border:#ddd 1px solid;text-align:center;margin:9px 0}
+.l2 h2{height:35px;line-height:35px;background-position:0 -120px}
+.l2 h2 a{display:inline-block;height:35px;line-height:35px;width:150px;border-bottom:#ddd 1px solid; border-right:#ddd 1px solid; text-decoration:none}
+.l2 h2 a:hover,.l2 .l2o{ background:#fff;border-bottom-color:#fff}
+.l2 .l2r{width:144px; border-right:none}
+.l2 ul{height:200px;width:750px}
+.l2 li{height:200px;width:150px;float:left}
+.l2 ul img{height:130px;width:130px}
+.ll h2{ text-align:center;}
+.l4l{background:url(135_392_OQHflI2.jpg) no-repeat right bottom;height:430px; border:#c00 1px solid}
+.l4l h2{ background-position:0 -315px;height:40px;line-height:40px; color:#fff;font-size:20px;font-weight:800;}
+.ll ul{padding:9px 0}
+.ll li{height:26px;line-height:26px;padding-left:15px}
+.ll li a{color:#005EA7}
+.lr ul img{height:130px;width:130px}
+.lr ul{margin-left:1px}
+.lr li{height:194px;width:127px;border-right:#ddd 1px solid;border-top:#ddd 1px solid;float:left}
+.lr .lrr{border-right:none}
+
+.lr h3{height:40px;line-height:40px;background-position:0 -75px}
+.lr h3 .lro{ background:#fff}
+.lr h3 a{display:inline-block;width:101px; border-right:#ddd 1px solid}
+.l4 .lr{border:#ddd 1px solid;}
+
+
+
+.r{width:230px}
+.r p a{margin:0 9px}
+.rj{margin:9px;padding-bottom:9px;width:212px;height:100px; border-bottom:#ddd 1px solid}
+.rj p{line-height:20px;height:80px;overflow: hidden;}
+.ri{width:100px}
+.ri img{height:100px;width:100px}
+.rg{width:112px;height:100px}
+.rg h3{white-space:nowrap;/*nowrap文本不换行*/text-overflow:ellipsis;overflow: hidden;height:20px;line-height:20px}
+
+.rv{ border:#ddd 1px solid;margin-top:9px}
+.rv h2{padding:0 7px; background:#f3f3f3; border-bottom:#ddd 1px solid}
+.rv h2 .q{font-size:12px}
+.rt h4 a{ display:inline-block;width:46px; border-left:#ddd 1px solid;border-bottom:#ddd 1px solid; font-weight:400;padding:5px;text-align:center}
+.rt .rtt{ border:none;font-weight:800; background:none}
+.rt form{margin:5px; font-size:12px; display:none}
+.rt .rtb{display:block}
+.rt input{margin:0 5px;width:50px;}
+.rt .lss{height:22px;width:35px}
+#lf{width:95px;}
+.r2 li{height:28px;line-height:28px}
+.r2 li a{margin:0 9px}
+.r3{width:230px;height:90px;margin:9px 0}
+.r3 img{width:230px;height:90px}
+.r4 ul{ height:31px;clear:both}
+.r4 ul img{width:75px;height:30px}
+.r4 li{height:31px;width:76px;float:left;background:#f3f3f3; text-align:center}
+
+
+.b{ text-align:center;margin-bottom:29px}
+.b a{margin:0 5px}
+.bb img{ height:40px;width:112px;margin:9px 0}

@@ -1,0 +1,16 @@
+<meta http-equiv="content-type" content="text/html; charset=gb2312">SET&nbsp;QUOTED_IDENTIFIER&nbsp;ON&nbsp;<BR>GO<BR>SET&nbsp;ANSI_NULLS&nbsp;ON&nbsp;<BR>GO
+<P></P>
+<P>if&nbsp;exists&nbsp;(select&nbsp;*&nbsp;from&nbsp;dbo.sysobjects&nbsp;where&nbsp;id&nbsp;=&nbsp;object_id(N'[dbo].[sp_drop_table]')&nbsp;and&nbsp;OBJECTPROPERTY(id,&nbsp;N'IsProcedure')&nbsp;=&nbsp;1)<BR>drop&nbsp;procedure&nbsp;[dbo].[sp_drop_table]<BR>GO</P>
+<P></P>
+<P></P>
+<P></P>
+<P><BR>CREATE&nbsp;PROCEDURE&nbsp;sp_drop_table<BR>&nbsp;@table_name&nbsp;nvarchar(128)&nbsp;/***Table&nbsp;to&nbsp;drop***/<BR>AS<BR>/****CREATED&nbsp;BY&nbsp;JASON&nbsp;BOHANON****/<BR>/****QUESTIONS,&nbsp;PLEASE&nbsp;EMAIL&nbsp;j_bohanon@msn.com****/</P>
+<P>/***&nbsp;&nbsp;This&nbsp;procedure&nbsp;will&nbsp;accept&nbsp;a&nbsp;table&nbsp;name&nbsp;and&nbsp;drop&nbsp;<BR>&nbsp;all&nbsp;constraints&nbsp;on&nbsp;the&nbsp;table&nbsp;before&nbsp;executing&nbsp;<BR>&nbsp;a&nbsp;DROP&nbsp;TABLE&nbsp;command.&nbsp;&nbsp;&nbsp;&nbsp;***/<BR>SET&nbsp;NOCOUNT&nbsp;ON<BR>DECLARE&nbsp;<BR>&nbsp;@alter_table1&nbsp;nvarchar(4000),<BR>&nbsp;@key_name&nbsp;nvarchar(128),&nbsp;<BR>&nbsp;@child_table&nbsp;nvarchar(128),&nbsp;<BR>&nbsp;@drop_table1&nbsp;nvarchar(4000)<BR>&nbsp;</P>
+<P><BR>BEGIN&nbsp;/***CREATE&nbsp;CONSTRAINT&nbsp;DROP&nbsp;SCRIPTS***/<BR>CREATE&nbsp;TABLE&nbsp;#tmp_drop_keys<BR>&nbsp;(<BR>&nbsp;key_name&nbsp;nvarchar(128)&nbsp;COLLATE&nbsp;database_default,&nbsp;<BR>&nbsp;child_table&nbsp;nvarchar(128)&nbsp;COLLATE&nbsp;database_default,&nbsp;<BR>&nbsp;used&nbsp;bit<BR>&nbsp;)<BR>&nbsp;INSERT&nbsp;INTO&nbsp;#tmp_drop_keys<BR>&nbsp;&nbsp;(<BR>&nbsp;&nbsp;key_name,&nbsp;<BR>&nbsp;&nbsp;child_table,&nbsp;<BR>&nbsp;&nbsp;used<BR>&nbsp;&nbsp;)<BR>&nbsp;SELECT&nbsp;<BR>&nbsp;&nbsp;d.name,<BR>&nbsp;&nbsp;c.name,&nbsp;&nbsp;<BR>&nbsp;&nbsp;0<BR>&nbsp;FROM&nbsp;<BR>&nbsp;&nbsp;sysobjects&nbsp;a&nbsp;<BR>&nbsp;&nbsp;JOIN&nbsp;sysforeignkeys&nbsp;b<BR>&nbsp;&nbsp;&nbsp;on&nbsp;a.id&nbsp;=&nbsp;b.rkeyid&nbsp;<BR>&nbsp;&nbsp;JOIN&nbsp;sysobjects&nbsp;c<BR>&nbsp;&nbsp;&nbsp;on&nbsp;c.id&nbsp;=&nbsp;b.fkeyid<BR>&nbsp;&nbsp;JOIN&nbsp;sysobjects&nbsp;d<BR>&nbsp;&nbsp;&nbsp;on&nbsp;d.id&nbsp;=&nbsp;b.constid<BR>&nbsp;WHERE&nbsp;<BR>&nbsp;&nbsp;a.name&nbsp;=&nbsp;@table_name&nbsp;</P>
+<P>WHILE&nbsp;EXISTS&nbsp;(SELECT&nbsp;*&nbsp;FROM&nbsp;#tmp_drop_keys&nbsp;WHERE&nbsp;used&nbsp;=&nbsp;0)<BR>BEGIN<BR>&nbsp;SELECT&nbsp;TOP&nbsp;1&nbsp;<BR>&nbsp;&nbsp;@key_name&nbsp;=&nbsp;key_name,&nbsp;<BR>&nbsp;&nbsp;@child_table&nbsp;=&nbsp;child_table<BR>&nbsp;FROM&nbsp;<BR>&nbsp;&nbsp;#tmp_drop_keys<BR>&nbsp;WHERE&nbsp;<BR>&nbsp;&nbsp;used&nbsp;=&nbsp;0</P>
+<P>&nbsp;SELECT&nbsp;@alter_table1&nbsp;=&nbsp;<BR>&nbsp;&nbsp;&nbsp;&nbsp;'&nbsp;ALTER&nbsp;TABLE&nbsp;'&nbsp;+&nbsp;@child_table&nbsp;+&nbsp;<BR>&nbsp;&nbsp;&nbsp;&nbsp;'&nbsp;DROP&nbsp;CONSTRAINT&nbsp;'&nbsp;+&nbsp;@key_name</P>
+<P>&nbsp;EXEC&nbsp;(@alter_table1)</P>
+<P><BR>&nbsp;&nbsp;UPDATE&nbsp;<BR>&nbsp;&nbsp;&nbsp;#tmp_drop_keys<BR>&nbsp;&nbsp;SET&nbsp;<BR>&nbsp;&nbsp;&nbsp;used&nbsp;=&nbsp;1<BR>&nbsp;&nbsp;WHERE&nbsp;<BR>&nbsp;&nbsp;&nbsp;key_name&nbsp;=&nbsp;@key_name<BR>END<BR>SELECT&nbsp;@drop_table1&nbsp;=&nbsp;'DROP&nbsp;TABLE&nbsp;'&nbsp;+&nbsp;@table_name<BR>EXEC&nbsp;(@drop_table1)</P>
+<P>END</P>
+<P></P>
+<P><BR>GO<BR>SET&nbsp;QUOTED_IDENTIFIER&nbsp;OFF&nbsp;<BR>GO<BR>SET&nbsp;ANSI_NULLS&nbsp;ON&nbsp;<BR>GO<BR></P>

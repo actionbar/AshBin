@@ -1,0 +1,6 @@
+<meta http-equiv="content-type" content="text/html; charset=gb2312">//bde要设置blobsize否则存进去,读不出来完整<BR>数据库SQL&nbsp;Server，存放文件的字段类型Image<BR>Create&nbsp;Table&nbsp;MyTable<BR>(<BR>FileName&nbsp;VarChar(20),<BR>FileSource&nbsp;Image<BR>)<BR>存放文件到数据库
+<P></P>
+<P>var&nbsp;FileName&nbsp;:String;<BR>FileName&nbsp;:=&nbsp;ExtractFileName(OpenDialog1.FileName);<BR>with&nbsp;Query&nbsp;do<BR>begin&nbsp;<BR>&nbsp;Close;&nbsp;<BR>&nbsp;Sql.Clear;&nbsp;&nbsp;<BR>Sql.Add('INSERT&nbsp;INTO&nbsp;MyTable&nbsp;valueS&nbsp;(:FileName,:FileSource)');&nbsp;<BR>&nbsp;ParamByName('FileName').AsString&nbsp;:=&nbsp;FileName;&nbsp;<BR>&nbsp;ParamByName('FileSource').LoadFromFile(OpenDialog1.FileName,ftBolob);&nbsp;<BR>&nbsp;ExecSQL;<BR>end;</P>
+<P></P>
+<P>从数据库中取出文件</P>
+<P>var&nbsp;FileName&nbsp;:String;<BR>begin&nbsp;<BR>&nbsp;with&nbsp;Query&nbsp;do&nbsp;&nbsp;<BR>begin&nbsp;&nbsp;&nbsp;<BR>&nbsp;Close;&nbsp;&nbsp;&nbsp;<BR>&nbsp;Sql.Clear;&nbsp;&nbsp;<BR>&nbsp;&nbsp;Sql.Add('SELECT&nbsp;*&nbsp;FROM&nbsp;MyTable&nbsp;WHERE&nbsp;FileName&nbsp;=&nbsp;'?'');&nbsp;&nbsp;&nbsp;<BR>&nbsp;Open;&nbsp;&nbsp;&nbsp;&nbsp;FileName&nbsp;:=&nbsp;'c:\'+FieldByName('FileName').AsString;&nbsp;&nbsp;&nbsp;<BR>&nbsp;(FieldByName('FileSource')&nbsp;AS&nbsp;TBlobField).SaveToFile(FileName);&nbsp;&nbsp;<BR>end;<BR>end;<BR></P>

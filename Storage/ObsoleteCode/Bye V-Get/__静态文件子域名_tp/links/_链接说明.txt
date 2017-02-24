@@ -1,0 +1,7 @@
+要对  %2f 再次 urlencode
+http://tp.v-get.com/links/e.v-get.com%252ftech%252fprogrammer_1.html.gif
+程序猿的悲剧
+
+采用这种方法可以获得图片的友链网址
+
+每个网址对应的图是唯一的，高度宽度友链者自己改，默认所有高度都是165x40px

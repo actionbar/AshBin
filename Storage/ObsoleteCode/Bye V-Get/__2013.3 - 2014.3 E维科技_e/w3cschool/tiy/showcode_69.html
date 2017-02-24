@@ -1,0 +1,20 @@
+<html>
+<head><link rel="stylesheet" type="text/css" href="showcode.css" /></head>
+<body>
+<pre>
+&lt;html&gt;
+&lt;body&gt;
+<code class="aspcode">&lt;%
+Dim fs,d,n
+Set fs=Server.CreateObject(&#34;Scripting.FileSystemObject&#34;)
+Set d=fs.GetDrive(&#34;c:&#34;)
+n = &#34;驱动器：&#34; & d
+n = n & &#34;&lt;br&gt;以字节计的总容量：&#34; & d.TotalSize
+Response.Write(n)
+set d=nothing
+set fs=nothing
+%&gt;</code>
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+</body>

@@ -1,0 +1,19 @@
+<html>
+<head><link rel="stylesheet" type="text/css" href="showcode.css" /></head>
+<body>
+<pre>
+&lt;html&gt;
+&lt;body&gt;
+<code class="aspcode">&lt;%  
+response.write(&#34;&lt;p&gt;&#34;)
+response.write(&#34;默认 Timeout 是：&#34; & Session.Timeout & &#34; 分钟。&#34;)
+response.write(&#34;&lt;/p&gt;&#34;)
+Session.Timeout=30
+response.write(&#34;&lt;p&gt;&#34;)
+response.write(&#34;现在的 Timeout 是 &#34; & Session.Timeout & &#34; 分钟。&#34;)
+response.write(&#34;&lt;/p&gt;&#34;)
+%&gt;</code>
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+</body>

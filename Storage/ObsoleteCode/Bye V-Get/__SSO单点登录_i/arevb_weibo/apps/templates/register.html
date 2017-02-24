@@ -1,0 +1,100 @@
+{template header}
+
+<form action="{eval echo miniurl('register');}" method="post" id="loginform">
+	<table class="formtable" cellspacing="2" cellpadding="0">
+		<caption>
+			<h2>注册本站帐号</h2>
+			<p>请完整填写以下信息进行注册。</p><p>注册完成后，该帐号将作为您在本站的通行帐号，您可以享受本站提供的各种服务。</p>
+		</caption>
+	</table>
+	<div class="upax"></div>
+	<div class="ugb">
+		<div class="ugb2">
+			<div class="ugb3">
+				<div class="ugb4">
+					<table class="formtable" cellspacing="6">
+						<tr>
+							<td width="15%" align="right">验证码:</td>
+							<td>
+								<img id="sec_img" src="{eval echo miniurl('seccode').'?hash='.random(6, 1);}" />
+								<p>
+									请计算图中数字，看不清可以<a href="javascript:;" onclick="chgSec();">更换一张</a>
+								</p>
+								<input type="text" class="inp" size="40" name="seccode" value="{$seccode}" />
+							</td>
+						</tr>
+						<tr>
+							<td width="15%" align="right">用户名:</td>
+							<td>
+								<input type="text" class="inp" size="40" name="username" value="{$username}" />
+							</td>
+						</tr>
+						<tr>
+							<td width="15%" align="right">密码:</td>
+							<td>
+								<input type="password" class="inp" size="40" name="password" />
+							</td>
+						</tr>
+						<tr>
+							<td width="15%" align="right">确认密码:</td>
+							<td>
+								<input type="password" class="inp" size="40" name="repassword" />
+							</td>
+						</tr>
+						<tr>
+							<td width="15%" align="right">Email:</td>
+							<td>
+								<input type="text" class="inp" size="40" name="email" value="{$email}" />
+								<p>
+									请准确填入您的邮箱，在忘记密码，或者您使用邮件通知功能时，会发送邮件到该邮箱。
+								</p>
+							</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>
+								<input type="submit" value="注 册" class="btn" />
+								<p>
+									<!--{if $error_message}--><div style="color:red">{$error_message}</div><!--{/if}-->
+								</p>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+	<input type="hidden" name="submit_post" value="1" />
+</form>
+<div style="height:20px;"></div>
+<table class="formtable">
+	<caption>
+		<h2>还没有注册吗？</h2>
+		<p>如果还没有本站的通行帐号，请先注册一个属于自己的帐号吧。</p>
+	</caption>
+</table>
+<div class="upax"></div>
+<div class="ugb">
+	<div class="ugb2">
+		<div class="ugb3">
+			<div class="ugb4">
+				<table class="formtable" cellspacing="6">
+					<tr>
+						<td width="15%" align="right"></td>
+						<td>
+							<input type="button" value="登 录" class="btn" onclick="location.href='{eval echo miniurl('login');}';" />
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+function chgSec()
+{
+	$("#sec_img").attr("src", "{eval echo miniurl('seccode/new?hash=');}"+Math.random());
+}
+</script>
+{template footer}

@@ -1,0 +1,162 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
+        "http://www.w3.org/TR/1998/REC-html40-19980424/loose.dtd">
+<html lang="cs">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+	<title>网页配色方案创建工具二 - 自由编辑</title>
+	<link rel="stylesheet" href="stylfree.css" type="text/css">
+<script type="text/javascript" src="colorblind.js"></script>
+<script type="text/javascript">
+<!--
+
+function objGet(x) {
+	if (typeof x != 'string') return x;
+	else if (Boolean(document.getElementById)) return document.getElementById(x);
+	else if (Boolean(document.all)) return eval('document.all.'+x);
+	else return null;
+}
+
+function objSetStyle (obj,prop,val) {
+	var o = objGet(obj);
+	if (o && o.style) {
+		eval ('o.style.'+prop+'="'+val+'"');
+		return true;
+		}
+	else return false;
+	}
+
+function objDisplay (obj,on,type) {
+	if (on && !type) type = 'block';
+	return objSetStyle(obj,'display',(on) ? type:'none');
+	}
+
+function dec2hex(n) {
+	var s = n.toString(16);
+	if (s.length<2) s = '0'+s;
+	return s.toUpperCase();
+	}
+function hex2dec(n) {
+	return parseInt(n,16);
+	}
+function col2Gray(r,g,b) {
+	var lum = Math.round( r*0.299 + g*0.587 + b*0.114 );
+	return dec2hex(lum)+dec2hex(lum)+dec2hex(lum);
+	}
+
+function getFormValue(name) { return objGet(name).value; }
+function setFormValue(name,val) { objGet(name).value = val; }
+
+function switchBlindlessMode() {
+	colorblindMode = getFormValue('cbmodeswitcher');
+	drawAllSamples();
+	}
+
+function setColor(n) {
+	o = objGet('color'+n);
+	c = getFormValue('color'+n+'val');
+	if (!c.match('[0-9a-fA-F]{6}')) alert('Chybna hodnota!');
+	else {
+		if (colorblindMode) {
+			r = hex2dec(c.substr(0,2));
+			g = hex2dec(c.substr(2,2));
+			b = hex2dec(c.substr(4,2));
+			if (colorblindMode==7) c = col2Gray(r,g,b);
+			else c = getColorBlindColor(r,g,b,colorblindMode);
+			}
+		color[n] = c;
+		}
+	}
+
+function drawSample(n) {
+	setColor(n);
+	objSetStyle('color'+n,'background','#'+color[n]);
+	objSetStyle('color'+n+'v','background','#'+color[n]);
+	for (var i=0;i<4;i++) objSetStyle('txt'+i+''+n,'color','#'+color[n]);
+	}
+function drawAllSamples() {
+	for (var i=0;i<4;i++) drawSample(i);
+	}
+
+var color = new Array(4);
+var colorblindMode = '';
+
+window.onload = Init;
+function Init() {
+	drawAllSamples();
+	}
+
+//-->
+</script>
+
+</head>
+
+<body>
+
+<div class="center">
+
+<div id="colsample">
+	<div id="color0">
+		<div id="txt00">Test Text</div>
+		<div id="txt01">Test Text</div>
+		<div id="txt02">Test Text</div>
+		<div id="txt03">Test Text</div>
+	</div>
+	<div id="color1">
+		<div id="txt10">Test Text</div>
+		<div id="txt11">Test Text</div>
+		<div id="txt12">Test Text</div>
+		<div id="txt13">Test Text</div>
+	</div>
+	<div id="color2">
+		<div id="txt20">Test Text</div>
+		<div id="txt21">Test Text</div>
+		<div id="txt22">Test Text</div>
+		<div id="txt23">Test Text</div>
+	</div>
+	<div id="color3">
+		<div id="txt30">Test Text</div>
+		<div id="txt31">Test Text</div>
+		<div id="txt32">Test Text</div>
+		<div id="txt33">Test Text</div>
+	</div>
+	<div id="color0v"></div>
+	<div id="color1v"></div>
+	<div id="color2v"></div>
+	<div id="color3v"></div>
+	<div id="colorBW"></div>
+	<div id="textBlack">黑色文本</div>
+	<div id="textWhite">白色文本</div>
+
+	<input id='color0val' type='text' value='FF8000' size='8' maxlength='6' onchange='drawSample(0)' />
+	<input id='color1val' type='text' value='0066B2' size='8' maxlength='6' onchange='drawSample(1)' />
+	<input id='color2val' type='text' value='FFB200' size='8' maxlength='6' onchange='drawSample(2)' />
+	<input id='color3val' type='text' value='2E2EB2' size='8' maxlength='6' onchange='drawSample(3)' />
+
+</div>
+</div>
+
+<form>
+  <span class="center odstup">
+  <SELECT name="select" id=cbmodeswitcher onchange=switchBlindlessMode()>
+    <OPTION value="" selected>&#27491;&#24120;&#33394;&#35273; (&#32422;&#21344;&#24635;&#20154;&#21475;&#30340;85.5 %)</OPTION>
+    <OPTION value=1>&#32418;&#33394;&#30450; (1 
+      % &#30340;&#30007;&#24615;)</OPTION>
+    <OPTION value=2>&#32511;&#33394;&#30450; (1 % &#30340;&#30007;&#24615;)</OPTION>
+    <OPTION value=3>&#34013;&#33394;&#30450; 
+      (&#32422;&#21344;&#24635;&#20154;&#21475;&#30340; 0.003 %)</OPTION>
+    <OPTION value=4>&#32418;&#33394;&#24369;(1 % &#30007;&#24615;)</OPTION>
+    <OPTION 
+  value=5>&#32511;&#33394;&#24369;(5 % &#30340;&#30007;&#24615;, 0.4 % &#30340;&#22899;&#24615;)</OPTION>
+    <OPTION value=6>&#34013;&#33394;&#24369;(&#20960;&#20046;&#20026; 0 %)</OPTION>
+    <OPTION value=7>&#20840;&#33394;&#30450;(&#20154;&#21475;&#30340;0.005%)</OPTION>
+    <OPTION value=8>&#38750;&#20856;&#22411;&#20840;&#33394;&#30450;</OPTION>
+  </SELECT>
+  </span>
+  <p><a href="c2.html">返回配色方案</a></p>
+
+</form>
+
+
+
+</body>
+</html>

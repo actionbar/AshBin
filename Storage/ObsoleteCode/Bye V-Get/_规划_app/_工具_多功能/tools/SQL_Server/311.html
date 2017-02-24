@@ -1,0 +1,126 @@
+<meta http-equiv="content-type" content="text/html; charset=gb2312"><B>sqldmo</B> 
+<P class=content style="MARGIN: 4px 2px 0px">unit 
+setup;<BR><BR>interface<BR><BR>uses<BR>&nbsp;Windows, Messages, SysUtils, 
+Variants, Classes, Graphics, Controls, Forms,<BR>&nbsp;Dialogs, StdCtrls, 
+Buttons, ComCtrls, ExtCtrls,shellapi,registry;<BR><BR>type<BR>&nbsp;TSetup_F = 
+class(TForm)<BR>&nbsp; &nbsp;Panel1: TPanel;<BR>&nbsp; &nbsp;Label1: 
+TLabel;<BR>&nbsp; &nbsp;EdtSrv: TEdit;<BR>&nbsp; &nbsp;Label2: TLabel;<BR>&nbsp; 
+&nbsp;edtuser: TEdit;<BR>&nbsp; &nbsp;Label3: TLabel;<BR>&nbsp; &nbsp;Edit3: 
+TEdit;<BR>&nbsp; &nbsp;Label4: TLabel;<BR>&nbsp; &nbsp;EdtDbname: 
+TEdit;<BR>&nbsp; &nbsp;StatusBar1: TStatusBar;<BR>&nbsp; &nbsp;Label5: 
+TLabel;<BR>&nbsp; &nbsp;EdtFilename: TEdit;<BR>&nbsp; &nbsp;BitBtn3: 
+TBitBtn;<BR>&nbsp; &nbsp;OpenDialog1: TOpenDialog;<BR>&nbsp; &nbsp;Label6: 
+TLabel;<BR>&nbsp; &nbsp;Edtlogin: TEdit;<BR>&nbsp; &nbsp;Panel2: 
+TPanel;<BR>&nbsp; &nbsp;BitBtn1: TBitBtn;<BR>&nbsp; &nbsp;BitBtn2: 
+TBitBtn;<BR>&nbsp; &nbsp;procedure BitBtn1Click(Sender: TObject);<BR>&nbsp; 
+&nbsp;procedure BitBtn3Click(Sender: TObject);<BR>&nbsp;private<BR>&nbsp; 
+&nbsp;{ Private declarations }<BR>&nbsp; &nbsp;procedure 
+initsqlserver;<BR>&nbsp; &nbsp;procedure setup;<BR>&nbsp; &nbsp;procedure 
+shinklog;<BR>&nbsp; &nbsp;function isnt:boolean;<BR>&nbsp; &nbsp;function 
+isexistsmssql:boolean;<BR>&nbsp; &nbsp;function 
+startmssql(pass:string):boolean;<BR>&nbsp;public<BR>&nbsp; &nbsp;{ Public 
+declarations }<BR>&nbsp;end;<BR><BR>var<BR>&nbsp;Setup_F: 
+TSetup_F;<BR><BR>implementation<BR>uses &nbsp; SQLDMO_TLB 
+;<BR>var<BR>&nbsp;SQLServer : _SQLServer;<BR>&nbsp;SQLRestore : 
+_Restore;<BR>&nbsp;SQLDatabase : _Database;<BR>&nbsp;SQLApplication : 
+_Application;<BR>&nbsp;SQLLogin : _Login;<BR>&nbsp;SQLUser : 
+_User;<BR>&nbsp;isexists:boolean=false;<BR>{$R *.dfm}<BR><BR>procedure 
+TSetup_F.BitBtn1Click(Sender: TObject);<BR>begin<BR>{ if isexistsmssql 
+then<BR>&nbsp; if startmssql('') then<BR>&nbsp; &nbsp; 
+showmessage('ok');<BR>}<BR>&nbsp;initsqlserver;<BR>&nbsp;setup;<BR>end;<BR><BR>procedure 
+TSetup_F.initsqlserver;<BR>//&amp;sup3;&amp;otilde;&amp;Ecirc;&amp;frac14;&amp;raquo;&amp;macr;,&amp;frac14;ì&amp;sup2;é&amp;Ecirc;&amp;Ccedil;·&amp;ntilde;°&amp;sup2;×°sqlserver<BR>begin<BR>&nbsp;try<BR>&nbsp; 
+&nbsp;SQLServer := coSQLServer.Create;<BR>&nbsp; &nbsp;SQLRestore := 
+coRestore.Create;<BR>&nbsp; &nbsp;SQLDatabase := coDatabase.Create; ;<BR>&nbsp; 
+&nbsp;SQLApplication := coApplication.Create;<BR>&nbsp; &nbsp;SQLLogin := 
+coLogin.Create;<BR>&nbsp; &nbsp;SQLUser := 
+coUser.Create;<BR>&nbsp;except<BR>&nbsp; &nbsp;Raise 
+Exception.Create('·&amp;thorn;&amp;Icirc;&amp;ntilde;&amp;AElig;÷&amp;acute;&amp;acute;&amp;frac12;¨&amp;Ecirc;§°&amp;Uuml;,&amp;Ccedil;&amp;aring;&amp;Egrave;·&amp;para;¨&amp;Auml;ú&amp;micro;&amp;Auml;&amp;frac14;&amp;AElig;&amp;Euml;&amp;atilde;&amp;raquo;ú&amp;Eacute;&amp;Iuml;&amp;Ecirc;&amp;Ccedil;·&amp;ntilde;&amp;Ograve;&amp;Ntilde;°&amp;sup2;×°&amp;ordm;&amp;Atilde;SQL 
+Server&amp;Ecirc;&amp;yacute;&amp;frac34;&amp;Yacute;&amp;iquest;&amp;acirc;&amp;sup3;&amp;Igrave;&amp;ETH;ò!');<BR>&nbsp; 
+Close;<BR>end;<BR><BR>end;<BR><BR>procedure 
+TSetup_F.setup;<BR>var<BR>&nbsp;i,j,index:integer;<BR>&nbsp;sfilename:string;<BR>&nbsp;owner:variant;<BR>&nbsp;DBUserIsExists:boolean;<BR>begin<BR>&nbsp;if 
+FileExists(edtfilename.Text) then 
+//&amp;Aring;&amp;ETH;&amp;para;&amp;Iuml;±&amp;cedil;·&amp;Yacute;°ü&amp;Ecirc;&amp;Ccedil;·&amp;ntilde;&amp;acute;&amp;aelig;&amp;Ocirc;&amp;Uacute;<BR>&nbsp; 
+&nbsp;sFileName := edtfilename.Text<BR>&nbsp;else<BR>&nbsp;begin<BR>&nbsp; 
+&nbsp;MessageBox(Handle,'&amp;Ouml;&amp;cedil;&amp;para;¨&amp;micro;&amp;Auml;&amp;Ecirc;&amp;yacute;&amp;frac34;&amp;Yacute;&amp;iquest;&amp;acirc;°&amp;sup2;×°°ü&amp;Icirc;&amp;Auml;&amp;frac14;&amp;thorn;&amp;sup2;&amp;raquo;&amp;acute;&amp;aelig;&amp;Ocirc;&amp;Uacute;&amp;pound;&amp;not;&amp;Ccedil;&amp;euml;&amp;Ouml;&amp;Oslash;&amp;ETH;&amp;Acirc;&amp;Ouml;&amp;cedil;&amp;para;¨','&amp;Igrave;á&amp;Ecirc;&amp;frac34;',MB_OK 
+or MB_ICONINFORMATION);<BR>&nbsp; &nbsp;edtfilename.SetFocus;<BR>&nbsp; 
+&nbsp;exit;<BR>&nbsp;end;<BR><BR>&nbsp;SQLRestore.Database := edtdbname.Text; 
+//sDatabaseName;<BR>&nbsp;SQLRestore.ReplaceDatabase := 
+true;<BR>&nbsp;SQLRestore.Action := 
+SQLDMORestore_Database;<BR>&nbsp;SQLRestore.Files := 
+ExtractShortPathName(sFileName);<BR><BR>&nbsp;//&amp;Aacute;&amp;not;&amp;frac12;&amp;Oacute;&amp;Ecirc;&amp;yacute;&amp;frac34;&amp;Yacute;&amp;iquest;&amp;acirc;<BR><BR>&nbsp;SQLServer.Connect(Edtsrv.Text,'sa',emptyparam);<BR>&nbsp;Screen.Cursor 
+:= crHourGlass;<BR>&nbsp;try<BR>&nbsp; 
+&nbsp;StatusBar1.Panels[0].Text:='&amp;Otilde;&amp;yacute;&amp;Ocirc;&amp;Uacute;°&amp;sup2;×°&amp;Ecirc;&amp;yacute;&amp;frac34;&amp;Yacute;&amp;iquest;&amp;acirc;&amp;pound;&amp;not;&amp;Ccedil;&amp;euml;&amp;Eacute;&amp;Ocirc;&amp;ordm;ò&amp;iexcl;¤&amp;iexcl;¤&amp;iexcl;¤';<BR>&nbsp;try<BR>&nbsp; 
+&nbsp;SQLRestore.SQLRestore(SQLServer); 
+//&amp;raquo;&amp;Ouml;&amp;cedil;&amp;acute;&amp;Ecirc;&amp;yacute;&amp;frac34;&amp;Yacute;&amp;iquest;&amp;acirc;<BR>&nbsp;except<BR>&nbsp; 
+&nbsp;MessageBox(Handle,'&amp;raquo;&amp;Ouml;&amp;cedil;&amp;acute;&amp;Ecirc;&amp;yacute;&amp;frac34;&amp;Yacute;&amp;iquest;&amp;acirc;&amp;Ecirc;§°&amp;Uuml;','&amp;acute;í&amp;Icirc;ó',MB_OK 
+or MB_ICONSTOP);<BR>&nbsp; &nbsp;exit;<BR>&nbsp;end;<BR>&nbsp;SQLUser.Name 
+:=edtuser.Text; &nbsp;//sDBUserName;<BR>&nbsp;SQLUser.Login :=Edtlogin.Text;// 
+sLoginName;<BR>&nbsp;SQLUser.Role := 'db_owner';<BR><BR><BR>DBUserIsExists := 
+false;<BR>&nbsp;for i := 1 to SQLServer.Databases.Count 
+do<BR>&nbsp;begin<BR>&nbsp; &nbsp;Owner := '';<BR>&nbsp; &nbsp;Index := 
+i;<BR>&nbsp; &nbsp;if UpperCase(SQLServer.Databases.Item(Index,Owner).Name) = 
+UpperCase(edtdbName.Text) then<BR>&nbsp; &nbsp;begin<BR>&nbsp; &nbsp; &nbsp;for 
+j := 1 to SQLServer.Databases.Item(i,Owner).Users.Count do<BR>&nbsp; &nbsp; 
+&nbsp;begin<BR>&nbsp; &nbsp; &nbsp; 
+&nbsp;showmessage(SQLServer.Databases.Item(i,Owner).Users.Item(j).Name);<BR>&nbsp; 
+&nbsp; &nbsp; &nbsp;if SQLServer.Databases.Item(i,Owner).Users.Item(j).Name 
+=edtuser.Text then<BR>&nbsp; &nbsp; &nbsp; &nbsp;begin<BR>&nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp;DBUserIsExists := true;<BR>&nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp;break;<BR>&nbsp; &nbsp; &nbsp; &nbsp;end;<BR>&nbsp; &nbsp; &nbsp; 
+end;<BR>&nbsp; &nbsp; &nbsp;// if not DBUserIsExists then<BR>&nbsp; &nbsp; 
+&nbsp;// &nbsp; SQLServer.Databases.Item(i,Owner).Users.Add(sqluser);<BR>&nbsp; 
+&nbsp; &nbsp;// &nbsp; showmessage(string(sqluser));<BR>&nbsp; 
+&nbsp;end;<BR>&nbsp;end;<BR>&nbsp;finally<BR>&nbsp; &nbsp;Screen.Cursor := 
+crDefault;<BR>&nbsp; 
+&nbsp;SQLServer.DisConnect;<BR>&nbsp;end;<BR>&nbsp;StatusBar1.Panels[0].Text:='°&amp;sup2;×°&amp;Iacute;ê&amp;sup3;&amp;Eacute;!';<BR>end;<BR><BR>procedure 
+TSetup_F.BitBtn3Click(Sender: TObject);<BR>begin<BR>&nbsp;if OpenDialog1.Execute 
+then<BR>&nbsp;begin<BR>&nbsp; 
+&nbsp;EdtFilename.Text:=OpenDialog1.FileName;<BR>&nbsp;end;<BR>end;<BR><BR>procedure 
+TSetup_F.shinklog;<BR>var<BR>&nbsp;svr : _SQLServer;<BR>&nbsp;dbs : Databases 
+;<BR>&nbsp;db : _Database ;<BR><BR>&nbsp;tlog : TransactionLog ;<BR>&nbsp;logs : 
+LogFiles ;<BR>&nbsp;log : _LogFile ;<BR>&nbsp;i : integer ;<BR>&nbsp;p : 
+ProPerty_ ;<BR>begin<BR>&nbsp;svr := CoSQLServer.Create() 
+;<BR>&nbsp;svr.Connect('BRUCE', 'sa', EmptyParam);<BR>&nbsp;// 
+&amp;Aacute;&amp;not;&amp;frac12;&amp;Oacute;&amp;micro;&amp;frac12;SQL 
+Server&amp;Ecirc;&amp;yacute;&amp;frac34;&amp;Yacute;&amp;iquest;&amp;acirc;<BR>&nbsp;// 
+&amp;sup2;&amp;Icirc;&amp;Ecirc;&amp;yacute;: _SQLServer.Connect(&amp;Server 
+Name&amp;, &amp;User name&amp;, &amp;password&amp;) ;<BR><BR>&nbsp;dbs := 
+svr.Databases ;<BR>&nbsp;for i := 1 to dbs.Count do<BR>&nbsp;begin<BR>&nbsp; 
+&nbsp;if (dbs.ItemByID(i).Name = 'DFW') then<BR>&nbsp; &nbsp;begin<BR>&nbsp; 
+&nbsp; &nbsp;db := dbs.ItemByID(i) ;<BR>&nbsp; &nbsp; &nbsp;break ;<BR>&nbsp; 
+&nbsp;end;<BR>&nbsp;end;<BR>// &amp;acute;&amp;Oacute;SQL 
+Server&amp;Ouml;&amp;ETH;&amp;Ntilde;&amp;iexcl;&amp;Ocirc;&amp;ntilde;&amp;Atilde;&amp;ucirc;×&amp;Ouml;&amp;Icirc;&amp;ordf;DFW&amp;micro;&amp;Auml;Database&amp;para;&amp;Ocirc;&amp;Iuml;ó 
+- db<BR><BR>&nbsp;tlog := db.TransactionLog ;<BR>&nbsp;logs := tlog.LogFiles 
+;<BR>// 
+&amp;acute;&amp;Oacute;_Database&amp;para;&amp;Ocirc;&amp;Iuml;ó&amp;raquo;&amp;ntilde;&amp;micro;&amp;Atilde;LogFiles&amp;para;&amp;Ocirc;&amp;Iuml;ó<BR><BR>&nbsp;for 
+i:= 1 to logs.Count do<BR>&nbsp;begin<BR>&nbsp; &nbsp;if (logs.Item(i).Name = 
+'DFW_log') then<BR>&nbsp; &nbsp;begin<BR>&nbsp; &nbsp; &nbsp;log := logs.Item(i) 
+;<BR>&nbsp; &nbsp; &nbsp; break ;<BR>&nbsp; &nbsp;end;<BR>&nbsp;end;<BR>// 
+&amp;acute;&amp;Oacute;LogFiles&amp;para;&amp;Ocirc;&amp;Iuml;ó&amp;Ouml;&amp;ETH;&amp;Ntilde;&amp;iexcl;&amp;Egrave;&amp;iexcl;&amp;Atilde;&amp;ucirc;&amp;Icirc;&amp;ordf;DFW_log&amp;micro;&amp;Auml;_LogFile&amp;para;&amp;Ocirc;&amp;Iuml;ó 
+- log<BR><BR>&nbsp;log.Shrink(10, EmptyParam);<BR>// 
+&amp;frac12;&amp;laquo;Log&amp;Icirc;&amp;Auml;&amp;frac14;&amp;thorn;&amp;Ntilde;&amp;sup1;&amp;Euml;&amp;otilde;&amp;micro;&amp;frac12;10M&amp;Ograve;&amp;Ocirc;&amp;Iuml;&amp;Acirc;<BR><BR>&nbsp;svr 
+:= nil ;<BR>end;<BR><BR>function TSetup_F.isnt: 
+boolean;<BR>begin<BR>&nbsp;result:=(win32majorversion&gt;=4) and 
+(win32platform=ver_platform_win32_nt);<BR>end;<BR><BR>function 
+TSetup_F.isexistsmssql: 
+boolean;<BR>const<BR>&nbsp;mssqlserver='software\mircosoft\mssqlserver';<BR>var<BR>&nbsp;reg:tregistry;<BR>begin<BR>&nbsp;result:=isexists;<BR>&nbsp;if 
+result then exit;<BR>&nbsp;if not isnt then<BR>&nbsp; 
+&nbsp;reg:=TRegistry.Create<BR>&nbsp;else<BR>&nbsp; 
+&nbsp;reg:=TRegistry.Create(key_read);<BR>try<BR>&nbsp;with reg 
+do<BR>&nbsp;begin<BR>&nbsp; &nbsp;reg.RootKey:=hkey_local_machine;<BR>&nbsp; 
+&nbsp;result:=keyexists(mssqlserver);<BR>&nbsp; 
+&nbsp;isexists:=result;<BR>&nbsp;end;<BR>&nbsp;finally<BR>&nbsp; 
+&nbsp;free;<BR>&nbsp;end;<BR><BR>end;<BR><BR>function 
+TSetup_F.startmssql(pass:string): 
+boolean;<BR>const<BR>&nbsp;mssql_98startcommand='scm_action 1 
+-pwd%s';<BR>&nbsp;mssql_ntstartcommand='net start 
+mssqlserver';<BR>&nbsp;mmsql_98stopcommand='scm_action 
+6';<BR>&nbsp;mmsql_ntstopcommand='net stop 
+mssqlserver';<BR>var<BR>&nbsp;s:string;<BR>begin<BR>Screen.Cursor:=crHourGlass;<BR>try<BR>&nbsp;if 
+not isnt then<BR>&nbsp; 
+&nbsp;s:=format(mssql_98startcommand,[pass])<BR>&nbsp;else<BR>&nbsp; 
+&nbsp;s:=mssql_ntstartcommand;<BR>&nbsp;try<BR>&nbsp; 
+&nbsp;winexec(pchar(s),SW_HIDE);<BR>&nbsp; 
+&nbsp;result:=true;<BR>&nbsp;except<BR>&nbsp; 
+&nbsp;result:=false;<BR>&nbsp;end;<BR>finally<BR>&nbsp; 
+Screen.Cursor:=crdefault;<BR>end;<BR>end;<BR><BR>end. </P>

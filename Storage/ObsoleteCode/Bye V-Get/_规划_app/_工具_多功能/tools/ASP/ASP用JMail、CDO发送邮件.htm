@@ -1,0 +1,106 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>ASP用JMail、CDO发送邮件</title>
+<style type="text/css">
+<!--
+body {
+	font-size: 10.4pt;
+	line-height: 22px;
+}
+-->
+</style>
+</head>
+
+<body bgcolor="eeeeee" leftmargin="20" marginwidth="20">
+<p><strong>ASP用JMail、CDO发送邮件 </strong></p>
+<hr>
+<p> 　　前一段时间有发过一个简单的JMAIL邮件发邮件的代码，今天就把这个代码做一个具体的注解，并增加了另外两个格式的代码，并举几个简单的例子：<br>
+  　　首先是jmail.smtpmail的核心代码：</p>
+<p>&lt;%<br>
+  Set jmail = Server.CreateObject(&quot;JMAIL.SMTPMail&quot;) '创建一个JMAIL对象<br>
+  jmail.silent = true 'JMAIL不会抛出例外错误，返回的值为FALSE跟TRUE<br>
+  jmail.logging = true '启用使用日志<br>
+  jmail.Charset = &quot;GB2312&quot; '邮件文字的代码为简体中文<br>
+  jmail.ContentType = &quot;text/html&quot; '邮件的格式为HTML的<br>
+  jmail.ServerAddress = &quot;Server Address&quot; '发送邮件的服务器<br>
+  jmail.AddRecipient Email '邮件的收件人<br>
+  jmail.SenderName = &quot;SenderName&quot; '邮件发送者的姓名<br>
+  jmail.Sender = &quot;Email Address&quot; '邮件发送者的邮件地址<br>
+  jmail.Priority = 1 '邮件的紧急程序，1 为最快，5 为最慢， 3 为默认值<br>
+  jmail.Subject = &quot;Mail Subject&quot; '邮件的标题<br>
+  jmail.Body = &quot;Mail Body&quot; '邮件的内容<br>
+  jmail.AddRecipientBCC Email '密件收件人的地址<br>
+  jmail.AddRecipientCC Email '邮件抄送者的地址<br>
+  jmail.Execute() '执行邮件发送<br>
+  jmail.Close '关闭邮件对象<br>
+  %&gt;</p>
+<p>　　w3 Jmail4.3组件重新设计了其内部结构——使用Message对象代替原来的单一对象Jmail.smtpmail发送邮件，有些方法需要身份验证的(如163、yahoo等)，可以用下面的方法解决：<br>
+  &lt;%<br>
+  Set jmail = Server.CreateObject(&quot;JMAIL.Message&quot;) '建立发送邮件的对象<br>
+  jmail.silent = true '屏蔽例外错误，返回FALSE跟TRUE两值j<br>
+  mail.logging = true '启用邮件日志<br>
+  jmail.Charset = &quot;GB2312&quot; '邮件的文字编码为国标<br>
+  jmail.ContentType = &quot;text/html&quot; '邮件的格式为HTML格式<br>
+  jmail.AddRecipient Email '邮件收件人的地址<br>
+  jmail.From = &quot;Email From for Sender&quot; '发件人的E-MAIL地址<br>
+  jmail.MailServerUserName = &quot;UserName of Email&quot; '登录邮件服务器所需的用户名<br>
+  jmail.MailServerPassword = &quot;Password of Email&quot; '登录邮件服务器所需的密码<br>
+  jmail.Subject = &quot;Mail Subject&quot; '邮件的标题 <br>
+  jmail.Body = &quot;Mail Body&quot; '邮件的内容<br>
+  jmail.Prority = 1 '邮件的紧急程序，1 为最快，5 为最慢， 3 为默认值<br>
+  jmail.Send(&quot;Server Address&quot;) '执行邮件发送（通过邮件服务器地址）<br>
+  jmail.Close() '关闭对象<br>
+  %&gt;</p>
+<p>　　再讲一下微软自带的CDONTS组件的发信的方法： </p>
+<p>&lt;%<br>
+  Set cdomail = Server.CreateObject(&quot;CDONTS.NewMail&quot;) '建立邮件对象<br>
+  cdomail.Subject = &quot;Mail Subject&quot; '邮件标题<br>
+  cdomail.From = &quot;Sender's Mail&quot; '发件人的地址<br>
+  cdomail.To = &quot;Email will from&quot; '收件人的地址<br>
+  cdomail.Body = &quot;Mail Body&quot; '邮件的内容<br>
+  cdomail.Send '执行发送<br>
+  %&gt;</p>
+<p>　　这种方法发送邮件是最简单的，同时也带来一定的问题，就是很少有服务器会开这项服务！</p>
+<p><br>
+  　　我们写程序，一般情况下都是说要代码模块化，这样方便维护，同时也方便移植。因此，我在这里将这个发邮件的写成一个子程，在调用的时候可以直接调用（当然，如果你高兴写成函数的话也是可以的，这个主要是看个人兴趣）：</p>
+<p>&lt;%<br>
+  '参数说明<br>
+  'Subject : 邮件标题<br>
+  'MailAddress : 发件服务器的地址,如smtp.163.com<br>
+  'Email : 收件人邮件地址<br>
+  'Sender : 发件人姓名<br>
+  'Content : 邮件内容<br>
+  'Fromer : 发件人的邮件地址</p>
+<p> Sub SendAction(subject, mailaddress, email, sender, content, fromer) <br>
+  Set jmail = Server.CreateObject(&quot;JMAIL.SMTPMail&quot;) '创建一个JMAIL对象<br>
+  jmail.silent = true 'JMAIL不会抛出例外错误，返回的值为FALSE跟TRUE<br>
+  jmail.logging = true '启用使用日志<br>
+  jmail.Charset = &quot;GB2312&quot; '邮件文字的代码为简体中文<br>
+  jmail.ContentType = &quot;text/html&quot; '邮件的格式为HTML的<br>
+  jmail.ServerAddress = mailaddress '发送邮件的服务器<br>
+  jmail.AddRecipient Email '邮件的收件人<br>
+  jmail.SenderName = sender '邮件发送者的姓名<br>
+  jmail.Sender = fromer '邮件发送者的邮件地址<br>
+  jmail.Priority = 1 '邮件的紧急程序，1 为最快，5 为最慢， 3 为默认值<br>
+  jmail.Subject = subject '邮件的标题<br>
+  jmail.Body = content '邮件的内容<br>
+  '由于没有用到密抄跟抄送，这里屏蔽掉这两句，如果您有需要的话，可以在这里恢复<br>
+  'jmail.AddRecipientBCC Email '密件收件人的地址<br>
+  'jmail.AddRecipientCC Email '邮件抄送者的地址<br>
+  jmail.Execute() '执行邮件发送<br>
+  jmail.Close '关闭邮件对象<br>
+  End Sub<br>
+  <br>
+  '调用此Sub的例子<br>
+  Dim strSubject,strEmail,strMailAdress,strSender,strContent,strFromer<br>
+  strSubject = &quot;这是一封用JMAIL发送的测试邮件&quot;<br>
+  strContent = &quot;JMail组件发送测试成功！&quot;<br>
+  strEmail = &quot;runbing@eyou.com&quot;<br>
+  strFromer = &quot;runbing@eyou.com&quot;<br>
+  strMailAddress = &quot;mail.ubbcn.com&quot;</p>
+<p></p>
+<p></p>
+</body>
+</html>

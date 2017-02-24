@@ -1,0 +1,66 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>Flash和Asp数据库的结合应用</title>
+<style type="text/css">
+<!--
+body {
+	font-size: 10.4pt;
+	line-height: 22px;
+}
+-->
+</style>
+</head>
+
+<body bgcolor="eeeeee" leftmargin="20" marginwidth="20">
+<p><strong>Flash和Asp数据库的结合应用</strong></p>
+<hr>
+<p> 　　在看这个例子之前，先讲讲Flash和Asp结合的原理，其实懂一点ASP的朋友都知道ASP是基于HTML的. <br>
+  　　其实Flash和Asp接口的原理和纯ASP文件之间交互的原理是一样的,简单地说就是页面之间的数据交换。了解了这一点之后，我们来看看下面这个简单的例子： 
+  <br>
+  　　这个例子是把ACCESS内的数据读出来，并在Flash内显示出来。这个例子一共有三个主要文件，一个是ACCESS的数据库文件employees.mdb，它有一个employees表，有四个字段：ID，Namelast，Lastname，Position。 
+</p>
+<p>　　现在我们就来看看这个例子的制作过程吧。第一个影帧，ACTION是stop，有一个供用户输入查询字段的文本框：strSearch，一个按钮：submit，它的ACTION是 
+</p>
+<p>　　于 (放开) </p>
+<p>　　　跳至并播放 (2) </p>
+<p>　　退出于 </p>
+<p>　　第二个影帧的ACTION是：载入参数 (&quot;employee.asp&quot;, 0, vars=GET) </p>
+<p>　　这个ACTION的作用是通过ASP文件把ACCESS数据库内符合用户查询条件的数据读出来。 </p>
+<p><br>
+  　　第三个影帧的ACTION是： </p>
+<p>　　如果(NameFirst ne &quot;&quot;) </p>
+<p>　　　跳至并停止 (9) </p>
+<p>　　退出如果 </p>
+<p>　　意思是如果NameFirst不等于空值的话，就跳到第九个影帧；否则将会执行下去（即播放下一个影帧）。 </p>
+<p>　　第4-7个影帧都没有ACTION哦。 </p>
+<p>　　第八个影帧的ACTION是： </p>
+<p>　　跳至并播放 (3) </p>
+<p>　　回过头来再看看第三个影帧看看，呵呵，懂了吧？ </p>
+<p>　　如果没有符合的数据的话，就一直读到有为止；读到了就跳到第九个影帧哦。 </p>
+<p>　　那么再来看看第九个影帧： </p>
+<p>　　一共有三个文本框：NameFirst，NameLast，Position </p>
+<p>　　数据库内符合查询条件的数据将会显示在他们之中哦！ </p>
+<p>　　还有一个按钮：Do It Again </p>
+<p>　　它的ACTION是： </p>
+<p>　　于 (放开) </p>
+<p>　　　　跳至并停止 (1) </p>
+<p>　　退出于 </p>
+<p>　　好了，再来看看employee.asp这个文件吧： </p>
+<p>Dim oRS, oConn ’定义两个变量 <br>
+  Set oRS = Server.CreateObject(&quot;ADODB.Recordset&quot;） ’定义oRS为RECORDSET对象 
+  <br>
+  Set oConn = Server.CreateObject(&quot;ADODB.Connection&quot;) ’定义oConn为CONNECTION对象 
+  <br>
+  oConn.ConnectionString = &quot;Driver={Microsoft Access Driver (*.mdb)}; <br>
+  DBQ=&quot; &amp; Server.MapPath(&quot;employees.mdb&quot;) <br>
+  oRS.Open &quot;SELECT * FROM Employees&quot;, oConn, 2, 3 <br>
+  ’嘿嘿，这两句不用说了吧？打开数据库哦 <br>
+  oRS.Find &quot;NameLast = ’&quot; &amp; UCase(Request.QueryString(&quot;strSearch&quot;)) 
+  &amp; &quot;’&quot; <br>
+  ’找到符合条件的数据 </p>
+<p></p>
+<p>&nbsp; </p>
+</body>
+</html>

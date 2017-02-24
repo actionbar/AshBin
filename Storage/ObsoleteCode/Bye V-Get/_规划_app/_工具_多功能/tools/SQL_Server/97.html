@@ -1,0 +1,29 @@
+<meta http-equiv="content-type" content="text/html; charset=gb2312"><FONT 
+style="FONT-SIZE: 9pt; LINE-HEIGHT: 15pt"><B>SQL&nbsp;Server里函数的两种用法（可以代替游标）</B><BR>1．&nbsp;因为update里不能用存储过程，然而要根据更新表的某些字段还要进行计算。我们常常采用游标的方法，这里用函数的方法实现。
+<P></P>
+<P>函数部分：<BR>CREATE&nbsp;FUNCTION&nbsp;[DBO].[FUN_GETTIME]&nbsp;(@TASKPHASEID&nbsp;INT)&nbsp;<BR>RETURNS&nbsp;FLOAT&nbsp;AS&nbsp;<BR>BEGIN&nbsp;<BR>&nbsp;&nbsp;DECLARE&nbsp;@TASKID&nbsp;INT,<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@HOUR&nbsp;FLOAT,&nbsp;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@PERCENT&nbsp;FLOAT,&nbsp;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@RETURN&nbsp;FLOAT<BR>&nbsp;&nbsp;IF&nbsp;@TASKPHASEID&nbsp;IS&nbsp;NULL&nbsp;<BR>&nbsp;&nbsp;BEGIN<BR>&nbsp;&nbsp;&nbsp;&nbsp;RETURN(0.0)<BR>&nbsp;&nbsp;END</P>
+<P>SELECT&nbsp;@TASKID=TASKID,@PERCENT=ISNULL(WORKPERCENT,0)/100&nbsp;<BR>FROM&nbsp;TABLETASKPHASE&nbsp;<BR>WHERE&nbsp;ID=@TASKPHASEID</P>
+<P>SELECT&nbsp;@HOUR=ISNULL(TASKTIME,0)&nbsp;FROM&nbsp;TABLETASK&nbsp;<BR>WHERE&nbsp;ID=@TASKID</P>
+<P>SET&nbsp;@RETURN=@HOUR*@PERCENT<BR>RETURN&nbsp;(@RETURN)<BR>END</P>
+<P>调用函数的存储过程部分<BR>CREATE&nbsp;PROCEDURE&nbsp;[DBO].[PROC_CALCCA]<BR>@ROID&nbsp;INT<BR>&nbsp;&nbsp;AS<BR>BEGIN<BR>&nbsp;&nbsp;DECLARE&nbsp;@CA&nbsp;FLOAT</P>
+<P>&nbsp;&nbsp;UPDATE&nbsp;TABLEFMECA&nbsp;<BR>&nbsp;&nbsp;SET&nbsp;<BR>&nbsp;&nbsp;Cvalue_M=&nbsp;&nbsp;&nbsp;&nbsp;ISNULL(MODERATE,0)*ISNULL(FMERATE,0)*ISNULL(B.BASFAILURERATE,0)*[DBO].[FUN_GETTIME](C.ID)<BR>FROM&nbsp;TABLEFMECA&nbsp;,TABLERELATION&nbsp;B,TABLETASKPHASE&nbsp;C<BR>WHERE&nbsp;ROID=@ROID&nbsp;AND&nbsp;TASKPHASEID=C.ID&nbsp;AND&nbsp;B.ID=@ROID</P>
+<P>&nbsp;&nbsp;SELECT&nbsp;@CA=SUM(ISNULL(Cvalue_M,0))&nbsp;FROM&nbsp;TABLEFMECA&nbsp;WHERE&nbsp;ROID=@ROID</P>
+<P>UPDATE&nbsp;TABLERELATION&nbsp;<BR>&nbsp;&nbsp;SET&nbsp;CRITICALITY=@CA<BR>&nbsp;&nbsp;WHERE&nbsp;ID=@ROID<BR>END<BR>GO</P>
+<P>2．&nbsp;我们要根据某表的某些记录，先计算后求和，因为无法存储中间值，平时我们也用游标的方法进行计算。但sqlserver2000里支持<BR>SUM&nbsp;(&nbsp;[&nbsp;ALL&nbsp;|&nbsp;DISTINCT&nbsp;]&nbsp;expression&nbsp;)&nbsp;</P>
+<P>expression</P>
+<P>是常量、列或函数，或者是算术、按位与字符串等运算符的任意组合。因此我们可以利用这一功能。</P>
+<P>函数部分：</P>
+<P>CREATE&nbsp;FUNCTION&nbsp;[DBO].[FUN_RATE]&nbsp;(@PARTID&nbsp;INT,@ENID&nbsp;INT,@SOURCEID&nbsp;INT,&nbsp;@QUALITYID&nbsp;INT,@COUNT&nbsp;INT)</P>
+<P>RETURNS&nbsp;FLOAT&nbsp;AS&nbsp;<BR>BEGIN&nbsp;<BR>&nbsp;&nbsp;DECLARE&nbsp;@QXS&nbsp;FLOAT,&nbsp;@G&nbsp;FLOAT,&nbsp;@RATE&nbsp;FLOAT</P>
+<P>&nbsp;&nbsp;IF&nbsp;(@ENID=NULL)&nbsp;OR&nbsp;(@PARTID=NULL)&nbsp;OR&nbsp;(@SOURCEID=NULL)&nbsp;OR&nbsp;(@QUALITYID=NULL)<BR>&nbsp;&nbsp;BEGIN<BR>&nbsp;&nbsp;&nbsp;&nbsp;RETURN(0.0)<BR>&nbsp;&nbsp;END</P>
+<P>&nbsp;&nbsp;SELECT&nbsp;@QXS=&nbsp;ISNULL(XS,0)&nbsp;FROM&nbsp;TABLEQUALITY&nbsp;WHERE&nbsp;ID=@QUALITYID<BR>&nbsp;&nbsp;SELECT&nbsp;@G=ISNULL(FRATE_G,0)&nbsp;FROM&nbsp;TABLEFAILURERATE<BR>&nbsp;&nbsp;WHERE&nbsp;(SUBKINDID=@PARTID)&nbsp;AND(&nbsp;ENID=@ENID)&nbsp;AND&nbsp;(&nbsp;DATASOURCEID=@SOURCEID)&nbsp;AND(&nbsp;(&nbsp;(ISNULL(MINCOUNT,0)&lt;=ISNULL(@COUNT,0))&nbsp;AND&nbsp;(&nbsp;ISNULL(MAXCOUNT,0)&gt;=ISNULL(@COUNT,0)))<BR>OR(ISNULL(@COUNT,0)&gt;ISNULL(MAXCOUNT,0)))&nbsp;</P>
+<P>&nbsp;&nbsp;SET&nbsp;@RATE=ISNULL(@QXS*@G,0)<BR>&nbsp;&nbsp;RETURN&nbsp;(@RATE)<BR>END</P>
+<P>调用函数的存储过程部分：</P>
+<P>CREATE&nbsp;PROC&nbsp;PROC_FAULTRATE</P>
+<P>@PARTID&nbsp;INTEGER,&nbsp;@QUALITYID&nbsp;INTEGER,&nbsp;@SOURCEID&nbsp;INTEGER,&nbsp;@COUNT&nbsp;INTEGER,&nbsp;@ROID&nbsp;INT,&nbsp;@GRADE&nbsp;INT,@RATE&nbsp;FLOAT=0&nbsp;OUTPUTAS<BR>BEGIN<BR>&nbsp;&nbsp;DECLARE&nbsp;<BR>&nbsp;&nbsp;&nbsp;&nbsp;@TASKID&nbsp;INT&nbsp;<BR>&nbsp;&nbsp;&nbsp;&nbsp;SET&nbsp;@RATE=0.0</P>
+<P>SELECT&nbsp;@TASKID=ISNULL(TASKPROID,-1)&nbsp;FROM&nbsp;TABLERELATION&nbsp;WHERE&nbsp;ID=(SELECT&nbsp;PID&nbsp;FROM&nbsp;TABLERELATION&nbsp;WHERE&nbsp;ID=@ROID)</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;IF&nbsp;(@TASKID=-1)&nbsp;OR(@GRADE=1)&nbsp;BEGIN<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SET&nbsp;@RATE=0<BR>&nbsp;&nbsp;&nbsp;&nbsp;RETURN&nbsp;<BR>END</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;SELECT&nbsp;@RATE=SUM([DBO].[FUN_RATE]&nbsp;(@PARTID,ENID,@SOURCEID,&nbsp;@QUALITYID,@COUNT)&nbsp;*ISNULL(WORKPERCENT,0)/100.0)</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;FROM&nbsp;TABLETASKPHASE&nbsp;<BR>&nbsp;&nbsp;&nbsp;&nbsp;WHERE&nbsp;TASKID=@TASKID<BR>END<BR>GO</P>
+<P>函数还可以返回表等，希望大家一起讨论sqlserver里函数的妙用。</P>
+<P>&nbsp;<BR></P></FONT>

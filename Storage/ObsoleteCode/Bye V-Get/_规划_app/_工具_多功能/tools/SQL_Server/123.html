@@ -1,0 +1,31 @@
+<meta http-equiv="content-type" content="text/html; charset=gb2312"><FONT 
+style="FONT-SIZE: 9pt; LINE-HEIGHT: 15pt"><B>DTS(中)</B><BR>还可以用编程方式创建自定义任务，然后使用“注册自定义任务”命&nbsp;<BR>令将其集成到&nbsp;DTS设计器中。&nbsp;
+<P></P>
+<P>　　为说明如何使用这些任务，这里显示一个简单的&nbsp;DTS软件包，其中包&nbsp;<BR>括两项任务：&nbsp;Microsoft&nbsp;ActiveX？脚本任务以及发送邮件任务：&nbsp;<BR>　　　　　　<BR>　　　　　　　图&nbsp;2.&nbsp;具有两项任务的&nbsp;DTS&nbsp;软件包&nbsp;</P>
+<P>　　ActiveX脚本任务可包含任何ActiveX脚本引擎，包括Microsoft&nbsp;Visual&nbsp;<BR>Basic&nbsp;Scripting&nbsp;Edition（VBScript）、Microsoft&nbsp;JScriptActiveState&nbsp;<BR>ActivePerl。这些搜索引擎可以从&nbsp;<IMG 
+src="http://www.pigtwo.com/forum/pic/url.gif" align=absMiddle border=0><A href="http://www.activestate.com" 
+target=_blank>http://www.activestate.com</A>&nbsp;下载。&nbsp;<BR>发送邮件任务可以发送消息，指示软件包已运行。请注意，这些任务尚未&nbsp;<BR>排序。执行软件包时，ActiveX&nbsp;脚本任务和发送邮件任务将同时运行。&nbsp;</P>
+<P>工作流：设置任务优先级&nbsp;</P>
+<P>　　定义任务组时，通常有一个执行任务的顺序。如果任务已排序，每个&nbsp;<BR>任务将成为进程中的一个步骤。在&nbsp;DTS设计器中，在&nbsp;DTS设计器工作表上&nbsp;<BR>操作任务，并使用优先级约束条件来控制执行任务的顺序。&nbsp;</P>
+<P>　　优先级约束条件继而将软件包中的任务链接起来。下表显示在&nbsp;DTS中&nbsp;<BR>可以使用的优先级约束条件类型。&nbsp;</P>
+<P></P>
+<P>优先级约束条件&nbsp;说明&nbsp;</P>
+<P>按完成顺序<BR>（蓝色箭头）<BR>如果希望在任务&nbsp;1&nbsp;完成前不执行任务&nbsp;2，而不考虑执行结果如何，则应使用“按完成顺序”优先级约束条件链接任务&nbsp;1&nbsp;和任务&nbsp;2。&nbsp;</P>
+<P>按成功情况<BR>（绿色箭头）<BR>如果希望在任务&nbsp;1&nbsp;成功完成前不执行任务&nbsp;2，应使用“按成功情况”优先级约束条件链接任务&nbsp;1&nbsp;和任务&nbsp;2。&nbsp;</P>
+<P>按失败情况<BR>（红色箭头）<BR>如果希望只在任务&nbsp;1&nbsp;无法成功执行的情况下才执行任务&nbsp;2，应使用“按失败情况”优先级约束条件链接任务&nbsp;1&nbsp;和任务&nbsp;2。&nbsp;&nbsp;</P>
+<P>　　下图显示使用“按完成顺序”优先级约束条件的&nbsp;ActiveX脚本任务和&nbsp;<BR>发送邮件任务。当&nbsp;Active&nbsp;X&nbsp;脚本任务完成后，无论成功或失败，都将运&nbsp;<BR>行发送邮件任务。&nbsp;<BR>　　　　　　<BR>图&nbsp;3.&nbsp;使用“按完成顺序”优先级约束条件的&nbsp;ActiveX&nbsp;脚本任务和发送邮件任务&nbsp;</P>
+<P>　　可以分别配置发送邮件任务，一个配置为使用“按成功情况”约束条&nbsp;<BR>件，一个配置为使用“按失败情况”约束条件。两个发送邮件任务可根据&nbsp;<BR>ActiveX&nbsp;脚本成功还是失败发送不同的消息。&nbsp;<BR>　　　　　<BR>　　　　　　　　　　　　　图&nbsp;4.&nbsp;邮件任务&nbsp;</P>
+<P>　　您还可以对一个任务采用多个优先级约束条件。例如，发送邮件任务&nbsp;<BR>“管理通知”可以在脚本&nbsp;#1&nbsp;采用“按成功情况”约束条件，在脚本&nbsp;#2&nbsp;<BR>采用“按失败情况”约束条件。在这些情况下，DTS&nbsp;假设存在逻辑关系&nbsp;<BR>“AND&nbsp;”。因此，只有在脚本&nbsp;#1&nbsp;成功执行而脚本&nbsp;#2&nbsp;失败的情况下，才&nbsp;<BR>会发送“管理通知”消息。&nbsp;<BR>　　　　　　　　<BR>　　　　　　图&nbsp;5.示例：对一项任务采用多个优先级约束条件&nbsp;</P>
+<P>连接：访问和移动数据&nbsp;</P>
+<P>　　要成功执行复制和转换数据的&nbsp;DTS任务，DTS&nbsp;软件包必须与它的源和&nbsp;<BR>目标数据以及所有其它数据源（如查找表）建立有效连接。&nbsp;</P>
+<P>　　创建软件包时，通过从可用的&nbsp;OLE&nbsp;DB&nbsp;提供程序和&nbsp;ODBC&nbsp;驱动程序列&nbsp;<BR>表选择连接类型，可对连接进行配置。可用的连接类型包括：&nbsp;</P>
+<P>●&nbsp;Microsoft&nbsp;数据访问组件&nbsp;(MDAC)&nbsp;驱动程序&nbsp;<BR>用于&nbsp;SQL&nbsp;Server&nbsp;的&nbsp;Microsoft&nbsp;OLE&nbsp;DB&nbsp;提供程序&nbsp;<BR>Microsoft&nbsp;数据链接&nbsp;<BR>用于&nbsp;Oracle&nbsp;的&nbsp;Microsoft&nbsp;ODBC&nbsp;驱动程序&nbsp;</P>
+<P>●&nbsp;Microsoft&nbsp;数据访问组件&nbsp;(MDAC)&nbsp;驱动程序&nbsp;<BR>dBase&nbsp;5&nbsp;<BR>Microsoft&nbsp;Access&nbsp;<BR>HTML&nbsp;文件（源）&nbsp;<BR>Microsoft&nbsp;Excel&nbsp;97-2000&nbsp;<BR>Paradox&nbsp;5.X&nbsp;</P>
+<P>●&nbsp;其它驱动程序&nbsp;<BR>文本文件（源）&nbsp;<BR>文本文件（目标）&nbsp;<BR>其它连接&nbsp;</P>
+<P><BR>　　DTS&nbsp;允许您使用任何&nbsp;OLE&nbsp;DB&nbsp;连接。使用“连接”工具栏上的图标可&nbsp;<BR>以便捷地访问常用的各种连接。&nbsp;</P>
+<P>　　下图显示一个使用两种连接的软件包。数据将从&nbsp;Access&nbsp;数据库（源&nbsp;<BR>连接）复制到&nbsp;SQL&nbsp;Server&nbsp;产品数据库（目标连接）。&nbsp;<BR>　<BR>　　　　　　　图&nbsp;6.&nbsp;示例：使用两种连接的软件包&nbsp;</P>
+<P>　　此软件包中的第一个步骤是一个执行&nbsp;SQL任务，该任务检查是否目标&nbsp;<BR>表已经存在。如果存在，将删除它然后重新创建。成功完成执行&nbsp;SQL任务&nbsp;<BR>后，第二个步骤是将数据复制到&nbsp;SQL&nbsp;Server&nbsp;数据库。如果复制操作失败，&nbsp;<BR>第三个步骤是发送一份电子邮件。&nbsp;</P>
+<P></P>
+<P>　　　&nbsp;摘自<IMG src="http://www.pigtwo.com/forum/pic/url.gif" align=absMiddle border=0><A 
+href="http://www.microsoft.com/china/msdn/?MSCOMTB=ICP_MSDN" 
+target=_blank>http://www.microsoft.com/china/msdn/?MSCOMTB=ICP_MSDN</A></P></FONT>

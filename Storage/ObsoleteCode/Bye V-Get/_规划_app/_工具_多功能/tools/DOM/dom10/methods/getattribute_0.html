@@ -1,0 +1,130 @@
+<html xmlns:rdl>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<script src="rdl_method.js"></script>
+<base target="_self">
+</head>
+<body>
+
+<script>
+//collFriendObjects=new Array();
+//collFriendProperties=new Array();
+//collFriendMethods=new Array();
+//collFriendEvents=new Array();
+//collFriendCollections=new Array();
+
+collFriendMethods=new Array(
+'createAttribute','setAttribute','mergeAttributes','removeAttribute','clearAttributes'
+);
+
+collFriendCollections=new Array(
+'attributes'
+);
+
+//collIE40=new Array();
+//collIE50=new Array();
+//collIE55=new Array();
+//collIE60=new Array();
+
+collIE50=new Array(
+'runtimeStyle','CUSTOM','currentStyle'
+);
+
+collIE40=new Array(
+'A','ADDRESS','APPLET','AREA','B','BASE','BASEFONT','BGSOUND','BIG','BLOCKQUOTE','BODY','BR','BUTTON','CAPTION','CENTER','CITE','CODE','COL','COLGROUP','COMMENT','CUSTOM','DD','DFN','DIR','DIV','DL','DT','EM','EMBED','FIELDSET','FONT','FORM','FRAME','FRAMESET','HEAD','Hn','HR','HTML','I','IFRAME','IMG','INPUT type=button','INPUT type=checkbox','INPUT type=file','INPUT type=hidden','INPUT type=image','INPUT type=password','INPUT type=radio','INPUT type=reset','INPUT type=submit','INPUT type=text','KBD','LABEL','LEGEND','LI','LINK','LISTING','MAP','MARQUEE','MENU','META','nextID','NOBR','OBJECT','OL','OPTION','P','PLAINTEXT','PRE','runtimeStyle','S','SAMP','SCRIPT','SELECT','SMALL','SPAN','STRIKE','STRONG','style','SUB','SUP','TABLE','TBODY','TD','TEXTAREA','TFOOT','TH','THEAD','TITLE','TR','TT','U','UL','VAR','WBR','XMP'
+);
+
+sStyle=
+'#idFont{text-decoration:underline;}\n'+
+'#idCodeDiv{width:100%;padding:4px;font-family:verdana,tahoma;margin:12px 0px 0px 0px;background-color:#EEEEEE;font-weight:bold;}\n';
+
+sScript=
+'<script>\n'+
+'var oCodeDiv;\n'+
+'var oFont;\n'+
+'var oSel;\n'+
+'\n'+
+'function window.onload(){\n'+
+'oCodeDiv=document.all("idCodeDiv");\n'+
+'oFont=document.all("idFont");\n'+
+'oSel=document.all("idSel");\n'+
+'for (m=0;m<oFont.attributes.length;m++) {\n'+
+'if (oFont.attributes[m].specified){\n'+
+'var oOption=document.createElement("option");\n'+
+'oSel.options.add(oOption,1); \n'+
+'with (oOption) {value=innerText=oFont.attributes[m].nodeName}\n'+
+'}\n'+
+'}\n'+
+'oFont.title=oCodeDiv.innerText=oFont.outerHTML;\n'+
+'}\n'+
+'\n'+
+'function doGetAttribute(){\n'+
+'with (oSel) {if (options[selectedIndex].value=="") return;\n'+
+'var sAttribute=options[selectedIndex].value;};\n'+
+'oCodeDiv.innerText=sAttribute+" = "+oFont.getAttribute(sAttribute,2);;\n'+
+'}\n'+
+'\n'+
+'<\/script>\n';
+
+sCode=
+'<input type=button color=red style="font-weight:bold" name=rdl case=died onmouseover="this.style.color=\'blue\';" onmouseout="this.style.color=\'black\';" id=idFont value="这里有一些文字"></input>\n'+
+'<br><br><br>\n'+
+'<select id="idSel" onchange="doGetAttribute();">\n'+
+'<option value="" style="font-weight:bold;">---请选择属性---\n'+
+'<option value="case" style="font-weight:bold;">case\n'+
+'<\/select>\n'+
+'<br><br><div id=idCodeDiv></div>\n';
+
+iWinWidth=420;
+
+iWinHeight=300;
+
+</script>
+
+<div id=idContent>
+
+<div id=idContentTitle><span id=idTitleName>getAttribute</span>版本：DOM1　返回值：有</div>
+
+<div class=cssColumnTitle>语法：</div>
+<div>
+<i>vAttrValue</i><b> = </b><i>object</i><b> . getAttribute ( </b><i>sAttrName</i><b> , </b><i>iFlags</i><b> ) </b>
+</div>
+
+<div class=cssColumnTitle>参数：</div>
+<table>
+<tr><td nowrap><i> sAttrName </i></td><td nowrap><b>:</b></td>
+<td><b>必选项</b>。字符串(String)。指定属性的名称。</td></tr>
+<tr><td nowrap><i> iFlags </i></td><td nowrap><b>:</b></td>
+<td><b>可选项</b>。整数值(Integer)。<span class=cssDefault><b>0</b></span> | <b>1</b> | <b>2</b>
+<table>
+<tr><td nowrap><b> 0 </b></td><td nowrap><b>:</b></td>
+<td><b>默认值</b>。执行不考虑字母大小写的搜索，假如特性被找到了返回一个以内插值替换的值。假如<a href="setattribute.html"> setAttribute </a>方法的<i> iFlags </i>参数设置为<b> 1 </b>而此方法的<i> iFlags </i>参数设置为<b> 0 </b>， 则满足<i> sAttrName </i>指定的特性名称不一定能被找到。</td></tr>
+<tr><td nowrap><b> 1 </b></td><td nowrap><b>:</b></td>
+<td>执行严格考虑字母大小写的搜索。</td></tr>
+<tr><td nowrap><b> 2 </b></td><td nowrap><b>:</b></td>
+<td>严格的按照脚本或源文档里的设置返回值。</td></tr>
+</table>
+</td></tr>
+</table>
+
+<div class=cssColumnTitle>返回值：</div>
+<table>
+<tr><td nowrap><i> vAttrValue </i></td><td nowrap><b>:</b></td>
+<td>返回属性的值。可能是任意类型的变量。假如属性没有被呈递，则返回<b> null </b>。
+</td></tr>
+</table>
+
+<div class=cssColumnTitle>说明：</div>
+<div>
+获取指定属性的值。<br>
+假如对象有多个名字一样但字母大小写不同的属性，并且<i> iFlags </i>参数被设为<b> 0 </b>，那么只有其中最后被建立的那一个会被此方法获取。而其他的则会被忽略。<br>
+当使用此方法获取<a href="../properties/class.html"> CLASS </a>属性的值时，需要将<i> sName </i>参数指定为<a href="../properties/classname.html"> className </a>。这是<a href="../properties/class.html"> CLASS </a>属性所对应的 DHTML 特性。<br>
+此方法仅仅可以由从 HTML 组件建立的事件使用。
+</div>
+
+</div>
+</body>
+</html>
+
+<!-- Part of RDL(TM) - Written by Rain1977 
+HomeSite: http://www.dhtmlet.com  E-Mail: dhtmlet@hotmail.com -->

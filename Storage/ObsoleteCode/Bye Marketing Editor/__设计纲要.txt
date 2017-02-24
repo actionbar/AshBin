@@ -1,0 +1,8 @@
+forEditor里面是给编辑的纯html文档
+
+editor_count.php  编辑用于查询自己的编辑数量
+editor_custom_count.php  客户用于查询
+
+
+
+[

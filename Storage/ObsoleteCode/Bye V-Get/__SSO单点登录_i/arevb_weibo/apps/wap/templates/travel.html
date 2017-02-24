@@ -1,0 +1,48 @@
+{template header}
+
+<p>
+	<!--{if $filter == 'comments'}-->
+	最热评论微博
+	<!--{elseif $filter == 'refers'}-->
+	最热转发微博
+	<!--{else}-->
+	最新发表微博
+	<!--{/if}-->
+	<br />
+	{eval $display_index = ($current-1)*$perpage;}
+	<!--{loop $travel_notes $travel_note}-->
+	{eval $display_index++;}
+	{$display_index}. <!--{if $travel_note['uid'] == $logger_uid}-->我说<!--{else}--><a href="{eval echo miniurl($travel_note['uid']);}">{$travel_note['username']}</a><!--{/if}-->:{$travel_note['note']['message']} <br />
+	<!--{if !empty($travel_note['note']['refer'])}-->
+	{eval $travel_note_refer = $travel_note['note']['refer'];}
+	转自:{$travel_note_refer['message']}<br />
+	<!--{if !empty($travel_note_refer['link'])}-->
+	原文分享链接:<a href="{$travel_note_refer['link']['url']}">$travel_note_refer['link']['title']</a><br />
+	<!--{/if}-->
+	<!--{if !empty($travel_note_refer['file'])}-->
+	原文分享文件:<a href="{$travel_note_refer['file']['url']}">$travel_note_refer['file']['title']</a><br />
+	<!--{/if}-->
+	<!--{if !empty($travel_note_refer['img'])}-->
+	原文分享图片:<a href="{eval echo imgurl($travel_note['note']['img']['url']);}" rel="{$travel_note_refer['img']['title']}">打开</a><br />
+	<!--{/if}-->
+	<!--{/if}-->
+	<!--{if !empty($travel_note['note']['link'])}-->
+	分享链接:<a href="{$travel_note['note']['link']['url']}">$travel_note['note']['link']['title']</a><br />
+	<!--{/if}-->
+	<!--{if !empty($travel_note['note']['file'])}-->
+	分享文件:<a href="{$travel_note['note']['file']['url']}">$travel_note['note']['file']['title']</a><br />
+	<!--{/if}-->
+	<!--{if !empty($travel_note['note']['img'])}-->
+	分享图片:<a href="{eval echo imgurl($travel_note['note']['img']['url']);}" rel="{$travel_note['note']['img']['title']}">打开</a><br />
+	<!--{/if}-->
+	{$travel_note['sgmdate']} 
+	<!--{if $logger_uid == $travel_note['uid']}-->
+	转发[{$travel_note['refers']}] <a href="{eval echo miniurl('note/'.$travel_note['nid'].'/comment');}">评论[{$travel_note['comments']}]</a> <a href="{eval echo miniurl('note/'.$travel_note['nid'].'/del');}">删除</a>
+	<!--{else}-->
+	<a href="{eval echo miniurl('note/'.$travel_note['nid'].'/refer');}">转发[{$travel_note['refers']}]</a> <a href="{eval echo miniurl('note/'.$travel_note['nid'].'/comment');}">评论[{$travel_note['comments']}]</a>
+	<!--{/if}--><br />
+	<!--{/loop}-->
+	{$pagehtml}
+</p>
+
+{template footer}

@@ -1,0 +1,32 @@
+{template header}
+
+<div class="showmessage">
+	<div class="ugb">
+		<div class="ugb2">
+			<div class="ugb3">
+				<div class="ugb4">
+					<div class="center">
+						<caption>
+							<h2>信息提示：</h2>
+						</caption>
+						<p>{$error_message}</p>
+						<p class="op">
+						<!--{if $url_forward}-->
+							<a href="$url_forward">页面跳转中...</a>
+						<!--{else}-->
+							<a href="javascript:history.go(-1);">返回上一页</a> | 
+							<a href="{eval echo miniurl();}">返回首页</a>
+						<!--{/if}-->
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!--{if $url_forward}-->
+<script type="text/javascript">setTimeout(function(){location.href='<!--{$url_forward}-->';}, 2000);</script>
+<!--{/if}-->
+
+{template footer}

@@ -1,0 +1,58 @@
+<head>
+<SCRIPT LANGUAGE="JavaScript">
+<!-- Begin
+var str_in;
+var str_out = "";
+var num_in;
+var num_out = "";
+var e = "Enter Text!";
+function str_to_num(form) {
+num_out = "";
+if(form.input.value == "") alert(e);
+else {
+str_in = escape(form.input.value);
+for(i = 0; i < str_in.length; i++) {
+num_out += str_in.charCodeAt(i) - 23;
+}
+form.output.value = num_out;
+form.input.value = "";
+}
+}
+function num_to_str(form) {
+str_out = "";
+if(form.output.value == "") alert(e)
+else {
+num_out = form.output.value;
+for(i = 0; i < num_out.length; i += 2) {
+num_in = parseInt(num_out.substr(i,[2])) + 23;
+num_in = unescape('%' + num_in.toString(16));
+str_out += num_in;
+}
+form.input.value = unescape(str_out);
+form.output.value = "";
+}
+}
+//  End -->
+</script>
+</head>
+<body>
+<center>
+<form name=encryptform>
+<table>
+<tr>
+<td align=center>
+<input name=input type=text size=40 value="JavaScript Fairyland">
+</td>
+<td align=center>
+<input type=button value="<--" onClick="javascript:num_to_str(this.form)">
+<br>
+<input type=button value="-->" onClick="javascript:str_to_num(this.form)">
+</td>
+<td align=center>
+<input name=output type=text size=40>
+</td>
+</tr>
+</table>
+</form>
+</center>
+</body>

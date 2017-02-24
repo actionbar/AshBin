@@ -1,0 +1,1 @@
+var ad = '<img src="http://www.luexu.com/_cdn/_misc/ad/sso.jpg" width="770" height="390" alt="广告">';

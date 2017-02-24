@@ -1,0 +1,142 @@
+<!DOCTYPE html><html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>JavaScript 地球自转动画_V-Get!</title><meta name="keywords" content="Quine,super-quine,自产生程序,Javascript,JS"/><meta name="description" content="用纯JS自产生程序（Quine）做的地球自转动画。该地球自转动画过程就是这段代码自我生成不同源码版本的综合。"/><style type="text/css">*{padding;0;margin:0}h1{font:bold 24px/36px "微软雅黑"}h2{font:bold 18px/30px "微软雅黑"}p{font:14px/25px "Microsoft YaHei","微软雅黑",Tahoma,Verdana,"宋体";}.w{width:728px;padding:20px;margin:0 auto;overflow:hidden}.ad{margin:20px 0}.o{clear:both}#c{margin:0 134px}.pjs{border:#ddd 1px solid;background:#f7f7f7;padding:9px;list-style-position:inside;list-style-type:decimal;font:normal 12px/22px Arial;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space:-o-pre-wrap;word-wrap:break-word;}</style></head><body><div class="w"><div class="c"><h1>JavaScript 地球自转动画</h1><p>本代码仅适合熟练Javascript的程序猿观看，只有懂得Javascript的程序猿看到这个效果，并看到未注释的源代码后才会惊叹这个代码的神奇！！！</p><p>Martin Kleppe 用纯JS自产生程序（Quine）做的地球自转动画。该地球自转动画过程就是这段代码自我生成不同源码版本的综合。自产生程序（Quine），它以哲学家奎恩命名，指的是输出结果为程序自身源码的程序。能够直接读取自己源码、读入用户输入或空白的程式一般都不视为自产生程序。</p></div><div class="ad"><script type="text/javascript">var cpro_id="u1163355"</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+
+
+<div id="bdshare"></div>
+<div class="o"></div>
+<div id="c">.<script>
+eval(z='p="<"+"pre>"/* ,.oq#+     ,._, */;for(y in n="zw24l6k\
+4e3t4jnt4qj24xh2 x/* =<,m#F^    A W###q. */42kty24wrt413n243n\
+9h243pdxt41csb yz/* #K       q##H######Am */43iyb6k43pk7243nm\
+r24".split(4)){/* dP      cpq#q##########b, */for(a in t=pars\
+eInt(n[y],36)+/*         p##@###YG=[#######y */(e=x=r=[]))for\
+(r=!r,i=0;t[a/*         d#qg `*PWo##q#######D */]>i;i+=.05)wi\
+th(Math)x-= /*        e.v-get.com Q###KWR#### W[ */.05,0<cos(o=\
+new Date/1e3/*      .Q#########Md#.###OP  A@ , */-x/PI)&&(e[~\
+~(32*sin(o)*/* ,    (W#####Xx######.P^     T % */sin(.5+y/7))\
++60] =-~ r);/* #y    `^TqW####P###BP           */for(x=0;122>\
+x;)p+="   *#"/* b.        OQ####x#K           */[e[x++]+e[x++\
+]]||(S=("eval"/* l         `X#####D  ,       */+"(z=\'"+z.spl\
+it(B = "\\\\")./*           G####B" #       */join(B+B).split\
+(Q="\'").join(B+Q/*          VQBP`        */)+Q+")//m1k")[x/2\
++61*y-1]).fontcolor/*         TP         */(/\\w/.test(S)&&"#\
+03B");document.getElementById("c").innerHTML=p+=B+"\\n"}setTimeout(z)')//
+</script></div><div class="ad"><script type="text/javascript">var cpro_id="u1163355"</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div><div><h2>该JS特效源代码</h2><p>复制下面代码到一个HTML文件里面，就可以实现地球自转动画，很神奇吧！注意下面代码&lt;script&gt; 前面有个 . 哦！！！</p><p>文章底部有代码详细注释解释，如果喜欢研究本JS代码的，可以参考一下。</p><pre class="pjs">
+.&lt;script&gt;
+eval(z=&#39;p=&#34;&lt;&#34;+&#34;pre&gt;&#34;/* ,.oq#+     ,._, */;for(y in n=&#34;zw24l6k\
+4e3t4jnt4qj24xh2 x/* =&lt;,m#F^    A W###q. */42kty24wrt413n243n\
+9h243pdxt41csb yz/* #K       q##H######Am */43iyb6k43pk7243nm\
+r24&#34;.split(4)){/* dP      cpq#q##########b, */for(a in t=pars\
+eInt(n[y],36)+/*         p##@###YG=[#######y */(e=x=r=[]))for\
+(r=!r,i=0;t[a/*         d#qg `*PWo##q#######D */]&gt;i;i+=.05)wi\
+th(Math)x-= /*        e.v-get.com Q###KWR#### W[ */.05,0&lt;cos(o=\
+new Date/1e3/*      .Q#########Md#.###OP  A@ , */-x/PI)&&(e[~\
+~(32*sin(o)*/* ,    (W#####Xx######.P^     T % */sin(.5+y/7))\
++60] =-~ r);/* #y    `^TqW####P###BP           */for(x=0;122&gt;\
+x;)p+=&#34;   *#&#34;/* b.        OQ####x#K           */[e[x++]+e[x++\
+]]||(S=(&#34;eval&#34;/* l         `X#####D  ,       */+&#34;(z=\&#39;&#34;+z.spl\
+it(B = &#34;\\\\&#34;)./*           G####B&#34; #       */join(B+B).split\
+(Q=&#34;\&#39;&#34;).join(B+Q/*          VQBP`        */)+Q+&#34;)//m1k&#34;)[x/2\
++61*y-1]).fontcolor/*         TP         */(/\\w/.test(S)&&&#34;#\
+03B&#34;);document.body.innerHTML=p+=B+&#34;\\n&#34;}setTimeout(z)&#39;)//
+&lt;/script&gt;
+</pre></div><div class="ad"><script type="text/javascript">var cpro_id="u1163355"</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div><div><h2>该JS特效源代码注释</h2><p>如果看不懂上面的源代码，可以看一下下面的注释。</p><pre class="pjs">
+function z(){                     // 用eval代替
+
+  p = &#34;&lt;&#34; + &#34;pre&gt;&#34;;               // 用&lg;pre&gt;标签来执行代码，
+
+  for (                          
+    y in n = (                    // y 是行数  ，n 是编译后的代码
+      &#34;zw24&#34;      +              
+      &#34;l6k4&#34;      +               // 保持每行都有编译后的代码
+      &#34;e3t4&#34;      +
+      &#34;jnt4&#34;      +              
+      &#34;qj24&#34;      +
+      &#34;xh2  4&#34;    +               // 空格后的字符会被忽略，但是...用来断开注释，并保存一些字符串
+      &#34;2kty24&#34;    +               
+      &#34;wrt4&#34;      +               
+      &#34;13n24&#34;     +
+      &#34;3n9h24&#34;    +
+      &#34;3pdxt4&#34;    +
+      &#34;1csb   4&#34;  +
+      &#34;3iyb6k4&#34;   +
+      &#34;3pk724&#34;    +
+      &#34;3nmr24&#34;
+    ).split(4)                    // 上面的代码会被分成4部分
+
+  ){
+    for (                         
+      a in t = parseInt(          // 数字被编译成基数36的字符串
+        n[y],                     
+        36
+      ) + (                       // 大量的数字会被编译成上面算法的字符串
+        e =                       // e - 保持地球形状
+        x =                       // x - 横向移动位置
+        r = []                    // r - 像素被设置后的位图
+      )
+    ){
+      r = !r;                     // 切换成二进制
+
+      for (                       // 对二进制位图循环
+        i = 0;                 
+        t[a] &gt; i;                 // 画像素 以 t[a]-times
+        i += .05
+      )
+        with (Math)               
+          x -= .05,
+          0 &gt; cos(                // 保持图像可见
+            o =
+              new Date / 1e3 +    // 依时间变化而转动
+              x / PI
+          ) && (
+            e[                    // 访问矩阵
+              ~~(                 // float 转 整型
+                sin(o) *          // 依y轴转动
+                sin(.5 + y/7) *
+                32                // 地球开始扩展
+              ) + 60              // 像中间移动
+            ] = -~r               // 保存相图到数列里面
+          )
+    }
+
+    for (                         // 行数循环
+      x = 0;
+      122 &gt; x;                    // 每122个字符break跳出一次for循环
+    ) p += &#34;   *#&#34;[               // 根据像素添加* # 空格符号
+        e[x++] +                  
+        e[x++]
+      ] || (S = (                 // 否则就是显示原有字符
+        &#34;eval(z=&#39;&#34; +              // 忽略开头的 &#34;eval&#34;
+          z
+            .split(B = &#34;\\&#34;)      //  用 \\ 转义 \ 
+            .join(B + B)
+         
+            .split(Q = &#34;&#39;&#34;)       // 用 \&#39; 转义 &#39; 
+            .join(B + Q) +
+         
+          Q +                     // 添加缺少的 &#39;)
+         
+          &#34;)////////&#34;             // 用一些字符填满地图
+        )[
+          x / 2 +                 // 获得当前位置的字符
+          61 * y-1
+        ]
+
+      ).fontcolor(                // 设置颜色
+        /\w/.test(S) &&           // test [0-9A-Z]
+        &#34;#03B&#34;                    // #03B 蓝色
+                                  // 默认是粉红色
+      );
+ 
+    document.body.innerHTML =     // 代码显示的区域body下
+      p +=                        // 添加空行
+      B +                         // 添加换行
+      &#34;\n&#34;;                       // 添加空行
+  }
+
+  setTimeout(z)                   // 根据时间运行下一帧
+}
+z()
+</pre></div></div>
+<script type="text/javascript" src="http://tu.v-get.com/i.js"></script>
+<script type="text/javascript" src="http://tu.v-get.com/f.js"></script>
+<script type="text/javascript">var cpro_id="u1344600"</script><script src="http://cpro.baidustatic.com/cpro/ui/f.js" type="text/javascript"></script></body></html>

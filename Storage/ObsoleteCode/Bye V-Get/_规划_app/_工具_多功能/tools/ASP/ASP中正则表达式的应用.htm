@@ -1,0 +1,272 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>ASP中正则表达式的应用</title>
+<style type="text/css">
+<!--
+body {
+	font-size: 10.4pt;
+	line-height: 22px;
+}
+-->
+</style>
+</head>
+
+<body bgcolor="#eeeeee" leftmargin="20" marginwidth="20">
+<p><strong>ASP中正则表达式的应用</strong></p>
+<hr>
+<p> 　　一、正则表达式概述 <br>
+  如果原来没有使用过正则表达式，那么可能对这个术语和概念会不太熟悉。不过，它们并不是您想象的那么新奇。 <br>
+  请回想一下在硬盘上是如何查找文件的。您肯定会使用 ? 和 * 字符来帮助查找您正寻找的文件。? 字符匹配文件名中的单个字符，而 * 则匹配一个或多个字符。一个如 
+  ＇data?.dat＇ 的模式可以找到下述文件：data1.dat、data2.dat等等。如果使用 * 字符代替 ? 字符，则将扩大找到的文件数量。＇data*.dat＇ 
+  可以匹配下述所有文件名：data.dat、data1.dat、data12.dat等等，尽管这种搜索文件的方法肯定很有用，但也十分有限。? 和 * 通配符的有限能力可以使你对正则表达式能做什么有一个概念，不过正则表达式的功能更强大，也更灵活。 
+  <br>
+  在我们编写ASP程序时，经常会判断一个字符串的有效性，如；一个串是否是数字、是否是有效的Email地址等等。如果不使用正则表达式，那么判断的程序会很长，并且容易出错，如果使用正则表达式，这些判断就是一件很轻松的工作了。后面我们将介绍如何判断数字和Email地址的有效性。 
+  <br>
+  在典型的搜索和替换操作中，必须提供要查找的确切文字。这种技术对于静态文本中的简单搜索和替换任务可能足够了，但是由于它缺乏灵活性，因此在搜索动态文本时就有困难了，甚至是不可能的。 
+  <br>
+  使用正则表达式，能完成些什么事情呢？ <br>
+  测试字符串的某个模式。例如，可以对一个输入字符串进行测试，看在该字符串是否存在一个电话号码模式或一个信用卡号码模式。这称为数据有效性验证。 <br>
+  替换文本。可以在文档中使用一个正则表达式来标识特定文字，然后可以全部将其删除，或者替换为别的文字。 <br>
+  根据模式匹配从字符串中提取一个子字符串。可以用来在文本或输入字段中查找特定文字。 <br>
+  例如，如果需要搜索整个 web 站点来删除某些过时的材料并替换某些HTML 格式化标记，则可以使用正则表达式对每个文件进行测试，看在该文件中是否存在所要查找的材料或 
+  HTML 格式化标记。用这个方法，就可以将受影响的文件范围缩小到包含要删除或更改的材料的那些文件。然后可以使用正则表达式来删除过时的材料，最后，可以再次使用正则表达式来查找并替换那些需要替换的标记。那么，正则表达式语法的语法是如何呢？ 
+  <br>
+  一个正则表达式就是由普通字符(例如字符 a 到 z)以及特殊字符(称为元字符)组成的文字模式。该模式描述在查找文 <br>
+  字主体时待匹配的一个或多个字符串。正则表达式作为一个模板，将某个字符模式与所搜索的字符串进行匹配。 <br>
+  这里有一些可能会遇到的正则表达式示例： <br>
+  /^\[ \t]*$/ "^\[ \t]*$" 匹配一个空白行。 <br>
+  /\d{2}-\d{5}/ "\d{2}-\d{5}" 验证一个ID 号码是否由一个2位数字，一个连字符以及一个5位数字组成。 <br>
+  /&lt;(.*)&gt;.*&lt;\/\1&gt;/ "&lt;(.*)&gt;.*&lt;\/\1&gt;" 匹配一个 HTML 
+  标记。</p>
+<p>　　二、正则表达式在VBScript中的应用 <br>
+  　　VBScript使用RegExp对象、Matches集合以及Match对象提供正则表达式支持功能。我们还是先看一个例子。 <br>
+  &lt;% <br>
+  Function RegExpTest(patrn, strng) <br>
+  Dim regEx, Match, Matches 　　＇建立变量。 <br>
+  Set regEx = New RegExp 　　＇建立正则表达式。 <br>
+  regEx.Pattern = patrn　　＇设置模式。 <br>
+  regEx.IgnoreCase = True 　　＇设置是否区分字符大小写。 <br>
+  regEx.Global = True 　　＇设置全局可用性。 <br>
+  Set Matches = regEx.Execute(strng)　　＇执行搜索。 <br>
+  For Each Match in Matches　　＇遍历匹配集合。 <br>
+  RetStr = RetStr &amp; "Match found at position " <br>
+  RetStr = RetStr &amp; Match.FirstIndex &amp; ". Match Value is ＇" 
+  <br>
+  RetStr = RetStr &amp; Match.Value &amp; "＇." &amp; "&lt;BR&gt;" 
+  <br>
+  Next <br>
+  RegExpTest = RetStr <br>
+  End Function <br>
+  response.write RegExpTest("[ij]s.", "IS1 Js2 IS3 is4") <br>
+  %&gt; <br>
+  在这个例子中，我们查找字符串中有无is或者js这两个词，忽略大小写。运行的结果如下： <br>
+  Match found at position 0. Match Value is ＇IS1＇. <br>
+  Match found at position 4. Match Value is ＇Js2＇. <br>
+  Match found at position 8. Match Value is ＇IS3＇. <br>
+  Match found at position 12. Match Value is ＇is4＇. <br>
+  下面我们就介绍这三个对象和集合。 <br>
+  　　1、RegExp对象 是最重要的一个对象，它有几个属性，其中： <br>
+  　　○Global 属性，设置或返回一个 Boolean 值，该值指明在整个搜索字符串时模式是全部匹配还是只匹配第一个。如果搜索应用于整个字符串，Global 
+  属性的值为 True，否则其值为 False。默认的设置为 False。 <br>
+  　　○IgnoreCase 属性，设置或返回一个Boolean值，指明模式搜索是否区分大小写。如果搜索是区分大小写的，则IgnoreCase 属性为 False；否则为 
+  True。缺省值为 False。 <br>
+  　　○Pattern 属性，设置或返回被搜索的正则表达式模式。必选项。总是一个 RegExp 对象变量。 <br>
+  　　2、Match 对象 <br>
+  　　匹配搜索的结果是存放在Match对象中，提供了对正则表达式匹配的只读属性的访问。 Match 对象只能通过 RegExp 对象的 Execute 方法来创建，该方法实际上返回了 
+  Match 对象的集合。所有的 Match 对象属性都是只读的。在执行正则表达式时，可能产生零个或多个 Match 对象。每个 Match 对象提供了被正则表达式搜索找到的字符串的访问、字符串的长度，以及找到匹配的索引位置等。 
+  <br>
+  　　○FirstIndex 属性，返回在搜索字符串中匹配的位置。FirstIndex 属性使用从零起算的偏移量，该偏移量是相对于 <br>
+  搜索字符串的起始位置而言的。换言之，字符串中的第一个字符被标识为字符 0 <br>
+  　　○Length 属性，返回在字符串搜索中找到的匹配的长度。 <br>
+  　　○Value 属性，返回在一个搜索字符串中找到的匹配的值或文本。 <br>
+  　　3、Matches 集合 <br>
+  　　正则表达式 Match 对象的集合。Matches 集合中包含若干独立的 Match 对象，只能使用 RegExp 对象的 Execute 方法来创建之。与独立的 
+  Match 对象属性相同，Matches `集合的一个属性是只读的。在执行正则表达式时，可能产生零个或多个 Match 对象。每个 Match 对象都提供了与正则表达式匹配的字符串的访问入口、字符串的长度，以及标识匹配位置的索引。 
+  <br>
+  　　学习了这三个对象和集合，如何应用于字符串的判断和替换呢？regExp对象的三个方法正好解决了这个问题，它们是Replace方法、Test方法和Execute方法。 
+  <br>
+  　　1、Replace 方法 <br>
+  　　替换在正则表达式查找中找到的文本。我们还是先看个例子：下面的例子说明了 Replace 方法的用法。 <br>
+  &lt;% <br>
+  Function ReplaceTest(patrn, replStr) <br>
+  Dim regEx, str1 ＇ 建立变量。 <br>
+  str1 = "The quick brown fox jumped over the lazy dog." <br>
+  Set regEx = New RegExp ＇ 建立正则表达式。 <br>
+  regEx.Pattern = patrn ＇ 设置模式。 <br>
+  regEx.IgnoreCase = True ＇ 设置是否区分大小写。 <br>
+  ReplaceTest = regEx.Replace(str1, replStr) ＇ 作替换。 <br>
+  End Function <br>
+  Response.write ReplaceTest("fox", "cat") &amp; "&lt;BR&gt;" 
+  ＇ 将 ＇fox＇ 替换为 ＇cat＇。 <br>
+  Response.write ReplaceTest("(\S+)(\s+)(\S+)", "$3$2$1") 
+  ＇ 交换词对. <br>
+  %&gt; <br>
+  　　2、Test 方法 <br>
+  　　对指定的字符串执行一个正则表达式搜索，并返回一个 Boolean 值指示是否找到匹配的模式。正则表达式搜索的实际模式是通过RegExp对象的Pattern属性来设置的。RegExp.Global属性对Test方法没有影响。 
+  <br>
+  　　如果找到了匹配的模式，Test方法返回True；否则返回False。下面的代码说明了Test 方法的用法。 <br>
+  &lt;% <br>
+  Function RegExpTest(patrn, strng) <br>
+  Dim regEx, retVal ＇ 建立变量。 <br>
+  Set regEx = New RegExp ＇ 建立正则表达式。 <br>
+  regEx.Pattern = patrn ＇ 设置模式。 <br>
+  regEx.IgnoreCase = False ＇ 设置是否区分大小写。 <br>
+  retVal = regEx.Test(strng) ＇ 执行搜索测试。 <br>
+  If retVal Then <br>
+  RegExpTest =
+    "找到一个或多个匹配。" <br>
+  Else <br>
+  RegExpTest =
+    "未找到匹配。" <br>
+  End If <br>
+  End Function <br>
+  Response.write RegExpTest("is.", "IS1 is2 IS3 is4") <br>
+  %&gt; <br>
+  　　3、Execute 方法 <br>
+  　　对指定的字符串执行正则表达式搜索。正则表达式搜索的设计模式是通过 RegExp 对象的 Pattern 来设置的。 <br>
+  　　Execute 方法返回一个 Matches 集合，其中包含了在 string 中找到的每一个匹配的 Match 对象。如果未找到匹配，Execute 
+  将返回空的 Matches 集合。<br>
+    <br>
+  　　三、JavaScript中正则表达式的使用 <br>
+  　　在JavaScript 1.2版以后，JavaScript也支持正则表达式。 <br>
+  　　1、replace <br>
+  　　replace在一个字符串中通过正则表达式查找替换相应的内容。replace并不改变原来的字符串，只是重新生成了一个新的字符串。如果需要执行全局查找或忽略大小写，那幺在正则表达式的最后添加g和i。 
+  <br>
+  例： <br>
+  &lt;SCRIPT&gt; <br>
+  re = /apples/gi; <br>
+  str = "Apples are round, and apples are juicy."; <br>
+  newstr=str.replace(re, "oranges"); <br>
+  document.write(newstr) <br>
+  &lt;/SCRIPT&gt; <br>
+  结果是："oranges are round, and oranges are juicy." <br>
+  例： <br>
+  &lt;SCRIPT&gt; <br>
+  str = "Twas the night before Xmas..."; <br>
+  newstr=str.replace(/xmas/i, "Christmas"); <br>
+  document.write(newstr) <br>
+  &lt;/SCRIPT&gt; <br>
+  结果是："Twas the night before Christmas..." <br>
+  例： <br>
+  &lt;SCRIPT&gt; <br>
+  re =
+    /(\w+)\s(\w+)/;str = "John Smith"; <br>
+  newstr =
+    str.replace(re, "$2, $1"); <br>
+  document.write(newstr) <br>
+  &lt;/SCRIPT&gt; <br>
+  结果是："Smith, John". <br>
+  　　2、search <br>
+  search通过正则表达式查找相应的字符串，只是判断有无匹配的字符串。如果查找成功，search返回匹配串的位置，否则返回-1。 <br>
+  search(regexp) <br>
+  &lt;SCRIPT&gt; <br>
+  function testinput(re, str){ <br>
+  if (str.search(re) != -1) <br>
+  midstring = " contains "; <br>
+  else <br>
+  midstring = " does not contain "; <br>
+  document.write (str + midstring + re.source); <br>
+  } <br>
+  testinput(/^[1-9]/i,"123") <br>
+  &lt;/SCRIPT&gt; <br>
+  　　3、match <br>
+  　　match方法执行全局查找，查找结果存放在一个数组里。 <br>
+  例一： <br>
+  &lt;SCRIPT&gt; <br>
+  str = "For more information, see Chapter 3.4.5.1"; <br>
+  re = /(chapter \d+(\.\d)*)/i; <br>
+  found = str.match(re); <br>
+  document.write(found); <br>
+  &lt;/SCRIPT&gt; <br>
+  显示结果：Chapter 3.4.5.1,Chapter 3.4.5.1,.1 <br>
+  例二： <br>
+  &lt;SCRIPT&gt; <br>
+  str = "abcDdcba"; <br>
+  newArray = str.match(/d/gi); <br>
+  document.write(newArray); <br>
+  &lt;/SCRIPT&gt; <br>
+  显示结果D,
+  d.</p>
+<p>　　四、示例<br>
+  1 、判断数字的正确性 <br>
+  &lt;%@ Language=VBScript %&gt; <br>
+  &lt;script language="javascript" runat="server"&gt; <br>
+  function isNumeric(strNumber) { <br>
+  return (strNumber.search(/^(-|\+)?\d+(\.\d+)?$/) != -1); <br>
+  } <br>
+  function isUnsignedNumeric(strNumber) { <br>
+  return (strNumber.search(/^\d+(\.\d+)?$/) != -1); <br>
+  } <br>
+  function isInteger(strInteger) { <br>
+  return (strInteger.search(/^(-|\+)?\d+$/) != -1); <br>
+  } <br>
+  function isUnsignedInteger(strInteger) { <br>
+  return (strInteger.search(/^\d+$/) != -1); <br>
+  } <br>
+  &lt;/script&gt; <br>
+  &lt;HTML&gt; <br>
+  &lt;BODY&gt; <br>
+  &lt;b&gt;判断数字的正确性&lt;/b&gt; <br>
+  &lt;% <br>
+  Dim strTemp <br>
+  strTemp =
+    CStr(Request.Form("inputstring")) <br>
+  If strTemp = "" Then strTemp = "0" <br>
+  %&gt; <br>
+  &lt;TABLE BORDER="1" CELLPADDING="4" CELLSPACING="2"&gt; 
+  <br>
+  &lt;TR&gt; <br>
+  &lt;TD ALIGN="right"&gt;&lt;B&gt;原始字符串&lt;/B&gt;&lt;/TD&gt; <br>
+  &lt;TD&gt;&lt;%= strTemp %&gt;&lt;/TD&gt; <br>
+  &lt;/TR&gt; <br>
+  &lt;TR&gt; <br>
+  &lt;TD ALIGN="right"&gt;&lt;B&gt;数字&lt;/B&gt;&lt;/TD&gt; <br>
+  &lt;TD&gt;&lt;%=isNumeric(strTemp)%&gt;&lt;/TD&gt; <br>
+  &lt;/TR&gt; <br>
+  &lt;TR&gt; <br>
+  &lt;TD ALIGN="right"&gt;&lt;B&gt;非负数字&lt;/B&gt;&lt;/TD&gt; <br>
+  &lt;TD&gt;&lt;%=isUnsignedNumeric(strTemp)%&gt;&lt;/TD&gt; <br>
+  &lt;/TR&gt; <br>
+  &lt;TR&gt; <br>
+  &lt;TD ALIGN="right"&gt;&lt;B&gt;整数&lt;/B&gt;&lt;/TD&gt; <br>
+  &lt;TD&gt;&lt;%=isInteger(strTemp)%&gt;&lt;/TD&gt; <br>
+  &lt;/TR&gt; <br>
+  &lt;TR&gt; <br>
+  &lt;TD ALIGN="right"&gt;&lt;B&gt;非负整数()&lt;/B&gt;&lt;/TD&gt; <br>
+  &lt;TD&gt;&lt;%=isUnsignedInteger(strTemp)%&gt;&lt;/TD&gt; <br>
+  &lt;/TR&gt; <br>
+  &lt;/TABLE&gt; <br>
+  &lt;FORM ACTION="&lt;%=Request.ServerVariables("SCRIPT_NAME")%&gt;" 
+  METHOD="post"&gt; <br>
+  请输入一个数字:&lt;BR&gt; <br>
+  &lt;INPUT TYPE="text" NAME="inputstring" SIZE="50"&gt;&lt;/INPUT&gt;&lt;BR&gt; 
+  <br>
+  &lt;INPUT TYPE="submit" Value="提交"&gt;&lt;/INPUT&gt;&lt;BR&gt; 
+  <br>
+  &lt;/FORM&gt; <br>
+  &lt;/BODY&gt; <br>
+  &lt;/HTML&gt; <br>
+  2、判断Email地址的正确性 <br>
+  &lt;% <br>
+  Function isemail(strng) <br>
+  isemail =
+    false <br>
+  Dim regEx, Match <br>
+  Set regEx = New RegExp <br>
+  regEx.Pattern =
+    "^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$" 
+  <br>
+  regEx.IgnoreCase = True <br>
+  Set Match =
+     regEx.Execute(strng) <br>
+  if match.count then isemail= true <br>
+  End Function <br>
+  %&gt;</p>
+<p>　　五、总结 <br>
+  　　上面我们介绍了正则表达式的基本概念，以及在VBScript和JavaScript中如何使用正则表达式，同时，通过一些实例让大家有了感性的认识。正则表达式的应用范围很广，能为大家解决很多实际中的问题。本文介绍的内容只是一些初步的知识，还有很多语法规则需要大家继续学习，在实践中发现问题，解决问题。<br>
+</p>
+<p> </p>
+</body>
+</html>

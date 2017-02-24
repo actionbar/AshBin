@@ -1,0 +1,20 @@
+<html>
+<head><link rel="stylesheet" type="text/css" href="showcode.css" /></head>
+<body>
+<pre>
+&lt;html&gt;
+&lt;body&gt;
+&lt;p&gt;文本文件中的第一行被略掉了：&lt;/p&gt;
+<code class="aspcode">&lt;%
+Set fs=Server.CreateObject(&#34;Scripting.FileSystemObject&#34;)
+Set f=fs.OpenTextFile(Server.MapPath(&#34;testread.txt&#34;), 1)
+f.SkipLine
+Response.Write(f.ReadAll)
+f.Close
+Set f=Nothing
+Set fs=Nothing
+%&gt;</code>
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+</body>

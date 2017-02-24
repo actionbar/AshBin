@@ -1,0 +1,31 @@
+<meta http-equiv="content-type" content="text/html; charset=gb2312">看了一篇关于动态生成的自动编号的文章，我觉得过于的复杂,有很多的地方都可以用SQLServer提供的函数替换。以下是我在和同事一起的工作中写成的，简单可行。<BR><BR><BR>说明:<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;档案号的格式: 
+四位年+两位月+两位日+四位档案号<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;即:200202260001<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;档案编号表:记录当前最新的档案编号,只有一个记录.为了防止记录 
+出现重复的情况.<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CREATE PROCEDURE 
+prGetNo --产生按年月日排列的档案号<BR>&nbsp;&nbsp;&nbsp;&nbsp;@No varchar(12) output 
+---为产生的档案号<BR>AS <BR>declare @Year 
+Int,<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@Month 
+int,<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@Day 
+int,<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@Temp_No 
+varchar(12),<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@NeedNo 
+varchar(4) --档案号<BR>BEGIN<BR>&nbsp;&nbsp;select 
+@year=Year(GetDate())<BR>&nbsp;&nbsp;select 
+@Month=Month(GetDate())<BR>&nbsp;&nbsp;select 
+@Day=Day(GetDate())<BR>&nbsp;&nbsp;select 
+@No=Str(@Year,4,0)+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(select<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;when 
+@Month&gt;=10 then 
+Str(@Month,2,0)<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;when 
+@Month&lt;10 Then 
+'0'+Str(@Month,1,0)<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end)+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(select<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;when 
+@Day&gt;=10 then 
+Str(@Day,2,0)<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;when 
+@Day&lt;10 Then 
+'0'+Str(@Day,1,0)<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end)<BR>&nbsp;&nbsp;SELECT 
+@Temp_No = 档案编号 FROM 档案编号表<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IF @No &lt;&gt; 
+SUBSTRING( @Temp_No,1,8)<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SELECT @No = 
+@No+'0001'<BR>&nbsp;&nbsp;ELSE<BR>&nbsp;&nbsp;&nbsp;BEGIN<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SELECT 
+@RandNo = STR(CONVERT(int,(SUBSTRING( @Temp_No 
+,9,4))+1),4,0)<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SELECT @RandNo = REPLACE( 
+@RandNo,' ','0')<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SELECT @No = @No + 
+@RandNo<BR>&nbsp;&nbsp;&nbsp;END<BR>&nbsp;&nbsp;UPDATE 
+档案编号表<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SET 档案编号 = 
+@No<BR>END<BR>END<BR>

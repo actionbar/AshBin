@@ -1,0 +1,139 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="../c3.css" />
+<title>SMIL 简介</title>
+</head>
+<body class="multimedia">
+<div id="wrapper">
+<div id="header">
+<a href="http://e.v-get.com/w3cschool/" style="float:left;">W3CSchool 在线教程</a>
+<div class="q g"><script type="text/javascript">var cpro_id="u1163355"</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div>
+<div id="navfirst">
+<ul id="menu">
+<li id="h"><a href="../h.html">HTML教程</a></li>
+<li id="x"><a href="../x.html">XML教程</a></li>
+<li id="b"><a href="../b.html">浏览器脚本</a></li>
+<li id="s"><a href="../s.html">服务器脚本</a></li>
+<li id="d"><a href="../d.html">dot net教程</a></li>
+<li id="m"><a href="../m.html">多媒体教程</a></li>
+<li id="w"><a href="../w.html">建站手册</a></li>
+</ul>
+</div><div id="navsecond">
+<div id="course">
+<h2>SMIL 教程</h2>
+<ul>
+<li><a href="http://e.v-get.com/w3cschool/">SMIL 首页</a></li>
+<li><a href="smil_intro.html">SMIL 简介</a></li>
+<li><a href="smil_files.html">SMIL 文件</a></li>
+<li><a href="smil_html.html">SMIL HTML</a></li>
+<li><a href="smil_xhtml.html">SMIL XHTML</a></li>
+<li><a href="smil_timing.html">SMIL Timing</a></li>
+<li><a href="smil_seq.html">SMIL Sequence</a></li>
+<li><a href="smil_parallel.html">SMIL Parallel</a></li>
+<li><a href="smil_transition.html">SMIL Transition</a></li>
+<li><a href="smil_media.html">SMIL Media</a></li>
+<li><a href="smil_reference.html">SMIL 参考</a></li>
+</ul>
+</div>
+<div id="selected">
+<h2>建站手册</h2>
+<ul>
+<li><a href="../site/">网站构建</a></li>
+<li><a href="../w3c/">万维网联盟</a></li>
+<li><a href="http://e.v-get.com/w3c/">W3CSchool 教程</a></li>
+<li><a href="../quality/">网站品质</a></li>
+<li><a href="../semweb/">语义网</a></li>
+<li><a href="../hosting/">网站主机</a></li>
+</ul>
+<h2><a href="http://e.v-get.com/w3c/" class="f13">W3CSchool 教程</a></h2><div class="a120x90"><script type="text/javascript">var cpro_id="u1210867";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div></div>
+</div>
+<div id="maincontent">
+<h1>SMIL 简介</h1>
+<div  id="tpn">
+<ul class="prenext">
+<li class="pre"><a href="http://e.v-get.com/w3cschool/">上一页</a></li>
+<li class="next"><a href="smil_files.html">下一页</a></li>
+</ul>
+</div>
+<div id="intro">
+<p><strong>SMIL 是一种用于描述视听呈现 (audiovisual presentations）的易于学习的类似 HTML 的语言。</strong></p>
+</div>
+<div>
+<h2>您应当具备的基础知识</h2>
+<p>在继续学习之前，您需要对下面的知识有基本的了解：</p>
+<ul>
+<li>HTML</li>
+<li>XHTML</li>
+<li>XML</li>
+<li>XML 命名空间</li>
+</ul>
+<p>假如您希望首先学习这些项目，请在我们的<a href="http://e.v-get.com/w3cschool/">首页</a>访问这些教程。</p>
+</div>
+<div>
+<h2>什么是 SMIL？</h2>
+<ul>
+<li>SMIL 指同步多媒体集成语言</li>
+<li>SMIL 的发音是 "smile"</li>
+<li>SMIL 是一种用于描述视听呈现的语言</li>
+<li>SMIL 易于学习和理解</li>
+<li>SMIL 是一种类似 HTML 的语言</li>
+<li>SMIL 使用 XML 编写</li>
+<li>SMIL 呈现 (SMIL presentations）可以使用文本编辑器来编写</li>
+<li>SMIL 是 W3C 标准</li>
+</ul>
+</div>
+<div>
+<h2>简化的 SMIL 例子：</h2>
+<pre>&lt;smil&gt;
+&lt;body&gt;
+  &lt;seq repeatCount=&#34;indefinite&#34;&gt;
+    &lt;img src=&#34;image1.jpg&#34; dur=&#34;3s&#34; /&gt;
+    &lt;img src=&#34;image2.jpg&#34; dur=&#34;3s&#34; /&gt;
+  &lt;/seq&gt;
+&lt;/body&gt;
+&lt;/smil&gt;</pre>
+<p>从上面的例子，您可以看到 SMIL 一门基于 XML、容易理解，而且可以被简单的文本编辑器编写的语言。</p>
+<p><em>&lt;smil&gt;&lt;/smil&gt;</em> 标签定义 SMIL 文档。<em>&lt;body&gt;</em> 元素定义呈现的主体。<em>&lt;seq&gt;</em> 定义显示序列。<em>repeatCount</em> 属性定了一个非确定的循环。每个 <em>&lt;img&gt;</em> 元素都用 <em>src</em> 属性来定义图像资源，而 <em>dur</em> 属性定义显示的持续时间。</p>
+</div>
+<div>
+<h2>SMIL 可以做什么？</h2>
+<ul>
+<li>SMIL 可用于创建因特网和内联网程序</li>
+<li>SMIL 可用于创建幻灯片放映呈现</li>
+<li>SMIL 已被描述为 PowerPoint 的 Internet 对应物</li>
+<li>SMIL 呈现可显示多种文件类型 (文本、视频、音频...）</li>
+<li>SMIL 可同时显示多个文件</li>
+<li>SMIL 可从多台网页服务器显示文件</li>
+<li>SMIL 可包含到其他 SMIL 呈现的链接</li>
+<li>SMIL 呈现可包含控制按钮 (停止、开始、下一步...）</li>
+<li>SMIL 拥有定义元素序列和持续时间的函数</li>
+<li>SMIL 拥有定义元素位置和可见性的函数</li>
+</ul>
+</div>
+<div>
+<h2>在 W3C 的 SMIL</h2>
+<p>自从 1997 年，W3C 一直把 SMIL 作为一门用于精细编制多媒体呈现的语言来发展，以此实时地组合视频、音频、文本以及图形。</p>
+<p>在 1997 年 11 月 SMIL 作为工作草案被提交。</p>
+<p>SMIL 1.0 在 1998 年 6 月成为 W3C 标准。</p>
+<p>SMIL 2.0 在 2001 年 8 月被确立为 W3C 标准。</p>
+</div>
+<div id="bpn">
+<ul class="prenext">
+<li class="pre"><a href="http://e.v-get.com/w3cschool/">上一页</a></li>
+<li class="next"><a href="smil_files.html">下一页</a></li>
+</ul>
+</div>
+</div>
+<div id="sidebar">
+<div class="rs"></div>
+<div id="tools">
+<h5 id="tools_reference"><a href="smil_reference.html">SMIL 参考手册</a></h5>
+</div>
+<div class="a120x600"><script type="text/javascript">var cpro_id="u1293136";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div><div class="b"></div>
+</div>
+</body>
+</html>

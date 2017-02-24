@@ -1,0 +1,43 @@
+* 渝海生日密码查询工具|渝海软件[HaiPHP.COM]
+* 当前版本：V1.2 Build 20100511 释放时间：2010.05.11 00:59
+* 官方网站：http://www.HaiPHP.COM
+* 官方演示：http://www.haiphp.com/searchtools/birthday/
+* 版权所有 CopyRight 2009-2010, 渝海软件[HaiPHP.COM]; 保留所有权利
+-----------------------------
+欢迎使用渝海生日密码查询工具，本工具运行环境需求：PHP+MYSQL。
+
+升级说明：
+1、优化程序及模板结构提升运行速度
+2、SEO效果改进
+
+主要功能：
+1、每一天出生的人都有自己的生日密码，决定您一生的性格、发展。本工具提供全年生日密码，内容丰富；
+2、带查询历史记录方便搜索引擎抓取；
+3、DIV+CSS模板方便修改；
+4、免费、开源程序。
+
+安装方法：
+1、解压后将code目录中文件以2进制上传服务器；
+
+2、使用PhpMyadmin工具，对data目录中SQL文件按以下顺序执行导入数据：
+	1）birthday_1.sql
+	2）birthday_2.sql
+	
+3、用记事本工具编辑config.php文件，修改数据库账户信息。
+	$dbusername  = 'root'; //root修改为数据库账户，
+	$dbpassword  = '111111'; //111111修改为数据库密码
+	$dbname  = 'birthday'; //您的数据库名称。
+	
+4、Unix类环境下list.txt文件、smarty\templates\templates_c目录请赋予777权限，2003系统请赋予写权限；
+
+5、显示模板位置：smarty\templates\templates\index.html，修改此文件调整显示效果。
+
+工具配置参数设置技巧请浏览：http://bbs.haiphp.com/read.php?tid=12
+
+旧版升级说明：
+2进制FTP上传程序及文件，如果修改过模板请先保存index.html。
+-----------------------------
+站长系列查询工具：http://bbs.haiphp.com/thread.php?fid=3
+娱乐休闲系列查询工具：http://bbs.haiphp.com/thread.php?fid=7
+请给渝海软件[HaiPHP.COM]留上链接，谢谢支持！
+渝海软件[HaiPHP.COM]提供PHP程序定制、网站数据采集服务，联系QQ：1005691162

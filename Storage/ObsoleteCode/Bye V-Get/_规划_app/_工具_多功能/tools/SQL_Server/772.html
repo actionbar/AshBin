@@ -1,0 +1,22 @@
+<meta http-equiv="content-type" content="text/html; charset=gb2312"><FONT 
+style="FONT-SIZE: 9pt; LINE-HEIGHT: 15pt"><B>Pass&nbsp;an&nbsp;Array&nbsp;into&nbsp;a&nbsp;Stored&nbsp;Procedure</B><BR>Pass&nbsp;an&nbsp;Array&nbsp;into&nbsp;a&nbsp;Stored&nbsp;Procedure<BR>Script&nbsp;Rating&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Total&nbsp;number&nbsp;of&nbsp;votes&nbsp;[19]&nbsp;<BR>By:&nbsp;david.hardin&nbsp;<BR>Have&nbsp;you&nbsp;ever&nbsp;wished&nbsp;T-SQL&nbsp;allowed&nbsp;you&nbsp;to&nbsp;pass&nbsp;an&nbsp;array&nbsp;into&nbsp;a&nbsp;stored&nbsp;procedure?&nbsp;Well&nbsp;the&nbsp;spListToTable&nbsp;stored&nbsp;procedure&nbsp;listed&nbsp;below&nbsp;accepts&nbsp;a&nbsp;delimeted&nbsp;string&nbsp;and&nbsp;turns&nbsp;it&nbsp;into&nbsp;a&nbsp;table.&nbsp;Code&nbsp;your&nbsp;stored&nbsp;procedure&nbsp;to&nbsp;accept&nbsp;a&nbsp;varchar,&nbsp;create&nbsp;a&nbsp;temporary&nbsp;table,&nbsp;call&nbsp;spListToTable,&nbsp;and&nbsp;use&nbsp;the&nbsp;populated&nbsp;temporary&nbsp;table&nbsp;as&nbsp;if&nbsp;it&nbsp;were&nbsp;an&nbsp;array&nbsp;of&nbsp;values.&nbsp;
+<P></P>
+<P>CREATE&nbsp;PROCEDURE&nbsp;[spListToTable]<BR>&nbsp;@vcList&nbsp;&nbsp;VARCHAR(8000),<BR>&nbsp;@vcDelimiter&nbsp;VARCHAR(8000),<BR>&nbsp;@TableName&nbsp;&nbsp;&nbsp;SYSNAME,<BR>&nbsp;@ColumnName&nbsp;SYSNAME<BR>AS<BR>&nbsp;SET&nbsp;NOCOUNT&nbsp;ON</P>
+<P>&nbsp;DECLARE&nbsp;@iPosStart&nbsp;INT,<BR>&nbsp;&nbsp;@iPosEnd&nbsp;INT,<BR>&nbsp;&nbsp;@iLenDelim&nbsp;INT,<BR>&nbsp;&nbsp;@iExit&nbsp;&nbsp;INT,<BR>&nbsp;&nbsp;@vcStr&nbsp;&nbsp;varchar(8000),<BR>&nbsp;&nbsp;@vcSql&nbsp;&nbsp;varchar(8000)</P>
+<P>&nbsp;SET&nbsp;@iPosStart&nbsp;=&nbsp;1<BR>&nbsp;SET&nbsp;@iPosEnd&nbsp;=&nbsp;1<BR>&nbsp;SET&nbsp;@iLenDelim&nbsp;=&nbsp;LEN(@vcDelimiter)</P>
+<P>&nbsp;SET&nbsp;@vcSql&nbsp;=&nbsp;'INSERT&nbsp;'&nbsp;+&nbsp;@TableName&nbsp;+&nbsp;'&nbsp;('&nbsp;+&nbsp;@ColumnName&nbsp;+&nbsp;')&nbsp;valueS&nbsp;('''</P>
+<P>&nbsp;SET&nbsp;@iExit&nbsp;=&nbsp;0</P>
+<P>&nbsp;WHILE&nbsp;@iExit&nbsp;=&nbsp;0<BR>&nbsp;BEGIN<BR>&nbsp;&nbsp;SET&nbsp;@iPosEnd&nbsp;=&nbsp;CHARINDEX(@vcDelimiter,&nbsp;@vcList,&nbsp;@iPosStart)</P>
+<P>&nbsp;&nbsp;IF&nbsp;@iPosEnd&nbsp;&lt;=&nbsp;0<BR>&nbsp;&nbsp;BEGIN<BR>&nbsp;&nbsp;&nbsp;SET&nbsp;@iPosEnd&nbsp;=&nbsp;LEN(@vcList)&nbsp;+&nbsp;1<BR>&nbsp;&nbsp;&nbsp;SET&nbsp;@iExit&nbsp;=&nbsp;1<BR>&nbsp;&nbsp;END</P>
+<P>&nbsp;&nbsp;SET&nbsp;@vcStr&nbsp;=&nbsp;SUBSTRING(@vcList,&nbsp;@iPosStart,&nbsp;@iPosEnd&nbsp;-&nbsp;@iPosStart)</P>
+<P>&nbsp;&nbsp;EXEC(@vcSql&nbsp;+&nbsp;@vcStr&nbsp;+&nbsp;''')')</P>
+<P>&nbsp;&nbsp;SET&nbsp;@iPosStart&nbsp;=&nbsp;@iPosEnd&nbsp;+&nbsp;@iLenDelim<BR>&nbsp;END</P>
+<P>&nbsp;RETURN&nbsp;0<BR>GO</P>
+<P>--&nbsp;You&nbsp;can&nbsp;use&nbsp;it&nbsp;like:</P>
+<P>DECLARE&nbsp;@vcArray&nbsp;VARCHAR(255)<BR>SELECT&nbsp;@vcArray&nbsp;=&nbsp;'1|2|3|4|5|6|7|8|9|10'</P>
+<P>CREATE&nbsp;TABLE&nbsp;#values&nbsp;(v&nbsp;INT&nbsp;NOT&nbsp;NULL)</P>
+<P>EXEC&nbsp;spListToTable&nbsp;@vcArray,&nbsp;'|',&nbsp;'#values',&nbsp;'v'</P>
+<P>CREATE&nbsp;TABLE&nbsp;#SomeTable&nbsp;(Status&nbsp;VARCHAR(10),&nbsp;value&nbsp;INT)</P>
+<P>INSERT&nbsp;INTO&nbsp;#SomeTable&nbsp;(Status,&nbsp;value)&nbsp;SELECT&nbsp;'New',&nbsp;v&nbsp;FROM&nbsp;#values</P>
+<P>SELECT&nbsp;*&nbsp;FROM&nbsp;#SomeTable</P>
+<P>DROP&nbsp;TABLE&nbsp;#values<BR>DROP&nbsp;TABLE&nbsp;#SomeTable</P></FONT>

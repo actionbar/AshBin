@@ -1,0 +1,3147 @@
+<html>
+<head>
+<title>传统字符集</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+
+<link rel = stylesheet href = "image/style.css">
+</head>
+<body bgcolor="#ffffff">
+<table width="688" border="0" cellspacing="0" cellpadding="0" align="center">
+  <tr bgcolor="EEEEEE"> 
+    <td height="22"><a href="index.htm">主页</a></td>
+  </tr>
+</table><br>
+<table border="0" cellpadding="0" cellspacing="0" width="688" align="center" height="490">
+  <tr valign="top"> 
+    <td rowspan="4" width="91">&nbsp; </td>
+    <td height="68" width="131"> 
+      <p><img src="image/doc.gif"></p>
+    </td>
+    <td rowspan="4" width="18"><b></b> </td>
+    <td height="68" width="387"><img src="image/title_doc.gif"></td>
+    <td rowspan="4" width="61"> 
+      <h6>&nbsp;</h6>
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td rowspan="3" valign="top" class="pt10" align="center" width="131" bgcolor="EEEEEE"> 
+      <p>&nbsp;</p>
+      <p><font color="#FF0000">※ 7.3 传统字符集</font></p>
+       
+	</td>
+  </tr>
+  <tr valign="top"> 
+    <td width="387" height="308"> 
+      <table width="100%" border="0" cellpadding="0">
+        <tr> 
+          <td>
+
+           <h4><a name="_Toc467197056">7.3 传统字符集</a></h4>
+<p>不同地区的不同计算机使用的默认字符集各不相同，大多数现代计算机使用ASCII码扩展字符集。ASCII码含有英语字母表和大部分常见的标点符号以及空格符的编码。</p>
+<p>在美国，Mac计算机使用MacRoman字符集，Windows PC机使用Windows ANSI字符集，大部分Unix工作站使用ISO Latin-1。这些都是扩展的ASCII码，支持西方欧洲语言，如法语和西班牙语中的多出来的字符，如&ccedil;和?。在其他地区，如日本、希腊和以色列，计算机仍然使用令人困惑的混合字符集，这些字符集几乎都支持ASCII码加本地语言。</p>
+<p>上述方法在Internet上无效。当你正在互联网上阅读<i>San Jose Mercury News</i>，翻页时不会遇到几个用德语或汉语写的栏目。但是在Web页面上，这完全可能。用户将跟随一个链接并停止在一个日文界面的开始。即使网上冲浪者不懂日语，他们如果能看到一个好的日本版面也是不错的。如图7-5所示，而不是图7-2显示的那种随意的字符组合。</p>
+<p>XML处理这个问题是通过把小的、局部的字符集以外的字符集合并到一个大的字符集中，并假定它包含了地球上现存语言（和某些已消失的语言）使用的文字。这种字符集称为Unicode。同前面提到的一样，Unicode是一个双字节字符集，它能表示多种文字和几百种语言中的40,000多个不同字符。即使不能全部显示Unicode，所有的XML处理器必须识别Unicode。</p>
+<p>在第6章中学过，一个XML文档分成文本和二进制实体两部分，每个文本实体有一种编码方法。如果编码在实体定义中没有明确指定，就会默认为UTF-8&#0;&#0;一种Unicode的压缩形式，将保持纯ASCII文本不变。因此，只包含普通ASCII字符的XML文件，不会用处理Unicode这种多字节字符集的复杂工具对它进行编辑。</p>
+<h4><a name="_Toc467197057">7.3.1 ASCII字符集</a></h4>
+<p>ASCII，即American Standard Code for Information Interchange（美国标准信息交换码），是一个原始的字符集，而且是到目前为止最通用的。它形成了所有字符集必须支持的最主要部分。它基本上只定义了书写英语需要的全部字符，这些字符的编码是0~127。表7-1显示了ASCII字符集。</p>
+<p align="center">表7-1 ASCII字符集</p>
+<div align="center">
+  <table BORDER cellspacing=1 cellpadding=1 width=548>
+    <tr> 
+      <td width="9%" valign="MIDDLE" height=26> 
+        <p>编码 
+      </td>
+      <td width="31%" valign="MIDDLE" height=26> 
+        <p>字 符 
+      </td>
+      <td width="10%" valign="MIDDLE" height=26> 
+        <p>编码 
+      </td>
+      <td width="10%" valign="MIDDLE" height=26> 
+        <p>字符 
+      </td>
+      <td width="10%" valign="MIDDLE" height=26> 
+        <p>编码 
+      </td>
+      <td width="10%" valign="MIDDLE" height=26> 
+        <p>字符 
+      </td>
+      <td width="9%" valign="MIDDLE" height=26> 
+        <p>编码 
+      </td>
+      <td width="11%" valign="MIDDLE" height=26> 
+        <p>字符 
+      </td>
+    </tr>
+    <tr> 
+      <td width="9%" valign="TOP"> 
+        <p>0 
+      </td>
+      <td width="31%" valign="TOP"> 
+        <p>空字符(Control-@) 
+      </td>
+      <td width="10%" valign="TOP"> 
+        <p>32 
+      </td>
+      <td width="10%" valign="TOP"> 
+        <p>Space 
+      </td>
+      <td width="10%" valign="TOP"> 
+        <p>64 
+      </td>
+      <td width="10%" valign="TOP"> 
+        <p>@ 
+      </td>
+      <td width="9%" valign="TOP"> 
+        <p>96 
+      </td>
+      <td width="11%" valign="TOP"> 
+        <p>` 
+      </td>
+    </tr>
+    <tr> 
+      <td width="9%" valign="TOP"> 
+        <p>1 
+      </td>
+      <td width="31%" valign="TOP"> 
+        <p>标题开始字符(Control-A) 
+      </td>
+      <td width="10%" valign="TOP"> 
+        <p>33 
+      </td>
+      <td width="10%" valign="TOP"> 
+        <p>! 
+      </td>
+      <td width="10%" valign="TOP"> 
+        <p>65 
+      </td>
+      <td width="10%" valign="TOP"> 
+        <p>A 
+      </td>
+      <td width="9%" valign="TOP"> 
+        <p>97 
+      </td>
+      <td width="11%" valign="TOP"> 
+        <p>A 
+      </td>
+    </tr>
+    <tr> 
+      <td width="9%" valign="TOP"> 
+        <p>2 
+      </td>
+      <td width="31%" valign="TOP"> 
+        <p>正文开始字符(Control-B) 
+      </td>
+      <td width="10%" valign="TOP"> 
+        <p>34 
+      </td>
+      <td width="10%" valign="TOP"> 
+        <p>“ 
+      </td>
+      <td width="10%" valign="TOP"> 
+        <p>66 
+      </td>
+      <td width="10%" valign="TOP"> 
+        <p>B 
+      </td>
+      <td width="9%" valign="TOP"> 
+        <p>98 
+      </td>
+      <td width="11%" valign="TOP"> 
+        <p>B 
+      </td>
+    </tr>
+    <tr> 
+      <td width="9%" valign="TOP"> 
+        <p>3 
+      </td>
+      <td width="31%" valign="TOP"> 
+        <p>正文结束字符(Control-C) 
+      </td>
+      <td width="10%" valign="TOP"> 
+        <p>35 
+      </td>
+      <td width="10%" valign="TOP"> 
+        <p># 
+      </td>
+      <td width="10%" valign="TOP"> 
+        <p>67 
+      </td>
+      <td width="10%" valign="TOP"> 
+        <p>C 
+      </td>
+      <td width="9%" valign="TOP"> 
+        <p>99 
+      </td>
+      <td width="11%" valign="TOP"> 
+        <p>C 
+      </td>
+    </tr>
+    <tr> 
+      <td width="9%" valign="TOP"> 
+        <p>4 
+      </td>
+      <td width="31%" valign="TOP"> 
+        <p>传输结束字符(Control-D) 
+      </td>
+      <td width="10%" valign="TOP"> 
+        <p>36 
+      </td>
+      <td width="10%" valign="TOP"> 
+        <p>$ 
+      </td>
+      <td width="10%" valign="TOP"> 
+        <p>68 
+      </td>
+      <td width="10%" valign="TOP"> 
+        <p>D 
+      </td>
+      <td width="9%" valign="TOP"> 
+        <p>100 
+      </td>
+      <td width="11%" valign="TOP"> 
+        <p>d 
+      </td>
+    </tr>
+    <tr> 
+      <td width="9%" valign="TOP"> 
+        <p>5 
+      </td>
+      <td width="31%" valign="TOP"> 
+        <p>询问字符(Control-E) 
+      </td>
+      <td width="10%" valign="TOP"> 
+        <p>37 
+      </td>
+      <td width="10%" valign="TOP"> 
+        <p>% 
+      </td>
+      <td width="10%" valign="TOP"> 
+        <p>69 
+      </td>
+      <td width="10%" valign="TOP"> 
+        <p>E 
+      </td>
+      <td width="9%" valign="TOP"> 
+        <p>101 
+      </td>
+      <td width="11%" valign="TOP"> 
+        <p>e 
+      </td>
+    </tr>
+    <tr> 
+      <td width="9%" valign="TOP"> 
+        <p>6 
+      </td>
+      <td width="31%" valign="TOP"> 
+        <p>应答字符(Control-F) 
+      </td>
+      <td width="10%" valign="TOP"> 
+        <p>38 
+      </td>
+      <td width="10%" valign="TOP"> 
+        <p>&amp; 
+      </td>
+      <td width="10%" valign="TOP"> 
+        <p>70 
+      </td>
+      <td width="10%" valign="TOP"> 
+        <p>F 
+      </td>
+      <td width="9%" valign="TOP"> 
+        <p>102 
+      </td>
+      <td width="11%" valign="TOP"> 
+        <p>f 
+      </td>
+    </tr>
+    <tr> 
+      <td width="9%" valign="TOP"> 
+        <p>7 
+      </td>
+      <td width="31%" valign="TOP"> 
+        <p>响铃字符(Control-G) 
+      </td>
+      <td width="10%" valign="TOP"> 
+        <p>39 
+      </td>
+      <td width="10%" valign="TOP"> 
+        <p>‘ 
+      </td>
+      <td width="10%" valign="TOP"> 
+        <p>71 
+      </td>
+      <td width="10%" valign="TOP"> 
+        <p>G 
+      </td>
+      <td width="9%" valign="TOP"> 
+        <p>103 
+      </td>
+      <td width="11%" valign="TOP"> 
+        <p>g 
+      </td>
+    </tr>
+    <tr> 
+      <td width="9%" valign="TOP"> 
+        <p>8 
+      </td>
+      <td width="31%" valign="TOP"> 
+        <p>退回字符(Control-H) 
+      </td>
+      <td width="10%" valign="TOP"> 
+        <p>40 
+      </td>
+      <td width="10%" valign="TOP"> 
+        <p>( 
+      </td>
+      <td width="10%" valign="TOP"> 
+        <p>72 
+      </td>
+      <td width="10%" valign="TOP"> 
+        <p>H 
+      </td>
+      <td width="9%" valign="TOP"> 
+        <p>104 
+      </td>
+      <td width="11%" valign="TOP"> 
+        <p>h 
+      </td>
+    </tr>
+    <tr> 
+      <td width="9%" valign="TOP"> 
+        <p>9 
+      </td>
+      <td width="31%" valign="TOP"> 
+        <p>制表符(Control-I) 
+      </td>
+      <td width="10%" valign="TOP"> 
+        <p>41 
+      </td>
+      <td width="10%" valign="TOP"> 
+        <p>) 
+      </td>
+      <td width="10%" valign="TOP"> 
+        <p>73 
+      </td>
+      <td width="10%" valign="TOP"> 
+        <p>I 
+      </td>
+      <td width="9%" valign="TOP"> 
+        <p>105 
+      </td>
+      <td width="11%" valign="TOP"> 
+        <p>i 
+      </td>
+    </tr>
+    <tr> 
+      <td width="9%" valign="TOP"> 
+        <p>10 
+      </td>
+      <td width="31%" valign="TOP"> 
+        <p>回行字符(Control-J) 
+      </td>
+      <td width="10%" valign="TOP"> 
+        <p>42 
+      </td>
+      <td width="10%" valign="TOP"> 
+        <p>* 
+      </td>
+      <td width="10%" valign="TOP"> 
+        <p>74 
+      </td>
+      <td width="10%" valign="TOP"> 
+        <p>J 
+      </td>
+      <td width="9%" valign="TOP"> 
+        <p>106 
+      </td>
+      <td width="11%" valign="TOP"> 
+        <p>j 
+      </td>
+    </tr>
+    <tr> 
+      <td width="9%" valign="TOP"> 
+        <p>11 
+      </td>
+      <td width="31%" valign="TOP"> 
+        <p>垂直制表符(Control-K) 
+      </td>
+      <td width="10%" valign="TOP"> 
+        <p>43 
+      </td>
+      <td width="10%" valign="TOP"> 
+        <p>+ 
+      </td>
+      <td width="10%" valign="TOP"> 
+        <p>75 
+      </td>
+      <td width="10%" valign="TOP"> 
+        <p>K 
+      </td>
+      <td width="9%" valign="TOP"> 
+        <p>107 
+      </td>
+      <td width="11%" valign="TOP"> 
+        <p>k 
+      </td>
+    </tr>
+    <tr> 
+      <td width="9%" valign="TOP"> 
+        <p>12 
+      </td>
+      <td width="31%" valign="TOP"> 
+        <p>进纸字符(Control-L) 
+      </td>
+      <td width="10%" valign="TOP"> 
+        <p>44 
+      </td>
+      <td width="10%" valign="TOP"> 
+        <p>, 
+      </td>
+      <td width="10%" valign="TOP"> 
+        <p>76 
+      </td>
+      <td width="10%" valign="TOP"> 
+        <p>L 
+      </td>
+      <td width="9%" valign="TOP"> 
+        <p>108 
+      </td>
+      <td width="11%" valign="TOP"> 
+        <p>l 
+      </td>
+    </tr>
+    <tr> 
+      <td width="9%" valign="TOP"> 
+        <p>13 
+      </td>
+      <td width="31%" valign="TOP"> 
+        <p>回车字符(Control-M) 
+      </td>
+      <td width="10%" valign="TOP"> 
+        <p>45 
+      </td>
+      <td width="10%" valign="TOP"> 
+        <p>- 
+      </td>
+      <td width="10%" valign="TOP"> 
+        <p>77 
+      </td>
+      <td width="10%" valign="TOP"> 
+        <p>M 
+      </td>
+      <td width="9%" valign="TOP"> 
+        <p>109 
+      </td>
+      <td width="11%" valign="TOP"> 
+        <p>m 
+      </td>
+    </tr>
+    <tr> 
+      <td width="9%" valign="TOP"> 
+        <p>14 
+      </td>
+      <td width="31%" valign="TOP"> 
+        <p>移出字符(Control-N) 
+      </td>
+      <td width="10%" valign="TOP"> 
+        <p>46 
+      </td>
+      <td width="10%" valign="TOP"> 
+        <p>. 
+      </td>
+      <td width="10%" valign="TOP"> 
+        <p>78 
+      </td>
+      <td width="10%" valign="TOP"> 
+        <p>N 
+      </td>
+      <td width="9%" valign="TOP"> 
+        <p>110 
+      </td>
+      <td width="11%" valign="TOP"> 
+        <p>n 
+      </td>
+    </tr>
+    <tr> 
+      <td width="9%" valign="TOP"> 
+        <p>15 
+      </td>
+      <td width="31%" valign="TOP"> 
+        <p>移入字符(Control-O) 
+      </td>
+      <td width="10%" valign="TOP"> 
+        <p>47 
+      </td>
+      <td width="10%" valign="TOP"> 
+        <p>/ 
+      </td>
+      <td width="10%" valign="TOP"> 
+        <p>79 
+      </td>
+      <td width="10%" valign="TOP"> 
+        <p>O 
+      </td>
+      <td width="9%" valign="TOP"> 
+        <p>111 
+      </td>
+      <td width="11%" valign="TOP"> 
+        <p>o 
+      </td>
+    </tr>
+    <tr> 
+      <td width="9%" valign="TOP"> 
+        <p>16 
+      </td>
+      <td width="31%" valign="TOP"> 
+        <p>数据连接转义符(Control-P) 
+      </td>
+      <td width="10%" valign="TOP"> 
+        <p>48 
+      </td>
+      <td width="10%" valign="TOP"> 
+        <p>0 
+      </td>
+      <td width="10%" valign="TOP"> 
+        <p>80 
+      </td>
+      <td width="10%" valign="TOP"> 
+        <p>P 
+      </td>
+      <td width="9%" valign="TOP"> 
+        <p>112 
+      </td>
+      <td width="11%" valign="TOP"> 
+        <p>p 
+      </td>
+    </tr>
+    <tr> 
+      <td width="9%" valign="TOP"> 
+        <p>17 
+      </td>
+      <td width="31%" valign="TOP"> 
+        <p>设备控制1(Control-Q) 
+      </td>
+      <td width="10%" valign="TOP"> 
+        <p>49 
+      </td>
+      <td width="10%" valign="TOP"> 
+        <p>1 
+      </td>
+      <td width="10%" valign="TOP"> 
+        <p>81 
+      </td>
+      <td width="10%" valign="TOP"> 
+        <p>Q 
+      </td>
+      <td width="9%" valign="TOP"> 
+        <p>113 
+      </td>
+      <td width="11%" valign="TOP"> 
+        <p>q 
+      </td>
+    </tr>
+    <tr> 
+      <td width="9%" valign="TOP"> 
+        <p>18 
+      </td>
+      <td width="31%" valign="TOP"> 
+        <p>设备控制2(Control-R) 
+      </td>
+      <td width="10%" valign="TOP"> 
+        <p>50 
+      </td>
+      <td width="10%" valign="TOP"> 
+        <p>2 
+      </td>
+      <td width="10%" valign="TOP"> 
+        <p>82 
+      </td>
+      <td width="10%" valign="TOP"> 
+        <p>R 
+      </td>
+      <td width="9%" valign="TOP"> 
+        <p>114 
+      </td>
+      <td width="11%" valign="TOP"> 
+        <p>r 
+      </td>
+    </tr>
+    <tr> 
+      <td width="9%" valign="TOP"> 
+        <p>19 
+      </td>
+      <td width="31%" valign="TOP"> 
+        <p>设备控制3(Control-S) 
+      </td>
+      <td width="10%" valign="TOP"> 
+        <p>51 
+      </td>
+      <td width="10%" valign="TOP"> 
+        <p>3 
+      </td>
+      <td width="10%" valign="TOP"> 
+        <p>83 
+      </td>
+      <td width="10%" valign="TOP"> 
+        <p>S 
+      </td>
+      <td width="9%" valign="TOP"> 
+        <p>115 
+      </td>
+      <td width="11%" valign="TOP"> 
+        <p>s 
+      </td>
+    </tr>
+    <tr> 
+      <td width="9%" valign="TOP"> 
+        <p>20 
+      </td>
+      <td width="31%" valign="TOP"> 
+        <p>设备控制4(Control-T) 
+      </td>
+      <td width="10%" valign="TOP"> 
+        <p>52 
+      </td>
+      <td width="10%" valign="TOP"> 
+        <p>4 
+      </td>
+      <td width="10%" valign="TOP"> 
+        <p>84 
+      </td>
+      <td width="10%" valign="TOP"> 
+        <p>T 
+      </td>
+      <td width="9%" valign="TOP"> 
+        <p>116 
+      </td>
+      <td width="11%" valign="TOP"> 
+        <p>t 
+      </td>
+    </tr>
+    <tr> 
+      <td width="9%" valign="TOP"> 
+        <p>21 
+      </td>
+      <td width="31%" valign="TOP"> 
+        <p>拒绝应答字符(Control-U) 
+      </td>
+      <td width="10%" valign="TOP"> 
+        <p>53 
+      </td>
+      <td width="10%" valign="TOP"> 
+        <p>5 
+      </td>
+      <td width="10%" valign="TOP"> 
+        <p>85 
+      </td>
+      <td width="10%" valign="TOP"> 
+        <p>U 
+      </td>
+      <td width="9%" valign="TOP"> 
+        <p>117 
+      </td>
+      <td width="11%" valign="TOP"> 
+        <p>u 
+      </td>
+    </tr>
+    <tr> 
+      <td width="9%" valign="TOP"> 
+        <p>22 
+      </td>
+      <td width="31%" valign="TOP"> 
+        <p>同步等待字符(Control-V) 
+      </td>
+      <td width="10%" valign="TOP"> 
+        <p>54 
+      </td>
+      <td width="10%" valign="TOP"> 
+        <p>6 
+      </td>
+      <td width="10%" valign="TOP"> 
+        <p>86 
+      </td>
+      <td width="10%" valign="TOP"> 
+        <p>V 
+      </td>
+      <td width="9%" valign="TOP"> 
+        <p>118 
+      </td>
+      <td width="11%" valign="TOP"> 
+        <p>v 
+      </td>
+    </tr>
+    <tr> 
+      <td width="9%" valign="TOP"> 
+        <p>23 
+      </td>
+      <td width="31%" valign="TOP"> 
+        <p>传输块结束符(Control-W) 
+      </td>
+      <td width="10%" valign="TOP"> 
+        <p>55 
+      </td>
+      <td width="10%" valign="TOP"> 
+        <p>7 
+      </td>
+      <td width="10%" valign="TOP"> 
+        <p>87 
+      </td>
+      <td width="10%" valign="TOP"> 
+        <p>W 
+      </td>
+      <td width="9%" valign="TOP"> 
+        <p>119 
+      </td>
+      <td width="11%" valign="TOP"> 
+        <p>w 
+      </td>
+    </tr>
+    <tr> 
+      <td width="9%" valign="TOP"> 
+        <p>24 
+      </td>
+      <td width="31%" valign="TOP"> 
+        <p>删除字符(Control-X) 
+      </td>
+      <td width="10%" valign="TOP"> 
+        <p>56 
+      </td>
+      <td width="10%" valign="TOP"> 
+        <p>8 
+      </td>
+      <td width="10%" valign="TOP"> 
+        <p>88 
+      </td>
+      <td width="10%" valign="TOP"> 
+        <p>X 
+      </td>
+      <td width="9%" valign="TOP"> 
+        <p>120 
+      </td>
+      <td width="11%" valign="TOP"> 
+        <p>x 
+      </td>
+    </tr>
+    <tr> 
+      <td width="9%" valign="TOP"> 
+        <p>25 
+      </td>
+      <td width="31%" valign="TOP"> 
+        <p>媒体结束符(Control-Y) 
+      </td>
+      <td width="10%" valign="TOP"> 
+        <p>57 
+      </td>
+      <td width="10%" valign="TOP"> 
+        <p>9 
+      </td>
+      <td width="10%" valign="TOP"> 
+        <p>89 
+      </td>
+      <td width="10%" valign="TOP"> 
+        <p>Y 
+      </td>
+      <td width="9%" valign="TOP"> 
+        <p>121 
+      </td>
+      <td width="11%" valign="TOP"> 
+        <p>y 
+      </td>
+    </tr>
+    <tr> 
+      <td width="9%" valign="TOP"> 
+        <p>26 
+      </td>
+      <td width="31%" valign="TOP"> 
+        <p>替换字符(Control-Z) 
+      </td>
+      <td width="10%" valign="TOP"> 
+        <p>58 
+      </td>
+      <td width="10%" valign="TOP"> 
+        <p>: 
+      </td>
+      <td width="10%" valign="TOP"> 
+        <p>90 
+      </td>
+      <td width="10%" valign="TOP"> 
+        <p>Z 
+      </td>
+      <td width="9%" valign="TOP"> 
+        <p>122 
+      </td>
+      <td width="11%" valign="TOP"> 
+        <p>z 
+      </td>
+    </tr>
+    <tr> 
+      <td width="9%" valign="TOP"> 
+        <p>27 
+      </td>
+      <td width="31%" valign="TOP"> 
+        <p>转义字符(Control-[) 
+      </td>
+      <td width="10%" valign="TOP"> 
+        <p>59 
+      </td>
+      <td width="10%" valign="TOP"> 
+        <p>; 
+      </td>
+      <td width="10%" valign="TOP"> 
+        <p>91 
+      </td>
+      <td width="10%" valign="TOP"> 
+        <p>[ 
+      </td>
+      <td width="9%" valign="TOP"> 
+        <p>123 
+      </td>
+      <td width="11%" valign="TOP"> 
+        <p>{ 
+      </td>
+    </tr>
+    <tr> 
+      <td width="9%" valign="TOP"> 
+        <p>28 
+      </td>
+      <td width="31%" valign="TOP"> 
+        <p>文件分隔符(Control-\) 
+      </td>
+      <td width="10%" valign="TOP"> 
+        <p>60 
+      </td>
+      <td width="10%" valign="TOP"> 
+        <p>&lt; 
+      </td>
+      <td width="10%" valign="TOP"> 
+        <p>92 
+      </td>
+      <td width="10%" valign="TOP"> 
+        <p>\ 
+      </td>
+      <td width="9%" valign="TOP"> 
+        <p>124 
+      </td>
+      <td width="11%" valign="TOP"> 
+        <p>| 
+      </td>
+    </tr>
+    <tr> 
+      <td width="9%" valign="TOP"> 
+        <p>29 
+      </td>
+      <td width="31%" valign="TOP"> 
+        <p>组群分隔符(Control-]) 
+      </td>
+      <td width="10%" valign="TOP"> 
+        <p>61 
+      </td>
+      <td width="10%" valign="TOP"> 
+        <p>= 
+      </td>
+      <td width="10%" valign="TOP"> 
+        <p>93 
+      </td>
+      <td width="10%" valign="TOP"> 
+        <p>] 
+      </td>
+      <td width="9%" valign="TOP"> 
+        <p>125 
+      </td>
+      <td width="11%" valign="TOP"> 
+        <p>} 
+      </td>
+    </tr>
+    <tr> 
+      <td width="9%" valign="TOP"> 
+        <p>30 
+      </td>
+      <td width="31%" valign="TOP"> 
+        <p>记录分隔符(Control-^) 
+      </td>
+      <td width="10%" valign="TOP"> 
+        <p>62 
+      </td>
+      <td width="10%" valign="TOP"> 
+        <p>&gt; 
+      </td>
+      <td width="10%" valign="TOP"> 
+        <p>94 
+      </td>
+      <td width="10%" valign="TOP"> 
+        <p>^ 
+      </td>
+      <td width="9%" valign="TOP"> 
+        <p>126 
+      </td>
+      <td width="11%" valign="TOP"> 
+        <p>~ 
+      </td>
+    </tr>
+    <tr> 
+      <td width="9%" valign="TOP"> 
+        <p>31 
+      </td>
+      <td width="31%" valign="TOP"> 
+        <p>单元分隔符(Control-_) 
+      </td>
+      <td width="10%" valign="TOP"> 
+        <p>63 
+      </td>
+      <td width="10%" valign="TOP"> 
+        <p>? 
+      </td>
+      <td width="10%" valign="TOP"> 
+        <p>95 
+      </td>
+      <td width="10%" valign="TOP"> 
+        <p>_ 
+      </td>
+      <td width="9%" valign="TOP"> 
+        <p>127 
+      </td>
+      <td width="11%" valign="TOP"> 
+        <p>delete 
+      </td>
+    </tr>
+  </table>
+</div>
+<p>&nbsp;</p>
+<p>在0~31之间的字符是非打印控制字符，包括回车、送纸、制表、响铃和其他类似的字符。其中有许多字符是以纸为基础的电传打印机时代遗留下来的。例如，回车在字面上表示把支架移回到左边空白处，就像在打字机上做一样。送纸使打印机滚筒向上移动一行。除了提及的几个字符外，其他的这些字符使用率不高。</p>
+<p>人们所碰到的大多数字符集可能是ASCII的扩展字符集。换句话说，它们定义在0到127之间的字符同ASCII一样，只是增加了127以后的字符。</p>
+<h5><a name="_Toc467197058">7.3.2 ISO字符集</a></h5>
+<p>ASCII中的“A”代表美国，因此ASCII码专门用于书写英语，严格来说是美式英语也就不足为奇了。ASCII码中缺少￡、&uuml;、?和许多书写其他语言和地区所需的字符。</p>
+<p>可通过指定128以后的更多字符扩展ASCII码。国际标准组织（ISO）定义了几个不同的字符集，它们是在ASCII码基础上增加了其他语言和地区需要的字符。其中最突出的是ISO8859-1，通常叫做Latin-1。Latin-1包括了书写所有西方欧洲语言不可缺少的附加字符，其中0~127的字符与ASCII码相同。表7-2给出了128~255之间的字符，同样前32个字符是极少使用的非打印控制字符。</p>
+<p align="center">表7-2 ISO 8859-1 Latin-1 字符集</p>
+<p> 
+<div align="center"> 
+  <table BORDER cellspacing=0 cellpadding=0 width=507>
+    <tr> 
+      <td width="12%" valign="MIDDLE" height=18> 
+        <p>编码 
+      </td>
+      <td width="13%" valign="MIDDLE" height=18> 
+        <p>字符 
+      </td>
+      <td width="12%" valign="MIDDLE" height=18> 
+        <p>编码 
+      </td>
+      <td width="15%" valign="MIDDLE" height=18> 
+        <p>字符 
+      </td>
+      <td width="11%" valign="MIDDLE" height=18> 
+        <p>编码 
+      </td>
+      <td width="13%" valign="MIDDLE" height=18> 
+        <p>字符 
+      </td>
+      <td width="13%" valign="MIDDLE" height=18> 
+        <p>编码 
+      </td>
+      <td width="13%" valign="MIDDLE" height=18> 
+        <p>字符 
+      </td>
+    </tr>
+    <tr> 
+      <td width="12%" valign="MIDDLE" height=18> 
+        <p>128 
+      </td>
+      <td width="13%" valign="MIDDLE" height=18> 
+        <p>未定义 
+      </td>
+      <td width="12%" valign="MIDDLE" height=18> 
+        <p>160 
+      </td>
+      <td width="15%" valign="MIDDLE" height=18> 
+        <p>不可分空格 
+      </td>
+      <td width="11%" valign="MIDDLE" height=18> 
+        <p>192 
+      </td>
+      <td width="13%" valign="MIDDLE" height=18> 
+        <p>&Agrave; 
+      </td>
+      <td width="13%" valign="MIDDLE" height=18> 
+        <p>224 
+      </td>
+      <td width="13%" valign="MIDDLE" height=18> 
+        <p>&Agrave; 
+      </td>
+    </tr>
+    <tr> 
+      <td width="12%" valign="MIDDLE" height=18> 
+        <p>129 
+      </td>
+      <td width="13%" valign="MIDDLE" height=18> 
+        <p>未定义 
+      </td>
+      <td width="12%" valign="MIDDLE" height=18> 
+        <p>161 
+      </td>
+      <td width="15%" valign="MIDDLE" height=18> 
+        <p>? 
+      </td>
+      <td width="11%" valign="MIDDLE" height=18> 
+        <p>193 
+      </td>
+      <td width="13%" valign="MIDDLE" height=18> 
+        <p>&Aacute; 
+      </td>
+      <td width="13%" valign="MIDDLE" height=18> 
+        <p>225 
+      </td>
+      <td width="13%" valign="MIDDLE" height=18> 
+        <p>&Aacute; 
+      </td>
+    </tr>
+    <tr> 
+      <td width="12%" valign="MIDDLE" height=18> 
+        <p>130 
+      </td>
+      <td width="13%" valign="MIDDLE" height=18> 
+        <p>Bph 
+      </td>
+      <td width="12%" valign="MIDDLE" height=18> 
+        <p>162 
+      </td>
+      <td width="15%" valign="MIDDLE" height=18> 
+        <p>￠ 
+      </td>
+      <td width="11%" valign="MIDDLE" height=18> 
+        <p>194 
+      </td>
+      <td width="13%" valign="MIDDLE" height=18> 
+        <p>&Acirc; 
+      </td>
+      <td width="13%" valign="MIDDLE" height=18> 
+        <p>226 
+      </td>
+      <td width="13%" valign="MIDDLE" height=18> 
+        <p>&Acirc; 
+      </td>
+    </tr>
+    <tr> 
+      <td width="12%" valign="MIDDLE" height=18> 
+        <p>131 
+      </td>
+      <td width="13%" valign="MIDDLE" height=18> 
+        <p>Nbh 
+      </td>
+      <td width="12%" valign="MIDDLE" height=18> 
+        <p>163 
+      </td>
+      <td width="15%" valign="MIDDLE" height=18> 
+        <p>￡ 
+      </td>
+      <td width="11%" valign="MIDDLE" height=18> 
+        <p>195 
+      </td>
+      <td width="13%" valign="MIDDLE" height=18> 
+        <p>&Atilde; 
+      </td>
+      <td width="13%" valign="MIDDLE" height=18> 
+        <p>227 
+      </td>
+      <td width="13%" valign="MIDDLE" height=18> 
+        <p>&Atilde; 
+      </td>
+    </tr>
+    <tr> 
+      <td width="12%" valign="MIDDLE" height=18> 
+        <p>132 
+      </td>
+      <td width="13%" valign="MIDDLE" height=18> 
+        <p>未定义 
+      </td>
+      <td width="12%" valign="MIDDLE" height=18> 
+        <p>164 
+      </td>
+      <td width="15%" valign="MIDDLE" height=18> 
+        <p>¤ 
+      </td>
+      <td width="11%" valign="MIDDLE" height=18> 
+        <p>196 
+      </td>
+      <td width="13%" valign="MIDDLE" height=18> 
+        <p>&Auml; 
+      </td>
+      <td width="13%" valign="MIDDLE" height=18> 
+        <p>228 
+      </td>
+      <td width="13%" valign="MIDDLE" height=18> 
+        <p>&Auml; 
+      </td>
+    </tr>
+    <tr> 
+      <td width="12%" valign="MIDDLE" height=18> 
+        <p>133 
+      </td>
+      <td width="13%" valign="MIDDLE" height=18> 
+        <p>Nel 
+      </td>
+      <td width="12%" valign="MIDDLE" height=18> 
+        <p>165 
+      </td>
+      <td width="15%" valign="MIDDLE" height=18> 
+        <p>￥ 
+      </td>
+      <td width="11%" valign="MIDDLE" height=18> 
+        <p>197 
+      </td>
+      <td width="13%" valign="MIDDLE" height=18> 
+        <p>&Aring; 
+      </td>
+      <td width="13%" valign="MIDDLE" height=18> 
+        <p>229 
+      </td>
+      <td width="13%" valign="MIDDLE" height=18> 
+        <p>&Aring; 
+      </td>
+    </tr>
+    <tr> 
+      <td width="12%" valign="MIDDLE" height=18> 
+        <p>134 
+      </td>
+      <td width="13%" valign="MIDDLE" height=18> 
+        <p>Ssa 
+      </td>
+      <td width="12%" valign="MIDDLE" height=18> 
+        <p>166 
+      </td>
+      <td width="15%" valign="MIDDLE" height=18> 
+        <p>B 
+      </td>
+      <td width="11%" valign="MIDDLE" height=18> 
+        <p>198 
+      </td>
+      <td width="13%" valign="MIDDLE" height=18> 
+        <p>&AElig; 
+      </td>
+      <td width="13%" valign="MIDDLE" height=18> 
+        <p>230 
+      </td>
+      <td width="13%" valign="MIDDLE" height=18> 
+        <p>&AElig; 
+      </td>
+    </tr>
+    <tr> 
+      <td width="12%" valign="MIDDLE" height=18> 
+        <p>135 
+      </td>
+      <td width="13%" valign="MIDDLE" height=18> 
+        <p>Esa 
+      </td>
+      <td width="12%" valign="MIDDLE" height=18> 
+        <p>167 
+      </td>
+      <td width="15%" valign="MIDDLE" height=18> 
+        <p>§ 
+      </td>
+      <td width="11%" valign="MIDDLE" height=18> 
+        <p>199 
+      </td>
+      <td width="13%" valign="MIDDLE" height=18> 
+        <p>&Ccedil; 
+      </td>
+      <td width="13%" valign="MIDDLE" height=18> 
+        <p>231 
+      </td>
+      <td width="13%" valign="MIDDLE" height=18> 
+        <p>&Ccedil; 
+      </td>
+    </tr>
+    <tr> 
+      <td width="12%" valign="MIDDLE" height=18> 
+        <p>136 
+      </td>
+      <td width="13%" valign="MIDDLE" height=18> 
+        <p>Hts 
+      </td>
+      <td width="12%" valign="MIDDLE" height=18> 
+        <p>168 
+      </td>
+      <td width="15%" valign="MIDDLE" height=18> 
+        <p>¨ 
+      </td>
+      <td width="11%" valign="MIDDLE" height=18> 
+        <p>200 
+      </td>
+      <td width="13%" valign="MIDDLE" height=18> 
+        <p>&Egrave; 
+      </td>
+      <td width="13%" valign="MIDDLE" height=18> 
+        <p>232 
+      </td>
+      <td width="13%" valign="MIDDLE" height=18> 
+        <p>&Egrave; 
+      </td>
+    </tr>
+    <tr> 
+      <td width="12%" valign="MIDDLE" height=18> 
+        <p>137 
+      </td>
+      <td width="13%" valign="MIDDLE" height=18> 
+        <p>Htj 
+      </td>
+      <td width="12%" valign="MIDDLE" height=18> 
+        <p>169 
+      </td>
+      <td width="15%" valign="MIDDLE" height=18> 
+        <p>&copy; 
+      </td>
+      <td width="11%" valign="MIDDLE" height=18> 
+        <p>201 
+      </td>
+      <td width="13%" valign="MIDDLE" height=18> 
+        <p>&Eacute; 
+      </td>
+      <td width="13%" valign="MIDDLE" height=18> 
+        <p>233 
+      </td>
+      <td width="13%" valign="MIDDLE" height=18> 
+        <p>&Eacute; 
+      </td>
+    </tr>
+    <tr> 
+      <td width="12%" valign="MIDDLE" height=18> 
+        <p>138 
+      </td>
+      <td width="13%" valign="MIDDLE" height=18> 
+        <p>Vts 
+      </td>
+      <td width="12%" valign="MIDDLE" height=18> 
+        <p>170 
+      </td>
+      <td width="15%" valign="MIDDLE" height=18> 
+        <p>a 
+      </td>
+      <td width="11%" valign="MIDDLE" height=18> 
+        <p>202 
+      </td>
+      <td width="13%" valign="MIDDLE" height=18> 
+        <p>&Ecirc; 
+      </td>
+      <td width="13%" valign="MIDDLE" height=18> 
+        <p>234 
+      </td>
+      <td width="13%" valign="MIDDLE" height=18> 
+        <p>&Ecirc; 
+      </td>
+    </tr>
+    <tr> 
+      <td width="12%" valign="MIDDLE" height=18> 
+        <p>139 
+      </td>
+      <td width="13%" valign="MIDDLE" height=18> 
+        <p>Pld 
+      </td>
+      <td width="12%" valign="MIDDLE" height=18> 
+        <p>171 
+      </td>
+      <td width="15%" valign="MIDDLE" height=18> 
+        <p>? 
+      </td>
+      <td width="11%" valign="MIDDLE" height=18> 
+        <p>203 
+      </td>
+      <td width="13%" valign="MIDDLE" height=18> 
+        <p>&Euml; 
+      </td>
+      <td width="13%" valign="MIDDLE" height=18> 
+        <p>235 
+      </td>
+      <td width="13%" valign="MIDDLE" height=18> 
+        <p>&Euml; 
+      </td>
+    </tr>
+    <tr> 
+      <td width="12%" valign="MIDDLE" height=18> 
+        <p>140 
+      </td>
+      <td width="13%" valign="MIDDLE" height=18> 
+        <p>Plu 
+      </td>
+      <td width="12%" valign="MIDDLE" height=18> 
+        <p>172 
+      </td>
+      <td width="15%" valign="MIDDLE" height=18> 
+        <p>? 
+      </td>
+      <td width="11%" valign="MIDDLE" height=18> 
+        <p>204 
+      </td>
+      <td width="13%" valign="MIDDLE" height=18> 
+        <p>&Igrave; 
+      </td>
+      <td width="13%" valign="MIDDLE" height=18> 
+        <p>236 
+      </td>
+      <td width="13%" valign="MIDDLE" height=18> 
+        <p>&Igrave; 
+      </td>
+    </tr>
+    <tr> 
+      <td width="12%" valign="MIDDLE" height=18> 
+        <p>141 
+      </td>
+      <td width="13%" valign="MIDDLE" height=18> 
+        <p>Ri 
+      </td>
+      <td width="12%" valign="MIDDLE" height=18> 
+        <p>173 
+      </td>
+      <td width="15%" valign="MIDDLE" height=18> 
+        <p>任意字符 
+      </td>
+      <td width="11%" valign="MIDDLE" height=18> 
+        <p>205 
+      </td>
+      <td width="13%" valign="MIDDLE" height=18> 
+        <p>&Iacute; 
+      </td>
+      <td width="13%" valign="MIDDLE" height=18> 
+        <p>237 
+      </td>
+      <td width="13%" valign="MIDDLE" height=18> 
+        <p>&Iacute; 
+      </td>
+    </tr>
+    <tr> 
+      <td width="12%" valign="MIDDLE" height=18> 
+        <p>142 
+      </td>
+      <td width="13%" valign="MIDDLE" height=18> 
+        <p>ss2 
+      </td>
+      <td width="12%" valign="MIDDLE" height=18> 
+        <p>174 
+      </td>
+      <td width="15%" valign="MIDDLE" height=18> 
+        <p>&reg; 
+      </td>
+      <td width="11%" valign="MIDDLE" height=18> 
+        <p>206 
+      </td>
+      <td width="13%" valign="MIDDLE" height=18> 
+        <p>&Icirc; 
+      </td>
+      <td width="13%" valign="MIDDLE" height=18> 
+        <p>238 
+      </td>
+      <td width="13%" valign="MIDDLE" height=18> 
+        <p>&Icirc; 
+      </td>
+    </tr>
+    <tr> 
+      <td width="12%" valign="MIDDLE" height=18> 
+        <p>143 
+      </td>
+      <td width="13%" valign="MIDDLE" height=18> 
+        <p>ss3 
+      </td>
+      <td width="12%" valign="MIDDLE" height=18> 
+        <p>175 
+      </td>
+      <td width="15%" valign="MIDDLE" height=18> 
+        <p>ˉ 
+      </td>
+      <td width="11%" valign="MIDDLE" height=18> 
+        <p>207 
+      </td>
+      <td width="13%" valign="MIDDLE" height=18> 
+        <p>&Iuml; 
+      </td>
+      <td width="13%" valign="MIDDLE" height=18> 
+        <p>239 
+      </td>
+      <td width="13%" valign="MIDDLE" height=18> 
+        <p>&Iuml; 
+      </td>
+    </tr>
+    <tr> 
+      <td width="12%" valign="MIDDLE" height=18> 
+        <p>144 
+      </td>
+      <td width="13%" valign="MIDDLE" height=18> 
+        <p>Dcs 
+      </td>
+      <td width="12%" valign="MIDDLE" height=18> 
+        <p>176 
+      </td>
+      <td width="15%" valign="MIDDLE" height=18> 
+        <p>° 
+      </td>
+      <td width="11%" valign="MIDDLE" height=18> 
+        <p>208 
+      </td>
+      <td width="13%" valign="MIDDLE" height=18> 
+        <p>W 
+      </td>
+      <td width="13%" valign="MIDDLE" height=18> 
+        <p>240 
+      </td>
+      <td width="13%" valign="MIDDLE" height=18> 
+        <p>e 
+      </td>
+    </tr>
+    <tr> 
+      <td width="12%" valign="MIDDLE" height=18> 
+        <p>145 
+      </td>
+      <td width="13%" valign="MIDDLE" height=18> 
+        <p>pu1 
+      </td>
+      <td width="12%" valign="MIDDLE" height=18> 
+        <p>177 
+      </td>
+      <td width="15%" valign="MIDDLE" height=18> 
+        <p>± 
+      </td>
+      <td width="11%" valign="MIDDLE" height=18> 
+        <p>209 
+      </td>
+      <td width="13%" valign="MIDDLE" height=18> 
+        <p>&Ntilde; 
+      </td>
+      <td width="13%" valign="MIDDLE" height=18> 
+        <p>241 
+      </td>
+      <td width="13%" valign="MIDDLE" height=18> 
+        <p>&Ntilde; 
+      </td>
+    </tr>
+    <tr> 
+      <td width="12%" valign="MIDDLE" height=18> 
+        <p>146 
+      </td>
+      <td width="13%" valign="MIDDLE" height=18> 
+        <p>pu2 
+      </td>
+      <td width="12%" valign="MIDDLE" height=18> 
+        <p>178 
+      </td>
+      <td width="15%" valign="MIDDLE" height=18> 
+        <p>2 
+      </td>
+      <td width="11%" valign="MIDDLE" height=18> 
+        <p>210 
+      </td>
+      <td width="13%" valign="MIDDLE" height=18> 
+        <p>&Ograve; 
+      </td>
+      <td width="13%" valign="MIDDLE" height=18> 
+        <p>242 
+      </td>
+      <td width="13%" valign="MIDDLE" height=18> 
+        <p>&Ograve; 
+      </td>
+    </tr>
+    <tr> 
+      <td width="12%" valign="MIDDLE" height=18> 
+        <p>147 
+      </td>
+      <td width="13%" valign="MIDDLE" height=18> 
+        <p>Sts 
+      </td>
+      <td width="12%" valign="MIDDLE" height=18> 
+        <p>179 
+      </td>
+      <td width="15%" valign="MIDDLE" height=18> 
+        <p>3 
+      </td>
+      <td width="11%" valign="MIDDLE" height=18> 
+        <p>211 
+      </td>
+      <td width="13%" valign="MIDDLE" height=18> 
+        <p>&Oacute; 
+      </td>
+      <td width="13%" valign="MIDDLE" height=18> 
+        <p>243 
+      </td>
+      <td width="13%" valign="MIDDLE" height=18> 
+        <p>&Oacute; 
+      </td>
+    </tr>
+    <tr> 
+      <td width="12%" valign="MIDDLE" height=18> 
+        <p>148 
+      </td>
+      <td width="13%" valign="MIDDLE" height=18> 
+        <p>Cch 
+      </td>
+      <td width="12%" valign="MIDDLE" height=18> 
+        <p>180 
+      </td>
+      <td width="15%" valign="MIDDLE" height=18> 
+        <p>′ 
+      </td>
+      <td width="11%" valign="MIDDLE" height=18> 
+        <p>212 
+      </td>
+      <td width="13%" valign="MIDDLE" height=18> 
+        <p>&Ocirc; 
+      </td>
+      <td width="13%" valign="MIDDLE" height=18> 
+        <p>244 
+      </td>
+      <td width="13%" valign="MIDDLE" height=18> 
+        <p>&Ocirc; 
+      </td>
+    </tr>
+    <tr> 
+      <td width="12%" valign="MIDDLE" height=18> 
+        <p>149 
+      </td>
+      <td width="13%" valign="MIDDLE" height=18> 
+        <p>Mw 
+      </td>
+      <td width="12%" valign="MIDDLE" height=18> 
+        <p>181 
+      </td>
+      <td width="15%" valign="MIDDLE" height=18> 
+        <p>μ 
+      </td>
+      <td width="11%" valign="MIDDLE" height=18> 
+        <p>213 
+      </td>
+      <td width="13%" valign="MIDDLE" height=18> 
+        <p>&Otilde; 
+      </td>
+      <td width="13%" valign="MIDDLE" height=18> 
+        <p>245 
+      </td>
+      <td width="13%" valign="MIDDLE" height=18> 
+        <p>&Otilde; 
+      </td>
+    </tr>
+    <tr> 
+      <td width="12%" valign="MIDDLE" height=18> 
+        <p>150 
+      </td>
+      <td width="13%" valign="MIDDLE" height=18> 
+        <p>Spa 
+      </td>
+      <td width="12%" valign="MIDDLE" height=18> 
+        <p>182 
+      </td>
+      <td width="15%" valign="MIDDLE" height=18> 
+        <p>? 
+      </td>
+      <td width="11%" valign="MIDDLE" height=18> 
+        <p>214 
+      </td>
+      <td width="13%" valign="MIDDLE" height=18> 
+        <p>&Ouml; 
+      </td>
+      <td width="13%" valign="MIDDLE" height=18> 
+        <p>246 
+      </td>
+      <td width="13%" valign="MIDDLE" height=18> 
+        <p>&Ouml; 
+      </td>
+    </tr>
+    <tr> 
+      <td width="12%" valign="MIDDLE" height=18> 
+        <p>151 
+      </td>
+      <td width="13%" valign="MIDDLE" height=18> 
+        <p>Epa 
+      </td>
+      <td width="12%" valign="MIDDLE" height=18> 
+        <p>183 
+      </td>
+      <td width="15%" valign="MIDDLE" height=18> 
+        <p>· 
+      </td>
+      <td width="11%" valign="MIDDLE" height=18> 
+        <p>215 
+      </td>
+      <td width="13%" valign="MIDDLE" height=18> 
+        <p>&#180; 
+      </td>
+      <td width="13%" valign="MIDDLE" height=18> 
+        <p>247 
+      </td>
+      <td width="13%" valign="MIDDLE" height=18> 
+        <p>÷ 
+      </td>
+    </tr>
+    <tr> 
+      <td width="12%" valign="MIDDLE" height=18> 
+        <p>152 
+      </td>
+      <td width="13%" valign="MIDDLE" height=18> 
+        <p>Sos 
+      </td>
+      <td width="12%" valign="MIDDLE" height=18> 
+        <p>184 
+      </td>
+      <td width="15%" valign="MIDDLE" height=18> 
+        <p>? 
+      </td>
+      <td width="11%" valign="MIDDLE" height=18> 
+        <p>216 
+      </td>
+      <td width="13%" valign="MIDDLE" height=18> 
+        <p>&Oslash; 
+      </td>
+      <td width="13%" valign="MIDDLE" height=18> 
+        <p>248 
+      </td>
+      <td width="13%" valign="MIDDLE" height=18> 
+        <p>&Oslash; 
+      </td>
+    </tr>
+    <tr> 
+      <td width="12%" valign="MIDDLE" height=18> 
+        <p>153 
+      </td>
+      <td width="13%" valign="MIDDLE" height=18> 
+        <p>未定义 
+      </td>
+      <td width="12%" valign="MIDDLE" height=18> 
+        <p>185 
+      </td>
+      <td width="15%" valign="MIDDLE" height=18> 
+        <p>1 
+      </td>
+      <td width="11%" valign="MIDDLE" height=18> 
+        <p>217 
+      </td>
+      <td width="13%" valign="MIDDLE" height=18> 
+        <p>&Ugrave; 
+      </td>
+      <td width="13%" valign="MIDDLE" height=18> 
+        <p>249 
+      </td>
+      <td width="13%" valign="MIDDLE" height=18> 
+        <p>&Ugrave; 
+      </td>
+    </tr>
+    <tr> 
+      <td width="12%" valign="MIDDLE" height=18> 
+        <p>154 
+      </td>
+      <td width="13%" valign="MIDDLE" height=18> 
+        <p>Sci 
+      </td>
+      <td width="12%" valign="MIDDLE" height=18> 
+        <p>186 
+      </td>
+      <td width="15%" valign="MIDDLE" height=18> 
+        <p>o 
+      </td>
+      <td width="11%" valign="MIDDLE" height=18> 
+        <p>218 
+      </td>
+      <td width="13%" valign="MIDDLE" height=18> 
+        <p>&Uacute; 
+      </td>
+      <td width="13%" valign="MIDDLE" height=18> 
+        <p>250 
+      </td>
+      <td width="13%" valign="MIDDLE" height=18> 
+        <p>&Uacute; 
+      </td>
+    </tr>
+    <tr> 
+      <td width="12%" valign="MIDDLE" height=18> 
+        <p>155 
+      </td>
+      <td width="13%" valign="MIDDLE" height=18> 
+        <p>Csi 
+      </td>
+      <td width="12%" valign="MIDDLE" height=18> 
+        <p>187 
+      </td>
+      <td width="15%" valign="MIDDLE" height=18> 
+        <p>? 
+      </td>
+      <td width="11%" valign="MIDDLE" height=18> 
+        <p>219 
+      </td>
+      <td width="13%" valign="MIDDLE" height=18> 
+        <p>&Ucirc; 
+      </td>
+      <td width="13%" valign="MIDDLE" height=18> 
+        <p>251 
+      </td>
+      <td width="13%" valign="MIDDLE" height=18> 
+        <p>&Ucirc; 
+      </td>
+    </tr>
+    <tr> 
+      <td width="12%" valign="MIDDLE" height=18> 
+        <p>156 
+      </td>
+      <td width="13%" valign="MIDDLE" height=18> 
+        <p>St 
+      </td>
+      <td width="12%" valign="MIDDLE" height=18> 
+        <p>188 
+      </td>
+      <td width="15%" valign="MIDDLE" height=18> 
+        <p>1/4 
+      </td>
+      <td width="11%" valign="MIDDLE" height=18> 
+        <p>220 
+      </td>
+      <td width="13%" valign="MIDDLE" height=18> 
+        <p>&Uuml; 
+      </td>
+      <td width="13%" valign="MIDDLE" height=18> 
+        <p>252 
+      </td>
+      <td width="13%" valign="MIDDLE" height=18> 
+        <p>&Uuml; 
+      </td>
+    </tr>
+    <tr> 
+      <td width="12%" valign="MIDDLE" height=18> 
+        <p>157 
+      </td>
+      <td width="13%" valign="MIDDLE" height=18> 
+        <p>Osc 
+      </td>
+      <td width="12%" valign="MIDDLE" height=18> 
+        <p>189 
+      </td>
+      <td width="15%" valign="MIDDLE" height=18> 
+        <p>1/2 
+      </td>
+      <td width="11%" valign="MIDDLE" height=18> 
+        <p>221 
+      </td>
+      <td width="13%" valign="MIDDLE" height=18> 
+        <p>&Yacute; 
+      </td>
+      <td width="13%" valign="MIDDLE" height=18> 
+        <p>253 
+      </td>
+      <td width="13%" valign="MIDDLE" height=18> 
+        <p>&Yacute; 
+      </td>
+    </tr>
+  </table>
+</div>
+<p></p>
+<p align="center">续表</p>
+<p>
+<center>
+  <table BORDER cellspacing=0 cellpadding=0 width=507>
+    <tr>
+      <td width="12%" valign="MIDDLE" height=18> 
+        <p>编码
+      </td>
+      <td width="13%" valign="MIDDLE" height=18> 
+        <p>字符
+      </td>
+      <td width="12%" valign="MIDDLE" height=18> 
+        <p>编码
+      </td>
+      <td width="15%" valign="MIDDLE" height=18> 
+        <p>字符
+      </td>
+      <td width="11%" valign="MIDDLE" height=18> 
+        <p>编码
+      </td>
+      <td width="13%" valign="MIDDLE" height=18> 
+        <p>字符
+      </td>
+      <td width="13%" valign="MIDDLE" height=18> 
+        <p>编码
+      </td>
+      <td width="13%" valign="MIDDLE" height=18> 
+        <p>字符
+      </td>
+    </tr>
+    <tr>
+      <td width="12%" valign="MIDDLE" height=18> 
+        <p>158
+      </td>
+      <td width="13%" valign="MIDDLE" height=18> 
+        <p>Pm
+      </td>
+      <td width="12%" valign="MIDDLE" height=18> 
+        <p>190
+      </td>
+      <td width="15%" valign="MIDDLE" height=18> 
+        <p>3/4
+      </td>
+      <td width="11%" valign="MIDDLE" height=18> 
+        <p>222
+      </td>
+      <td width="13%" valign="MIDDLE" height=18>
+        <p></p>
+      </td>
+      <td width="13%" valign="MIDDLE" height=18> 
+        <p>254
+      </td>
+      <td width="13%" valign="MIDDLE" height=18>
+        <p></p>
+      </td>
+    </tr>
+    <tr>
+      <td width="12%" valign="MIDDLE" height=18> 
+        <p>159
+      </td>
+      <td width="13%" valign="MIDDLE" height=18> 
+        <p>Apc
+      </td>
+      <td width="12%" valign="MIDDLE" height=18> 
+        <p>191
+      </td>
+      <td width="15%" valign="MIDDLE" height=18> 
+        <p>?
+      </td>
+      <td width="11%" valign="MIDDLE" height=18> 
+        <p>223
+      </td>
+      <td width="13%" valign="MIDDLE" height=18> 
+        <p>&szlig;
+      </td>
+      <td width="13%" valign="MIDDLE" height=18> 
+        <p>255
+      </td>
+      <td width="13%" valign="MIDDLE" height=18> 
+        <p>?
+      </td>
+    </tr>
+  </table>
+</center>
+<p></p>
+<p>&nbsp;</p>
+<p>Latin-1仍然缺少许多有用的字符，如希腊语、古斯拉夫语、汉语和其他文字及语言需要的字符。你也许会想到从256开始定义这些字符，这样做存在一个问题，单个字节只能表示0~255的数值，如果超出这个范围，需要使用多字节字符集。出于历史的原因，许多程序都是在一个字节表示一个字符的假定下编写的，这些程序在遇到多字节字符集时就会出错。因此，目前大多数操作系统（Windows 
+  NT例外）使用不同的单字节字符集而不是一个庞大的多字节字符集。Latin-1是最常见的这种字符集，其他字符集用于处理别的语言。</p>
+<p>ISO 8859另外定义了10个适用于不同文字的字符集（8859-2到8859-10和8859-15），还有4个字符集（8859-11到8859-14）正在开发。表7-3列出了ISO字符集以及使用它的语言和文字。这些字符集共享0~127的ASCII码，只是每个字符集都包含了128~255的其他字符。</p>
+<p align="center">表7-3 ISO字符集</p>
+<div align="center"> 
+  <table BORDER cellspacing=0 cellpadding=0 width=545>
+    <tr> 
+      <td width="17%" valign="MIDDLE"> 
+        <p>字符集 
+      </td>
+      <td width="11%" valign="MIDDLE"> 
+        <p>又 名 
+      </td>
+      <td width="72%" valign="MIDDLE"> 
+        <p>语 言 
+      </td>
+    </tr>
+    <tr> 
+      <td width="17%" valign="MIDDLE"> 
+        <p>ISO 8859-1 
+      </td>
+      <td width="11%" valign="MIDDLE"> 
+        <p>Latin-1 
+      </td>
+      <td width="72%" valign="MIDDLE"> 
+        <p>ASCII码加大部分西欧语言要求的字符，包括阿尔巴尼亚语、南非荷兰语、巴斯克语、加泰罗尼亚语、丹麦语、荷兰语、英语、法罗群岛语、芬兰语、佛兰德语、加利尼西亚语、德语、冰岛语、爱尔兰语、意大利语、挪威语、葡萄牙语、苏格兰语、西班牙语、瑞典语。但是其中忽略了ij(荷兰语)、? 
+          (法语)和德语的引号 
+      </td>
+    </tr>
+    <tr> 
+      <td width="17%" valign="MIDDLE"> 
+        <p>ISO 8859-2 
+      </td>
+      <td width="11%" valign="MIDDLE"> 
+        <p>Latin-2 
+      </td>
+      <td width="72%" valign="MIDDLE"> 
+        <p>ASCII码加中欧语言要求的字符，包括捷克语、英语、德语、匈牙利语、波兰语、罗马尼亚语、克罗地亚语、斯洛伐克语、斯洛文尼亚语和Sorbian 
+      </td>
+    </tr>
+    <tr> 
+      <td width="17%" valign="MIDDLE"> 
+        <p>ISO 8859-3 
+      </td>
+      <td width="11%" valign="MIDDLE"> 
+        <p>Latin-3 
+      </td>
+      <td width="72%" valign="MIDDLE"> 
+        <p>ASCII码、英语、世界语、德语、马耳他语和加利尼西亚语要求的字符 
+      </td>
+    </tr>
+    <tr> 
+      <td width="17%" valign="MIDDLE" height=50> 
+        <p>ISO 8859-4 
+      </td>
+      <td width="11%" valign="MIDDLE" height=50> 
+        <p>Latin-4 
+      </td>
+      <td width="72%" valign="MIDDLE" height=50> 
+        <p>ASCII码加波罗地海语、拉托维亚语、立陶宛语、德语、格陵兰岛语和拉普兰语中要求的并且被ISO 8859-10、Latin-6取代的字符</p>
+        <p>Latvian,Lithuania 
+      </td>
+    </tr>
+    <tr> 
+      <td width="17%" valign="MIDDLE"> 
+        <p>ISO 8859-5 
+      </td>
+      <td width="11%" valign="MIDDLE">　</td>
+      <td width="72%" valign="MIDDLE"> 
+        <p>ASCII码加古斯拉夫字符，用于Byelorussian 、保加利亚语、马其顿语、俄语、塞尔维亚语和乌克兰语 
+      </td>
+    </tr>
+    <tr> 
+      <td width="17%" valign="MIDDLE"> 
+        <p>ISO 8859-6 
+      </td>
+      <td width="11%" valign="MIDDLE">　</td>
+      <td width="72%" valign="MIDDLE"> 
+        <p>ASCII码加阿拉伯语 
+      </td>
+    </tr>
+    <tr> 
+      <td width="17%" valign="MIDDLE"> 
+        <p>ISO 8859-7 
+      </td>
+      <td width="11%" valign="MIDDLE">　</td>
+      <td width="72%" valign="MIDDLE"> 
+        <p>ASCII码加希腊语 
+      </td>
+    </tr>
+    <tr> 
+      <td width="17%" valign="MIDDLE"> 
+        <p>ISO 8859-8 
+      </td>
+      <td width="11%" valign="MIDDLE">　</td>
+      <td width="72%" valign="MIDDLE"> 
+        <p>ASCII码加希伯来语 
+      </td>
+    </tr>
+    <tr> 
+      <td width="17%" valign="MIDDLE"> 
+        <p>ISO 8859-9 
+      </td>
+      <td width="11%" valign="MIDDLE"> 
+        <p>Latin-5 
+      </td>
+      <td width="72%" valign="MIDDLE"> 
+        <p>就是Latin-1，但用土耳其字母代替了不常用的冰岛语字母 
+      </td>
+    </tr>
+    <tr> 
+      <td width="17%" valign="MIDDLE"> 
+        <p>ISO 8859-10 
+      </td>
+      <td width="11%" valign="MIDDLE"> 
+        <p>Latin-6 
+      </td>
+      <td width="72%" valign="MIDDLE"> 
+        <p>ASCII码和日耳曼语、立陶宛语、爱斯基摩语、拉普兰语和冰岛语中的字符 
+      </td>
+    </tr>
+    <tr> 
+      <td width="17%" valign="MIDDLE"> 
+        <p>ISO 8859-11 
+      </td>
+      <td width="11%" valign="MIDDLE">　</td>
+      <td width="72%" valign="MIDDLE"> 
+        <p>ASCII码加泰国语 
+      </td>
+    </tr>
+    <tr> 
+      <td width="17%" valign="MIDDLE"> 
+        <p>ISO 8859-12 
+      </td>
+      <td width="11%" valign="MIDDLE">　</td>
+      <td width="72%" valign="MIDDLE"> 
+        <p>适用于ASCII码和梵文 
+      </td>
+    </tr>
+    <tr> 
+      <td width="17%" valign="MIDDLE"> 
+        <p>ISO 8859-13 
+      </td>
+      <td width="11%" valign="MIDDLE"> 
+        <p>Latin-7 
+      </td>
+      <td width="72%" valign="MIDDLE"> 
+        <p>ASCII码加波罗地海周边的语言，特别是拉托维亚语 
+      </td>
+    </tr>
+    <tr> 
+      <td width="17%" valign="MIDDLE"> 
+        <p>ISO 8859-14 
+      </td>
+      <td width="11%" valign="MIDDLE"> 
+        <p>Latin-8 
+      </td>
+      <td width="72%" valign="MIDDLE"> 
+        <p>ASCII码加盖尔语和威尔士语 
+      </td>
+    </tr>
+    <tr> 
+      <td width="17%" valign="MIDDLE"> 
+        <p>ISO 8859-15 
+      </td>
+      <td width="11%" valign="MIDDLE"> 
+        <p>Latin-9</p>
+        <p>Latin-0 
+      </td>
+      <td width="72%" valign="MIDDLE"> 
+        <p>本质上与Latin-1相同，但是带有欧元符号，而不用国际货币符。而且用芬兰字符代替了一些不常用的字符。用法语字母CE、ce代替了1/4、1/2 
+      </td>
+    </tr>
+  </table>
+</div>
+<p>&nbsp;</p>
+<p>这些字符集常有重叠。有几种语言，特别是英语和德语可以使用多种字符集书写。在一定程度上不同的字符集允许结合不同的语言。例如，Latin-1结合了大部分欧洲语言和冰岛语言，而Latin-5结合了大部分西方语言和土耳其语而不是冰岛语。因此如果需要一个包括英语、法语和冰岛语的文档，应当使用Latin-1。相反，一个文档含有英语、法语和土耳其语，则需要Latin-5。但是，对于一个要求英语、希伯来语和土耳其语的文档，必须使用Unicode来书写，因为没有一个单字节字符集能够完全处理这三种语言和文字。</p>
+<p>单字节字符集不能满足汉语、日语和韩语的要求。这些语言含有的字符多于256个，因此必须使用多字节字符集。</p>
+<h5><a name="_Toc467197059">7.3.3 MacRoman字符集</a></h5>
+<p>Macos比Latin-1早几年出现，ISO 8859-1标准在1987年第一次被采用（第一个Mac计算机是在1984年出现）。这意味着苹果公司不得不定义自己的扩展字符集&#0;&#0;MacRoman。其中大部分扩展符同Latin-1一样（除冰岛语中的""），只是字符对应的编码不同。MacRoman中前127个字符与ASCII码和Latin-1中的一样。因此使用扩展字符的文本文件从PC机移到Mac时会显示混乱，反之亦然。表7-4列出了MacRoman字符集的后半部分。</p>
+<p align="center">表7-4 MacRoman字符集</p>
+<p>
+<center>
+  <table BORDER cellspacing=0 cellpadding=0 width=521>
+    <tr>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>编码
+      </td>
+      <td width="14%" valign="MIDDLE" height=16> 
+        <p>字符
+      </td>
+      <td width="11%" valign="MIDDLE" height=16> 
+        <p>编码
+      </td>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>字符
+      </td>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>编码
+      </td>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>字符
+      </td>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>编码
+      </td>
+      <td width="11%" valign="MIDDLE" height=16> 
+        <p>字符
+      </td>
+    </tr>
+    <tr>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>128
+      </td>
+      <td width="14%" valign="MIDDLE" height=16> 
+        <p>&Acirc;
+      </td>
+      <td width="11%" valign="MIDDLE" height=16> 
+        <p>160
+      </td>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>?
+      </td>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>192
+      </td>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>?
+      </td>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>224
+      </td>
+      <td width="11%" valign="MIDDLE" height=16> 
+        <p>?
+      </td>
+    </tr>
+    <tr>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>129
+      </td>
+      <td width="14%" valign="MIDDLE" height=16> 
+        <p>&Aring;
+      </td>
+      <td width="11%" valign="MIDDLE" height=16> 
+        <p>161
+      </td>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>°
+      </td>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>193
+      </td>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>?
+      </td>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>225
+      </td>
+      <td width="11%" valign="MIDDLE" height=16> 
+        <p>·
+      </td>
+    </tr>
+    <tr>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>130
+      </td>
+      <td width="14%" valign="MIDDLE" height=16> 
+        <p>&Ccedil;
+      </td>
+      <td width="11%" valign="MIDDLE" height=16> 
+        <p>162
+      </td>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>￠
+      </td>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>194
+      </td>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>?
+      </td>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>226
+      </td>
+      <td width="11%" valign="MIDDLE" height=16> 
+        <p>?
+      </td>
+    </tr>
+    <tr>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>131
+      </td>
+      <td width="14%" valign="MIDDLE" height=16> 
+        <p>&Eacute;
+      </td>
+      <td width="11%" valign="MIDDLE" height=16> 
+        <p>163
+      </td>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>￡
+      </td>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>195
+      </td>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>√
+      </td>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>227
+      </td>
+      <td width="11%" valign="MIDDLE" height=16> 
+        <p>?
+      </td>
+    </tr>
+    <tr>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>132
+      </td>
+      <td width="14%" valign="MIDDLE" height=16> 
+        <p>&Ntilde;
+      </td>
+      <td width="11%" valign="MIDDLE" height=16> 
+        <p>164
+      </td>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>§
+      </td>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>196
+      </td>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>?
+      </td>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>228
+      </td>
+      <td width="11%" valign="MIDDLE" height=16> 
+        <p>‰
+      </td>
+    </tr>
+    <tr>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>133
+      </td>
+      <td width="14%" valign="MIDDLE" height=16> 
+        <p>&Ouml;
+      </td>
+      <td width="11%" valign="MIDDLE" height=16> 
+        <p>165
+      </td>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>·
+      </td>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>197
+      </td>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>?
+      </td>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>229
+      </td>
+      <td width="11%" valign="MIDDLE" height=16> 
+        <p>&Acirc;
+      </td>
+    </tr>
+    <tr>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>134
+      </td>
+      <td width="14%" valign="MIDDLE" height=16> 
+        <p>&Ucirc;
+      </td>
+      <td width="11%" valign="MIDDLE" height=16> 
+        <p>166
+      </td>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>?
+      </td>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>198
+      </td>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>?
+      </td>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>230
+      </td>
+      <td width="11%" valign="MIDDLE" height=16> 
+        <p>&Ecirc;
+      </td>
+    </tr>
+    <tr>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>135
+      </td>
+      <td width="14%" valign="MIDDLE" height=16> 
+        <p>&Aacute;
+      </td>
+      <td width="11%" valign="MIDDLE" height=16> 
+        <p>167
+      </td>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>&szlig;
+      </td>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>199
+      </td>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>?
+      </td>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>231
+      </td>
+      <td width="11%" valign="MIDDLE" height=16> 
+        <p>&Aacute;
+      </td>
+    </tr>
+    <tr>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>136
+      </td>
+      <td width="14%" valign="MIDDLE" height=16> 
+        <p>&Agrave;
+      </td>
+      <td width="11%" valign="MIDDLE" height=16> 
+        <p>168
+      </td>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>&reg;
+      </td>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>200
+      </td>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>?
+      </td>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>232
+      </td>
+      <td width="11%" valign="MIDDLE" height=16>
+        <p></p>
+      </td>
+    </tr>
+    <tr>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>137
+      </td>
+      <td width="14%" valign="MIDDLE" height=16> 
+        <p>&Acirc;
+      </td>
+      <td width="11%" valign="MIDDLE" height=16> 
+        <p>169
+      </td>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>&copy;
+      </td>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>201
+      </td>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>...
+      </td>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>233
+      </td>
+      <td width="11%" valign="MIDDLE" height=16> 
+        <p>&Egrave;
+      </td>
+    </tr>
+    <tr>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>138
+      </td>
+      <td width="14%" valign="MIDDLE" height=16> 
+        <p>&Auml;
+      </td>
+      <td width="11%" valign="MIDDLE" height=16> 
+        <p>170
+      </td>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>&trade;
+      </td>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>202
+      </td>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>非换行空格
+      </td>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>234
+      </td>
+      <td width="11%" valign="MIDDLE" height=16> 
+        <p>&Iacute;
+      </td>
+    </tr>
+    <tr>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>139
+      </td>
+      <td width="14%" valign="MIDDLE" height=16> 
+        <p>&Atilde;
+      </td>
+      <td width="11%" valign="MIDDLE" height=16> 
+        <p>171
+      </td>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>′
+      </td>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>203
+      </td>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>&Agrave;
+      </td>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>235
+      </td>
+      <td width="11%" valign="MIDDLE" height=16> 
+        <p>&Icirc;
+      </td>
+    </tr>
+    <tr>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>140
+      </td>
+      <td width="14%" valign="MIDDLE" height=16> 
+        <p>&Aring;
+      </td>
+      <td width="11%" valign="MIDDLE" height=16> 
+        <p>172
+      </td>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>¨
+      </td>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>204
+      </td>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>&Atilde;
+      </td>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>236
+      </td>
+      <td width="11%" valign="MIDDLE" height=16> 
+        <p>&Iuml;
+      </td>
+    </tr>
+    <tr>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>141
+      </td>
+      <td width="14%" valign="MIDDLE" height=16> 
+        <p>&Ccedil;
+      </td>
+      <td width="11%" valign="MIDDLE" height=16> 
+        <p>173
+      </td>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>≠
+      </td>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>205
+      </td>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>&Otilde;
+      </td>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>237
+      </td>
+      <td width="11%" valign="MIDDLE" height=16> 
+        <p>&Igrave;
+      </td>
+    </tr>
+    <tr>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>142
+      </td>
+      <td width="14%" valign="MIDDLE" height=16> 
+        <p>&Eacute;
+      </td>
+      <td width="11%" valign="MIDDLE" height=16> 
+        <p>174
+      </td>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>&AElig;
+      </td>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>206
+      </td>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>?
+      </td>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>238
+      </td>
+      <td width="11%" valign="MIDDLE" height=16> 
+        <p>&Icirc;
+      </td>
+    </tr>
+    <tr>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>143
+      </td>
+      <td width="14%" valign="MIDDLE" height=16> 
+        <p>&Egrave;
+      </td>
+      <td width="11%" valign="MIDDLE" height=16> 
+        <p>175
+      </td>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>&Oslash;
+      </td>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>207
+      </td>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>?
+      </td>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>239
+      </td>
+      <td width="11%" valign="MIDDLE" height=16> 
+        <p>&Oacute;
+      </td>
+    </tr>
+    <tr>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>144
+      </td>
+      <td width="14%" valign="MIDDLE" height=16> 
+        <p>&Ecirc;
+      </td>
+      <td width="11%" valign="MIDDLE" height=16> 
+        <p>176
+      </td>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>∞
+      </td>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>208
+      </td>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>ˉ
+      </td>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>240
+      </td>
+      <td width="11%" valign="MIDDLE" height=16> 
+        <p>&Ocirc;
+      </td>
+    </tr>
+    <tr>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>145
+      </td>
+      <td width="14%" valign="MIDDLE" height=16> 
+        <p>&Euml;
+      </td>
+      <td width="11%" valign="MIDDLE" height=16> 
+        <p>177
+      </td>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>±
+      </td>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>209
+      </td>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>_
+      </td>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>241
+      </td>
+      <td width="11%" valign="MIDDLE" height=16> 
+        <p>Apple
+      </td>
+    </tr>
+    <tr>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>146
+      </td>
+      <td width="14%" valign="MIDDLE" height=16> 
+        <p>&Iacute;
+      </td>
+      <td width="11%" valign="MIDDLE" height=16> 
+        <p>178
+      </td>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>≤
+      </td>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>210
+      </td>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>"
+      </td>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>242
+      </td>
+      <td width="11%" valign="MIDDLE" height=16> 
+        <p>&Ograve;
+      </td>
+    </tr>
+    <tr>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>147
+      </td>
+      <td width="14%" valign="MIDDLE" height=16> 
+        <p>&Igrave;
+      </td>
+      <td width="11%" valign="MIDDLE" height=16> 
+        <p>179
+      </td>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>≥
+      </td>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>211
+      </td>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>"
+      </td>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>243
+      </td>
+      <td width="11%" valign="MIDDLE" height=16> 
+        <p>&Uacute;
+      </td>
+    </tr>
+    <tr>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>148
+      </td>
+      <td width="14%" valign="MIDDLE" height=16> 
+        <p>&Igrave;
+      </td>
+      <td width="11%" valign="MIDDLE" height=16> 
+        <p>180
+      </td>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>￥
+      </td>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>212
+      </td>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>‘
+      </td>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>244
+      </td>
+      <td width="11%" valign="MIDDLE" height=16> 
+        <p>&Ucirc;
+      </td>
+    </tr>
+    <tr>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>149
+      </td>
+      <td width="14%" valign="MIDDLE" height=16> 
+        <p>&Iuml;
+      </td>
+      <td width="11%" valign="MIDDLE" height=16> 
+        <p>181
+      </td>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>μ
+      </td>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>213
+      </td>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>‘
+      </td>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>245
+      </td>
+      <td width="11%" valign="MIDDLE" height=16> 
+        <p>1
+      </td>
+    </tr>
+    <tr>
+      <td valign="MIDDLE" colspan=8 height=16> 
+        <p>续表
+      </td>
+    </tr>
+    <tr>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>编码
+      </td>
+      <td width="14%" valign="MIDDLE" height=16> 
+        <p>字符
+      </td>
+      <td width="11%" valign="MIDDLE" height=16> 
+        <p>编码
+      </td>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>字符
+      </td>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>编码
+      </td>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>字符
+      </td>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>编码
+      </td>
+      <td width="11%" valign="MIDDLE" height=16> 
+        <p>字符
+      </td>
+    </tr>
+    <tr>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>150
+      </td>
+      <td width="14%" valign="MIDDLE" height=16> 
+        <p>&ntilde;
+      </td>
+      <td width="11%" valign="MIDDLE" height=16> 
+        <p>182
+      </td>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>&#182; 
+      </td>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>214
+      </td>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>÷
+      </td>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>246
+      </td>
+      <td width="11%" valign="MIDDLE" height=16> 
+        <p>?
+      </td>
+    </tr>
+    <tr>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>151
+      </td>
+      <td width="14%" valign="MIDDLE" height=16> 
+        <p>&oacute;
+      </td>
+      <td width="11%" valign="MIDDLE" height=16> 
+        <p>183
+      </td>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>∑
+      </td>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>215
+      </td>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>&#224; 
+      </td>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>247
+      </td>
+      <td width="11%" valign="MIDDLE" height=16> 
+        <p>~
+      </td>
+    </tr>
+    <tr>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>152
+      </td>
+      <td width="14%" valign="MIDDLE" height=16> 
+        <p>&ograve;
+      </td>
+      <td width="11%" valign="MIDDLE" height=16> 
+        <p>184
+      </td>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>∏
+      </td>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>216
+      </td>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>?
+      </td>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>248
+      </td>
+      <td width="11%" valign="MIDDLE" height=16> 
+        <p>ˉ
+      </td>
+    </tr>
+    <tr>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>153
+      </td>
+      <td width="14%" valign="MIDDLE" height=16> 
+        <p>&ocirc;
+      </td>
+      <td width="11%" valign="MIDDLE" height=16> 
+        <p>185
+      </td>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>Π
+      </td>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>217
+      </td>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>?
+      </td>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>249
+      </td>
+      <td width="11%" valign="MIDDLE" height=16>
+        <p></p>
+      </td>
+    </tr>
+    <tr>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>154
+      </td>
+      <td width="14%" valign="MIDDLE" height=16> 
+        <p>&ouml;
+      </td>
+      <td width="11%" valign="MIDDLE" height=16> 
+        <p>186
+      </td>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>∫
+      </td>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>218
+      </td>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>/
+      </td>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>250
+      </td>
+      <td width="11%" valign="MIDDLE" height=16> 
+        <p>.
+      </td>
+    </tr>
+    <tr>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>155
+      </td>
+      <td width="14%" valign="MIDDLE" height=16> 
+        <p>&otilde;
+      </td>
+      <td width="11%" valign="MIDDLE" height=16> 
+        <p>187
+      </td>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>a
+      </td>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>219
+      </td>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>¤
+      </td>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>251
+      </td>
+      <td width="11%" valign="MIDDLE" height=16> 
+        <p>°
+      </td>
+    </tr>
+    <tr>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>156
+      </td>
+      <td width="14%" valign="MIDDLE" height=16> 
+        <p>&uacute;
+      </td>
+      <td width="11%" valign="MIDDLE" height=16> 
+        <p>188
+      </td>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>°
+      </td>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>220
+      </td>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>?
+      </td>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>252
+      </td>
+      <td width="11%" valign="MIDDLE" height=16> 
+        <p>?
+      </td>
+    </tr>
+    <tr>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>157
+      </td>
+      <td width="14%" valign="MIDDLE" height=16> 
+        <p>&Ugrave;
+      </td>
+      <td width="11%" valign="MIDDLE" height=16> 
+        <p>189
+      </td>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>Ω
+      </td>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>221
+      </td>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>?
+      </td>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>253
+      </td>
+      <td width="11%" valign="MIDDLE" height=16> 
+        <p>".
+      </td>
+    </tr>
+    <tr>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>158
+      </td>
+      <td width="14%" valign="MIDDLE" height=16> 
+        <p>&Ucirc;
+      </td>
+      <td width="11%" valign="MIDDLE" height=16> 
+        <p>190
+      </td>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>&AElig;
+      </td>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>222
+      </td>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>fi
+      </td>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>254
+      </td>
+      <td width="11%" valign="MIDDLE" height=16> 
+        <p>.
+      </td>
+    </tr>
+    <tr>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>159
+      </td>
+      <td width="14%" valign="MIDDLE" height=16> 
+        <p>&Uuml;
+      </td>
+      <td width="11%" valign="MIDDLE" height=16> 
+        <p>191
+      </td>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>&Oslash;
+      </td>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>223
+      </td>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>fl
+      </td>
+      <td width="13%" valign="MIDDLE" height=16> 
+        <p>255
+      </td>
+      <td width="11%" valign="MIDDLE" height=16> 
+        <p>?|
+      </td>
+    </tr>
+  </table>
+</center>
+<p></p>
+<h5><a name="_Toc467197060">7.3.4 Windows ANSI字符集</a></h5>
+<p>第一个被广泛使用的Windows版本比Mac晚几年出现，因此它能够采用Latin-1字符集。它使用更多的可打印字符代替介于130和159之间的非打印控制字符，从而进一步扩展了使用范围。这个经过修改的Latin-1版本通常被称作Windows 
+  ANSI。表7-5列出了Windows ANSI字符集。</p>
+<p align="center">表7-5 Windows ANSI 字符集</p>
+<p> 
+<div align="center"> 
+  <table BORDER cellspacing=0 cellpadding=0 width=522>
+    <tr> 
+      <td width="12%" valign="MIDDLE" height=22> 
+        <p>编码 
+      </td>
+      <td width="12%" valign="MIDDLE" height=22> 
+        <p>字符 
+      </td>
+      <td width="12%" valign="MIDDLE" height=22> 
+        <p>编码 
+      </td>
+      <td width="12%" valign="MIDDLE" height=22> 
+        <p>字符 
+      </td>
+      <td width="12%" valign="MIDDLE" height=22> 
+        <p>编码 
+      </td>
+      <td width="12%" valign="MIDDLE" height=22> 
+        <p>字符 
+      </td>
+      <td width="12%" valign="MIDDLE" height=22> 
+        <p>编码 
+      </td>
+      <td width="13%" valign="MIDDLE" height=22> 
+        <p>字符 
+      </td>
+    </tr>
+    <tr> 
+      <td width="12%" valign="MIDDLE" height=22> 
+        <p>128 
+      </td>
+      <td width="12%" valign="MIDDLE" height=22> 
+        <p>未定义 
+      </td>
+      <td width="12%" valign="MIDDLE" height=22> 
+        <p>136 
+      </td>
+      <td width="12%" valign="MIDDLE" height=22> 
+        <p>? 
+      </td>
+      <td width="12%" valign="MIDDLE" height=22> 
+        <p>144 
+      </td>
+      <td width="12%" valign="MIDDLE" height=22> 
+        <p>未定义 
+      </td>
+      <td width="12%" valign="MIDDLE" height=22> 
+        <p>152 
+      </td>
+      <td width="13%" valign="MIDDLE" height=22> 
+        <p>~ 
+      </td>
+    </tr>
+    <tr> 
+      <td width="12%" valign="MIDDLE" height=22> 
+        <p>129 
+      </td>
+      <td width="12%" valign="MIDDLE" height=22> 
+        <p>未定义 
+      </td>
+      <td width="12%" valign="MIDDLE" height=22> 
+        <p>137 
+      </td>
+      <td width="12%" valign="MIDDLE" height=22> 
+        <p>‰ 
+      </td>
+      <td width="12%" valign="MIDDLE" height=22> 
+        <p>145 
+      </td>
+      <td width="12%" valign="MIDDLE" height=22> 
+        <p>‘ 
+      </td>
+      <td width="12%" valign="MIDDLE" height=22> 
+        <p>153 
+      </td>
+      <td width="13%" valign="MIDDLE" height=22> 
+        <p>&trade; 
+      </td>
+    </tr>
+    <tr> 
+      <td width="12%" valign="MIDDLE" height=22> 
+        <p>130 
+      </td>
+      <td width="12%" valign="MIDDLE" height=22> 
+        <p>, 
+      </td>
+      <td width="12%" valign="MIDDLE" height=22> 
+        <p>138 
+      </td>
+      <td width="12%" valign="MIDDLE" height=22> 
+        <p>146 
+      </td>
+      <td width="12%" valign="MIDDLE" height=22> 
+        <p>‘ 
+      </td>
+      <td width="12%" valign="MIDDLE" height=22> 
+        <p>154 
+      </td>
+      <td width="12%" valign="MIDDLE" height=22> 
+        <p>154 
+      </td>
+      <td width="13%" valign="MIDDLE" height=22> 
+        <p>§ 
+      </td>
+    </tr>
+    <tr> 
+      <td width="12%" valign="MIDDLE" height=22> 
+        <p>131 
+      </td>
+      <td width="12%" valign="MIDDLE" height=22> 
+        <p>□ 
+      </td>
+      <td width="12%" valign="MIDDLE" height=22> 
+        <p>139 
+      </td>
+      <td width="12%" valign="MIDDLE" height=22> 
+        <p>? 
+      </td>
+      <td width="12%" valign="MIDDLE" height=22> 
+        <p>147 
+      </td>
+      <td width="12%" valign="MIDDLE" height=22> 
+        <p>" 
+      </td>
+      <td width="12%" valign="MIDDLE" height=22> 
+        <p>155 
+      </td>
+      <td width="13%" valign="MIDDLE" height=22> 
+        <p>? 
+      </td>
+    </tr>
+    <tr> 
+      <td width="12%" valign="MIDDLE" height=22> 
+        <p>132 
+      </td>
+      <td width="12%" valign="MIDDLE" height=22> 
+        <p>" 
+      </td>
+      <td width="12%" valign="MIDDLE" height=22> 
+        <p>140 
+      </td>
+      <td width="12%" valign="MIDDLE" height=22> 
+        <p>? 
+      </td>
+      <td width="12%" valign="MIDDLE" height=22> 
+        <p>148 
+      </td>
+      <td width="12%" valign="MIDDLE" height=22> 
+        <p>" 
+      </td>
+      <td width="12%" valign="MIDDLE" height=22> 
+        <p>156 
+      </td>
+      <td width="13%" valign="MIDDLE" height=22> 
+        <p>? 
+      </td>
+    </tr>
+    <tr> 
+      <td width="12%" valign="MIDDLE" height=22> 
+        <p>133 
+      </td>
+      <td width="12%" valign="MIDDLE" height=22> 
+        <p>... 
+      </td>
+      <td width="12%" valign="MIDDLE" height=22> 
+        <p>141 
+      </td>
+      <td width="12%" valign="MIDDLE" height=22> 
+        <p>未定义 
+      </td>
+      <td width="12%" valign="MIDDLE" height=22> 
+        <p>149 
+      </td>
+      <td width="12%" valign="MIDDLE" height=22> 
+        <p>&#0; 
+      </td>
+      <td width="12%" valign="MIDDLE" height=22> 
+        <p>157 
+      </td>
+      <td width="13%" valign="MIDDLE" height=22> 
+        <p>未定义 
+      </td>
+    </tr>
+    <tr> 
+      <td width="12%" valign="MIDDLE" height=22> 
+        <p>134 
+      </td>
+      <td width="12%" valign="MIDDLE" height=22> 
+        <p>? 
+      </td>
+      <td width="12%" valign="MIDDLE" height=22> 
+        <p>142 
+      </td>
+      <td width="12%" valign="MIDDLE" height=22> 
+        <p>未定义 
+      </td>
+      <td width="12%" valign="MIDDLE" height=22> 
+        <p>150 
+      </td>
+      <td width="12%" valign="MIDDLE" height=22> 
+        <p>– 
+      </td>
+      <td width="12%" valign="MIDDLE" height=22> 
+        <p>158 
+      </td>
+      <td width="13%" valign="MIDDLE" height=22> 
+        <p>未定义 
+      </td>
+    </tr>
+    <tr> 
+      <td width="12%" valign="MIDDLE" height=22> 
+        <p>135 
+      </td>
+      <td width="12%" valign="MIDDLE" height=22> 
+        <p>? 
+      </td>
+      <td width="12%" valign="MIDDLE" height=22> 
+        <p>143 
+      </td>
+      <td width="12%" valign="MIDDLE" height=22> 
+        <p>未定义 
+      </td>
+      <td width="12%" valign="MIDDLE" height=22> 
+        <p>151 
+      </td>
+      <td width="12%" valign="MIDDLE" height=22> 
+        <p>— 
+      </td>
+      <td width="12%" valign="MIDDLE" height=22> 
+        <p>159 
+      </td>
+      <td width="13%" valign="MIDDLE" height=22> 
+        <p>? 
+      </td>
+    </tr>
+  </table>
+</div>
+<p></p>
+<h4>&nbsp;</h4>
+ 
+<a href='390.htm'>&lt;&lt;上一篇</a>&nbsp;&nbsp;<a href='392.htm'>下一篇&gt;&gt;</a></td>
+        </tr>
+      </table>
+      <p>&nbsp; </p>
+    </td>
+  </tr>
+</table>
+
+</body>
+
+</html>

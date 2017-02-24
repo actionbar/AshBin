@@ -1,0 +1,3 @@
+<?php
+	!defined('IN_TW') && exit('Access Denied');
+	?><?=$moreFields?><input type="hidden" name="TW_SESSION" value="<?=$TW_SESSION?>" /><label>运单号<input name="mailNo" type="text" id="mailNo" class="txt" style="width: 200px;" value="<?=$expNo?>" size="20" autocomplete="off" /></label><?php if(file_exists(TW_ROOT."./data/mod/{$code}/verifyImage.php")){ ?><label> 验证码<input name="verifyCode" type="text" id="v_input" size="5" class="txt" maxlength="5" style="width: 80px;" autocomplete="off" /> <img name="" src="<?=$verifyImageUrl?>" alt="验证码"  title="点击刷新验证码" id="vImage" onClick="changeImage(this)" <?php if(in_array($code,array('sto','xcjb'))){echo 'height="26"';} ?> /></label><?php }?>

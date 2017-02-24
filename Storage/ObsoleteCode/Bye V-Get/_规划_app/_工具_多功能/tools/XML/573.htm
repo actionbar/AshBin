@@ -1,0 +1,61 @@
+<html>
+<head>
+<title>DTD中的命名域</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+
+<link rel = stylesheet href = "image/style.css">
+</head>
+<body bgcolor="#ffffff">
+<table width="688" border="0" cellspacing="0" cellpadding="0" align="center">
+  <tr bgcolor="EEEEEE"> 
+    <td height="22"><a href="index.htm">主页</a></td>
+  </tr>
+</table><br>
+<table border="0" cellpadding="0" cellspacing="0" width="688" align="center" height="490">
+  <tr valign="top"> 
+    <td rowspan="4" width="91">&nbsp; </td>
+    <td height="68" width="131"> 
+      <p><img src="image/doc.gif"></p>
+    </td>
+    <td rowspan="4" width="18"><b></b> </td>
+    <td height="68" width="387"><img src="image/title_doc.gif"></td>
+    <td rowspan="4" width="61"> 
+      <h6>&nbsp;</h6>
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td rowspan="3" valign="top" class="pt10" align="center" width="131" bgcolor="EEEEEE"> 
+      <p>&nbsp;</p>
+      <p><font color="#FF0000">※ 18.3 DTD中的命名域</font></p>
+       
+	</td>
+  </tr>
+  <tr valign="top"> 
+    <td width="387" height="308"> 
+      <table width="100%" border="0" cellpadding="0">
+        <tr> 
+          <td>
+
+           <h4><a name="_Toc467209220">18.3 DTD中的命名域</a></h4>
+<p></p>
+<p>命名域并没有排除结构整洁和合法性的正常规则。要使带有命名域的文档合法，必须在DTD中声明xmlns特性，这样才能用于与这些特性相关联的元素。此外，如果文档使用math:subset元素，那么DTD必须声明math:subset元素，而不仅仅声明subset元素（当然，这些规定不适用于迄今讨论过的少数几个结构整洁的文档）。例如：</p>
+<p>&lt;!ELEMENT math:subset EMPTY&gt;</p>
+<p>缺省的特性值以及#IMPLIED特性在此处都有用。例如，下面的ATTLIST声明将每个math:subset元素都放在<a href="http://www.w3.org/TR/REC-MathML/&Atilde;&uuml;&Atilde;&ucirc;&Icirc;&#0;&Ouml;&ETH;">http://www.w3.org/TR/REC-MathML/命名域中</a>，除非在文档中另外指定。</p>
+<p>&lt;!ATTLIST math:subset</p>
+<p> xmlns:math "http://www.w3.org/TR/REC-MathML/" #IMPLIED&gt;</p>
+<p>由于缺省命名域不需要在所有的元素前加上前缀，所以当处理合法的文档时，这样的命名域特别有用。给DTD不使用前缀的XML应用程序中的元素加前缀将破坏合法性。</p>
+<p>但是，缺省命名域到底起多大作用，却有明确的范围。特别是，这些命名域不足以区分这样的两个元素：即使用的元素名相互矛盾。例如，如果一个DTD定义一个HEAD，同时又包含一个TITLE和一个META元素，并且另一个DTD也定义一个HEAD，同时包含#PCDATA，那么就得在DTD和文档中使用前缀来区分这两个不同的HEAD元素。</p>
+<p>正在进行的两种不同的开发，可能（或许不能）最终解决对来自不同领域的相互矛盾的DTD进行融合问题。XML模式为DTD提供更加强大的替代对象；而XML片断能够使不同的文档与差别更大的部分结合起来。但是，这两者至今仍没有完成。因此，如今，融合相互矛盾的DTD或许需要使用前缀来重新编写DTD和文档。</p>
+<p><img src="Image/BK000218-18.gif" width=63 height=57 align="left">如果对有关使用命名域的文档是否是结构整洁或合法还不太清楚的话，请忘掉有关命名域的所有知识。只将文档作为一个正常的XML文档来看待，只不过这样的文档中的一些元素和特性名碰巧包含冒号罢了。这种文档也是结构整洁和合法的，就像不考虑命名域时的一样。</p>
+     
+<a href='572.htm'>&lt;&lt;上一篇</a>&nbsp;&nbsp;<a href='574.htm'>下一篇&gt;&gt;</a></td>
+        </tr>
+      </table>
+      <p>&nbsp; </p>
+    </td>
+  </tr>
+</table>
+
+</body>
+
+</html>

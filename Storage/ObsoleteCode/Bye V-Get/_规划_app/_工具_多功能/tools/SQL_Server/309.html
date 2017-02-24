@@ -1,0 +1,7 @@
+<meta http-equiv="content-type" content="text/html; charset=gb2312"><FONT 
+style="FONT-SIZE: 9pt; LINE-HEIGHT: 15pt"><B>sql的一些性能问题(soul)</B><BR>今天碰到一个问题。每次看笔记评论，发觉都比较慢，于是检查。结果发觉一个有趣现象。<BR>原始写法：<BR>&nbsp;SQL="select&nbsp;*&nbsp;from&nbsp;vwTableA&nbsp;where&nbsp;id="&amp;xid<BR>&nbsp;RS.Open&nbsp;SQL,&nbsp;Conn,&nbsp;0,&nbsp;1<BR>&nbsp;Conn.Execute&nbsp;"update&nbsp;TableA&nbsp;set&nbsp;hits=hits+1&nbsp;where&nbsp;id="&amp;&nbsp;xid<BR>&nbsp;author=RS("author")<BR>修改后写法：<BR>&nbsp;SQL="select&nbsp;*&nbsp;from&nbsp;vwiTableA&nbsp;where&nbsp;id="&amp;xid<BR>&nbsp;RS.Open&nbsp;SQL,&nbsp;Conn,&nbsp;0,&nbsp;1<BR>&nbsp;author=RS("author")<BR>&nbsp;Conn.Execute&nbsp;"update&nbsp;TableA&nbsp;set&nbsp;hits=hits+1&nbsp;where&nbsp;id="&amp;&nbsp;xid<BR>结果就是速度快了。不再有停顿。<BR>vwTableA&nbsp;是&nbsp;TableA&nbsp;的一个视图。<BR>问题仅仅在于刚刚打开了一个数据表，然后马上执行一条相关的update语句。这里可能有<BR>锁的竞争问题。&nbsp;
+<P></P>
+<P></P>
+<P>2003-6-7&nbsp;16:58:00&nbsp;&nbsp;&nbsp;&nbsp;<BR>&nbsp;查看评语???&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</P>
+<P>&nbsp;2003-6-7&nbsp;17:16:55&nbsp;&nbsp;&nbsp;&nbsp;数据库索引对数据库性能的影响所有的问题在于索引的查找速度和内存的查找速度。<BR>内存大，索引做得好，那么大部分查询只需要在索引中进行查询，而索引很容易被缓存。这样，查询会变得很快。比想象得还快。比如在1千万条记录中查找若干记录，可以如此计算，1千万条记录如果主键是int类型，因为主键都是唯一的，所以其实也是数据库中最大的一个索引。那么所占空间不过4*1e7,&nbsp;40M内容，1千万条记录可能是很多个G了，经过优化的索引，一般主键是Hash表，一个索引大概是40M的10倍或更多，那么数据库查询就基本在内存中进行了。<BR>但是hash还是很大，所以会强烈的依赖于内存的大小，其实数据库再大点，因为索引都过于大，那么情况就开始完全不同了。也许我们需要一个更大型的数据库才可以支持了。&nbsp;</P>
+<P>&nbsp;<BR>&nbsp;2003-6-7&nbsp;19:03:10&nbsp;&nbsp;&nbsp;&nbsp;DBCC&nbsp;INDEXDEFRAG一个有用的可以提高性能的语句。<BR>用于整理索引碎片。就像整理磁盘碎片一样，索引也是有碎片的。&nbsp;</P></FONT>

@@ -1,0 +1,57 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>计算两个时间差的函数</title>
+<style type="text/css">
+<!--
+body {
+	font-size: 10.4pt;
+	line-height: 22px;
+}
+-->
+</style>
+</head>
+
+<body bgcolor="eeeeee" leftmargin="20" marginwidth="20">
+<p><strong>计算两个时间差的函数</strong></p>
+<hr>
+<p>'******************************<br>
+  '||Function TimeDiff(sBegin, sEnd)<br>
+  '||本函数计算两个时间的差，可以不用更改直接使用<br>
+  '||作者：machinecat 2001/10/26<br>
+  '******************************</p>
+<p>'******************************<br>
+  '注：首先需要判断用户输入的sBegin与sEnd之间的大小<br>
+  '可以通过DataDiff函数获得两者之间的时间差，不需要进行复杂的时间换算<br>
+  '******************************</p>
+<p>Function TimeDiff(sBegin, sEnd)<br>
+  Dim iHourB, iMinuteB, iSecondB, iMiniSecondB<br>
+  Dim iHourE, iMinuteE, iSecondE, iMiniSecondE<br>
+  Dim dTimeB, dTimeE, dTimeDiff<br>
+  Dim iHour, iMinute, iSecond, iMiniSecond</p>
+<p>iHourB = clng(Left(sBegin, 2))<br>
+  iMinuteB = clng(Mid(sBegin, 4, 2))<br>
+  iSecondB = clng(Mid(sBegin, 7, 2))<br>
+  iMiniSecondB = clng(Mid(sBegin, 10, 4))</p>
+<p>iHourE = clng(Left(sEnd, 2))<br>
+  iMinuteE = clng(Mid(sEnd, 4, 2))<br>
+  iSecondE = clng(Mid(sEnd, 7, 2))<br>
+  iMiniSecondE = clng(Mid(sEnd, 10, 4))</p>
+<p>dTimeB = iHourB * 3600 + iMinuteB * 60 + iSecondB + iMiniSecondB / 1000<br>
+  dTimeE = iHourE * 3600 + iMinuteE * 60 + iSecondE + iMiniSecondE / 1000<br>
+  dTimeDiff = dTimeE - dTimeB</p>
+<p>iHour = Int(dTimeDiff / 3600)<br>
+  dTimeDiff = dTimeDiff - iHour * 3600<br>
+  iMinute = Int(dTimeDiff / 60)<br>
+  dTimeDiff = dTimeDiff - iMinute * 60<br>
+  iSecond = Int(dTimeDiff)<br>
+  dTimeDiff = dTimeDiff - Int(dTimeDiff)<br>
+  iMiniSecond = dTimeDiff</p>
+<p>TimeDiff = iHour &amp; &quot;小时&quot; &amp; iMinute &amp; &quot;分钟&quot; &amp; 
+  iSecond &amp; FormatNumber(iMiniSecond, 3) &amp; &quot;秒&quot;<br>
+  End Function <br>
+</p>
+<p>&nbsp; </p>
+</body>
+</html>

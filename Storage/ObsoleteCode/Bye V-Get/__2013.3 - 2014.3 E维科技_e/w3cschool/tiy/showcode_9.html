@@ -1,0 +1,36 @@
+<html>
+<head><link rel="stylesheet" type="text/css" href="showcode.css" /></head>
+<body>
+<pre>
+&lt;html&gt;
+&lt;body&gt;
+<code class="aspcode">&lt;%
+set conn=Server.CreateObject(&#34;ADODB.Connection&#34;)
+conn.Provider=&#34;Microsoft.Jet.OLEDB.4.0&#34;
+conn.Open(Server.Mappath(&#34;/db/northwind.mdb&#34;))
+set rs = Server.CreateObject(&#34;ADODB.recordset&#34;)
+sql=&#34;SELECT Companyname, Contactname FROM Customers ORDER BY CompanyName DESC&#34;
+rs.Open sql, conn
+%&gt;</code>
+&lt;table border=&#34;1&#34; width=&#34;100%&#34;&gt;
+&lt;tr&gt;
+<code class="aspcode">&lt;%for each x in rs.Fields
+    response.write(&#34;&lt;th&gt;&#34; & x.name & &#34;&lt;/th&gt;&#34;)
+next%&gt;</code>
+&lt;/tr&gt;
+<code class="aspcode">&lt;%do until rs.EOF%&gt;</code>
+    &lt;tr&gt;
+    <code class="aspcode">&lt;%for each x in rs.Fields%&gt;</code>
+       &lt;td&gt;<code class="aspcode">&lt;%Response.Write(x.value)%&gt;</code> &lt;/td&gt;
+    <code class="aspcode">&lt;%next
+    rs.MoveNext%&gt;</code>
+    &lt;/tr&gt;
+<code class="aspcode">&lt;%loop
+rs.close
+conn.close
+%&gt;</code>
+&lt;/table&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+</body>

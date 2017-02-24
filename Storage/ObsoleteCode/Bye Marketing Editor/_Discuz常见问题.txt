@@ -1,0 +1,2 @@
+[/]  htmlon=1  / bbcodeoff=-1 ，源代码也是 <p></p>,但是不显示 [/]
+ 在后台配置该板块  支持 HTML ，禁止discuz代码

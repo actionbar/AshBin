@@ -1,0 +1,134 @@
+<html xmlns:rdl>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<script src="rdl_properties.js"></script>
+<base target="_self">
+</head>
+<body>
+
+<script>
+
+//collFriendProperties=new Array();
+//collFriendDeclarations=new Array();
+//collFriendAtRules=new Array();
+//collFriendElements=new Array();
+//collFriendClasses=new Array();
+
+collFriendProperties=new Array(
+'float'
+);
+
+//collIE40=new Array();
+//collIE50=new Array();
+//collIE55=new Array();
+//collIE60=new Array();
+
+collIE40=new Array(
+'A','ADDRESS','APPLET','B','BIG','BLOCKQUOTE','BUTTON','CAPTION','CENTER','CITE','CODE','COL','COLGROUP','DD','DFN','DIR','DIV','DL','DT','EM','EMBED','FIELDSET','FORM','Hn','HR','I','IFRAME','IMG','INPUT type=button','INPUT type=checkbox','INPUT type=file','INPUT type=image','INPUT type=password','INPUT type=radio','INPUT type=reset','INPUT type=submit','INPUT type=text','ISINDEX','KBD','LABEL','LEGEND','LI','LISTING','MARQUEE','MENU','OBJECT','OL','OPTION','P','PLAINTEXT','PRE','S','SAMP','SELECT','SMALL','SPAN','STRIKE','STRONG','style','SUB','SUP','TABLE','TBODY','TD','TEXTAREA','TFOOT','TH','THEAD','TR','TT','U','UL','VAR','XMP'
+);
+
+collIE50=new Array(
+'currentStyle','CUSTOM','runtimeStyle'
+);
+
+collIE55=new Array(
+'defaults'
+);
+
+sStyle=
+'<style>\n'+
+'#idParentDiv{width:100%;padding:6px;background-color:buttonshadow;}\n'+
+'#idDiv1{color:#FFFFFF;padding:4px;clear:none;}\n'+
+'#idDiv2{width:150px;height:40px;background-color:#FF6633;color:#FFFFFF;padding:4px;float:none;}\n'+
+'#idCodeDiv{width:100%;padding:4px;font-family:verdana,tahoma;margin:12px 0px 0px 0px;background-color:#EEEEEE;font-weight:bold;}\n'+
+'<\/style>\n';
+
+sScript=
+'<script>\n'+
+'function rdl_change(e){\n'+
+'var oCodeDiv=document.all("idCodeDiv");\n'+
+'var oDiv1=document.all("idDiv1");\n'+
+'var oDiv2=document.all("idDiv2");\n'+
+'with (document.all("idSel1")){\n'+
+'if (selectedIndex!=0) var sValue1=options[selectedIndex].value;\n'+
+'else var sValue1="none"\n'+
+'}\n'+
+'with (document.all("idSel2")){\n'+
+'if (selectedIndex!=0) var sValue2=options[selectedIndex].value;\n'+
+'else var sValue2="none"\n'+
+'}\n'+
+'oDiv1.style.clear=sValue1;\n'+
+'oDiv2.style.styleFloat=sValue2;\n'+
+'oCodeDiv.innerHTML="#idDiv1 { clear : "+sValue1+" ; }"+"<br>"+"#idDiv2 { float : "+sValue2+" ; }";\n'+
+'}\n'+
+'<\/script>\n';
+
+sCode=
+'<div id=idParentDiv>\n'+
+'<div id=idDiv2>我的ID是<b> idDiv2 </b>。请选择我的<b> float <\/b>属性的值。<\/div>\n'+
+'<div id=idDiv1>我的ID是<b> idDiv1 </b>。请从下方的第一个选择框内选择我的<b> clear <\/b>属性的值。从第二个选择框内选择<b> idDiv2 </b>的<b>  float <\/b>属性的值。<\/div>\n'+
+'<\/div>\n'+
+'<br>\n'+
+'<table><tr><td>\n'+
+'<select id="idSel1" onchange="rdl_change();">\n'+
+'<option value="null" style="font-weight:bold;">---clear---\n'+
+'<option value="none">none\n'+
+'<option value="left">left\n'+
+'<option value="right">right\n'+
+'<option value="both">both\n'+
+'<\/select>\n'+
+'<\/td><td>\n'+
+'<select id="idSel2" onchange="rdl_change();">\n'+
+'<option value="null" style="font-weight:bold;">---float---\n'+
+'<option value="none">none\n'+
+'<option value="left">left\n'+
+'<option value="right">right\n'+
+'<\/select>\n'+
+'<\/td><\/tr><\/table>\n'+
+'<div id=idCodeDiv>#idDiv1 { clear : none ; }<br>#idDiv2 { float : none ; }<\/div>\n';
+
+iWinWidth=360;
+
+iWinHeight=350;
+
+//bRunCode=false;
+
+//bElements=false;
+
+</script>
+
+<div id=idContent>
+
+<div id=idContentTitle><span id=idTitleName>clear</span>版本：CSS1　 兼容性：IE4+ NS4+　继承性：无</div>
+
+<div class=cssColumnTitle>语法：</div>
+<div>
+<b>clear : </b><span class=cssDefault><b>none</b></span> | <b>left</b> | <b>right</b> | <b>both</b>
+</div>
+
+<div class=cssColumnTitle>取值：</div>
+<table>
+<tr><td nowrap><b> none </b></td><td nowrap><b>:</b></td><td><b>默认值</b>。允许两边都可以有浮动对象</td></tr>
+<tr><td nowrap><b> left </b></td><td nowrap><b>:</b></td><td>不允许左边有浮动对象</td></tr>
+<tr><td nowrap><b> right </b></td><td nowrap><b>:</b></td><td>不允许右边有浮动对象</td></tr>
+<tr><td nowrap><b> both </b></td><td nowrap><b>:</b></td><td>不允许有浮动对象</td></tr>
+</table>
+
+<div class=cssColumnTitle>说明：</div>
+<div>
+该属性的值指出了不允许有浮动对象的边。请参阅<a href="c_float.html"> float </a>属性。<br>
+此属性对于<b> currentStyle </b>对象而言是只读的。对于其他对象而言是可读写的。<br>
+对应的脚本特性为<b> clear </b>。
+</div>
+
+<div class=cssColumnTitle>示例：</div>
+<div id=idSimpleCode>
+div { clear : left }<br>img { float: right }
+</div>
+
+</div>
+</body>
+</html>
+
+<!-- Part of RDL(TM) - Written by Rain1977 
+HomeSite: http://www.dhtmlet.com  E-Mail: dhtmlet@hotmail.com -->

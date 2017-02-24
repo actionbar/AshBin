@@ -1,0 +1,9 @@
+<meta http-equiv="content-type" content="text/html; charset=gb2312"><FONT 
+style="FONT-SIZE: 9pt; LINE-HEIGHT: 15pt"><B>生成测试数据－2－T－SQl系列</B><BR>（2）&nbsp;RAND(&nbsp;)&nbsp;的一般用法
+<P></P>
+<P>生成在一定范围的随机数</P>
+<P>--&nbsp;&nbsp;&nbsp;0~9999<BR>(CONVERT(int,RAND()*100000)%10000)</P>
+<P>--&nbsp;&nbsp;&nbsp;-9999~9999<BR>CASE&nbsp;<BR>WHEN&nbsp;(CONVERT(int,RAND()*100)%2=1&nbsp;THEN<BR>&nbsp;&nbsp;(CONVERT(int,RAND()*100000)%10000*-1)<BR>ELSE&nbsp;(CONVERT(int,RAND()*100000)%10000)<BR>END</P>
+<P>--&nbsp;&nbsp;&nbsp;A~Z<BR>CHAR((CONVERT(int,RAND()*1000)%26)+65)&nbsp;&nbsp;--65&nbsp;is&nbsp;A</P>
+<P></P>
+<P><BR></P></FONT>

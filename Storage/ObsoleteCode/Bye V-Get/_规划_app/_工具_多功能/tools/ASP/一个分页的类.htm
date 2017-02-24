@@ -1,0 +1,305 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>一个分页的类</title>
+<style type="text/css">
+<!--
+body {
+	font-size: 10.4pt;
+	line-height: 22px;
+}
+-->
+</style>
+</head>
+
+<body bgcolor="eeeeee" leftmargin="20" marginwidth="20">
+<p><strong>一个分页的类</strong></p>
+<hr>
+<p> &lt;%<br>
+  '=====================================================================<br>
+  'XDOWNPAGE ASP版本<br>
+  '版本 1.02<br>
+  'Code by zykj2000<br>
+  'Email: zykj_2000@163.net<br>
+  'BBS: http://bbs.513soft.net<br>
+  '本程序可以免费使用、修改，希望我的程序能为您的工作带来方便<br>
+  '但请保留以上请息<br>
+  '<br>
+  '程序特点<br>
+  '本程序主要是对数据分页的部分进行了封装，而数据显示部份完全由用户自定义，<br>
+  '支持URL多个参数<br>
+  '<br>
+  '使用说明<br>
+  '程序参数说明<br>
+  'PapgeSize 定义分页每一页的记录数<br>
+  'GetRS 返回经过分页的Recordset此属性只读<br>
+  'GetConn 得到数据库连接<br>
+  'GetSQL 得到查询语句<br>
+  '程序方法说明<br>
+  'ShowPage 显示分页导航条,唯一的公用方法<br>
+  '<br>
+  '例:<br>
+  ' &lt;!--#include file=&quot;conn.asp&quot;--&gt;<br>
+  ' &lt;!--#include file=&quot;xdownpage.inc&quot;--&gt; '包含文件<br>
+  '<br>
+  ' Set mypage=new xdownpage '创建对象<br>
+  ' mypage.getconn=conn '得到数据库连接<br>
+  ' mypage.getsql=&quot;select * from productinfo order by id asc&quot;<br>
+  ' mypage.pagesize=5 '设置每一页的记录条数据为5条<br>
+  ' set rs=mypage.getrs() '返回Recordset<br>
+  ' mypage.showpage() '显示分页信息，这个方法可以，在set rs=mypage.getrs()以后<br>
+  ' 任意位置调用，可以调用多次<br>
+  ' for i=1 to mypage.pagesize '接下来的操作就和操作一个普通Recordset对象一样操作<br>
+  ' if not rs.eof then '这个标记是为了防止最后一页的溢出<br>
+  ' response.write rs(0) &amp; &quot;<br>
+  &quot; '这里就可以自定义显示方式了<br>
+  ' rs.movenext<br>
+  ' else<br>
+  ' exit for<br>
+  ' end if<br>
+  ' next <br>
+  '<br>
+  '=====================================================================</p>
+<p>Const Btn_First=&quot;&lt;font face=webdings&gt;9&lt;/font&gt;&quot; '定义第一页按钮显示样式<br>
+  Const Btn_Prev=&quot;&lt;font face=webdings&gt;3&lt;/font&gt;&quot; '定义前一页按钮显示样式<br>
+  Const Btn_Next=&quot;&lt;font face=webdings&gt;4&lt;/font&gt;&quot; '定义下一页按钮显示样式<br>
+  Const Btn_Last=&quot;&lt;font face=webdings&gt;:&lt;/font&gt;&quot; '定义最后一页按钮显示样式<br>
+  Const XD_Align=&quot;Right&quot; '定义分页信息对齐方式<br>
+  Const XD_Width=&quot;100%&quot; '定义分页信息框大小</p>
+<p>Class Xdownpage<br>
+  Private XD_PageCount,XD_Conn,XD_Rs,XD_SQL,XD_PageSize,Str_errors,int_curpage,str_URL,int_totalPage,int_totalRecord</p>
+<p><br>
+  '=================================================================<br>
+  'PageSize 属性<br>
+  '设置每一页的分页大小<br>
+  '=================================================================<br>
+  Public Property Let PageSize(int_PageSize)<br>
+  If IsNumeric(Int_Pagesize) Then<br>
+  XD_PageSize=CLng(int_PageSize)<br>
+  Else<br>
+  str_error=str_error &amp; &quot;PageSize的参数不正确&quot;<br>
+  ShowError()<br>
+  End If<br>
+  End Property<br>
+  Public Property Get PageSize<br>
+  If XD_PageSize=&quot;&quot; or (not(IsNumeric(XD_PageSize))) Then<br>
+  PageSize=10 <br>
+  Else<br>
+  PageSize=XD_PageSize<br>
+  End If<br>
+  End Property</p>
+<p>'=================================================================<br>
+  'GetRS 属性<br>
+  '返回分页后的记录集<br>
+  '=================================================================<br>
+  Public Property Get GetRs()<br>
+  Set XD_Rs=Server.createobject(&quot;adodb.recordset&quot;)<br>
+  XD_Rs.PageSize=PageSize<br>
+  XD_Rs.Open XD_SQL,XD_Conn,1,1<br>
+  If not(XD_Rs.eof and XD_RS.BOF) Then<br>
+  If int_curpage&gt;XD_RS.PageCount Then<br>
+  int_curpage=XD_RS.PageCount<br>
+  End If<br>
+  XD_Rs.AbsolutePage=int_curpage<br>
+  End If<br>
+  Set GetRs=XD_RS<br>
+  End Property</p>
+<p>'================================================================<br>
+  'GetConn 得到数据库连接<br>
+  '<br>
+  '================================================================ <br>
+  Public Property Let GetConn(obj_Conn)<br>
+  Set XD_Conn=obj_Conn<br>
+  End Property</p>
+<p>'================================================================<br>
+  'GetSQL 得到查询语句<br>
+  '<br>
+  '================================================================<br>
+  Public Property Let GetSQL(str_sql)<br>
+  XD_SQL=str_sql<br>
+  End Property</p>
+<p></p>
+<p>'==================================================================<br>
+  'Class_Initialize 类的初始化<br>
+  '初始化当前页的值<br>
+  '<br>
+  '================================================================== <br>
+  Private Sub Class_Initialize<br>
+  '========================<br>
+  '设定一些参数的黙认值<br>
+  '========================<br>
+  XD_PageSize=10 '设定分页的默认值为10<br>
+  '========================<br>
+  '获取当前面的值<br>
+  '========================<br>
+  If request(&quot;page&quot;)=&quot;&quot; Then<br>
+  int_curpage=1<br>
+  ElseIf not(IsNumeric(request(&quot;page&quot;))) Then<br>
+  int_curpage=1<br>
+  ElseIf CInt(Trim(request(&quot;page&quot;)))&lt;1 Then<br>
+  int_curpage=1<br>
+  Else<br>
+  Int_curpage=CInt(Trim(request(&quot;page&quot;)))<br>
+  End If<br>
+  <br>
+  End Sub</p>
+<p>'====================================================================<br>
+  'ShowPage 创建分页导航条<br>
+  '有首页、前一页、下一页、末页、还有数字导航<br>
+  '<br>
+  '====================================================================<br>
+  Public Sub ShowPage()<br>
+  Dim str_tmp<br>
+  <br>
+  int_totalRecord=XD_RS.RecordCount<br>
+  If int_totalRecord&lt;=0 Then <br>
+  str_error=str_error &amp; &quot;总记录数为零，请输入数据&quot;<br>
+  Call ShowError()<br>
+  End If<br>
+  If int_totalRecord&lt;pagesize Then<br>
+  int_TotalPage=1<br>
+  Else<br>
+  int_TotalPage=XD_RS.PageCount<br>
+  'If int_totalRecord mod PageSize =0 Then<br>
+  ' int_TotalPage = CLng(int_TotalRecord / XD_PageSize * -1)*-1<br>
+  'Else<br>
+  ' int_TotalPage = CLng(int_TotalRecord / XD_PageSize * -1)*-1+1<br>
+  'End If<br>
+  End If<br>
+  <br>
+  If Int_curpage&gt;int_Totalpage Then<br>
+  int_curpage=int_TotalPage<br>
+  End If<br>
+  <br>
+  '===============================================================================<br>
+  '显示分页信息，各个模块根据自己要求更改显求位置<br>
+  '===============================================================================<br>
+  response.write &quot;&lt;table border=0 width=&quot;&amp;XD_Width&amp;&quot;&gt;&lt;tr&gt;&lt;td 
+  align=&quot;&amp;XD_Align&amp;&quot;&gt;&quot;<br>
+  str_tmp=ShowFirstPrv<br>
+  response.write str_tmp<br>
+  str_tmp=showNumBtn<br>
+  response.write str_tmp<br>
+  str_tmp=ShowNextLast<br>
+  response.write str_tmp<br>
+  str_tmp=ShowPageInfo<br>
+  response.write str_tmp<br>
+  <br>
+  response.write &quot;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&quot;<br>
+  <br>
+  End Sub</p>
+<p>'====================================================================<br>
+  'ShowFirstPrv 显示首页、前一页<br>
+  '<br>
+  '<br>
+  '====================================================================<br>
+  Private Function ShowFirstPrv()<br>
+  Dim Str_tmp,int_prvpage<br>
+  If int_curpage=1 Then<br>
+  str_tmp=Btn_First&amp;&quot;&quot;&amp;Btn_Prev<br>
+  Else<br>
+  int_prvpage=int_curpage-1<br>
+  str_tmp=&quot;&lt;a href=&quot;&amp;geturl&amp;&quot;1&gt;&quot;&amp;Btn_First&amp;&quot;&lt;/a&gt;&lt;a 
+  href=&quot;&amp;geturl &amp; int_prvpage &amp;&quot;&gt;&quot;&amp; Btn_Prev&amp;&quot;&lt;/a&gt;&quot;<br>
+  End If<br>
+  ShowFirstPrv=str_tmp<br>
+  End Function</p>
+<p>'====================================================================<br>
+  'ShowNextLast 下一页、末页<br>
+  '<br>
+  '<br>
+  '====================================================================<br>
+  Private Function ShowNextLast()<br>
+  Dim str_tmp,int_Nextpage<br>
+  <br>
+  If Int_curpage&gt;=int_totalpage Then<br>
+  str_tmp=Btn_Next &amp; &quot;&quot; &amp; Btn_Last<br>
+  Else<br>
+  Int_NextPage=int_curpage+1<br>
+  str_tmp=&quot;&lt;a href=&quot;&amp; geturl &amp; int_NextPage &amp;&quot;&gt;&quot;&amp;Btn_Next&amp;&quot;&lt;/a&gt;&lt;a 
+  href=&quot;&amp;geturl &amp; int_totalpage &amp;&quot;&gt;&quot;&amp; Btn_Last&amp;&quot;&lt;/a&gt;&quot;<br>
+  End If<br>
+  ShowNextLast=str_tmp<br>
+  End Function</p>
+<p><br>
+  '====================================================================<br>
+  'ShowNumBtn 数字导航<br>
+  '<br>
+  '<br>
+  '====================================================================<br>
+  Private Function showNumBtn()<br>
+  Dim i,str_tmp<br>
+  For i=1 to int_totalpage<br>
+  str_tmp=str_tmp &amp; &quot;&lt;a href=&quot;&amp; geturl &amp; i &amp;&quot;&gt;[&quot;&amp;i&amp;&quot;]&lt;/a&gt;&quot;<br>
+  Next<br>
+  showNumBtn=str_tmp<br>
+  <br>
+  End Function</p>
+<p><br>
+  '====================================================================<br>
+  'ShowPageInfo 分页信息<br>
+  '更据要求自行修改<br>
+  '<br>
+  '====================================================================<br>
+  Private Function ShowPageInfo()<br>
+  Dim str_tmp<br>
+  str_tmp=&quot;页次:&quot;&amp;int_curpage&amp;&quot;/&quot;&amp;int_totalpage&amp;&quot;页 
+  共&quot;&amp;int_totalrecord&amp;&quot;条记录 &quot;&amp;XD_PageSize&amp;&quot;条/每页&quot;<br>
+  ShowPageInfo=str_tmp<br>
+  End Function<br>
+  '==================================================================<br>
+  'GetURL 得到当前的URL<br>
+  '更据URL参数不同，获取不同的结果<br>
+  '<br>
+  '==================================================================<br>
+  Private Function GetURL()<br>
+  Dim strurl,str_url,i,j,search_str,result_url<br>
+  search_str=&quot;page=&quot;<br>
+  <br>
+  strurl=Request.ServerVariables(&quot;URL&quot;)<br>
+  Strurl=split(strurl,&quot;/&quot;)<br>
+  i=UBound(strurl,1)<br>
+  'response.write i<br>
+  'response.end<br>
+  str_url=strurl(i)'得到当前页文件名<br>
+  <br>
+  str_params=Request.ServerVariables(&quot;QUERY_STRING&quot;)<br>
+  If str_params=&quot;&quot; Then<br>
+  result_url=str_url &amp; &quot;?page=&quot;<br>
+  Else<br>
+  If InstrRev(str_params,search_str)=0 Then<br>
+  result_url=str_url &amp; &quot;?&quot; &amp; str_params &amp;&quot;&amp;page=&quot;<br>
+  Else<br>
+  j=InstrRev(str_params,search_str)-2<br>
+  If j=-1 Then<br>
+  result_url=str_url &amp; &quot;?page=&quot;<br>
+  Else<br>
+  str_params=Left(str_params,j)<br>
+  result_url=str_url &amp; &quot;?&quot; &amp; str_params &amp;&quot;&amp;page=&quot;<br>
+  End If<br>
+  End If<br>
+  End If<br>
+  <br>
+  GetURL=result_url<br>
+  <br>
+  End Function</p>
+<p></p>
+<p>'====================================================================<br>
+  'ShowError 错误提示<br>
+  '<br>
+  '<br>
+  '====================================================================<br>
+  Private Sub ShowError()<br>
+  If str_Error &lt;&gt; &quot;&quot; Then<br>
+  Response.Write(&quot;&lt;font color=&quot;&quot;#FF0000&quot;&quot;&gt;<br>
+  &lt;b&gt;&quot; &amp; SW_Error &amp; &quot;&lt;/font&gt;&quot;)<br>
+  Response.End<br>
+  End If<br>
+  End Sub</p>
+<p>End class</p>
+<p><br>
+  %&gt;</p>
+<p>&nbsp; </p>
+</body>
+</html>

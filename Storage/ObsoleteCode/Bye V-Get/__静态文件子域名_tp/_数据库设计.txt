@@ -1,0 +1,22 @@
+写入数据库 ，避免有些图片没有被使用，就需要删除掉，这里保存所有信息，保存图片状态为0（未使用），之后在文章发布之后判断是否使用
+
+
+
+
+数据库  hdm0940519
+ 表 vgt_t8  E维科技图片
+   p(primary )   varchar(9)  文件名，无后缀  abd  唯一性，  6字母  _ id (1-99)
+    primary 方便使用 ON DUPLICATE KEY UPDATE 执行存在就update，不存在就insert
+   h  title
+   
+   q   char(4) 后缀  .png
+   w  图片宽 px
+   g   图片高 px
+   t  datetime
+   以后利用 t datetime更新 l ，
+   u tinyint=0  判断是否被用过，默认没有，
+   
+   
+    vgt_t3  物流图片
+	
+	

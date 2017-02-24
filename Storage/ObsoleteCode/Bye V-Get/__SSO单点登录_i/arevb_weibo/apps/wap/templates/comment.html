@@ -1,0 +1,9 @@
+{template header}
+
+<p>
+	您确认要删除此条评论吗？<br />
+	<anchor title="确定">确定<go method="post" href="{eval echo miniurl('comment/'.$cmtid.'/del')}"><postfield name="submit_post" value="1" /></go></anchor>
+	<anchor title="confirm"><prev/>取消</anchor>
+</p>
+
+{template footer}

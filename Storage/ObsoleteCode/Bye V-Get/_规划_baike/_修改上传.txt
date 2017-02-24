@@ -1,0 +1,10 @@
+view/default/header.htm 修改 /上传到服务器
+view/default/footer.htm 修改 /上传到服务器
+修改js地址
+
+将  /js/ 移动到 tu.v-get.com/2/
+并将lang/zh中front.js 移动到 tu.v-get.com/2/下
+/style/default/ 移动到 tu.v-get.com/2/下
+
+style/hdwiki.css  修改尺寸960px  
+  

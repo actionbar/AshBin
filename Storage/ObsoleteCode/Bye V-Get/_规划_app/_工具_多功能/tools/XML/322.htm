@@ -1,0 +1,78 @@
+<html>
+<head>
+<title>考察简单的XML文档</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+
+<link rel = stylesheet href = "image/style.css">
+</head>
+<body bgcolor="#ffffff">
+<table width="688" border="0" cellspacing="0" cellpadding="0" align="center">
+  <tr bgcolor="EEEEEE"> 
+    <td height="22"><a href="index.htm">主页</a></td>
+  </tr>
+</table><br>
+<table border="0" cellpadding="0" cellspacing="0" width="688" align="center" height="490">
+  <tr valign="top"> 
+    <td rowspan="4" width="91">&nbsp; </td>
+    <td height="68" width="131"> 
+      <p><img src="image/doc.gif"></p>
+    </td>
+    <td rowspan="4" width="18"><b></b> </td>
+    <td height="68" width="387"><img src="image/title_doc.gif"></td>
+    <td rowspan="4" width="61"> 
+      <h6>&nbsp;</h6>
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td rowspan="3" valign="top" class="pt10" align="center" width="131" bgcolor="EEEEEE"> 
+      <p>&nbsp;</p>
+      <p><font color="#FF0000">※ 3.2 考察简单的XML文档</font></p>
+       
+	</td>
+  </tr>
+  <tr valign="top"> 
+    <td width="387" height="308"> 
+      <table width="100%" border="0" cellpadding="0">
+        <tr> 
+          <td>
+
+           <h4 ALIGN="CENTER">3.2 考察简单的XML文档</h4>
+<P>让我们检查一下列在清单3-1中的这个简单的XML文档，以便更好地理解每行代码的意义。第一行是XML声明：</P>
+<P><font face="Courier New, Courier, mono"><i>&lt;?xml version="1.0" standalone="yes"?&gt;</i></font></P>
+<P>这是XML处理指令的例子。处理指令以&lt;?开始，而以?&gt;结束。在&lt;?后的第一个单词是处理指令名，在本例中是xml。</P>
+<P>XML声明有version和standalone两个特性。特性是由等号分开的名称-数值对。位于等号左边的是特性名，而其值位于等号的右边，并用双引号括起来。</P>
+<P>每一个XML文档都以一个XML声明开始，用以指明所用的XML的版本。在上例中， version特性表明这个文档符合XML 1.0规范。XML声明还可以有standalone特性，这告诉我们文档是否在这一个文件里还是需要从外部导入文件。在本例中，以及在以后的几章中，所有的文档都在一个文件里完成，因而standalone特性的值要设置为yes。</P>
+<P>现在让我们看一下清单3-1中的下面的三行：</P>
+<P><font face="Courier New, Courier, mono"><i>&lt;FOO&gt;</i></font></P>
+<P><i><font face="Courier New, Courier, mono">Hello XML!</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;/FOO&gt;</font></i></P>
+<P>总体上说，这三行组成了FOO元素。分开说，&lt;FOO&gt;是开始标记，而&lt;/FOO&gt;是结束标记，Hello XML!是FOO元素的内容。</P>
+<P>读者可能要问，&lt;FOO&gt;标记的意义是什么？回答是“你要让它是什么就是什么”。除了几百个预定义的标记之外，XML还允许用户创建所需的标记。因而&lt;FOO&gt;标记可以具有用户赋于的任何意义。同一个XML文档可以用不同的标记名编写，正如清单3-2、3-3和3-4所表明的：</P>
+<P>清单3-2：greeting.xml</P>
+<P><i><font face="Courier New, Courier, mono">&lt;?xml version="1.0" standalone="yes"?&gt;</font></i></P>
+<P><font face="Courier New, Courier, mono"><i>&lt;GREETING&gt;</i></font></P>
+<P><font face="Courier New, Courier, mono"><i>Hello XML!</i></font></P>
+<P><font face="Courier New, Courier, mono"><i>&lt;/GREETING&gt;</i></font></P>
+<P>清单3-3：paragraph.xml</P>
+<P><font face="Courier New, Courier, mono"><i>&lt;?xml version="1.0" standalone="yes"?&gt;</i></font></P>
+<P><i><font face="Courier New, Courier, mono">&lt;P&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">Hello XML!</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;/P&gt;</font></i></P>
+<P>清单3-4：document.xml</P>
+<P><i><font face="Courier New, Courier, mono">&lt;?xml version="1.0" standalone="yes"?&gt;</font></i></P>
+<P><font face="Courier New, Courier, mono"><i>&lt;DOCUMENT&gt;</i></font></P>
+<P><font face="Courier New, Courier, mono"><i>Hello XML!</i></font></P>
+<P><font face="Courier New, Courier, mono"><i>&lt;/DOCUMENT&gt;</i></font></P>
+<P>清单3-1到3-4这四个文档用的标记名各不相同，但都是等价的，因为具有相同的结构和内容。</P>
+<P></P> 
+<a href='321.htm'>&lt;&lt;上一篇</a>&nbsp;&nbsp;<a href='323.htm'>下一篇&gt;&gt;</a></td>
+        </tr>
+      </table>
+      <p>&nbsp; </p>
+    </td>
+  </tr>
+</table>
+
+</body>
+
+</html>

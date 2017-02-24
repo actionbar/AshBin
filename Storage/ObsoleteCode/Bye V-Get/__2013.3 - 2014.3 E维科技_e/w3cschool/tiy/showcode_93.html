@@ -1,0 +1,28 @@
+<html>
+<head><link rel="stylesheet" type="text/css" href="showcode.css" /></head>
+<body>
+<pre>
+&lt;html&gt;
+&lt;body&gt;
+<code class="aspcode">&lt;%
+set conn=Server.CreateObject(&#34;ADODB.Connection&#34;)
+conn.Provider=&#34;Microsoft.Jet.OLEDB.4.0&#34;
+conn.Open(Server.Mappath(&#34;/db/northwind.mdb&#34;))
+set rs = Server.CreateObject(&#34;ADODB.recordset&#34;)
+rs.Open &#34;Select * from Customers&#34;, conn
+do until rs.EOF
+    for each x in rs.Fields
+       Response.Write(x.name)
+       Response.Write(&#34; = &#34;)
+       Response.Write(x.value & &#34;&lt;br /&gt;&#34;) 
+    next
+    Response.Write(&#34;&lt;br /&gt;&#34;)
+    rs.MoveNext
+loop
+rs.close
+conn.close
+%&gt;</code>
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+</body>

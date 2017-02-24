@@ -1,0 +1,212 @@
+<html>
+<head>
+<title>编制样式单以便显示文档(续)</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+
+<link rel = stylesheet href = "image/style.css">
+</head>
+<body bgcolor="#ffffff">
+<table width="688" border="0" cellspacing="0" cellpadding="0" align="center">
+  <tr bgcolor="EEEEEE"> 
+    <td height="22"><a href="index.htm">主页</a></td>
+  </tr>
+</table><br>
+<table border="0" cellpadding="0" cellspacing="0" width="688" align="center" height="490">
+  <tr valign="top"> 
+    <td rowspan="4" width="91">&nbsp; </td>
+    <td height="68" width="131"> 
+      <p><img src="image/doc.gif"></p>
+    </td>
+    <td rowspan="4" width="18"><b></b> </td>
+    <td height="68" width="387"><img src="image/title_doc.gif"></td>
+    <td rowspan="4" width="61"> 
+      <h6>&nbsp;</h6>
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td rowspan="3" valign="top" class="pt10" align="center" width="131" bgcolor="EEEEEE"> 
+      <p>&nbsp;</p>
+      <p><font color="#FF0000">※ 4.4 编制样式单以便显示文档(续)</font></p>
+       
+            <p align="left"><a href='333.htm'>4.4 编制样式单以便显示文档</a></p>
+          
+            <p align="left">4.4 编制样式单以便显示文档(续)</p>
+          
+	</td>
+  </tr>
+  <tr valign="top"> 
+    <td width="387" height="308"> 
+      <table width="100%" border="0" cellpadding="0">
+        <tr> 
+          <td>
+
+           <h5 align="left">4.4.4 为球员和统计元素指定样式规则</h5>
+<p>本文档需要的最具技巧的格式化是对每个球员及其统计数据的格式化。每个队有几十个球员。每个球员都有统计数据。应该将TEAM元素看作是由PLAYER元素组成的，且将每个球员放在他自己的块级节中，正如前一个元素所做的那样。不过，排列这些数据的更为吸引人且更为有效的方法是使用表格。达到这一目的的样式规则如下所示：</p>
+<p><font face="Courier New, Courier, mono"><i>TEAM {display: table}</i></font></p>
+<p><i><font face="Courier New, Courier, mono">TEAM_CITY {display: table-caption}</font></i></p>
+<p><i><font face="Courier New, Courier, mono">TEAM_NAME {display: table-caption}</font></i></p>
+<p><i><font face="Courier New, Courier, mono">PLAYER {display: table-row}</font></i></p>
+<p><i><font face="Courier New, Courier, mono">SURNAME {display: table-cell}</font></i></p>
+<p><i><font face="Courier New, Courier, mono">GIVEN_NAME {display: table-cell}</font></i></p>
+<p><i><font face="Courier New, Courier, mono">POSITION {display: table-cell}</font></i></p>
+<p><i><font face="Courier New, Courier, mono">GAMES {display: table-cell}</font></i></p>
+<p><i><font face="Courier New, Courier, mono">GAMES_STARTED {display: table-cell}</font></i></p>
+<p><i><font face="Courier New, Courier, mono">AT_BATS {display: table-cell}</font></i></p>
+<p><i><font face="Courier New, Courier, mono">RUNS {display: table-cell}</font></i></p>
+<p><i><font face="Courier New, Courier, mono">HITS {display: table-cell}</font></i></p>
+<p><i><font face="Courier New, Courier, mono">DOUBLES {display: table-cell}</font></i></p>
+<p><i><font face="Courier New, Courier, mono">TRIPLES {display: table-cell}</font></i></p>
+<p><i><font face="Courier New, Courier, mono">HOME_RUNS {display: table-cell}</font></i></p>
+<p><i><font face="Courier New, Courier, mono">RBI {display: table-cell}</font></i></p>
+<p><i><font face="Courier New, Courier, mono">STEALS {display: table-cell}</font></i></p>
+<p><i><font face="Courier New, Courier, mono">CAUGHT_STEALING {display: table-cell}</font></i></p>
+<p><i><font face="Courier New, Courier, mono">SACRIFICE_HITS {display: table-cell}</font></i></p>
+<p><i><font face="Courier New, Courier, mono">SACRIFICE_FLIES {display: table-cell}</font></i></p>
+<p><i><font face="Courier New, Courier, mono">ERRORS {display: table-cell}</font></i></p>
+<p><i><font face="Courier New, Courier, mono">WALKS {display: table-cell}</font></i></p>
+<p><i><font face="Courier New, Courier, mono">STRUCK_OUT {display: table-cell}</font></i></p>
+<p><i><font face="Courier New, Courier, mono">HIT_BY_PITCH {display: table-cell}</font></i></p>
+<p>遗憾的是，只有CSS2才支持表格属性，而Internet Explorer 5.0和其他写作本书时已存在的浏览器还不支持CSS2。由于还不能使用表格的格式化方法，我们只好使TEAM和PLAYER成为块级元素，而让其他数据保持缺省格式。</p>
+<h5>4.4.5 本节小结</h5>
+<p>清单4-2列出了完成后的样式单。CSS样式单除了一条一条的规则之外，这种样式单没有什么结构。实际上，样式单只是我在上面分别介绍过的所有规则的列表。列表中的顺序不是很重要，只要每条规则都包含进去也就可以了。</p>
+<b>
+<p>清单4-2：baseballstats.css</p>
+</b> 
+<p><font face="Courier New, Courier, mono"><i>SEASON {font-size: 4pt; background-color: 
+  white; </i></font></p>
+<p><i><font face="Courier New, Courier, mono"> color: black; display: block}</font></i></p>
+<p><i><font face="Courier New, Courier, mono">YEAR {display: block; font-size: 
+  32pt; font-weight: bold; </font></i></p>
+<p><i><font face="Courier New, Courier, mono"> text-align: center}</font></i></p>
+<p><i><font face="Courier New, Courier, mono">LEAGUE_NAME {display: block; text-align: 
+  center; </font></i></p>
+<p><i><font face="Courier New, Courier, mono"> font-size: 28pt; font-weight: bold}</font></i></p>
+<p><i><font face="Courier New, Courier, mono">DIVISION_NAME {display: block; text-align: 
+  center; </font></i></p>
+<p><i><font face="Courier New, Courier, mono"> font-size: 24pt; font-weight: bold}</font></i></p>
+<p><i><font face="Courier New, Courier, mono">TEAM_CITY {font-size: 20pt; font-weight: 
+  bold; </font></i></p>
+<p><i><font face="Courier New, Courier, mono"> font-style: italic}</font></i></p>
+<p><i><font face="Courier New, Courier, mono">TEAM_NAME {font-size: 20pt; font-weight: 
+  bold; </font></i></p>
+<p><i><font face="Courier New, Courier, mono"> font-style: italic}</font></i></p>
+<p><i><font face="Courier New, Courier, mono">TEAM {display: block}</font></i></p>
+<p><i><font face="Courier New, Courier, mono">PLAYER {display: block}</font></i></p>
+<p>到此就完成了棒球统计数据的基本格式化的任务。不过很清楚，还有许多工作要做。支持真正表格格式化的浏览器将会大有帮助。然而还有其他工作。下面指出这些工作，其顺序没有什么关系：</p>
+<ul>
+  <p>
+  <li>只是列出了原始的数字，而没有说明数字代表了什么。每个数字应该有一个为其命名的标题，如“RBI”或是“At Bats”。</li>
+  <p></p>
+  <p>
+  <li>令人感兴趣的数据，如平均击球数由于是可能从这里列出的数据中计算出来的，这样的数据就没有包括进来。</li>
+  <p></p>
+  <p>
+  <li>某些标题有点太短。如果文档的标题是“1998 Major League Baseball”而不是简单的“1998”可能会更好。</li>
+  <p></p>
+  <p>
+  <li>如果Major League中的所有球员都包括进来，这一文档就会如此之长，以至于难以阅读。在这种情况下，与Internet Explorer中的可折叠的大纲视图类似的东西可能会更有用。</li>
+  <p></p>
+  <p>
+  <li>由于投手统计数据与击球手的数据是如此不同，在花名册中分别排序可能会更好。</li>
+  <p></p>
+</ul>
+<p>像这样一类的许多看法都应该向文档中增加更多的内容加以体现。例如，为了将标题从“1998”改为“1998 Major League Baseball”，所要做的工作只是将YEAR 
+  元素改写如下：</p>
+<p>1998 Major League Baseball</p>
+<p>在每个花名册的顶部，用一个假想的球员名，为球员的统计数据加进小标题，如下所示：</p>
+<p><font face="Courier New, Courier, mono"><i>&lt;PLAYER&gt;</i></font></p>
+<p><i><font face="Courier New, Courier, mono">&lt;SURNAME&gt;Surname&lt;/SURNAME&gt;</font></i></p>
+<p><i><font face="Courier New, Courier, mono">&lt;GIVEN_NAME&gt;Given name&lt;/GIVEN_NAME&gt;</font></i></p>
+<p><i><font face="Courier New, Courier, mono">&lt;POSITION&gt;Position&lt;/POSITION&gt; 
+  </font></i></p>
+<p><i><font face="Courier New, Courier, mono">&lt;GAMES&gt;Games&lt;/GAMES&gt;</font></i></p>
+<p><i><font face="Courier New, Courier, mono">&lt;GAMES_STARTED&gt;Games Started&lt;/GAMES_STARTED&gt;</font></i></p>
+<p><i><font face="Courier New, Courier, mono">&lt;AT_BATS&gt;At Bats&lt;/AT_BATS&gt;</font></i></p>
+<p><i><font face="Courier New, Courier, mono">&lt;RUNS&gt;Runs&lt;/RUNS&gt;</font></i></p>
+<p><i><font face="Courier New, Courier, mono">&lt;HITS&gt;Hits&lt;/HITS&gt;</font></i></p>
+<p><i><font face="Courier New, Courier, mono">&lt;DOUBLES&gt;Doubles&lt;/DOUBLES&gt;</font></i></p>
+<p><i><font face="Courier New, Courier, mono">&lt;TRIPLES&gt;Triples&lt;/TRIPLES&gt;</font></i></p>
+<p><i><font face="Courier New, Courier, mono">&lt;HOME_RUNS&gt;Home Runs&lt;/HOME_RUNS&gt;</font></i></p>
+<p><i><font face="Courier New, Courier, mono">&lt;RBI&gt;Runs Batted In&lt;/RBI&gt;</font></i></p>
+<p><i><font face="Courier New, Courier, mono">&lt;STEALS&gt;Steals&lt;/STEALS&gt;</font></i></p>
+<p><i><font face="Courier New, Courier, mono">&lt;CAUGHT_STEALING&gt;Caught Stealing&lt;/CAUGHT_STEALING&gt;</font></i></p>
+<p><i><font face="Courier New, Courier, mono">&lt;SACRIFICE_HITS&gt;Sacrifice 
+  Hits&lt;/SACRIFICE_HITS&gt;</font></i></p>
+<p><i><font face="Courier New, Courier, mono">&lt;SACRIFICE_FLIES&gt;Sacrifice 
+  Flies&lt;/SACRIFICE_FLIES&gt;</font></i></p>
+<p><i><font face="Courier New, Courier, mono">&lt;ERRORS&gt;Errors&lt;/ERRORS&gt;</font></i></p>
+<p><i><font face="Courier New, Courier, mono">&lt;WALKS&gt;Walks&lt;/WALKS&gt;</font></i></p>
+<p><i><font face="Courier New, Courier, mono">&lt;STRUCK_OUT&gt;Struck Out&lt;/STRUCK_OUT&gt;</font></i></p>
+<p><i><font face="Courier New, Courier, mono">&lt;HIT_BY_PITCH&gt;Hit By Pitch&lt;/HIT_BY_PITCH&gt;</font></i></p>
+<p><i><font face="Courier New, Courier, mono">&lt;/PLAYER&gt;</font></i></p>
+<p>关于这种方法还有一些基本问题需要解决。年份是1998年，而不是1998 Major League Baseball 。小标题“At Bats”与击球数不是一回事。（这正是事物的名称与事物本身之间的差别。）这时可增加一些标记如下（加以解决）：</p>
+<p><i><font face="Courier New, Courier, mono">&lt;TABLE_HEAD&gt;</font></i></p>
+<p><font face="Courier New, Courier, mono"><i>&lt;COLUMN_LABEL&gt;Surname&lt;/COLUMN_LABEL&gt;</i></font></p>
+<p><font face="Courier New, Courier, mono"><i>&lt;COLUMN_LABEL&gt;Given name&lt;/COLUMN_LABEL&gt;</i></font></p>
+<p><font face="Courier New, Courier, mono"><i>&lt;COLUMN_LABEL&gt;Position&lt;/COLUMN_LABEL&gt; 
+  </i></font></p>
+<p><font face="Courier New, Courier, mono"><i>&lt;COLUMN_LABEL&gt;Games&lt;/COLUMN_LABEL&gt;</i></font></p>
+<p><font face="Courier New, Courier, mono"><i>&lt;COLUMN_LABEL&gt;Games Started&lt;/COLUMN_LABEL&gt;</i></font></p>
+<p><font face="Courier New, Courier, mono"><i>&lt;COLUMN_LABEL&gt;At Bats&lt;/COLUMN_LABEL&gt;</i></font></p>
+<p><font face="Courier New, Courier, mono"><i>&lt;COLUMN_LABEL&gt;Runs&lt;/COLUMN_LABEL&gt;</i></font></p>
+<p><font face="Courier New, Courier, mono"><i>&lt;COLUMN_LABEL&gt;Hits&lt;/COLUMN_LABEL&gt;</i></font></p>
+<p><font face="Courier New, Courier, mono"><i>&lt;COLUMN_LABEL&gt;Doubles&lt;/COLUMN_LABEL&gt;</i></font></p>
+<p><font face="Courier New, Courier, mono"><i>&lt;COLUMN_LABEL&gt;Triples&lt;/COLUMN_LABEL&gt;</i></font></p>
+<p><font face="Courier New, Courier, mono"><i>&lt;COLUMN_LABEL&gt;Home Runs&lt;/COLUMN_LABEL&gt;</i></font></p>
+<p><font face="Courier New, Courier, mono"><i>&lt;COLUMN_LABEL&gt;Runs Batted 
+  In&lt;/COLUMN_LABEL&gt;</i></font></p>
+<p><font face="Courier New, Courier, mono"><i>&lt;COLUMN_LABEL&gt;Steals&lt;/COLUMN_LABEL&gt;</i></font></p>
+<p><font face="Courier New, Courier, mono"><i>&lt;COLUMN_LABEL&gt;Caught Stealing&lt;/COLUMN_LABEL&gt;</i></font></p>
+<p><font face="Courier New, Courier, mono"><i>&lt;COLUMN_LABEL&gt;Sacrifice Hits&lt;/COLUMN_LABEL&gt;</i></font></p>
+<p><font face="Courier New, Courier, mono"><i>&lt;COLUMN_LABEL&gt;Sacrifice Flies&lt;/COLUMN_LABEL&gt;</i></font></p>
+<p><font face="Courier New, Courier, mono"><i>&lt;COLUMN_LABEL&gt;Errors&lt;/COLUMN_LABEL&gt;</i></font></p>
+<p><font face="Courier New, Courier, mono"><i>&lt;COLUMN_LABEL&gt;Walks&lt;/COLUMN_LABEL&gt;</i></font></p>
+<p><font face="Courier New, Courier, mono"><i>&lt;COLUMN_LABEL&gt;Struck Out&lt;/COLUMN_LABEL&gt;</i></font></p>
+<p><font face="Courier New, Courier, mono"><i>&lt;COLUMN_LABEL&gt;Hit By Pitch&lt;/COLUMN_LABEL&gt;</i></font></p>
+<p><font face="Courier New, Courier, mono"><i>&lt;/TABLE_HEAD&gt;</i></font></p>
+<p>不过这样一来，基本上是重新“发明”了HTML，而且使我们又回到了使用标记来格式化而不是用于意义了。同时，我们还重复了已经包括在元素名称中的信息。整个文档还相当大，我们还是希望文档不要太大为好。</p>
+<p>增加击球和其他的平均数并不复杂。只要将数据作为附加的元素包括进来就可以了。例如，下面是一个带有该种数据的球员：</p>
+<p><i><font face="Courier New, Courier, mono">&lt;PLAYER&gt;</font></i></p>
+<p><font face="Courier New, Courier, mono"><i>&lt;SURNAME&gt;Malloy&lt;/SURNAME&gt;</i></font></p>
+<p><font face="Courier New, Courier, mono"><i>&lt;GIVEN_NAME&gt;Marty&lt;/GIVEN_NAME&gt;</i></font></p>
+<p><font face="Courier New, Courier, mono"><i>&lt;POSITION&gt;Second Base&lt;/POSITION&gt; 
+  </i></font></p>
+<p><font face="Courier New, Courier, mono"><i>&lt;GAMES&gt;1&lt;/GAMES&gt;</i></font></p>
+<p><font face="Courier New, Courier, mono"><i>&lt;GAMES_STARTED&gt;8&lt;/GAMES_STARTED&gt;</i></font></p>
+<p><font face="Courier New, Courier, mono"><i>&lt;ON_BASE_AVERAGE&gt;.233&lt;/ON_BASE_AVERAGE&gt;</i></font></p>
+<p><font face="Courier New, Courier, mono"><i>&lt;SLUGGING_AVERAGE&gt;.321&lt;/SLUGGING_AVERAGE&gt;</i></font></p>
+<p><font face="Courier New, Courier, mono"><i>&lt;BATTING_AVERAGE&gt;.179&lt;/BATTING_AVERAGE&gt;</i></font></p>
+<p><font face="Courier New, Courier, mono"><i>&lt;AT_BATS&gt;28&lt;/AT_BATS&gt;</i></font></p>
+<p><font face="Courier New, Courier, mono"><i>&lt;RUNS&gt;3&lt;/RUNS&gt;</i></font></p>
+<p><font face="Courier New, Courier, mono"><i>&lt;HITS&gt;5&lt;/HITS&gt;</i></font></p>
+<p><font face="Courier New, Courier, mono"><i>&lt;DOUBLES&gt;1&lt;/DOUBLES&gt;</i></font></p>
+<p><font face="Courier New, Courier, mono"><i>&lt;TRIPLES&gt;0&lt;/TRIPLES&gt;</i></font></p>
+<p><font face="Courier New, Courier, mono"><i>&lt;HOME_RUNS&gt;1&lt;/HOME_RUNS&gt;</i></font></p>
+<p><font face="Courier New, Courier, mono"><i>&lt;RBI&gt;1&lt;/RBI&gt;</i></font></p>
+<p><font face="Courier New, Courier, mono"><i>&lt;STEALS&gt;0&lt;/STEALS&gt;</i></font></p>
+<p><font face="Courier New, Courier, mono"><i>&lt;CAUGHT_STEALING&gt;0&lt;/CAUGHT_STEALING&gt;</i></font></p>
+<p><font face="Courier New, Courier, mono"><i>&lt;SACRIFICE_HITS&gt;0&lt;/SACRIFICE_HITS&gt;</i></font></p>
+<p><font face="Courier New, Courier, mono"><i>&lt;SACRIFICE_FLIES&gt;0&lt;/SACRIFICE_FLIES&gt;</i></font></p>
+<p><font face="Courier New, Courier, mono"><i>&lt;ERRORS&gt;0&lt;/ERRORS&gt;</i></font></p>
+<p><font face="Courier New, Courier, mono"><i>&lt;WALKS&gt;2&lt;/WALKS&gt;</i></font></p>
+<p><font face="Courier New, Courier, mono"><i>&lt;STRUCK_OUT&gt;2&lt;/STRUCK_OUT&gt;</i></font></p>
+<p><font face="Courier New, Courier, mono"><i>&lt;HIT_BY_PITCH&gt;0&lt;/HIT_BY_PITCH&gt;</i></font></p>
+<p><font face="Courier New, Courier, mono"><i>&lt;/PLAYER&gt;</i></font></p>
+<p>但是，这种信息是多余的，因为这些数据可从已经包括进来的数据中计算出来。例如，平均击球数是击中的垒数被击球数除的结果，也就是HITS/AT_BAT。多余数据使得维护和更新数据变得非常困难。对一个元素的简单的改变或是增加都会引起多个位置的改变和重新计算。</p>
+<p>真正所需要的是一种不同的样式单语言，能使我们向元素中增加样板内容并根据现存的元素内容执行转换。这样的语言是存在的，这就是可扩展的样式语言（Extensible 
+  Style Language，简写为XSL）。</p>
+<p><img src="image/Image32.gif" width=51 height=37>　 可扩展的样式语言（Extensible Style 
+  Language，XSL）将在第14、15章中加以讨论。</p>
+<p>CSS比XSL简单，对于基本的Web页面来说，也更适合一些，而且也是更为直接的文档。XSL变得相当复杂，但功能也更为强大。XSL是建立在我们已经在上面学到的简单的CSS格式化的基础之上的，但是也提供了将源文档转换为读者可以查看的不同形式的方法。在调试XML时，首先使用CSS寻找问题，然后再转到XSL，以便获得更大的灵活性，这通常是不错的主意。</p>
+ 
+<a href='333.htm'>&lt;&lt;上一篇</a>&nbsp;&nbsp;<a href='335.htm'>下一篇&gt;&gt;</a></td>
+        </tr>
+      </table>
+      <p>&nbsp; </p>
+    </td>
+  </tr>
+</table>
+
+</body>
+
+</html>

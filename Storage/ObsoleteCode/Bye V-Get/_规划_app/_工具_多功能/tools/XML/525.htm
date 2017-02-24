@@ -1,0 +1,1105 @@
+<html>
+<head>
+<title>格式对象及其属性</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+
+<link rel = stylesheet href = "image/style.css">
+</head>
+<body bgcolor="#ffffff">
+<table width="688" border="0" cellspacing="0" cellpadding="0" align="center">
+  <tr bgcolor="EEEEEE"> 
+    <td height="22"><a href="index.htm">主页</a></td>
+  </tr>
+</table><br>
+<table border="0" cellpadding="0" cellspacing="0" width="688" align="center" height="490">
+  <tr valign="top"> 
+    <td rowspan="4" width="91">&nbsp; </td>
+    <td height="68" width="131"> 
+      <p><img src="image/doc.gif"></p>
+    </td>
+    <td rowspan="4" width="18"><b></b> </td>
+    <td height="68" width="387"><img src="image/title_doc.gif"></td>
+    <td rowspan="4" width="61"> 
+      <h6>&nbsp;</h6>
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td rowspan="3" valign="top" class="pt10" align="center" width="131" bgcolor="EEEEEE"> 
+      <p>&nbsp;</p>
+      <p><font color="#FF0000">※ 15.2 格式对象及其属性</font></p>
+       
+	</td>
+  </tr>
+  <tr valign="top"> 
+    <td width="387" height="308"> 
+      <table width="100%" border="0" cellpadding="0">
+        <tr> 
+          <td>
+
+           <h4><a name="_Toc467207745">15.2 格式对象及其属性</a></h4>
+<p>XSL格式化对象元素正好有51个。在这51个元素当中，大多表示各种类型的矩形区域。其他的大部分都是矩形区域和空间的容器。下面以字母顺序编排，列出这些格式化对象：</p>
+<ul>
+  <p>
+  <li>bidi-override</li>
+  <p></p>
+  <p>
+  <li>block</li>
+  <p></p>
+  <p>
+  <li>character</li>
+  <p></p>
+  <p>
+  <li>display-graphic</li>
+  <p></p>
+  <p>
+  <li>display-included-container</li>
+  <p></p>
+  <p>
+  <li>display-rule</li>
+  <p></p>
+  <p>
+  <li>display-sequence</li>
+  <p></p>
+  <p>
+  <li>first-line-marker</li>
+  <p></p>
+  <p>
+  <li>float</li>
+  <p></p>
+  <p>
+  <li>flow</li>
+  <p></p>
+  <p>
+  <li>footnote</li>
+  <p></p>
+  <p>
+  <li>footnote-citation</li>
+  <p></p>
+  <p>
+  <li>inline graphic</li>
+  <p></p>
+  <p>
+  <li>inline-included-container</li>
+  <p></p>
+  <p>
+  <li>inline-rule</li>
+  <p></p>
+  <p>
+  <li>inline-sequence</li>
+  <p></p>
+  <p>
+  <li>layout-master-set</li>
+  <p></p>
+  <p>
+  <li>list-block</li>
+  <p></p>
+  <p>
+  <li>list-item</li>
+  <p></p>
+  <p>
+  <li>list-item-body</li>
+  <p></p>
+  <p>
+  <li>list-item-label</li>
+  <p></p>
+  <p>
+  <li>multi-case</li>
+  <p></p>
+  <p>
+  <li>multi-properties</li>
+  <p></p>
+  <p>
+  <li>multi-property-set</li>
+  <p></p>
+  <p>
+  <li>multi-switch</li>
+  <p></p>
+  <p>
+  <li>multi-toggle</li>
+  <p></p>
+  <p>
+  <li>page-number</li>
+  <p></p>
+  <p>
+  <li>page-number-citation</li>
+  <p></p>
+  <p>
+  <li>page-sequence</li>
+  <p></p>
+  <p>
+  <li>region-after</li>
+  <p></p>
+  <p>
+  <li>region before</li>
+  <p></p>
+  <p>
+  <li>region-body</li>
+  <p></p>
+  <p>
+  <li>region-end</li>
+  <p></p>
+  <p>
+  <li>region-start</li>
+  <p></p>
+  <p>
+  <li>root</li>
+  <p></p>
+  <p>
+  <li>sequence-specification</li>
+  <p></p>
+  <p>
+  <li>sequence-specifier-alternating</li>
+  <p></p>
+  <p>
+  <li>sequence specifier repeating</li>
+  <p></p>
+  <p>
+  <li>sequence-specifier-single</li>
+  <p></p>
+  <p>
+  <li>simple-link</li>
+  <p></p>
+  <p>
+  <li>simple-page-master</li>
+  <p></p>
+  <p>
+  <li>static-content</li>
+  <p></p>
+  <p>
+  <li>table</li>
+  <p></p>
+  <p>
+  <li>table-and-caption</li>
+  <p></p>
+  <p>
+  <li>table-body</li>
+  <p></p>
+  <p>
+  <li>table-caption</li>
+  <p></p>
+  <p>
+  <li>table-cell</li>
+  <p></p>
+  <p>
+  <li>table-column</li>
+  <p></p>
+  <p>
+  <li>table-footer</li>
+  <p></p>
+  <p>
+  <li>table-header</li>
+  <p></p>
+  <p>
+  <li>table-row</li>
+  <p></p>
+</ul>
+<p>XSL格式化模型是基于称之为区域（area）的矩形框，该区域包含有文本、空格或其他格式化对象。尽管CSS页边距被XSL的缩进所代替，但正如CSS框一样，每个区域在其各侧都有边框和贴边。XSL格式化程序读取格式化对象来确定将哪个区域放在页面的什么位置。许多格式化对象都会产生单一的区域（至少对大多数情况即是如此），但由于页面分隔符、单词折行、断字以及将可能存在的不确定量的文本填充到有确定区域中的其他方面的原因，一些格式化对象偶尔也确实产生多个区域。</p>
+<p><img src="Image/BK000215-30.gif" width=48 height=52 align="left">含有间隔的框与含有空白字符的框是不一样的。含有空间的框是指页面或屏幕上的实际空的区域，例如，页面的左和右边上的页边距。这与页面上单词间的空格字符是不同的。</p>
+<p>格式化对象主要在它们所包含的内容上有差别。例如，list-item-label格式化对象就是一个包含项目符号、数字或放在列表项之前的其他指示符的框。list-item-body格式化对象就是一个包含列表项的文本（无标签）的框。而list-item格式化对象就是一个包含list-item-label和list-item两个格式化对象的框。</p>
+<p>格式化对象可进一步分成四类不同的矩形区域：</p>
+<p>1．区域容器</p>
+<p>2．块区域</p>
+<p>3．行区域</p>
+<p>4．内联区域</p>
+<p>这四种类型的区域就形式了粗略的层次关系。区域容器包含其他更小的区域容器以及块区域。块区域又包含其他块区域、行区域和内容。行区域包含内联区域。内联区域包含其他内联区域和内容。所以，更具体地分为：</p>
+<ul>
+  <p>
+  <li>区域容器在XSL中是最高级别的容器。在包含它的区域内，可以精确的坐标加以定位。它既可以包含其他更小的区域容器，也可包含一系列的块区域和显示空间。可以将书的一页看作为区域容器，而这个区域容器包含五个其他区域容器：页眉、页的主体内容、页脚以及左和右页边距（在本例中，页边距区域无内容）。产生区域容器的格式化对象包括region-body、region-before、region-after、region-start和region-end。</li>
+  <p></p>
+  <p>
+  <li>块区域代表块级元素，如段落或列表项。尽管块区域可能包含其他块区域，但在每个块区域的开始之前和结束之后都总是有一个换行符。块区域不能用坐标来精确定位，而是顺序地置于包含它的区域内。当在某个块区域之前或内部加入和删除其他块区域时，此块区域的位置发生移动，以便腾出空间。块区域可能含有行区域、显示空格以及连续地排列在用来包含的块区域中的其他块区域。块区域还可能包含一个图形影像。产生块区域的格式化对象包括block、display-graphic、display-link、display-rule和list-block。</li>
+  <p></p>
+  <p>
+  <li>行区域表示块部分的一行文本。例如，列表项中的每个分开的行都是行区域。行区域可以包含内联区域和内联空间。对应的行区域没有格式化对象。取而代之的是，格式化引擎可计算行区域，例如确定在块区域内部如何折行。</li>
+  <p></p>
+  <p>
+  <li>内联区域是一行中的成分，如单字符、脚注引用或数学方程。内联区域可以包含其他内联区域和内联空间。产生内联的格式化对象包括character、inline-graphic、inline-link、inline-rule、inline-sequence和page-number。</li>
+  <p></p>
+</ul>
+<h5><a name="_Toc467207746">15.2.1 fo命名域</a></h5>
+<p>在XSL样式单中，用于XSL格式化对象的XML元素放<a href="http://www.w3.org/XSL/Format/1.0">http://www.w3.org/XSL/Format 
+  /1.0</a>命名域中，如下的声明所示：</p>
+<p>&lt;xsl:stylesheet</p>
+<p> xmlns:xsl="http://www.w3.org/TR/WD-xsl"</p>
+<p> xmlns:fo="http://www.w3.org/XSL/Format/1.0"</p>
+<p> result-ns="fo"&gt;</p>
+<p>选择fo作为前缀的概率大约为99%。因此，几乎总可以看到下列元素以fo作前缀：</p>
+<ul>
+  <p>
+  <li>fo:bidi-override</li>
+  <p></p>
+  <p>
+  <li>fo:block</li>
+  <p></p>
+  <p>
+  <li>fo:character</li>
+  <p></p>
+  <p>
+  <li>fo:display-graphic</li>
+  <p></p>
+  <p>
+  <li>fo:display-included-container</li>
+  <p></p>
+  <p>
+  <li>fo:display-rule</li>
+  <p></p>
+  <p>
+  <li>fo:display-sequence</li>
+  <p></p>
+  <p>
+  <li>fo:first-line-marker</li>
+  <p></p>
+  <p>
+  <li>fo:float</li>
+  <p></p>
+  <p>
+  <li>fo:flow</li>
+  <p></p>
+  <p>
+  <li>fo:footnote</li>
+  <p></p>
+  <p>
+  <li>fo:footnote-citation</li>
+  <p></p>
+  <p>
+  <li>fo:inline-graphic</li>
+  <p></p>
+  <p>
+  <li>fo:inline-included-container</li>
+  <p></p>
+  <p>
+  <li>fo:inline-rule</li>
+  <p></p>
+  <p>
+  <li>fo:inline-sequence</li>
+  <p></p>
+  <p>
+  <li>fo:layout-master-set</li>
+  <p></p>
+  <p>
+  <li>fo:list-block</li>
+  <p></p>
+  <p>
+  <li>fo:list-item</li>
+  <p></p>
+  <p>
+  <li>fo:list-item-body</li>
+  <p></p>
+  <p>
+  <li>fo:list-item-label</li>
+  <p></p>
+  <p>
+  <li>fo:multi-case</li>
+  <p></p>
+  <p>
+  <li>fo:multi-properties</li>
+  <p></p>
+  <p>
+  <li>fo:multi-property-set</li>
+  <p></p>
+  <p>
+  <li>fo:multi-switc</li>
+  <p></p>
+  <p>
+  <li>fo:multi-toggle</li>
+  <p></p>
+  <p>
+  <li>fo:page-number</li>
+  <p></p>
+  <p>
+  <li>fo:page-number-citation</li>
+  <p></p>
+  <p>
+  <li>fo:page-sequence</li>
+  <p></p>
+  <p>
+  <li>fo:region-after</li>
+  <p></p>
+  <p>
+  <li>fo:region-before</li>
+  <p></p>
+  <p>
+  <li>fo:region-body</li>
+  <p></p>
+  <p>
+  <li>fo:region-end</li>
+  <p></p>
+  <p>
+  <li>fo:region-start</li>
+  <p></p>
+  <p>
+  <li>fo:root</li>
+  <p></p>
+  <p>
+  <li>fo:sequence-specification</li>
+  <p></p>
+  <p>
+  <li>fo:sequence-specifier-alternating</li>
+  <p></p>
+  <p>
+  <li>fo:sequence-specifier-repeating</li>
+  <p></p>
+  <p>
+  <li>fo:sequence-specifier-single</li>
+  <p></p>
+  <p>
+  <li>fo:simple-link</li>
+  <p></p>
+  <p>
+  <li>fo:simple-page-master</li>
+  <p></p>
+  <p>
+  <li>fo:static-content</li>
+  <p></p>
+  <p>
+  <li>fo:table</li>
+  <p></p>
+  <p>
+  <li>fo:table-and-caption</li>
+  <p></p>
+  <p>
+  <li>fo:table-body</li>
+  <p></p>
+  <p>
+  <li>fo:table-caption</li>
+  <p></p>
+</ul>
+<p>本章，我将使用fo作前缀，不再进一步说明。</p>
+<p><img src="Image/BK000215-30.gif" width=58 height=41 align="left">命名域在第18章“命名域”中讨论。在那之前，私獾闹皇荴SL格式化对象元素的名称都是以fo:开头。</p>
+<h5><a name="_Toc467207747">15.2.2 格式化属性</a></h5>
+<p>总的来说，XSL文档中的各种格式化对象都指定内容放在页面中的顺序。但是，格式化的所有详细内容（包括页的大小、元素大小、字体、颜色等等，但不局限于这些）都是由XSL属性指定的。这些格式化属性以各自格式化对象元素的特性来表示。</p>
+<p>这些属性中的许多属性的细节都应该从CSS中了解了。下面所进行的工作是为了确保CSS和XSL使用相同的名称来表示同一个内容。例如，CSS属性的font-family的含义与XSL的font-family属性是一回事；尽管在CSS和XSL中给属性赋值的句法不同，但值本身的句法是完全一样的。要说明fo:block元素格式化成与某种Times字体的近似，可以使用下面的CSS规则：</p>
+<p>fo:block {font-family: New York, Times New Roman, Times, serif }</p>
+<p>而XSL的等价语句可按下列方式，将font-family包括在fo:block开始标记中：</p>
+<p>&lt;fo:block</p>
+<p> font-family=”New York,Times New Roman,Times,serif”&gt;</p>
+<p>尽管从表面上来看不同，但样式名（font-family）和样式值（New York, Times New Roman, Times, serif）却是完全一样的。CSS的font-family属性指定为一组字体名，各字体名以逗号分开，而顺序是从第一选择到最后选择。XSL的font-family属性指定为一组字体名，各字体名以逗号分开，选择顺序是从第一个选择到最后一个选择。CSS和XSL都将关键字serif理解为任意的衬线字体。</p>
+<p><img src="Image/BK000215-30.gif" width=48 height=52 align="left">由于本章是基于XSL草案规范的第四稿，所以无法彻底完成CSS和XSL等效属性的完全同步。在下一个草案中将解决此问题。</p>
+<p>当然，XSL格式化对象支持许多CSS中没有等效属性的属性，例如，font-size-adjust、ligature、character和hyphenation-keep。所以，需要学习这些属性，以便最大限度地发挥XSL的优势。标准的XSL属性有：</p>
+<ul>
+  <p>
+  <li>auto-restore</li>
+  <p></p>
+  <p>
+  <li>azimuth</li>
+  <p></p>
+  <p>
+  <li>background</li>
+  <p></p>
+  <p>
+  <li>background-attachment</li>
+  <p></p>
+  <p>
+  <li>background-color</li>
+  <p></p>
+  <p>
+  <li>background-image</li>
+  <p></p>
+  <p>
+  <li>background-position</li>
+  <p></p>
+  <p>
+  <li>background-repeat</li>
+  <p></p>
+  <p>
+  <li>border</li>
+  <p></p>
+  <p>
+  <li>border-after-color</li>
+  <p></p>
+  <p>
+  <li>border-after-style</li>
+  <p></p>
+  <p>
+  <li>border-after-width</li>
+  <p></p>
+  <p>
+  <li>border-before-color</li>
+  <p></p>
+  <p>
+  <li>border-before-style</li>
+  <p></p>
+  <p>
+  <li>border-before-width</li>
+  <p></p>
+  <p>
+  <li>border-bottom</li>
+  <p></p>
+  <p>
+  <li>border-bottom-color</li>
+  <p></p>
+  <p>
+  <li>border-bottom-style</li>
+  <p></p>
+  <p>
+  <li>border-bottom-width</li>
+  <p></p>
+  <p>
+  <li>border-collapse</li>
+  <p></p>
+  <p>
+  <li>border-color</li>
+  <p></p>
+  <p>
+  <li>border-end-color</li>
+  <p></p>
+  <p>
+  <li>border-end-style</li>
+  <p></p>
+  <p>
+  <li>border-end-width</li>
+  <p></p>
+  <p>
+  <li>border-left</li>
+  <p></p>
+  <p>
+  <li>border-left-color</li>
+  <p></p>
+  <p>
+  <li>border-left-style</li>
+  <p></p>
+  <p>
+  <li>border-left-width</li>
+  <p></p>
+  <p>
+  <li>border-right</li>
+  <p></p>
+  <p>
+  <li>border-right-color</li>
+  <p></p>
+  <p>
+  <li>border-right-style</li>
+  <p></p>
+  <p>
+  <li>border-right-width</li>
+  <p></p>
+  <p>
+  <li>border-spacing</li>
+  <p></p>
+  <p>
+  <li>border-start-color</li>
+  <p></p>
+  <p>
+  <li>border-start-style</li>
+  <p></p>
+  <p>
+  <li>border-start-width</li>
+  <p></p>
+  <p>
+  <li>border-style</li>
+  <p></p>
+  <p>
+  <li>border-top</li>
+  <p></p>
+  <p>
+  <li>border-top-color</li>
+  <p></p>
+  <p>
+  <li>border-top-style</li>
+  <p></p>
+  <p>
+  <li>border-top-width</li>
+  <p></p>
+  <p>
+  <li>border-width</li>
+  <p></p>
+  <p>
+  <li>bottom</li>
+  <p></p>
+  <p>
+  <li>break-after</li>
+  <p></p>
+  <p>
+  <li>break-before</li>
+  <p></p>
+  <p>
+  <li>caption-side</li>
+  <p></p>
+  <p>
+  <li>cell-height</li>
+  <p></p>
+  <p>
+  <li>character</li>
+  <p></p>
+  <p>
+  <li>clear</li>
+  <p></p>
+  <p>
+  <li>clip</li>
+  <p></p>
+  <p>
+  <li>color</li>
+  <p></p>
+  <p>
+  <li>column-count</li>
+  <p></p>
+  <p>
+  <li>column-gap</li>
+  <p></p>
+  <p>
+  <li>column-number</li>
+  <p></p>
+  <p>
+  <li>column-width</li>
+  <p></p>
+  <p>
+  <li>country</li>
+  <p></p>
+  <p>
+  <li>cue</li>
+  <p></p>
+  <p>
+  <li>cue-after</li>
+  <p></p>
+  <p>
+  <li>cue-before</li>
+  <p></p>
+  <p>
+  <li>digit-group-sep</li>
+  <p></p>
+  <p>
+  <li>elevation</li>
+  <p></p>
+  <p>
+  <li>empty-cells</li>
+  <p></p>
+  <p>
+  <li>end-indent</li>
+  <p></p>
+  <p>
+  <li>ends-row</li>
+  <p></p>
+  <p>
+  <li>extent</li>
+  <p></p>
+  <p>
+  <li>external-destination</li>
+  <p></p>
+  <p>
+  <li>float</li>
+  <p></p>
+  <p>
+  <li>flow-name</li>
+  <p></p>
+  <p>
+  <li>font</li>
+  <p></p>
+  <p>
+  <li>font-family</li>
+  <p></p>
+  <p>
+  <li>font-height-override-after</li>
+  <p></p>
+  <p>
+  <li>font-height-override-before</li>
+  <p></p>
+  <p>
+  <li>font-size</li>
+  <p></p>
+  <p>
+  <li>font-size-adjust</li>
+  <p></p>
+  <p>
+  <li>font-stretch</li>
+  <p></p>
+  <p>
+  <li>font-style</li>
+  <p></p>
+  <p>
+  <li>font-variant</li>
+  <p></p>
+  <p>
+  <li>font-weight</li>
+  <p></p>
+  <p>
+  <li>format</li>
+  <p></p>
+  <p>
+  <li>height</li>
+  <p></p>
+  <p>
+  <li>href</li>
+  <p></p>
+  <p>
+  <li>hyphenate</li>
+  <p></p>
+  <p>
+  <li>hyphenation-char</li>
+  <p></p>
+  <p>
+  <li>hyphenation-keep</li>
+  <p></p>
+  <p>
+  <li>hyphenation-ladder-count</li>
+  <p></p>
+  <p>
+  <li>hyphenation-push-char-count</li>
+  <p></p>
+  <p>
+  <li>hyphenation-remain-char-count</li>
+  <p></p>
+  <p>
+  <li>id</li>
+  <p></p>
+  <p>
+  <li>indicate-destination</li>
+  <p></p>
+  <p>
+  <li>inhibit-line-breaks</li>
+  <p></p>
+  <p>
+  <li>initial</li>
+  <p></p>
+  <p>
+  <li>initial-page-number</li>
+  <p></p>
+  <p>
+  <li>internal-destination</li>
+  <p></p>
+  <p>
+  <li>keep-with-next</li>
+  <p></p>
+  <p>
+  <li>keep-with-previous</li>
+  <p></p>
+  <p>
+  <li>language</li>
+  <p></p>
+  <p>
+  <li>last-line-end-indent</li>
+  <p></p>
+  <p>
+  <li>left</li>
+  <p></p>
+  <p>
+  <li>length</li>
+  <p></p>
+  <p>
+  <li>letter-spacing</li>
+  <p></p>
+  <p>
+  <li>letter-value</li>
+  <p></p>
+  <p>
+  <li>line-height</li>
+  <p></p>
+  <p>
+  <li>line-height-shift-adjustment</li>
+  <p></p>
+  <p>
+  <li>line-stacking-strategy</li>
+  <p></p>
+  <p>
+  <li>margin</li>
+  <p></p>
+  <p>
+  <li>margin-bottom</li>
+  <p></p>
+  <p>
+  <li>margin-left</li>
+  <p></p>
+  <p>
+  <li>margin-right</li>
+  <p></p>
+  <p>
+  <li>margin-top</li>
+  <p></p>
+  <p>
+  <li>max-height</li>
+  <p></p>
+  <p>
+  <li>max-width</li>
+  <p></p>
+  <p>
+  <li>may-break-after-row</li>
+  <p></p>
+  <p>
+  <li>may-break-before-row</li>
+  <p></p>
+  <p>
+  <li>min-height</li>
+  <p></p>
+  <p>
+  <li>min-width</li>
+  <p></p>
+  <p>
+  <li>name</li>
+  <p></p>
+  <p>
+  <li>n-columns-repeated</li>
+  <p></p>
+  <p>
+  <li>n-columns-spanned</li>
+  <p></p>
+  <p>
+  <li>n-digits-per-group</li>
+  <p></p>
+  <p>
+  <li>n-rows-spanned</li>
+  <p></p>
+  <p>
+  <li>orphans</li>
+  <p></p>
+  <p>
+  <li>overflow</li>
+  <p></p>
+  <p>
+  <li>padding</li>
+  <p></p>
+  <p>
+  <li>padding-after</li>
+  <p></p>
+  <p>
+  <li>padding-before</li>
+  <p></p>
+  <p>
+  <li>padding-bottom</li>
+  <p></p>
+  <p>
+  <li>padding-end</li>
+  <p></p>
+  <p>
+  <li>padding-left</li>
+  <p></p>
+  <p>
+  <li>padding-right</li>
+  <p></p>
+  <p>
+  <li>padding-start</li>
+  <p></p>
+  <p>
+  <li>padding-top</li>
+  <p></p>
+  <p>
+  <li>page-break-inside</li>
+  <p></p>
+  <p>
+  <li>page-height</li>
+  <p></p>
+  <p>
+  <li>page-master-blank-even</li>
+  <p></p>
+  <p>
+  <li>page-master-even</li>
+  <p></p>
+  <p>
+  <li>page-master-first</li>
+  <p></p>
+  <p>
+  <li>page-master-last-even</li>
+  <p></p>
+  <p>
+  <li>page-master-last-odd</li>
+  <p></p>
+  <p>
+  <li>page-master-name</li>
+  <p></p>
+  <p>
+  <li>page-master-odd</li>
+  <p></p>
+  <p>
+  <li>page-master-repeating</li>
+  <p></p>
+  <p>
+  <li>page-width</li>
+  <p></p>
+  <p>
+  <li>pause</li>
+  <p></p>
+  <p>
+  <li>pause-after</li>
+  <p></p>
+  <p>
+  <li>pause-before</li>
+  <p></p>
+  <p>
+  <li>pitch</li>
+  <p></p>
+  <p>
+  <li>pitch-range</li>
+  <p></p>
+  <p>
+  <li>play-during</li>
+  <p></p>
+  <p>
+  <li>position</li>
+  <p></p>
+  <p>
+  <li>precedence</li>
+  <p></p>
+  <p>
+  <li>provisional-distance-between-starts</li>
+  <p></p>
+  <p>
+  <li>provisional-label-separation</li>
+  <p></p>
+  <p>
+  <li>reference-orientation</li>
+  <p></p>
+  <p>
+  <li>ref-id</li>
+  <p></p>
+  <p>
+  <li>richness</li>
+  <p></p>
+  <p>
+  <li>right</li>
+  <p></p>
+  <p>
+  <li>row-height</li>
+  <p></p>
+  <p>
+  <li>rule-orientation</li>
+  <p></p>
+  <p>
+  <li>rule-style</li>
+  <p></p>
+  <p>
+  <li>rule-thickness</li>
+  <p></p>
+  <p>
+  <li>scale</li>
+  <p></p>
+  <p>
+  <li>score-spaces</li>
+  <p></p>
+  <p>
+  <li>script</li>
+  <p></p>
+  <p>
+  <li>sequence-src</li>
+  <p></p>
+  <p>
+  <li>show-destination</li>
+  <p></p>
+  <p>
+  <li>size</li>
+  <p></p>
+  <p>
+  <li>space-above-destination-block</li>
+  <p></p>
+  <p>
+  <li>space-above-destination-start</li>
+  <p></p>
+  <p>
+  <li>space-after</li>
+  <p></p>
+  <p>
+  <li>space-before</li>
+  <p></p>
+  <p>
+  <li>space-between-list-rows</li>
+  <p></p>
+  <p>
+  <li>space-end</li>
+  <p></p>
+  <p>
+  <li>space-start</li>
+  <p></p>
+  <p>
+  <li>span</li>
+  <p></p>
+  <p>
+  <li>speak</li>
+  <p></p>
+  <p>
+  <li>speak-header</li>
+  <p></p>
+  <p>
+  <li>speak-numeral</li>
+  <p></p>
+  <p>
+  <li>speak-punctuation</li>
+  <p></p>
+  <p>
+  <li>speech–rate</li>
+  <p></p>
+  <p>
+  <li>start-indent</li>
+  <p></p>
+  <p>
+  <li>starts-row</li>
+  <p></p>
+  <p>
+  <li>state</li>
+  <p></p>
+  <p>
+  <li>stress</li>
+  <p></p>
+  <p>
+  <li>switch-to</li>
+  <p></p>
+  <p>
+  <li>table-height</li>
+  <p></p>
+  <p>
+  <li>table-layout</li>
+  <p></p>
+  <p>
+  <li>table-omit-middle-footer</li>
+  <p></p>
+  <p>
+  <li>table-omit-middle-header</li>
+  <p></p>
+  <p>
+  <li>table-width</li>
+  <p></p>
+  <p>
+  <li>text-align</li>
+  <p></p>
+  <p>
+  <li>text-align-last</li>
+  <p></p>
+  <p>
+  <li>text-decoration</li>
+  <p></p>
+  <p>
+  <li>text-indent</li>
+  <p></p>
+  <p>
+  <li>text-shadow</li>
+  <p></p>
+  <p>
+  <li>text-transform</li>
+  <p></p>
+  <p>
+  <li>title</li>
+  <p></p>
+  <p>
+  <li>top</li>
+  <p></p>
+  <p>
+  <li>vertical-align</li>
+  <p></p>
+  <p>
+  <li>visibility</li>
+  <p></p>
+  <p>
+  <li>voice-family</li>
+  <p></p>
+  <p>
+  <li>volume</li>
+  <p></p>
+  <p>
+  <li>white-space-treatment</li>
+  <p></p>
+  <p>
+  <li>widows</li>
+  <p></p>
+  <p>
+  <li>width</li>
+  <p></p>
+  <p>
+  <li>word-spacing</li>
+  <p></p>
+  <p>
+  <li>wrap-option</li>
+  <p></p>
+  <p>
+  <li>writing-mode</li>
+  <p></p>
+  <p>
+  <li>z-index</li>
+  <p></p>
+</ul>
+<h5><a name="_Toc467207748">15.2.3 转换成格式化对象</a></h5>
+<p>XSL格式化对象是用于在页面上排列元素的一个完整的XML符号集。使用XSL格式化对象的文档只是使用此符号集的结构整洁的XML文档。这意味着它有XML声明、根元素、子元素等等。它必须遵从任何XML文档的所有结构整洁的规则，否则格式化程序就不接受它。出于习惯，含有XSL格式化对象的文件要有.fob这三个字符作后缀。但是，由于它还是一个结构整洁的XML文件，所以很可能以.xml作后缀。</p>
+<p>清单15-1为一用XSL格式化对象来标记的简单文档。文档的根元素为fo:root。此元素含有一个fo:layout-master-set和一个fo:page-sequence。fo:layout-master-set元素包含fo:simple-page-master子元素。每个fo:simple-page-master描述了用来放置内容的一类页面。其中只有一页非常简单的页面，但更复杂的文档可以有不同的主控页，用于第一页、右页、左页、正文页、封面内容、封底内容等等；每个文档又可能有一系列不同的页边距、页号以及其他特征。</p>
+<p>使用fo:page-sequence可将内容放在主控页的许多副本上。fo:page-sequence包含fo:sequence-specification，指定不同的主控页应使用的顺序。其次，它还含有fo:flow子元素，此子元素保留以指定的序列放置在主控页上的实际内容。这里的内容是以两个fo:block子元素给出，而每个子元素的font-size属性值为20磅，font-family属性值为serif。</p>
+<p>清单15-1：使用XSL格式化对象符号集的简单文档</p>
+<p>&lt;fo:root xmlns:fo="http://www.w3.org/XSL/Format/1.0"&gt;</p>
+<p></p>
+<p> &lt;fo:layout-master-set&gt;</p>
+<p> &lt;fo:simple-page-master page-master-name="only"&gt;</p>
+<p> &lt;fo:region-body/&gt;</p>
+<p> &lt;/fo:simple-page-master&gt;</p>
+<p> &lt;/fo:layout master-set&gt;</p>
+<p></p>
+<p> &lt;fo:page-sequence&gt;</p>
+<p></p>
+<p> &lt;fo:sequence-specification&gt;</p>
+<p> &lt;fo:sequence-specifier-single page-master-name="only"/&gt;</p>
+<p> &lt;/fo:sequence-specification&gt;</p>
+<p></p>
+<p> &lt;fo:flow&gt;</p>
+<p> &lt;fo:block font-size="20pt" font-family="serif"&gt;</p>
+<p> Hydrogen</p>
+<p> &lt;/fo:block&gt;</p>
+<p> &lt;fo:block font-size="20pt" font-family="serif"&gt;</p>
+<p> Helium</p>
+<p> &lt;/fo:block&gt;</p>
+<p> &lt;/fo:flow&gt;</p>
+<p></p>
+<p> &lt;/fo:page sequence&gt;</p>
+<p>&lt;/fo: root&gt;</p>
+<p>尽管也许会像清单15-1中那样使用手工来编写文档，但这会失去XML所获得的内容格式独立性的所有优点。通常，应该编写XSL样式单，以便使用XSL转换符号集将源文档转换成格式化对象的符号集。使用清单15-2的XSL样式单，可将前一章中的清单14-1转换为清单15-1。</p>
+<p>清单15-2：从源符号集到XSL格式化对象的变换</p>
+<p>&lt;?xml version="1.0"?&gt;</p>
+<p>&lt;xsl:stylesheet</p>
+<p> xmlns:xsl="http://www.w3.org/XSL/Transform/1.0"</p>
+<p> xmlns:fo="http://www.w3.org/XSL/Format/1.0"</p>
+<p> result-ns="fo" indent-result="yes"&gt;</p>
+<p></p>
+<p> &lt;xsl:template match="/"&gt;</p>
+<p> &lt;fo:root xmlns:fo="http://www.w3.org/XSL/Format/1.0"&gt;</p>
+<p></p>
+<p> &lt;fo:layout-master-set&gt;</p>
+<p> &lt;fo:simple-page-master page-master-name="only"&gt;</p>
+<p> &lt;fo:region-body/&gt;</p>
+<p> &lt;/fo:simple-page-master&gt;</p>
+<p> &lt;/fo:layout-master-set&gt;</p>
+<p></p>
+<p> &lt;fo:page-sequence&gt;</p>
+<p></p>
+<p> &lt;fo:sequence-specification&gt;</p>
+<p> &lt;fo:sequence-specifier-single</p>
+<p> page-master name="only"/&gt;</p>
+<p> &lt;/fo:sequence-specification&gt;</p>
+<p></p>
+<p> &lt;fo:flow&gt;</p>
+<p></p>
+<p> &lt;xsl:apply-templates select="//ATOM"/&gt;</p>
+<p> &lt;/fo: flow&gt;</p>
+<p></p>
+<p> &lt;/fo:page-sequence&gt;</p>
+<p></p>
+<p> &lt;/fo :root&gt;</p>
+<p> &lt;/xsl:template&gt;</p>
+<p></p>
+<p> &lt;xsl:template match="ATOM"&gt;</p>
+<p> &lt;fo:block font-size="20pt" font-family="serif"&gt;</p>
+<p> &lt;xsl:value-of select="NAME"/&gt;</p>
+<p> &lt;/fo:block&gt;</p>
+<p> &lt;/xsl:template&gt;</p>
+<p></p>
+<p>&lt;/xsl:stylesheet&gt;</p>
+<h5><a name="_Toc467207749">15.2.4 使用FOP</a></h5>
+<p>在撰写本书时，没有任何浏览器能够直接显示转换成XSL格式化对象的XML。只有一个软件可以使用以XSL格式化对象标记的文件，此软件即为James Tauber的FOP。FOP为免费的Java程序，它将FO（格式化对象，formatting 
+  object）文档转换成Adobe Acrobat PDF文件。可从<a href="http://www.jtauber.com/fop/">http://www.jtauber.com/fop/</a>站点下载最新版的FOP。</p>
+<p>在撰写本书时，现有的FOP版本为0.6.0，它不完全支持格式化对象的子集和XSL第四草案中的属性。FOP是一Java程序，它可运行于适当兼容Java 
+  1.1虚拟机的任何平台。要安装此程序，只需将fop.jar压缩文件放在CLASSPATH路径指明的目录中。com.jtauber.fop.FOP类包含用于本程序的main()方法。在命令行中，可使用指定输入和输出文件的参数来运行本程序。例如：</p>
+<p>C:\XML\BIBLE\15&gt;java com.jtauber.fop.FOP 15-1.fob 15-1.pdf</p>
+<p>James Tauber s FOP 0.6.0</p>
+<p>auto page-height: using 11in</p>
+<p>auto page-width: using 8in</p>
+<p>successfully read and parsed 15-1.fob</p>
+<p>laying out page 1... done page 1.</p>
+<p>successfully wrote 15-1.pdf</p>
+<p>其中15-1.fob是输入的XML文件，它使用格式化对象符号集。15-1.pdf是输出的PDF文件，它能够在Adobe Acrobat或其他读取PDF文件的程序中显示和打印。</p>
+<p>尽管PDF文件本身是ASCII文本，但本书不是有关PostScript的书籍，所以虽然精确地显示了上面的命令，读者却什么也得不到。如果好奇，可在任何文本编辑器程序中打开PDF文件。图15-1展示的转换文件，是使用Acrobat插件程序（plug-in），在Netscape 
+  Navigator中显示的。</p>
+<p align="center"><img src="Image/BK000215-31.gif" width=379 height=297></p>
+<p align="center">图15-1 在Netscape Navigator中显示的PDF文件</p>
+<p>对于使用XSL格式化对象来设置样式的XML文档来说，PDF文件不是唯一的或是主要的最终目标格式。当然，人们希望在不太遥远的将来Web浏览器能直接支持XSL格式化对象。就目前而言，PDF文件是唯一可用的格式，这也正是我要在本章中说明的内容。最终，应该有更多的软件能够阅读和显示这些文件。</p>
+ 
+<a href='524.htm'>&lt;&lt;上一篇</a>&nbsp;&nbsp;<a href='526.htm'>下一篇&gt;&gt;</a></td>
+        </tr>
+      </table>
+      <p>&nbsp; </p>
+    </td>
+  </tr>
+</table>
+
+</body>
+
+</html>

@@ -1,0 +1,25 @@
+<!-- TWO STEPS TO INSTALL IMAGE RESIZER - DRAG AND DROP:
+1.  Copy the coding into the HEAD of your HTML document
+2.  Add the last code into the BODY of your HTML document  -->
+<!-- STEP ONE: Paste this code into the HEAD of your HTML document  -->
+<HEAD>
+<SCRIPT LANGUAGE="JavaScript">
+<!-- This script and many more are available free online at -->
+<!-- The JavaScript Source!! http://javascript.internet.com -->
+<!-- Begin
+function resizeImage(evt,name){
+newX=evt.x
+newY=evt.y
+eval("document."+name+".width=newX")
+eval("document."+name+".height=newY")
+}
+//  End -->
+</script>
+</HEAD>
+<BODY>
+点击拖动放大该图片大小。
+<p>
+<img src="窗口特效-仿QQ窗口抖动的效果.jpg"
+width="496" height="497" name="image1"
+ondrag="resizeImage(event,'image1')"></p>
+</BODY>

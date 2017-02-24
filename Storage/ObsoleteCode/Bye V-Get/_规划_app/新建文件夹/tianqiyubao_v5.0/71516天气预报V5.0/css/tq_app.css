@@ -1,0 +1,38 @@
+/* CSS Document */
+body {margin:0 auto; padding:0;font-size:12px; color:#000;text-align:center;line-height:22px;font-family:Arial, Helvetica, sans-serif，verdana;}body div{margin:0 auto;overflow:hidden;}div,img,ul,ol,li,dl,dt,dd,p{margin: 0; padding: 0; border: 0;}h1,h2,h3,h4,h5,h6{ margin:0; padding:0;}table,td,tr,th{font-size:12px;}textarea{resize:none;}li{list-style-type:none}em,cite{font-style:normal;}
+/* 链接颜色 */
+a:link {color: #005EAC; text-decoration:none;}a:visited {color: #005EAC;text-decoration:none;}a:hover {color: #005EAC; text-decoration:none;}a:active {color: #005EAC;}
+
+/* 颜色属性 [定义规则，小写c加颜色名称] */
+.cRed,a.cRed:link,a.cRed:visited{ color:#c00;}.cDRed,a.cDRed:link,a.cDRed:visited{color:#c00;font-size:14px;font-weight:bold;}.cDRed1,a.cDRed1:link,a.cDRed1:visited{font-size:18px;font-weight:bold;color:#CC0000}.cGreen,a.cGreen:link,a.cGreen:visited{color:#499704;}.cBlue,a.cBlue:link,a.cBlue:visited{color:#005EAC;}.cWhite,a.cWhite:link,a.cWhite:visited,a.cWhite:hover{color:#fff;text-decoration:none;}.cYellow,a.cYellow:link,a.cYellow:visited,a.cYellow:hover{color:#FFE96F;text-decoration:none;}
+
+/* 字体属性*/
+.fon16{ font-size:16px;}.fon14{ font-size:14px;}.fB{font-weight:bold;}.fI{ font-style:italic}
+
+/* new天气预报 */
+.marg10{margin-bottom:10px;}
+.main{width:580px;color:#333;}
+.tqzh{border:1px solid #BCD5E7;background:url(../images/tqzsbg.gif) repeat-x;}
+.tqzhmain{padding:8px 0 2px 0;height:174px;}
+.tqzhL{float:left;width:160px;padding:0 3px;}
+.tqzhR{float:right;width:400px;padding-right:12px;}
+.tqzhL h2{font-size:14px;padding:3px 0 5px 0;}
+.jttq{width:140px;height:130px;background:url(../images/todaytqbg.gif) no-repeat;padding-top:14px;}
+.tqshow{width:110px;margin:0 auto;}
+.tqshow li{line-height:21px;}
+.tqshow li img{width:54px;height:54px;margin-bottom:1px;}
+.zhzsbt{width:100%;background:url(../images/tqzsdot.gif) repeat-x 0 27px;padding-bottom:6px;}
+.zhzsbt b{float:left;width:80px;height:27px;line-height:27px;border:1px solid #92BBE8;border-bottom:0;font-size:14px;background:#fff;}
+.zhzsbt span{float:right;font-family:"宋体";padding:3px 10px 0 0;}
+.zhzsbd li{float:left;width:117px;border-bottom:1px dashed #ccc;padding:6px 8px;text-align:left;}
+.everytq{padding:10px 0;width:556px;}
+.everytqshow{width:556px;border:1px solid #92BBE8;border-right:0;}
+.tqshow1{float:left;width:110px;border-right:1px solid #92BBE8;background:url(../images/everydaybg.gif) repeat-x center bottom;color:#000;padding-bottom:5px;}
+.tqshow1 h3{font-size:12px;padding:0 0 1px 0;background:#C7E6F5;border-top:1px solid #ECF9FE;border-bottom:1px solid #A4C9ED;}
+.tqshow1 li{line-height:21px;}
+.tqpng{height:55px;}
+.tqshow1 li img{width:54px;height:54px;padding-bottom:1px;}
+.lifezs{padding:2px 2px;text-align:left;}
+.lifezs li{border-bottom:1px dashed #ccc;color:#666;line-height:18px;padding:7px 8px;height:55px;}
+.lifezs li b{display:block;color:#333;}
+#choose1{color:#333;margin:9px 18px 9px 25px;font-size:13px;}

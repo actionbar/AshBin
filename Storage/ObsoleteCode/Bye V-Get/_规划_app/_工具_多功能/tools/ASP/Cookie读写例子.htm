@@ -1,0 +1,96 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>Cookie读写例子</title>
+<style type="text/css">
+<!--
+body {
+	font-size: 10.4pt;
+	line-height: 22px;
+}
+-->
+</style>
+</head>
+
+<body bgcolor="eeeeee" leftmargin="20" marginwidth="20">
+<p><strong>Cookie读写例子</strong></p>
+<hr>
+<p>writecookie.asp <br>
+  <br>
+  &lt;%@ Language=VBScript　 <br>
+  %&gt; <br>
+  &lt;%Response.Buffer=true%&gt; <br>
+  &lt;HTML&gt; <br>
+  &lt;HEAD&gt; <br>
+  &lt;META NAME=&quot;GENERATOR&quot; Content=&quot;Microsoft Visual Studio 6.0&quot;&gt; 
+  <br>
+  &lt;TITLE&gt;写Cookie的示例&lt;/TITLE&gt; <br>
+  &lt;/HEAD&gt; <br>
+  &lt;BODY&gt; <br>
+  <br>
+  &lt;% <br>
+  Response.Write &quot;写Cookie：<br>
+  &quot; <br>
+  Response.Cookies(&quot;Cookie1&quot;)(&quot;key1&quot;) = &quot;KeyValue1&quot; 
+  <br>
+  Response.Cookies(&quot;Cookie1&quot;)(&quot;key1&quot;) = &quot;KeyValue2&quot; 
+  <br>
+  Response.Cookies(&quot;Cookie1&quot;).Expires = &quot;July 31, 1999&quot; <br>
+  <br>
+  Response.Cookies(&quot;Cookie2&quot;)(&quot;key2&quot;) = &quot;KeyValue1&quot; 
+  <br>
+  Response.Cookies(&quot;Cookie2&quot;)(&quot;key2&quot;) = &quot;KeyValue2&quot; 
+  <br>
+  Response.Cookies(&quot;Cookie2&quot;).Expires = &quot;July 31, 1999&quot; <br>
+  'Response.Cookies(&quot;Cookie2&quot;).Path = &quot;/testasp/&quot; <br>
+  '这个在使用的时候要注意 <br>
+  '是指定在那个目录的文件才可以读取这个cookie的内容。 <br>
+  '在本例子中。只有在testasp这目录下的文件才可以读取 <br>
+  'Cookie2的内容。 <br>
+  %&gt; <br>
+  <br>
+  &lt;/BODY&gt; <br>
+  &lt;/HTML&gt; <br>
+  <br>
+  ------------------------------------------------------- <br>
+  readwrite.asp <br>
+  <br>
+  &lt;%@ Language=VBScript %&gt; <br>
+  &lt;HTML&gt; <br>
+  &lt;HEAD&gt; <br>
+  &lt;META NAME=&quot;GENERATOR&quot; Content=&quot;Microsoft Visual Studio 6.0&quot;&gt; 
+  <br>
+  &lt;TITLE&gt;读Cookie的示例&lt;/TITLE&gt; <br>
+  &lt;/HEAD&gt; <br>
+  &lt;BODY&gt; <br>
+  <br>
+  &lt;%Response.Write &quot;读取Cookie：<br>
+  &quot; <br>
+  <br>
+  dim cookie,key <br>
+  　 <br>
+  　for each cookie in Request.Cookies <br>
+  if Request.Cookies(cookie).haskeys then <br>
+  Response.Write &quot;<br>
+  Cookie 名字：&quot;&amp;cookie&amp;&quot;&lt;BR&gt;--------------&lt;BR&gt;&quot; 
+  <br>
+  for each key in Request.Cookies(cookie) <br>
+  <br>
+  Response.Write &quot;Key 名字：&quot;&amp;key&amp;&quot;，值：&quot;&amp;Request.Cookies(cookie)(ke 
+  <br>
+  y)&amp;&quot;&lt;BR&gt;&quot; <br>
+  next <br>
+  else <br>
+  Response.Write &quot;Cookie 名字：&quot;&amp;Request.Cookies(cookie)&amp;&quot;&lt;BR&gt;&quot; 
+  <br>
+  end if <br>
+  　 <br>
+  　next <br>
+  　 <br>
+  %&gt; <br>
+  &lt;/BODY&gt; <br>
+  &lt;/HTML&gt; <br>
+</p>
+</body>
+</html>

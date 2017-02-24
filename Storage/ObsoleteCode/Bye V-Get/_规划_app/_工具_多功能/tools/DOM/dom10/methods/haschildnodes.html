@@ -1,0 +1,108 @@
+<html xmlns:rdl>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<script src="rdl_method.js"></script>
+<base target="_self">
+</head>
+<body>
+
+<script>
+
+//collFriendObjects=new Array();
+//collFriendProperties=new Array();
+//collFriendMethods=new Array();
+//collFriendEvents=new Array();
+//collFriendCollections=new Array();
+
+collFriendProperties=new Array(
+'canHaveChildren'
+);
+
+collFriendCollections=new Array(
+'childNodes'
+);
+
+//collIE40=new Array();
+//collIE50=new Array();
+//collIE55=new Array();
+//collIE60=new Array();
+
+collIE50=new Array(
+'A','ACRONYM','ADDRESS','APPLET','AREA','B','BASE','BASEFONT','BDO','BIG','BLOCKQUOTE','BODY','BR','BUTTON','CAPTION','CENTER','CITE','CODE','COL','COLGROUP','COMMENT','DD','DEL','DFN','DIR','DIV','DL','DT','EM','EMBED','FIELDSET','FONT','FORM','FRAME','FRAMESET','HEAD','Hn','HR','HTML','I','IFRAME','IMG','INPUT type=button','INPUT type=checkbox','INPUT type=file','INPUT type=image','INPUT type=password','INPUT type=radio','INPUT type=reset','INPUT type=submit','INPUT type=text','INS','KBD','LABEL','LEGEND','LI','LINK','LISTING','MAP','MARQUEE','MENU','nextID','OL','OPTION','P','PLAINTEXT','PRE','Q','S','SAMP','SCRIPT','SELECT','SMALL','SPAN','STRIKE','STRONG','SUB','SUP','TABLE','TBODY','TD','TEXTAREA','TFOOT','TH','THEAD','TITLE','TR','TT','U','UL','VAR','XMP'
+);
+
+collIE60=new Array(
+'attribute'
+);
+
+//sStyle='';
+
+sScript=
+'<script>\n'+
+'function rdl_eventHandle(e){\n'+
+'var sHasChild;\n'+
+'event.cancelBubble=true;\n'+
+'if (event.srcElement.hasChildNodes()==true) sHasChild="有";else sHasChild="没有";\n'+
+'switch (event.srcElement.id) {\n'+
+'case "oParent" : oCode.innerText="我"+sHasChild+"子对象";break;\n'+
+'case "oChild1" : oCode.innerText="我"+sHasChild+"子对象";break;\n'+
+'case "oChild2" : oCode.innerText="我"+sHasChild+"子对象";break;\n'+
+'default : oCode.innerText="请将鼠标移动到上面的色块中。";break;\n'+
+'}\n'+
+'}\n'+
+'document.onmouseover=rdl_eventHandle;\n'+
+'<\/script>\n';
+
+sCode=
+'<div id=oParent style="border:1px solid #000000;background:#6699CC;padding:6px;">第1个DIV<br><br>\n'+
+'<div id=oChild1 style="border:1px solid #000000;background:#999999;width:80%;">第2个DIV<\/div><br>\n'+
+'<div id=oChild2 style="border:1px solid #000000;background:#CC9966;width:80%;"><\/div><\/div>\n'+
+'<br><div id=oCode>请将鼠标移动到上面的色块中。<\/div>\n';
+
+iWinWidth=320;
+
+iWinHeight=260;
+
+</script>
+
+<div id=idContent>
+
+<div id=idContentTitle><span id=idTitleName>hasChildNodes</span>版本：DOM1　返回值：有</div>
+
+<div class=cssColumnTitle>语法：</div>
+<div>
+<i>bChildNodes</i><b> = </b><i>object</i><b> . hasChildNodes()</b>
+</div>
+
+<div class=cssColumnTitle>参数：</div>
+<div>
+无
+</div>
+
+<div class=cssColumnTitle>返回值：</div>
+<table>
+<tr><td nowrap><i> bChildNodes </i></td><td nowrap><b>:</b></td>
+<td>布尔值(Boolean)。<b>false</b> | <b>true</b>
+<table>
+<tr><td nowrap><b> false </b></td><td nowrap><b>:</b></td>
+<td><i> object </i>不包含网页元素( HTML Elements )或<a href="../objects/textnode.html"> TextNode </a>对象。</td></tr>
+<tr><td nowrap><b> true </b></td><td nowrap><b>:</b></td>
+<td><i> object </i>包含网页元素( HTML Elements )或<a href="../objects/textnode.html"> TextNode </a>对象。</td></tr>
+</table>
+</td></tr>
+</table>
+
+<div class=cssColumnTitle>说明：</div>
+<div>
+检测<i> object </i>是否包含有网页元素( HTML Elements )或<b> TextNodes </b>对象。
+<br>如果<i> object </i>包含网页元素( HTML Elements )或<b> TextNodes </b>，它们可以通过<i> object </i>的<a href="../objects/childnodes.html"> childNodes </a>集合访问。
+</div>
+
+
+
+</div>
+</body>
+</html>
+
+<!-- Part of RDL(TM) - Written by Rain1977 
+HomeSite: http://www.dhtmlet.com  E-Mail: dhtmlet@hotmail.com -->

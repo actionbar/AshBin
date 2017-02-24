@@ -1,0 +1,74 @@
+<html>
+<head>
+<title>使用xsl:variable定义常数</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+
+<link rel = stylesheet href = "image/style.css">
+</head>
+<body bgcolor="#ffffff">
+<table width="688" border="0" cellspacing="0" cellpadding="0" align="center">
+  <tr bgcolor="EEEEEE"> 
+    <td height="22"><a href="index.htm">主页</a></td>
+  </tr>
+</table><br>
+<table border="0" cellpadding="0" cellspacing="0" width="688" align="center" height="490">
+  <tr valign="top"> 
+    <td rowspan="4" width="91">&nbsp; </td>
+    <td height="68" width="131"> 
+      <p><img src="image/doc.gif"></p>
+    </td>
+    <td rowspan="4" width="18"><b></b> </td>
+    <td height="68" width="387"><img src="image/title_doc.gif"></td>
+    <td rowspan="4" width="61"> 
+      <h6>&nbsp;</h6>
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td rowspan="3" valign="top" class="pt10" align="center" width="131" bgcolor="EEEEEE"> 
+      <p>&nbsp;</p>
+      <p><font color="#FF0000">※ 14.15 使用xsl:variable定义常数</font></p>
+       
+	</td>
+  </tr>
+  <tr valign="top"> 
+    <td width="387" height="308"> 
+      <table width="100%" border="0" cellpadding="0">
+        <tr> 
+          <td>
+
+           <h4><a name="_Toc467207178">14.15 使用xsl:variable定义常数</a></h4>
+<p>命名的常数有助于代码的整洁；可以用简单的名称和引用来代替常用的样板文本；简单地改变常数定义，就能很容易地调整多处出现的样板文本。</p>
+<p>xsl:variable元素定义命名的字符串，以便借助于特性值模板用于样式单中的其他地方。xsl:variable是一空元素，是xsl:stylesheet的直系子元素。它只有唯一的一个特性&#0;&#0;name，此特性提供引用变量的名称。xsl:variable元素的内容作为替换文本。例如，下面的xsl:variable元素定义名为copy99和值为Copyright 
+  1999 Elliotte Rusty Harold的变量：</p>
+<p>&lt;xsl:variable name="copy99"&gt;</p>
+<p> Copyright 1999 Elliotte Rusty Harold</p>
+<p>&lt;/xsl:variable&gt;</p>
+<p>为了访问此变量的值，可将美元符作为前缀加到此变量名前。要在特性中插入此符号，可使用特性值模板。例如：</p>
+<p>&lt;BLOCK COPYRIGHT="{$copy99}"&gt;</p>
+<p>&lt;/BLOCK &gt;</p>
+<p>还可以使用xsl:value-of，将变量的替换文本以文本的形式插入到输出文档中：</p>
+<p>&lt;xsl:value-of select="$copy99"/&gt;</p>
+<p>xsl:variable的内容可以含有包括其他XSL指令的标记。这意味着可根据其他信息（包括其他变量的值）来计算变量的值。但是，变量不能以直接或间接的方式递归地引用其自身。例如，下面的例子是错误的：</p>
+<p>&lt;xsl:variable name="GNU"&gt;</p>
+<p> &lt;xsl:value-of select="$GNU"/&gt; s not Unix</p>
+<p>&lt;/xsl:variable&gt;</p>
+<p>同样，两个变量不能像下面这样循环地相互引用：</p>
+<p>&lt;xsl:variable name="Thingl"&gt;</p>
+<p> Thingl loves &lt;xsl:value-of select="$Thing2"/&gt;</p>
+<p>&lt;/xsl:variable&gt;</p>
+<p></p>
+<p>&lt;xsl:variable name="Thing2"&gt;</p>
+<p> Thing2 loves &lt;xsl:value-of select="$Thingl"/&gt;</p>
+<p>&lt;/xsl:variable&gt;</p>
+ 
+<a href='487.htm'>&lt;&lt;上一篇</a>&nbsp;&nbsp;<a href='489.htm'>下一篇&gt;&gt;</a></td>
+        </tr>
+      </table>
+      <p>&nbsp; </p>
+    </td>
+  </tr>
+</table>
+
+</body>
+
+</html>

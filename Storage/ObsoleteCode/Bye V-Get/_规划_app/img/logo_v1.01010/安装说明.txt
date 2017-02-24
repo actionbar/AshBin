@@ -1,0 +1,15 @@
+
+把所有文件上传到服务器。
+
+你可以添加更多的字体，在fonts文件夹添加。
+
+通过运行sample_maker更新字体页面。
+
+您可以通过上传添加更多的图标“bgstyle/sep/48”，“bgstyle/sep/64”，“bgstyle/sep/72”
+上传的图标格式：
+48文件目录必须以_48.png为图片名结尾。例：a_48.png  b_48.png
+72文件目录必须以_72.png为图片名结尾. 例:test_72.png test2_72.png
+同理，64文件目录也一样。
+
+头部广告在：top-ad.txt
+尾部广告在:bottom-ad.txt

@@ -1,0 +1,23 @@
+<meta http-equiv="content-type" content="text/html; charset=gb2312"><FONT 
+style="FONT-SIZE: 9pt; LINE-HEIGHT: 15pt"><B>Read&nbsp;a&nbsp;SQL&nbsp;Agent&nbsp;log&nbsp;file</B><BR><IMG 
+src="http://www.pigtwo.com/forum/pic/url.gif" align=absMiddle border=0><A 
+href="http://sqldev.net/sqlagent.htm" 
+target=_blank>http://sqldev.net/sqlagent.htm</A>
+<P></P>
+<P>use&nbsp;msdb<BR>go</P>
+<P>if&nbsp;exists&nbsp;(select&nbsp;*&nbsp;from&nbsp;sysobjects&nbsp;where&nbsp;name&nbsp;=&nbsp;N'sp_sqlagent_read_errorlog'&nbsp;and&nbsp;type&nbsp;='P')<BR>&nbsp;&nbsp;&nbsp;&nbsp;drop&nbsp;proc&nbsp;dbo.sp_sqlagent_read_errorlog<BR>go</P>
+<P>create&nbsp;proc&nbsp;dbo.sp_sqlagent_read_errorlog&nbsp;@fileversion&nbsp;int&nbsp;=&nbsp;null<BR>as</P>
+<P>set&nbsp;nocount&nbsp;on</P>
+<P>declare&nbsp;@rc&nbsp;int<BR>declare&nbsp;@version&nbsp;int<BR>declare&nbsp;@pos&nbsp;int<BR>declare&nbsp;@errorlog_file&nbsp;nvarchar(255)<BR>declare&nbsp;@filename&nbsp;nvarchar(255)<BR>declare&nbsp;@filename_no_ext&nbsp;nvarchar(255)<BR>declare&nbsp;@dirname&nbsp;nvarchar(255)<BR>declare&nbsp;@buf&nbsp;nvarchar(255)</P>
+<P>--&nbsp;SQL&nbsp;Server&nbsp;7.0<BR>if&nbsp;(charindex(N'7.00',&nbsp;@@version,&nbsp;0)&nbsp;&gt;&nbsp;0)<BR>begin<BR>&nbsp;&nbsp;&nbsp;&nbsp;exec&nbsp;@rc&nbsp;=&nbsp;master.dbo.xp_regread&nbsp;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;N'HKEY_LOCAL_MACHINE',<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;N'SOFTWARE\Microsoft\MSSQLServer\SQLServerAgent',<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;N'ErrorLogFile',<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@errorlog_file&nbsp;OUTPUT,<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;N'no_output'<BR>end</P>
+<P>--&nbsp;SQL&nbsp;Server&nbsp;2000&nbsp;needs&nbsp;to&nbsp;use&nbsp;instance&nbsp;aware&nbsp;Registry&nbsp;read&nbsp;<BR>if&nbsp;(charindex(N'8.00',&nbsp;@@version,&nbsp;0)&nbsp;&gt;&nbsp;0)<BR>begin<BR>&nbsp;&nbsp;&nbsp;&nbsp;exec&nbsp;@rc&nbsp;=&nbsp;master.dbo.xp_instance_regread&nbsp;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;N'HKEY_LOCAL_MACHINE',<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;N'SOFTWARE\Microsoft\MSSQLServer\SQLServerAgent',<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;N'ErrorLogFile',<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@errorlog_file&nbsp;OUTPUT,<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;N'no_output'<BR>end</P>
+<P>--&nbsp;reverse&nbsp;the&nbsp;string&nbsp;to&nbsp;find&nbsp;the&nbsp;last&nbsp;slash&nbsp;'\'<BR>select&nbsp;@buf&nbsp;=&nbsp;reverse(@errorlog_file)</P>
+<P>--&nbsp;determine&nbsp;posiktion&nbsp;of&nbsp;last&nbsp;slash,&nbsp;now&nbsp;first&nbsp;slash&nbsp;in&nbsp;reversed&nbsp;string<BR>select&nbsp;@pos&nbsp;=&nbsp;len(@buf)&nbsp;-&nbsp;charindex(char(92),&nbsp;@buf,&nbsp;0)&nbsp;+&nbsp;1</P>
+<P>--&nbsp;extract&nbsp;the&nbsp;directory&nbsp;only&nbsp;part,&nbsp;part&nbsp;before&nbsp;the&nbsp;last&nbsp;slash<BR>select&nbsp;@dirname&nbsp;=&nbsp;substring(@errorlog_file,&nbsp;0,&nbsp;&nbsp;@pos)</P>
+<P>--&nbsp;extract&nbsp;the&nbsp;filename,&nbsp;part&nbsp;after&nbsp;the&nbsp;last&nbsp;slash<BR>select&nbsp;@filename&nbsp;=&nbsp;substring(@errorlog_file,&nbsp;@pos&nbsp;+&nbsp;1,&nbsp;len(@errorlog_file)&nbsp;-&nbsp;@pos)</P>
+<P>--&nbsp;extract&nbsp;the&nbsp;filename&nbsp;with&nbsp;extension,&nbsp;part&nbsp;after&nbsp;dot&nbsp;in&nbsp;@filename<BR>select&nbsp;@filename_no_ext&nbsp;&nbsp;=&nbsp;substring(@filename,&nbsp;0,&nbsp;charindex(N'.',&nbsp;@filename,&nbsp;0))</P>
+<P>--&nbsp;change&nbsp;errorlog&nbsp;file&nbsp;to&nbsp;version&nbsp;X<BR>if&nbsp;(@fileversion&nbsp;is&nbsp;not&nbsp;null)<BR>&nbsp;&nbsp;&nbsp;&nbsp;select&nbsp;@errorlog_file&nbsp;=&nbsp;@dirname&nbsp;+N'\'&nbsp;+&nbsp;&nbsp;@filename_no_ext&nbsp;+&nbsp;N'.'&nbsp;+&nbsp;convert(nchar,&nbsp;@fileversion)</P>
+<P>--&nbsp;read&nbsp;file<BR>exec&nbsp;master.dbo.xp_readerrorlog&nbsp;1,&nbsp;@errorlog_file<BR>go</P>
+<P>--&nbsp;sample&nbsp;usage</P>
+<P>--&nbsp;read&nbsp;currently&nbsp;active&nbsp;log&nbsp;file,&nbsp;SQLAGENT.OUT<BR>--&nbsp;exec&nbsp;msdb.dbo.sp_sqlagent_read_errorlog</P>
+<P>--&nbsp;read&nbsp;version&nbsp;1&nbsp;of&nbsp;log,&nbsp;SQLAGENT.1<BR>--&nbsp;exec&nbsp;msdb.dbo.sp_sqlagent_read_errorlog&nbsp;1</P></FONT>

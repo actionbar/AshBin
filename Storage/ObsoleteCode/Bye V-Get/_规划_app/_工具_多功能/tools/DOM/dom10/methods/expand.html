@@ -1,0 +1,119 @@
+<html xmlns:rdl>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<script src="rdl_method.js"></script>
+<base target="_self">
+</head>
+<body>
+
+<script>
+//collFriendObjects=new Array();
+//collFriendProperties=new Array();
+//collFriendMethods=new Array();
+//collFriendEvents=new Array();
+//collFriendCollections=new Array();
+
+collFriendObjects=new Array(
+'TextRange'
+);
+
+collFriendMethods=new Array(
+'select','collapse','findText'
+);
+
+//collIE40=new Array();
+//collIE50=new Array();
+//collIE55=new Array();
+//collIE60=new Array();
+
+collIE40=new Array(
+'TextRange'
+);
+
+//sStyle='';
+
+sScript=
+'<script>\n'+
+'var oTextRange;\n'+
+'function rdl_doExpand(){\n'+
+'with (document.all("oSelect")) var sParam=options[selectedIndex].value;\n'+
+'oTextRange=document.selection.createRange();\n'+
+'oTextRange.expand(sParam);\n'+
+'oTextRange.select();\n'+
+'}\n'+
+'function rdl_doInit(){\n'+
+'var oMessage=document.all("oMessage");\n'+
+'oTextRange=document.body.createTextRange();\n'+
+'oTextRange.moveToElementText(oMessage);\n'+
+'oTextRange.select();\n'+
+'}\n'+
+'window.onload=rdl_doInit;\n'+
+'<\/script>\n';
+
+sCode=
+'<span id=oMessage>我是<\/span>要被选定的信息。\n'+
+'<br>\n'+
+'<table height=56><tr>\n'+
+'<td><select style="width:100px;" id=oSelect>\n'+
+'<option value="character" selected>character<\/option>\n'+
+'<option value="word">word<\/option>\n'+
+'<option value="sentence">sentence<\/option>\n'+
+'<option value="textedit">textedit<\/option>\n'+
+'<\/select><\/td>\n'+
+'<td><input type=button value=" 扩展 " onclick="rdl_doExpand();"><\/td>\n'+
+'<\/tr><\/table>\n';
+
+
+iWinWidth=320;
+
+iWinHeight=220;
+
+</script>
+
+<div id=idContent>
+
+<div id=idContentTitle><span id=idTitleName>expand</span>版本：DHTML Object Model　返回值：有</div>
+
+<div class=cssColumnTitle>语法：</div>
+<div>
+<i>bSuccess</i><b> = </b><a href="../objects/textrange.html"><b>TextRange</b></a><b> . expand ( </b><i>sUnit</i><b> ) </b>
+</div>
+
+<div class=cssColumnTitle>参数：</div>
+<table>
+<tr><td nowrap><i> sUnit </i></td><td nowrap><b>:</b></td>
+<td><b>必选项</b>。字符串(String)。<b>character</b> | <b>word</b> | <b>sentence</b> | <b>textedit</b>
+<table>
+<tr><td nowrap><b> character </b></td><td nowrap><b>:</b></td><td>扩展一个字符。</td></tr>
+<tr><td nowrap><b> word </b></td><td nowrap><b>:</b></td><td>扩展一个词。一个词是以空格或其他空白字符(如：<b>tab</b>)为分隔的一组字符。</td></tr>
+<tr><td nowrap><b> sentence </b></td><td nowrap><b>:</b></td><td>扩展一个句子。一个句子是以结束标点符号(如：句号)为分隔的一组词。</td></tr>
+<tr><td nowrap><b> textedit </b></td><td nowrap><b>:</b></td><td>扩展整个封闭区域。</td></tr>
+</table>
+</td></tr>
+</table>
+
+<div class=cssColumnTitle>返回值：</div>
+<table>
+<tr><td nowrap><i> bSuccess </i></td><td nowrap><b>:</b></td>
+<td>布尔值(Boolean)。<b>false</b> | <b>true</b>
+<table>
+<tr><td class=cssHeadTD><b> false </b></td><td nowrap><b>:</b></td><td>区域没有被扩展。</td></tr>
+<tr><td class=cssHeadTD><b> true </b></td><td nowrap><b>:</b></td><td>区域扩展成功。</td></tr>
+</table>
+</td></tr>
+</table>
+
+<div class=cssColumnTitle>说明：</div>
+<div>
+扩展区域使局部单位能够被完全包含进去。<br>
+此方法在非 Microsoft&reg; Win32&reg; 平台上不可用。
+</div>
+
+
+
+</div>
+</body>
+</html>
+
+<!-- Part of RDL(TM) - Written by Rain1977 
+HomeSite: http://www.dhtmlet.com  E-Mail: dhtmlet@hotmail.com -->

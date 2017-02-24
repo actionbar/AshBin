@@ -1,0 +1,96 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>存贮过程(SQL样版)</title>
+<style type="text/css">
+<!--
+body {
+	font-size: 10.4pt;
+	line-height: 22px;
+}
+-->
+</style>
+</head>
+
+<body bgcolor="eeeeee" leftmargin="20" marginwidth="20">
+<p><strong>存贮过程(SQL样版) </strong></p>
+<hr>
+<p> 今天发个SQL存贮过程给大家认识</p>
+<p><br>
+  CREATE PROCEDURE login_verify</p>
+<p>(<br>
+  @community_id int, --拿值<br>
+  @username varchar(20),<br>
+  @password varchar(40),<br>
+  @result tinyint output<br>
+  )</p>
+<p>AS</p>
+<p>set nocount ON</p>
+<p><br>
+  declare @service_deadline_date smalldatetime,@community_setting_max_online_count 
+  int ---定义一个变量为 短日期格式</p>
+<p>select @community_setting_max_online_count=community_setting_max_online_count,@service_deadline_date=service_deadline_date 
+  from community_info where community_id=@community_id --这里是求最大登录人数</p>
+<p>if datediff(d,@service_deadline_date,getdate())&gt;10 --其实这个是限制用户的使用期,求当前日期与库中的记录日期如时大于10天,则返回@result 
+  =11<br>
+  begin<br>
+  set @result=11 --超过使用期<br>
+  return<br>
+  end</p>
+<p><br>
+  if (select count(*) from online_user where =@community_setting_max_online_count&quot;&gt;community_id=@community_id)&gt;=@community_setting_max_online_count 
+  --根据库中的记录设定与当前人数比较<br>
+  begin<br>
+  set @result=10 --超出在线人数限制 --返回@result=10<br>
+  return<br>
+  end</p>
+<p><br>
+  declare @stamia int,@last_update_stamia_date smalldatetime,@level_id int --定义变量 
+  整型 短日期型 整型<br>
+  declare @userid int ,@user_role int<br>
+  select @userid=userid,@user_role=user_role,@stamia=stamia,@last_update_stamia_date=last_update_stamia_date,@level_id=level_id 
+  from user_info where username=@username and password=@password and community_id=@community_id 
+  and user_type=0</p>
+<p>--从用户信息表中,将一些信息写入到定义的三个变量中</p>
+<p>if @userid is not null ----如果@userid 不变null值<br>
+  begin --用户名和密码校验成功<br>
+  set @result=1 --检验成功<br>
+  return<br>
+  end <br>
+  else<br>
+  begin<br>
+  set @result=0 ---登录失败<br>
+  end</p>
+<p>set nocount OFF</p>
+<p>GO</p>
+<p>我们给上面的过程取个名login_verify叫做</p>
+<p>写成是ASP代码中调用安全认证的地方</p>
+<p>'''事先已经定义好conn</p>
+<p>Set cmd.ActiveConnection=conn<br>
+  cmd.CommandText=&quot;login_verify&quot;<br>
+  cmd.CommandType=&amp;H0004</p>
+<p>@community_id int, --拿值<br>
+  @username varchar(20),<br>
+  @password varchar(40),<br>
+  @result int</p>
+<p>cmd.Parameters.Append cmd.CreateParameter(&quot;@community_id&quot;,3)<br>
+  cmd.Parameters.Append cmd.CreateParameter(&quot;@username &quot;,200)<br>
+  cmd.Parameters.Append cmd.CreateParameter(&quot;@password&quot;,200)</p>
+<p>cmd(&quot;@community_id&quot;)=session(&quot;community_id&quot;)<br>
+  cmd(&quot;@username&quot;)=request(&quot;userid&quot;)<br>
+  cmd(&quot;@password&quot;)=request(&quot;userid&quot;)</p>
+<p>cmd.execute</p>
+<p>dim result</p>
+<p>result=cmd(&quot;@result&quot;)</p>
+<p>conn.close</p>
+<p>if trim(result)=&quot;1&quot; then</p>
+<p></p>
+<p> '''''''''''''登录成功的提示与操作</p>
+<p>else</p>
+<p> ''''''''''''''''''''''登录失败的提示与操作</p>
+<p>end if</p>
+<p>&nbsp;</p>
+<p>&nbsp; </p>
+</body>
+</html>

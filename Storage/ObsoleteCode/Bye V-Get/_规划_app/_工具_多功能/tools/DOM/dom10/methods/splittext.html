@@ -1,0 +1,104 @@
+<html xmlns:rdl>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<script src="rdl_method.js"></script>
+<base target="_self">
+</head>
+<body>
+
+<script>
+
+//collFriendObjects=new Array();
+//collFriendProperties=new Array();
+//collFriendMethods=new Array();
+//collFriendEvents=new Array();
+//collFriendCollections=new Array();
+
+collFriendMethods=new Array(
+'createElement'
+);
+
+collFriendObjects=new Array(
+'TextNode'
+);
+
+collFriendProperties=new Array(
+'nodeValue'
+);
+
+//collIE40=new Array();
+//collIE50=new Array();
+//collIE55=new Array();
+//collIE60=new Array();
+
+collIE50=new Array(
+'TextNode'
+);
+
+//sStyle='';
+
+sScript=
+'<script>\n'+
+'var i_nowheight=210;\n'+
+'function rdl_fnSplitNode(){\n'+
+'var oNode=oList.firstChild.childNodes(0);\n'+
+'var oNewNode=document.createElement("LI");\n'+
+'oList.appendChild(oNewNode);\n'+
+'var oSplitNode = oNode.splitText(oNode.nodeValue.length\/2);\n'+
+'oNewNode.appendChild(oSplitNode);\n'+
+'i_nowheight+=15;\n'+
+'window.resizeTo(360,i_nowheight);\n'+
+'}\n'+
+'<\/script>\n';
+
+sCode=
+'<ul id="oList">\n'+
+'<li>你让我失身于你。\n'+
+'<\/ul>\n'+
+'<br><input type=button value=" 分 割 " onclick="rdl_fnSplitNode();">\n';
+
+iWinWidth=360;
+
+iWinHeight=210;
+
+//bRunCode=false;
+
+</script>
+
+<div id=idContent>
+
+<div id=idContentTitle><span id=idTitleName>splitText</span>版本：DOM1　返回值：有</div>
+
+<div class=cssColumnTitle>语法：</div>
+<div>
+<i>oTextNode</i><b> = </b><i>TextNode</i><b> . splitText ( </b><i>iIndex</i><b> ) </b>
+</div>
+
+<div class=cssColumnTitle>参数：</div>
+<table>
+<tr><td nowrap><i> iIndex </i></td><td nowrap><b>:</b></td><td><b>可选项</b>。整数(Integet)。指定从第几个字符处切割。假如未提供此参数，则一个没有值的<a href="../objects/textnode.html"> TextNode </a>对象会被建立。</td></tr>
+</table>
+
+<div class=cssColumnTitle>返回值：</div>
+<table>
+<tr><td nowrap><i> oTextNode </i></td><td nowrap><b>:</b></td><td>对象(Object)。<a href="../objects/textnode.html"> TextNode </a>对象。</td></tr>
+</table>
+
+<div class=cssColumnTitle>说明：</div>
+<div>
+调用此方法的<a href="../objects/textnode.html"> TextNode </a>的<a href="../properties/nodevalue.html"> nodeValue </a>属性将变为等于从0到<i> iIndex </i>位的子字符串。生成的<i> oTextNode </i>的<a href="../properties/nodevalue.html"> nodeValue </a>属性等于从<i> iIndex </i>位到结束的子字符串。<br>
+当文档保存或持续时，<a href="../objects/textnode.html"> TextNode </a>的完整性不会被保存。
+</div>
+
+<div class=cssColumnTitle>示例：</div>
+<div id=idSimpleCode>
+var oSplitNode = oTextNode.splitText(oTextNode.nodeValue.length\/2);<br>
+document.body.appendChild(oSplitNode);
+</div>
+
+</div>
+</body>
+</html>
+
+<!-- Part of RDL(TM) - Written by Rain1977 
+HomeSite: http://www.dhtmlet.com  E-Mail: dhtmlet@hotmail.com -->

@@ -1,0 +1,184 @@
+<html>
+<head>
+<title>预定义属性</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+
+<link rel = stylesheet href = "image/style.css">
+</head>
+<body bgcolor="#ffffff">
+<table width="688" border="0" cellspacing="0" cellpadding="0" align="center">
+  <tr bgcolor="EEEEEE"> 
+    <td height="22"><a href="index.htm">主页</a></td>
+  </tr>
+</table><br>
+<table border="0" cellpadding="0" cellspacing="0" width="688" align="center" height="490">
+  <tr valign="top"> 
+    <td rowspan="4" width="91">&nbsp; </td>
+    <td height="68" width="131"> 
+      <p><img src="image/doc.gif"></p>
+    </td>
+    <td rowspan="4" width="18"><b></b> </td>
+    <td height="68" width="387"><img src="image/title_doc.gif"></td>
+    <td rowspan="4" width="61"> 
+      <h6>&nbsp;</h6>
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td rowspan="3" valign="top" class="pt10" align="center" width="131" bgcolor="EEEEEE"> 
+      <p>&nbsp;</p>
+      <p><font color="#FF0000">※ 10.6 预定义属性</font></p>
+       
+	</td>
+  </tr>
+  <tr valign="top"> 
+    <td width="387" height="308"> 
+      <table width="100%" border="0" cellpadding="0">
+        <tr> 
+          <td>
+
+           <h4><a name="_Toc467197334">10.6 预定义属性</a></h4>
+<p>在某种程度上说，可以在XML中预定义两个属性。必须在DTD中为将应用的每一元素声明这两个属性，但是仅仅可以为原定目标而使用这些声明的属性。通过在属性名前加xml:来标识这类属性。</p>
+<p>这两类属性分别为xml：space和xml：lang。Xml：space属性描述如何对待元素中的空格；xml：lang属性描述书写元素的语言（以及可选的方言和国别）。</p>
+<h5><a name="_Toc467197335">10.6.1 xml：space</a></h5>
+<p>在HTML中，空格并不重要。尽管一个空格和没有空格之间的差别是非常重要的，但是一个空格和两个空格、一个空格和一个回车符、一个空格三个回车符和12个制表符之间的差别并不重要。对某些文本来说，空格非常重要，如计算机源代码、某些大型机数据库报告或者e.e.cumming的诗文，可使用PRE元素指定等宽的字体和保留空格。</p>
+<p>不过，XML 的缺省方式为保留空格。XML处理器毫不改变地传送全部空格字符给应用程序。应用程序通常忽略额外的空格。可是XML处理器可通知应用程序某些特定的元素包含需保留的、意义重大的空格。作者可使用xml：space属性，为应用程序说明这些元素。</p>
+<p>如果元素包含重要的空格，DTD将为xml：space属性提供一个&lt;!ATTLIST&gt;标记。这个属性具有枚举类型，其值为default和preserve。如清单10-3所示。</p>
+<p>清单10-3：用XML编码的具有重要空格的Java源代码</p>
+<p>&lt;?xml version="1.0" standalone= "yes"?&gt;</p>
+<p>&lt;!DOCTYPE PROGRAM [</p>
+<p>&lt;!ELEMENT PROGRAM (#PCDATA)&gt;</p>
+<p>&lt;!ATTLIST PROGRAM xml:space (default|preserve)  preserve &gt;</p>
+<p>]&gt;</p>
+<p>&lt;PROGRAM xml:space= "preserve"&gt;public class AsciiTable {</p>
+<p>public static void m in (String[] args) {</p>
+<p>for (int i = 0; i &amp;lt; 128; i++) {</p>
+<p>System.out.println(i + " "+ (char) i);</p>
+<p>}</p>
+<p>}</p>
+<p>}</p>
+<p>&lt;/PROGRAM&gt;</p>
+<p>不管xml：space值为default或preserve，全部空格都传送给应用程序。可是，若值为default，应用程序按正常方式处理额外的空格；若值为preserve，则按有特殊意义的态度对待这些额外的空格。</p>
+<p><img src="Image/BK000210-13.gif" width=38 height=46>空格的特殊意义在某种角度来说依赖于数据的最终目标。例如，Java源代码中的额外空格仅与源代码的编辑器有关，但与编译器无关。</p>
+<p>已定义xml：space属性元素的子元素，除非子元素定义了与原值相矛盾的xml：space属性，否则将表现出与其父元素相似的行为（保留或不保留空格）。</p>
+<h5><a name="_Toc467197336">10.6.2 xml：lang</a></h5>
+<p>xml：lang属性标识书写元素内容的语言。属性值可以为CDATA、NMTOKEN或者枚举列表类型。理想的情况下，每一个属性值均为原始ISO-639标准定义的两个字母语言代码。代码列表可在下述Web地址处找到：</p>
+<p> http://www.ics.uci.edu/pub/ietf/http/related/iso639.txt。</p>
+<p>例如，研究下面两个例子，其中的句子取自Petronius的 <i>Satiricon</i>，分别用拉丁文（Latin）和英文（English）书写。一个SENTENCE标记包装了这两个句子，但是第一个句子标记使用的xml:lang属性值为“Latin”，而第二个句子中其值为“English”。</p>
+<p>拉丁文（Latin）：</p>
+<p>&lt;SENTENCE xml:lang="la"&gt;</p>
+<p>Veniebamus in forum deficiente now die, in quo notavimus frequentiam rerum 
+  venalium, non quidem pretiosarum sed tamen quarum fidem male mbulantem obscuritas 
+  temporis facillime tegeret.</p>
+<p>&lt;/SENTENCE&gt;</p>
+<p>英文（English）：</p>
+<p>&lt;SENTENCE xml:lang= "en"&gt;</p>
+<p>We have come to the marketplace now when the day is failing, where we have 
+  seen many things for s le, not for the valuable goods but rather that the darkness 
+  of the time may most easily conceal their shoddiness.</p>
+<p>&lt;/SENTENCE&gt;</p>
+<p>说英语的读者很容易区分哪个为原稿，哪个为译 本；计算机可根据xml:lang属性提供的线索进行区分。这个差别可确定拼写检查器决定如何检查特定的元素和决定使用哪个词典。搜索引擎可以检查这些语言属性，然后确定如何检索页面内容和返回基于用户优先选择的匹配结果。</p>
+<table cellspacing=0 border=0 cellpadding=7 width=559>
+  <tr bgcolor="#CCCCCC"> 
+    <td valign="TOP" height=9> <b> 
+      <p>语言种类过多，而代码不足
+      </b></td>
+  </tr>
+  <tr bgcolor="#CCCCCC"> 
+    <td valign="TOP" height=9> 
+      <p>XML在使用语言代码问题上依然有点落后。原始的ISO-639标准语言代码由两个不分大小写的ASCII字母字符构成；这标准允许的代码数目不能超过676种不同的代码（26*26），可是现在地球上使用的语言远远不止676种（即使不包括类似Etruscan这种已经消亡的语言）。实际上，合理的代码还少于676种，因为语言的缩写必须与语言的名字具有一定的关系。</p>
+      <p>ISO-639标准的第二部分使用三个字母的代码，可处理地球上使用的所有语言。可是XML标准规范要求使用两个字母代码。
+    </td>
+  </tr>
+</table>
+<p>语言（language）属性应用在元素及其所有的子元素上，除非其中某个子元素声明了不同的语言。前面的SENTENCE元素可按如下方式进行声明：</p>
+<p>&lt;!ELEMENT SENTENCE (#PCDATA)&gt;</p>
+<p>&lt;!ATTLIST SENTENCE xml:lang NMTOKEN "en"&gt;</p>
+<p>假如没有适当的ISO代码可利用，也可利用在IANA注册的代码之一，虽然现在IANA仅增加了四种附加代码（如表10-2所示）。最新的列表可在下面的地址处找到：</p>
+<p><a href="http://www.isi.edu/iana/assignments/language/tags">http://www.isi.edu/iana/assignments/language/tags</a>。</p>
+<p>
+<center>
+  <table BORDER cellspacing=1 cellpadding=7 width=410>
+    <tr>
+      <td valign="MIDDLE" colspan=2 height=24> 
+        <p>表10-2 IANA语言代码
+      </td>
+    </tr>
+    <tr>
+      <td width="24%" valign="MIDDLE" height=24> 
+        <p>代 码
+      </td>
+      <td width="76%" valign="MIDDLE" height=24> 
+        <p>语 言
+      </td>
+    </tr>
+    <tr>
+      <td width="24%" valign="MIDDLE" height=24> 
+        <p>no-bok
+      </td>
+      <td width="76%" valign="MIDDLE" height=24> 
+        <p>Norwegian "Book language"（挪威的书面语言）
+      </td>
+    </tr>
+    <tr>
+      <td width="24%" valign="MIDDLE" height=24> 
+        <p>no-nyn
+      </td>
+      <td width="76%" valign="MIDDLE" height=24> 
+        <p>Norwegian "New Norwegian"（新挪威语言）
+      </td>
+    </tr>
+    <tr>
+      <td width="24%" valign="MIDDLE" height=24> 
+        <p>i-navajo
+      </td>
+      <td width="76%" valign="MIDDLE" height=24> 
+        <p>Navajo（印第安语）
+      </td>
+    </tr>
+    <tr>
+      <td width="24%" valign="MIDDLE" height=24> 
+        <p>i-mingo
+      </td>
+      <td width="76%" valign="MIDDLE" height=24> 
+        <p>Mingo
+      </td>
+    </tr>
+  </table>
+</center>
+<p></p>
+<p>例如：</p>
+<p>&lt;P xml:lang="no-nyn"&gt;</p>
+<p>如果需要使用的语言代码（或许是Klingon）既不包含在ISO代码中也不包含在IANA代码中，就可定义新的语言代码。这些“x-codes”必须以字符串x-或者X-开始，标识为用户自定义、私人使用的代码。例如：</p>
+<p>&lt;P xml:lang="x-klingon"&gt;</p>
+<p>xml：lang属性值可包含附加的子代码部分，用连字符“-”把子代码与主要的语言代码区分开。最常见的情况是第一个子代码为ISO-3166规定的两个字母的国家代码。最新的国家代码列表可在下面的地址中找到：</p>
+<p>http://www.isi.edu/in-notes/iana/assignment/country-codes。</p>
+<p>例如：</p>
+<p>&lt;P xml:lang="en-US"&gt;Put the body in the trunk of the car.&lt;/P&gt;</p>
+<p>&lt;P xml:lang="en-GB"&gt;Put the body in the boot of the car.&lt;/P&gt;</p>
+<p>如果第一个子代码不是ISO规定的两个字母国家代码，就必须是设置IANA注册的语言的字符集子代码，如csDECMCS、roman8、mac、cp037或ebcdic-cp-ca。当前使用的代码列表可以在下述地址中找到：</p>
+<p>ftp://ftp.isi.edu/in-notes/iana/assignments/character-sets。</p>
+<p>示例如下：</p>
+<p>&lt;P xml:lang= "en-mac"&gt;</p>
+<p>最终的结果可能是第一个子代码，另一个以x-或X-开头的x-code。例如：</p>
+<p>&lt;P xml:lang= "en-x-tic"&gt;</p>
+<p>根据惯例，语言代码写为小写格式，国家代码为大写格式。可是这仅仅是一个惯例。这是XML少数对大小写敏感部分中的一个，因为它继承了ISO对大小写不敏感的特性。</p>
+<p>与DTD中使用的其他所有属性相同，为保持文档的合法性。必须明确地声明xml:lang属性，必需直接用于它所施加的元素（对于指定xml:lang属性的元素的子元素是间接施用）。</p>
+<p>或许不希望xml:lang取任意值。其允许值也应为合法的XML名称字，所以通常赋予属性NMTOKEN类型。这种类型可限制属性值为合法的XML名称字。例如：</p>
+<p>&lt;!ELEMENT P (#PCDATA)&gt;</p>
+<p>&lt;!ATTLIST P xml:lang NMTOKEN #IMPLIED "en"&gt;</p>
+<p>另外，如果仅允许很少的几个语言或方言，就可以应用枚举类型。例如，下述DTD说明P元素可以为English或Latin。</p>
+<p>&lt;!ELEMENT P (#PCDATA)&gt;</p>
+<p>&lt;!ATTLIST P xml:lang (en | la) "en"&gt;</p>
+<p>也可以使用CDATA类型，但是没有什么理由要这样做。使用NMTOKEN或者枚举类型有助于发现某些潜在的错误。</p>
+ 
+<a href='421.htm'>&lt;&lt;上一篇</a>&nbsp;&nbsp;<a href='423.htm'>下一篇&gt;&gt;</a></td>
+        </tr>
+      </table>
+      <p>&nbsp; </p>
+    </td>
+  </tr>
+</table>
+
+</body>
+
+</html>

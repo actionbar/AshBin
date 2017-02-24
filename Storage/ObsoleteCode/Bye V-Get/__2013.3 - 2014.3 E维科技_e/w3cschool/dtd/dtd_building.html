@@ -1,0 +1,147 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="../c3.css" />
+<title>DTD - XML 构建模块</title>
+</head>
+<body class="xml">
+<div id="wrapper">
+<div id="header">
+<a href="http://e.v-get.com/w3cschool/" style="float:left;">W3CSchool 在线教程</a>
+<div class="q g"><script type="text/javascript">var cpro_id="u1163355"</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div>
+<div id="navfirst">
+<ul id="menu">
+<li id="h"><a href="../h.html">HTML教程</a></li>
+<li id="x"><a href="../x.html">XML教程</a></li>
+<li id="b"><a href="../b.html">浏览器脚本</a></li>
+<li id="s"><a href="../s.html">服务器脚本</a></li>
+<li id="d"><a href="../d.html">dot net教程</a></li>
+<li id="m"><a href="../m.html">多媒体教程</a></li>
+<li id="w"><a href="../w.html">建站手册</a></li>
+</ul>
+</div><div id="navsecond">
+<div id="course">
+<h2>DTD 教程</h2>
+<ul>
+<li><a href="http://e.v-get.com/w3cschool/">DTD 首页</a></li>
+<li><a href="dtd_intro.html">DTD 简介</a></li>
+<li><a href="dtd_building.html">DTD 构建模块</a></li>
+<li><a href="dtd_elements.html">DTD 元素</a></li>
+<li><a href="dtd_attributes.html">DTD 属性</a></li>
+<li><a href="dtd_entities.html">DTD 实体</a></li>
+<li><a href="dtd_validation.html">DTD 验证</a></li>
+<li><a href="dtd_examples.html">DTD 实例</a></li>
+<li><a href="dtd_summary.html">DTD 总结</a></li>
+</ul>
+</div>
+<div id="selected">
+<h2>建站手册</h2>
+<ul>
+<li><a href="../site/">网站构建</a></li>
+<li><a href="../w3c/">万维网联盟</a></li>
+<li><a href="http://e.v-get.com/w3c/">W3CSchool 教程</a></li>
+<li><a href="../quality/">网站品质</a></li>
+<li><a href="../semweb/">语义网</a></li>
+<li><a href="../hosting/">网站主机</a></li>
+</ul>
+<h2><a href="http://e.v-get.com/w3c/" class="f13">W3CSchool 教程</a></h2><div class="a120x90"><script type="text/javascript">var cpro_id="u1210867";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div></div>
+</div>
+<div id="maincontent">
+<h1>DTD - XML 构建模块</h1>
+<div id="tpn">
+<ul class="prenext">
+<li class="pre"><a href="dtd_intro.html">上一页</a></li>
+<li class="next"><a href="dtd_elements.html">下一页</a></li>
+</ul>
+</div>
+<div id="intro">
+<p><strong>XML 以及 HTML 文档的主要构建模块是类似 &lt;body&gt;....&lt;/body&gt; 这样的标签。</strong></p>
+</div>
+<div>
+<h2>XML 文档构建模块</h2>
+<p>所有的 XML 文档 (以及 HTML 文档）均由以下简单的构建模块构成：</p>
+<ul>
+<li>元素
+<li>属性
+<li>实体
+<li>PCDATA 
+<li>CDATA
+</ul>
+<p>下面是每个构建模块的简要描述。</p>
+</div>
+<div>
+<h2>元素</h2>
+<p>元素是 XML 以及 HTML 文档的<em>主要构建模块</em>。</p>
+<p>HTML 元素的例子是 &#34;body&#34; 和 &#34;table&#34;。XML 元素的例子是 &#34;note&#34; 和 &#34;message&#34; 。元素可包含文本、其他元素或者是空的。空的 HTML 元素的例子是 &#34;hr&#34;、&#34;br&#34; 以及 &#34;img&#34;。</p>
+<h3>实例：</h3>
+<pre>&lt;body&gt;body text in between&lt;/body&gt;
+&lt;message&gt;some message in between&lt;/message&gt;</pre>
+</div>
+<div>
+<h2>属性</h2>
+<p>属性可提供<em>有关元素的额外信息</em>。</p>
+<p>属性总是被置于某元素的开始标签中。属性总是以<em>名称/值</em>的形式成对出现的。下面的 &#34;img&#34; 元素拥有关于源文件的额外信息：</p>
+<pre>&lt;img src=&#34;computer.gif&#34; /&gt;</pre>
+<p>元素的名称是 &#34;img&#34;。属性的名称是 &#34;src&#34;。属性的值是 &#34;computer.gif&#34;。由于元素本身为空，它被一个 &#34; /&#34; 关闭。</p>
+</div>
+<div>
+<h2>实体</h2>
+<p>实体是用来定义普通文本的变量。实体引用是对实体的引用。</p>
+<p>大多数同学都了解这个 HTML 实体引用：&#34;&amp;nbsp;&#34;。这个“无折行空格”实体在 HTML 中被用于在某个文档中插入一个额外的空格。</p>
+<p>当文档被 XML 解析器解析时，实体就会被展开。</p>
+<h3>下面的实体在 XML 中被预定义：</h3>
+<table class="dataintable">
+  <tr>
+    <th>实体引用</th>
+    <th>字符</th>
+  </tr>
+  <tr>
+    <td>&amp;lt;</td>
+    <td>&lt;</td>
+  </tr>
+  <tr>
+    <td>&amp;gt;</td>
+    <td>&gt;</td>
+  </tr>
+  <tr>
+    <td>&amp;amp;</td>
+    <td>&amp;</td>
+  </tr>
+  <tr>
+    <td>&amp;quot;</td>
+    <td>&#34;</td>
+  </tr>
+  <tr>
+    <td>&amp;apos;</td>
+    <td>'</td>
+  </tr>
+</table>
+</div>
+<div>
+<h2>PCDATA</h2>
+<p>PCDATA 的意思是被解析的字符数据 (parsed character data）。</p>
+<p>可把字符数据想象为 XML 元素的开始标签与结束标签之间的文本。</p>
+<p><strong>PDATA 是会被解析器解析的文本。这些文本将被解析器检查实体以及标记。</strong></p>
+<p>文本中的标签会被当作标记来处理，而实体会被展开。</p>
+<p>不过，被解析的字符数据不应当包含任何 &amp;、&lt; 或者 &gt; 字符；需要使用 &amp;amp;、&amp;lt; 以及 &amp;gt; 实体来分别替换它们。</p>
+</div>
+<div>
+<h2>CDATA</h2>
+<p>CDATA 的意思是字符数据 (character data）。</p>
+<p><em>CDATA 是不会被解析器解析的文本。</em>在这些文本中的标签不会被当作标记来对待，其中的实体也不会被展开。</p>
+</div>
+<div  id="bpn">
+<ul class="prenext">
+<li class="pre"><a href="dtd_intro.html">上一页</a></li>
+<li class="next"><a href="dtd_elements.html">下一页</a></li>
+</ul>
+</div>
+</div>
+<div id="sidebar">
+<div class="rs"></div><div class="a120x600"><script type="text/javascript">var cpro_id="u1293136";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div><div class="b"></div>
+</div>
+</body>
+</html>

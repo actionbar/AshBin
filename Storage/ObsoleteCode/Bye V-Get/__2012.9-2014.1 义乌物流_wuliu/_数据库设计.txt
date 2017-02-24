@@ -1,0 +1,61 @@
+排行榜不设数据库
+i  ==  c 里面的 i
+
+
+
+为了以后使用 kaibang.wuliu.v-get.com  所以论坛、用户名一律使用 英文
+
+
+
+[!] ct = 分部城市 [!]
+i  mediumint   
+b  mediumint    城市身份证前6位  
+e  char(4)     城市英文缩写   // c的 a== 用来确定c 的c
+g  varchar(6)  城市两字简称（义乌市==义乌  上海市==上海 乌鲁木齐=乌市）  //c的 c分类
+h  varchar(15)  城市全称  // c的4-5字中文
+
+保证最大数量，1稠城街道 - 2江东街道  3其他街道，如果以后后宅物流多了，再把3分给后宅，其他分到4
+
+没有 m 就是  wuliu.v-get.com/221
+有   m  就是  wuliu.v-get.com/kaibang
+
+[!] c  =  公司信息  [!] 
+     i smallint(5)  ==自动id
+	 m char(13)  ==用户名，这里需要查询，所以char最好，
+	   城市的必须要以城市缩写开头，把直接命名留给以后国际性大公司
+	     yiwukb.wuliu.v-get.com
+		 shjinda.wuliu.v-get.com
+	 e varchar(13)   === 这里只需要输出，用varchar  ，同时保持e m  ，m可以用_表示分部门，而e是唯一性的网站
+     a
+     b char(4) 
+     c
+     h
+     p   smallint  头像
+
+     d
+     f
+     kw
+     q
+     v
+     o  =RAND()*50+$V*50+$E?50:0+$M?50:0+论坛积分/10
+     t =datetime
+     z =坐标
+
+
+
+
+
+[!] cf2013= 文章 [!]
+  i=id
+  a=site 第一个类
+  b=city mdeiumint
+  c= 第三类
+  h=title
+  k=keyword
+  d=description
+  f=file 
+  m=varchar(13) 用户名
+  n=转载地
+  t=时间
+  top =置顶，每个用户有5个置顶的文章，显示在主页
+

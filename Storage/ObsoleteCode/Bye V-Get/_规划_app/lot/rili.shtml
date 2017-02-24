@@ -1,0 +1,105 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>农历</title>
+</head>
+<link rel="stylesheet" type="text/css" href="../index.css" />
+<link rel="stylesheet" type="text/css" href="http://localhost:8080/v-get.com/tool/index.css" />
+<style type="text/css">
+<!--
+.c{margin:25px 50px}
+.c p{line-height:22px}
+.c th{}
+#ff{ background:#E5E9F2; font-family:verdana}
+#ff td,#ff th{height:33px;width:35px; text-align:center; border:#C0D0E8 solid; border-width:0 1px 1px 0;}
+
+#ff select{height:22px;width:60px;margin:0 5px 0 15px}
+#fo td{cursor: pointer; }
+#ff thead{background:#C0D0E8;}
+#ff thead th{background:#A4B9D7; border:#C0D0E8 solid; border-width:1px; font-size:14px; font-weight:400}
+.ff{font-weight:800;BACKGROUND: #F6F6F6} 
+#ff .fy{color:red; border-left:#C0D0E8 1px solid} 
+.fm{color:green;} 
+.fo{background:#F6F6F6}
+.ft{ background:#F6F6F6}
+-->
+</style>
+
+
+<script type="text/javascript" src="http://localhost:8080/v-get.com/i/i.js"></script>
+
+
+</head>
+<body>
+<div class="w">
+<div class="t"><div class="q"><div class="p tl"></div><div class="p tc"><a href="">V-Get!首页</a>|<a href="">设为主页</a>|<a href="">收藏本站</a></div><div class="p tr"></div></div></div>
+<div class="u">
+<img src="http://localhost:8080/v-get.com/tool/index.png" />
+</div>
+<div class="n"><a href="http://localhost:8080/tool.v-get.com/">首页</a><a href="http://localhost:8080/v-get.com/tool/biz/">商务办公</a><a href="http://localhost:8080/v-get.com/tool/finance/">金融计算</a><a href="http://localhost:8080/v-get.com/tool/life/" class="no">生活助手</a><a href="http://localhost:8080/v-get.com/tool/images/">图片美工</a><a href="http://localhost:8080/v-get.com/tool/editor/">文字设计</a><a href="http://localhost:8080/v-get.com/tool/edu/">教育考试</a><a href="http://localhost:8080/v-get.com/tool/game/">娱乐游戏</a><a href="http://localhost:8080/v-get.com/tool/pc/">电脑优化</a></div>
+<div class="w4"><a href="#"><img src="http://localhost:8080/v-get.com/i/wuliu/a/zzidc980.gif" /></a></div>
+<!--这里不用include，因为基本这个部分是固定的；广告以后采用js替换，或者固定图片名称-->
+<!--因为都在life文件夹下，而且涉及.no，所以这样更好-->
+<div class="v">
+<div class="p l">
+<h2>生活助手</h2>
+<!--#include file="l.htm"-->
+
+</div>
+<div class="p r">
+<h1>眼皮跳吉凶查询</h1>
+<div class="c">
+<div id="cl">dd</div>
+<SCRIPT LANGUAGE="JavaScript"> 
+var months=new Array("一", "二", "三", "四", "五", "六", "七", "八", "九","十", "十一", "十二"); 
+var days=new Array("日","一","二","三","四","五","六");
+function FT(){var t=new Date();this.y=t.getFullYear();this.m=t.getMonth();this.d=t.getDate();this.h=t.getHours();this.f=t.getMinutes();this.s=t.getSeconds()}
+function FF() {function d(m,y){if(1==m)return((0==y%4)&&(0!=(y%100)))||(0==y%400)?29:28;else return [31,28,31,30,31,30,31,31,30,31,30,31][m]}var t=new FT(),f=new Date($v($("fy")),$v($("fm")),1),n=-1,s=f.getDay(),i=0,o=$("fo"),c,x=d(f.getMonth(),f.getFullYear());if((t.y==f.getFullYear())&&(t.m==f.getMonth()))n=t.d; for(var j=0;j<6;j++)for(I=0;I<7;I++){c=o.rows[j].cells[I];if((I==s)&&(0==i))i=1;if(n==i)C(c,"ff");else if(I==6)C(c,"fm");else if(I==0)C(c,"fy");else C(c,"");/*必须要的，不然换个月份，或者年，在本日位置还是today的class*/if((i>0)&&(i<=x)){c.textContent=i;c.innerText=i;i++}else {c.textContent="";c.innerText="";c.className="ft"}}} 
+function FM(e,f){e=e||$3.event;var g=e.target||e.srcElement,y=$v($("fy")),m=$v($("fm")),d=$i(g.innerText),w=new Date(y,m,d).getDay();
+if ("TD"==g.tagName&&""!=g.innerText){if($7==e.type){f(y,m,d,w)}/*月 少一个月，这是为了方便数组*/else if($8==e.type){C(g,C(g)+" fo");f(y,m,d,w)}else{window.setTimeout(function(){C(g,$r(C(g),' fo',''))},250);f(y,m,d,w)}}} 
+
+function FO(a,b){/*a=ac下限，b=bc上限*/
+var t=new FT();b=b||t.y,a=a||2037;/*设置年目录上限和下线*/
+var html='<table id="ff" cellspacing="0" cellpadding="0"><thead><tr><th colspan="7"><select id="fy" onchange="FF()">';
+for(I=b;I<a;I++)html+='<option value="'+I+'" '+(t.y==I?'selected':'')+'>'+I+'</option>'; /*for*/
+html+='</select>年<select id="fm" onchange="FF()">';
+for(I=0;I<12;I++)html+='<option value="'+I+'" '+(I==t.m?'selected':'')+'>'+(I+1)+'</option>'; /*for*/
+html+='</select>月</th></tr><tr> <td class="fy">日</td>';
+for(I=1;I<6;I++)html+="<td>" + days[I] + "</td>"; /*for*/
+html+='<td class="fm">六</td></tr></thead><tbody cellspacing="0" cellpadding="0" id="fo"> ';
+for(var intWeeks=0;intWeeks<6;intWeeks++){html+="<tr>";for (I=0;I<7;I++)html+="<td></td>";/*for*/html+="</tr>"} 
+html+='</tbody></table>';
+H($('cl'),html);
+FF();
+}
+FO();
+var o=$('fo');/*必须放在H后面，不然没有H之前，是没有fo的*/
+E(o,$7,function(e){var f=function(y,m,d,w){H($('c'),y+'年'+(m+1)+'月'+d+'日 星期'+days[w])};FM(e,f)});
+E(o,$8,function(e){FM(e)});
+E(o,$9,function(e){FM(e),500});
+</script> 
+
+ 
+
+
+<div id="c"></div>
+
+
+
+</div>
+
+<!--#include file="c.htm"-->
+
+
+</div>
+
+</div>
+
+<div class="o b">
+ddd
+</div>
+</div>
+
+</body>
+</html>

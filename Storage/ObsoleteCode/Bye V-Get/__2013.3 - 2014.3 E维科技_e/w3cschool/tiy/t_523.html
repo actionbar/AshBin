@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="tc.css" />
+<title>W3CSchool在线测试工具 v1.2</title>
+</head>
+<body id="editor">
+<div id="header">
+<h1>W3CSchool TIY</h1>
+<div class="q a728x90"><script type="text/javascript">var cpro_id="u1163355"</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div>
+<div id="test">
+<form action="/tiy/v.asp" method="post"  target="i">
+<div id="butt">
+<p><span><input name="submit" type="submit" value="TRY IT YOURSELF"></input></span><span>（请在下面的文本框中编辑您的代码，然后单击此按钮测试结果。）</span></p>
+</div>
+<div id="code">
+<h2>编辑您的代码：</h2>
+<textarea name="c">
+<html>
+<head>
+<style>
+body{font-family:arial;}
+a{color:black;text-decoration:none;font:bold}
+a:hover{color:#606060}
+td.menu{background:lightblue}
+table.nav
+{
+background:black;
+position:relative;
+font: bold 80% arial;
+top:0px;
+left:-135px;
+}
+</style>
+<script type="text/javascript">
+var i=-135
+var intHide
+var speed=3
+function showmenu()
+{
+clearInterval(intHide)
+intShow=setInterval("show()",10)
+}
+function hidemenu()
+{
+clearInterval(intShow)
+intHide=setInterval("hide()",10)
+}
+function show()
+{
+if (i<-12)
+	{
+	i=i+speed
+	document.getElementById('myMenu').style.left=i
+	}
+}
+function hide()
+{
+if (i>-135)
+	{
+	i=i-speed
+	document.getElementById('myMenu').style.left=i
+	}
+}
+</script>
+</head>
+<body>
+<table id="myMenu" class="nav" width="150" onmouseover="showmenu()" onmouseout="hidemenu()">
+<tr><td class="menu"><a href="http://e.v-get.com/w3cschool/">HOME</a></td>
+<td rowspan="5" align="center" bgcolor="#FF8080">M<br>E<br>N<br>U</td></tr>
+<tr><td class="menu"><a href="../asp/">ASP</a></td></tr>
+<tr><td class="menu"><a href="../js/">JavaScript</a></td></tr>
+<tr><td class="menu"><a href="../dhtml/">DHTML</a></td></tr>
+<tr><td class="menu"><a href="../vbscript/">VBScript</a></td></tr>
+</table>
+<p>请把鼠标移动到 MENU，可以显示这个菜单。</p>
+<p>可以尝试修改脚本中的 "speed" 变量，来改变菜单的滑动速度。</p>
+</body>
+</html>
+</textarea>
+</div>
+<div id="result">
+<h2>查看结果:</h2>
+<iframe name="i" src="loadtext_520.html"></iframe>
+</div>
+</form>
+</div>
+<div class="b"></div>
+</body>
+</html>

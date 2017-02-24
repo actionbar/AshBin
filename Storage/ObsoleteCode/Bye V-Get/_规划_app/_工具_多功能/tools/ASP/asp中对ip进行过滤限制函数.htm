@@ -1,0 +1,80 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>asp中对ip进行过滤限制函数</title>
+<style type="text/css">
+<!--
+body {
+	font-size: 10.4pt;
+	line-height: 22px;
+}
+-->
+</style>
+</head>
+
+<body bgcolor="eeeeee" leftmargin="20" marginwidth="20">
+<p><strong>asp中对ip进行过滤限制函数</strong></p>
+<p></p>
+<hr>
+<p> &lt;%<br>
+  '获取访问者的地址<br>
+  ip=Request.ServerVariables(&quot;REMOTE_ADDR&quot;) </p>
+<p>'允许的IP地址段为10.0.0.0～10.68.63.255<br>
+  allowip1=&quot;10.0.0.0&quot;<br>
+  allowip2=&quot;10.68.10.71&quot;</p>
+<p>response.write checkip(ip,allowip1,allowip2)</p>
+<p><br>
+  function checkip(ip,allowip1,allowip2)<br>
+  dim check(4)<br>
+  checkip=false<br>
+  ipstr=split(ip,&quot;.&quot;)<br>
+  allow1=split(allowip1,&quot;.&quot;)<br>
+  allow2=split(allowip2,&quot;.&quot;)<br>
+  if cint(allow1(0))&gt;cint(allow2(0)) then '判断IP地址段是否合法<br>
+  response.write &quot;IP地址段出错！&quot;<br>
+  exit function<br>
+  end if<br>
+  for i=0 to ubound(ipstr)<br>
+  if cint(allow1(i))&lt;cint(allow2(i)) then<br>
+  if cint(allow1(i))=cint(ipstr(i)) then<br>
+  check(i)=true<br>
+  checkip=true<br>
+  exit for<br>
+  else<br>
+  if cint(ipstr(i))&lt;cint(allow2(i)) then<br>
+  check(i)=true<br>
+  checkip=true<br>
+  exit for<br>
+  else<br>
+  if cint(ipstr(i))&gt;cint(allow2(i)) then<br>
+  check(i)=false<br>
+  checkip=false<br>
+  exit for<br>
+  else<br>
+  check(i)=true<br>
+  checkip=true<br>
+  end if<br>
+  end if<br>
+  end if<br>
+  else<br>
+  if cint(allow1(i))&gt;cint(ipstr(i)) or cint(allow1(i))&lt;cint(ipstr(i)) then<br>
+  check(i)=false<br>
+  checkip=false<br>
+  if i&lt;&gt;ubound(ipstr) then<br>
+  exit for<br>
+  end if<br>
+  else<br>
+  check(i)=true<br>
+  end if<br>
+  end if<br>
+  next</p>
+<p>if (check(0)=true and check(1)=true and check(2)=true and check(3)=false) and 
+  (cint(allow2(2))&gt;cint(ipstr(2))) then<br>
+  checkip=true<br>
+  end if</p>
+<p>end function<br>
+  %&gt;</p>
+<p>&nbsp; </p>
+</body>
+</html>

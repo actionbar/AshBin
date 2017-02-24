@@ -1,0 +1,159 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>asp内置对象 Application 详解</title>
+<style type="text/css">
+<!--
+body {
+	font-size: 10.4pt;
+	line-height: 22px;
+}
+-->
+</style>
+</head>
+
+<body bgcolor="eeeeee" leftmargin="20" marginwidth="20">
+<p><strong>asp内置对象 Application 详解</strong></p>
+<p></p>
+<hr>
+<p> 　　 在 ASP 的内建对象中除了用于发送、接收和处理数据的对象外，还有一些非常实用的代表 Active Server 应用程序和单个用户信息的对象。</p>
+<p>　　 让我们先来看看 Application 对象。在同一虚拟目录及其子目录下的所有 .asp 文件构成了 ASP 应用程序。我们非但可以使用 Application 
+  对象，在给定的应用程序的所有用户之间共享信息，并在服务器运行期间持久的保存数据。而且，Application 对象还有控制访问应用层数据的方法和可用于在应用程序启动和停止时触发过程的事件。 
+  <br>
+  　　 下面就让我们一起来学习 Application 对象。 </p>
+<p>　　 一、属性 </p>
+<p>　　 虽然 Application 对象没有内置的属性，但我们可以使用以下句法设置用户定义的属性也可称为集合。 </p>
+<p>　　 Application(&quot; 属性 / 集合名称 &quot;)= 值 </p>
+<p>　　 我们可以使用如下脚本声明并建立 Application 对象的属性。 <br>
+  &lt; %<br>
+  Application(&quot;MyVar&quot;) = &quot;Hello&quot;<br>
+  Set Application(&quot;MyObj&quot;) = Server.CreateObject(&quot;MyComponent&quot;)<br>
+  %&gt;</p>
+<p></p>
+<p>　　 一旦我们分配了 Application 对象的属性，它就会持久地存在，直到关闭 WEB 服务器服务使得 Application 停止。由于存储在 
+  Application 对象中的数值可以被应用程序的所有用户读取，所以 Application 对象的属性特别适合在应用程序的用户之间传递信息。 <br>
+  　　 二、方法 </p>
+<p>　　 Application 对象有两个方法，它们都是用于处理多个用户对存储在 Application 中的数据进行写入的问题 </p>
+<p>　　 1、Lock 方法禁止其他客户修改 Application 对象的属性。 </p>
+<p>　　 Lock 方法阻止其他客户修改存储在 Application 对象中的变量，以确保在同一时刻仅有一个客户可修改和存取 Application 变量。如果用户没有明确调用 
+  Unlock 方法，则服务器将在 .asp 文件结束或超时后即解除对 Application 对象的锁定。 </p>
+<p>　　 让我们来看看下面这段用 Application 来记录页面访问次数的程序 : <br>
+  &lt; %<br>
+  Dim NumVisitsNumVisits=0<br>
+  Application.LockApplication(&quot;NumVisits&quot;) = Application(&quot;NumVisits&quot;) 
+  + 1<br>
+  Application.Unlock<br>
+  %&gt;<br>
+  欢迎光临本网页，你是本页的第 &lt; %= Application(&quot;NumVisits&quot;) %&gt; 位访客 !</p>
+<p><br>
+  　　 将以上脚本保存在你的 .asp 文件中，就轻而易举地给你的页面添加了一个计数器。 </p>
+<p>　　 2、和 Lock 方法相反，Unlock 方法允许其他客户修改 Application 对象的属性。 </p>
+<p>　　 在上面的例子中，上述例子中，Unlock 方法解除对象的锁定，使得下一个客户端能够增加 NumVisits 的值。 </p>
+<p>　　 三、事件 </p>
+<p>　　 1、Application_OnStart </p>
+<p>　　 Application_OnStart 事件在首次创建新的会话 ( 即 Session_OnStart 事件 ) 之前发生。当 WEB 服务器启动并允许对应用程序所包含的文件进行请求时就触发 
+  Application_OnStart 事件。Application_OnStart 事件的处理过程必须写在 Global.asa 文件之中。</p>
+<p>　　 Application_OnStart 事件的语法如下 : <br>
+  &lt; SCRIPT LANGUAGE=ScriptLanguage RUNAT=Server&gt;<br>
+  Sub Application_OnStart. . .<br>
+  End Sub<br>
+  &lt; /SCRIPT&gt;</p>
+<p><br>
+  　　 2、Application_OnEnd </p>
+<p>　　 Application_OnEnd 事件在应用程序退出时于 Session_OnEnd 事件之后发生，Application_OnEnd 事件的处理过程也必须写在 
+  Global.asa 文件之中。 </p>
+<p>　　 下面让我们来看看在使用 Application 对象时必须注意的一些事项。 </p>
+<p>　　 不能在 Application 对象中存储 ASP 内建对象。例如，下面的每一行都返回一个错误。 <br>
+  &lt; %<br>
+  Set Application(&quot;var1&quot;)=Session<br>
+  Set Application(&quot;var2&quot;)=Request<br>
+  Set Application(&quot;var3&quot;)=Response<br>
+  Set Application(&quot;var4&quot;)=Server<br>
+  Set Application(&quot;var5&quot;)=Application<br>
+  Set Application(&quot;var6&quot;)=ObjectContext<br>
+  %&gt;</p>
+<p><br>
+  　　 若您将一个数组存储在 Application 对象中，请不要直接更改存储在数组中的元素。例如，下列的脚本无法运行。 <br>
+  &lt; % Application(&quot;StoredArray&quot;)(3) = &quot;new value&quot; %&gt;</p>
+<p></p>
+<p>　　 这是因为 Application 对象是作为集合被实现的。数组元素 StoredArray(3) 未获得新的赋值。而此值将包含在 Application 
+  对象集合中，并将覆盖此位置以前存储的任何信息。建议您在将数组存储在 Application 对象中时，在检索或改变数组中的对象前获取数组的一个副本。在对数组操作时，您应再将数组全部存储在 
+  Application 对象中，这样您所做的任何改动将被存储下来。下列的脚本对此进行演示。 <br>
+  ---asp8a.asp---<br>
+  &lt; %<br>
+  dim MyArray()<br>
+  Redim MyArray(5)<br>
+  MyArray(0)=&quot;hello&quot;<br>
+  MyArray(1)=&quot;some other string&quot;<br>
+  Application.Lock<br>
+  Application(&quot;StoredArray&quot;)=MyArray<br>
+  Application.Unlock<br>
+  Response.Redirect &quot;asp8b.asp&quot;<br>
+  %&gt;</p>
+<p>---asp8b.asp---<br>
+  &lt; %<br>
+  LocalArray=Application(&quot;StoredArray&quot;)<br>
+  LocalArray(1)=&quot; there&quot;<br>
+  Response.Write LocalArray(0)&amp;LocalArray(1)<br>
+  Application.Lock<br>
+  Application(&quot;StoredArray&quot;)=LocalArray<br>
+  Application.Unlock<br>
+  %&gt;</p>
+<p>　　 与 Application 对象具有相近作用的另一个非常实用的 ASP 内建对象就是 Session。我们可以使用 Session 对象存储特定的用户会话所需的信息。当用户在应用程序的页之间跳转时，存储在 
+  Session 对象中的变量不会清除，而用户在应用程序中访问页面时，这些变量始终存在。当用户请求来自应用程序的 Web 页时，如果该用户还没有会话，则 
+  Web 服务器将自动创建一个 Session 对象。当会话过期或被放弃后，服务器将终止该会话。</p>
+<p>　　 通过向客户程序发送唯一的 Cookie 可以管理服务器上的 Session 对象。当用户第一次请求 ASP 应用程序中的某个页面时，ASP 要检查 
+  HTTP 头信息，查看是否有在报文中有名为 ASPSESSIONID 的 Cookie 发送过来，如果有，则服务器会启动新的会话，并为该会话生成一个全局唯一的值，在把这个值作为新 
+  ASPSESSIONID Cookie 的值发送给客户端，正是使用这种 Cookie，可以访问存储在服务器上的属于客户程序的信息。Session 对象最常见的作用就是存储用户的首选项。例如，如果用户指明不喜欢查看图形，就可以将该信息存储在 
+  Session 对象中。另外其还经常被用在鉴别客户身份的程序中。要注意的是，会话状态仅在支持 cookie 的浏览器中保留，如果客户关闭了 Cookie 
+  选项，Session 也就不能发挥作用了。 <br>
+  　　 一、属性 </p>
+<p>　　 1、SessionID </p>
+<p>　　 SessionID 属性返回用户的会话标识。在创建会话时，服务器会为每一个会话生成一个单独的标识。会话标识以长整形数据类型返回。在很多情况下 SessionID 
+  可以用于 WEB 页面注册统计。 </p>
+<p>　　 2、TimeOut </p>
+<p>　　 Timeout 属性以分钟为单位为该应用程序的 Session 对象指定超时时限。如果用户在该超时时限之内不刷新或请求网页，则该会话将终止。 </p>
+<p>　　 二、方法 </p>
+<p>　　 Session 对象仅有一个方法，就是 Abandon，Abandon 方法删除所有存储在 Session 对象中的对象并释放这些对象的源。如果您未明确地调用 
+  Abandon 方法，一旦会话超时，服务器将删除这些对象。当服务器处理完当前页时，下面示例将释放会话状态。 <br>
+  　　&lt; % Session.Abandon %&gt;</p>
+<p></p>
+<p>　　 三、事件 </p>
+<p>　　 Session 对象有两个事件可用于在 Session 对象启动和释放是运行过程。 </p>
+<p>　　 1、Session_OnStart 事件在服务器创建新会话时发生。服务器在执行请求的页之前先处理该脚本。Session_OnStart 事件是设置会话期变量的最佳时机，因为在访问任何页之前都会先设置它们。 
+</p>
+<p>　　 尽管在 Session_OnStart 事件包含 Redirect 或 End 方法调用的情况下 Session 对象仍会保持，然而服务器将停止处理 
+  Global.asa 文件并触发 Session_OnStart 事件的文件中的脚本。 </p>
+<p>　　 为了确保用户在打开某个特定的 Web 页时始终启动一个会话，就可以在 Session_OnStart 事件中调用 Redirect 方法。当用户进入应用程序时，服务器将为用户创建一个会话并处理 
+  Session_OnStart 事件脚本。您可以将脚本包含在该事件中以便检查用户打开的页是不是启动页，如果不是，就指示用户调用 Response.Redirect 
+  方法启动网页。程序如下 : </p>
+<p>&lt; SCRIPT RUNAT=Server Language=VBScript&gt;<br>
+  Sub Session_OnStart<br>
+  startPage = &quot;/MyApp/StartHere.asp&quot;<br>
+  currentPage = Request.ServerVariables(&quot;SCRIPT_NAME&quot;)<br>
+  if strcomp(currentPage,startPage,1) then<br>
+  Response.Redirect(startPage)<br>
+  end if<br>
+  End Sub<br>
+  &lt; /SCRIPT&gt;</p>
+<p>　　 上述程序只能在支持 cookie 的浏览器中运行。因为不支持 cookie 的浏览器不能返回 SessionID cookie，所以，每当用户请求 
+  Web 页时，服务器都会创建一个新会话。这样，对于每个请求服务器都将处理 Session_OnStart 脚本并将用户重定向到启动页中。 <br>
+  　　 2、Session_OnEnd 事件在会话被放弃或超时发生。 </p>
+<p>　　 关于使用 Session 对象需要注意的事项 Application 对象相近，请参照前文。 </p>
+<p>　　 会话可以通过以下三种方式启动 : </p>
+<p>　　 1、一个新用户请求访问一个 URL，该 URL 标识了某个应用程序中的 .asp 文件，并且该应用程序的 Global.asa 文件包含 Session_OnStart 
+  过程。 </p>
+<p>　　 2、用户在 Session 对象中存储了一个值。 </p>
+<p>　　 3、用户请求了一个应用程序的 .asp 文件，并且该应用程序的Global.asa 文件使用 &lt; OBJECT&gt; 标签创建带有会话作用域的对象的实例。 
+</p>
+<p>　　 如果用户在指定时间内没有请求或刷新应用程序中的任何页，会话将自动结束。这段时间的默认值是 20 分钟。可以通过在 Internet 服务管理器中设置“应用程序选项”属性页中的“会话超时”属性改变应用程序的默认超时限制设置。应依据您的 
+  Web 应用程序的要求和服务器的内存空间来设置此值。例如，如果您希望浏览您的 Web 应用程序的用户在每一页仅停留几分钟，就应该缩短会话的默认超时值。过长的会话超时值将导致打开的会话过多而耗尽您的服务器的内存资源。对于一个特定的会话，如果您想设置一个小于默认超时值的超时值，可以设置 
+  Session 对象的 Timeout 属性。例如，下面这段脚本将超时值设置为 5 分钟。 <br>
+  　　&lt; % Session.Timeout = 5 %&gt;</p>
+<p>　　 当然你也可以设置一个大于默认设置的超时值，Session.Timeout 属性决定超时值。你还可以通过 Session 对象的 Abandon 
+  方法显式结束一个会话。例如，在表格中提供一个“退出”按钮，将按钮的 ACTION 参数设置为包含下列命令的 .asp 文件的 URL。 <br>
+  　　&lt; % Session.Abandon %&gt; </p>
+<p>&nbsp; </p>
+</body>
+</html>

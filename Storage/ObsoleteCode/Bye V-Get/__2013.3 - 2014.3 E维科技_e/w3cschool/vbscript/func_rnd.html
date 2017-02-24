@@ -1,0 +1,131 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="../c3.css" />
+<title>VBScript Rnd 函数</title>
+</head>
+<body class="browserscripting">
+<div id="wrapper">
+<div id="header">
+<a href="http://e.v-get.com/w3cschool/" style="float:left;">W3CSchool 在线教程</a>
+<div class="q g"><script type="text/javascript">var cpro_id="u1163355"</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div>
+<div id="navfirst">
+<ul id="menu">
+<li id="h"><a href="../h.html">HTML教程</a></li>
+<li id="x"><a href="../x.html">XML教程</a></li>
+<li id="b"><a href="../b.html">浏览器脚本</a></li>
+<li id="s"><a href="../s.html">服务器脚本</a></li>
+<li id="d"><a href="../d.html">dot net教程</a></li>
+<li id="m"><a href="../m.html">多媒体教程</a></li>
+<li id="w"><a href="../w.html">建站手册</a></li>
+</ul>
+</div><div id="navsecond">
+<div id="course">
+<h2>VBScript 教程</h2>
+<ul>
+<li><a href="http://e.v-get.com/w3cschool/">VB 首页</a></li>
+<li><a href="vbscript_intro.html">VB 简介</a></li>
+<li><a href="vbscript_howto.html">VB How to</a></li>
+<li><a href="vbscript_whereto.html">VB Where to</a></li>
+<li><a href="vbscript_variables.html">VB 变量</a></li>
+<li><a href="vbscript_procedures.html">VB 程序</a></li>
+<li><a href="vbscript_conditionals.html">VB 条件语句</a></li>
+<li><a href="vbscript_looping.html">VB 循环语句</a></li>
+<li><a href="vbscript_summary.html">VB 总结</a></li>
+</ul>
+<h2>实例</h2>
+<ul>
+<li><a href="../example/vbst_examples.html">VB 实例</a></li>
+</ul>
+<h2>参考手册</h2>
+<ul>
+<li><a href="vbscript_ref_functions.html">VB 函数</a></li>
+<li><a href="vbscript_ref_keywords.html">VB 关键字</a></li>
+</ul>
+</div>
+<div id="selected">
+<h2>建站手册</h2>
+<ul>
+<li><a href="../site/">网站构建</a></li>
+<li><a href="../w3c/">万维网联盟</a></li>
+<li><a href="http://e.v-get.com/w3c/">W3CSchool 教程</a></li>
+<li><a href="../quality/">网站品质</a></li>
+<li><a href="../semweb/">语义网</a></li>
+<li><a href="../hosting/">网站主机</a></li>
+</ul>
+<h2><a href="http://e.v-get.com/w3c/" class="f13">W3CSchool 教程</a></h2><div class="a120x90"><script type="text/javascript">var cpro_id="u1210867";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div></div>
+</div>
+<div id="maincontent">
+<h1>VBScript Rnd 函数</h1>
+<div class="backtoreference">
+<p><a href="vbscript_ref_functions.html">返回 VBScript 函数参考手册</a></p>
+</div>
+<div>
+<h2>定义和用法</h2>
+<p><strong>Rnd 函数可返回一个随机数。数字总是小于 1 但大于或等于 0 。</strong></p>
+<p>因每一次连续调用 Rnd 函数时都用序列中的前一个数作为下一个数的种子，所以对于任何最初给定的种子都会生成相同的数列。</p>
+<p>在调用 Rnd 之前，先使用无参数的 Randomize 语句初始化随机数生成器，该生成器具有基于系统计时器的种子。</p>
+<p>要产生指定范围的随机整数，请使用以下公式： </p>
+<pre>Int((upperbound - lowerbound + 1) * Rnd + lowerbound)</pre>
+<p>这里， upperbound 是此范围的上界，而 lowerbound 是此范围内的下界。</p>
+<p class="note"><span>注释：</span>要重复随机数的序列，请在使用数值参数调用 Randomize 之前，立即用负值参数调用 Rnd。使用同样 number 值的 Randomize 不能重复先前的随机数序列。</p>
+<h3>语法</h3>
+<pre>Rnd[(number)]</pre>
+<table class="dataintable"> 
+  <tr>
+    <th>参数</th>
+    <th>描述</th>
+  </tr>  
+  <tr>
+    <td>number</td>
+    <td>
+	<p>可选的。合法的数值表达式。</p>
+	<p>如果数字是：</p>
+    <ul>
+      <li>&lt;0 - Rnd 会每次都返回相同的值。</li>
+      <li>&gt;0 - Rnd 会返回序列中的下一个随机数。</li>
+      <li>=0 - Rnd 返回最近生成的数。</li>
+      <li>省略 - Rnd 会返回序列中的下一个随机数。</li>
+    </ul>
+	</td>
+  </tr>
+</table>
+</div>
+<div>
+<h2>实例</h2>
+<h3>例子 1</h3>
+<pre>document.write(Rnd)</pre>
+<p>输出：</p>
+<pre>0.7055475</pre>
+<h3>例子 2</h3>
+<p>如果您使用例子 1 中的代码，相同的随机数会重复出现。</p>
+<p>可以使用 Randomize 语句在页面每次重新载入的时候生成一个新的随机数：</p>
+<pre>Randomize
+document.write(Rnd)</pre>
+<p>输出：</p>
+<pre>0.4758112</pre>
+<h3>例子 3</h3>
+<pre>dim max,min
+max=100
+min=1
+document.write(Int((max-min+1)*Rnd+min))</pre>
+<p>输出：</p>
+<pre>71</pre>
+</div>
+<div class="backtoreference">
+<p><a href="vbscript_ref_functions.html">返回 VBScript 函数参考手册</a></p>
+</div>
+</div>
+<div id="sidebar">
+<div class="rs"></div>
+<div id="tools">
+<h5 id="tools_reference"><a href="vbscript_ref_functions.html">VBScript 参考手册</a></h5>
+<h5 id="tools_example"><a href="../example/vbst_examples.html">VBScript 实例</a></h5>
+</div>
+<div class="a120x600"><script type="text/javascript">var cpro_id="u1293136";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div><div class="b"></div>
+</div>
+</body>
+</html>

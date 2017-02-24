@@ -1,0 +1,147 @@
+<html xmlns:rdl>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<script src="rdl_method.js"></script>
+<base target="_self">
+</head>
+<body>
+
+<script>
+
+//collFriendObjects=new Array();
+//collFriendProperties=new Array();
+//collFriendMethods=new Array();
+//collFriendEvents=new Array();
+//collFriendCollections=new Array();
+
+collFriendMethods=new Array(
+'removeBehavior'
+);
+
+collFriendProperties=new Array(
+'behavior'
+);
+
+collFriendCollections=new Array(
+'behaviorUrns'
+);
+
+//collIE40=new Array();
+//collIE50=new Array();
+//collIE55=new Array();
+//collIE60=new Array();
+
+collIE50=new Array(
+'A','ACRONYM','ADDRESS','APPLET','AREA','B','BASE','BASEFONT','BGSOUND','BIG','BLOCKQUOTE','BODY','BR','BUTTON','CAPTION','CENTER','CITE','CODE','COL','COLGROUP','COMMENT','custom','DD','DEL','DFN','DIR','DIV','DL','DT','EM','EMBED','FIELDSET','FONT','FORM','FRAME','FRAMESET','HEAD','Hn','HR','HTML','I','IFRAME','IMG','INPUT type=button','INPUT type=checkbox','INPUT type=file','INPUT type=hidden','INPUT type=image','INPUT type=password','INPUT type=radio','INPUT type=reset','INPUT type=submit','INPUT type=text','INS','ISINDEX','KBD','LABEL','LEGEND','LI','LINK','LISTING','MAP','MARQUEE','MENU','NEXTID','NOBR','NOFRAMES','NOSCRIPT','OBJECT','OL','OPTION','P','PLAINTEXT','PRE','Q','RT','RUBY','S','SAMP','SCRIPT','SELECT','SMALL','SPAN','STRIKE','STRONG','STYLE','SUB','SUP','TABLE','TBODY','TD','TEXTAREA','TFOOT','TH','THEAD','TITLE','TR','TT','U','UL','VAR','WBR','XML','XMP'
+);
+
+//sStyle='';
+
+sScript=
+'<script>\n'+
+'var collBehaviorID = new Array();\n'+
+'var collLI = new Array ();\n'+
+'var countLI = 0;\n'+
+'function rdl_attachBehavior() {\n'+
+'collLI = document.all.tags ("LI");\n'+
+'countLI = collLI.length;\n'+
+'for (i=0; i < countLI; i++) {\n'+
+'var iID = collLI[i].addBehavior ("rdl_addbehavior_demo.htc");\n'+
+'if (iID)	collBehaviorID[i] = iID;\n'+
+'}\n'+
+'}\n'+
+'\n'+
+'function rdl_detachBehavior() {\n'+
+'for (i=0; i < countLI; i++) collLI[i].removeBehavior (collBehaviorID [i]);\n'+
+'}\n'+
+'<\/script>\n';
+
+sCode=
+'<ul>\n'+
+'<li>我的寂寞比这座城市的罪恶还深<\/li>\n'+
+'<li>我爱长发飘飘<\/li>\n'+
+'<li>菊花茶<\/li>\n'+
+'<li>那时花开<\/li>\n'+
+'<\/ul><br>\n'+
+'&nbsp;<input type=button value=" 绑定行为 " onclick="rdl_attachBehavior();">\n'+
+'&nbsp;<input type=button value=" 撤销绑定 " onclick="rdl_detachBehavior();">\n'+
+'\n';
+
+sPlusCode=
+'\n';
+
+iWinWidth=380;
+
+iWinHeight=260;
+
+</script>
+
+<div id=idContent>
+
+<div id=idContentTitle><span id=idTitleName>addBehavior</span>版本：DHTML Object Model　返回值：有</div>
+
+<div class=cssColumnTitle>语法：</div>
+<div>
+<i>iID</i><b> = </b><i> object</i><b> . addBehavior ( </b><i>sUrl</i><b> ) </b>
+</div>
+
+<div class=cssColumnTitle>参数：</div>
+<table>
+<tr><td nowrap><i> sUrl </i></td><td nowrap><b>:</b></td>
+<td><b>必选项</b>。字符串(String)。<i>sValue</i> | <i>#default#behaviorName</i> | <i>#objID</i>
+<table>
+<tr><td nowrap><i> sValue </i></td><td nowrap><b>:</b></td>
+<td>指定行为(<b> behavior</b>) 的<b> URL </b>地址。此<b> URL </b>地址应用成对引号括起。</td></tr>
+<tr><td nowrap><i> #default#behaviorName </i></td><td nowrap><b>:</b></td>
+<td>使用Microsoft&reg; Internet Explorer的默认行为。由行为的名称标识(<b> #behaviorName </b>)指定。<br>如：<b>behavior : url ( #default#download ) </b>。</td></tr>
+<tr><td nowrap><i> #objID </i></td><td nowrap><b>:</b></td>
+<td>使用二进制实现(作为<b> ActiveX&reg; </b>控件)的行为。此处的<i> #objID </i>为<a href="../objects/object.html"> object </a>对象的<a href="../properties/id.html"> id </a>属性值。</td></tr>
+</table>
+</td></tr>
+</table>
+
+<div class=cssColumnTitle>返回值：</div>
+<table>
+<tr><td nowrap><i> iID </i></td><td nowrap><b>:</b></td>
+<td>整数(Integet)。返回可在被用来将行为从对象分离的标识。</td></tr>
+</table>
+
+<div class=cssColumnTitle>说明：</div>
+<div>
+将行为绑定到对象。<br>
+这个方法正如说明的那样，是依据最初的 Internet Explorer 5.0 里所提出DHTML行为的概念，用来将行为附着到要素的。而对于Internet Explorer 5.5里所提出的新的元素行为(<b> Element behaviors </b>)而言，行为是不可以被向元素添加或分离的。<br>
+这个方法允许你附着行为而不需要通过使用样式表(CSS)。<br>
+除非此方法绑定的行为是 Internet Explorer 内置的默认行为，否则此方法的调用将激发 Internet Explorer 的异步下载。在行为附着到要素之前。<br>
+因为此方法的异步性，所以不能依赖它的返回值来判断行为是否成功的附着到对象。请等待<a href="../events/onreadystatechange.html"> onreadystatechange </a>事件并校验对象的<a href="../properties/readystate.html"> readyState </a>属性值为<b> complete </b>从而确保行为已经完全附着到对象并且行为的所有组分可以被脚本使用。否则，试图使用行为内定义的任何部分将导致报告“对象不支持”的脚本错误。<br>
+务必注意使用此方法或使用样式表(CSS)的<b> behavior </b>属性内联定义附着的行为不会在对象从文档树中移除时被自动分离。而在文档中的样式表规则定义的行为会在对象从文档树中移除时被自动分离。
+</div>
+
+<div class=cssColumnTitle>示例：</div>
+<div id=idSimpleCode>
+<b>----- #default#behaviorName 行为示例-----</b><br>
+<br>
+&lt;script&gt;<br>
+function onDownloadDone(s) {oHandler.innerText=s;}<br>
+&lt;/script&gt;<br>
+<br>
+&lt;ul&gt;<br>
+&lt;li id=oDownload style="behavior:url(#default#download);"&gt;那时花开&lt;/li&gt;<br>
+&lt;li id=oHandler onclick="oDownload.startDownload("cherry.html",onDownloadDone);"&gt;菊花茶&lt;/li&gt;<br>
+&lt;/ul&gt;<br>
+<br>
+<br>
+<b>----- #objID 行为示例-----</b><br>
+<br>
+&lt;object id=myObject&gt;&lt;/object&gt;<br>
+<br>
+&lt;ul&gt;<br>
+&lt;li style="behavior:url(#myObject);"&gt;我的寂寞比这座城市的罪恶还深&lt;/li&gt;<br>
+&lt;/ul&gt;<br>
+</div>
+
+</div>
+</body>
+</html>
+
+<!-- Part of RDL(TM) - Written by Rain1977 
+HomeSite: http://www.dhtmlet.com  E-Mail: dhtmlet@hotmail.com -->

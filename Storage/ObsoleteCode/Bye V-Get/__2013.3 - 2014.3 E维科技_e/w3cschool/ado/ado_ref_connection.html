@@ -1,0 +1,260 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="../c3.css" />
+<title>ADO Connection 对象</title>
+</head>
+<body class="serverscripting">
+<div id="wrapper">
+<div id="header">
+<a href="http://e.v-get.com/w3cschool/" style="float:left;">W3CSchool 在线教程</a>
+<div class="q g"><script type="text/javascript">var cpro_id="u1163355"</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div>
+<div id="navfirst">
+<ul id="menu">
+<li id="h"><a href="../h.html">HTML教程</a></li>
+<li id="x"><a href="../x.html">XML教程</a></li>
+<li id="b"><a href="../b.html">浏览器脚本</a></li>
+<li id="s"><a href="../s.html">服务器脚本</a></li>
+<li id="d"><a href="../d.html">dot net教程</a></li>
+<li id="m"><a href="../m.html">多媒体教程</a></li>
+<li id="w"><a href="../w.html">建站手册</a></li>
+</ul>
+</div><div id="navsecond">
+<div id="course">
+<h2>ADO 教程</h2>
+<ul>
+<li><a href="http://e.v-get.com/w3cschool/">ADO 首页</a></li>
+<li><a href="ado_intro.html">ADO 简介</a></li>
+<li><a href="ado_connect.html">ADO 连接</a></li>
+<li><a href="ado_recordset.html">ADO 记录集</a></li>
+<li><a href="ado_display.html">ADO 显示</a></li>
+<li><a href="ado_query.html">ADO 查询</a></li>
+<li><a href="ado_sort.html">ADO 排序</a></li>
+<li><a href="ado_add.html">ADO 添加</a></li>
+<li><a href="ado_update.html">ADO 更新</a></li>
+<li><a href="ado_delete.html">ADO 删除</a></li>
+<li><a href="ado_getstring.html">ADO 加速</a></li>
+</ul>
+<h2>ADO 对象</h2>
+<ul>
+<li><a href="ado_ref_command.html">ADO Command</a></li>
+<li><a href="ado_ref_connection.html">ADO Connection</a></li>
+<li><a href="ado_ref_error.html">ADO Error</a></li>
+<li><a href="ado_ref_field.html">ADO Field</a></li>
+<li><a href="ado_ref_parameter.html">ADO Parameter</a></li>
+<li><a href="ado_ref_property.html">ADO Property</a></li>
+<li><a href="ado_ref_record.html">ADO Record</a></li>
+<li><a href="ado_ref_recordset.html">ADO Recordset</a></li>
+<li><a href="ado_ref_stream.html">ADO Stream</a></li>
+<li><a href="ado_datatypes.html">ADO 数据类型</a></li>
+<li><a href="ado_summary.html">ADO 总结</a></li>
+</ul>
+<h2>实例</h2>
+<ul>
+<li><a href="../example/adoe_examples.html">ADO 实例</a></li>
+</ul>
+</div>
+<div id="selected">
+<h2>建站手册</h2>
+<ul>
+<li><a href="../site/">网站构建</a></li>
+<li><a href="../w3c/">万维网联盟</a></li>
+<li><a href="http://e.v-get.com/w3c/">W3CSchool 教程</a></li>
+<li><a href="../quality/">网站品质</a></li>
+<li><a href="../semweb/">语义网</a></li>
+<li><a href="../hosting/">网站主机</a></li>
+</ul>
+<h2><a href="http://e.v-get.com/w3c/" class="f13">W3CSchool 教程</a></h2><div class="a120x90"><script type="text/javascript">var cpro_id="u1210867";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div></div>
+</div>
+<div id="maincontent">
+<h1>ADO Connection 对象</h1>
+<div id="tpn">
+<ul class="prenext">
+<li class="pre"><a href="ado_ref_command.html">上一页</a></li>
+<li class="next"><a href="ado_ref_error.html">下一页</a></li>
+</ul>
+</div>
+<div>
+<h2>Connection 对象</h2>
+<p>ADO Connection 对象用于创建一个到达某个数据源的开放连接。通过此连接，您可以对一个数据库进行访问和操作。</p>
+<p>如果需要多次访问某个数据库，您应当使用 Connection 对象来建立一个连接。您也可以经由一个 Command 或 Recordset 对象传递一个连接字符串来创建某个连接。不过，此类连接仅仅适合一次具体的简单的查询。</p>
+<h3>ProgID</h3>
+<pre>set objConnection=Server.CreateObject(&#34;ADODB.connection&#34;)</pre>
+</div>
+<div>
+<h2>属性</h2>
+<table class="dataintable">
+<tr>
+<th>属性</th>
+<th>描述</th>
+</tr>
+<tr>
+<td><a href="prop_conn_attributes.html" title="">Attributes</a></td>
+<td>设置或返回 Connection 对象的属性。</td>
+</tr>
+<tr>
+<td><a href="prop_conn_commandtimeout.html" title="">CommandTimeout</a></td>
+<td>指示在终止尝试和产生错误之前执行命令期间需等待的时间。</td>
+</tr>
+<tr>
+<td><a href="prop_conn_connectionstring.html" title="">ConnectionString</a></td>
+<td>设置或返回用于建立连接数据源的细节信息。</td>
+</tr>
+<tr>
+<td><a href="prop_conn_connectiontimeout.html" title="">ConnectionTimeout</a></td>
+<td>指示在终止尝试和产生错误前建立连接期间所等待的时间。</td>
+</tr>
+<tr>
+<td><a href="prop_conn_cursorlocation.html" title="">CursorLocation</a></td>
+<td>设置或返回游标服务的位置。</td>
+</tr>
+<tr>
+<td><a href="prop_conn_defaultdb.html" title="">DefaultDatabase</a></td>
+<td>指示 Connection 对象的默认数据库。</td>
+</tr>
+<tr>
+<td><a href="prop_conn_isolationlevel.html" title="">IsolationLevel</a></td>
+<td>指示 Connection 对象的隔离级别。</td>
+</tr>
+<tr>
+<td><a href="prop_conn_mode.html" title="">Mode</a></td>
+<td>设置或返回 provider 的访问权限。</td>
+</tr>
+<tr>
+<td><a href="prop_conn_provider.html" title="">Provider</a></td>
+<td>设置或返回 Connection 对象提供者的名称。</td>
+</tr>
+<tr>
+<td><a href="prop_conn_state.html" title="">State</a></td>
+<td>返回一个描述连接是打开还是关闭的值。</td>
+</tr>
+<tr>
+<td><a href="prop_conn_version.html" title="">Version</a></td>
+<td>返回 ADO 的版本号。</td>
+</tr>
+</table>
+</div>
+<div>
+<h2>方法</h2>
+<table class="dataintable">
+<tr>
+<th>方法</th>
+<th>描述</th>
+</tr>
+<tr>
+<td><a href="met_conn_begintrans.html" title="">BeginTrans</a></td>
+<td>开始一个新事务。</td>
+</tr>
+<tr>
+<td><a href="met_conn_cancel.html" title="">Cancel</a></td>
+<td>取消一次执行。</td>
+</tr>
+<tr>
+<td><a href="met_conn_close.html" title="">Close</a></td>
+<td>关闭一个连接。</td>
+</tr>
+<tr>
+<td><a href="met_conn_begintrans.html" title="">CommitTrans</a></td>
+<td>保存任何更改并结束当前事务。</td>
+</tr>
+<tr>
+<td><a href="met_conn_execute.html" title="">Execute</a></td>
+<td>执行查询、SQL 语句、存储过程或 provider 具体文本。</td>
+</tr>
+<tr>
+<td><a href="met_conn_open.html" title="">Open</a></td>
+<td>打开一个连接。</td>
+</tr>
+<tr>
+<td><a href="met_conn_openschema.html" title="">OpenSchema</a></td>
+<td>从 provider 返回有关数据源的 schema 信息。</td>
+</tr>
+<tr>
+<td><a href="met_conn_begintrans.html" title="">RollbackTrans</a></td>
+<td>取消当前事务中所作的任何更改并结束事务。</td>
+</tr>
+</table>
+</div>
+<div>
+<h2>事件</h2>
+<p>注释：您无法使用 VBScript or JScript 来处理事件 (仅能使用 Visual Basic、Visual C++ 以及 Visual J++ 语言处理事件）。</p>
+<table class="dataintable">
+<tr>
+<th>事件</th>
+<th>描述</th>
+</tr>
+<tr>
+<td><a href="ev_conn_transcomplete.html" title="">BeginTransComplete</a></td>
+<td>在 BeginTrans 操作之后被触发。</td>
+</tr>
+<tr>
+<td><a href="ev_conn_transcomplete.html" title="">CommitTransComplete</a></td>
+<td>在 CommitTrans 操作之后被触发。</td>
+</tr>
+<tr>
+<td><a href="ev_conn_connect.html" title="">ConnectComplete</a></td>
+<td>在一个连接开始后被触发。</td>
+</tr>
+<tr>
+<td><a href="ev_conn_connect.html" title="">Disconnect</a></td>
+<td>在一个连接结束之后被触发。</td>
+</tr>
+<tr>
+<td><a href="ev_conn_execute.html" title="">ExecuteComplete</a></td>
+<td>在一条命令执行完毕后被触发。</td>
+</tr>
+<tr>
+<td><a href="ev_conn_infomessage.html" title="">InfoMessage</a></td>
+<td>假如在一个 ConnectionEvent 操作过程中警告发生，则触发该事件。</td>
+</tr>
+<tr>
+<td><a href="ev_conn_transcomplete.html" title="">RollbackTransComplete</a></td>
+<td>在 RollbackTrans 操作之后被触发。</td>
+</tr>
+<tr>
+<td><a href="ev_conn_connect.html" title="">WillConnect</a></td>
+<td>在一个连接开始之前被触发。</td>
+</tr>
+<tr>
+<td><a href="ev_conn_execute.html" title="">WillExecute</a></td>
+<td>在一条命令被执行之前被触发。</td>
+</tr>
+</table>
+</div>
+<div>
+<h2>集合</h2>
+<table class="dataintable">
+<tr>
+<th>集合</th>
+<th>描述</th>
+</tr>
+<tr>
+<td>Errors</td>
+<td>包含 Connection 对象的所有 Error 对象。</td>
+</tr>
+<tr>
+<td>Properties</td>
+<td>包含 Connection 对象的所有 Property 对象。</td>
+</tr>
+</table>
+</div>
+<div  id="bpn">
+<ul class="prenext">
+<li class="pre"><a href="ado_ref_command.html">上一页</a></li>
+<li class="next"><a href="ado_ref_error.html">下一页</a></li>
+</ul>
+</div>
+</div>
+<div id="sidebar">
+<div class="rs"></div>
+<div id="tools">
+<h5 id="tools_reference"><a href="ado_reference.html">ADO 参考手册</a></h5>
+<h5 id="tools_example"><a href="../example/adoe_examples.html">ADO 实例</a></h5>
+</div>
+<div class="a120x600"><script type="text/javascript">var cpro_id="u1293136";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div><div class="b"></div>
+</div>
+</body>
+</html>

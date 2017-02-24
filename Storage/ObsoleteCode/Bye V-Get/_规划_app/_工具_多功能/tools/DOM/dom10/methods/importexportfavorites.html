@@ -1,0 +1,104 @@
+<html xmlns:rdl>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<script src="rdl_method.js"></script>
+<base target="_self">
+</head>
+<body>
+
+<script>
+
+//collFriendObjects=new Array();
+//collFriendProperties=new Array();
+//collFriendMethods=new Array();
+//collFriendEvents=new Array();
+//collFriendCollections=new Array();
+
+collFriendMethods=new Array(
+'AddChannel','AddDesktopComponent','AddFavorite'
+);
+
+collFriendObjects=new Array(
+'external'
+);
+
+//collIE40=new Array();
+//collIE50=new Array();
+//collIE55=new Array();
+//collIE60=new Array();
+
+collIE40=new Array(
+"external"
+);
+
+//sStyle='';
+
+//sScript='';
+
+sCode=
+'\/\/收藏夹信息从服务器导入\n'+
+'\n'+
+'window.external.ImportExportFavorites(true,"http://www.dhtmlet.com");\n'+
+'\n'+
+'\/\/收藏夹信息从服务器导出\n'+
+'\n'+
+'window.external.ImportExportFavorites(false,"http://www.dhtmlet.com");\n'+
+'\n'+
+'\/\/打开文件对话框\n'+
+'\n'+
+'window.external.ImportExportFavorites(false);\n'+
+'\n\n';
+
+iWinWidth=380;
+
+iWinHeight=220;
+
+bRunCode=false;
+
+</script>
+
+<div id=idContent>
+
+<div id=idContentTitle><span id=idTitleName>ImportExportFavorites</span>版本：DHTML Object Model　返回值：无</div>
+
+<div class=cssColumnTitle>语法：</div>
+<div>
+<a href="../objects/window.html"><b>window</b></a><b> . </b><a href="../objects/external.html"><b>external</b></a><b> . ImportExportFavorites ( </b><i>bImportExport</i><b> , </b><i>sImportExportPath</i><b> ) </b>
+</div>
+
+<div class=cssColumnTitle>参数：</div>
+<table>
+<tr><td nowrap><i> bImportExport </i></td><td nowrap><b>:</b></td>
+<td><b>必选项</b>。布尔值(Boolean)。<b>true</b> | <b>false</b>
+<table>
+<tr><td nowrap><b> true </b></td><td nowrap><b>:</b></td>
+<td>导入请求。</td></tr>
+<tr><tr><td nowrap><b> false </b></td><td nowrap><b>:</b></td>
+<td>导出请求。</td></tr>
+</table>
+<tr><td nowrap><i> sImportExportPath </i></td><td nowrap><b>:</b></td>
+<td><b>可选项</b>。字符串(String)。指定导入或导出的<b> URL </b>地址。假如忽略此参数，一个打开文件对话框会被显示。</td></tr>
+</table>
+
+<div class=cssColumnTitle>返回值：</div>
+<div>
+无
+</div>
+
+<div class=cssColumnTitle>说明：</div>
+<div>
+导入或导出 Microsoft&reg; Internet Explorer 的收藏夹。<br>
+在导入或导出开始前需要确认。<br>
+导出时收藏夹所有内容被上传到服务器。建议将服务器设置为接受更新前删除已存在收藏内容。<br>
+从服务器导入的收藏和客户端已存在的收藏内容合并。服务器上的删除不会波及到客户端。<br>
+此方法不支持HTML应用程式(<b> HTA </b>)。
+</div>
+
+
+
+</div>
+</body>
+</html>
+
+<!-- Part of RDL(TM) - Written by Rain1977 
+HomeSite: http://www.dhtmlet.com  E-Mail: dhtmlet@hotmail.com -->

@@ -1,0 +1,173 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>ASP分页技术</title>
+<style type="text/css">
+<!--
+body {
+	font-size: 10.4pt;
+	line-height: 22px;
+}
+-->
+</style>
+</head>
+
+<body bgcolor="eeeeee" leftmargin="20" marginwidth="20">
+<p><strong>ASP分页技术</strong></p>
+<hr>
+<p> &lt;%''本程序文件名为：Pages.asp%&gt;<br>
+  &lt;%''包含ADO常量表文件adovbs.inc，可从&quot;\Program Files\Common Files\System\ADO&quot;目录下拷贝%&gt;<br>
+  &lt;!--#Include File=&quot;adovbs.inc&quot;--&gt;<br>
+  &lt;%''＊建立数据库连接，这里是Oracle8.05数据库<br>
+  Set conn=Server.CreateObject(&quot;ADODB.Connection&quot;) <br>
+  conn.Open &quot;Provider=msdaora.1;Data Source=YourSrcName;User ID=YourUserID;Password=YourPassword;&quot; 
+</p>
+<p> Set rs=Server.CreateObject(&quot;ADODB.Recordset&quot;) ''创建Recordset对象<br>
+  rs.CursorLocation=adUseClient ''设定记录集指针属性<br>
+  ''＊设定一页内的记录总数，可根据需要进行调整 <br>
+  rs.PageSize=10 <br>
+  <br>
+  ''＊设置查询语句 <br>
+  StrSQL=&quot;Select ID,姓名,住址,电话 from 通讯录 Order By ID&quot; <br>
+  rs.Open StrSQL,conn,adOpenStatic,adLockReadOnly,adCmdText<br>
+  %&gt;<br>
+  &lt;HTML&gt;<br>
+  &lt;HEAD&gt;<br>
+  &lt;title&gt;分页示例&lt;/title&gt;<br>
+  &lt;script language=javascript&gt;<br>
+  //点击&quot;[第一页]&quot;时响应：<br>
+  function PageFirst()<br>
+  { <br>
+  document.MyForm.CurrentPage.selectedIndex=0;<br>
+  document.MyForm.CurrentPage.onchange();<br>
+  }<br>
+  //点击&quot;[上一页]&quot;时响应：<br>
+  function PagePrior()<br>
+  { <br>
+  document.MyForm.CurrentPage.selectedIndex--;<br>
+  document.MyForm.CurrentPage.onchange();<br>
+  }<br>
+  //点击&quot;[下一页]&quot;时响应：<br>
+  function PageNext()<br>
+  { <br>
+  document.MyForm.CurrentPage.selectedIndex++;<br>
+  document.MyForm.CurrentPage.onchange(); <br>
+  }<br>
+  //点击&quot;[最后一页]&quot;时响应：<br>
+  function PageLast()<br>
+  { <br>
+  document.MyForm.CurrentPage.selectedIndex=document.MyForm.CurrentPage.length-1;<br>
+  document.MyForm.CurrentPage.onchange();<br>
+  }<br>
+  //选择&quot;第？页&quot;时响应：<br>
+  function PageCurrent()<br>
+  { //Pages.asp是本程序的文件名<br>
+  document.MyForm.action='Pages.asp?Page='+(document.MyForm.CurrentPage.selectedIndex+1)<br>
+  document.MyForm.submit();<br>
+  } <br>
+  &lt;/Script&gt;<br>
+  &lt;/HEAD&gt;<br>
+  &lt;BODY bgcolor=&quot;#ffffcc&quot; link=&quot;#008000&quot; vlink=&quot;#008000&quot; 
+  alink=&quot;#FF0000&quot;&quot;&gt;<br>
+  <br>
+  &lt;%IF rs.Eof THEN<br>
+  Response.Write(&quot;&lt;font size=2 color=#000080&gt;[数据库中没有记录！]&lt;/font&gt;&quot;)<br>
+  ELSE <br>
+  ''指定当前页码<br>
+  If Request(&quot;CurrentPage&quot;)=&quot;&quot; Then<br>
+  rs.AbsolutePage=1<br>
+  Else<br>
+  rs.AbsolutePage=CLng(Request(&quot;CurrentPage&quot;))<br>
+  End If <br>
+  <br>
+  ''创建表单MyForm,方法为Get<br>
+  Response.Write(&quot;&lt;form method=Get name=MyForm&gt;&quot;) <br>
+  Response.Write(&quot;&lt;p align=center&gt;&lt;font size=2 color=#008000&gt;&quot;)<br>
+  ''设置翻页超链接<br>
+  if rs.PageCount=1 then <br>
+  Response.Write(&quot;[第一页] [上一页] [下一页] [最后一页] &quot;)<br>
+  else <br>
+  if rs.AbsolutePage=1 then<br>
+  Response.Write(&quot;[第一页] [上一页] &quot;)<br>
+  Response.Write(&quot;[&lt;a href=javascript:PageNext()&gt;下一页&lt;/a&gt;] &quot;) 
+  <br>
+  Response.Write(&quot;[&lt;a href=javascript:PageLast()&gt;最后一页&lt;/a&gt;] &quot;) 
+  <br>
+  else <br>
+  if rs.AbsolutePage=rs.PageCount then<br>
+  Response.Write(&quot;[&lt;a href=javascript:PageFirst()&gt;第一页&lt;/a&gt;] &quot;) 
+  <br>
+  Response.Write(&quot;[&lt;a href=javascript:PagePrior()&gt;上一页&lt;/a&gt;] &quot;) 
+  <br>
+  Response.Write(&quot;[下一页] [最后一页] &quot;)<br>
+  else<br>
+  Response.Write(&quot;[&lt;a href=javascript:PageFirst()&gt;第一页&lt;/a&gt;] &quot;) 
+  <br>
+  Response.Write(&quot;[&lt;a href=javascript:PagePrior()&gt;上一页&lt;/a&gt;] &quot;) 
+  <br>
+  Response.Write(&quot;[&lt;a href=javascript:PageNext()&gt;下一页&lt;/a&gt;] &quot;) 
+  <br>
+  Response.Write(&quot;[&lt;a href=javascript:PageLast()&gt;最后一页&lt;/a&gt;] &quot;) 
+  <br>
+  end if<br>
+  end if<br>
+  end if<br>
+  <br>
+  ''创建下拉列表框，用于选择浏览页码<br>
+  Response.Write(&quot;第&lt;select size=1 name=CurrentPage onchange=PageCurrent()&gt;&quot;) 
+  <br>
+  For i=1 to rs.PageCount <br>
+  if rs.AbsolutePage=i then<br>
+  Response.Write(&quot;&lt;option selected&gt;&quot;&amp;i&amp;&quot;&lt;/option&gt;&quot;) 
+  ''当前页码<br>
+  else<br>
+  Response.Write(&quot;&lt;option&gt;&quot;&amp;i&amp;&quot;&lt;/option&gt;&quot;)<br>
+  end if <br>
+  Next <br>
+  Response.Write(&quot;&lt;/select&gt;页/共&quot;&amp;rs.PageCount&amp;&quot;页 共&quot;&amp;rs.RecordCount&amp;&quot;条记录&lt;/font&gt;&lt;p&gt;&quot;) 
+  <br>
+  Response.Write(&quot;&lt;/form&gt;&quot;)<br>
+  <br>
+  ''创建表格，用于显示<br>
+  Response.Write(&quot;&lt;table align=center cellspacing=1 cellpadding=1 border=1&quot;) 
+  <br>
+  Response.Write(&quot; bordercolor=#99CCFF bordercolordark=#b0e0e6 bordercolorlight=#000066&gt;&quot;)<br>
+  <br>
+  Response.Write(&quot;&lt;tr bgcolor=#ccccff bordercolor=#000066&gt;&quot;) <br>
+  <br>
+  Set Columns=rs.Fields <br>
+  <br>
+  ''显示表头<br>
+  For i=0 to Columns.Count-1<br>
+  Response.Write(&quot;&lt;td align=center width=200 height=13&gt;&quot;)<br>
+  Response.Write(&quot;&lt;font size=2&gt;&lt;b&gt;&quot;&amp;Columns(i).name&amp;&quot;&lt;/b&gt;&lt;/font&gt;&lt;/td&gt;&quot;) 
+  <br>
+  Next<br>
+  Response.Write(&quot;&lt;/tr&gt;&quot;)<br>
+  ''显示内容<br>
+  For i=1 to rs.PageSize <br>
+  Response.Write(&quot;&lt;tr bgcolor=#99ccff bordercolor=#000066&gt;&quot;) <br>
+  For j=0 to Columns.Count-1 <br>
+  Response.Write(&quot;&lt;td&gt;&lt;font size=2&gt;&quot;&amp;Columns(j)&amp;&quot;&lt;/font&gt;&lt;/td&gt;&quot;) 
+  <br>
+  Next<br>
+  Response.Write(&quot;&lt;/tr&gt;&quot;)<br>
+  <br>
+  rs.movenext <br>
+  if rs.EOF then exit for <br>
+  Next<br>
+  <br>
+  Response.Write(&quot;&lt;/table&gt;&quot;) </p>
+<p> END IF<br>
+  %&gt;<br>
+  &lt;/BODY&gt;<br>
+  &lt;/HTML&gt;<br>
+  &lt;%<br>
+  ''===程序在Win2000Server+IIS5.0+Oracle8.05下测试通过===<br>
+  ''===作者：夏春涛 E-mail:bluesky_521@yeah.net===<br>
+  %&gt;</p>
+<p></p>
+<p>&nbsp; </p>
+</body>
+</html>

@@ -1,0 +1,249 @@
+<html>
+<head>
+<title>表格</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+
+<link rel = stylesheet href = "image/style.css">
+</head>
+<body bgcolor="#ffffff">
+<table width="688" border="0" cellspacing="0" cellpadding="0" align="center">
+  <tr bgcolor="EEEEEE"> 
+    <td height="22"><a href="index.htm">主页</a></td>
+  </tr>
+</table><br>
+<table border="0" cellpadding="0" cellspacing="0" width="688" align="center" height="490">
+  <tr valign="top"> 
+    <td rowspan="4" width="91">&nbsp; </td>
+    <td height="68" width="131"> 
+      <p><img src="image/doc.gif"></p>
+    </td>
+    <td rowspan="4" width="18"><b></b> </td>
+    <td height="68" width="387"><img src="image/title_doc.gif"></td>
+    <td rowspan="4" width="61"> 
+      <h6>&nbsp;</h6>
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td rowspan="3" valign="top" class="pt10" align="center" width="131" bgcolor="EEEEEE"> 
+      <p>&nbsp;</p>
+      <p><font color="#FF0000">※ 15.9 表格</font></p>
+       
+	</td>
+  </tr>
+  <tr valign="top"> 
+    <td width="387" height="308"> 
+      <table width="100%" border="0" cellpadding="0">
+        <tr> 
+          <td>
+
+           <h4><a name="_Toc467207762">15.9 表格</a></h4>
+<p>XSL中的基本的表格元素为fo:table-and-caption，这是个块级对象。但将它包装到fo:inline-included-container中就可转变为内联对象，或将它包装到fo:float中就可转变为外联对象。表格模型与HTML的表格模型十分相近。表15-1显示HTML 
+  4.0表元素与XSL格式化对象之间的等价关系：</p>
+<p align="center">表15-1 HTML表格与XSL格式化对象的表格的对比</p>
+<p>
+<center>
+  <table BORDER cellspacing=1 cellpadding=7 width=439>
+    <tr>
+      <td width="48%" valign="TOP"> 
+        <p>HTML元素
+      </td>
+      <td width="52%" valign="TOP"> 
+        <p>XSL格式化对象元素
+      </td>
+    </tr>
+    <tr>
+      <td width="48%" valign="TOP"> 
+        <p>TABLE
+      </td>
+      <td width="52%" valign="TOP"> 
+        <p>Fo:table-and-caption
+      </td>
+    </tr>
+    <tr>
+      <td width="48%" valign="TOP"> 
+        <p>无对等元素
+      </td>
+      <td width="52%" valign="TOP"> 
+        <p>fo:table
+      </td>
+    </tr>
+    <tr>
+      <td width="48%" valign="TOP"> 
+        <p>CAPTION
+      </td>
+      <td width="52%" valign="TOP"> 
+        <p>fo:table-caption
+      </td>
+    </tr>
+    <tr>
+      <td width="48%" valign="TOP"> 
+        <p>COL
+      </td>
+      <td width="52%" valign="TOP"> 
+        <p>fo:table-column
+      </td>
+    </tr>
+    <tr>
+      <td width="48%" valign="TOP"> 
+        <p>COLGROUP
+      </td>
+      <td width="52%" valign="TOP"> 
+        <p>无对等元素
+      </td>
+    </tr>
+    <tr>
+      <td width="48%" valign="TOP"> 
+        <p>THEAD
+      </td>
+      <td width="52%" valign="TOP"> 
+        <p>fo:table-reader
+      </td>
+    </tr>
+    <tr>
+      <td width="48%" valign="TOP"> 
+        <p>TBODY
+      </td>
+      <td width="52%" valign="TOP"> 
+        <p>fo:table-body
+      </td>
+    </tr>
+    <tr>
+      <td width="48%" valign="TOP"> 
+        <p>TFOOT
+      </td>
+      <td width="52%" valign="TOP"> 
+        <p>fo:table-footer
+      </td>
+    </tr>
+    <tr>
+      <td width="48%" valign="TOP"> 
+        <p>TD
+      </td>
+      <td width="52%" valign="TOP"> 
+        <p>fo:table-cell
+      </td>
+    </tr>
+    <tr>
+      <td width="48%" valign="TOP"> 
+        <p>TR
+      </td>
+      <td width="52%" valign="TOP"> 
+        <p>fo:table-row
+      </td>
+    </tr>
+  </table>
+</center>
+<p></p>
+<p>fo:table-and-caption包括一个可选的fo:caption元素和一个fo:table元素。标题可包含要放在此标题中的任何块级元素。在缺省的情况下，标题放在表之前，但可以通过设置table-and-caption元素的caption-side属性为下列八个值之一而进行调整：</p>
+<ul>
+  <p>
+  <li>before</li>
+  <p></p>
+  <p>
+  <li>after</li>
+  <p></p>
+  <p>
+  <li>start</li>
+  <p></p>
+  <p>
+  <li>end</li>
+  <p></p>
+  <p>
+  <li>top</li>
+  <p></p>
+  <p>
+  <li>bottom</li>
+  <p></p>
+  <p>
+  <li>left</li>
+  <p></p>
+  <p>
+  <li>right</li>
+  <p></p>
+</ul>
+<p>例如，下面是一个将标题放在底部的表格：</p>
+<p>&lt;fo:table-and-caption caption-side="bottom"&gt;</p>
+<p> &lt;fo:table-caption&gt;</p>
+<p> &lt;fo:block font-weight="bold"</p>
+<p> font-family="Helvetica, Arial, sans"</p>
+<p> font-size="12pt"&gt;</p>
+<p> Table 15 1: HTML Tables vs. XSL Formatting Object Tables</p>
+<p> &lt;/fo:block&gt;</p>
+<p> &lt;/fo:table-caption&gt;</p>
+<p> &lt;fo:table&gt;</p>
+<p> &lt;!- table contents go here -&gt;</p>
+<p> &lt;/fo:table&gt;</p>
+<p>&lt;/fo:table-and-caption&gt;</p>
+<p>fo:table元素包括一个可选的fo:table-column、fo:table-header、一个可选的fo:table-footer和一个或多个fo:table-body元素。fo:table-body分成fo:table-row元素。每个fo:table-row分成fo:table-cell元素。fo:table-header和fo:table-footer既可分成fo:table-cell元素，也可分成fo:table-row元素。例如，下面的这个简单的表，与表15-1的第三行相对应：</p>
+<p>&lt;fo:table&gt;</p>
+<p> &lt;fo:table-header&gt;</p>
+<p> &lt;fo:table-cell&gt;</p>
+<p> &lt;fo:block font-family="Helvetica, Arial, sans"</p>
+<p> font-size="11pt" font-weight="bold"&gt;</p>
+<p> HTML Element</p>
+<p> &lt;/fo:block&gt;</p>
+<p> &lt;/fo:table-cell&gt;</p>
+<p> &lt;fo:table-cell&gt;</p>
+<p> &lt;fo:block font-family="Helvetica, Arial, sans"</p>
+<p> font-size="11pt" font-weight="bold"&gt;</p>
+<p> XSL FO Element</p>
+<p> &lt;/fo:block&gt;</p>
+<p> &lt;/fo:table-cell&gt;</p>
+<p> &lt;/fo:table-header&gt;</p>
+<p> &lt;fo:table-body&gt;</p>
+<p> &lt;fo:table-row&gt;</p>
+<p> &lt;fo:table-cell&gt;</p>
+<p> &lt;fo:block font-family="Courier, monospace"&gt;</p>
+<p> TABLE</p>
+<p> &lt;/fo:block&gt;</p>
+<p> &lt;/fo:table-cell&gt;</p>
+<p> &lt;fo:table-cell&gt;</p>
+<p> &lt;fo:block font-family="Courier, monospace"&gt;</p>
+<p> fo:table-and-caption</p>
+<p> &lt;/fo:block&gt;</p>
+<p> &lt;/fo:table-cell&gt;</p>
+<p> &lt;/fo:tdble-row&gt;</p>
+<p> &lt;fo:table-row&gt;</p>
+<p> &lt;fo:table-cell&gt;</p>
+<p> &lt;fo:block&gt;no equivalent&lt;/fo:block&gt;</p>
+<p> &lt;/fo:table-cell&gt;</p>
+<p> &lt;fo:table-cell&gt;</p>
+<p> &lt;fo:block font-family="Courier, monospace"&gt;</p>
+<p> fo:table</p>
+<p> &lt;/fo:block&gt;</p>
+<p> &lt;/fo:table-cell&gt;</p>
+<p> &lt;/fo:table-row&gt;</p>
+<p> &lt;/fo:table-body&gt;</p>
+<p>&lt;/fo:table&gt;</p>
+<p>设置n-columns-spanned和n-rows-spanned特性为一整数，表示要跨越的行或列数，这时，表的单元格就可以跨越多行和多列。可选的column-number特性可以改变从哪一列开始合并单元格，缺省值是当前列。</p>
+<p>使用通常的边界属性（将在以后讨论），就可以在表的各部分周围绘制边框。empty-cells特的值可取show或hide，如果要在无内容的单元格周围绘制边框，则为show；否则为hide。缺省值为show。</p>
+<p>大多数表的各部分不使用标准的宽度和高度属性，而是具有等价的属性。可以省略下面当中的任何一个或所有的特性，在此情况下，格式化程序只将每个部分调整成合适的大小：</p>
+<ul>
+  <p>
+  <li>table：table-width，table-height</li>
+  <p></p>
+  <p>
+  <li>table-caption：caption-width，由格式化程序自动确定高度</li>
+  <p></p>
+  <p>
+  <li>table-row：row-height，由内容确定宽度</li>
+  <p></p>
+  <p>
+  <li>table-cell：cell-height，column-number，column-width，n-columns-spanned，n-rows-spanned</li>
+  <p></p>
+</ul>
+<p>fo:table-row元素有可选的may-break-after-row和may-break-before-row特性，其值为yes或no，此值确定在行前和行后是否允许有分页符。这两个特性的缺省值都为yes。</p>
+<p>当一长表扩展到多页时，有时候在每页上重复页眉和页脚。使用fo:table元素的table-omit-middle-header和table-omit-middle-footer特性，可指定这种行为。值为yes表示页眉或页脚一页一页地重复。值为no表示页眉或页脚不是一页一页地重复。缺省值为no。</p>
+<p>可选的fo:table-column元素是一空元素，它为一特定列中的所有单元格指定值。使用此元素的单元格由column-number特性来识别。fo:table-column并不真正地包含任何单元格。将n-columns-spanned属性设置成大于1的整数时，fo:table-column可将属性应用于多个连续的列中。在fo:table-column中进行设置的最常用的属性是column-width（有符号的长度），但标准的边界、贴边以及背景属性（下面讨论）也可以设置。</p>
+ 
+<a href='531.htm'>&lt;&lt;上一篇</a>&nbsp;&nbsp;<a href='533.htm'>下一篇&gt;&gt;</a></td>
+        </tr>
+      </table>
+      <p>&nbsp; </p>
+    </td>
+  </tr>
+</table>
+
+</body>
+
+</html>

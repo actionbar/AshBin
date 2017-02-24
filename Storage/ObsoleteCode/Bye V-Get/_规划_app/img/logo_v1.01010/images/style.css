@@ -1,0 +1,37 @@
+A:link {
+COLOR: #000000;FONT-SIZE: 11px; TEXT-DECORATION: none
+}
+A:visited {
+COLOR: #000000;FONT-SIZE: 11px; TEXT-DECORATION: none
+}
+A:active {
+COLOR: #000000;FONT-SIZE: 11px; TEXT-DECORATION: none
+}
+A:hover {
+COLOR: #660000;FONT-SIZE: 11px; TEXT-DECORATION: underline
+}
+TD {
+COLOR: #333333; FONT-FAMILY: Verdana, Arial; FONT-SIZE: 13px; LINE-HEIGHT: 150%; padding-left: 0;
+}INPUT {
+COLOR: #333333; FONT-FAMILY: Verdana, Arial; FONT-SIZE: 11px; padding-left: 0;}
+TEXTAREA {
+COLOR: #333333; FONT-FAMILY: Verdana, Arial; FONT-SIZE: 11px; LINE-HEIGHT: 120%; padding-left: 0;border-width:1;
+}
+A.white:link {
+	COLOR: #ffffff; TEXT-DECORATION: none
+}
+A.white:visited {
+	COLOR: #ffffff; TEXT-DECORATION: none
+}
+A.white:active {
+	COLOR: #ffffff; TEXT-DECORATION: none
+}
+A.white:hover {
+	COLOR: #ffffff; TEXT-DECORATION: none
+}
+HR{
+COLOR:height:1px;
+}
+small{
+COLOR: #333333; FONT-FAMILY: Verdana, Arial; FONT-SIZE: 10px; LINE-HEIGHT: 1;
+}

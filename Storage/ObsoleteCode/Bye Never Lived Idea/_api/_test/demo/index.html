@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>Example</title>
+
+  <script src="thrift.js"></script>
+  <script src="gen-js/sso_types.js"></script>
+  <script src="gen-js/Sign.js"></script>
+
+  <script>
+    var transport = new Thrift.Transport("http://api.luexu.com/1/sso/?p=json");
+    var protocol  = new Thrift.Protocol(transport);
+    var handler = new Tf.Sso.SignClient(protocol);
+    
+    try {
+      result = handler.isAccountValid('15000777963', 2);
+      document.write("调用 hello 成功:<br>"+result);
+    } catch(err){
+       /* for(var i in err){
+            document.write(err[i]);
+        }*/
+      document.write("调用 hello 出错:<br>"+err.id+"<br>"+err.msg);
+    }
+  </script>
+
+</head>
+
+</html>

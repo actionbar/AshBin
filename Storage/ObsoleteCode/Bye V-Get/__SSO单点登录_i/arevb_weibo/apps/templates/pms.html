@@ -1,0 +1,170 @@
+<!--{if $action == 'send'}-->
+<h2>发送私信 · · · · · ·</h2>
+<form action="{eval echo miniurl('pms/send')}" method="post" style="border-top: 1px dashed #ccc; width: 350px; padding-top: 2em;" id="pop_win_form">
+<div class="refertxt">收件人 <input type="text" size="40" value="{$msgto}" id="msgto" /></div>
+<div style="float: right; margin-right: 13px; color: rgb(0, 136, 0);">
+还能输入<em style="font-style: normal;">140</em>个字
+</div>
+<textarea style="margin: 10px 0pt; overflow: hidden; width: 330px; height: 100px; font-size: 12px;" id="refer_message"></textarea>
+<input type="button" value="提交" id="onbtnpost"> <span style="color: rgb(46, 142, 253);" id="pop_in_msg"></span>
+</form>
+<script>
+$(function(){
+	$("#onbtnpost").click(function(){
+		var msgto = $.trim($("#msgto").val());
+		if (msgto == '')
+		{
+			$("#pop_in_msg").text("请输入收件人");
+		}
+		var msg = $.trim($("#refer_message").val());
+		if (msg == '')
+		{
+			$("#pop_in_msg").text("请至少写些文字");
+			return false;
+		}
+		$("#pop_in_msg").text("正在处理...");
+		$(this).attr('disabled', 'disabled');
+		$.post($("#pop_win_form").attr('action'), {submit_post:1,message:msg,msgto:msgto}, function(dat){
+			dat = eval('('+dat+')');
+			if (dat.success)
+			{
+				pop_win(dat.message);
+			}
+			else
+			{
+				$("#pop_in_msg").text(dat.message);
+				$("#onbtnpost").removeAttr('disabled');
+			}
+		});
+	});
+	$("#refer_message").keyup(function(){
+		var left = 140 - $(this).val().length;
+		if (left < 1)
+		{
+			left = 0;
+			$(this).val($(this).val().substr(0, 140));
+		}
+		$("#pop_win_form em").text(left);
+	});
+});
+</script>
+<!--{else}-->
+{template header}
+
+<div class="left">
+	<div class="post" id="mytopmenu">
+	<!--{if $filter == 'inbox'}-->
+	<a href="{eval echo miniurl('pms');}">未读邮件[{$_DSESSION['newpm']}]</a> - 收件箱 - <a href="{eval echo miniurl('pms?filter=outbox');}">发件箱</a>
+	<!--{elseif $filter == 'outbox'}-->
+	<a href="{eval echo miniurl('pms');}">未读邮件[{$_DSESSION['newpm']}]</a> - <a href="{eval echo miniurl('pms?filter=inbox');}">收件箱</a> - 发件箱
+	<!--{else}-->
+	未读邮件[{$_DSESSION['newpm']}] - <a href="{eval echo miniurl('pms?filter=inbox');}">收件箱</a> - <a href="{eval echo miniurl('pms?filter=outbox');}">发件箱</a>
+	<!--{/if}-->
+	</div>
+	<!--{if !empty($pms)}-->
+	<!--{if $filter == 'outbox'}-->
+	<!--{loop $pms $pms_item}-->
+	<div class="post" id="pm_{$pms_item['pmid']}">
+		<div class="detail" style="width:520px">
+			<p style="font-size:12px">发给 <a href="{eval echo miniurl($pms_item['msgtoid']);}">{$pms_item['msgto']}</a> : {$pms_item['message']} <cite class="gray">({eval echo sgmdate($pms_item['dateline']);})</cite></p>
+			<div class="attrs">
+				<div class="rt">
+					<a href="javascript:;" class="pm_send_a" r="{$pms_item['msgtoid']}">再发</a><span>|</span><a href="javascript:;" class="pm_del_a" r="{$pms_item['pmid']}">删除</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--{/loop}-->
+	<!--{else}-->
+	<!--{loop $pms $pms_item}-->
+	<div class="post" id="pm_{$pms_item['pmid']}">
+		<a href="{eval echo miniurl($pms_item['msgfromid']);}"><img src="{$siteurl}avatar.php?uid={$pms_item['msgfromid']}&size=small" /></a>
+		<div class="detail">
+			<p style="font-size:12px"><a href="{eval echo miniurl($pms_item['msgfromid']);}">{$pms_item['msgfrom']}</a> 说: {$pms_item['message']} <cite class="gray">({eval echo sgmdate($pms_item['dateline']);})</cite></p>
+			<div class="attrs">
+				<div class="rt">
+					<a href="javascript:;" class="pm_send_a" r="{$pms_item['msgfromid']}">回复</a><span>|</span><a href="javascript:;" class="pm_del_a" r="{$pms_item['pmid']}">删除</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--{/loop}-->
+	<!--{/if}-->
+	<!--{else}-->
+	<div class="post" style="border:none;">
+		<div class="detail">
+			<p>没有邮件
+			</p>
+		</div>
+	</div>
+	<!--{/if}-->
+</div>
+<div class="right">
+	<div class="ugb">
+		<div class="ugb2">
+			<div class="ugb3">
+				<div class="ugb4">
+					<div class="userinfo">
+						<div class="user_head">
+							<img src="{$siteurl}avatar.php?uid={$logger_uid}&size=middle" style="float:left" /><div style="float:left; margin:0 0 0 15px;"><p style="font-size:14px;line-height:33px;">{$logger_user}</p><p style="color:#999">上次登录:{eval echo sgmdate($_DSESSION['lastvisit']);}</p></div>
+						</div>
+						<div class="user_atten">
+							<ul>
+								<li>
+									<div class="num">
+										<a href="{eval echo miniurl($logger_uid.'/follows');}">{$_DSESSION['follows']}</a>
+									</div>
+									<a href="{eval echo miniurl($logger_uid.'/follows');}">关注</a>
+								</li>
+								<li>
+									<div class="num">
+										<a href="{eval echo miniurl($logger_uid.'/fans');}">{$_DSESSION['fans']}</a>
+									</div>
+									<a href="{eval echo miniurl($logger_uid.'/fans');}">粉丝</a>
+								</li>
+								<li style="border:none">
+									<div class="num">
+										<a href="{eval echo miniurl($logger_uid.'/notes');}">{$_DSESSION['notes']}</a>
+									</div>
+									<a href="{eval echo miniurl($logger_uid.'/notes');}">微博</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="usermenu">
+						<ul>
+							<li<!--{if $usermenu == 'index'}--> class="active"<!--{/if}-->><a href="{eval echo miniurl();}">我的首页</a></li>
+							<li<!--{if $usermenu == 'atme'}--> class="active"<!--{/if}-->><a href="{eval echo miniurl($logger_uid.'/atme');}">@我的</a></li>
+							<li<!--{if $usermenu == 'pms'}--> class="active"<!--{/if}-->><a href="{eval echo miniurl('pms');}">我的私信</a></li>
+							<li style="border:none"<!--{if $usermenu == 'cmts'}--> class="active"<!--{/if}-->><a href="{eval echo miniurl($logger_uid.'/comments');}">我的评论</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+$(function(){
+	$(".pm_del_a").click(function(){
+		var pmid = $(this).attr('r');
+		if (!confirm("您确定要删除此信息吗？"))
+		{
+			return false;
+		}
+		$.post("{eval echo miniurl('pms/del');}", {submit_post:1,pmid:pmid}, function(data){
+			data = eval('('+data+')');
+			if (data.success)
+			{
+				$("#pm_"+pmid).fadeOut();
+			}
+			else
+			{
+				alert(data.message);
+			}
+		});
+	});
+});
+</script>
+{template footer}
+<!--{/if}-->

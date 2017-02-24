@@ -1,0 +1,25 @@
+
+.t-padding-ad{height:53px;}
+.t{position:fixed;top:0;left:0;background:#F3F3F4;height:53px;width:100%}
+.t-nav{}
+.t-nav a{width:99px;height:53px;line-height: 53px}
+
+
+.l{width:220px;min-height:800px;background:#2f4050}
+
+.l-user{padding:50px 40px 20px;background:#293846;color:#DFE4ED}
+.l-avatar{border-radius:50%}
+.l-user-popup{height:25px;line-height: 25px}
+.l-user-popup a{color:#DFE4ED}
+
+
+.l-menu h3{height:46px;line-height:46px;padding:0 20px;color:#a7b1c2}
+.l-menu h3:hover{background:#293846}
+.l-menu ul{padding:0 50px;}
+.l-menu-show{background:#293846;border-left:4px solid #19aa8d;  }
+.l-menu a{color:#a7b1c2}
+.l-menu a:hover{color:#fff}
+
+
+.r{max-width:800px}
+.rt{height:48px;}

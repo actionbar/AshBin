@@ -1,0 +1,56 @@
+{template header}
+
+<p>
+{eval $display_index = ($current-1)*$perpage;}
+<!--{if $search_item == 'tag'}-->
+	标签"{$keyword}", 共有微博{$total}个:<br />
+	<!--{loop $tag_notes $tag_note}-->
+	{eval $display_index++;}
+	{$display_index}. <!--{if $tag_note['uid'] == $logger_uid}-->我说<!--{else}--><a href="{eval echo miniurl($tag_note['uid']);}">{$tag_note['username']}</a><!--{/if}-->:{$tag_note['note']['message']} <br />
+	<!--{if !empty($tag_note['note']['refer'])}-->
+	{eval $tag_note_refer = $tag_note['note']['refer'];}
+	转自:{$tag_note_refer['message']}<br />
+	<!--{if !empty($tag_note_refer['link'])}-->
+	原文分享链接:<a href="{$tag_note_refer['link']['url']}">$tag_note_refer['link']['title']</a><br />
+	<!--{/if}-->
+	<!--{if !empty($tag_note_refer['file'])}-->
+	原文分享文件:<a href="{$tag_note_refer['file']['url']}">$tag_note_refer['file']['title']</a><br />
+	<!--{/if}-->
+	<!--{if !empty($tag_note_refer['img'])}-->
+	原文分享图片:<a href="{eval echo imgurl($tag_note['note']['img']['url']);}" rel="{$tag_note_refer['img']['title']}">打开</a><br />
+	<!--{/if}-->
+	<!--{/if}-->
+	<!--{if !empty($tag_note['note']['link'])}-->
+	分享链接:<a href="{$tag_note['note']['link']['url']}">$tag_note['note']['link']['title']</a><br />
+	<!--{/if}-->
+	<!--{if !empty($tag_note['note']['file'])}-->
+	分享文件:<a href="{$tag_note['note']['file']['url']}">$tag_note['note']['file']['title']</a><br />
+	<!--{/if}-->
+	<!--{if !empty($tag_note['note']['img'])}-->
+	分享图片:<a href="{eval echo imgurl($tag_note['note']['img']['url']);}" rel="{$tag_note['note']['img']['title']}">打开</a><br />
+	<!--{/if}-->
+	{$tag_note['sgmdate']} 
+	<!--{if $logger_uid == $tag_note['uid']}-->
+	转发[{$tag_note['refers']}] <a href="{eval echo miniurl('note/'.$tag_note['nid'].'/comment');}">评论[{$tag_note['comments']}]</a> <a href="{eval echo miniurl('note/'.$tag_note['nid'].'/del');}">删除</a>
+	<!--{else}-->
+	<a href="{eval echo miniurl('note/'.$tag_note['nid'].'/refer');}">转发[{$tag_note['refers']}]</a> <a href="{eval echo miniurl('note/'.$tag_note['nid'].'/comment');}">评论[{$tag_note['comments']}]</a>
+	<!--{/if}--><br />
+	<!--{/loop}-->
+<!--{elseif $search_item == 'tags'}-->
+	共有标签{$total}个:<br />
+	<!--{loop $search_tags $search_tag}-->
+	{eval $display_index++;}
+	{$display_index}. <a href="{eval echo miniurl('search/tag?keyword='.$search_tag['tagname']);}">{$search_tag['tagname']}</a> ({$search_tag['total']})
+	<!--{/loop}-->
+<!--{elseif $search_item == 'people'}-->
+	找到{$total}个人:<br />
+	<!--{loop $search_peoples $search_people}-->
+	{eval $display_index++;}
+	{$display_index}. <a href="{eval echo miniurl($search_people['uid']);}">{$search_people['username']}</a> <!--{if $logger_uid > 0 && $logger_uid != $search_people['uid']}-->> <a href="{eval echo miniurl('follow/'.$search_people['uid']);}">关注他</a> <a href="{eval echo miniurl('pms/send?uid='.$search_people['uid']);}">发消息</a><!--{/if}--><br />
+	<!--{/loop}-->
+<!--{else}-->
+<!--{/if}-->
+	{$pagehtml}
+</p>
+
+{template footer}

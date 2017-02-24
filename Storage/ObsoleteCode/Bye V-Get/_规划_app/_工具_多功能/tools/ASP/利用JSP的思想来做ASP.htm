@@ -1,0 +1,214 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>利用 JSP的思想来做ASP</title>
+<style type="text/css">
+<!--
+body {
+	font-size: 10.4pt;
+	line-height: 22px;
+}
+-->
+</style>
+</head>
+
+<body bgcolor="eeeeee" leftmargin="20" marginwidth="20">
+<p><strong>利用 JSP的思想来做ASP</strong></p>
+<hr>
+<p>这几天开始接触JSP里面一些BEAN的写法，然后自己想了想，认为其实在ASP里面也可以采取这一思想来做。虽然不是很纯，不彻底，但是能够把一些逻辑处理分离出来，更适合程序的移植性，提高了开发周期。我自己写了个类ConnEX包含了一些对数据库的操作，觉得应该可以包括一大部分的逻辑处理，但是这样也提高了错误几率，如果你把SQL语句控制的比较好的话，应该是利大于弊的，这里都是一点点拙见，望大家指正。</p>
+<p>程序的功能有了个大体的框架，其实可以自己添加一些功能，比如开始的数据库连接 ，可以先设置变量然后通过INIT() 来选择不同类型的数据库</p>
+<p>&lt;%<br>
+  '*******************************************************************************************<br>
+  '* 程序:ConnEx.asp<br>
+  '* <br>
+  '* 描述：模仿JAVABEAN写的一个类，专门操作数据库，提供多种方法操作，但要避免SQL语法错误!<br>
+  '*<br>
+  '* 作者：田野 Email:Foxty@sina.com<br>
+  '*<br>
+  '* 日期：2005.06.0<br>
+  '*******************************************************************************************</p>
+<p><br>
+  'On Error Resume Next<br>
+  Class ConnEx<br>
+  public ConnEx<br>
+  public DBpath '---------数据库路径<br>
+  public DBtype '---------数据库类型 1(Access) 2(SqlServer) 3(可扩充)<br>
+  public ConnMethod '--------连接方式 （DSN，非DSN）<br>
+  public User<br>
+  public Pass<br>
+  Sub Class_initialize<br>
+  End Sub<br>
+  <br>
+  Sub Init()<br>
+  ConnStr = &quot;Driver={Microsoft Access Driver (*.mdb)};dbq=&quot;&amp;Server.MapPath(&quot;Date.mdb&quot;)<br>
+  Set ConnEx = Server.Createobject(&quot;ADODB.CONNECTION&quot;)<br>
+  ConnEx.Open ConnStr<br>
+  CatchError(&quot;Class_Terminate&quot;)<br>
+  End Sub<br>
+  <br>
+  Sub CatchError( Str )<br>
+  If Err Then<br>
+  Err.Clear<br>
+  Class_Terminate()<br>
+  Response.Write(&quot;捕捉到错误,程序结束!在&quot;&amp;Str&amp;&quot;处&quot;)<br>
+  Response.End()<br>
+  End If<br>
+  End Sub<br>
+  <br>
+  '******************************************<br>
+  '*通过SQL语句来查找记录是否存在,容易出错<br>
+  '******************************************<br>
+  <br>
+  Function HasRecordBySql( Sql )<br>
+  Call CheckSql(Sql,&quot;R&quot;)<br>
+  Dim Rs,HasR<br>
+  Set Rs = ConnEx.Execute( Sql )<br>
+  CatchError(&quot;HasReordSql&quot;)<br>
+  If Not (Rs.eof Or Rs.bof) Then<br>
+  HasR = False<br>
+  Else<br>
+  HasR = True<br>
+  End If<br>
+  Rs.Close<br>
+  Set Rs = Nothing<br>
+  HasRecordBySql = HasR<br>
+  End Function<br>
+  <br>
+  '***************************************<br>
+  '*通过ID来查找记录是否存在<br>
+  '***************************************<br>
+  <br>
+  Function HasRecordById( StrTableName , IntID )<br>
+  'CheckValue( IntID , 1 )<br>
+  Dim Rs,HasR<br>
+  Sql = &quot;Select top 1 * from &quot;&amp;StrTableName&amp;&quot; Where Id 
+  = &quot;&amp;IntID<br>
+  Call CheckSql(Sql,&quot;R&quot;)<br>
+  Set Rs = ConnEx.Execute(Sql)<br>
+  CatchError(&quot;HasRecordByID&quot;)<br>
+  If Not (Rs.eof Or Rs.bof) Then<br>
+  HasR = False<br>
+  Else<br>
+  HasR = True<br>
+  End If<br>
+  Rs.close<br>
+  Set Rs = Nothing<br>
+  HasRecordById = HasR<br>
+  End Function<br>
+  <br>
+  '**********************************************<br>
+  '*通过SQL语句取得记录集<br>
+  '**********************************************<br>
+  Function GetRsBySql( Sql )<br>
+  Call CheckSql(Sql,&quot;R&quot;)<br>
+  Dim Rs<br>
+  Set Rs = Server.CreateObject(&quot;Adodb.RecordSet&quot;)<br>
+  Rs.Open Sql,ConnEx,1,1<br>
+  Set GetRsBySql = Rs<br>
+  End Function<br>
+  <br>
+  '*********************************************<br>
+  '*取得某个字段的值<br>
+  '*********************************************<br>
+  Function GetValueBySql( Sql )<br>
+  Call CheckSql(Sql,&quot;R&quot;)<br>
+  Dim Rs,ReturnValue<br>
+  Set Rs = ConnEx.Execute(Sql)<br>
+  CatchError(&quot;GetValueBySql&quot;)<br>
+  If Not( Rs.Eof Or Rs.Bof ) Then<br>
+  ReturnValue = Rs(0)<br>
+  Else<br>
+  ReturnValue = &quot;没有记录&quot;<br>
+  End If<br>
+  Rs.Close<br>
+  Set Rs = Nothing<br>
+  GetValueBySql = ReturnValue<br>
+  End Function<br>
+  <br>
+  '==================================================Update,Insert==================================================================<br>
+  <br>
+  '*********************************************<br>
+  '*利用SQL修改数据 <br>
+  '*********************************************<br>
+  Function UpdateBySql( Sql )<br>
+  Call CheckSql(Sql,&quot;w&quot;)<br>
+  ConnEx.Execute(Sql)<br>
+  CatchError(&quot;UpdateBySql&quot;)<br>
+  UpdateBySql = True <br>
+  End Function<br>
+  <br>
+  '********************************************<br>
+  '*利用SQL语句插入数据<br>
+  '********************************************<br>
+  Function InsertBySql(Sql)<br>
+  Call CheckSql(Sql,&quot;w&quot;)<br>
+  ConnEx.Execute(Sql)<br>
+  CatchError(&quot;InsertBySql&quot;)<br>
+  InsertBySql = True<br>
+  End Function<br>
+  <br>
+  '======================================================Delete=============================================================<br>
+  <br>
+  '********************************************<br>
+  '*通过SQL语句删除 <br>
+  '********************************************<br>
+  Function DeleteBySql( Sql )<br>
+  Call CheckSql(Sql,&quot;D&quot;)<br>
+  ConnEx.Execute(Sql)<br>
+  CatchError(&quot;DeleteBySql&quot;)<br>
+  DeleteBySql = True<br>
+  End Function<br>
+  <br>
+  '********************************************<br>
+  '*检查SQL语句权限，根据标志Flag 来检测语句拥有的权限<br>
+  '********************************************<br>
+  Sub CheckSql( Sql , Flag )<br>
+  Dim StrSql,SinCounts,DouCounts,i<br>
+  StrSql = Lcase(Sql)<br>
+  SinCounts = 0<br>
+  DouCounts = 0<br>
+  For i = 1 to Len(StrSql)<br>
+  If Mid(StrSql,i,1) = &quot;'&quot; Then SinCounts = SinCounts + 1<br>
+  If Mid(StrSql,i,1) = &quot;&quot;&quot;&quot; Then DouConnts = DouCounts + 1<br>
+  Next<br>
+  <br>
+  If (SinCounts Mod 2) &lt;&gt; 0 Or (DouCounts Mod 2) &lt;&gt; 0 Or Instr(StrSql,&quot;;&quot;) 
+  &gt; 0 Then <br>
+  Call Class_Terminate()<br>
+  Response.Write(&quot;SQL语法错误!&quot;)<br>
+  Response.End()<br>
+  End If <br>
+  Select Case Flag<br>
+  Case &quot;R&quot;,&quot;r&quot;:<br>
+  If Instr(StrSql,&quot;delete&quot;) &gt; 0 Or Instr(StrSql,&quot;update&quot;) 
+  Or Instr(StrSql,&quot;drop&quot;) &gt; 0 Or Instr(StrSql,&quot;insert&quot;) 
+  &gt; 0 Then<br>
+  Class_Terminate()<br>
+  Response.Write(&quot;权限不足,没有执行写操作的权限&quot;)<br>
+  Response.End()<br>
+  End If<br>
+  Case &quot;W&quot;,&quot;w&quot;:<br>
+  If Instr(StrSql,&quot;delete&quot;) &gt; 0 Or Instr(StrSql,&quot;drop&quot;) 
+  &gt; 0 Or Instr(StrSql,&quot;select&quot;) &gt; 0 Then<br>
+  Class_Terminate()<br>
+  Response.Write(&quot;权限不足，没有执行删除操作的权限&quot;)<br>
+  Response.End()<br>
+  End If<br>
+  Case &quot;D&quot;,&quot;d&quot;: <br>
+  Case Else:<br>
+  Response.Write(&quot;函数CheckSql标志错误!&quot;)<br>
+  End Select<br>
+  End Sub<br>
+  <br>
+  Sub Class_Terminate<br>
+  If Not IsEmpty(FriendConn) Then<br>
+  FriendConn.Close<br>
+  Set FriendConn = Nothing<br>
+  CatchError()<br>
+  End If<br>
+  End Sub<br>
+  End Class<br>
+  %&gt;</p>
+</body>
+</html>

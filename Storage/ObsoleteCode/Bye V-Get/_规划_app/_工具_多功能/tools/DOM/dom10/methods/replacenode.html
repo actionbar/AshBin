@@ -1,0 +1,93 @@
+<html xmlns:rdl>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<script src="rdl_method.js"></script>
+<base target="_self">
+</head>
+<body>
+
+<script>
+
+//collFriendObjects=new Array();
+//collFriendProperties=new Array();
+//collFriendMethods=new Array();
+//collFriendEvents=new Array();
+//collFriendCollections=new Array();
+
+collFriendMethods=new Array(
+'replaceChild','swapNode','cloneNode','removeNode'
+);
+
+//collIE40=new Array();
+//collIE50=new Array();
+//collIE55=new Array();
+//collIE60=new Array();
+
+collIE50=new Array(
+'A','ACRONYM','ADDRESS','B','BDO','BIG','BLOCKQUOTE','BODY','BUTTON','CAPTION','CENTER','CITE','CODE','COL','COLGROUP','COMMENT','DD','DEL','DFN','DIR','DIV','DL','DT','EM','FIELDSET','FONT','FORM','FRAMESET','HEAD','Hn','HTML','I','IFRAME','INPUT type=button','INPUT type=checkbox','INPUT type=file','INPUT type=image','INPUT type=password','INPUT type=radio','INPUT type=reset','INPUT type=submit','INPUT type=text','INS','KBD','LABEL','LEGEND','LI','LISTING','MAP','MARQUEE','MENU','nextID','OBJECT','OL','OPTION','P','PLAINTEXT','PRE','Q','S','SAMP','SELECT','SMALL','SPAN','STRIKE','STRONG','SUB','SUP','TABLE','TBODY','TD','TEXTAREA','TFOOT','TH','THEAD','TR','TT','U','UL','VAR','XMP'
+);
+
+//sStyle='';
+
+sScript=
+'<script>\n'+
+'function rdl_fnReplace(){\n'+
+'var sPreserve = oList.innerHTML;\n'+
+'var oNewNode = document.createElement("OL");\n'+
+'oList.replaceNode(oNewNode);\n'+
+'oNewNode.innerHTML = sPreserve;\n'+
+'}\n'+
+'<\/script>\n';
+
+sCode=
+'<ul id = oList>\n'+
+'<li>第1个列表项目\n'+
+'<li>第2个列表项目\n'+
+'<li>第3个列表项目\n'+
+'<li>第4个列表项目\n'+
+'<\/ul>\n'+
+'<input type = button value = " 替换 " onclick = "rdl_fnReplace()">\n';
+
+iWinWidth=320;
+
+iWinHeight=240;
+
+</script>
+
+<div id=idContent>
+
+<div id=idContentTitle><span id=idTitleName>replaceNode</span>版本：DHTML Object Model　返回值：有</div>
+
+<div class=cssColumnTitle>语法：</div>
+<div>
+<i>oElement</i><b> = </b><i>object</i><b> . replaceNode ( </b><i>oNewNode</i><b> ) </b>
+</div>
+
+<div class=cssColumnTitle>参数：</div>
+<table>
+<tr><td nowrap><i> oNewNode </i></td><td nowrap><b>:</b></td>
+<td><b>必选项</b>。对象(Element)。用于替换<i> object </i>的对象。</td></tr>
+</table>
+
+<div class=cssColumnTitle>返回值：</div>
+<table>
+<tr><td nowrap><i> oElement </i></td><td nowrap><b>:</b></td>
+<td>对象(Element)。返回被替换对象的引用。</td></tr>
+</table>
+
+<div class=cssColumnTitle>说明：</div>
+<div>
+在文档树用<i> oNewNode </i>替换<i> object </i>。
+<br>当<i> object </i>被替换时，所有与之相关的属性内容都将被移除。
+<br><i> oNewNode </i>必须先被建立。
+<br>在运行时使用此方法是可以的。在对象的关闭标签被解析前，文档空间可能不能被呈递。
+</div>
+
+
+
+</div>
+</body>
+</html>
+
+<!-- Part of RDL(TM) - Written by Rain1977 
+HomeSite: http://www.dhtmlet.com  E-Mail: dhtmlet@hotmail.com -->

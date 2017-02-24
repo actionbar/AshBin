@@ -1,0 +1,108 @@
+所有三级域名的网站都是免费的！！
+免费的里面有广告，付费的取消广告
+
+免费用户也可以发文章，在论坛发，但是帖子必须进入审核，只有原创、优质的文章才会通过审核
+
+论坛 yiwukb  abc1234
+
+
+//head 302/301/404等跳转前面不能有任何包括 换行/空格/<>标签输出，php非echo 空格，换行没事
+
+
+
+[!]  co  数据库     三级域名公司        [!]
+	 e char(15)  primary ==网址前缀
+	 [/]b   暂时不需要[/]
+*    h varchar(75)                *
+     he varchar(75)  英文标题
+*	 k varchar(60)                *
+     d varchar(255)   首页describtion
+     a varchar(222)   ==公司简介==desction和主页用  公司简介
+     i   ==公司介绍
+	 m varchar(189)    ==服务简介 ==desction和主页用  我们的服务
+	 f   == 服务介绍
+	 g varchar(189)   ==荣誉简介 ==desction和主页用  企业的荣誉
+	 j   ==荣誉
+	 l varchar(189)   ==承诺简介 ==desction和主页用  我们的承诺
+*	 r   == 联系简介 ==desction和主页用  *
+	 s   ==联系
+	 n  text == FAQ 问答
+	 p char(20)  == 百度地图坐标 120.101736,29.300268
+*    q varchar(255)  QQ                 *
+	 lk text  友情链接
+	 lt varchar(99)  顶部链接   <a href="http://yiwu.wuliu.v-get.com/tuoyun/">义乌托运</a>
+	 lw varchar(20) 网址   ywwuliu.com  1556.co
+	 x varchar(12) ==企业法人 
+	 y varchar(36)  企业性质 ： 国内物流 - 托运公司
+	 z varchar(36) 主营，自己填  ： 义乌到宁波、上海外贸进仓
+	 zz varchar(255) 行业资质
+	 t   =datetime
+	 bg  用户公告，信息，自定义信息等图片
+	 adt = int    比较ta 与 当前时间，判断是否展示广告，用int 便于和 time()比较
+	 tj  = varchar(255)  统计代码  http://www.v-get.com/www.v-getimg.com/i1/s3/f/d/yiwusx0.jpg|http://www.v-get.com/www.v-getimg.com/i1/s3/f/d/yiwusx1.jpg|http://www.v-get.com/www.v-getimg.com/i1/s3/f/d/yiwusx2.jpg|http://www.v-get.com/www.v-getimg.com/i1/s3/f/d/yiwusx3.jpg&links=http://yiwusx.wuliu.v-get.com/logistics/about.html|http://yiwusx.wuliu.v-get.com/logistics/services.html|http://yiwusx.wuliu.v-get.com/logistics/faq.html|http://yiwusx.wuliu.v-get.com/logistics/exhibition.html
+[-]  coi fi  展厅数据库                               [-]
+     *i 不需要id 靠 m 和 p联合 确定图片地址： http://公司.wuliu.v-get.com/exhibit-id.html*
+	 e char(13)   ==用户名，有用户名的才能有价格表	 
+	 p tinyint(3)   ==该公司该图片id (i1/s3/f/kaibang_1.jpg)
+	 h varchar(19)  ==图片标题 （模仿这个样式http://www.xtuan.com/xiaoguotu/zhanting）
+	 d varchar(230)  ==图片描述
+	 g tinyint(3)  ==在exhibition.html页面的高度，宽度固定200
+	 j smallint(5) ==exhibition.html?show=1 高度，宽度固定600
+	 x tinyint(3) ==视觉展厅0 / 服务产品 1
+[-]  coc fc  公司介绍数据库              [-]
+     e char(13)
+*企业工商信息*
+	 h varchar(75) 公司工商执照名称
+	 #co.y varchar(36) 企业性质   国内物流 - 托运公司#
+     #co.z varchar(36) 主营，自己填  ： 义乌到宁波、上海外贸进仓#
+	 m smallint()  注册资金 万元
+	 w varchar(50)  企业类型  有限责任公司(自然人投资或控股)
+	 #co.x varchar(12) 法人代表  #
+	 #co.t datetime()  成立时间#
+	 l varchar(255)  注册地址
+	 j varchar(33) 新版工商注册号 330782000187109 内资15位；外资
+	 t varchar(25) 执照期限：  2011-03-18 至 2021-03-17
+	 u varchar(39) 发证机关
+#
+ 
+前6位：身份证地址6位一样
+中8位：
+第一位： 
+1） 内资各类企业使用“0”、“1”、“2”、“3”； 2） 外资企业使用“4”、“5”； 3） 个体工商户使用“6”、“7”、“8”、“9”。 各级工商行政管理机关必须保证8位数顺序码在其管辖区内的唯一性，即一个顺序码只能赋给一个市场主体。
+最后一位验证码
+
+老版注册号码为13位,例如:3202002105368。
+13位中的最后4位都是流水号。 
+
+二、 外资企业 
+标准注册号为7个汉字+6位数字+号，例如：企独苏宁总字第001123号 
+企：企业； 
+独：独资，可换为合（合资）、作（合作）、股（股份制）等 
+苏：江苏； 
+宁：南京（城市代号），苏州就是苏，无锡就是锡； 
+总：表示法人企业，可换为分（分支机构），办（办事处）等； 
+
+如果是省级工商局，就没有城市代码，即数字前只有6个汉字。 
+
+目前江苏省有省级工商局三家：省局、苏州工业园区、张家港保税区，他们区别在6位数字中。 
+省局是企苏总字第000000号 
+保税区是企苏总字第010000号 
+园区是企苏总字第020000号#
+	 
+	  
+*企业发展动态*	.
+     v tiny() 年营业额  1-->1-50万  2-->50-100万 
+	 b varchar(15) 物流品牌
+	 a tinyint()  员工人数   1-->1-25   2->25-50
+	 c tinyint()  车辆数目  1-->1-15  2-->15-30
+	 r varchar(255) 付款方式：到付;预付;月结;其他
+	  
+	
+*企业服务信息*	
+     s varchar(255) 服务：公路整车;公路零担;空运;仓储与配送,义乌到宁波外贸进仓;义乌到上海外贸进仓;义乌到宁波大货托运;义乌到上海大货托运
+	 p varchar(255) 经营区域 （采用高度固定，超过overflow显示）上海市;浙江省,宁波市 北仑区  #市用,省用;#
+	 q varchar(255) 增值服务 代收货款服务;保价服务;GPS跟踪;免费发送到货通知;准点到达服务;仓储服务;配送服务;代收货款服务
+	 g varchar(255） 是否配货上门==搬家公司可以自己写送货区域
+	 o varchar(255) 物流优势
+	 k varchar(255) 客户群体
+	 

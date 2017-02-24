@@ -1,0 +1,217 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="../c3.css" />
+<title>DTD - 属性</title>
+</head>
+<body class="xml">
+<div id="wrapper">
+<div id="header">
+<a href="http://e.v-get.com/w3cschool/" style="float:left;">W3CSchool 在线教程</a>
+<div class="q g"><script type="text/javascript">var cpro_id="u1163355"</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div>
+<div id="navfirst">
+<ul id="menu">
+<li id="h"><a href="../h.html">HTML教程</a></li>
+<li id="x"><a href="../x.html">XML教程</a></li>
+<li id="b"><a href="../b.html">浏览器脚本</a></li>
+<li id="s"><a href="../s.html">服务器脚本</a></li>
+<li id="d"><a href="../d.html">dot net教程</a></li>
+<li id="m"><a href="../m.html">多媒体教程</a></li>
+<li id="w"><a href="../w.html">建站手册</a></li>
+</ul>
+</div><div id="navsecond">
+<div id="course">
+<h2>DTD 教程</h2>
+<ul>
+<li><a href="http://e.v-get.com/w3cschool/">DTD 首页</a></li>
+<li><a href="dtd_intro.html">DTD 简介</a></li>
+<li><a href="dtd_building.html">DTD 构建模块</a></li>
+<li><a href="dtd_elements.html">DTD 元素</a></li>
+<li><a href="dtd_attributes.html">DTD 属性</a></li>
+<li><a href="dtd_entities.html">DTD 实体</a></li>
+<li><a href="dtd_validation.html">DTD 验证</a></li>
+<li><a href="dtd_examples.html">DTD 实例</a></li>
+<li><a href="dtd_summary.html">DTD 总结</a></li>
+</ul>
+</div>
+<div id="selected">
+<h2>建站手册</h2>
+<ul>
+<li><a href="../site/">网站构建</a></li>
+<li><a href="../w3c/">万维网联盟</a></li>
+<li><a href="http://e.v-get.com/w3c/">W3CSchool 教程</a></li>
+<li><a href="../quality/">网站品质</a></li>
+<li><a href="../semweb/">语义网</a></li>
+<li><a href="../hosting/">网站主机</a></li>
+</ul>
+<h2><a href="http://e.v-get.com/w3c/" class="f13">W3CSchool 教程</a></h2><div class="a120x90"><script type="text/javascript">var cpro_id="u1210867";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div></div>
+</div>
+<div id="maincontent">
+<h1>DTD - 属性</h1>
+<div  id="tpn">
+<ul class="prenext">
+<li class="pre"><a href="dtd_elements.html">上一页</a></li>
+<li class="next"><a href="dtd_entities.html">下一页</a></li>
+</ul>
+</div>
+<div id="intro">
+<p><strong>在 DTD 中，属性通过 ATTLIST 声明来进行声明。</strong></p>
+</div>
+<div>
+<h2>声明属性</h2>
+<p>属性声明拥使用下列语法：</p>
+<pre>&lt;!ATTLIST 元素名称 属性名称 属性类型 默认值&gt;</pre>
+<h3>DTD 实例:</h3>
+<pre>&lt;!ATTLIST payment type CDATA &#34;check&#34;&gt;</pre>
+<h3>XML 实例:</h3>
+<pre>&lt;payment type=&#34;check&#34; /&gt;</pre>
+<h3>以下是<em>属性类型</em>的选项：</h3>
+<table class="dataintable">
+<tr>
+<th>类型</th>
+<th>描述</th>
+</tr>
+<tr>
+<td>CDATA</td>
+<td>值为字符数据 (character data)</td>
+</tr>
+<tr>
+<td>(en1|en2|..)</td>
+<td>此值是枚举列表中的一个值</td>
+</tr>
+<tr>
+<td>ID</td>
+<td>值为唯一的 id</td>
+</tr>
+<tr>
+<td>IDREF</td>
+<td>值为另外一个元素的 id</td>
+</tr>
+<tr>
+<td>IDREFS</td>
+<td>值为其他 id 的列表</td>
+</tr>
+<tr>
+<td>NMTOKEN</td>
+<td>值为合法的 XML 名称</td>
+</tr>
+<tr>
+<td>NMTOKENS</td>
+<td>值为合法的 XML 名称的列表</td>
+</tr>
+<tr>
+<td>ENTITY</td>
+<td>值是一个实体</td>
+</tr>
+<tr>
+<td>ENTITIES</td>
+<td>值是一个实体列表</td>
+</tr>
+<tr>
+<td>NOTATION</td>
+<td>此值是符号的名称</td>
+</tr>
+<tr>
+<td>xml:</td>
+<td>值是一个预定义的 XML 值</td>
+</tr>
+</table>
+<h3>默认值参数可使用下列值：</h3>
+<table class="dataintable">
+<tr>
+<th>值</th>
+<th>解释</th>
+</tr>
+<tr>
+<td>值</td>
+<td>属性的默认值</td>
+</tr>
+<tr>
+<td>#REQUIRED</td>
+<td>属性值是必需的</td>
+</tr>
+<tr>
+<td>#IMPLIED</td>
+<td>属性不是必需的</td>
+</tr>
+<tr>
+<td>#FIXED value</td>
+<td>属性值是固定的</td>
+</tr>
+</table>
+</div>
+<div>
+<h2>规定一个默认的属性值</h2>
+<h3>DTD:</h3>
+<pre>&lt;!ELEMENT square EMPTY&gt;
+&lt;!ATTLIST square width CDATA &#34;0&#34;&gt;</pre>
+<h3>合法的 XML:</h3>
+<pre>&lt;square width=&#34;100&#34; /&gt;</pre>
+<p>在上面的例子中，&#34;square&#34; 被定义为带有 CDATA 类型的 &#34;width&#34; 属性的空元素。如果宽度没有被设定，其默认值为0 。</p>
+</div>
+<div>
+<h2>#IMPLIED</h2>
+<h3>语法</h3>
+<pre>&lt;!ATTLIST 元素名称 属性名称 属性类型 #IMPLIED&gt;</pre>
+<h3>例子</h3>
+<p>DTD:</p>
+<pre>&lt;!ATTLIST contact fax CDATA #IMPLIED&gt;</pre>
+<p>合法的 XML:</p>
+<pre>&lt;contact fax=&#34;555-667788&#34; /&gt;</pre>
+<p>合法的 XML:</p>
+<pre>&lt;contact /&gt;</pre>
+<p>假如您不希望强制作者包含属性，并且您没有默认值选项的话，请使用关键词 #IMPLIED。</p>
+</div>
+<div>
+<h2>#REQUIRED</h2>
+<h3>语法</h3>
+<pre>&lt;!ATTLIST 元素名称 属性名称 属性类型 #REQUIRED&gt;</pre>
+<h3>例子</h3>
+<p>DTD:</p>
+<pre>&lt;!ATTLIST person number CDATA #REQUIRED&gt;</pre>
+<p>合法的 XML:</p>
+<pre>&lt;person number=&#34;5677&#34; /&gt;</pre>
+<p>非法的 XML:</p>
+<pre>&lt;person /&gt;</pre>
+<p>假如您没有默认值选项，但是仍然希望强制作者提交属性的话，请使用关键词 #REQUIRED。</p>
+</div>
+<div>
+<h2>#FIXED</h2>
+<h3>语法</h3>
+<pre>&lt;!ATTLIST 元素名称 属性名称 属性类型 #FIXED &#34;value&#34;&gt;</pre>
+<h3>例子</h3>
+<p>DTD:</p>
+<pre>&lt;!ATTLIST sender company CDATA #FIXED &#34;Microsoft&#34;&gt;</pre>
+<p>合法的 XML:</p>
+<pre>&lt;sender company=&#34;Microsoft&#34; /&gt;</pre>
+<p>非法的 XML:</p>
+<pre>&lt;sender company=&#34;W3CSchool&#34; /&gt;</pre>
+<p>如果您希望属性拥有固定的值，并不允许作者改变这个值，请使用 #FIXED 关键词。如果作者使用了不同的值，XML 解析器会返回错误。</p>
+</div>
+<div>
+<h2>列举属性值</h2>
+<h3>语法：</h3>
+<pre>&lt;!ATTLIST 元素名称 属性名称 (en1|en2|..) 默认值&gt;</pre>
+<h3>DTD 例子:</h3>
+<pre>&lt;!ATTLIST payment type (check|cash) &#34;cash&#34;&gt;</pre>
+<h3>XML 例子:</h3>
+<pre>&lt;payment type=&#34;check&#34; /&gt;</pre>
+<p>或者</p>
+<pre>&lt;payment type=&#34;cash&#34; /&gt;</pre>
+<p>如果您希望属性值为一系列固定的合法值之一，请使用列举属性值。</p>
+</div>
+<div  id="bpn">
+<ul class="prenext">
+<li class="pre"><a href="dtd_elements.html">上一页</a></li>
+<li class="next"><a href="dtd_entities.html">下一页</a></li>
+</ul>
+</div>
+</div>
+<div id="sidebar">
+<div class="rs"></div><div class="a120x600"><script type="text/javascript">var cpro_id="u1293136";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div><div class="b"></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<html>
+<head><link rel="stylesheet" type="text/css" href="showcode.css" /></head>
+<body>
+<pre>
+<code class="aspcode">&lt;%
+dim numvisits
+response.cookies(&#34;NumVisits&#34;).Expires=date+365 
+numvisits=request.cookies(&#34;NumVisits&#34;)
+if numvisits=&#34;&#34; then
+   response.cookies(&#34;NumVisits&#34;)=1
+   response.write(&#34;欢迎！这是您第一次访问本页面。&#34;)
+else
+   response.cookies(&#34;NumVisits&#34;)=numvisits+1
+   response.write(&#34;之前，您已经访问过本页面 &#34;)
+   response.write(numvisits & &#34; 次。&#34;)
+end if
+%&gt;</code>
+&lt;html&gt;
+&lt;body&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+</body>

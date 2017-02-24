@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<style type="text/css">
+<!--
+*{padding:0;margin:0}
+body {background:#fff;font-size:12px;color: #333;font-family:"Tahoma","SimSun"}
+.w,.tc{margin: 0px auto; overflow: hidden; width: 990px}
+.t{background:url(i.png)}
+/*这个可以被很多利用*/
+/*H头部css*/
+.t{margin: 0px auto;LINE-HEIGHT: 26px;HEIGHT: 26px;border-bottom:#dadada 1px solid}
+.t a{padding:0 3px}
+td{width:80px; text-align:center; vertical-align:middle}
+.n{width:300px}
+.n a{}
+td input{width:30px; text-align:center}
+td img{width:50px;height:50px; vertical-align:middle}
+#t{font-weight:800;color:#F00}
+.cb td{ text-align:right}
+-->
+</style>
+<title>V-Get! 微商城-微网购首选，正品行货，价廉优品，让V时代的购物，无所不Get!</title>
+</head>
+<script type="text/javascript" src="http://localhost:8080/v-get.com/i/i.js"></script>
+<script type="text/javascript" src="http://localhost:8080/v-get.com/i/hao/i.js"></script>
+<body>
+<div class="t"><div class="tc"><a href="" class="th">收藏V-Get!商城</a></div></div>
+<div class="w">
+<form action="http://localhost:8080/v-get.com/shop/order.php" method="post">
+<table cellspacing="0" border="1" bordercolordark="#ffffff" bordercolorlight="#000000" id="c">
+<tr><th>商品编号</th><th class="n">商品名称</th><th>微购价</th><th>返现</th><th>赠送积分</th><th>数量</th><th>删除商品</th></tr>
+<tr class="cb"><td colspan="8"> 总价：<span id="t">￥0.00</span>元</td></tr>
+<tr class="cb"><td colspan="8"> <input type="submit" value="提交" /></td></tr>
+</table>
+</form>
+</div>
+
+
+<script type="text/javascript" language="javascript">
+var j=CG('v_od13'),t=0;
+     var js=j.substr(1).split(';');
+	for(I=0;I<L(js);I++){
+		var arr=js[I].split(',');
+		var tr=$('c').insertRow(1),td=new Array();
+		for(x=0;x<L(arr);x++){	
+		td[x]=tr.insertCell(x);
+		td[x].innerHTML=arr[x];
+		
+		}
+        td[0].innerHTML+='<input type="hidden" value="'+arr[0]+'" name="i[]" />';
+		td[1].innerHTML='<a href=""><img src="" />'+arr[1]+'</a>';
+		td[5].innerHTML='<input type="text" value="'+arr[5]+'" name="m[]" />';
+		td[6]=tr.insertCell(x);
+		td[6].innerHTML='<a href="javascript:$("c").deleteRow(1)">删除</a>';
+		var h=parseFloat(arr[2])*$i(arr[5]);
+		t+=h;
+		}
+
+$('t').innerHTML=t.toFixed(2);
+
+</script>
+</body></html>

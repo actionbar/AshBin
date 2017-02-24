@@ -1,0 +1,83 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>asp内置对象 ObjectContext 详解</title>
+<style type="text/css">
+<!--
+body {
+	font-size: 10.4pt;
+	line-height: 22px;
+}
+-->
+</style>
+</head>
+
+<body bgcolor="eeeeee" leftmargin="20" marginwidth="20">
+<p><strong>asp内置对象 ObjectContext 详解</strong></p>
+<p></p>
+<hr>
+<p> 您可以使用 ObjectContext 对象提交或放弃一项由 Microsoft Transaction Server (MTS) 管理的事务，它由 
+  ASP 页包含的脚本初始化。 </p>
+<p>ASP 包含 @TRANSACTION 指令时，该页会在事务中运行，直到事务成功或失败后才会终止。 </p>
+<p>语法<br>
+  ObjectContext.method</p>
+<p>方法<br>
+  SetComplete SetComplete 方法声明脚本不了解事务未完成的原因。如果事务中的所有组件都调用 SetComplete，事务将完成。 <br>
+  SetAbort SetAbort 方法声明被脚本初始化的事务未完成，无法更新源。 </p>
+<p><br>
+  事件<br>
+  OnTransactionCommit <br>
+  OnTransactionAbort </p>
+<p><br>
+  注释<br>
+  ObjectContext 实现 MTS ObjectContext 对象的两种方法。 SetAbort 方法完全终止事务。这样，MTS 不更新在第一阶段联系的源。事务终止时，将处理脚本的 
+  OnTransactionAbort 事件。</p>
+<p>调用 SetComplete 方法并不一定意味着事务已完成。只有脚本调用的所有事务组件都调用了 SetComplete，事务才能完成。在大多数实例中，如果结束处理时未调用 
+  SetAbort，脚本通常被假定为完成的，所以不一定要在脚本内调用 SetComplete。</p>
+<p>ObjectContext 展示了 SetAbort 和 SetComplete 以外的六种方法。这些方法可用于脚本调用的组件，但不能直接用于 ASP 
+  脚本。 </p>
+<p>示例<br>
+  这里示范使用 SetAbort 和 SetCommit 的方法。Sales.htm 文件获取处理销售请求所需的数据。第二个文件——SalesVerify.asp 
+  中的脚本使用两个对象——Inventory 和 Sales 处理销售。如果 Inventory 返回了错误代码表示供销售的存货不足，就会调用 SetAbort。如果 
+  Inventory 对象没有返回错误代码，将会调用 SetComplete 处理销售请求。</p>
+<p>Sales.htm<br>
+  &lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML//EN&quot;&gt;</p>
+<p>&lt;HTML&gt;<br>
+  &lt;HEAD&gt;<br>
+  &lt;TITLE&gt;Sales Order&lt;/TITLE&gt;<br>
+  &lt;/HEAD&gt;<br>
+  &lt;BODY BGCOLOR=&quot;#FFFFFF&quot;&gt;&lt;FONT FACE=&quot;ARIAL,HELVETICA&quot;&gt;<br>
+  &lt;H2&gt;Sales Order Form &lt;/H2&gt;</p>
+<p>&lt;FORM METHOD=POST ACTION=&quot;SalesVerify.asp&quot;&gt; <br>
+  &lt;P&gt;Please enter the product code, quantity, and your account number.<br>
+  &lt;INPUT TYPE=TEXT NAME=QuantityToBuy&gt; <br>
+  &lt;INPUT TYPE=TEXT NAME=ProductCode&gt; <br>
+  &lt;INPUT TYPE=TEXT NAME=AccountIn&gt; <br>
+  &lt;P&gt;<br>
+  &lt;INPUT TYPE=SUBMIT&gt; <br>
+  &lt;/FONT&gt; <br>
+  &lt;/BODY&gt;<br>
+  &lt;/HTML&gt;</p>
+<p>SalesVerify.asp 文件<br>
+  &lt;%@ Transaction = Required %&gt;<br>
+  &lt;%<br>
+  Set CurrentQOH = Server.CreateObject(&quot;Mycomp.Inventory&quot;)<br>
+  Set CurrentSales = Server.CreateObject(&quot;Mycomp.Sales&quot;)</p>
+<p> CheckQuantity = Request(&quot;QuantityToBuy&quot;)<br>
+  CheckProduct = Request(&quot;ProductCode&quot;)<br>
+  QuantityStatus = CurrentQOH.CheckQOH(CheckQuantity,CheckProduct)</p>
+<p>If QuantityStatus = None<br>
+  ObjectContext.SetAbort<br>
+  Response.Write &quot;Sorry, there is not sufficient quantity on hand to process 
+  your sale.&quot;<br>
+  Else <br>
+  ObjectContext.SetComplete<br>
+  Account = Request(&quot;AccountIn&quot;)<br>
+  Saleupdate = CurrentSales.PostIt(AccountIn)<br>
+  End If<br>
+  %&gt;</p>
+<p></p>
+<p>&nbsp; </p>
+</body>
+</html>

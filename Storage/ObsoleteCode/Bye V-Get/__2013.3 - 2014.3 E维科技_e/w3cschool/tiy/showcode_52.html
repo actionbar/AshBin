@@ -1,0 +1,19 @@
+<html>
+<head><link rel="stylesheet" type="text/css" href="showcode.css" /></head>
+<body>
+<pre>
+&lt;html&gt;
+&lt;body&gt;
+<code class="aspcode">&lt;%
+Set fs=Server.CreateObject(&#34;Scripting.FileSystemObject&#34;)
+If fs.FolderExists(&#34;c:\temp&#34;) = true Then
+      Response.Write(&#34;文件夹 c:\temp 存在。&#34;)
+Else
+      Response.Write(&#34;文件夹 c:\temp 不存在。&#34;)
+End If
+set fs=nothing
+%&gt;</code>
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+</body>

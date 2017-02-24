@@ -1,0 +1,164 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>ASP内置对象之一 Request对象 详解 </title>
+<style type="text/css">
+<!--
+body {
+	font-size: 10.4pt;
+	line-height: 22px;
+}
+-->
+</style>
+</head>
+
+<body bgcolor="#eeeeee" leftmargin="20" marginwidth="20">
+<p><strong>ASP内置对象 Request对象 详解</strong></p>
+<hr>
+<p>Request对象用于接受所有从浏览器发往你的服务器的请求内的所有信息。</p>
+<p>集合</p>
+<p>Request.ClientCertificate(key[SubField])</p>
+<p>所有客户证书的信息的集合。对于Key，该集合具有如下的关键字：</p>
+<p>Subject<br>
+  证书的主题。包含所有关于证书收据的信息。能和所有的子域后缀一起使用。</p>
+<p>Issuer<br>
+  证书的发行人。包含所有关于证书验证的信息。除了CN外，能和所有的子域后缀一起使用。</p>
+<p>VadidFrom<br>
+  证书发行的日期。使用VBScript格式。</p>
+<p>ValidUntil<br>
+  该证书不在有效的时间。</p>
+<p>SerialNumber<br>
+  包含该证书的序列号。</p>
+<p>Certificate<br>
+  包含整个证书内容的二进制流，使用ASN.1格式。</p>
+<p><br>
+  对于SubField，Subject和Issuer关键字可以具有如下的子域后缀：（比如：SubjectOU或IssuerL）</p>
+<p>C<br>
+  起源国家。</p>
+<p>O<br>
+  公司或组织名称。</p>
+<p>OU<br>
+  组织单元。</p>
+<p>CN<br>
+  用户的常规名称。</p>
+<p>L<br>
+  局部。</p>
+<p>S<br>
+  州（或省）。</p>
+<p>T<br>
+  个人或公司的标题。</p>
+<p>GN<br>
+  给定名称。</p>
+<p>I<br>
+  初始。</p>
+<p><br>
+  当文件cervbs.inc(VBScript使用)或cerjavas.inc(Jscript使用)通过使用#INCLUDE导向包含在你的Active Server 
+  Page里时，下面两个标志可以使用：</p>
+<p>ceCertPresent<br>
+  指明客户证书是否存在，其值为TRUE或FALSE。</p>
+<p>ceUnrecongnizedIssure<br>
+  指明在该链表中的最后的证书的发行者是否未知，其值为TRUE或FALSE。</p>
+<p><br>
+  Request.Cookies(Cookie[(key).Attribute])</p>
+<p>Cookie的集合。允许获得浏览器的Cookie。Cookie指明返回那一个Cookie。Key用于从Cookie字典中返回具有某一关键字的Cookie值。对于Attribute，你能使用属性HasKeys来确定某一Cookie是否具有子关键字。HasKeys的值为TRUE或FALSE。</p>
+<p>Request.Form(Parameter)[(Index).Count]</p>
+<p>填写在HTML的表单中所有的数据的集合。Parameter是在HTML表单中某一元素的名称。当某一参数具有不止一个值（比如，当在&lt;SELECT&gt;中使用MULTIPLE属性时）时，使用Index。当某一参数具有多值时，Count指明多值个数。</p>
+<p>Request.QueryString(Varible)[(Index).Count]</p>
+<p>查询字符串的所有值的集合。Varible是在查询字符串某一变量的名称。当某一变量具有多于一个值时，使用Index。当某一参数具有多值时，Count指明值的个数。</p>
+<p>Request.ServerVaribles(Server Environment Variable)</p>
+<p>环境变量的集合。允许读取HTTP头。你可以通过使用HTTP_前缀来读取任何头信息。比如，HTTP_USER_AGENT接受客户代理HTTP头（浏览器类型）。除此外，你可以使用下表所示的变量获得任何环境信息。</p>
+<p>ALL_HTTP<br>
+  客户端发送的所有HTTP标头，他的结果都有前缀HTTP_。</p>
+<p>ALL_RAW<br>
+  客户端发送的所有HTTP标头,其结果和客户端发送时一样，没有前缀HTTP_ </p>
+<p>APPL_MD_PATH<br>
+  应用程序的元数据库路径。</p>
+<p>APPL_PHYSICAL_PATH<br>
+  与应用程序元数据库路径相应的物理路径。</p>
+<p>AUTH_PASSWORD<br>
+  当使用基本验证模式时，客户在密码对话框中输入的密码。</p>
+<p>AUTH_TYPE<br>
+  这是用户访问受保护的脚本时，服务器用于检验用户的验证方法。</p>
+<p>AUTH_USER<br>
+  代验证的用户名。</p>
+<p>CERT_COOKIE<br>
+  唯一的客户证书ID号。</p>
+<p>CERT_FLAG<br>
+  客户证书标志，如有客户端证书，则bit0为0。如果客户端证书验证无效，bit1被设置为1。</p>
+<p>CERT_ISSUER<br>
+  用户证书中的发行者字段。</p>
+<p>CERT_KEYSIZE<br>
+  安全套接字层连接关键字的位数，如128。</p>
+<p>CERT_SECRETKEYSIZE<br>
+  服务器验证私人关键字的位数。如1024。</p>
+<p>CERT_SERIALNUMBER<br>
+  客户证书的序列号字段。</p>
+<p>CERT_SERVER_ISSUER<br>
+  服务器证书的发行者字段</p>
+<p>CERT_SERVER_SUBJECT<br>
+  服务器证书的主题字段。</p>
+<p>CERT_SUBJECT<br>
+  客户端证书的主题字段。</p>
+<p>CONTENT_LENGTH<br>
+  客户端发出内容的长度。</p>
+<p>CONTENT_TYPE<br>
+  客户发送的form内容或HTTP PUT的数据类型。</p>
+<p>GATEWAY_INTERFACE<br>
+  服务器使用的网关界面。</p>
+<p>HTTPS<br>
+  如果请求穿过安全通道（SSL），则返回ON。如果请求来自非安全通道，则返回OFF。</p>
+<p>HTTPS_KEYSIZE<br>
+  安全套接字层连接关键字的位数，如128。</p>
+<p>HTTPS_SECRETKEYSIZE<br>
+  服务器验证私人关键字的位数。如1024。</p>
+<p>HTTPS_SERVER_ISSUER<br>
+  服务器证书的发行者字段。</p>
+<p>HTTPS_SERVER_SUBJECT<br>
+  服务器证书的主题字段。</p>
+<p>INSTANCE_ID<br>
+  IIS实例的ID号。</p>
+<p>INSTANCE_META_PATH<br>
+  响应请求的IIS实例的元数据库路径。</p>
+<p>LOCAL_ADDR<br>
+  返回接受请求的服务器地址。</p>
+<p>LOGON_USER<br>
+  用户登录Windows NT的帐号</p>
+<p>PATH_INFO<br>
+  客户端提供的路径信息。</p>
+<p>PATH_TRANSLATED<br>
+  通过由虚拟至物理的映射后得到的路径。</p>
+<p>QUERY_STRING<br>
+  查询字符串内容。</p>
+<p>REMOTE_ADDR<br>
+  发出请求的远程主机的IP地址。</p>
+<p>REMOTE_HOST<br>
+  发出请求的远程主机名称。</p>
+<p>REQUEST_METHOD<br>
+  提出请求的方法。比如GET、HEAD、POST等等。</p>
+<p>SCRIPT_NAME<br>
+  执行脚本的名称。</p>
+<p>SERVER_NAME<br>
+  服务器的主机名、DNS地址或IP地址。</p>
+<p>SERVER_PORT<br>
+  接受请求的服务器端口号。</p>
+<p>SERVER_PORT_SECURE<br>
+  如果接受请求的服务器端口为安全端口时，则为1，否则为0。</p>
+<p>SERVER_PROTOCOL<br>
+  服务器使用的协议的名称和版本。</p>
+<p>SERVER_SOFTWARE<br>
+  应答请求并运行网关的服务器软件的名称和版本。</p>
+<p>URL<br>
+  提供URL的基本部分。</p>
+<p>　</p>
+<p>方法</p>
+<p>Request.BinaryRead(Count)</p>
+<p>接收一个HTML表单的未经过处理的内容。当调用此方法时，Count指明要接收多少字节。在调用此方法后，Count指明实际上接收到多少个字节。</p>
+<p>属性</p>
+<p>Request.TotalBytes</p>
+<p>查询体的长度，以字节为单位。</p>
+<p><br>
+</p>
+<p> </p>
+</body>
+</html>

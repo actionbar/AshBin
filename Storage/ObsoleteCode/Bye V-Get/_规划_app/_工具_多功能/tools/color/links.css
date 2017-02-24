@@ -1,0 +1,53 @@
+@font-face {
+	font-family: ee studio;
+	src:url(http://www.ee-studio.com/fonts/eestudio.eot);
+}
+@font-face {
+	font-family: ee;
+	src:url(http://www.ee-studio.com/fonts/ee.eot);
+}
+.geourl {
+	BORDER-RIGHT: #063 1px solid; PADDING-RIGHT: 3px; BORDER-TOP: #3c6 1px solid; PADDING-LEFT: 3px; FONT-WEIGHT: bold; FONT-SIZE: 10px; PADDING-BOTTOM: 0px; MARGIN: 0px; BORDER-LEFT: #3c6 1px solid; COLOR: white; PADDING-TOP: 0px; BORDER-BOTTOM: #063 1px solid; FONT-FAMILY: verdana, sans-serif; BACKGROUND-COLOR: #093; TEXT-DECORATION: none
+}
+.rss {
+	BORDER-RIGHT: #d30 1px solid; PADDING-RIGHT: 3px; BORDER-TOP: #fc4 1px solid; PADDING-LEFT: 3px; FONT-WEIGHT: bolder; FONT-SIZE: 10px; PADDING-BOTTOM: 0px; MARGIN: 0px; BORDER-LEFT: #fc4 1px solid; COLOR: white; PADDING-TOP: 0px; BORDER-BOTTOM: #d30 1px solid; FONT-FAMILY: verdana, sans-serif; BACKGROUND-COLOR: #f60; TEXT-DECORATION: none
+}
+.technorati {
+	BORDER-RIGHT: #030 1px solid; PADDING-RIGHT: 3px; BORDER-TOP: #9f0 1px solid; PADDING-LEFT: 3px; FONT-WEIGHT: bold; FONT-SIZE: 10px; PADDING-BOTTOM: 0px; MARGIN: 0px; BORDER-LEFT: #9f0 1px solid; COLOR: white; PADDING-TOP: 0px; BORDER-BOTTOM: #030 1px solid; FONT-FAMILY: verdana, sans-serif; BACKGROUND-COLOR: #9c0; TEXT-DECORATION: none
+}
+.atom {
+	BORDER-RIGHT: #006 1px solid; PADDING-RIGHT: 3px; BORDER-TOP: #9ff 1px solid; PADDING-LEFT: 3px; FONT-WEIGHT: bold; FONT-SIZE: 10px; PADDING-BOTTOM: 0px; MARGIN: 0px; BORDER-LEFT: #9ff 1px solid; COLOR: white; PADDING-TOP: 0px; BORDER-BOTTOM: #006 1px solid; FONT-FAMILY: verdana, sans-serif; BACKGROUND-COLOR: #09f; TEXT-DECORATION: none
+}
+.foaf {
+	BORDER-RIGHT: #333 1px solid; PADDING-RIGHT: 3px; BORDER-TOP: #fff 1px solid; PADDING-LEFT: 3px; FONT-WEIGHT: bold; FONT-SIZE: 10px; PADDING-BOTTOM: 0px; MARGIN: 0px; BORDER-LEFT: #fff 1px solid; PADDING-TOP: 0px; BORDER-BOTTOM: #333 1px solid; FONT-FAMILY: verdana, sans-serif; BACKGROUND-COLOR: #777; TEXT-DECORATION: none
+}
+.foaf_f1 {
+	COLOR: #ff6666
+}
+.foaf_o {
+	COLOR: #98cb98
+}
+.foaf_a {
+	COLOR: #ffff9f
+}
+.foaf_f2 {
+	COLOR: #99ccff
+}
+.w3c_check {
+	BORDER-RIGHT: #988 1px solid; PADDING-RIGHT: 3px; BORDER-TOP: #ffc 1px solid; PADDING-LEFT: 3px; FONT-WEIGHT: bold; FONT-SIZE: 10px; PADDING-BOTTOM: 0px; MARGIN: 0px; BORDER-LEFT: #ffc 1px solid; COLOR: black; PADDING-TOP: 0px; BORDER-BOTTOM: #988 1px solid; FONT-FAMILY: verdana, sans-serif; BACKGROUND-COLOR: #fc6; TEXT-DECORATION: none
+}
+.check {
+	FONT-WEIGHT: bolder; COLOR: #9c0000
+}
+.cc {
+	BORDER-RIGHT: #030 1px solid; PADDING-RIGHT: 3px; BORDER-TOP: #cfe 1px solid; PADDING-LEFT: 3px; FONT-WEIGHT: bold; FONT-SIZE: 10px; PADDING-BOTTOM: 0px; MARGIN: 0px; BORDER-LEFT: #cfe 1px solid; COLOR: white; PADDING-TOP: 0px; BORDER-BOTTOM: #030 1px solid; FONT-FAMILY: verdana, sans-serif; BACKGROUND-COLOR: #446666; TEXT-DECORATION: none
+}
+.print {
+	BORDER-RIGHT: #333 1px solid; PADDING-RIGHT: 3px; BORDER-TOP: #eee 1px solid; PADDING-LEFT: 3px; FONT-WEIGHT: bold; FONT-SIZE: 10px; PADDING-BOTTOM: 0px; MARGIN: 0px; BORDER-LEFT: #ddd 1px solid; COLOR: black; PADDING-TOP: 0px; BORDER-BOTTOM: #333 1px solid; BACKGROUND-COLOR: #d4d0c8; TEXT-DECORATION: none
+}
+.tech_link {
+	TEXT-ALIGN: center
+}
+.ee {
+	BORDER-RIGHT: #006 1px solid; PADDING-RIGHT: 3px; BORDER-TOP: #9ff 1px solid; PADDING-LEFT: 3px; FONT-WEIGHT: bold; FONT-SIZE: 12px; PADDING-BOTTOM: 0px; MARGIN: 0px; BORDER-LEFT: #9ff 1px solid; COLOR: white; PADDING-TOP: 0px; BORDER-BOTTOM: #006 1px solid; FONT-FAMILY: "ee studio"; BACKGROUND-COLOR: #4169e1; TEXT-DECORATION: none
+}

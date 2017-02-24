@@ -1,0 +1,108 @@
+<html xmlns:rdl>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<script src="rdl_properties.js"></script>
+<base target="_self">
+</head>
+<body>
+
+<script>
+
+//collFriendProperties=new Array();
+//collFriendDeclarations=new Array();
+//collFriendAtRules=new Array();
+//collFriendElements=new Array();
+//collFriendClasses=new Array();
+
+collFriendProperties=new Array(
+'layout-grid-mode','layout-grid-type','layout-grid-char','layout-grid'
+);
+
+//collIE40=new Array();
+//collIE50=new Array();
+//collIE55=new Array();
+//collIE60=new Array();
+
+collIE50=new Array(
+'BLOCKQUOTE','BODY','CENTER','currentStyle','DD','DIR','DIV','DL','DT','FIELDSET','FORM','Hn','HR','LI','LISTING','MARQUEE','MENU','OL','P','PLAINTEXT','PRE','runtimeStyle','style','TABLE','TD','TH','TR','UL','XMP'
+);
+
+sStyle=
+'<style>\n'+
+'#idDIV{width:100%;height:80px;background-color:#FFD700;padding:4px;font-family:verdana,tahoma;layout-grid : both loose none 12px;}\n'+
+'#idCodeDiv{width:100%;padding:4px;font-family:verdana,tahoma;margin:12px 0px 0px 0px;background-color:#EEEEEE;font-weight:bold;}\n'+
+'<\/style>\n';
+
+sScript=
+'<script>\n'+
+'function rdl_change(e){\n'+
+'var oCodeDiv=document.all("idCodeDiv");\n'+
+'var oDiv=document.all("idDiv");\n'+
+'with (document.all("idSel")) var sValue=options[selectedIndex].value;\n'+
+'oDiv.style.layoutGridLine=sValue;\n'+
+'oCodeDiv.innerText="layout-grid : both loose none 12px ; \\r\\nlayout-grid-line : "+sValue+";";\n'+
+'}\n'+
+'<\/script>\n';
+
+sCode=
+'<div id=idDIV><b>Every man dies , Not every man really lives .<\/b><br>请记住上面这句话。<\/div>\n'+
+'<br>\n'+
+'<select id="idSel" onchange="rdl_change();">\n'+
+'<option value="none">---layout-grid-line---\n'+
+'<option value="auto">auto\n'+
+'<option value="none">none\n'+
+'<option value="25%">25%\n'+
+'<option value="10px">10px\n'+
+'<option value="12px">12px\n'+
+'<\/select>\n'+
+'<br>\n'+
+'<div id=idCodeDiv>layout-grid : both loose none 12px ; <br>layout-grid-line : none ;<\/div>\n';
+
+iWinWidth=360;
+
+iWinHeight=320;
+
+//bRunCode=false;
+
+//bElements=false;
+
+</script>
+
+<div id=idContent>
+
+<div id=idContentTitle><span id=idTitleName>layout-grid-line</span>版本：IE5+专有属性　继承性：无</div>
+
+<div class=cssColumnTitle>语法：</div>
+<div>
+<b> layout-grid-line  : </b><span class=cssDefault><b>none</b></span> | <b>auto</b> | <i>length</i>
+</div>
+
+<div class=cssColumnTitle>取值：</div>
+<table>
+<tr><td nowrap><b> none </b></td><td nowrap><b>:</b></td><td><b>默认值</b>。无行网格设定</td></tr>
+<tr><td nowrap><b> auto </b></td><td nowrap><b>:</b></td><td>在对象文本中按最大的字符确定网格</td></tr>
+<tr><td nowrap><i> length </i></td><td nowrap><b>:</b></td><td>百分数 | 由浮点数字和单位标识符组成的长度值，其百分比取值是基于父对象尺寸。请参阅<a href="d_length.html"> 长度单位 </a></td></tr>
+</table>
+
+<div class=cssColumnTitle>说明：</div>
+<div>
+设置或检索应用于对象文本的行网格尺寸。<br>
+其视觉效果类似于<a href="c_lineheight.html"> line-height </a>属性。<br>
+以东亚语言(如中文，日文)写的文档通常根据一维或二维网格使用字符的页面版式。你可以用<a href="c_layoutgrid.html"> layout-grid </a>属性将这种布局加入到网页文档中去。<br>
+此属性只应用于块对象(如<b> div </b>)。<br>
+要使此属性发生作用，<a href="c_layoutgridmode.html"> layout-grid-mode </a>属性值必须设置为<b> line </b>或<b> both </b>。<br>
+此属性对于<b> currentStyle </b>对象而言是只读的。对于其他对象而言是可读写的。<br>
+对应的脚本特性为<b> layoutGridLine </b>。
+</div>
+
+<div class=cssColumnTitle>示例：</div>
+<div id=idSimpleCode>
+div { layout-grid-line: auto; } 
+</div>
+
+</div>
+</body>
+</html>
+
+<!-- Part of RDL(TM) - Written by Rain1977 
+HomeSite: http://www.dhtmlet.com  E-Mail: dhtmlet@hotmail.com -->

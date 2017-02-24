@@ -1,0 +1,8 @@
+
+<IfModule mod_rewrite.c>
+	RewriteEngine on
+	RewriteBase /www.v-get.com/baike/
+	RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteCond %{REQUEST_FILENAME} !-d
+	RewriteRule ^wiki/(.*)$ index.php?doc-innerlink-$1 [QSA,NU,PT,L] 
+</IfModule>

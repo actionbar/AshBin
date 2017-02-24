@@ -1,0 +1,108 @@
+<html xmlns:rdl>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<script src="rdl_method.js"></script>
+<base target="_self">
+</head>
+<body>
+
+<script>
+
+//collFriendObjects=new Array();
+//collFriendProperties=new Array();
+//collFriendMethods=new Array();
+//collFriendEvents=new Array();
+//collFriendCollections=new Array();
+
+collFriendMethods=new Array(
+'cloneNode','removeNode'
+);
+
+//collIE40=new Array();
+//collIE50=new Array();
+//collIE55=new Array();
+//collIE60=new Array();
+
+collIE40=new Array(
+'document'
+);
+
+//sStyle='';
+
+sScript=
+'<script>\n'+
+'function rdl_fnCreate(){\n'+
+'oData.innerHTML="";\n'+
+'with (oSel) var oOption=options[selectedIndex];\n'+
+'if(oOption.text.length\<1) return;\n'+
+'var aElement=document.createElement(oOption.text);\n'+
+'eval("aElement."+oOption.value+"=\'"+oText.value+"\'");\n'+
+'oView.innerText="document.createElement(\'"+oOption.text+"\');"\n'+
+'if(oOption.text=="A") {aElement.href="#"; aElement.onclick=new Function("return false;");}\n'+
+'if(oOption.text=="<FORM>") {aElement.border="1px solid #CCCCCC";var oReset=document.createElement("<input type=reset id=shit>");aElement.appendChild(oReset);}\n'+
+
+'oData.appendChild(aElement);\n'+
+'window.resizeTo(360,260);\n'+
+'}\n'+
+'<\/script>\n';
+
+sCode=
+'<div id="oData"><\/div><br>\n'+
+'<table width=98%><tr><td>\n'+
+'<select id="oSel">\n'+
+'<option value="innerText">A\n'+
+'<option value="value">&lt;INPUT TYPE="button"&gt;\n'+
+'<option value="innerText">&lt;FORM&gt;\n'+
+'<\/select>\n'+
+'<\/td><td>\n'+
+'<input type="text" id="oText" value="示范文字" size=12>\n'+
+'<\/td><td>\n'+
+'<input type=button value=" 建立 " onclick= "rdl_fnCreate();">\n'+
+'<\/td><\/tr><\/table><br>\n'+
+'<div id=oView style="font-size:10px;line-height:16px;background:#DFDFDF;padding:8px;"><\/div>\n';
+
+
+iWinWidth=360;
+
+iWinHeight=230;
+
+</script>
+
+<div id=idContent>
+
+<div id=idContentTitle><span id=idTitleName>createElement</span>版本：DOM1　返回值：有</div>
+
+<div class=cssColumnTitle>语法：</div>
+<div>
+<i>oElement</i><b> = </b><i>document</i><b> . createElement ( </b><i>sTagName</i><b> ) </b>
+</div>
+
+<div class=cssColumnTitle>参数：</div>
+<table>
+<tr><td nowrap><i> sTagName </i></td><td nowrap><b>:</b></td>
+<td><b>必选项</b>。字符串(String)。</td></tr>
+</table>
+
+<div class=cssColumnTitle>返回值：</div>
+<table>
+<tr><td nowrap><i> oElement </i></td><td nowrap><b>:</b></td>
+<td>对象(Element)。返回新建对象的引用。</td></tr>
+</table>
+
+<div class=cssColumnTitle>说明：</div>
+<div>
+根据指定的标签建立新的对象实例。
+<br>在IE4.0上仅仅可以用于新建<a href="../objects/img.html"> img </a>，<a href="../objects/area.html"> area </a>，<a href="../objects/option.html"> option </a>。在IE5.0上你可以用于新建除了<a href="../objects/frame.html"> frame </a>和<a href="../objects/iframe.html"> iframe </a>以外的所有对象类型。
+<br>新建对象的属性是可读取以及被程序控制的。
+<br>在使用本方法新建对象后，你必须明确的将对象置入集合或文档层次结构中，方可使用它们。
+<br>对于<a href="../objects/input.html"> input </a>而言，因其默认的<a href="../properties/ type.html"> type </a>属性值为<b> text </b>，所以新建的实例默认为文本输入框。若期望其他种类的<a href="../objects/input.html"> input </a>，则使用本方法建立对象时，要设置其<a href="../properties/ type.html"> type </a>属性。
+<br><i> sTagName </i>可以包含属性，只要整个字符串(String)是有效的HTML。如果你希望在运行时用本方法建立的对象包含<a href="../properties/name.html"> name </a>属性，你应该这样做。</div>
+
+
+
+</div>
+</body>
+</html>
+
+<!-- Part of RDL(TM) - Written by Rain1977 
+HomeSite: http://www.dhtmlet.com  E-Mail: dhtmlet@hotmail.com -->

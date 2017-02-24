@@ -1,0 +1,129 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>利用XMLHTTP 从其他页面获取数据</title>
+<style type="text/css">
+<!--
+body {
+	font-size: 10.4pt;
+	line-height: 22px;
+}
+-->
+</style>
+</head>
+
+<body bgcolor="#eeeeee" leftmargin="20" marginwidth="20">
+<p><strong>利用XMLHTTP 从其他页面获取数据</strong></p>
+<hr>
+<p>我们在编写ASP代码的时候，大家都知道可以通过post或者get获得form表单的数据，那么我们如何直接获得其他页面上的数据呢？这就要借助xmlhttp协议了。xmlhttp是xmldom技术的一部分。</p>
+<p>下面的代码就是一个很简单的例子，我们利用xmlhttp技术，把http://www.xxxx.com/站点首页的代码以xml的形式完全获取，并且在页面中输出。</p>
+<p>&lt;%<br>
+  Dim objXMLHTTP, xml<br>
+  Set xml = Server.CreateObject(&quot;Microsoft.XMLHTTP&quot;)<br>
+  <br>
+  xml.Open &quot;GET&quot;, &quot;http://www.codetoad.com/&quot;, False<br>
+  ' Pull the data from the web page<br>
+  xml.Send</p>
+<p> Response.write &quot;Here's the html we now have in our xml object&quot;<br>
+  Response.write &quot;&lt;BR&gt;&lt;BR&gt;&lt;BR&gt;&quot;<br>
+  Response.Write &quot;&lt;xmp&gt;&quot;<br>
+  Response.Write xml.responseText<br>
+  Response.Write &quot;&lt;/xmp&gt;&quot;<br>
+  Response.write &quot;&lt;BR&gt;&lt;BR&gt;&lt;BR&gt;&quot;<br>
+  Response.write &quot; Now here's how the page looks:&lt;BR&gt;&lt;BR&gt;&quot;<br>
+  Response.Write xml.responseText</p>
+<p> Set xml = Nothing<br>
+  %&gt;</p>
+<p><br>
+  下面是另一个实例</p>
+<p>&lt;%<br>
+  dim objHTTP , objXML , objXSL<br>
+  set objHTTP = Server.CreateObject(&quot;Microsoft.XMLHTTP&quot;)<br>
+  objHTTP.open &quot;GET&quot;, &quot;http://p.moreover.com/cgi-local/page?c=Pop%20music%20reviews&amp;o=xml&quot;, 
+  false<br>
+  objHTTP.send<br>
+  set objXML = objHTTP.responseXML<br>
+  set objXSL=Server.CreateObject(&quot;microsoft.xmldom&quot;)<br>
+  objXSL.async=false</p>
+<p>objXSL.load(Server.MapPath(&quot;style.xsl&quot;))</p>
+<p>if (objXSL.parseError.errorCode = 0) then<br>
+  Response.Write(objXML.transformnode(objXSL))<br>
+  else<br>
+  Response.Write &quot;Error: &quot; &amp; objXSL.parseError.reason &amp; &quot; 
+  URL:&quot; &amp; objXSL.url<br>
+  end if</p>
+<p>Set objHTTP = Nothing<br>
+  Set objXML = Nothing<br>
+  Set objXSL = Nothing<br>
+  %&gt;</p>
+<p>style.xsl：<br>
+  &lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/TR/WD-xsl&quot;&gt;<br>
+  &lt;xsl:template match=&quot;/&quot;&gt;</p>
+<p>&lt;html&gt;<br>
+  &lt;head&gt;<br>
+  &lt;TITLE&gt;moreover...&lt;/TITLE&gt;<br>
+  &lt;/head&gt;<br>
+  &lt;body BGCOLOR=&quot;ffffff&quot;&gt;</p>
+<p></p>
+<p><br>
+  &lt;DIV ALIGN=&quot;center&quot;&gt;<br>
+  &lt;TABLE BGCOLOR=&quot;ffffff&quot; BORDER=&quot;0&quot; CELLPADDING=&quot;4&quot; 
+  CELLSPACING=&quot;0&quot; WIDTH=&quot;100%&quot;&gt;</p>
+<p> &lt;xsl:for-each select=&quot;moreovernews/article&quot;&gt;<br>
+  <br>
+  &lt;TR VALIGN=&quot;middle&quot;&gt;<br>
+  &lt;TD ALIGN=&quot;left&quot; BGCOLOR=&quot;ffffff&quot;&gt;<br>
+  <br>
+  <br>
+  &lt;xsl:attribute name=&quot;HREF&quot;&gt;<br>
+  &lt;xsl:value-of select=&quot;url&quot;/&gt;<br>
+  &lt;/xsl:attribute&gt;<br>
+  &lt;xsl:attribute name=&quot;TARGET&quot;&gt;<br>
+  _blank<br>
+  &lt;/xsl:attribute&gt;<br>
+  <br>
+  &lt;xsl:value-of select=&quot;headline_text&quot;/&gt;<br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  &lt;xsl:attribute name=&quot;HREF&quot;&gt;<br>
+  &lt;xsl:value-of select=&quot;document_url&quot;/&gt;<br>
+  &lt;/xsl:attribute&gt;<br>
+  &lt;xsl:attribute name=&quot;TARGET&quot;&gt;<br>
+  _blank<br>
+  &lt;/xsl:attribute&gt;<br>
+  <br>
+  &lt;xsl:value-of select=&quot;source&quot;/&gt;<br>
+  <br>
+  <br>
+  <br>
+  &lt;xsl:attribute name=&quot;HREF&quot;&gt;<br>
+  &lt;xsl:value-of select=&quot;access_registration&quot;/&gt;<br>
+  &lt;/xsl:attribute&gt;<br>
+  &lt;xsl:attribute name=&quot;TARGET&quot;&gt;<br>
+  _blank<br>
+  &lt;/xsl:attribute&gt;<br>
+  <br>
+  &lt;xsl:value-of select=&quot;access_status&quot;/&gt;<br>
+  <br>
+  <br>
+  <br>
+  &lt;xsl:value-of select=&quot;harvest_time&quot;/&gt; GMT<br>
+  <br>
+  &lt;/TD&gt;<br>
+  &lt;/TR&gt;<br>
+  <br>
+  &lt;/xsl:for-each&gt;</p>
+<p><br>
+  &lt;/TABLE&gt;<br>
+  &lt;/DIV&gt;<br>
+  &lt;/body&gt;<br>
+  &lt;/html&gt;<br>
+  &lt;/xsl:template&gt;<br>
+  &lt;/xsl:stylesheet&gt;<br>
+</p>
+</body>
+</html>

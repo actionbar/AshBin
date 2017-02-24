@@ -1,0 +1,26 @@
+<html>
+<head><link rel="stylesheet" type="text/css" href="showcode.css" /></head>
+<body>
+<pre>
+<code class="aspcode">&lt;%
+Set FS=Server.CreateObject(&#34;Scripting.FileSystemObject&#34;)
+Set RS=FS.OpenTextFile(Server.MapPath(&#34;/example/aspe/counter.txt&#34;), 1, False)
+fcount=RS.ReadLine
+RS.Close
+fcount=fcount+1
+'This code is disabled due to the write access security on our server:
+'Set RS=FS.OpenTextFile(Server.MapPath(&#34;counter.txt&#34;), 2, False)
+'RS.Write fcount
+'RS.Close
+Set RS=Nothing
+Set FS=Nothing
+%&gt;</code>
+&lt;html&gt;
+&lt;body&gt;
+&lt;p&gt;
+本页已被访问了 <code class="aspcode">&lt;%=fcount%&gt;</code>  次。
+&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+</body>

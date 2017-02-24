@@ -1,0 +1,168 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="../c3.css" />
+<title>ASP.NET 2.0 - 母版页 (Master Pages）</title>
+</head>
+<body class="dotnet">
+<div id="wrapper">
+<div id="header">
+<a href="http://e.v-get.com/w3cschool/" style="float:left;">W3CSchool 在线教程</a>
+<div class="q g"><script type="text/javascript">var cpro_id="u1163355"</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div>
+<div id="navfirst">
+<ul id="menu">
+<li id="h"><a href="../h.html">HTML教程</a></li>
+<li id="x"><a href="../x.html">XML教程</a></li>
+<li id="b"><a href="../b.html">浏览器脚本</a></li>
+<li id="s"><a href="../s.html">服务器脚本</a></li>
+<li id="d"><a href="../d.html">dot net教程</a></li>
+<li id="m"><a href="../m.html">多媒体教程</a></li>
+<li id="w"><a href="../w.html">建站手册</a></li>
+</ul>
+</div><div id="navsecond">
+<div id="course">
+<h2>ASP.NET 教程</h2>
+<ul>
+<li><a href="http://e.v-get.com/w3cschool/">ASP.NET 首页</a></li>
+<li><a href="aspnet_intro.html">ASP.NET 简介</a></li>
+<li><a href="aspnet_vsasp.html">ASP.NET vs ASP</a></li>
+<li><a href="aspnet_pages.html">ASP.NET 页面</a></li>
+<li><a href="aspnet_controls.html">ASP.NET 控件</a></li>
+<li><a href="aspnet_events.html">ASP.NET 事件</a></li>
+</ul>
+<h2>ASP.NET 窗体</h2>
+<ul>
+<li><a href="aspnet_forms.html">ASP.NET 窗体</a></li>
+<li><a href="aspnet_viewstate.html">ASP.NET ViewState</a></li>
+<li><a href="aspnet_textbox.html">asp:TextBox</a></li>
+<li><a href="aspnet_button.html">asp:Button</a></li>
+</ul>
+<h2>ASP.NET 绑定</h2>
+<ul>
+<li><a href="aspnet_databinding.html">数据绑定</a></li>
+<li><a href="aspnet_arraylist.html">ArrayList</a></li>
+<li><a href="aspnet_hashtable.html">Hashtable</a></li>
+<li><a href="aspnet_sortedlist.html">SortedList</a></li>
+<li><a href="aspnet_xml.html">XML 文件</a></li>
+<li><a href="aspnet_repeater.html">asp:Repeater</a></li>
+<li><a href="aspnet_datalist.html">asp:DataList</a></li>
+</ul>
+<h2>ASP.NET 数据库</h2>
+<ul>
+<li><a href="aspnet_dbconnection.html">数据库连接</a></li>
+</ul>
+<h2>ASP.NET 2.0</h2>
+<ul>
+<li><a href="aspnet_newfeatures.html">2.0 新特性</a></li>
+<li><a href="aspnet_masterpages.html">2.0 母版页</a></li>
+<li><a href="aspnet_navigation.html">2.0 导航</a></li>
+</ul>
+<h2>参考手册</h2>
+<ul>
+<li><a href="aspnet_refhtmlcontrols.html">HTML 控件</a></li>
+<li><a href="aspnet_refwebcontrols.html">Web 控件</a></li>
+<li><a href="aspnet_refvalidationcontrols.html">Validation 控件</a></li>
+</ul>
+<h2>实例</h2>
+<ul>
+<li>ASP.NET 实例</li>
+</ul>
+</div>
+<div id="selected">
+<h2>建站手册</h2>
+<ul>
+<li><a href="../site/">网站构建</a></li>
+<li><a href="../w3c/">万维网联盟</a></li>
+<li><a href="http://e.v-get.com/w3c/">W3CSchool 教程</a></li>
+<li><a href="../quality/">网站品质</a></li>
+<li><a href="../semweb/">语义网</a></li>
+<li><a href="../hosting/">网站主机</a></li>
+</ul>
+<h2><a href="http://e.v-get.com/w3c/" class="f13">W3CSchool 教程</a></h2><div class="a120x90"><script type="text/javascript">var cpro_id="u1210867";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div></div>
+</div>
+<div id="maincontent">
+<h1>ASP.NET 2.0 - 母版页 (Master Pages）</h1>
+<div id="tpn">
+<ul class="prenext">
+<li class="pre"><a href="aspnet_newfeatures.html">上一页</a></li>
+<li class="next"><a href="aspnet_navigation.html">下一页</a></li>
+</ul>
+</div>
+<div id="intro">
+<p><strong>母版页 (Master Pages）为网站内的其他页面提供模版。</strong></p>
+</div>
+<div>
+<h2>母版页 (Master Pages）</h2>
+<p>Master Page 使您有能力为 web 应用程序中的所有页面 (或页面组）创建一致的外观和行为。</p>
+<p>Master Page 为其他页面提供了模版，带有共享的布局和功能。Master Page 为内容定义了可被内容页面覆盖的占位符。而输出结果就是 Master Page 和内容页面的组合。</p>
+<p>内容页包含您希望显示的内容。</p>
+<p>当用户请求内容页时，ASP.NET 会对页面进行合并以生成输出，输出结果对 Master Page 的布局和内容页面的内容进行了合并。</p>
+</div>
+<div>
+<h2>Master Page 实例：</h2>
+<pre><code>&lt;%@ Master %&gt;</code>
+&lt;html&gt;
+&lt;body&gt;
+&lt;h1&gt;Standard Header For All Pages&lt;/h1&gt;
+<code>&lt;asp:ContentPlaceHolder id=&#34;CPH1&#34; runat=&#34;server&#34;&gt;
+&lt;/asp:ContentPlaceHolder&gt;</code>
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+<p>Master Page 是一张为其他页面设计的普通 HTML 模版页。</p>
+<p><em>@ Master 指令</em>把它定义为一个张 master page。</p>
+<p>这个 master page 为单独的内容包含了一个占位符标签 <em>&lt;asp:ContentPlaceHolder&gt;</em>。</p>
+<p><em>id=&#34;CPH1&#34;</em> 属性标识该占位符，在相同的 master page 中允许多个占位符。</p>
+<p>该 master page 被保存为 <em>&#34;master1.master&#34;</em>。</p>
+<p class="note"><span>注释：</span>该 master page 也能够包含代码，允许动态的内容。</p>
+</div>
+<div>
+<h2>内容页实例：</h2>
+<pre><code>&lt;%@ Page MasterPageFile=&#34;master1.master&#34; %&gt;</code>
+&lt;asp:Content ContentPlaceHolderId=&#34;CPH1&#34; runat=&#34;server&#34;&gt;
+&lt;h2&gt;Individual Content&lt;/h2&gt;
+&lt;p&gt;Paragrap 1&lt;/p&gt;
+&lt;p&gt;Paragrap 2&lt;/p&gt;
+<code>&lt;/asp:Content&gt;</code></pre>
+<p>上面的内容页是独立的内容页面之一。</p>
+<p><em>@ Page 指令</em>把它定义为一张标准的内容页面。
+<p>该内容页面包含了一个内容标签<em>&lt;asp:Content&gt;</em>，该标签引用了母版页(ContentPlaceHolderId=&#34;CPH1&#34;)。</p>
+<p>该内容页被保存为 <em>&#34;mypage1.aspx&#34;</em>。</p>
+<p>当用户请求该页面时，ASP.NET 就会将母版页与内容页进行合并。</p>
+<p>点击这里显示 mypage1.aspx。</p>
+<p class="note"><span>注释：</span>内容文本必须位于 &lt;asp:Content&gt; 标签内。该标签外的文本是不被允许的。</p>
+</div>
+<div>
+<h2>带有控件的内容页</h2>
+<pre>
+&lt;%@ Page MasterPageFile=&#34;master1.master&#34; %&gt;
+&lt;asp:Content ContentPlaceHolderId=&#34;CPH1&#34; runat=&#34;server&#34;&gt;
+&lt;h2&gt;W3CSchool&lt;/h2&gt;
+<code>&lt;form runat=&#34;server&#34;&gt;
+&lt;asp:TextBox id=&#34;textbox1&#34; runat=&#34;server&#34; /&gt;
+&lt;asp:Button id=&#34;button1&#34; runat=&#34;server&#34; text=&#34;Button&#34; /&gt;
+&lt;/form&gt;</code>
+&lt;/asp:Content&gt;
+</pre>
+ 
+<p>上面的内容页演示了如何把 .NET 控件插入内容页，就像插入一个普通的页面中。</p>
+<p>点击这里显示 mypage2.aspx。</p>
+</div>
+<div id="bpn">
+<ul class="prenext">
+<li class="pre"><a href="aspnet_newfeatures.html">上一页</a></li>
+<li class="next"><a href="aspnet_navigation.html">下一页</a></li>
+</ul>
+</div>
+</div>
+<div id="sidebar">
+<div class="rs"></div>
+<div id="tools">
+<h5 id="tools_reference"><a href="aspnet_reference.html">ASP.NET 参考手册</a></h5>
+</div>
+<div class="a120x600"><script type="text/javascript">var cpro_id="u1293136";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div><div class="b"></div>
+</div>
+</body>
+</html>

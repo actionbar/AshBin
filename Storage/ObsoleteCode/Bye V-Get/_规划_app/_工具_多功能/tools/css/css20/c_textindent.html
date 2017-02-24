@@ -1,0 +1,108 @@
+<html xmlns:rdl>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<script src="rdl_properties.js"></script>
+<base target="_self">
+</head>
+<body>
+
+<script>
+
+//collFriendProperties=new Array();
+//collFriendDeclarations=new Array();
+//collFriendAtRules=new Array();
+//collFriendElements=new Array();
+//collFriendClasses=new Array();
+
+//collIE40=new Array();
+//collIE50=new Array();
+//collIE55=new Array();
+//collIE60=new Array();
+
+collFriendProperties=new Array(
+'text-overflow'
+);
+
+collIE40=new Array(
+'BLOCKQUOTE','BUTTON','CENTER','DD','DIR','DIV','DL','DT','FORM','Hn','ISINDEX','LI','LISTING','MENU','OL','P','PLAINTEXT','PRE','style','UL','XMP'
+);
+
+collIE50=new Array(
+'currentStyle','DFN','BODY','runtimeStyle','FIELDSET','MARQUEE','HR','TABLE','TD','TH','TR'
+);
+
+sStyle=
+'<style>\n'+
+'#idDIV{width:100%;height:80px;background-color:#FFD700;padding:4px;font-family:verdana,tahoma;font-weight:bold;}\n'+
+'#idCodeDiv{width:100%;padding:4px;font-family:verdana,tahoma;margin:12px 0px 0px 0px;background-color:#EEEEEE;font-weight:bold;}\n'+
+'<\/style>\n';
+
+sScript=
+'<script>\n'+
+'function rdl_change(e){\n'+
+'var oCodeDiv=document.all("idCodeDiv");\n'+
+'var oDiv=document.all("idDiv");\n'+
+'with (document.all("idSel")) var sValue=options[selectedIndex].value;\n'+
+'oDiv.style.textIndent=sValue;\n'+
+'oCodeDiv.innerText="text-indent : "+sValue+";";\n'+
+'}\n'+
+'<\/script>\n';
+
+sCode=
+'<div id=idDIV>请从下方选择我的<b> text-indent <\/b>值。这里有一些填充用的句子。<\/div>\n'+
+'<br>\n'+
+'<select id="idSel" onchange="rdl_change();">\n'+
+'<option value="0">---text-indent---\n'+
+'<option value="50%">50%\n'+
+'<option value="0">0\n'+
+'<option value="1cm">1cm\n'+
+'<option value="24px">24px\n'+
+'<option value="24">24\n'+
+'<\/select>\n'+
+'<br>\n'+
+'<div id=idCodeDiv>text-indent : 0 ;<\/div>\n';
+
+iWinWidth=360;
+
+iWinHeight=320;
+
+//bRunCode=false;
+
+//bElements=false;
+
+</script>
+
+<div id=idContent>
+
+<div id=idContentTitle><span id=idTitleName>text-indent</span>版本：CSS1　 兼容性：IE4+ NS4+　继承性：无</div>
+
+<div class=cssColumnTitle>语法：</div>
+<div>
+<b>text-indent : </b><i>length</i>
+</div>
+
+<div class=cssColumnTitle>取值：</div>
+<table>
+<tr><td nowrap><i> length </i></td><td nowrap><b>:</b></td><td>百分比数字 | 由浮点数字和单位标识符组成的长度值，允许为负值。请参阅<a href="d_length.html"> 长度单位 </a></td></tr>
+</table>
+
+<div class=cssColumnTitle>说明：</div>
+<div>
+检索或设置对象中的文本的缩进。默认值为<span class=cssDefault><b> 0 </b></span>。<br>
+在被另一个对象(如<b> br </b>)断开的对象内不能应用本属性。<br>
+此属性对于<b> currentStyle </b>对象而言是只读的。对于其他对象而言是可读写的。<br>
+对应的脚本特性为<b> textIndent </b>。
+</div>
+
+<div class=cssColumnTitle>示例：</div>
+<div id=idSimpleCode>
+DIV { text-indent:2cm }<br>.click1 { text-indent:50% }<br> .click2 { text-indent:  }
+
+</div>
+
+</div>
+</body>
+</html>
+
+<!-- Part of RDL(TM) - Written by Rain1977 
+HomeSite: http://www.dhtmlet.com  E-Mail: dhtmlet@hotmail.com -->

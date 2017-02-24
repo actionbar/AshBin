@@ -1,0 +1,55 @@
+
+*{padding:0;margin:0}
+body,.tl,.tr,.n a,.n .no,.l h3,h1,.r h6,.b{ background:url(i.gif);}
+
+
+body {background-position:0 -310px; background-repeat:repeat-x;font-size:12px;color: #333;font-family:"Tahoma","SimSun"}
+ul{list-style-position:outside;list-style-type: none}
+/*ul是无序的，ol是有序的*/
+ul li{white-space:nowrap;text-overflow:ellipsis;-o-text-overflow:ellipsis;overflow: hidden;line-height:22px}/*li中内容超过长度后以省略号显示的方法*/
+ul li,a{cursor:pointer}
+
+select,input,img{vertical-align:middle;}
+a{color: #333; text-decoration:none}/*发现所有大型"资讯类"网站，都默认链接全部下划线；物流不是资讯类，不需要下划线；资讯类一律用下划线，增加浏览量*/
+a:hover{color: #c00;text-decoration: underline;}
+img {border-width:0;}
+
+.p{float:left}.o{clear:both}.q{float:right}
+.fc{text-align:center}
+.f6{color:#f60}.f7{color:#00f}.f8{color:#0f0}.f9{color:#f00}
+
+
+.w {margin: 0px auto; overflow: hidden; width: 960px}
+
+
+
+/*这个可以被很多利用*/
+/*h头部css*/
+.t{height:24px;line-height:24px;color:#999}
+.t a{margin:0 7px;color:#fff}
+.t .q{width:321px; text-align:center;}
+
+.tl,.tr{width:44px;height:24px;}
+.tc{background:#c2c2c2}
+.tr{ background-position:0 -25px}
+
+.u{height:51px;}
+.n {height:38px;line-height:38px;font-size:14px;}
+.n a{ display:inline-block;width:88px; text-align:center;background-position:0 -50px;color:#FFF}
+.n .no{ background-position:0 -90px; color:#000; font-weight:800}
+
+.w4{height:50px}
+
+.l{width:161px;height:100%; text-indent:9px;padding:3px; background:#eee; border:#333 2px solid}
+.l li{line-height:22px}
+.l h2{height:30px;line-height:30px;font-size:14px; background:#333; color:#FFF; font-weight:400}
+.l h3{height:22px;line-height:22px; background-position:0 -130px;font-size:14px; border:#aaa 1px solid}
+.l li a{ display:inline-block;width:100%}
+.l li a:hover{ background:#FFF}
+.r{width:770px;padding:9px;background:#FFF;border-right:#eee 1px solid; }
+h1,.r h6{height:40px;line-height:40px;font-size:14px;border-bottom:#999 1px solid; background-position:0 -160px; background-repeat:no-repeat; padding-left:40px;margin-bottom:9px}
+.r h2{margin-top:15px}
+
+
+
+.b{ background-position:0 -200px; border:#e6e6ef 1px solid; height:108px}

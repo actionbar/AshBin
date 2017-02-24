@@ -1,0 +1,408 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="../c3.css" />
+<title>WML DTD</title>
+</head>
+<body class="xml">
+<div id="wrapper">
+<div id="header">
+<a href="http://e.v-get.com/w3cschool/" style="float:left;">W3CSchool 在线教程</a>
+<div class="q g"><script type="text/javascript">var cpro_id="u1163355"</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div>
+<div id="navfirst">
+<ul id="menu">
+<li id="h"><a href="../h.html">HTML教程</a></li>
+<li id="x"><a href="../x.html">XML教程</a></li>
+<li id="b"><a href="../b.html">浏览器脚本</a></li>
+<li id="s"><a href="../s.html">服务器脚本</a></li>
+<li id="d"><a href="../d.html">dot net教程</a></li>
+<li id="m"><a href="../m.html">多媒体教程</a></li>
+<li id="w"><a href="../w.html">建站手册</a></li>
+</ul>
+</div><div id="navsecond">
+<div id="course">
+<h2>WAP 教程</h2>
+<ul>
+<li><a href="http://e.v-get.com/w3cschool/">WAP 教程</a></li>
+<li><a href="wap_intro.html">WAP 简介</a></li>
+<li><a href="wap_basic.html">WAP 基础</a></li>
+<li><a href="wml_format.html">WML 格式化</a></li>
+<li><a href="wml_links.html">WML 连接</a></li>
+<li><a href="wml_input.html">WML 输入</a></li>
+<li><a href="wml_tasks.html">WML 任务</a></li>
+<li><a href="wml_timer.html">WML 定时器</a></li>
+<li><a href="wml_variables.html">WML 变量</a></li>
+<li><a href="wml_examples.html">WML 实例</a></li>
+<li><a href="wap_demo.html">WAP 演示</a></li>
+<li><a href="wap_pages.html">WAP W3CSchool</a></li>
+</ul>
+<h2>参考手册</h2>
+<ul>
+<li><a href="wml_reference.html">WML 参考手册</a></li>
+<li><a href="wml_entities.html">WML 实体</a></li>
+<li><a href="wml_dtd.html">WML DTD</a></li>
+</ul>
+<h2>资源</h2>
+<ul>
+<li><a href="wap_forum.html">WAP 论坛/OMA</a></li>
+<li><a href="wap_software.html">WAP 软件</a></li>
+</ul>
+</div>
+<div id="selected">
+<h2>建站手册</h2>
+<ul>
+<li><a href="../site/">网站构建</a></li>
+<li><a href="../w3c/">万维网联盟</a></li>
+<li><a href="http://e.v-get.com/w3c/">W3CSchool 教程</a></li>
+<li><a href="../quality/">网站品质</a></li>
+<li><a href="../semweb/">语义网</a></li>
+<li><a href="../hosting/">网站主机</a></li>
+</ul>
+<h2><a href="http://e.v-get.com/w3c/" class="f13">W3CSchool 教程</a></h2><div class="a120x90"><script type="text/javascript">var cpro_id="u1210867";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div></div>
+</div>
+<div id="maincontent">
+<h1>WML DTD</h1>
+<div id="tpn">
+<ul class="prenext">
+<li class="pre"><a href="wml_entities.html">上一页</a></li>
+<li class="next"><a href="wap_forum.html">下一页</a></li>
+</ul>
+</div>
+<div>
+<h2>完整的 WML DTD：</h2>
+<pre>&lt;!--
+Wireless Markup Language (WML) Document Type Definition.
+Copyright Wireless Application Protocol 
+Forum Ltd., 1998,1999.
+                      All rights reserved.  
+WML is an XML language.  Typical usage:
+   &lt;?xml version=&#34;1.0&#34;?&gt;
+   &lt;!DOCTYPE wml PUBLIC &#34;-//WAPFORUM//DTD WML 1.1//EN&#34;
+          &#34;http://www.wapforum.org/DTD/wml_1.1.xml&#34;&gt;
+   &lt;wml&gt;
+   ...
+   &lt;/wml&gt;
+Terms and conditions of use are 
+available from the Wireless 
+Application Protocol Forum Ltd. web site at
+http://www.wapforum.org/docs/copyright.htm.
+--&gt;
+&lt;!ENTITY % length  &#34;CDATA&#34;&gt;    
+  &lt;!-- [0-9]+ for pixels or [0-9]+&#34;%&#34;
+   for percentage length --&gt;
+&lt;!ENTITY % vdata   &#34;CDATA&#34;&gt;    
+  &lt;!-- attribute value possibly containing
+   variable references --&gt;
+&lt;!ENTITY % HREF    &#34;%vdata;&#34;&gt;  
+  &lt;!-- URI, URL or URN designating a
+   hypertext node. May contain variable references --&gt;
+&lt;!ENTITY % boolean	&#34;(true|false)&#34;&gt;
+&lt;!ENTITY % number  &#34;NMTOKEN&#34;&gt;  
+  &lt;!-- a number, with format [0-9]+ --&gt;
+&lt;!ENTITY % coreattrs  &#34;id    ID     #IMPLIED 
+                       class CDATA  #IMPLIED&#34;&gt;
+&lt;!ENTITY % emph    
+ &#34;em | strong | b | i | u | big | small&#34;&gt;
+&lt;!ENTITY % layout  &#34;br&#34;&gt;
+&lt;!ENTITY % text     &#34;#PCDATA | %emph;&#34;&gt;
+&lt;!-- flow covers &#34;card-level&#34; elements,
+ such as text and images --&gt;
+&lt;!ENTITY % flow     
+ &#34;%text; | %layout; | img | anchor | a | table&#34;&gt;
+&lt;!-- Task types --&gt;
+&lt;!ENTITY % task   &#34;go | prev | noop | refresh&#34;&gt;
+&lt;!-- Navigation and event elements --&gt;
+&lt;!ENTITY % navelmts &#34;do | onevent&#34;&gt;
+&lt;!--============= Decks and Cards =============--&gt;
+&lt;!ELEMENT wml ( head?, template?, card+ )&gt;
+&lt;!ATTLIST wml
+  xml:lang        NMTOKEN        #IMPLIED
+  %coreattrs;
+  &gt;
+&lt;!-- card intrinsic events --&gt;
+&lt;!ENTITY % cardev
+ &#34;onenterforward  %HREF;          #IMPLIED
+  onenterbackward %HREF;          #IMPLIED
+  ontimer         %HREF;          #IMPLIED&#34;
+  &gt;
+&lt;!-- card field types --&gt;
+&lt;!ENTITY % fields  
+ &#34;%flow; | input | select | fieldset&#34;&gt;
+&lt;!ELEMENT card (onevent*, timer?, (do | p)*)&gt;
+&lt;!ATTLIST card
+  title           %vdata;       #IMPLIED
+  newcontext      %boolean;     &#34;false&#34;
+  ordered         %boolean;     &#34;true&#34;
+  xml:lang        NMTOKEN       #IMPLIED
+  %cardev;
+  %coreattrs;
+  &gt;
+&lt;!--============= Event Bindings =============--&gt;
+&lt;!ELEMENT do (%task;)&gt;
+&lt;!ATTLIST do
+  type         CDATA       #REQUIRED
+  label        %vdata;     #IMPLIED
+  name         NMTOKEN     #IMPLIED
+  optional     %boolean;   &#34;false&#34;
+  xml:lang     NMTOKEN     #IMPLIED
+  %coreattrs;
+  &gt;
+&lt;!ELEMENT onevent (%task;)&gt;
+&lt;!ATTLIST onevent
+  type         CDATA       #REQUIRED
+  %coreattrs;
+  &gt;
+&lt;!--======== Deck-level declarations ========--&gt;
+&lt;!ELEMENT head ( access | meta )+&gt;
+&lt;!ATTLIST head
+  %coreattrs;
+  &gt;
+&lt;!ELEMENT template (%navelmts;)*&gt;
+&lt;!ATTLIST template
+  %cardev;
+  %coreattrs;
+  &gt;
+&lt;!ELEMENT access EMPTY&gt;
+&lt;!ATTLIST access
+  domain       CDATA       #IMPLIED
+  path         CDATA       #IMPLIED
+  %coreattrs;
+  &gt;
+&lt;!ELEMENT meta EMPTY&gt;
+&lt;!ATTLIST meta
+  http-equiv     CDATA      #IMPLIED
+  name           CDATA      #IMPLIED
+  forua          %boolean;  #IMPLIED
+  content        CDATA      #REQUIRED
+  scheme         CDATA      #IMPLIED
+  %coreattrs;
+  &gt;
+&lt;!--================ Tasks ================--&gt;
+&lt;!ELEMENT go (postfield | setvar)*&gt;
+&lt;!ATTLIST go
+  href            %HREF;           #REQUIRED
+  sendreferer     %boolean;       &#34;false&#34;
+  method          (post|get)      &#34;get&#34;
+  accept-charset  CDATA           #IMPLIED
+  %coreattrs;
+  &gt;
+&lt;!ELEMENT prev (setvar)*&gt;
+&lt;!ATTLIST prev
+  %coreattrs;
+  &gt;
+&lt;!ELEMENT refresh (setvar)*&gt;
+&lt;!ATTLIST refresh
+  %coreattrs;
+  &gt;
+&lt;!ELEMENT noop EMPTY&gt;
+&lt;!ATTLIST noop
+  %coreattrs;
+  &gt;
+&lt;!--============= postfield =============--&gt;
+ 
+&lt;!ELEMENT postfield EMPTY&gt;
+&lt;!ATTLIST postfield
+  name         %vdata;           #REQUIRED
+  value        %vdata;           #REQUIRED
+  %coreattrs;
+  &gt;
+&lt;!--============= variables =============--&gt;
+&lt;!ELEMENT setvar EMPTY&gt;
+&lt;!ATTLIST setvar
+  name         %vdata;           #REQUIRED
+  value        %vdata;           #REQUIRED
+  %coreattrs;
+  &gt;
+&lt;!--============= Card Fields =============--&gt;
+&lt;!ELEMENT select (optgroup|option)+&gt;
+&lt;!ATTLIST select
+  title        %vdata;           #IMPLIED
+  name         NMTOKEN           #IMPLIED
+  value        %vdata;           #IMPLIED
+  iname        NMTOKEN           #IMPLIED
+  ivalue       %vdata;           #IMPLIED
+  multiple     %boolean;         &#34;false&#34;
+  tabindex     %number;          #IMPLIED
+  xml:lang     NMTOKEN           #IMPLIED
+  %coreattrs;
+  &gt;
+&lt;!ELEMENT optgroup (optgroup|option)+ &gt;
+&lt;!ATTLIST optgroup
+  title      %vdata;    #IMPLIED
+  xml:lang   NMTOKEN    #IMPLIED
+  %coreattrs;
+  &gt;
+&lt;!ELEMENT option (#PCDATA | onevent)*&gt;
+&lt;!ATTLIST option
+  value      %vdata;    #IMPLIED
+  title      %vdata;    #IMPLIED
+  onpick     %HREF;     #IMPLIED
+  xml:lang   NMTOKEN    #IMPLIED
+  %coreattrs;
+  &gt;
+&lt;!ELEMENT input EMPTY&gt;
+&lt;!ATTLIST input
+  name       NMTOKEN           #REQUIRED
+  type       (text|password)   &#34;text&#34;
+  value      %vdata;           #IMPLIED
+  format     CDATA             #IMPLIED
+  emptyok    %boolean;         &#34;false&#34;
+  size       %number;          #IMPLIED
+  maxlength  %number;          #IMPLIED
+  tabindex   %number;          #IMPLIED
+  title      %vdata;           #IMPLIED
+  xml:lang   NMTOKEN           #IMPLIED
+  %coreattrs;
+  &gt;
+&lt;!ELEMENT fieldset (%fields; | do)* &gt;
+&lt;!ATTLIST fieldset
+  title           %vdata;      #IMPLIED
+  xml:lang        NMTOKEN      #IMPLIED
+  %coreattrs;
+  &gt;
+&lt;!ELEMENT timer EMPTY&gt;
+&lt;!ATTLIST timer
+  name       NMTOKEN           #IMPLIED
+  value      %vdata;           #REQUIRED
+  %coreattrs;
+  &gt;
+&lt;!--============= Images =============--&gt;
+&lt;!ENTITY % IAlign &#34;(top|middle|bottom)&#34; &gt;
+&lt;!ELEMENT img EMPTY&gt;
+&lt;!ATTLIST img
+  alt        %vdata;      #REQUIRED
+  src        %HREF;       #REQUIRED
+  localsrc   %vdata;      #IMPLIED
+  vspace     %length;     &#34;0&#34;
+  hspace     %length;     &#34;0&#34;
+  align      %IAlign;     &#34;bottom&#34;
+  height     %length;     #IMPLIED
+  width      %length;     #IMPLIED
+  xml:lang   NMTOKEN      #IMPLIED
+  %coreattrs;
+  &gt;
+&lt;!--============= Anchor =============--&gt;
+&lt;!ELEMENT anchor 
+ ( #PCDATA | br | img | go | prev | refresh )*&gt;
+&lt;!ATTLIST anchor
+  title        %vdata;      #IMPLIED
+  xml:lang     NMTOKEN      #IMPLIED
+  %coreattrs;
+  &gt;
+&lt;!ELEMENT a ( #PCDATA | br | img )*&gt;
+&lt;!ATTLIST a
+  href         %HREF;       #REQUIRED
+  title        %vdata;      #IMPLIED
+  xml:lang     NMTOKEN      #IMPLIED
+  %coreattrs;
+  &gt;
+&lt;!--============= Tables =============--&gt;
+&lt;!ELEMENT table (tr)+&gt;
+&lt;!ATTLIST table
+  title       %vdata;    #IMPLIED
+  align       CDATA      #IMPLIED
+  columns     %number;   #REQUIRED
+  xml:lang    NMTOKEN    #IMPLIED
+  %coreattrs;
+  &gt;
+&lt;!ELEMENT tr (td)+&gt;
+&lt;!ATTLIST tr
+  %coreattrs;
+  &gt;
+&lt;!ELEMENT td 
+ ( %text; | %layout; | img | anchor | a )*&gt;
+&lt;!ATTLIST td
+  xml:lang        NMTOKEN       #IMPLIED
+  %coreattrs;
+  &gt;
+&lt;!--== Text layout and line breaks ==--&gt;
+&lt;!ELEMENT em     (%flow;)*&gt;
+&lt;!ATTLIST em
+  xml:lang        NMTOKEN       #IMPLIED
+  %coreattrs;
+  &gt;
+&lt;!ELEMENT strong (%flow;)*&gt;
+&lt;!ATTLIST strong
+  xml:lang        NMTOKEN       #IMPLIED
+  %coreattrs;
+  &gt;
+&lt;!ELEMENT b      (%flow;)*&gt;
+&lt;!ATTLIST b
+  xml:lang        NMTOKEN       #IMPLIED
+  %coreattrs;
+  &gt;
+&lt;!ELEMENT i      (%flow;)*&gt;
+&lt;!ATTLIST i
+  xml:lang        NMTOKEN       #IMPLIED
+  %coreattrs;
+  &gt;
+&lt;!ELEMENT u      (%flow;)*&gt;
+&lt;!ATTLIST u
+  xml:lang        NMTOKEN       #IMPLIED
+  %coreattrs;
+  &gt;
+&lt;!ELEMENT big    (%flow;)*&gt;
+&lt;!ATTLIST big
+  xml:lang        NMTOKEN       #IMPLIED
+  %coreattrs;
+  &gt;
+&lt;!ELEMENT small  (%flow;)*&gt;
+&lt;!ATTLIST small
+  xml:lang        NMTOKEN       #IMPLIED
+  %coreattrs;
+  &gt;
+&lt;!ENTITY % TAlign &#34;(left|right|center)&#34;&gt;
+&lt;!ENTITY % WrapMode &#34;(wrap|nowrap)&#34; &gt;
+&lt;!ELEMENT p (%fields; | do)*&gt;
+&lt;!ATTLIST p
+  align       %TAlign;     &#34;left&#34;
+  mode        %WrapMode;   #IMPLIED
+  xml:lang    NMTOKEN      #IMPLIED
+  %coreattrs;
+  &gt;
+&lt;!ELEMENT br EMPTY&gt;
+&lt;!ATTLIST br
+  xml:lang        NMTOKEN       #IMPLIED
+  %coreattrs;
+  &gt;
+&lt;!ENTITY quot  &#34;&amp;#34;&#34;&gt;     
+ &lt;!-- quotation mark --&gt;
+&lt;!ENTITY amp   &#34;&amp;#38;#38;&#34;&gt; 
+ &lt;!-- ampersand --&gt;
+&lt;!ENTITY apos  &#34;&amp;#39;&#34;&gt;     
+ &lt;!-- apostrophe --&gt;
+&lt;!ENTITY lt    &#34;&amp;#38;#60;&#34;&gt; 
+ &lt;!-- less than --&gt;
+&lt;!ENTITY gt    &#34;&amp;#62;&#34;&gt;     
+ &lt;!-- greater than --&gt;
+&lt;!ENTITY nbsp  &#34;&amp;#160;&#34;&gt;    
+ &lt;!-- non-breaking space --&gt;
+&lt;!ENTITY shy   &#34;&amp;#173;&#34;&gt;    
+ &lt;!-- soft hyphen (discretionary hyphen) --&gt;
+&lt;!--
+Copyright Wireless Application Protocol 
+Forum Ltd., 1998,1999.
+                      All rights reserved.  
+--&gt;
+</pre>
+</div>
+<div  id="bpn">
+<ul class="prenext">
+<li class="pre"><a href="wml_entities.html">上一页</a></li>
+<li class="next"><a href="wap_forum.html">下一页</a></li>
+</ul>
+</div>
+</div>
+<div id="sidebar">
+<div class="rs"></div>
+<div id="tools">
+<h5 id="tools_reference"><a href="wml_reference.html">WML 参考手册</a></h5>
+<h5 id="tools_example"><a href="wap_demo.html">WAP 演示</a></h5>
+</div>
+<div class="a120x600"><script type="text/javascript">var cpro_id="u1293136";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div><div class="b"></div>
+</div>
+</body>
+</html>

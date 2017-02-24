@@ -1,0 +1,130 @@
+<html xmlns:rdl>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<script src="rdl_properties.js"></script>
+<base target="_self">
+</head>
+<body>
+
+<script>
+
+//collFriendProperties=new Array();
+//collFriendDeclarations=new Array();
+//collFriendAtRules=new Array();
+//collFriendElements=new Array();
+//collFriendClasses=new Array();
+
+collFriendProperties=new Array(
+'border','border-color','border-width','border-top','border-top-color','border-right-style','border-top-width','border-right','border-right-color','border-left-style','border-right-width','border-bottom','border-bottom-color','border-style','border-bottom-width','border-left','border-left-color','border-bottom-style','border-left-width'
+);
+
+//collIE40=new Array();
+//collIE50=new Array();
+//collIE55=new Array();
+//collIE60=new Array();
+
+collIE40=new Array(
+'A','ACRONYM','B','BIG','BLOCKQUOTE','BODY','BUTTON','CAPTION','CENTER','CITE','CODE','DD','DEL','DFN','DIR','DIV','DL','DT','EM','EMBED','FIELDSET','FONT','FORM','FRAME','Hn','HR','I','IFRAME','IMG','INPUT type=button','INPUT type=checkbox','INPUT type=file','INPUT type=image','INPUT type=password','INPUT type=radio','INPUT type=reset','INPUT type=submit','INPUT type=text','INS','ISINDEX','KBD','LABEL','LI','LISTING','MARQUEE','MENU','NOBR','OBJECT','OL','P','PLAINTEXT','PRE','Q','S','SAMP','SMALL','SPAN','STRIKE','STRONG','style','SUB','SUP','TABLE','TD','TEXTAREA','TH','TT','U','UL','VAR','XMP'
+);
+
+collIE50=new Array(
+'BDO','currentStyle','CUSTOM','runtimeStyle'
+);
+
+collIE55=new Array(
+'defaults'
+);
+
+sStyle=
+'<style>\n'+
+'#idParentDIV{width:100%;height:80px;padding:6px;background-color:buttonshadow;}\n'+
+'#idDIV{width:80%;height:40px;background-color:#FF6633;color:#FFFFFF;padding:4px;}\n'+
+'#idCodeDiv{width:80%;padding:4px;font-family:verdana,tahoma;margin:12px 0px 0px 0px;background-color:#EEEEEE;font-weight:bold;}\n'+
+'<\/style>\n';
+
+sScript=
+'<script>\n'+
+'function rdl_change(e){\n'+
+'var oCodeDiv=document.all("idCodeDiv");\n'+
+'var oDiv=document.all("idDiv");\n'+
+'with (document.all("idSel1")){\n'+
+'if (selectedIndex!=0) var sValue1=options[selectedIndex].value;\n'+
+'else var sValue1=""\n'+
+'}\n'+
+'oDiv.style.borderTopStyle=sValue1;\n'+
+'oCodeDiv.innerHTML="border-top-style : "+sValue1+" ;";\n'+
+'}\n'+
+'<\/script>\n';
+
+sCode=
+'<div id=idParentDIV><div id=idDIV>请从下方选择我的上边框样式。<\/div><\/div>\n'+
+'<br>\n'+
+'<table><tr><td>\n'+
+'<select id="idSel1" onchange="rdl_change();">\n'+
+'<option value="null">---样式---\n'+
+'<option value="none">none\n'+
+'<option value="dotted">dotted\n'+
+'<option value="dashed">dashed\n'+
+'<option value="solid">solid\n'+
+'<option value="double">double\n'+
+'<option value="groove">groove\n'+
+'<option value="ridge">ridge\n'+
+'<option value="inset">inset\n'+
+'<option value="outset">outset\n'+
+'<\/select>\n'+
+'<\/td><\/tr><\/table>\n'+
+'<div id=idCodeDiv>border-top-style : none ;<\/div>\n';
+
+iWinWidth=360;
+
+iWinHeight=320;
+
+//bRunCode=false;
+
+//bElements=false;
+
+</script>
+
+<div id=idContent>
+
+<div id=idContentTitle><span id=idTitleName>border-top-style</span>版本：CSS2　 兼容性：IE4+ NS6+　继承性：无</div>
+
+<div class=cssColumnTitle>语法：</div>
+<div>
+<b>border-top-style : </b><span class=cssDefault><b>none</b></span> | <b>hidden</b> | <b>dotted</b> | <b>dashed</b> | <b>solid</b> | <b>double</b> | <b>groove</b> | <b>ridge</b> | <b>inset</b> | <b>outset</b>
+</div>
+
+<div class=cssColumnTitle>取值：</div>
+<table>
+<tr><td nowrap><b> none </b></td><td nowrap><b>:</b></td><td><b>默认值</b>。无边框。不受任何指定的<a href="c_borderwidth.html"> border-width </a>值影响</td></tr>
+<tr><td nowrap><b> hidden </b></td><td nowrap><b>:</b></td><td>隐藏边框。IE不支持</td></tr>
+<tr><td nowrap><b> dotted </b></td><td nowrap><b>:</b></td><td>在MAC平台上IE4+与WINDOWS和UNIX平台上IE5.5+为点线。否则为实线</td></tr>
+<tr><td nowrap><b> dashed </b></td><td nowrap><b>:</b></td><td>在MAC平台上IE4+与WINDOWS和UNIX平台上IE5.5+为虚线。否则为实线</td></tr>
+<tr><td nowrap><b> solid </b></td><td nowrap><b>:</b></td><td>实线边框</td></tr>
+<tr><td nowrap><b> double </b></td><td nowrap><b>:</b></td><td>双线边框。两条单线与其间隔的和等于指定的<a href="c_borderwidth.html"> border-width </a>值</td></tr>
+<tr><td nowrap><b> groove </b></td><td nowrap><b>:</b></td><td>根据<a href="c_bordercolor.html"> border-color </a>的值画3D凹槽</td></tr>
+<tr><td nowrap><b> ridge </b></td><td nowrap><b>:</b></td><td>根据<a href="c_bordercolor.html"> border-color </a>的值画菱形边框</td></tr>
+<tr><td nowrap><b> inset </b></td><td nowrap><b>:</b></td><td>根据<a href="c_bordercolor.html"> border-color </a>的值画3D凹边</td></tr>
+<tr><td nowrap><b> outset </b></td><td nowrap><b>:</b></td><td>根据<a href="c_bordercolor.html"> border-color </a>的值画3D凸边</td></tr>
+</table>
+
+<div class=cssColumnTitle>说明：</div>
+<div>
+设置对象上边框的样式。<br>
+此属性对于<b> currentStyle </b>对象而言是只读的。对于其他对象而言是可读写的。<br>
+在 IE5.5+ 中，边框属性可以直接应用于内联要素。而在此前的版本中，内联要素要使用该属性，必须先设定对象的<a href="c_height.html"> height </a>或<a href="c_width.html"> width </a>属性，或者设定<a href="c_position.html"> position </a>属性为<b> absolute </b>，或者设定<a href="c_display.html"> display </a>属性为<b> block </b>。<br>
+如果<a href="c_bordertopwidth.html"> border-top-width </a>设置为<b> 0 </b>，本属性将失去作用。<br>
+对应的脚本特性为<b> borderTopStyle </b>。
+</div>
+
+<div class=cssColumnTitle>示例：</div>
+<div id=idSimpleCode>
+body { border-top-style: double; border-bottom-style: groove; border-left-style: dashed; border-right-style: dotted; }
+</div>
+
+</div>
+</body>
+</html>
+
+<!-- Part of RDL(TM) - Written by Rain1977 
+HomeSite: http://www.dhtmlet.com  E-Mail: dhtmlet@hotmail.com -->

@@ -1,0 +1,106 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="tc.css" />
+<title>W3CSchool在线测试工具 v1.2</title>
+</head>
+<body id="editor">
+<div id="header">
+<h1>W3CSchool TIY</h1>
+<div class="q a728x90"><script type="text/javascript">var cpro_id="u1163355"</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div>
+<div id="test">
+<form action="/tiy/v.asp" method="post"  target="i">
+<div id="butt">
+<p><span><input name="submit" type="submit" value="TRY IT YOURSELF"></input></span><span>（请在下面的文本框中编辑您的代码，然后单击此按钮测试结果。）</span></p>
+</div>
+<div id="code">
+<h2>编辑您的代码：</h2>
+<textarea name="c">
+<html>
+<head>
+<script type="text/javascript">
+var timer
+i=0
+j=0
+k=0
+l=160
+m=120
+function setlight()
+{
+document.getElementById('light_div').filters[0].clear()
+if (i<100)
+	{
+	document.getElementById('light_div').filters[0].addcone(0,0,0,50,50,100,120,200,i,100)
+	}
+else
+	{
+	if (j<160)
+		{
+		document.getElementById('light_div').filters[0].addcone(j,0,0,50,50,100,120,200,i,200)
+		j++
+		}
+	else
+		{
+		if (k<120)
+			{
+			document.getElementById('light_div').filters[0].addcone(j,k,0,50,50,100,120,200,i,200)
+			k++
+			}
+		else
+			{
+			if (l>0)
+				{
+				l--
+				document.getElementById('light_div').filters[0].addcone(l,k,0,50,50,100,120,200,i,200)
+				}
+			else
+				{
+				if (m>0)
+					{
+					m--
+					document.getElementById('light_div').filters[0].addcone(l,m,0,50,50,100,120,200,i,200)
+					}
+				else
+					{
+					stoptimer()
+					}
+				}				
+			}			
+		}
+	}
+i++
+timer=setTimeout("setlight()",1)
+}
+function stoptimer()
+{
+clearTimeout(timer)
+}
+</script>
+<style>
+div
+{
+width:100px;
+}
+body
+{
+background:#000000;
+}
+</style>
+</head>
+<body onload="setlight()" onunload="stoptimer()">
+<div id="light_div" style="filter:light(enabled=1);"><img src="../i/eg_landscape.jpg" width="160" height="120" /></div>
+</body>
+</html>
+</textarea>
+</div>
+<div id="result">
+<h2>查看结果:</h2>
+<iframe name="i" src="loadtext_428.html"></iframe>
+</div>
+</form>
+</div>
+<div class="b"></div>
+</body>
+</html>

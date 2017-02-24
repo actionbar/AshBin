@@ -1,0 +1,5 @@
+<meta http-equiv="content-type" content="text/html; charset=gb2312"><FONT 
+style="FONT-SIZE: 9pt; LINE-HEIGHT: 15pt"><B>获取排队顺序－2－T－SQL系列</B><BR>方法二：标准的&nbsp;SQL&nbsp;方法：不利用视图<BR>&nbsp;用导出表代替了视图，性能与方法一相当，没有改善。结果也一样。
+<P></P>
+<P>SELECT&nbsp;rank,title_id,price,title_name<BR>FROM(SELECT<BR>&nbsp;&nbsp;T1.title_id,<BR>&nbsp;&nbsp;price,<BR>&nbsp;&nbsp;T1.title_name,<BR>&nbsp;&nbsp;&nbsp;&nbsp;(SELECT&nbsp;COUNT(DISTINCT&nbsp;T2.price)&nbsp;FROM&nbsp;title&nbsp;AS&nbsp;T2<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WHERE&nbsp;T1.price&lt;=T2.price)&nbsp;AS&nbsp;rank<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FROM&nbsp;title&nbsp;AS&nbsp;T1)&nbsp;AS&nbsp;X<BR>WHERE&nbsp;price&nbsp;IS&nbsp;NOT&nbsp;NULL<BR>ORDER&nbsp;BY&nbsp;rank</P>
+<P>结果同上。</P></FONT>

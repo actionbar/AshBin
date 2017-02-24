@@ -1,0 +1,33 @@
+<meta http-equiv="content-type" content="text/html; charset=gb2312">SQL实现交叉表的方法？<BR>交叉一般来讲是分组统计的一种，形式更复杂，显示更清淅，但数据库本身并没有提供实现交叉表的功能，自己创建交叉表不仅要对过程、游标、临时表、动态SQL等非常熟悉，而且思路也要清淅，本例以PUBS.DBO.SALES表的数据做样本：<BR>CREATE 
+PROCEDURE UP_TEST(<BR>@T1 VARCHAR(30),@T2 VARCHAR(30),<BR>@T3 VARCHAR(30),@T4 
+VARCHAR(30)) AS<BR>--T1 
+表名,T2,T3是交叉表的两上分类字段,T4是汇总字段<BR>--T2是行字段，T3列字段<BR>BEGIN<BR>DECLARE @SQL 
+VARCHAR(7999),@FIELD VARCHAR(30)<BR>&nbsp;SELECT @SQL='SELECT DISTINCT '+@T3+' 
+FROM '+@T1<BR>&nbsp;CREATE TABLE #FIELD(FIELD 
+VARCHAR(30))<BR>&nbsp;--将列字段提取到临时表#FIELD中<BR>&nbsp;INSERT INTO #FIELD 
+EXEC(@SQL)<BR>&nbsp;SELECT @SQL='CREATE TABLE CROSS_TEST('+@T2+' 
+VARCHAR(30),'<BR>&nbsp;DECLARE CUR_FIELD CURSOR LOCAL FOR SELECT * FROM 
+#FIELD<BR>&nbsp;OPEN CUR_FIELD<BR>&nbsp;FETCH CUR_FIELD INTO 
+@FIELD<BR>&nbsp;WHILE @@FETCH_STATUS=0 BEGIN<BR>&nbsp; &nbsp;SELECT 
+@FIELD='['+@FIELD+']'<BR>SELECT @SQL=@SQL+@FIELD+' DECIMAL(8,2) DEFAULT 
+0,'<BR>&nbsp; &nbsp;FETCH CUR_FIELD INTO @FIELD<BR>&nbsp;END<BR>&nbsp;SELECT 
+@SQL=LEFT(@SQL,LEN(@SQL)-1)+')'<BR>&nbsp;--创建临时交叉表CROSS_TEST<BR>&nbsp;EXEC(@SQL)<BR>&nbsp;SELECT 
+@SQL='INSERT INTO CROSS_TEST('+@T2+') SELECT DISTINCT '+@T2+' FROM 
+'+@T1<BR>--将行数据存入交叉表#CROSS_TEST<BR>EXEC(@SQL)<BR>&nbsp;--创建分组数据表TEMP<BR>&nbsp;SELECT 
+@SQL='CREATE TABLE TEMP('+@T2+' VARCHAR(30),'+@T3+' VARCHAR(30),'+@T4+' 
+DECIMAL(8,2))'<BR>&nbsp;EXEC(@SQL) <BR>&nbsp;--将交叉汇总数据放入交叉表<BR>&nbsp;SELECT 
+@SQL='SELECT &nbsp;'+@T2+','+@T3+', SUM(QTY) QTY FROM '+@T1 +' GROUP BY 
+'+@T2+','+@T3<BR>&nbsp;INSERT INTO TEMP 
+EXEC(@SQL)<BR>&nbsp;--将汇总数据写入交叉表<BR>&nbsp;DECLARE CUR_SUM CURSOR LOCAL FOR 
+SELECT * FROM TEMP<BR>&nbsp;DECLARE @F1 VARCHAR(30),@F2 VARCHAR(30),@QTY 
+DECIMAL(8,2),@Q1 VARCHAR(30)<BR>&nbsp;OPEN CUR_SUM<BR>&nbsp;FETCH CUR_SUM INTO 
+@F1,@F2,@QTY<BR>&nbsp;WHILE @@FETCH_STATUS=0 BEGIN<BR>&nbsp; &nbsp;SELECT 
+@F2='['+@F2+']',@Q1=CAST(@QTY AS VARCHAR(30))<BR>&nbsp; &nbsp;SELECT 
+@SQL='UPDATE CROSS_TEST SET '+@F2+'='+@Q1+' WHERE '+@T2+'='''+@F1+''''<BR>&nbsp; 
+&nbsp;EXEC(@SQL)<BR>&nbsp; &nbsp;FETCH CUR_SUM INTO 
+@F1,@F2,@QTY<BR>&nbsp;END<BR>&nbsp;CLOSE CUR_SUM<BR>&nbsp;SELECT * FROM 
+CROSS_TEST<BR>&nbsp;DROP TABLE TEMP &nbsp;<BR>&nbsp;DROP TABLE 
+CROSS_TEST<BR>&nbsp;DROP TABLE 
+#FIELD<BR>END<BR>--------------------------------------------------------<BR>EXEC 
+UP_TEST 
+'SALES','TITLE_ID','STOR_ID','QTY'<BR>说明：字段加中括号为了处理字段中含有特殊字符，值得注意得是要实现交叉表的表必须有两个分类，本例只支持分类字段的数据类型是字符型的，最大的问题就是高亮显示这行的WHERE条件啦，字符类型字段查询时条件必须加单引号，如果是数值类型就可以直接写，所以数值类型的分类字段更容易实现一些，更可以融合在一个过程中。通常大家看到的交叉表都有行汇总与列汇总等信息，本例就没有实现，最后一点工作大家自己练练手吧。

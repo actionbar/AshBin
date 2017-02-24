@@ -1,0 +1,182 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="../c3.css" />
+<title>XML to HTML</title>
+</head>
+<body class="xml">
+<div id="wrapper">
+<div id="header">
+<a href="http://e.v-get.com/w3cschool/" style="float:left;">W3CSchool 在线教程</a>
+<div class="q g"><script type="text/javascript">var cpro_id="u1163355"</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div>
+<div id="navfirst">
+<ul id="menu">
+<li id="h"><a href="../h.html">HTML教程</a></li>
+<li id="x"><a href="../x.html">XML教程</a></li>
+<li id="b"><a href="../b.html">浏览器脚本</a></li>
+<li id="s"><a href="../s.html">服务器脚本</a></li>
+<li id="d"><a href="../d.html">dot net教程</a></li>
+<li id="m"><a href="../m.html">多媒体教程</a></li>
+<li id="w"><a href="../w.html">建站手册</a></li>
+</ul>
+</div><div id="navsecond">
+<div id="course">
+<h2>XML 基础</h2>
+<ul>
+<li><a href="http://e.v-get.com/w3cschool/">XML 首页</a></li>
+<li><a href="xml_intro.html">XML 简介</a></li>
+<li><a href="xml_usedfor.html">XML 用途</a></li>
+<li><a href="xml_tree.html">XML 树结构</a></li>
+<li><a href="xml_syntax.html">XML 语法</a></li>
+<li><a href="xml_elements.html">XML 元素</a></li>
+<li><a href="xml_attributes.html">XML 属性</a></li>
+<li><a href="xml_dtd.html">XML 验证</a></li>
+<li><a href="xml_validator.html">XML 验证器</a></li>
+<li><a href="xml_browsers.html">XML 浏览器</a></li>
+<li><a href="xml_view.html">XML 查看</a></li>
+<li><a href="xml_display.html">XML CSS</a></li>
+<li><a href="xml_xsl.html">XML XSLT</a></li>
+</ul>
+<h2>XML JavaScript</h2>
+<ul>
+<li><a href="xml_parser.html">XML 解析器</a></li>
+<li><a href="xml_dom.html">XML DOM</a></li>
+<li><a href="xml_to_html.html">XML to HTML</a></li>
+<li><a href="xml_http.html">XML HTTP Request</a></li>
+<li><a href="xml_applications.html">XML 应用程序</a></li>
+</ul>
+</ul>
+<h2>XML 高级</h2>
+<ul>
+<li><a href="xml_namespaces.html">XML 命名空间</a></li>
+<li><a href="xml_cdata.html">XML CDATA</a></li>
+<li><a href="xml_encoding.html">XML 编码</a></li>
+<li><a href="xml_server.html">XML 服务器</a></li>
+<li><a href="xml_dom_advanced.html">XML DOM 高级</a></li>
+<li><a href="xml_dont.html">XML Don't</a></li>
+<li><a href="xml_savedata.html">XML 数据存储</a></li>
+<li><a href="xml_technologies.html">XML 技术</a></li>
+<li><a href="xml_real_life.html">XML 现实案例</a></li>
+<li><a href="xml_editors.html">XML 编辑器</a></li>
+<li><a href="xml_summary.html">XML 总结</a></li>
+</ul>
+<h2>实例/测验</h2>
+<ul>
+<li><a href="../example/xmle_examples.html">XML 实例</a></li>
+<li><a href="xml_quiz.html">XML 测验</a></li>
+</ul>
+</div>
+<div id="selected">
+<h2>建站手册</h2>
+<ul>
+<li><a href="../site/">网站构建</a></li>
+<li><a href="../w3c/">万维网联盟</a></li>
+<li><a href="http://e.v-get.com/w3c/">W3CSchool 教程</a></li>
+<li><a href="../quality/">网站品质</a></li>
+<li><a href="../semweb/">语义网</a></li>
+<li><a href="../hosting/">网站主机</a></li>
+</ul>
+<h2><a href="http://e.v-get.com/w3c/" class="f13">W3CSchool 教程</a></h2><div class="a120x90"><script type="text/javascript">var cpro_id="u1210867";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div></div>
+</div>
+<div id="maincontent">
+<h1>XML to HTML</h1>
+<div id="tpn">
+<ul class="prenext">
+<li class="pre"><a href="xml_dom.html">上一页</a></li>
+<li class="next"><a href="xml_http.html">下一页</a></li>
+</ul>
+</div>
+<div id="intro">
+<p><strong>本章讲解如何把 XML 数据显示为 HTML。</strong></p>
+</div>
+<div class="example">
+<h2>实例</h2>
+<dl>
+<dt><a href="../tiy/t_222.html">把 XML 数据显示为 HTML 表格</a></dt>
+<dd>从 XML 文件中加载数据，然后把数据显示为一个 HTML 表格</dd>
+</dl>
+</div>
+<div>
+<h2>在 HTML 中显示数据</h2>
+<p>在上一节中，我们讲解了如何通过 JavaScript 来解析 XML 并访问 DOM。</p>
+<p>本例遍历一个 XML 文件 (<a href="../example/xmle/cd_catalog.xml">cd_catalog.xml</a>)，然后把每个 CD 元素显示为一个 HTML 表格行：</p>
+<pre>&lt;html&gt;
+&lt;body&gt;
+&lt;script type=&#34;text/javascript&#34;&gt;
+var xmlDoc=null;
+if (window.ActiveXObject)
+{
+<span>// code for IE</span>
+xmlDoc=new ActiveXObject(&#34;Microsoft.XMLDOM&#34;);
+}
+else if (document.implementation.createDocument)
+{
+<span>// code for Mozilla, Firefox, Opera, etc.</span>
+xmlDoc=document.implementation.createDocument(&#34;&#34;,&#34;&#34;,null);
+}
+else
+{
+alert('Your browser cannot handle this script');
+}
+if (xmlDoc!=null)
+{
+xmlDoc.async=false;
+xmlDoc.load(&#34;cd_catalog.xml&#34;);
+document.write(&#34;&lt;table border='1'&gt;&#34;);
+var x=xmlDoc.getElementsByTagName(&#34;CD&#34;);
+for (i=0;i&lt;x.length;i++)
+{ 
+document.write(&#34;&lt;tr&gt;&#34;);
+document.write(&#34;&lt;td&gt;&#34;);
+document.write(
+x[i].getElementsByTagName(&#34;ARTIST&#34;)[0].childNodes[0].nodeValue);
+document.write(&#34;&lt;/td&gt;&#34;);
+document.write(&#34;&lt;td&gt;&#34;);
+document.write(
+x[i].getElementsByTagName(&#34;TITLE&#34;)[0].childNodes[0].nodeValue);
+document.write(&#34;&lt;/td&gt;&#34;);
+document.write(&#34;&lt;/tr&gt;&#34;);
+}
+document.write(&#34;&lt;/table&gt;&#34;);
+}
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+<p>TIY：<a href="../tiy/t_672.html">在 HTML 表格中显示 XML 数据</a>。</p>
+<h3>例子解释：</h3>
+<ol>
+<li>检测浏览器，然后使用合适的解析器来加载 XML</li>
+<li>创建一个 HTML 表格 (&lt;table border="1"&gt;）</li>
+<li>使用 getElementsByTagName() 来获得所有 XML 的 CD 节点</li>
+<li>针对每个 CD 节点，把 ARTIST 和 TITLE 中的数据显示为表格数据</li>
+<li>用 &lt;/table&gt; 结束表格</li>
+</ol>
+<p>如需更多有关 JavaScript 和 XML DOM 的信息，请访问我们的 <a href="../xmldom/">XML DOM 教程</a>。</p>
+</div>
+<div>
+<h2>跨域访问</h2>
+<p>出于安全方面的原因，现代的浏览器不允许跨域的访问。</p>
+<p>这意味着，网页以及它试图加载的 XML 文件，都必须位于相同的服务器上。</p>
+<p>W3CSchool 的实例所打开的 XML 文件位于 W3CSchool 的域上。</p>
+<p>假如你打算在自己的网页上使用上面的例子，则必须把 XML 文件放到自己的服务器上。否则，xmlDoc.load() 将产生错误 &#34;Access is denied&#34;。</p>
+</div>
+<div  id="bpn">
+<ul class="prenext">
+<li class="pre"><a href="xml_dom.html">上一页</a></li>
+<li class="next"><a href="xml_http.html">下一页</a></li>
+</ul>
+</div>
+</div>
+<div id="sidebar">
+<div class="rs"></div>
+<div id="tools">
+<h5 id="tools_example"><a href="../example/xmle_examples.html">XML 实例</a></h5>
+<h5 id="tools_quiz"><a href="xml_quiz.html">XML 测验</a></h5>
+</div>
+<div class="a120x600"><script type="text/javascript">var cpro_id="u1293136";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div><div class="b"></div>
+</div>
+</body>
+</html>

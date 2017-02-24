@@ -1,0 +1,136 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>使用ASP脚本技术</title>
+<style type="text/css">
+<!--
+body {
+	font-size: 10.4pt;
+	line-height: 22px;
+}
+-->
+</style>
+</head>
+
+<body bgcolor="eeeeee" leftmargin="20" marginwidth="20">
+<p><strong>使用ASP脚本技术</strong></p>
+<hr>
+<p> 在VB脚本中，你不必定义变量或者象在其他脚本语言中明确的定义他们的类型。一个变量在你第一次使用的时候存在。但是，这个特性让你的代码广泛的存在打字稿中。如果你在代码中错误的定义一个变量名，那么一个新的变量将被创建。你的脚本可能不能正常的工作，而你也有可能不能意识到这个错误。</p>
+<p>转自：动态网制作指南 www.knowsky.com<br>
+  在你使用变量的时候，你要养成定义他们的习惯，你所需要做的就是测试Dim variableName: </p>
+<p>%&lt;%Dim IntUserID%&gt;% </p>
+<p>IntUserID现在可以使用了。为了另外一个安全网, 使用Option Explicit. 如果你打开Option Explicit, 你将会在使用变量的任何时候发出错误的信号。这个听起来很乏味，但是当你的脚本发生错误的时候，他可以给你一些线索，否则你要艰难的找出错误出在哪里。</p>
+<p>为了使用Option Explicit, 将下面的内容作为你脚本的第一行内容：</p>
+<p>&lt;% Option Explicit %&gt; </p>
+<p>如果你想要看看当你忘记定义了变量的时候会发生什么状况，可以运行下面这点代码：</p>
+<p>&lt;% Option Explicit %&gt;<br>
+  &lt;:% strName = Request.Form(&quot;Name&quot;) %&gt; </p>
+<p>因为strName变量 (Dim strName) 没有被定义，你将会看到发生下面这些错误：</p>
+<p>Microsoft VBScript runtime error '800a01f4'<br>
+  Variable is undefined: 'strName'<br>
+  /e/oe-test.asp, line 10</p>
+<p>使用Len <br>
+  你可以使用Len(string)函数来确定文本的串的长度：</p>
+<p>&lt;%<br>
+  IntString = &quot;This is a Simple Sentence.&quot;<br>
+  IntStringLength = Len(IntString)<br>
+  Response.Write &quot;There are &quot; &amp; IntStringLength &amp; &quot; characters 
+  (including spaces) in the sentence shown below:&quot;<br>
+  Response.Write &quot;&quot; &amp; IntString &amp; &quot;&quot;<br>
+  %&gt;</p>
+<p>如果你想知道Len是如何手动工作，你可以想想你要求用户输入他们的五位数字代码或者三位PIN的形式。使用Len，你效验是否输入了足够的数字。</p>
+<p>使用Trim<br>
+  Trimming 串是你想要在开始就获得的东西。很多时候，一个串在开始或者结束的时候有一个额外的空间，如果你不平衡它，你可能会担心浪费时间到这些变量上。</p>
+<p>&lt;% strName = Request.Form(&quot;Name&quot;)<br>
+  strCheckName = &quot;Amy Cowen&quot;<br>
+  If strName = strCheckName THEN<br>
+  Response.Write &quot;Success! The names matched.&quot;<br>
+  Else<br>
+  Response.Write &quot;Sorry. The names do not match.&quot;<br>
+  End if<br>
+  %&gt;</p>
+<p>如果strName的值是 &quot; Amy Cowen&quot;，因为那个是我怎样将它输入到形式box中，然后测试两个变量是否一样，结果不是，因为 
+  &quot;Amy Cowen&quot; 不是&quot; Amy Cowen.&quot; </p>
+<p>同样地，如果你将Name输入到URL中：</p>
+<p>&lt;% Response.Write &quot; &amp; objRec(&quot;Name&quot;) &amp; &quot;&quot;&gt;Your 
+  Site&quot; %&gt; </p>
+<p>如果Name中的记录的任何部分有额外的空间，你将迅速的执行错误问题。</p>
+<p>你可以修正一整个串后者在左边或者右边执行进程：</p>
+<p>&lt;% strComments = Request.Form(&quot;Comments&quot;)<br>
+  strComments = Trim(strComments)<br>
+  %&gt;</p>
+<p>假定用户已经输入：:</p>
+<p>&quot; I am having problems installing the software I downloaded. &quot; </p>
+<p>上面的修整语句将会打散额外的空间，只留下下面的内容：</p>
+<p>&quot;I am having problems installing the software I downloaded.&quot; </p>
+<p>现在，回到我们的 &quot; Amy Cowen&quot; 例子,如果我添加了下面的脚本，我们就会成功：</p>
+<p>strName = Trim(strName) </p>
+<p>在右边修整, 使用Rtrim(string). 在左边修整, 使用Ltrim(string). </p>
+<p>转换 <br>
+  当你开始使用和VB差不多的语言的时候，你会犯一些简单的错误，比如比较整型的512和串512。如果你认识到前一个512和后一个512是不一样的，你可以想想为什么给出的脚本不能正常工作。</p>
+<p><br>
+  假想一下，你传送一个文件的ID到ASP脚本中，使用Request.QueryString，你会确定这个文件的ID就是用户想要编辑的。你需要从数据库中为记录输入一些信息并将它们显示在屏幕上。数据库中的ID和整型差不多，特别地，如果你在那个区域使用了AutoNumber性能。你输入的ID事实上是一个串。因此，这两个永远不可能匹配除非你转换成相同的类型。</p>
+<p>Request.QueryString:<br>
+  使用FileSystemObject, 你可以测试一个文本—比如, *.html, *.asp, *.inc., *.gif—或者目录的存在。如果文件存在，你可以想要一连串的时间发生。如果文件不存在，你可能需要其他的事件发生，使用下面的代码： 
+  &lt;%<br>
+  sPath=&quot;/profiles/&quot; &amp; strFileName &amp; &quot;.asp&quot;<br>
+  sFile=Server.MapPath(sPath) <br>
+  Set fe=Server.CreateObject(&quot;Scripting.FileSystemObject&quot;)<br>
+  if fe.FileExists(sFile) THEN<br>
+  'do something<br>
+  Response.Write &quot;Yeah! I found it!.&quot;<br>
+  Response.Write &quot;You can access that file by &quot;<br>
+  Response.Write &quot;&lt;A HREF=&quot;&quot;&quot; &amp; sPath &amp; &quot;&quot;&quot;&gt;Clicking 
+  Here&lt;/A&gt;.&quot;<br>
+  else <br>
+  'do something<br>
+  Response.Write &quot;Sorry. The requested file does not exist.&quot;<br>
+  end if<br>
+  %&gt;</p>
+<p>为了简单的测试你这个文件，添加脚本到最上面：</p>
+<p> strFileName = &quot;name&quot;<br>
+  ' First assign the name of a file you have to this variable. <br>
+  ' strFileName holds just the name, not the extension or the path.<br>
+  ' Make sure you change the path for sPath to the virtual directory your file 
+  is in<br>
+  ' Run the script.<br>
+  ' Then come back and change the strFileName variable to the name of a file<br>
+  ' you do NOT have.<br>
+  ' Run the script.</p>
+<p>改变被输入的代码为一个整型是非常容易的并且可以让你以后的工作变得容易一点，样本的格式是这样的：</p>
+<p>&lt;%<br>
+  dim intUserID intUserID = Request.QueryString(&quot;userID&quot;) <br>
+  intUserID = CInt(intUserID)<br>
+  ' intUserID is now an integer.<br>
+  %&gt;</p>
+<p>你同样也可以注释你的ASP代码并使用它们。</p>
+<p>注释代码 <br>
+  在ASP中，一个脚本在它被发送到浏览器之前就被执行，所以，你不需要使用普通的HTML注释标签来从旧的浏览器隐藏脚本。事实上，你的脚本不会在HTML源中显示，因为那个源代码被浏览器交出去了，所以，旧的浏览器不会突然的发射任何代码到屏幕上。</p>
+<p>你可能想要注释来注释你的ASP脚本，在VB脚本中，你可以使用省略符来记录注释：</p>
+<p>&lt;%<br>
+  currentdate = now</p>
+<p>' make sure you use quotation marks around the HTML code<br>
+  ' the &amp; serves to concatenate the string</p>
+<p>Response.Write &quot;Today is: &quot; &amp; currentdate &amp; &quot;&lt;BR&gt;&quot;</p>
+<p>%&gt; </p>
+<p>在ASP脚本中使用//来表示注释</p>
+<p>使用包含 <br>
+  如果以前你使用过.shtml文件，你可能已经熟悉了包含的工作过程，如果没有，我们将一步一步告诉你如何使用。</p>
+<p><br>
+  一个包含是容量，它存储在一个单独的文件中。在标准的HTML中，包含通常使用.inc扩展。在ASP中，你使用.asp，.txt或者.inc扩展名。接着你将调用文件到HTML代码中。当HTML文件被发送，包含文件从特殊文件中出来并直接写到屏幕上作为HTML的内容。因此，如果你做一个视图源代码，你看到的显示页面和你输入的是一样的效果。</p>
+<p>对于一个普通的HTML来说，当为站点创建一个模版的时候，它会节省很多的时间。头部，页脚和导航元素是显示在你大量页面中的一部分。当你使用包含的时候，你就要输入文件一次并在需要的时候调用它。这有几个优点：</p>
+<p>更新内容的时候，你只需要更新一个文件。 <br>
+  包含meat是从HTML页面中隔离的，所以任何人想对内容做出修改都可以避免弄乱脚本。 <br>
+  你的核心HTML文件更小和更实用。 <br>
+  在ASP中，包含是无价的。你可以一遍又一遍的使用脚本，甚至一些时候可以象一个连接串那么简单的存储在包含中，并且，它可以在不可利用的页面删除。</p>
+<p>为了使用包含文件，你使用这些格式的任意一个：</p>
+<p>&lt;!-- #INCLUDE FILE=&quot;filename.inc&quot; --&gt;</p>
+<p>或者</p>
+<p>&lt;!-- #INCLUDE VIRTUAL=&quot;/filename.inc&quot; --&gt;. </p>
+<p> 文件引用包含使用了相关的路径。VIRTUAL引用一个绝对的路径到相关的服务器上。如果你想移动目录和文件，最简单的方法就是默认使用VIRTUAL，这样在后来你就不会遇到一些意想不到的错误。另外一方面，当你测试文件的时候，你需要利用文件，因为他依靠你如何设置的个人服务器。</p>
+<p> 在标准的HTML中，你一般都给你的包含文件使用.inc后缀。在ASP中，你能使用.asp。这个可以防止你的文件可以轻易的别他人打开并阅读。</p>
+<p></p>
+<p>&nbsp; </p>
+</body>
+</html>

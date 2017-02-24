@@ -1,0 +1,36 @@
+<meta http-equiv="content-type" content="text/html; charset=gb2312"><FONT 
+style="FONT-SIZE: 9pt; LINE-HEIGHT: 15pt"><B>Two&nbsp;Database&nbsp;Backup</B><BR>Two&nbsp;Database&nbsp;Backup&nbsp;Scripts
+<P></P>
+<P></P>
+<P><BR>Here&nbsp;are&nbsp;two&nbsp;scripts&nbsp;designed&nbsp;for&nbsp;backup&nbsp;purposes&nbsp;--&nbsp;the&nbsp;first&nbsp;returns&nbsp;the&nbsp;last&nbsp;date&nbsp;a&nbsp;database&nbsp;was&nbsp;backed&nbsp;up&nbsp;and&nbsp;the&nbsp;second&nbsp;reports&nbsp;on&nbsp;backup&nbsp;activity&nbsp;for&nbsp;all&nbsp;databases,&nbsp;sorted&nbsp;by&nbsp;date&nbsp;of&nbsp;backup.&nbsp;</P>
+<P>The&nbsp;Get&nbsp;Last&nbsp;Backup&nbsp;script&nbsp;allows&nbsp;you&nbsp;to&nbsp;report&nbsp;the&nbsp;last&nbsp;date&nbsp;of&nbsp;backup&nbsp;for&nbsp;all&nbsp;databases&nbsp;on&nbsp;a&nbsp;server,&nbsp;or&nbsp;you&nbsp;can&nbsp;pass&nbsp;in&nbsp;a&nbsp;specific&nbsp;database&nbsp;name&nbsp;and&nbsp;the&nbsp;script&nbsp;will&nbsp;report&nbsp;the&nbsp;date&nbsp;the&nbsp;database&nbsp;was&nbsp;last&nbsp;backed&nbsp;up.&nbsp;</P>
+<P>In&nbsp;addition&nbsp;to&nbsp;providing&nbsp;all&nbsp;database&nbsp;backup&nbsp;activity,&nbsp;the&nbsp;Get&nbsp;Backup&nbsp;Info&nbsp;script&nbsp;will&nbsp;also&nbsp;allow&nbsp;you&nbsp;to&nbsp;filter&nbsp;by&nbsp;a&nbsp;specific&nbsp;database&nbsp;name&nbsp;as&nbsp;well.&nbsp;</P>
+<P>Author:&nbsp;TJay&nbsp;Belt&nbsp;</P>
+<P><BR>/**********************************************************<BR>&nbsp;&nbsp;sp_GetBackupInfo<BR>**********************************************************/</P>
+<P><BR>if<BR>&nbsp;&nbsp;exists<BR>&nbsp;&nbsp;(<BR>&nbsp;&nbsp;&nbsp;&nbsp;select&nbsp;*&nbsp;from&nbsp;SysObjects<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;where&nbsp;ID&nbsp;=&nbsp;Object_ID('sp_GetBackupInfo')<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;and&nbsp;ObjectProperty(ID,&nbsp;'IsProcedure')&nbsp;=&nbsp;1<BR>&nbsp;&nbsp;)<BR>begin<BR>&nbsp;&nbsp;drop&nbsp;procedure&nbsp;sp_GetBackupInfo<BR>end<BR>go</P>
+<P>create&nbsp;procedure&nbsp;sp_GetBackupInfo<BR>&nbsp;&nbsp;@Name&nbsp;varchar(100)&nbsp;=&nbsp;'%'<BR>with&nbsp;Encryption<BR>as<BR>&nbsp;&nbsp;set&nbsp;NoCount&nbsp;on</P>
+<P>&nbsp;&nbsp;declare&nbsp;<BR>&nbsp;&nbsp;&nbsp;&nbsp;@result&nbsp;int</P>
+<P>&nbsp;&nbsp;--try</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;select&nbsp;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(substring&nbsp;(&nbsp;database_name,&nbsp;1,&nbsp;32))&nbsp;as&nbsp;Database_Name,<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;abs(DateDiff(day,&nbsp;GetDate(),&nbsp;backup_finish_date))&nbsp;as&nbsp;DaysSinceBackup,<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;backup_finish_date<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;from&nbsp;msdb.dbo.backupset<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;where&nbsp;Database_Name&nbsp;like&nbsp;@Name<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;order&nbsp;by&nbsp;Database_Name,&nbsp;backup_finish_date&nbsp;desc</P>
+<P>&nbsp;&nbsp;--finally<BR>&nbsp;&nbsp;&nbsp;&nbsp;SuccessProc:<BR>&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;0&nbsp;&nbsp;/*&nbsp;success&nbsp;*/</P>
+<P>&nbsp;&nbsp;--except<BR>&nbsp;&nbsp;&nbsp;&nbsp;ErrorProc:<BR>&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;1&nbsp;/*&nbsp;failure&nbsp;*/<BR>&nbsp;&nbsp;--end<BR>go</P>
+<P>grant&nbsp;execute&nbsp;on&nbsp;sp_GetBackupInfo&nbsp;to&nbsp;Public<BR>go</P>
+<P></P>
+<P>/*</P>
+<P>sp_GetBackupInfo&nbsp;'hgp'</P>
+<P>*/</P>
+<P></P>
+<P></P>
+<P>/**********************************************************<BR>&nbsp;&nbsp;sp_GetLastBackup<BR>**********************************************************/</P>
+<P>if<BR>&nbsp;&nbsp;exists<BR>&nbsp;&nbsp;(<BR>&nbsp;&nbsp;&nbsp;&nbsp;select&nbsp;*&nbsp;from&nbsp;SysObjects<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;where&nbsp;ID&nbsp;=&nbsp;Object_ID('sp_GetLastBackup')<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;and&nbsp;ObjectProperty(ID,&nbsp;'IsProcedure')&nbsp;=&nbsp;1<BR>&nbsp;&nbsp;)<BR>begin<BR>&nbsp;&nbsp;drop&nbsp;procedure&nbsp;sp_GetLastBackup<BR>end<BR>go</P>
+<P>create&nbsp;procedure&nbsp;sp_GetLastBackup<BR>&nbsp;&nbsp;@Name&nbsp;varchar(100)&nbsp;=&nbsp;'%'<BR>with&nbsp;Encryption<BR>as<BR>&nbsp;&nbsp;set&nbsp;NoCount&nbsp;on</P>
+<P>&nbsp;&nbsp;declare&nbsp;<BR>&nbsp;&nbsp;&nbsp;&nbsp;@result&nbsp;int</P>
+<P>&nbsp;&nbsp;--try</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;select&nbsp;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(substring&nbsp;(&nbsp;database_name,&nbsp;1,&nbsp;32))&nbsp;as&nbsp;Database_Name,<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;abs(DateDiff(day,&nbsp;GetDate(),&nbsp;Max(backup_finish_date)))&nbsp;as&nbsp;DaysSinceBackup,<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Max(backup_finish_date)<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;from&nbsp;msdb.dbo.backupset<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;where&nbsp;Database_Name&nbsp;like&nbsp;@Name<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;group&nbsp;by&nbsp;Database_Name<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;order&nbsp;by&nbsp;Database_Name</P>
+<P>&nbsp;&nbsp;--finally<BR>&nbsp;&nbsp;&nbsp;&nbsp;SuccessProc:<BR>&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;0&nbsp;&nbsp;/*&nbsp;success&nbsp;*/</P>
+<P>&nbsp;&nbsp;--except<BR>&nbsp;&nbsp;&nbsp;&nbsp;ErrorProc:<BR>&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;1&nbsp;/*&nbsp;failure&nbsp;*/<BR>&nbsp;&nbsp;--end<BR>go</P>
+<P>grant&nbsp;execute&nbsp;on&nbsp;sp_GetLastBackup&nbsp;to&nbsp;Public<BR>go</P>
+<P></P>
+<P>/*</P>
+<P>sp_GetLastBackup&nbsp;'hgp'</P>
+<P>*/<BR></P></FONT>

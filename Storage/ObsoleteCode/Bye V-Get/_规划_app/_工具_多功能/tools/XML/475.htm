@@ -1,0 +1,227 @@
+<html>
+<head>
+<title>XSL变换概述</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+
+<link rel = stylesheet href = "image/style.css">
+</head>
+<body bgcolor="#ffffff">
+<table width="688" border="0" cellspacing="0" cellpadding="0" align="center">
+  <tr bgcolor="EEEEEE"> 
+    <td height="22"><a href="index.htm">主页</a></td>
+  </tr>
+</table><br>
+<table border="0" cellpadding="0" cellspacing="0" width="688" align="center" height="490">
+  <tr valign="top"> 
+    <td rowspan="4" width="91">&nbsp; </td>
+    <td height="68" width="131"> 
+      <p><img src="image/doc.gif"></p>
+    </td>
+    <td rowspan="4" width="18"><b></b> </td>
+    <td height="68" width="387"><img src="image/title_doc.gif"></td>
+    <td rowspan="4" width="61"> 
+      <h6>&nbsp;</h6>
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td rowspan="3" valign="top" class="pt10" align="center" width="131" bgcolor="EEEEEE"> 
+      <p>&nbsp;</p>
+      <p><font color="#FF0000">※ 14.2 XSL变换概述</font></p>
+       
+	</td>
+  </tr>
+  <tr valign="top"> 
+    <td width="387" height="308"> 
+      <table width="100%" border="0" cellpadding="0">
+        <tr> 
+          <td>
+
+           <h4><a name="_Toc467207133">14.2 XSL变换概述</a></h4>
+<p>在XSL变换中，XSL处理程序读取XML文档和XSL样式单。基于处理程序在XSL样式单中找到的指令，输出新的XML文档。</p>
+<h5><a name="_Toc467207134">14.2.1 树形结构</a></h5>
+<p>就像第6章学到的那样，每个结构整洁的XML文档都是树形结构（tree）。树形结构是一种数据结构，它是由连接起来的节点（node）组成的，这些节点起始于一个称为根节点（root）的单节点。根节点连接它的子节点，每个子节点可以连接零个或多个它自己的子节点，依次类推。没有自己的子节点的节点称为叶节点（leave）。树形结构的图表更像家谱，列出各个先辈的后代。树形结构最有用的特征是每个节点及其子节点也会形成树形结构。因此，一个树形结构就是所有树形结构的分级结构，在此分级结构中，各树形结构都是由更小的树形结构建立的。</p>
+<p>XML树形结构的节点就是元素及元素的内容。但是，对于XSL，特性、命名域（namespace）、处理指令以及注释必须也作为节点看待。而且文档的根节点必须与根（基本）元素区别开来。因此，XSL处理程序假定XML树形结构包含下列七类节点：</p>
+<p>1．根节点</p>
+<p>2．元素</p>
+<p>3．文本</p>
+<p>4．特性</p>
+<p>5．命名域</p>
+<p>6．处理指令</p>
+<p>7．注释</p>
+<p><img src="Image/BK000214-23.gif" align="left">例如，对于清单14-1中的XML文档，它显示的是元素周期表，在本章我将用这个元素周期表作为例子（更恰当地说，是周期表中的前两个元素）。<br>
+  完整的元素周期表放在本书所附光盘中的examples/periodic_table文件夹中的allelements.xml文件中。</p>
+<p>根节点PERIODIC_TABLE元素包含ATOM子元素。每个ATOM元素含有各种子元素，以便提供原子序数、原子量、符号、沸点等等信息。UNITS特性为具有单位的元素指定单位。</p>
+<p><img src="Image/BK000214-17.gif" width=47 height=52 align="left">这里使用ELEMENT比ATOM或许更恰当。但是，写成ELEMENT元素难以区分化学元素和XML元素。因此，起码出于本章的考虑，ATOM似乎更具可读性。</p>
+<p>&nbsp;</p>
+<p>清单14-1：氢和氦元素的XML周期表</p>
+<p>&lt;?xml version=”1.0”?&gt;</p>
+<p>&lt;?xml-stylesheet type=”text/xsl” href=”14-2.xsl”?&gt;</p>
+<p>&lt;PERIODIC TABLE&gt;</p>
+<p></p>
+<p> &lt;ATOM STATE=”GAS”&gt;</p>
+<p> &lt;NAME&gt;Hydrogen&lt;/NAME&gt;</p>
+<p> &lt;SYMBOL&gt;H&lt;/SYMBOL&gt;</p>
+<p> &lt;ATOMIC_NUMBER&gt;l&lt;/ATOMIC_NUMBER&gt;</p>
+<p> &lt;ATOMIC_WLIGHT&gt;1.00794&lt;/ATOMIC_WEIGHT&gt;</p>
+<p> &lt;BOILING_POINT UNITS=”Kelvin”&gt;20.28&lt;/BOILING_POINT&gt;</p>
+<p> &lt;MELTING_POINT UNITS=”Kelvin”&gt;13.81&lt;/MELTING_POINT&gt;</p>
+<p> &lt;DENSITY UNITS=”grdMS/cubic centimeter”&gt;&lt;!- At 300K -&gt;</p>
+<p> 0.0899</p>
+<p> &lt;/DENSITY&gt;</p>
+<p> &lt;/ATOM&gt;</p>
+<p></p>
+<p> &lt;ATOM STATE=”GAS”&gt;</p>
+<p> &lt;NAME&gt;Helium&lt;/NAME&gt;</p>
+<p> &lt;SYMBOL&gt;He&lt;/SYMBOL&gt;</p>
+<p> &lt;ATOMIC_NUMBER&gt;2&lt;/ATOMIC_NUMBER&gt;</p>
+<p> &lt;ATOMIC_WEIGHT&gt;4.0026&lt;/ATOMIC_WEIGHT&gt;</p>
+<p> &lt;BOILING_POINT UNITS=”Kelvin”&gt;4.216&lt;/BOILING_POINT&gt;</p>
+<p> &lt;MELTING_POINT UNITS=”Kelvin”&gt;0.95&lt;/MELTING_POINT&gt;</p>
+<p> &lt;DENSITY UNITS=”grams/cubic centimeter”&gt;&lt;!- At 300K -&gt;</p>
+<p> 0.1785</p>
+<p> &lt;/DENSITY&gt;</p>
+<p> &lt;/ATOM&gt;</p>
+<p></p>
+<p>&lt;/PERIODIC_TABLE&gt;</p>
+<p>图14-1显示的是本文档作为树形结构的图解。它起始于顶端的根节点（不同于根元素！），包括两个子节点：xml-stylesheet处理指令和根元素PERIODIC_TABLE。（XML声明对XSL处理程序是不可见的，因而不包括在XSL处理程序进行操作的树形结构中）。PERIODIC_TABLE元素包括两个子节点，即两个ATOM元素。每个ATOM元素都一个STATE特性的特性节点和各种子元素节点。每个子元素包括其内容的节点，以及任何特性节点和拥有的注释。注意，在特殊情况下，许多节点可以是除元素之外的任何内容。节点可为文本、特性、注释和处理指令。与CSS1不同，XSL不限于只和全部元素一起使用，还有一个更加独特地查看文档的方法：能够根据注释、特性、处理指令等设计样式。</p>
+<p><img src="Image/BK000214-17.gif" width=47 height=52 align="left">像XML声明一样，内部的DTD子集或DOCTYPE声明不是树形结构的一部分。但是，通过使用#FIXED或缺省特性值的&lt;!ATTLIST&gt;声明，它可能具有将特性节点添加到某些元素中的效果。</p>
+<p>&nbsp;</p>
+<p align="center"><img src="Image/BK000214-24.gif" width=497 height=255></p>
+<p align="center">图14-1 以树形图表示的清单14-1</p>
+<p>XSL变换语言通过将XML树形结构变换成另一个XML树形结构来操作。这种语言含有操作符，此操作符用来从树形结构中选择特定节点、对节点重新排序以及输出节点。如果有一个节点是元素节点，那么它本身可能就是整个树形结构。请记住，所有的用于输入和输出的操作符都只能操作一个树形结构。它们不是用于变换任意数据的通用的正常表达语言。</p>
+<h5><a name="_Toc467207135">14.2.2 XSL 样式单文档</a></h5>
+<p>更准确地说，当输入时，XSL变换接受以XML文档表示的树形结构，而输出时，则产生也以XML文档来表示的新的树形结构。因此，XSL变换部分也称为树形结构建立部分。输入和输出的内容必须是XML文档。不能使用XSL来变换成非XML格式（如PDF、TeX、Microsoft 
+  Word、PostScript、MIDI或其他）或从非XML格式进行变换。可使用XSL将XML变换为一中间格式（如TeXML），然后使用另外的非XSL软件来将这个中间格式变换成期望的格式。HTML和SGML都是介乎于两者之间的情况，因为它们非常接近于XML。可使用XSL将符合XML的结构完整性规则的HTML和SGML文档变换成XML或者相反。但是，XSL不能处理在大多数Web站点上和文档生成系统中遇到的各种各样非结构整洁的HTML和SGML文档。要牢记的首要问题是，XSL变换语言对于XML到XML的变换是可行的，但对于其他方面则不行。</p>
+<p>XSL文档包含一组模板规则和其他规则。模板规则拥有模式（pattern）以及模板（template），模式用来指定模板规则所适用的树形结构，而模板是用来在与此模式匹配时进行输出。当XSL处理程序使用XSL样式单来格式化XML文档时，它对XML文档树形结构进行扫描，依次浏览每个子树形结构。当读完XML文档中的每个树形结构时，处理程序就把它与样式单中每个模板规则的模式进行比较。当处理程序找到与模板规则的模式相匹配的树形结构时，它就输出此规则的模板。这个模板通常包括一些标记、新的数据和从原XML文档的树形结构中复制来的数据。</p>
+<p>XSL使用XML来描述这些规则、模板和模式。XSL文档本身也是xsl:stylesheet元素。每个模板规则都是xsl:template元素。规则的模式是xsl:template元素的match特性值。输出模板是xsl:template元素的内容。模板中所有的指令都是由一个或另一个XSL元素来完成的，而这些指令是来完成某种动作，如选择输入树形结构中要包括在输出树形结构的部分。这些由元素名上的xsl:前缀来标识。没有xsl:前缀的元素为结果树部分。</p>
+<p><img src="Image/BK000214-19.gif" width=56 height=42 align="left">更恰当地说，作为XSL指令的所有元素都是xsl命名域的一部分。有关命名域将在第18章“命名域”中讨论。在那以前，只要了解所有的XSL元素的名称都是以xsl:开头就可以了。</p>
+<p>清单14-2显示的是一个非常简单的XSL样式单，它有两个模板规则。第一个模板规则与根元素PFRIODIC_TABLE相匹配，它使用html元素来代替此元素。html元素的内容是将文档中的其他模板应用于PFRIODIC_TABLE元素中所获得的结果。</p>
+<p>第二个模板与ATOM元素匹配，它用输出文档中的P元素代替输入文档中的每个ATOM元素。xsl:apply-templates规则将匹配的源元素的文本插入到输出文档中。因此，P元素的内容将是包含在相应的ATOM元素中的文本（但不是标记）。下面，将更进一步讨论这些元素的精确语法。</p>
+<p>清单14-2：有两个模板规则的周期表XSL样式单</p>
+<p>&lt;?xml version="1.0"?&gt;</p>
+<p>&lt;xsl:stylesheet</p>
+<p>xmlns:xsl="http://www.w3.org/XSL/Transform/1.0"&gt;</p>
+<p></p>
+<p> &lt;xsl:template match="PERIODIC_TABLE"&gt;</p>
+<p> &lt;html&gt;</p>
+<p> &lt;xsl:apply-templates/&gt;</p>
+<p> &lt;/html&gt;</p>
+<p> &lt;/xsl:template&gt;</p>
+<p></p>
+<p> &lt;xsl:template match="ATOM"&gt;</p>
+<p> &lt;P&gt;</p>
+<p> &lt;xsl:apply templates/&gt;</p>
+<p> &lt;/P&gt;</p>
+<p> &lt;/xsl:template&gt;</p>
+<p></p>
+<p>&lt;/xsl:stylesheet&gt;</p>
+<h5><a name="_Toc467207136">14.2.3 在何处进行XML变换</a></h5>
+<p>使用XSL样式单可有三种主要方式将XML文档变换成其他格式（如HTML）：</p>
+<p> 1．XML文档和相关的样式单都是用于客户端（Web浏览器）的，然后客户端程序按照样式单中指定的格式变换文档，并将它呈现给用户。</p>
+<p> 2．服务器将XSL样式单应用于XML文档，以便此文档能够变换成其他某种格式（通常为HTML），并把变换后的文档发送到客户端程序（Web浏览器）。</p>
+<p> 3．第三个程序将原XML文档变换成其他某种格式（常常为HTML）后，才把此文档放置在服务器上。服务器和客户程序只处理变换后的文档。</p>
+<p>这三种方法尽管都使用相同的XML文档和XSL样式，但每一种都使用不同的软件。将XML文档发送到Internet Explorer 5.0的普通Web服务器使用的就是第一种方法。使用IBM 
+  alphaWork的XML功能与服务小程序兼容的Web服务器就是第二种方法的例证。使用命令行XT程序来将XML文档变换成HTML文档，然后将HTML文档放置在Web服务器上，采用的就是第三种方法。但是，这些方法都使用（至少在理论上是如此）相同的XSL语言。</p>
+<p>本章中，我将重点介绍第三种方法，其主要原因是在撰写本书时，像James Clark的XT或IBM的LotusXSL这样的专用转换程序能够最完善、最精确地实现目前的XSL规范。此外，该方法提供了与先前的Web浏览器和服务器的最广泛的兼容性，而第一种方法要求浏览器比大多数用户使用的更新；第二种方法要求专门的Web服务器软件。但是，实际上，要求不同的服务器比要求特定客户来得简单。因为可以安装自己的专门服务器软件，但不能要求用户都安装特定的客户软件。</p>
+<h5><a name="_Toc467207137">14.2.4 如何使用XT</a></h5>
+<p>XT是Java 1.1的字符模式的应用程序。要使用它，需要安装与Java 1.1兼容的虚拟机，如Sun的Java开发包（Java Development 
+  Kit，JDK）或Java的运行时环境（Java Runtime Environment，JRE）、Apple的Macintosh Runtime for 
+  Java 2.1（MRJ）或Microsoft的虚拟机。还需要安装符合SAX的XML分析程序，如James Clark的XP，这也是一个Java应用程序。</p>
+<p><img src="Image/BK000214-17.gif" width=47 height=52>在撰写本书时，可在<a href="http://www.jclark.com/xml/xt">http://www.jclark.com/xml/xt</a>.html站点上找到XT程序，而在访问<a href="http://www.jclark.com/xml/xp/index.html">http://www.jclark.com/xml/xp/index.html</a>处找到.XP程序。当然，这些URL都随时间可能发生变化。甚至无法担保在你读到此书时XT就能存在。但是，尽管我在本章中使用XT，但使用任何XSL处理程序（执行1999年4月21日制定的XSL规范工作草案的树形结构部分）时，这些实例都能运行。另外的可能性是IBM 
+  alphaWork的LotusXSL（可在<a href="http://www.a1phaworks.ibm.com/tech">http://www.a1phaworks.ibm.com/tech</a>/LotusXSL处得到）。当使用执行XSL近期草案标准的软件时，这些例子可能运行，也可能不运行，尽管我希望这些例子更接近于近期标准。我将在我自己的Web站点（<a href="http://metalab.unc.edu/xml/books/bible/">http://metalab.unc.edu/xml/books/bible/</a>）上发布任何更新内容。</p>
+<p>含有XT main方法的Java类是com.jclark.xsl.sax.Driver。假设Java的CLASSPATH环境变量包括xt.jar和sax.jar文件（这两个文件在XT发行版中），那么在命令解释程序的提示符或DOS窗口中键入下面的代码，即可运行XT：</p>
+<p>C:\&gt;java</p>
+<p> -Dcom.jclark.xsl.sax.parser=com.jclark.xml.sax.CommentDriver</p>
+<p> com.jclark.xsl.sax.Driver 14-1.xml 14-2.xsl 14-3.html</p>
+<p>这一命令行运行java解释程序，将com.jclark.xsl.sax.parser Java的环境变量设置为com.jclark.xml.sax.CommentDriver，后者表示用于解析输入文档的Java类的完整名称。此类必须在类路径中。此处我使用XP语法分析器，但任何符合SAX的语法分析器都可以做到。接下来就是含有XT程序的main()方法的Java类名称（com.jclark.xsl.sax.Driver）。最后，是输入XML文档（14-1.xml）、输入XSL样式单（14-2.xsl）和输出的HTML文件（14-3.html）的名称。如果忽略最后一个参数，那么变换后的文档将打印在控制台上。</p>
+<p><img src="Image/BK000214-17.gif" width=47 height=52 align="left">如果正在使用Windows，并已安装了Microsoft 
+  Java虚拟机，就可以使用XT的单机可执行版。这样，由于它包括XP语法分析器，并且不要求提供CLASSPATH环境变量，所以使用起来就稍微容易一些。对于本程序，可简单地将xt.exe文件放置在自己的路径中，并键入下列句子：</p>
+<p> C:\&gt; xt 14-1.xml 14-2.xsl 14-3.html</p>
+<p>清单14-2像第6章讨论过的那样将输入文档变换成结构整洁的HTML文件。但是，只要编写的样式单支持这种变换，则可从任何XML应用程序变换到其他应用程序。例如，可以设想有这样的一个样式单，它把VML文档变换到SVG文档：</p>
+<p>% java</p>
+<p> -Dcom.jclark.xsl.sax.parser=com.jclark.xml.sax.CommentDriver</p>
+<p> com.jclark.xsl.sax.Driver pinktriangle.vml</p>
+<p> VmlToSVG.xsl -out pinktriangle.svg</p>
+<p>当然，尽管其他大多数命令行XSL处理程序具有不同的命令行参数和选项，但它们的表现形式相似。如果这些程序不是用Java来编写，由于不需要配置CLASSPATH，使用起来可能稍微容易些。</p>
+<p>清单14-3显示的是通过XT使用清单14-2中的XSL样式单来运行清单14-1时的输出结果。请注意，XT并不简化它所产生的具有许多空白的HTML。但这并不重要，因为最终是在Web浏览器中浏览此文件，而Web浏览器又会将空白截去。图14-2显示的是加载到Netscape 
+  Navigator 4.5中的清单14-3。由于清单14-3显示标准的HTML，所以不需要具有XML功能的浏览器来浏览此文档。</p>
+<p>清单14-3：将清单14-2中的样式单应用于清单14-1中的XML后产生的HTML</p>
+<p>&lt;html&gt;</p>
+<p></p>
+<p> &lt;P&gt;</p>
+<p> Hydrogen</p>
+<p> H</p>
+<p> 1</p>
+<p> 1.00794</p>
+<p> 20.28</p>
+<p> 13.81</p>
+<p></p>
+<p> 0.0899</p>
+<p></p>
+<p> &lt;/P&gt;</p>
+<p></p>
+<p> &lt;P&gt;</p>
+<p></p>
+<p> Helium</p>
+<p> He</p>
+<p> 2</p>
+<p> 4.0026</p>
+<p> 4.216</p>
+<p> 0.95</p>
+<p></p>
+<p> 0.1785</p>
+<p></p>
+<p> &lt;/P&gt;</p>
+<p></p>
+<p>&lt;/html&gt;</p>
+<p align="center"><img src="Image/BK000214-25.gif" width=343 height=182></p>
+<p align="center">图14-2 将清单14-2中的XSL样式单应用于清单14-1中的XML而生成的页面</p>
+<h5><a name="_Toc467207138">14.2.5 直接显示带有XSL样式单的XML文件</a></h5>
+<p>无需预处理XML文件，就可以向客户端发送XML文件和描述如何显示此文件的XSL文件。客户程序负责将样式单应用于文档，并按照要求加以显示。这种情况要求客户端所做的工作更多，但服务器的负载要小得多。在这种情况下，XSL样式单必须将文档变换成客户端能够理解的XML应用程序。尽管将来有些浏览器很可能能够处理XSL格式化对象，但HTML是很有希望的选择方案。</p>
+<p>将XSL样式单与XML文档相链接是很容易的，只需要紧跟在XML声明之后插入序言中的xml-stylesheet处理指令。这种处理指令应有text/xsl值的type特性，以及其值为指向此样式单的URL的href特性。例如：</p>
+<p>&lt;?xml version="1.0"?&gt;</p>
+<p>&lt;?xml-stylesheet type="text/xsl" href="14-2.xsl"?&gt;</p>
+<p>这也是将CSS样式单与文档链接的方法。这里的唯一区别是type特性具有text/xsl值，而不是text/css值。</p>
+<p>Internet Explorer 5.0的XSL支持在许多方面与1999年4月21日制定的草案有差异。首先，它期望XSL元素放在http://www.w3.org/TR/WD-xsl命名域中，而不是http://www.w3.org/XSL/Transform/1.0命名域，尽管xsl前缀仍然使用。其次，当元素不与任何模板相匹配时，并不执行此元素的缺省规则。因此，在Internet 
+  Explorer中浏览文档时，需要从根元素开始为分级结构中的每个元素提供一个模板。清单14-4显示了这种情况。三条规则依次与根节点、根元素PERIODIC_TABLE和ATOM相匹配。图14-3显示的是使用此样式单将清单14-1加载到Internet 
+  Explorer 5.0中之后的XML文档。</p>
+<p>清单14-4：将清单14-2调整为可在Internet Explorer 5.0下运行的样式单</p>
+<p>&lt;?xml version="1.0"?&gt;</p>
+<p>&lt;xsl:stylesheet xmlns:xsl="http://www.w3.org/TR/WD-xsl"&gt;</p>
+<p></p>
+<p> &lt;xsl:template match="/"&gt;</p>
+<p> &lt;html&gt;</p>
+<p> &lt;xsl:apply-templates/&gt;</p>
+<p> &lt;/html&gt;</p>
+<p> &lt;/xsl:template&gt;</p>
+<p></p>
+<p> &lt;xsl:template match="PERIODIC_TABLE"&gt;</p>
+<p> &lt;xsl:apply-templates/&gt;</p>
+<p> &lt;/xsl:template&gt;</p>
+<p></p>
+<p> &lt;xsl:template match="ATOM"&gt;</p>
+<p> &lt;P&gt;</p>
+<p> &lt;xsl:value-of select="."/&gt;</p>
+<p> &lt;/P&gt;</p>
+<p> &lt;/xsl:template&gt;</p>
+<p></p>
+<p>&lt;/xsl:stylesheet&gt;</p>
+<p>　</p>
+<p align="center"><img src="Image/BK000214-26.gif" width=366 height=176></p>
+<p align="center">图14-3 将清单14-4中调整过的XSL样式单应用于清单14-1中的XML文档， 在Internet Explorer 
+  5.0中生成的页面</p>
+<p><img src="Image/BK000214-17.gif" width=59 height=65 align="left">理想的情况是，相同的XML文档既可用于直接显示也可以预处理成HTML。不幸的是，XT不接受http://www.w3.org/TR/WD-xsl命名域，而IE 
+  5不接受http://www.w3.org/XSL/Transform/1.0命名域。 由于不同的处理程序在对改进的XSL规范各部分的支持方面起到各有所长的作用，所以我们仍然处于这种痛苦的境地。</p>
+<p>在本章剩下来的部分，在将文档装入浏览器之前，我将把它简单地预处理成HTML格式。</p>
+ 
+<a href='474.htm'>&lt;&lt;上一篇</a>&nbsp;&nbsp;<a href='476.htm'>下一篇&gt;&gt;</a></td>
+        </tr>
+      </table>
+      <p>&nbsp; </p>
+    </td>
+  </tr>
+</table>
+
+</body>
+
+</html>

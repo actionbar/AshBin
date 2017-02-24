@@ -1,0 +1,67 @@
+<meta http-equiv="content-type" content="text/html; charset=gb2312"><FONT 
+style="FONT-SIZE: 9pt; LINE-HEIGHT: 15pt"><B>用COM自动服务扩展SQL&nbsp;Server功能</B><BR>SQL&nbsp;Server的T-SQL编程语言在数据存储和恢复方面功能强大，但在与SQL&nbsp;Server数据库之外的系统交互方面则功能较弱。然而，我们可以通过SQL&nbsp;Server内置的COM自动操作环境来克服这个限制，SQL&nbsp;Server内置的COM自动操作环境可以使用户在存储过程中自动操作COM对象。在SQL&nbsp;Server&nbsp;7.0和SQL&nbsp;Server&nbsp;6.5中提供了7个扩展的存储过程，可以通过自己开发的或Office等现成的COM对象扩展SQL&nbsp;Server的功能。SQL&nbsp;Server还提供了一种错误处理机制，可以把出错信息写到SQL代理日志中。利用COM自动化操作服务，还可以把SQL&nbsp;Server与微软的Exchange&nbsp;Server、Index&nbsp;Server和其他可以通过COM自动化操作服务控制其他软件进行集成。
+<P></P>
+<P>　　SQL&nbsp;Server&nbsp;6.5引进了对象自动操作环境，它最初被称作OLE。随着时间的变迁对象操作的名称也有所变化，然而与SQL&nbsp;Server&nbsp;6.5相比，SQL&nbsp;Server&nbsp;7.0中的自动操作环境没有改变，因此微软的文档中仍然把这一功能称作OLE操作而不是COM操作，在查阅SQL&nbsp;Server在线手册（BOL）时尤其需要注意这一点。下面我们来讨论如何使用SQL&nbsp;Server的COM自动操作存储过程以及COM自动操作如何帮助我们解决现实的编程问题。<BR>COM操作的细节&nbsp;</P>
+<P>　　表1列出了SQL&nbsp;Server中的7个用于COM操作的扩展存储过程。当自动操作一个COM对象时，需要首先通过调用sp_OACreate建立一个COM对象的实例，然后通过一系列的sp_OAGetProperty、sp_OASetProperty和sp_OAMethod调用完成需要完成的任务，在完成对COM对象的操作后，还需要调用sp_OADestroy释放该对象。在详细地研究每个储存过程时，请注意二个很重要的问题。第一，必须提供调用的所有参数，因为自动操作功能不支持有名参数，如果不能使用一个详细的参数，需要向它传递一个NULL作为占位符；第二，每个调用返回一个整数类型的HRESULT，如果调用成功则该值为0。在后面，我们将讨论如何处理返回值为非0时的处理方法。</P>
+<P><BR>存储过程&nbsp;描述&nbsp;<BR>sp_OACreate&nbsp;建立自动操作对象的一个实例&nbsp;<BR>sp_OADestroy&nbsp;释放一个对象的实例&nbsp;<BR>sp_OAGetErrorInfo&nbsp;从其他过程返回的HRESULT中获得错误描述信息&nbsp;<BR>sp_OAGetProperty&nbsp;把一个对象的属性存储在结果集或局部变量中&nbsp;<BR>sp_OASetProperty&nbsp;改变一个对象属性的值&nbsp;<BR>sp_OAMethod&nbsp;执行对象的方法，向方法传递参数，并得到返回值&nbsp;<BR>sp_OAStop&nbsp;关闭SQL&nbsp;Server的自动操作环境&nbsp;</P>
+<P>　　　表&nbsp;1:&nbsp;SQL&nbsp;Server的COM自动操作存储过程&nbsp;</P>
+<P>　　COM操作必须以调用sp_OACreate存储过程开始，语法格式如下所示：</P>
+<P>　　　sp_OACreate&nbsp;progid&nbsp;|&nbsp;clsid,&nbsp;objecttoken&nbsp;OUT.PUT,</P>
+<P>　　[context:]</P>
+<P>　　　第一个参数是程序ID（ProgID━━一个应用程序名.类名形式的字符串，例如Excel.Application，）或者一个类ID（CLSID━━一个nnnnnnnn-nnnn-nnnn-nnnn-nnnnnnnnnnnn形式的全球唯一的ID），它标明你希望创建实例的COM对象。在可能的情况下，我建议使用ProgID参数，因为它易于输入和记忆。你会发现，只有很少的希望自动操作的对象没有ProgID，如果偶尔碰上这样的对象，就只有使用CLSID了。第二个变量objecttoken也是一个整型变量，一个对象的标记是指向SQL&nbsp;Server创建的对象的句柄和指针，我们需要在随后的对对象的自动操作中使用这个返回的对象标记来确定这个对象。最后的context变量是可选的，可以强迫创建的对象使用某种自动操作的机制。如果其值为1，则要求对象在一个ActiveX&nbsp;DLL文件中；值为4，则要求对象在ActiveX&nbsp;EXE服务器中；如果是缺省的值5，则可以使用任一自动操作。在这里我们建议使用缺省的选项，而无须为context参数提供一个恰当的值。下面调用op_OACreate&nbsp;的命令将创建一个微软的Excel程序的实例：</P>
+<P>　　Declare&nbsp;@Object&nbsp;int<BR>　　Declare&nbsp;@RetVal&nbsp;int</P>
+<P>　　Exec&nbsp;@RetVal=sp_OACreate&nbsp;'Excel.Application',<BR>　　@Object&nbsp;OUTPUT</P>
+<P>　　在创建一个对象后，需要获取其一些属性。要得到这些属性，可以通过下面的语法调用存储过程</P>
+<P>　　sp_OAGetProperty：<BR>　　sp_OAGetProperty&nbsp;objecttoken,&nbsp;propertyname[,&nbsp;propertyvalue&nbsp;OUTPUT]&nbsp;[,&nbsp;index]</P>
+<P>　　第一个参数objecttoken的值就是由sp_OACreate返回的值，参数Propertyname是我们希望获取的属性。在获取这个值是有几种选择，如果该属性是一个单一的值，可以把它存储在一个变量中，或者把它作为一个单行、单字段的结果集；如果属性值是一个一维或二维的数组，则必须把它作为一个结果集；如果如果该属性的值是一个多于二维的数组，sp_OAGetProperty就不能返回它的值，会出现一个错误。要返回一个结果集，只须简单地不指定propertyvalue参数的值即可（如果需要它有一个值以便使用index参数，就把NULL赋给它好了。），否则的话，应该赋给propertyvalue一个适当的类型的值，并且一定要把该参数标记为OUTPUT。如果你访问的属性是一个集合，就需要使用index参数指定这个集合中一个特定的数字。如果一个对象的属性是另一个对象，就应该把这个对象存入一个整数型变量中，sp_OAGetProperty返回的也是一个对象标记，不过与sp_OACreate返回的并不相同。我们可以使用这个对象标记对存储过程返回的任何对象进行自动化操作。下面的命令调用sp_OAGetProperty把一个名字为DefaultFilePath的属性值存入变量@DFP中：</P>
+<P>　　Exec&nbsp;sp_OAGetProperty&nbsp;@Object,&nbsp;'DefaultFilePath',<BR>　　@DFP&nbsp;OUTPUT</P>
+<P>　　可以通过如下格式使用sp_OASetProperty存储过程改变一个对象的属性值：</P>
+<P>　　sp_OASetProperty&nbsp;objecttoken,&nbsp;propertyname,newvalue&nbsp;[,&nbsp;index]</P>
+<P>第一个参数objecttoken是由sp_OACreate返回的，参数Propertyname是要改变的对象的属性名字，Newvalue参数是想赋给属性的新变量，可以是一个变量或一个文字值。如果设定的属性值是作为一个集合的一个对象，可以使用可选的index参数来指定这个集合的一个特定的位置。下面的命令调用sp_OASetProperty把名字为FixedDecimalPlaces的属性设置为6：</P>
+<P>　　Exec&nbsp;sp_OASetProperty&nbsp;@Object,&nbsp;'FixedDecimalPlaces',&nbsp;6</P>
+<P>　　可以用下面的语法调用sp_OAMethod存储过程执行一个对象的方法：</P>
+<P>　　sp_OAMethod&nbsp;objecttoken,&nbsp;methodname&nbsp;[,&nbsp;returnvalue&nbsp;OUTPUT]&nbsp;[,&nbsp;][@parametername&nbsp;=]&nbsp;parameter&nbsp;[OUTPUT]...]</P>
+<P>Sp_OAMethod是最灵活的，因而也是最复杂的自动操作存储过程，我们甚至可以用它象调用一个方法那样调用一个属性，而且还能得到一个返回值，当然，我们也能使用sp_OAGetProperty来完成这一任务。该存储过程的第一个参数objecttoken是由sp_OACreate返回的对象标记，参数methodname是希望执行的方法的名字，如果该方法有返回值，则下一个参数returnvalue应当是一个包含该方法返回值的适当类型的变量；如果返回值是一个一维或二维的数组，则用NULL作为一个占位符，该过程将返回一个结果集。该存储过程不能返回一个超过二维的数组作为结果集合，在这种情况下，SQL&nbsp;Server就会出错。如果该方法没有返回类型，则使用NULL作为一个占位符。</P>
+<P>　　如果调用的方法需要参数，就需要在调用sp_OAMethod时提供这些参数。如果方法允许按顺序提供参数，则按要求的顺序列出每个参数，并用逗号分隔每个参数，还可以用变量或文字变量作为参数。如果需要使用有名参数，SQL&nbsp;Server也提供了相应的机制，只需使用</P>
+<P>　　@变量名=变量值</P>
+<P>的形式列出所需的变量即可。需要注意的是不要因为有@前缀而把变量名当作局部变量，当调用存储过程sp_OAMethod时，SQL&nbsp;Server就会解析出@，因此，即使在调用的方法中有名字为HostName的参数时，仍然可以使用名字为@HostName的局部变量。</P>
+<P>　　下面是二个调用sp_OAMethod的例子。第一个例子调用一个名字为CentimetersToPoints的方法，它只接受在@CMVal变量中提供的一个参数，返回的值存储在变量@RetVal中。第二个例子调用一个名字为MailLogon的方法，它接受三个可选的变量，这个例子中根据名字接受二个变量，把Name设置为字符串"MyUserName"，把&nbsp;Password设置为字符串"pwd"。</P>
+<P>　　Exec&nbsp;sp_OAMethod&nbsp;@Object,&nbsp;'CentimetersToPoints',@RetVal&nbsp;OUTPUT,&nbsp;@CMVal</P>
+<P>　　Exec&nbsp;sp_OAMethod&nbsp;@Object,&nbsp;'MailLogon',&nbsp;NULL,@Name='MyUserName',&nbsp;@Password='pwd'</P>
+<P>不再使用一个对象后，需要通过下面的语法调用存储过程sp_OADestroy释放对该对象的引用：</P>
+<P>　　sp_OADestroy&nbsp;objecttoken</P>
+<P>　　调用sp_OADestroy存储过程可以释放由参数objecttoken指定的对象，同时还释放这个对象所使用的内存和其他资源。下面是一个调用sp_OADestroy的命令：</P>
+<P>　　Exec&nbsp;sp_OADestroy&nbsp;@Object</P>
+<P>　　需要注意的是，T-SQL中的数据类型与其他的编程语言并非是一一对应的，在调用一个需要特定的数据类型的方法时就可能出错。"数据类型转换"工具条可以将SQL&nbsp;Server的数据类型转换为Visual&nbsp;Basic的数据类型。</P>
+<P>　　错误处理</P>
+<P>　　象在前面提到的那样，如果对存储过程的调用成功了，则会返回一个为0的HRESULT值，其他的HRESULT值则意味着发生了错误。要判断一个非零的HRESULT值，可以把HRESULT值传递给sp_OAGetErrorInfo存储过程，其语法如下：</P>
+<P>　　sp_OAGetErrorInfo&nbsp;[objecttoken]&nbsp;[,&nbsp;source&nbsp;OUTPUT]&nbsp;[,&nbsp;description&nbsp;OUTPUT]&nbsp;[,&nbsp;helpfile&nbsp;OUTPUT]&nbsp;[,&nbsp;helpid&nbsp;OUTPUT]</P>
+<P>　　第一个参数objecttoken是由sp_OACreate返回的对象标记。下面的四个参数返回错误信息。Source是产生这一错误信息的应用程序或库，Description是该错误的描述，如果有帮助文件的话，则该Helpfile是帮助文件的路径。这三个参数都是有符号或无符号字符型数据，sp_OAGetErrorInfo会根据定义的变量的大小截取返回的值。最后一个参数helpid是特定错误在帮助文件中的索引号。下面的命令调用sp_OAGetErrorInfo以获得某一个错误的更详细的信息：</P>
+<P>　　Declare&nbsp;@Source&nbsp;varchar(100),&nbsp;@Description&nbsp;varchar(255),&nbsp;@HelpFile&nbsp;varchar(260),@HelpID&nbsp;int</P>
+<P><BR>　　Exec&nbsp;sp_OAGetErrorInfo&nbsp;@Object,&nbsp;@Source&nbsp;OUTPUT,&nbsp;@Description&nbsp;OUTPUT,&nbsp;@HelpFile&nbsp;OUTPUT,&nbsp;@HelpID&nbsp;OUTPUT</P>
+<P>　　SQL&nbsp;Server在线手册还提供了一个有关sp_DisplayOAErrorInfo存储过程的例子，该存储过程可以调用sp_OAGetErrorInfo把返回的值组织成格式化的字符串，以便把该信息写入日志文件中。关于sp_DisplayOAErrorInfo的更详细的信息，请参阅工具条，&nbsp;另外，调用sp_OAStop储存过程可以关闭SQL&nbsp;Server的COM自动操作环境，它无需任何参数。关闭自动操作环境在大多数情况下并非是必需的，第一次调用sp_OACreate时自动操作环境会自动开启，SQL&nbsp;Server关闭时自动操作环境也会自动关闭。如果一个存储过程正在对一个对象进行自动操作，而另一个过程调用sp_OAStop时就会出现错误，因此我们不建议在程序中调用sp_OAStop，只有在调试一个没有运行的过程时，才可以通过一个查询窗口调用它。</P>
+<P>　　在实际工作中使用COM自动操作</P>
+<P>　　至此，我们已经学习了如何使用每一个COM自动操作存储过程，我们现在来讨论一下一个综合应用它们的例子。程序清单1是一个名字为sp_OpenWordIfCoProcAvailable的过程，在这个过程中，我们用sp_OACreate创建了一个Microsoft&nbsp;Word的实例，然后使用sp_OAGetProperty来获取Word的MathCoProcessorAvailable属性，如果sp_OAGetProperty返回1，则sp_OpenWordIfCoProcAvailable向调用过程返回Word对象的对象标记；否则，sp_OpenWordIfCoProcAvailable关闭Word，并返回0。为了节省版面，我们只调用了出错处理过程一次，在实际应用中，应该在每次调用自动操作存储过程后都调用出错处理过程。注意，为对Word进行自动操作，应该在安装SQL&nbsp;Server的机器上安装Word。</P>
+<P>　　程序清单&nbsp;1：自动操作Word的方法的例子</P>
+<P>Create&nbsp;Procedure&nbsp;sp_OpenWordIfCoProcAvailable&nbsp;As</P>
+<P>　　Declare&nbsp;@Object&nbsp;int,&nbsp;@hr&nbsp;int,&nbsp;@RetVal&nbsp;int</P>
+<P>　&nbsp;　　Exec&nbsp;@hr&nbsp;=&nbsp;sp_OACreate&nbsp;'Word.Application',&nbsp;@Object&nbsp;OUTPUT</P>
+<P>　　If&nbsp;@hr&nbsp;&lt;&gt;&nbsp;0</P>
+<P>　　　BEGIN</P>
+<P>　　　　Exec&nbsp;sp_DisplayOAErrorInfo&nbsp;@Object,&nbsp;@hr</P>
+<P>　　　　Return&nbsp;0</P>
+<P>　　END</P>
+<P>　　Exec&nbsp;@hr&nbsp;=&nbsp;sp_OAGetProperty&nbsp;@Object,&nbsp;'MathCoProcessorAvailable',&nbsp;@RetVal</P>
+<P>　　If&nbsp;@hr=0</P>
+<P>　　　BEGIN</P>
+<P>　　　　Exec&nbsp;@hr&nbsp;=&nbsp;sp_OAMethod&nbsp;@Object,&nbsp;'Quit',&nbsp;0</P>
+<P>　　　　Exec&nbsp;@hr&nbsp;=&nbsp;sp_OADestroy&nbsp;@Object</P>
+<P>　　　　Return&nbsp;0</P>
+<P>　　END</P>
+<P>　　Exec&nbsp;@hr&nbsp;=&nbsp;sp_OAMethod&nbsp;@Object,&nbsp;'Activate'</P>
+<P>　　Return&nbsp;@Object</P>
+<P>　　如果需要对一个使用Visual&nbsp;Basic编写的COM对象进行自动操作，调试它与SQL&nbsp;Server之间的互操作性是一件相当容易的事。我们需要在运行SQL&nbsp;Server的机器上安装有Visual&nbsp;Basic，在Visual&nbsp;Basic的编辑器中加载COM项目，设置一些断点，然后编译并运行该COM对象。在有存储过程对该对象进行自动操作时，在运行到一个断点时，编辑器就会自动切换到调试模式，我们就可以象调试其他的Visual&nbsp;Basic程序那样调试这个COM对象。如果要对调试过程实施更多的控制，可以使用T-SQL&nbsp;Debugger&nbsp;for&nbsp;VB插件，它能采用步进方式执行存储过程的代码。</P>
+<P>　　此外，在SQL&nbsp;Server中应用COM自动操作我们还能作什么呢？下面是我曾使用SQL&nbsp;Server强大的COM自动操作功能的实际例子。前不久，我需要从一个SQL&nbsp;Server存储过程中使用一个通过命名管道进行通讯，而SQL&nbsp;Server中没有提供通过编程方式打开和使用命名管道的机制，我正好有一个可以使用命名管道通讯的VB例和库，因此就把这个库文件作成一个类，并创建了一个ActiveX&nbsp;DLL文件，然后从存储过程中对DLL进行自动操作。就这样，我就可以在SQL&nbsp;Server中使用命名管道通讯了。</P>
+<P>　　另一次，我需要复制一些文件和数据库表。使用SQL&nbsp;Server的复制功能可以很方便地复制这些数据，但复制文件则要难得多，NT的目录同步功能很弱，不能满足要求。尽管我还可以把拷贝命令存到字符变量中，然后把变量传递给xp_cmdshell，但会遇到命令行长度的限制。更不方便的是，如果在拷贝过程中发生了错误，我不能很方便地判断错误发生在什么地方，因此，我就编写了一个ActiveX&nbsp;DLL，并通过自动操作它来处理文件的拷贝工作。</P>
+<P>　　还有一次，我需要在SQL&nbsp;Server&nbsp;6.5和Index&nbsp;Server&nbsp;2.0之间先执行连结后再完成查询任务，如果使用带ADO的Windows&nbsp;2000&nbsp;Indexing&nbsp;Services和SQL&nbsp;Server&nbsp;7.0，完成这样的工作非常简单，但如果不是使用这些产品，则要困难得多。首先，需要编写一个可以执行Index&nbsp;Server查询对象ixsso.dll的ActiveX&nbsp;DLL，对它进行自动操作，从Index&nbsp;Server目录中获得信息，并通过一个方法将信息返回到存储过程中。然后把这些数据保存到一个临时表中，再对它进行联结操作。COM自动操作再一次帮我解决了问题。</P>
+<P>　　在存储过程中执行COM自动操作几乎可以使我们完成任何想完成的操作。SQL&nbsp;Server&nbsp;2000中的COM自动操作没有什么变化，因此采用这种方法编写的代码在将来仍然可以使用下去。<BR></P></FONT>

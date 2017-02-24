@@ -1,0 +1,374 @@
+<html>
+<head>
+<title>在文档间共享通用的DTD</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+
+<link rel = stylesheet href = "image/style.css">
+</head>
+<body bgcolor="#ffffff">
+<table width="688" border="0" cellspacing="0" cellpadding="0" align="center">
+  <tr bgcolor="EEEEEE"> 
+    <td height="22"><a href="index.htm">主页</a></td>
+  </tr>
+</table><br>
+<table border="0" cellpadding="0" cellspacing="0" width="688" align="center" height="490">
+  <tr valign="top"> 
+    <td rowspan="4" width="91">&nbsp; </td>
+    <td height="68" width="131"> 
+      <p><img src="image/doc.gif"></p>
+    </td>
+    <td rowspan="4" width="18"><b></b> </td>
+    <td height="68" width="387"><img src="image/title_doc.gif"></td>
+    <td rowspan="4" width="61"> 
+      <h6>&nbsp;</h6>
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td rowspan="3" valign="top" class="pt10" align="center" width="131" bgcolor="EEEEEE"> 
+      <p>&nbsp;</p>
+      <p><font color="#FF0000">※ 8.7 在文档间共享通用的DTD</font></p>
+       
+	</td>
+  </tr>
+  <tr valign="top"> 
+    <td width="387" height="308"> 
+      <table width="100%" border="0" cellpadding="0">
+        <tr> 
+          <td>
+
+           <h4>8.7 在文档间共享通用的DTD</h4>
+<p>前面的合法的例子都在文档的序言部分包含了DTD。但是XML真正的功能来自于不同的人们编写的可为许多文档共享通用的DTD。如果DTD不是直接包含在文档内，而是从外部联结而来，则DTD的改变会自动传播给使用它的所有文档。另一方面，当DTD改变时并不能确保其向后兼容性。不兼容的改变会破坏文档。</p>
+<p>当使用外部DTD时，文档类型声明要加以改变。DTD不再是包括在方括号中，而是在SYSTEM关键词后接一个能找到DTD的绝对或相对的URL。例如：</p>
+<p>&lt;!DOCTYPE root_element_name SYSTEM "DTD_ URL"&gt;</p>
+<p>这里root_element_name像以前一样是基本元素的名称，SYSTEM是一个XML关键词，DTD_URL是能找到DTD的绝对或相对的URL。例如：</p>
+<p>&lt;!DOCTYPE SEASON SYSTEM "baseball.dtd"&gt;</p>
+<p>为说明这一过程让我们来转换一个熟悉的例子。清单8-12包括了棒球统计的内部DTD。我们要把这份清单转换为外部DTD。首先，去掉DTD并把它放入自己的文档。DTD是起始于&lt;!DOCTYPE 
+  SEASON [终止于]&gt;之间的所有内容。但不包括&lt;!DOCTYPE SEASON [和]&gt;。可以将其保存在名为baseball.dtd的文档内，如清单8-13所示。文档名并不重要，通常用的扩展名为.dtd。</p>
+<p>清单8-13：棒球的DTD文档</p>
+<p>&lt;!ELEMENT YEAR (#PCDATA)&gt;</p>
+<p>&lt;!ELEMENT LEAGUE (LEAGUE_NAME, DIVISION, DIVISION, DIVISION)&gt;</p>
+<p>&lt;!--American or National--&gt;</p>
+<p>&lt;!ELEMENT LEAGUE_NAME (#PCDATA)&gt;</p>
+<p>&lt;!--East, West, or Central--&gt;</p>
+<p>&lt;!ELEMENT DIVISION_NAME (#PCDATA)&gt;</p>
+<p>&lt;!ELEMENT DIVISION (DIVISION_NAME, TEAM+)&gt;</p>
+<p>&lt;!ELEMENT SEASON (YEAR, LEAGUE, LEAGUE)&gt;</p>
+<p>&lt;!ELEMENT TEAM (TEAM_CITY, TEAM_NAME, PLAYER*)&gt;</p>
+<p>&lt;!ELEMENT TEAM_CITY (#PCDATA)&gt;</p>
+<p>&lt;!ELEMENT TEAM_NAME (#PCDATA)&gt;</p>
+<p>&lt;!ELEMENT PLAYER (GIVEN_NAME, SURNAME, P, G,</p>
+<p>GS, AB?, R?,H?, D?, T?, HR?, RBI?, SB?, CS?,</p>
+<p>SH?, SF?, E?, BB?, S?, HBP?, CG?, SO?, ERA?, IP?,</p>
+<p>HRA?, RA?, ER?, HB?, WP?, B?, WB?, K?)</p>
+<p>&gt;</p>
+<p>&lt;!--=======================--&gt;</p>
+<p>&lt;!--Player Info--&gt; </p>
+<p>&lt;!--Player’s last name--&gt;</p>
+<p>&lt;!ELEMENT SURNAME (#PCDATA)&gt;</p>
+<p>&lt;!--Player’s first name--&gt;</p>
+<p>&lt;!ELEMENT GIVEN_NAME (#PCDATA)&gt;</p>
+<p>&lt;!--Position--&gt;</p>
+<p>&lt;!ELEMENT P (#PCDATA)&gt;</p>
+<p>&lt;!--Games Played--&gt;</p>
+<p>&lt;!ELEMENT G (#PCDATA)&gt;</p>
+<p>&lt;!--Games Started--&gt;</p>
+<p>&lt;!ELEMENT GS (#PCDATA)&gt;</p>
+<p>&lt;!--=======================--&gt;</p>
+<p>&lt;!--Batting Statistics--&gt;</p>
+<p>&lt;!--At Bats--&gt;</p>
+<p>&lt;!ELEMENT AB (#PCDATA)&gt;</p>
+<p>&lt;!--uns--&gt;</p>
+<p>&lt;!ELEMENT R (#PCDATA)&gt;</p>
+<p>&lt;!--Hits--&gt; ?</p>
+<p>&lt;!ELEMENT H (#PCDATA)&gt;</p>
+<p>&lt;!--Doubles--&gt;</p>
+<p>&lt;!ELEMENT D (#PCDATA)&gt;</p>
+<p>&lt;!--Triples--&gt;</p>
+<p>&lt;!ELEMENT T (#PCDATA)&gt;</p>
+<p>&lt;!--Home Runs--&gt;</p>
+<p>&lt;!ELEMENT HR (#PCDATA)&gt;</p>
+<p>&lt;!--Runs Batted In--&gt;</p>
+<p>&lt;!ELEMENT RBI (#PCDATA)&gt;</p>
+<p>&lt;!--Stolen Bases--&gt;</p>
+<p>&lt;!ELEMENT SB (#PCDATA)&gt;</p>
+<p>&lt;!--Caught Stealing--&gt;</p>
+<p>&lt;!ELEMENT CS (#PCDATA)&gt;</p>
+<p>&lt;!--Sacrifice Hits--&gt;</p>
+<p>&lt;!ELEMENT SH (#PCDATA)&gt;</p>
+<p>&lt;!--Sacrifice Flies--&gt;</p>
+<p>&lt;!ELEMENT SF (#PCDATA)&gt;</p>
+<p>&lt;!—Errors--&gt;</p>
+<p>&lt;!ELEMENT E (#PCDATA)&gt;</p>
+<p>&lt;!--Walks (Base on Balls)--&gt;</p>
+<p>&lt;!ELEMENT BB (#PCDATA)&gt;</p>
+<p>&lt;!--Struck Out--&gt;</p>
+<p>&lt;!ELEMENT S (#PCDATA)&gt;</p>
+<p>&lt;!--Hit By Pitch--&gt;</p>
+<p>&lt;!ELEMENT HBP (#PCDATA)&gt;</p>
+<p>&lt;!--=======================--&gt;</p>
+<p>&lt;!--Pitching Staistics--&gt;</p>
+<p>&lt;!--Complete Games--&gt;</p>
+<p>&lt;!ELEMENT CG (#PCDATA)&gt;</p>
+<p>&lt;!--Shut Outs--&gt;</p>
+<p>&lt;!ELEMENT SO (#PCDATA)&gt;</p>
+<p>&lt;!--ERA--&gt;</p>
+<p>&lt;!ELEMENT ERA (#PCDATA)&gt;</p>
+<p>&lt;!--Innings Pitched--&gt;</p>
+<p>&lt;!ELEMENT IP (#PCDATA)&gt;</p>
+<p>&lt;!--Home Runs hit Against--&gt;</p>
+<p>&lt;!ELEMENT HRA (#PCDATA)&gt;</p>
+<p>&lt;!--Runs hit Against--&gt;</p>
+<p>&lt;!ELEMENT RA (#PCDATA)&gt;</p>
+<p>&lt;!--Earned Runs--&gt;</p>
+<p>&lt;!ELEMENT ER (#PCDATA)&gt;</p>
+<p>&lt;!--Hit Batter--&gt; </p>
+<p>&lt;!ELEMENT HB (#PCDATA)&gt;</p>
+<p>&lt;!--Wild Pitches--&gt;</p>
+<p>&lt;!ELEMENT WP (#PCDATA)&gt;</p>
+<p>&lt;!—Balk--&gt;</p>
+<p>&lt;!ELEMENT B (#PCDATA)&gt;</p>
+<p>&lt;!--Walked Batter--&gt;</p>
+<p>&lt;!ELEMENT WB (#PCDATA)&gt;</p>
+<p>&lt;!--Struck Out Batter--&gt;</p>
+<p>&lt;!ELEMENT K (#PCDATA)&gt;</p>
+<p>&lt;!--=======================--&gt;</p>
+<p>&lt;!--Fielding Statistics--&gt;</p>
+<p> &lt;!--Not yet supported--&gt;</p>
+<p>接下来，需要改动文档本身。因为要依赖于另一文档中的DTD，XML声明不再是独立的文档。所以standalone属性要改为no，如下所示： </p>
+<p>&lt;?xml version="1.0" standalone="no"?&gt;</p>
+<p>然后还要改变&lt;!DOCTYPE&gt;标记，借助于包括SYSTEM关键字和URL（通常是相对的）使它指向DTD。</p>
+<p>&lt;!DOCTYPE SEASON SYSTEM "baseball.dtd" &gt;</p>
+<p>文档的其余部分与以前相同。但是，现在序言部分只包含XML声明和文档类型声明而不包括DTD。清单8-14显示了这些代码。</p>
+<p>清单8-14：带有外部DTD的棒球统计</p>
+<p>&lt;?xml version="1.0" standalone="yes"?&gt;</p>
+<p>&lt;!DOCTYPE SEASON SYSTEM "baseball.dtd" &gt;</p>
+<p>&lt;SEASON&gt;</p>
+<p>&lt;YEAR&gt;1998&lt;/YEAR&gt;</p>
+<p>&lt;LEAGUE&gt;</p>
+<p>&lt;LEAGUE_NAME&gt;National&lt;/LEAGUE_NAME&gt;</p>
+<p>&lt;DIVISION&gt;</p>
+<p>&lt;DIVISION_NAME&gt;East&lt;/DIVISION_NAME&gt;</p>
+<p>&lt;TEAM&gt;</p>
+<p>&lt;TEAM_CITY&gt;Atlanta&lt;/TEAM_CITY&gt;</p>
+<p>&lt;TEAM_NAME&gt;Braves&lt;/TEAM_NAME&gt;</p>
+<p>&lt;PLAYER&gt;</p>
+<p>&lt;GIVEN_NAME&gt;Ozzie&lt;/GIVEN_NAME&gt;</p>
+<p>&lt;SURNAME&gt;Guillen&lt;/SURNAME&gt;</p>
+<p>&lt;P&gt;Shortstop&lt;/P&gt;</p>
+<p>&lt;G&gt;83&lt;/G&gt;</p>
+<p>&lt;GS&gt;59&lt;/GS&gt;</p>
+<p>&lt;AB&gt;264&lt;/AB&gt;</p>
+<p>&lt;R&gt;35&lt;/R&gt;</p>
+<p>&lt;H&gt;73&lt;/H&gt;</p>
+<p>&lt;D&gt;15&lt;/D&gt;</p>
+<p>&lt;T&gt;1&lt;/T&gt;</p>
+<p>&lt;HR&gt;1&lt;/HR&gt;</p>
+<p>&lt;RBI&gt;22&lt;/RBI&gt;</p>
+<p>&lt;SB&gt;1&lt;/SB&gt;</p>
+<p>&lt;CS&gt;4&lt;/CS&gt;</p>
+<p>&lt;S &gt;4&lt;/S &gt;</p>
+<p>&lt;SF&gt;2&lt;/SF&gt;</p>
+<p>&lt;E&gt;6&lt;/E&gt;</p>
+<p>&lt;BB&gt;24&lt;/BB&gt;</p>
+<p>&lt;S&gt;25&lt;/S&gt;</p>
+<p>&lt;HBP&gt;1&lt;/HBP&gt;</p>
+<p>&lt;/PLAYER&gt;</p>
+<p>&lt;/TEAM&gt;</p>
+<p>&lt;TEAM&gt;</p>
+<p>&lt;TEAM_CITY&gt;Florida&lt;/TEAM_CITY&gt;</p>
+<p>&lt;TEAM_NAME&gt;Marlins&lt;/TEAM_NAME&gt;</p>
+<p>&lt;/TEAM&gt;</p>
+<p>&lt;TEAM&gt;</p>
+<p>&lt;TEAM_CITY&gt;Montreal&lt;/TEAM_CITY&gt;</p>
+<p>&lt;TEAM_NAME&gt;Expos&lt;/TEAM_NAME&gt;</p>
+<p>&lt;/TEAM&gt;</p>
+<p>&lt;TEAM&gt;</p>
+<p>&lt;TEAM_CITY&gt;New York&lt;/TEAM_CITY&gt;</p>
+<p>&lt;TEAM_NAME&gt;Mets&lt;/TEAM_NAME&gt;</p>
+<p>&lt;/TEAM&gt;</p>
+<p>&lt;TEAM&gt;</p>
+<p>&lt;TEAM_CITY&gt;Philadelphia&lt;/TEAM_CITY&gt;</p>
+<p>&lt;TEAM_NAME&gt;Phillies&lt;/TEAM_NAME&gt;</p>
+<p>&lt;/TEAM&gt;</p>
+<p>&lt;/DIVISION&gt;</p>
+<p>&lt;DIVISION&gt;</p>
+<p>&lt;DIVISION_NAME&gt;Central&lt;/DIVISION_NAME&gt;</p>
+<p>&lt;TEAM&gt;</p>
+<p>&lt;TEAM_CITY&gt;Chicago&lt;/TEAM_CITY&gt;</p>
+<p>&lt;TEAM_NAME&gt;Cubs&lt;/TEAM_NAME&gt;</p>
+<p>&lt;/TEAM&gt;</p>
+<p>&lt;/DIVISION&gt;</p>
+<p>&lt;DIVISION&gt;</p>
+<p>&lt;DIVISION_NAME&gt;West&lt;/DIVISION_NAME&gt;</p>
+<p>&lt;TEAM&gt;</p>
+<p>&lt;TEAM_CITY&gt;Arizona&lt;/TEAM_CITY&gt;</p>
+<p>&lt;TEAM_NAME&gt;Diamondbacks&lt;/TEAM_NAME&gt;</p>
+<p>&lt;/TEAM&gt;</p>
+<p>&lt;/DIVISION&gt;</p>
+<p>&lt;/LEAGUE&gt;</p>
+<p>&lt;LEAGUE&gt;</p>
+<p>&lt;LEAGUE_NAME&gt;American&lt;/LEAGUE_NAME&gt;</p>
+<p>&lt;DIVISION&gt;</p>
+<p>&lt;DIVISION_NAME&gt;East&lt;/DIVISION_NAME&gt;</p>
+<p>&lt;TEAM&gt;</p>
+<p>&lt;TEAM_CITY&gt;Baltimore&lt;/TEAM_CITY&gt;</p>
+<p>&lt;TEAM_NAME&gt;Orioles&lt;/TEAM_NAME&gt;</p>
+<p>&lt;/TEAM&gt;</p>
+<p>&lt;/DIVISION&gt;</p>
+<p>&lt;DIVISION&gt;</p>
+<p>&lt;DIVISION_NAME&gt;Central&lt;/DIVISION_NAME&gt;</p>
+<p>&lt;TEAM&gt;</p>
+<p>&lt;TEAM_CITY&gt;Chicago&lt;/TEAM_CITY&gt;</p>
+<p>&lt;TEAM_NAME&gt;White Sox&lt;/TEAM_NAME&gt;</p>
+<p>&lt;/TEAM&gt;</p>
+<p>&lt;/DIVISION&gt;</p>
+<p>&lt;DIVISION&gt;</p>
+<p>&lt;DIVISION_NAME&gt;West&lt;/DIVISION_NAME&gt;</p>
+<p>&lt;TEAM&gt;</p>
+<p>&lt;TEAM_CITY&gt;Anaheim&lt;/TEAM_CITY&gt;</p>
+<p>&lt;TEAM_NAME&gt;Angels&lt;/TEAM_NAME&gt;</p>
+<p>&lt;/TEAM&gt;</p>
+<p>&lt;/DIVISION&gt;</p>
+<p>&lt;/LEAGUE&gt;</p>
+<p>&lt;/SEASON&gt;</p>
+<p>一定要确保清单8-14和baseball.dtd在同一目录下，然后像通常一样把清单8-14装入Web浏览器。如果一切正常，就会看到同装入清单8-12一样的输出。现在可以使用这个DTD来编写其他文档，如其他年度的统计数据。</p>
+<p>如果添加了样式单，那么就在三个不同的文档中保存了文档的三个重要部分。数据在文档文件中，数据应用的结构和语义在DTD文件中，而格式在样式单中。这种结构使我们能相对独立地检查和改变其中任一部分或全部。</p>
+<p>DTD与文档之间比文档与样式单之间联系更紧密。改变DTD一般要重新检查文档的合法性，并需要编辑文档使它与DTD相符。这样的顺序必要性取决于编辑方法；增加元素没什么问题，但移走元素就可能有问题。</p>
+<h5>8.7.1 远程URL上的DTD</h5>
+<p>如果一个DTD适用于多份文档，就不能总把它放在应用它的每份文档的同一目录下。可以使用URL来准确指明DTD的地址。例如，让我们假设棒球DTD在http://metalab.unc.edu/xml/dtds/baseball.dtd，可在序言中使用下面的&lt;!DOCTYPE&gt; 
+  标记将其链接到文档上：</p>
+<p>&lt;!DOCTYPE SEASON SYSTEM</p>
+<p>"http://metalab.unc.edu/xml/dtds/baseball.dtd"&gt;</p>
+<p>本例中使用了完整的URL，从任何地方都是合法的。有时也希望从相对于Web服务器文档根目录或当前目录找出DTD来 。通常，任何相对于文档位置所形成合法的URL的引用都可以接受。例如，下面这些都是合法的文档类型声明：</p>
+<p>&lt;!DOCTYPE SEASON SYSTEM"/xml/dtds/baseball.dtd"&gt;</p>
+<p>&lt;!DOCTYPE SEASON SYSTEM"/dtds/baseball.dtd"&gt;</p>
+<p>&lt;!DOCTYPE SEASON SYSTEM "../baseball.dtd"&gt;</p>
+<p><img src="Image/BK000208-37.gif" width=48 height=67>一个文档不能有多于一个的文档类型声明，即不能有多于一个的&lt;!DOCTYPE 
+  &gt;标记。要使用不止在一个DTD中声明的元素，就需要使用外部参数实体引用。这些内容将在下一章中讨论。</p>
+<h5>8.7.2 公共的DTD</h5>
+<p>关键词SYSTEM是为单个作者或小组所用的私有的DTD使用的。但作为XML承诺的一部分，可令覆盖整个产业的广泛组织（如ISO或IEEE）能够将公共DTD加以标准化，以便用于各自的专门领域。这样的标准化可以让人们不用为同一项目重复作标记，并且使用户共享公用文档更容易。</p>
+<p>为创建组织之外的编写者设计的DTD使用PUBLIC关键词而不使用SYSTEM关键词。并且DTD有一个文件名。句法如下：</p>
+<p>&lt;!DOCTYPE root_element_name PUBLIC "DTD_name" "DTD_URL"&gt;</p>
+<p>root_element_name仍然是基本元素名称。PUBLIC是XML关键词，说明这一DTD是公共使用并具有名称。DTD_name是与此DTD联系的名称。有些XML处理程序会使用名称从中心库中检索DTD。最后，如果DTD不能根据名称从熟知的库中检索到，则DTD_URL是一个能找到该DTD的相对或绝对URL。</p>
+<p>DTD名称与XML名称略有不同。它们只能包含ASCII字母字符、空格、软回车符、换行符和下面的标点符号： -’()+,/:=?;!*#@$_%。 而且，公共DTD要遵守一些约定。</p>
+<p>如果一项DTD是ISO标准，它的名称要以字符串“ISO”开始。如果是非ISO标准组织批准的DTD，它的名称以加号(+)开始。如果不是标准组织批准的DTD，它的名称以连字符 
+  (-)开始。这些开始字符串后接双斜线(//) 和DTD所有者的名字，其后接另一个双斜线和DTD描述的文档类型，然后又是一个双斜线后接ISO639语言标识符，如EN表示英语。在http://www.ics.uci.edu/pub/ietf/http/related/iso639.txt处列有完整的ISO639标识符。例如，棒球DTD可以如下命名： 
+</p>
+<p>-//Elliotte Rusty Harold//DTD baseball statistics//EN</p>
+<p>本例说明这个DTD不是由任何标准组织批准的(-)，为Elliotte Rusty Harold所有，描述棒球统计，用英语编写。通过DTD名称指向这一DTD的完整的文档类型声明如下：</p>
+<p>&lt;!DOCTYPE SEASON PUBLIC</p>
+<p>"//Elliotte Rusty Harold//DTD baseball statistics//EN"</p>
+<p>"http://metalab.unc.edu/xml/dtds/baseball.dtd"&gt;</p>
+<p>读者也许注意到了许多HTML编辑器如BBEdit会在其创建的每个HTML文档开端放入下列字符串：</p>
+<p>&lt;!DOCTYPE HTML PUBLIC"-//W3C//DTD HTML//EN"＞</p>
+<p>现在可能&#9;了解这些字符串是什么意思了！它表明文档符合一项非标准 (-) 的HTML的DTD，由W3C用英语制作。 </p>
+<p><img src="Image/BK000208-38.gif" width=45 height=49>从技术上说,W3C不是一个标准组织，因为它的成员限于交纳会费的公司而不是官方批准的实体。它只出版建议而不是标准。实际上这种区别没有关系。</p>
+<h5>8.7.3 内部和外部DTD子集</h5>
+<p> 尽管大多数文档由易于定义的部分组成，但不是所有的文档都使用共同的模板。许多文档为自己使用而增加特定元素时，可能需要像HTML 4.0 DTD 这样的标准DTD。其他文档可能只使用标准元素，但需要对它们重新排序。例如，一个HTML主页可能有一个BODY元素，它必须包含一个H1标题标记后接一份DL定义列表，而另一个HTML主页可能有一个BODY元素，它包含许多不同的顺序不定的标题标记、段落和图像。如果特定的文档与同一站点上其他页面具有不同的结构，在文档本身内定义结构比在单独的DTD中定义更有用。这种方法也使文档更易于编辑。</p>
+<p> 为达此目的，文档可使用内部和外部DTD。内部声明放在&lt;!DOCTYPE&gt;标记尾部的方括号中。例如，假如需要一个包括棒球统计并有页眉和页脚的主页。这样的文档可如清单8-15所示。棒球信息从文档baseball.dtd中得到，构成外部DTD子集。基本元素DOCUMENT 
+  以及元素TITLE和SIGNATURE的定义来自包含于文档中的内部DTD子集。这有点不寻常。一般的，更为通用的部分可能应该是外部DTD的一部分，而内部内容则更与特定专题有关。</p>
+<p>清单8-15：DTD具有内部和外部DTD子集的棒球文档</p>
+<p>&lt;?xml version="1.0" standalone="yes"?&gt;</p>
+<p>&lt;!DOCTYPE SEASON SYSTEM "baseball.dtd"&gt; [</p>
+<p>&lt;!ELEMENT DOCUMENT (TITLE, SEASON, SIGNATURE)&gt;</p>
+<p>&lt;!ELEMENT TITLE (#PCDATA)&gt;</p>
+<p>&lt;!ELEMENT COPYRIG T (#PCDATA)&gt;</p>
+<p>&lt;!ELEMENT EMAIL (#PCDATA)&gt;</p>
+<p>&lt;!ELEMENT LAST_MODIFIED (#PCDATA)&gt;</p>
+<p>&lt;!ELEMENT SIGNATURE (COPYRIGHT, EMAIL, LAST_MODIFIED)&gt;</p>
+<p>]&gt;</p>
+<p>&lt;DOCUMENT&gt;</p>
+<p>&lt;TITLE&gt;1998 Major League Baseball Statistics&lt;/TITLE&gt;</p>
+<p>&lt;SEASON&gt;</p>
+<p>&lt;YEAR&gt;1998&lt;/YEAR&gt;</p>
+<p>&lt;LEAGUE&gt;</p>
+<p>&lt;LEAGUE_NAME&gt;National&lt;/LEAGUE_NAME&gt;</p>
+<p>&lt;DIVISION&gt;</p>
+<p>&lt;DIVISION_NAME&gt;East&lt;/DIVISION_NAME&gt;</p>
+<p>&lt;TEAM&gt;</p>
+<p>&lt;TEAM_CITY&gt;Atlanta&lt;/TEAM_CITY&gt;</p>
+<p>&lt;TEAM_NAME&gt;Braves&lt;/TEAM_NAME&gt;</p>
+<p>&lt;/TEAM&gt;</p>
+<p>&lt;TEAM&gt;</p>
+<p>&lt;TEAM_CITY&gt;Florida&lt;/TEAM_CITY&gt;</p>
+<p>&lt;TEAM_NAME&gt;Marlins&lt;/TEAM_NAME&gt;</p>
+<p>&lt;/TEAM&gt;</p>
+<p>&lt;TEAM&gt;</p>
+<p>&lt;TEAM_CITY&gt;Montreal&lt;/TEAM_CITY&gt;</p>
+<p>&lt;TEAM_NAME&gt;Expos&lt;/TEAM_NAME&gt;</p>
+<p>&lt;/TEAM&gt;</p>
+<p>&lt;TEAM&gt;</p>
+<p>&lt;TEAM_CITY&gt;New York&lt;/TEAM_CITY&gt;</p>
+<p>&lt;TEAM_NAME&gt;Mets&lt;/TEAM_NAME&gt;</p>
+<p>&lt;/TEAM&gt;</p>
+<p>&lt;TEAM&gt;</p>
+<p>&lt;TEAM_CITY&gt;Philadelphia&lt;/TEAM_CITY&gt;</p>
+<p>&lt;TEAM_NAME&gt;Phillies&lt;/TEAM_NAME&gt;</p>
+<p>&lt;/TEAM&gt;</p>
+<p>&lt;/DIVISION&gt;</p>
+<p>&lt;DIVISION&gt;</p>
+<p>&lt;DIVISION_NAME&gt;Central&lt;/DIVISION_NAME&gt;</p>
+<p>&lt;TEAM&gt;</p>
+<p>&lt;TEAM_CITY&gt;Chicago&lt;/TEAM_CITY&gt;</p>
+<p>&lt;TEAM_NAME&gt;Cubs&lt;/TEAM_NAME&gt;</p>
+<p>&lt;/TEAM&gt;</p>
+<p>&lt;/DIVISION&gt;</p>
+<p>&lt;DIVISION&gt;</p>
+<p>&lt;DIVISION_NAME&gt;West&lt;/DIVISION_NAME&gt;</p>
+<p>&lt;TEAM&gt;</p>
+<p>&lt;TEAM_CITY&gt;Arizona&lt;/TEAM_CITY&gt;</p>
+<p>&lt;TEAM_NAME&gt;Diamondbacks&lt;/TEAM_NAME&gt;</p>
+<p>&lt;/TEAM&gt;</p>
+<p>&lt;/DIVISION&gt;</p>
+<p>&lt;/LEAGUE&gt;</p>
+<p>&lt;LEAGUE&gt;</p>
+<p>&lt;LEAGUE_NAME&gt;American&lt;/LEAGUE_NAME&gt;</p>
+<p>&lt;DIVISION&gt;</p>
+<p>&lt;DIVISION_NAME&gt;East &lt;/DIVISION_NAME&gt;</p>
+<p>&lt;TEAM&gt;</p>
+<p>&lt;TEAM_CITY&gt;Baltimore&lt;/TEAM_CITY&gt;</p>
+<p>&lt;TEAM_NAME&gt;Orioles&lt;/TEAM_NAME&gt;</p>
+<p>&lt;/TEAM&gt;</p>
+<p>&lt;/DIVISION&gt;</p>
+<p>&lt;DIVISION&gt;</p>
+<p>&lt;DIVISION_NAME&gt;Central&lt;/DIVISION_NAME&gt;</p>
+<p>&lt;TEAM&gt;</p>
+<p>&lt;TEAM_CITY&gt;Chicago&lt;/TEAM_CITY&gt;</p>
+<p>&lt;TEAM_NAME&gt;White Sox&lt;/TEAM_NAME&gt;</p>
+<p>&lt;/TEAM&gt;</p>
+<p>&lt;/DIVISION&gt;</p>
+<p>&lt;DIVISION&gt;</p>
+<p>&lt;DIVISION_NAME&gt;West&lt;/DIVISION_NAME&gt;</p>
+<p>&lt;TEAM&gt;</p>
+<p>&lt;TEAM_CITY&gt;Anaheim&lt;/TEAM_CITY&gt;</p>
+<p>&lt;TEAM_NAME&gt;Angels&lt;/TEAM_NAME&gt;</p>
+<p>&lt;/TEAM&gt;</p>
+<p>&lt;/DIVISION&gt;</p>
+<p>&lt;/LEAGUE&gt;</p>
+<p>&lt;/SEASON&gt;</p>
+<p>&lt;SIGNATURE&gt;</p>
+<p>&lt;COPYRIGHT&gt;Copyright 1999 Elliotte Rusty Harold&lt;/COPYRIGHT&gt;</p>
+<p>&lt;EMAIL&gt;elharo@metalab.unc.edu&lt;/EMAIL&gt;</p>
+<p>&lt;LAST_MODIFIED&gt;March 10, 1999&lt;/LAST_MODIFIED&gt;</p>
+<p>&lt;/SIGNATURE&gt;</p>
+<p>&lt;/DOCUMENT&gt;</p>
+<p>在内部和外部DTD子集中的同名元素之间发生冲突的情况下,内部声明的元素具有优先权。这种优先权提供了不完善部分的继承机制。例如，如要推翻PLAYER元素的定义，以便只包含击球统计数据，而不要投球统计数据。这时可使用大多数的棒球DTD的相同声明，但却要将PLAYER元素作如下改变：</p>
+<p>&lt;!DOCTYPE SEASON SYSTEM "baseball.dtd" [</p>
+<p>&lt;!ELEMENT PLAYER (GIVEN_NAME, SURNAME, P, G,</p>
+<p>GS, AB?, R?, H?, D?, T?, HR?, RBI?, SB?, CS?,</p>
+<p>SH ?, SF?, E?, BB?, S?, HBP?)</p>
+<p>&gt;</p>
+<p>]&gt;</p>
+<h4></h4>
+ 
+<a href='401.htm'>&lt;&lt;上一篇</a>&nbsp;&nbsp;<a href='403.htm'>下一篇&gt;&gt;</a></td>
+        </tr>
+      </table>
+      <p>&nbsp; </p>
+    </td>
+  </tr>
+</table>
+
+</body>
+
+</html>

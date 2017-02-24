@@ -1,0 +1,169 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="ASP ASPError Object" />
+<meta name="description" content="ASPError对象的作用，以及相关的属性" />
+<link rel="stylesheet" type="text/css" href="../c3.css" />
+<title>ASP ASPError 对象</title>
+</head>
+<body class="serverscripting">
+<div id="wrapper">
+<div id="header">
+<a href="http://e.v-get.com/w3cschool/" style="float:left;">W3CSchool 在线教程</a>
+<div class="q g"><script type="text/javascript">var cpro_id="u1163355"</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div>
+<div id="navfirst">
+<ul id="menu">
+<li id="h"><a href="../h.html">HTML教程</a></li>
+<li id="x"><a href="../x.html">XML教程</a></li>
+<li id="b"><a href="../b.html">浏览器脚本</a></li>
+<li id="s"><a href="../s.html">服务器脚本</a></li>
+<li id="d"><a href="../d.html">dot net教程</a></li>
+<li id="m"><a href="../m.html">多媒体教程</a></li>
+<li id="w"><a href="../w.html">建站手册</a></li>
+</ul>
+</div><div id="navsecond">
+<div id="course">
+<h2>ASP 教程</h2>
+<ul>
+<li><a href="http://e.v-get.com/w3cschool/">ASP 首页</a></li>
+<li><a href="asp_intro.html">ASP 简介</a></li>
+<li><a href="asp_install.html">ASP 安装</a></li>
+<li><a href="asp_syntax.html">ASP 语法</a></li>
+<li><a href="asp_variables.html">ASP 变量</a></li>
+<li><a href="asp_procedures.html">ASP 程序</a></li>
+<li><a href="asp_inputforms.html">ASP 表单</a></li>
+<li><a href="asp_cookies.html">ASP Cookies</a></li>
+<li><a href="asp_sessions.html">ASP Session</a></li>
+<li><a href="asp_applications.html">ASP Application</a></li>
+<li><a href="asp_incfiles.html">ASP #include</a></li>
+<li><a href="asp_globalasa.html">ASP Global.asa</a></li>
+<li><a href="asp_send_email.html">ASP e-mail</a></li>
+</ul>
+<h2>ASP 对象</h2>
+<ul class="small">
+<li><a href="asp_ref_response.html">ASP Response</a></li>
+<li><a href="asp_ref_request.html">ASP Request</a></li>
+<li><a href="asp_ref_application.html">ASP Application</a></li>
+<li><a href="asp_ref_session.html">ASP Session</a></li>
+<li><a href="asp_ref_server.html">ASP Server</a></li>
+<li><a href="asp_ref_error.html">ASP Error</a></li>
+<li class="list_apart"><a href="asp_ref_filesystem.html">ASP FileSystem</a></li>
+<li><a href="asp_ref_textstream.html">ASP TextStream</a></li>
+<li><a href="asp_ref_drive.html">ASP Drive</a></li>
+<li><a href="asp_ref_file.html">ASP File</a></li>
+<li><a href="asp_ref_folder.html">ASP Folder</a></li>
+<li><a href="asp_ref_dictionary.html">ASP Dictionary</a></li>
+<li><a href="asp_ado.html">ASP ADO</a></li>
+</ul>
+<h2>ASP 组件</h2>
+<ul class="small">
+<li><a href="asp_adrotator.html">ASP AdRotator</a></li>
+<li><a href="asp_browser.html">ASP BrowserCap</a></li>
+<li><a href="asp_contentlinking.html">ASP Content Linking</a></li>
+<li><a href="asp_contentrotator.html">ASP Content Rotator</a></li>
+</ul>
+<h2>ASP 教程总结</h2>
+<ul>
+<li><a href="asp_quickref.html">ASP 快速参考</a></li>
+<li><a href="asp_summary.html">ASP 总结</a></li>
+</ul>
+<h2>实例/测验</h2>
+<ul>
+<li><a href="../example/aspe_examples.html">ASP 实例</a></li>
+<li><a href="asp_quiz.html">ASP 测验</a></li>
+</ul>
+</div>
+<div id="selected">
+<h2>建站手册</h2>
+<ul>
+<li><a href="../site/">网站构建</a></li>
+<li><a href="../w3c/">万维网联盟</a></li>
+<li><a href="http://e.v-get.com/w3c/">W3CSchool 教程</a></li>
+<li><a href="../quality/">网站品质</a></li>
+<li><a href="../semweb/">语义网</a></li>
+<li><a href="../hosting/">网站主机</a></li>
+</ul>
+<h2><a href="http://e.v-get.com/w3c/" class="f13">W3CSchool 教程</a></h2><div class="a120x90"><script type="text/javascript">var cpro_id="u1210867";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div></div>
+</div>
+<div id="maincontent">
+<h1>ASP ASPError 对象</h1>
+<div  id="tpn">
+<ul class="prenext">
+<li class="pre"><a href="asp_ref_server.html">上一页</a></li>
+<li class="next"><a href="asp_ref_filesystem.html">下一页</a></li>
+</ul>
+</div>
+<div id="intro">
+<p><strong>ASPError 对象用于显示在 ASP 文件的脚本中发生的任何错误的详细信息。</strong></p>
+</div>
+<div>
+<h2>ASP ASPError 对象</h2>
+<p>ASP 3.0 提供这个对象，且在 IIS5 及更高版本中可用。</p>
+<p>ASPError 对象用于显示在 ASP 文件的脚本中发生的任何错误的详细信息。当 Server.GetLastError 被调用时，ASPError 对象就会被创建，因此只能通过使用 Server.GetLastError 方法来访问错误信息。</p>
+<p>ASPError 对象的属性描述如下 (所有属性都是可读的）：</p>
+<p class="note"><span>注释：</span>下面的属性只能 <a href="met_getlasterror.html">Server.GetLastError()</a> 方法来访问。</p>
+<h3>属性</h3>
+<table class="dataintable">
+<tr>
+<th>属性</th>
+<th>描述</th>
+</tr>
+<tr>
+<td><a href="prop_asperrorobject.html">ASPCode</a></td>
+<td>返回由 IIS 生成的错误代码。</td>
+</tr>
+<tr>
+<td><a href="prop_asperrorobject.html">ASPDescription</a></td>
+<td>返回有关错误的详细信息。 (假如错误和 ASP 相关。）</td>
+</tr>
+<tr>
+<td><a href="prop_asperrorobject.html">Category</a></td>
+<td>返回错误来源。(是由 ASP、脚本语言还是对象引起的？）</td>
+</tr>
+<tr>
+<td><a href="prop_asperrorobject.html">Column</a></td>
+<td>返回在出错文件中的列位置。</td>
+</tr>
+<tr>
+<td><a href="prop_asperrorobject.html">Description</a></td>
+<td>返回关于错误的简短描述。</td>
+</tr>
+<tr>
+<td><a href="prop_asperrorobject.html">File</a></td>
+<td>返回出错 ASP 文件的文件名。</td>
+</tr>
+<tr>
+<td><a href="prop_asperrorobject.html">Line</a></td>
+<td>返回错误所在的行数。</td>
+</tr>
+<tr>
+<td><a href="prop_asperrorobject.html">Number</a></td>
+<td>返回关于错误的标准 COM 错误代码。</td>
+</tr>
+<tr>
+<td><a href="prop_asperrorobject.html">Source</a></td>
+<td>返回错误所在行的实际的源代码</td>
+</tr>
+</table>
+</div>
+<div id="bpn">
+<ul class="prenext">
+<li class="pre"><a href="asp_ref_server.html">上一页</a></li>
+<li class="next"><a href="asp_ref_filesystem.html">下一页</a></li>
+</ul>
+</div>
+</div>
+<div id="sidebar">
+<div class="rs"></div>
+<div id="tools">
+<h5 id="tools_reference"><a href="asp_ref.html">ASP 参考手册</a></h5>
+<h5 id="tools_example"><a href="../example/aspe_examples.html">ASP 实例</a></h5>
+<h5 id="tools_quiz"><a href="asp_quiz.html">ASP 测验</a></h5>
+</div>
+<div class="a120x600"><script type="text/javascript">var cpro_id="u1293136";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div><div class="b"></div>
+</div>
+</body>
+</html>

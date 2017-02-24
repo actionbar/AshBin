@@ -1,0 +1,22 @@
+<html>
+<head><link rel="stylesheet" type="text/css" href="showcode.css" /></head>
+<body>
+<pre>
+&lt;html&gt;
+&lt;body&gt;
+&lt;form action=&#34;/example/aspe/demo_aspe_reqquery.asp&#34; method=&#34;get&#34;&gt;
+您的姓名：&lt;input type=&#34;text&#34; name=&#34;fname&#34; size=&#34;20&#34; /&gt;
+&lt;input type=&#34;submit&#34; value=&#34;提交&#34; /&gt;
+&lt;/form&gt;
+<code class="aspcode">&lt;%
+dim fname
+fname=Request.QueryString(&#34;fname&#34;)
+If fname&lt;&gt;&#34;&#34; Then
+      Response.Write(&#34;你好！&#34; & fname & &#34;！&lt;br /&gt;&#34;)
+      Response.Write(&#34;今天过得怎么样？&#34;)
+End If
+%&gt;</code>
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+</body>

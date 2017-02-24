@@ -1,0 +1,94 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>ASP编程常用的代码 </title>
+<style type="text/css">
+<!--
+body {
+	font-size: 10.4pt;
+	line-height: 22px;
+}
+-->
+</style>
+</head>
+
+<body bgcolor="eeeeee" leftmargin="20" marginwidth="20">
+<p><strong>ASP编程常用的代码 </strong></p>
+<hr>
+<p> <font color="#006699">1. ASP与Access数据库连接： </font></p>
+<p> &lt;% <br>
+  dim conn,mdbfile <br>
+  mdbfile=server.mappath(&quot;数据库名称.mdb&quot;) <br>
+  set conn=server.createobject(&quot;adodb.connection&quot;) <br>
+  conn.open &quot;driver={microsoft access driver (*.mdb)};uid=admin;pwd=数据库密码;dbq=&quot;&amp;mdbfile 
+  <br>
+  %&gt; </p>
+<p><br>
+  <font color="#006699">2. ASP与SQL数据库连接： </font></p>
+<p>&lt;% <br>
+  dim conn <br>
+  set conn=server.createobject(&quot;ADODB.connection&quot;) <br>
+  con.open &quot;PROVIDER=SQLOLEDB;DATA SOURCE=SQL服务器名称或IP地址;UID=sa;PWD=数据库密码;DATABASE=数据库名称 
+  <br>
+  %&gt; </p>
+<p>建立记录集对象： </p>
+<p>set rs=server.createobject(&quot;adodb.recordset&quot;) <br>
+  rs.open SQL语句,conn,3,2 </p>
+<p></p>
+<p><font color="#006699">3. SQL常用命令使用方法： </font></p>
+      <p>(1) 数据记录筛选： </p>
+<p>sql=&quot;select * from 数据表 where 字段名=字段值 order by 字段名 &quot; <br>
+  sql=&quot;select * from 数据表 where 字段名 like ‘%字段值%‘ order by 字段名 &quot; <br>
+  sql=&quot;select top 10 * from 数据表 where 字段名 order by 字段名 &quot; <br>
+  sql=&quot;select * from 数据表 where 字段名 in (‘值1‘,‘值2‘,‘值3‘)&quot; <br>
+  sql=&quot;select * from 数据表 where 字段名 between 值1 and 值2&quot; </p>
+<p>(2) 更新数据记录： </p>
+<p>sql=&quot;update 数据表 set 字段名=字段值 where 条件表达式&quot; <br>
+  sql=&quot;update 数据表 set 字段1=值1,字段2=值2 …… 字段n=值n where 条件表达式&quot; </p>
+<p>(3) 删除数据记录： </p>
+<p>sql=&quot;delete from 数据表 where 条件表达式&quot; <br>
+  sql=&quot;delete from 数据表&quot; (将数据表所有记录删除) </p>
+<p>(4) 添加数据记录： </p>
+<p>sql=&quot;insert into 数据表 (字段1,字段2,字段3 …) valuess (值1,值2,值3 …)&quot; <br>
+  sql=&quot;insert into 目标数据表 select * from 源数据表&quot; (把源数据表的记录添加到目标数据表) </p>
+<p>(5) 数据记录统计函数： </p>
+<p>AVG(字段名) 得出一个表格栏平均值 <br>
+  COUNT(*|字段名) 对数据行数的统计或对某一栏有值的数据行数统计 <br>
+  MAX(字段名) 取得一个表格栏最大的值 <br>
+  MIN(字段名) 取得一个表格栏最小的值 <br>
+  SUM(字段名) 把数据栏的值相加 </p>
+<p>引用以上函数的方法： </p>
+<p>sql=&quot;select sum(字段名) as 别名 from 数据表 where 条件表达式&quot; <br>
+  set rs=conn.excute(sql) </p>
+<p>用 rs(&quot;别名&quot;) 获取统的计值，其它函数运用同上。 </p>
+<p>(5) 数据表的建立和删除： </p>
+<p>CREATE TABLE 数据表名称(字段1 类型1(长度),字段2 类型2(长度) …… ) </p>
+<p>例：CREATE TABLE tab01(name varchar(50),datetime default now()) </p>
+<p>DROP TABLE 数据表名称 (永久性删除一个数据表) </p>
+<p></p>
+(6) 记录集对象的方法： 
+<p>rs.movenext 将记录指针从当前的位置向下移一行 <br>
+  rs.moveprevious 将记录指针从当前的位置向上移一行 <br>
+  rs.movefirst 将记录指针移到数据表第一行 <br>
+  rs.movelast 将记录指针移到数据表最后一行 <br>
+  rs.absoluteposition=N 将记录指针移到数据表第N行 <br>
+  rs.absolutepage=N 将记录指针移到第N页的第一行 <br>
+  rs.pagesize=N 设置每页为N条记录 <br>
+  rs.pagecount 根据 pagesize 的设置返回总页数 <br>
+  rs.recordcount 返回记录总数 <br>
+  rs.bof 返回记录指针是否超出数据表首端，true表示是，false为否 <br>
+  rs.eof 返回记录指针是否超出数据表末端，true表示是，false为否 <br>
+  rs.delete 删除当前记录，但记录指针不会向下移动 <br>
+  rs.addnew 添加记录到数据表末端 <br>
+  rs.update 更新数据表记录 </p>
+<p><br>
+  判断所填数据是数字型</p>
+<p>if not isNumeric(request(&quot;字段名称&quot;)) then <br>
+  response.write &quot;不是数字&quot; <br>
+  else <br>
+  response.write &quot;数字&quot; <br>
+  end if</p>
+<p>&nbsp; </p>
+</body>
+</html>

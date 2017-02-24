@@ -1,0 +1,208 @@
+<html>
+<head>
+<title>属性与元素的对比</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+
+<link rel = stylesheet href = "image/style.css">
+</head>
+<body bgcolor="#ffffff">
+<table width="688" border="0" cellspacing="0" cellpadding="0" align="center">
+  <tr bgcolor="EEEEEE"> 
+    <td height="22"><a href="index.htm">主页</a></td>
+  </tr>
+</table><br>
+<table border="0" cellpadding="0" cellspacing="0" width="688" align="center" height="490">
+  <tr valign="top"> 
+    <td rowspan="4" width="91">&nbsp; </td>
+    <td height="68" width="131"> 
+      <p><img src="image/doc.gif"></p>
+    </td>
+    <td rowspan="4" width="18"><b></b> </td>
+    <td height="68" width="387"><img src="image/title_doc.gif"></td>
+    <td rowspan="4" width="61"> 
+      <h6>&nbsp;</h6>
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td rowspan="3" valign="top" class="pt10" align="center" width="131" bgcolor="EEEEEE"> 
+      <p>&nbsp;</p>
+      <p><font color="#FF0000">※ 5.2 属性与元素的对比</font></p>
+       
+	</td>
+  </tr>
+  <tr valign="top"> 
+    <td width="387" height="308"> 
+      <table width="100%" border="0" cellpadding="0">
+        <tr> 
+          <td>
+
+           <h4><a name="_Toc467197021">5.2 属性与元素的对比</a></h4>
+<p>何时使用子元素或属性没有严格的规则可循，通常要看哪一种更适合自己应用的需要。随着经验的增长就会有一种感觉，知道在何时使用属性比子元素更简单，反之亦然。一个好的经验规则是数据本身应当存储在元素中，而有关数据的信息（元数据）应当存储在属性中。不知道怎么做时，就把信息放在元素中。</p>
+<p>为区分数据与元数据，首先要问自己是否会有一些读者希望看到一条特别的信息。如果答案是肯定的，该信息应当包含在一个子元素中。相反，则应包含在一个属性中。如果从该文档中删除所有标记与属性，文档的基本信息应当还存在。属性是放置ID号、URL、参考资料及其他与读者不直接相关的信息的好地方。但是，把元数据作为属性存储的基本规则还有许多例外。这些例外包括：</p>
+<ul>
+  <p>
+  <li>属性不能很好地保持原文的结构。</li>
+  <p></p>
+  <p>
+  <li>元素允许包括元元数据（有关信息的更深层次的信息）。</li>
+  <p></p>
+  <p>
+  <li>每个人对元数据和非元数据的理解是不一样的。</li>
+  <p></p>
+  <p>
+  <li>面对以后的变化，元素更具扩展性。</li>
+  <p></p>
+</ul>
+<h5><a name="_Toc467197022">5.2.1 结构化的元数据</a></h5>
+<p>需要特别记住的是元素可以有子结构而属性没有。这使元素更加灵活，更方便我们将元数据编译成子元素。例如，设想我们在写一篇论文，而且希望其中包含某件事情的出处，结果可能是这样：</p>
+<p>&lt;FACT SOURCE="The Biographical History of Baseball,</p>
+<p>Donald Dewey and Nicholas Acocella (New York:Carroll &amp;amp;</p>
+<p>Graf Publishers,Inc.1995)p.169"&gt;</p>
+<dir> 
+  <p>Josh Gibson is the only person in the history of baseball to </p>
+  <p>hit a pitch out of Yankee Stadium.</p>
+</dir>
+<p>&lt;/FACT&gt;</p>
+<p>很明显，信息“The Biographical History of Baseball, Donald Dewey and Nicholas Acocella(New 
+  York:Carroll &amp;amp;Graf Publishers,Inc. 1995)p.169”是元数据。它不是事情本身而更像事情的有关信息。SOURCE属性暗含了许多子结构。按照下文的方法组织上面的信息可能更有效：</p>
+<p>&lt;SOURCE&gt;</p>
+<p> &lt;AUTHOR&gt;Donald Dewey&lt;/AUTHOR&gt;</p>
+<p> &lt;AUTHOR&gt;Nicholas Acocella&lt;/AUTHOR&gt;</p>
+<p> &lt;BOOK&gt;</p>
+<p> &lt;TITLE&gt;The Biographical History of Baseball&lt;/TITLE&gt;</p>
+<p> &lt;PAGES&gt;169&lt;/PAGES&gt;</p>
+<p> &lt;YEAR&gt;1995&lt;/YEAR&gt;</p>
+<p> &lt;/BOOK&gt;</p>
+<p>&lt;/SOURCE&gt;</p>
+<p>此外，使用元素代替属性包含附加的信息更容易、直接，例如作者的e-mail地址，可找到文档的电子副本的URL，日报特刊的标题或主题以及其他看似重要的信息等。</p>
+<p>日期是另外一个常见的例子。与学术论文有关的一个常用的元数据是第一次收到论文的日期，它对建立发明创造的优先权很重要。在ARTICLE标记中很容易包含一个DATE属性，如下所示：</p>
+<p>&lt;ARTICLE DATE="06/28/1969"&gt;</p>
+<p> Polymerase Reactions in Organic Compounds</p>
+<p>&lt;/ARTICLE&gt;</p>
+<p>DATE属性中含有用/表示的子结构，如果要从属性值中获得该结构要比读取DATE元素的子元素困难得多，如下所示：</p>
+<p>&lt;DATE&gt;</p>
+<p> &lt;YEAR&gt;1969&lt;/YEAR&gt;</p>
+<p> &lt;MONTH&gt;06&lt;/MONTH&gt;</p>
+<p> &lt;DAY&gt;28&lt;/DAY&gt;</p>
+<p>&lt;/DATE&gt;</p>
+<p>例如，使用CSS或XSL很容易将日期或月份格式化为看不见的形式，因此只会出现年份。请看下面使用CSS的例子：</p>
+<p>YEAR {display:inline}</p>
+<p>MONTH {display:none}</p>
+<p>DAY {display:none}</p>
+<p>如果DATE是作为属性存储的，几乎没有简单的办法可以访问其中任何一部分。我们只有用一种类似ECMAScript或Java的编程语言写一个单独的程序，才能分析其日期格式。使用标准的XML工具和子元素做起来就比较容易。</p>
+<p>另外，属性句法显得模糊不清，"10/11/1999"究竟表示10月11日还是11月10日？不同国家的读者对它的理解是不同的。即使语法分析程序能够识别某种格式，但不能保证其他人能够正确输入日期。作此对照用XML表示就不会摸棱两可。</p>
+<p>最后，使用DATE子元素允许一个元素有多个日期。例如，学术论文通常要交还作者修改。在此情况下，记录再次收到修改过的论文的日期也很重要。例如：</p>
+<p>&lt;ARTICLE&gt;</p>
+<p> &lt;TITLE&gt;</p>
+<dir> 
+  <p> Maximum Projectile Velocity in an Augmented Railgun</p>
+</dir>
+<p> &lt;/TITLE&gt;</p>
+<p> &lt;AUTHOR&gt;Elliotte Harold&lt;/AUTHOR&gt;</p>
+<p> &lt;AUTHOR&gt;Bruce Bukiet&lt;/AUTHOR&gt;</p>
+<p> &lt;AUTHOR&gt;William Peter&lt;/AUTHOR&gt;</p>
+<p> &lt;DATE&gt;</p>
+<p> &lt;YEAR&gt;1992&lt;/YEAR&gt;</p>
+<p> &lt;MONTH&gt;10&lt;/MONTH&gt;</p>
+<p> &lt;DAY&gt;29&lt;/DAY&gt;</p>
+<p> &lt;/DATE&gt;</p>
+<p> &lt;DATE&gt;</p>
+<p> &lt;YEAR&gt;1993&lt;/YEAR&gt;</p>
+<p> &lt;MONTH&gt;10&lt;/MONTH&gt;</p>
+<p> &lt;DAY&gt;26&lt;/DAY&gt;</p>
+<p> &lt;/DATE&gt;</p>
+<p>&lt;/ARTICLE&gt;</p>
+<p>再比如，在HTML中，IMG标记的ALT属性被限定为一个单独的文本字符串。虽然一幅图片比成千的单词更能说明问题，但还是应该用已标记的文本来代替一个IMG标记。例如，考虑图5-2中的饼形图。</p>
+<p><img src="image/BK000205-3.gif" width=331 height=281></p>
+<p>图5-2 主要棒球联赛中各位置球员的分布情况</p>
+<p>使用ALT属性对该图的最好描述如下：</p>
+<p>&lt;IMG SRC="image/05021.gif"</p>
+<p> ALT="Pie Chart of Positions in Major League Baseball"</p>
+<p> WIDTH="819" HEIGHT="623"&gt;</p>
+<p>&lt;/IMG&gt;</p>
+<p>如果对上图使用一个ALT子元素描述，会更具灵活性，因为我们可以在其中嵌入标记。例如，使用一个写有相关数字的一览表去替代饼形图：</p>
+<p>&lt;IMG SRC="image/05021.gif" WIDTH="819" HEIGHT="623"&gt;</p>
+<p> &lt;ALT&gt;</p>
+<p> &lt;TABLE&gt;</p>
+<p> &lt;TR&gt;</p>
+<p> &lt;TD&gt;Starting Pitcher&lt;/TD&gt;&lt;TD&gt;242&lt;/TD&gt;&lt;TD&gt;20%&lt;/TD&gt;</p>
+<p> &lt;/TR&gt;</p>
+<p> &lt;TR&gt;</p>
+<p> &lt;TD&gt;Relief Pitcher&lt;/TD&gt;&lt;TD&gt;336&lt;/TD&gt;&lt;TD&gt;27%&lt;/TD&gt;</p>
+<p> &lt;/TR&gt;</p>
+<p> &lt;TR&gt;</p>
+<p> &lt;TD&gt;Catcher&lt;/TD&gt;&lt;TD&gt;104&lt;/TD&gt;&lt;TD&gt;9%&lt;/TD&gt;</p>
+<p> &lt;/TR&gt;</p>
+<p> &lt;TR&gt;</p>
+<p> &lt;TD&gt;Outfield&lt;/TD&gt;&lt;TD&gt;235&lt;/TD&gt;&lt;TD&gt;19%&lt;/TD&gt;</p>
+<p> &lt;/TR&gt;</p>
+<p> &lt;TR&gt;</p>
+<p> &lt;TD&gt;First Base&lt;/TD&gt;&lt;TD&gt;67&lt;/TD&gt;&lt;TD&gt;6%&lt;/TD&gt;</p>
+<p> &lt;/TR&gt;</p>
+<p> &lt;TR&gt;</p>
+<p> &lt;TD&gt;Shortstop&lt;/TD&gt;&lt;TD&gt;67&lt;/TD&gt;&lt;TD&gt;6%&lt;/TD&gt;</p>
+<p> &lt;/TR&gt;</p>
+<p> &lt;TR&gt;</p>
+<p> &lt;TD&gt;Second Base&lt;/TD&gt;&lt;TD&gt;88&lt;/TD&gt;&lt;TD&gt;7%&lt;/TD&gt;</p>
+<p> &lt;/TR&gt;</p>
+<p> &lt;TR&gt;</p>
+<p> &lt;TD&gt;Third Base&lt;/TD&gt;&lt;TD&gt;67&lt;/TD&gt;&lt;TD&gt;6%&lt;/TD&gt;</p>
+<p> &lt;/TR&gt;</p>
+<p> &lt;/TABLE&gt;</p>
+<p> &lt;/ALT&gt;</p>
+<p>&lt;/IMG&gt;</p>
+<p>在得不到位图图片的情况下，甚至可以使用实际的Postscript、SVG或VML代码来形成该图片。</p>
+<h5><a name="_Toc467197023">5.2.2 元元数据</a></h5>
+<p>元素可用于元数据，同样也可用于元元数据，或者信息的深层相关信息。例如，一首诗的作者是这首诗的元数据，书写作者姓名所用的语言就是这首诗的元元数据。特别是对于明显的非罗马语言，这并非是无关紧要的。例如，Odyssey的作者是Homer还是Ωμηοδ？如果使用元素就可以很容易写出：</p>
+<p>&lt;POET LANGUAGE="English"&gt;Homer&lt;/POET&gt;</p>
+<p>&lt;POET LANGUAGE="Greek"&gt;Ωμηοδ&lt;/POET&gt;</p>
+<p>但是，如果POET是一个属性而不是一个元素，如下所示的这种不易操作的结构会让人感到纠缠不清：</p>
+<p>&lt;POEM POET="Homer" POET_LANGUAGE="English"</p>
+<p>POEM_LANGUAGE="English"&gt;</p>
+<p> Tell me,O Muse,of the cunning man...</p>
+<p>&lt;/POEM&gt;</p>
+<p>而且如果想要同时提供诗人的英文名与希腊名的时候，这种表示方法会更显得重要：</p>
+<p>&lt;POEM POET_NAME_1="Homer" POET_LANGUAGE_1="English"</p>
+<p>POET_NAME_2=" Ωμηοδ" POET_LANGUAGE_2="Greek"</p>
+<p>POEM_LANGUAGE="English"&gt;</p>
+<p> Tell me,O Muse,of the cunning man...</p>
+<p>&lt;/POEM&gt;</p>
+<h5><a name="_Toc467197024">5.2.3 有关元数据的说明</a></h5>
+<p>判断元数据的决定权掌握在读者手中，不同的读者和他们的阅读目的决定哪些是元数据，哪些是数据。例如，阅读一份学报上的文章，作者的名字与文章的内容相比就显得无足轻重。但是，如果作为晋升委员会的委员浏览学报来确定发表与未发表文章的人员，作者的名字与所发表文章的数量比其内容更重要。</p>
+<p>事实上，人们也许会改变对数据和元数据的看法。今天看似无关紧要的东西，下周可能会变得很有用。你可以使用样式单隐藏今天看似不重要的元素，在以后可改变样式单将其显示出来。但是，显示一个原先存储在属性中的信息很困难。通常在此情况下需要重写整个文档，而不是简单地修改样式单。</p>
+<h5><a name="_Toc467197025">5.2.4 元素更具扩展性</a></h5>
+<p>在只需要传达一两个字的非结构性信息时，使用属性是很方便的。在此情况下,显然不需要一个子元素。但是这并不排除日后需要它。</p>
+<p>例如,目前可能只需要存储一篇文章的作者名而不必区分名和姓。但将来可能会需要存储姓名、e-mail地址、机构、邮政通信处、URL以及更多的东西。如果把文章的作者保存为一个元素，在其中添加子元素包含这些附加的信息会很容易。</p>
+<p>尽管上述任何改动都需要重新修改文档、样式单和相关的程序，但是把一个简单的元素修改为元素树比把一个属性修改为元素树简单得多。而且使用了属性就只好继续使用下去。扩展属性句法使之超越最初的设计范围也很困难。</p>
+<h5><a name="_Toc467197026">5.2.5 使用属性的最佳时机</a></h5>
+<p>在前面已经详尽阐述了应当使用子元素代替属性的原因，然而，必须指出的是，有时候使用属性是有意义的。首先，同前面提到的一样，属性非常适用于那些读者未必想看见的没有子结构的简单数据。例如，IMG中的HEIGHT和WIDTH属性，尽管这些属性值随图片的改变而改变，但是无法想象属性中的数据除了一个很短的字符串外还能是什么。HEIGHT和WIDTH分别是一维的数，因此作为属性执行起来很顺利。</p>
+<p>此外，属性也适用于与文档有关而与文档内容无关的简单信息。例如，给每一个元素指定一个ID属性常常是有用的，这是文档中仅隶属于元素的唯一字符串。该字符串可用于不同的目的，包括链接到文档中的特殊元素。甚至在文档发生改变时，这些元素会随之移动。例如：</p>
+<p>&lt;SOURCE ID="S1"&gt;</p>
+<p> &lt;AUTHOR ID="A1"&gt;Donald Dewey&lt;/AUTHOR&gt;</p>
+<p> &lt;AUTHOR ID="A2"&gt;Nicholas Acocella&lt;/AUTHOR&gt;</p>
+<p> &lt;BOOK ID="B1"&gt;</p>
+<p> &lt;TITLE ID="B2"&gt;</p>
+<p> The Biographical History of Baseball</p>
+<p> &lt;/TITLE&gt;</p>
+<p> &lt;PAGES ID="B3"&gt;169&lt;/PAGES&gt;</p>
+<p> &lt;YEAR ID="B4"&gt;1995&lt;/YEAR&gt;</p>
+<p> &lt;/BOOK&gt;</p>
+<p>&lt;/SOURCE&gt;</p>
+<p>利用ID属性使链接文档中的特定元素成为可能。这样它们就有与HTML中A元素的NAME属性一样的功能。其他与链接有关的数据——HREF属性指明的链接目标，SRC属性指定的图像和二进制数据等等——作为属性都很合适。</p>
+<p><img src="image/BK000205-4.gif" width=50 height=36>在第16章“Xlink”和第17章“XPointer”中讨论XLL——可扩展链接语言时，会看到更多的这种例子。</p>
+<p>属性也常用于存储文档的特定样式信息。例如，TITLE元素一般是以粗体出现，但是如果使一个TITLE元素有粗体和斜体两种字体，可以这样描述：</p>
+<p>&lt;TITLE style="font-style:italic"&gt;Significant Others&lt;/TITLE&gt;</p>
+<p>这样做可以在不改变文档树状结构的情况下嵌入样式信息。虽然最理想的方法是使用一个单独的元素，但当不能在处理的标记集里添加元素时，这个方案会给文档作者更多的控制权。例如，一个站点的管理员需要使用某一特定的DTD，而且不希望任何人修改该DTD。除此之外，还要允许他人对个别的页面做微小的校正。使用这种方案时要有所节制，否则很快会发现自己又陷入了HTML的“地狱”中，使用XML的本意是要避免这一“地狱”的。</p>
+<p>使用属性的最后一个原因是为了保持与HTML的兼容性。甚至扩展到使用的标记，对于诸如&lt;IMG&gt;、&lt;P&gt;和&lt;TD&gt;看起来与HTML相似的标记还是使用标准的HTML属性为好。这样做有双重好处，至少使传统的浏览器能够部分地分析和显示你的文档，而且对于文档的作者来说更熟悉这种方式。</p>
+ 
+<a href='361.htm'>&lt;&lt;上一篇</a>&nbsp;&nbsp;<a href='363.htm'>下一篇&gt;&gt;</a></td>
+        </tr>
+      </table>
+      <p>&nbsp; </p>
+    </td>
+  </tr>
+</table>
+
+</body>
+
+</html>

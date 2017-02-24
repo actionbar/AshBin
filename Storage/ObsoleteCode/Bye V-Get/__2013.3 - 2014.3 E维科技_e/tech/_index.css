@@ -1,0 +1,44 @@
+
+.ai a{width:117px;margin:0 9px}
+.ai h3{font:bold 14px "微软雅黑"}
+h4{font-size:14px;color:#1c3d72;height:25px;line-height:25px;margin:6px 0 9px}
+.h4b{height:30px;line-height:30px;text-indent:30px;background:url(CONSTANT('GO_CSS_F')bw270.png) no-repeat}
+.h4b .pr{right:9px;top:3px;color:#1c3d72}
+h4 a{color:#1c3d72}
+h4 .pr{font:12px/1.6 "Segoe UI",Tahoma,Arial}
+.w5{padding:9px 15px}
+.w5 a{padding:0 9px;color:#315AAA;height:21px;line-height:21px;width:213px;text-align:left;background:url(CONSTANT('GO_CSS')g.gif) 0 -1200px no-repeat}
+.w5 .f0{color:#F00}
+.w5 .f2{color:#00F}
+
+.l,.r{width:270px;padding:0 9px}
+.l{background:url(CONSTANT('GO_CSS_F')bw360.jpg) -70px 0 no-repeat}
+.d{background:url(CONSTANT('GO_CSSe')tech/d.gif) no-repeat #6BA3E5;position:relative;width:270px;height:215px;margin:8px 0;overflow:hidden;cursor:pointer;}
+.d a{position:absolute;top:0px;left:0px;font-family:Microsoft YaHei;color:#FFF;font-weight:bold; text-decoration:none; padding: 3px 6px; }
+.d a:hover {border: 1px solid #eee; background: #000;}
+
+
+.l3{border-top:2px solid #DDD}
+.l3 .mh{border-bottom:1px dotted #DDD;margin:0 0 9px 0}
+.l .ai h3,.l a.ai p{width:199px;overflow:hidden}
+
+.c{width:360px;padding:0 9px;border:#C8C8C8 solid;border-width:0 1px;background:url(CONSTANT('GO_CSS_B')bd06b.gif) 0 -9px repeat-x}
+a.ct h2{color:#C00}
+.c .po a{color:#315AAA}
+.c li a{margin:0 3px}
+.r{background:url(CONSTANT('GO_CSS_F')bw300.jpg) no-repeat}
+.r a.ai img{width:110px;height:90px}
+.r .ai h3,.r a.ai p{width:145px;overflow:hidden}
+.r2 li{background-position:0 -1400px}
+.r5 li{height:25px;line-height:25px}
+.r5 li strong{font:bold 14px "微软雅黑"}
+.v1 .l{background:none}
+.v1 .c{background:url(CONSTANT('GO_CSS_F')bw360.jpg) no-repeat}
+
+
+
+
+.r9{line-height:25px;border-top:1px dotted #BBB;padding:9px 0}
+.r9l{background:#DA7575;color:#FFF;border-top-right-radius:9px;border-bottom-right-radius:9px;padding:0 15px 0 10px}
+.r9l:hover{background:#C83232;text-decoration:none}
+.r9 a{margin:0 13px 0 0}

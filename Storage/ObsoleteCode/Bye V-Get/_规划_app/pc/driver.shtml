@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>V-Get!打开本地硬盘驱动</title>
+<style type="text/css">
+body,td,th {
+	font-family: Tahoma, SimSun;
+}
+</style>
+</head>
+<link rel="stylesheet" type="text/css" href="../index.css" />
+<link rel="stylesheet" type="text/css" href="http://localhost:8080/v-get.com/tool/index.css" />
+<style type="text/css">
+<!--
+.c{margin:25px 0px}
+.c p{line-height:22px;height:22px;margin-top:9px}
+.c p a{display:inline-block;height:22px;padding:9px; border:#999 1px solid}
+.c .co{ background:#F00}
+.ct form{ float:left}
+-->
+</style>
+
+
+<script type="text/javascript" src="http://localhost:8080/v-get.com/i/i.js"></script>
+
+
+</head>
+<body>
+<div class="w">
+<div class="t"><div class="q"><div class="p tl"></div><div class="p tc"><a href="">V-Get!首页</a>|<a href="">设为主页</a>|<a href="">收藏本站</a></div><div class="p tr"></div></div></div>
+<div class="u">
+<img src="http://localhost:8080/v-get.com/tool/index.png" />
+</div>
+<div class="n"><a href="http://localhost:8080/tool.v-get.com/">首页</a><a href="http://localhost:8080/v-get.com/tool/biz/">商务办公</a><a href="http://localhost:8080/v-get.com/tool/finance/">金融计算</a><a href="http://localhost:8080/v-get.com/tool/life/">生活助手</a><a href="http://localhost:8080/v-get.com/tool/images/">图片美工</a><a href="http://localhost:8080/v-get.com/tool/editor/">文字设计</a><a href="http://localhost:8080/v-get.com/tool/edu/">教育考试</a><a href="http://localhost:8080/v-get.com/tool/game/" class="no">娱乐游戏</a><a href="http://localhost:8080/v-get.com/tool/pc/">电脑优化</a></div>
+<div class="w4"><a href="#"><img src="http://localhost:8080/v-get.com/i/wuliu/a/zzidc980.gif" /></a></div>
+<!--这里不用include，因为基本这个部分是固定的；广告以后采用js替换，或者固定图片名称-->
+<!--因为都在life文件夹下，而且涉及.no，所以这样更好-->
+<div class="v">
+<div class="p l">
+<h2>生活助手</h2>
+<!--#include file="l.htm"-->
+
+</div>
+<div class="p r">
+<h1>微工具打开本地硬盘驱动</h1>
+<div class="c">
+<p class="ct"><form action="file:///d|/"><input type="submit" value="d:\ drive"></form><form action="file:///d|/"><input type="submit" value="d:\ drive"></form></p>
+<p class="o"><select onchange="$('c1').src='file:///'+this.value+'|/'"><option value="a">本地磁盘：A</option><option value="b">本地磁盘：B</option><option value="c" selected="selected">本地磁盘：C</option><option value="d">本地磁盘：D</option><option value="e">本地磁盘：E</option><option value="f">本地磁盘：F</option><option value="g">本地磁盘：G</option><option value="h">本地磁盘：H</option><option value="i">本地磁盘：I</option><option value="j">本地磁盘：J</option><option value="k">本地磁盘：K</option><option value="l">本地磁盘：L</option><option value="m">本地磁盘：M</option><option value="n">本地磁盘：N</option><option value="o">本地磁盘：O</option><option value="p">本地磁盘：P</option><option value="q">本地磁盘：Q</option><option value="r">本地磁盘：R</option><option value="s">本地磁盘：S</option><option value="t">本地磁盘：T</option><option value="u">本地磁盘：U</option><option value="v">本地磁盘：V</option><option value="w">本地磁盘：W</option><option value="x">本地磁盘：X</option><option value="y">本地磁盘：Y</option><option value="z">本地磁盘：Z</option></select></p>
+<iframe src="file:///c|/" width="100%" height="200px" id="c1"></iframe>
+<p><select onchange="$('c2').src='file:///'+this.value+'|/'"><option value="a">本地磁盘：A</option><option value="b">本地磁盘：B</option><option value="c">本地磁盘：C</option><option value="d" selected="selected">本地磁盘：D</option><option value="e">本地磁盘：E</option><option value="f">本地磁盘：F</option><option value="g">本地磁盘：G</option><option value="h">本地磁盘：H</option><option value="i">本地磁盘：I</option><option value="j">本地磁盘：J</option><option value="k">本地磁盘：K</option><option value="l">本地磁盘：L</option><option value="m">本地磁盘：M</option><option value="n">本地磁盘：N</option><option value="o">本地磁盘：O</option><option value="p">本地磁盘：P</option><option value="q">本地磁盘：Q</option><option value="r">本地磁盘：R</option><option value="s">本地磁盘：S</option><option value="t">本地磁盘：T</option><option value="u">本地磁盘：U</option><option value="v">本地磁盘：V</option><option value="w">本地磁盘：W</option><option value="x">本地磁盘：X</option><option value="y">本地磁盘：Y</option><option value="z">本地磁盘：Z</option></select></p>
+<iframe src="file:///d|/" width="100%" height="200px"></iframe>
+<p><select onchange="$('c3').src='file:///'+this.value+'|/'"><option value="a">本地磁盘：A</option><option value="b">本地磁盘：B</option><option value="c">本地磁盘：C</option><option value="d">本地磁盘：D</option><option value="e" selected="selected">本地磁盘：E</option><option value="f">本地磁盘：F</option><option value="g">本地磁盘：G</option><option value="h">本地磁盘：H</option><option value="i">本地磁盘：I</option><option value="j">本地磁盘：J</option><option value="k">本地磁盘：K</option><option value="l">本地磁盘：L</option><option value="m">本地磁盘：M</option><option value="n">本地磁盘：N</option><option value="o">本地磁盘：O</option><option value="p">本地磁盘：P</option><option value="q">本地磁盘：Q</option><option value="r">本地磁盘：R</option><option value="s">本地磁盘：S</option><option value="t">本地磁盘：T</option><option value="u">本地磁盘：U</option><option value="v">本地磁盘：V</option><option value="w">本地磁盘：W</option><option value="x">本地磁盘：X</option><option value="y">本地磁盘：Y</option><option value="z">本地磁盘：Z</option></select></p>
+<iframe src="file:///e|/" width="100%" height="200px"></iframe>
+<iframe src="file:///x|/" width="100%" height="200px"></iframe>
+</div>
+
+<!--#include file="c.htm"-->
+
+
+</div>
+
+</div>
+
+<div class="o b">
+ddd
+</div>
+</div>
+
+  <script language="javascript" type="text/javascript">
+  <!--
+  
+  -->
+  </script>
+</body>
+</html>

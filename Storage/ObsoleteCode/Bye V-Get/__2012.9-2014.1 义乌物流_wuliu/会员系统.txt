@@ -1,0 +1,8 @@
+[!]  o 排序  [!]
+默认 0-100  random
+p 头像 +50
+m  +50
+e  +50
+v  50*v
+dz_common_member.credits     credits/10
+

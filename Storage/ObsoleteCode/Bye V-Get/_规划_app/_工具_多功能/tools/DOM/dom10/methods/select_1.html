@@ -1,0 +1,95 @@
+<html xmlns:rdl>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<script src="rdl_method.js"></script>
+<base target="_self">
+</head>
+<body>
+
+<script>
+
+//collFriendObjects=new Array();
+//collFriendProperties=new Array();
+//collFriendMethods=new Array();
+//collFriendEvents=new Array();
+//collFriendCollections=new Array();
+
+collFriendObjects=new Array(
+'INPUT'
+);
+
+collFriendEvents=new Array(
+'onselect','onselectstart'
+);
+
+//collIE40=new Array();
+//collIE50=new Array();
+//collIE55=new Array();
+//collIE60=new Array();
+
+collIE40=new Array(
+'TextRange'
+);
+
+collIE50=new Array(
+'controlRange'
+);
+
+//sStyle='';
+
+sScript=
+'<script>\n'+
+'function rdl_doSelect(){\n'+
+'var oMessage=document.all("oMessage");\n'+
+'var oTextRange=document.body.createTextRange();\n'+
+'oTextRange.moveToElementText(oMessage);\n'+
+'oTextRange.select();\n'+
+'}\n'+
+'function rdl_doClear(){\n'+
+'document.selection.clear();\n'+
+'}\n'+
+'<\/script>\n';
+
+sCode=
+'<input type=text id=oMessage value="我是要被选定的信息">\n'+
+'<br><br>\n'+
+'<input type=button value=" 选择 " onclick="rdl_doSelect();">&nbsp;<input type=button value=" 清除 " onclick="rdl_doClear();">\n';
+
+iWinWidth=340;
+
+iWinHeight=210;
+
+</script>
+
+<div id=idContent>
+
+<div id=idContentTitle><span id=idTitleName>select</span>版本：DOM1　返回值：无</div>
+
+<div class=cssColumnTitle>语法：</div>
+<div>
+<i>object</i><b> . select () </b>
+
+</div>
+
+<div class=cssColumnTitle>参数：</div>
+<div>
+无
+</div>
+
+<div class=cssColumnTitle>返回值：</div>
+<div>
+无
+</div>
+
+<div class=cssColumnTitle>说明：</div>
+<div>
+让当前对象成为被激活的选择区(<a href="../objects/selection.html"> selection </a>)。<br>
+此方法在非 Microsoft&reg; Win32&reg; 平台上不可用。
+</div>
+
+</div>
+</body>
+</html>
+
+<!-- Part of RDL(TM) - Written by Rain1977 
+HomeSite: http://www.dhtmlet.com  E-Mail: dhtmlet@hotmail.com -->

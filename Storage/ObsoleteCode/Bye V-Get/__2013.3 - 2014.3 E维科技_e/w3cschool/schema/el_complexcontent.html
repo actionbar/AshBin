@@ -1,0 +1,169 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="../c3.css" />
+<title>XML Schema complexContent 元素</title>
+</head>
+<body class="xml">
+<div id="wrapper">
+<div id="header">
+<a href="http://e.v-get.com/w3cschool/" style="float:left;">W3CSchool 在线教程</a>
+<div class="q g"><script type="text/javascript">var cpro_id="u1163355"</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div>
+<div id="navfirst">
+<ul id="menu">
+<li id="h"><a href="../h.html">HTML教程</a></li>
+<li id="x"><a href="../x.html">XML教程</a></li>
+<li id="b"><a href="../b.html">浏览器脚本</a></li>
+<li id="s"><a href="../s.html">服务器脚本</a></li>
+<li id="d"><a href="../d.html">dot net教程</a></li>
+<li id="m"><a href="../m.html">多媒体教程</a></li>
+<li id="w"><a href="../w.html">建站手册</a></li>
+</ul>
+</div><div id="navsecond">
+<div id="course">
+<h2>Schema 教程</h2>
+<ul>
+<li><a href="http://e.v-get.com/w3cschool/">XSD 首页</a></li>
+<li><a href="schema_intro.html">XSD 简介</a></li>
+<li><a href="schema_why.html">XSD 为何使用</a></li>
+<li><a href="schema_howto.html">XSD 如何使用</a></li>
+<li><a href="schema_schema.html">XSD &lt;schema&gt;</a></li>
+</ul>
+<h2>简单的类型</h2>
+<ul>
+<li><a href="schema_simple.html">XSD 元素</a></li>
+<li><a href="schema_simple_attributes.html">XSD 属性</a></li>
+<li><a href="schema_facets.html">XSD 限定</a></li>
+</ul>
+<h2>复杂的类型</h2>
+<ul>
+<li><a href="schema_complex.html">XSD 元素</a></li>
+<li><a href="schema_complex_empty.html">XSD 空元素</a></li>
+<li><a href="schema_complex_elements.html">XSD 仅含元素</a></li>
+<li><a href="schema_complex_text.html">XSD 仅含文本</a></li>
+<li><a href="schema_complex_mixed.html">XSD 混合内容</a></li>
+<li><a href="schema_complex_indicators.html">XSD 指示器</a></li>
+<li><a href="schema_complex_any.html">XSD &lt;any&gt;</a></li>
+<li><a href="schema_complex_anyattribute.html" title="">XSD &lt;anyAttribute&gt;</a></li>
+<li><a href="schema_complex_subst.html">XSD 元素替换</a></li>
+<li><a href="schema_example.html">XSD 实例</a></li>
+</ul>
+<h2>数据类型</h2>
+<ul>
+<li><a href="schema_dtypes_string.html">XSD 字符串</a></li>
+<li><a href="schema_dtypes_date.html">XSD 日期</a></li>
+<li><a href="schema_dtypes_numeric.html">XSD 数值</a></li>
+<li><a href="schema_dtypes_misc.html">XSD 杂项</a></li>
+<li><a href="schema_summary.html">XSD 总结</a></li>
+</ul>
+<h2>参考手册</h2>
+<ul>
+<li><a href="schema_elements_ref.html">XSD 参考手册</a></li>
+<li><a href="http://www.w3.org/2001/03/webdata/xsv/">XSD 验证器</a></li>
+</ul>
+</div>
+<div id="selected">
+<h2>建站手册</h2>
+<ul>
+<li><a href="../site/">网站构建</a></li>
+<li><a href="../w3c/">万维网联盟</a></li>
+<li><a href="http://e.v-get.com/w3c/">W3CSchool 教程</a></li>
+<li><a href="../quality/">网站品质</a></li>
+<li><a href="../semweb/">语义网</a></li>
+<li><a href="../hosting/">网站主机</a></li>
+</ul>
+<h2><a href="http://e.v-get.com/w3c/" class="f13">W3CSchool 教程</a></h2><div class="a120x90"><script type="text/javascript">var cpro_id="u1210867";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div></div>
+</div>
+<div id="maincontent">
+<h1>XML Schema complexContent 元素</h1>
+<div class="backtoreference">
+<p><a href="schema_elements_ref.html">返回 XML Schema 参考手册</a></p>
+</div>
+<div>
+<h2>定义和用法</h2>
+<p>complexContent 元素定义对复杂类型 (包含混合内容或仅包含元素）的扩展或限制。</p>
+<h3>元素信息</h3>
+<table class="dataintable">
+<tr>
+<td class="no_wrap">出现次数</td>
+<td>一次</td>
+</tr>
+<tr>
+<td>父元素</td>
+<td>complexType</td>
+</tr>
+<tr>
+<td>内容</td>
+<td>
+<p>可选项。annotation</p>
+<p>必选项。 有并且只有一个下列元素： restriction (complexContent) 或 extension (complexContent)。</p>
+</td>
+</tr>
+</table>
+<h3>语法</h3>
+<pre>&lt;complexContent
+id=ID
+mixed=true|false<i>
+any attributes</i>
+&gt;
+(annotation?,(restriction|extension))
+&lt;/complexContent&gt;</pre>
+<p> (? 符号声明元素可在 complexContent 元素内出现零次或一次。）</p>
+<table class="dataintable">
+<tr>
+<th>属性</th>
+<th>描述</th>
+</tr>
+<tr>
+<td>id</td>
+<td>可选。规定该元素的唯一的 ID。</td>
+</tr>
+<tr>
+<td>mixed</td>
+<td>可选。规定是否允许字符数据出现在该 complexType 元素的子元素之间。 默认值为 false。</td>
+</tr>
+<tr>
+<td class="no_wrap">any attributes</td>
+<td>可选。规定带有 non-schema 命名空间的任何其他属性。</td>
+</tr>
+</table>
+</div>
+<div>
+<h2>实例</h2>
+<p>下面的例子中有一个复杂类型 &#34;fullpersoninfo&#34;，这个复杂类型是通过用三个补充的元素扩展继承的类型，从另一个复杂类型 &#34;personinfo&#34; 衍生而来的：</p>
+<pre>&lt;xs:element name=&#34;employee&#34; type=&#34;fullpersoninfo&#34;/&gt;
+&lt;xs:complexType name=&#34;personinfo&#34;&gt;
+  &lt;xs:sequence&gt;
+    &lt;xs:element name=&#34;firstname&#34; type=&#34;xs:string&#34;/&gt;
+    &lt;xs:element name=&#34;lastname&#34; type=&#34;xs:string&#34;/&gt;
+  &lt;/xs:sequence&gt;
+&lt;/xs:complexType&gt;
+&lt;xs:complexType name=&#34;fullpersoninfo&#34;&gt;
+  &lt;xs:complexContent&gt;
+    &lt;xs:extension base=&#34;personinfo&#34;&gt;
+      &lt;xs:sequence&gt;
+        &lt;xs:element name=&#34;address&#34; type=&#34;xs:string&#34;/&gt;
+        &lt;xs:element name=&#34;city&#34; type=&#34;xs:string&#34;/&gt;
+        &lt;xs:element name=&#34;country&#34; type=&#34;xs:string&#34;/&gt;
+      &lt;/xs:sequence&gt;
+    &lt;/xs:extension&gt;
+  &lt;/xs:complexContent&gt;
+&lt;/xs:complexType&gt;</pre>
+<p>在上例中，&#34;employee&#34; 元素必须按顺序包含下面的元素：&#34;firstname&#34;、&#34;lastname&#34;、&#34;address&#34;、&#34;city&#34; 以及 &#34;country&#34;。</p>
+</div>
+<div class="backtoreference">
+<p><a href="schema_elements_ref.html">返回 XML Schema 参考手册</a></p>
+</div>
+</div>
+<div id="sidebar">
+<div class="rs"></div>
+<div id="tools">
+<h5 id="tools_reference"><a href="schema_elements_ref.html">XML Schema 参考手册</a></h5>
+</div>
+<div class="a120x600"><script type="text/javascript">var cpro_id="u1293136";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div><div class="b"></div>
+</div>
+</body>
+</html>

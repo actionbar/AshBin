@@ -1,0 +1,106 @@
+<html xmlns:rdl>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<script src="rdl_method.js"></script>
+<base target="_self">
+</head>
+<body>
+
+<script>
+
+//collFriendObjects=new Array();
+//collFriendProperties=new Array();
+//collFriendMethods=new Array();
+//collFriendEvents=new Array();
+//collFriendCollections=new Array();
+
+collFriendMethods=new Array(
+'hasChildNodes'
+);
+
+collFriendCollections=new Array(
+'all','children','childNodes'
+);
+
+//collIE40=new Array();
+//collIE50=new Array();
+//collIE55=new Array();
+//collIE60=new Array();
+
+collIE40=new Array(
+'A','ADDRESS','APPLET','AREA','B','BASE','BASEFONT','BIG','BLOCKQUOTE','BODY','BUTTON','CAPTION','CENTER','CITE','CODE','COL','COLGROUP','DD','DFN','DIR','DIV','DL','DT','EM','EMBED','FIELDSET','FONT','FORM','FRAME','FRAMESET','HEAD','Hn','HR','HTML','I','IFRAME','IMG','INPUT type=button','INPUT type=checkbox','INPUT type=file','INPUT type=image','INPUT type=password','INPUT type=radio','INPUT type=reset','INPUT type=submit','INPUT type=text','KBD','LABEL','LEGEND','LI','LINK','LISTING','MAP','MARQUEE','MENU','META','NEXTID','NOBR','OL','OPTION','P','PLAINTEXT','PRE','S','SAMP','SCRIPT','SELECT','SMALL','SPAN','STRIKE','STRONG','SUB','SUP','TABLE','TBODY','TD','TEXTAREA','TFOOT','TH','THEAD','TITLE','TR','TT','U','UL','VAR','XMP' 
+);
+
+collIE50=new Array(
+'custom'
+);
+
+//sStyle='';
+
+bRunCode=true;
+
+sScript=
+'<script>\n'+
+'function rdl_eventHandle(e){\n'+
+'event.cancelBubble=true;\n'+
+'if (document.all("oParent").contains(event.srcElement)) {\n'+
+'document.all("oCode").innerHTML="<b>第1个DIV<\/b>包含这个<b>"+event.srcElement.tagName+"<\/b>";}\n'+
+'else {\n'+
+'document.all("oCode").innerHTML="<b>第1个DIV<\/b>不包含这个<b>"+event.srcElement.tagName+"<\/b>";}\n'+
+'}\n'+
+'document.onmouseover=rdl_eventHandle;\n'+
+'<\/script>\n';
+
+sCode=
+'<div id=oParent style="border:1px solid #000000;background:#6699CC;padding:6px;">第1个DIV<br><br>\n'+
+'<div id=oChild1 style="border:1px solid #000000;background:#999999;width:80%;">第2个DIV<\/div><br>\n'+
+'<div id=oChild2 style="border:1px solid #000000;background:#CC9966;width:80%;">第3个DIV<\/div><\/div>\n'+
+'<br><div id=oCode>请移动鼠标。<\/div>\n';
+
+iWinWidth=320;
+
+iWinHeight=260;
+
+</script>
+
+<div id=idContent>
+
+<div id=idContentTitle><span id=idTitleName>contains</span>版本：DHTML Object Model　返回值：有</div>
+
+<div class=cssColumnTitle>语法：</div>
+<div>
+<i>bFound</i><b> = </b><i>object</i><b> . contains ( </b><i>oElement</i><b> ) </b>
+</div>
+
+<div class=cssColumnTitle>参数：</div>
+<table>
+<tr><td nowrap><i> oElement </i></td><td nowrap><b>:</b></td>
+<td><b>必选项</b>。对象(Element)。要被检查的对象。</td></tr>
+</table>
+
+<div class=cssColumnTitle>返回值：</div>
+<table>
+<tr><td nowrap><i> bFound </i></td><td nowrap><b>:</b></td>
+<td>布尔值(Boolean)。<b>false</b> | <b>true</b>
+<table>
+<tr><td class=cssHeadTD><b> false </b></td><td nowrap><b>:</b></td>
+<td><i> object </i>不包含<i> oElement </i>。</td></tr>
+<tr><td class=cssHeadTD><b> true </b></td><td nowrap><b>:</b></td>
+<td><i> object </i>包含<i> oElement </i>。</td></tr>
+</table> 
+</td></tr>
+</table>
+
+<div class=cssColumnTitle>说明：</div>
+<div>
+检查<i> object </i>是否包含<i> oElement </i>。<br>
+</div>
+
+
+
+</div>
+</body>
+</html>
+
+<!-- Part of RDL(TM) - Written by Rain1977 
+HomeSite: http://www.dhtmlet.com  E-Mail: dhtmlet@hotmail.com -->

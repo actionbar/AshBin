@@ -1,0 +1,132 @@
+{template header}
+
+<p>
+{eval $display_index = ($current-1)*$perpage;}
+<!--{if $action == 'atme'}-->
+	@<!--{if $request_user['uid'] == $logger_uid}-->我的<!--{else}-->他的<!--{/if}-->[{$request_user['atmes']}]<br />
+	<a href="{eval echo miniurl($request_user['uid'].'/notes');}">微博[{$request_user['notes']}]</a>
+	<a href="{eval echo miniurl($request_user['uid'].'/follows');}">关注[{$request_user['follows']}]</a>
+	<a href="{eval echo miniurl($request_user['uid'].'/fans');}">粉丝[{$request_user['fans']}]</a> 
+	<!--{if $logger_uid == $request['uid']}-->
+	<a href="{eval echo miniurl($request_user['uid'].'/comments');}">管理评论</a>
+	<!--{/if}-->
+</p>
+<p>
+	<!--{loop $atmes $atme}-->
+	{eval $display_index++;}
+	{$display_index}. <a href="{eval echo miniurl($atme['uid']);}">{$atme['username']}</a>:{$atme['note']['message']} <br />
+	<!--{if !empty($atme['note']['refer'])}-->
+	{eval $atme_refer = $atme['note']['refer'];}
+	转自:{$atme_refer['message']}<br />
+	<!--{if !empty($atme_refer['link'])}-->
+	原文分享链接:<a href="{$atme_refer['link']['url']}">$atme_refer['link']['title']</a><br />
+	<!--{/if}-->
+	<!--{if !empty($atme_refer['file'])}-->
+	原文分享文件:<a href="{$atme_refer['file']['url']}">$atme_refer['file']['title']</a><br />
+	<!--{/if}-->
+	<!--{if !empty($atme_refer['img'])}-->
+	原文分享图片:<a href="{eval echo imgurl($atme['note']['img']['url']);}" rel="{$atme_refer['img']['title']}">打开</a><br />
+	<!--{/if}-->
+	<!--{/if}-->
+	<!--{if !empty($atme['note']['link'])}-->
+	分享链接:<a href="{$atme['note']['link']['url']}">$atme['note']['link']['title']</a><br />
+	<!--{/if}-->
+	<!--{if !empty($atme['note']['file'])}-->
+	分享文件:<a href="{$atme['note']['file']['url']}">$atme['note']['file']['title']</a><br />
+	<!--{/if}-->
+	<!--{if !empty($atme['note']['img'])}-->
+	分享图片:<a href="{eval echo imgurl($atme['note']['img']['url']);}" rel="{$atme['note']['img']['title']}">打开</a><br />
+	<!--{/if}-->
+	{$atme['sgmdate']} 
+	<!--{if $logger_uid == $atme['uid']}-->
+	转发[{$atme['refers']}] <a href="{eval echo miniurl('note/'.$atme['nid'].'/comment');}">评论[{$atme['comments']}]</a> <a href="{eval echo miniurl('note/'.$atme['nid'].'/del');}">删除</a>
+	<!--{else}-->
+	<a href="{eval echo miniurl('note/'.$atme['nid'].'/refer');}">转发[{$atme['refers']}]</a> <a href="{eval echo miniurl('note/'.$atme['nid'].'/comment');}">评论[{$atme['comments']}]</a>
+	<!--{/if}--><br />
+	<!--{/loop}-->
+<!--{elseif $action == 'fans'}-->
+	<!--{if $request_user['uid'] == $logger_uid}-->我的<!--{else}-->他的<!--{/if}-->粉丝[{$request_user['fans']}]<br />
+	<a href="{eval echo miniurl($request_user['uid'].'/notes');}">微博[{$request_user['notes']}]</a>
+	<a href="{eval echo miniurl($request_user['uid'].'/follows');}">关注[{$request_user['follows']}]</a>
+	<a href="{eval echo miniurl($request_user['uid'].'/atme');}">@<!--{if $request_user['uid'] == $logger_uid}-->我的<!--{else}-->他的<!--{/if}-->[{$request_user['atmes']}]</a> 
+	<!--{if $logger_uid == $request['uid']}-->
+	<a href="{eval echo miniurl($request_user['uid'].'/comments');}">管理评论</a>
+	<!--{/if}-->
+</p>
+<p>
+	<!--{loop $fans $fans_item}-->
+	{eval $display_index++;}
+	{$display_index}. <a href="{eval echo miniurl($fans_item['uid'])}">{$fans_item['username']}</a> >> <!--{if $logger_uid != $fans_item['uid'] && $request_user['uid'] != $logger_uid}--><a href="{eval echo miniurl('follow/'.$fans_item['uid']);}">关注他</a> <!--{/if}--><!--{if $logger_uid != $fans_item['uid']}--><a href="{eval echo miniurl('pms/send?uid='.$fans_item['uid']);}">发消息</a><!--{/if}--><br />
+	<!--{/loop}-->
+<!--{elseif $action == 'follows'}-->
+	<!--{if $request_user['uid'] == $logger_uid}-->我的<!--{else}-->他的<!--{/if}-->关注[{$request_user['follows']}]<br />
+	<a href="{eval echo miniurl($request_user['uid'].'/notes');}">微博[{$request_user['notes']}]</a>
+	<a href="{eval echo miniurl($request_user['uid'].'/fans');}">粉丝[{$request_user['fans']}]</a>
+	<a href="{eval echo miniurl($request_user['uid'].'/atme');}">@<!--{if $request_user['uid'] == $logger_uid}-->我的<!--{else}-->他的<!--{/if}-->[{$request_user['atmes']}]</a> 
+	<!--{if $logger_uid == $request['uid']}-->
+	<a href="{eval echo miniurl($request_user['uid'].'/comments');}">管理评论</a>
+	<!--{/if}-->
+</p>
+<p>
+	<!--{loop $follows $follows_item}-->
+	{eval $display_index++;}
+	{$display_index}. <a href="{eval echo miniurl($follows_item['who'])}">{$follows_item['whosname']}</a> >> <!--{if $logger_uid != $follows_item['who'] && $request_user['uid'] != $logger_uid}--><a href="{eval echo miniurl('follow/'.$follows_item['who']);}">关注他</a> <!--{else}--><a href="{eval echo miniurl('follow/'.$follows_item['who'].'/del');}">取消关注</a> <!--{/if}--><!--{if $logger_uid != $follows_item['who']}--><a href="{eval echo miniurl('pms/send?uid='.$follows_item['who']);}">发消息</a><!--{/if}--><br />
+	<!--{/loop}-->
+<!--{elseif $action == 'comments'}-->
+	<a href="{eval echo miniurl($request_user['uid'].'/comments');}">管理评论</a><br />
+	<a href="{eval echo miniurl($request_user['uid'].'/notes');}">微博[{$request_user['notes']}]</a>
+	<a href="{eval echo miniurl($request_user['uid'].'/follows');}">关注[{$request_user['follows']}]</a>
+	<a href="{eval echo miniurl($request_user['uid'].'/fans');}">粉丝[{$request_user['fans']}]</a>
+	<a href="{eval echo miniurl($request_user['uid'].'/atme');}">@<!--{if $request_user['uid'] == $logger_uid}-->我的<!--{else}-->他的<!--{/if}-->[{$request_user['atmes']}]</a><br />
+	<!--{loop $comments $comment}-->
+	{eval $display_index++;}
+	{$display_index}. {eval echo sgmdate($comment['dateline'], 1);} 对<a href="{eval echo miniurl($comment['note_uid'])}">{$comment['note_user']}</a>的<a href="{eval echo miniurl('note/'.$comment['nid'].'/comment');}">微博</a>发表评论: <br />
+	{$comment['comment']} <a href="{eval echo miniurl('comment/'.$comment['mid'].'/del')}">删除</a><br />
+	<!--{/loop}-->
+<!--{else}-->
+	<!--{if $request_user['uid'] == $logger_uid}-->我<!--{else}--><a href="{eval echo miniurl($request_user['uid']);}">{$request_user['username']}</a> <!--{/if}-->的微博[{$request_user['notes']}]<br />
+	<a href="{eval echo miniurl($request_user['uid'].'/follows');}">关注[{$request_user['follows']}]</a>
+	<a href="{eval echo miniurl($request_user['uid'].'/fans');}">粉丝[{$request_user['fans']}]</a>
+	<a href="{eval echo miniurl($request_user['uid'].'/atme');}">@<!--{if $request_user['uid'] == $logger_uid}-->我的<!--{else}-->他的<!--{/if}-->[{$request_user['atmes']}]</a> 
+	<!--{if $logger_uid == $request['uid']}-->
+	<a href="{eval echo miniurl($request_user['uid'].'/comments');}">管理评论</a>
+	<!--{/if}-->
+</p>
+<p>
+	<!--{loop $my_blogs $my_blog}-->
+	{eval $display_index++;}
+	{$display_index}. <!--{if $my_blog['uid'] == $logger_uid}-->我说<!--{else}--><a href="{eval echo miniurl($my_blog['uid']);}">{$my_blog['username']}</a><!--{/if}-->:{$my_blog['note']['message']} <br />
+	<!--{if !empty($my_blog['note']['refer'])}-->
+	{eval $my_blog_refer = $my_blog['note']['refer'];}
+	转自:{$my_blog_refer['message']}<br />
+	<!--{if !empty($my_blog_refer['link'])}-->
+	原文分享链接:<a href="{$my_blog_refer['link']['url']}">$my_blog_refer['link']['title']</a><br />
+	<!--{/if}-->
+	<!--{if !empty($my_blog_refer['file'])}-->
+	原文分享文件:<a href="{$my_blog_refer['file']['url']}">$my_blog_refer['file']['title']</a><br />
+	<!--{/if}-->
+	<!--{if !empty($my_blog_refer['img'])}-->
+	原文分享图片:<a href="{eval echo imgurl($my_blog['note']['img']['url']);}" rel="{$my_blog_refer['img']['title']}">打开</a><br />
+	<!--{/if}-->
+	<!--{/if}-->
+	<!--{if !empty($my_blog['note']['link'])}-->
+	分享链接:<a href="{$my_blog['note']['link']['url']}">$my_blog['note']['link']['title']</a><br />
+	<!--{/if}-->
+	<!--{if !empty($my_blog['note']['file'])}-->
+	分享文件:<a href="{$my_blog['note']['file']['url']}">$my_blog['note']['file']['title']</a><br />
+	<!--{/if}-->
+	<!--{if !empty($my_blog['note']['img'])}-->
+	分享图片:<a href="{eval echo imgurl($my_blog['note']['img']['url']);}" rel="{$my_blog['note']['img']['title']}">打开</a><br />
+	<!--{/if}-->
+	{$my_blog['sgmdate']} 
+	<!--{if $logger_uid == $my_blog['uid']}-->
+	转发[{$my_blog['refers']}] <a href="{eval echo miniurl('note/'.$my_blog['nid'].'/comment');}">评论[{$my_blog['comments']}]</a> <a href="{eval echo miniurl('note/'.$my_blog['nid'].'/del');}">删除</a>
+	<!--{else}-->
+	<a href="{eval echo miniurl('note/'.$my_blog['nid'].'/refer');}">转发[{$my_blog['refers']}]</a> <a href="{eval echo miniurl('note/'.$my_blog['nid'].'/comment');}">评论[{$my_blog['comments']}]</a>
+	<!--{/if}--><br />
+	<!--{/loop}-->
+<!--{/if}-->
+	{$pagehtml}
+</p>
+
+{template footer}

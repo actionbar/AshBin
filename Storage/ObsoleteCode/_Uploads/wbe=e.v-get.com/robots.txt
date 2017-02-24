@@ -1,0 +1,19 @@
+User-agent: *
+# 不要使用allow，否则将忽略disallow
+# Allow: /*.html$
+Disallow: /*.php
+Disallow: /w3c/*.htm$
+Disallow: /*.shtml$
+Disallow: /a/
+Disallow: /bbs/
+Disallow: /t/
+Sitemap: http://tp.v-get.com/sitemap_e.xml.gz
+Sitemap: http://tp.v-get.com/sitemap_e_w3cschool.xml.gz
+Sitemap: http://e.v-get.com/sitemap.xml
+Sitemap: http://e.v-get.com/sitemap_index.xml
+Sitemap: http://e.v-get.com/z/sitemap.xml
+Sitemap: http://e.v-get.com/z/sitemap_tech.xml
+Sitemap: http://e.v-get.com/z/sitemap_i.xml
+Sitemap: http://e.v-get.com/z/sitemap_tag.xml
+Sitemap: http://e.v-get.com/z/sitemap_w3c.xml
+Sitemap: http://e.v-get.com/z/sitemap_w3cschool.xml

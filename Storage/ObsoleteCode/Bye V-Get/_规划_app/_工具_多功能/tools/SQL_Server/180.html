@@ -1,0 +1,8 @@
+<meta http-equiv="content-type" content="text/html; charset=gb2312"><FONT 
+style="FONT-SIZE: 9pt; LINE-HEIGHT: 15pt"><B>用“单位矩阵”解决“交叉表”问题－T－SQL系列</B><BR><BR>用“单位矩阵”解决“交叉表”问题
+<P></P>
+<P>构造如下“单位矩阵”：表pivot</P>
+<P>Qtr&nbsp;&nbsp;Q1&nbsp;&nbsp;Q2&nbsp;&nbsp;Q3&nbsp;&nbsp;Q4<BR>1&nbsp;&nbsp;1&nbsp;&nbsp;0&nbsp;&nbsp;0&nbsp;&nbsp;0<BR>2&nbsp;&nbsp;0&nbsp;&nbsp;1&nbsp;&nbsp;0&nbsp;&nbsp;0<BR>3&nbsp;&nbsp;0&nbsp;&nbsp;0&nbsp;&nbsp;1&nbsp;&nbsp;0<BR>4&nbsp;&nbsp;0&nbsp;&nbsp;0&nbsp;&nbsp;0&nbsp;&nbsp;1</P>
+<P>SELECT&nbsp;year,<BR>&nbsp;&nbsp;q1=SUM(value*Q1),<BR>&nbsp;&nbsp;q2=SUM(value*Q2),<BR>&nbsp;&nbsp;q3=SUM(value*Q3),<BR>&nbsp;&nbsp;q4=SUM(value*Q4),<BR>&nbsp;&nbsp;total=SUM(value)<BR>FROM&nbsp;cross_tab&nbsp;JOIN&nbsp;pivot<BR>ON&nbsp;(cross_tab.qrt=pivot.qrt)<BR>GROUP&nbsp;BY&nbsp;year</P>
+<P>它的效率没有使用CASE和导出表高，不使用CASE时，在应该是最好的方法。</P>
+<P>本例请同事参考CASE或导出表的解决方法和效率。</P></FONT>

@@ -1,0 +1,54 @@
+<html xmlns:rdl>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<script src="rdl_selectors.js"></script>
+<base target="_self">
+</head>
+<body>
+
+<script>
+
+collFriendSelectors=new Array(
+'Pseudo Selectors','Type Selectors','Universal Selector','Descendant Selectors','Child Selectors','Adjacent Sibling Selectors','ID Selectors','Class Selectors','Grouping'
+);
+
+</script>
+
+<div id=idContent>
+
+<div id=idContentTitle><span id=idTitleName>Attribute Selectors</span>　版本：CSS2　 兼容性：无</div>
+
+<div class=cssColumnTitle>语法：</div>
+<ol>
+<li><b>E [ </b><i>attr</i><b> ] { </b><i>sRules</i><b> } </b> 
+<li><b>E [ </b><i>attr</i><b> = </b><i>value</i><b> ] { </b><i>sRules</i><b> } </b> 
+<li><b>E [ </b><i>attr</i><b> ~= </b><i>value</i><b> ] { </b><i>sRules</i><b> } </b> 
+<li><b>E [ </b><i>attr</i><b> |= </b><i>value</i><b> ] { </b><i>sRules</i><b> } </b> 
+</ol>
+
+<div class=cssColumnTitle>说明：</div>
+<div>
+属性选择符。
+<ol>
+<li>选择具有<i> attr </i>属性的<b> E </b>
+<li>选择具有<i> attr </i>属性且属性值等于<i> value </i>的<b> E </b>
+<li>选择具有<i> attr </i>属性且属性值为一用空格分隔的字词列表，其中一个等于<i> value </i>的<b> E </b>。这里的<i> value </i>不能包含空格
+<li>选择具有<i> attr </i>属性且属性值为一用连字符分隔的字词列表，由<i> value </i>开始的<b> E </b>
+</ol>
+</div>
+
+<div class=cssColumnTitle>示例：</div>
+<div id=idSimpleCode>
+h[title] { color: blue; } 
+<br>/* 所有具有title属性的h对象 */
+<br>&nbsp;<br>span[class=demo] { color: red; }
+<br>&nbsp;<br>div[speed="fast"][dorun="no"] { color: red; }
+<br>&nbsp;<br>a[rel~="copyright"] { color:black; }
+</div>
+
+</div>
+</body>
+</html>
+
+<!-- Part of RDL(TM) - Written by Rain1977 
+HomeSite: http://www.dhtmlet.com  E-Mail: rainersu@hotmail.com -->

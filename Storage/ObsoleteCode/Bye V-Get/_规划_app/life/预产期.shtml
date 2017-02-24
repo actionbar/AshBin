@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>快递查询——国内/国际快递查询</title>
+</head>
+<link rel="stylesheet" type="text/css" href="../index.css" />
+<link rel="stylesheet" type="text/css" href="http://localhost:8080/v-get.com/tool/index.css" />
+
+
+
+<script type="text/javascript" src="http://localhost:8080/v-get.com/i/i.js"></script>
+
+
+</head>
+<body>
+<div class="w">
+<div class="t"><div class="q"><a href="">V-Get!首页</a>|<a href="">设为主页</a>|<a href="">收藏本站</a></div></div>
+<div class="u">
+<img src="http://localhost:8080/v-get.com/tool/index.png" />
+</div>
+<div class="n"><a href="http://localhost:8080/tool.v-get.com/">首页</a><a href="http://localhost:8080/v-get.com/tool/biz/">商务办公</a><a href="http://localhost:8080/v-get.com/tool/finance/">金融计算</a><a href="http://localhost:8080/v-get.com/tool/life/" class="no">生活助手</a><a href="http://localhost:8080/v-get.com/tool/images/">图片美工</a><a href="http://localhost:8080/v-get.com/tool/editor/">文字设计</a><a href="http://localhost:8080/v-get.com/tool/edu/">教育考试</a><a href="http://localhost:8080/v-get.com/tool/games/">娱乐游戏</a><a href="http://localhost:8080/v-get.com/tool/pc/">电脑优化</a></div>
+<div class="w4"><a href="#"><img src="http://localhost:8080/v-get.com/i/wuliu/a/zzidc980.gif" /></a></div>
+<!--这里不用include，因为基本这个部分是固定的；广告以后采用js替换，或者固定图片名称-->
+<!--因为都在life文件夹下，而且涉及.no，所以这样更好-->
+<div class="v">
+<div class="p l">
+<!--#include file="l.htm"-->
+
+</div>
+<div class="p r">
+<h1>快递查询</h1>
+<div class="c">
+<script language="javascript" type="text/javascript">
+if(month<4){month+=9}else {month-=3}/*月份9个月，为预产月*/
+day+=7;
+</script>
+
+最后一次月经日期：<input type="text"  />
+
+预产期主要的计算方法
+　　(1) 根据末次月经计算[1]： 　　末次月经日期的月份加9或减3，为预产期月份数；天数加7，为预产期日。举例：最后一次月经是1985  预产期
+年2月1日，日期 1 + 7 ，预产期=11月8日（85年） 　　月份 2 + 9 末次月经是1985年4月15日 日期 15 + 7 预产期=1月22日（86年） 月份 4 - 3 　　(2) 根据胎动日期计算： 　　如你记不清末次月经日期，可以依据胎动日期来进行推算。一般胎动开始于怀孕后的18-20周。计算方法为：初产妇是胎动日加20周；经产妇是胎动日加22周。 　　(3) 根据基础体温曲线计算： 　　将基础体温曲线的低温段的最后一天作为排卵日，从排卵日向后推算264-268天，或加38周。 　　(4) 根据B超检查推算： 　　医生做B超时测得胎头双顶间径、头臀长度及股骨长度即可估算出胎龄，并推算出预产期（此方法大多作为医生B超检查诊断应用）。 　　(5) 从孕吐开始的时间推算： 　　反应孕吐一般出现在怀孕6周末，就是末次月经后42天，由此向后推算至280天即为预产期。 　　(6) 根据子宫底高度大致估计 　　如果末次月经日期记不清，可以按子宫底高度大致估计预产期。妊娠四月末，子宫高度在肚脐与耻骨上缘当中（耻骨联合上10厘米）；妊娠五月末，子宫底在脐下2横指（耻骨上16-17厘米）；妊娠六月末，子宫底平肚脐（耻骨上19-20厘米）；妊娠七月末，子宫底在脐上三横指（耻骨上22-23厘米）；妊娠八个月末，子宫底的剑突与脐的正中（耻上24-25厘米）；妊娠九月末，子宫底在剑突下2横指（耻骨上28-30厘米）；妊娠十个月末，子宫底高度又恢复到八个月时的高度，但腹围比八个月时大。
+
+</div>
+<h2>推荐工具</h2>
+<div>
+<ul><li><a href="">快递</a></li></ul>
+</div>
+<h2>热门工具</h2>
+<div>
+采用require 
+</div>
+
+
+
+</div>
+
+</div>
+
+
+</div>
+<!--<ul>
+<li><a href="http://localhost:8080/v-get.com/tool/fanyi.html">数字大小写及翻译</a></li>
+<li><a href="http://localhost:8080/v-get.com/tool/yanpitiao.php">眼皮跳吉凶查询</a></li>
+<li><a href="http://localhost:8080/v-get.com/tool/erweima/">QR二维码</a></li>
+</ul>-->
+ 
+  
+</body>
+</html>

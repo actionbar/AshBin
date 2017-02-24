@@ -1,0 +1,38 @@
+#wt,a#wt:hover{width:89px}
+#wtz{position:fixed;*position:relative;top:10px;width:410px;height:100px;z-index:99;display:none}
+#wtz h4{background:#fff;width:170px;height:28px;line-height:28px;font-size:12px}
+#wtz table{background:#fff;margin:0;border-top:none;padding:0 0 9px 15px}
+
+#wtz th{text-align:left;background:#f4f9ff}
+.wtzo,.wtzv{background:#DFEDFE}
+#wtz td{margin:3px;cursor:pointer}
+
+
+.u {margin:9px auto;_margin:0 0 9px;height:90px;position:relative}
+.u a{color:#000}
+#au{width:728px;position:absolute}
+
+/*chrome 等 webkit浏览器对10px字体无效，只有添加禁止浏览器字体调整-webkit-text-size-adjust:none;就行了*/
+.i{height:90px;width:230px;_width:226px;background:#FDF4D5;font-size:10px;-webkit-text-size-adjust:none;font-family:Tahoma}
+
+.il{margin:26px 0;background:url(http://localhost/www.v-get.com/tu/i.gif);width:125px;height:38px;}
+/*主页“商务物流网”要用到font-size:14px*/
+.ir{margin:26px 4px;padding:7px;color:#888888;background:url(http://localhost/www.v-get.com/tu/f.png) 0 -372px no-repeat;}
+.ir p{height:12px;line-height:12px}
+
+#n,#n .no,#n a:hover,#n i{background:url(http://localhost/www.v-get.com/tu/f.png) repeat-x}
+#n{height:33px;padding-top:6px;background-position:0 -150px;font-size:13px;_font-size:14px;border:#2885C6 solid;border-width:0 1px;border-radius:3px}
+#n a{width:62px;text-decoration:none;color:#fff;height:32px;line-height:28px;*line-height:32px;line-height:32px\9;margin:0 5px}
+#n .no,#n a:hover{width:60px;border-top-left-radius:3px;border-top-right-radius:3px;}
+#n .no,#n a.no:hover{line-height:28px;*line-height:30px;line-height:30px\9;background-position:0 -190px;color:#595656;font-weight:700;border:#0069ac solid;border-width:1px 1px 0}
+#n a:hover{background-position:0 -411px;border:#94c9ed solid;line-height:26px;*line-height:30px;line-height:30px\9;border-width:1px 1px 0}
+#n i{display:inline-block;float:left;width:7px;height:26px;background-position:50% -223px;background-repeat:no-repeat}
+
+
+
+.g{height:43px}
+.gl{width:145px;background:#f00}
+.gl img{width:145px;height:43px}
+.gr{width:809px;height:31px;padding:5px 0;color:#666}
+.gr p{line-height:16px;height:16px}
+.gr a{padding:0 10px;}

@@ -1,0 +1,642 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>实例演练ASP+XML编程</title>
+<style type="text/css">
+<!--
+body {
+	font-size: 10.4pt;
+	line-height: 22px;
+}
+-->
+</style>
+</head>
+
+<body bgcolor="eeeeee" leftmargin="20" marginwidth="20">
+<p><strong>实例演练ASP+XML编程</strong></p>
+<hr>
+<p> 本文是一篇实例讲解的文章。作为一个普通的程序员，我深知，一个优秀的例程，对于正在学习编程的人是多么的有帮助。本文中使用的例程，是一个联系信息管理程序，我也是写来以方便自己和朋友们互相联系用的。但麻雀虽小，五脏俱全，相信对正在学习ASP＋XML编程的朋友们，还是具备一定的参考价值的。 
+  <br>
+  <br>
+  读者可以通过此实例，了解在ASP（Active Server Page）中如何操纵XML文件，并进行数据的各种处理，包括XML节点的建立、修改、删除和保存等等。文中涉及到的技术包括ASP，VBScript，DOM，XML和XSL等。 
+  <br>
+  <br>
+  本文未对使用到的技术进行深入的理论介绍，因此，读者需要具备一定的相关知识，尤其是对ASP、XML和DOM应该有一定的了解。通读本文，并参考源代码，相信读者一定可以熟练地掌握XML编程。 
+  <br>
+  　　一、程序说明 <br>
+  <br>
+  例程基于B/S结构，使用XML文件存储联系信息，然后通过一个VBScript写的Class，使用DOM，对XML文件中的联系信息进行各种操作。 <br>
+  <br>
+  例程提供的代码采用了统一的命名规范，主要包括：用三个字母的缩写说明变量类型，如数字类型——int，字符串类型——str，对象——obj，等等，虽然在ASP/VBScript中，不区分数据类型，但使用明显的数据类型说明，对程序的编写和维护还是很有意义的；使用有意义的变量名称，如XMLDocument对象，定义为objXmlDoc，等等，同样，这样做的也是为了更好地编写和维护程序。 
+  <br>
+  <br>
+  此程序可以分为后台数据处理和前台界面表现两部分。 <br>
+  <br>
+  程序后台，使用VBScript编写了一个Class，这是在VBScript5.0版中提供的新特性。虽然这里Class的概念和真正的面向对象相去甚远，但是，在ASP中合理地使用Class，还是可以在一定程度上提高程序的运行效率和可维护性。 
+  <br>
+  <br>
+  前台表现，使用XSL对XML文件中的数据进行了格式化，然后以HTML的形式输出到客户端，充分体现了XML技术带来的灵活性与可定制性。格式化的过程放在了服务器端，使用ASP程序完成，这样，客户端得到的是经过格式化之后的HTML信息，避免了兼容性问题的出现。 
+  <br>
+  <br>
+  当然，程序对于具体的操作细节未作非常严格的检验，比如联系信息必填项的检查，但是，对于在ASP中使用DOM操作XML的有关部分，程序提供了完整的示例代码。 
+  <br>
+  　　二、XML文件说明（persons.xml） <br>
+  <br>
+  例程中使用到的XML文件结构十分简单，并且没有定义相关的Schema或者DTD，因为，对于此程序这是不必要的。当然，如果读者愿意自己定义一个的话，也不会对程序的运行产生影响。 
+  <br>
+  <br>
+  程序的数据结构定义如下，Persons集合，它包含多个Person对象，每一个Person对象包括姓名Name、英文名Nick、手机Mobile、电话Tel、电子邮件Email、腾讯QQ和所在公司Company的属性。将以上定义对应到XML文件即，Persons为根节点，Person为Persons的子节点，Name、Nick、Mobile、Tel、Email、QQ和Company为Person的子节点。 
+  <br>
+  <br>
+  这样，我们得到的XML文件内容如下: <br>
+  ＜?xml version=&quot;1.0&quot; encoding=&quot;gb2312&quot;?＞ <br>
+  ＜Persons＞ <br>
+  ＜Person＞ <br>
+   　　　　＜Name＞小东＜/Name＞ <br>
+  ＜Nick＞gwd＜/Nick＞ <br>
+  ＜Mobile＞139XXXXXXXX＜/Mobile＞ <br>
+  ＜Tel＞XXXXXXXX＜/Tel＞ <br>
+  ＜Email＞gwd@chinaren.com＜/Email＞ <br>
+  ＜QQ＞7066015＜/QQ＞ <br>
+  ＜Company＞XXX＜/Company＞ <br>
+  ＜Person＞ <br>
+  ＜/Person＞ <br>
+  读者需要注意＜?xml version=&quot;1.0&quot; encoding=&quot;gb2312&quot;?＞这一行，XML默认不支持中文，通过设置encoding属性，才可以使XML正确地显示中文。读者可以在IE5.0及以上版本的浏览器中访问此文件，它会以 
+  树型结构把数据显示出来。 <br>
+  转自：动态网制作指南www.knowsky.com <br>
+  <br>
+  转自：动态网制作指南www.knowsky.com <br>
+  　　三、格式转换XSL文件说明(Persons.xsl) <br>
+  <br>
+  例程中使用XSL对XMl数据进行格式化，并以HTML的形式返回到客户端。这个过程也可以放在客户端进行，但考虑到兼容性的问题，例程中采用了在服务器端通过ASP操纵DOM进行格式化的方法。 
+  <br>
+  <br>
+  XSL文件的内容如下， <br>
+  ＜?xml version=&quot;1.0&quot; encoding=&quot;gb2312&quot;?＞ <br>
+  ＜xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; version=&quot;1.0&quot;＞ 
+  <br>
+  ＜xsl:template match=&quot;/Persons&quot;＞ <br>
+  ＜script language=&quot;javascript&quot;＞ <br>
+  　function add() <br>
+  　{ <br>
+  　　window.open(&quot;add.asp&quot;, &quot;add&quot;, &quot;width=300,height=320,resize=no&quot;); 
+  <br>
+  　} <br>
+  　function edit(intId) <br>
+  　{ <br>
+  　　window.open(&quot;edit.asp?id=&quot;+intId, &quot;edit&quot;, &quot;width=300,height=320,resize=no&quot;); 
+  <br>
+  　} <br>
+  ＜/script＞ <br>
+  ＜table width=&quot;600&quot; border=&quot;0&quot; align=&quot;center&quot;＞ 
+  <br>
+  　＜tr＞ <br>
+  　　＜td align=&quot;right&quot;＞＜a href=&quot;javascript:add();&quot; title=&quot;添加新联系人&quot;＞添加新联系人＜/a＞　　＜/td＞ 
+  <br>
+  　＜/tr＞ <br>
+  ＜/table＞ <br>
+  <br>
+  ＜table align=&quot;center&quot; width=&quot;680&quot; cellspacing=&quot;1&quot; 
+  cellpadding=&quot;2&quot; border=&quot;0&quot; bgcolor=&quot;#666600&quot;＞ 
+  <br>
+  　＜tr class=&quot;title&quot; bgcolor=&quot;#E5E5E5&quot;＞ <br>
+  　　＜td width=&quot;25&quot;＞＜xsl:text disable-output-escaping=&quot;yes&quot;＞&amp;＜/xsl:text＞nbsp;＜/td＞ 
+  <br>
+  　　＜td＞姓名＜/td＞ <br>
+  　　＜td＞英文名＜/td＞ <br>
+  　　＜td＞手机＜/td＞ <br>
+  　　＜td＞电话＜/td＞ <br>
+  　　＜td＞Email＜/td＞ <br>
+  　　＜td＞QQ＜/td＞ <br>
+  　　＜td＞所在公司＜/td＞ <br>
+  　＜/tr＞ <br>
+  　＜xsl:for-each select=&quot;Person&quot;＞ <br>
+  　＜TR BGCOLOR=&quot;#FFFFFF&quot;＞ <br>
+  　　＜TD ALIGN=&quot;right&quot;＞＜xsl:value-of select=&quot;position()&quot;/＞＜/TD＞ 
+  <br>
+  　　＜TD STYLE=&quot;color:#990000&quot;＞＜A＞＜xsl:attribute name=&quot;HREF&quot;＞javascript:edit('＜xsl:value-of 
+  select=&quot;position()&quot;/＞');＜/xsl:attribute＞＜xsl:attribute name=&quot;title&quot;＞修改信息　　＜/xsl:attribute＞＜xsl:value-of 
+  select=&quot;Name&quot;/＞＜/A＞＜/TD＞ <br>
+  　　＜TD＞＜xsl:value-of select=&quot;Nick&quot;/＞＜/TD＞ <br>
+  　　＜TD＞＜xsl:value-of select=&quot;Mobile&quot;/＞＜/TD＞ <br>
+  　　＜TD＞＜xsl:value-of select=&quot;Tel&quot;/＞＜/TD＞ <br>
+  　　＜TD＞＜A＞＜xsl:attribute name=&quot;HREF&quot;＞mailto:＜xsl:value-of select=&quot;Email&quot;/＞＜/xsl:attribute＞＜xsl:value-of 
+  select=&quot;Email&quot;/＞＜/A＞＜/TD＞ <br>
+  　　＜TD＞＜xsl:value-of select=&quot;QQ&quot;/＞＜/TD＞ <br>
+  　　＜TD＞＜xsl:value-of select=&quot;Company&quot;/＞＜/TD＞ <br>
+  　＜/TR＞ <br>
+  　＜/xsl:for-each＞ <br>
+  ＜/table＞ <br>
+  ＜/xsl:template＞ <br>
+  ＜/xsl:stylesheet＞ <br>
+  在服务器端的转换使用一个函数来完成，格式化成功，返回HTML字符串，格式化失败，打印出错误信息，如下， <br>
+  '******************************************* <br>
+  ' 说明：使用XSL文件格式化XML文件。 <br>
+  ' 作者：gwd 2002-11-05 <br>
+  ' 参数：strXmlFile -- Xml文件，路径＋文件名 <br>
+  ' strXslFile -- Xsl文件，路径＋文件名 <br>
+  ' 返回：成功 -- 格式化后的HTML字符串 <br>
+  ' 失败 -- 自定义的错误信息 <br>
+  '******************************************* <br>
+  Function FormatXml(strXmlFile, strXslFile) <br>
+  　Dim objXml, objXsl <br>
+  　strXmlFile = Server.MapPath(strXmlFile) <br>
+  　strXslFile = Server.MapPath(strXslFile) <br>
+  　Set objXml = Server.CreateObject(&quot;MSXML2.DOMDocument&quot;) <br>
+  　Set objXsl = Server.CreateObject(&quot;MSXML2.DOMDocument&quot;) <br>
+  　objXML.Async = False <br>
+  　If objXml.Load(strXmlFile) Then <br>
+  　　objXsl.Async = False <br>
+  　　objXsl.ValidateonParse = False <br>
+  　　If objXsl.Load(strXslFile) Then <br>
+  　　　On Error Resume Next ' 捕获transformNode方法的错误 <br>
+  　　　FormatXml = objXml.transformNode(objXsl) <br>
+  　　　If objXsl.parseError.errorCode ＜＞ 0 Then <br>
+  　　　　Response.Write &quot;＜br＞＜hr＞&quot; <br>
+  　　　　Response.Write &quot;Error Code: &quot; &amp; objXsl.parseError.errorCode 
+  <br>
+  　　　　Response.Write &quot;＜br＞Error Reason: &quot; &amp; objXsl.parseError.reason 
+  <br>
+  　　　　Response.Write &quot;＜br＞Error Line: &quot; &amp; objXsl.parseError.line 
+  <br>
+  　　　　FormatXml = &quot;＜span class=&quot;&quot;alert&quot;&quot;＞格式化XML文件错误！＜/span＞&quot; 
+  <br>
+  　　　End If <br>
+  　　Else <br>
+  　　　Response.Write &quot;＜br＞＜hr＞&quot; <br>
+  　　　Response.Write &quot;Error Code: &quot; &amp; objXsl.parseError.errorCode 
+  <br>
+  　　　Response.Write &quot;＜br＞Error Reason: &quot; &amp; objXsl.parseError.reason 
+  <br>
+  　　　Response.Write &quot;＜br＞Error Line: &quot; &amp; objXsl.parseError.line 
+  <br>
+  　　　FormatXml = &quot;＜span class=&quot;&quot;alert&quot;&quot;＞装载XSL文件错误！＜/span＞&quot; 
+  <br>
+  　　End If <br>
+  　Else <br>
+  　　Response.Write &quot;＜br＞＜hr＞&quot; <br>
+  　　Response.Write &quot;Error Code: &quot; &amp; objXml.parseError.errorCode 
+  <br>
+  　　Response.Write &quot;＜br＞Error Reason: &quot; &amp; objXml.parseError.reason 
+  <br>
+  　　Response.Write &quot;＜br＞Error Line: &quot; &amp; objXml.parseError.line <br>
+  　　FormatXml = &quot;＜span class=&quot;&quot;alert&quot;&quot;＞装载XML文件错误！＜/span＞&quot; 
+  <br>
+  　End If <br>
+  　Set objXsl = Nothing <br>
+  　Set objXml = Nothing <br>
+  End Function <br>
+  <br>
+  转自：动态网制作指南www.knowsky.com <br>
+  　　四、操作Xml数据的Cls_Person类说明（clsPerson.asp） <br>
+  <br>
+  Cls_Person类用来完成与联系人信息相关的各种操作，包括添加、修改和删除等等，它使用VBScript编写。Cls_Person包括Id、Name、Nick、Mobile、Tel、Email、QQ和Company属性，对应于XML文件中的Person节点。Cls_Person包括GetInfoFromXml、AddToXml、EditToXml和DeleteFormXml四个主要方法，分别完成获取信息，添加信息，修改信息和删除信息四个功能。 
+  <br>
+  <br>
+  Cls_Person的具体实现如下， <br>
+  '*************************************************** <br>
+  ' 说明：Person类 <br>
+  ' 作者：gwd 2002-11-06 <br>
+  ' 引用：pub/constpub.asp <br>
+  '*************************************************** <br>
+  Class Cls_Person <br>
+  Private m_intId ' Id，对应Person节点在Persons集合中的位置 <br>
+  Private m_strName ' 姓名 <br>
+  Private m_strNick ' 英文名 <br>
+  Private m_strMobile ' 手机 <br>
+  Private m_strTel ' 电话 <br>
+  Private m_strEmail ' 电子邮件 <br>
+  Private m_strQQ ' QQ号 <br>
+  Private m_strCompany ' 所在公司 <br>
+  Private m_strError ' 出错信息 <br>
+  ' 类初始化 <br>
+  Private Sub Class_Initialize() <br>
+  　m_strError = &quot;&quot; <br>
+  　m_intId = -1 <br>
+  End Sub <br>
+  ' 类释放 <br>
+  Private Sub Class_Terminate() <br>
+  　m_strError = &quot;&quot; <br>
+  End Sub <br>
+  '-----读写各个属性--------------------------- <br>
+  Public Property Get Id <br>
+  　Id = m_intId <br>
+  End Property <br>
+  Public Property Let Id(intId) <br>
+  　m_intId = intId <br>
+  End Property <br>
+  Public Property Get Name <br>
+  Name = m_strName <br>
+  End Property <br>
+  Public Property Let Name(strName) <br>
+  　m_strName = strName <br>
+  End Property <br>
+  Public Property Get Nick <br>
+  　Nick = m_strNick <br>
+  End Property <br>
+  Public Property Let Nick(strNick) <br>
+  　m_strNick = strNick <br>
+  End Property <br>
+  Public Property Get Mobile <br>
+  　Mobile = m_strMobile <br>
+  End Property <br>
+  Public Property Let Mobile(strMobile) <br>
+  　m_strMobile = strMobile <br>
+  End Property <br>
+  Public Property Get Tel <br>
+  　Tel = m_strTel <br>
+  End Property <br>
+  Public Property Let Tel(strTel) <br>
+  　m_strTel = strTel <br>
+  End Property <br>
+  Public Property Get Email <br>
+  　Email = m_strEmail <br>
+  End Property <br>
+  Public Property Let Email(strEmail) <br>
+  　m_strEmail = strEmail <br>
+  End Property <br>
+  Public Property Get QQ <br>
+  　QQ = m_strQQ <br>
+  End Property <br>
+  Public Property Let QQ(strQQ) <br>
+  　m_strQQ = strQQ <br>
+  End Property <br>
+  Public Property Get Company <br>
+  　Company = m_strCompany <br>
+  End Property <br>
+  Public Property Let Company(strCompany) <br>
+  　m_strCompany = strCompany <br>
+  End Property <br>
+  '----------------------------------------------- <br>
+  ' 获取错误信息 <br>
+  Public Function GetLastError() <br>
+  　GetLastError = m_strError <br>
+  End Function <br>
+  ' 私有方法，添加错误信息 <br>
+  Private Sub AddErr(strEcho) <br>
+  　m_strError = m_strError + &quot;＜Div CLASS=&quot;&quot;alert&quot;&quot;＞&quot; 
+  &amp; strEcho &amp; &quot;＜/Div＞&quot; <br>
+  End Sub <br>
+  ' 清除错误信息 <br>
+  Public Function ClearError() <br>
+  　m_strError = &quot;&quot; <br>
+  End Function <br>
+  ' 从Xml中读取指定节点的数据，并填充各个属性 <br>
+  ' 需要首先设置Id <br>
+  Public Function GetInfoFromXml(objXmlDoc) <br>
+  　Dim objNodeList <br>
+  　Dim I <br>
+  　ClearError <br>
+  　If objXmlDoc Is Nothing Then <br>
+  　　GetInfoFromXml = False <br>
+  　　AddErr &quot;Dom对象为空值&quot; <br>
+  　　Exit Function <br>
+  　End If <br>
+  　If CStr(m_intId) = &quot;-1&quot; Then <br>
+  　　GetInfoFromXml = False <br>
+  　　AddErr &quot;未正确设置联系人对象的ID属性&quot; <br>
+  　　Exit Function <br>
+  　Else <br>
+  　　I = m_intId - 1 ' 要读取得节点位置 <br>
+  　End If <br>
+  　' 选择并读取节点信息，赋予各个属性 <br>
+  　Set objNodeList = objXmlDoc.getElementsByTagName(&quot;Person&quot;) <br>
+  　If objNodeList.length - m_intId ＞= 0 Then <br>
+  　　On Error Resume Next <br>
+  　　m_strName = objNodeList(I).selectSingleNode(&quot;Name&quot;).Text <br>
+  　　m_strNick = objNodeList(I).selectSingleNode(&quot;Nick&quot;).Text <br>
+  　　m_strMobile = objNodeList(I).selectSingleNode(&quot;Mobile&quot;).Text <br>
+  　　m_strTel = objNodeList(I).selectSingleNode(&quot;Tel&quot;).Text <br>
+  　　m_strEmail = objNodeList(I).selectSingleNode(&quot;Email&quot;).Text <br>
+  　　m_strQQ = objNodeList(I).selectSingleNode(&quot;QQ&quot;).Text <br>
+  　　m_strCompany = objNodeList(I).selectSingleNode(&quot;Company&quot;).Text <br>
+  　　GetInfoFromXml = True <br>
+  　Else <br>
+  　　GetInfoFromXml = False <br>
+  　　AddErr &quot;获取联系信息发生错误&quot; <br>
+  　　Set objNodeList = Nothing <br>
+  　　Exit Function <br>
+  　End If <br>
+  　Set objNodeList = Nothing <br>
+  End Function <br>
+  ' 添加信息到XML文件中 <br>
+  ' 需要首先设置好要填充的属性 <br>
+  Public Function AddToXml(objXmlDoc) <br>
+  　Dim objPerson, objNode <br>
+  　ClearError <br>
+  　If objXmlDoc Is Nothing Then <br>
+  　　AddToXml = False <br>
+  　　AddErr &quot;Dom对象为空值&quot; <br>
+  　　Exit Function <br>
+  　End If <br>
+  　' 创建Person节点 <br>
+  　Set objPerson = objXmlDoc.createElement(&quot;Person&quot;) <br>
+  　objXmlDoc.documentElement.appendChild objPerson <br>
+  　' 创建各个子节点 <br>
+  　'----------------------------------------------------- <br>
+  　Set objNode = objXmlDoc.createElement(&quot;Name&quot;) <br>
+  　objNode.Text = m_strName <br>
+  　objPerson.appendChild objNode <br>
+  　Set objNode = objXmlDoc.createElement(&quot;Nick&quot;) <br>
+  　objNode.Text = m_strNick <br>
+  　objPerson.appendChild objNode <br>
+  　Set objNode = objXmlDoc.createElement(&quot;Mobile&quot;) <br>
+  　objNode.Text = m_strMobile <br>
+  　objPerson.appendChild objNode <br>
+  　Set objNode = objXmlDoc.createElement(&quot;Tel&quot;) <br>
+  　objNode.Text = m_strTel <br>
+  　objPerson.appendChild objNode <br>
+  　Set objNode = objXmlDoc.createElement(&quot;Email&quot;) <br>
+  　objNode.Text = m_strEmail <br>
+  　objPerson.appendChild objNode <br>
+  　Set objNode = objXmlDoc.createElement(&quot;QQ&quot;) <br>
+  　objNode.Text = m_strQQ <br>
+  　objPerson.appendChild objNode <br>
+  　Set objNode = objXmlDoc.createElement(&quot;Company&quot;) <br>
+  　objNode.Text = m_strCompany <br>
+  　objPerson.appendChild objNode <br>
+  　'----------------------------------------------------- <br>
+  　Set objNode = Nothing <br>
+  　Set objPerson = Nothing <br>
+  　 On Error Resume Next <br>
+  　objXmlDoc.save Server.MapPath(C_XMLFILE) '保存XML文件 <br>
+  　If Err.Number = 0 Then <br>
+  　　AddToXml = True <br>
+  　Else <br>
+  　　AddToXml = False <br>
+  　　AddErr Err.Description <br>
+  　End If <br>
+  End Function <br>
+  ' 从XML文件中删除数据 <br>
+  ' 需要首先设置Id <br>
+  Public Function DeleteFromXml(objXmlDoc) <br>
+  　Dim objNodeList, objNode <br>
+  　ClearError <br>
+  　If objXmlDoc Is Nothing Then <br>
+  　　DeleteFromXml = False <br>
+  　　AddErr &quot;Dom对象为空值&quot; <br>
+  　　Exit Function <br>
+  　End If <br>
+  　If CStr(m_intId) = &quot;-1&quot; Then <br>
+  　　DeleteFromXml = False <br>
+  　　AddErr &quot;未正确设置联系人对象的ID属性&quot; <br>
+  　　Exit Function <br>
+  　End If <br>
+  　Set objNodeList = objXmlDoc.getElementsByTagName(&quot;Person&quot;) <br>
+  　If objNodeList.length - m_intId ＜ 0 Then <br>
+  　　DeleteFromXml = False <br>
+  　　AddErr &quot;未找到相应的联系人&quot; <br>
+  　　Set objNodeList = Nothing <br>
+  　　Exit Function <br>
+  　End If <br>
+  　On Error Resume Next <br>
+  　Set objNode = objXmlDoc.documentElement.removeChild(objNodeList(intId-1)) <br>
+  　If objNode Is Nothing Then <br>
+  　　DeleteFromXml = False <br>
+  　　AddErr &quot;删除联系人失败&quot; <br>
+  　　Set objNodeList = Nothing <br>
+  　　Exit Function <br>
+  　Else <br>
+  　　objXmlDoc.save Server.MapPath(C_XMLFILE) <br>
+  　End If <br>
+  　Set objNode = Nothing <br>
+  　Set objNodeList = Nothing <br>
+  　If Err.Number = 0 Then <br>
+  　　DeleteFromXml = True <br>
+  　Else <br>
+  　　DeleteFromXml = False <br>
+  　　AddErr Err.Description <br>
+  　End If <br>
+  End Function <br>
+  ' 修改XML文件中的数据 <br>
+  ' 需要首先设置好Id <br>
+  Public Function EditToXml(objXmlDoc) <br>
+  　Dim objPersonList, objOldPerson, objNewPerson, objNode <br>
+  　ClearError <br>
+  　If objXmlDoc Is Nothing Then <br>
+  　　EditToXml = False <br>
+  　　AddErr &quot;Dom对象为空值&quot; <br>
+  　　Exit Function <br>
+  　End If <br>
+  　If CStr(m_intId) = &quot;-1&quot; Then <br>
+  　　EditToXml = False <br>
+  　　AddErr &quot;未正确设置联系人对象的ID属性&quot; <br>
+  　　Exit Function <br>
+  　End If <br>
+  　Set objPersonList = objXmlDoc.getElementsByTagName(&quot;Person&quot;) <br>
+  　If objPersonList.length - m_intId ＜ 0 Then <br>
+  　　DeleteFromXml = False <br>
+  　　AddErr &quot;未找到相应的联系人&quot; <br>
+  　　Set objPersonList = Nothing <br>
+  　　Exit Function <br>
+  　End If <br>
+  　Set objOldPerson = objPersonList(m_intId-1) ' 要修改的旧节点 <br>
+  　Set objNewPerson = objXmlDoc.createElement(&quot;Person&quot;) ' 用来替换旧节点的新节点 
+  <br>
+  　Set objNode = objXmlDoc.createElement(&quot;Name&quot;) <br>
+  　objNode.Text = m_strName <br>
+  　objNewPerson.appendChild objNode <br>
+  　Set objNode = objXmlDoc.createElement(&quot;Nick&quot;) <br>
+  　objNode.Text = m_strNick <br>
+  　objNewPerson.appendChild objNode <br>
+  　Set objNode = objXmlDoc.createElement(&quot;Mobile&quot;) <br>
+  　objNode.Text = m_strMobile <br>
+  　objNewPerson.appendChild objNode <br>
+  　Set objNode = objXmlDoc.createElement(&quot;Tel&quot;) <br>
+  　objNode.Text = m_strTel <br>
+  　objNewPerson.appendChild objNode <br>
+  　Set objNode = objXmlDoc.createElement(&quot;Email&quot;) <br>
+  　objNode.Text = m_strEmail <br>
+  　objNewPerson.appendChild objNode <br>
+  　Set objNode = objXmlDoc.createElement(&quot;QQ&quot;) <br>
+  　objNode.Text = m_strQQ <br>
+  　objNewPerson.appendChild objNode <br>
+  　Set objNode = objXmlDoc.createElement(&quot;Company&quot;) <br>
+  　objNode.Text = m_strCompany <br>
+  　objNewPerson.appendChild objNode <br>
+  　On Error Resume Next <br>
+  　' 进行替换 <br>
+  　Set objNode = objXmlDoc.documentElement.replaceChild(objNewPerson, objOldPerson) 
+  <br>
+  　If objNode Is Nothing Then <br>
+  　EditToXml = False <br>
+  　AddErr &quot;修改联系人失败&quot; <br>
+  　Set objOldPerosn = Nothing <br>
+  　Set objNewPerson = Nothing <br>
+  　Set objPersonList = Nothing <br>
+  　Exit Function <br>
+  Else <br>
+  　objXmlDoc.save Server.MapPath(C_XMLFILE) <br>
+  End If <br>
+  Set objOldPerson = Nothing <br>
+  Set objNewPerson = Nothing <br>
+  Set objPersonList = Nothing <br>
+  If Err.Number = 0 Then <br>
+  　EditToXml = True <br>
+  Else <br>
+  　EditToXml = False <br>
+  　AddErr Err.Description <br>
+  End If <br>
+  End Function <br>
+  End Class <br>
+  　　五、程序首页（default.asp） <br>
+  <br>
+  调用相应的包含文件和公共函数，格式化XML文件，并进行显示。可以看到，页面Title是可定制的，公共的头部和尾部都做成了相应的包含文件。C_TITLE、C_XMLFILE和C_XSLFILE为公共常量，在constpub.asp文件中定义，至于它们的意义，相信读者可以很容易地明白。这里调用了上面定义的FormatXml函数。 
+  <br>
+  ＜% Option Explicit <br>
+  '*********************************************** <br>
+  ' 说明：通讯录 <br>
+  ' 作者：gwd 2002-11-05 <br>
+  '*********************************************** <br>
+  %＞ <br>
+  ＜!--#include file=&quot;pub/funcxml.asp&quot;--＞ <br>
+  ＜!--#include file=&quot;pub/constpub.asp&quot;--＞ <br>
+  ＜HTML＞ <br>
+  ＜HEAD＞ <br>
+  ＜TITLE＞＜% = C_TITLE %＞＜/TITLE＞ <br>
+  ＜META HTTP-EQUIV=&quot;content-type&quot; CONTENT=&quot;text/html;charset=GB2312&quot;/＞ 
+  <br>
+  ＜link rel=&quot;stylesheet&quot; href=&quot;contact.css&quot; type=&quot;text/css&quot;＞ 
+  <br>
+  ＜/HEAD＞ <br>
+  ＜BODY＞ <br>
+  ＜!--#include file=&quot;pub/header.asp&quot;--＞ <br>
+  ＜% = FormatXml(C_XMLFILE, C_XSLFILE) %＞ <br>
+  ＜br＞ <br>
+  ＜!--#include file=&quot;pub/footer.asp&quot;--＞ <br>
+  ＜/BODY＞ <br>
+  ＜/HTML＞ <br>
+  　　六、添加、修改和删除XML中的信息 <br>
+  <br>
+  我们知道，在Cls_Person中已经定义了相应的方法，因此，在各个文件中，只需要调用对应的方法即可。添加信息的文件为add.asp，修改信息的文件为edit.asp，删除信息的文件为delete.asp，我们仅以add.asp文件为例进行说明。其中的CheckStrInput和CheckStrOutput函数，用来格式化用户的输入和输出字符串。 
+  <br>
+  ＜% Option Explicit <br>
+  '*********************************************** <br>
+  ' 说明：37080308通讯录 <br>
+  ' 作者：gwd 2002-11-05 <br>
+  '*********************************************** <br>
+  %＞ <br>
+  ＜!--#include file=&quot;pub/funcxml.asp&quot;--＞ <br>
+  ＜!--#include file=&quot;pub/constpub.asp&quot;--＞ <br>
+  ＜!--#include file=&quot;pub/funcpub.asp&quot;--＞ <br>
+  ＜!--#include file=&quot;pub/class/clsPerson.asp&quot;--＞ <br>
+  ＜% <br>
+  　Dim objXml, objPerson <br>
+  　Dim strErr <br>
+  　Set objXml = Server.CreateObject(&quot;MSXML2.DOMDocument&quot;) <br>
+  　Set objPerson = New Cls_Person ' 生成Cls_Person对象 <br>
+  　If Request.Form(&quot;btnOk&quot;) ＜＞ &quot;&quot; Then <br>
+  　　If LoadXmlDoc(objXml, C_XMLFILE, False, strErr) Then ' 装载XML文件 <br>
+  　　　' 给相应的属性赋值 <br>
+  　　　objPerson.Name = CheckStrInput(Request.Form(&quot;txtName&quot;)) <br>
+  　　　objPerson.Nick = CheckStrInput(Request.Form(&quot;txtNick&quot;)) <br>
+  　　　objPerson.Mobile = CheckStrInput(Request.Form(&quot;txtMobile&quot;)) <br>
+  　　　objPerson.Tel = CheckStrInput(Request.Form(&quot;txtTel&quot;)) <br>
+  　　　objPerson.Email = CheckStrInput(Request.Form(&quot;txtEmail&quot;)) <br>
+  　　　objPerson.QQ = CheckStrInput(Request.Form(&quot;txtQQ&quot;)) <br>
+  　　　objPerson.Company = CheckStrInput(Request.Form(&quot;txtCompany&quot;)) <br>
+  　　　If Not objPerson.AddToXml(objXml) Then ' 调用Cls_Person类的AddToXml方法，添加数据 <br>
+  　　　　AddErr strErr, objPerson.GetLastError <br>
+  　　　Else <br>
+  　　　　AddErr strErr, &quot;添加成功&quot; <br>
+  　　　　Response.Write &quot;＜script language=&quot;&quot;javascript&quot;&quot;＞opener.location.reload();＜/script＞&quot; 
+  <br>
+  　　　End If <br>
+  　　End If <br>
+  　End If <br>
+  　Set objXml = Nothing <br>
+  %＞ <br>
+  ＜HTML＞ <br>
+  ＜HEAD＞ <br>
+  ＜TITLE＞＜% = C_TITLE %＞＜/TITLE＞ <br>
+  ＜META HTTP-EQUIV=&quot;content-type&quot; CONTENT=&quot;text/html;charset=GB2312&quot;/＞ 
+  <br>
+  ＜link rel=&quot;stylesheet&quot; href=&quot;contact.css&quot; type=&quot;text/css&quot;＞ 
+  <br>
+  ＜script language=&quot;javascript&quot;＞ <br>
+  ＜!-- <br>
+  function CheckForm() <br>
+  { <br>
+  　return true; <br>
+  } <br>
+  //--＞ <br>
+  ＜/script＞ <br>
+  ＜/HEAD＞ <br>
+  ＜BODY＞ <br>
+  ＜% = strErr %＞ <br>
+  ＜div class=&quot;title&quot;＞添加联系信息＜/div＞ <br>
+  ＜form name=&quot;form1&quot; method=&quot;post&quot; action=&quot;add.asp&quot; 
+  onsubmit=&quot;return CheckForm()&quot;＞ <br>
+  　＜table align=&quot;center&quot; width=&quot;100%&quot; cellspacing=&quot;1&quot; 
+  cellpadding=&quot;2&quot; border=&quot;0&quot; bgcolor=&quot;#666600&quot;＞ 
+  <br>
+  　　＜tr bgcolor=&quot;#ffffff&quot;＞ <br>
+  　　　＜td width=&quot;25%&quot; bgcolor=&quot;#e5e5e5&quot; align=&quot;right&quot;＞＜b＞姓名：＜/b＞＜/td＞ 
+  <br>
+  　　　＜td width=&quot;75%&quot;＞＜input type=&quot;text&quot; name=&quot;txtName&quot; 
+  size=&quot;25&quot; class=&quot;input&quot; value=&quot;＜%=CheckStrOutput(objPerson.Name)%＞&quot;＞＜/td＞ 
+  <br>
+  　　＜/tr＞ <br>
+  　　＜tr bgcolor=&quot;#ffffff&quot;＞ <br>
+  　　　＜td bgcolor=&quot;#e5e5e5&quot; align=&quot;right&quot;＞＜b＞英文名：＜/b＞＜/td＞ 
+  <br>
+  　　　＜td＞＜input type=&quot;text&quot; name=&quot;txtNick&quot; size=&quot;25&quot; 
+  class=&quot;input&quot; value=&quot;＜%=CheckStrOutput(objPerson.Nick)%＞&quot;＞＜/td＞ 
+  <br>
+  　　＜/tr＞ <br>
+  　　＜tr bgcolor=&quot;#ffffff&quot;＞ <br>
+  　　　＜td bgcolor=&quot;#e5e5e5&quot; align=&quot;right&quot;＞＜b＞手机：＜/b＞＜/td＞ <br>
+  　　　＜td＞＜input type=&quot;text&quot; name=&quot;txtMobile&quot; size=&quot;25&quot; 
+  class=&quot;input&quot; value=&quot;＜%=CheckStrOutput(objPerson.Mobile)%＞&quot;＞＜/td＞ 
+  <br>
+  　　＜/tr＞ <br>
+  　　＜tr bgcolor=&quot;#ffffff&quot;＞ <br>
+  　　　＜td bgcolor=&quot;#e5e5e5&quot; align=&quot;right&quot;＞＜b＞电话：＜/b＞＜/td＞ <br>
+  　　　＜td＞＜input type=&quot;text&quot; name=&quot;txtTel&quot; size=&quot;25&quot; 
+  class=&quot;input&quot; value=&quot;＜%=CheckStrOutput(objPerson.Tel)%＞&quot;＞＜/td＞ 
+  <br>
+  　　＜/tr＞ <br>
+  　　＜tr bgcolor=&quot;#ffffff&quot;＞ <br>
+  　　　＜td bgcolor=&quot;#e5e5e5&quot; align=&quot;right&quot;＞＜b＞Email：＜/b＞＜/td＞ 
+  <br>
+  　　　＜td＞＜input type=&quot;text&quot; name=&quot;txtEmail&quot; size=&quot;25&quot; 
+  class=&quot;input&quot; value=&quot;＜%=CheckStrOutput(objPerson.Email)%＞&quot;＞＜/td＞ 
+  <br>
+  　　＜/tr＞ <br>
+  　　＜tr bgcolor=&quot;#ffffff&quot;＞ <br>
+  　　　＜td bgcolor=&quot;#e5e5e5&quot; align=&quot;right&quot;＞＜b＞QQ：＜/b＞＜/td＞ <br>
+  　　　＜td＞＜input type=&quot;text&quot; name=&quot;txtQQ&quot; size=&quot;25&quot; 
+  class=&quot;input&quot; value=&quot;＜%=CheckStrOutput(objPerson.QQ)%＞&quot;＞＜/td＞ 
+  <br>
+  　　＜/tr＞ <br>
+  　　＜tr bgcolor=&quot;#ffffff&quot;＞ <br>
+  　　　＜td bgcolor=&quot;#e5e5e5&quot; align=&quot;right&quot;＞＜b＞所在公司：＜/b＞＜/td＞ 
+  <br>
+  　　　＜td＞＜input type=&quot;text&quot; name=&quot;txtCompany&quot; size=&quot;25&quot; 
+  class=&quot;input&quot; value=&quot;＜%=CheckStrOutput(objPerson.Company)%＞&quot;＞＜/td＞ 
+  <br>
+  　　＜/tr＞ <br>
+  　＜/table＞ <br>
+  　＜br＞ <br>
+  　＜div align=&quot;center&quot;＞ <br>
+  　＜input type=&quot;submit&quot; name=&quot;btnOk&quot; value=&quot;提交&quot;＞ 
+  <br>
+  　＜input type=&quot;button&quot; name=&quot;btnClose&quot; value=&quot;关闭&quot; 
+  onclick=&quot;javascript:return window.close();&quot;＞ <br>
+  　＜/div＞ <br>
+  ＜/form＞ <br>
+  ＜/BODY＞ <br>
+  ＜/HTML＞ <br>
+  ＜% <br>
+  Set objPerson = Nothing <br>
+  %＞ <br>
+  　　七、总结 <br>
+  <br>
+  到此，我们的联系信息管理程序就大功告成了。怎么样，感觉如何，应该来说还是相当简单的吧。当然了，这个例程还有许多可以改进的地方，我这里也只不过是抛砖引玉，希望读者在掌握了XML编程之后，自行修改完善吧。 
+  <br>
+  <br>
+  此例程已经在我本机（Windows Server 2000、IIS5.0和IE6.0）和网上进行了测试，都能够正常运行。 <br>
+</p>
+</body>
+</html>

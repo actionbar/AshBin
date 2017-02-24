@@ -1,0 +1,112 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="../c3.css" />
+<title>WML 变量</title>
+</head>
+<body class="xml">
+<div id="wrapper">
+<div id="header">
+<a href="http://e.v-get.com/w3cschool/" style="float:left;">W3CSchool 在线教程</a>
+<div class="q g"><script type="text/javascript">var cpro_id="u1163355"</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div>
+<div id="navfirst">
+<ul id="menu">
+<li id="h"><a href="../h.html">HTML教程</a></li>
+<li id="x"><a href="../x.html">XML教程</a></li>
+<li id="b"><a href="../b.html">浏览器脚本</a></li>
+<li id="s"><a href="../s.html">服务器脚本</a></li>
+<li id="d"><a href="../d.html">dot net教程</a></li>
+<li id="m"><a href="../m.html">多媒体教程</a></li>
+<li id="w"><a href="../w.html">建站手册</a></li>
+</ul>
+</div><div id="navsecond">
+<div id="course">
+<h2>WAP 教程</h2>
+<ul>
+<li><a href="http://e.v-get.com/w3cschool/">WAP 教程</a></li>
+<li><a href="wap_intro.html">WAP 简介</a></li>
+<li><a href="wap_basic.html">WAP 基础</a></li>
+<li><a href="wml_format.html">WML 格式化</a></li>
+<li><a href="wml_links.html">WML 连接</a></li>
+<li><a href="wml_input.html">WML 输入</a></li>
+<li><a href="wml_tasks.html">WML 任务</a></li>
+<li><a href="wml_timer.html">WML 定时器</a></li>
+<li><a href="wml_variables.html">WML 变量</a></li>
+<li><a href="wml_examples.html">WML 实例</a></li>
+<li><a href="wap_demo.html">WAP 演示</a></li>
+<li><a href="wap_pages.html">WAP W3CSchool</a></li>
+</ul>
+<h2>参考手册</h2>
+<ul>
+<li><a href="wml_reference.html">WML 参考手册</a></li>
+<li><a href="wml_entities.html">WML 实体</a></li>
+<li><a href="wml_dtd.html">WML DTD</a></li>
+</ul>
+<h2>资源</h2>
+<ul>
+<li><a href="wap_forum.html">WAP 论坛/OMA</a></li>
+<li><a href="wap_software.html">WAP 软件</a></li>
+</ul>
+</div>
+<div id="selected">
+<h2>建站手册</h2>
+<ul>
+<li><a href="../site/">网站构建</a></li>
+<li><a href="../w3c/">万维网联盟</a></li>
+<li><a href="http://e.v-get.com/w3c/">W3CSchool 教程</a></li>
+<li><a href="../quality/">网站品质</a></li>
+<li><a href="../semweb/">语义网</a></li>
+<li><a href="../hosting/">网站主机</a></li>
+</ul>
+<h2><a href="http://e.v-get.com/w3c/" class="f13">W3CSchool 教程</a></h2><div class="a120x90"><script type="text/javascript">var cpro_id="u1210867";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div></div>
+</div>
+<div id="maincontent">
+<h1>WML 变量</h1>
+<div id="tpn">
+<ul class="prenext">
+<li class="pre"><a href="wml_timer.html">上一页</a></li>
+<li class="next"><a href="wml_examples.html">下一页</a></li>
+</ul>
+</div>
+<div>
+<h2>变量</h2>
+<p>当用户在卡片组的卡片之间切换时，我们需要在变量中存储数据。WML 变量对大小写敏感。</p>
+<h3>通过 Setvar 命令规定变量</h3>
+<p>当用户执行任务时 (比如 go, prev 或 refresh），可使用 Setvar 元素设置带有指定值的变量。</p>
+<p>下面的例子将创建一个名为 i 的变量，值是 500：</p>
+<pre>&lt;setvar name=&#34;i&#34; value=&#34;500&#34;/&gt;</pre>
+<p>name 和 value 属性是必需的。</p>
+<h3>为输入元素规定变量</h3>
+<p>可以为输入元素 (比如input, select, option 等等）设置变量：</p>
+<p>下面的例子将创建名为 schoolname 的变量：</p>
+<pre>&lt;card id=&#34;card1&#34;&gt;
+&lt;select name=&#34;schoolname&#34;&gt;
+&lt;option value=&#34;HTML&#34;&gt;HTML Tutorial&lt;/option&gt;
+&lt;option value=&#34;XML&#34;&gt;XML Tutorial&lt;/option&gt;
+&lt;/select&gt;
+&lt;/card&gt;</pre>
+<p>使用上例中创建的变量：</p>
+<pre>&lt;card id=&#34;card2&#34;&gt;
+&lt;p&gt;You selected: $(schoolname)&lt;/p&gt;
+&lt;/card&gt;</pre>
+</div>
+<div id="bpn">
+<ul class="prenext">
+<li class="pre"><a href="wml_timer.html">上一页</a></li>
+<li class="next"><a href="wml_examples.html">下一页</a></li>
+</ul>
+</div>
+</div>
+<div id="sidebar">
+<div class="rs"></div>
+<div id="tools">
+<h5 id="tools_reference"><a href="wml_reference.html">WML 参考手册</a></h5>
+<h5 id="tools_example"><a href="wap_demo.html">WAP 演示</a></h5>
+</div>
+<div class="a120x600"><script type="text/javascript">var cpro_id="u1293136";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div><div class="b"></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="../c3.css" />
+<title>SOAP Envelope 元素</title>
+</head>
+<body class="xml">
+<div id="wrapper">
+<div id="header">
+<a href="http://e.v-get.com/w3cschool/" style="float:left;">W3CSchool 在线教程</a>
+<div class="q g"><script type="text/javascript">var cpro_id="u1163355"</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div>
+<div id="navfirst">
+<ul id="menu">
+<li id="h"><a href="../h.html">HTML教程</a></li>
+<li id="x"><a href="../x.html">XML教程</a></li>
+<li id="b"><a href="../b.html">浏览器脚本</a></li>
+<li id="s"><a href="../s.html">服务器脚本</a></li>
+<li id="d"><a href="../d.html">dot net教程</a></li>
+<li id="m"><a href="../m.html">多媒体教程</a></li>
+<li id="w"><a href="../w.html">建站手册</a></li>
+</ul>
+</div><div id="navsecond">
+<div id="course">
+<h2>SOAP 教程</h2>
+<ul>
+<li><a href="http://e.v-get.com/w3cschool/">SOAP 首页</a></li>
+<li><a href="soap_intro.html">SOAP 简介</a></li>
+<li><a href="soap_syntax.html">SOAP 语法</a></li>
+<li><a href="soap_envelope.html">SOAP Envelope</a></li>
+<li><a href="soap_header.html">SOAP Header</a></li>
+<li><a href="soap_body.html">SOAP Body</a></li>
+<li><a href="soap_fault.html">SOAP Fault</a></li>
+<li><a href="soap_httpbinding.html">SOAP HTTP Binding</a></li>
+<li><a href="soap_example.html">SOAP 实例</a></li>
+<li><a href="soap_summary.html">SOAP 总结</a></li>
+</ul>
+</div>
+<div id="selected">
+<h2>建站手册</h2>
+<ul>
+<li><a href="../site/">网站构建</a></li>
+<li><a href="../w3c/">万维网联盟</a></li>
+<li><a href="http://e.v-get.com/w3c/">W3CSchool 教程</a></li>
+<li><a href="../quality/">网站品质</a></li>
+<li><a href="../semweb/">语义网</a></li>
+<li><a href="../hosting/">网站主机</a></li>
+</ul>
+<h2><a href="http://e.v-get.com/w3c/" class="f13">W3CSchool 教程</a></h2><div class="a120x90"><script type="text/javascript">var cpro_id="u1210867";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div></div>
+</div>
+<div id="maincontent">
+<h1>SOAP Envelope 元素</h1>
+<div id="tpn">
+<ul class="prenext">
+<li class="pre"><a href="soap_syntax.html">上一页</a></li>
+<li class="next"><a href="soap_header.html">下一页</a></li>
+</ul>
+</div>
+<div id="intro">
+<p><strong>强制使用的 SOAP 的 Envelope 元素是 SOAP 消息的根元素。</strong></p>
+</div>
+<div>
+<h2>SOAP Envelope 元素</h2>
+<p>必需的 SOAP 的 Envelope 元素是 SOAP 消息的根元素。它可把 XML 文档定义为 SOAP 消息。</p>
+<p>请注意 xmlns:soap 命名空间的使用。它的值应当始终是：</p>
+<pre>http://www.w3.org/2001/12/soap-envelope</pre>
+<p>并且它可把封装定义为 SOAP 封装：</p>
+<pre>&lt;?xml version=&#34;1.0&#34;?&gt;
+&lt;soap:Envelope
+xmlns:soap=&#34;http://www.w3.org/2001/12/soap-envelope&#34;
+soap:encodingStyle=&#34;http://www.w3.org/2001/12/soap-encoding&#34;&gt;
+  ...
+  Message information goes here
+  ...
+&lt;/soap:Envelope&gt;</pre>
+</div>
+<div>
+<h2>xmlns:soap 命名空间</h2>
+<p>SOAP 消息必须拥有与命名空间 &#34;http://www.w3.org/2001/12/soap-envelope&#34; 相关联的一个 Envelope 元素。</p>
+<p>如果使用了不同的命名空间，应用程序会发生错误，并抛弃此消息。</p>
+</div>
+<div>
+<h2>encodingStyle 属性</h2>
+<p>SOAP 的 encodingStyle 属性用于定义在文档中使用的数据类型。此属性可出现在任何 SOAP 元素中，并会被应用到元素的内容及元素的所有子元素上。SOAP 消息没有默认的编码方式。</p>
+<h3>语法</h3>
+<pre>soap:encodingStyle=&#34;URI&#34;</pre>
+<h3>实例</h3>
+<pre>&lt;?xml version=&#34;1.0&#34;?&gt;
+&lt;soap:Envelope
+xmlns:soap=&#34;http://www.w3.org/2001/12/soap-envelope&#34;
+soap:encodingStyle=&#34;http://www.w3.org/2001/12/soap-encoding&#34;&gt;
+...
+Message information goes here
+...
+&lt;/soap:Envelope&gt;</pre>
+</div>
+<div id="bpn">
+<ul class="prenext">
+<li class="pre"><a href="soap_syntax.html">上一页</a></li>
+<li class="next"><a href="soap_header.html">下一页</a></li>
+</ul>
+</div>
+</div>
+<div class="r q"></div><div class="b"></div>
+</div>
+</body>
+</html>

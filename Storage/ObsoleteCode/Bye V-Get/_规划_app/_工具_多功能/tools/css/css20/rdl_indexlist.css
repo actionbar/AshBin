@@ -1,0 +1,47 @@
+
+body{margin:0px;padding:0px;background:#FFFFFF;}
+body,table,input,select,form,textarea{font-family:verdana,tahoma,arial,宋体;font-size:12px;color:#000000;word-break:break-all;}
+table,img{border:0px;}
+
+a{text-decoration:none;color:#003399;}
+a:hover{color:#000000;text-decoration:underline;}
+
+#idHeadTable{width:100%;height:25px;color:#FFFFFF;}
+#idHeadTable td{padding:1px 10px 0px 10px;white-space:nowrap;}
+#idHeadTable a{color:#FFFFFF;}
+#idHeadTable a:hover{color:#EEEAEA;text-decoration:none;}
+#idTrademarkTD{background:#000000;font-weight:bold;}
+#idSelectTD{background:#005599;letter-spacing:1px;text-align:right;}
+#idSelect{width:220px;font-size:10px;}
+
+#idContent{padding:25px 15px;line-height:19px;}
+#idContentTitle{border-bottom:1px solid #666666;padding-top:20px;white-space:nowrap;}
+#idTitleName{width:254px;font-size:18px;font-weight:bold;line-height:24px;}
+
+#idNoteTD{font-size:14px;font-family:arial,verdana,tahoma;font-weight:bold;height:60px;padding-right:15px;}
+#idSortSelect{width:100px;font-size:11px;}
+a.cssListModeA{color:#000000;}
+a.cssListModeA:hover{color:#003399;}
+
+#idListTable{background-color:#000000;font-size:11px;font-family:tahoma,verdana,arial;}
+#idListTable td{padding:6px 12px;background-color:#FFFFFF;text-align:left;vertical-align:middle;line-height:16px;}
+#idListTable td.cssListHead{background-color:#99CCFF;font-weight:bold;white-space:nowrap;}
+
+#idListDiv{width:100%;padding:6px;}
+
+#idFootnote{margin-top:40px;padding-top:10px;border-top:1px solid #000000;width:100%;}
+#idCopyright{font-size:10px;}
+
+.cssIEA{width:152px;font-family:verdana,tahoma,arial;font-size:11px;white-space:nowrap;}
+
+.cssSwatchSpan{height:16px;text-align:left;padding:1px;cursor:hand;border:1px solid #FFFFFF;}
+.cssSwatchView{height:12px;width:28px;border:1px solid #000000;font-size:6px;}
+.cssSwatchName{height:12px;width:100px;padding:0px 0px 2px 2px;white-space:nowrap;font-size:10px;font-family:tahoma;}
+
+@media all{
+rdl\:param{font-style:italic;}
+}*/
+
+/**************************************
+ 苏昱(Rainer Su)版权所有，保留所有权利。
+**************************************/

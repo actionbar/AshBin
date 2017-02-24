@@ -1,0 +1,74 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>从数据库中动态选取下拉列表的方法</title>
+<style type="text/css">
+<!--
+body {
+	font-size: 10.4pt;
+	line-height: 22px;
+}
+-->
+</style>
+</head>
+
+<body bgcolor="eeeeee" leftmargin="20" marginwidth="20">
+<p><strong>从数据库中动态选取下拉列表的方法</strong></p>
+<hr>
+<p> 有一页填表的页面，其中有几个下拉表单是通过一个表的某个字段动态<br>
+  生成，比如省下面的城市名，希望选择某一个省即可自动在另一下拉表<br>
+  单内生成城市名，.....然后提交给asp处理加入到另外一个表内。</p>
+<p>&lt;form name=f1 METHOD=&quot;POST&quot;&gt;<br>
+  &lt;%<br>
+  OpenDB objConn, &quot;xxxx&quot;<br>
+  Set RSClass = objConn.Execute(&quot;SELECT * FROM class Order by fldClass&quot;)<br>
+  If RSClass.EOF Then <br>
+  Response.Write &quot;没有记录。&lt;BR&gt;&quot;</p>
+<p>Else</p>
+<p> Response.Write &quot;&lt;SELECT NAME=&quot;&quot;class&quot;&quot; style=&quot;&quot;FONT-SIZE: 
+  9pt&quot;&quot; SIZE=10&quot; &amp; _<br>
+  &quot; ONCHANGE=&quot;&quot;classselected(this);&quot;&quot; &gt;&quot;<br>
+  sJavaScript = &quot;function classselected(elem){&quot; &amp;_<br>
+  vbCrlf &amp; _<br>
+  &quot;for (var i = document.f1.sort.options.length; i &gt;= 0; i--){&quot; &amp; 
+  vbCrlf &amp; _<br>
+  &quot;document.f1.sort.options[i] = null;&quot; &amp; _ <br>
+  vbCrlf<br>
+  Do Until RSClass.EOF<br>
+  If sLastClass &lt;&gt; RSClass(&quot;fldClass&quot;) Then<br>
+  sLastClass = RSClass(&quot;fldClass&quot;)<br>
+  Response.Write &quot;&lt;OPTION VALUE=&quot; &amp; RSClass(&quot;fldID&quot;) 
+  &amp; &quot;&gt;&quot; &amp; sLastClass &amp; &quot;&lt;/OPTION&gt;&quot;<br>
+  sJavaScript = sJavaScript &amp; &quot;}&quot; &amp; vbCrlf &amp; _<br>
+  &quot;if (elem.options[elem.selectedIndex].value==&quot; &amp; _<br>
+  RSClass(&quot;fldID&quot;) &amp; &quot;){&quot; &amp; vbCrlf<br>
+  End If<br>
+  sJavaScript = sJavaScript &amp; _<br>
+  &quot;document.f1.sort.options[document.&quot; &amp; _<br>
+  &quot;f1.sort.options.length] = new Option('&quot; &amp; _<br>
+  RSClass(&quot;fldSort&quot;) &amp; &quot;','&quot; &amp; RSClass(&quot;fldID&quot;) 
+  &amp; &quot;');&quot; &amp; _<br>
+  vbCrlf<br>
+  RSClass.MoveNext<br>
+  Loop<br>
+  Response.Write &quot;&lt;/SELECT&gt;&quot;<br>
+  Response.Write &quot;&lt;SELECT NAME=&quot;&quot;sort&quot;&quot; style=&quot;&quot;FONT-SIZE: 
+  9pt&quot;&quot; SIZE=10&gt;&quot;<br>
+  Response.Write &quot;&lt;OPTION&gt;[请选择]&lt;/OPTION&gt;&quot;<br>
+  Response.Write &quot;&lt;/SELECT&gt;&quot;<br>
+  <br>
+  sJavaScript = sJavaScript &amp; vbCrlf &amp; &quot;}&quot; &amp; vbCrlf &amp; 
+  &quot;}&quot; &amp; vbCrlf<br>
+  Response.Write &quot;&lt;SCR&quot; &amp; &quot;IPT LANGUAGE=&quot;&quot;JavaScript&quot;&quot;&gt;&quot; 
+  &amp; vbCrlf<br>
+  Response.Write sJavaScript &amp; vbCrlf &amp; &quot;&lt;/SCR&quot; &amp; &quot;IPT&gt;&quot; 
+  &amp; vbCrlf<br>
+  End If<br>
+  RSClass.Close<br>
+  Set RSClass = Nothing%&gt;<br>
+  &lt;/form&gt;</p>
+<p></p>
+<p>&nbsp; </p>
+</body>
+</html>

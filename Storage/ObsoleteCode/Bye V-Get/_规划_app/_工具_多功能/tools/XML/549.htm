@@ -1,0 +1,91 @@
+<html>
+<head>
+<title>XPointer实例</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+
+<link rel = stylesheet href = "image/style.css">
+</head>
+<body bgcolor="#ffffff">
+<table width="688" border="0" cellspacing="0" cellpadding="0" align="center">
+  <tr bgcolor="EEEEEE"> 
+    <td height="22"><a href="index.htm">主页</a></td>
+  </tr>
+</table><br>
+<table border="0" cellpadding="0" cellspacing="0" width="688" align="center" height="490">
+  <tr valign="top"> 
+    <td rowspan="4" width="91">&nbsp; </td>
+    <td height="68" width="131"> 
+      <p><img src="image/doc.gif"></p>
+    </td>
+    <td rowspan="4" width="18"><b></b> </td>
+    <td height="68" width="387"><img src="image/title_doc.gif"></td>
+    <td rowspan="4" width="61"> 
+      <h6>&nbsp;</h6>
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td rowspan="3" valign="top" class="pt10" align="center" width="131" bgcolor="EEEEEE"> 
+      <p>&nbsp;</p>
+      <p><font color="#FF0000">※ 17.2 XPointer实例</font></p>
+       
+	</td>
+  </tr>
+  <tr valign="top"> 
+    <td width="387" height="308"> 
+      <table width="100%" border="0" cellpadding="0">
+        <tr> 
+          <td>
+
+           <h4><a name="_Toc467208982">17.2 XPointer实例</a></h4>
+<p>HTML链接通常指向特定的文档。其他的细节（即指向特定的节、章或特定文档的段落）都不能很好地支持。假设要同时控制用来链接和被链接文档的话，可以将命名定位符插入到HTML文件中的想要链接的位置上。例如：</p>
+<p>&lt;H2&gt;&lt;A NAME="xpointers"&gt;XPointers&lt;/A&gt;&lt;/H2&gt;</p>
+<p>然后，将#和定位符的名称加入到此链接中，于是就可链接于此文件中的这种特定位置。例如，在目录中可以看到：</p>
+<p>&lt;A HREF="#xpointers"&gt;XPointers&lt;/A&gt;</p>
+<p>实际上，这种方法就是组装（kludge）。修改目标文档以便源文档可链接其上不一定总是可能的。目标文档可能会放在另外的服务器上，由源文档作者以外的人加以控制，并且，目标文档的作者可以改变或移动它，而无需通知源文档的作者。</p>
+<p>此外，命名定位符干扰内容与标记的分离。将命名定位符放在文档中，对与文档或其内容不说明什么问题。命名定位符只不过是作为要引用的其他文档的一种标记，对文档拥有的没有任何增加。</p>
+<p>通过使用XPointer，XLink允许文档之间的更为复杂的链接。XPointer引用文档的特定元素；引用第1个、第2个或第17个这样的元素；引用给定元素的第1个子元素，等等。XPointer提供文档间的极其强大的连接。无需目标文档包含附加标记，就像其各段相互链接的一样。</p>
+<p>此外，与HTML定位符不同，XPointer并不只是指向文档中的单一点，可以指向一个范围。因此，可以使用一个XPointer来选择文档的一个特定的部分，或许可以将这部分复制或加载到程序中。</p>
+<p>下面是几个XPointer的例子：</p>
+<p>root( )</p>
+<p>id(dt-xmldecl)</p>
+<p>descendant(2,termref)</p>
+<p>following(,termdef,term,CDATA Section)</p>
+<p>html(recent)</p>
+<p>id(NT-extSubsetDecl)</p>
+<p>每个都选择文档中的一个特定元素。文档没有在XPointer中指定，而XLink指定了这些例子中的文档。在前章所看到的XLink不包含XPointer，但要将XPointer加入XLink中则不难。大多数时候，只需将XPointer追加到URI中，并以#分开，就像HTML中使用命名定位符那样。例如，可以将上面的XPointer作为URL的后缀，于是就像下面的形式：</p>
+<p>http://www.w3.org/TR/1998/REC-xml-19980210.xml#root()</p>
+<p>http://www.w3.org/TR/1998/REC xml-19980210.xml#id(dt-xmldecl)</p>
+<p>http://www.w3.org/TR/1998/REC-xml-</p>
+<p>19980210.xml#descendant(2,termref)</p>
+<p>http://www.w3.org/TR/1998/REC-xml-</p>
+<p>19980210.xml#following(,termdef,term,CDATA Section)</p>
+<p>http://www.w3.org/TR/1998/REC-xml-19980210.xml#id(NT-</p>
+<p>extSubsetDecl)</p>
+<p>通常，它们都作为locator元素的href特性值使用。例如：</p>
+<p>&lt;locator</p>
+<p> href="http://www.w3.org/TR/1998/REC-xml-19980210.xml#root()"&gt;</p>
+<p> Extensible Markup Language (XML) 1.0</p>
+<p>&lt;/locator&gt;</p>
+<p>可以使用竖线（|），来代替#，表示不想要链接整个文档。这样只获得XPointer引用的文档的一部分。例如：</p>
+<p><a href="http://www.w3.org/TR/1998/REC-xml-19980210.xml">http://www.w3.org/TR/1998/REC-xml-19980210.xml</a> 
+  | root()</p>
+<p>http://www.w3.org/TR/1998/REC-xml-19980210.xml | id(dt-xmldecl)</p>
+<p>http://www.w3.org/TR/1998/REC-xml-</p>
+<p>19980210.xmlldescendant(2,termref)</p>
+<p>http://www.w3.org/TR/1998/REC-xml-</p>
+<p>19980210.xmllfollowing(,termdef,term,CDATA Section)</p>
+<p>http://www.w3.org/TR/1998/REC xml-19980210.xmllid(NT-</p>
+<p>extSubsetDecl)</p>
+<p>客户能否只检索文档的一部分是由协议决定的。目前大多数Web浏览器和服务器都不能处理XPointer所具备的复杂的请求。但是，对于使用XML作为潜在的传输机制的自定义协议，这是很有用的。</p>
+ 
+<a href='548.htm'>&lt;&lt;上一篇</a>&nbsp;&nbsp;<a href='550.htm'>下一篇&gt;&gt;</a></td>
+        </tr>
+      </table>
+      <p>&nbsp; </p>
+    </td>
+  </tr>
+</table>
+
+</body>
+
+</html>

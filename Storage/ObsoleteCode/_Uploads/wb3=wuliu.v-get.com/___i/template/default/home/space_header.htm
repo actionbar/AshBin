@@ -1,0 +1,75 @@
+<!--{eval $_G[cookie][extstyle] = false;}-->
+<!--{subtemplate common/header_common}-->
+	<script type="text/javascript" src="{$_G[setting][jspath]}home.js?{VERHASH}"></script>
+	<link rel="stylesheet" type="text/css" href="{$_G[setting][csspath]}data/cache/style_{STYLEID}_css_space.css?{VERHASH}" />
+	<link id="style_css" rel="stylesheet" type="text/css" href="{STATICURL}space/{if $space[theme]}$space[theme]{else}t1{/if}/style.css?{VERHASH}">
+	<style id="diy_style">$space[spacecss]</style>
+</head>
+<body id="space" onkeydown="if(event.keyCode==27) return false;">
+	<div id="append_parent"></div>
+	<div id="ajaxwaitid"></div>
+	<!--{if $space['self'] && $_GET['diy'] == 'yes' && $do == 'index' }-->
+	<link rel="stylesheet" type="text/css" href="{$_G[setting][csspath]}data/cache/style_{STYLEID}_css_diy.css?{VERHASH}" />
+	<!--{subtemplate home/space_diy}-->
+	<!--{/if}-->
+	<div id="toptb" class="cl">
+		<!--{if $_G['uid']}-->
+			<div class="y"><a href="http://wuliu.v-get.com/i/{$_G[member][username]}" class="xw1" target="_blank">{$_G[member][username]}</a><a href="javascript:;" id="myspace" class="showmenu cur1" onmouseover="showMenu(this.id);">我的菜单</a><!--{hook/global_usernav_extra1}--><a href="http://wuliu.v-get.com/i/home.php?mod=spacecp">设置</a><a href="http://wuliu.v-get.com/i/home.php?mod=space&do=pm" id="pm_ntc" target="_blank"{if $_G[member][newpm]} class="new"{/if}>{lang pm_center}<!--{if $_G[member][newpm]}-->($_G[member][newpm])<!--{/if}--></a>
+				<a href="http://wuliu.v-get.com/i/home.php?mod=space&do=notice" id="myprompt" target="_blank"{if $_G[member][newprompt]} class="new"{/if}>提醒<!--{if $_G[member][newprompt]}-->($_G[member][newprompt])<!--{/if}--></a><span id="myprompt_check"></span>
+				<!--{if $_G['group']['allowmanagearticle'] || $_G['group']['allowdiy']|| getstatus($_G['member']['allowadmincp'], 4) || getstatus($_G['member']['allowadmincp'], 2) || getstatus($_G['member']['allowadmincp'], 3) || in_array($_G['uid'], $_G['setting']['ext_portalmanager'])}--><a href="http://wuliu.v-get.com/i/portal.php?mod=portalcp">模块管理</a><!--{/if}-->
+				<!--{if $_G['uid'] && $_G['group']['radminid'] > 1}--><a href="http://wuliu.v-get.com/i/forum.php?mod=modcp&fid=$_G[fid]" target="_blank">{lang forum_manager}</a><!--{/if}-->
+				<!--{if $_G['uid'] && ($_G['group']['radminid'] == 1 || getstatus($_G['member']['allowadmincp'], 1))}--><a href="http://wuliu.v-get.com/i/admin.php" target="_blank">后台</a><!--{/if}-->
+				<!--{hook/global_usernav_extra2}-->
+				<a href="http://wuliu.v-get.com/i/member.php?mod=logging&action=logout&formhash={FORMHASH}">退出</a>
+				<!--{if $space['self'] && $do == 'index'}--><a id="diy-tg" href="javascript:openDiy();" title="{lang dress_space}">DIY</a><!--{/if}-->
+			</div>
+		<!--{elseif !empty($_G['cookie']['loginuser'])}-->
+			<div class="y"><a id="loginuser" class="xw1">$_G['cookie']['loginuser']</a><a href="http://wuliu.v-get.com/i/member.php?mod=logging&action=login" onclick="showWindow('login', this.href)">{lang activation}</a><a href="http://wuliu.v-get.com/i/member.php?mod=logging&action=logout&formhash={FORMHASH}">退出</a>
+			</div>
+		<!--{elseif $_G['connectguest']}-->
+			<div class="y">
+				{lang connect_fill_profile_to_view}
+			</div>
+		<!--{else}--><div class="y"><a href="http://wuliu.v-get.com/i/member.php?mod={$_G[setting][regname]}">$_G['setting']['reglinkname']</a><a href="http://wuliu.v-get.com/i/member.php?mod=logging&action=login" onclick="showWindow('login', this.href)">登录</a></div>
+		<!--{/if}-->
+		<div class="z"><a href="http://wuliu.v-get.com/i/" id="navs" class="showmenu" onmouseover="showMenu(this.id);">返回首页</a></div>
+	</div>
+	<!--{if $space['status'] == -1 && $_G['adminid'] == 1 }-->
+		<p class="ptw xw1 xi1 hm"><img src="{IMGDIR}/locked.gif" alt="Locked" class="vm" /> {lang message_banned}</p>
+	<!--{/if}-->
+	<div id="hd" class="wp cl">
+		<h2 id="spaceinfoshow">
+			<!--{eval space_merge($space, 'field_home'); $space[domainurl] = space_domain($space);getuserdiydata($space);$personalnv = isset($_G['blockposition']['nv']) ? $_G['blockposition']['nv'] : '';}-->
+			<strong id="spacename" class="mbn"><!--{if $space[spacename]}-->$space[spacename]<!--{else}-->$space[username]<!--{/if}--></strong>
+			<span class="xs0 xw0">
+				<a id="domainurl" href="http://wuliu.v-get.com/i/$space[username]" onclick="setCopy('http://wuliu.v-get.com/i/$space[username]', '{lang copy_space_address}');return false;">http://wuliu.v-get.com/i/$space[username]</a><a href="javascript:;" onclick="addFavorite(location.href, document.title)">[收藏]</a><a href="http://wuliu.v-get.com/i/$space[username]?do=profile" target="_blank">[资料]</a>
+				<!--{if !$space['self']}-->
+					<!--{if helper_access::check_module('share')}-->
+					<a id="share_space" href="http://wuliu.v-get.com/i/home.php?mod=spacecp&ac=share&type=space&id=$space[uid]" onclick="showWindow(this.id, this.href, 'get', 0);">[分享]</a>
+					<!--{/if}-->
+				<!--{/if}-->
+			</span>
+			<span id="spacedescription" class="xs1 xw0 mtn">$space[spacedescription]</span>
+		</h2>
+		<!--{subtemplate home/space_header_personalnv}-->
+	</div>
+
+	<!--{if !empty($_G['setting']['plugins']['jsmenu'])}-->
+		<ul class="p_pop h_pop" id="plugin_menu" style="display: none">
+		<!--{loop $_G['setting']['plugins']['jsmenu'] $module}-->
+		     <!--{if !$module['adminid'] || ($module['adminid'] && $_G['adminid'] > 0 && $module['adminid'] >= $_G['adminid'])}-->
+		     <li>$module[url]</li>
+		     <!--{/if}-->
+		<!--{/loop}-->
+		</ul>
+	<!--{/if}-->
+	$_G[setting][menunavs]
+<!--{eval $mnid = getcurrentnav();}-->
+<ul id="navs_menu" class="p_pop topnav_pop" style="display:none"><li id="mn_forum"><a href="http://wuliu.v-get.com/i/">首页</a></li><li id="mn_N954b"><a href="http://wuliu.v-get.com/tech/" target="_blank">有趣</a></li><li id="mn_Ncf67"><a href="http://wuliu.v-get.com/i/misc.php?mod=ranklist">排行榜</a></li></ul>
+<ul id="myspace_menu" class="p_pop" style="display:none;"><li><a href="http://wuliu.v-get.com/i/商务物流网">个人主页</a></li><li><a href="http://wuliu.v-get.com/i/home.php?mod=space&amp;do=friend" style="background-image:url(http://wuliu.v-get.com/i/static/image/feed/friend_b.png) !important">好友</a></li>
+<li><a href="http://wuliu.v-get.com/i/forum.php?mod=guide&amp;view=my" style="background-image:url(http://wuliu.v-get.com/i/static/image/feed/thread_b.png) !important">帖子</a></li>
+<li><a href="http://wuliu.v-get.com/i/home.php?mod=space&amp;do=favorite&amp;view=me" style="background-image:url(http://wuliu.v-get.com/i/static/image/feed/favorite_b.png) !important">收藏</a></li>
+<li><a href="http://wuliu.v-get.com/i/home.php?mod=magic" style="background-image:url(http://wuliu.v-get.com/i/static/image/feed/magic_b.png) !important">道具</a></li>
+<li><a href="http://wuliu.v-get.com/i/home.php?mod=medal" style="background-image:url(http://wuliu.v-get.com/i/static/image/feed/medal_b.png) !important">勋章</a></li>
+<li><a href="http://wuliu.v-get.com/i/home.php?mod=task" style="background-image:url(http://wuliu.v-get.com/i/static/image/feed/task_b.png) !important">任务</a></li>
+</ul>

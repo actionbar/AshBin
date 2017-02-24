@@ -1,0 +1,185 @@
+{template header}
+<div class="left">
+	<div class="postbox">
+		<div class="header">
+			<span class="lt">有什么新鲜事要告诉大家？</span><cite>您还可以输入 <span id="post_left_char">140</span> 字</cite>
+		</div>
+		<form action="{eval echo miniurl('note/post')}" method="post" enctype="multipart/form-data" target="process_attaches" id="post_form">
+		<textarea tabindex="1" id="post_message"></textarea>
+		<div class="attach">
+			<a id="post_attach_link"><b>链接</b></a>
+			<a id="post_attach_image"><b>图片</b></a>
+			<div class="publish">
+				<input type="button" class="btn" id="post_submit" value="发 布" />
+			</div>
+		</div>
+		<div class="attachbox" id="post_attach_link_hide" style="display:none">
+			<p>
+				链接名称：<input type="text" name="link_name" /> 链接地址：<input type="text" value="http://" name="link_url" />
+			</p>
+		</div>
+		<div class="attachbox" id="post_attach_image_hide" style="display:none">
+			<p>
+				上传图片：<input type="file" name="upload_image" />
+			</p>
+		</div>
+		<div style="display:none; width:544px; height:100px; line-height:100px; font-size:16px; color:#2E8EFD; text-align:center;font-weight:bold;" id="post_show_message">正在处理...
+		</div>
+		<input type="hidden" value="1" name="submit_post" />
+		<input type="hidden" value="" name="content" id="submit_content" />
+		</form>
+		<iframe id="process_attaches" name="process_attaches" style="display:none">
+		</iframe>
+	</div>
+	<div class="post" id="mytopmenu">我的首页</div>
+	<!--{if $my_blogs}-->
+	<!--{loop $my_blogs $my_blog}-->
+	<div class="post" id="post_{$my_blog['nid']}">
+		<div class="detail" style="width:520px">
+			<p>
+				{$my_blog['note']['message']}
+				<!--{if $my_blog['note']['link']}-->
+				<p>分享链接：<a href="{$my_blog['note']['link']['url']}">{$my_blog['note']['link']['title']}</a></p>
+				<!--{/if}-->
+				<!--{if $my_blog['note']['file']}-->
+				<p>分享文件：<a href="{$my_blog['note']['file']['url']}">{$my_blog['note']['file']['title']}</a></p>
+				<!--{/if}-->
+				<!--{if $my_blog['note']['img']}-->
+				<p><img src="{eval echo imgurl($my_blog['note']['img']['url']);}" rel="{$my_blog['note']['img']['title']}" /></p>
+				<!--{/if}-->
+				<!--{if !empty($my_blog['note']['refer'])}-->
+				{eval $my_blog_refer = $my_blog['note']['refer'];}
+				<div class="upax"></div>
+				<div class="ugb">
+					<div class="ugb2">
+						<div class="ugb3">
+							<div class="ugb4">
+								转发自 {$my_blog_refer['message']}
+								<!--{if !empty($my_blog_refer['link'])}-->
+								<p>分享链接：<a href="{$my_blog_refer['link']['url']}">$my_blog_refer['link']['title']</a></p>
+								<!--{/if}-->
+								<!--{if !empty($my_blog_refer['file'])}-->
+								<p>分享文件：<a href="{$my_blog_refer['file']['url']}">$my_blog_refer['file']['title']</a></p>
+								<!--{/if}-->
+								<!--{if !empty($my_blog_refer['img'])}-->
+								<p><img style="float:none" src="{eval echo imgurl($my_blog_refer['img']['url']);}" rel="{$my_blog_refer['img']['title']}" /></p>
+								<!--{/if}-->
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--{/if}-->
+			</p>
+			<div class="attrs">
+				<div class="lf">
+					<cite>{eval echo sgmdate($my_blog['dateline']);}</cite> 来自{$sourcefrom[$my_blog['from']]}
+				</div>
+				<div class="rt">
+					转发[{$my_blog['refers']}]<span>|</span><a href="{eval echo miniurl('note/'.$my_blog['nid'].'/comment');}">评论[{$my_blog['comments']}]</a><span>|</span><a href="javascript:;" class="delete_a" r="{$my_blog['nid']}">删除</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--{/loop}-->
+	<!--{else}-->
+	<!--{/if}-->
+</div>
+<div class="right">
+	<div class="ugb">
+		<div class="ugb2">
+			<div class="ugb3">
+				<div class="ugb4">
+					<div class="userinfo">
+						<div class="user_head">
+							<img src="{$siteurl}avatar.php?uid={$logger_uid}&size=middle" style="float:left" /><div style="float:left; margin:0 0 0 15px;"><p style="font-size:14px;line-height:33px;">{$logger_user}</p><p style="color:#999">上次登录:{eval echo sgmdate($_DSESSION['lastvisit']);}</p></div>
+						</div>
+						<div class="user_atten">
+							<ul>
+								<li>
+									<div class="num">
+										<a href="{eval echo miniurl($logger_uid.'/follows');}">{$_DSESSION['follows']}</a>
+									</div>
+									<a href="{eval echo miniurl($logger_uid.'/follows');}">关注</a>
+								</li>
+								<li>
+									<div class="num">
+										<a href="{eval echo miniurl($logger_uid.'/fans');}">{$_DSESSION['fans']}</a>
+									</div>
+									<a href="{eval echo miniurl($logger_uid.'/fans');}">粉丝</a>
+								</li>
+								<li style="border:none">
+									<div class="num">
+										<a href="{eval echo miniurl($logger_uid.'/notes');}">{$_DSESSION['notes']}</a>
+									</div>
+									<a href="{eval echo miniurl($logger_uid.'/notes');}">微博</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="usermenu">
+						<ul>
+							<li<!--{if $usermenu == 'index'}--> class="active"<!--{/if}-->><a href="{eval echo miniurl();}">我的首页</a></li>
+							<li<!--{if $usermenu == 'atme'}--> class="active"<!--{/if}-->><a href="{eval echo miniurl($logger_uid.'/atme');}">@我的</a></li>
+							<li<!--{if $usermenu == 'pms'}--> class="active"<!--{/if}-->><a href="{eval echo miniurl('pms');}">我的私信</a></li>
+							<li style="border:none"<!--{if $usermenu == 'cmts'}--> class="active"<!--{/if}-->><a href="{eval echo miniurl($logger_uid.'/comments');}">我的评论</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+$(function(){
+	$(".postbox .attach a").click(function(){
+		var id = $(this).attr('id');
+		var flag = $(this).attr('class') == 'pressed' ? 1 : 0;
+		if (flag)
+		{
+			$(".postbox .attach a").attr('class', '');
+			$("#"+id+"_hide").css("display", "none");
+		}
+		else
+		{
+			$(".postbox .attach a").attr('class', '');
+			$(this).attr('class', 'pressed');
+			$(".attachbox").css("display", "none");
+			$("#"+id+"_hide").css("display", "");
+		}
+	});
+	$("#post_message").keyup(function(){
+		var left = 140 - $(this).val().length;
+		if (left < 1)
+		{
+			left = 0;
+			$(this).val($(this).val().substr(0, 140));
+		}
+		$("#post_left_char").text(left);
+	});
+	$("#post_submit").click(function(){
+		var message = $.trim($("#post_message").val());
+		if (message == '')
+		{
+			alert("请至少写些文字");
+			return;
+		}
+		$("#post_message").css("background", "#eee").css("color","#eee").attr("disabled", "disabled");
+		$("#post_submit").attr("disabled", "disabled");
+		var left = $("#post_message").offset().left;
+		var top = $("#post_message").offset().top;
+		$("#post_show_message").css("position", "absolute").css("left",left).css("top",top).css("z-index","1000").css("display","");
+		$("#submit_content").val($("#post_message").val());
+		$("#post_form").submit();
+	});
+});
+function onPostOver(data)
+{
+	$("#post_show_message").text(data.message);
+	if (data.success)
+	{
+		location.href="{eval echo miniurl()}";
+	}
+}
+</script>
+{template footer}

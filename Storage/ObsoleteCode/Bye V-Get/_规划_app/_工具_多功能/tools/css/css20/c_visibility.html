@@ -1,0 +1,126 @@
+<html xmlns:rdl>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<script src="rdl_properties.js"></script>
+<base target="_self">
+</head>
+<body>
+
+<script>
+
+//collFriendProperties=new Array();
+//collFriendDeclarations=new Array();
+//collFriendAtRules=new Array();
+//collFriendElements=new Array();
+//collFriendClasses=new Array();
+
+collFriendProperties=new Array(
+'display','float','clear'
+);
+
+//collIE40=new Array();
+//collIE50=new Array();
+//collIE55=new Array();
+//collIE60=new Array();
+
+collIE40=new Array(
+'A','ADDRESS','APPLET','B','BIG','QUOTE','BODY','BUTTON','CAPTION','CENTER','CITE','CODE','COL','COLGROUP','DD','DFN','DIR','DIV','DL','DT','EM','EMBED','FIELDSET','FORM','Hn','HR','HTML','I','IFRAME','IMG','INPUT type=button','INPUT type=checkbox','INPUT type=file','INPUT type=image','INPUT type=password','INPUT type=radio','INPUT type=reset','INPUT type=submit','INPUT type=text','ISINDEX','KBD','LABEL','LEGEND','LI','LISTING','MARQUEE','MENU','OBJECT','OL','P','PRE','S','SAMP','SELECT','SMALL','SPAN','STRIKE','STRONG','style','SUB','SUP','TABLE','TBODY','TEXTAREA','TFOOT','TH','THEAD','TT','U','UL','VAR','XMP'
+);
+
+collIE50=new Array(
+'TR','TD','runtimeStyle','currentStyle','CUSTOM'
+);
+
+collIE55=new Array(
+'defaults'
+);
+
+sStyle=
+'<style>\n'+
+'#idParentDiv{width:100%;height:120px;padding:6px;background-color:buttonshadow;position:relative;}\n'+
+'#idDiv{width:80%;height:80px;background-color:#FFD700;padding:6px;position:absolute;z-index:3;left:9px;top:9px;}\n'+
+'#idCodeDiv{width:100%;padding:4px;font-family:verdana,tahoma;margin:12px 0px 0px 0px;background-color:#EEEEEE;font-weight:bold;}\n'+
+'<\/style>\n';
+
+sScript=
+'<script>\n'+
+'function rdl_change(e){\n'+
+'var oCodeDiv=document.all("idCodeDiv");\n'+
+'var oImg=document.all("idImg");\n'+
+'with (document.all("idSel1")) var sValue1=options[selectedIndex].value;\n'+
+'with (document.all("idSel2")) var sValue2=options[selectedIndex].value;\n'+
+'with (oImg.style) {\n'+
+'visibility=sValue1;display=sValue2;\n'+
+'}\n'+
+'oCodeDiv.innerText="visibility : "+sValue1+" ; "+"\\r\\n"+"display : "+sValue2+" ; ";\n'+
+'}\n'+
+'<\/script>\n';
+
+sCode=
+'<div id=idParentDiv>\n'+
+'<div id=idDiv><img src="images/rdl_body0.jpg" style="float:left;border:1px solid #000000;" id=idImg>请从下方选择左边这张图片的<b> visibility <\/b>和<b> dislpay <\/b>属性的值。<\/div>\n'+
+'<\/div>\n'+
+'<br>\n'+
+'<table><tr><td>\n'+
+'<select id="idSel1" onchange="rdl_change();">\n'+
+'<option value="inherit">---visibility---\n'+
+'<option value="inherit">inherit\n'+
+'<option value="visible">visible\n'+
+'<option value="hidden">hidden\n'+
+'<\/select>\n'+
+'<\/td><td>\n'+
+'<select id="idSel2" onchange="rdl_change();">\n'+
+'<option value="block">---display---\n'+
+'<option value="block">block\n'+
+'<option value="none">none\n'+
+'<\/select>\n'+
+'<\/td><\/tr><\/table>\n'+
+'<div id=idCodeDiv>visibility : inherit ;<br>display : block ;<\/div>\n';
+
+iWinWidth=420;
+
+iWinHeight=340;
+
+//bRunCode=false;
+
+//bElements=false;
+
+</script>
+
+<div id=idContent>
+
+<div id=idContentTitle><span id=idTitleName>visibility</span>版本：CSS2　 兼容性：IE4+ NS6+　继承性：无</div>
+
+<div class=cssColumnTitle>语法：</div>
+<div>
+<b>visibility  : </b><span class=cssDefault><b>inherit</b></span> | <b>visible</b> | <b>collapse</b> | <b>hidden</b>
+</div>
+
+<div class=cssColumnTitle>取值：</div>
+<table>
+<tr><td nowrap><b> inherit </b></td><td nowrap><b>:</b></td><td><b>默认值</b>。继承父对象的可见性</td></tr>
+<tr><td nowrap><b> visible </b></td><td nowrap><b>:</b></td><td>对象可视</td></tr>
+<tr><td nowrap><b class=cssNone> collapse </b></td><td nowrap><b>:</b></td><td><b>未支持</b>。主要用来隐藏表格的行或列。隐藏的行或列能够被其他内容使用。对于表格外的其他对象，其作用等同于<b> hidden </b></td></tr>
+<tr><td nowrap><b> hidden </b></td><td nowrap><b>:</b></td><td>对象隐藏</td></tr>
+</table>
+
+<div class=cssColumnTitle>说明：</div>
+<div>
+设置或检索是否显示对象。<br>
+与<a href="c_display.html"> display </a>属性不同，此属性为隐藏的对象保留其占据的物理空间。<br>
+在IE5.0+中，当父对象不可视时子对象是能被设为可视的。而在此前的浏览器版本中，如果希望对象为可视，其父对象也必须是可视的。<br>
+此属性对于<b> currentStyle </b>对象而言是只读的。对于其他对象而言是可读写的。<br>
+对应的脚本特性为<b> visibility </b>。
+</div>
+
+<div class=cssColumnTitle>示例：</div>
+<div id=idSimpleCode>
+img { visibility: inherit; float: right; }
+</div>
+
+</div>
+</body>
+</html>
+
+<!-- Part of RDL(TM) - Written by Rain1977 
+HomeSite: http://www.dhtmlet.com  E-Mail: dhtmlet@hotmail.com -->

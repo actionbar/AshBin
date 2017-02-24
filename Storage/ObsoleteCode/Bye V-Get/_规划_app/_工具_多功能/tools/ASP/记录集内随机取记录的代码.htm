@@ -1,0 +1,57 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>记录集内随机取记录的代码</title>
+<style type="text/css">
+<!--
+body {
+	font-size: 10.4pt;
+	line-height: 22px;
+}
+-->
+</style>
+</head>
+
+<body bgcolor="eeeeee" leftmargin="20" marginwidth="20">
+<p><strong>记录集内随机取记录的代码</strong></p>
+<hr>
+<p>&lt;% <br>
+  ' Moving to random record - Steven Jones' Extension<br>
+  If Not(记录集名称.bof and 记录集名称.eof) Then<br>
+  ' reset the cursor to the beginning<br>
+  If (记录集名称.CursorType &gt; 0) Then<br>
+  记录集名称.MoveFirst<br>
+  Else<br>
+  记录集名称.Requery<br>
+  End If</p>
+<p>记录集名称_totalrn = -1<br>
+  记录集名称_totalrn = 记录集名称.RecordCount ' ony works on some recordsets, but much faster<br>
+  If (记录集名称_totalrn = -1) Then ' and if it didn't work, we still have to count 
+  the records.</p>
+<p>' count the total records by iterating through the recordset<br>
+  记录集名称_totalrn=0<br>
+  While (Not 记录集名称.EOF)<br>
+  记录集名称_totalrn = 记录集名称_totalrn + 1<br>
+  记录集名称.MoveNext<br>
+  Wend</p>
+<p>' reset the cursor to the beginning<br>
+  If (记录集名称.CursorType &gt; 0) Then<br>
+  记录集名称.MoveFirst<br>
+  Else<br>
+  记录集名称.Requery<br>
+  End If</p>
+<p>End If</p>
+<p>' now do final adjustments, and move to the random record <br>
+  记录集名称_totalrn = 记录集名称_totalrn - 1<br>
+  If 记录集名称_totalrn &gt; 0 Then<br>
+  Randomize<br>
+  记录集名称.Move Int((记录集名称_totalrn + 1) * Rnd)<br>
+  End If <br>
+  End If<br>
+  ' all done; you should always check for an empty recordset before displaying 
+  data<br>
+  %&gt;</p>
+<p>&nbsp; </p>
+</body>
+</html>

@@ -1,0 +1,246 @@
+<html>
+<head>
+<title>结构完整的文档中的实体和DTD</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+
+<link rel = stylesheet href = "image/style.css">
+</head>
+<body bgcolor="#ffffff">
+<table width="688" border="0" cellspacing="0" cellpadding="0" align="center">
+  <tr bgcolor="EEEEEE"> 
+    <td height="22"><a href="index.htm">主页</a></td>
+  </tr>
+</table><br>
+<table border="0" cellpadding="0" cellspacing="0" width="688" align="center" height="490">
+  <tr valign="top"> 
+    <td rowspan="4" width="91">&nbsp; </td>
+    <td height="68" width="131"> 
+      <p><img src="image/doc.gif"></p>
+    </td>
+    <td rowspan="4" width="18"><b></b> </td>
+    <td height="68" width="387"><img src="image/title_doc.gif"></td>
+    <td rowspan="4" width="61"> 
+      <h6>&nbsp;</h6>
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td rowspan="3" valign="top" class="pt10" align="center" width="131" bgcolor="EEEEEE"> 
+      <p>&nbsp;</p>
+      <p><font color="#FF0000">※ 9.7 结构完整的文档中的实体和DTD</font></p>
+       
+	</td>
+  </tr>
+  <tr valign="top"> 
+    <td width="387" height="308"> 
+      <table width="100%" border="0" cellpadding="0">
+        <tr> 
+          <td>
+
+           <h4>9.7 结构完整的文档中的实体和DTD</h4>
+<p> 本书第一部分研究了无DTD的结构完整的XML文档，第二部分研究包含DTD和包含DTD中的约束条件的文档，也就是正确的文档。但是还有与XML标准相符合的第三个层次：由于DTD不完整或文档不符合DTD中的约束条件，所以该包含DTD的文档结构完整但不合法；这是三种类型中最不普遍的情况。</p>
+<p> 可是，没有必要要求所有的文档都是合法的。有时XML文档仅需结构完整就足够了。DTD在结构完整文档中也占有一席之地（虽然不是必需的，但是对合法的文档来说确实是必需的），并且不进行合法性检查的XML处理器可以在DTD中获取有用的信息，而不必完全符合DTD的要求。在本节中将研究该项内容。</p>
+<p>若结构完整但无效的XML文档中包含DTD，则该DTD需具有上一章所研究的相同的通用形式。那就是说，开头为文档类型声明，且可包含ELEMENT、ATTLIST和ENITITY声明。与有效文档的区别在于处理器仅处理其ENTITY声明。</p>
+<h5>9.7.1 内部实体</h5>
+<p>在结构完整的无效文档中使用DTD的主要益处在于还可以使用内部通用实体引用，除了五个预定义引用&amp;gt;、&amp;lt;、&amp;quot;、&amp;apos;和&amp;amp;之外。可按通常的方法简单地声明所需的实体，然后在文档中使用它们。</p>
+<p>例如，回顾前面的例子，假如需要实体引用&amp;ERH;用于替换字符串“Elliotte Rusty Harlod”（好吧，那就假设我需要实体引用&amp;ERH;用于替换字符串“Elliotte 
+  Rusty Harlod”），但不想为文档编写一个完整的DTD。可按清单9-15所示，在DTD中简单地声明ERH实体引用。该文档仅仅是结构完整，但却是不合法的文档；若不追求合法性，该文档完全可以接受。</p>
+<p>清单9-15：DTD中的ERH实体引用产生了结构完整但不合法的文档</p>
+<p>&lt;?xml version="1.0" standalone="yes"?&gt;</p>
+<p>&lt;!DOCTYPE DOCUMENT [</p>
+<p> &lt;!ENTITY ERH "Elliotte Rusty Harold?"&gt;</p>
+<p>]&gt;</p>
+<p>&lt;DOCUMENT &gt;</p>
+<p>&lt;TITLE&gt;&amp;ERH;&lt;/TI LE&gt;</p>
+<p>&lt;SIGNATURE&gt;</p>
+<p>&lt;COPYRIGHT &gt;1999 &amp;ERH;&lt;/COPYRIGHT&gt;</p>
+<p>&lt;EMAIL&gt;elharo@metalab.unc.edu&lt;/EMAIL&gt;</p>
+<p>&lt;LAST_MODIFIED&gt;March 10, 1999&lt;/LAST_MODIFIED&gt;</p>
+<p>&lt;/SIGNATURE&gt;</p>
+<p>&lt;/DOCUMENT&gt;</p>
+<p>清单9-15中的文档类型声明是少见的。除了在定义ERH实体引用的之外，只是简单地说明了基本元素为DOCUMENT。可是文档的结构完整性并不要求文档满足这一小小的约束。例如清单9-16，显示的是另一个使用了PAGE基本元素的文档，但文档类型声明中却说明该基本元素应该是DOCUMENT。该文档结构依然完整，但是与清单9-15的文档一样都是不合法的。</p>
+<p>清单9-16：结构完整，但不合法的文档</p>
+<p>&lt;?xml version="1.0"standalone="yes"?&gt;</p>
+<p>&lt;!DOCTYPE DOCUMENT [</p>
+<p> &lt;!ENTITY ERH "Elliotte Rusty Harold?"&gt;</p>
+<p>]&gt;</p>
+<p>&lt;PAGE&gt;</p>
+<p>&lt;TITLE&gt;&amp;ERH;&lt;/TI LE&gt;</p>
+<p>&lt;SIGNATURE&gt;</p>
+<p>&lt;COPYRIGHT &gt;1999 &amp;ERH;&lt;/COPYRIGHT &gt;</p>
+<p>&lt;EMAIL&gt;elharo@metalab.unc.edu&lt;/EMAIL&gt;</p>
+<p>&lt;LAST_MODIFIED&gt;March 10, 1999&lt;/LAST_MODIFIED&gt;</p>
+<p>&lt;/SIGNATURE&gt;</p>
+<p>&lt;/PAGE&gt;</p>
+<p>这个DTD同样也可包含其他的&lt;!ELEMENT&gt;、&lt;!ATTLIST&gt;和&lt;!NOTATION&gt;声明，所有这些声明均被不进行合法性检查的处理器忽略，仅处理&lt;!ENTITY&gt;声明。清单9-17中的DTD与其本身的内容相矛盾。例如，根据DTD定义， 
+  ADDRESS元素本应为空，但实际上该元素包含几个未声明的子元素。另外，要求每个ADDRESS元素都具有OCCUPANT、STREET、CITY和ZIP属性值，但是却无处可寻。基本元素本应为DOCUMENT，而不是ADDRESS。DOCUMENT元素本应包含的TITLE和SIGNATURE均未在DTD中进行声明。本文档结构依然完整，却无半点合法性。</p>
+<p>清单9-17：结构完整却无效的文档</p>
+<p>&lt;?xml version="1.0" standalone="yes"?&gt;</p>
+<p>&lt;!DOCTYPE DOCUMENT [</p>
+<p>&lt;!ENTITY ERH "Elliotte Rusty Harold?"&gt;</p>
+<p>&lt;!ELEMENT ADDRESS EMPTY&gt;</p>
+<p>&lt;!ELEMENT DOCUMENT ( TITLE, ADDRESS+, SIGNATURE)&gt;</p>
+<p>&lt;!ATLIST ADDRESS OCCUPANT CDATA #REQUIRED&gt;</p>
+<p>&lt;!ATLIST ADDRESS DEPAR ME CDATA #IMPLIED&gt;</p>
+<p>&lt;!ATLIST ADDRESS COMPANY CDATA #IMPLIED&gt;</p>
+<p>&lt;!ATLIST ADDRESS S REET CDATA #REQUIRED&gt;</p>
+<p>&lt;!ATLIST ADDRESS CITY CDATA #REQUIRED&gt;</p>
+<p>&lt;!ATLIST ADDRESS ZIP CDATA #REQUIRED&gt;</p>
+<p>]&gt;</p>
+<p>&lt;ADDRESS&gt;</p>
+<p>&lt;OCCUPANT&gt;Elliotte Rusty Harold&lt;/OCCUPANT &gt;</p>
+<p>&lt;DEPARTMENT &gt;Computer Science&lt;/DEPARTMENT &gt;</p>
+<p>&lt;COMPANY&gt;Polytechnic University&lt;/COMPAN Y&gt;</p>
+<p>&lt;STREE &gt;5 Metrotech Center&lt;/STREE &gt;</p>
+<p>&lt;CITY&gt;Brooklyn&lt;/CITY&gt;</p>
+<p>&lt;STATE&gt;NY&lt;/STATE&gt;</p>
+<p>&lt;ZIP&gt;11201&lt;/ZIP&gt;</p>
+<p>&lt;/ADDRESS&gt;</p>
+<h5>9.7.2 外部实体</h5>
+<p>不进行合法性检查的处理器可处理外部实体引用，但这不是必须的。详细的说，例如Mozilla使用的开放资源XML语法分析器并不处理外部实体引用。包含IE 
+  5.0在内的其余大部分处理器却要处理外部实体引用。可是不进行合法性检查的处理器可能仅处理可析实体，不处理包含非XML数据（像图像或声音）的外部实体引用。</p>
+<p>外部实体对存储样式文本特别有用。例如，HTML预定义非ASCII ISO Latin-1字母的实体引用，这些引用比数字化字符实体引用稍便于记忆。例如，&aring;预定义为&amp;ring;，&thorn;预定义为&amp;thorn;，&yacute;预定义为&amp;Yacute;等等。清单9-18为定义这些引用的正式ISO 
+  DTD（对注释进行一些轻微的修改，文中巧妙地应用空格，使得文档看起来形式优美整洁）。</p>
+<p>清单9-18：非ASCII ISO Latin-1字符的DTD</p>
+<p>&lt;!-(C) International Organization for Standardization 1986</p>
+<p>Permission to copy in any form is granted for use with</p>
+<p>conforming SGML systems and applications as defined in</p>
+<p>ISO 8879, provided this notice is included in all copies.</p>
+<p>-&gt;</p>
+<p>&lt;!-Character entity set. Typical invocation:</p>
+<p>&lt;!ENTITY % ISOlat1 PUBLIC</p>
+<p>"ISO 8879-1986//E I IES Added Latin 1//E //XML-&gt;</p>
+<p>%ISOlat1;</p>
+<p>-&gt;</p>
+<p>&lt;!- his version of the entity set can be used with any SGML </p>
+<p>document which uses ISO 8859-1 or ISO 10646 as its </p>
+<p>document character set. This includes XML documents and </p>
+<p>ISO HTML documents.</p>
+<p>Version: 1998-10-01</p>
+<p>-&gt;</p>
+<p>&lt;!ENTITY Agrave "&amp;#192; "&gt;&lt;!-capital A, grave accent -&gt;</p>
+<p>&lt;!ENTITY Aacute "&amp;#193; "&gt;&lt;!-capital A, acute accent -&gt;</p>
+<p>&lt;!ENTITY Acirc "&amp;#194; "&gt;&lt;!-capital A, circumflex accent -&gt;</p>
+<p>&lt;!ENTITY Atilde "&amp;#195; "&gt;&lt;!-capital A, tilde -&gt;</p>
+<p>&lt;!ENTITY Auml "&amp;#196; "&gt;&lt;!-capital A, dieresis umlaut -&gt;</p>
+<p>&lt;!ENTITY Aring "&amp;#197; "&gt;&lt;!-capital A, ring -&gt;</p>
+<p>&lt;!ENTITY AElig "&amp;#198; "&gt;&lt;!-capital AE diphthong ligature-&gt;</p>
+<p>&lt;!ENTITY Ccedil "&amp;#199; "&gt;&lt;!-capital C, cedilla -&gt;</p>
+<p>&lt;!ENTITY Egrave "&amp;#200; "&gt;&lt;!-capital E, grave accent -&gt;</p>
+<p>&lt;!ENTITY Eacute "&amp;#201; "&gt;&lt;!-capital E, acute accent -&gt;</p>
+<p>&lt;!ENTITY Ecirc "&amp;#202; "&gt;&lt;!-capital E, circumflex accent -&gt;</p>
+<p>&lt;!ENTITY Euml "&amp;#203; "&gt;&lt;!-capital E, dieresis umlaut -&gt;</p>
+<p>&lt;!ENTITY Igrave "&amp;#204; "&gt;&lt;!-capital I, grave accent -&gt;</p>
+<p>&lt;!ENTITY Iacute "&amp;#205; "&gt;&lt;!-capital I, acute accent -&gt;</p>
+<p>&lt;!ENTITY Icirc "&amp;#206;"&gt;&lt;!-capital I, circumflex accent -&gt;</p>
+<p>&lt;!ENTITY Iuml "&amp;#207;"&gt;&lt;!-capital I, dieresis umlaut -&gt;</p>
+<p>&lt;!ENTITY ETH "&amp;#208;"&gt;&lt;!-capital Eth, Icelandic -&gt;</p>
+<p>&lt;!ENTITY Ntilde "&amp;#209;"&gt;&lt;!-capital N, tilde -&gt;</p>
+<p>&lt;!ENTITY Ograve "&amp;#210;"&gt;&lt;!-capital O, grave accent -&gt;</p>
+<p>&lt;!ENTITY Oacute "&amp;#211;"&gt;&lt;!-capital O, acute accent -&gt;</p>
+<p>&lt;!ENTITY Ocirc "&amp;#212;"&gt;&lt;!-capital O, circumflex accent -&gt;</p>
+<p>&lt;!ENTITY Otilde "&amp;#213;"&gt;&lt;!-capital O, tilde -&gt;</p>
+<p>&lt;!ENTITY Ouml "&amp;#214;-&gt;&lt;!-apital O dieresis/umlaut mark-&gt;</p>
+<p>&lt;!ENTITY Oslash "&amp;#216;"&gt;&lt;!-capital O, slash -&gt;</p>
+<p>&lt;!ENTITY Ugrave "&amp;#217;"&gt;&lt;!-capital U, grave accent -&gt;</p>
+<p>&lt;!ENTITY Uacute "&amp;#218;"&gt;&lt;!-capital U, acute accent -&gt;</p>
+<p>&lt;!ENTITY Ucirc "&amp;#219;"&gt;&lt;!-capital U circumflex accent -&gt;</p>
+<p>&lt;!ENTITY Uuml "&amp;#220;"&gt;&lt;!-capital U dieresis umlaut -&gt;</p>
+<p>&lt;!ENTITY Yacute "&amp;#221;"&gt;&lt;!-capital Y, acute accent -&gt;</p>
+<p>&lt;!ENTITY THORN "&amp;#222;"&gt;&lt;!-capital THORN, Icelandic -&gt;</p>
+<p>&lt;!ENTITY szlig "&amp;#223;"&gt;&lt;!-small sharp s, (sz ligature) -&gt;</p>
+<p>&lt;!ENTITY agrave "&amp;#224;"&gt;&lt;!-small a, grave accent -&gt;</p>
+<p>&lt;!ENTITY aacute "&amp;#225;"&gt;&lt;!-small a, acute accent -&gt;</p>
+<p>&lt;!ENTITY acirc "&amp;#226;"&gt;&lt;!-small a, circumflex accent -&gt;</p>
+<p>&lt;!ENTITY atilde "&amp;#227;"&gt;&lt;!-small a, tilde -&gt;</p>
+<p>&lt;!ENTITY auml "&amp;#228;"&gt;&lt;!-small a dieresis/umlaut mark-&gt;</p>
+<p>&lt;!ENTITY aring "&amp;#229;"&gt;&lt;!-small a, ring -&gt;</p>
+<p>&lt;!ENTITY aelig "&amp;#230;"&gt;&lt;!-small ae, diphthong ligature -&gt;</p>
+<p>&lt;!ENTITY ccedil "&amp;#231;"&gt;&lt;!-small c, cedilla -&gt;</p>
+<p>&lt;!ENTITY egrave "&amp;#232;"&gt;&lt;!-small e, grave accent -&gt;</p>
+<p>&lt;!ENTITY eacute "&amp;#233;"&gt;&lt;!-small e, acute accent -&gt;</p>
+<p>&lt;!ENTITY ecirc "&amp;#234;"&gt;&lt;!-small e, circumflex accent -&gt;</p>
+<p>&lt;!ENTITY euml "&amp;#235;"&gt;&lt;!-small e, dieresis or umlaut -&gt;</p>
+<p>&lt;!ENTITY igrave "&amp;#236;"&gt;&lt;!-small i, grave accent -&gt;</p>
+<p>&lt;!ENTITY iacute "&amp;#237;"&gt;&lt;!-small i, acute accent -&gt;</p>
+<p>&lt;!ENTITY icirc "&amp;#238;"&gt;&lt;!-small i, circumflex accent -&gt;</p>
+<p>&lt;!ENTITY iuml "&amp;#239;"&gt;&lt;!-small i, dieresis or umlaut -&gt;</p>
+<p>&lt;!ENTITY eth "&amp;#240;"&gt;&lt;!-small eth, Icelandic -&gt;</p>
+<p>&lt;!ENTITY ntilde "&amp;#241;"&gt;&lt;!-small n, tilde -&gt;</p>
+<p>&lt;!ENTITY ograve "&amp;#242;"&gt;&lt;!-small o, grave accent -&gt;</p>
+<p>&lt;!ENTITY oacute "&amp;#243;"&gt;&lt;!-small o, acute accent -&gt;</p>
+<p>&lt;!ENTITY ocirc "&amp;#244;"&gt;&lt;!-small o, circumflex accent -&gt;</p>
+<p>&lt;!ENTITY otilde "&amp;#245;"&gt;&lt;!-small o, tilde -&gt;</p>
+<p>&lt;!ENTITY ouml "&amp;#246;"&gt;&lt;!-small o, dieresis or umlaut-&gt;</p>
+<p>&lt;!ENTITY oslash "&amp;#248;"&gt;&lt;!-small o, slash -&gt;</p>
+<p>&lt;!ENTITY ugrave "&amp;#249;"&gt;&lt;!-small u, grave accent -&gt;</p>
+<p>&lt;!ENTITY uacute "&amp;#250;"&gt;&lt;!-small u, acute accent -&gt;</p>
+<p>&lt;!ENTITY ucirc "&amp;#251;"&gt;&lt;!-small u, circumflex accent -&gt;</p>
+<p>&lt;!ENTITY uuml "&amp;#252;"&gt;&lt;!-small u, dieresis or umlaut -&gt;</p>
+<p>&lt;!ENTITY yacute "&amp;#253;"&gt;&lt;!-small y, acute accent -&gt;</p>
+<p>&lt;!ENTITY thorn "&amp;#254;"&gt;&lt;!-small thorn, Icelandic -&gt;</p>
+<p>&lt;!ENTITY yuml "&amp;#255;"&gt;&lt;!-small y, dieresis or umlaut -&gt;</p>
+<p>可简单地应用参数实体引用链接到清单9-18所示的实体引用，然后在文档中使用通用实体引用，而不需要把清单9-18包含在文档DTD的内部子集中。</p>
+<p>例如，假设需要以结构完整的XML文档将中世纪的Hlidebrandslied文档放入Web上，可是原稿为德语书写的，文中使用了非ASCII字符&aelig;、&ecirc;、&icirc;、&ocirc;和&ucirc;。</p>
+<p>为使文档具有最大的可移植性，可按ASCII字符键入诗文，而把这些字母分别编码为&amp;ecirc；、&amp;icirc；、&amp;ocirc；、&amp;ucirc；和&amp;aelig；的实体引用。即使不需要有效完整的文档，也依然需要一个DTD，该DTD声明使用的各种实体引用。获取所需扩展字符的最简单方法就是简单地引用清单9-18中的外部DTD。清单9-19说明了这种情况。</p>
+<p>清单9-19：为使用ASCII ISO Latin-1字母而使用实体引用的无效完整文档</p>
+<p>&lt;?xml version="1.0" standalone="no"?&gt;</p>
+<p>&lt;!DOCTYPE DOCUMENT [</p>
+<p> &lt;!ENTITY % ISOlat1 </p>
+<p>PUBLIC "ISO 8879-1986//E I IES Added Latin 1//E //XML"</p>
+<p> "http://www.schema.net/public-text/ISOlat1.pen"&gt;</p>
+<p>%ISOlat1;</p>
+<p>]&gt;</p>
+<p>&lt;DOCUMENT&gt;</p>
+<p>&lt;TITLE&gt;Das Hildebrandslied, circa 775 C.E. &lt;/TITLE&gt;</p>
+<p>&lt;LINE&gt;Ik gih&amp;ocirc;rta dhat seggen,&lt;/LINE&gt;</p>
+<p>&lt;LINE&gt;dhat sih urh&amp;ecirc;ttun &amp;aelig;non muot&amp;icirc;n,&lt;/LINE&gt;</p>
+<p>&lt;LINE&gt;Hiltibrant enti Hadhubrant untar heriun tu&amp;ecirc;m. </p>
+<p>&lt;/LINE&gt;</p>
+<p>&lt;LINE&gt;sunufatarungo: iro saro rihtun,&lt;/LINE&gt;</p>
+<p>&lt;COMMENT&gt;I ll spare you the next 61 lines&lt;/COMMENT&gt;</p>
+<p>&lt;/DOCUMENT&gt;</p>
+<p>文档部分是由使用现场编写的标记的结构完整的XML所组成。这些标记未在DTD中声明过，也没有必要去维护文档的结构完整性。可是实体引用需要在内部或外部子集的DTD中声明。在清单9-19中，通过外部参数实体引用%ISO1atl载入清单9-18中声明的实体，也就在外部子集中声明了实体引用。</p>
+<p>DTD也可用于储存通用样式文本，该文本用在整个Web站点上的结构完整的XML文档，有利于维护XML文档的合法性。当仅仅处理结构完整的XML文档时，可体现出一定的简便性，这是因为插入到文档中的样式文本与父文档DTD的约束条件上不会出现任何匹配问题。</p>
+<p>首先，把不带DTD的样式插入到一个文件中，如清单9-20所示。</p>
+<p>清单9-20：不带DTD的Signature样板</p>
+<p>&lt;?xml version="1.0"?&gt;</p>
+<p>&lt;SIGNATURE&gt;</p>
+<p>&lt;COPYRIGHT&gt;1999 Elliotte Rusty Harold&lt;/COPYRIGH &gt;</p>
+<p>&lt;EMAIL&gt;elharo@metalab.unc.edu&lt;/EMAIL&gt;</p>
+<p>&lt;/SIGNATURE&gt;</p>
+<p>接下来，按清单9-21所示编写一个小型的DTD，该DTD为清单9-20中的文件定义一实体引用。在这里，假设可在文件signature.xml中找到清单9-20所示内容，该文件位于Web服务器根目录上的boilerplate目录中；也假定可在文件singature.dtd中找到清单9-21所示内容，该文件位于Web服务器根目录上的dtds目录中.</p>
+<p>清单9-21：定义实体引用的Signature DTD</p>
+<p>&lt;!ENTITY SIGNATURE SYSTEM "/boilerplate/signature.xml"&gt;</p>
+<p>现在，就可在文档中引入signature.dtd，然后使用通用实体引用&amp;SIGNATURE;，就可在文件中嵌入signature.xml的内容。清单9-22说明了这种用法：</p>
+<p>清单9-22：使用&amp;SIGNATURE；的文件</p>
+<p>&lt;?xml version="1.0" standalone="yes"?&gt;</p>
+<p>&lt;!DOCTYPE DOCUMENT [</p>
+<p>&lt;!ENTITY % SIG SYSTEM "/dtds/signature.dtd"&gt;</p>
+<p>%SIG;</p>
+<p>]&gt;</p>
+<p>&lt;DOCUMENT&gt;</p>
+<p>&lt;TITLE&gt;A Very Boring Document&lt;/TITLE&gt;</p>
+<p>&amp;SIGNATURE;</p>
+<p>&lt;/DOCUMENT&gt;</p>
+<p>似乎这种间接的做法与真正所需的相比较，多了一个层次。例如清单9-23直接在其内部DTD子集中定义了&amp;SIGNATURE；实体引用，且确实有效。但是这种间接做法所增加的层次可保护Web站点免于被更改，这是因为无法通过编辑一个文件的方式仅更改所有页面使用的signature内容。也可通过编辑一个文件的方式更改所有Web页面使用的signature的位置。另一方面，清单9-22中使用的方法越直接，就越便于在不同的页面上使用不同的signature。</p>
+<p>清单9-23：使用&amp;SIGNATURE；减少了一层非直接引用的文件</p>
+<p>&lt;?xml version="1.0" standalone="yes"?&gt;</p>
+<p>&lt;!DOCTYPE DOCUMENT [</p>
+<p> &lt;!ENTITY % SIGNATURE SYSTEM "/dtds/signature.dtd"&gt;</p>
+<p>]&gt;</p>
+<p>&lt;DOCUMENT&gt;</p>
+<p> &lt;TITLE&gt;A Very Boring Document&lt;/TITLE&gt;</p>
+<p> &amp;SIGNATURE;</p>
+<p>&lt;/DOCUMENT&gt;</p>
+ 
+<a href='413.htm'>&lt;&lt;上一篇</a>&nbsp;&nbsp;<a href='415.htm'>下一篇&gt;&gt;</a></td>
+        </tr>
+      </table>
+      <p>&nbsp; </p>
+    </td>
+  </tr>
+</table>
+
+</body>
+
+</html>

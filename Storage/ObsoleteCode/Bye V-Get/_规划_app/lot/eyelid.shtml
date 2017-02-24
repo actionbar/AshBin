@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>眼皮跳吉凶查询</title>
+</head>
+<link rel="stylesheet" type="text/css" href="../index.css" />
+<link rel="stylesheet" type="text/css" href="http://localhost:8080/v-get.com/tool/index.css" />
+<style type="text/css">
+<!--
+.c{margin:25px 50px}
+.c p{line-height:22px}
+.c select{margin:9px 0 3px}
+-->
+</style>
+
+
+<script type="text/javascript" src="http://localhost:8080/v-get.com/i/i.js"></script>
+
+
+</head>
+<body>
+<div class="w">
+<div class="t"><div class="q"><div class="p tl"></div><div class="p tc"><a href="">V-Get!首页</a>|<a href="">设为主页</a>|<a href="">收藏本站</a></div><div class="p tr"></div></div></div>
+<div class="u">
+<img src="http://localhost:8080/v-get.com/tool/index.png" />
+</div>
+<div class="n"><a href="http://localhost:8080/tool.v-get.com/">首页</a><a href="http://localhost:8080/v-get.com/tool/biz/">商务办公</a><a href="http://localhost:8080/v-get.com/tool/finance/">金融计算</a><a href="http://localhost:8080/v-get.com/tool/life/" class="no">生活助手</a><a href="http://localhost:8080/v-get.com/tool/images/">图片美工</a><a href="http://localhost:8080/v-get.com/tool/editor/">文字设计</a><a href="http://localhost:8080/v-get.com/tool/edu/">教育考试</a><a href="http://localhost:8080/v-get.com/tool/game/">娱乐游戏</a><a href="http://localhost:8080/v-get.com/tool/pc/">电脑优化</a></div>
+<div class="w4"><a href="#"><img src="http://localhost:8080/v-get.com/i/wuliu/a/zzidc980.gif" /></a></div>
+<!--这里不用include，因为基本这个部分是固定的；广告以后采用js替换，或者固定图片名称-->
+<!--因为都在life文件夹下，而且涉及.no，所以这样更好-->
+<div class="v">
+<div class="p l">
+<h2>生活助手</h2>
+<!--#include file="l.htm"-->
+
+</div>
+<div class="p r">
+<h1>眼皮跳吉凶查询</h1>
+<div class="c">
+
+<p>眼皮乱跳，让你很害怕吗？是祸是福？是灾是喜？<br/>想知道是情人想你，呃，还是老妈在念叨？又或者是老板要找你"谈话"？！别急别急，眼跳占卜释义都会告诉你</p>
+	  <select id="t" onchange="H($('c'),a[this.value])">
+	    <option value="0">子时（23点－凌晨1点前）</option>
+	    <option value="1">丑时（1点－凌晨3点前）</option>
+	    <option value="2">寅时（3点－凌晨5点前）</option>
+	    <option value="3">卯时（5点－上午7点前）</option>
+	    <option value="4">辰时（7点－上午9点前）</option>
+	    <option value="5">巳时（9点－上午11点前）</option>
+	    <option value="6">午时（11点－中午13点前）</option>
+	    <option value="7">未时（13点－下午15点前）</option>
+	    <option value="8">申时（15点－下午17点前）</option>
+	    <option value="9">酉时（17点－下午19点）</option>
+	    <option value="10">戌时（19点－晚上21点前）</option>
+	    <option value="11">亥时（21点－晚上23点前）</option>
+	  </select>  
+<div id="c">
+<p>左眼：意外之喜降临，会有不错好运，你的心脏要强一点，别兴奋过了头。</p><p>右眼：有人请你吃饭，可以省下一笔钱，但是这个人的目的不明，你要多多斟酌。</p>
+</div>
+</div>
+
+<!--#include file="c.htm"-->
+
+
+</div>
+
+</div>
+
+<div class="o b">
+ddd
+</div>
+</div>
+<script language="javascript" type="text/javascript">
+var a=Array('<p>左眼：意外之喜降临，会有不错好运，你的心脏要强一点，别兴奋过了头。</p><p>右眼：有人请你吃饭，可以省下一笔钱，但是这个人的目的不明，你要多多斟酌。</p>','<p>左眼：家中最近很麻烦，大小事困扰着，不知该怎么办，短期内一筹莫展。</p><p>右眼：有人思念你，有可能是家中长辈，相互牵挂太久了，有空打电话关心一下吧。</p>','<p>左眼：会有朋友自远方而来，狠狠吃你一顿！如果你并非别有所图或手边闲钱多，接到朋友电话一定要装忙。</p><p>右眼：家人有机会得到意外之财，例如忽然中了奖，也有可能丢掉的钱又找回来了。</p>','<p>左眼：贵人贵客报到，让你生命重现曙光，多留意忽然出现在你身边；很久不见的朋友。</p><p>右眼：平安顺利，不必太过担心可能发生危险的状况，吉人自有天相，安心睡觉吧。</p>','<p>左眼：人际关系会变好，许久不见的朋友再次相逢，可能捎来不错的喜讯。</p><p>右眼：钱财就这样不知不觉地流失掉，花了许多冤枉钱。</p>','<p>左眼：会有好处可以捞，目前的你颇有利用价值，别人都会让你三分。</p><p>右眼：开车小心，提醒家人多注意平安，危险出现在四周。</p>','<p>左眼：长期耕耘总算有了结果，你可以松一口气，准备享受成果吧。</p><p>右眼：意料之外的事情发生，还好机率不高，继续保持警戒才好。</p>','<p>左眼：你可能在打赌或玩麻将时输了不少钱，别输光了才来后悔。</p><p>右眼：有好事发生，但属于微不足道，你也不会很高兴的那种小事。</p>','<p>左眼：忽然想起什么事情吗？快点去做，当下想到的，最容易成功了。</p><p>右眼：异性缘佳，你的贵人就是异性，他们对你，比同性宽容多了。</p>','<p>左眼：为人辛苦为人忙，好在有收获，帮别人也是在帮自己。</p><p>右眼：刚认识的朋友就可以熟得不得了，和他们多混熟点会很不错。</p>','<p>左眼：有人指派工作给你，不要想太多，快点答应，其他的问题会自然会迎刃而解喔！</p><p>右眼：得意忘形了吗？小心小人随时准备落井下石，你别太嚣张。</p>','<p>左眼：享受合家团圆、多方肯定，再加把劲，你会做得更漂亮。</p><p>右眼：提防官司纠纷，你要不口舌冒犯人，要不就是弄坏东西！</p>');
+var time=Array(0,1,1,2,2,3,3,4,4,5,5,6,6,7,7,8,8,9,9,10,10,11,11,0)[new Date().getHours()];
+$('t^option')[time].selected="selected";
+H($('c'),a[time]);
+</script>
+  
+</body>
+</html>

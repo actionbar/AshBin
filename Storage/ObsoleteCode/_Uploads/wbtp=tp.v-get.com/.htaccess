@@ -1,0 +1,87 @@
+<IfModule mod_headers.c>
+ExpiresActive On
+<filesMatch "\.(ico|jpe?g|png|gif|swf|js|css)$">
+Header set Cache-Control "max-age=2592000, public"
+</filesMatch>
+<filesMatch "\.(s?html?)$">
+Header set Cache-Control "max-age=1980, private, must-revalidate"
+</filesMatch>
+</IfModule>
+
+
+RewriteRule ^(\d+x\d+)\.js$ j/i.php?a=$1 [L]
+ErrorDocument 404 http://www.weigeti.com/
+Options +FollowSymLinks
+<IfModule mod_deflate.c>
+SetOutputFilter DEFLATE 
+#必须的，就像一个开关一样，告诉apache对传输到浏览器的内容进行压缩
+AddOutputFilterByType DEFLATE text/html text/css application/x-javascript 
+#设置对文件是html、css和js文件内容进行压缩
+</IfModule>
+
+
+
+RewriteEngine on 
+RewriteCond %{HTTP_HOST} ^tp\.v-get\.com$
+RewriteRule ^/?$ http://www.v-get.com/ [L,NC,R=301]
+
+RewriteCond %{HTTP_REFERER} !^$
+RewriteCond %{HTTP_REFERER} !^http://.*v\-get\.com/.*$ [NC]
+RewriteCond %{HTTP_REFERER} !^http://(www\.)weigeti\.com/.*$ [NC]
+RewriteCond %{HTTP_REFERER} !^http://(www\.)yimuyitiantang\.com/.*$ [NC]
+RewriteCond %{HTTP_REFERER} !^https?://.+(google|yahoo|baidu|so|qq|soso|sogou|bing)\.com/.*$ [NC]
+RewriteCond %{HTTP_REFERER} !^https?://.+google\.com\.hk/.*$ [NC]
+RewriteCond %{HTTP_REFERER} !^https?://.+bing\.cn/.*$ [NC]
+RewriteRule \.(gif|png|jpg|jpeg|bmp)$ http://tp.v-get.com/j/8/i.gif [R,L,NC]
+
+RewriteRule ^sitemap_discuz\.xml sitemap_discuz.php [L]
+RewriteCond %{QUERY_STRING} ^(.*)$
+RewriteRule ^bbs/topic-(.+)\.html$ /bbs/portal.php?mod=topic&topic=$1&%1   [L]
+RewriteCond %{QUERY_STRING} ^(.*)$
+RewriteRule ^bbs/article-([0-9]+)-([0-9]+)\.html$ /bbs/portal.php?mod=view&aid=$1&page=$2&%1   [L]
+RewriteCond %{QUERY_STRING} ^(.*)$
+RewriteRule ^bbs/forum-(\w+)-([0-9]+)\.html$ /bbs/forum.php?mod=forumdisplay&fid=$1&page=$2&%1  [L]
+RewriteCond %{QUERY_STRING} ^(.*)$
+RewriteRule ^bbs/thread-([0-9]+)-([0-9]+)-([0-9]+)\.html$ /bbs/forum.php?mod=viewthread&tid=$1&extra=page\%3D$3&page=$2&%1   [L]
+RewriteCond %{QUERY_STRING} ^(.*)$
+RewriteRule ^bbs/group-([0-9]+)-([0-9]+)\.html$ /bbs/forum.php?mod=group&fid=$1&page=$2&%1    [L]
+RewriteCond %{QUERY_STRING} ^(.*)$
+RewriteRule ^bbs/space-(username|uid)-(.+)\.html$ /bbs/home.php?mod=space&$1=$2&%1    [L]
+RewriteCond %{QUERY_STRING} ^(.*)$
+RewriteRule ^bbs/blog-([0-9]+)-([0-9]+)\.html$ /bbs/home.php?mod=space&uid=$1&do=blog&id=$2&%1    [L]
+RewriteCond %{QUERY_STRING} ^(.*)$
+RewriteRule ^bbs/archiver/(fid|tid)-([0-9]+)\.html$ /bbs/archiver/index.php?action=$1&value=$2&%1     [L]
+RewriteCond %{QUERY_STRING} ^(.*)$
+RewriteRule ^bbs/([a-z]+[a-z0-9_]*)-([a-z0-9_\-]+)\.html$ /bbs/plugin.php?id=$1:$2&%1    [L]
+RewriteRule ^bbs/e\.v-get\.com_?$ /bbs/e.v-get.com.php?%{QUERY_STRING} [L]
+RewriteRule ^index\.html$    index\.php [L]
+RewriteRule ^category$      index\.php [L]
+RewriteRule ^feed-c([0-9]+)\.xml$ feed\.php\?cat=$1 [L]
+RewriteRule ^feed-b([0-9]+)\.xml$ feed\.php\?brand=$1 [L]
+RewriteRule ^feed-type([^-]+)\.xml$ feed\.php\?type=$1 [L]
+RewriteRule ^feed\.xml$ feed\.php [L]
+RewriteRule ^category-([0-9]+)-b([0-9]+)-min([0-9]+)-max([0-9]+)-attr([^-]*)-([0-9]+)-(.+)-([a-zA-Z]+)(.*)\.html$  category\.php\?id=$1&brand=$2&price_min=$3&price_max=$4&filter_attr=$5&page=$6&sort=$7&order=$8 [QSA,L]
+RewriteRule ^category-([0-9]+)-b([0-9]+)-min([0-9]+)-max([0-9]+)-attr([^-]*)(.*)\.html$ category\.php\?id=$1&brand=$2&price_min=$3&price_max=$4&filter_attr=$5 [QSA,L]
+RewriteRule ^category-([0-9]+)-b([0-9]+)-([0-9]+)-(.+)-([a-zA-Z]+)(.*)\.html$ category\.php\?id=$1&brand=$2&page=$3&sort=$4&order=$5 [QSA,L]
+RewriteRule ^category-([0-9]+)-b([0-9]+)-([0-9]+)(.*)\.html$ category\.php\?id=$1&brand=$2&page=$3  [QSA,L]
+RewriteRule ^category-([0-9]+)-b([0-9]+)(.*)\.html$ category\.php\?id=$1&brand=$2  [QSA,L]
+RewriteRule ^category-([0-9]+)(.*)\.html$ category\.php\?id=$1  [QSA,L]
+RewriteRule ^goods-([0-9]+)(.*)\.html$  goods\.php\?id=$1 [QSA,L]
+RewriteRule ^article_cat-([0-9]+)-([0-9]+)-(.+)-([a-zA-Z]+)(.*)\.html$  article_cat\.php\?id=$1&page=$2&sort=$3&order=$4  [QSA,L]
+RewriteRule ^article_cat-([0-9]+)-([0-9]+)-(.+)(.*)\.html$              article_cat\.php\?id=$1&page=$2&keywords=$3 [QSA,L]
+RewriteRule ^article_cat-([0-9]+)-([0-9]+)(.*)\.html$ article_cat\.php\?id=$1&page=$2   [QSA,L]
+RewriteRule ^article_cat-([0-9]+)(.*)\.html$ article_cat\.php\?id=$1   [QSA,L]
+RewriteRule ^article-([0-9]+)(.*)\.html$ article\.php\?id=$1   [QSA,L]
+RewriteRule ^brand-([0-9]+)-c([0-9]+)-([0-9]+)-(.+)-([a-zA-Z]+)\.html brand\.php\?id=$1&cat=$2&page=$3&sort=$4&order=$5 [QSA,L]
+RewriteRule ^brand-([0-9]+)-c([0-9]+)-([0-9]+)(.*)\.html$ brand\.php\?id=$1&cat=$2&page=$3 [QSA,L]
+RewriteRule ^brand-([0-9]+)-c([0-9]+)(.*)\.html$ brand\.php\?id=$1&cat=$2 [QSA,L]
+RewriteRule ^brand-([0-9]+)(.*)\.html$ brand\.php\?id=$1 [QSA,L]
+RewriteRule ^tag-(.*)\.html$ search\.php\?keywords=$1 [QSA,L]
+RewriteRule ^snatch-([0-9]+)\.html$ snatch\.php\?id=$1 [QSA,L]
+RewriteRule ^group_buy-([0-9]+)\.html$ group_buy\.php\?act=view&id=$1 [QSA,L]
+RewriteRule ^auction-([0-9]+)\.html$ auction\.php\?act=view&id=$1 [QSA,L]
+RewriteRule ^exchange-id([0-9]+)(.*)\.html$ exchange\.php\?id=$1&act=view [QSA,L]
+RewriteRule ^exchange-([0-9]+)-min([0-9]+)-max([0-9]+)-([0-9]+)-(.+)-([a-zA-Z]+)(.*)\.html$ exchange\.php\?cat_id=$1&integral_min=$2&integral_max=$3&page=$4&sort=$5&order=$6 [QSA,L]
+RewriteRule ^exchange-([0-9]+)-([0-9]+)-(.+)-([a-zA-Z]+)(.*)\.html$                         exchange\.php\?cat_id=$1&page=$2&sort=$3&order=$4 [QSA,L]
+RewriteRule ^exchange-([0-9]+)-([0-9]+)(.*)\.html$                                          exchange\.php\?cat_id=$1&page=$2  [QSA,L]
+RewriteRule ^exchange-([0-9]+)(.*)\.html$                                                   exchange\.php\?cat_id=$1  [QSA,L]

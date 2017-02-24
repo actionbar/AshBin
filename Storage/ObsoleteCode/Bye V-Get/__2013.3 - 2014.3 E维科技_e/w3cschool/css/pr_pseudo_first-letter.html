@@ -1,0 +1,155 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="../c3.css" />
+<title>CSS :first-letter 伪元素</title>
+</head>
+<body class="html">
+<div id="wrapper">
+<div id="header">
+<a href="http://e.v-get.com/w3cschool/" style="float:left;">W3CSchool 在线教程</a>
+<div class="q g"><script type="text/javascript">var cpro_id="u1163355"</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div>
+<div id="navfirst">
+<ul id="menu">
+<li id="h"><a href="../h.html">HTML教程</a></li>
+<li id="x"><a href="../x.html">XML教程</a></li>
+<li id="b"><a href="../b.html">浏览器脚本</a></li>
+<li id="s"><a href="../s.html">服务器脚本</a></li>
+<li id="d"><a href="../d.html">dot net教程</a></li>
+<li id="m"><a href="../m.html">多媒体教程</a></li>
+<li id="w"><a href="../w.html">建站手册</a></li>
+</ul>
+</div><div id="navsecond">
+<div id="course">
+<h2>CSS 基础</h2>
+<ul>
+<li><a href="http://e.v-get.com/w3cschool/">CSS 教程</a></li>
+<li><a href="css_intro.html">CSS 简介</a></li>
+<li><a href="css_syntax_01.html">CSS 基础语法</a></li>
+<li><a href="css_syntax_02.html">CSS 高级语法</a></li>
+<li><a href="css_syntax_03.html">CSS 派生选择器</a></li>
+<li><a href="css_syntax_04.html">CSS id 选择器</a></li>
+<li><a href="css_syntax_05.html">CSS 类选择器</a></li>
+<li><a href="css_howto.html">CSS How To</a></li>
+<li><a href="css_background.html">CSS 背景</a></li>
+<li><a href="css_text.html">CSS 文本</a></li>
+<li><a href="css_font.html">CSS 字体</a></li>
+<li><a href="css_list.html">CSS 列表</a></li>
+<li><a href="css_table.html">CSS 表格</a></li>
+</ul>
+<h2>CSS 框模型</h2>
+<ul>
+<li><a href="css_boxmodel.html">CSS 框模型概述</a></li>
+<li><a href="css_padding.html">CSS 内边距</a></li>
+<li><a href="css_border.html">CSS 边框</a></li>
+<li><a href="css_margin.html">CSS 外边距</a></li>
+<li><a href="css_margin_collapsing.html">CSS 外边距合并</a></li>
+</ul>
+<h2>CSS 定位</h2>
+<ul>
+<li><a href="css_positioning.html">CSS 定位概述</a></li>
+<li><a href="css_positioning_relative.html">CSS 相对定位</a></li>
+<li><a href="css_positioning_absolute.html">CSS 绝对定位</a></li>
+<li><a href="css_positioning_floating.html">CSS 浮动</a></li>
+</ul>
+<h2>CSS 高级</h2>
+<ul>
+<li><a href="css_dimension.html">CSS 尺寸</a></li>
+<li><a href="css_classification.html">CSS 分类</a></li>
+<li><a href="css_pseudo_classes.html">CSS 伪类</a></li>
+<li><a href="css_pseudo_elements.html">CSS 伪元素</a></li>
+<li><a href="css_mediatypes.html">CSS 媒介类型</a></li>
+<li><a href="css_dont.html">CSS Don't</a></li>
+<li><a href="css_summary.html">CSS 总结</a></li>
+</ul>
+<h2>CSS 实例</h2>
+<ul>
+<li><a href="../example/csse_examples.html">CSS 实例</a></li>
+</ul>
+<h2>参考手册</h2>
+<ul>
+<li><a href="css_reference.html">CSS2 参考手册</a></li>
+<li><a href="css_ref_print.html">CSS2 打印</a></li>
+<li><a href="css_ref_aural.html">CSS2 听觉</a></li>
+<li><a href="css_units.html">CSS2 单位</a></li>
+</ul>
+<h2>CSS Quiz</h2>
+<ul>
+<li><a href="css_quiz.html">CSS 测验</a></li>
+</ul>
+</div>
+<div id="selected">
+<h2>建站手册</h2>
+<ul>
+<li><a href="../site/">网站构建</a></li>
+<li><a href="../w3c/">万维网联盟</a></li>
+<li><a href="http://e.v-get.com/w3c/">W3CSchool 教程</a></li>
+<li><a href="../quality/">网站品质</a></li>
+<li><a href="../semweb/">语义网</a></li>
+<li><a href="../hosting/">网站主机</a></li>
+</ul>
+<h2><a href="http://e.v-get.com/w3c/" class="f13">W3CSchool 教程</a></h2><div class="a120x90"><script type="text/javascript">var cpro_id="u1210867";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div></div>
+</div>
+<div id="maincontent">
+<h1>CSS :first-letter 伪元素</h1>
+<div class="backtoreference">
+<p><a href="css_reference.html">返回 CSS 参考手册</a></p>
+</div>
+<div>
+<h2>定义</h2>
+<p><em>:first-letter</em> 伪元素向文本的第一个字母添加特殊样式。</p>
+<p>这个伪元素用于指定一个元素第一个字母的样式。所有前导标点符号应当与第一个字母一同应用该样式。某些语言有一些要处理为单个字符的字母组合，如果是这样，用户代理可能会把首字母同时应用到这个字母组合。</p>
+<p>在 CSS2.1 之前，:first-letter 只能与块级元素关联。CSS2.1 扩大了这个范围，可以与任何元素关联。可以应用到首字母的属性是有限的。</p>
+</div>
+<div>
+<h2>例子</h2>
+<pre>p {font-size: 12pt}
+p:first-letter {color:#ff0000;font-size:xx-large}
+&lt;p&gt;The first words of an article...&lt;/p&gt;</pre>
+ 
+<p class="note"><span>注释：</span>下列属性应用于 :first-letter 伪元素：</p>
+<ul>
+<li>font 属性</li>
+<li>color 属性 </li>
+<li>background 属性</li>
+<li>margin 属性</li>
+<li>padding 属性</li>
+<li>border 属性</li>
+<li>text-decoration
+<li>vertical-align (仅当 'float' 为 'none' 时) </li>
+<li>text-transform</li>
+<li>line-height</li>
+<li>float</li>
+<li>clear</li>
+</ul>
+<p>伪元素可与 CSS 类结合：</p>
+<pre>p.article:first-line {color: #FF0000}
+&lt;p class=&#34;article&#34;&gt;A paragraph in an article&lt;/p&gt;</pre>
+ 
+<p>本例将把所有 class=&#34;article&#34; 的段落的第一个字母设置为 red。</p>
+</div>
+<div class="example">
+<h2>TIY 实例</h2>
+<dl>
+<dt><a href="../tiy/t_217.html">向首字母添加样式</a></dt>
+<dt><a href="../tiy/t_723.html">向首字母和首行添加样式</a></dt>
+</dl>
+</div>
+<div class="backtoreference">
+<p><a href="css_reference.html">返回 CSS 参考手册</a></p>
+</div>
+</div>
+<div id="sidebar">
+<div class="rs"></div>
+<div id="tools">
+<h5 id="tools_reference"><a href="css_reference.html">CSS 参考手册</a></h5>
+<h5 id="tools_example"><a href="../example/csse_examples.html">CSS 实例</a></h5>
+<h5 id="tools_quiz"><a href="css_quiz.html">CSS 测验</a></h5>
+</div>
+<div class="a120x600"><script type="text/javascript">var cpro_id="u1293136";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div><div class="b"></div>
+</div>
+</body>
+</html>

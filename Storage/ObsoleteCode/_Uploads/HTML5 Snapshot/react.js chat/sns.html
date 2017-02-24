@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>后台</title>
+  <link href="res/ext/aa.css" type="text/css" rel="stylesheet">
+  <link href="res/css/admin/admin.css" type="text/css" rel="stylesheet">
+  <link href="res/css/admin/index.css" type="text/css" rel="stylesheet">
+  <link href="res/css/admin/inquiry.css" type="text/css" rel="stylesheet">
+
+  <link href="res/css/admin/sign.css" type="text/css" rel="stylesheet">
+
+
+  <script src="res/js/conf.js"></script>
+  <script src="res/ext/jquery-2.1.4.min.js"></script>
+<!--   <script src="res/js/admin/sign.js?i=100"></script> -->
+
+
+  <script src="res/ext/data-aa.js"></script>
+  <script src="res/ext/errcode.js?i=100"></script>
+  <script src="res/js/errhandle.js?i=100"></script>
+  <!-- <script src="res/js/admin/sign_handle.js?i=100"></script> -->
+
+
+  <script src="res/ext/react-0.13.3/build/react.js"></script>
+  <script src="res/ext/react-0.13.3/build/JSXTransformer.js"></script>
+
+
+  <script src="res/js/admin/index.js"></script>
+  <script src="res/js/admin/leftsub.js"></script>
+
+</head>
+<body>
+
+<div class="sign-box">
+  <div class="sign-box-nav">
+    <nav class="a">
+      <a href="">登陆</a>
+    </nav>
+  </div>
+
+  <form class="sign-form" id="sign_form" data-lef="" method="post">
+    <ul>
+      <li class="sign-input-box">
+        <input type="text"
+               data-lef-regexp="\d{11}"
+               data-lef-errmsg="手机号码输入错误"
+               placeholder="请输入您的手机号"
+               value="18123456789"
+               class="sign-in-account"
+               name="account">
+      </li>
+      <li class="sign-input-box">
+        <input type="password" placeholder="请输入密码"
+               data-lef-lenrange="6,"
+               data-lef-errmsg="密码输入错误"
+               value="123456"
+               name="passwd">
+      </li>
+      <li><input type="checkbox" checked="checked"> 记住登陆</li>
+      <li><input type="submit" value="登陆" class="sign-in-submit"></li>
+    </ul>
+  </form>
+
+  <footer class="a sign-box-footer">
+    <a class="sign-third-party-qq">
+      <span>QQ账号登陆</span>
+    </a>
+    <a class="sign-third-party-weibo">
+      <span>新浪微博登陆</span>
+    </a>
+  </footer>
+</div>
+<div class="sign-fade-in"></div>
+
+
+<div class="o">
+
+
+
+
+  <div class="p r">
+    <div class="rt">
+
+
+
+
+
+
+
+      <div id="content">
+        聊天
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+
+
+<script type="text/jsx" src="res/js/admin/avatar.jsx"></script>
+
+
+<script type="text/jsx" src="res/js/admin/inquiry.jsx"></script>
+<script type="text/jsx">
+
+/*** 仅用于snapshot 展示 **/
+ $('#sign_form').on('submit', function(e){
+  e.preventDefault();
+  $('.sign-box').hide();
+  $('.sign-fade-in').hide();
+});
+/*** 仅用于snapshot 展示 **/
+
+
+
+  var InquiryInfo = {
+    inquiryId: 100
+  };
+
+
+  var inquiry_url = Conf.host + "/v0/?c=Talk";
+  React.render(
+    <InquiryFrame url={inquiry_url} inquiryId={InquiryInfo.inquiryId}/>,
+    document.getElementById('content')
+  );
+
+</script>
+
+</body>
+</html>

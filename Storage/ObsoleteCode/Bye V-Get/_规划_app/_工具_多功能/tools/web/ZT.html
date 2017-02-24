@@ -1,0 +1,430 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>论坛转帖工具</title>
+<meta name="keywords" content="论坛转帖工具">
+<meta content="论坛转帖工具" name="description" />
+<link href="../images/style.css" rel="stylesheet" type="text/css" />
+<style type="text/css">
+<!--
+body {margin:0; padding:0;background: #FFF url('../images/top3.gif') repeat-x top; font-size:12px;color:#666}
+.style1 {font-size: 14px}
+-->
+</style>
+<script language=javascript>
+<!--
+function SymError()
+{
+	return true;
+}
+window.onerror = SymError;
+//-->
+</script>
+<script language="JavaScript" src="bbcode.js"></script>
+<script language="javascript1.2">
+function delnull(){
+var str=document.getElementById('text').value;
+str=str.replace(/([\s]*\r\n[\s]*){2,}/gm,"\r\n");
+document.getElementById('text').value=str;
+}
+function refix(){
+var str=document.getElementById('text').value;
+str=str.replace(/([\s]*\r\n[\s]*){2,}/gm,"\r\n\r\n");
+document.getElementById('text').value=str;
+}
+function url(){
+var str=document.getElementById('text').value;
+str=str.replace(/^[ ]*(http:\/\/|^mms:\/\/|rtsp:\/\/|pnm:\/\/|ftp:\/\/|mmst:\/\/|mmsu:\/\/)([^\r\n]*)$/igm,"[url]$1$2[/url]");
+document.getElementById('text').value=str;
+}
+
+function addbr(){
+var str=document.getElementById('text').value;
+str=str.replace(/\r\n/gm,"\r\n\r\n");
+document.getElementById('text').value=str;
+}
+
+function html_trans(str){
+str = str.replace(/\r/g,"");
+str = str.replace(/on(load|click|dbclick|mouseover|mousedown|mouseup)=("|')?[^>]+?\2(?: |>)/ig,"");
+str = str.replace(/<script[^>]*?>([\w\W]*?)<\/script>/ig,"");
+
+if(set.fontbash.checked){
+str = str.replace(/<span[^>]*?display\s*?:\s*?none[^>]*?>([\w\W]*?)<\/span>/ig,"");
+str = str.replace(/<span[^>]*?font\s*?-\s*?size\s*?:\s*(0px|0pt)[^>]*?>([\w\W]*?)<\/span>/ig,"");
+str = str.replace(/<font([^>]+)(0px|0pt)+([^>]*)>([\w\W]*?)<\/font>/ig,"");
+}
+
+if(set.filtrate.checked){
+str = str.replace(/[^<]*<([^>]*?)>[^<]*/ig,"<$1>");
+var re = /<img[^>]+src=("|')?([^>]+?)\1[^>]*>/gi
+//var re = new RegExp(strtm,"ig");
+str = str.replace(re,"[img]$2[/img]\r\n\r\n");
+}
+else{
+if(set.stext.checked) str = str.replace(/[^<]*<([^>]*?)>[^<]*/ig,"<$1>");
+
+if(!set.linka.checked) str = str.replace(/<a[^>]+href=[" ]?([^"]+)[" ]?[^>]*>(.*?)<\/a>/ig,"[url=$1]$2[/url]");
+if(!set.font_color.checked&&!set.stext.checked)
+str = str.replace(/<font([^>]+)color=([^ >]+)([^>]*)>(.*?)<\/font>/ig,"[color=$2]<font$1$3>$4</font>[/color]");
+if(!set.font_size.checked&&!set.stext.checked)
+str = str.replace(/<font([^>]+)size=([^ >]+)([^>]*)>(.*?)<\/font>/ig,"[size=$2]<font$1$3>$4</font>[/size]");
+if(!set.font_face.checked&&!set.stext.checked)
+str = str.replace(/<font[^>]+face=([^ >]+)[^>]*>(.*?)<\/font>/ig,"[font=$1]$2[/font]");
+if(!set.img.checked) str = str.replace(/<img[^>]+src=[" ]?([^"]+)[" ]?[^>]*>/ig,"\n[img]$1[/img]\n");
+
+if(!set.odj.checked){
+str = str.replace(/<object[^>]*?6BF52A52\-394A\-11d3\-B153\-00C04F79FAA6[^>]*?>.*<param[^>]+name\s*=\s*["](url|src)["][^>]+value=[" ]?([^"]+)[" ][^>]*>.*<\/object>/ig,"\n[wmv]$2[/wmv]\n"); 
+str = str.replace(/<object[^>]*?D27CDB6E\-AE6D\-11cf\-96B8\-444553540000[^>]*?>.*<param[^>]+name\s*=\s*["](url|src)["][^>]+value=[" ]?([^"]+)[" ][^>]*>.*<\/object>/ig,"\n[swf]$2[/swf]\n");
+str = str.replace(/<embed[^>]*type=["]?application\/x\-shockwave\-flash["]?[^>]*src=[" ]?([^"|^ ]+)[" ]?[^>]*>/ig,"\n[swf]$1[/swf]\n");
+str = str.replace(/<embed[^>]*src=["]?([^"|^ ]+)["]?[^>]*type=["]?application\/x\-shockwave\-flash["]?[^>]*>/ig,"\n[swf]$1[/swf]\n");
+str = str.replace(/<object[^>]*?CFCDAA03\-8BE4\-11cf\-B84B\-0020AFBBCCFA[^>]*?>.*<param[^>]+name\s*=\s*["](url|src)["][^>]+value=[" ]?([^"]+)[" ][^>]*>.*<\/object>/ig,"\n[rm]$2[/rm]\n"); 
+}
+if(!set.font_b.checked&&!set.stext.checked){
+str = str.replace(/<([\/]?)b>/ig,"[$1b]");
+str = str.replace(/<([\/]?)strong>/ig,"[$1b]");}
+if(!set.font_u.checked&&!set.stext.checked)
+str = str.replace(/<([\/]?)u>/ig,"[$1u]");
+if(!set.font_i.checked&&!set.stext.checked)
+str = str.replace(/<([\/]?)i>/ig,"[$1i]");
+
+str = str.replace(/&nbsp;/g," ");
+str = str.replace(/&amp;/g,"&");
+str = str.replace(/&quot;/g,"\"");
+str = str.replace(/&lt;/g,"<");
+str = str.replace(/&gt;/g,">");
+}
+str = str.replace(/<br>/ig,"\n");
+str = str.replace(/<p[^>]*?>/ig,"\n\n");
+str = str.replace(/<[^>]*?>/g,"");
+str = str.replace(/\[url=([^\]]+)\]\n(\[img\]\1\[\/img\])\n\[\/url\]/g,"$2");
+str = str.replace(/\n+/g,"\n");
+
+return str;
+}
+
+function copycode(obj){
+obj.select();
+objcopy=obj.createTextRange();
+objcopy.execCommand("Copy");
+}
+
+function trans(){
+var str = "";
+rtf.focus();
+rtf.document.body.innerHTML = "";
+rtf.document.execCommand("paste");
+str = rtf.document.body.innerHTML;
+if(str.length == 0) {
+alert("剪贴版不存在超文本数据！");
+return "";
+}
+return html_trans(str);
+}
+
+function preview(){
+var s = document.getElementById('text').value;
+var prewin=window.open("","","");
+prewin.document.write(bbcode2html(s));
+}
+
+function zhen(str){
+strfound=str.replace(/\\/ig,"\\\\");
+strfound=strfound.replace(/\[/ig,"\\[");
+strfound=strfound.replace(/\]/ig,"\\]");
+strfound=strfound.replace(/\{/ig,"\\{");
+strfound=strfound.replace(/\}/ig,"\\}");
+strfound=strfound.replace(/\|/ig,"\\|");
+strfound=strfound.replace(/\//ig,"\\/");
+strfound=strfound.replace(/\^/ig,"\\^");
+strfound=strfound.replace(/\./ig,"\\.");
+strfound=strfound.replace(/\*/ig,"\\*");
+strfound=strfound.replace(/\?/ig,"\\?");
+strfound=strfound.replace(/\+/ig,"\\+");
+return strfound;
+}
+
+function replace_star(){
+var str=document.getElementById('text').value;
+if(!reg.checked)
+strfound=zhen(find_text.value);
+else
+strfound=find_text.value;
+var re = new RegExp(strfound,"ig");
+str=str.replace(re,replace_text.value);
+document.getElementById('text').value=str;
+}
+</script>
+
+</HEAD>
+<BODY>
+<table width="960" height="75" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td width="264" rowspan="2" align="center"><a href="../index.html">
+	<img src="../images/logo.gif" width="224" height="38" border="0" /></a></td>
+    <td height="24" valign="top">
+	<table width="321" height="24" border="0" align="right" cellpadding="0" cellspacing="0" background="../images/top2.gif">
+        <tr>
+          <td align="center" class="cwhite12"><a href="#" class="cwhite12">tools.kqiqi.com</a>　<a href="#" OnClick='this.style.behavior="url(#default#homepage)";this.setHomePage("http://tools.kqiqi.com");' class="cwhite12">设为首页</a> | <a href="#" onClick="window.external.AddFavorite('http://tools.kqiqi.com','客齐齐实用查询工具');" class="cwhite12">收藏本站</a></td>
+        </tr>
+    </table></td>
+  </tr>
+</table>
+<table width="960" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td><table height="38" border="0" cellpadding="0" cellspacing="0" style="margin-left:5px">
+      <tr align="center">
+          <td width="88" background="../images/nav1.gif" style="padding-top:5px"><a href="../index.html" class="navfh2">首　页</a></td>
+          <td width="88" background="../images/nav1.gif" style="padding-top:5px"><a href="../admin/index.html" class="navfh2">站长工具</a></td>
+          <td width="88" background="../images/nav1.gif" style="padding-top:5px"><a href="../query/index.html" class="navfh2">查询工具</a></td>
+          <td width="88" background="../images/nav1.gif" style="padding-top:5px"><a href="../calculation/index.html" class="navfh2">计算工具</a></td>
+          <td width="88" background="../images/nav1.gif" style="padding-top:5px"><a href="../password/index.html" class="navfh2">加密解密</a></td>
+          <td width="88" background="../images/nav1.gif" style="padding-top:5px"><a href="../conversion/index.html" class="navfh2">转换工具</a></td>
+          <td width="88" background="../images/nav1.gif" style="padding-top:5px"><a href="../color/index.html" class="navfh2">颜色工具</a></td>
+          <td width="88" background="../images/nav2.gif" style="padding-top:5px"><a href="index.html" class="navfh1">网络辅助</a></td>
+          <td width="88" background="../images/nav1.gif" style="padding-top:5px"><a href="../picture/index.html" class="navfh2">图片工具</a></td>
+          <td width="88" background="../images/nav1.gif" style="padding-top:5px"><a href="../others/index.html" class="navfh2">其它工具</a></td>
+        </tr>
+    </table></td>
+  </tr>
+</table>
+<script language="javascript" src="../js/others_top.js"></script>
+<table width="960" border="0" align="center" cellpadding="0" cellspacing="0" class="mainbg1">
+  <tr valign="top">
+    <td width="20">　</td>
+    <td width="190">
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td colspan="2" height="10">
+
+</td>
+</tr>
+      <tr>
+        <td width="75%">
+		<img src="../images/t9.gif" width="32" height="32" align="absmiddle" />　<span class="navfh1">工具列表</span></td>
+        <td width="25%">　</td>
+      </tr>
+    </table>
+     <table width="100%"  border="0" cellpadding="0" cellspacing="0" background="../images/t12.gif" class="mar5">
+        <tr>
+          <td height="10"> </td>
+        </tr>
+      </table>
+<table width="100%"  border="0" cellpadding="0" cellspacing="0" class="mar5">
+      <tr>
+        <td>　
+ <div id="menu">
+ <div class="box">
+    <a href="ZT.html">超级转贴工具
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+
+  <div class="box">
+    <a href="PicAssistant.html">有序图片助手
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+    <div class="box">
+    <a href="FadeColor.html">色彩渐变代码
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+  <div class="box">
+    <a href="PYInPut.html">简体拼音输入法
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+  <div class="box">
+    <a href="WBInPut.html">简体五笔输入法
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+  <div class="box">
+    <a href="SPInPut.html">简体双拼输入法
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+  <div class="box">
+    <a href="ZYInPut.html">简体注音输入法
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+  <div class="box">
+    <a href="CJInPut.html">简体仓颉输入法
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+<div class="box">
+    <a href="DMInPut.html">老式导码输入法
+      <span class="left"></span>
+      <span class="right"></span>
+    </a>
+  </div>
+</div>
+ </td>
+      </tr>
+    </table>
+
+      <table width="100%" height="17"  border="0" cellpadding="0" cellspacing="0" background="t2.gif" class="mar5">
+        <tr>
+          <td> </td>
+        </tr>
+      </table>
+      
+    </td>
+    <td width="27">　</td>
+    <td width="700">
+     
+            <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+          <tr>
+      <td height="10" colspan="2">
+      </td>
+      </tr>
+        <tr valign="top">
+         <td width="40"><img src="../images/bang.gif" width="32" height="31"> </td>
+          <td><span class="navfh1">论坛转帖工具</span></td>
+          
+        </tr>
+      </table>
+      <hr size="1" style="color:#E3E8E9" />
+      <table width="100%"  border="0" cellpadding="3" cellspacing="1">
+              <tr>
+          <td>
+             <table border="1" bordercolor="#6699CC" cellspacing="0" width="700" align="center" cellpadding="2">
+	<tr height=10><td bgcolor="#6699CC" align="center"><font color="#FFFFFF"><b>论坛转帖工具</b></font> &nbsp; <a class="a1" href="javascript:window.external.addfavorite('http://tools.kqiqi.com/web/zt.html', '论坛转帖工具')">←【加入收藏夹】</a></td></tr>
+	<tr>
+		<td align=middle bgcolor=#f6f6f6>
+			<textarea class=textarea onbeforepaste="if(document.getElementById('x_paste').checked){window.clipboardData.setData('text',trans());this.focus();}" id=text style="width:580px;height:200px" name=textarea rows=1 cols=100></textarea>
+			<iframe id=rtf style="width:0px;height:0px" marginWidth=0 marginHeight=0 src="about:blank" scrolling=no></iframe>
+			<label for=x_paste></label>
+			<table borderColor=#f6f6f6 cellSpacing=1 width=600 align=center border=0>
+				<tr valign=center align=middle>
+					<td width=80 height=44><input style="width:80px;height:40px" onclick="document.getElementById('text').value += trans();" type=button value=转换(追加) name=button></td>
+					<td width=80><input style="width:80px;height:40px" onclick="document.getElementById('text').value = trans()" type=button value=转换(覆盖) name=button></td>
+					<td width=85><input style="width:85px;height:40px" onclick=copycode(window.text) type=button value=复制到剪贴板></td>
+					<td width=85>
+						<table cellSpacing=2 cellPadding=0 width=0 border=0>
+							<tr>
+								<td><input style="width:85px;height:20px" onclick="preview()" type="button" value="预览帖子"></td>
+							</tr>
+							<tr>
+								<td><input style="width:85px;height:20px" onclick="document.getElementById('text').value=''" type=button value="清空内容"></td>
+							</tr>
+						</table>
+					</td>
+					<td width=170>
+						<table cellSpacing=2 cellPadding=0 width="100%" border=0>
+							<tr>
+								<td><input title="自动分析所有超链接，并转换成超链接格式&#13;&#10;注意：超链接必须单独在一行中！" style="width:80px;" onclick=url() type=button value=分析超链接 name=Submit></td>
+								<td><input title="紧凑格式，删除所有空行" style="width:80px;" onclick=delnull() type=button value=清除空行 name=Submit></td>
+							</tr>
+							<tr>
+								<td><input title="清除多余的空行，保持最一个空行" style="width:80px;" onclick=refix() type=button value=清除多余 name=Submit></td>
+								<td><input title="为每一行（包括空行）增加一空行" style="width:80px;" onclick=addbr() type=button value=增加空行 name=Submit></td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+			</table>
+			<table cellSpacing=5 cellPadding=0 width=620 border=0>
+				<form name=set>
+				<tr align="left">
+					<td title=转换的结果中将不含有图片信息 width="120" height=20><label for=img><input id=img type=checkbox>屏蔽图片</label></td>
+					<td title=转换的结果中将不含有链接信息 width="120"><label for=linka><input id=linka type=checkbox>屏蔽超链接</label></td>
+					<td title=转换的结果中将不含音频、视频、FLASH等信息 width="120"><label for=odj><input id=odj type=checkbox>屏蔽对象</label></td>
+					<td title=转换的结果中将不含文本信息，同时字体属性将被自动屏蔽 width="120"><label for=stext><input id=stext type=checkbox>屏蔽文字</label></td>
+					<td title="为了方便帖子的阅读，强制把图片用空行隔开" width="120"><label for=filtrate><input id=filtrate onclick="if(this.checked)window.base_url.style.display='block';else window.base_url.style.display='none';" type=checkbox>启用图片过滤</label></td>
+				</tr><tr align="left">
+					<td title=屏蔽所有定字体相关的属性><label for=font><input id=font onclick=font_color.checked=this.checked;font_size.checked=this.checked;font_face.checked=this.checked;font_b.checked=this.checked;font_i.checked=this.checked;font_u.checked=this.checked; type=checkbox>屏蔽字体属性</label></td>
+					<td title=屏蔽所有定字体相关的属性><label><input id=fontbash type=checkbox CHECKED value=checkbox>屏蔽干扰码</label></td>
+					<td title=转换的结果中将不含有字体颜色信息><label for=font_color><input id=font_color type=checkbox>屏蔽字颜色</label></td>
+					<td title=转换的结果中将不含有字体尺寸信息><label for=font_size><input id=font_size type=checkbox>屏蔽字体尺寸</label></td>
+					<td title=转换的结果中将不含有字体类型信息><label for=font_face><input id=font_face type=checkbox>屏蔽字体类型</label></td>
+				</tr><tr align="left">
+					<td title=转换的结果中将不含有粗体信息><label for=font_b><input id=font_b type=checkbox>屏蔽粗体</label></td>
+					<td title=转换的结果中将不含有斜体信息><label for=font_i><input id=font_i type=checkbox>屏蔽斜体</label></td>
+					<td title=转换的结果中将不含有下划线信息><label for=font_u><input id=font_u type=checkbox>屏蔽下划线</label></td>
+					<td>　</td>
+					<td>　</td>
+				</tr>
+				</form>
+			</table>
+			<table id="base_url" style="display: none;" border="0" cellpadding="2" cellspacing="0" width="100%">
+				<tr>
+					<td align="left" style="padding-left:30px"><font color="#006600">仅保留图片，图片之间换行隔开</font><hr color="#000000" size="1" width="100%">
+					</td>
+				</tr>
+			</table>
+			<table borderColor=#efefef cellSpacing=2 cellPadding=2 width=600 bgcolor=#f6f6f6 border=0>
+				<tr>
+					<td>查找 <input id=find_text size=36 name=find_text></td>
+					<td width="60"><input onclick="set.reset();find_text.value='';replace_text.value='';window.textfield.value='';" type=button value=恢复默认 name=submit></td>
+					<td width="140" rowspan=2 align=middle><label for=reg><input id=reg type=checkbox checked value=1 name=reg>使用正则语法</label></td>
+				</tr>
+				<tr>
+					<td>替换 <input id=replace_text size=36 name=replace_text></td>
+					<td><input onclick=replace_star() type=button value="开始替换" name=submit></td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+	<tr bgcolor=#f8f8f8>
+		<td>
+			<table cellSpacing=0 cellPadding=0 width=600 align=center border=0>
+				<tr>
+					<td><p><b>转贴工具使用说明：</b><br>
+				1.在网页中拖动鼠标选中你想要的图片或文字，然后鼠标右键“复制(C)”或按Ctrl+C。<br>
+				2.进入该页面，直接按下“转换（追加）”或者“转换（覆盖）”。<br>
+				3.点击“复制到剪贴板”,将代码复制到剪贴板。<br>
+				4.进入论坛发贴页面，鼠标右键“粘贴(P)”或按Ctrl+V将帖子内容复制到帖子内容框。</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+<script>
+rtf.document.designMode="On";
+</script>
+   
+          </td>
+        </tr>
+        </table>
+      <br />
+         <script type="text/javascript" src="../js/wz.js"></script>
+         <script type="text/javascript" src="../js/Copy.js"></script>
+           
+      <br />
+      </td>
+    <td width="20">　</td>
+  </tr>
+</table>
+<table width="960" border="0" align="center" cellpadding="0" cellspacing="0" class="mainbg2">
+  <tr>
+    <td height="25"></td>
+  </tr>
+</table>
+
+<table width="960" border="0" align="center" cellpadding="0" cellspacing="0" class="mainbg2">
+  <tr>
+    <td><table width="920"  border="0" align="center" cellpadding="0" cellspacing="20" class="bottombg">
+    <tr>
+        <td align="center">
+          Copyright &copy; <a href="http://tools.kqiqi.com/">客齐齐实用查询工具</a> All rights reserved - <a href="../map.html">网站地图</a> - <a href="../contact.html">联系我们</a> - <script language="javascript" src="../js/bottom.js"></script>
+          </td>
+      </tr>
+    </table></td>
+  </tr>
+</table>
+</body>
+</html>

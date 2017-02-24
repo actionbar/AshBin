@@ -1,0 +1,24 @@
+<public:component tagName="abc" urn="rdl:demo">
+<attach event="ondocumentready" handler="rdl_doReady" />
+<attach event="onmouseover" handler="rdl_doOver" />
+<attach event="onmouseout" handler="rdl_doOut" />
+<script>
+
+function rdl_doReady() {
+element.style.backgroundColor="#99CCFF";
+}
+
+function rdl_doOver() {
+element.style.backgroundColor="#EFEFEF";
+}
+
+function rdl_doOut() {
+element.style.backgroundColor="#99CCFF";
+}
+
+/* Part of RDL(TM) - Written by Rain1977 */
+/* HomeSite: http://www.dhtmlet.com  E-Mail: dhtmlet@hotmail.com */
+
+</script>
+
+</public:component>

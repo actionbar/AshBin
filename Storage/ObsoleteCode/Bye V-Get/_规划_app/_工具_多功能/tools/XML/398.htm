@@ -1,0 +1,126 @@
+<html>
+<head>
+<title>根据DTD的合法性检验</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+
+<link rel = stylesheet href = "image/style.css">
+</head>
+<body bgcolor="#ffffff">
+<table width="688" border="0" cellspacing="0" cellpadding="0" align="center">
+  <tr bgcolor="EEEEEE"> 
+    <td height="22"><a href="index.htm">主页</a></td>
+  </tr>
+</table><br>
+<table border="0" cellpadding="0" cellspacing="0" width="688" align="center" height="490">
+  <tr valign="top"> 
+    <td rowspan="4" width="91">&nbsp; </td>
+    <td height="68" width="131"> 
+      <p><img src="image/doc.gif"></p>
+    </td>
+    <td rowspan="4" width="18"><b></b> </td>
+    <td height="68" width="387"><img src="image/title_doc.gif"></td>
+    <td rowspan="4" width="61"> 
+      <h6>&nbsp;</h6>
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td rowspan="3" valign="top" class="pt10" align="center" width="131" bgcolor="EEEEEE"> 
+      <p>&nbsp;</p>
+      <p><font color="#FF0000">※ 8.3 根据DTD的合法性检验</font></p>
+       
+	</td>
+  </tr>
+  <tr valign="top"> 
+    <td width="387" height="308"> 
+      <table width="100%" border="0" cellpadding="0">
+        <tr> 
+          <td>
+
+           <h4>8.3 根据DTD的合法性检验</h4>
+<p>一个合法的文档必须符合DTD指定的约束条件。而且，它的基本元素必须是在文档类型声明中指明的。清单8-1中的文档类型声明和DTD说明一个合法的文档必须是这样的：</p>
+<p>&lt;GREETING&gt;</p>
+<p> various random text but no markup</p>
+<p>&lt;/GREETING&gt;</p>
+<p>一个合法的文档不能是这样的：</p>
+<p>&lt;GREETING&gt;</p>
+<p> &lt;sometag&gt;various random text&lt;/sometag&gt;</p>
+<p> &lt;someEmptyTag/&gt;</p>
+<p>&lt;/GREETING&gt;</p>
+<p>也不能是这样的：</p>
+<p>&lt;GREETING&gt;</p>
+<p> &lt;GREETING&gt;various random text&lt;/GREETING&gt;</p>
+<p>&lt;/GREETING&gt;</p>
+<p>这个文档必须由放在&lt;GREETING&gt;开始标记和&lt;1GREETING&gt;结束标记之间的可析的字符所组成。与只是结构完整的文档不同，合法文档不允许使用任意的标记。使用的任何标记都要在DTD内声明。而且，必须以DTD 
+  允许的方式使用。在清单8-1中，&lt;GREETING&gt;标记只能用作基本元素的开始，且不能嵌套使用。</p>
+<p>假设我们对清单8-2做一点变动，以&lt;foo&gt;和&lt;/foo&gt;替换&lt;GREETING&gt;和&lt;/GREETING&gt;标记，如清单8-3所示。清单8-3是合法的。它是一个结构完整的XML文档，但它不符合文档类型声明和DTD中的约束条件。</p>
+<p>清单８-３：不符合DTD规则的不合法的Hello XML</p>
+<p>&lt;?xml version="1.0" standalone="yes"?&gt;</p>
+<p>&lt;?xml-stylesheet type="text/css" href="greeting.css"?&gt;</p>
+<p>&lt;!DOCTYPE GREETING [</p>
+<p> &lt;!ELEMENT GREETING (#PCDATA)&gt;</p>
+<p>]&gt;</p>
+<p>&lt;foo&gt;</p>
+<p>Hello XML!</p>
+<p>&lt;/foo&gt;</p>
+<p><img src="Image/BK000208-26.gif" width=55 height=59> 不是所有的文档都必须合法，也不是所有的语法分析程序都检查文档的合法性。事实上，多数Web浏览器包括IE５和Mozilla都不检查文档的合法性。</p>
+<p>进行合法性检查的语法分析程序读取DTD并检查文档是否合乎DTD指定的规则。如果是，则分析程序将数据传送到XML应用程序（如Web浏览器和数据库）。如果分析程序发现错误，它将报告出错。如果手工编写XML，应在张贴前检查文档的合法性以确保读者不会遇到错误。</p>
+<p>在Web上可找到几十种不同的进行合法性检查的语法分析程序。其中多数是免费的。大多数是以库文件的形式存在的接近完成的产品，以便程序员可将其结合到自己的程序中。这些产品用户界面（如果有的话）较差。这类分析程序包括IBM的alphaWorks’XML 
+  for Java、Microsoft和DataChannel的XJParser和Silfide的SXP。</p>
+<p>XML for Java：http://www.alphaworks.ibm.com/ tech/xml</p>
+<p>XJParser：http://www.datachannel.com/xml_resources/</p>
+<p>SXP：http://www.loria.fr/projets/XSilfide/EN/sxp/</p>
+<p>一些库文件也包括在命令行上运行的独立的分析程序。这些程序读取XML文件并报告发现的错误，但不加以显示。例如，XJParse 是一个Java程序，包括在IBM的Samples. 
+  XJParse软件包中的XML for Java 1.1.16类库中。要运行这一程序，必须首先将XML for Java的jar文件添加到Java类库的路径上。然后就可以打开DOS 
+  窗口或外壳程序提示符，向XJParse程序传送要检查合法性的文档的本地文件名或远程URL，以便对文档进行检查，如下所示：</p>
+<p>C:\xml4j&gt;java samples.XJParse.XJParse -d D:\XML\08\invalid.xml</p>
+<dir> 
+  <p><img src="Image/BK000208-27.gif" width=54 height=58>本书写作时，IBM的alphaWorks推出了XML 
+    for Java的2.0.6版本。在这一版本下，启动的只是XJParse而非Samples. XJParse 。但是，1.1.16版本提供了更多的用于独立检查的功能。</p>
+</dir>
+<p>您可以使用URL代替文件名，如下所示：</p>
+<p>C:\xml4j&gt;java samples.XJParse.XJParse -d</p>
+<p>http://metalab.unc.edu/books/bible/examples/08/invalid.xml</p>
+<p>在任一情况下，XJParse将列出发现的错误后跟树状结构的文档作为反应。例如：</p>
+<p>D:\XML\07\invalid.xml: 6? 4: Document root element, "foo", must</p>
+<p>match DOCTYPE root , "GREETING".</p>
+<p>D:\XML\07\invalid.xml: 8, 6: Element "&lt;foo&gt;"is not valid in </p>
+<p>this context.</p>
+<p>&lt;?xml version="1.0" standalone="yes"?&gt;</p>
+<p>&lt;?xml-stylesheet type="text/css" href="greeting.css"?&gt;</p>
+<p>&lt;!DOCTYPE GREETING [</p>
+<p> &lt;!ELEMENT GREETING (#PCDATA)&gt;</p>
+<p>]&gt;</p>
+<p>&lt;foo&gt;</p>
+<p>Hello XML!</p>
+<p>&lt;/foo&gt;</p>
+<p>这个输出不是特别吸引人。但是，像XJParse这样的合法性检查程序的目的不是显示XML文件。相反，分析程序的任务是把文档分成为树状结构并把树的结点传送给显示数据的程序。这个程序可能是Netscape 
+  Navigator或 Internet Explorer等Web浏览器。也可能是一个数据库。甚至可能是自己写成的定制程序。使用XJParse或其他命令行合法性分析程序来验证是否编写了其他程序可以处理的良好的XML。实质上这是一种校对或质量保证阶段而不是最后的输出。</p>
+<p>因为XML for Java和多数合法性分析程序是用Java写成的，它们也就具有跨平台的Java程序的所有缺点。首先，在能够运行分析程序之前必须安装Java开发工具（JDK）或Java运行环境。其次，需要将XML 
+  for Java的jar文件添加到类路径上。这两项工作都不是太简单。它们都不是为非程序员的最终用户设计的。这些工具有点设计欠佳，使用不便。</p>
+<p>如果正在为浏览器编写文档，验证文档的最简易方法是把文档装入浏览器看一看报告出什么错误。但是并不是所有的浏览器都对文档进行合法性检查，某些浏览器仅接受结构完整的文档，而不管其合法性如何。Internet 
+  Explorer 5.0β2版对文档进行合法性检查，但正式发行版都不进行了。</p>
+<p>如果将文档装入Web服务器且无需特别保密，基于Web的合法性检查程序是一种替代方法。这些分析程序只需要以简单的形式输入文档的URL。它们明显的优点是不需要面对Java运行软件、类路径和环境变量等麻烦。</p>
+<p>图8-3显示的是Richard Tobin的基于RXP的以Web为宿主的XML结构完整性和合法性检查程序。可以在http://www.cogsci.ed.ac.uk/%7Erichard/xml-check.html处找到此程序。图8-4显示的是使用这一程序检查清单8-3显示出的错误结果。</p>
+<p align="center"><img src="Image/BK000208-28.gif" width=477 height=333></p>
+<p align="center">图8-3 Richard Tobin的基于RXP的以Web为宿主的XML结构完整性和合法性检查程序</p>
+<p align="center"><img src="Image/BK000208-29.gif" width=364 height=323></p>
+<p align="center">图8-4 Richard Tobin的XML合法性检查程序报告的清单8-3中的错误</p>
+<p></p>
+<p>布朗大学的Scholarly Technology Group在<a href="http://www.stg.brown.edu/">http://www.stg.brown.edu/</a></p>
+<p>service/xmlvalid/处提供了一种检查程序。这一程序以允许从本地计算机上载文件而不必把文件装入公共服务器而著称。如图8-5所示，图8-6显示了用这一程序检查清单8-3的结果。</p>
+<p align="center"><img src="Image/BK000208-30.gif" width=353 height=323></p>
+<p align="center">图8-5 布朗大学的Scholarly Technology Group的以Web为宿主的XML合法性检查程序</p>
+<p align="center"><img src="Image/BK000208-31.gif" width=451 height=371></p>
+<p align="center">图8-6 布朗大学的Scholarly Technology Group的合法性检查程序报告的清单8-3中的错误</p>
+ 
+<a href='397.htm'>&lt;&lt;上一篇</a>&nbsp;&nbsp;<a href='399.htm'>下一篇&gt;&gt;</a></td>
+        </tr>
+      </table>
+      <p>&nbsp; </p>
+    </td>
+  </tr>
+</table>
+
+</body>
+
+</html>

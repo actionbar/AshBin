@@ -1,0 +1,32 @@
+<html>
+<head><link rel="stylesheet" type="text/css" href="showcode.css" /></head>
+<body>
+<pre>
+&lt;html&gt;
+&lt;body&gt;
+<code class="aspcode">&lt;%
+set conn=Server.CreateObject(&#34;ADODB.Connection&#34;)
+conn.Provider=&#34;Microsoft.Jet.OLEDB.4.0&#34;
+conn.Open(Server.Mappath(&#34;/db/northwind.mdb&#34;))
+set rs = Server.CreateObject(&#34;ADODB.recordset&#34;)
+rs.Open &#34;Select * from Customers&#34;, conn
+'The first number indicates how many records to copy
+'The second number indicates what recordnumber to start on
+p=rs.GetRows(2,0)
+response.write(&#34;&lt;p&gt;This example returns the value of the first column in the first two records:&lt;/p&gt;&#34;)
+response.write(p(0,0))
+response.write(&#34;&lt;br&gt;&#34;)
+response.write(p(0,1))
+response.write(&#34;&lt;p&gt;This example returns the value of the first three columns in the first record:&lt;/p&gt;&#34;)
+response.write(p(0,0))
+response.write(&#34;&lt;br&gt;&#34;)
+response.write(p(1,0))
+response.write(&#34;&lt;br&gt;&#34;)
+response.write(p(2,0))
+rs.close
+conn.close
+%&gt;</code>
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+</body>

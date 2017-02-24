@@ -1,0 +1,87 @@
+<html>
+<head>
+<title>什么是XML</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+
+<link rel = stylesheet href = "image/style.css">
+</head>
+<body bgcolor="#ffffff">
+<table width="688" border="0" cellspacing="0" cellpadding="0" align="center">
+  <tr bgcolor="EEEEEE"> 
+    <td height="22"><a href="index.htm">主页</a></td>
+  </tr>
+</table><br>
+<table border="0" cellpadding="0" cellspacing="0" width="688" align="center" height="490">
+  <tr valign="top"> 
+    <td rowspan="4" width="91">&nbsp; </td>
+    <td height="68" width="131"> 
+      <p><img src="image/doc.gif"></p>
+    </td>
+    <td rowspan="4" width="18"><b></b> </td>
+    <td height="68" width="387"><img src="image/title_doc.gif"></td>
+    <td rowspan="4" width="61"> 
+      <h6>&nbsp;</h6>
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td rowspan="3" valign="top" class="pt10" align="center" width="131" bgcolor="EEEEEE"> 
+      <p>&nbsp;</p>
+      <p><font color="#FF0000">※ 1.1 什么是XML</font></p>
+       
+	</td>
+  </tr>
+  <tr valign="top"> 
+    <td width="387" height="308"> 
+      <table width="100%" border="0" cellpadding="0">
+        <tr> 
+          <td>
+
+<h4 ALIGN="CENTER">1.1 什么是XML</h4>
+<P>XML代表Extensible Markup Language（eXtensible Markup Language的缩写，意为可扩展的标记语言）。XML是一套定义语义标记的规则，这些标记将文档分成许多部件并对这些部件加以标识。它也是元标记语言，即定义了用于定义其他与特定领域有关的、语义的、结构化的标记语言的句法语言。</P>
+<h5>1.1.1 XML是元标记语言</h5>
+<P>关于XML要理解的第一件事是，它不只是像超文本标记语言（Hypertext Markup Language，HTML）或是格式化的程序。这些语言定义了一套固定的标记，用来描述一定数目的元素。如果标记语言中没有所需的标记，用户也就没有办法了。这时只好等待标记语言的下一个版本，希望在新版本中能够包括所需的标记，但是这样一来就得依赖于软件开发商的选择了。</P>
+<P>但是XML是一种元标记语言。用户可以定义自己需要的标记。这些标记必须根据某些通用的原理来创建，但是在标记的意义上，也具有相当的灵活性。例如，假如用户正在处理与家谱有关的事情，需要描述人的出生、死亡、埋葬地、家庭、结婚、离婚等，这就必须创建用于每项的标记。新创建的标记可在文档类型定义（Document Type Definition，在以后的篇幅中常简称为DTD）中加以描述。在本书的第二部分中将会学到有关DTD的更多的知识。现在，只需把DTD看作是一本词汇表和某类文档的句法。例如，在Peter Murray-Rust的Chemical Markup Language （化学标记语言，简写为CML）中的MOL.DTD文件中描述了词汇表和分子科学的句法：其中包括chemistry（化学）、crystallography（结晶学）、solid state physics（固体物理）等词汇。它包括用于atoms（原子）、molecules（分子）、bonds（化学键）、spectra（光谱）等的标记。这个DTD可与分子科学领域中的许多不同的人共享。对于其他领域也有其他的DTD，用户还可以创建自己的DTD。</P>
+<P>XML定义了一套元句法，与特定领域有关的标记语言（如MusicML、MathML和CML）都必须遵守。如果一个应用程序可以理解这一元句法，那么它也就自动地能够理解所有的由此元语言建立起来的语言。浏览器不必事先了解多种不同的标记语言使用的每个标记。事实是，浏览器在读入文档或是它的DTD时才了解了给定文档使用的标记。关于如何显示这些标记的内容的详细指令是附加在文档上的另外的样式单提供的。例如，考虑薛定格（Schrodinger）方程：</P>
+<P ALIGN="CENTER"><img src="image/Image3.gif" WIDTH=265 HEIGHT=42></P>
+<P>科学论文中充满了这一类方程，但是科学家还必须等待多年，才能让浏览器的开发商支持书写最基本的数学公式所需的标记。音乐家也有同样的局限性，因为Netscape Navigator和Internet Explorer还都不支持乐谱。</P>
+<P>有了XML就意味着不必等待浏览器的开发商来满足用户的需要了。用户可以创建自己需要的标记，当需要时，告诉浏览器如何显示这些标记就可以了。</P>
+<h5>1.1.2 XML描述的是结构和语义，而不是格式化</h5>
+<P>关于XML要了解的第二件事是，XML标记描述的是文档的结构和意义。它不描述页面元素的格式化。可用样式单为文档增加格式化信息。文档本身只说明文档包括什么标记，而不是说明文档看起来是什么样的。</P>
+<P>作为对照，HTML文档包括了格式化、结构和语义的标记。&lt;B&gt;就是一种格式化标记，它使其中的内容变为粗体。&lt;STRONG&gt;是一种语义标记，意味着其中的内容特别重要。&lt;TD&gt;是结构标记，指明内容是表中的一个单元。事实上，某些标记可能具有所有这三种意义。&lt;H1&gt;标记可同时表示20磅的Helvetica字体的粗体、第一级标题和页面标题。</P>
+<P>例如，在HTML中，一首歌可能是用定义标题、定义数据、无序的列表和列表项来描述的。但是事实上这些项目没有一件是与音乐有关的。用HTML定义的歌曲可能如下：</P>
+<P><font face="Courier New, Courier, mono"><i>&lt;dt&gt;Hot Cop</i></font></P>
+<P><i><font face="Courier New, Courier, mono">&lt;dd&gt; by Jacques Morali Henri 
+  Belolo and Victor Willis</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;ul&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;li&gt;Producer: Jacques Morali</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;li&gt;Publisher: PolyGram Records</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;li&gt;Length: 6:20</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;li&gt;Written: 978</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;li&gt;Artist: Village People</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;/ul&gt;</font></i></P>
+<P>而在XML中，同样的数据可能标记为：</P>
+<P><font face="Courier New, Courier, mono"><i>&lt;SONG&gt;</i></font></P>
+<P><i><font face="Courier New, Courier, mono">&lt;TITLE&gt;Hot Cop&lt;/TITLE&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;COMPOSER&gt;Jacques Morali&lt;/COMPOSER&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;COMPOSER&gt;Henri Belolo&lt;/COMPOSER&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;COMPOSER&gt;Victor Willis&lt;/COMPOSER&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;PRODUCER&gt;Jacques Morali&lt;/PRODUCER&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;PUBLISHER&gt;PolyGram Records&lt;/PUBLISHER&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;LENGTH&gt;6:20&lt;/LENGTH&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;YEAR&gt; 978&lt;/YEAR&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;ARTIST&gt;Village People&lt;/ARTIST&gt;</font></i></P>
+<P><i><font face="Courier New, Courier, mono">&lt;/SONG&gt;</font></i></P>
+<P>在这个清单中没有使用通用的标记如&lt;dt&gt;和&lt;li&gt;，而是使用了具有意义的标记，如&lt;SONG&gt;、&lt;TITLE&gt;、&lt;COMPOSER&gt;和&lt;YEAR&gt;等。这种用法具有许多优点，包括源码易于被人阅读，使人能够看出作者的含义。</P>
+<P>XML标记还使非人类的自动机器人易于找出文档中的所有歌曲。在HTML中，机器人只能告诉我们这个元素是dt。机器人不能决定dt到底代表一首歌的题目还是定义，抑或只是一些设计者喜爱的缩进文本格式。事实上，单一文档中可以很好地包括带有三种意义的各种dt元素。</P>
+<P>可以选择XML的元素名称，以便使其在附加的上下文中具有额外的意义。例如，元素名称可以是数据库的域名。XML比HTML更为灵活而且适用于各种应用，因为有限数目的标记不必用于许多不同的目的。</P> 
+<a href='304.htm'>&lt;&lt;上一篇</a>&nbsp;&nbsp;<a href='306.htm'>下一篇&gt;&gt;</a></td>
+        </tr>
+      </table>
+      <p>&nbsp; </p>
+    </td>
+  </tr>
+</table>
+
+</body>
+
+</html>

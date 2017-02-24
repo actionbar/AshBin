@@ -1,0 +1,35 @@
+<html>
+<head><link rel="stylesheet" type="text/css" href="showcode.css" /></head>
+<body>
+<pre>
+&lt;html&gt;
+<code class="aspcode">&lt;%
+dim cars
+cars=Request.Form(&#34;cars&#34;)
+%&gt;</code>
+&lt;body&gt;
+&lt;form action=&#34;/example/aspe/demo_aspe_radiob.asp&#34; method=&#34;post&#34;&gt;
+&lt;p&gt;请选择您喜欢的汽车：&lt;/p&gt;
+&lt;input type=&#34;radio&#34; name=&#34;cars&#34;
+<code class="aspcode">&lt;%if cars=&#34;Volvo&#34; then Response.Write(&#34;checked&#34;)%&gt;</code>
+value=&#34;Volvo&#34;&gt;Volvo&lt;/input&gt;
+&lt;br /&gt;
+&lt;input type=&#34;radio&#34; name=&#34;cars&#34;
+<code class="aspcode">&lt;%if cars=&#34;Saab&#34; then Response.Write(&#34;checked&#34;)%&gt;</code>
+value=&#34;Saab&#34;&gt;Saab&lt;/input&gt;
+&lt;br /&gt;
+&lt;input type=&#34;radio&#34; name=&#34;cars&#34;
+<code class="aspcode">&lt;%if cars=&#34;BMW&#34; then Response.Write(&#34;checked&#34;)%&gt;</code>
+value=&#34;BMW&#34;&gt;BMW&lt;/input&gt;
+&lt;br /&gt;&lt;br /&gt;
+&lt;input type=&#34;submit&#34; value=&#34;提交&#34; /&gt;
+&lt;/form&gt;
+<code class="aspcode">&lt;%
+if cars&lt;&gt;&#34;&#34; then
+   Response.Write(&#34;&lt;p&gt;您喜欢的汽车是&#34; & cars & &#34;&lt;/p&gt;&#34;)
+end if
+%&gt;</code>
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+</body>

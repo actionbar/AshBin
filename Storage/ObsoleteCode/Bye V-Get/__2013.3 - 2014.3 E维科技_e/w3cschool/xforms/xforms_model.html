@@ -1,0 +1,186 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="../c3.css" />
+<title>XForms 模型</title>
+</head>
+<body class="xml">
+<div id="wrapper">
+<div id="header">
+<a href="http://e.v-get.com/w3cschool/" style="float:left;">W3CSchool 在线教程</a>
+<div class="q g"><script type="text/javascript">var cpro_id="u1163355"</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div>
+<div id="navfirst">
+<ul id="menu">
+<li id="h"><a href="../h.html">HTML教程</a></li>
+<li id="x"><a href="../x.html">XML教程</a></li>
+<li id="b"><a href="../b.html">浏览器脚本</a></li>
+<li id="s"><a href="../s.html">服务器脚本</a></li>
+<li id="d"><a href="../d.html">dot net教程</a></li>
+<li id="m"><a href="../m.html">多媒体教程</a></li>
+<li id="w"><a href="../w.html">建站手册</a></li>
+</ul>
+</div><div id="navsecond">
+<div id="course">
+<h2>XForms 教程</h2>
+<ul>
+<li><a href="http://e.v-get.com/w3cschool/">XForms 首页</a></li>
+<li><a href="xforms_intro.html">XForms 简介</a></li>
+<li><a href="xforms_model.html">XForms 模型</a></li>
+<li><a href="xforms_namespace.html">XForms 命名空间</a></li>
+<li><a href="xforms_example.html">XForms 实例</a></li>
+<li><a href="xforms_xpath.html">XForms XPath</a></li>
+<li><a href="xforms_input.html">XForms 输入</a></li>
+<li><a href="xforms_selections.html">XForms 选择</a></li>
+<li><a href="xforms_datatypes.html">XForms 数据类型</a></li>
+<li><a href="xforms_properties.html">XForms 属性</a></li>
+<li><a href="xforms_actions.html">XForms 行为</a></li>
+<li><a href="xforms_functions.html">XForms 函数</a></li>
+</ul>
+<h2>参考手册</h2>
+<ul>
+<li><a href="xforms_typeref.html">XForms 数据类型</a></li>
+</ul>
+</div>
+<div id="selected">
+<h2>建站手册</h2>
+<ul>
+<li><a href="../site/">网站构建</a></li>
+<li><a href="../w3c/">万维网联盟</a></li>
+<li><a href="http://e.v-get.com/w3c/">W3CSchool 教程</a></li>
+<li><a href="../quality/">网站品质</a></li>
+<li><a href="../semweb/">语义网</a></li>
+<li><a href="../hosting/">网站主机</a></li>
+</ul>
+<h2><a href="http://e.v-get.com/w3c/" class="f13">W3CSchool 教程</a></h2><div class="a120x90"><script type="text/javascript">var cpro_id="u1210867";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div></div>
+</div>
+<div id="maincontent">
+<h1>XForms 模型</h1>
+<div id="tpn">
+<ul class="prenext">
+<li class="pre"><a href="xforms_intro.html">上一页</a></li>
+<li class="next"><a href="xforms_namespace.html">下一页</a></li>
+</ul>
+</div>
+<div id="intro">
+<p><strong>XForms 模型为集中于表单中的数据定义了一个模板。</strong></p>
+</div>
+<div>
+<h2>XForms 框架</h2>
+<p>HTML 表单的作用是搜集数据。XForms 的作用是相同的。</p>
+<p>通过 XForms，输入数据被描述在两个不同的部分中：</p>
+<ul>
+<li>XForms 模型 (描述数据和逻辑）</li>
+<li>XForms 用户界面 (显示和输入数据）</li>
+</ul>
+<p><em>XForms 模型</em>定义了什么是表单，它包含什么数据，以及它应该做什么。</p>
+<p><em>XForms 用户界面</em>定义了输入域，以及它们如何被显示。</p>
+</div>
+<div>
+<h2>XForms 模型</h2>
+<p>XForms <em>模型</em>用于<em>描述</em>数据。</p>
+<p>数据模型是 XML 文档的一个实例 (一个模板）。</p>
+<p>XForms 模型定义了一个 &lt;model&gt; 元素内部的一个数据模型：</p>
+<pre>&lt;model&gt;
+&lt;instance&gt;
+  &lt;person&gt;
+    &lt;fname/&gt;
+    &lt;lname/&gt;
+  &lt;/person&gt;
+&lt;/instance&gt;
+&lt;submission id=&#34;form1&#34; action=&#34;submit.asp&#34; method=&#34;get&#34;/&gt;
+&lt;/model&gt;</pre>
+<p>从上面的例子，您可以看到 XForms 模型使用 一个 <em>&lt;instance&gt;</em> 元素来为需要收集的数据定义 XML 模板，并使用一个 <em>&lt;submission&gt;</em> 元素来描述如何提交数据。</p>
+<p>&lt;submission&gt; 模型<em>没有</em>表达任何有关表单可见部分 (用户界面）的信息。</p>
+</div>
+<div>
+<h2>XForms 命名空间</h2>
+<p>假如您忽略了这些例子中的 XForms 命名空间，或者假如您不清楚命名空间的概念，我们会在下一节介绍这个内容。</p>
+</div>
+<div>
+<h2>&lt;instance&gt; 元素</h2>
+<p>XForms 模型 <em>&lt;instance&gt;</em> 元素来定义数据收集的数据。</p>
+<p>XForms 是<em>为某个 XML 文档进行数据收集</em>的。在这个 XForms 模型中的 &lt;instance&gt; 元素定义了这个 XML 文档。</p>
+<p>在上面的例子中，表单为其收集数据的数据实例 (XML 文档）类似这样：</p>
+<pre>&lt;person&gt;
+  &lt;fname/&gt;
+  &lt;lname/&gt;
+&lt;/person&gt;</pre>
+<p>在数据收集完毕后，这个 XML 文档也许看上去类似这样：</p>
+<pre>&lt;person&gt;
+  &lt;fname&gt;John&lt;/fname&gt;
+  &lt;lname&gt;Smith&lt;/lname&gt;
+&lt;/person&gt;</pre>
+</div>
+<div>
+<h2>&lt;submission&gt; 元素</h2>
+<p>XForms 模型使用 <em>&lt;submission&gt;</em> 元素来描述如何提交数据。</p>
+<p>&lt;submission&gt; 元素可定义表单以及如何提交表单。在上面的例子中，<em>id=&#34;form1&#34;</em> 用于标示此表单，<em>action=&#34;submit.asp&#34;</em> 属性表单被提交到的 URL，而 <em>method=&#34;get&#34;</em> 属性定义了在表单提交过程中使用的方法。</p>
+</div>
+<div>
+<h2>XForms 用户界面</h2>
+<p>XForms <em>用户界面</em>用于<em>显示和输入</em>数据。</p>
+<p>XForms 的用户界面元素被称为<em>控件</em>或输入控件：</p>
+<pre>&lt;input ref=&#34;fname&#34;&gt;&lt;label&gt;First Name&lt;/label&gt;&lt;/input&gt;
+&lt;input ref=&#34;lname&#34;&gt;&lt;label&gt;Last Name&lt;/label&gt;&lt;/input&gt;
+&lt;submit submission=&#34;form1&#34;&gt;&lt;label&gt;Submit&lt;/label&gt;&lt;/submit&gt;</pre>
+<p>在上面的例子中，两个 &lt;input&gt; 元素定义了两个输入域。ref=&#34;fname&#34; 和 ref=&#34;lname&#34; 属性指向了 XForms 模型中的 &lt;fname&gt; 和 &lt;lname&gt; 元素。</p>
+<p>&lt;submit&gt; 元素中的 submission=&#34;form1&#34; 属性可引用 XForms 模型中的 &lt;submission&gt; 元素。submit 元素通常被显示为按钮。</p>
+<p>请留意例子中的 &lt;label&gt; 元素。使用 XForms 的话，每个输入控件元素都必须有 &lt;label&gt; 元素。</p>
+</div>
+<div>
+<h2>您将需要一个容器</h2>
+<p>XForms 没有被设计为单独工作的方式。也没有所谓的 XForms 文档。</p>
+<p>XForms 必须工作在另外一个 XML 文档中。它可运行在 XHTML 1.0 中，同时它也将工作在 XHTML 2.0 中。</p>
+</div>
+<div>
+<h2>现在把所有的组合起来</h2>
+<p>如果我们把它组合起来，此文档是这样的：</p>
+<pre>&lt;xforms&gt;
+&lt;model&gt;
+&lt;instance&gt;
+  &lt;person&gt;
+    &lt;fname/&gt;
+    &lt;lname/&gt;
+  &lt;/person&gt;
+&lt;/instance&gt;
+&lt;submission id=&#34;form1&#34;
+action=&#34;submit.asp&#34;
+method=&#34;get&#34;/&gt;
+&lt;/model&gt;
+&lt;input ref=&#34;fname&#34;&gt;&lt;label&gt;First Name&lt;/label&gt;&lt;/input&gt;
+&lt;input ref=&#34;lname&#34;&gt;&lt;label&gt;Last Name&lt;/label&gt;&lt;/input&gt;
+&lt;submit submission=&#34;form1&#34;&gt;&lt;label&gt;Submit&lt;/label&gt;&lt;/submit&gt;
+&lt;/xforms&gt;</pre>
+<p>页面会这样显示：</p>
+<img src="i/xforms_model_01.gif" alt="" />
+</div>
+<div>
+<h2>XForms 处理器</h2>
+<p>内建于浏览器中的 <em>XForms 处理器</em>将负责向目标提交 XForms 数据。</p>
+<p>数据可作为 XML 来提交，类似这样：</p>
+<pre>&lt;person&gt;
+  &lt;fname&gt;David&lt;/fname&gt;
+  &lt;lname&gt;Smith&lt;/lname&gt;
+&lt;/person&gt;</pre>
+<p>或作为文本来提交，类似这样：</p>
+<pre>fname=David;lname=Smith</pre>
+</div>
+<div id="bpn">
+<ul class="prenext">
+<li class="pre"><a href="xforms_intro.html">上一页</a></li>
+<li class="next"><a href="xforms_namespace.html">下一页</a></li>
+</ul>
+</div>
+</div>
+<div id="sidebar">
+<div class="rs"></div>
+<div id="tools">
+<h5 id="tools_reference"><a href="xforms_typeref.html">XForms 参考手册</a></h5>
+</div>
+<div class="a120x600"><script type="text/javascript">var cpro_id="u1293136";</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script></div>
+</div><div class="b"></div>
+</div>
+</body>
+</html>
